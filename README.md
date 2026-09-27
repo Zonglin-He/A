@@ -1,0 +1,70 @@
+# A — STVG adaptation research code
+
+用于时空视频定位（STVG）的研究代码，包含当前的 **DESTA-3D v2**、已有 **DeCoTA C+D 精简实现**，以及这些入口实际依赖的历史工具。
+
+本仓库是代码快照。数据集、标注、视频、backbone/adapter 权重、缓存、逐样本预测和个人研究记录均不包含在内。
+
+## 主要入口
+
+| 内容 | 代码 |
+|---|---|
+| DESTA-3D v2：共享 THW stem、query-conditioned 双 reader、独立残差 | [`vg_tta/desta3d_v2.py`](vg_tta/desta3d_v2.py) |
+| 冻结 PTD 的 event → spatial 两次解码、caption token 提取 | [`vg_tta/desta3d_v2_ptd.py`](vg_tta/desta3d_v2_ptd.py) |
+| 源监督的 temporal/spatial token mask | [`vg_tta/desta3d_v2_source.py`](vg_tta/desta3d_v2_source.py) |
+| Evidence loss、分组优化器、warmup/cosine | [`vg_tta/desta3d_v2_training.py`](vg_tta/desta3d_v2_training.py) |
+| 真实模型工程验收入口 | [`scripts/desta3d_v2_p0.py`](scripts/desta3d_v2_p0.py) |
+| 四臂 source fit、断点续跑、封存与选态 | [`scripts/desta3d_v2_source_fit.py`](scripts/desta3d_v2_source_fit.py) |
+| 已有 DeCoTA 精简运行模块 | [`methods/decota_final_simplified_v1/`](methods/decota_final_simplified_v1/) |
+| 单次 DeCoTA 预测入口 | [`scripts/predict_decota.py`](scripts/predict_decota.py) |
+
+`scripts/` 中保留递归导入依赖，因而包含若干旧实验、oracle 诊断和 teacher 接口。这些文件的存在不表示它们属于 v2 当前方法，也不表示它们已建立有效性；当前 v2 没有启用新教师或 OPD 训练。
+
+## DESTA-3D v2 计算图
+
+```text
+Frozen PTD visual merger [T,H,W,2560] + frozen caption token sequence
+                          |
+                learned projection / shared THW stem
+                   /                         \
+        spatial text pooling           event text pooling
+           reader-internal FiLM       reader-internal FiLM
+                   |                         |
+             spatial reader              event reader
+                   |                         |
+       referent occupancy M(t,x,y)      frame event presence a(t)
+                   |                         |
+          independent gated V_S       independent gated V_E
+                   |                         |
+                   |                    PTD temporal pass
+                   |                         | I*
+                   +-------- PTD spatial pass (fresh KV) ------>
+                                     full tube (I*, B*)
+```
+
+两个 branch 不做平均后统一注入。归一化是每个 THW cell 的 channel-only LayerNorm；event head 使用平滑空间池化后的独立帧级输出。初始 gate 为 `sigmoid(-6)`，out projection 为非零小方差初始化。文本 pooling 是否学出对象/动作语义分工仍需实验验证。
+
+`dF/dt` 和 dilation pyramid 是可选代码，本快照的 source 配置中 `p1_enabled=false`。约 2.49M 个 dual adapter 参数；拟议的 FiLM/LN/gates 校准范围为 66,818 参数。
+
+## 无数据 CPU 使用
+
+以下示例和测试只验证模块与训练接口，不会下载模型、访问标注或启动 GPU 实验。
+
+```bash
+python -m venv .venv
+. .venv/bin/activate
+python -m pip install -r requirements-core.txt
+python examples/desta3d_v2_cpu.py
+python -m pytest -q tests/test_desta3d_v2.py tests/test_desta3d_v2_training.py
+```
+
+CPU 模块示例使用合成特征，不是视频定位 demo，也不代表任务精度。
+
+## 完整实验依赖与状态
+
+源训练配方见 [`configs/desta3d_v2_source.json`](configs/desta3d_v2_source.json)，设计记录见 [`protocols/desta3d_v2.md`](protocols/desta3d_v2.md)。入口保留原研究中的严格配置与完整性检查：需要自行准备官方依赖、权重、合法数据及原格式 manifest。仅克隆本仓库不能直接复现历史全量实验。
+
+截至 2026-09-27 此次快照：v2 的 4-query 真实 PTD 工程检查和单个 source-train query 的分支梯度检查已完成；四臂源训练正在运行，尚没有完整 v2 source-fit 效用结论，目标 TTA 尚未开始。612 条 CPU mask 检查不是 612 次模型反向传播。工程检查通过不等同于精度提升。
+
+已有 v1 与 DeCoTA 的结论不自动转移到 v2。训练修复的各臂共用数据曝光，但优化步数、PTD CE 次数和阶段不同，不能把组合配方的差异归因于单一 trick。数据边界、评价和当前局限见 [`docs/REPRODUCIBILITY.md`](docs/REPRODUCIBILITY.md)。
+
+第三方项目和固定版本见 [`docs/DEPENDENCIES.md`](docs/DEPENDENCIES.md)。出版副本的路径脱敏及源码哈希见 [`docs/PUBLICATION_MANIFEST.json`](docs/PUBLICATION_MANIFEST.json)。
