@@ -1,0 +1,302 @@
+{
+  "schema": "public_aggregate_source_E0_v1",
+  "created_utc": "2026-09-27T14:29:49.268177+00:00",
+  "evidence": {
+    "local_evidence_name": "INDEPENDENT_E0_READBACK.json",
+    "local_evidence_sha256": "22faa0434e35ab32b8f4e0a1d7e2b2ac4e2a15e2653a6b664cb300364bed4bd7",
+    "raw_evidence_in_public_repository": false
+  },
+  "scope": "source development, first epoch only; no target TTA or checkpoint promotion",
+  "queries": 198,
+  "parents": 31,
+  "metric_units": "IoUs fractions; deltas percentage points",
+  "metric_method": {
+    "format_failures": "Retained with vIoU/sIoU/tIoU=0; none dropped.",
+    "implementation": "Independent inline scalar geometry arithmetic; no call/import of worker `_tube_metric`, `_score_predictions`, or `vg_tta.metrics`.",
+    "paired_bootstrap": "31 paired source-parent deltas, parent sampling with replacement, 10,000 replicates, seed 20260927, percentile 95% interval; equal source-parent weighting.",
+    "sIoU": "Mean xyxy IoU over all event_active AND box_valid support frames; zero when none.",
+    "tIoU": "Continuous physical-time intersection/union of [frame_ids[pred_start], frame_ids[pred_end]+1) and [GT begin_fid, GT end_fid).",
+    "vIoU": "Dense zero canvas from sparse boxes_cxcywh; invalid geometry becomes zero box. IoU over event_active AND box_valid frames, numerator summed only when original frame id lies in physical half-open predicted∩GT event segment; denominator is number of sampled frame ids in physical half-open union.",
+    "worker_comparison": "After raw independent computation, rowwise v/s/t checked against E0_SOURCE_METRICS.json with 1e-6 tolerance; the worker table was not used to derive the independent scores."
+  },
+  "frozen": {
+    "query_macro": {
+      "vIoU": 0.3437758375599235,
+      "sIoU": 0.4983015519782383,
+      "tIoU": 0.4380207126536309
+    },
+    "parent_macro": {
+      "vIoU": 0.40173598008866857,
+      "sIoU": 0.5660427299249831,
+      "tIoU": 0.5120664970010521
+    }
+  },
+  "arms": {
+    "dual_current": {
+      "stage": "B integration",
+      "parent_macro": {
+        "sIoU": 0.565715362249927,
+        "tIoU": 0.5096357653386774,
+        "vIoU": 0.4012551197294037
+      },
+      "query_macro": {
+        "sIoU": 0.4980717301866878,
+        "tIoU": 0.43565037110903426,
+        "vIoU": 0.3444212582022647
+      },
+      "support_and_coverage": {
+        "adapter_hash_matches_seal": true,
+        "format_failures_retained_with_zero_metrics": 0,
+        "keys_equal_input_roster": true,
+        "no_support_queries_included": 5,
+        "parents": 31,
+        "queries": 198,
+        "source_mapping_matches_roster": true,
+        "spatial_support_frames": 1865,
+        "spatial_support_queries": 193,
+        "unique_adapter_hashes": 1
+      },
+      "versus_frozen": {
+        "sIoU": {
+          "best_delta_pp": 1.8632129003956055,
+          "delta_parent_macro_pp": -0.03273676750560715,
+          "paired_parent_bootstrap_95ci_pp": [
+            -0.23939842453926438,
+            0.17457122634299496
+          ],
+          "parents_negative": 14,
+          "parents_positive": 17,
+          "parents_zero_within_1e_10": 0,
+          "severe_loss_gt5pp": 0,
+          "worst_delta_pp": -1.6767909935519687
+        },
+        "tIoU": {
+          "best_delta_pp": 1.4772917714094196,
+          "delta_parent_macro_pp": -0.2430731662374782,
+          "paired_parent_bootstrap_95ci_pp": [
+            -0.5848943725751692,
+            0.026633862678021054
+          ],
+          "parents_negative": 6,
+          "parents_positive": 3,
+          "parents_zero_within_1e_10": 22,
+          "severe_loss_gt5pp": 0,
+          "worst_delta_pp": -3.5303388494877908
+        },
+        "vIoU": {
+          "best_delta_pp": 2.1858539361066716,
+          "delta_parent_macro_pp": -0.04808603592649619,
+          "paired_parent_bootstrap_95ci_pp": [
+            -0.28119996012677695,
+            0.17753795151593366
+          ],
+          "parents_negative": 16,
+          "parents_positive": 15,
+          "parents_zero_within_1e_10": 0,
+          "severe_loss_gt5pp": 0,
+          "worst_delta_pp": -2.0478229777599832
+        }
+      }
+    },
+    "dual_repaired": {
+      "stage": "A evidence only",
+      "parent_macro": {
+        "sIoU": 0.5658653420378359,
+        "tIoU": 0.5121179383029282,
+        "vIoU": 0.40283007476257066
+      },
+      "query_macro": {
+        "sIoU": 0.49664903196802224,
+        "tIoU": 0.437066712959841,
+        "vIoU": 0.3442236131216849
+      },
+      "support_and_coverage": {
+        "adapter_hash_matches_seal": true,
+        "format_failures_retained_with_zero_metrics": 0,
+        "keys_equal_input_roster": true,
+        "no_support_queries_included": 5,
+        "parents": 31,
+        "queries": 198,
+        "source_mapping_matches_roster": true,
+        "spatial_support_frames": 1865,
+        "spatial_support_queries": 193,
+        "unique_adapter_hashes": 1
+      },
+      "versus_frozen": {
+        "sIoU": {
+          "best_delta_pp": 5.600374327289536,
+          "delta_parent_macro_pp": -0.017738788714702133,
+          "paired_parent_bootstrap_95ci_pp": [
+            -0.4227746806926377,
+            0.46853246606088866
+          ],
+          "parents_negative": 16,
+          "parents_positive": 15,
+          "parents_zero_within_1e_10": 0,
+          "severe_loss_gt5pp": 0,
+          "worst_delta_pp": -3.3698812809014655
+        },
+        "tIoU": {
+          "best_delta_pp": 5.925925925925924,
+          "delta_parent_macro_pp": 0.00514413018760087,
+          "paired_parent_bootstrap_95ci_pp": [
+            -0.4603566710651748,
+            0.5429007138321913
+          ],
+          "parents_negative": 10,
+          "parents_positive": 6,
+          "parents_zero_within_1e_10": 15,
+          "severe_loss_gt5pp": 0,
+          "worst_delta_pp": -3.5303388494877908
+        },
+        "vIoU": {
+          "best_delta_pp": 5.270940543331326,
+          "delta_parent_macro_pp": 0.10940946739021361,
+          "paired_parent_bootstrap_95ci_pp": [
+            -0.2488922940487501,
+            0.5572565717244089
+          ],
+          "parents_negative": 17,
+          "parents_positive": 14,
+          "parents_zero_within_1e_10": 0,
+          "severe_loss_gt5pp": 0,
+          "worst_delta_pp": -1.8715108538238767
+        }
+      }
+    },
+    "early_repaired": {
+      "stage": "A evidence only",
+      "parent_macro": {
+        "sIoU": 0.5642882842741362,
+        "tIoU": 0.5092239227003547,
+        "vIoU": 0.4002096603326002
+      },
+      "query_macro": {
+        "sIoU": 0.49676706962092004,
+        "tIoU": 0.4353834909714377,
+        "vIoU": 0.3435614639356033
+      },
+      "support_and_coverage": {
+        "adapter_hash_matches_seal": true,
+        "format_failures_retained_with_zero_metrics": 0,
+        "keys_equal_input_roster": true,
+        "no_support_queries_included": 5,
+        "parents": 31,
+        "queries": 198,
+        "source_mapping_matches_roster": true,
+        "spatial_support_frames": 1865,
+        "spatial_support_queries": 193,
+        "unique_adapter_hashes": 1
+      },
+      "versus_frozen": {
+        "sIoU": {
+          "best_delta_pp": 1.0836976032010448,
+          "delta_parent_macro_pp": -0.17544456508467637,
+          "paired_parent_bootstrap_95ci_pp": [
+            -0.37890997797601494,
+            0.02019703104223578
+          ],
+          "parents_negative": 20,
+          "parents_positive": 11,
+          "parents_zero_within_1e_10": 0,
+          "severe_loss_gt5pp": 0,
+          "worst_delta_pp": -1.6474568178469262
+        },
+        "tIoU": {
+          "best_delta_pp": 1.338184675310966,
+          "delta_parent_macro_pp": -0.28425743006974563,
+          "paired_parent_bootstrap_95ci_pp": [
+            -0.62352829512078,
+            -0.01790297070998431
+          ],
+          "parents_negative": 9,
+          "parents_positive": 4,
+          "parents_zero_within_1e_10": 18,
+          "severe_loss_gt5pp": 0,
+          "worst_delta_pp": -3.5303388494877908
+        },
+        "vIoU": {
+          "best_delta_pp": 2.373707815317841,
+          "delta_parent_macro_pp": -0.15263197560683822,
+          "paired_parent_bootstrap_95ci_pp": [
+            -0.38346502802530874,
+            0.08755109258352209
+          ],
+          "parents_negative": 21,
+          "parents_positive": 10,
+          "parents_zero_within_1e_10": 0,
+          "severe_loss_gt5pp": 0,
+          "worst_delta_pp": -1.9898596532331003
+        }
+      }
+    },
+    "shared_repaired": {
+      "stage": "A evidence only",
+      "parent_macro": {
+        "sIoU": 0.5635454487434884,
+        "tIoU": 0.509473011421178,
+        "vIoU": 0.4006006334423687
+      },
+      "query_macro": {
+        "sIoU": 0.49523616266048603,
+        "tIoU": 0.4357566147787463,
+        "vIoU": 0.3435239579982126
+      },
+      "support_and_coverage": {
+        "adapter_hash_matches_seal": true,
+        "format_failures_retained_with_zero_metrics": 0,
+        "keys_equal_input_roster": true,
+        "no_support_queries_included": 5,
+        "parents": 31,
+        "queries": 198,
+        "source_mapping_matches_roster": true,
+        "spatial_support_frames": 1865,
+        "spatial_support_queries": 193,
+        "unique_adapter_hashes": 1
+      },
+      "versus_frozen": {
+        "sIoU": {
+          "best_delta_pp": 1.5748011525609396,
+          "delta_parent_macro_pp": -0.24972811814945603,
+          "paired_parent_bootstrap_95ci_pp": [
+            -0.5887438099521098,
+            0.031685325304437885
+          ],
+          "parents_negative": 18,
+          "parents_positive": 13,
+          "parents_zero_within_1e_10": 0,
+          "severe_loss_gt5pp": 0,
+          "worst_delta_pp": -3.571529358295067
+        },
+        "tIoU": {
+          "best_delta_pp": 1.4772917714094196,
+          "delta_parent_macro_pp": -0.2593485579874085,
+          "paired_parent_bootstrap_95ci_pp": [
+            -0.5921118641901012,
+            0.002256510212847093
+          ],
+          "parents_negative": 7,
+          "parents_positive": 2,
+          "parents_zero_within_1e_10": 22,
+          "severe_loss_gt5pp": 0,
+          "worst_delta_pp": -3.5303388494877908
+        },
+        "vIoU": {
+          "best_delta_pp": 1.8788724880298036,
+          "delta_parent_macro_pp": -0.11353466462998933,
+          "paired_parent_bootstrap_95ci_pp": [
+            -0.32957495228619177,
+            0.0975842317542042
+          ],
+          "parents_negative": 18,
+          "parents_positive": 13,
+          "parents_zero_within_1e_10": 0,
+          "severe_loss_gt5pp": 0,
+          "worst_delta_pp": -2.0412031743290484
+        }
+      }
+    }
+  },
+  "selection_clarification": "Common eligible window is epochs 1 through 5 for all four arms, including dual_current. E0 is excluded; no retrospective re-ranking.",
+  "interpretation": "A versus B is not a stage-matched recipe comparison; complete B training remains ongoing."
+}

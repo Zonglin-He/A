@@ -1,0 +1,137 @@
+{
+  "GT_read": false,
+  "adapter_exactly_reset": true,
+  "backbone_grad_none": true,
+  "changed_parameter_tensors": 10,
+  "clip_norm_before": 0.017667891457676888,
+  "coordinate_KL_before_to_after": 0.0025299913249909878,
+  "coordinate_logits_shape": [
+    10,
+    4,
+    1001
+  ],
+  "ephemeral_source_interface_only": true,
+  "final_boxes_changed": false,
+  "fixed_event_reference_time_for_after": true,
+  "gates_unchanged": true,
+  "gradients": {
+    "branch_film": {
+      "gradient_l2": 0.01757504765811141,
+      "none_tensors": 0,
+      "nonzero_tensors": 4,
+      "parameters": 66048,
+      "trainable_parameters": 66048,
+      "zero_tensors": 0
+    },
+    "event_reader": {
+      "gradient_l2": 0.0,
+      "none_tensors": 6,
+      "nonzero_tensors": 0,
+      "parameters": 36864,
+      "trainable_parameters": 0,
+      "zero_tensors": 0
+    },
+    "gates": {
+      "gradient_l2": 0.0,
+      "none_tensors": 2,
+      "nonzero_tensors": 0,
+      "parameters": 2,
+      "trainable_parameters": 0,
+      "zero_tensors": 0
+    },
+    "input_projection": {
+      "gradient_l2": 0.0,
+      "none_tensors": 2,
+      "nonzero_tensors": 0,
+      "parameters": 327808,
+      "trainable_parameters": 0,
+      "zero_tensors": 0
+    },
+    "norm_affine": {
+      "gradient_l2": 0.0018088965967285144,
+      "none_tensors": 0,
+      "nonzero_tensors": 6,
+      "parameters": 768,
+      "trainable_parameters": 768,
+      "zero_tensors": 0
+    },
+    "out_projection": {
+      "gradient_l2": 0.0,
+      "none_tensors": 4,
+      "nonzero_tensors": 0,
+      "parameters": 660480,
+      "trainable_parameters": 0,
+      "zero_tensors": 0
+    },
+    "readout_heads": {
+      "gradient_l2": 0.0,
+      "none_tensors": 6,
+      "nonzero_tensors": 0,
+      "parameters": 16770,
+      "trainable_parameters": 0,
+      "zero_tensors": 0
+    },
+    "shared_reader": {
+      "gradient_l2": 0.0,
+      "none_tensors": 0,
+      "nonzero_tensors": 0,
+      "parameters": 0,
+      "trainable_parameters": 0,
+      "zero_tensors": 0
+    },
+    "shared_stem": {
+      "gradient_l2": 0.0,
+      "none_tensors": 3,
+      "nonzero_tensors": 0,
+      "parameters": 19968,
+      "trainable_parameters": 0,
+      "zero_tensors": 0
+    },
+    "spatial_reader": {
+      "gradient_l2": 0.0,
+      "none_tensors": 3,
+      "nonzero_tensors": 0,
+      "parameters": 19968,
+      "trainable_parameters": 0,
+      "zero_tensors": 0
+    },
+    "text_pool": {
+      "gradient_l2": 0.0,
+      "none_tensors": 10,
+      "nonzero_tensors": 0,
+      "parameters": 1344000,
+      "trainable_parameters": 0,
+      "zero_tensors": 0
+    }
+  },
+  "logit_changed_count": 31255,
+  "logit_max_abs_change": 0.5625,
+  "loss": 0.0020198975689709187,
+  "optimizer_steps": 1,
+  "scope": "actual frozen PTD output, no task score or generalization claim",
+  "terms": {
+    "alignment": 0.0,
+    "event": 4.61322815681342e-06,
+    "latent": 0.00040007627103477716,
+    "parameter_anchor": 0.0,
+    "referent": 0.0016152078751474619
+  },
+  "updated_parameter_count": 66816,
+  "evidence": {
+    "local_evidence_name": "REAL_TTA_GRADIENT.json",
+    "local_evidence_sha256": "8c9e68f358b7d9507c51ff187beade6ed06dea2ceed103dda7d9c421dc62f89a",
+    "raw_evidence_in_public_repository": false
+  },
+  "source_queries": 1,
+  "target_queries": 0,
+  "views": "clean detached teacher and gamma 0.9 student, same physical frames",
+  "optimizer": {
+    "name": "AdamW",
+    "lr": 1e-05,
+    "weight_decay": 0,
+    "clip_norm": 1
+  },
+  "alignment_weight": 0,
+  "joint_weight": 0,
+  "interpretation": "Real model connectivity check; changed logits with unchanged argmax boxes is not a task gain."
+}
