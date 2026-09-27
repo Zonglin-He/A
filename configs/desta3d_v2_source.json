@@ -1,0 +1,68 @@
+{
+  "TTA_steps": 0,
+  "arms": {
+    "dual_current": [
+      "dual3d",
+      "current"
+    ],
+    "dual_repaired": [
+      "dual3d",
+      "repaired"
+    ],
+    "early_repaired": [
+      "early_factorized",
+      "repaired"
+    ],
+    "shared_repaired": [
+      "shared3d",
+      "repaired"
+    ]
+  },
+  "backbone": "frozen official PTD4B; no backbone optimizer parameters",
+  "checkpoint": "all-arm complete accumulation-window boundary; states/optimizer/RNG/cursor atomically saved; failure replay counted; validation predictions write-once and resume verified",
+  "clip_norm": 1.0,
+  "cohort": "existing isolated VidSTG source-only; no HC mixed-source claim; future HC is cross-dataset unless separately re-prepared",
+  "cumulative_cap_seconds": null,
+  "current_control_scope": "same v2 nonzero gated architecture and split objectives, old optimizer recipe; not old v1 architecture",
+  "current_recipe": {
+    "accumulation": 1,
+    "lr": 0.0001,
+    "scheduler": "constant",
+    "warmup": 0.0
+  },
+  "epochs_max": 6,
+  "hidden_dim": 128,
+  "initialization": "common semantic modules copied from dual_repaired to architecture controls where names/shapes agree; dual_current exact entire dual_repaired state",
+  "loss_A": "L_ref + L_frame_event; source labels only; missing boxes masked only for referent",
+  "loss_B": "L_reference_time_NTP_MTP + L_box_NTP_MTP + .1 L_ref + .1 L_frame_event; structural separator CE omitted explicitly; joint=0; no identity loss",
+  "minimum_free_bytes": 8589934592,
+  "optimizer": "AdamW",
+  "p1_enabled": false,
+  "repaired_recipe": {
+    "accumulation": 4,
+    "head_out_gate_lr": 0.0001,
+    "reader_lr": 3e-05,
+    "scheduler": "cosine per stage; fresh optimizer on A to B only",
+    "warmup": 0.05
+  },
+  "seed": 20260927,
+  "source_gate": "dual_repaired selected B parent vIoU >= exact matched Frozen before later target TTA; CI and negative tails separately reported",
+  "source_patience": "after at least 2 B validation epochs, stop only if every arm has no strict parent-vIoU improvement for 2 B epochs",
+  "source_teacher_forcing": "official GT reference/time prefix for spatial loss; free validation uses event-predicted I* and separate spatial semantic reference",
+  "stage_review_seconds": 3600,
+  "stages": "repaired A=epoch0 evidence; B=epochs1..5 integration; current B throughout0..5",
+  "state_selection": "best source-validation parent-macro vIoU among B epochs only; ties keep earlier; all epoch predictions retained",
+  "target64_metadata_overlap": {
+    "parents": 0,
+    "scope": "only existing target64 manifest; not universal unseen-source claim",
+    "target_labels_read": false,
+    "video_sha256": 0
+  },
+  "target_GT_read": false,
+  "train_parents": 95,
+  "train_queries": 618,
+  "validation_GT": "read only after all 4x198 current-epoch prediction seals; source development selection",
+  "validation_parents": 31,
+  "validation_queries": 198,
+  "weight_decay": 0.0
+}

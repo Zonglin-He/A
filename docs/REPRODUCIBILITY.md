@@ -1,0 +1,29 @@
+# Scope and experimental boundaries
+
+This repository contains reusable code plus selected research execution scripts. It does not contain a turnkey data preparation pipeline for every historical experiment.
+
+## Current v2 source comparison
+
+- Frozen official PTD-4B, hidden width 128, P1 motion/pyramid features disabled.
+- VidSTG source-only: 618 training queries / 95 parent videos; 198 development-validation queries / 31 parents.
+- Three repaired arms: early-factorized, shared-3D and dual-3D. One auxiliary evidence epoch, then at most five integration epochs. Reader LR 3e-5, head/out/gate LR 1e-4, AdamW, no weight decay, accumulation 4, 5% warmup and cosine schedule, gradient clip 1.
+- Current-recipe control: same dual-v2 initial state and split objective, six integration epochs, AdamW 1e-4, accumulation 1 and constant learning rate.
+- The two dual arms start at exactly the same state. Shared modules across architecture controls are copied where names/shapes match. Parameter counts differ slightly; this is not exact capacity matching.
+- Source evidence uses referent occupancy on valid annotated support and independent frame event labels. Missing boxes do not erase event supervision. Six queries lacking valid PTD responses still receive auxiliary supervision.
+- All arms' current-epoch validation predictions are sealed before source validation labels are read. State selection uses parent-macro full-tube vIoU over integration epochs only. This is development selection, not an untouched target estimate.
+- Target labels never select updates, checkpoints or sources. HC mixed-source media disjointness was not resolved for this run; later HC evaluation would be cross-dataset transfer.
+- Full v2 TTA is pending the source gate. Its proposed calibration-only update scope and current implementation parameter groups must not be described as completed target results.
+
+## What can run from this repository alone
+
+The synthetic CPU example and the two included v2 unit-test modules exercise tensor shape, query conditioning, branch separation, channel-only normalization, physical time differences, event targets, and optimizer parameter groups. They require no data or weights.
+
+The real-PTD P0 and source-fit scripts still require local `artifacts/` metadata, fixed source records, original model dependencies, tokenizer files, model weights and legally acquired video data. They deliberately retain registration and sealing checks. `configs/desta3d_v2_source.json` is a readable copy of the actual configuration, not a substitute for those inputs.
+
+Historical support scripts may reference old artifacts, oracle labels, or superseded methods. They are included because of imported helper dependencies and to make the implementation inspectable, not as recommended jobs to run. No schedule or training job is started on import by this publication procedure.
+
+## Snapshot integrity
+
+The live research workspace and all running experiment pins remain unchanged. Public copies replace seven machine-specific path references with relative placeholders, including private authorization-note locations. These historical authorization files are not published, and those registration paths need explicit local setup before reuse. The publication manifest records original and exported hashes.
+
+No trained model, video, annotation, per-query caption/media manifest, raw prediction, personal conversation, credential, or full private research ledger is included. No new open-source license has been selected in this snapshot; third-party rights remain with their owners.
