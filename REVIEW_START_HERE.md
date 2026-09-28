@@ -1,3 +1,17 @@
+# 最新：大幅度 mask 单因素对照完成；尚不进入 OPD
+
+同原16源/B1/冻结PTD，仅将旧late correct/wrong mask诱导的merger差分别独立归一化到stockF的8.7687%(时间)/17.0316%(空间)，五臂80native、0optimizer。三例中性时间方向原样保留；不扫幅度、不改位置、不扩context、不训练reader或外部teacher。
+
+正确时间mask相对Base的tIoU **−2.5320pp**，正确空间mask的sIoU **−1.7126pp**。正确−错误：时间13例+2.9092pp[0,+8.4008]，空间16例+.4161pp[−.4832,+1.5204]；时间优势集中2例且一例是wrong损害更大，不能当成teacher净收益。空间7正8负1零，混合结果不等于全部mask无效。完整正负/逐例/CI见[主表](results/desta3d_v3/2026-09-28/LARGE_MASK_CONTROL.md)、[匿名机器结果](results/desta3d_v3/2026-09-28/LARGE_MASK_CONTROL.json)。
+
+78/80格式合法：两空间臂同一源末框输出null而非box_end，保留原raw并按原grammar失败计零。空间event端点和logits全等Base；主表t下降是整条格式失效，不是时间分支被改动。原好阈值与连续负尾分别报告。
+
+[协议](protocols/desta3d_v3_large_mask_v1.md)、[执行入口](scripts/desta3d_v3_large_mask_recovery_v2.py)、[独立scorer](scripts/score_desta3d_v3_large_mask.py)、[根病例复核](scripts/audit_desta3d_v3_large_mask_cases.py)。首worker比较CPU/GPU记录时报错，原2预测/12.035秒保留；隔离只修读回设备，配置及重放逐值一致。7CPU合同、240几何、4072margin、90父源汇总、256完整BF16端点hash通过。所有GPU已退出，累计42340.06753310408秒cap=null。
+
+当前结论：固定大幅度确实作用到native，但幅度单独放大没有建立净收益。两个已有span病例只证明可达方向；directionality门未过，reader learnability/distillability未验。保留3D/dual主线；下一context假设需固定operator/location/幅度另登记，本轮未跑。外部pixel基线暂缓，不进OPD/target/64。公开不含权重/视频/标签/caption/预测raw。
+
+## 以下为历史记录，当前状态以本节为准
+
 # 最新：源可控性与同范数位置对照已完成
 
 已按附件完成自由merger→冻结输出列空间→旧mask链，以及同16源的early/late×correct/wrong无更新对照。自由/列空间在两个监督源上改善，但等效latent更新巨大，不能据此声称易学。位置对照未支持“提前mask即可修好”：正确性差值early−late，时间−4.899pp CI跨0、空间+.1298pp CI跨0；错误负控本身退化与全部负尾保留。

@@ -119,8 +119,8 @@ norms are2697.54 and5309.50 times the original branch latent. Token deltas are
 8.77% and17.03% of base F,764.0 and564.0 times the old correct-mask perturbation.
 Independent FP64 reconstruction gW delta_z matches actual delta_F within3.786e-7.
 Thus neither the weak old intervention nor the powerful supervised control isolates
-location as the cause. The next discriminating check must match intervention norm
-while moving the same mask before versus after the reader, retaining wrong masks.
+location as the cause. That motivated the now-completed norm-matched before/after-reader check below,
+retaining wrong masks.
 
 The chain executed150 fresh model-gradient steps, plus24 saved-gradient Adam
 arithmetic reconstruction steps,156 distinct two-pass native outputs. Layers
@@ -150,3 +150,49 @@ failure. Context-preserving evidence remains a separate hypothesis; no context
 experiment or OPD is registered from these results. Full raw/scaled deltas and
 sparse postcast differences stay local.432 geometry and7628 margin comparisons
 passed, parent/interaction rechecks passed; scope and numerical limits retained.
+
+
+## Magnitude is the next isolated factor (latest request)
+
+The successful source span directions and old scalar masks differed in direction,
+objective and magnitude. Equivalent latent coefficients of2698x/5310x are not
+by themselves a stopping rule: the interface magnitudes are8.77%/17.03% of stock
+visualF. The old mask changes were hundreds of times smaller. The location trial
+only tested the old small norm and cannot settle this magnitude hypothesis.
+
+The completed registered control retained all16 source parents, B1, frozen PTD and
+adapter, the original late correct/matched-wrong masks and native decoding. It
+has exactly5 arms. Signed mask-minus-B1 merger deltas independently match fixed
+stock-F relative norms .087687(event) and .170316(spatial), retaining the B1
+residual. Three neutral temporal directions remain zero and are explicitly
+reported alongside the13 eligible cases. No scale search, reader update, new
+external expert, context extension or OPD is part of this experiment.
+
+The evidence chain is reachability -> evidence directionality -> actual-reader
+learnability -> distillability. Two source-case span controls establish the first
+only. Correct-mask improvement must be judged against both original and equally
+strong wrong evidence. Correct-versus-wrong separation caused solely by a worse
+wrong control is insufficient teacher advantage. A later reader control or
+context/directional-residual test needs the resulting evidence and a separate
+fixed protocol. The oracle mask supplies answer-related source information; its
+success would not by itself prove sufficient corrective information was already
+present in the ordinary latent.
+
+
+## Large magnitude result (completed)
+
+See [full5-arm table and interpretation](../../results/desta3d_v3/2026-09-28/LARGE_MASK_CONTROL.md).
+Realized ratios match fixed requests within6.18e-9; all64 small raw directions
+replay exactly, and all256 BF16 before/after endpoint hashes reconstruct from
+full saved FP32 bases/deltas. Large correct masks nevertheless change mean
+native tIoU by-2.5320pp(event) and sIoU by-1.7126pp(spatial) versusBase. Both
+primary baseline CIs cross zero. Correct-minus-wrong has limited source signals
+but does not establish a net teacher advantage. The two spatial format failures
+are retained; their event decisions stay exactly fixed. Mixed gains/losses oppose
+a blanket collapse claim. Magnitude alone does not rescue this scalar direction
+in this panel; source-oracle evidence is not target TTA or latent sufficiency.
+
+No actual-reader training or OPD followed. A possible context-support experiment
+must freeze the current operator/location/magnitude and define its own matched
+wrong evidence before registration. It has not been run. The pre-existing
+external/pixel baseline is deferred by the latest user priority.
