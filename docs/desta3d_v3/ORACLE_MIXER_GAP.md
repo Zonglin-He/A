@@ -1,3 +1,22 @@
+## Completed result: direction-learning gap, not a qualified teacher
+
+本轮447query/31已曝光源父源诊断完成，1788预测、873backward、0optimizer，全部封存、full raw和两级独立评分核验通过。**DECISION=A：优先state-aware方向蒸馏；新训练尚未启动。**
+
+| 父源宏 | tIoU % | sIoU % | vIoU % | Δv vs B1，pp |
+|---|---:|---:|---:|---:|
+| B1 | 46.637512 | 48.627481 | 32.407600 | — |
+| Learned seed1 | 46.887168 | 47.764785 | 32.167599 | −0.240001 |
+| Learned seed2 | 46.741185 | 48.246816 | 32.295832 | −0.111768 |
+| Analytic Joint oracle | 53.402853 | 60.069317 | 44.679649 | +12.272049 |
+
+Oracle Δv的配对父源95%CI为[+8.979625,+15.496381]pp，29正2负父源；对两seed分别+12.512050/+12.383817pp，CI下界均>9pp。两个learned/oracle方向cos均值仅.001459/.001767，中位.000697/.000833；444定义、3缺支持不定义。Oracle gain/learned harm为128/117query。虽均贴norm cap，但方向接近正交，未满足“方向对、幅度错”的B规则。
+
+**正均值不等于完整teacher资格。** Oracle仍有2个父源v损害>5pp、66个query v损害>5pp，native-good v保持122/136、t保持164/199，未通过尾部和原好保持门。sourceGT诊断、非held-out/target结果；局部对齐不能证明native-state缺失是因果，A仍需单独真实接口/源训练验收。A/B/C只有CPU模块与协议，新31父源388query确认保持metadata-only；无自动expert/OPD/target/网格。
+
+[完整匿名结果与限制](../../results/desta3d_v3/2026-09-29/ORACLE_MIXER_GAP.md)；同目录JSON保留全部31父源和9类结果组合。以下运行中记录保留为历史，不代表仍有GPU任务。
+
+---
+
 # Oracle–Mixer Gap Audit and prepared conditional follow-ups
 
 Status on 2026-09-28: the registered 447-query frozen audit is running. Its first
