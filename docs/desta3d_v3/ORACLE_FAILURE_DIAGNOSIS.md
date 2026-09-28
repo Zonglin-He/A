@@ -127,3 +127,26 @@ arithmetic reconstruction steps,156 distinct two-pass native outputs. Layers
 added3 stock-prefill cases but no native outputs. Total settled GPU allocation
 time41976.21386800704s includes historical failures/loading/replay/finalization;
 cap=null. No target or OPD qualification follows from this source-only result.
+
+## Matched-magnitude location diagnostic completed
+
+Same original16 source parents,144 native outputs, zero updates. Before-reader
+means afterFiLM/beforelocal convolution; query pooling/shared stem are not
+privileged. All four correct/wrong/early/late deltas per branch match the old
+late-correct continuous merger norm. Baseline and late-correct exactly replay
+the original oracle; normalized wrong is an explicitly different intervention.
+
+Early-minus-late correctness advantage: temporal tIoU−4.8994pp[−15.4502,+3.2389]
+on13 eligible parents; spatial sIoU+.1298pp[−.2152,+.4543] on16. Correct temporal
+mask still loses toBase at both locations. Late's positive correct-minus-wrong
+mean partly reflects a degraded wrong control; it is not teacher improvement.
+All tails, margins and anonymous16-case metrics are published. Large new native
+endpoint changes follow small norm rescaling in three wrong-temporal cases.
+This does not isolate BF16 cast as the sole source of discrete sensitivity.
+
+No evidence that this early scalar attenuation fixes the old mechanism. The
+operator/norm/readout is one specific condition, not a universal early-evidence
+failure. Context-preserving evidence remains a separate hypothesis; no context
+experiment or OPD is registered from these results. Full raw/scaled deltas and
+sparse postcast differences stay local.432 geometry and7628 margin comparisons
+passed, parent/interaction rechecks passed; scope and numerical limits retained.

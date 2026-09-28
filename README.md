@@ -1,3 +1,11 @@
+# 最新：源可控性与同范数位置对照已完成
+
+已按附件完成自由merger→冻结输出列空间→旧mask链，以及同16源的early/late×correct/wrong无更新对照。自由/列空间在两个监督源上改善，但等效latent更新巨大，不能据此声称易学。位置对照未支持“提前mask即可修好”：正确性差值early−late，时间−4.899pp CI跨0、空间+.1298pp CI跨0；错误负控本身退化与全部负尾保留。
+
+先看[位置主表/匿名16例/全部CI](results/desta3d_v3/2026-09-28/SOURCE_LOCATION.json)、[裁决与局限](results/desta3d_v3/2026-09-28/SOURCE_LOCATION.md)、[三层正控表](results/desta3d_v3/2026-09-28/ACTUATION_CHAIN.md)。location144输出/0optimizer，6CPU控制、432几何、7628margin、174+36汇总二核通过。当前所有GPU结束，累计42173.00594093104秒cap=null；源GT诊断非TTA，无target/OPD/64。后续context机制需先固定operator/幅度另登记，当前未跑。外部pixel baseline仍在授权内、须先official smoke。
+
+## 以下为历史记录，当前状态以本节为准
+
 # 最新：三层源可控性诊断已完成并独立核验
 
 时间病例的自由残差与冻结输出列空间控制均把tIoU从29.17%提高至68.06%；空间先暴露坐标类CE与原生全词表argmax的支持差别，保留格式失败后，仅修loss分母得到sIoU59.65→74.88%，列空间控制为73.83%。原模型/门控全部冻结，固定30步、无best选择。
