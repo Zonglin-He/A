@@ -7,7 +7,7 @@ protocols, predictions, and positive/negative outcomes remain unchanged.
 
 **Preserve the shared THW representation, distinguish task evidence, coordinate
 correction.** This is a proposal to test, not a demonstrated general principle
-or a completed TVG/SVG/OPD system. The joint mixer is implemented, CPU checked and real-native interface validated. Fixed source training is running; learned native utility remains untested.
+or a completed TVG/SVG/OPD system. The joint mixer is implemented, CPU checked and real-native interface validated. Seed20260928 completed618queries/155Adam calls and passed the full CPU state/coverage audit; seed20260929 is running. Confirmation native utility remains untested. See [first-seed training record](../../results/desta3d_v3/2026-09-28/JOINT_LEARNABILITY_SEED1_TRAINING.md).
 
 ## What the completed oracle establishes
 

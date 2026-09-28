@@ -1,3 +1,7 @@
+## Latest: first learned-mixer seed complete, confirmation pending
+
+Seed20260928 completed618queries/95parents/155actualAdam calls with audited integer states, frozen union and deterministic coverage. Seed20260929 is running. One training event-format failure is retained; missing support is explicitly counted. The first CPU auditor had an overly strict two-pass assertion; isolated v2 matches the existing early-failure contract without any GPU/scientific change. See [full training accounting](../../results/desta3d_v3/2026-09-28/JOINT_LEARNABILITY_SEED1_TRAINING.md). No confirmation utility or teacher advantage has been measured yet.
+
 ## Latest: learned joint mixer implemented, real probe passed, fit running
 
 C_theta has103424 parameters; frozen PTD4B/B1 and256-dimensional union. Only C is optimized. Four CPU controls and real zero-native/replay equality, full152775-class coordinate objective, frozen scope and disposable Adam/reset passed. Fixed2seeds x618queries/95parents train;447queries/31 newly locked source confirmation parents. Native utility is not measured yet. See [learnability protocol](../../protocols/desta3d_v3_joint_learnability_v1.md). Historical31val exposure remains; no globally untouched claim. Finite component oracle deferred; no expert/OPD/target started. Old status paragraphs below are historical.
