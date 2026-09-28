@@ -1,0 +1,666 @@
+{
+  "status": "completed_independently_reduced",
+  "both_branches_strong_sign_diagnosis": false,
+  "numeric_checks": 176,
+  "maximum_absolute_discrepancy": 1.0128132998943329e-08,
+  "new_GPU_seconds": 0,
+  "new_forward": 0,
+  "new_backward": 0,
+  "new_optimizer": 0,
+  "new_native": 0,
+  "new_target": false,
+  "limitations": [
+    "Two previously outcome-selected, source-training exposed cases; no population inference.",
+    "g is the initial B1 native CE gradient, not a gradient at the optimized endpoint.",
+    "30-step endpoint was reached along changing native states; initial Taylor dot is not its finite utility.",
+    "BF16 autograd is not an exact derivative of the discrete numerical program.",
+    "Low endpoint cosine alone does not establish adverse gradient direction or a root cause.",
+    "No claim of actual-reader learnability, teacher qualification or OPD success."
+  ],
+  "cases": [
+    {
+      "alias": "P07",
+      "branch": "event",
+      "shape": [
+        1,
+        32,
+        8,
+        14,
+        2560
+      ],
+      "gradient_norm": 8.338014423441486,
+      "gradient_dtype": "torch.float32",
+      "gradient_clipping_was_triggered": true,
+      "gradient_used": "saved BEFORE clipping",
+      "baseline_native_equal_all_five_runs": true,
+      "native_classes": 32,
+      "valid_action_positions": 2,
+      "initial_CE": 3.459648609161377,
+      "span_coordinate_chain": {
+        "x_norm": 25.16621157949455,
+        "y_norm": 25.166211865643387,
+        "dot": 633.3382124651475,
+        "cosine": 0.999999999999968,
+        "relative_L2_error": 2.4963333976885745e-07,
+        "max_abs_error": 1.2921121328446361e-06,
+        "basis_orthogonality_max_error": 6.431346566415641e-09
+      },
+      "span_final_reconstruction": {
+        "max_abs": 1.36487700919119e-07,
+        "relative_L2": 1.4979121265369942e-07
+      },
+      "directions": {
+        "span_step30": {
+          "x_norm": 8.338014423441486,
+          "y_norm": 197.83511474290628,
+          "dot": 101.56871945164065,
+          "cosine": 0.06157351631050642,
+          "cosine_to_span": 1.0,
+          "descent_at_span_norm": 101.56871945164065,
+          "new_native": false
+        },
+        "free_step30": {
+          "x_norm": 8.338014423441486,
+          "y_norm": 176.90357532146786,
+          "dot": 229.778399083993,
+          "cosine": 0.15577937134871614,
+          "cosine_to_span": 0.18941879952010862,
+          "descent_at_span_norm": 256.96617982772085,
+          "new_native": false
+        },
+        "event_late_correct": {
+          "x_norm": 8.338014423441486,
+          "y_norm": 0.25894208844707234,
+          "dot": -0.004699478404469307,
+          "cosine": -0.00217662879272835,
+          "cosine_to_span": 0.0035265761835092304,
+          "descent_at_span_norm": -3.5904624657803756,
+          "original_norm_record": {
+            "raw_norm": 0.2589420884470724,
+            "target_norm": 0.2589420884470724,
+            "scale": 1.0,
+            "realized_norm": 0.2589420884470724,
+            "normalization": "FP64 norm, FP32 delta multiplication/addition; no amplitude search",
+            "tolerance_relative": 0.001
+          },
+          "native_metrics": {
+            "tIoU": 0.005952380952380952,
+            "sIoU": 0.27946462331302957,
+            "vIoU": 0.13973231165651478
+          },
+          "native_effect_pp": {
+            "tIoU": -28.571428571428577,
+            "sIoU": -9.397855827773654,
+            "vIoU": -4.698927913886827
+          },
+          "new_native": false
+        },
+        "event_late_wrong": {
+          "x_norm": 8.338014423441486,
+          "y_norm": 0.2589420933407199,
+          "dot": -0.004374316480662886,
+          "cosine": -0.0020260254864291624,
+          "cosine_to_span": 0.0005550214994964774,
+          "descent_at_span_norm": -3.3420344746152586,
+          "original_norm_record": {
+            "raw_norm": 0.2597263709348733,
+            "target_norm": 0.2589420884470724,
+            "scale": 0.9969803509555927,
+            "realized_norm": 0.25894203485184875,
+            "normalization": "FP64 norm, FP32 delta multiplication/addition; no amplitude search",
+            "tolerance_relative": 0.001
+          },
+          "native_metrics": {
+            "tIoU": 0.005952380952380952,
+            "sIoU": 0.27946462331302957,
+            "vIoU": 0.13973231165651478
+          },
+          "native_effect_pp": {
+            "tIoU": -28.571428571428577,
+            "sIoU": -9.397855827773654,
+            "vIoU": -4.698927913886827
+          },
+          "new_native": false
+        },
+        "event_early_correct": {
+          "x_norm": 8.338014423441486,
+          "y_norm": 0.25894208177614464,
+          "dot": 0.0007739730936083475,
+          "cosine": 0.00035847641349798156,
+          "cosine_to_span": 0.011906448012972607,
+          "descent_at_span_norm": 0.5913254992454295,
+          "original_norm_record": {
+            "raw_norm": 0.019376887124430614,
+            "target_norm": 0.2589420884470724,
+            "scale": 13.363451352337965,
+            "realized_norm": 0.25894305722749333,
+            "normalization": "FP64 norm, FP32 delta multiplication/addition; no amplitude search",
+            "tolerance_relative": 0.001
+          },
+          "native_metrics": {
+            "tIoU": 0.2916666666666667,
+            "sIoU": 0.3734431815907661,
+            "vIoU": 0.18672159079538306
+          },
+          "native_effect_pp": {
+            "tIoU": 0.0,
+            "sIoU": 0.0,
+            "vIoU": 0.0
+          },
+          "new_native": false
+        },
+        "event_early_wrong": {
+          "x_norm": 8.338014423441486,
+          "y_norm": 0.2589420856104112,
+          "dot": -0.002919093029608223,
+          "cosine": -0.0013520185560294887,
+          "cosine_to_span": 0.008179669849082846,
+          "descent_at_span_norm": -2.230224967472578,
+          "original_norm_record": {
+            "raw_norm": 0.01763136333548178,
+            "target_norm": 0.2589420884470724,
+            "scale": 14.686447299623797,
+            "realized_norm": 0.25894241170524007,
+            "normalization": "FP64 norm, FP32 delta multiplication/addition; no amplitude search",
+            "tolerance_relative": 0.001
+          },
+          "native_metrics": {
+            "tIoU": 0.2916666666666667,
+            "sIoU": 0.3734431815907661,
+            "vIoU": 0.18672159079538306
+          },
+          "native_effect_pp": {
+            "tIoU": 0.0,
+            "sIoU": 0.0,
+            "vIoU": 0.0
+          },
+          "new_native": false
+        },
+        "event_large_correct": {
+          "x_norm": 8.338014423441486,
+          "y_norm": 197.8351061350414,
+          "dot": -3.5904623369867843,
+          "cosine": -0.0021766288093561996,
+          "cosine_to_span": 0.003526576183784996,
+          "descent_at_span_norm": -3.590462493208879,
+          "original_norm_record": {
+            "raw_norm": 0.2589420884470724,
+            "target_norm": 197.83510230247697,
+            "scale": 764.0129246231609,
+            "realized_norm": 197.83510613084843,
+            "normalization": "FP64 norm, FP32 delta multiplication/addition; no amplitude search",
+            "tolerance_relative": 0.001,
+            "branch": "event",
+            "requested_ratio": 0.087687,
+            "stock_norm": 2256.1508810026226,
+            "requested_norm": 197.83510230247697,
+            "applicable": true,
+            "neutral_reason": null,
+            "realized_ratio": 0.08768700169685968,
+            "denominator": "original captured stock visual_grid F",
+            "baseline": "B1 F+R_b is retained; only signed mask-minus-B1 delta is scaled",
+            "small_raw_exact_replay": true
+          },
+          "native_metrics": {
+            "tIoU": 0.2916666666666667,
+            "sIoU": 0.3734431815907661,
+            "vIoU": 0.18672159079538306
+          },
+          "native_effect_pp": {
+            "tIoU": 0.0,
+            "sIoU": 0.0,
+            "vIoU": 0.0
+          },
+          "new_native": false
+        },
+        "event_large_wrong": {
+          "x_norm": 8.338014423441486,
+          "y_norm": 197.835101776934,
+          "dot": -3.342034272661037,
+          "cosine": -0.0020260254967836917,
+          "cosine_to_span": 0.0005550214893309054,
+          "descent_at_span_norm": -3.342034491695593,
+          "original_norm_record": {
+            "raw_norm": 0.2597263709348733,
+            "target_norm": 197.83510230247697,
+            "scale": 761.7058737254076,
+            "realized_norm": 197.8351017070099,
+            "normalization": "FP64 norm, FP32 delta multiplication/addition; no amplitude search",
+            "tolerance_relative": 0.001,
+            "branch": "event",
+            "requested_ratio": 0.087687,
+            "stock_norm": 2256.1508810026226,
+            "requested_norm": 197.83510230247697,
+            "applicable": true,
+            "neutral_reason": null,
+            "realized_ratio": 0.08768699973606948,
+            "denominator": "original captured stock visual_grid F",
+            "baseline": "B1 F+R_b is retained; only signed mask-minus-B1 delta is scaled",
+            "small_raw_exact_replay": true
+          },
+          "native_metrics": {
+            "tIoU": 0.2916666666666667,
+            "sIoU": 0.3734431815907661,
+            "vIoU": 0.18672159079538306
+          },
+          "native_effect_pp": {
+            "tIoU": 0.0,
+            "sIoU": 0.0,
+            "vIoU": 0.0
+          },
+          "new_native": false
+        },
+        "event_context_correct": {
+          "x_norm": 8.338014423441486,
+          "y_norm": 197.83510236918417,
+          "dot": -3.430436182189873,
+          "cosine": -0.0020796169585255903,
+          "cosine_to_span": 0.0028786444662077123,
+          "descent_at_span_norm": -3.430436396748682,
+          "original_norm_record": {
+            "raw_norm": 0.25010608297110176,
+            "target_norm": 197.83510230247697,
+            "scale": 791.0047606692382,
+            "realized_norm": 197.83510240418494,
+            "normalization": "FP64 norm, FP32 delta multiplication/addition; no amplitude search",
+            "tolerance_relative": 0.001,
+            "branch": "event",
+            "requested_ratio": 0.087687,
+            "stock_norm": 2256.1508810026226,
+            "requested_norm": 197.83510230247697,
+            "applicable": true,
+            "neutral_reason": null,
+            "realized_ratio": 0.0876870000450803,
+            "denominator": "original captured stock visual_grid F",
+            "baseline": "B1 F+R_b is retained; only signed mask-minus-B1 delta is scaled",
+            "old_raw_exact_replay": true,
+            "context_sha": "068661059e89b203ab1d9a6e0d5d21c399eb494d7070df455cebf8fc00e9164b"
+          },
+          "native_metrics": {
+            "tIoU": 0.2916666666666667,
+            "sIoU": 0.3734431815907661,
+            "vIoU": 0.18672159079538306
+          },
+          "native_effect_pp": {
+            "tIoU": 0.0,
+            "sIoU": 0.0,
+            "vIoU": 0.0
+          },
+          "new_native": false
+        },
+        "event_context_wrong": {
+          "x_norm": 8.338014423441486,
+          "y_norm": 197.83510545907768,
+          "dot": -3.317729220539154,
+          "cosine": -0.0020112911235278946,
+          "cosine_to_span": -0.00012298738438445796,
+          "descent_at_span_norm": -3.317729376230579,
+          "original_norm_record": {
+            "raw_norm": 0.25562794332543237,
+            "target_norm": 197.83510230247697,
+            "scale": 773.9181394994011,
+            "realized_norm": 197.83510545738744,
+            "normalization": "FP64 norm, FP32 delta multiplication/addition; no amplitude search",
+            "tolerance_relative": 0.001,
+            "branch": "event",
+            "requested_ratio": 0.087687,
+            "stock_norm": 2256.1508810026226,
+            "requested_norm": 197.83510230247697,
+            "applicable": true,
+            "neutral_reason": null,
+            "realized_ratio": 0.0876870013983597,
+            "denominator": "original captured stock visual_grid F",
+            "baseline": "B1 F+R_b is retained; only signed mask-minus-B1 delta is scaled",
+            "old_raw_exact_replay": true,
+            "context_sha": "068661059e89b203ab1d9a6e0d5d21c399eb494d7070df455cebf8fc00e9164b"
+          },
+          "native_metrics": {
+            "tIoU": 0.2916666666666667,
+            "sIoU": 0.3734431815907661,
+            "vIoU": 0.18672159079538306
+          },
+          "native_effect_pp": {
+            "tIoU": 0.0,
+            "sIoU": 0.0,
+            "vIoU": 0.0
+          },
+          "new_native": false
+        }
+      },
+      "strong_sign_diagnosis": true,
+      "baseline_metrics": {
+        "tIoU": 0.2916666666666667,
+        "sIoU": 0.3734431815907661,
+        "vIoU": 0.18672159079538306
+      },
+      "span_final_metrics": {
+        "tIoU": 0.6805555555555556,
+        "sIoU": 0.5069938236169567,
+        "vIoU": 0.5069938236169567
+      }
+    },
+    {
+      "alias": "P03",
+      "branch": "spatial",
+      "shape": [
+        1,
+        32,
+        14,
+        8,
+        2560
+      ],
+      "gradient_norm": 0.10013043897349938,
+      "gradient_dtype": "torch.float32",
+      "gradient_clipping_was_triggered": false,
+      "gradient_used": "saved BEFORE clipping",
+      "baseline_native_equal_all_five_runs": true,
+      "native_classes": 152775,
+      "valid_action_positions": 44,
+      "initial_CE": 4.716957092285156,
+      "span_coordinate_chain": {
+        "x_norm": 0.19467641498199278,
+        "y_norm": 0.194676418021013,
+        "dot": 0.037898907141864745,
+        "cosine": 0.9999999999999504,
+        "relative_L2_error": 3.0253664599861777e-07,
+        "max_abs_error": 6.207815537659367e-09,
+        "basis_orthogonality_max_error": 4.786476548446217e-09
+      },
+      "span_final_reconstruction": {
+        "max_abs": 3.8200989815884157e-07,
+        "relative_L2": 1.4966769634474243e-07
+      },
+      "directions": {
+        "span_step30": {
+          "x_norm": 0.10013043897349938,
+          "y_norm": 416.54542127153024,
+          "dot": 3.547040974153798,
+          "cosine": 0.08504283318475404,
+          "cosine_to_span": 1.0,
+          "descent_at_span_norm": 3.547040974153798,
+          "new_native": false
+        },
+        "free_step30": {
+          "x_norm": 0.10013043897349938,
+          "y_norm": 294.0678946693333,
+          "dot": 6.841140216247153,
+          "cosine": 0.23233506450718971,
+          "cosine_to_span": 0.18214140987845348,
+          "descent_at_span_norm": 9.690434369105752,
+          "new_native": false
+        },
+        "spatial_late_correct": {
+          "x_norm": 0.10013043897349938,
+          "y_norm": 0.7385800590627422,
+          "dot": 0.0004999780491760703,
+          "cosine": 0.0067606311108022515,
+          "cosine_to_span": 0.016493353993933858,
+          "descent_at_span_norm": 0.28197832390012056,
+          "original_norm_record": {
+            "raw_norm": 0.7385800590627424,
+            "target_norm": 0.7385800590627424,
+            "scale": 1.0,
+            "realized_norm": 0.7385800590627424,
+            "normalization": "FP64 norm, FP32 delta multiplication/addition; no amplitude search",
+            "tolerance_relative": 0.001
+          },
+          "native_metrics": {
+            "tIoU": 0.20134228187919462,
+            "sIoU": 0.5965498605299774,
+            "vIoU": 0.19884995350999246
+          },
+          "native_effect_pp": {
+            "tIoU": 0.0,
+            "sIoU": 0.0,
+            "vIoU": 0.0
+          },
+          "new_native": false
+        },
+        "spatial_late_wrong": {
+          "x_norm": 0.10013043897349938,
+          "y_norm": 0.7385800621915998,
+          "dot": 0.00039482177507029544,
+          "cosine": 0.005338723107651189,
+          "cosine_to_span": 0.01813367520633204,
+          "descent_at_span_norm": 0.2226721394777722,
+          "original_norm_record": {
+            "raw_norm": 0.7367262602315745,
+            "target_norm": 0.7385800590627424,
+            "scale": 1.0025162654451671,
+            "realized_norm": 0.7385800142593827,
+            "normalization": "FP64 norm, FP32 delta multiplication/addition; no amplitude search",
+            "tolerance_relative": 0.001
+          },
+          "native_metrics": {
+            "tIoU": 0.20134228187919462,
+            "sIoU": 0.5965498605299774,
+            "vIoU": 0.19884995350999246
+          },
+          "native_effect_pp": {
+            "tIoU": 0.0,
+            "sIoU": 0.0,
+            "vIoU": 0.0
+          },
+          "new_native": false
+        },
+        "spatial_early_correct": {
+          "x_norm": 0.10013043897349938,
+          "y_norm": 0.7385800444849466,
+          "dot": -1.7987479898279334e-06,
+          "cosine": -2.4322411515037783e-05,
+          "cosine_to_span": 0.002730659156092373,
+          "descent_at_span_norm": -0.0010144604430880554,
+          "original_norm_record": {
+            "raw_norm": 0.03465047482240934,
+            "target_norm": 0.7385800590627424,
+            "scale": 21.31514973021622,
+            "realized_norm": 0.7385800603928735,
+            "normalization": "FP64 norm, FP32 delta multiplication/addition; no amplitude search",
+            "tolerance_relative": 0.001
+          },
+          "native_metrics": {
+            "tIoU": 0.20134228187919462,
+            "sIoU": 0.5965498605299774,
+            "vIoU": 0.19884995350999246
+          },
+          "native_effect_pp": {
+            "tIoU": 0.0,
+            "sIoU": 0.0,
+            "vIoU": 0.0
+          },
+          "new_native": false
+        },
+        "spatial_early_wrong": {
+          "x_norm": 0.10013043897349938,
+          "y_norm": 0.7385800196484282,
+          "dot": 0.00018023894739119047,
+          "cosine": 0.002437165195844043,
+          "cosine_to_span": 0.006080632275265929,
+          "descent_at_span_norm": 0.10165142066304256,
+          "original_norm_record": {
+            "raw_norm": 0.041560208676115803,
+            "target_norm": 0.7385800590627424,
+            "scale": 17.771327011820233,
+            "realized_norm": 0.7385800691736694,
+            "normalization": "FP64 norm, FP32 delta multiplication/addition; no amplitude search",
+            "tolerance_relative": 0.001
+          },
+          "native_metrics": {
+            "tIoU": 0.20134228187919462,
+            "sIoU": 0.5965498605299774,
+            "vIoU": 0.19884995350999246
+          },
+          "native_effect_pp": {
+            "tIoU": 0.0,
+            "sIoU": 0.0,
+            "vIoU": 0.0
+          },
+          "new_native": false
+        },
+        "spatial_large_correct": {
+          "x_norm": 0.10013043897349938,
+          "y_norm": 416.54553935211885,
+          "dot": 0.28197840512467576,
+          "cosine": 0.006760631141742799,
+          "cosine_to_span": 0.01649335400997682,
+          "descent_at_span_norm": 0.28197832519061594,
+          "original_norm_record": {
+            "raw_norm": 0.7385800590627424,
+            "target_norm": 416.54553974540704,
+            "scale": 563.9815679210227,
+            "realized_norm": 416.54553937676366,
+            "normalization": "FP64 norm, FP32 delta multiplication/addition; no amplitude search",
+            "tolerance_relative": 0.001,
+            "branch": "spatial",
+            "requested_ratio": 0.170316,
+            "stock_norm": 2445.7217157836435,
+            "requested_norm": 416.54553974540704,
+            "applicable": true,
+            "neutral_reason": null,
+            "realized_ratio": 0.1703159998492701,
+            "denominator": "original captured stock visual_grid F",
+            "baseline": "B1 F+R_b is retained; only signed mask-minus-B1 delta is scaled",
+            "small_raw_exact_replay": true
+          },
+          "native_metrics": {
+            "tIoU": 0.20134228187919462,
+            "sIoU": 0.6449472154770602,
+            "vIoU": 0.2149824051590201
+          },
+          "native_effect_pp": {
+            "tIoU": 0.0,
+            "sIoU": 4.839735494708286,
+            "vIoU": 1.613245164902763
+          },
+          "new_native": false
+        },
+        "spatial_large_wrong": {
+          "x_norm": 0.10013043897349938,
+          "y_norm": 416.5455401458782,
+          "dot": 0.22267220275113797,
+          "cosine": 0.005338723101102501,
+          "cosine_to_span": 0.01813367520589175,
+          "descent_at_span_norm": 0.22267213920463377,
+          "original_norm_record": {
+            "raw_norm": 0.7367262602315745,
+            "target_norm": 416.54553974540704,
+            "scale": 565.4006952520936,
+            "realized_norm": 416.54554013264016,
+            "normalization": "FP64 norm, FP32 delta multiplication/addition; no amplitude search",
+            "tolerance_relative": 0.001,
+            "branch": "spatial",
+            "requested_ratio": 0.170316,
+            "stock_norm": 2445.7217157836435,
+            "requested_norm": 416.54553974540704,
+            "applicable": true,
+            "neutral_reason": null,
+            "realized_ratio": 0.17031600015833082,
+            "denominator": "original captured stock visual_grid F",
+            "baseline": "B1 F+R_b is retained; only signed mask-minus-B1 delta is scaled",
+            "small_raw_exact_replay": true
+          },
+          "native_metrics": {
+            "tIoU": 0.20134228187919462,
+            "sIoU": 0.640818567441467,
+            "vIoU": 0.21360618914715568
+          },
+          "native_effect_pp": {
+            "tIoU": 0.0,
+            "sIoU": 4.426870691148965,
+            "vIoU": 1.4756235637163218
+          },
+          "new_native": false
+        },
+        "spatial_context_correct": {
+          "x_norm": 0.10013043897349938,
+          "y_norm": 416.5455479077822,
+          "dot": 0.3188799076032726,
+          "cosine": 0.007645370533200106,
+          "cosine_to_span": 0.014502077347537135,
+          "descent_at_span_norm": 0.3188798106588772,
+          "original_norm_record": {
+            "raw_norm": 0.604757546228031,
+            "target_norm": 416.54553974540704,
+            "scale": 688.7810534047369,
+            "realized_norm": 416.54554793214385,
+            "normalization": "FP64 norm, FP32 delta multiplication/addition; no amplitude search",
+            "tolerance_relative": 0.001,
+            "branch": "spatial",
+            "requested_ratio": 0.170316,
+            "stock_norm": 2445.7217157836435,
+            "requested_norm": 416.54553974540704,
+            "applicable": true,
+            "neutral_reason": null,
+            "realized_ratio": 0.17031600334737054,
+            "denominator": "original captured stock visual_grid F",
+            "baseline": "B1 F+R_b is retained; only signed mask-minus-B1 delta is scaled",
+            "old_raw_exact_replay": true,
+            "context_sha": "fad4b068e8170790f48ae8dffca807cbff4398fdf546fb3e872a062a70615457"
+          },
+          "native_metrics": {
+            "tIoU": 0.20134228187919462,
+            "sIoU": 0.6410123002683322,
+            "vIoU": 0.21367076675611074
+          },
+          "native_effect_pp": {
+            "tIoU": 0.0,
+            "sIoU": 4.446243973835484,
+            "vIoU": 1.482081324611828
+          },
+          "new_native": false
+        },
+        "spatial_context_wrong": {
+          "x_norm": 0.10013043897349938,
+          "y_norm": 416.54552350807404,
+          "dot": 0.23730818638978224,
+          "cosine": 0.005689631358161317,
+          "cosine_to_span": 0.016220993209177498,
+          "descent_at_span_norm": 0.2373081281450829,
+          "original_norm_record": {
+            "raw_norm": 0.6538258409435765,
+            "target_norm": 416.54553974540704,
+            "scale": 637.0894413476598,
+            "realized_norm": 416.54552349586805,
+            "normalization": "FP64 norm, FP32 delta multiplication/addition; no amplitude search",
+            "tolerance_relative": 0.001,
+            "branch": "spatial",
+            "requested_ratio": 0.170316,
+            "stock_norm": 2445.7217157836435,
+            "requested_norm": 416.54553974540704,
+            "applicable": true,
+            "neutral_reason": null,
+            "realized_ratio": 0.17031599335593298,
+            "denominator": "original captured stock visual_grid F",
+            "baseline": "B1 F+R_b is retained; only signed mask-minus-B1 delta is scaled",
+            "old_raw_exact_replay": true,
+            "context_sha": "fad4b068e8170790f48ae8dffca807cbff4398fdf546fb3e872a062a70615457"
+          },
+          "native_metrics": {
+            "tIoU": 0.20134228187919462,
+            "sIoU": 0.6479949258171608,
+            "vIoU": 0.21599830860572025
+          },
+          "native_effect_pp": {
+            "tIoU": 0.0,
+            "sIoU": 5.14450652871834,
+            "vIoU": 1.714835509572779
+          },
+          "new_native": false
+        }
+      },
+      "strong_sign_diagnosis": false,
+      "baseline_metrics": {
+        "tIoU": 0.20134228187919462,
+        "sIoU": 0.5965498605299774,
+        "vIoU": 0.19884995350999246
+      },
+      "span_final_metrics": {
+        "tIoU": 0.20134228187919462,
+        "sIoU": 0.7383441610346282,
+        "vIoU": 0.24611472034487605
+      }
+    }
+  ],
+  "source_report_sha": "4bf3040577ab0bcd789a2f4886de0f6dcb4cd5f878769134d6d85ebbe62beaf3",
+  "GPU_seconds": 0
+}

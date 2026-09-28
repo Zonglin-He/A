@@ -1,3 +1,9 @@
+## Latest: saved direction audit completed (2026-09-28)
+
+CPU-only direction_alignment_v2: two prior selected source cases, exact B1/native support, full initial merger gradient (not low-dimensional parameter gradient), fixed span30 and all8 mask variants per case. Temporal late/context masks have adverse initial local CE dots; spatial masks have favorable but weaker dots and retained native gains. A shared sign-reversal root cause is not established. No prototype, reader training or OPD was launched; scalar-mask STOP remains. See the complete anonymous DIRECTION_ALIGNMENT results and audit protocol. Original v1 metadata-schema failure is preserved. No new GPU, cumulative42493.15652965409s.
+
+Historical entries below retain their original time-specific meaning.
+
 ## Latest completed context-support result (2026-09-28)
 
 The single-factor context control is completed: same16 exposed source parents,
@@ -201,7 +207,7 @@ present in the ordinary latent.
 
 ## Large magnitude result (completed)
 
-See [full5-arm table and interpretation](../../results/desta3d_v3/2026-09-28/LARGE_MASK_CONTROL.md).
+See [full5-arm table and interpretation](../../artifacts/desta3d_v3/latent_oracle_v1/large_mask002/DECISION_AND_NEXT.md).
 Realized ratios match fixed requests within6.18e-9; all64 small raw directions
 replay exactly, and all256 BF16 before/after endpoint hashes reconstruct from
 full saved FP32 bases/deltas. Large correct masks nevertheless change mean

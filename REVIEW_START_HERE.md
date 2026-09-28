@@ -1,3 +1,17 @@
+# 最新：方向审计完成，时间与空间结论不同
+
+按新建议直接读取两个旧成功病例的完整 merger 梯度和固定30步 span 残差，另读 late/early、large、context 的全部正确/错误方向。本轮纯CPU，无新模型执行或预测。
+
+- 时间：成功span与负梯度cos+.061574；large/context正确mask为−.002177/−.002080，确为该起点的局部CE上升方向。
+- 空间：成功span为+.085043；large/context正确mask仍为+.006761/+.007645，方向弱但并未反向，旧native sIoU分别改善+4.839735/+4.446244pp。
+- 两支mask与成功span末态cos仅.003左右/.015左右。但末态路径不同，低相似度不能单独证明错误方向或共同根因。完整负控与early正例保留。
+
+因此保留scalar-mask停止决定，但不把两支失败一概解释成direction sign错误。附件提出的强符号诊断只在时间例成立；本轮未直接登记prototype或OPD。3D/dual-reader继续作为候选，reader可学性和蒸馏收益未建立。
+
+见[完整20方向数值与裁决](results/desta3d_v3/2026-09-28/DIRECTION_ALIGNMENT.md)、[匿名机器聚合](results/desta3d_v3/2026-09-28/DIRECTION_ALIGNMENT.json)、[审计协议](protocols/desta3d_v3_direction_alignment_v1.md)、[有效CPU入口v2](scripts/audit_desta3d_v3_direction_alignment_v2.py)。4CPU控制、54原seal文件、87pins、176双实现数值核验通过；首次metadata合同失败和原脚本保留。无新target/训练/GPU，累计42493.15652965409s不变；公开不含视频、标签、caption、权重或raw。
+
+## 以下是之前的完成记录
+
 # 最新：context-support 对照完成，停止继续调 scalar mask
 
 按固定PANEL16/B1/late/8.7687%时间与17.0316%空间merger范数，仅增加时间前后各一个已有观测、空间一圈latent-cell邻域。正确时间context对Base的tIoU **−3.2991pp**，正确空间context的sIoU **−1.5757pp**；correct−wrong分别+1.6383pp、+.5718pp，CI均跨0。未满足正确证据同时胜Base和wrong的预定条件，因此停止追加scalar-mask变体，保留3D/dual-reader主线，directional residual仅下一待设计机制，尚无reader训练或OPD。
