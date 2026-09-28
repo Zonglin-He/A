@@ -1,10 +1,20 @@
 # DESTA-3D 双分支与外部证据 OPD 审阅入口
 
-更新：2026-09-28。用户已取消 v3 全量 source fit，最后保存140条 query occurrences /35个完整优化器步；它不是已训练完成的候选。新主线是 **LLaVA-ST 外部证据资格验证 → 同 PTD 的时空特权视图 → native 分支正控 → 有条件 OPD**。新代码、协议和四项CPU合同已实现；官方权重下载中，尚无新teacher GPU结果或OPD训练。定时跟进保持删除，CURRENT未改。
+更新：2026-09-28，针对 main439e6f2 的外部审阅落实五项修复。full-source fit 已取消于140 query occurrences /35个完整Adam步；checkpoint只留来源证据，不用于方法比较/teacher/OPD。当前主线为 **LLaVA-ST证据 → 同PTD时空特权视图 → 资格通过后另登记native正控 → 条件性OPD**。尚无新teacher GPU结果。用户随后要求单Luna max每30分钟监测下载/已启动阶段，异常由主代理处理；CURRENT和旧队列不变。
 
-先看[新路线结构与状态](docs/desta3d_v3/EXTERNAL_PRIVILEGED_OPD.md)、[固定资格协议](protocols/desta3d_v3_external_privileged_opd_v1.md)与[机器可读状态](results/desta3d_v3/2026-09-28/ROUTE_SWITCH_STATUS.json)。完整旧 source fit 和所有失败版本保留供审查，不是运行指令。260.159GB旧权重/视频包/缓存已按用户要求清理；科学raw和报告保留，受影响的历史重放需要重新下载/重建依赖。
+先看[当前结构与状态](docs/desta3d_v3/EXTERNAL_PRIVILEGED_OPD.md)、[修正版资格协议v2](protocols/desta3d_v3_external_privileged_opd_v2.md)和[机器状态](results/desta3d_v3/2026-09-28/ROUTE_SWITCH_STATUS.json)。v1错误时间合同已保留并明确替代，未用于任何真实teacher GPU评分。
 
-新实现入口：[外部teacher](vg_tta/llava_st_teacher.py)、[不改坐标的views及时间映射](vg_tta/external_privileged_views.py)、[无更新资格runner](scripts/desta3d_v3_external_teacher_qualification.py)、[CPU合同测试](tests/test_external_privileged_views.py)。外部模型与PTD不共用token，禁止直接跨模型KL；同PTD student-prefix OPD仍是条件后续，不能误写为已验证收益。
+|本次修复|实现及验证状态|
+|---|---|
+|100槽物理时间|[views](vg_tta/external_privileged_views.py)：uniform physical clip time选最近原观测；u=.5在[10,11,90]映射50，不依赖重复像素|
+|many-to-one/局部坏框|同模块：逐帧median；保留raw、duplicates、pairwise IoU、dispersion；局部fallback，coverage/max gap诊断；不新增gap阈值|
+|官方loader/decode smoke|[smoke](scripts/desta3d_v3_external_loader_smoke.py)：两固定源输入、官方temp.01 vs greedy、显式max_frame100、真实official loader对照；权重下载中，GPU未验收|
+|完整Stage B|[runner](scripts/desta3d_v3_privileged_ptd_qualification.py)：原图/T/S/TS四视图同PTD4B+B1，完整64新预测封存后[独立scorer](scripts/score_desta3d_v3_privileged_qualification.py)/[root复算](scripts/crosscheck_desta3d_v3_privileged_summary.py)；代码及合成流程就位，实际结果待跑|
+|native控制scope|[新隔离helper](vg_tta/desta3d_v3_native_scopes_v2.py)：L2加入branch QueryPool、event temporal最后pointwise；L3共享projection/conv且norm_stem冻结；真实native控制尚未跑|
+
+16项CPU检查通过，含真实hidden128可更新范围、逐帧无效证据、独立几何、合成16父源封存/评分/root汇总、坏seal在读标签前拒绝。不是GPUteacher资格。Q0固定16源训练父源；官方ST-Align stage3列有VidOR来源，不能声称teacher-unseen。未建立provenance-clean Q1。当前不实现OPD optimizer。
+
+260.159GB不再需要的权重/视频包/缓存已按用户授权清理，科学raw和正负报告保留；历史精确重放若依赖已删资源须重建。
 
 ## 先了解当前判断
 

@@ -13,3 +13,14 @@ CUDA_VISIBLE_DEVICES='' PYTHONDONTWRITEBYTECODE=1 python -B -m pytest -q tests/t
 发布时另外检查Python语法、入口文档相对链接、文件类型/大小、私有路径/凭据模式以及源码映射。完整GPU入口仍依赖未公开的合法数据、权重和锁定manifest。统计JSON不含逐样本标识/预测；旧历史结果不覆盖。
 
 不同研究阶段的runner存在不同数据合同。不能把所有历史runner当成一套CLI，也不要为了运行而跳过pins、sealed-prediction前置检查或源/目标数据边界。
+
+
+## 2026-09-28 external qualification review repairs
+
+16 CPU tests passed (local actual runner environment):
+
+```bash
+python -m pytest -q tests/test_external_privileged_views.py tests/test_external_qualification_metrics.py tests/test_llava_teacher_decode_contract.py tests/test_desta3d_v3_native_scopes_v2.py
+```
+
+The decode-call test mocks CUDA and generation. The real hidden128 scope test uses synthetic features. The16-parent scorer control uses synthetic sealed predictions and verifies rejection of a corrupted file before labels are opened. These do not establish actual loader equivalence, teacher performance or privileged-policy advantage. Actual official-loader/two-recipe smoke and full Stage A/B require complete pinned weights and separate write-once registration. Private test evidence remains local.
