@@ -1,3 +1,23 @@
+## Latest completed context-support result (2026-09-28)
+
+The single-factor context control is completed: same16 exposed source parents,
+late scalar attenuation and fixed event.087687/spatial.170316 merger ratios.
+One observed temporal neighbour per side and one fractional spatial cell-neighbourhood
+did not establish teacher advantage: correct-Base t=-3.299131pp / s=-1.575665pp;
+eligible correct-wrong t=+1.638257pp / s=+.571838pp, both descriptive CIs cross0.
+Do not continue scalar-mask tuning. SharedTHW/dual-reader remains the mainline;
+evidence-conditioned directional residual is proposed, not implemented or learned.
+Reader learnability/OPD remain untested and gated. The existing two source span
+successes demonstrate local reachability, not representation sufficiency or a
+measured projection of masks onto useful directions.
+
+Local positives and negative tails persist. Correct spatial9positive/6negative/1zero;
+both spatial arms retain a box_end→null failure on the same source. Their event
+outputs are unchanged. Expanded mask weights are unequal at clipped boundaries;
+merger norms are matched independently. All cases/failed syntax remain scored.
+No new target or training. Full results in CONTEXT_MASK_CONTROL public artifacts
+and private context001 independent readback. Historical conclusions below remain.
+
 # From a negative attenuation oracle to a native actuation control
 
 The completed six-arm oracle tested **post-reader attenuation of the existing

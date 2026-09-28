@@ -1,3 +1,12 @@
+## Current context-support stage
+
+Completed/audited context001: new context_mask helper, prepare script, five-arm
+runner, seal-first independent scorer and root case/grammar readbacks. Same16
+source parents,80native/0updates. Teacher directionality gates not established;
+stop scalar-mask variants. Directional residual remains proposed/untested; no
+actual-reader learning/OPD, no external GPU qualification or target expansion.
+Full-source fit remains cancelled; original35step checkpoint is provenance only.
+
 # 最新：源可控性与同范数位置对照已完成
 
 已按附件完成自由merger→冻结输出列空间→旧mask链，以及同16源的early/late×correct/wrong无更新对照。自由/列空间在两个监督源上改善，但等效latent更新巨大，不能据此声称易学。位置对照未支持“提前mask即可修好”：正确性差值early−late，时间−4.899pp CI跨0、空间+.1298pp CI跨0；错误负控本身退化与全部负尾保留。

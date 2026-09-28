@@ -1,3 +1,15 @@
+# 最新：context-support 对照完成，停止继续调 scalar mask
+
+按固定PANEL16/B1/late/8.7687%时间与17.0316%空间merger范数，仅增加时间前后各一个已有观测、空间一圈latent-cell邻域。正确时间context对Base的tIoU **−3.2991pp**，正确空间context的sIoU **−1.5757pp**；correct−wrong分别+1.6383pp、+.5718pp，CI均跨0。未满足正确证据同时胜Base和wrong的预定条件，因此停止追加scalar-mask变体，保留3D/dual-reader主线，directional residual仅下一待设计机制，尚无reader训练或OPD。
+
+完整五臂t/s/v、匿名16例、所有CI/原好保持/负尾、旧large对照与核验见[报告](results/desta3d_v3/2026-09-28/CONTEXT_MASK_CONTROL.md)、[机器结果](results/desta3d_v3/2026-09-28/CONTEXT_MASK_CONTROL.json)。正确空间仍9正6负1零，不能称全无收益。78/80格式合法：两空间臂同一源末框null替代box_end仍保留；空间event端点逐值等Base，表面t下降来自原整条格式失败合同。
+
+[协议](protocols/desta3d_v3_context_mask_v1.md)、[context构造](vg_tta/desta3d_v3_context_mask.py)、[runner](scripts/desta3d_v3_context_mask.py)、[独立scorer](scripts/score_desta3d_v3_context_mask.py)、[根病例/旧对照](scripts/audit_desta3d_v3_context_cases.py)。12CPU控制、64mask独立逐值核验、240scalar/tensor几何、4080margin、90parent汇总、256完整BF16端点hash通过；与实际GPU效用分开。80native/0optimizer，GPU153.088997s，累计42493.15652965409s cap=null，已退出。
+
+所有16训练源已开发曝光、尺度来自两个旧源控制；不是无标签TTA/target或泛化验证。扩张后边界裁切导致mask权重不等，未重新选择wrong；残差范数独立配平。科研原件/失败/负数保留，公开不含视频、标签、caption、权重或raw。旧full-source训练取消、CURRENT保持，外部pixel基线暂缓，无自动64/生产晋升。
+
+## 以下为历史记录，当前状态以本节为准
+
 # 最新：大幅度 mask 单因素对照完成；尚不进入 OPD
 
 同原16源/B1/冻结PTD，仅将旧late correct/wrong mask诱导的merger差分别独立归一化到stockF的8.7687%(时间)/17.0316%(空间)，五臂80native、0optimizer。三例中性时间方向原样保留；不扫幅度、不改位置、不扩context、不训练reader或外部teacher。
