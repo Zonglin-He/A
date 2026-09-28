@@ -1,3 +1,13 @@
+# 最新：三层源可控性诊断已完成并独立核验
+
+时间病例的自由残差与冻结输出列空间控制均把tIoU从29.17%提高至68.06%；空间先暴露坐标类CE与原生全词表argmax的支持差别，保留格式失败后，仅修loss分母得到sIoU59.65→74.88%，列空间控制为73.83%。原模型/门控全部冻结，固定30步、无best选择。
+
+关键限制：列空间控制等效latent改变量为原latent的2698/5310倍；它证明两个源病例存在可达方向，不证明reader容易学会，更不是OPD/target收益。旧mask与监督控制不是纯位置单因素。下一检验同norm的before/after reader和正确/错误mask；尚未运行。
+
+见[完整对照表](results/desta3d_v3/2026-09-28/ACTUATION_CHAIN.md)、[机器聚合及校验](results/desta3d_v3/2026-09-28/ACTUATION_CONTROL.json)、[解释与实现](docs/desta3d_v3/ORACLE_FAILURE_DIAGNOSIS.md)。所有失败、旧oracle负数和原始数据本地保留；公开不含权重、标签、caption、预测raw。GPU累计41976.21386800704秒，cap=null。官方外部权重下载已完成，后续pixel baseline尚待独立smoke/qualification。
+
+## 以下为历史记录，当前状态以本节为准
+
 > **Current 2026-09-28:** source native free-actuation control completed: temporal success, spatial coordinate-CE/native-grammar mismatch. Matched full-vocabulary spatial control is running. See [current review](REVIEW_START_HERE.md). All older notes below are historical.
 
 > **Current 2026-09-28:** source GT branch-latent oracle completed with matched wrong controls; correct-evidence advantage not established. External downloads resumed only for the pixel baseline. No OPD result. See [latest review entry](REVIEW_START_HERE.md) and [oracle table](results/desta3d_v3/2026-09-28/LATENT_ORACLE.md).

@@ -94,12 +94,36 @@ argmax, but1001-class CE excludes non-coordinate competitors. A new registered
 single-factor control uses full-vocabulary CE at the same four coordinate
 positions, same source/B1/free tensor/LR/fixed30steps. No structure loss, token
 repair, prefix forcing, dtype change or best-step selection is introduced.
-Its real GPU result is pending. A finite failure cannot prove interface or span
-impossibility. The original both-branch gate for the span experiment is not yet
-satisfied; no OPD or target experiment is qualified.
+The completed full-vocabulary control improved spatial sIoU59.6550→74.8830%
+and vIoU19.8850→24.9610%, with all31 native formats valid. It satisfied the
+registered source-actuation gate, allowing a separate frozen-output-span run.
+This is a specific loss/support correction, not a diagnosis of all old failures.
 
 The three-source layer readback reproduced the old oracle's merger hashes.
 Correct mask z changes45.53–72.60% in relative L2; gated changes relative to base
 F are only.01148–.04656%, while5.42–22.23% of BF16 elements change. Full saved
 layers verify projection, bias cancellation and BF16 rounding. These establish
 actual intervention strength, not a task-level root-cause attribution.
+
+## Frozen-output-span control completed
+
+Both sources ran a fresh fixed30 steps with delta restricted to the unchanged
+branch projection column span. Temporal t/s/v became68.0556/50.6994/50.6994%;
+spatial20.1342/73.8344/24.6115%. All62 native states were format-valid;186
+independent scalar/tensor metrics agree exactly, and raw gradients, actual Adam
+changes/counters, frozen scope and final restoration passed. No best-step selection.
+
+This establishes two-case reachable improvements, not perfect overfit or efficient
+learnability. QR absorbs the small gate into coordinates: equivalent latent delta
+norms are2697.54 and5309.50 times the original branch latent. Token deltas are
+8.77% and17.03% of base F,764.0 and564.0 times the old correct-mask perturbation.
+Independent FP64 reconstruction gW delta_z matches actual delta_F within3.786e-7.
+Thus neither the weak old intervention nor the powerful supervised control isolates
+location as the cause. The next discriminating check must match intervention norm
+while moving the same mask before versus after the reader, retaining wrong masks.
+
+The chain executed150 fresh model-gradient steps, plus24 saved-gradient Adam
+arithmetic reconstruction steps,156 distinct two-pass native outputs. Layers
+added3 stock-prefill cases but no native outputs. Total settled GPU allocation
+time41976.21386800704s includes historical failures/loading/replay/finalization;
+cap=null. No target or OPD qualification follows from this source-only result.
