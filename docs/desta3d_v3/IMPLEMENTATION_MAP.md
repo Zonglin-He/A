@@ -1,3 +1,5 @@
+> Current diagnostic: [free-merger native controls and objective correction](ORACLE_FAILURE_DIAGNOSIS.md). These optimize standalone token deltas with model weights frozen, not the L0–L3 adapter scopes. Source preparation below remains cancelled.
+
 # DESTA-3D v3: implementation and evidence map
 
 **Current route (2026-09-28):** the mainline candidate is [privileged branch-latent adaptation](LATENT_PRIVILEGED_OPD.md). The source six-arm oracle has completed; it has not established correct-evidence advantage. External downloads were paused, then explicitly resumed by the user to finish this pixel-view route as a baseline. This is not a source-fit or OPD restart. Read the current oracle report/decision before interpreting the historical plan below.

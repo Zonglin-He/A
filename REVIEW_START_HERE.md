@@ -1,3 +1,15 @@
+# 最新：先诊断原生可控性，再推进 latent privilege
+
+2026-09-28 已完成两个源训练诊断样本的自由 merger 残差各30步正控，全PTD/B1参数冻结。时间样本 tIoU29.17→68.06%、vIoU18.67→50.70%；空间坐标受限CE下降但原生格式失败，完整tube按原合同计零。原失败和精确Adam恢复记录保留；不选best、不删负数。这证明一个时间样本可控，尚不能声称空间不可控或3D路线失败。
+
+发现的具体目标差别：原native decoder全词表argmax，而1001-class坐标CE忽略非坐标竞争者。已隔离登记同一空间样本、同30steps/LR，仅改完整词表分母的控制；真实结果待封存二核。原span门未通过，尚未跑span/early-conditioning/OPD。
+
+请先看[完整诊断与竞争解释](docs/desta3d_v3/ORACLE_FAILURE_DIAGNOSIS.md)、[聚合数值及核验](results/desta3d_v3/2026-09-28/ACTUATION_CONTROL.json)、[支持恢复协议](protocols/desta3d_v3_free_actuation_v2.md)、[完整词表单因素协议](protocols/desta3d_v3_free_actuation_full_vocab_v1.md)。7项新增CPU控制通过，和实际GPU效用严格分开。原六臂oracle及全部历史正负继续保留。
+
+官方LLaVA-ST与SigLIP权重已下载并独立hash核验，后续pixel baseline仍待official-loader smoke与资格运行，当前不抢占源诊断。全量source fit仍取消、CURRENT不变；单Luna max半小时只读监测已更新到当前handoff。无target/64/生产晋升。
+
+## 以下为此前完整审阅入口（按时间保留）
+
 # DESTA：特权分支 latent 主线与实际 oracle 结果
 
 更新：2026-09-28。主线候选回到 **共享THW → event/referent readers → 分支特权latent → same-PTD条件策略 → 有条件native-state OPD**。3D是THW而非XYZ，外部模型只提供证据。当前已经实际完成source-only GT oracle四主臂及两个匹配错误证据负控，**尚未建立正确证据优势，不能开始OPD或宣称方法成功**。

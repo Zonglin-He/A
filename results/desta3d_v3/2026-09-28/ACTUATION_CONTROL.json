@@ -1,0 +1,75 @@
+{
+  "status": "restricted-coordinate control completed audited; single-factor full-vocabulary correction running",
+  "source_only": true,
+  "outcome_selected_cases": 2,
+  "target_read": false,
+  "GT_diagnostic_not_TTA": true,
+  "base": "official frozen PTD4B plus fixed B1 adapter, all model parameters frozen",
+  "recipe": "one free merger delta; each source fresh AdamW .01 wd0 clip1 fixed30 steps; native state, no GT prefix",
+  "cases": [
+    {
+      "branch": "event",
+      "baseline_percent": {
+        "vIoU": 18.672159079538307,
+        "sIoU": 37.344318159076614,
+        "tIoU": 29.166666666666668
+      },
+      "final_percent": {
+        "vIoU": 50.69938236169567,
+        "sIoU": 50.69938236169567,
+        "tIoU": 68.05555555555556
+      },
+      "loss_before": 3.459648609161377,
+      "loss_after": 0.00043501838808879256,
+      "fixed_endpoint_success": true,
+      "format_failures_over_31_states": 0,
+      "clip_count": 1
+    },
+    {
+      "branch": "spatial",
+      "baseline_percent": {
+        "vIoU": 19.884995350999247,
+        "sIoU": 59.654986052997735,
+        "tIoU": 20.13422818791946
+      },
+      "final_percent": {
+        "vIoU": 0.0,
+        "sIoU": 0.0,
+        "tIoU": 0.0
+      },
+      "loss_before": 4.709063529968262,
+      "loss_after": 0.6635275483131409,
+      "fixed_endpoint_success": false,
+      "format_failures_over_31_states": 7,
+      "clip_count": 0
+    }
+  ],
+  "limitation": "Two exposed diagnostic train sources; no universal feasibility claim. Spatial tIoU zero reflects whole-output format failure, despite unchanged temporal branch.",
+  "checks": {
+    "geometry_comparisons": 186,
+    "geometry_scalar_tensor_max_error": 0.0,
+    "CPU_CE_max_error": 3.915166444379281e-07,
+    "raw_steps": 60,
+    "gradient_norm_max_error": 7.744524381791962e-07,
+    "delta_sum_final_max_error": 1.862645149230957e-09
+  },
+  "scope_gate": "span/earlier evidence conditional; no OPD or target qualification",
+  "preserved_failure": "first worker stopped after event30/spatial24; parser positions conflated with native anchors. Separate recovery exact24 CUDA Adam arithmetic and failed native replay;6 new steps.",
+  "objective_gap": "Native full-vocabulary argmax vs1001-class coordinate objective; one coordinate slot emits non-coordinate token. No generated token repaired.",
+  "new_registered_control": "Same spatial source/B1/free tensor/30steps/LR; only normalize four coordinate positions over full vocabulary; completed temporal case hash-reused.",
+  "layer_readback": {
+    "cases": 3,
+    "new_native": 0,
+    "optimizer_steps": 0,
+    "FP64_projection_max_error": 4.5792659963961313e-07,
+    "all_old_cast_endpoint_hashes_equal": true
+  },
+  "measured_GPU_seconds_settled_before_full_control": 40883.05217312603,
+  "GPU_cap": null,
+  "external_download": "official LLaVA-ST four shards complete;13-file full root SHA/LFS check passed. No teacher qualification GPU yet.",
+  "provenance_sha256": {
+    "actuation_free002/ROOT_DECISION.json": "808ce2a3a5fad11897eda8085b93405451f2de2e45414bc2218a70ddad3c62b5",
+    "actuation_free002/ROOT_GRAMMAR_READBACK.json": "a9f8c1885ea8b9f39c1fca74965b54852af15524d98adfe17de0d3e83c9c598b",
+    "layers001/ROOT_RAW_READBACK.json": "8b67579490ec6e374fdeb7513643692334417e706210033f9808a0f16eb1920b"
+  }
+}
