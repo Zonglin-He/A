@@ -1,3 +1,15 @@
+# 最新：开始主方法 GT-evidence Joint Correction learnability
+
+已按用户新指令结束architecture diagnosis优先级；finite component intervention转为后续消融，不再挡住方法构造。新增joint mixer已经实现、4CPU检查和真实PTD接口验收通过，正式训练已启动；**尚无learnability或held-out native收益结果**。
+
+冻结PTD4B、B1、审计256维union；只训练103424参数THW mixer。输入冻结公共stem/双query特征与时间/空间异质GT evidence，输出同一union残差进入两个native pass。零输出初始化精确复现B1；两个可微replay与原native logits逐值相等，空间CE保持完整152775类。原BF16主体/head/native均未换精度。GT privilege明确披露，不能当无标签TTA。
+
+训练618query/95Vid父源，两个seed各固定一完整epoch；native endpoint meanCE+full-vocab coordinate meanCE，AdamW1e-3/accum4/clip1，固定末态不val选步。原31val已有多轮曝光，另从已有source验证metadata按固定hash规则锁31父源全部447query，排除登记的旧source/PANEL16/target64父源和media哈希；source标签曾预处理，**不宣称全历史或PTD预训练未见**。最终Base与两seed共1341自由native预测全封存后评分；GT提前仅作privilege，不冒称score前未读标签。
+
+看[当前协议](protocols/desta3d_v3_joint_learnability_v1.md)、[mixer](vg_tta/desta3d_v3_joint_mixer.py)、[训练](scripts/desta3d_v3_joint_learnability.py)、[确认推理](scripts/desta3d_v3_joint_learnability_eval.py)、[评分](scripts/score_desta3d_v3_joint_learnability.py)。串行GPU/可审计完整窗口恢复/8GiB底线；单Luna每30min读进程状态，异常根修复。只有完成的自由native优势能推进后续资格，expert/OPD/target尚未启动。旧source full-fit保持取消，所有正负与optimizer勘误保留。
+
+## 以下为历史记录
+
 # 最新：Joint component attribution 完成；主线候选改为 Decomposed Evidence, Joint Correction
 
 撤回“时间/空间纠正必须分开”作为当前主方法假设。旧六臂结果和全部正负不变；当前只完成已封存PANEL16梯度/residual的CPU归因，没有新model/GPU/optimizer或预测。

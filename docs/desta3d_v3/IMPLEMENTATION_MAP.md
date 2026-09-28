@@ -1,3 +1,7 @@
+## Latest: learned joint mixer implemented, real probe passed, fit running
+
+C_theta has103424 parameters; frozen PTD4B/B1 and256-dimensional union. Only C is optimized. Four CPU controls and real zero-native/replay equality, full152775-class coordinate objective, frozen scope and disposable Adam/reset passed. Fixed2seeds x618queries/95parents train;447queries/31 newly locked source confirmation parents. Native utility is not measured yet. See [learnability protocol](../../protocols/desta3d_v3_joint_learnability_v1.md). Historical31val exposure remains; no globally untouched claim. Finite component oracle deferred; no expert/OPD/target started. Old status paragraphs below are historical.
+
 ## Latest: Joint component CPU attribution completed (2026-09-28)
 
 Current candidate: **Decomposed Evidence, Joint Correction**. Independent correction as the principal-method hypothesis is withdrawn. All16 saved cases show local complementary span contributions, while gradient-input cross effects remain9positive/7negative. No isolated-component native effect, joint mixer, expert or OPD has been measured. See [candidate boundaries](JOINT_CORRECTION_CANDIDATE.md) and [full attribution results](../../results/desta3d_v3/2026-09-28/JOINT_COMPONENT_ATTRIBUTION.md). Four synthetic CPU controls and1570 independent raw scalar checks passed; GPU increment0. Previous implementation/status entries below are historical, not an active queue.

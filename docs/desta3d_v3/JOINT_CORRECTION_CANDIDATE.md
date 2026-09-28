@@ -7,7 +7,7 @@ protocols, predictions, and positive/negative outcomes remain unchanged.
 
 **Preserve the shared THW representation, distinguish task evidence, coordinate
 correction.** This is a proposal to test, not a demonstrated general principle
-or a completed TVG/SVG/OPD system. No joint mixer has been implemented or trained.
+or a completed TVG/SVG/OPD system. A joint mixer has now been implemented and CPU checked; real interface and learned utility remain untested.
 
 ## What the completed oracle establishes
 
@@ -55,7 +55,7 @@ native-state conditional losses, not a proven exact KL of the full tube joint
 distribution. Measure final ordinary-input utility after removing privilege;
 include evidence-provider cost during adaptation. No such OPD has run.
 
-## Current action: saved component attribution only
+## Historical action: completed component attribution
 
 Read [the audit protocol](../../protocols/desta3d_v3_joint_component_attribution_v1.md).
 Use every saved PANEL16 gradient and Joint residual, with both orders of
@@ -67,3 +67,16 @@ Even a positive cross-component dot cannot identify why the final tube improved.
 The audit does not change a correction, a radius, a projection, a checkpoint,
 or an evaluation rule. No scalar-mask continuation, full-source restart, new
 expert, mixer, OPD, target, or hyperparameter grid is part of this action.
+
+## Current authorized construction
+
+The user moved finite-component intervention to later ablation. Implemented
+`vg_tta/desta3d_v3_joint_mixer.py` trains only a zero-initialized128-channel
+THW mixer into the frozen256-dimensional union. Decomposed source-GT evidence
+enters as inputs; one correction enters both frozen B1 passes. Native endpoint
+and full-vocabulary coordinate losses share mixer parameters. See
+[locked learnability protocol](../../protocols/desta3d_v3_joint_learnability_v1.md).
+Train618 queries/95 parents, independently lock447 confirmation queries/31
+parents outside enumerated development manifests. Annotation preparation was
+previously exposed; no globally untouched claim. Two seeds, one complete epoch
+each, fixed final states. Real expert/OPD stages remain conditional.
