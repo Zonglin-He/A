@@ -1,3 +1,19 @@
+# DESTA：特权分支 latent 主线与实际 oracle 结果
+
+更新：2026-09-28。主线候选回到 **共享THW → event/referent readers → 分支特权latent → same-PTD条件策略 → 有条件native-state OPD**。3D是THW而非XYZ，外部模型只提供证据。当前已经实际完成source-only GT oracle四主臂及两个匹配错误证据负控，**尚未建立正确证据优势，不能开始OPD或宣称方法成功**。
+
+先看[主线与文献边界](docs/desta3d_v3/LATENT_PRIVILEGED_OPD.md)、[六臂完整聚合表](results/desta3d_v3/2026-09-28/LATENT_ORACLE.md)、[机器可读结果](results/desta3d_v3/2026-09-28/LATENT_ORACLE.json)、[锁定协议](protocols/desta3d_v3_latent_oracle_v1.md)。同16个Vid源训练父源/同PTD4B+B1/0optimizer；Base不是裸Frozen。sourceGT用于oracle mask，不是无标签TTA。96预测加1全一控制，288独立几何和105根汇总核验通过，6CPU检查通过。
+
+T-oracle主要Δt=-1.785714pp；S-oracle Δs=+.218113pp，但错误位置负控Δs=+.365087pp。正确−错误空间Δs=-.146974pp，CI跨0；13个可区分时间负控的正确−错误Δt=+.053605pp，CI跨0。局部正负与负尾均保留，不据小涨包装正确性方向。注入和策略logits实际发生变化，全一及分支隔离控制通过。
+
+[实际调制](vg_tta/desta3d_v3_latent_oracle.py)、[runner](scripts/desta3d_v3_latent_oracle.py)、[独立scorer](scripts/score_desta3d_v3_latent_oracle.py)、[root masks/injection/KL](scripts/audit_desta3d_v3_latent_oracle_raw.py)、[root汇总](scripts/crosscheck_desta3d_v3_oracle_summary.py)。空间比较固定Base reference/interval/anchors；T/TS可能改变条件，不能把最终sIoU当固定条件空间收益。
+
+外部LLaVA-ST及SigLIP下载曾按用户停止，后经用户明确确认恢复，目的是补 **pixel Stage B baseline**，不是恢复全源训练。官方loader/decode与teacher资格GPU仍待完整权重/hash/注册。full-source fit仍取消于140query occurrences/35steps，checkpoint仅历史证据。下一按条件分别验teacher advantage、native参数可控性、无privilege最终OPD效用，三者不能替代。用户单Luna max每30min监测，异常由根处理；不自动target/64/生产晋升/网格。
+
+公开仅代码、协议、结构和聚合结果；无权重、视频、源标签、caption、逐样本预测或raw。累计GPU实测40122.33975609803秒cap=null，全部失败/加载/重放保持计费。
+
+## 以下保留之前外部资格修复的历史审阅入口
+
 # DESTA-3D 双分支与外部证据 OPD 审阅入口
 
 更新：2026-09-28，针对 main439e6f2 的外部审阅落实五项修复。full-source fit 已取消于140 query occurrences /35个完整Adam步；checkpoint只留来源证据，不用于方法比较/teacher/OPD。当前主线为 **LLaVA-ST证据 → 同PTD时空特权视图 → 资格通过后另登记native正控 → 条件性OPD**。尚无新teacher GPU结果。用户随后要求单Luna max每30分钟监测下载/已启动阶段，异常由主代理处理；CURRENT和旧队列不变。

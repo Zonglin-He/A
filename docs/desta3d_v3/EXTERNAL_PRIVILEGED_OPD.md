@@ -1,5 +1,7 @@
 # External-guided Privileged OPD implementation map
 
+**Current route (2026-09-28):** the mainline candidate is [privileged branch-latent adaptation](LATENT_PRIVILEGED_OPD.md). The source six-arm oracle has completed; it has not established correct-evidence advantage. External downloads were paused, then explicitly resumed by the user to finish this pixel-view route as a baseline. This is not a source-fit or OPD restart. Read the current oracle report/decision before interpreting the historical plan below.
+
 Updated2026-09-28. The user cancelled the full-source fit. Its last committed state contains140 query occurrences /35 optimizer steps; that incomplete model is not used as a teacher. Full training is not running. Historical v2 failures and benefits remain available for review.
 
 ## Current architecture and boundaries

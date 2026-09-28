@@ -1,0 +1,668 @@
+{
+  "status": "source_GT_branch_latent_oracle_completed",
+  "scope": "16 exposed source-training parents; GT creates latent masks; no optimizer/target/OPD. Not unlabeled TTA or held-out generalization.",
+  "configuration": "Frozen official PTD4B+B1; alpha .25 after reader/LN/SiLU before output projection; RGB and gates unchanged",
+  "queries": 16,
+  "parents": 16,
+  "predictions": 96,
+  "identity_controls": 1,
+  "optimizer_steps": 0,
+  "arms": {
+    "original": {
+      "parent_macro": {
+        "vIoU": 0.4111335879322764,
+        "sIoU": 0.6192973650563642,
+        "tIoU": 0.5400302749153774
+      }
+    },
+    "temporal": {
+      "parent_macro": {
+        "vIoU": 0.4081967579860971,
+        "sIoU": 0.6134237051640057,
+        "tIoU": 0.5221731320582345
+      }
+    },
+    "spatial": {
+      "parent_macro": {
+        "vIoU": 0.4126193808497269,
+        "sIoU": 0.6214784971874157,
+        "tIoU": 0.5400302749153774
+      }
+    },
+    "dual": {
+      "parent_macro": {
+        "vIoU": 0.4104216469042411,
+        "sIoU": 0.6170830292964442,
+        "tIoU": 0.5221731320582345
+      }
+    },
+    "wrong_temporal": {
+      "parent_macro": {
+        "vIoU": 0.40025966561225634,
+        "sIoU": 0.5921125592563141,
+        "tIoU": 0.5217375919885481
+      }
+    },
+    "wrong_spatial": {
+      "parent_macro": {
+        "vIoU": 0.41292609692603366,
+        "sIoU": 0.6229482353876276,
+        "tIoU": 0.5400302749153774
+      }
+    }
+  },
+  "comparisons": {
+    "temporal_minus_original": {
+      "vIoU": {
+        "sign": "first minus second",
+        "metric": "vIoU",
+        "parents": 16,
+        "mean_delta_pp": -0.2936829946179267,
+        "bootstrap_ci95_pp": [
+          -0.8810489838537802,
+          0.0
+        ],
+        "positive_parents": 0,
+        "negative_parents": 1,
+        "zero_parents": 15,
+        "severe_loss_below_minus5pp": 0,
+        "worst_delta_pp": -4.698927913886827,
+        "best_delta_pp": 0.0,
+        "bootstrap_replicates": 10000,
+        "bootstrap_seed": 20260927,
+        "bootstrap_rng": "numpy default_rng; paired source-parent resampling with replacement"
+      },
+      "sIoU": {
+        "sign": "first minus second",
+        "metric": "sIoU",
+        "parents": 16,
+        "mean_delta_pp": -0.5873659892358534,
+        "bootstrap_ci95_pp": [
+          -1.7620979677075603,
+          0.0
+        ],
+        "positive_parents": 0,
+        "negative_parents": 1,
+        "zero_parents": 15,
+        "severe_loss_below_minus5pp": 1,
+        "worst_delta_pp": -9.397855827773654,
+        "best_delta_pp": 0.0,
+        "bootstrap_replicates": 10000,
+        "bootstrap_seed": 20260927,
+        "bootstrap_rng": "numpy default_rng; paired source-parent resampling with replacement"
+      },
+      "tIoU": {
+        "sign": "first minus second",
+        "metric": "tIoU",
+        "parents": 16,
+        "mean_delta_pp": -1.785714285714286,
+        "bootstrap_ci95_pp": [
+          -5.357142857142858,
+          0.0
+        ],
+        "positive_parents": 0,
+        "negative_parents": 1,
+        "zero_parents": 15,
+        "severe_loss_below_minus5pp": 1,
+        "worst_delta_pp": -28.571428571428577,
+        "best_delta_pp": 0.0,
+        "bootstrap_replicates": 10000,
+        "bootstrap_seed": 20260927,
+        "bootstrap_rng": "numpy default_rng; paired source-parent resampling with replacement"
+      }
+    },
+    "spatial_minus_original": {
+      "vIoU": {
+        "sign": "first minus second",
+        "metric": "vIoU",
+        "parents": 16,
+        "mean_delta_pp": 0.14857929174505666,
+        "bootstrap_ci95_pp": [
+          -0.1309963328122239,
+          0.5094055967829741
+        ],
+        "positive_parents": 3,
+        "negative_parents": 7,
+        "zero_parents": 6,
+        "severe_loss_below_minus5pp": 0,
+        "worst_delta_pp": -0.7930816246445982,
+        "best_delta_pp": 2.0854264215064755,
+        "bootstrap_replicates": 10000,
+        "bootstrap_seed": 20260927,
+        "bootstrap_rng": "numpy default_rng; paired source-parent resampling with replacement"
+      },
+      "sIoU": {
+        "sign": "first minus second",
+        "metric": "sIoU",
+        "parents": 16,
+        "mean_delta_pp": 0.21811321310514228,
+        "bootstrap_ci95_pp": [
+          -0.2766225868062201,
+          0.8608940628097229
+        ],
+        "positive_parents": 3,
+        "negative_parents": 7,
+        "zero_parents": 6,
+        "severe_loss_below_minus5pp": 0,
+        "worst_delta_pp": -1.5861632492891964,
+        "best_delta_pp": 3.9992973225385544,
+        "bootstrap_replicates": 10000,
+        "bootstrap_seed": 20260927,
+        "bootstrap_rng": "numpy default_rng; paired source-parent resampling with replacement"
+      },
+      "tIoU": {
+        "sign": "first minus second",
+        "metric": "tIoU",
+        "parents": 16,
+        "mean_delta_pp": 0.0,
+        "bootstrap_ci95_pp": [
+          0.0,
+          0.0
+        ],
+        "positive_parents": 0,
+        "negative_parents": 0,
+        "zero_parents": 16,
+        "severe_loss_below_minus5pp": 0,
+        "worst_delta_pp": 0.0,
+        "best_delta_pp": 0.0,
+        "bootstrap_replicates": 10000,
+        "bootstrap_seed": 20260927,
+        "bootstrap_rng": "numpy default_rng; paired source-parent resampling with replacement"
+      }
+    },
+    "dual_minus_original": {
+      "vIoU": {
+        "sign": "first minus second",
+        "metric": "vIoU",
+        "parents": 16,
+        "mean_delta_pp": -0.07119410280352154,
+        "bootstrap_ci95_pp": [
+          -0.75178684414475,
+          0.45846913171132697
+        ],
+        "positive_parents": 3,
+        "negative_parents": 7,
+        "zero_parents": 6,
+        "severe_loss_below_minus5pp": 0,
+        "worst_delta_pp": -4.309455937421849,
+        "best_delta_pp": 2.0854264215064755,
+        "bootstrap_replicates": 10000,
+        "bootstrap_seed": 20260927,
+        "bootstrap_rng": "numpy default_rng; paired source-parent resampling with replacement"
+      },
+      "sIoU": {
+        "sign": "first minus second",
+        "metric": "sIoU",
+        "parents": 16,
+        "mean_delta_pp": -0.2214335759920141,
+        "bootstrap_ci95_pp": [
+          -1.5677950823497477,
+          0.7746758923433673
+        ],
+        "positive_parents": 3,
+        "negative_parents": 7,
+        "zero_parents": 6,
+        "severe_loss_below_minus5pp": 1,
+        "worst_delta_pp": -8.618911874843699,
+        "best_delta_pp": 3.9992973225385544,
+        "bootstrap_replicates": 10000,
+        "bootstrap_seed": 20260927,
+        "bootstrap_rng": "numpy default_rng; paired source-parent resampling with replacement"
+      },
+      "tIoU": {
+        "sign": "first minus second",
+        "metric": "tIoU",
+        "parents": 16,
+        "mean_delta_pp": -1.785714285714286,
+        "bootstrap_ci95_pp": [
+          -5.357142857142858,
+          0.0
+        ],
+        "positive_parents": 0,
+        "negative_parents": 1,
+        "zero_parents": 15,
+        "severe_loss_below_minus5pp": 1,
+        "worst_delta_pp": -28.571428571428577,
+        "best_delta_pp": 0.0,
+        "bootstrap_replicates": 10000,
+        "bootstrap_seed": 20260927,
+        "bootstrap_rng": "numpy default_rng; paired source-parent resampling with replacement"
+      }
+    },
+    "wrong_temporal_minus_original": {
+      "vIoU": {
+        "sign": "first minus second",
+        "metric": "vIoU",
+        "parents": 16,
+        "mean_delta_pp": -1.0873922320020037,
+        "bootstrap_ci95_pp": [
+          -3.2621766960060112,
+          0.0
+        ],
+        "positive_parents": 0,
+        "negative_parents": 1,
+        "zero_parents": 15,
+        "severe_loss_below_minus5pp": 1,
+        "worst_delta_pp": -17.39827571203206,
+        "best_delta_pp": 0.0,
+        "bootstrap_replicates": 10000,
+        "bootstrap_seed": 20260927,
+        "bootstrap_rng": "numpy default_rng; paired source-parent resampling with replacement"
+      },
+      "sIoU": {
+        "sign": "first minus second",
+        "metric": "sIoU",
+        "parents": 16,
+        "mean_delta_pp": -2.7184805800050094,
+        "bootstrap_ci95_pp": [
+          -8.155441740015029,
+          0.0
+        ],
+        "positive_parents": 0,
+        "negative_parents": 1,
+        "zero_parents": 15,
+        "severe_loss_below_minus5pp": 1,
+        "worst_delta_pp": -43.49568928008015,
+        "best_delta_pp": 0.0,
+        "bootstrap_replicates": 10000,
+        "bootstrap_seed": 20260927,
+        "bootstrap_rng": "numpy default_rng; paired source-parent resampling with replacement"
+      },
+      "tIoU": {
+        "sign": "first minus second",
+        "metric": "tIoU",
+        "parents": 16,
+        "mean_delta_pp": -1.8292682926829267,
+        "bootstrap_ci95_pp": [
+          -5.48780487804878,
+          0.0
+        ],
+        "positive_parents": 0,
+        "negative_parents": 1,
+        "zero_parents": 15,
+        "severe_loss_below_minus5pp": 1,
+        "worst_delta_pp": -29.268292682926827,
+        "best_delta_pp": 0.0,
+        "bootstrap_replicates": 10000,
+        "bootstrap_seed": 20260927,
+        "bootstrap_rng": "numpy default_rng; paired source-parent resampling with replacement"
+      }
+    },
+    "wrong_spatial_minus_original": {
+      "vIoU": {
+        "sign": "first minus second",
+        "metric": "vIoU",
+        "parents": 16,
+        "mean_delta_pp": 0.17925089937573419,
+        "bootstrap_ci95_pp": [
+          -0.18094716751448314,
+          0.6471595866797116
+        ],
+        "positive_parents": 4,
+        "negative_parents": 6,
+        "zero_parents": 6,
+        "severe_loss_below_minus5pp": 0,
+        "worst_delta_pp": -0.7930816246445982,
+        "best_delta_pp": 2.8391481319144707,
+        "bootstrap_replicates": 10000,
+        "bootstrap_seed": 20260927,
+        "bootstrap_rng": "numpy default_rng; paired source-parent resampling with replacement"
+      },
+      "sIoU": {
+        "sign": "first minus second",
+        "metric": "sIoU",
+        "parents": 16,
+        "mean_delta_pp": 0.3650870331263309,
+        "bootstrap_ci95_pp": [
+          -0.2768330763805438,
+          1.272683987419397
+        ],
+        "positive_parents": 4,
+        "negative_parents": 6,
+        "zero_parents": 6,
+        "severe_loss_below_minus5pp": 0,
+        "worst_delta_pp": -1.5861632492891964,
+        "best_delta_pp": 5.648081589501075,
+        "bootstrap_replicates": 10000,
+        "bootstrap_seed": 20260927,
+        "bootstrap_rng": "numpy default_rng; paired source-parent resampling with replacement"
+      },
+      "tIoU": {
+        "sign": "first minus second",
+        "metric": "tIoU",
+        "parents": 16,
+        "mean_delta_pp": 0.0,
+        "bootstrap_ci95_pp": [
+          0.0,
+          0.0
+        ],
+        "positive_parents": 0,
+        "negative_parents": 0,
+        "zero_parents": 16,
+        "severe_loss_below_minus5pp": 0,
+        "worst_delta_pp": 0.0,
+        "best_delta_pp": 0.0,
+        "bootstrap_replicates": 10000,
+        "bootstrap_seed": 20260927,
+        "bootstrap_rng": "numpy default_rng; paired source-parent resampling with replacement"
+      }
+    }
+  },
+  "correct_minus_wrong": {
+    "temporal_minus_wrong_temporal": {
+      "eligible_parents": 13,
+      "non_discriminating_count": 3,
+      "all_parents": {
+        "vIoU": {
+          "sign": "first minus second",
+          "metric": "vIoU",
+          "parents": 16,
+          "mean_delta_pp": 0.7937092373840771,
+          "bootstrap_ci95_pp": [
+            -0.8810489838537802,
+            3.2621766960060112
+          ],
+          "positive_parents": 1,
+          "negative_parents": 1,
+          "zero_parents": 14,
+          "severe_loss_below_minus5pp": 0,
+          "worst_delta_pp": -4.698927913886827,
+          "best_delta_pp": 17.39827571203206,
+          "bootstrap_replicates": 10000,
+          "bootstrap_seed": 20260927,
+          "bootstrap_rng": "numpy default_rng; paired source-parent resampling with replacement"
+        },
+        "sIoU": {
+          "sign": "first minus second",
+          "metric": "sIoU",
+          "parents": 16,
+          "mean_delta_pp": 2.131114590769156,
+          "bootstrap_ci95_pp": [
+            -1.7620979677075603,
+            8.155441740015029
+          ],
+          "positive_parents": 1,
+          "negative_parents": 1,
+          "zero_parents": 14,
+          "severe_loss_below_minus5pp": 1,
+          "worst_delta_pp": -9.397855827773654,
+          "best_delta_pp": 43.49568928008015,
+          "bootstrap_replicates": 10000,
+          "bootstrap_seed": 20260927,
+          "bootstrap_rng": "numpy default_rng; paired source-parent resampling with replacement"
+        },
+        "tIoU": {
+          "sign": "first minus second",
+          "metric": "tIoU",
+          "parents": 16,
+          "mean_delta_pp": 0.04355400696864076,
+          "bootstrap_ci95_pp": [
+            -5.357142857142858,
+            5.48780487804878
+          ],
+          "positive_parents": 1,
+          "negative_parents": 1,
+          "zero_parents": 14,
+          "severe_loss_below_minus5pp": 1,
+          "worst_delta_pp": -28.571428571428577,
+          "best_delta_pp": 29.268292682926827,
+          "bootstrap_replicates": 10000,
+          "bootstrap_seed": 20260927,
+          "bootstrap_rng": "numpy default_rng; paired source-parent resampling with replacement"
+        }
+      },
+      "eligible_only": {
+        "vIoU": {
+          "sign": "first minus second",
+          "metric": "vIoU",
+          "parents": 13,
+          "mean_delta_pp": 0.9768729075496333,
+          "bootstrap_ci95_pp": [
+            -1.0843679801277293,
+            4.014986702776628
+          ],
+          "positive_parents": 1,
+          "negative_parents": 1,
+          "zero_parents": 11,
+          "severe_loss_below_minus5pp": 0,
+          "worst_delta_pp": -4.698927913886827,
+          "best_delta_pp": 17.39827571203206,
+          "bootstrap_replicates": 10000,
+          "bootstrap_seed": 20260927,
+          "bootstrap_rng": "numpy default_rng; paired source-parent resampling with replacement"
+        },
+        "sIoU": {
+          "sign": "first minus second",
+          "metric": "sIoU",
+          "parents": 13,
+          "mean_delta_pp": 2.622910265562038,
+          "bootstrap_ci95_pp": [
+            -2.1687359602554586,
+            10.037466756941575
+          ],
+          "positive_parents": 1,
+          "negative_parents": 1,
+          "zero_parents": 11,
+          "severe_loss_below_minus5pp": 1,
+          "worst_delta_pp": -9.397855827773654,
+          "best_delta_pp": 43.49568928008015,
+          "bootstrap_replicates": 10000,
+          "bootstrap_seed": 20260927,
+          "bootstrap_rng": "numpy default_rng; paired source-parent resampling with replacement"
+        },
+        "tIoU": {
+          "sign": "first minus second",
+          "metric": "tIoU",
+          "parents": 13,
+          "mean_delta_pp": 0.0536049316537117,
+          "bootstrap_ci95_pp": [
+            -6.593406593406594,
+            6.7542213883677285
+          ],
+          "positive_parents": 1,
+          "negative_parents": 1,
+          "zero_parents": 11,
+          "severe_loss_below_minus5pp": 1,
+          "worst_delta_pp": -28.571428571428577,
+          "best_delta_pp": 29.268292682926827,
+          "bootstrap_replicates": 10000,
+          "bootstrap_seed": 20260927,
+          "bootstrap_rng": "numpy default_rng; paired source-parent resampling with replacement"
+        }
+      }
+    },
+    "spatial_minus_wrong_spatial": {
+      "eligible_parents": 16,
+      "non_discriminating_count": 0,
+      "all_parents": {
+        "vIoU": {
+          "sign": "first minus second",
+          "metric": "vIoU",
+          "parents": 16,
+          "mean_delta_pp": -0.03067160763067754,
+          "bootstrap_ci95_pp": [
+            -0.36518444111549225,
+            0.26879983917764805
+          ],
+          "positive_parents": 5,
+          "negative_parents": 6,
+          "zero_parents": 5,
+          "severe_loss_below_minus5pp": 0,
+          "worst_delta_pp": -1.882693863167026,
+          "best_delta_pp": 1.4997364959519575,
+          "bootstrap_replicates": 10000,
+          "bootstrap_seed": 20260927,
+          "bootstrap_rng": "numpy default_rng; paired source-parent resampling with replacement"
+        },
+        "sIoU": {
+          "sign": "first minus second",
+          "metric": "sIoU",
+          "parents": 16,
+          "mean_delta_pp": -0.1469738200211886,
+          "bootstrap_ci95_pp": [
+            -1.1105505228416197,
+            0.662680778768145
+          ],
+          "positive_parents": 5,
+          "negative_parents": 6,
+          "zero_parents": 5,
+          "severe_loss_below_minus5pp": 1,
+          "worst_delta_pp": -5.648081589501075,
+          "best_delta_pp": 3.9992973225385544,
+          "bootstrap_replicates": 10000,
+          "bootstrap_seed": 20260927,
+          "bootstrap_rng": "numpy default_rng; paired source-parent resampling with replacement"
+        },
+        "tIoU": {
+          "sign": "first minus second",
+          "metric": "tIoU",
+          "parents": 16,
+          "mean_delta_pp": 0.0,
+          "bootstrap_ci95_pp": [
+            0.0,
+            0.0
+          ],
+          "positive_parents": 0,
+          "negative_parents": 0,
+          "zero_parents": 16,
+          "severe_loss_below_minus5pp": 0,
+          "worst_delta_pp": 0.0,
+          "best_delta_pp": 0.0,
+          "bootstrap_replicates": 10000,
+          "bootstrap_seed": 20260927,
+          "bootstrap_rng": "numpy default_rng; paired source-parent resampling with replacement"
+        }
+      },
+      "eligible_only": {
+        "vIoU": {
+          "sign": "first minus second",
+          "metric": "vIoU",
+          "parents": 16,
+          "mean_delta_pp": -0.03067160763067754,
+          "bootstrap_ci95_pp": [
+            -0.36518444111549225,
+            0.26879983917764805
+          ],
+          "positive_parents": 5,
+          "negative_parents": 6,
+          "zero_parents": 5,
+          "severe_loss_below_minus5pp": 0,
+          "worst_delta_pp": -1.882693863167026,
+          "best_delta_pp": 1.4997364959519575,
+          "bootstrap_replicates": 10000,
+          "bootstrap_seed": 20260927,
+          "bootstrap_rng": "numpy default_rng; paired source-parent resampling with replacement"
+        },
+        "sIoU": {
+          "sign": "first minus second",
+          "metric": "sIoU",
+          "parents": 16,
+          "mean_delta_pp": -0.1469738200211886,
+          "bootstrap_ci95_pp": [
+            -1.1105505228416197,
+            0.662680778768145
+          ],
+          "positive_parents": 5,
+          "negative_parents": 6,
+          "zero_parents": 5,
+          "severe_loss_below_minus5pp": 1,
+          "worst_delta_pp": -5.648081589501075,
+          "best_delta_pp": 3.9992973225385544,
+          "bootstrap_replicates": 10000,
+          "bootstrap_seed": 20260927,
+          "bootstrap_rng": "numpy default_rng; paired source-parent resampling with replacement"
+        },
+        "tIoU": {
+          "sign": "first minus second",
+          "metric": "tIoU",
+          "parents": 16,
+          "mean_delta_pp": 0.0,
+          "bootstrap_ci95_pp": [
+            0.0,
+            0.0
+          ],
+          "positive_parents": 0,
+          "negative_parents": 0,
+          "zero_parents": 16,
+          "severe_loss_below_minus5pp": 0,
+          "worst_delta_pp": 0.0,
+          "best_delta_pp": 0.0,
+          "bootstrap_replicates": 10000,
+          "bootstrap_seed": 20260927,
+          "bootstrap_rng": "numpy default_rng; paired source-parent resampling with replacement"
+        }
+      }
+    }
+  },
+  "retention": {
+    "vIoU": {
+      "eligible": 7,
+      "arms": {
+        "original": {
+          "retained": 7,
+          "lost_count": 0
+        },
+        "temporal": {
+          "retained": 7,
+          "lost_count": 0
+        },
+        "spatial": {
+          "retained": 7,
+          "lost_count": 0
+        },
+        "dual": {
+          "retained": 7,
+          "lost_count": 0
+        },
+        "wrong_temporal": {
+          "retained": 7,
+          "lost_count": 0
+        },
+        "wrong_spatial": {
+          "retained": 7,
+          "lost_count": 0
+        }
+      }
+    },
+    "tIoU": {
+      "eligible": 8,
+      "arms": {
+        "original": {
+          "retained": 8,
+          "lost_count": 0
+        },
+        "temporal": {
+          "retained": 8,
+          "lost_count": 0
+        },
+        "spatial": {
+          "retained": 8,
+          "lost_count": 0
+        },
+        "dual": {
+          "retained": 8,
+          "lost_count": 0
+        },
+        "wrong_temporal": {
+          "retained": 8,
+          "lost_count": 0
+        },
+        "wrong_spatial": {
+          "retained": 8,
+          "lost_count": 0
+        }
+      }
+    }
+  },
+  "CI": "Descriptive 10000 paired-parent bootstrap, seed20260927, no multiplicity correction",
+  "geometry_comparisons": 288,
+  "geometry_max_error": 2.220446049250313e-16,
+  "summary_crosscheck_max_error": 2.220446049250313e-16,
+  "CPU_tests": 6,
+  "GPU_receipt_seconds": 144.82667824599775,
+  "cumulative_GPU_seconds": 40122.33975609803,
+  "cap": null,
+  "decision": "No established correct-evidence advantage under fixed .25 post-reader residual modulation; no OPD qualification",
+  "source_report_sha": "e1116d08a471741ecf94db8280a86528d785f3eb2f474540a9000d3a9c2bc386",
+  "raw_published": false
+}

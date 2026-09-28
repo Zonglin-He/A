@@ -1,3 +1,5 @@
+> **Current 2026-09-28:** source GT branch-latent oracle completed with matched wrong controls; correct-evidence advantage not established. External downloads resumed only for the pixel baseline. No OPD result. See [latest review entry](REVIEW_START_HERE.md) and [oracle table](results/desta3d_v3/2026-09-28/LATENT_ORACLE.md).
+
 > 2026-09-28 更新：全量源训练已按用户要求停止，新外部证据路线请从 [REVIEW_START_HERE.md](REVIEW_START_HERE.md) 和 [结构图](docs/desta3d_v3/EXTERNAL_PRIVILEGED_OPD.md) 开始。代码/CPU接口已实现，teacher权重下载中，OPD效用未测。
 
 # A — STVG adaptation research code
