@@ -7,7 +7,7 @@ protocols, predictions, and positive/negative outcomes remain unchanged.
 
 **Preserve the shared THW representation, distinguish task evidence, coordinate
 correction.** This is a proposal to test, not a demonstrated general principle
-or a completed TVG/SVG/OPD system. A joint mixer has now been implemented and CPU checked; real interface and learned utility remain untested.
+or a completed TVG/SVG/OPD system. The joint mixer is implemented, CPU checked and real-native interface validated. Fixed source training is running; learned native utility remains untested.
 
 ## What the completed oracle establishes
 
@@ -28,14 +28,15 @@ dimensional union and normalized objective gradients. It does not isolate a
 causal benefit of temporal-spatial coordination, an optimal parameter scope, or
 the best possible separate correction. Parameter adaptation was not performed.
 
-## Proposed architecture and supervision
+## Architecture and conditional downstream supervision
 
 Keep frozen PTD visual features F, a shared THW representation Z=H(F,q), and
-task-aware evidence acquisition eT and eS. A future correction operator would
-form one shared delta Z=C(Z,eT,eS,q), applied consistently to both native passes.
-The exact insertion, projection back to PTD tokens, residual size, and parameter
-scope need their own protocol; the previous oracle intervened at F, not at a
-newly learned low-dimensional Z. Do not equate these interfaces.
+task-aware evidence acquisition eT and eS. The implemented correction operator forms a256-dimensional coefficient field
+from shared features and heterogeneous evidence, then projects it through the
+frozen union into one shared delta F. It enters F before both frozen B1 passes.
+The exact insertion, norm bound and103424-parameter scope are now fixed in the
+learnability protocol. This is a learned operator; the earlier oracle directly
+optimized or analytically constructed fields, and did not establish learnability.
 
 TVG and SVG/RVOS are candidate evidence providers, not interchangeable-logit
 teachers. Same-PTD privileged policies must first improve actual native utility
