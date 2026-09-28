@@ -1,3 +1,18 @@
+# Current: A0 completed in31.8min; direction gate failed
+
+|Direction cosine|Train128 /95parents|Dev64 /16parents|
+|---|---:|---:|
+|Mean|0.029865917|0.024222450|
+|Median|0.007693602|0.002401304|
+
+192/192 directions defined. Fixed existing StateAwareDirectionMixer, one seed,200 actual AdamW steps/800 query occurrences, only coefficient cosine loss. **Dev median<0.1 and Train median<0.3: capacity/optimization screening branch.** Native inference was correctly skipped; there is no A0 native t/s/v result, full618/447 expansion or fresh388 use.
+
+The cache completed128 new source native captures/253 backwards; Dev64 reused all native/oracle evidence and only extracted missing frozen features. Complete NumPy projection/state/cosine audits passed. All8 tensors changed, clip0, frozen union unchanged, Adam integer/live counters200. Weak fit is not a proven capacity root cause. Source GT privilege and exposed development are explicit.
+
+[Full anonymous results](../../results/desta3d_v3/2026-09-29/A0_FAST_SCREEN.md) and [machine-readable report](../../results/desta3d_v3/2026-09-29/A0_FAST_SCREEN.json). GPU exited and this A0 monitor was deleted. Only proposed next: internal width128→256, preserving feature128/state33/cache/loss/radius/steps. It has not run. Prior negative results and the CPU controller compatibility repair are retained.
+
+## Historical registration and earlier results
+
 # A0 execution and boundaries
 
 The user-authorized run is Train128 / exposed Dev64, not full618. See the [locked protocol](../../protocols/desta3d_v3_a0_fast_screen_v1.md).
