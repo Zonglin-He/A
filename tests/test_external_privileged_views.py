@@ -65,3 +65,10 @@ def test_spatial_full_box_identity_and_geometry_preservation():
     e=parse_teacher_text('{0,1} .2:[.2,.25,.8,.75]',[1,7,30])
     y,_=spatial_view(x,[1,7,30],e)
     assert np.array_equal(x[[0,2]],y[[0,2]]) and np.array_equal(x[1,2:6,2:8],y[1,2:6,2:8])
+
+def test_uniform_physical_roundoff_tie_selects_earlier_real_panel_case():
+    ids=[0,209,279,1917,1987,2196]
+    positions,_=repeated_frame_indices(ids)
+    assert positions[11]==1 and positions[88]==3
+    ev=parse_teacher_text('{0,1} .1111111111111111:[0,0,1,1]',ids)
+    assert ev['boxes'][0]['observation_frame']==209

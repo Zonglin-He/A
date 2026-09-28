@@ -16,11 +16,19 @@ def time_support(frame_ids,clip_bounds=None):
     return ids,lo,hi
 
 
+def nearest_observations(ids,times):
+    """Earlier observation on a tie, including roundoff within 8*float64 epsilon at the support scale."""
+    times=np.atleast_1d(np.asarray(times,dtype=np.float64))
+    distances=np.abs(ids[:,None]-times)
+    tolerance=8*np.finfo(np.float64).eps*np.maximum(1,np.maximum(np.abs(ids).max(),np.abs(times)))
+    return (distances<=distances.min(axis=0)+tolerance).argmax(axis=0)
+
+
 def repeated_frame_indices(frame_ids,count=100,*,clip_bounds=None):
     ids,lo,hi=time_support(frame_ids,clip_bounds)
     if count<2:raise ValueError('At least two physical slots required')
     slots=np.linspace(lo,hi,count)
-    positions=np.abs(ids[:,None]-slots).argmin(axis=0)  # exact ties: earlier observation
+    positions=nearest_observations(ids,slots)
     return positions,np.asarray(frame_ids)[positions]
 
 
@@ -55,7 +63,7 @@ def parse_teacher_text(text,frame_ids,*,clip_bounds=None):
         box=list(map(float,parts)) if syntax else None
         valid_time=bool(np.isfinite(t) and 0<=t<=1)
         physical=lo+t*(hi-lo) if valid_time else None
-        pos=int(np.abs(ids-physical).argmin()) if valid_time else None
+        pos=int(nearest_observations(ids,[physical])[0]) if valid_time else None
         valid=bool(syntax and np.isfinite(box).all() and all(0<=v<=1 for v in box) and box[0]<box[2] and box[1]<box[3])
         saved_box=None if box is None else [v if np.isfinite(v) else None for v in box]
         boxes.append(dict(raw_index=index,raw_match=m.group(0),normalized_time=t if np.isfinite(t) else None,physical_frame=physical,

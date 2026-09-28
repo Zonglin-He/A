@@ -12,7 +12,7 @@
 |完整Stage B|[runner](scripts/desta3d_v3_privileged_ptd_qualification.py)：原图/T/S/TS四视图同PTD4B+B1，完整64新预测封存后[独立scorer](scripts/score_desta3d_v3_privileged_qualification.py)/[root复算](scripts/crosscheck_desta3d_v3_privileged_summary.py)；代码及合成流程就位，实际结果待跑|
 |native控制scope|[新隔离helper](vg_tta/desta3d_v3_native_scopes_v2.py)：L2加入branch QueryPool、event temporal最后pointwise；L3共享projection/conv且norm_stem冻结；真实native控制尚未跑|
 
-16项CPU检查通过，含真实hidden128可更新范围、逐帧无效证据、独立几何、合成16父源封存/评分/root汇总、坏seal在读标签前拒绝。不是GPUteacher资格。Q0固定16源训练父源；官方ST-Align stage3列有VidOR来源，不能声称teacher-unseen。未建立provenance-clean Q1。当前不实现OPD optimizer。
+17项CPU检查通过，含真实hidden128可更新范围、逐帧无效证据、独立几何、合成16父源封存/评分/root汇总、坏seal在读标签前拒绝。不是GPUteacher资格。Q0固定16源训练父源；官方ST-Align stage3列有VidOR来源，不能声称teacher-unseen。未建立provenance-clean Q1。当前不实现OPD optimizer。
 
 260.159GB不再需要的权重/视频包/缓存已按用户授权清理，科学raw和正负报告保留；历史精确重放若依赖已删资源须重建。
 

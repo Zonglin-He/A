@@ -17,7 +17,7 @@ CUDA_VISIBLE_DEVICES='' PYTHONDONTWRITEBYTECODE=1 python -B -m pytest -q tests/t
 
 ## 2026-09-28 external qualification review repairs
 
-16 CPU tests passed (local actual runner environment):
+17 CPU tests passed (local actual runner environment):
 
 ```bash
 python -m pytest -q tests/test_external_privileged_views.py tests/test_external_qualification_metrics.py tests/test_llava_teacher_decode_contract.py tests/test_desta3d_v3_native_scopes_v2.py

@@ -24,7 +24,7 @@
   "official_loader_decode_smoke": "implemented; two fixed source inputs, both recipes/loaders; not yet GPU validated",
   "native_scope_v2": "L2 includes branch query pool and event temporal pointwise; L3 shared projection/conv with norm_stem frozen; no optimizer",
   "new_route": "LLaVA-ST evidence qualification -> same frozen PTD geometry-preserving views -> native branch controls -> conditional same-PTD student-prefix reverse KL",
-  "CPU_contracts": 16,
+  "CPU_contracts": 17,
   "official_CPU_tokenizer_preprocess": "passed, 2554 tokens / 100x3x384x384 synthetic pixels; no model inference",
   "optimizer_or_TTA_updates": 0,
   "external_teacher_task_metrics": null,
@@ -34,5 +34,11 @@
     "100 uniform physical clip-time slots select nearest existing7-32 observations; teacher time maps independently to physical clip endpoints; not the original100 unique-frame benchmark",
     "Archived model/data dependencies intentionally removed may require redownload for exact historical replay",
     "All prior negative task results and optimizer-continuity corrections retained"
-  ]
+  ],
+  "physical_mapping_readback": {
+    "queries": 16,
+    "slots": 1600,
+    "reference": "exact rational nearest physical time; deterministic earlier tie",
+    "prior_CPU_failure": "Two midpoint roundoff cases found before GPU; retained and repaired"
+  }
 }
