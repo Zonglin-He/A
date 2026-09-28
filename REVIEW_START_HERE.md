@@ -1,3 +1,15 @@
+# Current: A0 fast-screen registered and caching
+
+The completed447 Gap audit is retained below. The next authorized run is a small direction screen, not full618. Fixed SHA256 metadata selection gives Train128 covering95 training parents and exposed Dev64/16 parents (four queries each). Fresh31/388 stays untouched.
+
+Existing StateAwareDirectionMixer, hidden128/state33/union256, radius0.13545580427763146. One seed,200 AdamW steps, batch4, lr0.001/wd0/clip1, only global coefficient cosine loss. Train cache has frozen B1 native endpoint/full-vocabulary coordinate gradient targets. Dev oracle and complete native states reuse sealed artifacts; only absent frozen features are re-extracted. No PTD is loaded for cached training.
+
+Only terminal Dev median cosine>=0.1 allows Dev64 native evaluation. Below the gate: train median<0.3 suggests capacity/optimization, otherwise conditioning/generalization. These are screening categories, not causal proofs. Native v<=0 directs a later trust/no-op hypothesis; positive v without systematic branch collapse only qualifies for separately registered expansion. No automatic full training, fresh confirmation, expert, OPD or target stage.
+
+CPU3 controls and first real cache independent projection/state check passed. Overall cache/training/native efficacy remains pending. [Protocol](protocols/desta3d_v3_a0_fast_screen_v1.md). Conditional native runner is implemented separately and locked only if the direction gate passes. Private media, labels, raw and weights remain local.
+
+---
+
 # 最新：Oracle–Mixer Gap Audit完成，DECISION=A
 
 本轮447query/31已曝光源父源诊断完成，1788预测、873backward、0optimizer，全部封存、full raw和两级独立评分核验通过。**DECISION=A：优先state-aware方向蒸馏；新训练尚未启动。**
