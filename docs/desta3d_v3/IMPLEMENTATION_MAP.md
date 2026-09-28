@@ -1,3 +1,23 @@
+## Current: joint mixer completed and audited; source teacher qualification not passed
+
+Both fixed training seeds and all1,341 confirmation predictions are complete.
+Parent-macro vIoU vs B1 is -0.240001pp and -0.111768pp, both CIs crossing zero;
+temporal means rise slightly, spatial means decline, native-good retention is
+incomplete. The registered qualification is not passed. No expert/OPD/target
+stage starts. See [complete two-seed native result](../../results/desta3d_v3/2026-09-28/JOINT_LEARNABILITY_CONFIRMATION.md)
+and [all31 anonymous parent results](../../results/desta3d_v3/2026-09-28/JOINT_LEARNABILITY_CONFIRMATION.json).
+All earlier status entries below are historical; no training is running.
+
+## Current: both learned-mixer training seeds complete, confirmation inference running
+
+Both fixed seeds completed 618 queries / 95 parents / 155 actual Adam calls.
+Seed one passes the preserved CPU audit v2; seed two passes isolated v3, which
+accepts valid captured endpoint support even when generation format fails and
+the spatial pass is not started. No GPU or scientific configuration changed.
+See [both-seed training and audit record](../../results/desta3d_v3/2026-09-28/JOINT_LEARNABILITY_BOTH_TRAINING.md).
+The 447-query, three-arm confirmation is running and has not been scored.
+Older entries below record their historical state, not a current running queue.
+
 ## Latest: first learned-mixer seed complete, confirmation pending
 
 Seed20260928 completed618queries/95parents/155actualAdam calls with audited integer states, frozen union and deterministic coverage. Seed20260929 is running. One training event-format failure is retained; missing support is explicitly counted. The first CPU auditor had an overly strict two-pass assertion; isolated v2 matches the existing early-failure contract without any GPU/scientific change. See [full training accounting](../../results/desta3d_v3/2026-09-28/JOINT_LEARNABILITY_SEED1_TRAINING.md). No confirmation utility or teacher advantage has been measured yet.

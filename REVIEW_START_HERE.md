@@ -1,3 +1,19 @@
+# 最新：Joint mixer两seed确认完成，当前配置未建立teacher优势
+
+两个seed各完成618query/95源父源/155actualAdam。新锁31源父源全部447query，B1＋两seed共1341自由native预测封存、独立评分和根复核完成；**不是仍在训练，也不是只看loss。**
+
+| 父源宏 | tIoU % | sIoU % | vIoU % | Δv vs B1，pp |
+|---|---:|---:|---:|---:|
+| B1 | 46.637512 | 48.627481 | 32.407600 | — |
+| Seed1 | 46.887168 | 47.764785 | 32.167599 | −0.240001 |
+| Seed2 | 46.741185 | 48.246816 | 32.295832 | −0.111768 |
+
+Δv配对95%CI分别[−1.121475,+.713042]和[−.915397,+.750465]，均跨0。两seed空间均值下降，原B1 v>.5保持127/136和126/136；当前配置未通过预注册资格。正例、完整31父源匿名数据、query/父源不同层级负尾都保留，不以单个失败否定全部joint路线，也不自动进入expert/OPD/target。
+
+看[完整结果与决定](results/desta3d_v3/2026-09-28/JOINT_LEARNABILITY_CONFIRMATION.md)、[全部31父源匿名数值](results/desta3d_v3/2026-09-28/JOINT_LEARNABILITY_CONFIRMATION.json)、[两seed训练合同与CPU审计修复](results/desta3d_v3/2026-09-28/JOINT_LEARNABILITY_BOTH_TRAINING.md)。4023 scalar/tensor误差4.441e−16、263根汇总误差3.375e−14；所有GPU阶段结束，注册监测已删除。GT仍明确作为source privilege，确认现在开发曝光，不能称无标签TTA或预训练未见。公开只有代码/协议/匿名聚合，raw/标签/媒体/权重保持本地。
+
+## 以下为历史阶段记录
+
 # 最新：开始主方法 GT-evidence Joint Correction learnability
 
 已按用户新指令结束architecture diagnosis优先级；finite component intervention转为后续消融，不再挡住方法构造。新增joint mixer已经实现、4CPU检查和真实PTD接口验收通过，正式训练已启动；**尚无learnability或held-out native收益结果**。

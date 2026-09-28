@@ -7,7 +7,7 @@ protocols, predictions, and positive/negative outcomes remain unchanged.
 
 **Preserve the shared THW representation, distinguish task evidence, coordinate
 correction.** This is a proposal to test, not a demonstrated general principle
-or a completed TVG/SVG/OPD system. The joint mixer is implemented, CPU checked and real-native interface validated. Seed20260928 completed618queries/155Adam calls and passed the full CPU state/coverage audit; seed20260929 is running. Confirmation native utility remains untested. See [first-seed training record](../../results/desta3d_v3/2026-09-28/JOINT_LEARNABILITY_SEED1_TRAINING.md).
+or a completed TVG/SVG/OPD system. The joint mixer is implemented, CPU checked and real-native interface validated. Both locked seeds completed618queries/155Adam calls and passed their CPU state/coverage audits. All1,341 confirmation predictions are sealed and independently scored: vIoU vs B1 -0.240001pp/-0.111768pp, both CIs crossing zero, spatial means negative and native-good retention incomplete. This configuration did not pass teacher qualification. See [full confirmation and boundaries](../../results/desta3d_v3/2026-09-28/JOINT_LEARNABILITY_CONFIRMATION.md) and [both-seed training record](../../results/desta3d_v3/2026-09-28/JOINT_LEARNABILITY_BOTH_TRAINING.md).
 
 ## What the completed oracle establishes
 

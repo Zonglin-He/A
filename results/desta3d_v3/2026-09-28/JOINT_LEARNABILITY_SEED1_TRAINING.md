@@ -1,5 +1,10 @@
 # Joint mixer: first seed training complete, utility pending
 
+> Update after both seeds completed: this is the preserved first-seed milestone.
+> Seed2 revealed that early format failure can retain valid time logits; use
+> the isolated v3 auditor for that case. See [both-seed audit](JOINT_LEARNABILITY_BOTH_TRAINING.md)
+> and [completed confirmation result](JOINT_LEARNABILITY_CONFIRMATION.md).
+
 Seed 20260928 completed the locked one-epoch source training: 618 queries from
 95 Vid parents, 155 actual Adam calls, no empty windows; final window has two
 queries. Seed 20260929 is running independently. The 447-query / 31-parent
