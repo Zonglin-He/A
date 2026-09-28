@@ -1,3 +1,7 @@
+## Latest: Joint component CPU attribution completed (2026-09-28)
+
+Current candidate: **Decomposed Evidence, Joint Correction**. Independent correction as the principal-method hypothesis is withdrawn. All16 saved cases show local complementary span contributions, while gradient-input cross effects remain9positive/7negative. No isolated-component native effect, joint mixer, expert or OPD has been measured. See [candidate boundaries](JOINT_CORRECTION_CANDIDATE.md) and [full attribution results](../../results/desta3d_v3/2026-09-28/JOINT_COMPONENT_ATTRIBUTION.md). Four synthetic CPU controls and1570 independent raw scalar checks passed; GPU increment0. Previous implementation/status entries below are historical, not an active queue.
+
 ## Latest: PANEL16 decomposition oracle completed
 
 Six-arm96native /32 shared-F backwards /128 finite support reads /0optimizer, independently audited. See DECOMPOSITION_ORACLE.md and public result aggregates. No next stage auto-started; old scalar/full-source STOP remains.

@@ -1,3 +1,15 @@
+# 最新：Joint component attribution 完成；主线候选改为 Decomposed Evidence, Joint Correction
+
+撤回“时间/空间纠正必须分开”作为当前主方法假设。旧六臂结果和全部正负不变；当前只完成已封存PANEL16梯度/residual的CPU归因，没有新model/GPU/optimizer或预测。
+
+两个128维span交集维数0、并集256维，但并不正交；直接把两投影相加会有53.13%–70.31%重建误差。本轮用T-first/S-first两套正交分解，并独立核原span非正交direct-sum。Joint超出T自身span的部分对T一阶收益16/16为正，平均占Joint局部T下降量10.59%；超出S自身span部分对S也16/16为正，占34.10%。原span归属下S成分对T、T成分对S也全部局部正向，完整数值及分母见[报告](results/desta3d_v3/2026-09-28/JOINT_COMPONENT_ATTRIBUTION.md)和[匿名逐例结果](results/desta3d_v3/2026-09-28/JOINT_COMPONENT_ATTRIBUTION.json)。
+
+**不能把span归属与梯度来源混同。** 按gT/gS来源拆Joint，两方向跨任务贡献均为9正7负；Joint本就包含每个任务的监督梯度。这里只支持局部互补容量，不证明另一个任务监督普遍有益，也没有测单分量native因果效应。旧Joint对Base的CI仍跨0，负尾全部保留。
+
+[新候选与边界](docs/desta3d_v3/JOINT_CORRECTION_CANDIDATE.md)、[锁定CPU协议](protocols/desta3d_v3_joint_component_attribution_v1.md)、[执行入口](scripts/audit_desta3d_v3_joint_components.py)、[独立原始复算](scripts/crosscheck_desta3d_v3_joint_components.py)。4CPU合成控制、48旧seal原件、1570双实现标量核验通过；最大绝对误差6.0042e-8符合预锁混合容差。没有更换幅度/steps/投影去重试旧native，不实现新mixer/TVG/SVG/OPD。下一因果缺口仅记录为未验证，不自动开GPU。旧监测保持已删除。
+
+## 以下为历史完成记录
+
 # 最新：PANEL16 Decomposition Oracle 完成；本配置下 Joint 优于 Decomposed
 
 **核心结论：T/S有不同纠错几何和部分交叉伤害，但当前一次有限纠正未支持分开更新更好。Decomposed相对两个Joint的vIoU差均为负，描述性95%CI均不跨0。不能把低cos当成解耦必要性。**

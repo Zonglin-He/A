@@ -1,3 +1,9 @@
+# Superseded method hypothesis — current candidate uses joint correction
+
+**2026-09-28:** This original branch-isolated OPD proposal is preserved as history. Mandatory T/S gradient isolation and independently applied correction are no longer the principal-method hypothesis. The current candidate is [Decomposed Evidence, Joint Correction](JOINT_CORRECTION_CANDIDATE.md). The all16 saved-gradient attribution supports local complementary span capacity but does not establish the cause of finite native improvement, a learned mixer, external-evidence teacher quality, or OPD success. Existing scalar-mask STOP and all negative/positive results remain. No new model/OPD run is authorized by this document.
+
+## Historical proposal below
+
 # DESTA: evidence-conditioned branch-latent adaptation
 
 Current mainline candidate, not an established method result. The source oracle has completed: temporal tIoU -1.785714pp, spatial sIoU +.218113pp but correct-minus-wrong spatial -.146974pp with CI crossing zero. Correct evidence advantage is not established. See `artifacts/desta3d_v3/latent_oracle_v1/oracle001/independent_readback_v1/REPORT.md` and `DECISION_AND_NEXT.md` for all results. Full-source fit remains cancelled at 140 query occurrences / 35 committed steps, retained for provenance only. It is not source-prepared or eligible as the teacher. Official external downloads were paused at the user's route change, then explicitly resumed to finish the pixel-view baseline; that baseline remains conditional on download/loader/qualification gates. No OPD optimizer has run.
