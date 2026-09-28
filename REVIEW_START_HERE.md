@@ -1,6 +1,10 @@
-# DESTA-3D v2 外部代码审阅入口
+# DESTA-3D 双分支与外部证据 OPD 审阅入口
 
-更新：2026-09-28。当前实验阶段及其独立审计均已完成，GPU 空闲；按用户要求结束定时跟进并交给外部审阅。后续 native-endpoint 源正控只有协议草案，未实现、未登记、未运行。此仓库是代码与汇总证据快照，不是已验证成功的部署方案。
+更新：2026-09-28。用户已取消 v3 全量 source fit，最后保存140条 query occurrences /35个完整优化器步；它不是已训练完成的候选。新主线是 **LLaVA-ST 外部证据资格验证 → 同 PTD 的时空特权视图 → native 分支正控 → 有条件 OPD**。新代码、协议和四项CPU合同已实现；官方权重下载中，尚无新teacher GPU结果或OPD训练。定时跟进保持删除，CURRENT未改。
+
+先看[新路线结构与状态](docs/desta3d_v3/EXTERNAL_PRIVILEGED_OPD.md)、[固定资格协议](protocols/desta3d_v3_external_privileged_opd_v1.md)与[机器可读状态](results/desta3d_v3/2026-09-28/ROUTE_SWITCH_STATUS.json)。完整旧 source fit 和所有失败版本保留供审查，不是运行指令。260.159GB旧权重/视频包/缓存已按用户要求清理；科学raw和报告保留，受影响的历史重放需要重新下载/重建依赖。
+
+新实现入口：[外部teacher](vg_tta/llava_st_teacher.py)、[不改坐标的views及时间映射](vg_tta/external_privileged_views.py)、[无更新资格runner](scripts/desta3d_v3_external_teacher_qualification.py)、[CPU合同测试](tests/test_external_privileged_views.py)。外部模型与PTD不共用token，禁止直接跨模型KL；同PTD student-prefix OPD仍是条件后续，不能误写为已验证收益。
 
 ## 先了解当前判断
 
@@ -33,7 +37,7 @@
 2. **监督正控是否有效。** 原 GT teacher-forced 全 token CE 与 native 按预测 anchors 构造的时间/框支持不同。NTP/MTP 是位置分组，不能直接称时间/坐标损失。请核原 `joint_loss` 的分母、mask、分块、重算与冻结范围。
 3. **数值与离散读出。** 小残差经过 BF16 转换，少量离散变化能明显改变 endpoint argmax；最后输出舍入在单源确有贡献，但只换最终 head 为 FP32 的源16正控更差。请不要据此建议无区别精度、LR、gate、步数网格。
 4. **恢复与可复现性。** 检查整数 optimizer key、live Parameter 绑定、actual step、RNG、完整 accumulation window。旧测试只比序列化曾漏掉 silent momentum reset；新测试在真实模块上比恢复后的两次更新。
-5. **提出一个有区分力的下一项。** 写清旧证据、新机制、固定条件、正控、过程读出、native 效用、失败分支和资源。当前 native-endpoint 源正控草案可讨论，但不视为已通过。优先指出实际代码行和支持/反证，避免泛泛换 backbone/teacher/PCGrad。
+5. **提出一个有区分力的下一项。** 写清旧证据、新机制、固定条件、正控、过程读出、native 效用、失败分支和资源。当前外部teacher资格与native分支正控可审查，但不视为已通过。优先指出实际代码行和支持/反证，避免泛泛换 backbone/teacher/PCGrad。
 
 审查时请区分：代码事实、已测结果、解释假设、未执行提案、生产方法。所有历史正负和工程失败都应保留。当前没有证明双支路线不可能，也没有证据足以宣称稳定全正。
 
@@ -43,6 +47,6 @@
 - 模型权重、视频、标注、逐样本预测、原始梯度/logits、私有 manifest/授权附件不上传。本地原件保留。只有本仓库无法独立复算所有历史数值，汇总来源 hash 提供对应关系而不是替代 raw evidence。
 - 运行环境与第三方版本见 [DEPENDENCIES](docs/DEPENDENCIES.md)。CPU synthetic 检查可运行；完整 GPU runner 依赖本地数据和锁定证据，不能直接克隆后运行，也不要绕过它们的 hash 检查。
 - 公开副本只做路径和私有授权引用脱敏，原实验代码和 pins 不改；映射见 [PUBLICATION_UPDATE_20260928.json](docs/PUBLICATION_UPDATE_20260928.json)。历史协议可能引用未打包的本地 artifacts。
-- 测试说明见 [REVIEW_VALIDATION](docs/REVIEW_VALIDATION.md)。当前累计 GPU 实测 38820.55116519004 秒，含失败、加载、重放及不重叠 wrapper 时间；本次发布和清理未增加 GPU 实验。
+- 测试说明见 [REVIEW_VALIDATION](docs/REVIEW_VALIDATION.md)。当前累计 GPU 实测 39977.51307785203 秒，含失败、加载、重放及不重叠 wrapper 时间；最新累计包含后续已取消的全源fit；新外部teacher代码发布、清理与下载没有新增GPU推理。
 
 可直接使用 [外部审查提示词](docs/EXTERNAL_REVIEW_PROMPT.md)。
