@@ -1,3 +1,11 @@
+# 当前：447-query Oracle–Mixer Gap Audit 正在运行
+
+原两seed训练与447query确认已完成，负结果保留。当前仅进行同447/31已曝光源集合的冻结解析oracle诊断，首例真实接口和独立raw核验通过，尚无全量新效用结论。A方向蒸馏、B trust/no-op gate、C rescue骨架及31父源/388query新metadata确认名单已事先锁定，CPU检查通过，未启动其GPU训练或救援实验。
+
+[当前协议、实现入口和限制](docs/desta3d_v3/ORACLE_MIXER_GAP.md)。下面旧状态记录保留为历史。
+
+---
+
 # 最新：Joint mixer两seed确认完成，当前配置未建立teacher优势
 
 两个seed各完成618query/95源父源/155actualAdam。新锁31源父源全部447query，B1＋两seed共1341自由native预测封存、独立评分和根复核完成；**不是仍在训练，也不是只看loss。**

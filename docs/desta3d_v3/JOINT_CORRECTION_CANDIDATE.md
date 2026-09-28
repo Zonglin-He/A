@@ -1,3 +1,11 @@
+## Current execution: frozen gap diagnosis; conditional modules prepared
+
+原两seed训练与447query确认已完成，负结果保留。当前仅进行同447/31已曝光源集合的冻结解析oracle诊断，首例真实接口和独立raw核验通过，尚无全量新效用结论。A方向蒸馏、B trust/no-op gate、C rescue骨架及31父源/388query新metadata确认名单已事先锁定，CPU检查通过，未启动其GPU训练或救援实验。
+
+[当前协议、实现入口和限制](ORACLE_MIXER_GAP.md)。下面旧状态记录保留为历史。
+
+---
+
 # Decomposed Evidence, Joint Correction
 
 Current research candidate after the PANEL16 Decomposition Oracle. The former
