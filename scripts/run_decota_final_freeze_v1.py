@@ -72,7 +72,7 @@ def prepare():
     pins['methods/decota_spatial4_v1/WORKING_METHOD.json']=sha(ROOT/'methods/decota_spatial4_v1/WORKING_METHOD.json')
     pins['methods/decota_spatial4_v1/configs.json']=sha(ROOT/'methods/decota_spatial4_v1/configs.json')
     method=dict(version='decota_final_v1',status='final_design_locked_not_independently_confirmed',
-        created=time.time(),authority='./private_authorization_notes/d449d50e-c980-4f8c-b7d2-6b9556b56e93/pasted-text.txt',
+        created=time.time(),authority='./private_authorization_notes/authorization.txt',
         definition='methods/decota_final_v1/METHOD_CARD.md',config=read(METHOD/'configs.json'),
         code_pins=pins,api_verification_sha256=sha(OUT/'API_VERIFICATION.json'),
         F45_is_all_development=True,formal_registry_changed=False,new_method_search=False)

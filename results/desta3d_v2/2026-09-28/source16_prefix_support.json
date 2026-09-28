@@ -1,0 +1,56 @@
+{
+  "evidence": {
+    "source_evidence_relative_path": "tta_v2/source_prefix_support16_v2/REPORT.json",
+    "source_evidence_sha256": "31ea460c1bf0bc3581ec8420beb8e929a1bddb3333bdcab47ce133ac0d79b7f7",
+    "raw_evidence_bundled": false
+  },
+  "status": "completed_CPU_audit",
+  "queries": 16,
+  "parents": 16,
+  "new_model_calls": 0,
+  "new_GPU_seconds": 0,
+  "new_optimizer_steps": 0,
+  "new_predictions": 0,
+  "aggregate": {
+    "by_arm": {
+      "no_update": {
+        "semantic_reference_exact_GT": 16,
+        "time_and_frame_support_exact_GT": 4,
+        "has_extra_frame_support": 10,
+        "has_missing_GT_frames": 6,
+        "total_native_frames": 240,
+        "invalid_geometry_frames": 0
+      },
+      "supervised": {
+        "semantic_reference_exact_GT": 16,
+        "time_and_frame_support_exact_GT": 4,
+        "has_extra_frame_support": 10,
+        "has_missing_GT_frames": 6,
+        "total_native_frames": 242,
+        "invalid_geometry_frames": 0
+      },
+      "supervised_fp32": {
+        "semantic_reference_exact_GT": 16,
+        "time_and_frame_support_exact_GT": 3,
+        "has_extra_frame_support": 10,
+        "has_missing_GT_frames": 7,
+        "total_native_frames": 221,
+        "invalid_geometry_frames": 0
+      }
+    },
+    "GT_box_rows": 164,
+    "endpoint_event_denominator_fraction_range": [
+      0.09090909090909091,
+      0.12121212121212122
+    ],
+    "spatial_coordinate_denominator_fraction": 0.6153846153846154,
+    "CE_reaggregation_checks": 320,
+    "max_CE_reaggregation_error": 3.6679781434401093e-07
+  },
+  "limitations": [
+    "dummy prompt is not multimodal prefix replay; actual masks only have saved hashes for15",
+    "NTP/MTP means do not identify endpoint/coordinate CE; per-token losses absent for this all16 comparison",
+    "support mismatch is not a demonstrated cause or aligned-objective benefit; existing metrics only"
+  ],
+  "support_limit": "Full actual support tensors exist for the first source query only; the other 15 have hashes/counts. Label-side reconstruction is not proof of all actual KV supports."
+}

@@ -55,3 +55,6 @@ source-fit配置在 `artifacts/desta3d_v2/source_fit/CONFIG.json` 与 `LOCK.json
 固定Vid95/618与31/198；target64 metadata父源和video SHA交集0，HC不混入。612条eligible response的官方time端点与event_active首末采样端点全部一致；另6条保留辅助训练。source validation先四臂792输出封存，再读本轮源标签。已有Frozen源验证缓存锁定同198个query，source指标定义沿旧源scorer，不能与目标corruption口径混算。
 
 源拟合每个完整全臂累计窗口原子保存模型/optimizer/RNG/cursor，checkpoint携带最后窗口的history commit，可恢复幂等写入history_windows；JSONL仅辅助流。验证预测原子写入，恢复检查key/source/frame_ids/video SHA/adapter。阶段3600秒是保存与复盘间隔，持续预算cap=null。首16 query已CPU核验三个新臂各4步、current16步，参数确实变化/有限，A两gate固定−6；尚无源效用结果。
+
+
+Public review note (2026-09-28): this is the original stage protocol, not an instruction to run it. Superseded and failed versions are retained for provenance. See REVIEW_START_HERE.md for current status. Referenced local data, weights and artifacts are not bundled.

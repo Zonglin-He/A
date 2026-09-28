@@ -63,7 +63,7 @@ def prepare():
         backbone='TA-STVG',extra_models=False,full_evaluation=False,schedules=False,historical_exposure=True,
         max_unique_inputs=83,max_fits=1500,max_backward=12000,max_new_DINO=4096,max_GPU_hours=8,
         attachments={x:sha(Path('./private_authorization_notes')/x/'pasted-text.txt') for x in
-            ['234503ef-4236-47ca-89eb-cf90d1bf6462','fb33b9d7-f70b-4386-aafc-dfee4f40ec73']})
+            ['private-authorization-8992e283a532','private-authorization-4c2fc5555cf3']})
     write(OUT/'GOAL_CONTRACT.json',contract)
     write(OUT/'LOCK.json',dict(rows=rows,counts=counts,created=time.time(),spatial_lr=old['spatial_lr'],
         config=dict(image_scale=.9,image_sensitivity=.95,warp=.6,warp_sensitivity=.4,tau_u=.25,kappas=[2.,4.],

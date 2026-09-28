@@ -1,6 +1,6 @@
 # DESTA-3D v2: shared reference/time and calibration connectivity audit
 
-Registered review amendment, 2026-09-27. Incremental audit; original four-arm training, locks, selection, and predictions remain unchanged.
+User authorization: private authorization (not distributed), 2026-09-27. Incremental audit; original four-arm training, locks, selection, and predictions remain unchanged.
 
 ## Fixed state and paired decode
 
@@ -34,4 +34,5 @@ Pilot001 failed zero-gate box equality in four of four queries despite identical
 
 The one-query gradient check found a large weighted-auxiliary/task gradient norm ratio. A separately registered eight-parent source development panel (`gradient_scale_panel_v1`) uses the lexical first training query of each of the first eight distinct parents; it reuses the already sealed first-query result and evaluates seven more without optimizer steps. This is not independent confirmation: the first result motivated the panel, and source-training data are used. It measures identical shared_stem parameter gradients for temporal CE, spatial CE and the two auxiliaries, including .1 weighting and undefined angles for zero norms. No PCGrad, rescaling, extra loss, source sampling or active optimizer change is made on the basis of this diagnostic.
 
-Public snapshot note: referenced artifacts are local evidence, not bundled inputs. Aggregated completed results are in `results/desta3d_v2/2026-09-27/`; weights, manifests, raw predictions and private logs are excluded.
+
+Public review note (2026-09-28): this is the original stage protocol, not an instruction to run it. Superseded and failed versions are retained for provenance. See REVIEW_START_HERE.md for current status. Referenced local data, weights and artifacts are not bundled.

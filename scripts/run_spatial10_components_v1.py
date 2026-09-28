@@ -110,7 +110,7 @@ def prepare():
         assert not {r['input']['video_sha256'] for r in aa} & {r['input']['video_sha256'] for r in bb}
     lock = dict(protocol='Spatial10_components_and_temporal_supervision_F35', created=time.time(),
         attachments={n: sha(Path('./private_authorization_notes')/n/'pasted-text.txt') for n in
-                     ['2e247490-a307-4926-9454-a8a8485e288b', 'd6778a0e-37ae-4f42-87ef-78c3a8af6b54']},
+                     ['private-authorization-ade406e654b7', 'private-authorization-13d96fed9c7d']},
         own_pins=pins, protected_pins=protected, counts=counts, rows=rows,
         caps=dict(fits=1200, backward=16000, new_DINO=2500), expected_new_fits=1199,
         temporal_selection=dict(teachers=['ensemble', 'original', 'mapped'], primary_new_candidates=['original', 'mapped'],

@@ -44,7 +44,7 @@ def prepare():
     protected=['methods/CURRENT_METHOD.json','methods/CURRENT_WORKING_METHOD.json','methods/C1_FINAL_RESEARCH_CONFIG.json','methods/C1_TEMPORAL_RESEARCH_STATUS.json','artifacts/c1_fresh_confirmation_v1/vid_train_audit/PROSPECTIVE_SOURCE_RESERVATION.json']
     deps=[Path(__file__),ROOT/'protocols/decota_corrective_opd_v1.md',ROOT/'scripts/run_spatial_ssl_gpu_v1.py',ROOT/'scripts/run_spatial_regression_alignment_v1.py',ROOT/'vg_tta/c1_enabling_tricks_v1.py',ROOT/'vg_tta/c1_luna_tricks_v1.py']+list((ROOT/'methods/decota_final_simplified_v1').glob('*.py'))
     write(OUT/'INPUTS.json',rows)
-    write(OUT/'LOCK.json',dict(created=time.time(),user_attachment='./private_authorization_notes/7d8709f2-df38-420c-988a-c9dbce960430/已粘贴的文本.txt',
+    write(OUT/'LOCK.json',dict(created=time.time(),user_attachment='./private_authorization_notes/authorization.txt',
           parent_metadata_sha=sha(parent),inputs_sha=sha(OUT/'INPUTS.json'),dev=old['dev'],validation=old['validation'],labels=old['labels'],labels_sha=old['labels_sha'],
           checkpoint=read(ROOT/'methods/C1_FINAL_RESEARCH_CONFIG.json')['source_checkpoint_sha256'],teacher_manifest=sha(MODEL/'DOWNLOAD_MANIFEST.json'),
           pins={str(f):sha(f) for f in deps},protected={str(ROOT/f):sha(ROOT/f) for f in protected},prompt=COMMON,

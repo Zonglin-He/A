@@ -1,0 +1,389 @@
+{
+  "evidence": {
+    "source_evidence_relative_path": "tta_v2/source_fp32_head_control_v1/independent_readback_v2/REPORT.json",
+    "source_evidence_sha256": "942913d5148daa07b8c39c003dbd9b38d0eef33efa66e1a703409acdb2b85154",
+    "raw_evidence_bundled": false
+  },
+  "status": "completed_source_training_diagnostic",
+  "queries": 16,
+  "parents": 16,
+  "scope": "Fixed source-train panel; source GT for supervised controls and diagnostics only; no target input.",
+  "units": "IoUs fractions; named pp quantities are percentage points; CE uses native loss units",
+  "arms": {
+    "no_update": {
+      "queries": 16,
+      "parents": 16,
+      "query_macro": {
+        "vIoU": 0.41113358793227633,
+        "sIoU": 0.6192973650563642,
+        "tIoU": 0.5400302749153774
+      },
+      "parent_macro": {
+        "vIoU": 0.4111335879322764,
+        "sIoU": 0.6192973650563642,
+        "tIoU": 0.5400302749153774
+      },
+      "no_spatial_support_queries_included_with_zero_vIoU": 0,
+      "spatial_support_queries": 16,
+      "spatial_support_frames": 164,
+      "format_failures": 0
+    },
+    "unlabeled": {
+      "queries": 16,
+      "parents": 16,
+      "query_macro": {
+        "vIoU": 0.40929489454561463,
+        "sIoU": 0.607120753322103,
+        "tIoU": 0.5391852545386934
+      },
+      "parent_macro": {
+        "vIoU": 0.4092948945456146,
+        "sIoU": 0.607120753322103,
+        "tIoU": 0.5391852545386933
+      },
+      "no_spatial_support_queries_included_with_zero_vIoU": 0,
+      "spatial_support_queries": 16,
+      "spatial_support_frames": 164,
+      "format_failures": 0
+    },
+    "supervised": {
+      "queries": 16,
+      "parents": 16,
+      "query_macro": {
+        "vIoU": 0.4114457500358791,
+        "sIoU": 0.6219058229190456,
+        "tIoU": 0.5397297705907281
+      },
+      "parent_macro": {
+        "vIoU": 0.411445750035879,
+        "sIoU": 0.6219058229190456,
+        "tIoU": 0.5397297705907281
+      },
+      "no_spatial_support_queries_included_with_zero_vIoU": 0,
+      "spatial_support_queries": 16,
+      "spatial_support_frames": 164,
+      "format_failures": 0
+    },
+    "supervised_fp32": {
+      "queries": 16,
+      "parents": 16,
+      "query_macro": {
+        "vIoU": 0.37013729376405186,
+        "sIoU": 0.5777090676252247,
+        "tIoU": 0.4802921139491242
+      },
+      "parent_macro": {
+        "vIoU": 0.37013729376405186,
+        "sIoU": 0.5777090676252248,
+        "tIoU": 0.48029211394912413
+      },
+      "no_spatial_support_queries_included_with_zero_vIoU": 0,
+      "spatial_support_queries": 16,
+      "spatial_support_frames": 164,
+      "format_failures": 0
+    }
+  },
+  "comparisons": {
+    "supervised_fp32_minus_no_update": {
+      "vIoU": {
+        "sign": "first minus second",
+        "metric": "vIoU",
+        "parents": 16,
+        "mean_delta_pp": -4.09962941682245,
+        "bootstrap_ci95_pp": [
+          -10.937812550918412,
+          -0.009123569437577111
+        ],
+        "positive_parents": 2,
+        "negative_parents": 8,
+        "zero_parents": 6,
+        "severe_loss_below_minus5pp": 2,
+        "worst_delta_pp": -45.10452721194014,
+        "best_delta_pp": 0.692341135181429,
+        "bootstrap_replicates": 10000,
+        "bootstrap_seed": 20260927,
+        "bootstrap_rng": "numpy default_rng; paired source-parent resampling with replacement"
+      },
+      "sIoU": {
+        "sign": "first minus second",
+        "metric": "sIoU",
+        "parents": 16,
+        "mean_delta_pp": -4.158829743113958,
+        "bootstrap_ci95_pp": [
+          -10.978019125897655,
+          -0.03867582764524409
+        ],
+        "positive_parents": 2,
+        "negative_parents": 7,
+        "zero_parents": 7,
+        "severe_loss_below_minus5pp": 2,
+        "worst_delta_pp": -45.10452721194014,
+        "best_delta_pp": 0.692341135181429,
+        "bootstrap_replicates": 10000,
+        "bootstrap_seed": 20260927,
+        "bootstrap_rng": "numpy default_rng; paired source-parent resampling with replacement"
+      },
+      "tIoU": {
+        "sign": "first minus second",
+        "metric": "tIoU",
+        "parents": 16,
+        "mean_delta_pp": -5.97381609662532,
+        "bootstrap_ci95_pp": [
+          -16.545557951261912,
+          0.0
+        ],
+        "positive_parents": 0,
+        "negative_parents": 3,
+        "zero_parents": 13,
+        "severe_loss_below_minus5pp": 2,
+        "worst_delta_pp": -74.04761904761905,
+        "best_delta_pp": 0.0,
+        "bootstrap_replicates": 10000,
+        "bootstrap_seed": 20260927,
+        "bootstrap_rng": "numpy default_rng; paired source-parent resampling with replacement"
+      }
+    },
+    "supervised_fp32_minus_supervised": {
+      "vIoU": {
+        "sign": "first minus second",
+        "metric": "vIoU",
+        "parents": 16,
+        "mean_delta_pp": -4.130845627182719,
+        "bootstrap_ci95_pp": [
+          -11.170564373906835,
+          0.05717824461050378
+        ],
+        "positive_parents": 1,
+        "negative_parents": 8,
+        "zero_parents": 7,
+        "severe_loss_below_minus5pp": 2,
+        "worst_delta_pp": -46.63230151593301,
+        "best_delta_pp": 1.2049970771661478,
+        "bootstrap_replicates": 10000,
+        "bootstrap_seed": 20260927,
+        "bootstrap_rng": "numpy default_rng; paired source-parent resampling with replacement"
+      },
+      "sIoU": {
+        "sign": "first minus second",
+        "metric": "sIoU",
+        "parents": 16,
+        "mean_delta_pp": -4.419675529382094,
+        "bootstrap_ci95_pp": [
+          -11.411756614445347,
+          -0.104262185881672
+        ],
+        "positive_parents": 1,
+        "negative_parents": 8,
+        "zero_parents": 7,
+        "severe_loss_below_minus5pp": 2,
+        "worst_delta_pp": -46.63230151593301,
+        "best_delta_pp": 1.2049970771661478,
+        "bootstrap_replicates": 10000,
+        "bootstrap_seed": 20260927,
+        "bootstrap_rng": "numpy default_rng; paired source-parent resampling with replacement"
+      },
+      "tIoU": {
+        "sign": "first minus second",
+        "metric": "tIoU",
+        "parents": 16,
+        "mean_delta_pp": -5.943765664160401,
+        "bootstrap_ci95_pp": [
+          -16.515507518796994,
+          0.0
+        ],
+        "positive_parents": 0,
+        "negative_parents": 2,
+        "zero_parents": 14,
+        "severe_loss_below_minus5pp": 2,
+        "worst_delta_pp": -74.04761904761905,
+        "best_delta_pp": 0.0,
+        "bootstrap_replicates": 10000,
+        "bootstrap_seed": 20260927,
+        "bootstrap_rng": "numpy default_rng; paired source-parent resampling with replacement"
+      }
+    },
+    "supervised_fp32_minus_unlabeled": {
+      "vIoU": {
+        "sign": "first minus second",
+        "metric": "vIoU",
+        "parents": 16,
+        "mean_delta_pp": -3.9157600781562745,
+        "bootstrap_ci95_pp": [
+          -10.786905754272201,
+          0.02085489056037039
+        ],
+        "positive_parents": 2,
+        "negative_parents": 8,
+        "zero_parents": 6,
+        "severe_loss_below_minus5pp": 2,
+        "worst_delta_pp": -47.50612157299864,
+        "best_delta_pp": 0.3975340277680983,
+        "bootstrap_replicates": 10000,
+        "bootstrap_seed": 20260927,
+        "bootstrap_rng": "numpy default_rng; paired source-parent resampling with replacement"
+      },
+      "sIoU": {
+        "sign": "first minus second",
+        "metric": "sIoU",
+        "parents": 16,
+        "mean_delta_pp": -2.941168569687835,
+        "bootstrap_ci95_pp": [
+          -8.945314995402985,
+          0.13000888099789693
+        ],
+        "positive_parents": 2,
+        "negative_parents": 8,
+        "zero_parents": 6,
+        "severe_loss_below_minus5pp": 1,
+        "worst_delta_pp": -47.50612157299864,
+        "best_delta_pp": 0.8483838556595291,
+        "bootstrap_replicates": 10000,
+        "bootstrap_seed": 20260927,
+        "bootstrap_rng": "numpy default_rng; paired source-parent resampling with replacement"
+      },
+      "tIoU": {
+        "sign": "first minus second",
+        "metric": "tIoU",
+        "parents": 16,
+        "mean_delta_pp": -5.889314058956916,
+        "bootstrap_ci95_pp": [
+          -16.406604308390023,
+          0.0
+        ],
+        "positive_parents": 0,
+        "negative_parents": 2,
+        "zero_parents": 14,
+        "severe_loss_below_minus5pp": 2,
+        "worst_delta_pp": -74.04761904761905,
+        "best_delta_pp": 0.0,
+        "bootstrap_replicates": 10000,
+        "bootstrap_seed": 20260927,
+        "bootstrap_rng": "numpy default_rng; paired source-parent resampling with replacement"
+      }
+    },
+    "supervised_minus_no_update": {
+      "vIoU": {
+        "sign": "first minus second",
+        "metric": "vIoU",
+        "parents": 16,
+        "mean_delta_pp": 0.03121621036026967,
+        "bootstrap_ci95_pp": [
+          -0.17414211734157573,
+          0.2813143989424482
+        ],
+        "positive_parents": 4,
+        "negative_parents": 6,
+        "zero_parents": 6,
+        "severe_loss_below_minus5pp": 0,
+        "worst_delta_pp": -0.7930816246445982,
+        "best_delta_pp": 1.5277743039928682,
+        "bootstrap_replicates": 10000,
+        "bootstrap_seed": 20260927,
+        "bootstrap_rng": "numpy default_rng; paired source-parent resampling with replacement"
+      },
+      "sIoU": {
+        "sign": "first minus second",
+        "metric": "sIoU",
+        "parents": 16,
+        "mean_delta_pp": 0.26084578626813654,
+        "bootstrap_ci95_pp": [
+          -0.22647072101792445,
+          0.8958385650939488
+        ],
+        "positive_parents": 5,
+        "negative_parents": 5,
+        "zero_parents": 6,
+        "severe_loss_below_minus5pp": 0,
+        "worst_delta_pp": -1.5861632492891964,
+        "best_delta_pp": 4.094731278794828,
+        "bootstrap_replicates": 10000,
+        "bootstrap_seed": 20260927,
+        "bootstrap_rng": "numpy default_rng; paired source-parent resampling with replacement"
+      },
+      "tIoU": {
+        "sign": "first minus second",
+        "metric": "tIoU",
+        "parents": 16,
+        "mean_delta_pp": -0.030050432464919386,
+        "bootstrap_ci95_pp": [
+          -0.09015129739475816,
+          0.0
+        ],
+        "positive_parents": 0,
+        "negative_parents": 1,
+        "zero_parents": 15,
+        "severe_loss_below_minus5pp": 0,
+        "worst_delta_pp": -0.4808069194387102,
+        "best_delta_pp": 0.0,
+        "bootstrap_replicates": 10000,
+        "bootstrap_seed": 20260927,
+        "bootstrap_rng": "numpy default_rng; paired source-parent resampling with replacement"
+      }
+    }
+  },
+  "retention": {
+    "vIoU": {
+      "eligible": 7,
+      "definition": "B1>0.5 retained if candidate>0.5",
+      "arms": {
+        "no_update": {
+          "retained": 7
+        },
+        "unlabeled": {
+          "retained": 7
+        },
+        "supervised": {
+          "retained": 7
+        },
+        "supervised_fp32": {
+          "retained": 6
+        }
+      }
+    },
+    "tIoU": {
+      "eligible": 8,
+      "definition": "B1>0.5 retained if candidate>0.5",
+      "arms": {
+        "no_update": {
+          "retained": 8
+        },
+        "unlabeled": {
+          "retained": 8
+        },
+        "supervised": {
+          "retained": 8
+        },
+        "supervised_fp32": {
+          "retained": 7
+        }
+      }
+    }
+  },
+  "CE_same_definition_changes": {
+    "old": {
+      "BF16": {
+        "mean_delta": 0.0009716326603665948,
+        "decreased_queries": 6,
+        "increased_queries": 10
+      },
+      "FP32": {
+        "mean_delta": 0.00024797971127554774,
+        "decreased_queries": 5,
+        "increased_queries": 11
+      }
+    },
+    "new": {
+      "BF16": {
+        "mean_delta": -0.001531788264401257,
+        "decreased_queries": 9,
+        "increased_queries": 7
+      },
+      "FP32": {
+        "mean_delta": -0.0007826804649084806,
+        "decreased_queries": 8,
+        "increased_queries": 8
+      }
+    }
+  },
+  "interpretation": "FP32 final task-head control worsens native tube score in this setting. A negative single-seed source control is not a universal precision or architecture failure."
+}
