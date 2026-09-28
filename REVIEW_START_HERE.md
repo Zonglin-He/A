@@ -1,3 +1,15 @@
+# 最新：PANEL16 Decomposition Oracle 完成；本配置下 Joint 优于 Decomposed
+
+**核心结论：T/S有不同纠错几何和部分交叉伤害，但当前一次有限纠正未支持分开更新更好。Decomposed相对两个Joint的vIoU差均为负，描述性95%CI均不跨0。不能把低cos当成解耦必要性。**
+
+本轮按同16源、同B1起点计算共同F上的native T/S梯度，并完成一次固定解析纠正的六臂96预测；0optimizer，无新MLP、外部teacher或OPD。原始梯度cos均值-0.004501、中位0.045818，负值7/16，|cos|≤.1为11/16。低相似度本身不当作冲突或解耦必要性。
+
+Decomposed对Base Δv +1.754549pp，对Joint -4.401181pp，对实际双pass能量匹配Joint -5.941072pp；完整CI、t/s/v、固定支持CE、逐例负尾与原好保持见[全部结果](results/desta3d_v3/2026-09-28/DECOMPOSITION_ORACLE.md)和[匿名数值](results/desta3d_v3/2026-09-28/DECOMPOSITION_ORACLE.json)。预注册实用性门：False。本轮不自动推进下一实验。
+
+梯度在进入B1之前的共同THW F处定义，含identity和冻结reader导数，query固定；旧post-adapter两例不冒称本接口已验。各128维分支列空间与256维Joint并集、单位分支梯度平衡、继承源幅度、一次终点，均先锁定。用户残差预算与实际两pass能量两种公平性口径均保留。源GT明确用于oracle，非无标签/目标效果。见[方法合同](docs/desta3d_v3/DECOMPOSITION_ORACLE.md)、[协议](protocols/desta3d_v3_decomposition_oracle_v1.md)、[runner](scripts/desta3d_v3_decomposition_oracle.py)。
+
+## 以下保留历史结果
+
 # 最新：方向审计完成，时间与空间结论不同
 
 按新建议直接读取两个旧成功病例的完整 merger 梯度和固定30步 span 残差，另读 late/early、large、context 的全部正确/错误方向。本轮纯CPU，无新模型执行或预测。

@@ -1,3 +1,7 @@
+## Latest: PANEL16 decomposition oracle completed
+
+Six-arm96native /32 shared-F backwards /128 finite support reads /0optimizer, independently audited. See DECOMPOSITION_ORACLE.md and public result aggregates. No next stage auto-started; old scalar/full-source STOP remains.
+
 ## Latest: saved direction audit completed (2026-09-28)
 
 CPU-only direction_alignment_v2: two prior selected source cases, exact B1/native support, full initial merger gradient (not low-dimensional parameter gradient), fixed span30 and all8 mask variants per case. Temporal late/context masks have adverse initial local CE dots; spatial masks have favorable but weaker dots and retained native gains. A shared sign-reversal root cause is not established. No prototype, reader training or OPD was launched; scalar-mask STOP remains. See the complete anonymous DIRECTION_ALIGNMENT results and audit protocol. Original v1 metadata-schema failure is preserved. No new GPU, cumulative42493.15652965409s.
