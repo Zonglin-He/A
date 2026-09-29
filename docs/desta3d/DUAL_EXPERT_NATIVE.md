@@ -63,3 +63,17 @@ offload 上限设为14GiB，host reserve保持6GiB；原memory-v7代码不改。
 不要再次执行本轮接续器；当前进度看 `ACTIVE.json` 和 `CONTROLLER_V4.log`。
 
 工程修复补充协议：`protocols/desta_dual_expert_native_runtime_v3.md`；原科学协议保持登记hash。
+
+## 专家参数的实际作用范围
+
+- `dino_text_threshold` 在当前 Transformers 实现中只生成候选的文本标签；
+  runner 保存标签但不使用标签筛选 anchor，所以它当前不改变伪目标。
+- `dino_box_threshold` 筛选框；只要最高分有效候选仍保留，调阈值不改变选中框。
+  跨过候选分数时可能让该 query 失去空间支持。
+- TVG segment voting 可改变时间区间；SAM mask threshold 可改变框边界或空mask。
+  最终只有改变映射后的PTD目标token或支持集合，才会改变此固定输入下的更新。
+- 专家分数用于选候选，没有直接作为梯度的可靠性权重。当前两支full-F梯度分别
+  单位归一化，低专家分数不自动带来小更新。
+
+这些是代码作用路径，不是敏感性实验排名。本轮固定专家证据，27配置只识别
+这些证据条件下K/rho/T-S权重的影响，不能据此判定专家超参数是否重要。
