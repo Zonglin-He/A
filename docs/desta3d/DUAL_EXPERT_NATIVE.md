@@ -8,9 +8,9 @@
 
 1. `desta3d/native_adaptation.py`：伪目标映射、完整空间梯度归一化、R16 投影与半径约束。
 2. `scripts/desta_native_experts.py`：UniversalVTG、GroundingDINO + SAM2 独立推理和原始证据保存。
-3. `scripts/desta_native_run.py`：固定 B1 原生支持、分别反传、更新 C、末态自由解码。
+3. `scripts/desta_native_run_v3.py`：固定 B1 原生支持、分别反传、更新 C、末态自由解码。
 4. `scripts/score_desta_native.py`：先封存后离线评分，按父源宏 vIoU 选配置。
-5. `scripts/supervise_desta_native.py`：27→6→1 和最终 T-only/S-only 消融自动执行。
+5. `scripts/supervise_desta_native_v3.py`：27→6→1 和最终 T-only/S-only 消融自动执行。
 6. `protocols/desta_dual_expert_native_v1.md`：本轮实际完整合同。
 
 ## 三个主参数
@@ -35,7 +35,7 @@ PYTHONPATH=. .venv-ptd-audit/bin/python -B -m pytest -q tests/test_desta_native_
 .venv-ptd-audit/bin/python -B scripts/desta_native_common.py
 .venv-ptd-audit/bin/python -B scripts/launch_desta_native.py temporal --run temporal001
 PYTHONPATH=.runtime/desta_spatial_deps .venv-ptd-audit/bin/python -B scripts/launch_desta_native.py spatial --run spatial002
-.venv-ptd-audit/bin/python -B scripts/supervise_desta_native.py
+.venv-ptd-audit/bin/python -B scripts/supervise_desta_native_v3.py
 ```
 
 时间专家使用 `.venv-exost`；PTD 使用 `.venv-ptd-audit`；空间 tracker 的轻量依赖
@@ -47,3 +47,19 @@ PYTHONPATH=.runtime/desta_spatial_deps .venv-ptd-audit/bin/python -B scripts/lau
 `scores/dev16/REPORT.md` 是完整27配置表；`scores/dev64/REPORT.md` 是前6扩展；
 `scores/ablations/REPORT.md` 是单专家消融。最终参数影响结论见根 `REPORT.md`。
 本轮使用已曝光 development GT 离线挑配置，不能作为未见数据泛化结果。
+
+## 当前运行的工程版本
+
+科学更新核心仍是 `desta3d/native_adaptation.py`。当前 worker 为
+`desta_native_run_v3.py`，通过 `desta3d/native_runtime.py` 将 host activation
+offload 上限设为14GiB，host reserve保持6GiB；原memory-v7代码不改。
+这只改变保存张量驻留位置，不改变dtype、数值、stride、loss或梯度。
+原v1/v2因为32GiB主机的可用内存不足而触发保护，失败与部分步骤全部保留。
+首例两支C0原生logits、loss及完整raw梯度已逐值验证一致。
+
+`continue_desta_native_v4.py --after-run dev16003` 是本轮一次性接续器：
+只等待现有wrapper的真实进程句柄，成功退出后运行v3 controller；失败不重试。
+用户手动读码时主要看上述科学核心与v3 worker，旧版本是复现/失败证据。
+不要再次执行本轮接续器；当前进度看 `ACTIVE.json` 和 `CONTROLLER_V4.log`。
+
+工程修复补充协议：`protocols/desta_dual_expert_native_runtime_v3.md`；原科学协议保持登记hash。
