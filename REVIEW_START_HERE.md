@@ -37,3 +37,7 @@ Two independent specialists → native pseudo-targets → R16 latent adaptation.
 ## TA-STVG Round2 — completed causal and oracle audit
 
 [Full report](results/tastvg_causal_round2/2026-09-29/REPORT.md), [protocol](protocols/tastvg_causal_correctability_round2_v1.md), [native oracle and causal implementation](vg_tta/tastvg_causal_round2_v1.py), and [all anonymous scalar rows](results/tastvg_causal_round2/2026-09-29/ROWS_INDEX.json). Official detach semantics retained; seven-arm GT oracle on original64 exposed development parents, not an unlabeled TTA result. Round3 remains unstarted.
+
+## TA-STVG corruption C0/C1 — frozen anatomy and student support
+
+[Full report](results/tastvg_corruption_c0c1/2026-09-29/REPORT.md), [protocol](protocols/tastvg_corruption_c0c1_v1.md), [anonymous rows](results/tastvg_corruption_c0c1/2026-09-29/ROWS_INDEX.json). Same-domain Vid-source primary;32 parents x7 frozen conditions and first16 x4 candidate sets. No experts, gradients or adaptation; C2 remains unstarted.
