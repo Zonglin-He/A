@@ -1,3 +1,13 @@
+# Latest update: 2026-09-29 final external-policy gate completed — NO-GO
+
+The user closed the internal R16 direction-rescue chain and authorized one final direct privileged-policy gate. It is now completed and independently audited: frozen PTD4B/B1, exact exposed Dev16, fixed LLaVA-ST evidence, four native arms,0optimizer. B1/T/S/TS vIoU percentages are **23.041295 /20.618530 /22.151871 /19.079401**. TS Δv **−3.961893pp**, descriptive paired-parent95%CI[−16.383701,+5.097992]. T Δt+.746687pp does not rescue its negative v gain. The required TS-positive-native gate failed.
+
+**Stop this DESTA-3D privileged-correction/OPD line as the predeclared investment decision.** Conditional wrong controls did not trigger, so correct>wrong is untested; no OPD, replacement expert/prompt/injection, or R16 rescue. Existing source GT oracle actionability evidence and all positive/negative cases remain. This16-source result does not prove universal impossibility. Fresh388/target and CURRENT stay untouched.
+
+Real interface checks fixed two engineering defects before utility assessment: official AutoConfig vocabulary loading and official generated-prose parsing. The first loader failure and old parsing/raw records remain. Two actual loaders produced identical parameters/pixels/vision features/tokens; official temp.01 selected by the predetermined decode smoke. All16 B1 baselines replay exactly.64 native predictions sealed before only16 source labels; dual geometry max2.220447e−16,195 summary checks max3.552714e−15,720 case/support checks. Legal invalid-zero boxes and TS5 severe harms retained; best TS gain+21.522665pp, worst−78.395626pp. One fixed provider supplied both roles, not two independently validated experts; this is a pixel observation privilege test.
+
+[Complete anonymous report](../../results/desta3d_v3/2026-09-29/EXTERNAL_POLICY_GATE.md) and machine-readable counterpart include all16 cases, resources and preserved failures. All GPU stages exited; no active monitoring remains for this completed gate. Earlier entries below preserve historical states and proposals superseded by this decision.
+
 # Latest update: 2026-09-29 A0.5 completed and independently audited
 
 The fixed Dev16 R16 direction screen fails for both predeclared label-free signals. Consistency cosine mean/median is **−.018640/−.045876**, temporal/spatial positive GT-local descent **8/15 and 7/15**. Entropy gives **+.022218/+.032153**, **9/15 and 8/15**. Required median>=.10 and both branch fractions>=.65 are not met. Therefore **no finite native inference** was run. Stop the current internal objective/augmentation/weight tuning chain; expert pseudo-gradient qualification is the next proposed experiment, not an automatically started expert or OPD stage.
