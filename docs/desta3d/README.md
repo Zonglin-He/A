@@ -117,3 +117,7 @@ CPU 检查：
 ```bash
 .venv-ptd-audit/bin/python -B -m pytest -q tests/test_desta3d_workbench.py
 ```
+
+## 双专家 native R16 方法（当前新实验）
+
+完整实现与调参导航见 [DUAL_EXPERT_NATIVE.md](DUAL_EXPERT_NATIVE.md)。三因子网格为 K、rho、T/S 权重；本轮结果待真实 native 调参完成后填入。

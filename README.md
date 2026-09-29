@@ -22,3 +22,7 @@
 本次是代码整理和手动调参工具，不是新方法成绩。DESTA-3D privileged-correction/OPD 的最后 Dev16 gate 已结束，原 NO-GO 与所有正负结果保留；现有生产方法登记不因本工作区改变。
 
 历史入口原文：[旧 README](README_HISTORY_20260929.md)、[旧审阅记录](REVIEW_START_HERE_HISTORY_20260929.md)。本地完整研究档案为 `docs/RESEARCH_HISTORY.md`，实际生产登记为 `methods/CURRENT_METHOD.json`；已有 DeCoTA 精简路径见 [方法入口](methods/decota_final_simplified_v1/README.md)。
+
+## New authorized DESTA experiment (running; results pending)
+
+Two independent specialists → native pseudo-targets → R16 latent adaptation. [Readable method and hyperparameters](docs/desta3d/DUAL_EXPERT_NATIVE.md), [27 → 6 → 1 protocol](protocols/desta_dual_expert_native_v1.md). Previous negative results remain; this is not yet an efficacy claim.

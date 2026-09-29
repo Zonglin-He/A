@@ -25,3 +25,7 @@
 旧审阅页完整快照在 [REVIEW_START_HERE_HISTORY_20260929.md](REVIEW_START_HERE_HISTORY_20260929.md)。旧 `scripts/` 和 `protocols/` 仍是各自已锁实验的原件；不要把其中早期“running / next”文本当成当前队列状态。
 
 公开仓库只含代码、协议和匿名结果；媒体、标签、cache、权重、预测 raw 留在本地。本地最高优先级状态入口为 `docs/RESEARCH_HISTORY.md`，生产方法由 `methods/CURRENT_METHOD.json` 决定。
+
+## New authorized DESTA experiment (running; results pending)
+
+Two independent specialists → native pseudo-targets → R16 latent adaptation. [Readable method and hyperparameters](docs/desta3d/DUAL_EXPERT_NATIVE.md), [27 → 6 → 1 protocol](protocols/desta_dual_expert_native_v1.md). Previous negative results remain; this is not yet an efficacy claim.

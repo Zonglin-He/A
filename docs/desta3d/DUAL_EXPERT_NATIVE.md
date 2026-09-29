@@ -1,0 +1,49 @@
+# DESTA 双专家原生伪监督：读码与调参
+
+本版本把时间专家区间和空间专家轨迹转换为 PTD 原生 action targets，
+只更新每个 query 的 R16 latent field。原 PTD/B1 和专家权重冻结。
+不使用旧 offline mixer、pixel dim/blur 或 OPD。
+
+建议按这个顺序读：
+
+1. `desta3d/native_adaptation.py`：伪目标映射、完整空间梯度归一化、R16 投影与半径约束。
+2. `scripts/desta_native_experts.py`：UniversalVTG、GroundingDINO + SAM2 独立推理和原始证据保存。
+3. `scripts/desta_native_run.py`：固定 B1 原生支持、分别反传、更新 C、末态自由解码。
+4. `scripts/score_desta_native.py`：先封存后离线评分，按父源宏 vIoU 选配置。
+5. `scripts/supervise_desta_native.py`：27→6→1 和最终 T-only/S-only 消融自动执行。
+6. `protocols/desta_dual_expert_native_v1.md`：本轮实际完整合同。
+
+## 三个主参数
+
+| 参数 | 本轮取值 | 实际作用 |
+|---|---|---|
+| `steps` / K | 1, 3, 5 | 梯度重算次数；单步长度为 rho*norm(F)/K |
+| `radius` / rho | .03, .07, .135 | latent 总位移上限，相对于原 F 范数 |
+| `temporal_weight` | .5, 1, 2 | T/S 完整梯度各自归一化后，时间项的相对权重；空间权重1 |
+
+`AdaptationConfig` 就是每个 arm 的真实配置。`grid_configs()` 生成本轮 27 臂，
+登记后的 `CONFIG.json` 保存实际参数。阅读、复制或新建未来实验时可以修改这些值；
+正在执行与已经封存的目录和代码 pins 不应原地覆盖。权重、native support、专家阈值
+以及R16 basis属于另一层配置，本轮固定，不能从本轮三因子网格推断它们的影响。
+
+## 执行入口
+
+下面命令用于一个**尚未登记的新版本**；当前版本已执行的阶段不可重复启动。
+
+```bash
+PYTHONPATH=. .venv-ptd-audit/bin/python -B -m pytest -q tests/test_desta_native_adaptation.py
+.venv-ptd-audit/bin/python -B scripts/desta_native_common.py
+.venv-ptd-audit/bin/python -B scripts/launch_desta_native.py temporal --run temporal001
+PYTHONPATH=.runtime/desta_spatial_deps .venv-ptd-audit/bin/python -B scripts/launch_desta_native.py spatial --run spatial002
+.venv-ptd-audit/bin/python -B scripts/supervise_desta_native.py
+```
+
+时间专家使用 `.venv-exost`；PTD 使用 `.venv-ptd-audit`；空间 tracker 的轻量依赖
+独立放在 `.runtime/desta_spatial_deps`，不改 PTD 安装包。空间模型是检测+跟踪备选，
+不是任务训练 RVOS。SAM2 当前缺 optional connected-components CUDA extension，
+官方实现跳过 hole-filling 后处理；这一实际运行条件需在报告中保留。
+
+结果目录：`artifacts/desta3d_v3/latent_oracle_v1/dual_expert_native_v1/`。
+`scores/dev16/REPORT.md` 是完整27配置表；`scores/dev64/REPORT.md` 是前6扩展；
+`scores/ablations/REPORT.md` 是单专家消融。最终参数影响结论见根 `REPORT.md`。
+本轮使用已曝光 development GT 离线挑配置，不能作为未见数据泛化结果。
