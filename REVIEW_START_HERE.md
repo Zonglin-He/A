@@ -1,5 +1,9 @@
 # 代码与研究审阅入口
 
+## Latest TA-STVG: J0 integrated sparse-expert online method
+
+[Chinese interpretation](docs/TA_JOINT_J0_UPDATE.md), [four-arm report](results/tastvg_joint_j0/2026-09-29/REPORT.md), [fixed recipe](methods/tastvg_dual_evidence_j0_v1/config.json). Current-policy temporal reranking + persistent spatial Rank-RKL executes correctly. Future Final−Fast vIoU+0.0472pp reproduces S1.1, but whole-stream Final−Frozen is−0.0363pp (CI crosses0): the positive final-method criterion is not met. Fixed25%expert availability selects four sources with negative temporal reranking gain, despite a positive prior full-availability reference. No favorable-schedule selection, new module, parameter-space OPD or production promotion. Components and implementation archived; mechanism optimization stopped.
+
 ## Latest TA-STVG: S1.1 rank preference and normalized spatial updates
 
 [Chinese interpretation](docs/TA_SPATIAL_RANK_S11_UPDATE.md), [three-arm report](results/tastvg_spatial_rank_s11/2026-09-29/REPORT.md), [fixed protocol](protocols/tastvg_spatial_rank_s11_v1.md). Raw-RKL reused; two new on-policy persistent1792D arms,192arrivals/36updates. Rank preference gives small positive future-nonexpert transfer; normalized1%-probe steps do not improve over Rank-SGD. No sweep, parameter-space OPD, joint run or production promotion.

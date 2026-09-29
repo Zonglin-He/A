@@ -1,0 +1,10 @@
+{
+  "version": "tastvg_dual_evidence_j0_v1",
+  "entrypoint": "methods.tastvg_dual_evidence_j0_v1.OnlineMethod",
+  "backbone": "TA-STVG",
+  "source_checkpoint_sha256": "5ab12c86363ef0ce0ee006c00fd11c6b659c3a9b2cb01a4f2c613efe22a2aa83",
+  "temporal": {"candidate_family": "native six decoder layers plus final top endpoint pairs", "max_candidates": 8, "critic": "UniversalVTG confidence-weighted maximum interval overlap", "tie_break": "first native candidate", "parameter_update": false},
+  "spatial": {"dimensions": 1792, "interface": "second-pass spatial query residual256 plus final spatial block5 norm1/norm3/norm4 weight+bias1536", "directions": 4, "candidates": 9, "seed": 20260929, "relative_probe_radius": 0.05, "absolute_probe_radius": 1.5765801926049214, "critic": "Sa2VA mean boxIoU over nonempty observed masks", "teacher": "softmax(-descending_average_rank)", "rank_tolerance": 1e-12, "student": "softmax(-native_L1_GIoU_distance_to_detached_current_student_support)", "loss": "KL(student||teacher)", "optimizer": "plain SGD", "learning_rate": 0.005, "steps": 1, "current_output": "pre-update central spatial prediction", "empty_evidence": "no-op", "persistent": true},
+  "schedule": {"expert_arrivals_zero_based": [0,4,8,12], "stream_length": 16, "availability_fraction": 0.25, "reset_between_streams": true, "note": "Same availability positions; Final uses both specialists, so total logical specialist calls differ from single-branch arms."},
+  "scope": "Locked J0 development recipe; independent of production CURRENT_METHOD registration"
+}
