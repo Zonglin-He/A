@@ -29,3 +29,7 @@
 ## New authorized DESTA experiment (running; results pending)
 
 Two independent specialists → native pseudo-targets → R16 latent adaptation. [Readable method and hyperparameters](docs/desta3d/DUAL_EXPERT_NATIVE.md), [27 → 6 → 1 protocol](protocols/desta_dual_expert_native_v1.md). Previous negative results remain; this is not yet an efficacy claim.
+
+## TA-STVG Round1 evidence sensitivity — completed
+
+[Full64 report](results/tastvg_evidence/2026-09-29/REPORT.md): 25/64 parents preserve their native tube while passing a prelocked strong-evidence-drift screen; new extension48 contributes16 cases. Signal concentrates in ASA; native correctness and TTA benefit are unmeasured. [Protocol](protocols/tastvg_evidence_vulnerability_v1.md), [cached capture](vg_tta/tastvg_evidence_capture_v1.py), [attack](vg_tta/tastvg_evidence_attack_v1.py), and [all192 anonymous scalar rows](results/tastvg_evidence/2026-09-29/ROWS_INDEX.json). Round2/3 have not started.
