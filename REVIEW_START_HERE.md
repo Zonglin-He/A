@@ -1,5 +1,9 @@
 # 代码与研究审阅入口
 
+## Latest TA-STVG: S0.5 Native Spatial Rollout Support Test
+
+[Latest report](results/tastvg_native_spatial_rollout_s05/2026-09-29/REPORT.md), [Chinese interpretation](docs/TA_SPATIAL_PROPAGATION_S05_UPDATE.md), [protocol](protocols/tastvg_native_spatial_rollout_s05_v1.md). Student-only1792D parameter neighborhood,4 orthogonal antithetic pairs plus native, one5% radius,96cells/864candidates. No experts or GT during generation; post-seal oracle support remains limited. No S1/OPD/online learning or production promotion. Completed [threshold v1](results/tastvg_spatial_propagation_s05_superseded_v1/2026-09-29/REPORT.md) and [soft-moments v2](results/tastvg_spatial_propagation_s05_superseded_v2/2026-09-29/REPORT.md) are preserved and explicitly superseded by the latest user route.
+
 ## Latest TA-STVG: S0 RVOS-guided spatial expansion
 
 [Report](results/tastvg_spatial_expansion_s0/2026-09-29/REPORT.md), [Chinese interpretation](docs/TA_SPATIAL_EXPANSION_S0_UPDATE.md), [protocol](protocols/tastvg_spatial_expansion_s0_v1.md). Real Sa2VA-4B sparse-video masks guide three fixed appearance-only native trajectories on16 previously exposed sources × clean/five existing5% corruptions. Native B0 always retained; whole-tube spatial oracle compared against matched six-layer support. This measures candidate headroom, not a deployed selector or online-TTA benefit. Temporal research frozen at native candidates + UniversalVTG reranking; prior OPD/KNN reports remain historical. No S1 or production change.

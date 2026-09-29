@@ -1,0 +1,37 @@
+{
+  "backbone": "TA-STVG",
+  "source_checkpoint": {
+    "source_dataset": "vidstg",
+    "checkpoint": "TASTVG_VidSTG.pth",
+    "sha256": "5ab12c86363ef0ce0ee006c00fd11c6b659c3a9b2cb01a4f2c613efe22a2aa83"
+  },
+  "source_model_state_sha256": "fbb1ed8871d6c2aa093879efefc2ee500bb7de5e0fe1c25b809c5393d010f3c7",
+  "cohort": "Original C3 first16 previously exposed VidSTG sources, one query each",
+  "sources": 16,
+  "queries": 16,
+  "cells": 96,
+  "conditions": [
+    "clean",
+    "frame_drop_5",
+    "frame_freeze_5",
+    "motion_blur_5",
+    "occlusion_5",
+    "exposure_5"
+  ],
+  "pins": {
+    "protocols/tastvg_native_spatial_rollout_s05_v1.md": "d8ee08094dc0f2722c88e33f01e11c9e72d155af0d64c71930ec1e78a9801e6b",
+    "vg_tta/tastvg_native_spatial_rollout_s05_v1.py": "5ece0dd68491dc26625df94346a87d3466163af678a05b29e74fb98e3b9db2b5",
+    "scripts/run_tastvg_native_spatial_rollout_s05_v1.py": "df9b16bb50abc1758ba1e413f5756784e33c0fa7654e07ce1edfde1bb95271cb",
+    "vg_tta/tastvg_evidence_capture_v1.py": "9d9cbfa2fe649c52dafc84b689723716a2e886566bb94fef1d8990ef83c4fa83",
+    "methods/decota_final_simplified_v1/backbone.py": "7c853bd12bc1aac32a44bca64ae9ccf95b7a9edfaa4a6cfce5305a25c0fe0eda",
+    "methods/CURRENT_METHOD.json": "bd75706cf8377823ac6af488b1bd993af5fd7480e7e45a047c6fdde5e81df8d2"
+  },
+  "prior_barriers": {
+    "LOCK.json": "97fb7932574fd78a1e3ca4813d91bfdfee5476527d2fa894a889754a7de456e6",
+    "H_BARRIER.json": "4493c10ade220d144d288534f5c9ffb7788aa400dbd5b458f8820ac2ffe4c57b"
+  },
+  "GT_scope": "Same16 previously exposed keys, post-seal offline scoring only",
+  "expert_data_read_during_generation": false,
+  "online_learning_performed": false,
+  "production_changed": false
+}

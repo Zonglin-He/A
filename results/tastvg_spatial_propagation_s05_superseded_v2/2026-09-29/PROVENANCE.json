@@ -1,0 +1,40 @@
+{
+  "backbone": "TA-STVG",
+  "source_checkpoint": {
+    "source_dataset": "vidstg",
+    "checkpoint": "TASTVG_VidSTG.pth",
+    "sha256": "5ab12c86363ef0ce0ee006c00fd11c6b659c3a9b2cb01a4f2c613efe22a2aa83"
+  },
+  "source_model_state_sha256": "fbb1ed8871d6c2aa093879efefc2ee500bb7de5e0fe1c25b809c5393d010f3c7",
+  "sources": 16,
+  "queries": 16,
+  "cells": 96,
+  "conditions": [
+    "clean",
+    "frame_drop_5",
+    "frame_freeze_5",
+    "motion_blur_5",
+    "occlusion_5",
+    "exposure_5"
+  ],
+  "cohort": "Original C3 first16 previously exposed VidSTG sources, one query each",
+  "GT_scope": "same 16 historically exposed keys, post-seal scoring only",
+  "reused_expert_revision": "3fee777d49ee9276eac51ea3e5f9b69e81d09be6",
+  "pins": {
+    "protocols/tastvg_spatial_propagation_s05_v2.md": "4869d47b1f6a806e3d7f729c304bb6f7c69a72e1bf459395580afd2d9841a3e2",
+    "vg_tta/tastvg_spatial_propagation_s05_v2.py": "98c38ed429b4ea79501b8d144ffd47859e168d1cc7b59249edcd3b6481d41321",
+    "vg_tta/tastvg_spatial_expansion_s0_v1.py": "55d96b268b3b86eade60375f025465bf3b65b5de015b0ad2a13bee7a1003cb10",
+    "vg_tta/tastvg_evidence_capture_v1.py": "9d9cbfa2fe649c52dafc84b689723716a2e886566bb94fef1d8990ef83c4fa83",
+    "vg_tta/tastvg_causal_round2_v1.py": "1c7f9333bea8919b1261a015c7d54acb2d6a4ba956e773e1114955171ec15916",
+    "scripts/run_tastvg_spatial_propagation_s05_v2.py": "b5e4364e2ea2cdd3a1556e45b43cbd1014099f2368fd5da823d3359a7182446b",
+    "methods/CURRENT_METHOD.json": "bd75706cf8377823ac6af488b1bd993af5fd7480e7e45a047c6fdde5e81df8d2"
+  },
+  "prior_barrier_hashes": {
+    "LOCK.json": "97fb7932574fd78a1e3ca4813d91bfdfee5476527d2fa894a889754a7de456e6",
+    "H_BARRIER.json": "4493c10ade220d144d288534f5c9ffb7788aa400dbd5b458f8820ac2ffe4c57b",
+    "EXPERT_BARRIER.json": "69f4f49e98ea646d9102aa894f08ac82050d64cb84c447e380bb86cc5398e678",
+    "PREDICTION_BARRIER.json": "60691bec21312305b527ce1fe6126fa6e75df8090be03ccc63625923d3ac2789",
+    "ROWS.json": "a0317bcbc6abdf726294b1da49ee725e34f3dc7533f88747eb0ad1f6ebe05da5"
+  },
+  "production_changed": false
+}
