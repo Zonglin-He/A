@@ -1,3 +1,9 @@
+# Latest update: 2026-09-29 A0.2 and structure audit completed
+
+A0.2 completed with zero added parameters and exact original H128 initialization. GMean200 train/dev medians .007042/.001827; GMean2000 .007718/.001876: neither passes. Stop global-context/width/step tuning. Conditional full192 cached CPU structure audit also completed: global means explain only .029656%/.032596% energy (train/dev); per-time spatial means .655224%/.636620%; per-query rank16 captures90.437770%/91.370581%. T/H/W neighbor cosine means are approximately .1. Low channel rank coexists with strongly varying THW directions; it does not prove predictable factors or native utility. No new architecture, PTD/native/fresh/full/expert/OPD/target run. Full report: [A0.2 and structure audit](results/desta3d_v3/2026-09-29/A02_GLOBAL_CONTEXT.md).
+
+Earlier entries retain their historical state.
+
 # Latest update: 2026-09-29 A0.1 completed
 
 A0.1 cached-only triage completed and independently audited. W256/S200 train/dev medians .007140/.002261; H128/S2000 .007310/.001842. Both fail. Hash-fixed Q1 H128/S2000 cosine .955796 passes the engineering fitability control. Stop width/step tuning; next candidate only global THW context conditioning, not implemented or run. No PTD/native/fresh/full expansion. Three workers/wrappers107.402s; full576 coefficient cosine audit max2.088e-14. H128 at200 exactly matches A0 parameters and Adam state. See [complete result](results/desta3d_v3/2026-09-29/A01_FITABILITY.md).

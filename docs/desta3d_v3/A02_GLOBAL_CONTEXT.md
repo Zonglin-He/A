@@ -1,0 +1,5 @@
+# A0.2 Global-THW Mean Screen
+
+A0.2 completed with zero added parameters and exact original H128 initialization. GMean200 train/dev medians .007042/.001827; GMean2000 .007718/.001876: neither passes. Stop global-context/width/step tuning. Conditional full192 cached CPU structure audit also completed: global means explain only .029656%/.032596% energy (train/dev); per-time spatial means .655224%/.636620%; per-query rank16 captures90.437770%/91.370581%. T/H/W neighbor cosine means are approximately .1. Low channel rank coexists with strongly varying THW directions; it does not prove predictable factors or native utility. No new architecture, PTD/native/fresh/full/expert/OPD/target run. Full report: [A0.2 and structure audit](../../results/desta3d_v3/2026-09-29/A02_GLOBAL_CONTEXT.md).
+
+See the locked protocol `protocols/desta3d_v3_a02_global_mean_v1.md`. GMean fit workers/wrappers56.405s; independent cosine CPU5.149s; complete NumPy/Torch structure audit11.214s. Inputs and cache are unchanged. Next parameterization proposal: low-rank channel factors with THW-dependent coefficients, unimplemented and untested.
