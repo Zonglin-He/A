@@ -1,3 +1,13 @@
+# Latest update: 2026-09-29 A0.4 completed
+
+Fixed Shared-R16 output did not establish direction learnability. Original local H128 with only output256->16, same sealed Train128/Dev64, Train-only frozen B16,76688 parameters. S200 Train/Dev cosine medians **.006040/.002462**; the authorized same-model/Adam/RNG/order continuation to2000 gives **.006738/.002975**. Both fail the fixed Train>=.3/Dev>=.1 gate. No PTD/native/fresh/full expansion. Stop offline predictor architecture tuning; R16 per-query coefficient optimization remains a proposed feasibility question, without a new objective or run.
+
+All384 terminal coefficient fields independently audited (max cosine error2.776e-15); counters1->2000, integer/live Adam binding, frozen bases and exact hidden initialization pass. Clip503/2000 retained; this does not prove all offline prediction impossible. A0.3 Oracle-R16's +10.9384pp vIoU remains a distinct privileged source-oracle result. Original S200 wrapper status-write failure preserved; isolated launcher_v2 repaired mutable status only, no GPU replay. Full protocol/results disclose the unmeasured post-receipt traceback tail. New measured allocations33.541902s; cumulative72806.298168s cap=null.
+
+[Full anonymous A0.4 report](../../results/desta3d_v3/2026-09-29/A04_FIXED_R16.md).
+
+Earlier entries retain their historical state.
+
 # Latest update: 2026-09-29 A0.3 completed
 
 A Train-only query-balanced shared channel basis passes the exposed Dev64 structure gate (rank32 median energy86.1936%). Norm-matched native Shared-R16 and Shared-R32 both pass: Δt/s/v vs B1 are +9.0271/+9.2265/+10.9384pp and +9.0739/+10.4231/+12.5314pp. R16/R32 retain83.39%/95.53% of Full Oracle vIoU gain. The registered priority selects **fixed shared-rank16 factorized predictor as the next candidate only**; no learned low-rank network was implemented or trained.

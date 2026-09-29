@@ -1,0 +1,187 @@
+{
+  "status": "completed_independently_audited",
+  "screen": "A0.4 Fixed Shared-R16 Factorized Predictor",
+  "train": {
+    "queries": 128,
+    "parents": 95
+  },
+  "dev": {
+    "queries": 64,
+    "parents": 16,
+    "exposed": true
+  },
+  "settings": {
+    "local_hidden": 128,
+    "feature_dim": 128,
+    "state_dim": 33,
+    "evidence_dim": 8,
+    "rank": 16,
+    "trainable_parameters": 76688,
+    "seed": 20260928,
+    "batch": 4,
+    "lr": 0.001,
+    "wd": 0,
+    "clip": 1,
+    "radius": 0.13545580427763146
+  },
+  "stages": {
+    "200": {
+      "status": "completed_independently_audited",
+      "steps": 200,
+      "results": {
+        "train": {
+          "mean": 0.027539446075933872,
+          "median": 0.006040454924510373,
+          "count_gt_point1": 12,
+          "count_gt_point3": 0,
+          "defined": 128,
+          "terminal_mean_loss": 0.9724605539240662,
+          "rounded_training_target_mean_loss": 0.9724605539221216,
+          "full_oracle_mean": 0.02407284763713555,
+          "full_oracle_median": 0.005253112346164109
+        },
+        "dev": {
+          "mean": 0.02012408107405385,
+          "median": 0.0024616871826443976,
+          "count_gt_point1": 4,
+          "count_gt_point3": 0,
+          "defined": 64,
+          "terminal_mean_loss": 0.9798759189259462,
+          "rounded_training_target_mean_loss": 0.9798759189898207,
+          "full_oracle_mean": 0.017776135039699506,
+          "full_oracle_median": 0.0022191286040857145
+        }
+      },
+      "decision": "continue_same_trajectory_to_2000",
+      "trainable_parameters": 76688,
+      "gradient_norm": {
+        "min": 0.017094183713197708,
+        "max": 0.8688626885414124,
+        "last": 0.14757324755191803,
+        "clipped": 0
+      },
+      "terminal_training_batch_loss": 0.9639991521835327,
+      "new_steps": 200,
+      "PTD_loaded": false,
+      "native_predictions": 0,
+      "fresh_read": false,
+      "cumulative_GPU_seconds": 72779.05083548807,
+      "cap": null,
+      "scope": "source GT cached direction screen; repeatedly exposed Dev64; not target TTA or learned native utility"
+    },
+    "2000": {
+      "status": "completed_independently_audited",
+      "steps": 2000,
+      "results": {
+        "train": {
+          "mean": 0.03695228616872891,
+          "median": 0.006738155629373807,
+          "count_gt_point1": 16,
+          "count_gt_point3": 1,
+          "defined": 128,
+          "terminal_mean_loss": 0.9630477138312711,
+          "rounded_training_target_mean_loss": 0.9630477138175553,
+          "full_oracle_mean": 0.03228789932808747,
+          "full_oracle_median": 0.006114088182992757
+        },
+        "dev": {
+          "mean": 0.017331722808400233,
+          "median": 0.002974831492064892,
+          "count_gt_point1": 3,
+          "count_gt_point3": 0,
+          "defined": 64,
+          "terminal_mean_loss": 0.9826682771915998,
+          "rounded_training_target_mean_loss": 0.9826682772526263,
+          "full_oracle_mean": 0.015391630445817395,
+          "full_oracle_median": 0.0026557090895748315
+        }
+      },
+      "decision": "stop_offline_predictor_tuning_next_R16_optimization_feasibility",
+      "trainable_parameters": 76688,
+      "gradient_norm": {
+        "min": 0.006219103466719389,
+        "max": 24.149118423461914,
+        "last": 2.0004220008850098,
+        "clipped": 503
+      },
+      "terminal_training_batch_loss": 1.0003586113452911,
+      "new_steps": 1800,
+      "PTD_loaded": false,
+      "native_predictions": 0,
+      "fresh_read": false,
+      "cumulative_GPU_seconds": 72806.29816828508,
+      "cap": null,
+      "scope": "source GT cached direction screen; repeatedly exposed Dev64; not target TTA or learned native utility"
+    }
+  },
+  "audits": {
+    "200": {
+      "status": "passed",
+      "steps": 200,
+      "decision": "continue_same_trajectory_to_2000",
+      "coefficient_fields": 192,
+      "max_numpy_scalar_error": 1.970645868709653e-15,
+      "max_target_projection_rounding_relative_L2": 3.5425424756237445e-08,
+      "max_cosine_factorization_identity_error": 1.1102230246251565e-16,
+      "frozen_basis_and_hidden_initialization_exact": true,
+      "changed_parameter_tensors": 8,
+      "integer_Adam_keys": true,
+      "live_Parameter_binding": true,
+      "actual_counters": 200,
+      "sample_order_and_RNG_exact": true,
+      "continuation_from_step200": false,
+      "CPU_seconds": 2.4396189379913267
+    },
+    "2000": {
+      "status": "passed",
+      "steps": 2000,
+      "decision": "stop_offline_predictor_tuning_next_R16_optimization_feasibility",
+      "coefficient_fields": 192,
+      "max_numpy_scalar_error": 2.7755575615628914e-15,
+      "max_target_projection_rounding_relative_L2": 3.5425424756237445e-08,
+      "max_cosine_factorization_identity_error": 1.942890293094024e-16,
+      "frozen_basis_and_hidden_initialization_exact": true,
+      "changed_parameter_tensors": 8,
+      "integer_Adam_keys": true,
+      "live_Parameter_binding": true,
+      "actual_counters": 2000,
+      "sample_order_and_RNG_exact": true,
+      "continuation_from_step200": true,
+      "CPU_seconds": 2.4807031840027776
+    }
+  },
+  "actual_unique_Adam_steps": 2000,
+  "new_steps_by_stage": [
+    200,
+    1800
+  ],
+  "coefficient_fields_audited": 384,
+  "receipts": {
+    "200": {
+      "worker": 5.210060368990526,
+      "wrapper": 1.0845090220100246
+    },
+    "2000": {
+      "worker": 26.181450573989423,
+      "wrapper": 1.0658822230179794
+    }
+  },
+  "GPU_allocation_and_nonoverlap_wrapper_seconds": 33.54190218800795,
+  "cumulative_GPU_seconds": 72806.29816828508,
+  "cap": null,
+  "CPU_target_preparation_seconds": 1.4590425110072829,
+  "CPU_audit_seconds": 4.920322121994104,
+  "free_bytes": 129084538880,
+  "scientific_worker_failures": 0,
+  "wrapper_status_failure_count": 1,
+  "wrapper_status_repair": "isolated v2 launcher; original scientific worker and pins retained; no GPU replay",
+  "receipt_limit": "S200 original wrapper receipt measures completed child and waiting overhead; subsequent FileExistsError traceback tail was not timed. Original receipt retained, not falsely labeled process-success evidence.",
+  "native_run": false,
+  "new_PTD_loads": 0,
+  "new_labels": false,
+  "fresh_read": false,
+  "new_full_training": false,
+  "decision": "stop_offline_predictor_tuning_next_R16_optimization_feasibility",
+  "next_stage": "proposed/untested R16 per-query coefficient optimization feasibility; no new objective or run registered",
+  "interpretation": "Current local offline predictor still fails Train128 direction gate after output256->16 and bounded same-trajectory rescue. This does not invalidate the measured R16 source oracle gain or prove all offline prediction impossible."
+}
