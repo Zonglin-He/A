@@ -1,0 +1,51 @@
+"""Report one bounded online-transfer experiment and its actual evidence."""
+import sys,time,json
+from pathlib import Path
+ROOT=Path(__file__).resolve().parents[1];sys.path.insert(0,str(ROOT))
+import numpy as np
+from scripts.decota_matrix_common_v1 import read,write,sha
+from scripts.run_tastvg_sparse_online_capture_v1 import OUT
+from scripts.audit_tastvg_sparse_online_public_v1 import audit
+
+
+def run():
+    rows=read(OUT/'analysis/ROWS.json');s=read(OUT/'analysis/SUMMARY.json');p=read(OUT/'analysis/PROGRESSION.json');primary=s['nonexpert']['comparisons']['Online Slow-Fast - Budgeted Rerank'];rr=[r for r in rows if not r['expert']];changed=[r for r in rr if r['selected']['Online Slow-Fast']!=0]
+    resources=[read(f) for f in sorted((OUT/'gpu_allocations').glob('*.json'))];totals={k:sum(z['seconds'] for z in resources if z['stage']==k) for k in ['capture','teacher_online','teacher_full']}
+    resource=dict(stage_seconds=totals,total_gpu_process_seconds=sum(totals.values()),online_cpu_seconds=read(OUT/'ONLINE_BARRIER.json')['seconds'],logical_calls={'Frozen':0,'Budgeted Rerank':8,'Online Slow-Fast':8,'Full Rerank':32},online_expert_new=read(OUT/'TEACHER_ONLINE_BARRIER.json')['new_evidence'],online_expert_reused=read(OUT/'TEACHER_ONLINE_BARRIER.json')['reused'],full_extra_expert_new=read(OUT/'TEACHER_FULL_BARRIER.json')['new_evidence'],full_extra_expert_reused=read(OUT/'TEACHER_FULL_BARRIER.json')['reused'],failures=[z for z in resources if z['failure']],includes_smoke_loading_and_cpu_decode=True,excludes_development_and_historical_cache_creation=True)
+    write(OUT/'RESOURCES.json',resource);write(OUT/'PUBLIC_AUDIT.json',audit(OUT/'analysis'))
+    positive={m:sum(r['arms']['Online Slow-Fast'][m]-r['arms']['Budgeted Rerank'][m]>1e-12 for r in rr) for m in ['tIoU','vIoU_corrected']};negative={m:sum(r['arms']['Online Slow-Fast'][m]-r['arms']['Budgeted Rerank'][m]<-1e-12 for r in rr) for m in positive}
+    dt=primary['tIoU']['mean'];dv=primary['vIoU_corrected']['mean']
+    if dt>0 and dv>0:conclusion='Positive transfer is observed in this realized stream. Its support is limited to the arrivals that actually changed; this single exposed development stream does not establish robust online benefit across orders or cohorts.'
+    elif dt<=0 and dv<=0:conclusion='This fixed first implementation does not show a positive non-expert transfer gain. The result is specific to raw temporal features, LR .001, eight one-step writes and this stream; it does not identify representation failure or establish that transferable critic information is absent.'
+    else:conclusion='The non-expert transfer result is mixed across temporal and tube metrics. This fixed first implementation does not establish a consistent online benefit.'
+    decision=dict(status='completed',measurement='audited',conclusion=conclusion,nonexpert_changed=len(changed),positive_arrivals=positive,negative_arrivals=negative,unchanged_v_arrivals=24-positive['vIoU_corrected']-negative['vIoU_corrected'],production_changed=False,followon='none; no added reliability, prototype, memory, LR search or extra stream')
+    write(OUT/'DECISION.json',decision)
+    provenance=dict(student_checkpoint_sha256='5ab12c86363ef0ce0ee006c00fd11c6b659c3a9b2cb01a4f2c613efe22a2aa83',expert_checkpoint_sha256='ac48fa4474f65a84f5176de5dbbf4439ebe7996a3fc361fe10161e9f338a1ba8',student_state_sha256=read(OUT/'CAPTURE_BARRIER.json')['model_state_sha256'],parents=32,source_repetitions=0,stream_orders=1,historical_development=True,lr=.001,steps_per_expert=1,state_parameters=769,identifiable_parameters=768,feature='raw final temporal hidden start/end/mean, interleaved offsets',GT_for_adaptation=False,production_changed=False)
+    write(OUT/'PROVENANCE.json',provenance)
+    fmt=lambda z:f"{z['mean']*100:+.4f} [{z['ci95'][0]*100:+.4f}, {z['ci95'][1]*100:+.4f}]"
+    lines=['# O1: Sparse-Critic Online Transfer','',conclusion,'',
+        '32 previously exposed VidSTG development sources, one query and one source-hashed existing transient condition each, one separately hashed order. Expert positions: 1,5,9,13,17,21,25,29. The primary comparison is on the other 24 arrivals, where neither Budgeted Rerank nor Online Slow-Fast reads the current expert.','',
+        '| Arm | Logical expert calls | Non-expert tIoU (%) | Non-expert vIoU (%) | All32 tIoU (%) | All32 vIoU (%) |','|---|---:|---:|---:|---:|---:|']
+    for a in ['Frozen','Budgeted Rerank','Online Slow-Fast','Full Rerank']:
+        values=[s[g]['arms'][a][m]['mean']*100 for g in ['nonexpert','all'] for m in ['tIoU','vIoU_corrected']];lines.append('| '+a+f" | {resource['logical_calls'][a]} | "+' | '.join(f'{v:.4f}' for v in values)+' |')
+    lines+=['','## Primary: inherited state at non-expert arrivals','',f"Online minus Budgeted Rerank: tIoU {fmt(primary['tIoU'])} pp; vIoU {fmt(primary['vIoU_corrected'])} pp.",'',
+        '**The intervals are descriptive paired bootstraps of sealed arrival outcomes, conditional on this one realized stream. They do not rerun the online trajectory and do not estimate robustness over stream orders or independent online runs.** There are 24 unique non-expert sources but their predictions share an inherited state.','',
+        f"Only {len(changed)}/24 non-expert selections differ from Frozen. vIoU improves on {positive['vIoU_corrected']}, worsens on {negative['vIoU_corrected']}, and is unchanged on {decision['unchanged_v_arrivals']}. >5pp vIoU harms: {s['nonexpert']['harms_gt5pp']['Online Slow-Fast - Budgeted Rerank']['vIoU_corrected']}.",'',
+        '| Changed non-expert arrival | Parent | Condition | Frozen/Budgeted vIoU (%) | Online vIoU (%) | Full Rerank vIoU (%) |','|---|---|---|---:|---:|---:|']
+    for r in changed:lines.append(f"| {r['position']} | Q{r['parent']+1:02} | {r['condition']} | {r['arms']['Frozen']['vIoU_corrected']*100:.4f} | {r['arms']['Online Slow-Fast']['vIoU_corrected']*100:.4f} | {r['arms']['Full Rerank']['vIoU_corrected']*100:.4f} |")
+    lines+=['','## What was adapted','',
+        'Only a zero-initialized 768D weight and a common scalar bias persist. Raw features concatenate the final temporal hidden state at candidate start/end and its within-interval mean. The native candidate base score is the exact maximum legal two-offset log-probability score consistent with that physical envelope; zero residual reproduces native selection on 32/32 arrivals. No hand-added native bonus or score calibration.','',
+        'At each expert arrival, the current output is direct expert reranking and is fixed BEFORE the update. One plain SGD step (LR .001, no momentum or weight decay) fits all strict expert preference pairs. The common bias cancels and stays exactly zero. No H, temporal head, decoder or backbone parameters are changed. No normalization tuning, gate, EMA, replay buffer, prototype, low rank, extra step, learning-rate sweep or extra stream.','',
+        f"All {sum(r['diagnostics']['loss_after']<r['diagnostics']['loss_before'] for r in rows if r['expert'])}/8 expert updates decreased their pairwise training loss. Final weight norm is {rows[-1]['after_norm']:.8f}. Loss reduction on expert arrivals is not itself evidence of future-query task improvement.",'',
+        'The 8 expert outputs are shared exactly between Budgeted Rerank and Online. Online output/state was sealed and independently reconstructed before reading/computing the additional 24 Full Rerank scores. Full Rerank is a higher-cost reference, not an oracle or guaranteed performance ceiling. All four arms were sealed before retaining the original 32 GT records for offline scoring.','',
+        '## Chronology, accounting and limits','',
+        'STATE_AUDIT.json reconstructs all32 arrival states and eight SGD writes in NumPy, verifies prior-state and record hashes, and confirms zero teacher reads at non-expert arrivals. UTILITY_AUDIT.json checks two task metric implementations, all expert scores and matched controls. PUBLIC_AUDIT.json independently rebuilds published aggregates and chronology. Source/condition hashes never use GT, query or outcome.','',
+        'PROGRESSION.json reports eight chronological blocks and cumulative non-expert differences. Blocks have different sources; a rising or falling curve alone does not identify state pollution. No margin write gate or prototype was added. Spatial and C0.6 remain unrun. Production CURRENT is unchanged.','',
+        f"Logical online expert budget is 8/32 (25%). Actual online evidence: {resource['online_expert_new']} new, {resource['online_expert_reused']} reused exactly; full-reference extras: {resource['full_extra_expert_new']} new, {resource['full_extra_expert_reused']} reused. These cache-reuse savings do not change the logical expert budgets or establish fresh-input end-to-end latency.",'',
+        f"GPU process allocation (including loading, decoding and smoke): {resource['total_gpu_process_seconds']:.3f}s; stage times {json.dumps(totals)}. CPU online loop: {resource['online_cpu_seconds']:.3f}s. No run failures. CPU development/scoring and historical cache creation are excluded.",'',
+        'This is a fixed first implementation on an exposed 32-source development stream. A small number of changed predictions limits what can be inferred about transferable representations. Negative results do not isolate feature quality, learning scale and discrete candidate readout; positive results do not establish broad generalization. No follow-on experiment was launched.','',
+        'Reproduction: protocols/tastvg_sparse_online_o1_v1.md; capture -> teacher online -> online stream -> state audit -> teacher full -> seal full -> analysis. Public scalar reproduction uses scripts/audit_tastvg_sparse_online_public_v1.py on this result directory. Raw media, labels, hidden features, learned state tensors and predictions remain local.']
+    (OUT/'REPORT.md').write_text('\n'.join(lines)+'\n');write(OUT/'COMPLETION.json',dict(status='completed',files={n:sha(OUT/n) for n in ['REPORT.md','STATE_AUDIT.json','UTILITY_AUDIT.json','PUBLIC_AUDIT.json','RESOURCES.json','DECISION.json','PROVENANCE.json','analysis/ROWS.json','analysis/SUMMARY.json']},time=time.time()))
+    print(conclusion);print('PRIMARY',primary)
+
+if __name__=='__main__':run()

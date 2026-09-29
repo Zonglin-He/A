@@ -1,5 +1,9 @@
 # 代码与研究审阅入口
 
+## Latest TA-STVG: O1 sparse-critic online transfer completed
+
+[Report](results/tastvg_sparse_online_o1/2026-09-29/REPORT.md), [Chinese interpretation](docs/TA_SPARSE_ONLINE_O1_UPDATE.md), [protocol](protocols/tastvg_sparse_online_o1_v1.md), [persistent ranker](vg_tta/tastvg_sparse_online_v1.py). One32-source stream, eight specialist writes; primary future non-expert t/v gain is exactly zero in this fixed first implementation. State and chronology are verified; no added mechanisms or production promotion. Earlier latest/running statements below are historical snapshots.
+
 ## Latest TA-STVG: minimal temporal four-arm experiment completed
 
 [Results](results/tastvg_temporal_fourarm/2026-09-29/REPORT.md), [current protocol](protocols/tastvg_temporal_fourarm_v1.md), [one-step implementation](vg_tta/tastvg_temporal_fourarm_v1.py), [anonymous per-cell results](results/tastvg_temporal_fourarm/2026-09-29/ROWS.json). Frozen/Rerank/Hard/OPD on the unchanged transient setting plus clean, only motion-H updates. Earlier C2.5 gates and C0.6 multiseed plans are superseded; no production change. Older running/next statements below are historical snapshots.
