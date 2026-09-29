@@ -1,3 +1,9 @@
+# Latest update: 2026-09-29 A0.1 completed
+
+A0.1 cached-only triage completed and independently audited. W256/S200 train/dev medians .007140/.002261; H128/S2000 .007310/.001842. Both fail. Hash-fixed Q1 H128/S2000 cosine .955796 passes the engineering fitability control. Stop width/step tuning; next candidate only global THW context conditioning, not implemented or run. No PTD/native/fresh/full expansion. Three workers/wrappers107.402s; full576 coefficient cosine audit max2.088e-14. H128 at200 exactly matches A0 parameters and Adam state. See [complete result](results/desta3d_v3/2026-09-29/A01_FITABILITY.md).
+
+Earlier entries below retain their historical status.
+
 # Current: A0 completed in31.8min; direction gate failed
 
 |Direction cosine|Train128 /95parents|Dev64 /16parents|

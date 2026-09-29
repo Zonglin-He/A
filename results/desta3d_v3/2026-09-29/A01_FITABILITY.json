@@ -1,0 +1,99 @@
+{
+  "status": "completed_independently_audited",
+  "results": {
+    "W256-S200": {
+      "train": {
+        "mean": 0.029897715819952465,
+        "median": 0.007139961891949192,
+        "defined": 128,
+        "terminal_mean_loss": 0.9701022841800475
+      },
+      "dev": {
+        "mean": 0.024832749467007035,
+        "median": 0.0022607660605143205,
+        "defined": 64,
+        "terminal_mean_loss": 0.9751672505329929
+      }
+    },
+    "W128-S2000": {
+      "train": {
+        "mean": 0.04123458960157018,
+        "median": 0.007309577107702873,
+        "defined": 128,
+        "terminal_mean_loss": 0.9587654103984298
+      },
+      "dev": {
+        "mean": 0.020093047304830792,
+        "median": 0.0018424984512674452,
+        "defined": 64,
+        "terminal_mean_loss": 0.9799069526951693
+      }
+    },
+    "Q1-overfit": {
+      "train": {
+        "mean": 0.010279961141983979,
+        "median": 0.004534188718929244,
+        "defined": 128,
+        "terminal_mean_loss": 0.9897200388580161
+      },
+      "dev": {
+        "mean": -0.002561294524165197,
+        "median": -0.00719376640061834,
+        "defined": 64,
+        "terminal_mean_loss": 1.002561294524165
+      }
+    }
+  },
+  "parameter_counts": {
+    "W256-S200": 247808,
+    "W128-S2000": 107648,
+    "Q1-overfit": 107648
+  },
+  "gradient_norm": {
+    "W256-S200": {
+      "min": 0.00890817865729332,
+      "max": 0.3805743455886841,
+      "last": 0.1009180098772049,
+      "clipped": 0
+    },
+    "W128-S2000": {
+      "min": 0.005258143413811922,
+      "max": 2.613516092300415,
+      "last": 0.11415708810091019,
+      "clipped": 17
+    },
+    "Q1-overfit": {
+      "min": 0.08491268008947372,
+      "max": 9.257630348205566,
+      "last": 0.917549192905426,
+      "clipped": 1675
+    }
+  },
+  "terminal_training_batch_loss": {
+    "W256-S200": 0.9661125242710114,
+    "W128-S2000": 1.0019062906503677,
+    "Q1-overfit": 0.045159220695495605
+  },
+  "q1_terminal_cosine": 0.9557962994175445,
+  "q1_terminal_loss": 0.044203700582455485,
+  "decision": "stop_width_steps_next_global_context_conditioning",
+  "native_run": false,
+  "fresh_read": false,
+  "actual_steps": 4200,
+  "arm_gpu_seconds": {
+    "W256-S200": {
+      "worker": 9.062428881996311,
+      "wrapper": 1.393243149999762
+    },
+    "W128-S2000": {
+      "worker": 43.77919765198021,
+      "wrapper": 1.323820190038532
+    },
+    "Q1-overfit": {
+      "worker": 50.52514401701046,
+      "wrapper": 1.3178568429721054
+    }
+  },
+  "cumulative_GPU_seconds": 72513.02124451008,
+  "cap": null
+}

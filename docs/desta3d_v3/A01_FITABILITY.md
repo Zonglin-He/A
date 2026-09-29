@@ -1,0 +1,5 @@
+# A0.1 cached fitability triage
+
+A0.1 cached-only triage completed and independently audited. W256/S200 train/dev medians .007140/.002261; H128/S2000 .007310/.001842. Both fail. Hash-fixed Q1 H128/S2000 cosine .955796 passes the engineering fitability control. Stop width/step tuning; next candidate only global THW context conditioning, not implemented or run. No PTD/native/fresh/full expansion. Three workers/wrappers107.402s; full576 coefficient cosine audit max2.088e-14. H128 at200 exactly matches A0 parameters and Adam state. See [complete result](../../results/desta3d_v3/2026-09-29/A01_FITABILITY.md).
+
+Implementation: `vg_tta/desta3d_v3_a01_triage.py`, serial runner `scripts/desta3d_v3_a01_triage.py`, CPU readback `scripts/audit_desta3d_v3_a01_triage.py`, and protocol `protocols/desta3d_v3_a01_cached_fitability_v1.md`. Inputfeature128 remains frozen; only internal hidden width expands. Q1 is not a method candidate. Gradient norms are preclip worker records; Q1 clipped1675/2000 times.
