@@ -1,5 +1,9 @@
 # 代码与研究审阅入口
 
+## Frozen TA-STVG paper matrix: implementation preparation, B1 still running
+
+[Execution status and claim boundaries](docs/tastvg_paper_matrix_v1/EXECUTION.md), [A2 matched protocol](protocols/tastvg_matched_ablation_a2_v1.md), [CPU audit](results/tastvg_paper_matrix/2026-09-30/CPU_AUDIT.json). Raw-RKL and pairwise five-order ablations are locked, not measured. Persistent TENT/SAR/ViTTA optimization cores and offline readout helpers pass 10 CPU tests; full baseline ports and results remain pending. A finite serial continuation waits for B1. Existing 9411-query B1 remains unchanged. Sampled-grid scores are not automatically official dense-interpolated metrics; historical exposure and unsupported on-policy-superiority claims remain disclosed.
+
 ## Latest TA-STVG: frozen-method matched ablations; full test registered
 
 [Matched ablations](results/tastvg_matched_ablation_a1/2026-09-29/REPORT.md), [Chinese interpretation](docs/TA_MATCHED_ABLATION_A1_UPDATE.md), [full test protocol](protocols/tastvg_full_b1_v1.md). Five-order future vIoU: Final +0.025505 pp, Random-Rank −0.004011, Off-Policy +0.026227, Direct PL +0.003409. Preference beats this random control and fixed PL; **on-policy superiority is not established**. Frozen recipe unchanged. Full official test registration retains all9411queries/670sources after excluding62current-route development sources;3orders×16conditions. Historical project exposure disclosed; full-run results pending, not claimed complete.
