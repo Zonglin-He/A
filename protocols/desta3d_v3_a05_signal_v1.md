@@ -1,0 +1,35 @@
+# A0.5 R16 Unlabeled Direction Signal Audit
+
+## Question and locked scope
+A0.3 source-GT R16 oracle yielded exposed Dev64 +10.938378pp vIoU. A0.4's fixed-R16 local offline predictor failed Train fitting (median.006738 at2000). Stop offline predictor training. Ask whether exactly two label-free native-state objectives supply useful directions at C=0 in the frozen R16 action space. This is a source development signal screen, not target efficacy or multi-step adaptation.
+
+Select one query per each of the16 existing Dev64 parents using minimum SHA256('DESTA-A05-v1|query|'+key), parents ordered by SHA256('DESTA-A05-v1|parent|'+source). No outcome selection. All16 remain, including missing support and malformed geometry. Fresh31/388, full447/618, targets/expert/OPD and historical queues remain untouched.
+
+Frozen official PTD4B/B1/Q_U/A0.3 Train-only B16. Q_C=(Q_U.float64 @ B16.float64).float32, [2560,16]; check near-orthonormality (<2e-6 max Gram error). One FP32 leaf C[1,T,H,W,16]=0 per objective/branch. F_corrected=F+C@Q_C.T through the existing shared-F replacement before frozen B1 and its identity residual; no changed model parameters or optimizer.
+
+## Exactly two objectives
+Native support comes exclusively from sealed observed B1 BASE_TRACE: student-native reference, interval, anchors, all block token/position/cache constraints. Replay every branch from its fresh prefill. No GT-prefix and no GT-validity filtering of unlabeled positions. Event logits are2 endpoints over actual observed time classes; spatial is every native coordinate position over full152775 vocabulary (including malformed geometry positions if support exists).
+
+- U-Consistency: detached observed B1 logits as teacher; student is the same observed RGB frames transformed by the original v2 make_mild_photometric_view:1.05*(frame_mean+.95*(pixel-frame_mean)), round/clamp uint8, same physical frames/grid/token support. KL(teacher||student), categorical sum then mean over endpoints/frame-coordinate positions. Teacher is not clean counterpart and its tokens come from observed B1. Mild query features/prefill are recomputed from mild pixels as in the frozen v2 view contract.
+- U-Entropy: original observed input, mean categorical entropy over exactly the same endpoint or full-vocabulary spatial support. Observed replay logits must equal saved B1 native logits bitwise before backward.
+
+Compute g_T and g_S independently with respect to C. d_U=-unit(unit(g_T)+unit(g_S)), unit(0)=0; no branch weights. Missing native branch contributes zero and is reported. Exact cancellation yields no-op; mathematical cosine undefined, gate convention0 retained in all16. This implements the requested balancing *in coefficient space*. Historical oracle balanced full-F gradients *before projection*; normalization/projection do not commute, so these constructions are not described as identical oracle trajectories.
+
+Consistency direction is measured on mild F and transported in the common physical THW/R16 coordinates to observed F for local GT comparison and possible finite intervention. This is not a claim that mild and observed objectives share a Jacobian.
+
+## Reuse and independence
+Reference is the sealed A0.3 Shared-R16_FACTORS.npy normalized per full query. CPU-only preparation projects already saved Gap native GT g_F with the actual Q_C, retaining objective availability and original raw hashes. No new GT inference/backward. These reference tensors are never passed to the GPU signal function; GPU worker reads inputs, B1 native trace and fixed basis only. Prior source GT has already been exposed. GT remains explicit in qualification/readout and cannot become online selection.
+
+Persist all four complete coefficient gradients, both complete mild-view student logit sets, native trace hashes/replay checks, losses, full native/cache support, physical input hashes and frozen scope. Observed logits reuse exact sealed trace after equality checks. First fixed query also saves complete upstream g_F for both signals/branches to independently check g_C≈g_F Q_C (relative tolerance2e-5, fixed before GPU); no extra backward needed. FP32 scalar loss versus independent stable FP64 NumPy tolerance1e-5. Gradient norm/direction/dot summaries independently FP64 with absolute1e-9 or relative1e-7. Zero C and no parameter gradient/state change required. Mild/observed full support is never narrowed for memory; engineering failure retains partial and requires isolated repair.
+
+## Predeclared routing
+Per signal report all16 cosine to Oracle-R16 and -g_C,GT^T d_U for each GT-available branch. Gate: median16 cosine>=.10 AND positive local-descent fraction>=.65 for each branch among GT-available queries. A missing GT branch is excluded only from its descent denominator, not from the16-case report; zero direction counts as not-positive. A zero denominator cannot pass. Both tested signals reported, no ranking or best-signal selection.
+
+Only passing signal(s) get exactly one same-Dev16 native correction at original radius .13545580427763146*||F_observed||, normalized on realized full delta using actual Q_C. Same field enters event and spatial pass. Compare sealed B1 / new one-step / sealed Oracle-R16; Full Oracle optional reference. Corrected policy freely decodes its own interval/anchors. All predictions seal before scalar/tensor score. Report t/s/v parent means (onequery/parent), query harm>5pp and native-good v/t>.5 retention. Systematic collapse retains existing definition: branch mean <=-1pp AND >=12/16 negative parents.
+
+If positive v and no collapse: next separately registered expansion only passing signal to Dev64. If directional gate passes but finite utility does not, one trust/magnitude factor is next; this does not prove excessive magnitude is the unique cause. If neither passes, stop internal loss/augmentation/weight variants; next proposed experiment is expert pseudo-gradient qualification, not automatic expert downloads/runs or OPD. No3/5/20-step optimization here.
+
+## Engineering controls and resource ledger
+CPU synthetic complete-vocabulary/teacher-detach/entropy, zero-leaf chain/frozen scope, support rejection, SHA selection, balancing/zero and routing controls. Initial identity-KL backward test had an overly strict1e-10 assertion (actual1.163e-10 FP32 residual); original failure/test preserved, replaced before registration with dtype-aware8*eps*maxprobability bound. No real-GPU gate relaxed.
+
+Torch4 threads, deterministic algorithms/cudnn, CUBLAS :4096:8; retain original PTD numeric path, no precision change. CPU NumPy BLAS4 locked. First stage900s and only first selected query; if independently verified, continue remaining15 exactly once in a separate3600s serial allocation, never repeat first. Up to64 backwards,0optimizer,0newnative in direction phase. New storage<=4GiB, disk always>=8GiB, GPU lease serial. All loading/failed/replayed/worker/nonoverlap wrapper actual duration entered cap=null ledger, CPU preparation/audits separate. Preserve original failures/partials/pins. Archive check/snapshot/check and reviewed anonymous GitHub publication; no private data/weights/raw upload.

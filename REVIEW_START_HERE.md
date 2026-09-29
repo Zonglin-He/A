@@ -1,3 +1,15 @@
+# Latest update: 2026-09-29 A0.5 completed and independently audited
+
+The fixed Dev16 R16 direction screen fails for both predeclared label-free signals. Consistency cosine mean/median is **−.018640/−.045876**, temporal/spatial positive GT-local descent **8/15 and 7/15**. Entropy gives **+.022218/+.032153**, **9/15 and 8/15**. Required median>=.10 and both branch fractions>=.65 are not met. Therefore **no finite native inference** was run. Stop the current internal objective/augmentation/weight tuning chain; expert pseudo-gradient qualification is the next proposed experiment, not an automatically started expert or OPD stage.
+
+Frozen PTD4B/B1/union256/Train-only B16, C0=0,64 actual backwards,0optimizer/0newGTbackwards. Both signals use original B1 native reference/interval/anchors; spatial includes all152775 classes. GT is absent from GPU signal computation and used only in CPU qualification against sealed source references. All16 source queries retained; native supports all exist, while GT availability is15 per branch. Positive cases remain: entropy has5 cosines>.3 and one+.9361, but the aggregate gate still fails. This is source development evidence, not a universal impossibility result.
+
+Full raw, complete consistency logits and physical/native identity audited; observed C0 replay logits bitwise equal. NumPy scalar error<=7.029e-7, first real coefficient-chain relative error2.057e-7; second108-check aggregation max5.774e-15. SHA selection and fixed basis independently reconstructed. Preserved pre-GPU assertion/prepare failures; no GPU failure or replay. Worker plus nonoverlap wrapper391.474112s (~6.52min), cumulative73197.772280s cap=null. Fresh388, target, full618/447, offline predictor training and OPD remain untouched.
+
+[Full anonymous report](results/desta3d_v3/2026-09-29/A05_UNLABELED_SIGNAL.md).
+
+Earlier entries retain their historical state.
+
 # Latest update: 2026-09-29 A0.4 completed
 
 Fixed Shared-R16 output did not establish direction learnability. Original local H128 with only output256->16, same sealed Train128/Dev64, Train-only frozen B16,76688 parameters. S200 Train/Dev cosine medians **.006040/.002462**; the authorized same-model/Adam/RNG/order continuation to2000 gives **.006738/.002975**. Both fail the fixed Train>=.3/Dev>=.1 gate. No PTD/native/fresh/full expansion. Stop offline predictor architecture tuning; R16 per-query coefficient optimization remains a proposed feasibility question, without a new objective or run.
