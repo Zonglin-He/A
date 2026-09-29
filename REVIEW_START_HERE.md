@@ -33,3 +33,7 @@ Two independent specialists → native pseudo-targets → R16 latent adaptation.
 ## TA-STVG Round1 evidence sensitivity — completed
 
 [Full64 report](results/tastvg_evidence/2026-09-29/REPORT.md): 25/64 parents preserve their native tube while passing a prelocked strong-evidence-drift screen; new extension48 contributes16 cases. Signal concentrates in ASA; native correctness and TTA benefit are unmeasured. [Protocol](protocols/tastvg_evidence_vulnerability_v1.md), [cached capture](vg_tta/tastvg_evidence_capture_v1.py), [attack](vg_tta/tastvg_evidence_attack_v1.py), and [all192 anonymous scalar rows](results/tastvg_evidence/2026-09-29/ROWS_INDEX.json). Round2/3 have not started.
+
+## TA-STVG Round2 — completed causal and oracle audit
+
+[Full report](results/tastvg_causal_round2/2026-09-29/REPORT.md), [protocol](protocols/tastvg_causal_correctability_round2_v1.md), [native oracle and causal implementation](vg_tta/tastvg_causal_round2_v1.py), and [all anonymous scalar rows](results/tastvg_causal_round2/2026-09-29/ROWS_INDEX.json). Official detach semantics retained; seven-arm GT oracle on original64 exposed development parents, not an unlabeled TTA result. Round3 remains unstarted.
