@@ -1,5 +1,9 @@
 # 代码与研究审阅入口
 
+## Latest TA-STVG: O3 Conditional Online OPD completed
+
+[Report](results/tastvg_conditional_opd_o3/2026-09-29/REPORT.md), [Chinese interpretation](docs/TA_CONDITIONAL_OPD_O3_UPDATE.md), [protocol](protocols/tastvg_conditional_opd_o3_v1.md). Matched768->128->1 Pairwise/Reverse-KL students on original O2 streams:40 verified CPU SGD updates, but both preserve all60 nonexpert choices and yield zero t/v gain. Reverse-KL remains an implementation candidate per user tie preference, not a validated benefit or production promotion. [Earlier KNN measurements](results/tastvg_preference_memory_superseded/2026-09-29/REPORT.md) completed before steering and are separately archived as superseded. S0 deferred; no spatial inference. Earlier latest/running entries below are historical.
+
 ## Latest TA-STVG: O2 regime-coherent online transfer completed
 
 [Report](results/tastvg_regime_online_o2/2026-09-29/REPORT.md), [Chinese interpretation](docs/TA_REGIME_ONLINE_O2_UPDATE.md), [protocol](protocols/tastvg_regime_online_o2_v1.md). Five fixed16-source streams, four specialist writes each; nonexpert macro gains +0.1293pp tIoU / +0.0454pp vIoU, driven by two of60 cells. Four choices change; three regimes have no change. Conditional intervals include zero, so retain local positive cases without claiming coherence solves transfer. No method tuning or follow-on experiment. Earlier latest/running statements below are historical snapshots.
