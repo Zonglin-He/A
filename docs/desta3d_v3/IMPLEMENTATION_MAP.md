@@ -1,3 +1,13 @@
+# Latest update: 2026-09-29 A0.3 completed
+
+A Train-only query-balanced shared channel basis passes the exposed Dev64 structure gate (rank32 median energy86.1936%). Norm-matched native Shared-R16 and Shared-R32 both pass: Δt/s/v vs B1 are +9.0271/+9.2265/+10.9384pp and +9.0739/+10.4231/+12.5314pp. R16/R32 retain83.39%/95.53% of Full Oracle vIoU gain. The registered priority selects **fixed shared-rank16 factorized predictor as the next candidate only**; no learned low-rank network was implemented or trained.
+
+Negative tails remain: v harm>5pp on6/5 queries; B1-good v retained14/17 and13/17. Source-GT oracle,16 exposed parents, descriptive CIs; not fresh/target or ordinary-input learnability. All256 predictions sealed; full scalar/tensor and independent source-parent audits passed. Original CPU hash audit failed from OpenBLAS4 versus original20; isolated v2 reconstructed every delta hash without GPU rerun or changing predictions/tolerances. Original failure retained. No full/fresh/expert/gate/OPD expansion.
+
+[Full anonymous A0.3 results](../../results/desta3d_v3/2026-09-29/A03_SHARED_CHANNEL_BASIS.md).
+
+Earlier entries retain their historical state.
+
 # Latest update: 2026-09-29 A0.2 and structure audit completed
 
 A0.2 completed with zero added parameters and exact original H128 initialization. GMean200 train/dev medians .007042/.001827; GMean2000 .007718/.001876: neither passes. Stop global-context/width/step tuning. Conditional full192 cached CPU structure audit also completed: global means explain only .029656%/.032596% energy (train/dev); per-time spatial means .655224%/.636620%; per-query rank16 captures90.437770%/91.370581%. T/H/W neighbor cosine means are approximately .1. Low channel rank coexists with strongly varying THW directions; it does not prove predictable factors or native utility. No new architecture, PTD/native/fresh/full/expert/OPD/target run. Full report: [A0.2 and structure audit](../../results/desta3d_v3/2026-09-29/A02_GLOBAL_CONTEXT.md).
