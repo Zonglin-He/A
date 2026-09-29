@@ -32,7 +32,9 @@ def inputs(processor, model, row):
 def run(phase, name):
     dependencies = [Path(__file__), ROOT/'desta3d/native_adaptation.py', ROOT/'scripts/desta_native_common.py',
                     ROOT/'vg_tta/desta3d_v3_actuation_full_vocab.py', ROOT/'vg_tta/desta3d_v3_decomposition.py',
-                    ROOT/'vg_tta/desta3d_v2_output_anchor_memory_v7.py']
+                    ROOT/'vg_tta/desta3d_v2_output_anchor_memory_v7.py',
+                    D/'ROOT_EXPERT_READBACK.json', D/'EXPERT_EVIDENCE_SEAL.json']
+    assert read(D/'ROOT_EXPERT_READBACK.json')['status']=='passed'
     dest = stage(name, dependencies)
     with allocation(dest) as (cfg, guard):
         import torch
