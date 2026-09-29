@@ -13,13 +13,17 @@ def archive(event):
   for cmd in ['check','snapshot','check']:subprocess.run([str(ROOT/'.conda/tubedetr/bin/python'),'-B','scripts/research_archive.py',cmd],cwd=ROOT,stdout=log,stderr=subprocess.STDOUT,check=True)
 def verify():
  p=read(OUT/'POSTPROCESS_LOCK.json')
- for f,h in p['pins'].items():assert sha(ROOT/f)==h,f
+ pins=dict(p['pins'])
+ revision=OUT/'POSTPROCESS_REVISION_001.json'
+ if revision.exists():
+  r=read(revision);assert r['original_lock_sha256']==sha(OUT/'POSTPROCESS_LOCK.json');pins.update(r['pin_overrides'])
+ for f,h in pins.items():assert sha(ROOT/f)==h,f
 
 def stage(name,script,arguments,barrier,env=None):
  if (OUT/barrier).exists():return
  verify();status(dict(status='running',stage=name));archive(name+'运行')
  with (OUT/f'{name.upper()}_PIPELINE.log').open('a') as log:
-  code=subprocess.call(['bash','scripts/with_local_cuda.sh',str(ROOT/'.conda/tubedetr/bin/python'),'-B',script,*arguments],cwd=ROOT,env=env,stdout=log,stderr=subprocess.STDOUT)
+  code=subprocess.call(['bash','scripts/with_local_cuda.sh',str(ROOT/('.venv-exost/bin/python' if name=='temporal' else '.conda/tubedetr/bin/python')),'-B',script,*arguments],cwd=ROOT,env=env,stdout=log,stderr=subprocess.STDOUT)
  if code or not (OUT/barrier).exists():raise RuntimeError(f'{name} failed: exit={code}, missing_barrier={not (OUT/barrier).exists()}')
  archive(name+'阶段完成，后续阶段继续')
 

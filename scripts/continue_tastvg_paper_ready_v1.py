@@ -7,7 +7,11 @@ def sha(p):return hashlib.sha256(p.read_bytes()).hexdigest()
 def status(**value):
  p=OUT/'QUEUE_STATUS.json';tmp=p.with_suffix('.tmp');tmp.write_text(json.dumps(dict(**value,time=time.time()),indent=2)+'\n');tmp.replace(p)
 def verify():
- for f,h in read(OUT/'READY_LOCK.json')['pins'].items():assert sha(ROOT/f)==h,f
+ pins=dict(read(OUT/'READY_LOCK.json')['pins'])
+ revision=OUT/'READY_REVISION_001.json'
+ if revision.exists():
+  r=read(revision);assert r['original_lock_sha256']==sha(OUT/'READY_LOCK.json');pins.update(r['pin_overrides'])
+ for f,h in pins.items():assert sha(ROOT/f)==h,f
 
 def archive(event):
  p=ROOT/'docs/RESEARCH_HISTORY.md';s=p.read_text();e='**2026-09-30｜论文补证串行队列：'+event+'。** B1冻结配方和全量名单不改；A2为16曝光源/五序六条件960到达；baseline smoke仅两旧fixture，不是完整baseline效果。后续未实现阶段不称已运行。见[队列状态](</home/wwww/visual grounding/artifacts/tastvg_paper_matrix_v1/QUEUE_STATUS.json>)。'
@@ -27,6 +31,12 @@ def run():
   if z.get('stage')=='spatial' and pid and not Path('/proc',str(pid)).exists():raise RuntimeError('Spatial process absent without B1 completion')
   time.sleep(60)
  assert read(B/'COMPLETION.json')['status']=='completed'
+ status(status='waiting_for_B1_publication',pid=os.getpid(),active_GPU_job_started=False)
+ while not (B/'GITHUB_PUBLICATION.json').exists():
+  if time.monotonic()>deadline:raise TimeoutError('Finite B1 publication waiting deadline')
+  time.sleep(60)
+ publication=read(B/'GITHUB_PUBLICATION.json')
+ assert publication['status']=='verified' and publication['completion_sha256']==sha(B/'COMPLETION.json')
  stages=[('a2_predict','scripts/run_tastvg_matched_ablation_a2_v1.py',['run'], 'artifacts/tastvg_matched_ablation_a2_v1/PREDICTION_BARRIER.json',2700),('a2_score','scripts/score_tastvg_matched_ablation_a2_v1.py',[],'artifacts/tastvg_matched_ablation_a2_v1/AUDIT.json',1800),('a2_report','scripts/report_tastvg_matched_ablation_a2_v1.py',[],'artifacts/tastvg_matched_ablation_a2_v1/COMPLETION.json',600),('baseline_smoke','scripts/validate_tastvg_paper_baselines_v1.py',[],'artifacts/tastvg_paper_matrix_v1/baseline_smoke/AUDIT.json',1200),('b1_readouts','scripts/analyze_tastvg_full_b1_paper_v1.py',[],'artifacts/tastvg_paper_matrix_v1/b1_readouts/READOUTS.json',12*3600)]
  for name,script,args,receipt,timeout in stages:
   verify()
