@@ -1,5 +1,9 @@
 # 代码与研究审阅入口
 
+## Latest TA-STVG: spatial critic qualification and persistent Reverse-KL
+
+[Chinese interpretation](docs/TA_SPATIAL_CRITIC_S06_ONLINE_S1_UPDATE.md), [S0.6 critic report](results/tastvg_spatial_critic_s06/2026-09-29/REPORT.md), [S1 online report](results/tastvg_spatial_online_opd_s1/2026-09-29/REPORT.md). Cached critic antithetic ordering is informative, so the user-authorized persistent1792D spatial RKL was run.18 actual SGD updates across six16-arrival streams, current-policy probes regenerated, no expert regression target. Fixed tau1/SGD.005 yields negligible practical future-nonexpert gains. Both positive critic evidence and weak online outcome retained; no joint run or production promotion.
+
 ## Latest TA-STVG: S0.5 Native Spatial Rollout Support Test
 
 [Latest report](results/tastvg_native_spatial_rollout_s05/2026-09-29/REPORT.md), [Chinese interpretation](docs/TA_SPATIAL_PROPAGATION_S05_UPDATE.md), [protocol](protocols/tastvg_native_spatial_rollout_s05_v1.md). Student-only1792D parameter neighborhood,4 orthogonal antithetic pairs plus native, one5% radius,96cells/864candidates. No experts or GT during generation; post-seal oracle support remains limited. No S1/OPD/online learning or production promotion. Completed [threshold v1](results/tastvg_spatial_propagation_s05_superseded_v1/2026-09-29/REPORT.md) and [soft-moments v2](results/tastvg_spatial_propagation_s05_superseded_v2/2026-09-29/REPORT.md) are preserved and explicitly superseded by the latest user route.
