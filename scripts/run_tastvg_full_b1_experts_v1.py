@@ -14,7 +14,11 @@ def observation(row,condition,frames):
 
 def verify():
  p=read(OUT/'EXECUTION_LOCK.json')
- for f,h in p['pins'].items():assert sha(ROOT/f)==h,f
+ pins=dict(p['pins'])
+ revision=OUT/'IMPLEMENTATION_REVISION_001.json'
+ if revision.exists():
+  r=read(revision);assert r['original_execution_lock_sha256']==sha(OUT/'EXECUTION_LOCK.json');pins.update(r['pin_overrides'])
+ for f,h in pins.items():assert sha(ROOT/f)==h,f
  assert sha(OUT/'ROSTER_LOCK.json')==p['roster_sha256']
  return read(OUT/'ROSTER_LOCK.json')
 
@@ -36,7 +40,8 @@ def run(stage,limit=0):
   from vg_tta.exact_frame_decode_audit_v2 import decode
   from scripts.run_final_simplification_v1 import lease as gpu_lease
   from methods.decota_final_simplified_v1.tensors import state_hash
-  sys.addaudithook(guard);lease=gpu_lease();torch.set_num_threads(4);torch.manual_seed(20260929);np.random.seed(20260929);torch.backends.cudnn.benchmark=False
+  sys.addaudithook(guard);lease=gpu_lease();torch.set_num_threads(4);torch.manual_seed(20260929);np.random.seed(20260929);torch.backends.cudnn.benchmark=False;torch.backends.cudnn.deterministic=(stage=='spatial')
+  print('BACKEND',stage,'deterministic',torch.backends.cudnn.deterministic,flush=True)
   if stage=='spatial':
    from transformers import AutoModel,AutoTokenizer
    from vg_tta.tastvg_spatial_expansion_s0_v1 import mask_boxes
