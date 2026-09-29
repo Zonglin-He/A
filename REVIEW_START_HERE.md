@@ -1,5 +1,9 @@
 # 代码与研究审阅入口
 
+## Latest TA-STVG: S1.1 rank preference and normalized spatial updates
+
+[Chinese interpretation](docs/TA_SPATIAL_RANK_S11_UPDATE.md), [three-arm report](results/tastvg_spatial_rank_s11/2026-09-29/REPORT.md), [fixed protocol](protocols/tastvg_spatial_rank_s11_v1.md). Raw-RKL reused; two new on-policy persistent1792D arms,192arrivals/36updates. Rank preference gives small positive future-nonexpert transfer; normalized1%-probe steps do not improve over Rank-SGD. No sweep, parameter-space OPD, joint run or production promotion.
+
 ## Latest TA-STVG: spatial critic qualification and persistent Reverse-KL
 
 [Chinese interpretation](docs/TA_SPATIAL_CRITIC_S06_ONLINE_S1_UPDATE.md), [S0.6 critic report](results/tastvg_spatial_critic_s06/2026-09-29/REPORT.md), [S1 online report](results/tastvg_spatial_online_opd_s1/2026-09-29/REPORT.md). Cached critic antithetic ordering is informative, so the user-authorized persistent1792D spatial RKL was run.18 actual SGD updates across six16-arrival streams, current-policy probes regenerated, no expert regression target. Fixed tau1/SGD.005 yields negligible practical future-nonexpert gains. Both positive critic evidence and weak online outcome retained; no joint run or production promotion.
