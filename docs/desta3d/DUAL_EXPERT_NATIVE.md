@@ -1,5 +1,7 @@
 # DESTA 双专家原生伪监督：读码与调参
 
+**2026-09-29 状态：用户要求暂停。** Dev16 全27配置已完成评分和根二核，27组vIoU均低于B1，最好17.8563%对B1 23.0413%。Dev64刚开始即按用户指令停止，所有worker/controller已退出，定时检查PAUSED；没有自动恢复。完整首轮表见 [Dev16结果](../../results/desta3d_v3/2026-09-29/DUAL_EXPERT_NATIVE_DEV16.md)。下方执行说明只作代码参考。
+
 本版本把时间专家区间和空间专家轨迹转换为 PTD 原生 action targets，
 只更新每个 query 的 R16 latent field。原 PTD/B1 和专家权重冻结。
 不使用旧 offline mixer、pixel dim/blur 或 OPD。
