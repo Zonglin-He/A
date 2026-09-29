@@ -1,5 +1,9 @@
 # 代码与研究审阅入口
 
+## Latest TA-STVG: minimal temporal four-arm experiment completed
+
+[Results](results/tastvg_temporal_fourarm/2026-09-29/REPORT.md), [current protocol](protocols/tastvg_temporal_fourarm_v1.md), [one-step implementation](vg_tta/tastvg_temporal_fourarm_v1.py), [anonymous per-cell results](results/tastvg_temporal_fourarm/2026-09-29/ROWS.json). Frozen/Rerank/Hard/OPD on the unchanged transient setting plus clean, only motion-H updates. Earlier C2.5 gates and C0.6 multiseed plans are superseded; no production change. Older running/next statements below are historical snapshots.
+
 ## 先读代码
 
 手动调参入口是 [`docs/desta3d/README.md`](docs/desta3d/README.md)。核心 adapter 保留在 [`vg_tta/desta3d_v2.py`](vg_tta/desta3d_v2.py)，新可编辑工作区在 [`desta3d/`](desta3d/)，参数集中于 [`configs/desta3d/`](configs/desta3d/)。
