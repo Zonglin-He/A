@@ -13,6 +13,9 @@
 5. `scripts/supervise_desta_native_v3.py`：27→6→1 和最终 T-only/S-only 消融自动执行。
 6. `protocols/desta_dual_expert_native_v1.md`：本轮实际完整合同。
 
+专家输入、置信度与时空协同的实际限制及全64条封存统计，见
+[EXPERT_INPUT_REVIEW.md](EXPERT_INPUT_REVIEW.md)。该审计不改变正在执行的实验。
+
 ## 三个主参数
 
 | 参数 | 本轮取值 | 实际作用 |
