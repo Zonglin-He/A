@@ -1,5 +1,9 @@
 # 代码与研究审阅入口
 
+## Latest TA-STVG: O1.1 fixed-state scale readout completed
+
+[Report](results/tastvg_o11_scale_readout/2026-09-29/REPORT.md), [Chinese interpretation](docs/TA_O11_SCALE_READOUT_UPDATE.md), [protocol](protocols/tastvg_o11_scale_readout_v1.md). CPU-only alpha1/8/16/32 on the saved O1 arrival states: many choices move, but no amplified scale improves mean vIoU. No retraining, new expert calls, online trajectory or normalization rerun. Earlier latest/running entries below are historical snapshots.
+
 ## Latest TA-STVG: O1 sparse-critic online transfer completed
 
 [Report](results/tastvg_sparse_online_o1/2026-09-29/REPORT.md), [Chinese interpretation](docs/TA_SPARSE_ONLINE_O1_UPDATE.md), [protocol](protocols/tastvg_sparse_online_o1_v1.md), [persistent ranker](vg_tta/tastvg_sparse_online_v1.py). One32-source stream, eight specialist writes; primary future non-expert t/v gain is exactly zero in this fixed first implementation. State and chronology are verified; no added mechanisms or production promotion. Earlier latest/running statements below are historical snapshots.
