@@ -1,5 +1,9 @@
 # 代码与研究审阅入口
 
+## Latest TA-STVG: S0 RVOS-guided spatial expansion
+
+[Report](results/tastvg_spatial_expansion_s0/2026-09-29/REPORT.md), [Chinese interpretation](docs/TA_SPATIAL_EXPANSION_S0_UPDATE.md), [protocol](protocols/tastvg_spatial_expansion_s0_v1.md). Real Sa2VA-4B sparse-video masks guide three fixed appearance-only native trajectories on16 previously exposed sources × clean/five existing5% corruptions. Native B0 always retained; whole-tube spatial oracle compared against matched six-layer support. This measures candidate headroom, not a deployed selector or online-TTA benefit. Temporal research frozen at native candidates + UniversalVTG reranking; prior OPD/KNN reports remain historical. No S1 or production change.
+
 ## Latest TA-STVG: O3 Conditional Online OPD completed
 
 [Report](results/tastvg_conditional_opd_o3/2026-09-29/REPORT.md), [Chinese interpretation](docs/TA_CONDITIONAL_OPD_O3_UPDATE.md), [protocol](protocols/tastvg_conditional_opd_o3_v1.md). Matched768->128->1 Pairwise/Reverse-KL students on original O2 streams:40 verified CPU SGD updates, but both preserve all60 nonexpert choices and yield zero t/v gain. Reverse-KL remains an implementation candidate per user tie preference, not a validated benefit or production promotion. [Earlier KNN measurements](results/tastvg_preference_memory_superseded/2026-09-29/REPORT.md) completed before steering and are separately archived as superseded. S0 deferred; no spatial inference. Earlier latest/running entries below are historical.
