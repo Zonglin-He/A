@@ -1,5 +1,9 @@
 # 代码与研究审阅入口
 
+## Latest TA-STVG: frozen-method matched ablations; full test registered
+
+[Matched ablations](results/tastvg_matched_ablation_a1/2026-09-29/REPORT.md), [Chinese interpretation](docs/TA_MATCHED_ABLATION_A1_UPDATE.md), [full test protocol](protocols/tastvg_full_b1_v1.md). Five-order future vIoU: Final +0.025505 pp, Random-Rank −0.004011, Off-Policy +0.026227, Direct PL +0.003409. Preference beats this random control and fixed PL; **on-policy superiority is not established**. Frozen recipe unchanged. Full official test registration retains all9411queries/670sources after excluding62current-route development sources;3orders×16conditions. Historical project exposure disclosed; full-run results pending, not claimed complete.
+
 ## Latest TA-STVG: J0.1 online schedule robustness
 
 [Chinese results](docs/TA_SCHEDULE_J01_UPDATE.md), [five-order report](results/tastvg_schedule_j01/2026-09-29/REPORT.md), [recipe freeze](methods/tastvg_dual_evidence_j0_v1/FREEZE_J01.json). The exact J0 method was tested on five prelocked source-hash orders with 25% specialist availability. Whole-stream Fast and Final improve in 5/5 orders: Final gain +1.5177 pp, sample SD 0.8599 pp. Future spatial transfer averages +0.0255 pp but is positive in 4/5 orders, negative in one. Original J0 negative result retained separately; all six also summarized. Freeze the existing research recipe for subsequent evaluation; no favorable-order selection, new gate or production promotion. Same 16 exposed sources, not five independent cohorts.
