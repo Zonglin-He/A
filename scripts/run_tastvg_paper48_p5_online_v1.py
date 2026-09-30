@@ -32,7 +32,7 @@ def run(limit=0):
   from scripts.run_final_simplification_v1 import lease as gpu_lease
   from methods.decota_final_simplified_v1.tensors import state_hash,detached
   from methods.tastvg_dual_evidence_j0_v1.method import OnlineMethod,central_with_candidates,fast_rerank
-  from vg_tta.exact_frame_decode_audit_v2 import decode
+  from vg_tta.tastvg_paper48_hc2_decode_v1 import decode
   from vg_tta.tastvg_native_spatial_rollout_s05_v1 import reinsert
   from scripts.run_tastvg_schedule_j01_v1 import full_temporal_check
   sys.addaudithook(guard);install_clean_loader();lease=gpu_lease();torch.set_num_threads(4);torch.manual_seed(20260929);np.random.seed(20260929);torch.backends.cudnn.benchmark=False;torch.backends.cudnn.deterministic=True

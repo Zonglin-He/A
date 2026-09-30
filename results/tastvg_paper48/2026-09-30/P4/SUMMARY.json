@@ -1,0 +1,284 @@
+{
+  "timing_model": "real serialized cold-start processes on single32GB GPU; each query loads native model; each expert call freshly loads its specialist. Includes Python launch/checkpoint/model loading and all uncached inference. This is not warm resident service latency.",
+  "persistent_parameters": 1792,
+  "queries": 100,
+  "new_native_runs": 200,
+  "new_spatial_calls": 25,
+  "new_temporal_calls": 25,
+  "results": {
+    "Frozen": {
+      "all": {
+        "end_to_end_cold_seconds": {
+          "mean": 8.387414008631604,
+          "p50": 8.356434059009189,
+          "p95": 8.85557816508226
+        },
+        "native_process_seconds": {
+          "mean": 8.387281280467286,
+          "p50": 8.356306483998196,
+          "p95": 8.855457374232355
+        },
+        "load_seconds": {
+          "mean": 5.361052222954458,
+          "p50": 5.334235710033681,
+          "p95": 5.519640089274617
+        },
+        "decode_seconds": {
+          "mean": 0.26143639177258593,
+          "p50": 0.23066830349853262,
+          "p95": 0.5660826829960569
+        },
+        "native_seconds": {
+          "mean": 0.6296011316298973,
+          "p50": 0.6133797345100902,
+          "p95": 0.8931984126043971
+        },
+        "initialization_seconds": {
+          "mean": 0.0,
+          "p50": 0.0,
+          "p95": 0.0
+        },
+        "adapter_seconds": {
+          "mean": 0.0,
+          "p50": 0.0,
+          "p95": 0.0
+        },
+        "spatial_process_seconds": {
+          "mean": 0.0,
+          "p50": 0.0,
+          "p95": 0.0
+        },
+        "temporal_process_seconds": {
+          "mean": 0.0,
+          "p50": 0.0,
+          "p95": 0.0
+        },
+        "logical_expert_calls": {
+          "mean": 0.0,
+          "p50": 0.0,
+          "p95": 0.0
+        },
+        "peak_vram_bytes": 8408004096,
+        "queries": 100
+      },
+      "nonexpert": {
+        "end_to_end_cold_seconds": {
+          "mean": 8.387414008631604,
+          "p50": 8.356434059009189,
+          "p95": 8.85557816508226
+        },
+        "native_process_seconds": {
+          "mean": 8.387281280467286,
+          "p50": 8.356306483998196,
+          "p95": 8.855457374232355
+        },
+        "load_seconds": {
+          "mean": 5.361052222954458,
+          "p50": 5.334235710033681,
+          "p95": 5.519640089274617
+        },
+        "decode_seconds": {
+          "mean": 0.26143639177258593,
+          "p50": 0.23066830349853262,
+          "p95": 0.5660826829960569
+        },
+        "native_seconds": {
+          "mean": 0.6296011316298973,
+          "p50": 0.6133797345100902,
+          "p95": 0.8931984126043971
+        },
+        "initialization_seconds": {
+          "mean": 0.0,
+          "p50": 0.0,
+          "p95": 0.0
+        },
+        "adapter_seconds": {
+          "mean": 0.0,
+          "p50": 0.0,
+          "p95": 0.0
+        },
+        "spatial_process_seconds": {
+          "mean": 0.0,
+          "p50": 0.0,
+          "p95": 0.0
+        },
+        "temporal_process_seconds": {
+          "mean": 0.0,
+          "p50": 0.0,
+          "p95": 0.0
+        },
+        "logical_expert_calls": {
+          "mean": 0.0,
+          "p50": 0.0,
+          "p95": 0.0
+        },
+        "peak_vram_bytes": 8408004096,
+        "queries": 100
+      }
+    },
+    "Ours": {
+      "all": {
+        "end_to_end_cold_seconds": {
+          "mean": 18.422990108357627,
+          "p50": 9.327819535013987,
+          "p95": 45.59768328993232
+        },
+        "native_process_seconds": {
+          "mean": 9.282662818732206,
+          "p50": 9.260865818505408,
+          "p95": 10.080198213394032
+        },
+        "load_seconds": {
+          "mean": 5.386042612937745,
+          "p50": 5.367000166996149,
+          "p95": 5.548818324544118
+        },
+        "decode_seconds": {
+          "mean": 0.28209028853219936,
+          "p50": 0.23679653799626976,
+          "p95": 0.5473290340218226
+        },
+        "native_seconds": {
+          "mean": 0.6802128646930214,
+          "p50": 0.6682489464874379,
+          "p95": 0.9538285088725388
+        },
+        "initialization_seconds": {
+          "mean": 0.05285735726938583,
+          "p50": 0.046407219517277554,
+          "p95": 0.09453107512381394
+        },
+        "adapter_seconds": {
+          "mean": 0.1735235347202979,
+          "p50": 0.04447646997869015,
+          "p95": 0.6122775083262241
+        },
+        "spatial_process_seconds": {
+          "mean": 4.564629512170213,
+          "p50": 0.0,
+          "p95": 16.828268366793054
+        },
+        "temporal_process_seconds": {
+          "mean": 4.5743086601892715,
+          "p50": 0.0,
+          "p95": 18.687919199268798
+        },
+        "logical_expert_calls": {
+          "mean": 0.5,
+          "p50": 0.0,
+          "p95": 2.0
+        },
+        "peak_vram_bytes": 10087094784,
+        "queries": 100
+      },
+      "expert": {
+        "end_to_end_cold_seconds": {
+          "mean": 46.257688382044435,
+          "p50": 44.49857506301487,
+          "p95": 55.58987037360202
+        },
+        "native_process_seconds": {
+          "mean": 9.698686342795845,
+          "p50": 9.728385024005547,
+          "p95": 10.205487039790023
+        },
+        "load_seconds": {
+          "mean": 5.441906594398898,
+          "p50": 5.4003618390415795,
+          "p95": 5.62079770702403
+        },
+        "decode_seconds": {
+          "mean": 0.2675724022067152,
+          "p50": 0.22978779097320512,
+          "p95": 0.5038364232401361
+        },
+        "native_seconds": {
+          "mean": 0.6669313660822809,
+          "p50": 0.6744488080148585,
+          "p95": 0.9487241441966034
+        },
+        "initialization_seconds": {
+          "mean": 0.045235798163339495,
+          "p50": 0.041531945986207575,
+          "p95": 0.09372107541421429
+        },
+        "adapter_seconds": {
+          "mean": 0.5650102605228312,
+          "p50": 0.5745868589729071,
+          "p95": 0.6184812445892021
+        },
+        "spatial_process_seconds": {
+          "mean": 18.258518048680852,
+          "p50": 16.527170112996828,
+          "p95": 26.99908458963036
+        },
+        "temporal_process_seconds": {
+          "mean": 18.297234640757086,
+          "p50": 18.251943484006915,
+          "p95": 18.95762496921234
+        },
+        "logical_expert_calls": {
+          "mean": 2.0,
+          "p50": 2.0,
+          "p95": 2.0
+        },
+        "peak_vram_bytes": 10087094784,
+        "queries": 25
+      },
+      "nonexpert": {
+        "end_to_end_cold_seconds": {
+          "mean": 9.144757350462022,
+          "p50": 9.100273618998472,
+          "p95": 9.73705175840296
+        },
+        "native_process_seconds": {
+          "mean": 9.143988310710993,
+          "p50": 9.100126464036293,
+          "p95": 9.736352476896718
+        },
+        "load_seconds": {
+          "mean": 5.367421285784027,
+          "p50": 5.363281008962076,
+          "p95": 5.416412322485121
+        },
+        "decode_seconds": {
+          "mean": 0.2869295839740274,
+          "p50": 0.2468313609715551,
+          "p95": 0.5948495613993144
+        },
+        "native_seconds": {
+          "mean": 0.6846400308966015,
+          "p50": 0.6620490849600174,
+          "p95": 0.9538509681238793
+        },
+        "initialization_seconds": {
+          "mean": 0.05539787697140128,
+          "p50": 0.04880433902144432,
+          "p95": 0.09508161341655068
+        },
+        "adapter_seconds": {
+          "mean": 0.04302795945278679,
+          "p50": 0.04341268603457138,
+          "p95": 0.046277941268635915
+        },
+        "spatial_process_seconds": {
+          "mean": 0.0,
+          "p50": 0.0,
+          "p95": 0.0
+        },
+        "temporal_process_seconds": {
+          "mean": 0.0,
+          "p50": 0.0,
+          "p95": 0.0
+        },
+        "logical_expert_calls": {
+          "mean": 0.0,
+          "p50": 0.0,
+          "p95": 0.0
+        },
+        "peak_vram_bytes": 8447382528,
+        "queries": 75
+      }
+    }
+  }
+}
