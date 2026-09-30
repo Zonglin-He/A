@@ -13,6 +13,8 @@ def read_rows(path):
     return rows
 
 def check_summary(rows,expected):
+    if not rows:
+        assert expected==dict(sources=0,cells=0,metrics={});return 2
     fields=list(expected['metrics']);buckets=collections.defaultdict(lambda:collections.defaultdict(list))
     for r in rows:buckets[r['parent']][r['order']].append([r[k] for k in fields])
     sources=sorted(buckets);orders=sorted({r['order'] for r in rows})
@@ -42,19 +44,21 @@ def check_summary(rows,expected):
 def run(root):
     root=Path(root);read=lambda n:json.loads((root/n).read_text())
     rows=read_rows(root/'SCALARS.csv');summary=read('SUMMARY.json');audit=read('AUDIT.json');checks=0
-    assert len(rows)==audit['state_links']==8040
-    assert len({(r['parent'],r['order'],r['condition']) for r in rows})==8040
-    assert len({r['parent'] for r in rows})==670
+    panel=root.name;ns,total,availability={'P1':(670,8040,25),'P2':(128,4096,25),'P3_b0':(64,768,0),'P3_b25':(64,768,25),'P3_b100':(64,768,100)}[panel]
+    assert len(rows)==audit['state_links']==total
+    assert len({(r['parent'],r['order'],r['condition']) for r in rows})==total
+    assert len({r['parent'] for r in rows})==ns
     assert sum(r['updated'] for r in rows)==audit['SGD_updates']
     assert sum(r['expert_scheduled'] for r in rows)==audit['teacher_checks'];checks+=5
     metric_names=['m_tIoU','m_vIoU','vIoU@0.3','vIoU@0.5','sIoU_dense_GT','sIoU_sampled','vIoU_sampled']
     for r in rows:
-        assert r['expert_scheduled']==(r['arrival']%4==0)
-        assert r['quartile']==min(3,4*r['arrival']//670)
+        assert r['expert_scheduled']==(availability==100 or (availability==25 and r['arrival']%4==0))
+        assert r['quartile']==min(3,4*r['arrival']//ns)
         assert r['expert_scheduled'] or (not r['updated'] and r['delta_m_tIoU']==0);checks+=3
         for k in metric_names:
             assert 0<=r['Frozen_'+k]<=1+1e-12 and 0<=r['Ours_'+k]<=1+1e-12
             assert abs(r['Ours_'+k]-r['Frozen_'+k]-r['delta_'+k])<1e-12;checks+=2
+            if availability==0:assert r['delta_'+k]==0
         for arm in ['Frozen','Ours']:
             for t in [.3,.5]:assert r[f'{arm}_vIoU@{t}']==float(r[arm+'_m_vIoU']>t);checks+=1
     for group,subsets in summary.items():
@@ -68,6 +72,10 @@ def run(root):
         paired.append(dict(parent=parent,order=order,delta_excess=float(np.mean(bad)-clean['delta_m_vIoU'])))
     checks+=check_summary(paired,read('CORRUPTION_EXCESS.json'))
     for q,expected in read('QUARTILES.json').items():checks+=check_summary([r for r in rows if r['condition']!='clean' and r['quartile']==int(q)],expected)
-    return dict(status='pass',rows=len(rows),sources=670,checks=checks,bootstrap_replicates=10000,scope='Independent source/order/bootstrap/harm aggregation from anonymous public scalars; does not recompute metrics from private GT or rerun models')
+    if (root/'SEVERITY.json').exists():
+        for severity,subsets in read('SEVERITY.json').items():
+            selected=[r for r in rows if r['condition'].endswith('_'+severity)]
+            for subset,expected in subsets.items():checks+=check_summary([r for r in selected if subset=='all' or not r['expert_scheduled']],expected)
+    return dict(status='pass',rows=len(rows),sources=ns,panel=panel,checks=checks,bootstrap_replicates=10000,scope='Independent source/order/bootstrap/harm aggregation from anonymous public scalars; does not recompute metrics from private GT or rerun models')
 
 if __name__=='__main__':print(json.dumps(run(sys.argv[1]),indent=2))
