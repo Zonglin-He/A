@@ -1,0 +1,13 @@
+# Paper48: user-authorized compute-only scope replacement
+
+The user replaced the earlier full matrix with a48-hour wall-clock plan. The original451,728-arrival B1 was safely stopped: spatial86,352 receipts complete, temporal22,822 retained, no online predictions or partial B1 scoring. The old paper queue, external baselines, Pairwise, dynamic stream, cross-domain and TubeDETR remain stopped. No outcomes were used to reduce data or choose conditions.
+
+P0 Raw-RKL is completed and audited:16 exposed VidSTG development sources, five fixed J01 orders, six conditions,480 new arrivals. Frozen/Fast/Slow/Full are reused unchanged. Full future nonexpert sampled-grid ΔvIoU is +0.025505±0.020209pp, Raw-RKL +0.000180±0.000042pp. This favors rank calibration in this fixed configuration, not a universal result across all loss scales. GPU199.015620s;12,066 independent public scalar checks. Full remains frozen.
+
+The registered remaining required panels are P1 670sources×1query×2orders×6conditions=8040, P2 128×2×16=4096, P3 64×2×6×3budgets=2304, and P4 real uncached100queries. All selections are hash-only before outcomes. P1/P2/P3 share2658 necessary specialist query-condition inputs. Different online histories prohibit reusing P1 adapted predictions as a128-source P2 stream; only unchanged inputs/experts may be reused. Historical project exposure is disclosed. These panels are running/pending, not complete.
+
+P4 will report real single-GPU serialized cold-start end-to-end latency including each native load and scheduled specialist loads, alongside inference/probing/update components and peak allocated VRAM. It is not warm resident-service latency. No prior H or specialist results are reused for its calls. P5 HC-STVG-v2 is optional subject to preparation<=2h and remaining deadline; not claimed run.
+
+Two preparation failures were preserved: duplicate metadata keyword and missing spatial peft environment. Neither produced fresh predictions. Append-only revisions fix the metadata copy and restore the exact previous Sa2VA runtime overlay; a fresh single spatial inference passed. No method/cohort or old frozen files changed. The finite supervisor reserves closure time and will preserve/report incomplete phases if the deadline is reached.
+
+See protocols/tastvg_paper48_v1.md and results/tastvg_paper48/2026-09-30/P0/REPORT.md. New main scoring uses actual official TA-STVG interpolation/evaluator functions with an independent dense calculation audit; old P0 sampled-grid scores are explicitly separate. Source/order/bootstrap/harm/clean/nonexpert evidence and negative outcomes are retained. Only anonymized scalars, code, protocol and audit summaries are exported; no media, annotations, weights, raw predictions or conversation attachments.
