@@ -21,20 +21,24 @@ def native_child(mode,index):
  from scripts.run_final_simplification_v1 import lease as gpu_lease
  from scripts.run_tastvg_evidence_vulnerability_v2 import install_clean_loader
  from scripts.run_tastvg_evidence_vulnerability_v1 import device_tree
- from scripts.run_spatial_regression_alignment_v1 import model_load
  from methods.decota_final_simplified_v1.tensors import state_hash,detached
- from methods.decota_final_simplified_v1.backbone import make_batch,query_subject,offset_batch
+ from methods.decota_final_simplified_v1.backbone import make_batch,query_subject,offset_batch,inserted_state
  from methods.decota_final_simplified_v1.objectives import prediction
  from methods.tastvg_dual_evidence_j0_v1.method import OnlineMethod
  from vg_tta.exact_frame_decode_audit_v2 import decode
  # Importing runner only defines source_capture; PANEL argv is irrelevant to that helper.
  from scripts.run_tastvg_paper48_online_v1 import source_capture
  p=verify();plan=read(BASE/'P4_PLAN.json');parent=plan['parents'][index];row=p['rows'][parent];budget();sys.addaudithook(guard);install_clean_loader();lease=gpu_lease();torch.set_num_threads(4);torch.manual_seed(20260929);np.random.seed(20260929);torch.backends.cudnn.benchmark=False;torch.backends.cudnn.deterministic=True
+ # Bind only after install_clean_loader replaces the module function.
+ from scripts.run_spatial_regression_alignment_v1 import model_load
  started=time.perf_counter();model=model_load('hcstvg1_test');torch.cuda.synchronize();load_sec=time.perf_counter()-started;mh=state_hash(model.state_dict());assert mh=='fbb1ed8871d6c2aa093879efefc2ee500bb7de5e0fe1c25b809c5393d010f3c7'
+ assert model.taev_loader_provenance['annotation_files_opened'] is False
  tick=time.perf_counter();frames,ids=decode(row['input']);subjectfile=BASE/'P1/subjects'/f'{parent:05}.json';subject=read(subjectfile)['parses']['subject'];decode_sec=time.perf_counter()-tick;tick=time.perf_counter();adapter_sec=0.;initialization_sec=0.;scheduled=mode=='Ours' and index%4==0
  if mode=='Frozen':
   batch=make_batch(frames,ids,row['input'],model);boxes=[];logits=[];records=[]
-  with torch.no_grad(),query_subject(model,batch,subject):
+  # Same post-encoder FP32 interface as the sealed Paper48 Frozen baseline.
+  # Empty state preserves every source parameter while applying its precision hooks.
+  with torch.no_grad(),query_subject(model,batch,subject),inserted_state(model,{}):
    for offset in [0,1]:
     view=offset_batch(batch,offset)
     with torch.autocast('cuda',dtype=torch.float16):z=model(view['videos'],view['texts'],view['targets'],iteration_rate=-1)
