@@ -5,26 +5,20 @@ ROOT=Path(__file__).resolve().parents[1];sys.path.insert(0,str(ROOT))
 from scripts.tastvg_paper48_common_v1 import BASE,read,write,sha,status,verify
 
 def archive(event):
- p=ROOT/'docs/RESEARCH_HISTORY.md';s=p.read_text();e='**Paper48执行事件：'+event+'。** 固定方法、hash名单和48小时预算不变，旧B1/外部基线/Pairwise/动态流不恢复。已完成与待执行分开；见[队列状态](</home/wwww/visual grounding/artifacts/tastvg_paper48_v1/QUEUE_STATUS.json>)。';s=s.replace('## 1. 当前状态：先读这一节\n','## 1. 当前状态：先读这一节\n\n'+e+'\n',1);s+='\n\n### Paper48 execution event\n\n'+e+'\n';p.write_text(s)
+ p=ROOT/'docs/RESEARCH_HISTORY.md';s=p.read_text();e='**Paper48执行事件：'+event+'。** 固定方法和hash名单不变；按最新授权无总截止，P5必做，旧B1/外部基线/Pairwise/动态流不恢复。已完成与待执行分开；见[队列状态](</home/wwww/visual grounding/artifacts/tastvg_paper48_v1/QUEUE_STATUS.json>)。';s=s.replace('## 1. 当前状态：先读这一节\n','## 1. 当前状态：先读这一节\n\n'+e+'\n',1);s+='\n\n### Paper48 execution event\n\n'+e+'\n';p.write_text(s)
  with (BASE/'ARCHIVE.log').open('a') as log:
   for cmd in ['check','snapshot','check']:subprocess.run([str(ROOT/'.conda/tubedetr/bin/python'),'-B','scripts/research_archive.py',cmd],cwd=ROOT,stdout=log,stderr=subprocess.STDOUT,check=True)
 
 def stage(name,script,args,receipt,python='.conda/tubedetr/bin/python',gpu=True):
  if (BASE/receipt).exists():return
- verify();now=time.time();b=read(BASE/'TIME_BUDGET.json');deadline=min(b['deadline_unix']-2*3600,b['start_unix']+41*3600) if gpu else b['deadline_unix']-3600
- assert now<deadline,'Paper48 reserved closure time reached; preserve incomplete phase'
- status(BASE/'QUEUE_STATUS.json',dict(status='running',stage=name,pid=os.getpid(),time=now,deadline_unix=b['deadline_unix']));archive(name+'开始，尚未完成')
+ verify();now=time.time()
+ status(BASE/'QUEUE_STATUS.json',dict(status='running',stage=name,pid=os.getpid(),time=now,deadline_unix=None,P5_required=True));archive(name+'开始，尚未完成')
  with (BASE/(name+'.log')).open('a') as log:
   env=os.environ.copy()
-  if name=='spatial':env['PYTHONPATH']=str(ROOT/'.runtime/sa2va_deps')+os.pathsep+env.get('PYTHONPATH','')
+  if name in ['spatial','P5_spatial']:env['PYTHONPATH']=str(ROOT/'.runtime/sa2va_deps')+os.pathsep+env.get('PYTHONPATH','')
   process=subprocess.Popen(['bash','scripts/with_local_cuda.sh',str(ROOT/python),'-B',script,*args],cwd=ROOT,env=env,stdin=subprocess.DEVNULL,stdout=log,stderr=subprocess.STDOUT,start_new_session=True)
-  status(BASE/'QUEUE_STATUS.json',dict(status='running',stage=name,pid=os.getpid(),worker_pid=process.pid,time=time.time(),deadline_unix=b['deadline_unix']))
-  try:code=process.wait(timeout=deadline-time.time())
-  except subprocess.TimeoutExpired:
-   os.killpg(process.pid,signal.SIGINT)
-   try:process.wait(timeout=30)
-   except subprocess.TimeoutExpired:os.killpg(process.pid,signal.SIGTERM);process.wait(timeout=30)
-   raise TimeoutError(name+' exhausted finite deadline; all partial outputs preserved, no partial scoring')
+  status(BASE/'QUEUE_STATUS.json',dict(status='running',stage=name,pid=os.getpid(),worker_pid=process.pid,time=time.time(),deadline_unix=None,P5_required=True))
+  code=process.wait()
  if code or not (BASE/receipt).exists():raise RuntimeError(f'{name} exit={code}, completion_receipt={(BASE/receipt).exists()}')
  archive(name+'完成，根核验与公开同步待执行')
 
@@ -41,7 +35,8 @@ def run():
   stage(panel+'_score','scripts/score_tastvg_paper48_v1.py',[panel],panel+'/COMPLETION.json',gpu=False)
  stage('P4_efficiency','scripts/run_tastvg_paper48_efficiency_v1.py',[],'P4/COMPLETION.json')
  stage('paper_readouts','scripts/report_tastvg_paper48_v1.py',[],'MANDATORY_COMPLETION.json',gpu=False)
- status(BASE/'QUEUE_STATUS.json',dict(status='mandatory_completed_pending_root_review',remaining='root verification/publication; P5 optional readiness and remaining deadline decision',pid=os.getpid(),time=time.time()));archive('P0-P4已实现阶段完成，根复核/公开同步/P5可选决定待执行；不称整个计划收尾')
+ stage('P5_hc2','scripts/continue_tastvg_paper48_p5_v1.py',[],'P5/COMPLETION.json')
+ status(BASE/'QUEUE_STATUS.json',dict(status='P0_P5_completed_pending_root_review',remaining='root verification and public synchronization of P0-P5',pid=os.getpid(),time=time.time()));archive('P0-P5执行完成，根复核/公开同步待执行；不称已公开收尾')
 if __name__=='__main__':
  try:run()
  except BaseException as e:

@@ -1,4 +1,4 @@
-"""Frozen Paper48 plans, strict deadline and immutable implementation verification."""
+"""Frozen Paper48 plans, user-authorized execution policy and immutable implementation verification."""
 import sys,time,shutil
 from pathlib import Path
 ROOT=Path(__file__).resolve().parents[1];sys.path.insert(0,str(ROOT))
@@ -8,7 +8,8 @@ FAMILIES=['frame_drop','frame_freeze','motion_blur','occlusion','exposure']
 CONDS=['clean']+[f'{f}_5' for f in FAMILIES]
 
 def budget(tick=None):
- assert time.time()<read(BASE/'TIME_BUDGET.json')['deadline_unix']-60,'Paper48 wall-clock deadline'
+ policy=read(BASE/'EXECUTION_POLICY.json')
+ assert policy['total_deadline_unix'] is None and policy['P5_required'] is True
  assert shutil.disk_usage(ROOT).free>8*2**30,'Paper48 free disk floor'
 
 def verify(panel=None):

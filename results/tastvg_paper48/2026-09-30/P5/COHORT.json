@@ -1,0 +1,30 @@
+{
+  "status": "locked_before_P5_predictions",
+  "sources": 128,
+  "queries": 128,
+  "arrivals": 768,
+  "conditions": [
+    "clean",
+    "frame_drop_5",
+    "frame_freeze_5",
+    "motion_blur_5",
+    "occlusion_5",
+    "exposure_5"
+  ],
+  "orders": 1,
+  "availability": 0.25,
+  "expert_pairs": 192,
+  "checkpoint": "checkpoints/TASTVG_HCSTVG2.pth",
+  "checkpoint_sha256": "47d8f15841cd57e7bbf5a10e8bf23b1054d23b753e0becbd38a07f3dd60d5036",
+  "selection": "source then one query by prespecified SHA256; one independently hashed order",
+  "pool_sources": 167,
+  "pool_queries": 512,
+  "pool": "local official HC-STVG-v2 validation confirm512",
+  "historical_project_exposure": true,
+  "GT_used_for_selection": false,
+  "annotation_intake": "annotation-bearing JSON deserialized only to extract whitelisted query/media metadata; no GT-based selection or model access",
+  "parameter_support": "same seed/rho=.05; center and resulting absolute radius from HC2 checkpoint, not Vid-trained center",
+  "resolution": 224,
+  "nominal_sample_frames": 64,
+  "time": 1790738252.1571705
+}

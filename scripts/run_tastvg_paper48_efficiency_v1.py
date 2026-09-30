@@ -56,19 +56,13 @@ def native_child(mode,index):
 
 
 def child(script_args,log,python='.conda/tubedetr/bin/python'):
- budget();left=read(BASE/'TIME_BUDGET.json')['deadline_unix']-time.time()-60;assert left>0
+ budget()
  start=time.perf_counter()
  with log.open('a') as out:
   env=os.environ.copy()
   if script_args[:2]==['expert','spatial']:env['PYTHONPATH']=str(ROOT/'.runtime/sa2va_deps')+os.pathsep+env.get('PYTHONPATH','')
   p=subprocess.Popen(['bash','scripts/with_local_cuda.sh',str(ROOT/python),'-B',__file__,*map(str,script_args)],cwd=ROOT,env=env,stdout=out,stderr=subprocess.STDOUT,start_new_session=True)
-  try:code=p.wait(timeout=min(600,left))
-  except subprocess.TimeoutExpired:
-   import signal
-   os.killpg(p.pid,signal.SIGINT)
-   try:p.wait(timeout=30)
-   except subprocess.TimeoutExpired:os.killpg(p.pid,signal.SIGTERM);p.wait(timeout=30)
-   raise TimeoutError('P4 child budget exhausted; keep all outputs')
+  code=p.wait()
  assert code==0,(script_args,code);return time.perf_counter()-start
 
 
