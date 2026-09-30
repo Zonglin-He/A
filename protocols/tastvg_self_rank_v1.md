@@ -1,0 +1,15 @@
+# Self-Rank spatial preference control
+
+Priority authorized by user on 2026-09-30: save/pause Paper48, complete this control, then resume Paper48 from receipts. The original 48-hour deadline remains unchanged.
+
+Question: on the fixed exposed development panel, does a student-derived spatial preference reproduce the future-transfer effect of the frozen specialist ranking?
+
+One new arm only. Reuse J0.1's 16 VidSTG sources (one query each), five fixed orders, clean plus five 5% transient corruptions: 480 arrivals, 30 independent stream resets. Same Vid-trained TA-STVG checkpoint, 1792 updated spatial parameters, nine current-state probes, detached candidate tubes, geometry coefficients, reverse KL, one SGD .005 step, persistent states, 25% scheduled expert positions and output-before-update semantics. Temporal UniversalVTG reranking remains unchanged. No tail subset, entropy scaling, extra loss, hyperparameter search or method promotion.
+
+At scheduled positions construct p=softmax(-D(current tube, each detached candidate)), rank detached p descending (zero-based average ranks, tolerance 1e-12), freeze q_self=softmax(-rank), and differentiate KL(p||q_self). The post-step loss uses this same frozen q, without reranking. No Sa2VA provider, reward, mask or spatial cache may be read during inference. The audit hook rejects spatial expert files. All scheduled positions attempt a finite-gradient update.
+
+Admission limitation declared before running: the frozen Expert-Rank and Random-Rank skip all-invalid Sa2VA masks (102 of 120 scheduled positions updated in the old panel). Fully spatial-teacher-free Self-Rank has no such validity veto, so it attempts all 120 positions. This is not a perfectly rank-only intervention; update counts are reported explicitly. No gate is secretly reconstructed from Sa2VA and no retrospective matched rerun is selected based on outcomes. Temporal specialist evidence still remains; 'teacher-free' applies only to the spatial branch.
+
+Reuse existing sealed Expert-Rank (J0.1 Final), Random-Rank (A1), Frozen and Fast-only scores; do not rerun or tune them. Lock hashes before inference. Verify 480 state links, scheduled accesses, detached q, independent geometry/probability/rank/KL, SGD coordinates, four full spatial reinsertions and two six-layer temporal reinsertions. Seal every prediction before reopening only these 16 already-exposed GT entries.
+
+Report source-macro corruption and clean means, each of five orders and sample SD (orders share sources and are not independent datasets), all-stream and nonexpert future deltas, paired Expert-minus-Self per order, and >5pp harms. Metrics here reproduce the original sampled-grid development definitions, not the new official dense Paper48 endpoint. This conceptual control is not an implementation or reproduction of OPSA, and does not establish necessity of external knowledge in general. Preserve failed attempts. Publish code, anonymous scalar results, audit and limitations; exclude media, captions, annotations, raw prediction/state tensors and weights.
