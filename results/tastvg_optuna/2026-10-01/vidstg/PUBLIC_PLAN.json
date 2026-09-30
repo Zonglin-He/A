@@ -1,0 +1,155 @@
+{
+  "dataset": "vidstg",
+  "paper48_panel": "P1",
+  "splits": {
+    "search": {
+      "sources": 32,
+      "orders": {
+        "order1": [
+          8,
+          15,
+          19,
+          27,
+          7,
+          1,
+          25,
+          3,
+          4,
+          6,
+          20,
+          17,
+          24,
+          2,
+          0,
+          9,
+          26,
+          22,
+          5,
+          13,
+          18,
+          10,
+          28,
+          31,
+          23,
+          21,
+          11,
+          12,
+          29,
+          16,
+          30,
+          14
+        ],
+        "order2": [
+          1,
+          18,
+          20,
+          22,
+          10,
+          17,
+          16,
+          13,
+          15,
+          31,
+          23,
+          28,
+          30,
+          21,
+          4,
+          26,
+          11,
+          14,
+          27,
+          0,
+          19,
+          12,
+          8,
+          24,
+          3,
+          5,
+          2,
+          7,
+          6,
+          9,
+          25,
+          29
+        ]
+      },
+      "total": 384
+    },
+    "confirm": {
+      "sources": 16,
+      "orders": {
+        "order1": [
+          36,
+          33,
+          43,
+          38,
+          46,
+          37,
+          34,
+          39,
+          35,
+          41,
+          45,
+          32,
+          44,
+          42,
+          40,
+          47
+        ],
+        "order2": [
+          34,
+          32,
+          45,
+          47,
+          37,
+          44,
+          38,
+          33,
+          41,
+          36,
+          40,
+          39,
+          43,
+          35,
+          46,
+          42
+        ]
+      },
+      "total": 192
+    }
+  },
+  "conditions": [
+    "clean",
+    "frame_drop_5",
+    "frame_freeze_5",
+    "motion_blur_5",
+    "occlusion_5",
+    "exposure_5"
+  ],
+  "availability": 25,
+  "space": {
+    "lr": [
+      1e-05,
+      0.5
+    ],
+    "rho": [
+      0.001,
+      0.5
+    ],
+    "teacher_temperature": [
+      0.05,
+      20.0
+    ]
+  },
+  "default": {
+    "lr": 0.005,
+    "rho": 0.05,
+    "teacher_temperature": 1.0
+  },
+  "trials": 48,
+  "selection": "source-hash first32 search next16 confirmation; no GT/outcome selection",
+  "historical_exposure": true,
+  "private_plan_sha256": "cb04494db451912a733817b6b303e4f5d65d83ab82c290d4809a83f04b176b21",
+  "sources_note": "Parent indices only; captions/media/annotation identifiers excluded."
+}
