@@ -1,0 +1,154 @@
+{
+  "dataset": "hc2",
+  "paper48_panel": "P5",
+  "splits": {
+    "search": {
+      "sources": 32,
+      "orders": {
+        "order1": [
+          2,
+          0,
+          25,
+          22,
+          27,
+          31,
+          11,
+          30,
+          26,
+          24,
+          19,
+          13,
+          14,
+          16,
+          17,
+          23,
+          29,
+          9,
+          5,
+          8,
+          28,
+          10,
+          21,
+          20,
+          1,
+          7,
+          12,
+          18,
+          3,
+          6,
+          15,
+          4
+        ],
+        "order2": [
+          16,
+          2,
+          27,
+          22,
+          23,
+          26,
+          15,
+          12,
+          5,
+          17,
+          11,
+          3,
+          1,
+          9,
+          14,
+          31,
+          20,
+          0,
+          24,
+          6,
+          4,
+          28,
+          30,
+          25,
+          29,
+          21,
+          19,
+          18,
+          8,
+          7,
+          10,
+          13
+        ]
+      },
+      "total": 384
+    },
+    "confirm": {
+      "sources": 16,
+      "orders": {
+        "order1": [
+          39,
+          33,
+          34,
+          45,
+          32,
+          38,
+          42,
+          35,
+          36,
+          44,
+          43,
+          46,
+          37,
+          40,
+          47,
+          41
+        ],
+        "order2": [
+          46,
+          40,
+          33,
+          32,
+          37,
+          41,
+          45,
+          47,
+          35,
+          34,
+          38,
+          42,
+          44,
+          43,
+          36,
+          39
+        ]
+      },
+      "total": 192
+    }
+  },
+  "conditions": [
+    "clean",
+    "frame_drop_5",
+    "frame_freeze_5",
+    "motion_blur_5",
+    "occlusion_5",
+    "exposure_5"
+  ],
+  "availability": 25,
+  "space": {
+    "lr": [
+      1e-05,
+      0.5
+    ],
+    "rho": [
+      0.001,
+      0.5
+    ],
+    "teacher_temperature": [
+      0.05,
+      20.0
+    ]
+  },
+  "default": {
+    "lr": 0.005,
+    "rho": 0.05,
+    "teacher_temperature": 1.0
+  },
+  "trials": 48,
+  "selection": "source-hash first32 search next16 confirmation; no GT/outcome selection",
+  "historical_exposure": true,
+  "private_plan_sha256": "40d427a1a500ed38ded848e8e9a0f2137d5b7ea688e2f4bd010b932343548e17"
+}
