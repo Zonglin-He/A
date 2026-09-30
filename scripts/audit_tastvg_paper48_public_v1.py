@@ -44,13 +44,16 @@ def check_summary(rows,expected):
 def run(root):
     root=Path(root);read=lambda n:json.loads((root/n).read_text())
     rows=read_rows(root/'SCALARS.csv');summary=read('SUMMARY.json');audit=read('AUDIT.json');checks=0
-    panel=root.name;ns,total,availability={'P1':(670,8040,25),'P2':(128,4096,25),'P3_b0':(64,768,0),'P3_b25':(64,768,25),'P3_b100':(64,768,100)}[panel]
+    panel=root.name;ns,total,availability={'P1':(670,8040,25),'P2':(128,4096,25),'P3_b0':(64,768,0),'P3_b25':(64,768,25),'P3_b100':(64,768,100),'P5':(128,768,25)}[panel]
     assert len(rows)==audit['state_links']==total
     assert len({(r['parent'],r['order'],r['condition']) for r in rows})==total
     assert len({r['parent'] for r in rows})==ns
     assert sum(r['updated'] for r in rows)==audit['SGD_updates']
     assert sum(r['expert_scheduled'] for r in rows)==audit['teacher_checks'];checks+=5
     metric_names=['m_tIoU','m_vIoU','vIoU@0.3','vIoU@0.5','sIoU_dense_GT','sIoU_sampled','vIoU_sampled']
+    if panel=='P5':
+        metric_names=metric_names[:5]
+        assert len({r['order'] for r in rows})==1 and len({r['condition'] for r in rows})==6
     for r in rows:
         assert r['expert_scheduled']==(availability==100 or (availability==25 and r['arrival']%4==0))
         assert r['quartile']==min(3,4*r['arrival']//ns)

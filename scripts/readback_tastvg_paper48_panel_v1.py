@@ -4,8 +4,12 @@ from pathlib import Path
 root=Path(__file__).resolve().parents[1];sys.path.insert(0,str(root))
 from scripts.tastvg_paper48_common_v1 import verify
 from scripts.decota_matrix_common_v1 import read,sha,load,write
-panel=sys.argv[1];assert panel in ['P1','P2','P3_b0','P3_b25','P3_b100']
-b=root/'artifacts/tastvg_paper48_v1'/panel;plan=verify(panel);bar=read(b/'PREDICTION_BARRIER.json');completion=read(b/'COMPLETION.json');exposure=read(b/'GT_EXPOSURE.json')
+panel=sys.argv[1];assert panel in ['P1','P2','P3_b0','P3_b25','P3_b100','P5']
+if panel=='P5':
+ from scripts.tastvg_paper48_p5_common_v1 import verify as verify_hc2
+ plan=verify_hc2()
+else:plan=verify(panel)
+b=root/'artifacts/tastvg_paper48_v1'/panel;bar=read(b/'PREDICTION_BARRIER.json');completion=read(b/'COMPLETION.json');exposure=read(b/'GT_EXPOSURE.json')
 assert completion['audit_sha256']==sha(b/'AUDIT.json') and read(b/'AUDIT.json')['status']=='pass'
 assert exposure['prediction_barrier_sha256']==sha(b/'PREDICTION_BARRIER.json') and bar['time']<exposure['time']<completion['time']
 assert bar['cells']==len(bar['files'])==plan['total'] and bar['GT_read'] is False and bar['model_restored'] is True

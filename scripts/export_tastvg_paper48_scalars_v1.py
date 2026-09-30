@@ -7,10 +7,11 @@ from vg_tta.tastvg_paper48_metrics_v1 import source_summary
 from scripts.audit_tastvg_paper48_public_v1 import run as audit
 
 def run(panel):
-    assert panel in ['P1','P2','P3_b0','P3_b25','P3_b100']
+    assert panel in ['P1','P2','P3_b0','P3_b25','P3_b100','P5']
     b=ROOT/'artifacts/tastvg_paper48_v1'/panel
     assert read(b/'COMPLETION.json')['status']=='completed' and read(b/'AUDIT.json')['status']=='pass'
     rows=read(b/'ROWS.json');metrics=['m_tIoU','m_vIoU','vIoU@0.3','vIoU@0.5','sIoU_dense_GT','sIoU_sampled','vIoU_sampled']
+    if panel=='P5':metrics=metrics[:5]  # HC2 reports official dense metrics only.
     fields=['parent','order','condition','arrival','expert_scheduled','quartile','query_type','updated','drift']+[a+'_'+k for a in ['Frozen','Ours','delta'] for k in metrics]
     assert all(set(r)==set(fields) for r in rows)
     with (b/'SCALARS.csv').open('w',newline='') as f:
