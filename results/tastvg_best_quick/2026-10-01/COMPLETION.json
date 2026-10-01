@@ -1,0 +1,161 @@
+{
+  "status": "completed_root_audited",
+  "datasets": {
+    "vidstg": {
+      "cohort": {
+        "dataset": "vidstg",
+        "conditions": [
+          "clean",
+          "frame_drop_5",
+          "frame_freeze_5",
+          "motion_blur_5",
+          "occlusion_5",
+          "exposure_5"
+        ],
+        "params": {
+          "lr": 0.033761698432507946,
+          "rho": 0.05,
+          "teacher_temperature": 0.34902548789596055,
+          "steps": 1,
+          "student_temperature": 1.0,
+          "direction_count": 4
+        },
+        "total": 8040,
+        "sources": 670,
+        "queries": 670,
+        "availability": 25,
+        "full_official_cohort": false,
+        "historically_exposed": true,
+        "GT_used_for_selection": false,
+        "selected_config_path": "artifacts/tastvg_extended_sensitivity_v3/vidstg/SELECTION.json",
+        "selected_config_sha256": "2af98b721e7f1febb022cb9cfdb94d6f848f23955db2f5db6033da627fab8e0d",
+        "matched_previous_panel": "P1",
+        "matched_previous_plan_sha256": "d6e936076b9870e6eedfe5eecf64638870f595a27cf94df9910e0a52a4afe099",
+        "same_video_repeated_within_stream": false,
+        "orders": 2,
+        "expert_pairs": 1752,
+        "tuning_overlap_sources": 80,
+        "outside_tuning_sources": 590
+      },
+      "root": {
+        "status": "pass",
+        "dataset": "vidstg",
+        "cells": 8040,
+        "scalar_checks": 130428,
+        "independent_parameter_scalar_checks": 3159296,
+        "max_previous_Frozen_error": 0.0,
+        "sealed_before_GT": true,
+        "GPU_initialized": false,
+        "compute": {
+          "inner_steps": 2016,
+          "spatial_candidate_replays": 18144,
+          "native_replays": 29710,
+          "backward_calls": 1763,
+          "spatial_provider_calls": 2016,
+          "temporal_provider_calls": 2016
+        },
+        "time": 1790868024.436304
+      },
+      "diagnosis_root": {
+        "status": "pass",
+        "cells": 8040,
+        "spatial_steps": 2016,
+        "scalar_checks": 22872,
+        "net_fixed_time_trace_checked": true,
+        "all_diagnostic_tables_reconstructed": true,
+        "model_or_GT_read": false,
+        "GPU_used": false,
+        "inputs": {
+          "COHORT.json": "8cc9c4f722f2873ca9c10577f36af44ca41e037329af0e6b395b61a54907952a",
+          "ROWS.json": "4cc278aef67a0f18a73786982b7bee090c9757bf8a774d5c0b843e252452e1b2",
+          "SPATIAL_STEP_ROWS.json": "b89661adc29c84bb530a9a47a1bb3e8232fc906df5653f773f8f645f51db79b8",
+          "PIPELINE_DIAGNOSIS.json": "00af7d13d656335138f89d2d9b5f21094ce019676789fb76616dc7fde7ba9ab5"
+        },
+        "script_sha256": "cf21f3134eedda66f908c87a73f6ac66b1ddfbbf36a7707dd0d3ef2292291c8e",
+        "time": 1790868236.1223123
+      }
+    },
+    "hc2": {
+      "cohort": {
+        "dataset": "hc2",
+        "conditions": [
+          "clean",
+          "frame_drop_5",
+          "frame_freeze_5",
+          "motion_blur_5",
+          "occlusion_5",
+          "exposure_5"
+        ],
+        "params": {
+          "lr": 0.006097133675874025,
+          "rho": 0.05,
+          "teacher_temperature": 1.0,
+          "steps": 8,
+          "student_temperature": 1.0,
+          "direction_count": 4
+        },
+        "total": 768,
+        "sources": 128,
+        "queries": 128,
+        "availability": 25,
+        "full_official_cohort": false,
+        "historically_exposed": true,
+        "GT_used_for_selection": false,
+        "selected_config_path": "artifacts/tastvg_extended_sensitivity_v3/hc2/SELECTION.json",
+        "selected_config_sha256": "7301ebebbac1950ef7be1771eb67b22c846035c9dab4646762124ce47cc242aa",
+        "matched_previous_panel": "P5",
+        "matched_previous_plan_sha256": "2e71a0ce3a26dd6aa0254fb61ef6a2724db66cc7657d7e032586dc8929c802c5",
+        "same_video_repeated_within_stream": false,
+        "orders": 1,
+        "expert_pairs": 192,
+        "tuning_overlap_sources": 80,
+        "outside_tuning_sources": 48
+      },
+      "root": {
+        "status": "pass",
+        "dataset": "hc2",
+        "cells": 768,
+        "scalar_checks": 19404,
+        "independent_parameter_scalar_checks": 2408448,
+        "max_previous_Frozen_error": 0.0,
+        "sealed_before_GT": true,
+        "GPU_initialized": false,
+        "compute": {
+          "inner_steps": 1368,
+          "spatial_candidate_replays": 12312,
+          "native_replays": 16944,
+          "backward_calls": 1344,
+          "spatial_provider_calls": 192,
+          "temporal_provider_calls": 192
+        },
+        "time": 1790868028.7998343
+      },
+      "diagnosis_root": {
+        "status": "pass",
+        "cells": 768,
+        "spatial_steps": 1368,
+        "scalar_checks": 6384,
+        "net_fixed_time_trace_checked": true,
+        "all_diagnostic_tables_reconstructed": true,
+        "model_or_GT_read": false,
+        "GPU_used": false,
+        "inputs": {
+          "COHORT.json": "b504882c6cdcea7cfa299c3722327f3d3b853b4b0df28aa1ac8614390702e066",
+          "ROWS.json": "3f0ad952791be9f3dab29d2ab46465b9e5a997fc3b4e32810c261097a3cccd91",
+          "SPATIAL_STEP_ROWS.json": "8ed916801ed97f4489dd12fdd7d529659e0b6f2c9ef93b2a7d05cb4233c6b69b",
+          "PIPELINE_DIAGNOSIS.json": "16a2b11aa59d6a71f064942d0431aee601a70b2a263a5c04e531aa67aeb361d1"
+        },
+        "script_sha256": "cf21f3134eedda66f908c87a73f6ac66b1ddfbbf36a7707dd0d3ef2292291c8e",
+        "time": 1790868236.184822
+      }
+    }
+  },
+  "cells": 8808,
+  "GLOBAL_PREDICTION_BARRIER_sha256": "7323dfc615fa5a584d602d3fea2746a8130dbc451e3530bda960ad75077b7365",
+  "all_predictions_sealed_before_GT": true,
+  "new_specialist_model_inference": 0,
+  "historically_exposed": true,
+  "official_all_query_evaluation": false,
+  "full_query_run": "preserved_paused",
+  "time": 1790868965.8543882
+}
