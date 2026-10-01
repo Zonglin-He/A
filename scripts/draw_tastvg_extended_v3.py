@@ -37,6 +37,22 @@ def run(folder):
     ax.axhline(0,color='#888',lw=.8);ax.set_xticks([0,1],['V2 anchor','V3 selected']);ax.set_xlim(-.5,1.5);ax.set_ylabel('Corruption ΔvIoU vs. Frozen (pp)');ax.set_title('Separate 16-source confirmation');ax.legend(frameon=False);fig.tight_layout()
     for ext in ['svg','pdf','png']:fig.savefig(b/f'confirmation.{ext}',dpi=170,facecolor='white')
     plt.close(fig)
+    # Focused coordinates are separate from the original one-factor screen.
+    for stage in sorted({t['stage'] for t in trials if t['stage']!='screen'}):
+        grid=read(b/f'{stage}_GRID.json');key=grid['parameter'];tt=sorted([t for t in trials if t['stage']==stage and t['state']=='COMPLETE'],key=lambda t:t['params'][key])
+        fig,axs=plt.subplots(1,2,figsize=(9.8,4.1));xs=[t['params'][key] for t in tt]
+        for sub,color,label in [('all','#315b8a','All arrivals'),('nonexpert','#b77932','Nonexpert arrivals')]:
+            mm=[paired[t['tag']]['corruption'][sub]['metrics']['delta_vs_anchor'] for t in tt];axs[0].plot(xs,[100*m['mean'] for m in mm],marker='o',color=color,label=label)
+            if sub=='all':axs[0].fill_between(xs,[100*m['ci95'][0] for m in mm],[100*m['ci95'][1] for m in mm],alpha=.12,color=color)
+        selected=read(b/f'{stage}_SELECTION.json')['params'][key]
+        axs[0].axvline(selected,ls=':',color='#555',label='Sealed selection');axs[0].axhline(0,color='#888',lw=.8);axs[0].set_ylabel('Corruption ΔvIoU vs. anchor (pp)');axs[0].legend(frameon=False,fontsize=8)
+        work=[read(b/t['result_dir']/'AUDIT.json') for t in tt];axs[1].plot(xs,[a['compute']['native_replays'] for a in work],marker='o',color='#487c62');axs[1].set_ylabel('Replays per 384-arrival trial')
+        for ax in axs:
+            ax.set_xlabel(key);ax.grid(axis='y',alpha=.2)
+            if key in ['rho','student_temperature']:ax.set_xscale('log')
+        axs[0].set_title('Focused coordinate: '+key,loc='left');axs[1].set_title('Exact downstream work',loc='left');fig.tight_layout()
+        for ext in ['svg','pdf','png']:fig.savefig(b/f'{stage}.{ext}',dpi=170,facecolor='white')
+        plt.close(fig)
     costs=[]
     for t in trials:
         if t['state']=='COMPLETE':
