@@ -15,7 +15,9 @@
 
 换学生甚至换 backbone，只要这些专家的输入和实现不变，独立专家输出仍可复用。若新方法让专家看学生 crop、预测区间或改写 prompt，专家输出就依赖学生，不能直接沿用旧缓存。
 
-UniversalVTG 的 CLIP 视觉特征可在共享同一观察的多 query 间复用，文本 embedding 可按 caption 复用，值得单独持久化。当前 worker 会计算它们，但未单独保存可复用 feature cache；这是后续接口建议，不是已完成的缓存。Sa2VA raw masks 也不在当前缓存里；未来若改 mask-to-box 或使用 mask reward，需额外保存原始 mask。
+UniversalVTG 当前使用 **PE-Core-L14-336（Perception Encoder）** 的视觉/文本特征。视觉特征可在共享同一观察的多 query 间复用，文本 embedding 可按 caption 复用，值得单独持久化。当前 worker 会计算它们，但未单独保存可复用 feature cache；这是后续接口建议，不是已完成的缓存。Sa2VA raw masks 也不在当前缓存里；未来若改 mask-to-box 或使用 mask reward，需额外保存原始 mask。
+
+2026-10-02 更正：本说明第一版误将当前 UniversalVTG 的特征提取器称为 CLIP。已逐项核对 `external/UniversalVTG/universal_vtg_inference.py` 中 `_ensure_video_encoder` / `_ensure_text_encoder` 和实际 expert worker，二者均绑定 PE-Core-L14-336。缓存可复用的依赖原则不变，具体特征的 provider 身份必须用 PE；没有更换 teacher 或重跑任何结果。
 
 ## H 的边界
 
