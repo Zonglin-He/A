@@ -1,0 +1,1854 @@
+{
+  "anchor": {
+    "score": {
+      "status": "completed",
+      "objective": -0.003069066322492946,
+      "objective_pp": -0.3069066322492946,
+      "params": {
+        "lr": 0.033761698432507946,
+        "rho": 0.05,
+        "teacher_temperature": 0.34902548789596055,
+        "steps": 1,
+        "student_temperature": 1.0,
+        "direction_count": 4
+      },
+      "split": "confirm",
+      "cells": 192,
+      "audit_sha256": "27562704d3274a8fc17b86163e41abea62424fa846ca12a8e7214ecdc5dd09bc",
+      "prediction_barrier_sha256": "9724b9566256b6ac12ac54e8d22d3aa71cc0651989836203401e74997d6abf58",
+      "time": 1790841108.1163568
+    },
+    "summary": {
+      "clean": {
+        "all": {
+          "sources": 16,
+          "cells": 32,
+          "metrics": {
+            "Frozen_m_vIoU": {
+              "mean": 0.33947284611551204,
+              "ci95": [
+                0.2105838839114024,
+                0.47391952650688474
+              ],
+              "order_values": [
+                0.33947284611551204,
+                0.33947284611551204
+              ],
+              "order_sample_SD": 0.0,
+              "harm_gt5pp_sources": null,
+              "harm_gt20pp_sources": null,
+              "harm_gt5pp_cells": null,
+              "harm_gt20pp_cells": null
+            },
+            "Frozen_m_tIoU": {
+              "mean": 0.5855301241884621,
+              "ci95": [
+                0.4128424044532457,
+                0.7523713329026558
+              ],
+              "order_values": [
+                0.5855301241884621,
+                0.5855301241884621
+              ],
+              "order_sample_SD": 0.0,
+              "harm_gt5pp_sources": null,
+              "harm_gt20pp_sources": null,
+              "harm_gt5pp_cells": null,
+              "harm_gt20pp_cells": null
+            },
+            "Frozen_sIoU_dense_GT": {
+              "mean": 0.5650164762854057,
+              "ci95": [
+                0.44299719248733427,
+                0.6785779837517276
+              ],
+              "order_values": [
+                0.5650164762854057,
+                0.5650164762854059
+              ],
+              "order_sample_SD": 1.1102230246251565e-16,
+              "harm_gt5pp_sources": null,
+              "harm_gt20pp_sources": null,
+              "harm_gt5pp_cells": null,
+              "harm_gt20pp_cells": null
+            },
+            "Ours_m_vIoU": {
+              "mean": 0.3376243770329399,
+              "ci95": [
+                0.2086145184669863,
+                0.4716090237532051
+              ],
+              "order_values": [
+                0.3422859173346616,
+                0.3329628367312183
+              ],
+              "order_sample_SD": 0.0065924135162435515,
+              "harm_gt5pp_sources": null,
+              "harm_gt20pp_sources": null,
+              "harm_gt5pp_cells": null,
+              "harm_gt20pp_cells": null
+            },
+            "Ours_m_tIoU": {
+              "mean": 0.5788278319958206,
+              "ci95": [
+                0.40834682798597416,
+                0.742318122620407
+              ],
+              "order_values": [
+                0.5840536708186668,
+                0.5736019931729741
+              ],
+              "order_sample_SD": 0.007390452138045129,
+              "harm_gt5pp_sources": null,
+              "harm_gt20pp_sources": null,
+              "harm_gt5pp_cells": null,
+              "harm_gt20pp_cells": null
+            },
+            "Ours_sIoU_dense_GT": {
+              "mean": 0.5670540780061895,
+              "ci95": [
+                0.44666509636613233,
+                0.6790177318601942
+              ],
+              "order_values": [
+                0.5696987543213401,
+                0.5644094016910388
+              ],
+              "order_sample_SD": 0.003740137112972937,
+              "harm_gt5pp_sources": null,
+              "harm_gt20pp_sources": null,
+              "harm_gt5pp_cells": null,
+              "harm_gt20pp_cells": null
+            },
+            "delta_m_vIoU": {
+              "mean": -0.0018484690825721077,
+              "ci95": [
+                -0.005315810488690498,
+                0.00160354085215495
+              ],
+              "order_values": [
+                0.0028130712191495526,
+                -0.006510009384293768
+              ],
+              "order_sample_SD": 0.006592413516243542,
+              "harm_gt5pp_sources": 0,
+              "harm_gt20pp_sources": 0,
+              "harm_gt5pp_cells": 1,
+              "harm_gt20pp_cells": 0
+            },
+            "delta_m_tIoU": {
+              "mean": -0.006702292192641545,
+              "ci95": [
+                -0.017040105140240472,
+                0.0018715560911344695
+              ],
+              "order_values": [
+                -0.0014764533697951797,
+                -0.011928131015487911
+              ],
+              "order_sample_SD": 0.00739045213804518,
+              "harm_gt5pp_sources": 0,
+              "harm_gt20pp_sources": 0,
+              "harm_gt5pp_cells": 3,
+              "harm_gt20pp_cells": 0
+            },
+            "delta_sIoU_dense_GT": {
+              "mean": 0.002037601720783636,
+              "ci95": [
+                -0.005744667200602127,
+                0.008739628579885368
+              ],
+              "order_values": [
+                0.004682278035934285,
+                -0.000607074594367013
+              ],
+              "order_sample_SD": 0.0037401371129729497,
+              "harm_gt5pp_sources": 0,
+              "harm_gt20pp_sources": 0,
+              "harm_gt5pp_cells": 0,
+              "harm_gt20pp_cells": 0
+            }
+          }
+        },
+        "nonexpert": {
+          "sources": 16,
+          "cells": 24,
+          "metrics": {
+            "Frozen_m_vIoU": {
+              "mean": 0.33947284611551204,
+              "ci95": [
+                0.2105838839114024,
+                0.47391952650688474
+              ],
+              "order_values": [
+                0.36827775815802793,
+                0.37112806441967156
+              ],
+              "order_sample_SD": 0.0020154708860666815,
+              "harm_gt5pp_sources": null,
+              "harm_gt20pp_sources": null,
+              "harm_gt5pp_cells": null,
+              "harm_gt20pp_cells": null
+            },
+            "Frozen_m_tIoU": {
+              "mean": 0.5855301241884621,
+              "ci95": [
+                0.4128424044532457,
+                0.7523713329026558
+              ],
+              "order_values": [
+                0.5979300976546972,
+                0.6169066185410409
+              ],
+              "order_sample_SD": 0.013418426602061795,
+              "harm_gt5pp_sources": null,
+              "harm_gt20pp_sources": null,
+              "harm_gt5pp_cells": null,
+              "harm_gt20pp_cells": null
+            },
+            "Frozen_sIoU_dense_GT": {
+              "mean": 0.5650164762854057,
+              "ci95": [
+                0.44299719248733427,
+                0.6785779837517276
+              ],
+              "order_values": [
+                0.602301514754704,
+                0.5622651507684922
+              ],
+              "order_sample_SD": 0.02830998446870324,
+              "harm_gt5pp_sources": null,
+              "harm_gt20pp_sources": null,
+              "harm_gt5pp_cells": null,
+              "harm_gt20pp_cells": null
+            },
+            "Ours_m_vIoU": {
+              "mean": 0.3421136590099015,
+              "ci95": [
+                0.21277114381292117,
+                0.4764969285372524
+              ],
+              "order_values": [
+                0.37091224972063525,
+                0.3705525172932578
+              ],
+              "order_sample_SD": 0.00025436923881130504,
+              "harm_gt5pp_sources": null,
+              "harm_gt20pp_sources": null,
+              "harm_gt5pp_cells": null,
+              "harm_gt20pp_cells": null
+            },
+            "Ours_m_tIoU": {
+              "mean": 0.5855301241884621,
+              "ci95": [
+                0.4128424044532457,
+                0.7523713329026558
+              ],
+              "order_values": [
+                0.5979300976546972,
+                0.6169066185410409
+              ],
+              "order_sample_SD": 0.013418426602061795,
+              "harm_gt5pp_sources": null,
+              "harm_gt20pp_sources": null,
+              "harm_gt5pp_cells": null,
+              "harm_gt20pp_cells": null
+            },
+            "Ours_sIoU_dense_GT": {
+              "mean": 0.5703047937860932,
+              "ci95": [
+                0.44897998174272,
+                0.6831921559335498
+              ],
+              "order_values": [
+                0.6077685923420184,
+                0.5612824590457268
+              ],
+              "order_sample_SD": 0.032870660084949536,
+              "harm_gt5pp_sources": null,
+              "harm_gt20pp_sources": null,
+              "harm_gt5pp_cells": null,
+              "harm_gt20pp_cells": null
+            },
+            "delta_m_vIoU": {
+              "mean": 0.0026408128943894126,
+              "ci95": [
+                -0.0019654790287146114,
+                0.008002032460494237
+              ],
+              "order_values": [
+                0.0026344915626073137,
+                -0.0005755471264138049
+              ],
+              "order_sample_SD": 0.002269840124878008,
+              "harm_gt5pp_sources": 0,
+              "harm_gt20pp_sources": 0,
+              "harm_gt5pp_cells": 0,
+              "harm_gt20pp_cells": 0
+            },
+            "delta_m_tIoU": {
+              "mean": 0.0,
+              "ci95": [
+                0.0,
+                0.0
+              ],
+              "order_values": [
+                0.0,
+                0.0
+              ],
+              "order_sample_SD": 0.0,
+              "harm_gt5pp_sources": 0,
+              "harm_gt20pp_sources": 0,
+              "harm_gt5pp_cells": 0,
+              "harm_gt20pp_cells": 0
+            },
+            "delta_sIoU_dense_GT": {
+              "mean": 0.005288317500687382,
+              "ci95": [
+                -0.003929032919805159,
+                0.014373365658724928
+              ],
+              "order_values": [
+                0.005467077587314492,
+                -0.0009826917227654152
+              ],
+              "order_sample_SD": 0.004560675616246382,
+              "harm_gt5pp_sources": 0,
+              "harm_gt20pp_sources": 0,
+              "harm_gt5pp_cells": 0,
+              "harm_gt20pp_cells": 0
+            }
+          }
+        },
+        "expert": {
+          "sources": 8,
+          "cells": 8,
+          "metrics": {
+            "Frozen_m_vIoU": {
+              "mean": 0.24878265059549892,
+              "ci95": [
+                0.11423416850717232,
+                0.39194851022773214
+              ],
+              "order_values": [
+                0.2530581099879644,
+                0.24450719120303346
+              ],
+              "order_sample_SD": 0.006046412658200104,
+              "harm_gt5pp_sources": null,
+              "harm_gt20pp_sources": null,
+              "harm_gt5pp_cells": null,
+              "harm_gt20pp_cells": null
+            },
+            "Frozen_m_tIoU": {
+              "mean": 0.5198654224602408,
+              "ci95": [
+                0.25861397372151296,
+                0.7792187564738847
+              ],
+              "order_values": [
+                0.5483302037897565,
+                0.49140064113072535
+              ],
+              "order_sample_SD": 0.04025527980618539,
+              "harm_gt5pp_sources": null,
+              "harm_gt20pp_sources": null,
+              "harm_gt5pp_cells": null,
+              "harm_gt20pp_cells": null
+            },
+            "Frozen_sIoU_dense_GT": {
+              "mean": 0.5132159068568292,
+              "ci95": [
+                0.37867043096381625,
+                0.6434418360883558
+              ],
+              "order_values": [
+                0.4531613608775114,
+                0.5732704528361469
+              ],
+              "order_sample_SD": 0.08492995340610975,
+              "harm_gt5pp_sources": null,
+              "harm_gt20pp_sources": null,
+              "harm_gt5pp_cells": null,
+              "harm_gt20pp_cells": null
+            },
+            "Ours_m_vIoU": {
+              "mean": 0.23830035761092022,
+              "ci95": [
+                0.10650642792805805,
+                0.38197782164361804
+              ],
+              "order_values": [
+                0.25640692017674066,
+                0.22019379504509978
+              ],
+              "order_sample_SD": 0.02560654634854025,
+              "harm_gt5pp_sources": null,
+              "harm_gt20pp_sources": null,
+              "harm_gt5pp_cells": null,
+              "harm_gt20pp_cells": null
+            },
+            "Ours_m_tIoU": {
+              "mean": 0.49305625368967465,
+              "ci95": [
+                0.2540119027855058,
+                0.7326239845318188
+              ],
+              "order_values": [
+                0.5424243903105758,
+                0.44368811706877365
+              ],
+              "order_sample_SD": 0.06981708835836614,
+              "harm_gt5pp_sources": null,
+              "harm_gt20pp_sources": null,
+              "harm_gt5pp_cells": null,
+              "harm_gt20pp_cells": null
+            },
+            "Ours_sIoU_dense_GT": {
+              "mean": 0.51463973494314,
+              "ci95": [
+                0.3865877327406241,
+                0.6412891695281994
+              ],
+              "order_values": [
+                0.45548924025930504,
+                0.5737902296269749
+              ],
+              "order_sample_SD": 0.08365143180295702,
+              "harm_gt5pp_sources": null,
+              "harm_gt20pp_sources": null,
+              "harm_gt5pp_cells": null,
+              "harm_gt20pp_cells": null
+            },
+            "delta_m_vIoU": {
+              "mean": -0.010482292984578694,
+              "ci95": [
+                -0.026175914035695767,
+                0.0038229059905902536
+              ],
+              "order_values": [
+                0.003348810188776268,
+                -0.024313396157933657
+              ],
+              "order_sample_SD": 0.01956013369034014,
+              "harm_gt5pp_sources": 1,
+              "harm_gt20pp_sources": 0,
+              "harm_gt5pp_cells": 1,
+              "harm_gt20pp_cells": 0
+            },
+            "delta_m_tIoU": {
+              "mean": -0.026809168770566185,
+              "ci95": [
+                -0.06204822060223381,
+                0.007453604854236182
+              ],
+              "order_values": [
+                -0.005905813479180719,
+                -0.047712524061951644
+              ],
+              "order_sample_SD": 0.02956180855218072,
+              "harm_gt5pp_sources": 3,
+              "harm_gt20pp_sources": 0,
+              "harm_gt5pp_cells": 3,
+              "harm_gt20pp_cells": 0
+            },
+            "delta_sIoU_dense_GT": {
+              "mean": 0.0014238280863109291,
+              "ci95": [
+                -0.0076662835728544855,
+                0.009698550774891505
+              ],
+              "order_values": [
+                0.002327879381793664,
+                0.0005197767908281942
+              ],
+              "order_sample_SD": 0.0012785216031526501,
+              "harm_gt5pp_sources": 0,
+              "harm_gt20pp_sources": 0,
+              "harm_gt5pp_cells": 0,
+              "harm_gt20pp_cells": 0
+            }
+          }
+        }
+      },
+      "corruption": {
+        "all": {
+          "sources": 16,
+          "cells": 160,
+          "metrics": {
+            "Frozen_m_vIoU": {
+              "mean": 0.329534087887151,
+              "ci95": [
+                0.20861532950165257,
+                0.4553231964638358
+              ],
+              "order_values": [
+                0.329534087887151,
+                0.32953408788715105
+              ],
+              "order_sample_SD": 5.551115123125783e-17,
+              "harm_gt5pp_sources": null,
+              "harm_gt20pp_sources": null,
+              "harm_gt5pp_cells": null,
+              "harm_gt20pp_cells": null
+            },
+            "Frozen_m_tIoU": {
+              "mean": 0.5700835507976484,
+              "ci95": [
+                0.40751067831005955,
+                0.7271410671793436
+              ],
+              "order_values": [
+                0.5700835507976484,
+                0.5700835507976484
+              ],
+              "order_sample_SD": 0.0,
+              "harm_gt5pp_sources": null,
+              "harm_gt20pp_sources": null,
+              "harm_gt5pp_cells": null,
+              "harm_gt20pp_cells": null
+            },
+            "Frozen_sIoU_dense_GT": {
+              "mean": 0.5551717113053926,
+              "ci95": [
+                0.4274969251617659,
+                0.674376548938959
+              ],
+              "order_values": [
+                0.5551717113053926,
+                0.5551717113053926
+              ],
+              "order_sample_SD": 0.0,
+              "harm_gt5pp_sources": null,
+              "harm_gt20pp_sources": null,
+              "harm_gt5pp_cells": null,
+              "harm_gt20pp_cells": null
+            },
+            "Ours_m_vIoU": {
+              "mean": 0.32646502156465806,
+              "ci95": [
+                0.20686248769231838,
+                0.45194903671700554
+              ],
+              "order_values": [
+                0.3295551448569006,
+                0.32337489827241556
+              ],
+              "order_sample_SD": 0.004370094269294354,
+              "harm_gt5pp_sources": null,
+              "harm_gt20pp_sources": null,
+              "harm_gt5pp_cells": null,
+              "harm_gt20pp_cells": null
+            },
+            "Ours_m_tIoU": {
+              "mean": 0.5629706637237211,
+              "ci95": [
+                0.40465057255550885,
+                0.7157802258003916
+              ],
+              "order_values": [
+                0.5673064678658745,
+                0.5586348595815679
+              ],
+              "order_sample_SD": 0.006131753021626623,
+              "harm_gt5pp_sources": null,
+              "harm_gt20pp_sources": null,
+              "harm_gt5pp_cells": null,
+              "harm_gt20pp_cells": null
+            },
+            "Ours_sIoU_dense_GT": {
+              "mean": 0.5563304808259066,
+              "ci95": [
+                0.43067950610713773,
+                0.6744031203770048
+              ],
+              "order_values": [
+                0.5580538489987587,
+                0.5546071126530545
+              ],
+              "order_sample_SD": 0.0024372106430095362,
+              "harm_gt5pp_sources": null,
+              "harm_gt20pp_sources": null,
+              "harm_gt5pp_cells": null,
+              "harm_gt20pp_cells": null
+            },
+            "delta_m_vIoU": {
+              "mean": -0.003069066322492946,
+              "ci95": [
+                -0.0061421131823074645,
+                -8.393606521399083e-05
+              ],
+              "order_values": [
+                2.105696974950659e-05,
+                -0.0061591896147354
+              ],
+              "order_sample_SD": 0.004370094269294277,
+              "harm_gt5pp_sources": 0,
+              "harm_gt20pp_sources": 0,
+              "harm_gt5pp_cells": 7,
+              "harm_gt20pp_cells": 0
+            },
+            "delta_m_tIoU": {
+              "mean": -0.007112887073927266,
+              "ci95": [
+                -0.016275660620030028,
+                0.0004388766948383756
+              ],
+              "order_values": [
+                -0.002777082931773987,
+                -0.011448691216080545
+              ],
+              "order_sample_SD": 0.0061317530216266096,
+              "harm_gt5pp_sources": 0,
+              "harm_gt20pp_sources": 0,
+              "harm_gt5pp_cells": 15,
+              "harm_gt20pp_cells": 0
+            },
+            "delta_sIoU_dense_GT": {
+              "mean": 0.0011587695205140622,
+              "ci95": [
+                -0.005798026336147518,
+                0.006958611959163607
+              ],
+              "order_values": [
+                0.002882137693366068,
+                -0.0005645986523379418
+              ],
+              "order_sample_SD": 0.0024372106430094456,
+              "harm_gt5pp_sources": 0,
+              "harm_gt20pp_sources": 0,
+              "harm_gt5pp_cells": 0,
+              "harm_gt20pp_cells": 0
+            }
+          }
+        },
+        "nonexpert": {
+          "sources": 16,
+          "cells": 120,
+          "metrics": {
+            "Frozen_m_vIoU": {
+              "mean": 0.329534087887151,
+              "ci95": [
+                0.20861532950165257,
+                0.4553231964638358
+              ],
+              "order_values": [
+                0.3632496855185553,
+                0.35797940836856984
+              ],
+              "order_sample_SD": 0.003726648711487229,
+              "harm_gt5pp_sources": null,
+              "harm_gt20pp_sources": null,
+              "harm_gt5pp_cells": null,
+              "harm_gt20pp_cells": null
+            },
+            "Frozen_m_tIoU": {
+              "mean": 0.5700835507976484,
+              "ci95": [
+                0.40751067831005955,
+                0.7271410671793436
+              ],
+              "order_values": [
+                0.5973306046558293,
+                0.5966028127161843
+              ],
+              "order_sample_SD": 0.0005146266158158943,
+              "harm_gt5pp_sources": null,
+              "harm_gt20pp_sources": null,
+              "harm_gt5pp_cells": null,
+              "harm_gt20pp_cells": null
+            },
+            "Frozen_sIoU_dense_GT": {
+              "mean": 0.5551717113053926,
+              "ci95": [
+                0.4274969251617659,
+                0.674376548938959
+              ],
+              "order_values": [
+                0.6009127699630677,
+                0.5491254163211633
+              ],
+              "order_sample_SD": 0.036619188939896484,
+              "harm_gt5pp_sources": null,
+              "harm_gt20pp_sources": null,
+              "harm_gt5pp_cells": null,
+              "harm_gt20pp_cells": null
+            },
+            "Ours_m_vIoU": {
+              "mean": 0.33211817717035985,
+              "ci95": [
+                0.2114304063432157,
+                0.45802664097295465
+              ],
+              "order_values": [
+                0.36609180432607896,
+                0.3574949026472736
+              ],
+              "order_sample_SD": 0.006078927474277267,
+              "harm_gt5pp_sources": null,
+              "harm_gt20pp_sources": null,
+              "harm_gt5pp_cells": null,
+              "harm_gt20pp_cells": null
+            },
+            "Ours_m_tIoU": {
+              "mean": 0.5700835507976484,
+              "ci95": [
+                0.40751067831005955,
+                0.7271410671793436
+              ],
+              "order_values": [
+                0.5973306046558293,
+                0.5966028127161843
+              ],
+              "order_sample_SD": 0.0005146266158158943,
+              "harm_gt5pp_sources": null,
+              "harm_gt20pp_sources": null,
+              "harm_gt5pp_cells": null,
+              "harm_gt20pp_cells": null
+            },
+            "Ours_sIoU_dense_GT": {
+              "mean": 0.5589185307661189,
+              "ci95": [
+                0.4327338102879821,
+                0.677267665830685
+              ],
+              "order_values": [
+                0.6047519431755475,
+                0.5481134652500895
+              ],
+              "order_sample_SD": 0.040049451817175896,
+              "harm_gt5pp_sources": null,
+              "harm_gt20pp_sources": null,
+              "harm_gt5pp_cells": null,
+              "harm_gt20pp_cells": null
+            },
+            "delta_m_vIoU": {
+              "mean": 0.0025840892832088395,
+              "ci95": [
+                -0.0016500060291510608,
+                0.007552675901236717
+              ],
+              "order_values": [
+                0.0028421188075236294,
+                -0.00048450572129617436
+              ],
+              "order_sample_SD": 0.0023522787627899867,
+              "harm_gt5pp_sources": 0,
+              "harm_gt20pp_sources": 0,
+              "harm_gt5pp_cells": 0,
+              "harm_gt20pp_cells": 0
+            },
+            "delta_m_tIoU": {
+              "mean": 0.0,
+              "ci95": [
+                0.0,
+                0.0
+              ],
+              "order_values": [
+                0.0,
+                0.0
+              ],
+              "order_sample_SD": 0.0,
+              "harm_gt5pp_sources": 0,
+              "harm_gt20pp_sources": 0,
+              "harm_gt5pp_cells": 0,
+              "harm_gt20pp_cells": 0
+            },
+            "delta_sIoU_dense_GT": {
+              "mean": 0.0037468194607263882,
+              "ci95": [
+                -0.0042420393358709955,
+                0.01072184931055117
+              ],
+              "order_values": [
+                0.003839173212479986,
+                -0.00101195107107394
+              ],
+              "order_sample_SD": 0.0034302628772797127,
+              "harm_gt5pp_sources": 0,
+              "harm_gt20pp_sources": 0,
+              "harm_gt5pp_cells": 0,
+              "harm_gt20pp_cells": 0
+            }
+          }
+        },
+        "expert": {
+          "sources": 8,
+          "cells": 40,
+          "metrics": {
+            "Frozen_m_vIoU": {
+              "mean": 0.2362927107179163,
+              "ci95": [
+                0.10471388472307042,
+                0.37051918025420727
+              ],
+              "order_values": [
+                0.22838729499293806,
+                0.2441981264428946
+              ],
+              "order_sample_SD": 0.011179946134461804,
+              "harm_gt5pp_sources": null,
+              "harm_gt20pp_sources": null,
+              "harm_gt5pp_cells": null,
+              "harm_gt20pp_cells": null
+            },
+            "Frozen_m_tIoU": {
+              "mean": 0.48943407713257336,
+              "ci95": [
+                0.22816340985429165,
+                0.7436036165184663
+              ],
+              "order_values": [
+                0.48834238922310574,
+                0.4905257650420409
+              ],
+              "order_sample_SD": 0.0015438798474477614,
+              "harm_gt5pp_sources": null,
+              "harm_gt20pp_sources": null,
+              "harm_gt5pp_cells": null,
+              "harm_gt20pp_cells": null
+            },
+            "Frozen_sIoU_dense_GT": {
+              "mean": 0.49562956579522366,
+              "ci95": [
+                0.337625574354293,
+                0.6377882740938933
+              ],
+              "order_values": [
+                0.4179485353323672,
+                0.5733105962580801
+              ],
+              "order_sample_SD": 0.10985756681968915,
+              "harm_gt5pp_sources": null,
+              "harm_gt20pp_sources": null,
+              "harm_gt5pp_cells": null,
+              "harm_gt20pp_cells": null
+            },
+            "Ours_m_vIoU": {
+              "mean": 0.22048002579860337,
+              "ci95": [
+                0.09653718329735882,
+                0.34593284758571435
+              ],
+              "order_values": [
+                0.21994516644936518,
+                0.22101488514784146
+              ],
+              "order_sample_SD": 0.0007564053456546212,
+              "harm_gt5pp_sources": null,
+              "harm_gt20pp_sources": null,
+              "harm_gt5pp_cells": null,
+              "harm_gt20pp_cells": null
+            },
+            "Ours_m_tIoU": {
+              "mean": 0.4609825288368643,
+              "ci95": [
+                0.22585405785104126,
+                0.6923066427987363
+              ],
+              "order_values": [
+                0.4772340574960099,
+                0.4447310001777186
+              ],
+              "order_sample_SD": 0.022983132239058807,
+              "harm_gt5pp_sources": null,
+              "harm_gt20pp_sources": null,
+              "harm_gt5pp_cells": null,
+              "harm_gt20pp_cells": null
+            },
+            "Ours_sIoU_dense_GT": {
+              "mean": 0.4960238106651708,
+              "ci95": [
+                0.3408396882757301,
+                0.638073489283608
+              ],
+              "order_values": [
+                0.4179595664683915,
+                0.5740880548619501
+              ],
+              "order_sample_SD": 0.1103995128794905,
+              "harm_gt5pp_sources": null,
+              "harm_gt20pp_sources": null,
+              "harm_gt5pp_cells": null,
+              "harm_gt20pp_cells": null
+            },
+            "delta_m_vIoU": {
+              "mean": -0.015812684919312966,
+              "ci95": [
+                -0.028793932168598928,
+                -0.004020871194477115
+              ],
+              "order_values": [
+                -0.00844212854357286,
+                -0.023183241295053076
+              ],
+              "order_sample_SD": 0.010423540788807147,
+              "harm_gt5pp_sources": 1,
+              "harm_gt20pp_sources": 0,
+              "harm_gt5pp_cells": 7,
+              "harm_gt20pp_cells": 0
+            },
+            "delta_m_tIoU": {
+              "mean": -0.028451548295709065,
+              "ci95": [
+                -0.05824806118119631,
+                0.00136932643855241
+              ],
+              "order_values": [
+                -0.011108331727095947,
+                -0.045794764864322185
+              ],
+              "order_sample_SD": 0.02452701208650644,
+              "harm_gt5pp_sources": 3,
+              "harm_gt20pp_sources": 0,
+              "harm_gt5pp_cells": 15,
+              "harm_gt20pp_cells": 0
+            },
+            "delta_sIoU_dense_GT": {
+              "mean": 0.00039424486994718284,
+              "ci95": [
+                -0.0075921950796662314,
+                0.007423018005206158
+              ],
+              "order_values": [
+                1.1031136024314269e-05,
+                0.0007774586038700515
+              ],
+              "order_sample_SD": 0.0005419460598013555,
+              "harm_gt5pp_sources": 0,
+              "harm_gt20pp_sources": 0,
+              "harm_gt5pp_cells": 0,
+              "harm_gt20pp_cells": 0
+            }
+          }
+        }
+      }
+    }
+  },
+  "selected": {
+    "score": {
+      "status": "completed",
+      "objective": -0.003069066322492946,
+      "objective_pp": -0.3069066322492946,
+      "params": {
+        "lr": 0.033761698432507946,
+        "rho": 0.05,
+        "teacher_temperature": 0.34902548789596055,
+        "steps": 1,
+        "student_temperature": 1.0,
+        "direction_count": 4
+      },
+      "split": "confirm",
+      "cells": 192,
+      "audit_sha256": "27562704d3274a8fc17b86163e41abea62424fa846ca12a8e7214ecdc5dd09bc",
+      "prediction_barrier_sha256": "9724b9566256b6ac12ac54e8d22d3aa71cc0651989836203401e74997d6abf58",
+      "time": 1790841108.1163568
+    },
+    "summary": {
+      "clean": {
+        "all": {
+          "sources": 16,
+          "cells": 32,
+          "metrics": {
+            "Frozen_m_vIoU": {
+              "mean": 0.33947284611551204,
+              "ci95": [
+                0.2105838839114024,
+                0.47391952650688474
+              ],
+              "order_values": [
+                0.33947284611551204,
+                0.33947284611551204
+              ],
+              "order_sample_SD": 0.0,
+              "harm_gt5pp_sources": null,
+              "harm_gt20pp_sources": null,
+              "harm_gt5pp_cells": null,
+              "harm_gt20pp_cells": null
+            },
+            "Frozen_m_tIoU": {
+              "mean": 0.5855301241884621,
+              "ci95": [
+                0.4128424044532457,
+                0.7523713329026558
+              ],
+              "order_values": [
+                0.5855301241884621,
+                0.5855301241884621
+              ],
+              "order_sample_SD": 0.0,
+              "harm_gt5pp_sources": null,
+              "harm_gt20pp_sources": null,
+              "harm_gt5pp_cells": null,
+              "harm_gt20pp_cells": null
+            },
+            "Frozen_sIoU_dense_GT": {
+              "mean": 0.5650164762854057,
+              "ci95": [
+                0.44299719248733427,
+                0.6785779837517276
+              ],
+              "order_values": [
+                0.5650164762854057,
+                0.5650164762854059
+              ],
+              "order_sample_SD": 1.1102230246251565e-16,
+              "harm_gt5pp_sources": null,
+              "harm_gt20pp_sources": null,
+              "harm_gt5pp_cells": null,
+              "harm_gt20pp_cells": null
+            },
+            "Ours_m_vIoU": {
+              "mean": 0.3376243770329399,
+              "ci95": [
+                0.2086145184669863,
+                0.4716090237532051
+              ],
+              "order_values": [
+                0.3422859173346616,
+                0.3329628367312183
+              ],
+              "order_sample_SD": 0.0065924135162435515,
+              "harm_gt5pp_sources": null,
+              "harm_gt20pp_sources": null,
+              "harm_gt5pp_cells": null,
+              "harm_gt20pp_cells": null
+            },
+            "Ours_m_tIoU": {
+              "mean": 0.5788278319958206,
+              "ci95": [
+                0.40834682798597416,
+                0.742318122620407
+              ],
+              "order_values": [
+                0.5840536708186668,
+                0.5736019931729741
+              ],
+              "order_sample_SD": 0.007390452138045129,
+              "harm_gt5pp_sources": null,
+              "harm_gt20pp_sources": null,
+              "harm_gt5pp_cells": null,
+              "harm_gt20pp_cells": null
+            },
+            "Ours_sIoU_dense_GT": {
+              "mean": 0.5670540780061895,
+              "ci95": [
+                0.44666509636613233,
+                0.6790177318601942
+              ],
+              "order_values": [
+                0.5696987543213401,
+                0.5644094016910388
+              ],
+              "order_sample_SD": 0.003740137112972937,
+              "harm_gt5pp_sources": null,
+              "harm_gt20pp_sources": null,
+              "harm_gt5pp_cells": null,
+              "harm_gt20pp_cells": null
+            },
+            "delta_m_vIoU": {
+              "mean": -0.0018484690825721077,
+              "ci95": [
+                -0.005315810488690498,
+                0.00160354085215495
+              ],
+              "order_values": [
+                0.0028130712191495526,
+                -0.006510009384293768
+              ],
+              "order_sample_SD": 0.006592413516243542,
+              "harm_gt5pp_sources": 0,
+              "harm_gt20pp_sources": 0,
+              "harm_gt5pp_cells": 1,
+              "harm_gt20pp_cells": 0
+            },
+            "delta_m_tIoU": {
+              "mean": -0.006702292192641545,
+              "ci95": [
+                -0.017040105140240472,
+                0.0018715560911344695
+              ],
+              "order_values": [
+                -0.0014764533697951797,
+                -0.011928131015487911
+              ],
+              "order_sample_SD": 0.00739045213804518,
+              "harm_gt5pp_sources": 0,
+              "harm_gt20pp_sources": 0,
+              "harm_gt5pp_cells": 3,
+              "harm_gt20pp_cells": 0
+            },
+            "delta_sIoU_dense_GT": {
+              "mean": 0.002037601720783636,
+              "ci95": [
+                -0.005744667200602127,
+                0.008739628579885368
+              ],
+              "order_values": [
+                0.004682278035934285,
+                -0.000607074594367013
+              ],
+              "order_sample_SD": 0.0037401371129729497,
+              "harm_gt5pp_sources": 0,
+              "harm_gt20pp_sources": 0,
+              "harm_gt5pp_cells": 0,
+              "harm_gt20pp_cells": 0
+            }
+          }
+        },
+        "nonexpert": {
+          "sources": 16,
+          "cells": 24,
+          "metrics": {
+            "Frozen_m_vIoU": {
+              "mean": 0.33947284611551204,
+              "ci95": [
+                0.2105838839114024,
+                0.47391952650688474
+              ],
+              "order_values": [
+                0.36827775815802793,
+                0.37112806441967156
+              ],
+              "order_sample_SD": 0.0020154708860666815,
+              "harm_gt5pp_sources": null,
+              "harm_gt20pp_sources": null,
+              "harm_gt5pp_cells": null,
+              "harm_gt20pp_cells": null
+            },
+            "Frozen_m_tIoU": {
+              "mean": 0.5855301241884621,
+              "ci95": [
+                0.4128424044532457,
+                0.7523713329026558
+              ],
+              "order_values": [
+                0.5979300976546972,
+                0.6169066185410409
+              ],
+              "order_sample_SD": 0.013418426602061795,
+              "harm_gt5pp_sources": null,
+              "harm_gt20pp_sources": null,
+              "harm_gt5pp_cells": null,
+              "harm_gt20pp_cells": null
+            },
+            "Frozen_sIoU_dense_GT": {
+              "mean": 0.5650164762854057,
+              "ci95": [
+                0.44299719248733427,
+                0.6785779837517276
+              ],
+              "order_values": [
+                0.602301514754704,
+                0.5622651507684922
+              ],
+              "order_sample_SD": 0.02830998446870324,
+              "harm_gt5pp_sources": null,
+              "harm_gt20pp_sources": null,
+              "harm_gt5pp_cells": null,
+              "harm_gt20pp_cells": null
+            },
+            "Ours_m_vIoU": {
+              "mean": 0.3421136590099015,
+              "ci95": [
+                0.21277114381292117,
+                0.4764969285372524
+              ],
+              "order_values": [
+                0.37091224972063525,
+                0.3705525172932578
+              ],
+              "order_sample_SD": 0.00025436923881130504,
+              "harm_gt5pp_sources": null,
+              "harm_gt20pp_sources": null,
+              "harm_gt5pp_cells": null,
+              "harm_gt20pp_cells": null
+            },
+            "Ours_m_tIoU": {
+              "mean": 0.5855301241884621,
+              "ci95": [
+                0.4128424044532457,
+                0.7523713329026558
+              ],
+              "order_values": [
+                0.5979300976546972,
+                0.6169066185410409
+              ],
+              "order_sample_SD": 0.013418426602061795,
+              "harm_gt5pp_sources": null,
+              "harm_gt20pp_sources": null,
+              "harm_gt5pp_cells": null,
+              "harm_gt20pp_cells": null
+            },
+            "Ours_sIoU_dense_GT": {
+              "mean": 0.5703047937860932,
+              "ci95": [
+                0.44897998174272,
+                0.6831921559335498
+              ],
+              "order_values": [
+                0.6077685923420184,
+                0.5612824590457268
+              ],
+              "order_sample_SD": 0.032870660084949536,
+              "harm_gt5pp_sources": null,
+              "harm_gt20pp_sources": null,
+              "harm_gt5pp_cells": null,
+              "harm_gt20pp_cells": null
+            },
+            "delta_m_vIoU": {
+              "mean": 0.0026408128943894126,
+              "ci95": [
+                -0.0019654790287146114,
+                0.008002032460494237
+              ],
+              "order_values": [
+                0.0026344915626073137,
+                -0.0005755471264138049
+              ],
+              "order_sample_SD": 0.002269840124878008,
+              "harm_gt5pp_sources": 0,
+              "harm_gt20pp_sources": 0,
+              "harm_gt5pp_cells": 0,
+              "harm_gt20pp_cells": 0
+            },
+            "delta_m_tIoU": {
+              "mean": 0.0,
+              "ci95": [
+                0.0,
+                0.0
+              ],
+              "order_values": [
+                0.0,
+                0.0
+              ],
+              "order_sample_SD": 0.0,
+              "harm_gt5pp_sources": 0,
+              "harm_gt20pp_sources": 0,
+              "harm_gt5pp_cells": 0,
+              "harm_gt20pp_cells": 0
+            },
+            "delta_sIoU_dense_GT": {
+              "mean": 0.005288317500687382,
+              "ci95": [
+                -0.003929032919805159,
+                0.014373365658724928
+              ],
+              "order_values": [
+                0.005467077587314492,
+                -0.0009826917227654152
+              ],
+              "order_sample_SD": 0.004560675616246382,
+              "harm_gt5pp_sources": 0,
+              "harm_gt20pp_sources": 0,
+              "harm_gt5pp_cells": 0,
+              "harm_gt20pp_cells": 0
+            }
+          }
+        },
+        "expert": {
+          "sources": 8,
+          "cells": 8,
+          "metrics": {
+            "Frozen_m_vIoU": {
+              "mean": 0.24878265059549892,
+              "ci95": [
+                0.11423416850717232,
+                0.39194851022773214
+              ],
+              "order_values": [
+                0.2530581099879644,
+                0.24450719120303346
+              ],
+              "order_sample_SD": 0.006046412658200104,
+              "harm_gt5pp_sources": null,
+              "harm_gt20pp_sources": null,
+              "harm_gt5pp_cells": null,
+              "harm_gt20pp_cells": null
+            },
+            "Frozen_m_tIoU": {
+              "mean": 0.5198654224602408,
+              "ci95": [
+                0.25861397372151296,
+                0.7792187564738847
+              ],
+              "order_values": [
+                0.5483302037897565,
+                0.49140064113072535
+              ],
+              "order_sample_SD": 0.04025527980618539,
+              "harm_gt5pp_sources": null,
+              "harm_gt20pp_sources": null,
+              "harm_gt5pp_cells": null,
+              "harm_gt20pp_cells": null
+            },
+            "Frozen_sIoU_dense_GT": {
+              "mean": 0.5132159068568292,
+              "ci95": [
+                0.37867043096381625,
+                0.6434418360883558
+              ],
+              "order_values": [
+                0.4531613608775114,
+                0.5732704528361469
+              ],
+              "order_sample_SD": 0.08492995340610975,
+              "harm_gt5pp_sources": null,
+              "harm_gt20pp_sources": null,
+              "harm_gt5pp_cells": null,
+              "harm_gt20pp_cells": null
+            },
+            "Ours_m_vIoU": {
+              "mean": 0.23830035761092022,
+              "ci95": [
+                0.10650642792805805,
+                0.38197782164361804
+              ],
+              "order_values": [
+                0.25640692017674066,
+                0.22019379504509978
+              ],
+              "order_sample_SD": 0.02560654634854025,
+              "harm_gt5pp_sources": null,
+              "harm_gt20pp_sources": null,
+              "harm_gt5pp_cells": null,
+              "harm_gt20pp_cells": null
+            },
+            "Ours_m_tIoU": {
+              "mean": 0.49305625368967465,
+              "ci95": [
+                0.2540119027855058,
+                0.7326239845318188
+              ],
+              "order_values": [
+                0.5424243903105758,
+                0.44368811706877365
+              ],
+              "order_sample_SD": 0.06981708835836614,
+              "harm_gt5pp_sources": null,
+              "harm_gt20pp_sources": null,
+              "harm_gt5pp_cells": null,
+              "harm_gt20pp_cells": null
+            },
+            "Ours_sIoU_dense_GT": {
+              "mean": 0.51463973494314,
+              "ci95": [
+                0.3865877327406241,
+                0.6412891695281994
+              ],
+              "order_values": [
+                0.45548924025930504,
+                0.5737902296269749
+              ],
+              "order_sample_SD": 0.08365143180295702,
+              "harm_gt5pp_sources": null,
+              "harm_gt20pp_sources": null,
+              "harm_gt5pp_cells": null,
+              "harm_gt20pp_cells": null
+            },
+            "delta_m_vIoU": {
+              "mean": -0.010482292984578694,
+              "ci95": [
+                -0.026175914035695767,
+                0.0038229059905902536
+              ],
+              "order_values": [
+                0.003348810188776268,
+                -0.024313396157933657
+              ],
+              "order_sample_SD": 0.01956013369034014,
+              "harm_gt5pp_sources": 1,
+              "harm_gt20pp_sources": 0,
+              "harm_gt5pp_cells": 1,
+              "harm_gt20pp_cells": 0
+            },
+            "delta_m_tIoU": {
+              "mean": -0.026809168770566185,
+              "ci95": [
+                -0.06204822060223381,
+                0.007453604854236182
+              ],
+              "order_values": [
+                -0.005905813479180719,
+                -0.047712524061951644
+              ],
+              "order_sample_SD": 0.02956180855218072,
+              "harm_gt5pp_sources": 3,
+              "harm_gt20pp_sources": 0,
+              "harm_gt5pp_cells": 3,
+              "harm_gt20pp_cells": 0
+            },
+            "delta_sIoU_dense_GT": {
+              "mean": 0.0014238280863109291,
+              "ci95": [
+                -0.0076662835728544855,
+                0.009698550774891505
+              ],
+              "order_values": [
+                0.002327879381793664,
+                0.0005197767908281942
+              ],
+              "order_sample_SD": 0.0012785216031526501,
+              "harm_gt5pp_sources": 0,
+              "harm_gt20pp_sources": 0,
+              "harm_gt5pp_cells": 0,
+              "harm_gt20pp_cells": 0
+            }
+          }
+        }
+      },
+      "corruption": {
+        "all": {
+          "sources": 16,
+          "cells": 160,
+          "metrics": {
+            "Frozen_m_vIoU": {
+              "mean": 0.329534087887151,
+              "ci95": [
+                0.20861532950165257,
+                0.4553231964638358
+              ],
+              "order_values": [
+                0.329534087887151,
+                0.32953408788715105
+              ],
+              "order_sample_SD": 5.551115123125783e-17,
+              "harm_gt5pp_sources": null,
+              "harm_gt20pp_sources": null,
+              "harm_gt5pp_cells": null,
+              "harm_gt20pp_cells": null
+            },
+            "Frozen_m_tIoU": {
+              "mean": 0.5700835507976484,
+              "ci95": [
+                0.40751067831005955,
+                0.7271410671793436
+              ],
+              "order_values": [
+                0.5700835507976484,
+                0.5700835507976484
+              ],
+              "order_sample_SD": 0.0,
+              "harm_gt5pp_sources": null,
+              "harm_gt20pp_sources": null,
+              "harm_gt5pp_cells": null,
+              "harm_gt20pp_cells": null
+            },
+            "Frozen_sIoU_dense_GT": {
+              "mean": 0.5551717113053926,
+              "ci95": [
+                0.4274969251617659,
+                0.674376548938959
+              ],
+              "order_values": [
+                0.5551717113053926,
+                0.5551717113053926
+              ],
+              "order_sample_SD": 0.0,
+              "harm_gt5pp_sources": null,
+              "harm_gt20pp_sources": null,
+              "harm_gt5pp_cells": null,
+              "harm_gt20pp_cells": null
+            },
+            "Ours_m_vIoU": {
+              "mean": 0.32646502156465806,
+              "ci95": [
+                0.20686248769231838,
+                0.45194903671700554
+              ],
+              "order_values": [
+                0.3295551448569006,
+                0.32337489827241556
+              ],
+              "order_sample_SD": 0.004370094269294354,
+              "harm_gt5pp_sources": null,
+              "harm_gt20pp_sources": null,
+              "harm_gt5pp_cells": null,
+              "harm_gt20pp_cells": null
+            },
+            "Ours_m_tIoU": {
+              "mean": 0.5629706637237211,
+              "ci95": [
+                0.40465057255550885,
+                0.7157802258003916
+              ],
+              "order_values": [
+                0.5673064678658745,
+                0.5586348595815679
+              ],
+              "order_sample_SD": 0.006131753021626623,
+              "harm_gt5pp_sources": null,
+              "harm_gt20pp_sources": null,
+              "harm_gt5pp_cells": null,
+              "harm_gt20pp_cells": null
+            },
+            "Ours_sIoU_dense_GT": {
+              "mean": 0.5563304808259066,
+              "ci95": [
+                0.43067950610713773,
+                0.6744031203770048
+              ],
+              "order_values": [
+                0.5580538489987587,
+                0.5546071126530545
+              ],
+              "order_sample_SD": 0.0024372106430095362,
+              "harm_gt5pp_sources": null,
+              "harm_gt20pp_sources": null,
+              "harm_gt5pp_cells": null,
+              "harm_gt20pp_cells": null
+            },
+            "delta_m_vIoU": {
+              "mean": -0.003069066322492946,
+              "ci95": [
+                -0.0061421131823074645,
+                -8.393606521399083e-05
+              ],
+              "order_values": [
+                2.105696974950659e-05,
+                -0.0061591896147354
+              ],
+              "order_sample_SD": 0.004370094269294277,
+              "harm_gt5pp_sources": 0,
+              "harm_gt20pp_sources": 0,
+              "harm_gt5pp_cells": 7,
+              "harm_gt20pp_cells": 0
+            },
+            "delta_m_tIoU": {
+              "mean": -0.007112887073927266,
+              "ci95": [
+                -0.016275660620030028,
+                0.0004388766948383756
+              ],
+              "order_values": [
+                -0.002777082931773987,
+                -0.011448691216080545
+              ],
+              "order_sample_SD": 0.0061317530216266096,
+              "harm_gt5pp_sources": 0,
+              "harm_gt20pp_sources": 0,
+              "harm_gt5pp_cells": 15,
+              "harm_gt20pp_cells": 0
+            },
+            "delta_sIoU_dense_GT": {
+              "mean": 0.0011587695205140622,
+              "ci95": [
+                -0.005798026336147518,
+                0.006958611959163607
+              ],
+              "order_values": [
+                0.002882137693366068,
+                -0.0005645986523379418
+              ],
+              "order_sample_SD": 0.0024372106430094456,
+              "harm_gt5pp_sources": 0,
+              "harm_gt20pp_sources": 0,
+              "harm_gt5pp_cells": 0,
+              "harm_gt20pp_cells": 0
+            }
+          }
+        },
+        "nonexpert": {
+          "sources": 16,
+          "cells": 120,
+          "metrics": {
+            "Frozen_m_vIoU": {
+              "mean": 0.329534087887151,
+              "ci95": [
+                0.20861532950165257,
+                0.4553231964638358
+              ],
+              "order_values": [
+                0.3632496855185553,
+                0.35797940836856984
+              ],
+              "order_sample_SD": 0.003726648711487229,
+              "harm_gt5pp_sources": null,
+              "harm_gt20pp_sources": null,
+              "harm_gt5pp_cells": null,
+              "harm_gt20pp_cells": null
+            },
+            "Frozen_m_tIoU": {
+              "mean": 0.5700835507976484,
+              "ci95": [
+                0.40751067831005955,
+                0.7271410671793436
+              ],
+              "order_values": [
+                0.5973306046558293,
+                0.5966028127161843
+              ],
+              "order_sample_SD": 0.0005146266158158943,
+              "harm_gt5pp_sources": null,
+              "harm_gt20pp_sources": null,
+              "harm_gt5pp_cells": null,
+              "harm_gt20pp_cells": null
+            },
+            "Frozen_sIoU_dense_GT": {
+              "mean": 0.5551717113053926,
+              "ci95": [
+                0.4274969251617659,
+                0.674376548938959
+              ],
+              "order_values": [
+                0.6009127699630677,
+                0.5491254163211633
+              ],
+              "order_sample_SD": 0.036619188939896484,
+              "harm_gt5pp_sources": null,
+              "harm_gt20pp_sources": null,
+              "harm_gt5pp_cells": null,
+              "harm_gt20pp_cells": null
+            },
+            "Ours_m_vIoU": {
+              "mean": 0.33211817717035985,
+              "ci95": [
+                0.2114304063432157,
+                0.45802664097295465
+              ],
+              "order_values": [
+                0.36609180432607896,
+                0.3574949026472736
+              ],
+              "order_sample_SD": 0.006078927474277267,
+              "harm_gt5pp_sources": null,
+              "harm_gt20pp_sources": null,
+              "harm_gt5pp_cells": null,
+              "harm_gt20pp_cells": null
+            },
+            "Ours_m_tIoU": {
+              "mean": 0.5700835507976484,
+              "ci95": [
+                0.40751067831005955,
+                0.7271410671793436
+              ],
+              "order_values": [
+                0.5973306046558293,
+                0.5966028127161843
+              ],
+              "order_sample_SD": 0.0005146266158158943,
+              "harm_gt5pp_sources": null,
+              "harm_gt20pp_sources": null,
+              "harm_gt5pp_cells": null,
+              "harm_gt20pp_cells": null
+            },
+            "Ours_sIoU_dense_GT": {
+              "mean": 0.5589185307661189,
+              "ci95": [
+                0.4327338102879821,
+                0.677267665830685
+              ],
+              "order_values": [
+                0.6047519431755475,
+                0.5481134652500895
+              ],
+              "order_sample_SD": 0.040049451817175896,
+              "harm_gt5pp_sources": null,
+              "harm_gt20pp_sources": null,
+              "harm_gt5pp_cells": null,
+              "harm_gt20pp_cells": null
+            },
+            "delta_m_vIoU": {
+              "mean": 0.0025840892832088395,
+              "ci95": [
+                -0.0016500060291510608,
+                0.007552675901236717
+              ],
+              "order_values": [
+                0.0028421188075236294,
+                -0.00048450572129617436
+              ],
+              "order_sample_SD": 0.0023522787627899867,
+              "harm_gt5pp_sources": 0,
+              "harm_gt20pp_sources": 0,
+              "harm_gt5pp_cells": 0,
+              "harm_gt20pp_cells": 0
+            },
+            "delta_m_tIoU": {
+              "mean": 0.0,
+              "ci95": [
+                0.0,
+                0.0
+              ],
+              "order_values": [
+                0.0,
+                0.0
+              ],
+              "order_sample_SD": 0.0,
+              "harm_gt5pp_sources": 0,
+              "harm_gt20pp_sources": 0,
+              "harm_gt5pp_cells": 0,
+              "harm_gt20pp_cells": 0
+            },
+            "delta_sIoU_dense_GT": {
+              "mean": 0.0037468194607263882,
+              "ci95": [
+                -0.0042420393358709955,
+                0.01072184931055117
+              ],
+              "order_values": [
+                0.003839173212479986,
+                -0.00101195107107394
+              ],
+              "order_sample_SD": 0.0034302628772797127,
+              "harm_gt5pp_sources": 0,
+              "harm_gt20pp_sources": 0,
+              "harm_gt5pp_cells": 0,
+              "harm_gt20pp_cells": 0
+            }
+          }
+        },
+        "expert": {
+          "sources": 8,
+          "cells": 40,
+          "metrics": {
+            "Frozen_m_vIoU": {
+              "mean": 0.2362927107179163,
+              "ci95": [
+                0.10471388472307042,
+                0.37051918025420727
+              ],
+              "order_values": [
+                0.22838729499293806,
+                0.2441981264428946
+              ],
+              "order_sample_SD": 0.011179946134461804,
+              "harm_gt5pp_sources": null,
+              "harm_gt20pp_sources": null,
+              "harm_gt5pp_cells": null,
+              "harm_gt20pp_cells": null
+            },
+            "Frozen_m_tIoU": {
+              "mean": 0.48943407713257336,
+              "ci95": [
+                0.22816340985429165,
+                0.7436036165184663
+              ],
+              "order_values": [
+                0.48834238922310574,
+                0.4905257650420409
+              ],
+              "order_sample_SD": 0.0015438798474477614,
+              "harm_gt5pp_sources": null,
+              "harm_gt20pp_sources": null,
+              "harm_gt5pp_cells": null,
+              "harm_gt20pp_cells": null
+            },
+            "Frozen_sIoU_dense_GT": {
+              "mean": 0.49562956579522366,
+              "ci95": [
+                0.337625574354293,
+                0.6377882740938933
+              ],
+              "order_values": [
+                0.4179485353323672,
+                0.5733105962580801
+              ],
+              "order_sample_SD": 0.10985756681968915,
+              "harm_gt5pp_sources": null,
+              "harm_gt20pp_sources": null,
+              "harm_gt5pp_cells": null,
+              "harm_gt20pp_cells": null
+            },
+            "Ours_m_vIoU": {
+              "mean": 0.22048002579860337,
+              "ci95": [
+                0.09653718329735882,
+                0.34593284758571435
+              ],
+              "order_values": [
+                0.21994516644936518,
+                0.22101488514784146
+              ],
+              "order_sample_SD": 0.0007564053456546212,
+              "harm_gt5pp_sources": null,
+              "harm_gt20pp_sources": null,
+              "harm_gt5pp_cells": null,
+              "harm_gt20pp_cells": null
+            },
+            "Ours_m_tIoU": {
+              "mean": 0.4609825288368643,
+              "ci95": [
+                0.22585405785104126,
+                0.6923066427987363
+              ],
+              "order_values": [
+                0.4772340574960099,
+                0.4447310001777186
+              ],
+              "order_sample_SD": 0.022983132239058807,
+              "harm_gt5pp_sources": null,
+              "harm_gt20pp_sources": null,
+              "harm_gt5pp_cells": null,
+              "harm_gt20pp_cells": null
+            },
+            "Ours_sIoU_dense_GT": {
+              "mean": 0.4960238106651708,
+              "ci95": [
+                0.3408396882757301,
+                0.638073489283608
+              ],
+              "order_values": [
+                0.4179595664683915,
+                0.5740880548619501
+              ],
+              "order_sample_SD": 0.1103995128794905,
+              "harm_gt5pp_sources": null,
+              "harm_gt20pp_sources": null,
+              "harm_gt5pp_cells": null,
+              "harm_gt20pp_cells": null
+            },
+            "delta_m_vIoU": {
+              "mean": -0.015812684919312966,
+              "ci95": [
+                -0.028793932168598928,
+                -0.004020871194477115
+              ],
+              "order_values": [
+                -0.00844212854357286,
+                -0.023183241295053076
+              ],
+              "order_sample_SD": 0.010423540788807147,
+              "harm_gt5pp_sources": 1,
+              "harm_gt20pp_sources": 0,
+              "harm_gt5pp_cells": 7,
+              "harm_gt20pp_cells": 0
+            },
+            "delta_m_tIoU": {
+              "mean": -0.028451548295709065,
+              "ci95": [
+                -0.05824806118119631,
+                0.00136932643855241
+              ],
+              "order_values": [
+                -0.011108331727095947,
+                -0.045794764864322185
+              ],
+              "order_sample_SD": 0.02452701208650644,
+              "harm_gt5pp_sources": 3,
+              "harm_gt20pp_sources": 0,
+              "harm_gt5pp_cells": 15,
+              "harm_gt20pp_cells": 0
+            },
+            "delta_sIoU_dense_GT": {
+              "mean": 0.00039424486994718284,
+              "ci95": [
+                -0.0075921950796662314,
+                0.007423018005206158
+              ],
+              "order_values": [
+                1.1031136024314269e-05,
+                0.0007774586038700515
+              ],
+              "order_sample_SD": 0.0005419460598013555,
+              "harm_gt5pp_sources": 0,
+              "harm_gt20pp_sources": 0,
+              "harm_gt5pp_cells": 0,
+              "harm_gt20pp_cells": 0
+            }
+          }
+        }
+      }
+    }
+  }
+}
