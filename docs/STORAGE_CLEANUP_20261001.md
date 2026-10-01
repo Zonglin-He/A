@@ -1,0 +1,11 @@
+# Unused storage retirement — 2026-10-01
+
+The user authorized deletion of unused model weights and other unused disk assets while the locked TA-STVG quick comparison continued. Actual net freed space was **53.812 GiB**; available space rose from approximately30 GiB to approximately84 GiB.
+
+Retired official weights were TaRO-8B(16.330 GiB), STVG-R1-7B(15.445 GiB), LLaVA-ST-Qwen2-7B(15.080 GiB), and the old LLaVA SigLIP constructor dependency(3.271 GiB). These belonged to paused historical teacher routes and are not dependencies of the active TA-STVG/Sa2VA/UniversalVTG pipeline or deployed DeCoTA method. Official repository/revision/file SHA identities and download provenance are preserved in `RETIRED_OFFICIAL_WEIGHTS.json`. Their configurations, tokenizers, indexes, code, and original verified download receipts remain locally available; exact old teacher replay requires restoring these files first.
+
+Additional deletion covered inactive download fragments, redundant Sa2VA partial shards beside their qualified complete files, already-extracted installer archives, an obsolete NVIDIA570 installer(actual running driver580.178.04), and five inactive older VS Code remote-server installations. Version1.124.2 and all editor settings/extensions/user data were retained. Only original installers were removed; their extracted runtime libraries/binaries remain present.
+
+All scientific predictions, negative results, experiment logs, trained research checkpoints, datasets/media/annotations, installed environments, current specialist/student weights, and PTD Fig1 weights were retained. The70 active runtime pins and frozen metadata matched before/after cleanup. All selected files were checked for unchanged stat/inode identity immediately before unlinking; no selected file was open or mapped by any accessible process. Some system processes were permission limited, so this is not a claim of complete system observability. No inference restart, scoring, new experiment, or scientific configuration change occurred.
+
+See `SUMMARY.json` for measured allocation/free-space totals. Detailed local manifests and execution receipts are recorded in `artifacts/storage_cleanup_20261001_models` and `artifacts/storage_cleanup_20261001_other`; no model content or private research media was exported.
