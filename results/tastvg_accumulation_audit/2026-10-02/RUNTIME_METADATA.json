@@ -1,0 +1,63 @@
+{
+  "launch": {
+    "worker_pid": 2698807,
+    "command": [
+      "bash",
+      "scripts/with_local_cuda.sh",
+      ".conda/tubedetr/bin/python",
+      "-B",
+      "scripts/run_tastvg_accumulation_v1.py"
+    ],
+    "time": 1790940193.795754,
+    "GT_read": false
+  },
+  "preparation": {
+    "status": "pass",
+    "state_chains": 768,
+    "exact_prefix_reconstructions": 768,
+    "targets": 576,
+    "streams": 24,
+    "origin_sha": "c1f2fb753c043a1879dccdfc44fafcaf733782e88aaa7fa8b1910e8972db67d1",
+    "GT_read": false,
+    "time": 1790940147.781764
+  },
+  "prediction_barrier": {
+    "status": "sealed",
+    "targets": 576,
+    "source_all_last_predictions": 1728,
+    "cohort_sha256": "e4a7f674b8b2a7047c3ec86fb3472df3112726e2c682f3b6845c832725c935f1",
+    "GT_read": false,
+    "time": 1790940810.1511695
+  },
+  "runtime_pins": {
+    "protocols/tastvg_accumulation_audit_v1.md": "a69db1a6f8889aaee25c0a9799f1c9c26918819cf9aa80e1778af8eae653dd98",
+    "scripts/tastvg_accumulation_common_v1.py": "321841c482e76097129cbf782e6d6f9942e6c88b9f64a8f2cf09a9118ad8b868",
+    "scripts/prepare_tastvg_accumulation_v1.py": "2ae35fb0cd4629243b014c0739e8c4ce2048448175315a462b0105d68badfb94",
+    "scripts/run_tastvg_accumulation_v1.py": "83031a9aaa8574e76f1027059169348d90840f816f9da5c18296955695145c31",
+    "vg_tta/tastvg_saved_write_accumulation_v1.py": "2f34c12d27149dde1c65d6ea35a7645a8e0fbf1aefa1cebe31faf459b42e59fb",
+    "vg_tta/tastvg_native_spatial_rollout_s05_v1.py": "5ece0dd68491dc26625df94346a87d3466163af678a05b29e74fb98e3b9db2b5",
+    "vg_tta/tastvg_causal_round2_v1.py": "1c7f9333bea8919b1261a015c7d54acb2d6a4ba956e773e1114955171ec15916",
+    "vg_tta/tastvg_evidence_capture_v1.py": "9d9cbfa2fe649c52dafc84b689723716a2e886566bb94fef1d8990ef83c4fa83",
+    "scripts/decota_matrix_common_v1.py": "3ea962a47308ac9a94c67701ffff8fe2603c678f1b762cabf625844a60a66d18",
+    "scripts/run_tastvg_evidence_vulnerability_v1.py": "64730e878880e205fb56f0b70d559fd296806b59ab9404629ce228a9413ba8e0",
+    "scripts/run_tastvg_evidence_vulnerability_v2.py": "1bd0c5ad082cd845124f9c6984b7ec93c848de0dc686600baa68702255b3c971",
+    "scripts/run_tastvg_paper48_p5_online_v1.py": "063287472ccc93e7d115c7957a21b4a7fc5f77de50d5e8bff8bea9879a55842d",
+    "scripts/run_spatial_regression_alignment_v1.py": "d711f2a966dcf2f6eaed7c9d5a109b5b7614d3c2d767207b5516cef1222c7e37",
+    "methods/decota_final_simplified_v1/backbone.py": "7c853bd12bc1aac32a44bca64ae9ccf95b7a9edfaa4a6cfce5305a25c0fe0eda",
+    "methods/decota_final_simplified_v1/tensors.py": "d964125abb7934d6c9385f6facd1cab9707db948e55e595c9b489fc5b909a40f"
+  },
+  "scoring_pins": {
+    "scripts/score_tastvg_accumulation_v1.py": "4df14c02efcd82b280048156865b2b27553f7540cea48c47ffab3231de9cf4dd",
+    "scripts/score_tastvg_best_quick_v1.py": "d108a6da0066a2e273f5ad8793b58875994b6d3062cf5739d711042496f329bb",
+    "vg_tta/tastvg_paper48_hc2_metrics_v1.py": "20229e610a2c4e5ccd884c8c2fb7c661334718b82a0f165f4d976a7c6219136a",
+    "vg_tta/tastvg_paper_readouts_v1.py": "c23f874b2cb20b4957ed0100b27f8f4cf53cde59aa42de5a944cdff9e8ed59ac"
+  },
+  "GT_exposure": {
+    "time": 1790940940.813571,
+    "after_global_prediction_barrier": true,
+    "historical_exposure": true,
+    "model_GT_input": false,
+    "scope": "offline frozen-delta diagnosis; no reselection or promotion"
+  },
+  "checkpoint_state_sha256": "ee72f0d9a50c573a115bd7cfc2329c860745a1cf3dab83af1be7787c11b3c218"
+}

@@ -1,0 +1,91 @@
+{
+  "status": "interface_unavailable_on_inspected_existing_encoders",
+  "checks": [
+    {
+      "path": "external/UniversalVTG/feature_extraction/extract_visual_features.py",
+      "sha256": "59b91414ed4934359cca82f73229d02ccdde921c037e5c4b358b09d4b597f18a",
+      "start_line": 87,
+      "anchor_line": 101,
+      "anchor": "image_features = self.model.encode_image(pixel_values)",
+      "conclusion": "The active extractor calls image encoding independently for each batch frame."
+    },
+    {
+      "path": "external/UniversalVTG/perception_models/core/vision_encoder/pe.py",
+      "sha256": "36b62204c4cf12a709946facce2df8980e0880bf06deb6e49a2aa288158c3d53",
+      "start_line": 499,
+      "anchor_line": 506,
+      "anchor": "batch, _, h, w = x.shape",
+      "conclusion": "Spatial patch tokens have a 4-D image input; the batch dimension is not a temporal attention axis."
+    },
+    {
+      "path": "external/UniversalVTG/perception_models/core/vision_encoder/pe.py",
+      "sha256": "36b62204c4cf12a709946facce2df8980e0880bf06deb6e49a2aa288158c3d53",
+      "start_line": 535,
+      "anchor_line": 537,
+      "anchor": "x = self._pool(x)",
+      "conclusion": "The visual pool precedes the shared projection returned by the active encoder."
+    },
+    {
+      "path": "external/UniversalVTG/perception_models/core/vision_encoder/pe.py",
+      "sha256": "36b62204c4cf12a709946facce2df8980e0880bf06deb6e49a2aa288158c3d53",
+      "start_line": 717,
+      "anchor_line": 722,
+      "anchor": "video_feats = video_feats.mean(dim=1)",
+      "conclusion": "The video convenience method independently encodes b*n frames and averages them; it does not contextualize spatial tokens in time."
+    },
+    {
+      "path": "external/UniversalVTG/universal_vtg_inference.py",
+      "sha256": "aecd2580bece67be5d58ea161bc863263fea62a2e40f83ccd200bc42cfdc4dbc",
+      "start_line": 528,
+      "anchor_line": 582,
+      "anchor": "features_dt = features.T.contiguous().float()",
+      "conclusion": "The active UniversalVTG video input contract is (feature_dim, T), with spatial coordinates already pooled away."
+    },
+    {
+      "path": "external/UniversalVTG/libs/modeling/model.py",
+      "sha256": "3e0c27e204dd3bb9549d0c5f9415f0685797e3da9677d7c8464ea488e4cdca55",
+      "start_line": 166,
+      "anchor_line": 179,
+      "anchor": "vid, vid_masks = self.project_video(vid, vid_masks)",
+      "conclusion": "Its temporal/fused hidden states are (batch, channels, time), without the spatial patch axis needed to distinguish candidate tube boxes."
+    },
+    {
+      "path": "external/TA-STVG/models/vidswin/video_swin_transformer.py",
+      "sha256": "703a4257a0567ec00ac909bc22b28d97fb8d3041d1e541aef57cd76faff101d3",
+      "start_line": 649,
+      "anchor_line": 708,
+      "anchor": "out[idx] = rearrange(o, 'b c t h w -> (b t) c h w')",
+      "conclusion": "VideoSwin does preserve spatial positions after temporal blocks, but its Kinetics-pretrained visual features are not a supplied event-word dual-encoder cosine space."
+    },
+    {
+      "path": "external/TA-STVG/models/pipeline.py",
+      "sha256": "7c9723d8110192ffd80deaf624752165ad0399a7be28480ef70e3eeb30ae49f3",
+      "start_line": 65,
+      "anchor_line": 66,
+      "anchor": "self.input_proj2 = nn.Conv2d(768, hidden_dim, kernel_size=1)",
+      "conclusion": "TA-STVG projects motion features into its grounding hidden space; equal hidden dimensionality does not supply the requested pretrained lexical cosine interface."
+    },
+    {
+      "path": "external/TA-STVG/models/grounding_model/classifier.py",
+      "sha256": "d0c04ce156149fb748114a5644b7844b16c8932ea9548d5ab4eba78c840e53c2",
+      "start_line": 34,
+      "anchor_line": 60,
+      "anchor": "query, att_map = self.layer_ca[i](query, x)",
+      "conclusion": "Native ASA uses learned cross-attention, not the requested event-token/patch cosine with a pretrained logit scale."
+    }
+  ],
+  "P2_prediction_cells": 0,
+  "P2_candidate_scores": 0,
+  "GT_read": false,
+  "model_weights_read": false,
+  "GPU_used": false,
+  "no_download": true,
+  "available": [
+    "PE-Core static image patch features",
+    "UniversalVTG spatially pooled temporal hidden states",
+    "VideoSwin temporally modeled spatial features"
+  ],
+  "missing": "A supplied trained event-lexical/temporally-contextualized spatial-token cosine space with native logit scale",
+  "decision": "Retain interface investigation; do not substitute static CLIP or train/invent a projection. No P2 quality claim.",
+  "time": 1790940728.5016189
+}
