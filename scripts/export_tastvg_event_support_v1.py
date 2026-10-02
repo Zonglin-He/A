@@ -1,0 +1,88 @@
+"""Export only allowlisted implementation and anonymous sealed A/H scalars."""
+import sys,time,shutil,json
+from pathlib import Path
+ROOT=Path(__file__).resolve().parents[1];sys.path.insert(0,str(ROOT))
+from scripts.tastvg_event_support_common_v1 import *
+PUBLIC=Path('/home/wwww/visual-grounding-public-A');REL='results/tastvg_event_support/2026-10-02'
+def put(path,value):
+ path=Path(path);path.parent.mkdir(parents=True,exist_ok=True)
+ path.write_text(json.dumps(value,ensure_ascii=False,indent=2,allow_nan=False)+'\n')
+def pp(m):return f"{100*m['mean']:+.4f} [{100*m['ci95'][0]:+.4f}, {100*m['ci95'][1]:+.4f}]"
+def run():
+ assert read(BASE/'ROOT_READOUT.json')['status']=='completed_pending_root_public_audit'
+ dst=PUBLIC/REL;costs={};audits={};total=0;decisions={};obs=[]
+ for ds in DATASETS:
+  m=read(BASE/ds/'PAIRED.json')['H']['corruption']['nonexpert']['metrics']['delta_m_vIoU']
+  obs.append(ds+' H-lite−A '+pp(m)+' pp')
+ report=['# H-lite：学生时间共识条件化空间偏好','',
+  '**完整结果（未来 corrupt nonexpert）**：'+'；'.join(obs)+'。95%区间为配对source-bootstrap；这是历史曝光开发面板，不是fresh验证。','',
+  '本轮只比较A与H-lite。A保持原Rank-RKL；H-lite从当前central学生的原生≤8去重时间候选产生等权共识w，停止梯度后同时加权原五均匀Sa2VA有效参考奖励和native系数L1/GIoU几何。原rank teacher、RKL、普通SGD、学习率、温度及K不换，非空flat rewards保留原来的loss语义。','',
+  '每数据集原32历史开发源、一query/源、双序、clean+五类5%瞬时部署corruption、25%专家；384到达/臂，共1536新到达。官方同域TA-STVG checkpoint、原Paper48帧/像素、H、Sa2VA/UniversalVTG缓存、两offset、九probe和1792空间参数固定。VidK1/HC K8每步刷新central时间候选和空间rollout；每arrival专家只fetch一次，当前输出封存后才更新空间state。Temporal Fast输出仍正常rerank，w不使用其分数或hard选区。','',
+  '缓存参考上valid weight mass=0时加权reward无定义，按无证据不更新并记录原因，不加平滑/全clip回退或GT gate。H-lite不能产生缺失的事件参考；权重归一化也不能表示绝对证据可信度。候选共识不是已经校准的event posterior，相关候选可能给出集中但错误的支持。','',
+  '四stream全部预测共同封存后才CPU读取同一批已有曝光GT。主指标是未来corrupt nonexpert源宏dense ΔvIoU，paired10000 source-bootstrap seed20261001。每组先按source/order/condition聚合、再条件/序/源等权；不把重复arrival当独立source。A每个384全流输出、梯度和状态逐值复现e3578af。','']
+ for ds in DATASETS:
+  p=verify(ds);out=dst/ds;decision=read(BASE/ds/'DEVELOPMENT_DECISION.json');decisions[ds]=decision['arm']
+  radius=read(BASE/ds/'A/SUPPORT.json')['spec']['radius']
+  put(out/'CONFIG.json',dict(dataset=ds,sources=32,queries=32,orders=p['splits']['search']['orders'],
+   conditions=p['conditions'],arrivals_per_arm=384,completed_arms=['A','H'],params=p['params'],
+   probe_radius=radius,expert_fraction=.25,spatial_parameters=1792,historical_exposure=True,
+   checkpoint_state_sha256=read(POOL/ds/'CAPTURE_BARRIER.json')['checkpoint_state_sha256']))
+  for name in ['PAIRED.json','DEVELOPMENT_DECISION.json','GROSS_FUTURE_VS_A.json','DIRECTION_DIAGNOSIS.json',
+               'SUPPORT_DIAGNOSIS.json','NEGATIVE_TAILS.json','CASES.json','SMOKE.json','ROOT_PREDICTION_READBACK.json']:
+   put(out/name,read(BASE/ds/name))
+  report.extend([f'## {ds}','',f'封存参数：`{json.dumps(p["params"],ensure_ascii=False)}`。开发优先臂 **{decision["arm"]}**，依预登记strict future mean规则；没有生产晋升。','',
+   '| 臂 | 全部corrupt ΔvIoU vs Frozen (pp,95%CI) | 未来nonexpert ΔvIoU vs Frozen | 未来 ΔvIoU vs A |',
+   '|---|---:|---:|---:|'])
+  for arm in ['A','H']:
+   a=BASE/ds/arm
+   for name in ['REQUEST.json','ROWS.json','SPATIAL_STEP_ROWS.json','SUMMARY.json','AUDIT.json','COMPLETION.json']:
+    put(out/arm/name,read(a/name))
+   s=read(a/'SUMMARY.json');contrast='—' if arm=='A' else pp(read(BASE/ds/'PAIRED.json')[arm]['corruption']['nonexpert']['metrics']['delta_m_vIoU'])
+   report.append(f'| {arm} | {pp(s["corruption"]["all"]["metrics"]["delta_m_vIoU"])} | {pp(s["corruption"]["nonexpert"]["metrics"]["delta_m_vIoU"])} | {contrast} |')
+   audit=read(a/'AUDIT.json');costs[f'{ds}/{arm}']={**audit,'optimization_backbone_forwards':0,'new_expert_inference':0}
+   audits[f'{ds}/{arm}']=sha(a/'AUDIT.json');total+=384
+  dg=read(BASE/ds/'DIRECTION_DIAGNOSIS.json');sd=read(BASE/ds/'SUPPORT_DIAGNOSIS.json')
+  gross=read(BASE/ds/'GROSS_FUTURE_VS_A.json');tail=read(BASE/ds/'NEGATIVE_TAILS.json')
+  report.extend(['','| 臂 | 未来gross gain/loss vs A (pp) | 局部GT gain/loss steps | 有益selected目标却执行受损（全部/首步） | >5pp未来受损到达 |',
+   '|---|---:|---:|---:|---:|'])
+  for arm in ['A','H']:
+   d=dg[arm]['corruption'];g=gross[arm]['metrics']
+   report.append(f'| {arm} | {100*g["gross_gain_vs_A"]["mean"]:.4f}/{100*g["gross_loss_vs_A"]["mean"]:.4f} | {d["GT_gain_steps"]}/{d["GT_harm_steps"]} | {d["selected_useful_harm"]}/{d["selected_useful_harm_first"]} | {tail[arm]["harm_over5pp"]}/{tail[arm]["arrivals"]} |')
+  report.extend(['','| 臂 | corrupt首步非空参考arrival | 首步参考完全没落在GT支持 | 时间共识下参考mass=0（A仅离线诊断） | 实际可更新步数 | 平均局部固定时间ΔvIoU(pp) |',
+   '|---|---:|---:|---:|---:|---:|'])
+  for arm in ['A','H']:
+   d=dg[arm]['corruption'];v=sd[arm]['corruption']
+   report.append(f'| {arm} | {v["first_nonempty_reference_arrivals"]} | {v["raw_first_reference_misses_GT"]} | {v["first_zero_weighted_reference_mass"]} | {d["eligible_steps"]} | {100*d["post_fixed_time_delta"]["mean"]:+.6f} |')
+  hm=read(BASE/ds/'PAIRED.json')['H']['corruption']['nonexpert']['metrics']['delta_m_vIoU']
+  scope='负均值且区间在0以下' if hm['ci95'][1]<0 else '正均值且区间在0以上' if hm['ci95'][0]>0 else '区间跨0，方向未确认'
+  report.extend(['',f'H-lite−A：{scope}。H-lite实际 {sd["H"]["corruption"]["zero_weighted_mass_steps"]} 个corrupt step因数学零加权证据不更新。',
+   f'primary未来子集 {read(BASE/ds/"H/SUMMARY.json")["corruption"]["nonexpert"]["cells"]} 到达、{read(BASE/ds/"H/SUMMARY.json")["corruption"]["nonexpert"]["sources"]} 来源；两序均为expert的source只从未来子集排除，保留在全组。',''])
+ report.extend(['## 根审查后的具体判断','',
+  '两个数据集H-lite主指标均低于A，配对95%CI均跨0；目前没有建立优势，也没有统计确证总体伤害。按预登记规则两集仍保留A作为开发比较基线。','',
+  'Vid的学生支持在首步平均覆盖63.04%的GT采样帧，归一化支持权重仅47.36%落在GT计分帧；这些是离线覆盖读出，不是正确概率。75个非空参考arrival有17个加权质量为0，其中5个的原参考实际含GT事件帧。H-lite只能抑制已有证据，不能生成新的事件内参考；当前学生支持有时还会排除原本在事件内的参考。H有效更新75→58，有益selected目标却执行受损3→8，未来相对A超过5pp的受损到达13/240。','',
+  'HC学生首步GT帧覆盖较高（94.11%），共识下加权参考质量为0的5个arrival均没有原GT参考。H的局部受损步167/600→80/560、局部平均固定时间增益+.04452→+.07198pp，但未来nonexpert净收益仍低于A。局部支持改善没有自动转化成跨query迁移收益；不同轨迹的计数不证明共享状态是唯一原因。','',
+  '本P0既发现Vid事件支持可能漏掉已有有用证据，也发现HC局部更新改善与future结果不一致。它没有证明只要把temporal branch置于上游就能增益，亦没有测试重新在事件内调用Sa2VA的H-full；后者是不同的证据收集干预。','',
+  '上述新解释只读取本轮封存匿名标量。GT不用于线上权重、门槛、参数或后续自动调度。','',
+  '## 机制解释与边界','',
+  'H-lite同时改变reward和geometry支持，是一个匹配的支持干预；它不能单独把变化归因于reward或loss哪一侧，也不验证重新取事件帧。GT support、selected有益却执行有害、full-D下降而事件内D上升等都只作离线诊断，不作为在线选择规则。不同臂走不同on-policy状态轨迹，局部counts分母/有效步数不同，必须与首步及净future指标共同看。','',
+  'H-lite通过候选共识归一化空间支持，可能集中错误支持或抛弃uniform cache仅有的证据；归一化不表示证据覆盖可信度。全局shared空间state、critic误排、有限步长和几何代理错配仍是竞争解释。不能用这一次开发均值否定全部event-conditioned监督、OPD或global-state路线。','',
+  'Temporal在框架中既保留当前时间输出修正，又为H-lite提供上游学习支持；本批没有新增temporal参数更新、confidence gate、entropy multiplier、质检网络或专家推理。当前selected tube只是诊断参照，H-lite实际目标仍是Rank-RKL分布，没有悄悄采用G hard target。','',
+  'A的时间支持诊断仅第一步有已存六层候选；H每inner step观察。first比较具有相同arrival分母，A后续step的参考GT覆盖可复算但没有重新执行decoder补充support。full-D与GT计分支持D均从封存框在CPU重建。候选target也被停止梯度，w不通过边界求导。','',
+  'clean/expert/all分组、全部匿名arrival和每步记录、正负cases、gross与严重尾部保留。formal worker wall包含checkpoint载入、I/O及核验，不称纯GPU kernel时间；smoke等资格检查时间没有混称为formal inference时间。','',
+  '首个no-GT smoke的独立reward auditor以FP32计算而原overlap使用FP64，最大差1.0493e−7。原log/source/lock保留，修复只改CPU独立复核精度、没有改模型目标/权重/更新，revision001后重做两集smoke再正式执行。','',
+  '本P0控制器不自动启动H-full新参考帧、critic calibration/reliability耦合、context-memory、grid、新模型或旧fullquery任务；资源决定与机制证伪分开，当前部署注册未变。',''])
+ put(dst/'COSTS.json',costs)
+ txt='\n'.join(report)+'\n';(ROOT/'docs/TA_EVENT_SUPPORT_REVIEW.md').write_text(txt)
+ (PUBLIC/'docs/TA_EVENT_SUPPORT_REVIEW.md').write_text(txt);(dst/'README.md').write_text(txt)
+ code=set(read(BASE/'RUNTIME_LOCK.json')['pins'])|set(read(BASE/'SCORING_RUNTIME_LOCK.json')['pins'])
+ code|={str(p.relative_to(ROOT)) for p in (ROOT/'scripts').glob('*tastvg_event_support*.py')}
+ for rel in sorted(code):
+  target=PUBLIC/rel;target.parent.mkdir(parents=True,exist_ok=True);shutil.copy2(ROOT/rel,target)
+ for name in ['RUNTIME_LOCK.json','RUNTIME_REVISION001.json','SCORING_RUNTIME_LOCK.json','SMOKE_ROOT_ACCEPTANCE.json',
+              'ROOT_READOUT.json','ROOT_REQUEST_VERIFICATION.json','CPU_TESTS.json','STATISTICS_CPU_TEST.json','PUBLIC_SOURCE_PREFLIGHT.json']:
+  put(dst/name,read(BASE/name))
+ put(dst/'ENGINEERING_PRELAUNCH.json',read(BASE/'recovery/reward_auditor_precision_001/INCIDENT.json'))
+ put(BASE/'ROOT_EXPORT.json',dict(status='exported_pending_public_audit_and_remote',total_arrivals=total,
+   result_relative_path=REL,code_paths=sorted(code),audits=audits,development_decisions=decisions,time=time.time()))
+ print('Exported',total,'anonymous A/H-lite arrivals')
+if __name__=='__main__':run()
