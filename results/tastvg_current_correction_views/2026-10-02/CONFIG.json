@@ -1,0 +1,37 @@
+{
+  "params": {
+    "vidstg": {
+      "lr": 0.033761698432507946,
+      "rho": 0.05,
+      "teacher_temperature": 0.34902548789596055,
+      "steps": 1,
+      "student_temperature": 1.0,
+      "direction_count": 4
+    },
+    "hc2": {
+      "lr": 0.006097133675874025,
+      "rho": 0.05,
+      "teacher_temperature": 1.0,
+      "steps": 8,
+      "student_temperature": 1.0,
+      "direction_count": 4
+    }
+  },
+  "search_sources": 32,
+  "confirm_sources": 16,
+  "orders": 2,
+  "conditions": [
+    "clean",
+    "frame_drop_5",
+    "frame_freeze_5",
+    "motion_blur_5",
+    "occlusion_5",
+    "exposure_5"
+  ],
+  "expert_fraction": 0.25,
+  "historically_exposed": true,
+  "correction": "R_select",
+  "final": "CT",
+  "persistent": "Uniform A unchanged",
+  "current_lifespan": "one query"
+}
