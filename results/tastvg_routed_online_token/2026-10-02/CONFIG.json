@@ -1,0 +1,59 @@
+{
+  "question": "Does reference-position-only routing improve future nonexpert online adaptation; does native token binding qualify on fixed candidates?",
+  "primary_dataset": "hc2",
+  "secondary_dataset": "vidstg",
+  "online_sources_per_dataset": 32,
+  "queries_per_source": 1,
+  "orders": 2,
+  "conditions": [
+    "clean",
+    "frame_drop_5",
+    "frame_freeze_5",
+    "motion_blur_5",
+    "occlusion_5",
+    "exposure_5"
+  ],
+  "arrivals_per_arm_per_dataset": 384,
+  "scheduled_expert_fraction": 0.25,
+  "total_online_scored_arrivals": 1536,
+  "new_R_arrivals": 768,
+  "exact_reused_A_arrivals": 768,
+  "exposure": "historically exposed development sources, not fresh/full evaluation",
+  "params": {
+    "hc2": {
+      "lr": 0.006097133675874025,
+      "rho": 0.05,
+      "teacher_temperature": 1.0,
+      "steps": 8,
+      "student_temperature": 1.0,
+      "direction_count": 4
+    },
+    "vidstg": {
+      "lr": 0.033761698432507946,
+      "rho": 0.05,
+      "teacher_temperature": 0.34902548789596055,
+      "steps": 1,
+      "student_temperature": 1.0,
+      "direction_count": 4
+    }
+  },
+  "token": {
+    "fixed_cells_per_dataset": 30,
+    "sources_per_dataset": 10,
+    "clean_cells_per_dataset": 10,
+    "corrupt_cells_per_dataset": 20,
+    "candidates_per_cell": 9,
+    "parameter_updates": 0,
+    "external_models": 0,
+    "GT_used_for_model": false,
+    "inside_interval": "common sealed A native interval",
+    "object_query": "native spatial-branch cross-attention weighted post-MM text",
+    "event_query": "native temporal-branch cross-attention weighted post-MM text",
+    "roi": "positive cell-area intersection weighted features",
+    "binding": "motion inside cosine minus same-tube outside cosine",
+    "semantic_decomposition_validated": false
+  },
+  "global_online_prediction_barrier_sha256": "0d26c25b8bc1be344da7735d0311eb3a603c13f6102ce5e8b651c5a134efebb9",
+  "token_prediction_barrier_sha256": "d4acc3180ddfbdbcc1ea1943d7d38ca15513c9e2f0bd6bbd1b05869c379b9ade",
+  "deployment_unchanged": true
+}

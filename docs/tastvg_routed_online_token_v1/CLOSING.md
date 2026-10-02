@@ -1,0 +1,9 @@
+# Actual closing (2026-10-02)
+
+Both R workers completed, new768 arrivals and immutable A768 reuse; GLOBAL_PREDICTION_BARRIER has1536. CPU all four scoring jobs, independent native-token60 scoring and root closing checks passed. ST_ELIGIBILITY is false for both datasets; do not launch ST or combined online/memory. No remaining GPU work in this authorized experiment. Publication is pending remote readback; the later FINAL_COMPLETION is required for full closing.
+
+Root artifacts: ROOT_CLOSING_READBACK.json, PUBLIC_SCALAR_AUDIT.json, token/ROOT_READBACK.json. Report docs/TA_ROUTED_ONLINE_TOKEN_REVIEW.md; results/tastvg_routed_online_token/2026-10-02 includes all scalar rows, local paired controls, token positive/negative cases, resource/recovery/decision metadata and measured PNG/PDF/SVG. Seven analytic CPU tests passed. Exact A clean parity includes a write and a future nonexpert arrival, and one Uniform specialist pixel/mask/text parity call per dataset.
+
+Saved engineering recoveries remain: online code-receipt schema001 and immutable launch002; token compact schema003, seal metadata004 and FP64-auditor005. Current predictions and score definitions did not change. The auditor precision failure happened after token seal and diagnostic HC GT opening; corrected arithmetic still uses the original1e-12 criterion. Final public engineering summary retains this exposure. Old logs can contain these errors and should not be mistaken for active failures.
+
+Closing steps: audit_tastvg_routed_public_v1.py on exported files; check/snapshot/check archive; exact allowlist GitHub blobs/tree/commit/ref; fetch and verify every exported byte; repeat public auditor/tests on remote checkout; record FINAL_COMPLETION, final archive receipt, pause the existing hourly Luna automation. Do not resume any historical queues.

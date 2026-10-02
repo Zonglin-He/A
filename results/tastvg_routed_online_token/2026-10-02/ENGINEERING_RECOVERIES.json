@@ -1,0 +1,50 @@
+{
+  "all_failures_retained_privately": true,
+  "scientific_changes": 0,
+  "GT_used_for_recovery_selection": false,
+  "records": [
+    {
+      "id": "code_receipt_schema_001",
+      "failure": "Sa2VA official-code receipt values are metadata objects, not direct digest strings",
+      "phase": "after A parity; before first R prediction or specialist inference",
+      "fix": "verify nested sha256",
+      "revision": "online001"
+    },
+    {
+      "id": "restart_launch_002",
+      "failure": "immutable LAUNCH file already exists on preserved restart",
+      "phase": "controller initialization, no predictions",
+      "fix": "mutable launch status update, without overwriting saved failed attempts",
+      "revision": "online002"
+    },
+    {
+      "id": "token_compact_schema_003",
+      "failure": "compact old slow prediction omits logits",
+      "phase": "first token replay, boxes/interval already parity, no token scores",
+      "fix": "use same sealed arrival full first-step native prediction logits",
+      "revision": "token001"
+    },
+    {
+      "id": "token_manifest_metadata_004",
+      "failure": "seal contains additive revision metadata as well as prediction receipts",
+      "phase": "before GT scoring",
+      "fix": "verify metadata hash separately, never edit the original seal",
+      "revision": "token002"
+    },
+    {
+      "id": "token_auditor_box_precision_005",
+      "failure": "independent scalar ROI auditor computed FP32 corners while runtime converts boxes to FP64 first",
+      "phase": "after token seal and first HC diagnostic GT opening",
+      "fix": "convert auditor box to FP64 before corner arithmetic; retain 1e-12 criterion; no model or score change",
+      "revision": "token003",
+      "GT_read_before_fix": true
+    },
+    {
+      "id": "online_report_import",
+      "failure": "missing repository root on Python import path",
+      "phase": "offline report assembly",
+      "fix": "add root to sys.path; preserve first failed log"
+    }
+  ],
+  "resource_scope": "successfully completed worker wall time includes loading/decode/IO; saved unsuccessful startup durations not included; not pure GPU kernel time"
+}
