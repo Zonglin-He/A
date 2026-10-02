@@ -1,0 +1,64 @@
+{
+  "task": "two independent mechanism qualification diagnostics",
+  "transfer": {
+    "dataset": "HC-STVG-v2",
+    "sources": 32,
+    "scheduled_donor_sources": 14,
+    "orders": 2,
+    "conditions": [
+      "clean",
+      "frame_drop_5",
+      "frame_freeze_5",
+      "motion_blur_5",
+      "occlusion_5",
+      "exposure_5"
+    ],
+    "historically_exposed": true,
+    "write_payloads": 192,
+    "logical_pairs": 768,
+    "cross_query_pairs": 576,
+    "self_pairs": 192,
+    "checkpoint_state_sha256": "ee72f0d9a50c573a115bd7cfc2329c860745a1cf3dab83af1be7787c11b3c218",
+    "params": {
+      "lr": 0.006097133675874025,
+      "rho": 0.05,
+      "teacher_temperature": 1.0,
+      "steps": 8,
+      "student_temperature": 1.0,
+      "direction_count": 4
+    },
+    "spatial_parameters": 1792,
+    "current_output_change": false,
+    "new_experts": 0,
+    "new_backbone_forwards": 0,
+    "new_training_updates": 0,
+    "primary_metric": "target-frozen native interval dense vIoU, sIoU all annotated dense frames",
+    "self_control": "saved pre-native interval, equal to target frozen interval in every actual HC pair",
+    "primary_cluster": "donor source",
+    "bootstrap": 10000,
+    "seed": 20261001
+  },
+  "token": {
+    "cells": 60,
+    "candidates": 540,
+    "sources_per_dataset": 10,
+    "corrupt_cells_per_dataset": 20,
+    "clean_cells_per_dataset": 10,
+    "checkpoint": {
+      "repository": "openai/clip-vit-base-patch16",
+      "revision": "57c216476eefef5ab752ec549e440a49ae4ae5f3"
+    },
+    "clip_precision": "FP32 eager no TF32",
+    "frame_resize": "full-frame PIL bicubic224x224 no center crop",
+    "text": "explicit Stanza phrase lists and lexical BPE token projections",
+    "visual": "final CLIP patch tokens postLN plus visual_projection",
+    "score": "event max inside minus max outside, averaged over lexical tokens",
+    "object_score": "diagnostic only",
+    "training_updates": 0,
+    "Sa2VA_calls": 0,
+    "FILIP_trained_local_alignment": false,
+    "online_fusion": false
+  },
+  "deployment_changed": false,
+  "old_queues_resumed": false
+}

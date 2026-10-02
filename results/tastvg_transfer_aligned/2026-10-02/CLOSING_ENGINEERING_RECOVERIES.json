@@ -1,0 +1,21 @@
+[
+  {
+    "stage": "root closing metadata check after completed scoring",
+    "error": "KeyError time on TARGET_LOCK; actual key is selection_time",
+    "original_assertion": "read(BASE/'transfer/TARGET_LOCK.json')['time'] < first_GT_exposure",
+    "repair": "read existing selection_time, no metadata/result mutation",
+    "GT_read": false,
+    "model_execution": false,
+    "scientific_change": false,
+    "time": 1790936635.3392737
+  },
+  {
+    "stage": "postprocessing only",
+    "error": "immutable JSON writer refused rewriting existing engineering/public-audit files",
+    "repair": "preserve existing immutable files; publish separate closing record; report verifies identical saved public audit",
+    "measurement_changed": false,
+    "new_GT_read": false,
+    "model_execution": false,
+    "time": 1790936718.4200597
+  }
+]
