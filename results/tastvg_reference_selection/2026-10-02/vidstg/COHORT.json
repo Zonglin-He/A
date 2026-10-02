@@ -1,0 +1,20 @@
+{
+  "dataset": "vidstg",
+  "sources": 10,
+  "queries": 10,
+  "corrupt_cells": 20,
+  "clean_cells": 10,
+  "cohort_rule": "first10 sha256(dataset+colon+source), eligible if scheduled in either A order; prefer order1; clean+rotating corrupt indices j and j+2 modulo5",
+  "params": {
+    "lr": 0.033761698432507946,
+    "rho": 0.05,
+    "teacher_temperature": 0.34902548789596055,
+    "steps": 1,
+    "student_temperature": 1.0,
+    "direction_count": 4
+  },
+  "checkpoint_state_sha256": "fbb1ed8871d6c2aa093879efefc2ee500bb7de5e0fe1c25b809c5393d010f3c7",
+  "old_expert_fraction": 0.25,
+  "historical_exposure": true,
+  "not_an_online_trajectory": true
+}

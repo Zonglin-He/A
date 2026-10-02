@@ -1,0 +1,20 @@
+{
+  "dataset": "hc2",
+  "sources": 10,
+  "queries": 10,
+  "corrupt_cells": 20,
+  "clean_cells": 10,
+  "cohort_rule": "first10 sha256(dataset+colon+source), eligible if scheduled in either A order; prefer order1; clean+rotating corrupt indices j and j+2 modulo5",
+  "params": {
+    "lr": 0.006097133675874025,
+    "rho": 0.05,
+    "teacher_temperature": 1.0,
+    "steps": 8,
+    "student_temperature": 1.0,
+    "direction_count": 4
+  },
+  "checkpoint_state_sha256": "ee72f0d9a50c573a115bd7cfc2329c860745a1cf3dab83af1be7787c11b3c218",
+  "old_expert_fraction": 0.25,
+  "historical_exposure": true,
+  "not_an_online_trajectory": true
+}
