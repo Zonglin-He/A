@@ -1,0 +1,21 @@
+{
+  "status": "retain_A_no_promotion",
+  "conclusion": "已有缓存信号含部分大幅修改的排序信息，但未建立可安全替换A8的共同证据。冻结native在Vid拒绝全部有益大幅修改；UVTG边界密度与两视图稳健性仍大量接受有害修改，HC全流负收益区间低于零。",
+  "interpretation": [
+    "N在Vid确认全流为+0.1715pp [-0.0567,0.4528]，没有稳定增益；开发为-1.2218pp。其大幅修改TP=0、FP=11，实际没有选择大幅修改，不能补主要新增容量。此结论限定冻结source起止边缘先验，不替代A-current/joint span检验。",
+    "HC的N大幅候选接受为9个TP/0个FP，全部来自source47；条件precision=1不能外推安全性。32候选最终选择只采用2次有益大幅修改，同时21次小幅修改受损；全流-0.3887pp区间跨零。",
+    "U在Vid确认large benefit/harm AUC=.7092 [.5772,.8347]，S=.7157 [.5823,.8366]，但有益precision仅10.31%/10.75%；候选内排序与相对anchor的正值认证不是同一能力。四组的候选/类别构成相同，AUC不存在跨支持pair population混淆，但仍是有条件的探索性统计。",
+    "U/S在HC确认全流分别-2.7536pp [-5.7064,-0.4106] / -2.2134pp [-4.2095,-0.5847]。两视图降低部分有害候选接受率，没有消除共享误判；large top1均6次改善、32次损害。",
+    "Vid large trim-start的U/S条件AUC=1，但只在5个有双类别到达上定义；有益precision仅3.90%/5.88%。HC large trim-start没有任何有益候选，AUC未定义，不能据此证明该类修正不可行。",
+    "保留A，暂不接入本次N/U/S读出、不启动小半径refiner、PE变体、额外expert或旧队列。现有UVTG proposal边缘密度和同专家双视图不足以授权大胆改边界；这不否定完整joint temporal evidence、A-current概率或另一独立专家的未来验证。"
+  ],
+  "scientific_scope": "three_fixed_cached_boundary_proxies_not_universal_independent_evidence_impossibility",
+  "next_variable": "independent_or_joint_endpoint_evidence_before_any_refiner",
+  "next_experiment_started": false,
+  "spatial_C": false,
+  "parameters_changed": false,
+  "extra_expert_started": false,
+  "production_promoted": false,
+  "confirmation_used_to_select_rule": false,
+  "negative_results_preserved": true
+}

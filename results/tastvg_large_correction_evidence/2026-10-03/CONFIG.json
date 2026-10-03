@@ -1,0 +1,65 @@
+{
+  "version": "tastvg_large_correction_evidence_v1",
+  "predecessor_commit": "ac2102e3527e8344241a62db1fb4c3eceec48991",
+  "supports": [
+    8,
+    32
+  ],
+  "signals": [
+    "N",
+    "U",
+    "S"
+  ],
+  "bandwidth_seconds": 0.5,
+  "large_radius": 0.5,
+  "dominant_balance": 0.25,
+  "decision": "unique_strict_improvement_over_same_A8_else_anchor",
+  "tie_epsilon": 1e-12,
+  "native_logits_scope": "frozen_source_checkpoint_not_current_A",
+  "native_mapping": "equal_offset_mass_interleaved_marginals_not_native_envelope_likelihood",
+  "UVTG_scope": "equal_proposal_boundary_mass_without_confidence",
+  "two_view_scope": "same_model_phases_0_and_025_not_independent_experts",
+  "groups": [
+    "all_changed",
+    "large",
+    "large_trim_start",
+    "large_trim_end",
+    "large_expand",
+    "large_shift",
+    "large_trim_both"
+  ],
+  "new_model_calls": 0,
+  "new_expert_calls": 0,
+  "new_GPU_jobs": 0,
+  "GT_use": "join_already_published_dense_candidate_metrics_after_new_signal_seal",
+  "fresh_test": false,
+  "confirmation_selects_rules": false,
+  "parameters_unchanged": true,
+  "source_bootstrap_draws": 10000,
+  "seed": 20261003,
+  "original_parameters": {
+    "vidstg": {
+      "lr": 0.033761698432507946,
+      "rho": 0.05,
+      "teacher_temperature": 0.34902548789596055,
+      "steps": 1,
+      "student_temperature": 1.0,
+      "direction_count": 4
+    },
+    "hc2": {
+      "lr": 0.006097133675874025,
+      "rho": 0.05,
+      "teacher_temperature": 1.0,
+      "steps": 8,
+      "student_temperature": 1.0,
+      "direction_count": 4
+    }
+  },
+  "checkpoint_state_sha256": {
+    "vidstg": "fbb1ed8871d6c2aa093879efefc2ee500bb7de5e0fe1c25b809c5393d010f3c7",
+    "hc2": "ee72f0d9a50c573a115bd7cfc2329c860745a1cf3dab83af1be7787c11b3c218"
+  },
+  "production_method_sha256": "bd75706cf8377823ac6af488b1bd993af5fd7480e7e45a047c6fdde5e81df8d2",
+  "private_input_files": 2705,
+  "time": 1791014821.1778922
+}
