@@ -1,0 +1,84 @@
+{
+  "version": "tastvg_dta_oracle_r1_v1",
+  "stage": "R1 supervised oracle only",
+  "predecessor_commit": "e6037633c10773a57cf3983d5060b56f08fc96cc",
+  "checkpoints": {
+    "vidstg": {
+      "path": "checkpoints/TASTVG_VidSTG.pth",
+      "sha256": "5ab12c86363ef0ce0ee006c00fd11c6b659c3a9b2cb01a4f2c613efe22a2aa83",
+      "key": "model_ema"
+    },
+    "hc2": {
+      "path": "checkpoints/TASTVG_HCSTVG2.pth",
+      "sha256": "47d8f15841cd57e7bbf5a10e8bf23b1054d23b753e0becbd38a07f3dd60d5036",
+      "key": "model_ema"
+    }
+  },
+  "head_parameters": 514,
+  "effective_bias_invariance": true,
+  "scope": "original temp_embed.layers.1 weight+bias",
+  "K": 3,
+  "beta": 1.0,
+  "lr_grid": [
+    0.0001,
+    0.0003,
+    0.001,
+    0.003,
+    0.01
+  ],
+  "lr_selection": "per dataset source-validation mean physical tIoU after step3; exact tie lowest lr",
+  "source_validation_queries": {
+    "vidstg": 31,
+    "hc2": 16
+  },
+  "source_training_queries_used": 0,
+  "target_design_sources": {
+    "search": 32,
+    "confirm": 16
+  },
+  "target_design_arrivals": 1152,
+  "target_adaptation_cells": 288,
+  "target_expert_sources": {
+    "vidstg": {
+      "search": 16,
+      "confirm": 8
+    },
+    "hc2": {
+      "search": 14,
+      "confirm": 7
+    }
+  },
+  "nonexpert_cached_A_cells": 864,
+  "conditions": [
+    "clean",
+    "frame_drop_5",
+    "frame_freeze_5",
+    "motion_blur_5",
+    "occlusion_5",
+    "exposure_5"
+  ],
+  "schedule_fraction": 0.25,
+  "sampling": "unchanged original Paper48, two offsets",
+  "GT_used_in_target_teacher": true,
+  "GT_used_for_lr_selection": "official-train-derived source validation only",
+  "target_selection": false,
+  "sigma": "median physical spacing of each offset; one observed cell, unclipped GT coordinates",
+  "probabilities": "full strict i<j joint for each original offset; averaged two losses",
+  "readout": "original offset MAP FP32 logsoftmax and physical envelope",
+  "spatial_A_fixed": true,
+  "temporal_state": "reset for each current query, after exactly three SGD steps, discard",
+  "beta_is_soft_penalty_not_hard_trust_region": true,
+  "lambda_R2_unused": 0.5,
+  "head_arithmetic": "CPU FP32; FP64 probability/loss",
+  "original_CUDA_CPU_logit_atol": 0.0001,
+  "exact_native_interval_parity_required": true,
+  "new_GPU_calls": 0,
+  "new_backbone_calls": 0,
+  "new_suffix_replays": 0,
+  "new_expert_calls": 0,
+  "history_exposure": true,
+  "production_method_sha256": "bd75706cf8377823ac6af488b1bd993af5fd7480e7e45a047c6fdde5e81df8d2",
+  "bootstrap_draws": 10000,
+  "bootstrap_seed": 20261004,
+  "time": 1791044264.1033473
+}

@@ -1,0 +1,117 @@
+{
+  "R1_gradient_channel": "supported_in_locked_supervised_scope_with_source_concentration",
+  "deployable_TTA_claim": false,
+  "expert_teacher_tested": false,
+  "persistence_tested": false,
+  "R1_target_lr_tuning": false,
+  "source_lr_selected_at_upper_grid_boundary": true,
+  "A8_replacement": "Vid confirmation positive; HC uncertain and >5pp harms persist",
+  "next_conditional_question": "Can deployable expert supervision replace GT in this same head/steps/learning-rate interface?",
+  "R2_started": false,
+  "R3_started": false,
+  "head_LN_started": false,
+  "production_promoted": false,
+  "source_concentration": {
+    "vidstg": {
+      "positive_sources": 4,
+      "total_sources": 8,
+      "largest_positive_source": "33",
+      "largest_positive_share": 0.8391255632660337,
+      "top_two_positive_share": 0.9939536678667761,
+      "leave_one_source_out_gain_range_pp": [
+        1.070402028291578,
+        6.653648957675438
+      ]
+    },
+    "hc2": {
+      "positive_sources": 6,
+      "total_sources": 7,
+      "largest_positive_source": "47",
+      "largest_positive_share": 0.528073367105337,
+      "top_two_positive_share": 0.7638217584758404,
+      "leave_one_source_out_gain_range_pp": [
+        1.4335583546830772,
+        3.0376720760386853
+      ]
+    }
+  },
+  "native_interval_changes": {
+    "vidstg": {
+      "search": {
+        "cells": 80,
+        "native_interval_changed": 52,
+        "loss_decreased": 80,
+        "source_gains": {
+          "1": 0.0,
+          "3": 0.09148678528411693,
+          "4": 0.0,
+          "6": 0.1902120010690879,
+          "7": 0.0,
+          "8": 0.013458575829845876,
+          "10": 0.0,
+          "11": 0.0,
+          "15": 0.0,
+          "18": 0.0,
+          "19": 0.09948174278926561,
+          "23": 0.0,
+          "24": 5.472202534225314e-06,
+          "26": 0.0,
+          "29": 0.0,
+          "30": 0.005684051250842303
+        }
+      },
+      "confirm": {
+        "cells": 40,
+        "native_interval_changed": 11,
+        "loss_decreased": 40,
+        "source_gains": {
+          "33": 0.3908272850568702,
+          "34": 0.0,
+          "36": 0.07211202997569154,
+          "37": 0.0,
+          "38": 0.002186052946911663,
+          "40": 0.0,
+          "41": 0.0,
+          "45": 0.0006300590578072445
+        }
+      }
+    },
+    "hc2": {
+      "search": {
+        "cells": 80,
+        "native_interval_changed": 54,
+        "loss_decreased": 80,
+        "source_gains": {
+          "1": 0.0,
+          "2": 0.1245954405617106,
+          "3": 0.15245976326534078,
+          "4": 0.0,
+          "5": 0.11769659084975521,
+          "8": 0.029622358378593505,
+          "14": 0.02560563978663909,
+          "16": 0.20633366203183176,
+          "20": 0.0,
+          "23": -0.0010536684408814334,
+          "26": 0.01412848131967267,
+          "27": 0.010365819536793275,
+          "28": 0.07473847632687365,
+          "29": 0.013457386012329684
+        }
+      },
+      "confirm": {
+        "cells": 40,
+        "native_interval_changed": 21,
+        "loss_decreased": 40,
+        "source_gains": {
+          "33": 0.006786753560201942,
+          "34": 0.0019287562624896392,
+          "41": 0.018762442120061163,
+          "42": 0.015567971011998865,
+          "43": 0.04296757832623305,
+          "44": 0.0,
+          "47": 0.09624682328133649
+        }
+      }
+    }
+  }
+}
