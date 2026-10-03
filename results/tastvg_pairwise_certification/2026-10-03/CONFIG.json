@@ -1,0 +1,52 @@
+{
+  "version": "tastvg_pairwise_certification_v1",
+  "predecessor_commit": "b7a8be7a0952a70fce7c231f7fef38e394a6e299",
+  "source_validation_counts": {
+    "vidstg": 31,
+    "hc2": 16
+  },
+  "source_ridge_train_counts": {
+    "vidstg": 95,
+    "hc2": 48
+  },
+  "source_validation_reused_after_ridge_alpha_and_calibration": true,
+  "source_supervised": true,
+  "source_pairs": "all unordered L-score-strict pairs oriented higher-score minus lower-score; GT ties/negative delta retained",
+  "source_weight": "total one/source; equal within-source pairs; source bootstrap",
+  "calibration": "increasing isotonic fitted mean tIoU difference",
+  "IQR_epsilon": 1e-08,
+  "IQR_percentile_method": "linear",
+  "pair_score_tie_epsilon": 1e-12,
+  "bootstrap_draws": 10000,
+  "bootstrap_seed": 20261003,
+  "primary": "Pair-Norm",
+  "matched_diagnostic": "Pair-Raw",
+  "fixed_lower_quantile": 0.05,
+  "threshold_family_searched": false,
+  "primary_rule": "unique L32> A8 and within source pair-margin domain and lower mean>1e-12",
+  "lower_curve_scope": "pointwise fitted-mean bootstrap heuristic; not individual/conformal/simultaneous/target safety",
+  "target_anchor": "unchanged A8",
+  "ranking_unchanged": true,
+  "target_GT_fit": false,
+  "target_GT_threshold_selection": false,
+  "target_historical_exposure": true,
+  "target_design": "32 development+16 confirmation/dataset;one query/source;two orders;clean+five5%;25% expert",
+  "target_counts": {
+    "arrivals": 1152,
+    "expert": 288,
+    "nonexpert": 864,
+    "corrupt_expert": 240,
+    "clean_expert": 48
+  },
+  "arms": [
+    "A",
+    "L32",
+    "Pair-Raw",
+    "Pair-Norm"
+  ],
+  "production_method_sha256": "bd75706cf8377823ac6af488b1bd993af5fd7480e7e45a047c6fdde5e81df8d2",
+  "checkpoint_sampling_A_state_unchanged": true,
+  "GO": "both confirm full-corruption mean_v>0;>=3 accepting sources/dataset;positive LOO;gross loss and severe count lower than L32",
+  "scientific_limits": "source arbitrary-pair to target selected-top1/A8 and domain shift remain; no unique causal identification",
+  "new_GPU_expert_replay_backward_update_counts": 0
+}
