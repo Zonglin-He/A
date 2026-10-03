@@ -1,0 +1,88 @@
+{
+  "version": "tastvg_controlled_query_v1",
+  "predecessor_commit": "451d1c84cf74ae88cf7e6df04948e19e57526e41",
+  "coverage": {
+    "vidstg": {
+      "cells": 144,
+      "sources": 24,
+      "available": {
+        "common": 24,
+        "event": 30,
+        "event/same_video_same_referent_disjoint_actions": 12,
+        "subject": 36,
+        "subject/same_video_different_referent_same_action_signature": 6,
+        "event/cross_video_subject_phrase_match": 18,
+        "subject/cross_video_same_action_signature": 18,
+        "subject/cross_video_same_root_action": 12
+      },
+      "encoder_inputs": {
+        "event": 30,
+        "subject": 36
+      }
+    },
+    "hc2": {
+      "cells": 144,
+      "sources": 21,
+      "available": {
+        "event": 138,
+        "event/cross_video_subject_phrase_match": 120,
+        "subject": 120,
+        "subject/cross_video_same_action_signature": 30,
+        "common": 120,
+        "subject/cross_video_same_root_action": 90,
+        "event/cross_video_subject_class_match": 18
+      },
+      "encoder_inputs": {
+        "event": 120,
+        "subject": 108
+      }
+    }
+  },
+  "original_cells": 288,
+  "corrupt_cells": 240,
+  "clean_cells": 48,
+  "target_sources": {
+    "vidstg": 24,
+    "hc2": 21
+  },
+  "donor_pool_queries": {
+    "vidstg": 561,
+    "hc2": 3482
+  },
+  "annotation_assisted_referent_matching": true,
+  "GT_time_or_metric_used_for_pairing": false,
+  "source_checkpoint_sha256": {
+    "vidstg": "fbb1ed8871d6c2aa093879efefc2ee500bb7de5e0fe1c25b809c5393d010f3c7",
+    "hc2": "ee72f0d9a50c573a115bd7cfc2329c860745a1cf3dab83af1be7787c11b3c218"
+  },
+  "probe_hashes": {
+    "vidstg": "bf0e737d75ca43f7f24f4977c4769792fd65a41cc9cede560fc4b2356525ff7d",
+    "hc2": "0c18de752b6153a58de3d80d0e23af55971bda8492329c33194697dd6bf08725"
+  },
+  "source_models_unchanged": 136,
+  "candidate_views": [
+    "Full",
+    "Contrast"
+  ],
+  "candidate_tasks": [
+    "precision",
+    "recall",
+    "tiou"
+  ],
+  "secondary": "Hidden event AUROC",
+  "primary": "HC Contrast R2(subject)-R2(event) on corrupt common_strict recipients; three correlated pointwise endpoints; weaker common is secondary",
+  "support": 32,
+  "old8_preserved": true,
+  "probe_refits": 0,
+  "new_expert_calls": 0,
+  "new_candidates": 0,
+  "parameter_updates": 0,
+  "historical_exposure": true,
+  "source_bootstrap_draws": 10000,
+  "seed": 20261003,
+  "donors_fixed_in_bootstrap": true,
+  "donor_reuse_allowed": true,
+  "no_new_top1_output": true,
+  "production_method_sha256": "bd75706cf8377823ac6af488b1bd993af5fd7480e7e45a047c6fdde5e81df8d2",
+  "time": 1791025230.024869
+}
