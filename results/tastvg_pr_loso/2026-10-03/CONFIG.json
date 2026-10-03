@@ -1,0 +1,66 @@
+{
+  "alpha": {
+    "vidstg": {
+      "P": 1.0,
+      "R": 1.0
+    },
+    "hc2": {
+      "P": 1.0,
+      "R": 0.1
+    }
+  },
+  "views": {
+    "P": "Inside[512:768]",
+    "R": "Endpoint[0:512]"
+  },
+  "latent": "same cached final sixth temporal decoder hidden",
+  "checkpoint_state_sha256": {
+    "vidstg": "fbb1ed8871d6c2aa093879efefc2ee500bb7de5e0fe1c25b809c5393d010f3c7",
+    "hc2": "ee72f0d9a50c573a115bd7cfc2329c860745a1cf3dab83af1be7787c11b3c218"
+  },
+  "sampling": "original Paper48 two-offset",
+  "fixed_persistent_A": "Uniform Rank-RKL 1792 parameters; VidK1 HCK8",
+  "production_method_sha256": "bd75706cf8377823ac6af488b1bd993af5fd7480e7e45a047c6fdde5e81df8d2",
+  "version": "tastvg_pr_loso_v1",
+  "predecessor_commit": "c1558266eaefee13b745202f332f7f52bffa1748",
+  "search_expert_cells_per_dataset": 96,
+  "actual_search_sources": {
+    "vidstg": 16,
+    "hc2": 14
+  },
+  "held_source_count": 30,
+  "levels": [
+    "n4",
+    "n8",
+    "n12",
+    "nmax"
+  ],
+  "max_train_sources": {
+    "vidstg": 15,
+    "hc2": 13
+  },
+  "populations": [
+    "all",
+    "role"
+  ],
+  "normalizer": "same source-weighted training-only mean/std procedure, re-estimated each fold/population",
+  "weight_sum": 1.0,
+  "ridge_objective": "source-weighted MSE + fixed alpha*coefficient squared norm; unpenalized intercept",
+  "new_scientific_CPU_fits": 480,
+  "reused_in_sample_heads": 8,
+  "source_subsets": "nested SHA256(tastvg_pr_loso_v1|dataset|held_id|train_id), one prelocked list/fold",
+  "target_search_GT_supervised_diagnostic_only": true,
+  "confirmation_read_or_refitted": false,
+  "historically_exposed": true,
+  "held_source_unseen_by_readout_fit_only": true,
+  "primary_panel": "search corruption source-LOSO maximum vs same-cell in-sample",
+  "raw_regression": true,
+  "analytic_t": "clip P/R to [0,1]; PR/(P+R-PR); zero denominator ->0",
+  "decision": "fixed W accepted iff eligible and predicted analytic delta_T>0",
+  "bootstrap_draws": 10000,
+  "seed": 20261003,
+  "epsilon": 1e-12,
+  "bootstrap_refits": false,
+  "bootstrap_scope": "conditional fixed OOF predictions; folds overlap; one nested sequence; no multiplicity correction",
+  "GPU_backbone_expert_candidate_replay_backward_online_production_calls": 0
+}
