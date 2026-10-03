@@ -1,0 +1,32 @@
+"""Descriptive paired diagnostics and one root recommendation; no model execution."""
+from scripts.tastvg_oracle_event5_common_v1 import *
+def run():
+    notes={}
+    for split in SPLITS:
+        for ds in DATASETS:
+            one=read(PUBLIC/'experiment1'/split/ds/'SUMMARY.json')['corruption']['expert']
+            m=one['metrics'];rows=read(PUBLIC/'experiment2'/split/ds/'INTERVENTION_ROWS.json')
+            rr=[dict(r,GT_time_spatial_candidate_headroom=r['spatial_oracle_GT']-r['A_GT']) for r in rows if r['eligible'] and r['condition']!='clean']
+            notes[f'{split}/{ds}']=dict(
+                temporal_coverage_fraction_of_headroom_ratio_of_macro_means=m['H_coverage']['mean']/m['H_temporal']['mean'],
+                temporal_candidate_coverage=m['H_coverage'],temporal_selection=m['H_selection'],
+                spatial_candidate_increment_at_GT_time=source_summary(rr,['GT_time_spatial_candidate_headroom']),
+                temporal_order_means={f:m[f]['order_values'] for f in ['H_selection','H_coverage','T_recovered']})
+    write(PUBLIC/'PAIRED_DIAGNOSTIC_NOTES.json',notes)
+    paragraphs=[
+      '**Principal next research variable: temporal candidate position and boundary coverage.** This is a recommendation only; no new candidate generator, method or third experiment was executed. Keep A, the temporal scorer, observation budget and spatial update rule fixed when testing that variable. The rationale is the repeated, positive coverage gap on both datasets and both existing cohorts, rather than selecting a slightly higher-mean combination.',
+      'On corrupt expert arrivals, temporal coverage versus selection is 11.021 vs 2.120 pp (Vid development), 17.884 vs 5.535 (HC development), 24.375 vs 3.179 (Vid confirmation), and 13.165 vs 3.543 (HC confirmation). Coverage accounts for 83.9%, 76.4%, 88.5% and 78.8% of temporal headroom respectively, as ratios of source-macro means. Their coverage intervals are all above zero. The existing T recovers only .646, .266, .628 and −.148 pp respectively; it also leaves selection errors, but a better selector over exactly these eight intervals cannot close the larger coverage gap.',
+      'The spatial branch also has a candidate-capacity limitation. At original A time the nine-tube oracle adds only .551/.599/.401/.745 pp; even at GT time the same probes offer 2.034/1.212/.835/.950 pp on the eligible matched development/confirmation sets. GT-space ideal readout headroom is much larger. These are limits of the current fixed probes and readout, not an upper bound on future SGD, spatial representations or new candidates. The joint oracle adds only .487/.551/.421/.371 pp above the better single oracle, with no large joint-only reservoir under this support. Spatial candidate generation remains a documented secondary bottleneck, rather than being declared adequate.',
+      'Correct event timing alone does not establish a useful observation module. Vid development GT-event−R/U2 selection at GT time is +.762/+.886 pp with both paired intervals crossing zero; one donor can reverse those selection differences under leave-one-source-out analysis. Vid confirmation differences are only +.043/+.279 pp, again crossing zero. HC selection differences are negative in both cohorts, with intervals crossing zero. Thus the required condition of robustly better selection and actual execution against both controls on both datasets was not met.',
+      'Retain the positive execution result: Vid confirmation GT-event−U2 one-step update is +1.368 pp [+.374,+2.364] at GT time and +.688 [+.139,+1.330] at original A time. Against R the corresponding +.782 [−.032,+1.720] and +.427 [−.035,+1.095] remain uncertain. HC has no stable corresponding improvement. This gives a specific Vid execution signal, without proving shared routing value, dependence on corruption, or HC K8 transfer.',
+      'Evidence validity and execution remain separate. Putting every observation inside the event increases event-frame coverage, but does not guarantee a better localized expert box or candidate ranking. Conditional valid event-box IoU is lower for GT-event than R in all four corrupt cohorts; those are different observed frame sets, so the descriptive ratios alone are not a paired causal estimate of expert degradation. At GT time, GT-event selects a relatively better tube yet its one-step update harms the center in 17/75 Vid development donors, 6/80 HC development donors, 0/35 Vid confirmation donors and 6/40 HC confirmation donors. Eight Vid-development updates exceed 5 pp harm, whereas the other three cohorts have zero such GT-event harms. Correct event acquisition therefore does not remove preference-to-update mismatch.',
+      'Order sensitivity, clean controls and source influence limit extrapolation. Vid development GT-event−R selection at GT time is +1.784/−.133 pp across the two orders, versus +.063/+.017 on confirmation; HC confirmation GT-event selection itself is −.129/+.653 pp across orders. HC development clean GT-event−R selection is −.345 pp [−.881,−.015]. All clean outcomes, order values, unsupported no-op sensitivities, positive/negative cases and source influence are retained. Expert subsets have only 7–16 distinct sources; paired intervals are descriptive on historically exposed development data, with many correlated endpoints rather than new held-out benchmark claims.',
+      'A minimal later test would keep the eight-interval budget and all downstream modules fixed, predefine a candidate allocation that spans distinct locations and boundary scales, then compare existing versus replacement support before any scorer change. That later test requires separate authorization and a prediction seal before GT. This report does not resume full-query evaluation or choose online thresholds from GT.']
+    write(BASE/'DECISION.json',dict(status='diagnosis_completed_one_followup_recommended_not_executed',
+        primary_next_variable='temporal_candidate_position_and_boundary_coverage',
+        temporal_coverage_fraction_ratios={k:v['temporal_coverage_fraction_of_headroom_ratio_of_macro_means'] for k,v in notes.items()},
+        spatial_capacity_also_limited=True,GT_event_shared_routing_qualified=False,
+        Vid_confirmation_execution_signal_retained=True,
+        no_third_experiment=True,no_production_promotion=True,report_paragraphs=paragraphs,time=time.time()))
+    print('PAIRED_DIAGNOSTICS_AND_DECISION_WRITTEN',flush=True)
+if __name__=='__main__':run()

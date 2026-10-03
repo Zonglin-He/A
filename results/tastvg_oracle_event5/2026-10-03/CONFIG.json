@@ -1,0 +1,69 @@
+{
+  "version": "tastvg_oracle_event5_v1",
+  "authorized_date": "2026-10-03",
+  "predecessor_commit": "3b3ebd297f621667ce03f1291d130b6fd71236db",
+  "params": {
+    "vidstg": {
+      "lr": 0.033761698432507946,
+      "rho": 0.05,
+      "teacher_temperature": 0.34902548789596055,
+      "steps": 1,
+      "student_temperature": 1.0,
+      "direction_count": 4
+    },
+    "hc2": {
+      "lr": 0.006097133675874025,
+      "rho": 0.05,
+      "teacher_temperature": 1.0,
+      "steps": 8,
+      "student_temperature": 1.0,
+      "direction_count": 4
+    }
+  },
+  "datasets": [
+    "vidstg",
+    "hc2"
+  ],
+  "development_sources_each": 32,
+  "confirmation_sources_each": 16,
+  "queries_per_source": 1,
+  "orders": 2,
+  "conditions": [
+    "clean",
+    "frame_drop_5",
+    "frame_freeze_5",
+    "motion_blur_5",
+    "occlusion_5",
+    "exposure_5"
+  ],
+  "history_exposed": true,
+  "GT_assisted_diagnostic": true,
+  "persistent_A_frozen": true,
+  "no_parameter_selection": true,
+  "source_bootstrap_draws": 10000,
+  "source_bootstrap_seed": 20261003,
+  "full_arrivals": 1152,
+  "candidate_arrivals": 288,
+  "candidate_support": [
+    8,
+    9
+  ],
+  "combination_count": 20736,
+  "event5_logical_requests": 288,
+  "event5_eligible": 276,
+  "event5_unsupported": 12,
+  "event5_corruption_eligible": 230,
+  "event5_clean_eligible": 46,
+  "quantiles": [
+    0,
+    0.25,
+    0.5,
+    0.75,
+    1
+  ],
+  "no_outside_event_fill": true,
+  "temporary_SGD_steps": 1,
+  "temporary_lifespan": "one_query",
+  "production_unchanged": true,
+  "all_old_queues_remain_paused": true
+}

@@ -1,0 +1,110 @@
+{
+  "experiment1": {
+    "status": "pass",
+    "arrivals": 1152,
+    "checks": {
+      "candidate_cells": 288,
+      "candidate_combinations": 20736,
+      "official_scalar_checks": 11232
+    },
+    "max_official_error": 1.7763568394002505e-15,
+    "CUDA_initialized": false,
+    "new_model_calls": 0,
+    "worker_wall_seconds": 47.04509395791683,
+    "time": 1790997025.7023842
+  },
+  "experiment2": {
+    "status": "pass",
+    "donors": 288,
+    "eligible": 276,
+    "checks": {
+      "independent_loss_scalars": 7560,
+      "independent_SGD_coordinates": 494592,
+      "official_metric_scalars": 13824,
+      "observation_branches": 1152,
+      "cached_U_omitted_post_readouts": 96
+    },
+    "max_official_error": 1.2212453270876722e-15,
+    "CUDA_initialized": false,
+    "post_global_intervention_seal": true,
+    "worker_wall_seconds": 43.192323275026865,
+    "time": 1790999086.9153955
+  },
+  "global_intervention": {
+    "status": "sealed",
+    "donors": 288,
+    "GT_assisted_observation": true,
+    "raw_GT_read": false,
+    "datasets": {
+      "vidstg": "11f2629aeb548e5c537d8f15d113290d33a04593acd135794508ada5eab61e0a",
+      "hc2": "aab3de2ec3ac5814770d815959cb3938e838b3b440bbdbe1a2a318be880d5de3"
+    },
+    "time": 1790997793.728099
+  },
+  "dataset_intervention_barriers": {
+    "vidstg": {
+      "status": "sealed",
+      "donors": 144,
+      "raw_GT_read": false,
+      "GT_assisted_observation": true,
+      "model_restored": true,
+      "time": 1790997630.5865982
+    },
+    "hc2": {
+      "status": "sealed",
+      "donors": 144,
+      "raw_GT_read": false,
+      "GT_assisted_observation": true,
+      "model_restored": true,
+      "time": 1790997792.834566
+    }
+  },
+  "old_U_SGD_bitwise_reused_donors": 288,
+  "new_uniform_VJP_bitwise_controls": 270,
+  "omitted_U_post_tubes_reconstructed": 96,
+  "cached_U_pre_state_prediction_bitwise_controls": 4,
+  "cached_U_readout_barriers": {
+    "vidstg": {
+      "status": "sealed",
+      "cells": 48,
+      "no_learning": true,
+      "raw_GT_read": false,
+      "model_restored": true,
+      "time": 1790998919.074925
+    },
+    "hc2": {
+      "status": "sealed",
+      "cells": 48,
+      "no_learning": true,
+      "raw_GT_read": false,
+      "model_restored": true,
+      "time": 1790999012.694763
+    }
+  },
+  "final_root_audit": {
+    "status": "pass",
+    "checks": {
+      "old_input_file_sha256": 6104,
+      "valid_partial_byte_reproduction": 3,
+      "new_expert_calls_input_unique": 67,
+      "U_receipt_sha256": 96,
+      "fixed_A_donor_state_chain": 288,
+      "U_post_state_exact": 96
+    },
+    "old_A_unchanged": true,
+    "production_unchanged": true,
+    "old_uniform_readouts_completed_without_learning": 96,
+    "final_metrics_after_all_cached_U_readouts": true,
+    "cached_U_readout_after_initial_CPU_partial": true,
+    "fixed_U_states_not_chosen_by_GT": true,
+    "raw_GT_not_read_by_model_workers": true,
+    "CUDA_initialized": false,
+    "max_new_expert_budget": 288,
+    "actual_new_expert_calls": 67,
+    "worker_wall_seconds": 1.930573467980139,
+    "time": 1790999117.5167773
+  },
+  "model_restored": true,
+  "GT_sampling_read_pre_inference_explicitly_authorized": true,
+  "post_intervention_metric_read_after_global_seal": true
+}
