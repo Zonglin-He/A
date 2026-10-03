@@ -1,0 +1,10 @@
+{
+  "time": 1791034825.0663078,
+  "status": "preserved_auditor_failure",
+  "action": "root audit",
+  "error": "Discrete class-source weighted quantiles differ at exact CDF jump due FP64 summation order; first mismatch .3754169255402357 vs .30899495391995035",
+  "old_auditor_sha256": "d3e53aea4fe2a5d7b2f9e73812932bfdd1eb09c50849d09a3ac3916031c6140a",
+  "scientific_results_changed": false,
+  "repair": "Independently reconstruct per-source class distribution in canonical source order before inverse-CDF FP64 calculation; no tolerance expansion for AUC/CI or choices",
+  "additional_auditor_issue": "Almost-constant shuffled recall control gives covariance cancellation: independent FP64 Pearson differences up to 2.01e-10. Only Pearson diagnostics have 1e-8 tolerance; AUC/CI/labels/choices/means retain 3e-12. All measured results unchanged; failures preserved."
+}
