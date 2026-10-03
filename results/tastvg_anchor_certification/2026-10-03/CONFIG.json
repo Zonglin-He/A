@@ -1,0 +1,82 @@
+{
+  "version": "tastvg_anchor_certification_v1",
+  "predecessor_commit": "5c3a3c93c1b6b23d93ee2146b2ec20f5ec35663e",
+  "source_validation_counts": {
+    "vidstg": 31,
+    "hc2": 16
+  },
+  "source_anchor": "frozen native candidate0",
+  "target_anchor": "unchanged A8",
+  "user_explicit_native_to_A8_CPU_authorization": true,
+  "source_validation_reused_after_ridge_alpha_selection": true,
+  "calibration": "increasing isotonic on eligible source-validation top1 winners, one/source",
+  "bootstrap_draws": 10000,
+  "bootstrap_seed": 20261003,
+  "primary_lower_quantile": 0.05,
+  "curve_lower_quantiles": [
+    0.5,
+    0.2,
+    0.1,
+    0.05,
+    0.025,
+    0.01
+  ],
+  "curve_margin_quantiles": [
+    0.0,
+    0.05,
+    0.1,
+    0.15000000000000002,
+    0.2,
+    0.25,
+    0.30000000000000004,
+    0.35000000000000003,
+    0.4,
+    0.45,
+    0.5,
+    0.55,
+    0.6000000000000001,
+    0.65,
+    0.7000000000000001,
+    0.75,
+    0.8,
+    0.8500000000000001,
+    0.9,
+    0.9500000000000001,
+    1.0
+  ],
+  "source_margin_extrapolation": false,
+  "target_counts": {
+    "arrivals": 1152,
+    "expert": 288,
+    "nonexpert": 864,
+    "corrupt_expert": 240,
+    "clean_expert": 48
+  },
+  "source_fit_counts": {
+    "vidstg": [
+      95,
+      31
+    ],
+    "hc2": [
+      48,
+      16
+    ]
+  },
+  "target_design": "32 development+16 confirmation/dataset;two orders;clean+five5%;25% expert",
+  "source_supervised": true,
+  "target_GT_fit": false,
+  "target_GT_threshold_selection": false,
+  "target_historical_exposure": true,
+  "intake_target_label_access": "hash-only existing cached file binding; contents parsed after global new-decision seal",
+  "arms": [
+    "A",
+    "L32",
+    "Selective"
+  ],
+  "ranking_unchanged": true,
+  "checkpoint_sampling_A_state_unchanged": true,
+  "new_GPU_model_expert_replay_backward_parameter_update_counts": 0,
+  "lower_bound_scope": "approximate pointwise bootstrap lower mean-delta curve; not individual or target safety guarantee",
+  "GO": "both confirm full-corruption mean_v>0;>=3 accepting sources/dataset;positive LOO;gross loss and severe count lower than L32",
+  "production_method_sha256": "bd75706cf8377823ac6af488b1bd993af5fd7480e7e45a047c6fdde5e81df8d2"
+}
