@@ -1,0 +1,81 @@
+{
+  "name": "TA-STVG Temporal Latent Information Atlas v1",
+  "stage": "P0 CPU characterization",
+  "predecessor_commit": "107e1ef9b87bdf5e1b3b07cfe06bf660e3e9284e",
+  "alphas": [
+    0.001,
+    0.01,
+    0.1,
+    1.0,
+    10.0,
+    100.0,
+    1000.0
+  ],
+  "source_splits": {
+    "vidstg": [
+      95,
+      31
+    ],
+    "hc2": [
+      48,
+      16
+    ]
+  },
+  "frame_tasks": [
+    "position",
+    "event",
+    "start_distance",
+    "end_distance",
+    "phase"
+  ],
+  "candidate_tasks": [
+    "precision",
+    "recall",
+    "tiou",
+    "delta"
+  ],
+  "candidate_views": {
+    "Endpoint": 512,
+    "Inside": 256,
+    "Context": 512,
+    "Contrast": 512,
+    "Full": 1792,
+    "Geometry": 3
+  },
+  "frame_views": {
+    "Hidden": 256,
+    "Geometry": 1
+  },
+  "hidden_interface": "final sixth temporal decoder temp_embed input; cached observed-frame 256D",
+  "source_checkpoint_sha256": {
+    "vidstg": "fbb1ed8871d6c2aa093879efefc2ee500bb7de5e0fe1c25b809c5393d010f3c7",
+    "hc2": "ee72f0d9a50c573a115bd7cfc2329c860745a1cf3dab83af1be7787c11b3c218"
+  },
+  "source_validation_selects_alpha": true,
+  "validation_refit": false,
+  "target_GT_for_fit": false,
+  "target_schema_preflight_span_inspections": 4,
+  "controls": "equal-source weighted geometry and within-source training-label shuffle; intercept-only null",
+  "delta": "zero-intercept relative features: source native anchor / target actual A8; also absolute-tIoU prediction differences",
+  "frame_domain": "existing observation clip origin=first fid, width=last fid+1-first fid",
+  "target_cache_coverage": {
+    "vidstg": {
+      "search_sources": 16,
+      "confirm_sources": 8,
+      "cells": 144
+    },
+    "hc2": {
+      "search_sources": 14,
+      "confirm_sources": 7,
+      "cells": 144
+    }
+  },
+  "bootstrap_draws": 10000,
+  "seed": 20261003,
+  "model_calls": 0,
+  "expert_calls": 0,
+  "GPU_calls": 0,
+  "no_new_top1_outputs": true,
+  "historical_exposure": true,
+  "production_method_sha256": "bd75706cf8377823ac6af488b1bd993af5fd7480e7e45a047c6fdde5e81df8d2"
+}
