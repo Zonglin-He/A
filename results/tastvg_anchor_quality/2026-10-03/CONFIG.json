@@ -1,0 +1,62 @@
+{
+  "version": "tastvg_anchor_quality_v1",
+  "predecessor_commit": "d5c67eb178b973d68cbd410c9ccff3a6c092c645",
+  "source_validation_counts": {
+    "vidstg": 31,
+    "hc2": 16
+  },
+  "source_validation_reused_after_alpha_and_calibration": true,
+  "pseudo_anchor_rule": "all32 including unique top self; ambiguous top source excluded; retain GT-negative-neutral and duplicate intervals",
+  "weighting": "total1/source, equal pseudo-anchors",
+  "models": {
+    "M0": [
+      "intercept",
+      "margin"
+    ],
+    "M1": [
+      "intercept",
+      "margin",
+      "anchor_score"
+    ]
+  },
+  "solver": "unregularized weighted NumPy SVD least squares",
+  "rcond": 1e-12,
+  "IQR_epsilon": 1e-08,
+  "score_epsilon": 1e-12,
+  "source_LOSO": true,
+  "source_LOSO_selects_nothing": true,
+  "bootstrap_draws": 10000,
+  "seed": 20261003,
+  "target_rule": "unique score top>A8 and predicted mean delta>1e-12; same rule M0/M1; no fitted threshold/LCB/domain gate",
+  "marginal_extrapolation_recorded_only": true,
+  "arms": [
+    "A",
+    "L32",
+    "Pair-Norm",
+    "M0",
+    "M1"
+  ],
+  "ranking_unchanged": true,
+  "target_design": "32search+16confirm/dataset;onequery;twoorders;clean+five5%;25%expert",
+  "coverage": {
+    "arrivals": 1152,
+    "expert": 288,
+    "nonexpert": 864,
+    "corrupt_expert": 240,
+    "clean_expert": 48
+  },
+  "target_historical_GT_exposure": true,
+  "baseline_case_GT_diagnosis_before_fit": true,
+  "new_choices_seal_before_new_arm_label_join": true,
+  "target_GT_fit": false,
+  "target_threshold_selection": false,
+  "quartile_rule": "A8_t then cellkey; equal count within panel corrupt experts, no-op retained",
+  "feature_identity": "margin+anchor_score=top_context within source/pool; not independent true anchor-quality measurement",
+  "correlation_limit": "delta_t subtracts anchor_t; negative association does not identify a cause",
+  "source_supervised": true,
+  "production_method_sha256": "bd75706cf8377823ac6af488b1bd993af5fd7480e7e45a047c6fdde5e81df8d2",
+  "new_GPU_expert_replay_backward_updates": 0,
+  "GO": "both datasets: LOSO M0-M1 MSE>0;confirm v delta>0;M1-M0 v>0;>=3 accepting sources;positive LOO;less loss and fewer severe than L32",
+  "method_promoted": false,
+  "structured_model_started": false
+}
