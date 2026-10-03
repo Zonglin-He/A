@@ -1,0 +1,76 @@
+{
+  "version": "tastvg_pr_role_v1",
+  "predecessor_commit": "d408f154fb753764fef4aac2ca510f9b3b8fd36a",
+  "fits": [
+    "all",
+    "role"
+  ],
+  "alpha": {
+    "vidstg": {
+      "P": 1.0,
+      "R": 1.0
+    },
+    "hc2": {
+      "P": 1.0,
+      "R": 0.1
+    }
+  },
+  "views": {
+    "P": "Inside[512:768]",
+    "R": "Endpoint[0:512]"
+  },
+  "latent": "same cached final sixth temporal decoder hidden",
+  "planned_sources": {
+    "search": 32,
+    "confirm": 16
+  },
+  "actual_expert_sources": {
+    "vidstg": {
+      "search": 16,
+      "confirm": 8
+    },
+    "hc2": {
+      "search": 14,
+      "confirm": 7
+    }
+  },
+  "checkpoint_state_sha256": {
+    "vidstg": "fbb1ed8871d6c2aa093879efefc2ee500bb7de5e0fe1c25b809c5393d010f3c7",
+    "hc2": "ee72f0d9a50c573a115bd7cfc2329c860745a1cf3dab83af1be7787c11b3c218"
+  },
+  "sampling": "original Paper48 two-offset",
+  "fixed_persistent_A": "Uniform Rank-RKL 1792 parameters; VidK1 HCK8",
+  "production_method_sha256": "bd75706cf8377823ac6af488b1bd993af5fd7480e7e45a047c6fdde5e81df8d2",
+  "populations": {
+    "all": "reuse target-search 32-candidate model",
+    "role": "ordered A,W pair per cell, keep duplicates"
+  },
+  "training_rows_per_dataset": {
+    "all": 3072,
+    "role": 192
+  },
+  "training_cells_per_dataset": 96,
+  "new_scientific_fits": 4,
+  "reused_all_fits": 4,
+  "normalized_source_weight_sum": 1.0,
+  "ridge_objective": "source-weighted MSE + fixed alpha*coefficient squared norm; unpenalized intercept",
+  "normalizer": "identical weighted search-only procedure; re-estimate statistics on role population",
+  "target_search_GT_supervised_diagnostic_only": true,
+  "confirmation_fresh": false,
+  "historically_exposed": true,
+  "confirm_used_for_fit": false,
+  "role_input_feature": false,
+  "separate_A_W_heads": false,
+  "alpha_search": false,
+  "threshold_search": false,
+  "winner_reselected": false,
+  "oracle_ladder_added": false,
+  "analytic_t": "clip P/R to [0,1]; PR/(P+R-PR); zero denominator ->0",
+  "decision": "fixed W accepted iff eligible and predicted analytic delta_T>0",
+  "raw_regression": true,
+  "bootstrap_draws": 10000,
+  "seed": 20261003,
+  "epsilon": 1e-12,
+  "primary_panel": "confirmation corruption; clean/search/orders/influence separately",
+  "new_GPU_backbone_expert_candidate_replay_backward_online_production_calls": 0
+}
