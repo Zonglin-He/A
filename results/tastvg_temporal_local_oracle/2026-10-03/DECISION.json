@@ -1,0 +1,20 @@
+{
+  "status": "completed_cpu_diagnostic_root_verified",
+  "root_conclusion": "本轮不支持把新增机会统一解释成“小幅局部边界微调”，也不能由远距离直接断定“选错事件”。Vid确认的主要新增机会更接近大幅单边界收缩；HC确认包含更明显的区间整体移动，但仅两个正增来源，不能推广为稳定规律。保留A，暂不启动anchor-conditioned refinement。",
+  "interpretation": [
+    "确认corrupt专家：半个A8时长的端点总位移可收回新增容量，Vid15.93% [6.05,28.97]、HC48.13% [4.24,100]；分别为1.1928pp [0.2860,2.5347]、3.2336pp [0,9.3923]。Vid只有4.73%的新增收益对应完整O32最优位于此半径内，HC45.83%。局部存在收益，但不能说大部分新增机会来自小幅微调。",
+    "扩大到r=1时，Vid确认可收回100%、HC75.02%；r=2两组100%。r=1/2属于允许较大端点变动的描述性邻域，不是已经证明安全的局部refiner。开发集在r=.5只可收回Vid28.92%、HC33.87%，不能以确认集单独设接受半径。",
+    "严格符号分类把Vid确认86.69%、HC确认100%的新增收益归为centre-dominant。连续分解却显示Vid收益加权balance仅11.70% [5.27,30.44]，extent/L1达90.31% [73.09,96.12]：大部分位移由一端承担，严格centre标签不足以证明mode错误。起点/终点份额52.49%/47.51%，区间很宽，不能规定只修start或只修end。",
+    "Vid确认source34/occlusion/order1：A区间[.2212,.9724]变为oracle[.7465,.9447]，起点移动3.8038秒、终点.2002秒，新增31.38pp；source45/frame_drop/order2的起点只动.2002秒而终点移动39.4060秒，新增24.04pp。两例支持大幅裁边，不是统一的小步修正，也不证明真实事件identity改变。",
+    "HC确认balance73.15%、extent/L1仅26.85%，现有两个正增来源更像两端协同移动。source47/motion_blur/order1：A[.392,.708]→oracle[.142,.378]，区间不重叠，起点/终点移动4.9900/6.5868秒，新增30.59pp。但source34与47贡献全部新增容量，937/10000 bootstrap总增量为0，比例CI条件于其余9063次抽样，不能宣称所有HC事件都如此。",
+    "固定一端的32池条件oracle，Vid仅移动end/仅移动start相对A的均值收益1.73/1.19pp，HC.82/2.01pp；平均只有约2至3个候选。这不否定更丰富的单边界生成机制，且不能与总O32−O8相加或直接比较为独立贡献。",
+    "确认集没有正增量oracle并列影响本结论；最近/最远最优的新增收益CDF一致。零收益行和clean对照完整保留，HC集中度和顺序差异均披露。",
+    "下一步依据仅限：若研究refinement，须容许大幅单边裁剪及区间协同移动，并先在同支持上验证新的独立定位证据；本轮未授权立即执行该方法，不启动新PE scorer、空间loss、memory、专家或旧队列。"
+  ],
+  "A_retained": true,
+  "refinement_started": false,
+  "new_method_promoted": false,
+  "CURRENT_METHOD_changed": false,
+  "multiple_hypothesis_extreme_tail_cause": "hypothesis_not_tested",
+  "time": 1791013302.7483957
+}

@@ -1,0 +1,130 @@
+{
+  "version": "tastvg_temporal_local_oracle_v1",
+  "predecessor_commit": "4ecf366dee49c844f1af7aabfcba5517d74c86e4",
+  "predecessor_files_verified": 44,
+  "inputs": {
+    "results/tastvg_temporal_boundary_support/2026-10-03/search/vidstg/ROWS.json": "44b7f7ed46d4eddcd93a1342cbe084c143075da744e23614266d76d2fce8542e",
+    "results/tastvg_temporal_boundary_support/2026-10-03/search/vidstg/SUMMARY.json": "96566c596edcd893f9a604e5bebd5ec1d5a1c2cfbdefada3f4b6050e4e207cdd",
+    "results/tastvg_temporal_boundary_support/2026-10-03/search/hc2/ROWS.json": "73b3dd8b4b9cdfd4136a7d4eb5d66aa9ab8529b94aaa3de86b0265132e8dbf46",
+    "results/tastvg_temporal_boundary_support/2026-10-03/search/hc2/SUMMARY.json": "a768afc3e87ca563a95a54a4a31268855948fdafba3568e15b8895081aa50a8c",
+    "results/tastvg_temporal_boundary_support/2026-10-03/confirm/vidstg/ROWS.json": "236e3ab5cc32e10eb29242c64ea0ad7a3996529e7467e5f4900f592a8040ed4e",
+    "results/tastvg_temporal_boundary_support/2026-10-03/confirm/vidstg/SUMMARY.json": "f872ab3062e29ebc74f43ebb8dcdc0ed886c1456d354df104d55f42d529d01a6",
+    "results/tastvg_temporal_boundary_support/2026-10-03/confirm/hc2/ROWS.json": "47a187740c33249e4e5adb363f526f55ea42a744622eee4914397f70846881ab",
+    "results/tastvg_temporal_boundary_support/2026-10-03/confirm/hc2/SUMMARY.json": "55a7aec0627cfbe4a9b794ded776978924c9a0a09486538c1bb89ea854aff7dd",
+    "results/tastvg_temporal_boundary_support/2026-10-03/CONFIG.json": "a1f3710d36a4f9491377be1791b58fde3f25f82efd167c2a63cfe459cf5234b6"
+  },
+  "pins": {
+    "protocols/tastvg_temporal_local_oracle_v1.md": "4bdc78d2d35ae4377371191896f132a51260649bba129f4a48bda11ffdf3cc44",
+    "docs/tastvg_temporal_local_oracle_v1/EXECUTION.md": "f65b39912020241ded9948d043bf1af65c81e54a4fea176eb8b0689a759b97ba",
+    "scripts/tastvg_local_oracle_math_v1.py": "5940bbb8e45a5c91471c862cc05514fc0e64cf131e567dd92fb1475399cca490",
+    "scripts/run_tastvg_local_oracle_v1.py": "3a66bff6064acf15b8c6890634453fa08153d545c26497a36f24895e9bb6f6f6",
+    "scripts/audit_tastvg_local_oracle_public_v1.py": "02f0b222fb8269acc0699886e83cd6a33e7a38ff548dbe666f3265e5f47eab81",
+    "scripts/report_tastvg_local_oracle_v1.py": "0ba3eb0518df3f52af37e4d55836b34dba48dd259bd4123c7b8b8f151b061a88",
+    "scripts/test_tastvg_local_oracle_v1.py": "06c4298df94e6ebc0ea04f955bc8cc27c5ecdfb70269578bec57f85d5455e59b"
+  },
+  "radii": {
+    "anchor": [
+      0.0,
+      0.1,
+      0.25,
+      0.5,
+      0.75,
+      1.0,
+      1.5,
+      2.0,
+      3.0,
+      4.0,
+      8.0,
+      null
+    ],
+    "window": [
+      0.0,
+      0.025,
+      0.05,
+      0.1,
+      0.2,
+      0.3,
+      0.5,
+      1.0,
+      2.0,
+      null
+    ]
+  },
+  "tie_epsilon": 1e-12,
+  "source_bootstrap_draws": 10000,
+  "seed": 20261003,
+  "previous_design": {
+    "version": "tastvg_temporal_boundary_support_v1",
+    "supports": [
+      8,
+      32
+    ],
+    "append": "24_maximin_squared_normalized_physical_endpoints_seeded_by_entire_Old8",
+    "allocation_ties": "lexicographic_start_end_exact",
+    "retains_old_A_selection": true,
+    "scorers": [
+      "A_original_UVTG",
+      "B_old_inner_outer_alpha025",
+      "D_min_start_end_transition"
+    ],
+    "boundary_window_seconds": 1.0,
+    "inner_clip_to_candidate": true,
+    "exterior_clip_to_observed_window": true,
+    "missing_exterior_transition": 0.0,
+    "no_positive_gate": true,
+    "alpha_B": 0.25,
+    "tie_epsilon": 1e-12,
+    "decision_ties": "native_first_retained_candidate_order",
+    "unavailable_or_constant": "same_support_A_selection",
+    "spatial_C_removed": true,
+    "B_plus_D": false,
+    "activation": "same_PE_pooled_query_cosine_float64_phase0_2Hz_fractional_bins",
+    "all_arrivals": 1152,
+    "expert_arrivals": 288,
+    "corrupt_expert_arrivals": 240,
+    "clean_expert_arrivals": 48,
+    "params": {
+      "vidstg": {
+        "lr": 0.033761698432507946,
+        "rho": 0.05,
+        "teacher_temperature": 0.34902548789596055,
+        "steps": 1,
+        "student_temperature": 1.0,
+        "direction_count": 4
+      },
+      "hc2": {
+        "lr": 0.006097133675874025,
+        "rho": 0.05,
+        "teacher_temperature": 1.0,
+        "steps": 8,
+        "student_temperature": 1.0,
+        "direction_count": 4
+      }
+    },
+    "checkpoints": {
+      "vidstg": "fbb1ed8871d6c2aa093879efefc2ee500bb7de5e0fe1c25b809c5393d010f3c7",
+      "hc2": "ee72f0d9a50c573a115bd7cfc2329c860745a1cf3dab83af1be7787c11b3c218"
+    },
+    "new_model_calls": 0,
+    "new_expert_calls": 0,
+    "new_backprop": 0,
+    "new_GPU_jobs": 0,
+    "confirmation_not_used_to_choose_rule": true,
+    "historical_exposure": true,
+    "GT_read": false,
+    "references": {
+      "BAM_DETR": "https://arxiv.org/html/2312.00083v2",
+      "distinction": "BAM-DETR trains an IoU head; D is an untrained transition proxy, no equivalence"
+    }
+  },
+  "previous_sampling": "original_Paper48_not_Fig1_uniform64",
+  "production_method_sha256": "bd75706cf8377823ac6af488b1bd993af5fd7480e7e45a047c6fdde5e81df8d2",
+  "input_use": "already_sealed_anonymous_GT_derived_metrics_posthoc_diagnosis",
+  "annotation_files_opened": 0,
+  "new_model_calls": 0,
+  "new_expert_calls": 0,
+  "new_predictions": 0,
+  "GPU_used": false,
+  "new_refinement_started": false,
+  "time": 1791013038.3361988
+}
