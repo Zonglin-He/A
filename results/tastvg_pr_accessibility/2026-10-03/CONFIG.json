@@ -1,0 +1,80 @@
+{
+  "version": "tastvg_pr_accessibility_v1",
+  "predecessor_commit": "f5e3f2d4758f50379ac94baa2b3e16c293d652dd",
+  "source_fit_alpha": {
+    "vidstg": {
+      "P": 1.0,
+      "R": 1.0
+    },
+    "hc2": {
+      "P": 1.0,
+      "R": 0.1
+    }
+  },
+  "latent": "same cached final sixth temporal decoder hidden",
+  "views": {
+    "P": "Inside[512:768]",
+    "R": "Endpoint[0:512]"
+  },
+  "training": "all 32 candidates of search expert cells, clean and corruption",
+  "target_training_rows_per_dataset": 3072,
+  "target_training_cells_per_dataset": 96,
+  "planned_sources": {
+    "search": 32,
+    "confirm": 16
+  },
+  "actual_expert_sources": {
+    "vidstg": {
+      "search": 16,
+      "confirm": 8
+    },
+    "hc2": {
+      "search": 14,
+      "confirm": 7
+    }
+  },
+  "source_probe_train_sources": {
+    "vidstg": 95,
+    "hc2": 48
+  },
+  "source_alpha_validation_sources": {
+    "vidstg": 31,
+    "hc2": 16
+  },
+  "source_equal_weight": true,
+  "normalization": "same weighted-train mean/std procedure, re-estimated on target-search only",
+  "ridge_objective": "source-weighted MSE + fixed alpha*coefficient squared norm; unpenalized intercept",
+  "target_supervision": "diagnostic search GT fitting only; confirm joins after model/readout seals",
+  "historically_exposed": true,
+  "confirmation_fresh": false,
+  "readout_regression_raw": true,
+  "analytic_t": "clip P/R to [0,1]; PR/(P+R-PR); zero denominator ->0",
+  "decision": "fixed W accepted iff eligible and predicted analytic delta_T>0",
+  "winner_frozen": true,
+  "alpha_tuning": false,
+  "ladders": [
+    "predicted",
+    "GT_anchor",
+    "GT_winner",
+    "GT_precision",
+    "GT_recall",
+    "GT_all"
+  ],
+  "fits": [
+    "source_fit",
+    "target_search_fit"
+  ],
+  "epsilon_true_labels": 1e-12,
+  "bootstrap_draws": 10000,
+  "seed": 20261003,
+  "source_weighting": "condition -> order -> equal source; binary AUC equal source within each class",
+  "checkpoint_state_sha256": {
+    "vidstg": "fbb1ed8871d6c2aa093879efefc2ee500bb7de5e0fe1c25b809c5393d010f3c7",
+    "hc2": "ee72f0d9a50c573a115bd7cfc2329c860745a1cf3dab83af1be7787c11b3c218"
+  },
+  "sampling": "original Paper48 two-offset",
+  "fixed_persistent_A": "Uniform Rank-RKL 1792 parameters; VidK1 HCK8",
+  "new_GPU_backbone_expert_candidate_replay_backward_method_updates": 0,
+  "new_diagnostic_ridge_fits": 4,
+  "production_method_sha256": "bd75706cf8377823ac6af488b1bd993af5fd7480e7e45a047c6fdde5e81df8d2"
+}
