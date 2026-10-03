@@ -1,0 +1,78 @@
+{
+  "views": {
+    "P": "Inside[512:768]",
+    "R": "Endpoint[0:512]"
+  },
+  "latent": "same cached final sixth temporal decoder hidden",
+  "checkpoint_state_sha256": {
+    "vidstg": "fbb1ed8871d6c2aa093879efefc2ee500bb7de5e0fe1c25b809c5393d010f3c7",
+    "hc2": "ee72f0d9a50c573a115bd7cfc2329c860745a1cf3dab83af1be7787c11b3c218"
+  },
+  "sampling": "original Paper48 two-offset",
+  "fixed_persistent_A": "Uniform Rank-RKL 1792 parameters; VidK1 HCK8",
+  "production_method_sha256": "bd75706cf8377823ac6af488b1bd993af5fd7480e7e45a047c6fdde5e81df8d2",
+  "weight_sum": 1.0,
+  "normalizer": "same source-weighted training-only mean/std procedure, re-estimated each fold/population",
+  "historically_exposed": true,
+  "held_source_unseen_by_readout_fit_only": true,
+  "analytic_t": "clip P/R to [0,1]; PR/(P+R-PR); zero denominator ->0",
+  "decision": "fixed W accepted iff eligible and predicted analytic delta_T>0",
+  "bootstrap_draws": 10000,
+  "seed": 20261003,
+  "epsilon": 1e-12,
+  "bootstrap_refits": false,
+  "bootstrap_scope": "conditional fixed OOF predictions; folds overlap; one nested sequence; no multiplicity correction",
+  "version": "tastvg_pr_nested_alpha_v1",
+  "predecessor_commit": "bf45294c2de6cce96ce808da080ecb79dfe4298f",
+  "old_alpha": {
+    "vidstg": {
+      "P": 1.0,
+      "R": 1.0
+    },
+    "hc2": {
+      "P": 1.0,
+      "R": 0.1
+    }
+  },
+  "alpha_grid": [
+    0.001,
+    0.01,
+    0.1,
+    1.0,
+    10.0,
+    100.0,
+    1000.0
+  ],
+  "outer_source_count": {
+    "vidstg": 16,
+    "hc2": 14
+  },
+  "outer_train_source_count": {
+    "vidstg": 15,
+    "hc2": 13
+  },
+  "inner_train_source_count": {
+    "vidstg": 14,
+    "hc2": 12
+  },
+  "inner_LOSO": true,
+  "populations": [
+    "all",
+    "role"
+  ],
+  "raw_regression": true,
+  "selection": "separate P/R alpha; inner equal-source A/W MAE over all six conditions, exact ties smallest alpha",
+  "ridge_objective": "equal-source weighted MSE + alpha*coefficient squared norm; unpenalized bias",
+  "ordered_inner_folds": 422,
+  "inner_candidate_head_fits": 11816,
+  "selected_outer_head_fits": 120,
+  "new_scientific_CPU_fits": 11936,
+  "eigendecompositions": 1808,
+  "reused_fixed_LOSO_heads": 120,
+  "source_symmetry_cache_reuse": false,
+  "confirmation_read_or_refitted": false,
+  "outer_labels_used_for_alpha_selection": false,
+  "target_search_GT_supervised_diagnostic_only": true,
+  "primary_panel": "corruption raw A/W regression; nested minus same-cell fixed-alpha nmax LOSO",
+  "GPU_backbone_expert_candidate_replay_backward_online_production_calls": 0
+}
