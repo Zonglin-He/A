@@ -1,0 +1,77 @@
+{
+  "design": {
+    "version": "tastvg_temporal_boundary_support_v1",
+    "supports": [
+      8,
+      32
+    ],
+    "append": "24_maximin_squared_normalized_physical_endpoints_seeded_by_entire_Old8",
+    "allocation_ties": "lexicographic_start_end_exact",
+    "retains_old_A_selection": true,
+    "scorers": [
+      "A_original_UVTG",
+      "B_old_inner_outer_alpha025",
+      "D_min_start_end_transition"
+    ],
+    "boundary_window_seconds": 1.0,
+    "inner_clip_to_candidate": true,
+    "exterior_clip_to_observed_window": true,
+    "missing_exterior_transition": 0.0,
+    "no_positive_gate": true,
+    "alpha_B": 0.25,
+    "tie_epsilon": 1e-12,
+    "decision_ties": "native_first_retained_candidate_order",
+    "unavailable_or_constant": "same_support_A_selection",
+    "spatial_C_removed": true,
+    "B_plus_D": false,
+    "activation": "same_PE_pooled_query_cosine_float64_phase0_2Hz_fractional_bins",
+    "all_arrivals": 1152,
+    "expert_arrivals": 288,
+    "corrupt_expert_arrivals": 240,
+    "clean_expert_arrivals": 48,
+    "params": {
+      "vidstg": {
+        "lr": 0.033761698432507946,
+        "rho": 0.05,
+        "teacher_temperature": 0.34902548789596055,
+        "steps": 1,
+        "student_temperature": 1.0,
+        "direction_count": 4
+      },
+      "hc2": {
+        "lr": 0.006097133675874025,
+        "rho": 0.05,
+        "teacher_temperature": 1.0,
+        "steps": 8,
+        "student_temperature": 1.0,
+        "direction_count": 4
+      }
+    },
+    "checkpoints": {
+      "vidstg": "fbb1ed8871d6c2aa093879efefc2ee500bb7de5e0fe1c25b809c5393d010f3c7",
+      "hc2": "ee72f0d9a50c573a115bd7cfc2329c860745a1cf3dab83af1be7787c11b3c218"
+    },
+    "new_model_calls": 0,
+    "new_expert_calls": 0,
+    "new_backprop": 0,
+    "new_GPU_jobs": 0,
+    "confirmation_not_used_to_choose_rule": true,
+    "historical_exposure": true,
+    "GT_read": false,
+    "references": {
+      "BAM_DETR": "https://arxiv.org/html/2312.00083v2",
+      "distinction": "BAM-DETR trains an IoU head; D is an untrained transition proxy, no equivalence"
+    }
+  },
+  "predecessor_commit": "b7b3790ae3697f11c3643fa0260ab4336aba5989",
+  "checkpoint_state_sha256": {
+    "vidstg": "fbb1ed8871d6c2aa093879efefc2ee500bb7de5e0fe1c25b809c5393d010f3c7",
+    "hc2": "ee72f0d9a50c573a115bd7cfc2329c860745a1cf3dab83af1be7787c11b3c218"
+  },
+  "production_method_sha256": "bd75706cf8377823ac6af488b1bd993af5fd7480e7e45a047c6fdde5e81df8d2",
+  "production_unchanged": true,
+  "source_bootstrap_draws": 10000,
+  "source_bootstrap_seed": 20261003,
+  "sampling": "original_Paper48_not_Fig1_uniform64",
+  "confirmation": "historically_exposed_source_disjoint_within_batch"
+}
