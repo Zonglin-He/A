@@ -1,0 +1,91 @@
+{
+  "status": "pass",
+  "checks": {
+    "immutable_file_hashes": 573,
+    "original_input_hashes": 538,
+    "official_training_label_joins": 197,
+    "payload_sha256": 670,
+    "independent_features_scalars": 27410432,
+    "independent_geometry_scalars": 45888,
+    "context_counts": 45888,
+    "source_queries": 190,
+    "training_standardization_scalars": 7180,
+    "training_intercept_scalars": 4,
+    "direct_ridge_coefficients_scalars": 3590,
+    "source_validation_path_scalars": 196,
+    "frozen_target_scores_scalars": 18432,
+    "target_decisions": 1152,
+    "target_expert_arrivals": 288,
+    "legacy_scalar_comparisons_scalars": 6912,
+    "target_metric_rows": 1152
+  },
+  "maximum_errors": {
+    "independent_features": 0.0,
+    "independent_geometry": 1.1102230246251565e-16,
+    "training_standardization": 5.551115123125783e-17,
+    "training_intercept": 0.0,
+    "direct_ridge_coefficients": 4.191091917959966e-15,
+    "source_validation_path": 1.3999912340523224e-13,
+    "frozen_target_scores": 1.1102230246251565e-16,
+    "legacy_scalar_comparisons": 0.0
+  },
+  "source_probe_audits": {
+    "vidstg": {
+      "L": {
+        "alpha": 10.0,
+        "independent_training_queries": 95,
+        "independent_validation_queries": 31,
+        "direct_solve_weight_error": 2.6861108823328372e-17,
+        "normalization_training_only": true,
+        "validation_refit": false
+      },
+      "G": {
+        "alpha": 0.001,
+        "independent_training_queries": 95,
+        "independent_validation_queries": 31,
+        "direct_solve_weight_error": 4.191091917959966e-15,
+        "normalization_training_only": true,
+        "validation_refit": false
+      }
+    },
+    "hc2": {
+      "L": {
+        "alpha": 1.0,
+        "independent_training_queries": 48,
+        "independent_validation_queries": 16,
+        "direct_solve_weight_error": 3.9101751350689717e-16,
+        "normalization_training_only": true,
+        "validation_refit": false
+      },
+      "G": {
+        "alpha": 0.1,
+        "independent_training_queries": 48,
+        "independent_validation_queries": 16,
+        "direct_solve_weight_error": 5.551115123125783e-17,
+        "normalization_training_only": true,
+        "validation_refit": false
+      }
+    }
+  },
+  "contexts": {
+    "vidstg": {
+      "candidates": 4608,
+      "empty_left": 580,
+      "empty_right": 681
+    },
+    "hc2": {
+      "candidates": 4608,
+      "empty_left": 643,
+      "empty_right": 690
+    }
+  },
+  "source_supervision_only": true,
+  "target_annotation_files_opened": 0,
+  "target_GT_used_for_fit": false,
+  "target_GT_join_after_global_score_seal": true,
+  "production_unchanged": true,
+  "CUDA_initialized": false,
+  "new_model_forwards": 0,
+  "live_head_parity_scope": "Per-offset bitwise checks performed during capture; root independently verifies saved features and scores without a new model replay.",
+  "time": 1791017548.0856326
+}
