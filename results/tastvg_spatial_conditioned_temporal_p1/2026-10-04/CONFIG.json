@@ -1,0 +1,74 @@
+{
+  "version": "tastvg_spatial_conditioned_temporal_p1_v1",
+  "arms": [
+    "Full",
+    "Soft",
+    "A_ROI"
+  ],
+  "alpha": 0.5,
+  "mechanism": "Frozen attention-pool additive log spatial prior; CLS=1, patch=.5+.5*fractional_A_box_mask",
+  "full_context": "All complete-frame tokens retained; no pixel cropping, no token deletion; outside prior=.5",
+  "transform": "Stock PE336 bilinear squash resize; patch14, 24x24; no centre crop",
+  "projection": "Original learned attention pool, residual MLP and visual projection; no extra L2 normalization",
+  "invalid_box": "Zero/nonfinite/inverted/clipped-empty mask uses exact original global pool",
+  "sampling": "Exact original full observations, nearest-original-observation 2Hz feature grid, FP16 batch16",
+  "expert": "Same frozen UniversalVTG + PE-Core-L14-336; first raw confidence argmax; no query unifier",
+  "parent_arrivals": 1152,
+  "expert_cells": 288,
+  "corrupt_cells": 240,
+  "clean_cells": 48,
+  "nonexpert_cells_scored": 0,
+  "design_sources_per_dataset": {
+    "search": 32,
+    "confirm": 16
+  },
+  "expert_sources": {
+    "vidstg": {
+      "search": 16,
+      "confirm": 8
+    },
+    "hc2": {
+      "search": 14,
+      "confirm": 7
+    }
+  },
+  "conditions": [
+    "clean",
+    "exposure_5",
+    "frame_drop_5",
+    "frame_freeze_5",
+    "motion_blur_5",
+    "occlusion_5"
+  ],
+  "orders": [
+    "order1",
+    "order2"
+  ],
+  "source_queries": 1,
+  "historical_exposure": true,
+  "fresh_test": false,
+  "spatial_A_fixed": true,
+  "current_pre_update_boxes": true,
+  "backbone_calls": 0,
+  "spatial_expert_calls": 0,
+  "backward_calls": 0,
+  "parameter_updates": 0,
+  "DTA_started": false,
+  "production_promoted": false,
+  "production_sha256": "bd75706cf8377823ac6af488b1bd993af5fd7480e7e45a047c6fdde5e81df8d2",
+  "expert_checkpoint_sha256": "ac48fa4474f65a84f5176de5dbbf4439ebe7996a3fc361fe10161e9f338a1ba8",
+  "PE_sha256": "0cdab5b338cbaa1e7a5dcd1b2fb4c9f4d5df1abd289564658edbab64a650e7e8",
+  "bootstrap_draws": 10000,
+  "bootstrap_seed": 20261004,
+  "aggregation": "Source macro; same-source paired bootstrap",
+  "primary": "Soft minus cached Full teacher tIoU; all four corrupt panels lower95CI>0 for teacher-only GO",
+  "GO_rule": "all four corruption panels Soft-Full paired lower95CI>0; no automatic DTA",
+  "max_new_Soft_requests": 288,
+  "smoke_Full_controls": 2,
+  "smoke_Soft_format_calls": 2,
+  "max_new_Soft_calls_including_smoke": 290,
+  "network_downloads": 0,
+  "previous_crop_commit": "39e060b8a7821916194bcf03c6f510e685f6ad0a",
+  "source_paper": "CoSD CVPR2023 soft modulation is jointly trained, not a guarantee for this frozen plugin",
+  "stopping_scope": "If not stable, stop this UVTG coupling line as resource decision; no universal impossibility claim"
+}
