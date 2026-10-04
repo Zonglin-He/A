@@ -1,0 +1,96 @@
+{
+  "online_compute": {
+    "inner_steps": 102,
+    "spatial_candidate_replays": 918,
+    "native_replays": 1527,
+    "backward_calls": 102,
+    "spatial_provider_calls": 102,
+    "temporal_provider_calls": 102
+  },
+  "CPU_wall_seconds": 7.628400066983886,
+  "CUDA_initialized": false,
+  "new_GPU_calls": 0,
+  "max_dense_error": 9.992007221626409e-16,
+  "GPU_stage_resources": {
+    "CAPTURE": {
+      "counts": {
+        "new_full_backbone_offset_forwards": 270,
+        "source_suffix_values": 58,
+        "source_suffix_values_with_temporal_support": 77
+      },
+      "worker_wall_seconds": 298.36362960597035,
+      "wall_includes_loading_IO": true,
+      "peak_allocated_vram_bytes": 6019822080,
+      "GT_read": false
+    },
+    "TARGET_REFERENCE": {
+      "counts": {
+        "new_full_backbone_offset_forwards": 270
+      },
+      "worker_wall_seconds": 248.676054339041,
+      "wall_includes_loading_IO": true,
+      "peak_allocated_vram_bytes": 5783427072,
+      "GT_read": false
+    },
+    "ONLINE": {
+      "counts": {
+        "inner_steps": 102,
+        "spatial_candidate_replays": 918,
+        "native_replays": 1527,
+        "backward_calls": 102,
+        "spatial_provider_calls": 102,
+        "temporal_provider_calls": 102,
+        "live_parity_inner_steps": 2,
+        "live_parity_spatial_candidate_replays": 18,
+        "live_parity_native_replays": 24,
+        "live_parity_backward_calls": 2,
+        "live_parity_spatial_provider_calls": 2,
+        "live_parity_temporal_provider_calls": 0,
+        "new_full_backbone_offset_forwards": 12
+      },
+      "worker_wall_seconds": 183.32495891489089,
+      "wall_includes_loading_IO": true,
+      "peak_allocated_vram_bytes": 5795996160,
+      "GT_read": false
+    }
+  },
+  "expert_allocation_files": {
+    "spatial": [
+      {
+        "stage": "spatial",
+        "status": "failed",
+        "done": 0,
+        "new_inferences": 0,
+        "seconds": 23.418632011977024,
+        "failure": {
+          "error": "ImportError('This modeling file requires the following packages that were not found in your environment: peft. Run `pip install peft`')",
+          "traceback": "Traceback (most recent call last):\n  File \"/home/wwww/visual grounding/scripts/tastvg_best_quick_expert_worker_v1.py\", line 52, in run\n    model,info=AutoModel.from_pretrained(str(model_path),torch_dtype=torch.bfloat16,low_cpu_mem_usage=True,use_flash_attn=False,trust_remote_code=True,local_files_only=True,output_loading_info=True)\n               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/wwww/visual grounding/.conda/tubedetr/lib/python3.11/site-packages/transformers/models/auto/auto_factory.py\", line 558, in from_pretrained\n    model_class = get_class_from_dynamic_module(\n                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/wwww/visual grounding/.conda/tubedetr/lib/python3.11/site-packages/transformers/dynamic_module_utils.py\", line 569, in get_class_from_dynamic_module\n    final_module = get_cached_module_file(\n                   ^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/wwww/visual grounding/.conda/tubedetr/lib/python3.11/site-packages/transformers/dynamic_module_utils.py\", line 393, in get_cached_module_file\n    modules_needed = check_imports(resolved_module_file)\n                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/wwww/visual grounding/.conda/tubedetr/lib/python3.11/site-packages/transformers/dynamic_module_utils.py\", line 225, in check_imports\n    raise ImportError(\nImportError: This modeling file requires the following packages that were not found in your environment: peft. Run `pip install peft`\n"
+        },
+        "time": 1791115541.8094652,
+        "peak_vram_bytes": 0
+      },
+      {
+        "stage": "spatial",
+        "status": "completed",
+        "done": 77,
+        "new_inferences": 77,
+        "seconds": 173.8679067810299,
+        "failure": null,
+        "time": 1791115875.9927974,
+        "peak_vram_bytes": 10201805824
+      }
+    ],
+    "temporal": [
+      {
+        "stage": "temporal",
+        "status": "completed",
+        "done": 77,
+        "new_inferences": 77,
+        "seconds": 141.70948184491135,
+        "failure": null,
+        "time": 1791116019.3934526,
+        "peak_vram_bytes": 5959824896
+      }
+    ]
+  }
+}
