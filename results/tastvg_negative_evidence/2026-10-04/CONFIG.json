@@ -1,0 +1,62 @@
+{
+  "arms": [
+    "rank_native",
+    "rank_cross",
+    "negative_global",
+    "negative_local"
+  ],
+  "bundles": {
+    "vidstg": {
+      "lr": 0.033761698432507946,
+      "teacher_temperature": 0.34902548789596055,
+      "steps": 1
+    },
+    "hc2": {
+      "lr": 0.006097133675874025,
+      "teacher_temperature": 1.0,
+      "steps": 8
+    }
+  },
+  "lambda_value": 1.0,
+  "student_temperature": 1.0,
+  "parameters": 1792,
+  "geometry_coefficients": {
+    "vidstg": [
+      5,
+      3
+    ],
+    "hc2": [
+      5,
+      4
+    ]
+  },
+  "bootstrap_draws": 10000,
+  "bootstrap_seed": 20261004,
+  "local_expert_cells": 288,
+  "local_corrupt_cells": 240,
+  "local_clean_cells": 48,
+  "reset_arrivals": 1152,
+  "development_sources_per_dataset": 32,
+  "confirmation_sources_per_dataset": 16,
+  "historically_exposed": true,
+  "current_interval": "sealed original A final_indices",
+  "step_interval": "sealed original A final_indices; same as arrival contrast",
+  "future_cluster": "write source",
+  "future_target_source_sensitivity": true,
+  "future_scope": "isolated one-write transfer; not a new persistent online trajectory",
+  "reset_u_scope": "separate actual online Rank stream with zero query residual per arrival and persistent LN",
+  "predictions_sealed_before_GT": true,
+  "teacher_GT_used": false,
+  "target_retuning": false,
+  "production_promoted": false,
+  "main_contrasts": [
+    "negative_global_minus_rank_native",
+    "negative_local_minus_rank_native",
+    "negative_local_minus_negative_global"
+  ],
+  "cross_bundle_is_not_individual_parameter_causality": true,
+  "no_evidence_is_not_correctness": true,
+  "geometric_distribution_is_not_native_tube_likelihood": true,
+  "global_barrier_sha256": "67419b1dc2167c112aefe47189f1fd4e08b0fc99265ce332481917cb91608e7b",
+  "runtime_lock_sha256": "b2ee7ccfffa9d61725f4858a64eee2cc7c61620495c83f003f82a043224ad668"
+}
