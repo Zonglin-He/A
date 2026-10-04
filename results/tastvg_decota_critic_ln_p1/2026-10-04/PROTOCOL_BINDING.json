@@ -1,0 +1,54 @@
+{
+  "version": "tastvg_decota_critic_ln_p1_v1",
+  "runtime_lock_sha256": "eead4d8048ecd28d4f988d7b5ceaa5b404f7793d40ff85ec3be04acc6d03c85c",
+  "global_barrier_sha256": "0e3a61272890138cf74c8f4c94d76fb8d716f63d21f700b4cab32e454cf1f483",
+  "P0_barrier_sha256": "3a2bebac75c9b2796a785705cf83b067bee339dc0c283e95f9f62554bb78c40f",
+  "parameters": 1792,
+  "LN_writeback_fraction": 0.0625,
+  "query_reset": true,
+  "Adam_reset": true,
+  "lr": 0.03,
+  "steps": 10,
+  "temperatures": [
+    1,
+    1
+  ],
+  "source_inputs": 576,
+  "online_arrivals": 1152,
+  "expert_every_query": true,
+  "observations_per_query": 4,
+  "native_time_fixed": true,
+  "Before_is_not_25percent_nonexpert_stream": true,
+  "historical_exposure": true,
+  "GT_used_for_optimization": false,
+  "datasets": {
+    "vidstg": {
+      "checkpoint": "checkpoints/TASTVG_VidSTG.pth",
+      "checkpoint_sha256": "5ab12c86363ef0ce0ee006c00fd11c6b659c3a9b2cb01a4f2c613efe22a2aa83",
+      "search_sources": 32,
+      "confirm_sources": 16,
+      "conditions": [
+        "clean",
+        "frame_drop_5",
+        "frame_freeze_5",
+        "motion_blur_5",
+        "occlusion_5",
+        "exposure_5"
+      ]
+    },
+    "hc2": {
+      "checkpoint": "checkpoints/TASTVG_HCSTVG2.pth",
+      "checkpoint_sha256": "47d8f15841cd57e7bbf5a10e8bf23b1054d23b753e0becbd38a07f3dd60d5036",
+      "search_sources": 32,
+      "confirm_sources": 16,
+      "conditions": [
+        "clean",
+        "frame_drop_5",
+        "frame_freeze_5",
+        "motion_blur_5",
+        "occlusion_5",
+        "exposure_5"
+      ]
+    }
+  }
+}
