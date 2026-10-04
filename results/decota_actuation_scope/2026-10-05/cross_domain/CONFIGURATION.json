@@ -1,0 +1,59 @@
+{
+  "version": "decota_cross_qualification_v1",
+  "time": 1791137428.356202,
+  "configurations": {
+    "vidstg": {
+      "source_dataset": "hcstvg2",
+      "target_dataset": "vidstg",
+      "checkpoint": "checkpoints/TASTVG_HCSTVG2.pth",
+      "checkpoint_sha256": "47d8f15841cd57e7bbf5a10e8bf23b1054d23b753e0becbd38a07f3dd60d5036",
+      "adaptation": {
+        "optimizer": "adam",
+        "lr": 0.03,
+        "evidence": "frame",
+        "authority": false,
+        "authority_source": "frame"
+      },
+      "scope": "joint",
+      "steps": 10,
+      "parameters": 1792,
+      "LN_writeback": 0.0625,
+      "query_reset": true,
+      "optimizer_reset": true,
+      "temporal": "native",
+      "expert_budget": 1.0
+    },
+    "hc2": {
+      "source_dataset": "vidstg",
+      "target_dataset": "hc2",
+      "checkpoint": "checkpoints/TASTVG_VidSTG.pth",
+      "checkpoint_sha256": "5ab12c86363ef0ce0ee006c00fd11c6b659c3a9b2cb01a4f2c613efe22a2aa83",
+      "adaptation": {
+        "optimizer": "adam",
+        "lr": 0.03,
+        "evidence": "frame",
+        "authority": false,
+        "authority_source": "frame"
+      },
+      "scope": "joint",
+      "steps": 10,
+      "parameters": 1792,
+      "LN_writeback": 0.0625,
+      "query_reset": true,
+      "optimizer_reset": true,
+      "temporal": "native",
+      "expert_budget": 1.0
+    }
+  },
+  "expert_checkpoint_sha256": "1a2412ef99bd74bcd3c2a246fa1e48581f8889a1300c9051974741314fc042f3",
+  "unique_inputs": 576,
+  "observation_requests_cap": 2304,
+  "logical_readouts": 2304,
+  "streams": [
+    "episodic",
+    "online_100"
+  ],
+  "historical_exposure": true,
+  "no_parameter_search": true,
+  "scope_correction": "R6 cross-domain explicitly authorized; prior assistant-added same-domain resource gate superseded, not a method reselection"
+}

@@ -1,0 +1,95 @@
+{
+  "main_revisions": [
+    {
+      "time": 1791133562.7360296,
+      "pin_overrides": {
+        "scripts/score_decota_actuation_scope_v1.py": "6408bcd30439ef0ee9910db4d6770c85e08e032c93130223d3776ca2aca77cbb"
+      },
+      "reason": "Pre-R3 GT engineering repair: R4 must carry sealed final R3/R3G configuration; objective and selection rules unchanged.",
+      "GT_read_before_revision": false,
+      "new_predictions_invalidated": false
+    },
+    {
+      "time": 1791133632.7017033,
+      "pin_overrides": {
+        "scripts/run_decota_actuation_scope_v1.py": "a7ede5b61ad437b7e563a1a8dbd7fff546698b25adcf017b5b8ddac6f514ce11"
+      },
+      "reason": "Smoke must read chosen family from sealed private R2 config, never open public result directory in no-GT worker. Guard blocked before reading.",
+      "GT_read": false,
+      "scientific_change": false
+    },
+    {
+      "time": 1791134883.0724728,
+      "reason": "Independent FP64 posterior/authority remains checked; exact parameter execution uses the actually recorded GPU FP32 coefficient. Original GT exposure preserved, no predictions or objectives changed. Finite controller resumes only unfinished stages.",
+      "GT_read": true,
+      "predictions_changed": false,
+      "pin_overrides": {
+        "scripts/score_decota_actuation_scope_v1.py": "7d0fb7fc322330408b16ce1c0ab6d0f44889896a8225e5788451f471bab851fc",
+        "scripts/score_decota_online_qualification_v1.py": "57a34fe59734779cc1a12ddc5c58c1323ca436b2341f3ea2d856c8347f6eb948",
+        "scripts/continue_decota_actuation_scope_v1.py": "1420cb0ae85c5ca760840e552904be6ac8d1e5b46acb7815286e7d63478feeec"
+      }
+    },
+    {
+      "time": 1791134929.5506403,
+      "pin_overrides": {
+        "scripts/score_decota_actuation_scope_v1.py": "fac9cf6593ea606d4d1492228714514d8266388e72822bcfdc2241746b30be57"
+      },
+      "reason": "CPU-only exact enumeration optimization: precompute each proposal/adjacency IoU, use identical full path indices and sequential sums. No pruning, predictions, threshold, objective or gradient change. Must compare old independent implementation before resume.",
+      "scientific_change": false,
+      "predictions_changed": false
+    },
+    {
+      "time": 1791137398.7296395,
+      "pin_overrides": {
+        "protocols/decota_actuation_scope_v1.md": "10dadb2b25e19b5016e7bd3e84e11a4d47d3d93e8686fe565f033d67bf50607d",
+        "docs/decota_actuation_scope_v1/EXECUTION.md": "7890dc4194644405afd5464910103f006252e451ab8196b83b4d75dd1335b3c3"
+      },
+      "reason": "Execution scope correction: remove agent-added R6 acquisition gate, retain all selected scientific configurations and historical decisions. User full attachment authorization already includes cross-domain qualification.",
+      "scientific_change": false,
+      "predictions_changed": false,
+      "old_gate_preserved": true
+    },
+    {
+      "time": 1791137699.2438545,
+      "pin_overrides": {
+        "docs/decota_actuation_scope_v1/EXECUTION.md": "c600229a2d87050126efbda26ec3cc646f96b3a76e6b4e57afe9af097d6cb37a"
+      },
+      "reason": "Execution documentation removes superseded R6 paragraph; scientific runtime, selection and predictions unchanged.",
+      "scientific_change": false,
+      "predictions_changed": false
+    },
+    {
+      "time": 1791138289.171442,
+      "pin_overrides": {
+        "scripts/score_decota_actuation_scope_v1.py": "eb4de54a96bc27fd6d08e441902226766a6ababf446e9fbbe6fe401806bf24af"
+      },
+      "reason": "Public reader supports established lossless gzip diagnostics. Private predictions, metrics, mathematical audit and cohort unchanged.",
+      "scientific_change": false,
+      "predictions_changed": false
+    }
+  ],
+  "cross_revisions": [
+    {
+      "time": 1791137463.8669128,
+      "pin_overrides": {
+        "scripts/run_decota_cross_qualification_v1.py": "3cc6c32610e52b0227289825efaefa0024fc1a3f253251c30d7ce29dd25b1e41"
+      },
+      "reason": "Pre-prediction compact cache excludes fields reconstructed exactly by NormalizedSpatialReplay; identical existing capture convention. No GT, inference or scientific change.",
+      "scientific_change": false,
+      "predictions_changed": false
+    },
+    {
+      "time": 1791138101.1256433,
+      "pin_overrides": {
+        "scripts/score_decota_cross_qualification_v1.py": "3b0a9b69c25a169d7dca4dd23e4afceed404289e214584419e25ef545c64b366"
+      },
+      "reason": "Pre-GT audit strengthens loaded source identity and records four additional full-model smoke reinsertions plus matched raw/normalized smoke gradients. No prediction or scientific change.",
+      "scientific_change": false,
+      "predictions_changed": false
+    }
+  ],
+  "retained_historical_failures": true,
+  "scientific_configuration_unchanged_after_each_stage_GT": true,
+  "R6_scope_correction_not_method_reselection": true,
+  "time": 1791139470.4033132
+}
