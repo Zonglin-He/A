@@ -1,0 +1,89 @@
+{
+  "EMix": "NO_GO for this raw equal-weight teacher with frozen R1/R2 dynamics",
+  "panels": [
+    {
+      "dataset": "vidstg",
+      "split": "search",
+      "mix_over_native_mean": -0.007579676292386936,
+      "mix_over_native_ci95": [
+        -0.02344977176835645,
+        0.0010189830367595453
+      ],
+      "mix_over_deploy_mean": -0.005376461604238177,
+      "mix_over_deploy_ci95": [
+        -0.022886239906608964,
+        0.010896403435191706
+      ],
+      "native_gain_established": false,
+      "deploy_improvement_established": false
+    },
+    {
+      "dataset": "hc2",
+      "split": "search",
+      "mix_over_native_mean": -0.02273291246381404,
+      "mix_over_native_ci95": [
+        -0.0701525030801973,
+        0.013533181550030103
+      ],
+      "mix_over_deploy_mean": 0.0989741804416426,
+      "mix_over_deploy_ci95": [
+        0.002158786633402003,
+        0.21749162030185681
+      ],
+      "native_gain_established": false,
+      "deploy_improvement_established": true
+    },
+    {
+      "dataset": "vidstg",
+      "split": "confirm",
+      "mix_over_native_mean": -0.04212647312738059,
+      "mix_over_native_ci95": [
+        -0.09387352342939967,
+        -0.005370410388636071
+      ],
+      "mix_over_deploy_mean": 0.030652066478016327,
+      "mix_over_deploy_ci95": [
+        -0.01821422454586591,
+        0.11362428818929048
+      ],
+      "native_gain_established": false,
+      "deploy_improvement_established": false
+    },
+    {
+      "dataset": "hc2",
+      "split": "confirm",
+      "mix_over_native_mean": -0.04442353845299426,
+      "mix_over_native_ci95": [
+        -0.13264814015710283,
+        0.007480449783802058
+      ],
+      "mix_over_deploy_mean": 0.014590519142876774,
+      "mix_over_deploy_ci95": [
+        -0.11921360862691122,
+        0.12751688759055899
+      ],
+      "native_gain_established": false,
+      "deploy_improvement_established": false
+    }
+  ],
+  "confirmation_native_gain_established": false,
+  "confirmation_deploy_improvement_established": false,
+  "uncertainty_preservation_solves_bottleneck_proven": false,
+  "bad_raw_mass_is_unique_failure_cause_proven": false,
+  "measured": "All four Native vIoU means negative; Vid confirmation CI below zero. Only HC development demonstrates paired gain over failed EDeploy.",
+  "competing_explanations": [
+    "equal raw proposal mass is not localization-quality mass",
+    "joint multimodal teacher projected into additive start/end student",
+    "diffuse target changes gradient and MAP execution"
+  ],
+  "next_question": "If reopened, distinguish teacher support purification from diffuse joint-target projection; no extra job launched.",
+  "target_retuning": false,
+  "source_retuning": false,
+  "production_promoted": false,
+  "A8_changed": false,
+  "R3_started": false,
+  "purification_started": false,
+  "weighting_started": false,
+  "PoE_started": false,
+  "time": 1791087239.7885346
+}

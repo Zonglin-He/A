@@ -1,0 +1,103 @@
+{
+  "checkpoints": {
+    "vidstg": {
+      "path": "checkpoints/TASTVG_VidSTG.pth",
+      "sha256": "5ab12c86363ef0ce0ee006c00fd11c6b659c3a9b2cb01a4f2c613efe22a2aa83",
+      "key": "model_ema"
+    },
+    "hc2": {
+      "path": "checkpoints/TASTVG_HCSTVG2.pth",
+      "sha256": "47d8f15841cd57e7bbf5a10e8bf23b1054d23b753e0becbd38a07f3dd60d5036",
+      "key": "model_ema"
+    }
+  },
+  "head_parameters": 514,
+  "K": 3,
+  "beta": 1.0,
+  "lr": {
+    "vidstg": 0.01,
+    "hc2": 0.01
+  },
+  "source_lr_inherited": true,
+  "source_selection_barrier_sha256": "7e72dcf92bad009e6e5f4479da8ae40f40cc6eb075be08f4d2990b619da41a70",
+  "sigma": "median physical spacing of each offset; one observed cell, unclipped GT coordinates",
+  "probabilities": "full strict i<j joint for each original offset; averaged two losses",
+  "readout": "original offset MAP FP32 logsoftmax and physical envelope",
+  "head_arithmetic": "CPU FP32; FP64 probability/loss",
+  "temporal_state": "reset for each current query, after exactly three SGD steps, discard",
+  "spatial_A_fixed": true,
+  "sampling": "unchanged original Paper48, two offsets",
+  "conditions": [
+    "clean",
+    "frame_drop_5",
+    "frame_freeze_5",
+    "motion_blur_5",
+    "occlusion_5",
+    "exposure_5"
+  ],
+  "schedule_fraction": 0.25,
+  "target_design_sources": {
+    "search": 32,
+    "confirm": 16
+  },
+  "target_expert_sources": {
+    "vidstg": {
+      "search": 16,
+      "confirm": 8
+    },
+    "hc2": {
+      "search": 14,
+      "confirm": 7
+    }
+  },
+  "history_exposure": true,
+  "empty_support_policy": "preparation error; no fallback",
+  "raw_proposals_preserved": true,
+  "unique_expert_cache_files": 235,
+  "proposal_count_range": [
+    26,
+    312
+  ],
+  "Gaussian_centers_fractional_unclipped": true,
+  "production_method_sha256": "bd75706cf8377823ac6af488b1bd993af5fd7480e7e45a047c6fdde5e81df8d2",
+  "version": "tastvg_dta_mixture_r2b_v1",
+  "predecessor_commit": "324b3357dbd67b435d1fb507ae516a44ecf53961",
+  "teacher": "all valid raw UVTG proposals equal mixture; duplicates/order preserved",
+  "component_normalization": "each R1 Gaussian independently normalized on original offset strict i<j BEFORE arithmetic averaging",
+  "weights": "1/M per raw row, including duplicates",
+  "teacher_joint_preserved": true,
+  "product_of_mixed_marginals": false,
+  "teacher_shapes": "joint Gaussian mixture; unchanged component sigma and centers",
+  "target_design_arrivals": 1152,
+  "scheduled_cells": 288,
+  "new_query_arm_adaptations": 288,
+  "reused_control_arms": [
+    "Native",
+    "A8",
+    "R1",
+    "EDeploy",
+    "EOracle"
+  ],
+  "unchanged_nonexpert_cells": 864,
+  "source_retuning": false,
+  "target_tuning": false,
+  "mixture": true,
+  "PoE": false,
+  "confidence_weighting": false,
+  "top_K": false,
+  "deduplication": false,
+  "gate": false,
+  "new_view": false,
+  "bootstrap_draws": 10000,
+  "bootstrap_seed": 20261004,
+  "shared_R1_helpers_sha256": "25369f63bce96dc2e2dc845fda5f014815130d0050f5d0d14cbbfb0df2657503",
+  "teacher_MAP": "FP64 joint MAP per original offset, then original envelope; diagnostic only",
+  "new_GPU_calls": 0,
+  "new_backbone_calls": 0,
+  "new_suffix_replays": 0,
+  "new_expert_calls": 0,
+  "temporal_persistence_writes": 0,
+  "spatial_updates": 0,
+  "R3_started": false,
+  "time": 1791086882.4535785
+}
