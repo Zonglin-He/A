@@ -26,3 +26,11 @@
 ## New authorized DESTA experiment (running; results pending)
 
 Two independent specialists → native pseudo-targets → R16 latent adaptation. [Readable method and hyperparameters](docs/desta3d/DUAL_EXPERT_NATIVE.md), [27 → 6 → 1 protocol](protocols/desta_dual_expert_native_v1.md). Previous negative results remain; this is not yet an efficacy claim.
+
+## DeCoTA C1–Scale06 online：最新锁定研究入口
+
+[正式 online 版本与代码导航](docs/DECOTA_C1_ONLINE_RELEASE.md)；[空间锁定配置](methods/C1_FINAL_RESEARCH_CONFIG.json)；[原 NLL＋hinge 时间状态](methods/C1_TEMPORAL_RESEARCH_STATUS.json)。
+
+C1 online 每个 query 重置残差和 Adam，只以 1/16 写回空间 LN；原时间适应仍逐 query 丢弃。更早的 `decota_final_simplified_v1` 是 episodic 路径，不能替代 online 状态继承。两份历史 CURRENT 登记保持不变。
+
+[同域 corruption online 评估](docs/TA_DECOTA_C1_SAME_DOMAIN_REVIEW.md)与[新增 Spatial-DeCoTA Direct/critic P0](docs/TA_DECOTA_CRITIC_P0_REVIEW.md)分别列出实际配置、正负结果及审计。P0 是无时间适应、无 LN 继承的当前空间纠错对照，不自动晋升正式配置。

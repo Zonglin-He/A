@@ -1,0 +1,76 @@
+{
+  "datasets": {
+    "vidstg": {
+      "unique_inputs": 288,
+      "logical_arrivals": 576,
+      "arms": 2,
+      "new_DINO_forwards": 0,
+      "formal_full_backbone_forwards": 0,
+      "spatial_backward_calls": 4370,
+      "temporal_backward_calls": 0,
+      "spatial_replay_evaluations": 4946,
+      "worker_seconds": 199.0656509399414,
+      "fit_seconds_by_arm": {
+        "direct": 74.29414829146117,
+        "critic": 85.11361082829535
+      },
+      "peak_memory_bytes": 1559201792,
+      "worker_wall_includes_IO": true,
+      "not_pure_GPU_kernel_time": true
+    },
+    "hc2": {
+      "unique_inputs": 288,
+      "logical_arrivals": 576,
+      "arms": 2,
+      "new_DINO_forwards": 0,
+      "formal_full_backbone_forwards": 0,
+      "spatial_backward_calls": 5700,
+      "temporal_backward_calls": 0,
+      "spatial_replay_evaluations": 6276,
+      "worker_seconds": 230.76948237419128,
+      "fit_seconds_by_arm": {
+        "direct": 90.10765863303095,
+        "critic": 102.7488006495405
+      },
+      "peak_memory_bytes": 1295959552,
+      "worker_wall_includes_IO": true,
+      "not_pure_GPU_kernel_time": true
+    }
+  },
+  "smoke": {
+    "status": "pass",
+    "GT_read": false,
+    "records": [
+      {
+        "dataset": "vidstg",
+        "source_id": 0,
+        "native_bitwise": true,
+        "original_direct_all_steps_bitwise": true,
+        "critic_full_replay_all_steps_bitwise": true,
+        "full_reinsertion_native_time_bitwise": true,
+        "paths": {
+          "direct": 11,
+          "critic": 11
+        },
+        "new_DINO": 0
+      },
+      {
+        "dataset": "hc2",
+        "source_id": 0,
+        "native_bitwise": true,
+        "original_direct_all_steps_bitwise": true,
+        "critic_full_replay_all_steps_bitwise": true,
+        "full_reinsertion_native_time_bitwise": true,
+        "paths": {
+          "direct": 11,
+          "critic": 11
+        },
+        "new_DINO": 0
+      }
+    ],
+    "seconds": 25.251387119293213,
+    "full_backbone_inputs": 2
+  },
+  "formal_unique_paired_inputs": 576,
+  "logical_arrivals_per_arm": 1152
+}

@@ -1,0 +1,46 @@
+{
+  "version": "c1_final_research_v1",
+  "status": "locked",
+  "selected": "Scale06",
+  "locked_at": 1790227234.6200838,
+  "scope": "TA-STVG VidSTG controlled-corruption historical research",
+  "source_checkpoint": "checkpoints/TASTVG_VidSTG.pth",
+  "source_checkpoint_sha256": "5ab12c86363ef0ce0ee006c00fd11c6b659c3a9b2cb01a4f2c613efe22a2aa83",
+  "parameters": {
+    "query": 256,
+    "LN": 1536
+  },
+  "optimizer": {
+    "name": "Adam",
+    "lr": 0.03,
+    "betas": [
+      0.9,
+      0.999
+    ],
+    "eps": 1e-08,
+    "weight_decay": 0,
+    "steps": 10
+  },
+  "lookahead": null,
+  "loss": "5 L1 + 2 GIoU; accepted references; denominator planned K=4",
+  "selector": "minimum original reference loss over evaluated steps0..10; earliest tie",
+  "query_reset": "zero each video",
+  "adam_reset": "fresh each video",
+  "LN_writeback_fraction": 0.0625,
+  "temporal": "original C1 formal time unchanged",
+  "fit_entrypoint": "vg_tta.c1_luna_tricks_v1.fit",
+  "fit_arm": "Scale06",
+  "code_pins": {
+    "vg_tta/c1_luna_tricks_v1.py": "73d76a383bc38b00297d1fe2ed176942cd88dce7f01324380951aa53212208cb"
+  },
+  "evidence": {
+    "artifacts/c1_scale06_matched_online_v1/LOCK.json": "8a52408ef7ccd9e75be721012eb5dd68ad0edfbbd0cab90629f8553eec673ae1",
+    "artifacts/c1_scale06_matched_online_v1/DECISION.json": "175658d30ada12375bc5c9e770eebc2fdd68c56260f617f1721a83f98a01e328",
+    "artifacts/c1_scale06_matched_online_v1/SUMMARY96.json": "fc71a902291ba5cc297eea7353b5f7d66fe5324b79efb7fd113028671158bcb3",
+    "artifacts/c1_scale06_matched_online_v1/SUMMARY128.json": "135811e2216a9733ea16aa6267c921df6008d8813eddcab0e4ccfa134c989b61",
+    "artifacts/c1_scale06_matched_online_v1/online/BARRIER.json": "faf173cd992122ac9b3e409f63f3702eaff00dd4f6daccca6c4812c4409aa026"
+  },
+  "no_further_search": true,
+  "fresh_confirmation": false,
+  "production_CURRENT_changed": false
+}
