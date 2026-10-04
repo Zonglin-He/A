@@ -1,0 +1,89 @@
+{
+  "version": "tastvg_dta_expert_r2_v1",
+  "predecessor_commit": "885762286dd75b806fae34b0bb712583d5088d84",
+  "checkpoints": {
+    "vidstg": {
+      "path": "checkpoints/TASTVG_VidSTG.pth",
+      "sha256": "5ab12c86363ef0ce0ee006c00fd11c6b659c3a9b2cb01a4f2c613efe22a2aa83",
+      "key": "model_ema"
+    },
+    "hc2": {
+      "path": "checkpoints/TASTVG_HCSTVG2.pth",
+      "sha256": "47d8f15841cd57e7bbf5a10e8bf23b1054d23b753e0becbd38a07f3dd60d5036",
+      "key": "model_ema"
+    }
+  },
+  "head_parameters": 514,
+  "K": 3,
+  "beta": 1.0,
+  "lr": {
+    "vidstg": 0.01,
+    "hc2": 0.01
+  },
+  "source_lr_inherited": true,
+  "source_selection_barrier_sha256": "7e72dcf92bad009e6e5f4479da8ae40f40cc6eb075be08f4d2990b619da41a70",
+  "sigma": "median physical spacing of each offset; one observed cell, unclipped GT coordinates",
+  "probabilities": "full strict i<j joint for each original offset; averaged two losses",
+  "readout": "original offset MAP FP32 logsoftmax and physical envelope",
+  "head_arithmetic": "CPU FP32; FP64 probability/loss",
+  "shared_R1_fit_code_sha256": "25369f63bce96dc2e2dc845fda5f014815130d0050f5d0d14cbbfb0df2657503",
+  "temporal_state": "reset for each current query, after exactly three SGD steps, discard",
+  "spatial_A_fixed": true,
+  "sampling": "unchanged original Paper48, two offsets",
+  "conditions": [
+    "clean",
+    "frame_drop_5",
+    "frame_freeze_5",
+    "motion_blur_5",
+    "occlusion_5",
+    "exposure_5"
+  ],
+  "schedule_fraction": 0.25,
+  "target_design_sources": {
+    "search": 32,
+    "confirm": 16
+  },
+  "target_expert_sources": {
+    "vidstg": {
+      "search": 16,
+      "confirm": 8
+    },
+    "hc2": {
+      "search": 14,
+      "confirm": 7
+    }
+  },
+  "target_design_arrivals": 1152,
+  "query_arm_adaptations": 576,
+  "scheduled_cells": 288,
+  "unchanged_nonexpert_cells": 864,
+  "history_exposure": true,
+  "teacher_shapes": "single Gaussian; only center changes",
+  "EDeploy": "raw UVTG proposal confidence first-argmax",
+  "EOracle": "GT continuous physical tIoU first-argmax on identical raw UVTG support",
+  "empty_support_policy": "preparation error; no fallback",
+  "raw_proposals_preserved": true,
+  "unique_expert_cache_files": 235,
+  "proposal_count_range": [
+    26,
+    312
+  ],
+  "Gaussian_centers_fractional_unclipped": true,
+  "direct_teacher_metric_endpoints": "official dense integer truncation, separately from continuous support tIoU",
+  "target_tuning": false,
+  "source_retuning": false,
+  "mixture": false,
+  "PoE": false,
+  "confidence_weighting": false,
+  "gate": false,
+  "bootstrap_draws": 10000,
+  "bootstrap_seed": 20261004,
+  "production_method_sha256": "bd75706cf8377823ac6af488b1bd993af5fd7480e7e45a047c6fdde5e81df8d2",
+  "new_GPU_calls": 0,
+  "new_backbone_calls": 0,
+  "new_expert_calls": 0,
+  "new_suffix_replays": 0,
+  "R2b_started": false,
+  "R3_started": false,
+  "time": 1791085232.3923323
+}
