@@ -1,0 +1,60 @@
+{
+  "revisions": [
+    {
+      "pin_overrides": {
+        "scripts/score_decota_optimizer_posterior_v1.py": "135ae96f322d3c52369c0fdf3e7fee73d969afe44de361a816093ee6d2f7e9fd"
+      },
+      "reason": "enforce independent CPU code-lock readback before GT",
+      "GT_read": false
+    },
+    {
+      "pin_overrides": {
+        "scripts/score_decota_optimizer_posterior_v1.py": "cc5900dad4d618e7f374508ea25bac9640d584893aeda46bdefea69ebb4cc51a"
+      },
+      "reason": "add independent entropy arithmetic, observed/held-out support harm and beta0 numerical readout control; no prediction change",
+      "GT_read": false
+    },
+    {
+      "pin_overrides": {
+        "scripts/score_decota_optimizer_posterior_v1.py": "fcdff66a381cc4b1857171d3d2c0ef20f115e59b845396369b2f99cd002cef29"
+      },
+      "reason": "use already-verified offset parity frame IDs for numerical readout control instead of repeated large H-cache loads",
+      "GT_read": false
+    },
+    {
+      "pin_overrides": {
+        "scripts/score_decota_optimizer_posterior_v1.py": "4864087b0746f71825f34be29be3017195af1349121dfaadf5ad7a028b4b293f"
+      },
+      "reason": "separate post-authority actually used state from unmodified Adam proposal in proxy/GT diagnostics",
+      "GT_read": false
+    },
+    {
+      "pin_overrides": {
+        "scripts/score_decota_optimizer_posterior_v1.py": "cc379a64f2e3ecf40f0d98d8194a8241e2b37d74e517b90caa3aa8b51914468f"
+      },
+      "reason": "post-seal saved CPU failure: SGS theoretical-delta absolute tolerance replaced by elementwise float32 addition ULP bound; no predictions or science changed",
+      "GT_already_read": true,
+      "time": 1791132211.6155312
+    },
+    {
+      "pin_overrides": {
+        "scripts/score_decota_optimizer_posterior_v1.py": "cad0d2fea020ec6baf2d5aecf50b767974908844e7b96e6dcc3a0acbc83dc98d"
+      },
+      "reason": "shared rounding checker and immutable original GT exposure receipt retained on CPU resumption",
+      "prediction_change": false,
+      "time": 1791132244.1534376
+    },
+    {
+      "pin_overrides": {
+        "scripts/report_decota_optimizer_posterior_v1.py": "9930b7cca451e2c6e6eafab8ea6959145c8bc233d1002d71ef491ad69ef1e0f5"
+      },
+      "reason": "root plot review: distinguish proposal path and actually used post-authority/selected outputs with diamond markers",
+      "predictions_changed": false,
+      "time": 1791132729.7406485
+    }
+  ],
+  "engineering_failure_preserved": true,
+  "predictions_changed_after_GT": false,
+  "optimizer_changed": false,
+  "SGD_addition_audited_by_per_element_float32_ULP_bound": true
+}
