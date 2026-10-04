@@ -1,0 +1,92 @@
+{
+  "bundles": {
+    "vidstg": {
+      "lr": 0.033761698432507946,
+      "teacher_temperature": 0.34902548789596055,
+      "steps": 1
+    },
+    "hc2": {
+      "lr": 0.006097133675874025,
+      "teacher_temperature": 1.0,
+      "steps": 8
+    }
+  },
+  "parameters": 1792,
+  "rho": 0.05,
+  "student_temperature": 1.0,
+  "direction_count": 4,
+  "arrivals": 1152,
+  "expert_writes": 288,
+  "scope_target_cells": 4032,
+  "donor_balanced_scope_rows": 1584,
+  "availability": {
+    "vidstg": {
+      "expert_sources": 24,
+      "same_video_other_query": 24
+    },
+    "hc2": {
+      "expert_sources": 21,
+      "same_video_other_query": 0
+    }
+  },
+  "blocks": [
+    "query",
+    "norm1",
+    "norm3",
+    "norm4",
+    "full"
+  ],
+  "scopes": [
+    "self",
+    "same_video_other_query",
+    "different_video_same_corruption",
+    "semantic_near",
+    "semantic_far",
+    "different_corruption"
+  ],
+  "life_arms": [
+    "Frozen",
+    "A_before",
+    "A_after",
+    "E_before",
+    "E_after"
+  ],
+  "life_contrasts": [
+    [
+      "A_before",
+      "Frozen"
+    ],
+    [
+      "A_after",
+      "A_before"
+    ],
+    [
+      "E_after",
+      "E_before"
+    ],
+    [
+      "E_after",
+      "A_after"
+    ],
+    [
+      "E_after",
+      "A_before"
+    ]
+  ],
+  "new_expert_calls": 0,
+  "new_alternative_query_inputs": 144,
+  "full_reset": true,
+  "GT_used_for_updates": false,
+  "GT_used_for_selection": false,
+  "historically_exposed": true,
+  "production_promoted": false,
+  "primary_lifecycle_interval": "source-native fixed for all arms",
+  "primary_scope_interval": "target common donor-pre native fixed",
+  "confirm_A_after_source": "sealed rank_native final-step raw post output, excluding its top-level Fast interval override; original pre/post states and pre prediction verified exactly; nonexpert no-op uses slow",
+  "transfer_is_isolated": true,
+  "blocks_nonadditive": true,
+  "bootstrap_seed": 20261004,
+  "bootstrap_draws": 10000,
+  "global_barrier_sha256": "24600041c32e7fa6b12ea2cdbcf2cb05fca99c4e34b13619adfff864651a14f5",
+  "runtime_lock_sha256": "9f65c705d944d5bc2405de20b7b8369ca461b8d33100b8f941dce6b92a8a37e8"
+}
