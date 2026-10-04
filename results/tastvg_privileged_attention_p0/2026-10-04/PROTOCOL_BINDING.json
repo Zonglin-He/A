@@ -1,0 +1,94 @@
+{
+  "runtime_lock_sha256": "6cad3429b723b893ca6fc056b6f19569678ace5259fcb4465cf4daa652b83492",
+  "global_prediction_barrier_sha256": "7147238785785b50672e45a1f50173b4a5a41c3f63adc6c44a34d87bbea95062",
+  "defaults": {
+    "threshold": 0.35,
+    "tau_E": 1.0,
+    "gaussian_sigma": "half_box_width_height",
+    "alpha": 1.0,
+    "epsilon": 1e-06
+  },
+  "expert_checkpoint_sha256": "1a2412ef99bd74bcd3c2a246fa1e48581f8889a1300c9051974741314fc042f3",
+  "datasets": {
+    "vidstg": {
+      "configuration": {
+        "direction": "vidstg_within_domain_C1_Scale06",
+        "spatial_lr": 0.03,
+        "temporal_lr": 0.1,
+        "center_fraction": 0.5,
+        "source_dataset": "vidstg",
+        "checkpoint": "checkpoints/TASTVG_VidSTG.pth",
+        "checkpoint_sha256": "5ab12c86363ef0ce0ee006c00fd11c6b659c3a9b2cb01a4f2c613efe22a2aa83",
+        "spatial_steps": 10,
+        "temporal_steps": 5,
+        "planned_observations": 4,
+        "spatial_selection": "best",
+        "temporal_selection": "last",
+        "eta": 0.25,
+        "prior_weight": 0.1,
+        "epsilon": 1e-06,
+        "margin": 0.2,
+        "mode_weight": 1.0,
+        "spatial_parameters": 1792,
+        "temporal_parameters": 66306
+      },
+      "checkpoint_state_sha256": "fbb1ed8871d6c2aa093879efefc2ee500bb7de5e0fe1c25b809c5393d010f3c7",
+      "sources": 16,
+      "search_sources": 8,
+      "confirm_sources": 8,
+      "cells": 96,
+      "conditions": [
+        "clean",
+        "frame_drop_5",
+        "frame_freeze_5",
+        "motion_blur_5",
+        "occlusion_5",
+        "exposure_5"
+      ]
+    },
+    "hc2": {
+      "configuration": {
+        "direction": "hc2_within_domain_C1_Scale06",
+        "spatial_lr": 0.03,
+        "temporal_lr": 0.001,
+        "center_fraction": 1.0,
+        "source_dataset": "hcstvg2",
+        "checkpoint": "checkpoints/TASTVG_HCSTVG2.pth",
+        "checkpoint_sha256": "47d8f15841cd57e7bbf5a10e8bf23b1054d23b753e0becbd38a07f3dd60d5036",
+        "spatial_steps": 10,
+        "temporal_steps": 5,
+        "planned_observations": 4,
+        "spatial_selection": "best",
+        "temporal_selection": "last",
+        "eta": 0.25,
+        "prior_weight": 0.1,
+        "epsilon": 1e-06,
+        "margin": 0.2,
+        "mode_weight": 1.0,
+        "spatial_parameters": 1792,
+        "temporal_parameters": 66306
+      },
+      "checkpoint_state_sha256": "ee72f0d9a50c573a115bd7cfc2329c860745a1cf3dab83af1be7787c11b3c218",
+      "sources": 16,
+      "search_sources": 8,
+      "confirm_sources": 8,
+      "cells": 96,
+      "conditions": [
+        "clean",
+        "frame_drop_5",
+        "frame_freeze_5",
+        "motion_blur_5",
+        "occlusion_5",
+        "exposure_5"
+      ]
+    }
+  },
+  "historical_exposure": true,
+  "expert_schedule": "every cell, max four native-interval sampled frames",
+  "native_time_fixed": true,
+  "final_six_spatial_layers_only": true,
+  "parameter_updates": 0,
+  "worker_GT_read": false,
+  "score_GT_read": true,
+  "no_private_box_attention_or_media_export": true
+}
