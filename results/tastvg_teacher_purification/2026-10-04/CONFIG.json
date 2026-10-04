@@ -1,0 +1,93 @@
+{
+  "version": "tastvg_teacher_purification_v1",
+  "question": "Can confidence-free peer overlap identify useful raw expert proposals?",
+  "confidence": "first raw confidence argmax",
+  "consensus": "mean peer interval IoU excluding self; confidence-free first exact argmax",
+  "raw_duplicates_and_order_preserved": true,
+  "fractional_endpoints_unclipped": true,
+  "singleton": "sole index0, peer agreement undefined and score0",
+  "empty_invalid": "engineering error, no fallback",
+  "oracle": "first continuous physical GT-tIoU argmax, diagnostic only after selection seal",
+  "tIoU_metric": "continuous half-open physical-frame coordinates; same R2 teacher support metric",
+  "success": "tIoU>.5 strict",
+  "severe_wrong_event": "tIoU==0 disjoint or touching intervals",
+  "raw_proposal_count_range": [
+    26,
+    312
+  ],
+  "unique_expert_cache_files": 235,
+  "parent_design_arrivals": 1152,
+  "scheduled_teacher_cells": 288,
+  "corrupt_teacher_cells": 240,
+  "clean_teacher_cells": 48,
+  "nonexpert_cells_evaluated": 0,
+  "target_design_sources": {
+    "search": 32,
+    "confirm": 16
+  },
+  "target_expert_sources": {
+    "vidstg": {
+      "search": 16,
+      "confirm": 8
+    },
+    "hc2": {
+      "search": 14,
+      "confirm": 7
+    }
+  },
+  "history_exposure": true,
+  "source_queries_per_source": 1,
+  "orders": [
+    "order1",
+    "order2"
+  ],
+  "conditions": [
+    "clean",
+    "frame_drop_5",
+    "frame_freeze_5",
+    "motion_blur_5",
+    "occlusion_5",
+    "exposure_5"
+  ],
+  "checkpoints_provenance_only": {
+    "vidstg": {
+      "path": "checkpoints/TASTVG_VidSTG.pth",
+      "sha256": "5ab12c86363ef0ce0ee006c00fd11c6b659c3a9b2cb01a4f2c613efe22a2aa83",
+      "key": "model_ema"
+    },
+    "hc2": {
+      "path": "checkpoints/TASTVG_HCSTVG2.pth",
+      "sha256": "47d8f15841cd57e7bbf5a10e8bf23b1054d23b753e0becbd38a07f3dd60d5036",
+      "key": "model_ema"
+    }
+  },
+  "sampling": "unchanged original Paper48, two offsets",
+  "schedule_fraction": 0.25,
+  "production_method_sha256": "bd75706cf8377823ac6af488b1bd993af5fd7480e7e45a047c6fdde5e81df8d2",
+  "spatial_A_fixed": true,
+  "persistent_state_unchanged": true,
+  "R2_commit": "324b3357dbd67b435d1fb507ae516a44ecf53961",
+  "R2b_commit": "866ec35bd0dc0c41b938e656e9c9e430d18c18af",
+  "prior_T0": "confidence times overlap routing/native critic NO_GO; new pure raw medoid teacher endpoint",
+  "bootstrap_draws": 10000,
+  "bootstrap_seed": 20261004,
+  "aggregation": "equal source mean of repeated condition/order cells; paired source bootstrap",
+  "continuation": "all four corrupt panels Consensus-Confidence lower95CI>0; no adaptation in this audit",
+  "target_GT_used_in_unlabeled_selection": false,
+  "parameter_tuning": false,
+  "confidence_weighting": false,
+  "threshold": false,
+  "clustering": false,
+  "deduplication": false,
+  "new_view": false,
+  "model_loads": 0,
+  "new_GPU_calls": 0,
+  "new_backbone_calls": 0,
+  "new_expert_calls": 0,
+  "backward_calls": 0,
+  "head_updates": 0,
+  "spatial_updates": 0,
+  "temporal_persistence_writes": 0,
+  "R2c_started": false,
+  "production_promoted": false
+}
