@@ -1,3 +1,11 @@
+# Scope replaced on 2026-10-05
+
+The previously launched four-direction all-query corruption queue was stopped
+at 880 preserved partial arrivals when the user authorized the formal paper
+scope. No partial scoring or automatic resume. The text below is the saved
+historical launch record; the current task is
+[paper experiments](DECOTA_PAPER_EXPERIMENTS_EXECUTION.md).
+
 # 固定 DeCoTA：全量同域与跨域 corruption 已启动
 
 2026-10-05 登记的是实际运行中的完整评估，当前没有本轮 GT 指标。

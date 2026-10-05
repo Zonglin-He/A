@@ -1,0 +1,205 @@
+{
+  "version": "decota_paper_experiments_v1",
+  "canonical_method": {
+    "version": "decota_fixed_frame_top1_online_full_v1",
+    "source_selection_sha256": "701670f857cd87ea88f6d8afe32146ab70f2023c40ec9de88c94524113e7e1e0",
+    "native_when": true,
+    "observation_scope": "zero-update native interval",
+    "observation_budget": 4,
+    "spatial_expert": "frozen Grounding DINO tiny",
+    "critic": "existing admitted Frame-Top1 energy",
+    "parameters": 1792,
+    "spatial_lr": 0.03,
+    "Adam_betas": [
+      0.9,
+      0.999
+    ],
+    "Adam_eps": 1e-08,
+    "steps": 10,
+    "selection": "first minimum own loss among 0..10",
+    "LN_writeback": 0.0625,
+    "query_reset": true,
+    "Adam_reset": true,
+    "LN_reset": "checkpoint/target/condition/order",
+    "expert_availability": 1.0,
+    "temporal_parameter_updates": false,
+    "production_promoted": false
+  },
+  "severity_physical_burst_percent": [
+    2.5,
+    5,
+    10
+  ],
+  "one_query_video_counts": {
+    "vidstg": 732,
+    "hc2": 3482
+  },
+  "source_cluster_counts": {
+    "vidstg": 732,
+    "hc2": 237
+  },
+  "order_hashes": {
+    "vidstg": {
+      "order1": "cb67bfd0ad83243f5cc8218f5dd3550a06456a58bb5d0daea3ad2c982dd4e3ef",
+      "order2": "6d336664ab96533d418650643622691f110661c6cc6a25f6dad38ef2b79a4f06",
+      "order3": "685966d1b5984d5828f3f2bc25ca91391944458e8bcb92fbe90bc63470efb455"
+    },
+    "hc2": {
+      "order1": "97a438361af1c8defbbcb1712b5ad82fb467e85efe240faed94daaf3a424f5bb",
+      "order2": "07b1b0160d9be5872b489f1dea6cbcc0d4bdddc6518be83c0bb3530e29451c1e",
+      "order3": "76bb27202f16cd4b93397421e789b6e3e582d5161019f74322198c02b8150e2d"
+    }
+  },
+  "no_total_deadline": true,
+  "no_target_metric_tuning": true,
+  "production_promoted": false,
+  "stages": [
+    {
+      "id": "table1",
+      "setting": "clean_cross_domain",
+      "all_queries": true,
+      "orders": 3,
+      "ours_arrivals": 41355,
+      "methods": [
+        "Source Only",
+        "TENT-STVG",
+        "EATA-STVG",
+        "SAR-STVG",
+        "DINO-Refine",
+        "Ours",
+        "Target-trained reference"
+      ],
+      "status": "Ours_running_remaining_arms_pending",
+      "baseline_qualification": "pending_port_source_Fisher_and_smoke"
+    },
+    {
+      "id": "table2",
+      "setting": "same_domain",
+      "one_query_per_video": true,
+      "orders": 1,
+      "conditions": 16,
+      "arrivals_per_online_method": 67424,
+      "methods": [
+        "Source Only",
+        "TENT-STVG",
+        "EATA-STVG",
+        "SAR-STVG",
+        "DINO-Refine",
+        "Ours"
+      ],
+      "status": "locked_cohort_pending_runtime"
+    },
+    {
+      "id": "table3",
+      "variants": [
+        "Frozen",
+        "DINO-only",
+        "w/o query residual",
+        "w/o LN adaptation",
+        "w/o consolidation",
+        "Full"
+      ],
+      "status": "locked_scope_pending_runtime"
+    },
+    {
+      "id": "table4",
+      "variants": [
+        "Direct L1+GIoU",
+        "Multi-proposal energy",
+        "Admitted Top1 energy"
+      ],
+      "status": "locked_scope_pending_runtime"
+    },
+    {
+      "id": "table5",
+      "variants": [
+        "Native",
+        "Actionness adaptation",
+        "Real transform consensus",
+        "GT-head oracle"
+      ],
+      "UVTG": "old_audited_appendix_only",
+      "status": "locked_scope_pending_matched_runtime"
+    },
+    {
+      "id": "budget_alpha_efficiency",
+      "observation_counts": [
+        1,
+        2,
+        4,
+        8
+      ],
+      "LN_writeback": [
+        0,
+        0.03125,
+        0.0625,
+        0.125
+      ],
+      "status": "locked_scope_pending_runtime"
+    },
+    {
+      "id": "sealed_analyses",
+      "groups": [
+        "expert_quality",
+        "duration",
+        "motion",
+        "query_type"
+      ],
+      "pipeline_GT_required": true,
+      "status": "waiting_all_seals"
+    }
+  ],
+  "datasets": {
+    "vidstg": {
+      "queries": 10303,
+      "sources": 732,
+      "outside_development_sources": 652,
+      "historically_exposed": true,
+      "official_videos": 732,
+      "parent_source_clusters": 732,
+      "arrivals_per_checkpoint": 30909
+    },
+    "hc2": {
+      "queries": 3482,
+      "sources": 237,
+      "outside_development_sources": 157,
+      "historically_exposed": true,
+      "official_videos": 3482,
+      "parent_source_clusters": 237,
+      "arrivals_per_checkpoint": 10446
+    }
+  },
+  "GT_read": false,
+  "complete": false,
+  "old_full_corruption": {
+    "status": "paused_by_revised_paper_scope",
+    "partial_arrivals": 880,
+    "scored": false,
+    "resume_authorized": false
+  },
+  "current_execution": {
+    "stage": "t1_ours_hc2",
+    "actual_done": 740,
+    "actual_total": 10446,
+    "order": "order1",
+    "snapshot_time": 1791193040.5490973,
+    "Ours_main_runtime_sha256": "4e342321cba9b74eee8cf2ba7f5c5e5e68571f0ab7bf9823867702d7d616c532",
+    "Table1_continuation_runtime_sha256": "b36fc383763b59d1bbb50685c54eb77a48378188ebbdf31781a9bb7e8fdded76",
+    "baseline_runtime_sha256": "8215e6df620e6e38918e2b022b1277d6398dadd8aa0240773336f99e905b8dc9",
+    "continuation": "Finite waiter queued; no second GPU stream. Later tables remain implementation/execution pending."
+  },
+  "baseline_source_fisher": {
+    "queries_each": 2000,
+    "vid_source_videos": 1488,
+    "hc_source_clips": 2000,
+    "hc_source_parent_movies": 228,
+    "selected_HC_train_parent_overlap_with_validation": 222,
+    "target_validation_clip_overlap": 0,
+    "HC_official_train_clips_sharing_validation_parent": 10054,
+    "official_HC_train_clips": 10131,
+    "locked_HC_media_locally_found": 178,
+    "actual_Fisher_model_forwards": 0,
+    "official_range_intake": "ConnectionError before media/Fisher; exact source media pending, no replacement/ETA masquerading"
+  },
+  "time": 1791193040.5490973
+}

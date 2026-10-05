@@ -1,8 +1,10 @@
 # Visual Grounding / DESTA-3D
 
-## 2026-10-05：固定 DeCoTA 全量同域／跨域 corruption 正在运行
+## 2026-10-05：冻结 DeCoTA 正式论文实验已启动，旧全 query corruption 队列已停
 
-[实际启动与边界](docs/TA_DECOTA_FIXED_FULL_LAUNCH.md)、[协议](protocols/decota_fixed_full_corruption_v1.md)、[固定配置](methods/DECOTA_FIXED_FULL_RESEARCH_CONFIG.json)、[公开登记](results/decota_fixed_full_corruption/2026-10-05/REGISTRATION.json)。Native-WHEN + Uniform4 + 单 DINO admitted Frame-Top1 + joint1792 Adam .03 + LN delta/16；全 VidSTG test 10303query/732源及 HC2 val 3482query/237源，四种 checkpoint→target、clean+五5%、双序，共330840在线到达。八个真实 smoke 和独立 CPU 算术通过；**没有本轮完整指标，GT 仍等待全封存**。完整 pipeline 诊断与结果公开是必须的收尾。原暂停队列未恢复；生产登记未改。
+[实际执行与接续](docs/DECOTA_PAPER_EXPERIMENTS_EXECUTION.md)、[正式协议](protocols/decota_paper_experiments_v1.md)、[登记与四真实输入 smoke](results/decota_paper_experiments/2026-10-05/REGISTRATION.json)、[基线移植与 Fisher 条件](protocols/decota_paper_baselines_20261005_v1.md)。Table 1 先做自然 clean cross-domain，两个方向、全部 13,785 queries、三固定完整顺序；Ours 共 41,355 到达，已在第一方向实际运行。Source / DINO-Refine / target-trained 参考及 TENT/EATA/SAR 逐方向 runner 已实现并独立 pin，有限接续只等 Ours 退出后串行运行；32 CPU 合同不是基线 GPU 资格或指标。EATA HC 源 2,000 个锁定 train 片段目前本地 178 个，官方连接失败已保存，完整 Fisher 待媒体；不把 ETA 冒充 EATA。
+
+Table 2 为全部官方视频/片段各一 query、同域 clean＋五类×2.5/5/10% physical burst：Vid 732 视频、HC2 val 3,482 片段／237 父来源，共 4,214 queries；每在线方法 67,424 到达。后续组件／监督／匹配 temporal／预算／alpha／成本／封存后 GT pipeline 均仍待实际执行。HC2 validation 不改称 test，统计按父来源聚类。方法、生产登记保持原保护边界，当前没有新正式指标。旧 330,840 到达队列在 880 partial 时按新 scope 停止保存，不评分、不恢复。
 
 [磁盘清理](docs/STORAGE_CLEANUP_20261005.md)已完成：311个闲置权重／临时缓存文件，净释放30.36GiB；当前依赖、数据与封存科学记录保留。旧 Sa2VA/PTD 精确重放须恢复退休权重。
 
@@ -28,6 +30,7 @@
 本次是代码整理和手动调参工具，不是新方法成绩。DESTA-3D privileged-correction/OPD 的最后 Dev16 gate 已结束，原 NO-GO 与所有正负结果保留；现有生产方法登记不因本工作区改变。
 
 历史入口原文：[旧 README](README_HISTORY_20260929.md)、[旧审阅记录](REVIEW_START_HERE_HISTORY_20260929.md)。本地完整研究档案为 `docs/RESEARCH_HISTORY.md`，实际生产登记为 `methods/CURRENT_METHOD.json`；已有 DeCoTA 精简路径见 [方法入口](methods/decota_final_simplified_v1/README.md)。
+
 
 ## New authorized DESTA experiment (running; results pending)
 
