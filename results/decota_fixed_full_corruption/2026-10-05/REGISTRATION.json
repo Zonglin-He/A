@@ -1,0 +1,153 @@
+{
+  "version": "decota_fixed_full_corruption_v1",
+  "datasets": {
+    "vidstg": {
+      "dataset": "vidstg",
+      "conditions": [
+        "clean",
+        "frame_drop_5",
+        "frame_freeze_5",
+        "motion_blur_5",
+        "occlusion_5",
+        "exposure_5"
+      ],
+      "queries": 10303,
+      "sources": 732,
+      "arrivals_per_checkpoint": 123636,
+      "full_official_query_cohort": true,
+      "expert_availability": 1.0,
+      "historically_exposed": true,
+      "outside_development_sources": 652,
+      "cohort_origin_sha256": "b0cdfd33ae275d5b6e18e366080c91997768dc5969a11971875e7940f1ab5375"
+    },
+    "hc2": {
+      "dataset": "hc2",
+      "conditions": [
+        "clean",
+        "frame_drop_5",
+        "frame_freeze_5",
+        "motion_blur_5",
+        "occlusion_5",
+        "exposure_5"
+      ],
+      "queries": 3482,
+      "sources": 237,
+      "arrivals_per_checkpoint": 41784,
+      "full_official_query_cohort": true,
+      "expert_availability": 1.0,
+      "historically_exposed": true,
+      "outside_development_sources": 157,
+      "cohort_origin_sha256": "df7a03588b81467d1465751e082fba4dd57c49668b3347fcf80c3da53f98b52e"
+    }
+  },
+  "jobs": [
+    {
+      "job": "same_vid",
+      "target": "vidstg",
+      "source": "vidstg"
+    },
+    {
+      "job": "same_hc2",
+      "target": "hc2",
+      "source": "hcstvg2"
+    },
+    {
+      "job": "cross_vid",
+      "target": "vidstg",
+      "source": "hcstvg2"
+    },
+    {
+      "job": "cross_hc2",
+      "target": "hc2",
+      "source": "vidstg"
+    }
+  ],
+  "online_arrivals": 330840,
+  "unique_frozen_inputs": 165420,
+  "config": {
+    "version": "decota_fixed_frame_top1_online_full_v1",
+    "source_selection_sha256": "701670f857cd87ea88f6d8afe32146ab70f2023c40ec9de88c94524113e7e1e0",
+    "native_when": true,
+    "observation_scope": "zero-update native interval",
+    "observation_budget": 4,
+    "spatial_expert": "frozen Grounding DINO tiny",
+    "critic": "existing admitted Frame-Top1 energy",
+    "parameters": 1792,
+    "spatial_lr": 0.03,
+    "Adam_betas": [
+      0.9,
+      0.999
+    ],
+    "Adam_eps": 1e-08,
+    "steps": 10,
+    "selection": "first minimum own loss among 0..10",
+    "LN_writeback": 0.0625,
+    "query_reset": true,
+    "Adam_reset": true,
+    "LN_reset": "checkpoint/target/condition/order",
+    "expert_availability": 1.0,
+    "temporal_parameter_updates": false,
+    "production_promoted": false
+  },
+  "GT_inference": false,
+  "no_total_deadline": true,
+  "status": "running",
+  "registration_date": "2026-10-05",
+  "snapshot_time": 1791189707.2828128,
+  "production_promoted": false,
+  "prediction_barrier_complete": false,
+  "snapshot": {
+    "job": "same_vid",
+    "done": 650,
+    "total": 123636,
+    "condition": "clean",
+    "order": "order1",
+    "GT_read": false
+  },
+  "runtime_source_pins": {
+    "protocols/decota_fixed_full_corruption_v1.md": "27707a5948a9292a3c4f15acbf10d81c8b838a09988ad62f28bc448e9d4b4b5d",
+    "scripts/decota_fixed_full_common_v1.py": "23ece8785e4536dfec2f4aab8dabb8833f52e238039871b6a482574cd52189b9",
+    "scripts/prepare_decota_fixed_full_v1.py": "f3f64d515f92fa9560dd9e7a2adfbcb3d79d0ee1c58a7788e8ebc98d9bb9a66f",
+    "scripts/run_decota_fixed_full_v1.py": "1f154518099a25d3113baf164339c2501f58c95acf3c7c074d136d278c981c5d",
+    "scripts/continue_decota_fixed_full_v1.py": "6d47e2eec3aa0fc5012a985c881095a1faf9daef776d3ccebd173dd2c9a508c8",
+    "vg_tta/decota_fixed_full_audit_v1.py": "043eb82163e7c3feccf157caa6322beb6becd94fc1c02fa0eb47425431b1a857",
+    "vg_tta/decota_identity_commitment_v1.py": "82acd92b457f2ef1343b8d06613e6a7590b3b272ddbae1999804f9ff2ce154b9",
+    "vg_tta/decota_optimizer_posterior_r1_v1.py": "c730eb6fa38b6558a337f6c42687d18b1d9b023963fd66593efdf01b923262c0",
+    "vg_tta/tastvg_decota_critic_p0_v1.py": "78b8b20281f8ef6f667fea2a284213c1780d33f77334153a774d55c2e4d87c99",
+    "vg_tta/decota_actuation_scope_v1.py": "e0b8f501418472bd48d5fe319b8845edd6b32fc94436e2f721fc30d12865f668",
+    "vg_tta/c1_enabling_tricks_v1.py": "c1c25119bfcc724ffa494261d00d1e81c9a612237ee5bfbf46258496c1b20e59",
+    "vg_tta/spatial_online_state_v1.py": "9f9916632606d1f6dfc44d1392f1ad4008fdb2d51fabf7982c6af4577cb3e475",
+    "vg_tta/tastvg_decota_c1_same_domain_v1.py": "8c8b64e74c85b3b7690fa7d106f05b8b90f4f3e7aa60a7025069faceb41ccd71",
+    "scripts/run_spatial_ssl_gpu_v1.py": "af6bd8191129cd4008910fb2cbf33ec1ab731b309d2971754005bb155f3635f2",
+    "scripts/run_spatial_regression_alignment_v1.py": "d711f2a966dcf2f6eaed7c9d5a109b5b7614d3c2d767207b5516cef1222c7e37",
+    "scripts/run_tastvg_full_b1_experts_v1.py": "dac54b01a4768a2054b0064e04f12d6c33be5f2b4a333c35f65ef35305d4b9d2",
+    "scripts/c1_controlled_corruption_v1.py": "0251259a53885fe5e509b3991c8710e0ed63ccad970ccff329a826778eb1f16a",
+    "vg_tta/tastvg_deployment_corruption_v2.py": "eafba7c3f71c69ff8cecdae0955aedb5eb909fae643294354f1e0dbb5cdad20a",
+    "vg_tta/exact_frame_decode_audit_v2.py": "735f45b14236309111a4b69c64b96e8f26215602c710e7964a9338388305291b",
+    "vg_tta/tastvg_paper48_hc2_decode_v1.py": "d5393dbe6a2187053f8afc2a1cd0f1073c26224e65f4ea1214e2fb73d2f37c49",
+    "vg_tta/unanchored_dense_shift_data_v1.py": "236443a5f9213645d3d9e4515b5a520b5d1cd5f970d86271774baf23c00fd2b0",
+    "scripts/run_tastvg_evidence_vulnerability_v2.py": "1bd0c5ad082cd845124f9c6984b7ec93c848de0dc686600baa68702255b3c971",
+    "methods/decota_final_simplified_v1/_tastvg_load.py": "1b95a35a795fd002817388485c531127cd21ae6a876368be289db23c2f8118d6",
+    "methods/decota_final_simplified_v1/release.py": "876a299b8a16cf6b38943b7c1ed826b41809000d8f24bff08428ab209eb71ae9",
+    "methods/decota_final_simplified_v1/observations.py": "24563668ebab04fdb133ecef8e628bf87d3d266cb1dbff33cf624365ebf79c82",
+    "methods/decota_final_simplified_v1/objectives.py": "c2dc28e23e4213ff2559482f7362e32bec81e767786b5b53c4501dd6017aaeaf",
+    "methods/decota_final_simplified_v1/optim.py": "67f56a2f6f72006348aa8c39ac578ee5ea929df790fd93f341ce80426ce04e22",
+    "methods/decota_final_simplified_v1/predictor.py": "041449c2d7497d62006e6ba140fd99043f67638d6953d1ccc5083bb74cb305aa",
+    "methods/decota_final_simplified_v1/config.py": "bf2484dfbeebd622b0a313af42810c8dc2681c8d552bd7ab25c0487665ae77a0",
+    "methods/decota_final_simplified_v1/loader.py": "d61a526b015bf9f6c57dcf3e69b8a2e723a867f9e8431c848e4eb4094d08e73a",
+    "methods/decota_final_simplified_v1/replay.py": "87ccd74410b26c5224e764bd031f5d33d62f97ece1e9dfc25dc27f912a439acc",
+    "methods/decota_final_simplified_v1/tensors.py": "d964125abb7934d6c9385f6facd1cab9707db948e55e595c9b489fc5b909a40f",
+    "methods/decota_final_simplified_v1/backbone.py": "7c853bd12bc1aac32a44bca64ae9ccf95b7a9edfaa4a6cfce5305a25c0fe0eda",
+    "methods/decota_final_simplified_v1/__init__.py": "5ec99a8f877e655e0d5c1e43f08d87e3879eea156fc0621840a1333edfc622de"
+  },
+  "design_sha256": "98c4f4bd4ee29b55a5edd820cf25abfc51e793277778188da685b772c57162c4",
+  "runtime_lock_sha256": "aaf60c26f1d188bf8d3dd8c5afa42d7caf85303aea57f770ab0aa8c9d1014510",
+  "CPU_handoff": "running_and_waiting_for_all_four_prediction_seals",
+  "same_input_readouts": [
+    "Frozen",
+    "inherited_Before",
+    "corrected_After"
+  ],
+  "evaluation_results_available": false,
+  "private_assets_exported": false
+}

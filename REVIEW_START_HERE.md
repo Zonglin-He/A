@@ -1,5 +1,11 @@
 # 代码与研究审阅入口
 
+## 2026-10-05：固定 DeCoTA 全量同域／跨域 corruption 正在运行
+
+[实际启动与边界](docs/TA_DECOTA_FIXED_FULL_LAUNCH.md)、[协议](protocols/decota_fixed_full_corruption_v1.md)、[固定配置](methods/DECOTA_FIXED_FULL_RESEARCH_CONFIG.json)、[公开登记](results/decota_fixed_full_corruption/2026-10-05/REGISTRATION.json)。Native-WHEN + Uniform4 + 单 DINO admitted Frame-Top1 + joint1792 Adam .03 + LN delta/16；全 VidSTG test 10303query/732源及 HC2 val 3482query/237源，四种 checkpoint→target、clean+五5%、双序，共330840在线到达。八个真实 smoke 和独立 CPU 算术通过；**没有本轮完整指标，GT 仍等待全封存**。完整 pipeline 诊断与结果公开是必须的收尾。原暂停队列未恢复；生产登记未改。
+
+[磁盘清理](docs/STORAGE_CLEANUP_20261005.md)已完成：311个闲置权重／临时缓存文件，净释放30.36GiB；当前依赖、数据与封存科学记录保留。旧 Sa2VA/PTD 精确重放须恢复退休权重。
+
 ## Frozen TA-STVG paper matrix: implementation preparation, B1 still running
 
 [Execution status and claim boundaries](docs/tastvg_paper_matrix_v1/EXECUTION.md), [A2 matched protocol](protocols/tastvg_matched_ablation_a2_v1.md), [CPU audit](results/tastvg_paper_matrix/2026-09-30/CPU_AUDIT.json). Raw-RKL and pairwise five-order ablations are locked, not measured. Persistent TENT/SAR/ViTTA optimization cores and offline readout helpers pass 10 CPU tests; full baseline ports and results remain pending. A finite serial continuation waits for B1. Existing 9411-query B1 remains unchanged. Sampled-grid scores are not automatically official dense-interpolated metrics; historical exposure and unsupported on-policy-superiority claims remain disclosed.

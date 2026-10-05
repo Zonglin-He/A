@@ -1,5 +1,11 @@
 # Visual Grounding / DESTA-3D
 
+## 2026-10-05：固定 DeCoTA 全量同域／跨域 corruption 正在运行
+
+[实际启动与边界](docs/TA_DECOTA_FIXED_FULL_LAUNCH.md)、[协议](protocols/decota_fixed_full_corruption_v1.md)、[固定配置](methods/DECOTA_FIXED_FULL_RESEARCH_CONFIG.json)、[公开登记](results/decota_fixed_full_corruption/2026-10-05/REGISTRATION.json)。Native-WHEN + Uniform4 + 单 DINO admitted Frame-Top1 + joint1792 Adam .03 + LN delta/16；全 VidSTG test 10303query/732源及 HC2 val 3482query/237源，四种 checkpoint→target、clean+五5%、双序，共330840在线到达。八个真实 smoke 和独立 CPU 算术通过；**没有本轮完整指标，GT 仍等待全封存**。完整 pipeline 诊断与结果公开是必须的收尾。原暂停队列未恢复；生产登记未改。
+
+[磁盘清理](docs/STORAGE_CLEANUP_20261005.md)已完成：311个闲置权重／临时缓存文件，净释放30.36GiB；当前依赖、数据与封存科学记录保留。旧 Sa2VA/PTD 精确重放须恢复退休权重。
+
 **手动看代码、改超参数，从 [DESTA-3D 工作区](docs/desta3d/README.md) 开始。**
 
 | 入口 | 内容 |
