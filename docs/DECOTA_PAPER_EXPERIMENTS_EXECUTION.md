@@ -5,6 +5,17 @@ formal experiment scope, not a resumed historical research queue.
 
 ## Actual running stage
 
+2026-10-05 23:56+08 stage readback: VidSTG-source -> HC2 Ours completed
+all3482 validation queries, three orders10446 arrivals and its job-level seal.
+Root independently verified all10446 compressed prediction-file SHA256 values,
+326342186 bytes, receipt sizes/runtime binding and pre-seal receipt times;
+`STAGE_ROOT_METADATA_READBACK_HC2.json` records this metadata/byte-only check.
+No prediction arrays or GT were read, no efficacy metrics were computed, and
+this is not the complete Table1 all-arm seal. The existing controller has
+serially started HC2-source -> VidSTG Ours; baseline continuation4047165 still
+waits for both Ours directions to seal. All GT scoring remains deferred until
+the full Table1 deployment-arm barrier.
+
 `scripts/continue_decota_paper_v1.py`: controller3849394 (dynamic STATUS/LAUNCH
 is authoritative). The finite first stage locked runtime, passed four real
 query smoke checks and now runs VidSTG checkpoint -> HC2 clean all3482 queries,
