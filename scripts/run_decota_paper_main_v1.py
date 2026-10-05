@@ -52,14 +52,16 @@ def read_row(ds,parent):
  return {**r,'parses':s['parses'],'subject_sha256':sha(sf)}
 
 def frames_for(ds,row,cache):
- from vg_tta import exact_frame_decode_audit_v2 as binding
+ assert ds in ('hc2','vidstg')
  if ds=='hc2':
   from vg_tta.tastvg_paper48_hc2_decode_v1 import decode
-  binding.decode=decode
+  decoder_id='HC2_official_output_timing'
  else:
-  # Each worker is a fresh process; the unmodified Vid decoder is its default.
-  decode=binding.decode
- key=digest({k:row['input'][k] for k in ['video_path','video_sha256','frame_ids','width','height']})
+  from vg_tta.exact_frame_decode_audit_v2 import decode
+  decoder_id='Vid_original_frame_vsync0'
+ # Decoder routing is local. Smoke uses both datasets in one process, so
+ # changing the shared module's decode binding contaminates its second half.
+ key=digest(dict(dataset=ds,decoder=decoder_id,input={k:row['input'][k] for k in ['video_path','video_sha256','frame_ids','width','height']}))
  if key in cache:frames,ids=cache.pop(key);cache[key]=(frames,ids);return frames,ids,True
  frames,ids=decode(row['input']);assert ids==row['frame_ids'];cache[key]=(frames,ids)
  while sum(x[0].nbytes for x in cache.values())>512*2**20 and len(cache)>1:cache.popitem(last=False)
@@ -111,7 +113,8 @@ def unpack_expert(z):
   out['observations'][x['view'],x['position']]=dict(probe=probe,receipt=x['receipt'])
  return out
 
-def smoke():
+def smoke(output_root=None):
+ output_root=BASE if output_root is None else Path(output_root)
  import torch
  from methods.decota_final_simplified_v1.config import EXPERT_SNAPSHOT
  from methods.decota_final_simplified_v1.observations import SpatialExpert
@@ -137,12 +140,12 @@ def smoke():
      if 'update' in a:assert torch.equal(a['update']['gradient'],b['update']['gradient']) and torch.equal(a['update']['raw'],b['update']['raw'])
     check=audit(z,ex);previous=commit_state(detached(initial,'cpu'),z['state'])
     from scripts.decota_matrix_common_v1 import save
-    sf=BASE/'smoke'/job/f'{parent:05}.pt';save(sf,dict(fit=z,expert=detached(ex,'cpu'),native=detached(native,'cpu'),committed=previous,audit=check))
+    sf=output_root/'smoke'/job/f'{parent:05}.pt';save(sf,dict(fit=z,expert=detached(ex,'cpu'),native=detached(native,'cpu'),committed=previous,audit=check))
     stats.append(dict(job=job,parent=parent,sha256=sha(sf),steps=z['gradient_calls'],raw_normalized_all_steps_bitwise=True,
      inherited_prestate=True,math_audit=check,compute=cost,GT_read=False))
     del base,norm,z,w,native,ex,views,data;gc.collect();torch.cuda.empty_cache()
    assert state_hash(model.state_dict())==modelhash;del model;cache.clear();gc.collect();torch.cuda.empty_cache()
-  write(BASE/'SMOKE_ROOT_ACCEPTANCE.json',dict(status='pass',records=stats,actual_queries=4,GT_read=False,time=time.time()))
+  write(output_root/'SMOKE_ROOT_ACCEPTANCE.json',dict(status='pass',records=stats,actual_queries=4,GT_read=False,time=time.time()))
   print('PAPER_MAIN_SMOKE_PASS',4,flush=True)
  finally:lease.close()
 
@@ -230,7 +233,7 @@ if __name__=='__main__':
  action=sys.argv[1]
  try:
   if action=='lock':lock()
-  elif action=='smoke':smoke()
+  elif action=='smoke':smoke(Path(sys.argv[2]) if len(sys.argv)>2 else None)
   elif action=='seal':seal()
   else:execute(action)
  except BaseException:

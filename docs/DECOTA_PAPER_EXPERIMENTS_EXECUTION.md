@@ -5,6 +5,22 @@ formal experiment scope, not a resumed historical research queue.
 
 ## Actual running stage
 
+2026-10-06 engineering recovery: the first combined smoke changed a shared
+Vid decoder binding while processing HC2. Its two Vid input caches consequently
+used HC output timing. The fresh formal Vid worker correctly used original-frame
+Vid decoding, so cached-pixel/signature assertions stopped it after2283 saved
+arrivals. All originals remain in `recovery/capture_signature_001`.
+`revision001_decoder_isolation` uses local dataset decoder dispatch and a
+decoder-scoped temporary frame cache. Twelve CPU contracts and four real-query
+no-GT requalifications passed; HC2 old/new fit paths and commits are bitwise
+equal and the two Vid pixel hashes match canonical Vid decoding. The original
+two Vid smoke qualifications are explicitly superseded for input convention.
+All2283 formal prediction files remain byte-identical; their input parents
+exclude both affected smoke inputs. The original state chain resumed with
+controller2511200/worker2511204, and finite waiter2511201 waits for its overall
+Ours seal. Dynamic LAUNCH/STATUS remains authoritative. HC2's10446 formal rows
+were not rerun. No method, data, corruption, or GT-barrier change was made.
+
 2026-10-05 23:56+08 stage readback: VidSTG-source -> HC2 Ours completed
 all3482 validation queries, three orders10446 arrivals and its job-level seal.
 Root independently verified all10446 compressed prediction-file SHA256 values,

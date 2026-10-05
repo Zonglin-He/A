@@ -19,3 +19,12 @@ self-updating claim that future stages already executed.
 `HC2_OURS_STAGE_SEAL_READBACK` is only a byte/hash, receipt-binding and seal-time
 check. No efficacy results or complete independent state/math/dense audit are
 claimed. GT scoring waits for all Table1 deployment arms to seal.
+
+The original combined smoke leaked HC output-timing decoder binding into its
+two Vid inputs. The formal fresh Vid worker used canonical original-frame
+decoding and correctly stopped on cached-pixel/signature mismatch. Revision001
+locally isolates decoder routing/cache scope; all2283 saved formal predictions
+remain unchanged and the original queue has resumed. Four actual no-GT query
+requalifications and CPU decoder contracts passed. Original wrong inputs and
+failure evidence are retained privately; the current smoke summary explicitly
+supersedes those two original Vid input qualifications. No efficacy scoring.
