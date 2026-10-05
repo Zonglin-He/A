@@ -1,5 +1,11 @@
 # Frozen method paper experiments v1
 
+**Unmeasured cohort clarification:** Table2 and matched one-query stages await
+HC parent-movie versus official-clip sampling resolution. The all-clip counts
+below record the initial metadata interpretation, not user-approved resolution.
+See `results/decota_paper_experiments/2026-10-05/COHORT_UNIT_HOLD.json`. Table1
+all-query streams and frozen method are unchanged. No Table2 predictions exist.
+
 ## Scope and method freeze
 
 The user explicitly authorized attachment 8edaf940 on 2026-10-05. It replaces

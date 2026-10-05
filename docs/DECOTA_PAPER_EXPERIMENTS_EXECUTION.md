@@ -120,3 +120,16 @@ remaining_EATA_HC_source_media_pending_root after sealing other Table1 rows.
 Root must finish exact source-media receipts/Fisher/smoke/EATA, all-arm seal and
 independent scoring/publication before proceeding to later tables. No original
 full-corruption queue is resumed. No partial main metrics are released.
+
+## Cohort-unit clarification pending before Table2
+
+The original metadata preparation interpreted “one query per official video” as
+all3482 HC clips. The attachment also explicitly says source-balanced /
+one-query per video/source; for HC this can instead mean237 parent movies.
+A specific two-option clarification has been sent once. Table1 keeps all3482
+queries and continues unchanged. Table2 and matched one-query stages have zero
+new predictions and must not start until the unit is resolved and their actual
+roster/runtime is independently sealed. Read TABLE2_COHORT_UNIT_HOLD.json.
+The two possible totals are969*16=15504 or4214*16=67424 per online method.
+The original counts/prototype plan remain historical preparation, not evidence
+that the user already selected a unit. Parent-movie bootstrap applies either way.

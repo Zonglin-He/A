@@ -78,7 +78,7 @@
       "one_query_per_video": true,
       "orders": 1,
       "conditions": 16,
-      "arrivals_per_online_method": 67424,
+      "arrivals_per_online_method": null,
       "methods": [
         "Source Only",
         "TENT-STVG",
@@ -87,7 +87,9 @@
         "DINO-Refine",
         "Ours"
       ],
-      "status": "locked_cohort_pending_runtime"
+      "status": "cohort_unit_clarification_pending_zero_predictions",
+      "cohort_unit_status": "Awaiting HC parent-source versus official-clip resolution before dependent stages",
+      "initial_metadata_arrivals_per_online_method": 67424
     },
     {
       "id": "table3",
@@ -99,7 +101,8 @@
         "w/o consolidation",
         "Full"
       ],
-      "status": "locked_scope_pending_runtime"
+      "status": "locked_scope_pending_runtime",
+      "cohort_unit_status": "Awaiting HC parent-source versus official-clip resolution before dependent stages"
     },
     {
       "id": "table4",
@@ -108,7 +111,8 @@
         "Multi-proposal energy",
         "Admitted Top1 energy"
       ],
-      "status": "locked_scope_pending_runtime"
+      "status": "locked_scope_pending_runtime",
+      "cohort_unit_status": "Awaiting HC parent-source versus official-clip resolution before dependent stages"
     },
     {
       "id": "table5",
@@ -119,7 +123,8 @@
         "GT-head oracle"
       ],
       "UVTG": "old_audited_appendix_only",
-      "status": "locked_scope_pending_matched_runtime"
+      "status": "locked_scope_pending_matched_runtime",
+      "cohort_unit_status": "Awaiting HC parent-source versus official-clip resolution before dependent stages"
     },
     {
       "id": "budget_alpha_efficiency",
@@ -135,7 +140,8 @@
         0.0625,
         0.125
       ],
-      "status": "locked_scope_pending_runtime"
+      "status": "locked_scope_pending_runtime",
+      "cohort_unit_status": "Awaiting HC parent-source versus official-clip resolution before dependent stages"
     },
     {
       "id": "sealed_analyses",
@@ -146,7 +152,8 @@
         "query_type"
       ],
       "pipeline_GT_required": true,
-      "status": "waiting_all_seals"
+      "status": "waiting_all_seals",
+      "cohort_unit_status": "Awaiting HC parent-source versus official-clip resolution before dependent stages"
     }
   ],
   "datasets": {
@@ -201,5 +208,39 @@
     "actual_Fisher_model_forwards": 0,
     "official_range_intake": "ConnectionError before media/Fisher; exact source media pending, no replacement/ETA masquerading"
   },
-  "time": 1791193040.5490973
+  "time": 1791193040.5490973,
+  "cohort_unit_clarification": {
+    "status": "awaiting_user_clarification_before_Table2_and_matched_one_query_stages",
+    "question": "HC one-query/source:237 parent movies versus3482 official clips",
+    "required_before": [
+      "Table2 roster/runtime",
+      "Tables3/4/5 matched one-query roster",
+      "budget/alpha one-query roster"
+    ],
+    "Table1_all_query_continues_unchanged": true,
+    "Table2_gpu_predictions": 0,
+    "options": [
+      {
+        "unit": "parent_movie",
+        "HC_queries": 237,
+        "Vid_queries": 732,
+        "queries": 969,
+        "conditions": 16,
+        "arrivals_per_online_method": 15504
+      },
+      {
+        "unit": "official_clip",
+        "HC_queries": 3482,
+        "Vid_queries": 732,
+        "queries": 4214,
+        "conditions": 16,
+        "arrivals_per_online_method": 67424
+      }
+    ],
+    "default_metadata": "Preliminary preparation used all official clips; not a user-approved resolution of source-balanced ambiguity.",
+    "no_inference_using_Gt_for_choice": true,
+    "GT_read": false,
+    "time": 1791193377.0379076
+  },
+  "one_query_video_counts_status": "Initial all-clip metadata, not a resolved one-query/source approval"
 }
