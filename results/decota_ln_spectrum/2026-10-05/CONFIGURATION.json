@@ -1,0 +1,63 @@
+{
+  "version": "decota_ln_spectrum_v1",
+  "predecessor_commit": "38810f55a09d2aec1a384a8b585981ac4eec0781",
+  "cohort": {
+    "datasets": [
+      "vidstg",
+      "hc2"
+    ],
+    "development_sources_each": 32,
+    "confirmation_sources_each": 16,
+    "queries_per_source": 1,
+    "orders": 2,
+    "historically_exposed": true,
+    "conditions": [
+      "clean",
+      "frame_drop_5",
+      "frame_freeze_5",
+      "motion_blur_5",
+      "occlusion_5",
+      "exposure_5"
+    ],
+    "old_logical_arrivals": 13824
+  },
+  "backbone": "TA-STVG official same-domain checkpoint",
+  "checkpoint_file_sha256": {
+    "vidstg": "5ab12c86363ef0ce0ee006c00fd11c6b659c3a9b2cb01a4f2c613efe22a2aa83",
+    "hc2": "47d8f15841cd57e7bbf5a10e8bf23b1054d23b753e0becbd38a07f3dd60d5036"
+  },
+  "spatial_expert": "one frozen Grounding DINO",
+  "temporal": "frozen Native interval",
+  "critic": "admitted-frame Top1 energy",
+  "optimizer": {
+    "name": "Adam",
+    "lr": 0.03,
+    "steps": 10,
+    "selection": "first own-loss minimum"
+  },
+  "current_parameters": 1792,
+  "LN_dimension": 1536,
+  "LN_names": [
+    "spatial.layers.5.norm1.weight",
+    "spatial.layers.5.norm1.bias",
+    "spatial.layers.5.norm3.weight",
+    "spatial.layers.5.norm3.bias",
+    "spatial.layers.5.norm4.weight",
+    "spatial.layers.5.norm4.bias"
+  ],
+  "write_scale": 0.0625,
+  "ranks": [
+    1,
+    2,
+    4,
+    8,
+    16,
+    32
+  ],
+  "seed": 20261005,
+  "new_model_calls": 0,
+  "new_expert_calls": 0,
+  "new_GT_scoring": 0,
+  "utility_scope": "exact first nonzero-write prefixes at scale1/16 only; source-initialized donor and recipient correction cosine",
+  "production_promoted": false
+}
