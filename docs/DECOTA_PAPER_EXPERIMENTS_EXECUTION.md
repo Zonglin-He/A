@@ -5,6 +5,17 @@ formal experiment scope, not a resumed historical research queue.
 
 ## Actual running stage
 
+2026-10-06 latest user preemption (attachment5ab425de): this original paper
+continuation is intentionally saved while independent spatial-policy OPD runs.
+TENT HC2->Vid has11791 saved predictions; full Adam state restored from arrival
+1400 plus87 saved arrivals reproduces every parameter and Before/After prediction
+bitwise, next arrival1488. Original interruption evidence and all prefix hashes
+are in `user_opd_pause_20261006`. Resume the original queue only after the new
+study's actual root audit/visual review/GitHub closing receipt. Prepared entry:
+`scripts/continue_decota_paper_after_opd_v1.py`. The older running-stage paragraphs
+below remain historical records; dynamic STATUS is now the intentional pause.
+Original Ours/production registration and HC-media/Table2-unit holds are intact.
+
 2026-10-06 Table1 Ours handoff: both clean cross-domain jobs and all three
 complete orders are sealed, HC2 10446 and Vid 30909 arrivals, 41355 total.
 The existing finite continuation2511201 received the exact global barrier
