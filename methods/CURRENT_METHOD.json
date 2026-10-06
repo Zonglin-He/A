@@ -1,0 +1,17 @@
+{
+  "version": "decota_spatial_opd_v1",
+  "entrypoint": "methods.decota_spatial_opd_v1.predictor.SpatialOPDPredictor",
+  "main_method_selection": "explicit_user_instruction_20261006",
+  "temporal": "Native TA-STVG WHEN frozen",
+  "spatial": "on-policy Gaussian logit-cxcywh output; 32 antithetic actions; detached admitted Top1 DINO IoU feedback; true likelihood gradient",
+  "spatial_parameter_updates": true,
+  "active_parameters": 1792,
+  "observation": "original Uniform4, one frozen Grounding DINO, original admission/Top1",
+  "optimizer": "per-query Adam reset; configured final-round output",
+  "state": "query residual reset per query; LN delta persists at configured writeback",
+  "configurations": "methods/decota_spatial_opd_v1/configs.json",
+  "protocol": "protocols/decota_spatial_opd_tuning_v1.md",
+  "historical_method_registry": "artifacts/decota_spatial_opd_tuning_v1/PREVIOUS_CURRENT_METHOD.json",
+  "evidence_scope": "User method registration is not evidence of dual-dataset improvement; original clean confirmation on-policy Vid positive, HC total inconclusive and current-query harm. Dataset-specific tuning uses exposed development data only.",
+  "other_method_experiments": "paused_by_user; tune first then original baselines only"
+}
