@@ -46,9 +46,16 @@ def rank(summary):
     return metric['mean'], -metric['harm_gt20pp_sources'], -summary['GPU_fit_seconds']
 
 
+def verify_root_pin():
+    expected = read(BASE / 'ROOT_AUDIT_RUNTIME.json')['script_sha256']
+    for revision in sorted((BASE / 'revisions').glob('root_report_*.json')):
+        expected = read(revision)['new_root_script_sha256']
+    assert sha(Path(__file__)) == expected
+
+
 def run():
     verify()
-    assert sha(Path(__file__)) == read(BASE / 'ROOT_AUDIT_RUNTIME.json')['script_sha256']
+    verify_root_pin()
     barrier = read(BASE / 'SELECTION_BARRIER.json')
     assert barrier['status'] == 'sealed' and set(barrier['datasets']) == {'vidstg', 'hc2'}
     assert sha(ROOT / 'methods/decota_spatial_opd_v1/configs.json') == barrier['configuration_file_sha256']
@@ -133,21 +140,32 @@ def run():
                  tables=tables, numerical_failures=failures, new_GT_reads=False,
                  new_model_execution=False, selection_is_exposed_development=True,
                  heldout_efficacy_claim=False, time=time.time())
-    write(output, audit)
+    if output.exists():
+        original = read(output)
+        assert {k: v for k, v in original.items() if k != 'time'} == {k: v for k, v in audit.items() if k != 'time'}
+    else:
+        write(output, audit)
     with (PUB / 'TRIALS.csv').open('w', newline='') as f:
         writer = csv.DictWriter(f, fieldnames=list(records[0])); writer.writeheader(); writer.writerows(records)
-    write(PUB / 'NUMERICAL_FAILURES.json', failures)
+    if (PUB / 'NUMERICAL_FAILURES.json').exists():
+        assert read(PUB / 'NUMERICAL_FAILURES.json') == failures
+    else:
+        write(PUB / 'NUMERICAL_FAILURES.json', failures)
     draw(records, tables)
     lines = ['# DeCoTA Spatial OPD：有限参数搜索', '',
              'VidSTG 与 HC2 各选择一套统一参数。下表来自历史曝光开发来源，',
              '用于选参；CI 描述这些开发样本，不是经过调参后的独立效能证据。', '',
              '| Target | lr | sigma | tau | steps | LN writeback | ΔvIoU (pp) | current / inherited (pp) | >20pp harm sources / cells |',
              '|---|---:|---:|---:|---:|---:|---:|---:|---:|']
+    notes = []
     for ds, table in tables.items():
         chosen = table['selection']; cfg = chosen['config']; met = chosen['statistics']['metrics']
         m = met['delta_total_v']
         lines.append(f"| {ds} | {cfg['lr']} | {cfg['sigma']} | {cfg['tau']} | {cfg['steps']} | {cfg['writeback']} | {m['mean']*100:.3f} [{m['ci95'][0]*100:.3f}, {m['ci95'][1]*100:.3f}] | {met['delta_current_v']['mean']*100:.3f} / {met['delta_inherited_v']['mean']*100:.3f} | {m['harm_gt20pp_sources']} / {m['harm_gt20pp_cells']} |")
-        lines.extend(['', f"{ds} 的敏感参数：{', '.join(chosen['sensitive_parameters'])}。16来源单因素筛查后，", f"在32来源双序上进行12次坐标提案，实际{chosen['unique_refine_configs']}个独立配置（重复提案复用）。"])
+        notes.extend(['', f"{ds} 的敏感参数：{', '.join(chosen['sensitive_parameters'])}。16来源单因素筛查后，", f"在32来源双序上进行12次坐标提案，实际{chosen['unique_refine_configs']}个独立配置（重复提案复用）。", f"本数据集共{table['completed_unique_trials']}个完整评分配置、{table['invalid_trials']}个保留但未评分的数值无效配置。"])
+    lines.extend(notes)
+    for failure in failures:
+        lines.extend(['', f"数值无效配置保留：{failure['dataset']} {failure['trial']}，{failure['config']}，失败前保存{failure['preserved_prefix']}条。该配置未评分、不能获选，没有跳过失败query或用fallback补分。"])
     lines.extend(['', 'Native WHEN、单DINO、Uniform4、原admission/Top1、1792参数、M32 antithetic与真实likelihood结构均固定。',
                   'GPU预测封存后才进行开发集评分。未使用原128确认来源挑参数，没有新增主方法全量、corruption或其他消融。',
                   '不同筛查/细化阶段的来源数不同，不能把16来源默认值与32来源获选值直接解释成调参的配对收益。',
@@ -194,7 +212,7 @@ def draw(records, tables):
 
 
 def wait_then_run(timeout_seconds=14400):
-    assert sha(Path(__file__)) == read(BASE / 'ROOT_AUDIT_RUNTIME.json')['script_sha256']
+    verify_root_pin()
     deadline = time.monotonic() + timeout_seconds
     while not (BASE / 'TUNING_COMPLETION.json').exists():
         current = read(BASE / 'STATUS.json')
@@ -212,7 +230,9 @@ def wait_then_run(timeout_seconds=14400):
 if __name__ == '__main__':
     try:
         if '--wait' in sys.argv: wait_then_run()
-        else: run()
+        else:
+            run()
+            status(BASE / 'ROOT_AUDIT_STAGE.json', dict(status='pending_actual_visual_and_publication', pid=os.getpid(), time=time.time()))
     except BaseException:
         failure = BASE / 'root_audit_failures' / str(time.time_ns()); failure.mkdir(parents=True, exist_ok=True)
         (failure / 'traceback.txt').write_text(traceback.format_exc())
