@@ -1,0 +1,65 @@
+{
+  "status": "passed_stage_seals_metadata_and_opaque_byte_hashes_only",
+  "jobs": [
+    {
+      "job": "t1_ours_hc2",
+      "dataset": "hc2",
+      "source_checkpoint": "vidstg",
+      "target_split": "validation",
+      "queries": 3482,
+      "official_videos_or_clips": 3482,
+      "parent_sources": 237,
+      "orders": 3,
+      "arrivals": 10446,
+      "Ours": {
+        "prediction_files_verified": 10446,
+        "prediction_bytes_verified": 326342186,
+        "prediction_barrier_sha256": "299b185c345c6b297662af0aa751a98528aa8190e53453c13f60e743efec1704",
+        "receipt_GT_runtime_size_time_checks": "pass"
+      },
+      "CPU_stateless_controls": {
+        "prediction_files_verified": 3482,
+        "prediction_bytes_verified": 8205611,
+        "prediction_barrier_sha256": "51c7733b53faaba198e221a1acc4e039178579f03687b7ae91dc6938ed402661",
+        "receipt_GT_runtime_size_time_checks": "pass"
+      }
+    },
+    {
+      "job": "t1_ours_vid",
+      "dataset": "vidstg",
+      "source_checkpoint": "hcstvg2",
+      "target_split": "test",
+      "queries": 10303,
+      "official_videos_or_clips": 732,
+      "parent_sources": 732,
+      "orders": 3,
+      "arrivals": 30909,
+      "Ours": {
+        "prediction_files_verified": 30909,
+        "prediction_bytes_verified": 1025433852,
+        "prediction_barrier_sha256": "2eccc9db2ddbae61feba138827486386d2693cf8d50adb25d94b463e02adc87e",
+        "receipt_GT_runtime_size_time_checks": "pass"
+      },
+      "CPU_stateless_controls": {
+        "prediction_files_verified": 10303,
+        "prediction_bytes_verified": 36248129,
+        "prediction_barrier_sha256": "78479f34f0778cda8b180f2285295ca19908410a89505b2719ecdf02881c55d9",
+        "receipt_GT_runtime_size_time_checks": "pass"
+      }
+    }
+  ],
+  "Ours_arrivals_verified": 41355,
+  "stateless_unique_payloads_verified": 13785,
+  "stateless_logical_rows_per_arm": 41355,
+  "runtime_lock_sha256": "4e342321cba9b74eee8cf2ba7f5c5e5e68571f0ab7bf9823867702d7d616c532",
+  "Ours_global_barrier_sha256": "d08e1e4b92f5cdae8d704d5f7df5e641a683f20bc67d55a569329d1b14210eac",
+  "stateless_global_barrier_sha256": "24a0d798c25173da031c14fd68cb72cee020ccf9ac64519d98aec82c7cbd199e",
+  "GT_read": false,
+  "prediction_arrays_read": false,
+  "efficacy_scoring": false,
+  "state_or_math_or_dense_audit": false,
+  "all_Table1_arms_complete": false,
+  "whole_paper_complete": false,
+  "next": "Existing serial continuation: references, qualified ports/source Fisher; GT scoring and pipeline diagnosis only after all Table1 deployable arms seal",
+  "time": 1791252175.5415359
+}

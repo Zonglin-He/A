@@ -28,3 +28,26 @@ remain unchanged and the original queue has resumed. Four actual no-GT query
 requalifications and CPU decoder contracts passed. Original wrong inputs and
 failure evidence are retained privately; the current smoke summary explicitly
 supersedes those two original Vid input qualifications. No efficacy scoring.
+
+## 2026-10-06 actual Ours global seal and serial continuation
+
+Both clean cross-domain Ours directions now completed all three fixed orders:
+HC2 validation10446 and VidSTG test30909,41355 arrivals. Source Only and the
+shared DINO-Refine control have been derived and sealed (13785 unique payloads,
+41355 logical arrivals each). The existing serial continuation actually started
+target-trained frozen reference inference after the Ours controller exited.
+No duplicate GPU controller was launched.
+
+OURS_CONTROLS_ROOT_BYTE_READBACK.json verifies all55140 corresponding files:
+Ours1351776038 bytes plus stateless44453740 bytes, SHA256, exact coverage and
+receipt size/runtime/seal times. Four synthetic auditor tests pass. This is
+stage metadata and opaque-byte verification only; it reads neither GT nor
+prediction arrays, and publishes no efficacy score. State/optimizer/dense
+scoring and GT pipeline diagnosis remain required after the complete Table1
+all-deployable-arm barrier. TENT/EATA/SAR live qualification and predictions
+are not claimed complete by this receipt. HC source Fisher media and the HC
+Table2 parent-movie/clip-unit answer remain unresolved.
+
+This is not all Table1 or paper completion. No method retuning or promotion,
+old queue resumption, or GT-selected prediction is authorized by this handoff.
+

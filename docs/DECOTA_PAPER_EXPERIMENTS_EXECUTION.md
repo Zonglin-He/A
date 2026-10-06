@@ -5,6 +5,28 @@ formal experiment scope, not a resumed historical research queue.
 
 ## Actual running stage
 
+2026-10-06 Table1 Ours handoff: both clean cross-domain jobs and all three
+complete orders are sealed, HC2 10446 and Vid 30909 arrivals, 41355 total.
+The existing finite continuation2511201 received the exact global barrier
+and predecessor exit, derived Source Only/DINO-Refine on CPU (13785 unique
+readout payloads, 41355 logical arrivals per arm), and has actually started
+frozen target-trained reference inference. Its dynamic STATUS is authoritative;
+no duplicate controller or concurrent GPU method was started.
+
+The independent stage byte audit verified all41355 Ours files (1351776038 bytes)
+and13785 shared CPU-control files (44453740 bytes), exact per-order/per-query
+coverage, SHA256/size/runtime receipts and receipt-before-seal times. Four
+synthetic corruption/coverage/receipt tests passed. This is only opaque-byte
+and metadata verification: no GT or prediction arrays were read, no efficacy
+scores/CI were computed, and state/math/dense auditing remains pending. All
+Table1 deployable arms must seal before those audits and the GT pipeline work.
+EATA HC source-media and Table2 parent-movie/clip-unit clarification are still
+pending; neither is silently resolved by this handoff. Later matched one-query
+stages must not run until the user's unit choice is recorded.
+See TABLE1_OURS_CONTROLS_ROOT_BYTE_READBACK.json and the standalone auditor
+scripts/audit_decota_paper_stage_bytes_v1.py. This is not entire Table1 or paper
+completion and does not promote the research method into CURRENT_METHOD.
+
 2026-10-06 engineering recovery: the first combined smoke changed a shared
 Vid decoder binding while processing HC2. Its two Vid input caches consequently
 used HC output timing. The fresh formal Vid worker correctly used original-frame
