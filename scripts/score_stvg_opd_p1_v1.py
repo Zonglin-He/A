@@ -82,7 +82,7 @@ def run(stage_name):
      for name,box in [('Frozen',inp['native_boxes']),('Before',fit['before']),('After',fit['final'])]:
       values[name]=official(box.numpy(),row,gt,span,z['interval'],ds)
       tubes[name]=DenseTube(box.numpy(),row,gt,span,clip=ds=='hc2')
-      ev=tubes[name].score(z['interval']);assert abs(ev['v']-values[name]['v'])<2e-10 and abs(ev['t']-values[name]['t'])<2e-10
+      ev=tubes[name].score(z['interval']);assert all(abs(ev[f]-values[name][f])<2e-10 for f in ['v','t','s'])
       densechecks+=1
      r=dict(source_id=sourceids[row['source']],parent_ordinal_in_locked_roster=stage['parents'].index(parent),arrival=at,arm=arm,order=order,condition=condition,
       values=values,delta_total_v=values['After']['v']-values['Frozen']['v'],delta_inherited_v=values['Before']['v']-values['Frozen']['v'],
