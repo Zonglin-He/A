@@ -1,0 +1,11 @@
+# HC2 sequential coordinate execution
+
+HC2-only finite greedy search actually completed: 26 logical comparisons,22 full configurations,1408 complete development arrivals,0 numerical invalid trials. Two exact complete historical configurations were reused; all configurations were rescored only after the corresponding whole-coordinate prediction seal. Seven CPU contracts and four real GPU qualification fits passed; two START boxes and all1792 final/committed parameters matched bitwise.
+
+Selected HC2: `lr=.01,sigma=.025,tau=.05,steps=40,writeback=1/16,samples=32`. VidSTG remains `.03,.1,.25,10,1/8,32`. Original32 exposed HC2 development parent movies and both original orders were used;128 confirmation/P1 GT scores did not choose parameters. One predeclared greedy pass gives conditional grid best, not global optimality or independent confirmation.
+
+All32-parent independent10000 bootstrap/greedy-chain checks4405 passed,1408 opaque prediction bytes/coverage/receipts were separately verified (986248672 bytes); both actual plots and positive/negative scalar chains were read. Development total Δv=3.572563pp; current=2.717506pp; inherited=0.855057pp. Total harm>5/20pp is0/0; one current harm>5pp and3 spatial harms>5pp remain. Decoder Jacobians were not independently replayed.
+
+Actual configuration registration and the authorized paper continuation occur only after verified public publication. Preserve originalP0 negative result and P1 HC2 685 predictions/state; changed HC2 uses separately locked `artifacts/stvg_opd_paper_hc2_revision_v2`, source-reset P0 then P1 after actual root review. VidP0 evidence and completed baselines are reused exactly. EATA/media/Fisher remains user paused. P2–P6 prepared code does not imply execution.
+
+[Actual report](</home/wwww/visual grounding/results/stvg_opd_hc2_coordinate/2026-10-08/ROOT_REVIEW.md>), [selected configuration](</home/wwww/visual grounding/results/stvg_opd_hc2_coordinate/2026-10-08/SELECTED_CONFIG.json>), [postselection CPU handoff](</home/wwww/visual grounding/artifacts/stvg_opd_hc2_coordinate_v1/ROOT_AUDIT_COMPLETION.json>). `ROOT_CLOSING_RECEIPT.json` and revision `LAUNCH.json` determine actual closure/resume, not code presence.
