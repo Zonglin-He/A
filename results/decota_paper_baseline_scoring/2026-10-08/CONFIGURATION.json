@@ -1,0 +1,51 @@
+{
+  "baseline_version": "native_paper_ports_20261005",
+  "baseline_configs": {
+    "TENT": {
+      "lr": 0.001,
+      "steps": 1,
+      "optimizer": "Adam"
+    },
+    "EATA": {
+      "lr": 0.00025,
+      "steps": 1,
+      "optimizer": "SGD",
+      "momentum": 0.9,
+      "margin_fraction": 0.4,
+      "d_margin": 0.05,
+      "fisher_alpha": 2000.0,
+      "profile_bins": 32
+    },
+    "SAR": {
+      "lr": 0.001,
+      "steps": 3,
+      "optimizer": "SGD",
+      "momentum": 0.9,
+      "rho": 0.05,
+      "margin_fraction": 0.4,
+      "reset_entropy": 0.2
+    }
+  },
+  "adapted_scope": "ground decoder and time decoder LayerNorm affine; 19968 coordinates; encoders/heads frozen",
+  "entropy": "mean across independent native offsets of H(start)+H(end)+mean binary actionness entropy, one sigmoid, valid frames only",
+  "source_checkpoint": {
+    "vidstg_target": "official HC2-trained TA-STVG",
+    "hc2_validation_target": "official VidSTG-trained TA-STVG"
+  },
+  "reference": "same-dataset trained frozen checkpoint; supervised comparator, not TTA or mathematical upper bound",
+  "DINO_Refine": "sealed admitted Uniform4 frame Top1 boxes, physical cxcywh interpolation and nearest admitted extension; no additional expert calls",
+  "target_queries": {
+    "vidstg_test": 10303,
+    "hc2_validation": 3482
+  },
+  "parent_sources": {
+    "vidstg": 732,
+    "hc2": 237
+  },
+  "original_query_orders": 3,
+  "no_new_hyperparameter_selection": true,
+  "EATA_inference_user_paused": true,
+  "EATA_hc2_source_Fisher": "sealed VidSTG 2000 official training queries / 1488 videos; original locked inputs",
+  "EATA_vidstg": "unavailable and paused; no HC-source Fisher performed",
+  "current_OPD_full_roster_evaluation": false
+}

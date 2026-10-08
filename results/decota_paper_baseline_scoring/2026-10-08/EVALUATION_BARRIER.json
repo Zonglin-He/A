@@ -1,0 +1,151 @@
+{
+  "status": "sealed",
+  "human_authorized_after_EATA_pause": true,
+  "methods_both_directions": [
+    "Source Only",
+    "DINO-Refine",
+    "TENT-STVG",
+    "SAR-STVG",
+    "Target-trained reference"
+  ],
+  "EATA_HC2_only": "sealed_one_direction_supplement",
+  "EATA_VidSTG": "paused_unavailable",
+  "OPD": "not_evaluated_on_this_full_roster",
+  "old_Ours": "excluded_user_deleted_payloads",
+  "original_barriers_unchanged": true,
+  "groups": [
+    {
+      "dataset": "vidstg",
+      "kind": "stateless",
+      "methods": [
+        "Source Only",
+        "DINO-Refine"
+      ],
+      "queries": 10303,
+      "barrier": "table1_stateless/t1_ours_vid/PREDICTION_BARRIER.json",
+      "prediction_files_verified": 10303,
+      "prediction_bytes_verified": 36248129,
+      "prediction_barrier_sha256": "78479f34f0778cda8b180f2285295ca19908410a89505b2719ecdf02881c55d9",
+      "receipt_GT_runtime_size_time_checks": "pass",
+      "seal_time": 1791252000.8146772
+    },
+    {
+      "dataset": "vidstg",
+      "kind": "reference",
+      "methods": [
+        "Target-trained reference"
+      ],
+      "queries": 10303,
+      "barrier": "table1_target_reference/vidstg/PREDICTION_BARRIER.json",
+      "prediction_files_verified": 10303,
+      "prediction_bytes_verified": 27967192,
+      "prediction_barrier_sha256": "cfc7b8c3742657b4dba102d08721522ecc8b606bbcbfe106e35a5a20cdd8dc3b",
+      "receipt_GT_runtime_size_time_checks": "pass",
+      "seal_time": 1791262934.6153843
+    },
+    {
+      "dataset": "vidstg",
+      "kind": "TENT",
+      "methods": [
+        "TENT-STVG"
+      ],
+      "queries": 10303,
+      "barrier": "baselines/TENT_vidstg/PREDICTION_BARRIER.json",
+      "prediction_files_verified": 30909,
+      "prediction_bytes_verified": 4566503309,
+      "prediction_barrier_sha256": "54fe1b838f2439c797501286dedbdb46dd52fbeb9c1130b60ff494622205144f",
+      "receipt_GT_runtime_size_time_checks": "pass",
+      "seal_time": 1791320630.4950833
+    },
+    {
+      "dataset": "vidstg",
+      "kind": "SAR",
+      "methods": [
+        "SAR-STVG"
+      ],
+      "queries": 10303,
+      "barrier": "baselines/SAR_vidstg/PREDICTION_BARRIER.json",
+      "prediction_files_verified": 30909,
+      "prediction_bytes_verified": 4538566792,
+      "prediction_barrier_sha256": "d8d1268f350ed647dcb6744c6cf708f68129f7f100b70dcb0df4b693281d418a",
+      "receipt_GT_runtime_size_time_checks": "pass",
+      "seal_time": 1791387104.565971
+    },
+    {
+      "dataset": "hc2",
+      "kind": "stateless",
+      "methods": [
+        "Source Only",
+        "DINO-Refine"
+      ],
+      "queries": 3482,
+      "barrier": "table1_stateless/t1_ours_hc2/PREDICTION_BARRIER.json",
+      "prediction_files_verified": 3482,
+      "prediction_bytes_verified": 8205611,
+      "prediction_barrier_sha256": "51c7733b53faaba198e221a1acc4e039178579f03687b7ae91dc6938ed402661",
+      "receipt_GT_runtime_size_time_checks": "pass",
+      "seal_time": 1791251960.1430871
+    },
+    {
+      "dataset": "hc2",
+      "kind": "reference",
+      "methods": [
+        "Target-trained reference"
+      ],
+      "queries": 3482,
+      "barrier": "table1_target_reference/hc2/PREDICTION_BARRIER.json",
+      "prediction_files_verified": 3482,
+      "prediction_bytes_verified": 6906623,
+      "prediction_barrier_sha256": "274668e73ba40659d0c18448645c4fe2b7a36f652a35b38f127481de0ad8740b",
+      "receipt_GT_runtime_size_time_checks": "pass",
+      "seal_time": 1791255476.6052926
+    },
+    {
+      "dataset": "hc2",
+      "kind": "TENT",
+      "methods": [
+        "TENT-STVG"
+      ],
+      "queries": 3482,
+      "barrier": "baselines/TENT_hc2/PREDICTION_BARRIER.json",
+      "prediction_files_verified": 10446,
+      "prediction_bytes_verified": 1528424744,
+      "prediction_barrier_sha256": "5d59f0758c87b986be668dde3098534c494a8f9cb8ece9f7b0dd763f4522e7c9",
+      "receipt_GT_runtime_size_time_checks": "pass",
+      "seal_time": 1791276687.5175047
+    },
+    {
+      "dataset": "hc2",
+      "kind": "SAR",
+      "methods": [
+        "SAR-STVG"
+      ],
+      "queries": 3482,
+      "barrier": "baselines/SAR_hc2/PREDICTION_BARRIER.json",
+      "prediction_files_verified": 10446,
+      "prediction_bytes_verified": 1519599853,
+      "prediction_barrier_sha256": "bdbae45d34fb7bcdd571d46b95f49f0d7fbf3db550d255cd219cca23674cc21f",
+      "receipt_GT_runtime_size_time_checks": "pass",
+      "seal_time": 1791337596.790684
+    },
+    {
+      "dataset": "hc2",
+      "kind": "EATA",
+      "methods": [
+        "EATA-STVG"
+      ],
+      "queries": 3482,
+      "barrier": "baselines/EATA_hc2/PREDICTION_BARRIER.json",
+      "prediction_files_verified": 10446,
+      "prediction_bytes_verified": 1519424761,
+      "prediction_barrier_sha256": "d5289de66658f4c5ef5b9bed3c32853ecc962fb58674fddcbcce3e3ceb6aa82e",
+      "receipt_GT_runtime_size_time_checks": "pass",
+      "seal_time": 1791402705.3642638
+    }
+  ],
+  "logical_rows": 217221,
+  "physical_files": 120726,
+  "runtime_lock_sha256": "099cb75c46f00bae87cc58105dfc2658f5ba62c72f0579ec8882c79be2902e61",
+  "GT_read": false,
+  "time": 1791421168.0888572
+}
