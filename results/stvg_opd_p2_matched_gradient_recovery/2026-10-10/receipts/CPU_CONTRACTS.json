@@ -1,0 +1,229 @@
+{
+  "status": "pass",
+  "scope": "independent matched-gradient valid cases, explicit rejected malformed/wrong derivatives, and actual serialized original reproduction readback",
+  "valid_contracts": [
+    {
+      "n": 1,
+      "sigma": 0.025,
+      "frozen_rollout_shifted": false,
+      "pass_": true
+    },
+    {
+      "n": 1,
+      "sigma": 0.025,
+      "frozen_rollout_shifted": true,
+      "pass_": true
+    },
+    {
+      "n": 1,
+      "sigma": 0.1,
+      "frozen_rollout_shifted": false,
+      "pass_": true
+    },
+    {
+      "n": 1,
+      "sigma": 0.1,
+      "frozen_rollout_shifted": true,
+      "pass_": true
+    },
+    {
+      "n": 2,
+      "sigma": 0.025,
+      "frozen_rollout_shifted": false,
+      "pass_": true
+    },
+    {
+      "n": 2,
+      "sigma": 0.025,
+      "frozen_rollout_shifted": true,
+      "pass_": true
+    },
+    {
+      "n": 2,
+      "sigma": 0.1,
+      "frozen_rollout_shifted": false,
+      "pass_": true
+    },
+    {
+      "n": 2,
+      "sigma": 0.1,
+      "frozen_rollout_shifted": true,
+      "pass_": true
+    },
+    {
+      "n": 3,
+      "sigma": 0.025,
+      "frozen_rollout_shifted": false,
+      "pass_": true
+    },
+    {
+      "n": 3,
+      "sigma": 0.025,
+      "frozen_rollout_shifted": true,
+      "pass_": true
+    },
+    {
+      "n": 3,
+      "sigma": 0.1,
+      "frozen_rollout_shifted": false,
+      "pass_": true
+    },
+    {
+      "n": 3,
+      "sigma": 0.1,
+      "frozen_rollout_shifted": true,
+      "pass_": true
+    },
+    {
+      "n": 4,
+      "sigma": 0.025,
+      "frozen_rollout_shifted": false,
+      "pass_": true
+    },
+    {
+      "n": 4,
+      "sigma": 0.025,
+      "frozen_rollout_shifted": true,
+      "pass_": true
+    },
+    {
+      "n": 4,
+      "sigma": 0.1,
+      "frozen_rollout_shifted": false,
+      "pass_": true
+    },
+    {
+      "n": 4,
+      "sigma": 0.1,
+      "frozen_rollout_shifted": true,
+      "pass_": true
+    },
+    {
+      "n": 16,
+      "sigma": 0.025,
+      "frozen_rollout_shifted": false,
+      "pass_": true
+    },
+    {
+      "n": 16,
+      "sigma": 0.025,
+      "frozen_rollout_shifted": true,
+      "pass_": true
+    },
+    {
+      "n": 16,
+      "sigma": 0.1,
+      "frozen_rollout_shifted": false,
+      "pass_": true
+    },
+    {
+      "n": 16,
+      "sigma": 0.1,
+      "frozen_rollout_shifted": true,
+      "pass_": true
+    }
+  ],
+  "rejection_contracts": [
+    {
+      "name": "wrong_GPU_gradient",
+      "rejected": true
+    },
+    {
+      "name": "wrong_GPU_gradient_and_forged_inline_error",
+      "rejected": true
+    },
+    {
+      "name": "wrong_analytic_branch",
+      "rejected": true
+    },
+    {
+      "name": "rewritten_original_error",
+      "rejected": true
+    },
+    {
+      "name": "missing_sample",
+      "rejected": true
+    },
+    {
+      "name": "wrong_weight_shape",
+      "rejected": true
+    },
+    {
+      "name": "wrong_mean_shape",
+      "rejected": true
+    },
+    {
+      "name": "wrong_gradient_shape",
+      "rejected": true
+    },
+    {
+      "name": "negative_weight",
+      "rejected": true
+    },
+    {
+      "name": "unnormalized_weights",
+      "rejected": true
+    },
+    {
+      "name": "nonfinite_mean",
+      "rejected": true
+    },
+    {
+      "name": "nonfinite_sample",
+      "rejected": true
+    },
+    {
+      "name": "nonfinite_gradient",
+      "rejected": true
+    },
+    {
+      "name": "zero_sigma",
+      "rejected": true
+    },
+    {
+      "name": "mismatched_sigma",
+      "rejected": true
+    },
+    {
+      "name": "non_float32_input",
+      "rejected": true
+    },
+    {
+      "name": "non_float32_gradient",
+      "rejected": true
+    }
+  ],
+  "valid_count": 20,
+  "rejected_count": 17,
+  "original_reproduced_guard_failure_retained": true,
+  "actual_witness_check": {
+    "status": "pass",
+    "original_inline_absolute_guard_passed": true,
+    "original_inline_error": 3.814697265625e-06,
+    "original_absolute_threshold": 2e-05,
+    "max_original004_CPU32_vs_GPU32_error": 0.0001220703125,
+    "original004_CPU32_absolute_guard_passed": false,
+    "max_matched_CPU32_vs_GPU32_error": 0.0,
+    "matched_precision_absolute_threshold": 2e-05,
+    "max_CPU64_vs_formula64_error": 2.2737367544323206e-13,
+    "max_GPU32_vs_formula64_error": 0.0001162412174835481,
+    "max_original_analytic32_vs_formula64_error": 0.0001162412174835481,
+    "max_GPU_precision_bound": 0.0041560003305613075,
+    "max_analytic_precision_bound": 0.0041560003305613075,
+    "max_GPU_bound_fraction": 0.0368883222069373,
+    "max_analytic_bound_fraction": 0.03554215545908342,
+    "unit_roundoff": 5.960464477539063e-08,
+    "operation_bound": 48,
+    "CUDA_reduction_inputs": 32,
+    "CUDA_reduction_accumulators": 4,
+    "CUDA_reduction_thread_stride": 1,
+    "CUDA_reduction_warp_split": false,
+    "production_loss_gradient_Adam_and_readout_unchanged": true
+  },
+  "AST_only_one_original_assertion_test_supplemented": true,
+  "witness_sha256": "f35d183c17771bec0094200ca2819e9f182f056237c79c6c5a291a54f6d0c91b",
+  "new_model_calls": 0,
+  "new_DINO_calls": 0,
+  "GT_read": false,
+  "time": 1791569457.711076
+}
