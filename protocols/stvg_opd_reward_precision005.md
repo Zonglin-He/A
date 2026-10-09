@@ -1,0 +1,13 @@
+# Detached reward precision audit revision005
+
+This is an engineering audit supplement under the human instruction “修复接着做”. It does not change the scientific method, fitter, reward function, actions, optimizer, writeback, prediction selection, input frames, source checkpoint, target list, or original runtime files.
+
+The actual failed VidSTG fit (order2 arrival5767, query5250) was serialized before the worker exited. Preserve it, its original float64 absolute IoU assertion failure, the complete16070 opaque prediction prefix and receipts, and the HC2 sealed10446 predictions. Qualification compares to this actual failed-process serialization, rather than an unrecorded dead-process state.
+
+Keep the original3e-6 threshold for an independently constructed CPU float32 IoU computation. Enclose measured CPU sigmoid rounding and each subsequent corner/intersection/area/division operation with outward interval arithmetic, and retain the original GPU32/float64 discrepancy. This is not a proof of an independently implemented CUDA transcendental kernel or complete decoder Jacobian. Incorrect rewards must still be rejected. Only an exception whose saved causal chain reaches the original detached-reward line21 can receive the supplement; unrelated failures remain fatal. Original/001/002/003 audit outputs keep their exact receipts.
+
+Before new predictions:20 synthetic CPU contracts and17 rejection controls, full saved-fit CPU Gaussian/IoU/softmax/gradient/Adam/chart audit, two actual GPU complete repeats of the failed fit and four predeclared normal old/new control fits, exact original fit tensors and independent CPU readback. Qualification accepts zero predictions, reads no GT, and makes zero new DINO calls. Then compare the first formally missing fit to qualification bitwise before saving it. Preserve all16070 original prefix bytes and receipts; continue only the suffix with the original200-frame input and10-round final output. The allocator004 setting remains expandable_segments:True.
+
+All41355 P1 deployment arrivals across both directions must seal before original CPU GT scoring. CPU audit dispatches according to each saved audit revision, including005 only where the original reward check failed. New P1 root efficacy/source/dense/figure/public closure and original P2–P6 remain required. HC2 and sealed baselines are not rerun. EATA and old queues stay paused.
+
+The Figure1 v6 waiting process exited because it detected this P1 dependency failure. Retain its failed queue receipt and restore exactly one unchanged CPU waiter only after P1 resumes; its8 GPU qualification cells and512 cross-domain native outputs still wait for actual P1 global GPU seal. No figure GPU/GT started at this handoff.
