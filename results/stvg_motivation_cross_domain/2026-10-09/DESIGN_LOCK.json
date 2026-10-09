@@ -1,0 +1,95 @@
+{
+  "status": "locked_before_new_GPU_or_GT",
+  "directions": {
+    "vidstg_to_hc2": {
+      "source_dataset": "vidstg",
+      "target_dataset": "hc2",
+      "queries": 128,
+      "parent_sources": 128,
+      "frames_per_query": 64,
+      "roster_sha256": "2013c4771cef2b7752181c01d9cedcc402d4906decbb7b33e10046fccc1075db",
+      "qualification_ordinals": [
+        0,
+        1
+      ],
+      "models": [
+        "tastvg",
+        "tubedetr"
+      ],
+      "cells": 256,
+      "cohort_origin": "original P0 HC2 confirmation list"
+    },
+    "hc2_to_vidstg": {
+      "source_dataset": "hc2",
+      "target_dataset": "vidstg",
+      "queries": 128,
+      "parent_sources": 128,
+      "frames_per_query": 64,
+      "roster_sha256": "8da604d0b1decec1775a2cd22eb3c4da738e5fb750e0ea44cc7951350051acb6",
+      "qualification_ordinals": [
+        0,
+        1
+      ],
+      "models": [
+        "tastvg",
+        "tubedetr"
+      ],
+      "cells": 256,
+      "cohort_origin": "original native-support VidSTG 128-parent list"
+    }
+  },
+  "checkpoints": {
+    "tastvg": {
+      "vidstg": {
+        "path": "checkpoints/TASTVG_VidSTG.pth",
+        "sha256": "5ab12c86363ef0ce0ee006c00fd11c6b659c3a9b2cb01a4f2c613efe22a2aa83",
+        "bytes": 1951230809,
+        "STVG_training_dataset": "vidstg",
+        "target_STVG_dataset_training_claim": false
+      },
+      "hc2": {
+        "path": "checkpoints/TASTVG_HCSTVG2.pth",
+        "sha256": "47d8f15841cd57e7bbf5a10e8bf23b1054d23b753e0becbd38a07f3dd60d5036",
+        "bytes": 1951277247,
+        "STVG_training_dataset": "hc2",
+        "target_STVG_dataset_training_claim": false
+      }
+    },
+    "tubedetr": {
+      "vidstg": {
+        "path": "checkpoints/tubedetr_vidstg_res224_stride2.pth",
+        "sha256": "2802c66049b2e7986a826b4bbd291eb8521446cfba6fee03b56729438bf44213",
+        "bytes": 2963970961,
+        "STVG_training_dataset": "vidstg",
+        "target_STVG_dataset_training_claim": false
+      },
+      "hc2": {
+        "path": "checkpoints/tubedetr_hcstvg2_res224_stride2.pth",
+        "sha256": "c646a8b7131bb28806c350e16479cd8bb31d4425ccb15129b26a6e4d38dd4222",
+        "bytes": 2963971089,
+        "STVG_training_dataset": "hc2",
+        "target_STVG_dataset_training_claim": false
+      }
+    }
+  },
+  "cells": 512,
+  "qualification_cells": 8,
+  "main_thresholds": {
+    "tIoU": 0.5,
+    "GT_frame_mean_IoU": 0.5,
+    "strict_greater_than": true
+  },
+  "paired_parent_bootstrap": 10000,
+  "seed": 20261009,
+  "historically_exposed": true,
+  "no_formal_OPD_payload_access": true,
+  "parameter_updates": 0,
+  "new_training": false,
+  "PTD_excluded": "official model card lists joint VidSTG and HC-STVG training",
+  "white_background": true,
+  "outer_or_panel_borders": false,
+  "overall_figure_title": false,
+  "human_scope": "Figure1 PanelB must be cross domain",
+  "GT_read": false,
+  "time": 1791521011.977953
+}

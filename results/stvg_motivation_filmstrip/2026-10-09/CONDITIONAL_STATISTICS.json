@@ -1,0 +1,101 @@
+{
+  "status": "pass",
+  "scope": "post-hoc conditional descriptive view of all sealed native v6 scalars",
+  "total_native_rows": 512,
+  "unique_parents": 256,
+  "sources_per_direction": 128,
+  "conditional_event": "S <= .5 conditional on T > .5",
+  "temporal_metric": "physical-frame tIoU",
+  "spatial_metric": "mean frame IoU on all legal GT frames, uncovered support zero",
+  "thresholds_changed": false,
+  "checkpoint_cohort_outputs_changed": false,
+  "original_quadrant_comparisons": 16,
+  "bootstrap_draws": 10000,
+  "bootstrap_seed": 20261009,
+  "bootstrap_direction_offset": true,
+  "all_four_original_categories_retained": true,
+  "original_error_dominance_hypothesis_not_supported": true,
+  "no_new_model_calls": true,
+  "no_new_GT_metric_evaluation": true,
+  "active_P1_payload_access": false,
+  "directions": {
+    "vidstg_to_hc2": {
+      "tastvg": {
+        "N_all": 128,
+        "temporal_correct": 50,
+        "temporal_correct_spatial_wrong": 19,
+        "conditional_spatial_failure_percent": 38.0,
+        "conditional_95CI_percent": [
+          24.527339237581824,
+          51.28378378378376
+        ],
+        "original_quadrant_counts": [
+          31,
+          19,
+          44,
+          34
+        ],
+        "original_TplusSminus_minus_TminusSplus_pp": -19.53125
+      },
+      "tubedetr": {
+        "N_all": 128,
+        "temporal_correct": 39,
+        "temporal_correct_spatial_wrong": 17,
+        "conditional_spatial_failure_percent": 43.58974358974359,
+        "conditional_95CI_percent": [
+          28.205128205128204,
+          59.375
+        ],
+        "original_quadrant_counts": [
+          22,
+          17,
+          58,
+          31
+        ],
+        "original_TplusSminus_minus_TminusSplus_pp": -32.03125
+      }
+    },
+    "hc2_to_vidstg": {
+      "tastvg": {
+        "N_all": 128,
+        "temporal_correct": 38,
+        "temporal_correct_spatial_wrong": 21,
+        "conditional_spatial_failure_percent": 55.26315789473684,
+        "conditional_95CI_percent": [
+          39.473684210526315,
+          70.96774193548387
+        ],
+        "original_quadrant_counts": [
+          17,
+          21,
+          29,
+          61
+        ],
+        "original_TplusSminus_minus_TminusSplus_pp": -6.25
+      },
+      "tubedetr": {
+        "N_all": 128,
+        "temporal_correct": 46,
+        "temporal_correct_spatial_wrong": 16,
+        "conditional_spatial_failure_percent": 34.78260869565217,
+        "conditional_95CI_percent": [
+          21.428571428571427,
+          49.056603773584904
+        ],
+        "original_quadrant_counts": [
+          30,
+          16,
+          31,
+          51
+        ],
+        "original_TplusSminus_minus_TminusSplus_pp": -11.71875
+      }
+    }
+  },
+  "input_sha256": {
+    "SCALAR_ROWS.json": "d6451f10474022ae67ee87113335a915cf4e0ae6f1afb5b43d1dab7dae1d8ec4",
+    "QUADRANT_STATISTICS.json": "bbd34802f337a1098ca6f8b0e4240672a9399d11176b9e18778efb1f234bd1a8",
+    "ROOT_AUDIT.json": "82e79200c6ef0daad86955ddd127cf3d7c26a8926b99944bd6a842623cdbbe2a",
+    "GLOBAL_PREDICTION_BARRIER.json": "cc931dba77ce282054ca8fe80154b1cf5a68d646e0dfa144dd5f419ca6d4c9b6"
+  }
+}
