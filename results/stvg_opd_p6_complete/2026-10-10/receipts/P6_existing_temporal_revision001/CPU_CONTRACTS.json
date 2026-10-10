@@ -1,0 +1,146 @@
+{
+  "status": "pass",
+  "scope": "actual synthetic CPU original-fit parity and independent complete-head algebra/error rejection",
+  "valid": 2,
+  "invalid_rejected": 16,
+  "records": [
+    {
+      "dataset": "hc2",
+      "status": "pass",
+      "complete_synthetic_CPU_fit_bitwise": true,
+      "math": {
+        "status": "pass",
+        "scope": "same actual projection/loss/native-head-output VJP/two-layer head gradient/AdamW/66306 state/reset/last/shrink",
+        "evaluations": 7,
+        "backwards": 5,
+        "state_coordinates": 397836,
+        "maximum_errors": {
+          "projection": 3.3306690738754696e-16,
+          "loss": 4.440892098500626e-16,
+          "native_logit_gradient": 2.5879768661418723e-08,
+          "head_forward": 1.4508881127639484e-06,
+          "head_gradient": 1.1992195059207233e-07,
+          "Adam_m": 8.940696710757479e-09,
+          "Adam_v": 2.357412732904851e-10,
+          "Adam_parameter": 3.895474887105621e-09
+        },
+        "CPU64_formula_and_declared_float32_operation_bounds": true,
+        "independent_full_decoder_Jacobian": false,
+        "CUDA_transcendental_proof": false,
+        "GT_read": false
+      }
+    },
+    {
+      "dataset": "vidstg",
+      "status": "pass",
+      "complete_synthetic_CPU_fit_bitwise": true,
+      "math": {
+        "status": "pass",
+        "scope": "same actual projection/loss/native-head-output VJP/two-layer head gradient/AdamW/66306 state/reset/last/shrink",
+        "evaluations": 7,
+        "backwards": 5,
+        "state_coordinates": 397836,
+        "maximum_errors": {
+          "projection": 2.220446049250313e-16,
+          "loss": 4.440892098500626e-16,
+          "native_logit_gradient": 2.5879768661418723e-08,
+          "head_forward": 3.5186877994419774e-05,
+          "head_gradient": 1.1992195059207233e-07,
+          "Adam_m": 8.940696710757479e-09,
+          "Adam_v": 2.1242657069139859e-10,
+          "Adam_parameter": 2.872825455302319e-08
+        },
+        "CPU64_formula_and_declared_float32_operation_bounds": true,
+        "independent_full_decoder_Jacobian": false,
+        "CUDA_transcendental_proof": false,
+        "GT_read": false
+      }
+    }
+  ],
+  "rejections": [
+    {
+      "dataset": "hc2",
+      "change": "loss",
+      "rejected": true
+    },
+    {
+      "dataset": "hc2",
+      "change": "target",
+      "rejected": true
+    },
+    {
+      "dataset": "hc2",
+      "change": "native_gradient",
+      "rejected": true
+    },
+    {
+      "dataset": "hc2",
+      "change": "parameter",
+      "rejected": true
+    },
+    {
+      "dataset": "hc2",
+      "change": "moment",
+      "rejected": true
+    },
+    {
+      "dataset": "hc2",
+      "change": "shrink",
+      "rejected": true
+    },
+    {
+      "dataset": "hc2",
+      "change": "path",
+      "rejected": true
+    },
+    {
+      "dataset": "hc2",
+      "change": "actions",
+      "rejected": true
+    },
+    {
+      "dataset": "vidstg",
+      "change": "loss",
+      "rejected": true
+    },
+    {
+      "dataset": "vidstg",
+      "change": "target",
+      "rejected": true
+    },
+    {
+      "dataset": "vidstg",
+      "change": "native_gradient",
+      "rejected": true
+    },
+    {
+      "dataset": "vidstg",
+      "change": "parameter",
+      "rejected": true
+    },
+    {
+      "dataset": "vidstg",
+      "change": "moment",
+      "rejected": true
+    },
+    {
+      "dataset": "vidstg",
+      "change": "shrink",
+      "rejected": true
+    },
+    {
+      "dataset": "vidstg",
+      "change": "path",
+      "rejected": true
+    },
+    {
+      "dataset": "vidstg",
+      "change": "actions",
+      "rejected": true
+    }
+  ],
+  "CPU_only": true,
+  "new_GPU_calls": 0,
+  "GT_read": false,
+  "time": 1791641167.2089846
+}
