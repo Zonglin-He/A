@@ -1,0 +1,5 @@
+# Claim-strengthening supplement
+
+Three original qualitative cases have been rendered and every PDF page visually checked. Each uses Native / Before / After / GT, all four expert observation positions and three actual sampled intermediate frames. RGB, query text and GT geometry remain private. Two historical improvements and one regression are retained; these examples do not estimate prevalence.
+
+New predeclared GPU work is queued after the existing calibrated baselines and audited cost readback: Full / alpha0 / alpha1 on 205 HC and 700 Vid non-development parents, two fixed orders, 5430 new fits; paired Full / Frozen deployment profiling on 32 fixed queries with two repeats. No new state comparison or deployment timing result exists in this stage. All future state predictions must globally seal before GT; complete fit qualification must pass before minimal-path timing. Full-minus-alpha0 and Full-minus-alpha1 are the direct endpoints. Historical exposure and negative results are retained.
