@@ -37,8 +37,10 @@ def run(phase,closing=False):
         'scripts/score_stvg_opd_temporal_capture_p7a_v1.py','scripts/run_stvg_opd_temporal_guided_p7b_v1.py',
         'scripts/score_stvg_opd_temporal_guided_p7b_v1.py','scripts/report_stvg_opd_temporal_guided_p7_v1.py',
         'scripts/audit_stvg_opd_p7_public_v1.py','scripts/publish_stvg_opd_p7_phase_v1.py','scripts/close_stvg_opd_p7_phase_v1.py']
+    if phase=='B':source_names.extend(['scripts/diagnose_stvg_opd_temporal_guided_p7b_v1.py','scripts/report_stvg_opd_p7b_case_orders002.py'])
     for name in source_names:copy(ROOT/name,name)
     for name in ['ROWS.jsonl.gz','REPORT.md']:copy(pub/name,str((pub/name).relative_to(ROOT)))
+    if phase=='B':copy(pub/'DIAGNOSTIC_EXTRA_ROWS.jsonl.gz',str((pub/'DIAGNOSTIC_EXTRA_ROWS.jsonl.gz').relative_to(ROOT)))
     # Preserve every scalar and parent vector; deterministic compression is
     # a byte-reversible public transport, not a statistical projection.
     summary=pub/'SUMMARY_public.json.gz'
@@ -50,7 +52,7 @@ def run(phase,closing=False):
     if not closing:
         receipt_names=(['ROOT_QUALIFICATION.json','TEMPORAL_CAPTURE_BARRIER.json','ACTUAL_CAPTURE_PHASE_READBACK.json','GLOBAL_READOUT_BARRIER.json',
             'CPU_COMPLETION.json','ROOT_READBACK.json','PRIORITY_PAUSE_RECEIPT.json','PRIORITY_RESUMPTION_RECEIPT.json','P7_B_BRANCH_DECISION.json','ROOT_VISUAL_REVIEW.json'] if phase=='A' else
-            ['RUNTIME.json','EXPERT_EVIDENCE_BARRIER.json','ROOT_QUALIFICATION.json','GLOBAL_PREDICTION_BARRIER.json','CPU_COMPLETION.json','ROOT_READBACK.json',
+            ['RUNTIME.json','EXPERT_EVIDENCE_BARRIER.json','EXPERT_BUDGET_READBACK.json','ROOT_QUALIFICATION.json','GLOBAL_PREDICTION_BARRIER.json','CPU_COMPLETION.json','ROOT_READBACK.json','ROOT_CASE_READBACK.json','case_orders_layout002/ROOT_CASE_ORDERS_READBACK.json',
             'PRIORITY_PAUSE_RECEIPT.json','PRIORITY_RESUMPTION_RECEIPT.json','CANDIDATE_MECHANISM_DECISION.json','ROOT_VISUAL_REVIEW.json'])
         for name in receipt_names:
             f=ns/name;target=pub/'receipts'/name;write(target,dict(original_private_receipt_sha256=sha(f),projection=receipt_metadata(read(f))))
@@ -68,6 +70,11 @@ def run(phase,closing=False):
         assert read(ns/'FINAL_COMPLETION.json')['status']=='complete'
         for name in ['ROOT_CLOSING.json','FINAL_COMPLETION.json','ARCHIVE_VERIFICATION_RECEIPT.json','FINAL_GITHUB_RECEIPT.json']:
             f=ns/name;target=pub/'closing'/name;projection_write(target,dict(original_private_receipt_sha256=sha(f),projection=receipt_metadata(read(f))))
+        if phase=='B':
+            assert read(BASE/'FINAL_COMPLETION.json')['status']=='complete'
+            for name in ['ROOT_CLOSING.json','FINAL_COMPLETION.json','ARCHIVE_VERIFICATION_RECEIPT.json']:
+                f=BASE/name;target=pub/'closing'/('P7_'+name)
+                projection_write(target,dict(original_private_receipt_sha256=sha(f),projection=receipt_metadata(read(f))))
         old=read(ns/'PUBLIC_STAGE.json');owned.update(f['path'] for f in old['files'])
     for p in pub.rglob('*.json'):
         if p.name not in ['SUMMARY.json','PUBLIC_SCALAR_AUDIT.json','SOURCE_MANIFEST.json','SOURCE_MANIFEST_CLOSING.json']:copy(p,str(p.relative_to(ROOT)))

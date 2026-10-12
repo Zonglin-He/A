@@ -38,4 +38,30 @@ def run(phase):
     write(ns/'FINAL_COMPLETION.json',dict(status='complete',scope=scope,phase='P7_'+phase,root_closing_sha256=sha(ns/'ROOT_CLOSING.json'),actual_root=True,actual_PDF_pixel_view=True,actual_remote_publication=True,actual_archive=True,whole_S_C_N_task_complete=False,production_promoted=False,full_official_query_expansion=False,time=time.time()))
     print('P7_PHASE_ACTUAL_CLOSED',phase,public['commit'])
 
-if __name__=='__main__':run(sys.argv[1])
+def candidate():
+    verify()
+    bindings={}
+    for phase,ns in [('P7_A',A),('P7_B',B)]:
+        final=read(ns/'FINAL_COMPLETION.json');view=read(ns/'ROOT_VISUAL_REVIEW.json')
+        assert final['status']=='complete' and all(final[k] for k in ['actual_root','actual_PDF_pixel_view','actual_remote_publication','actual_archive'])
+        assert view['actual_pixel_view'] and view['status']=='pass'
+        for rel,b in view['PDF_files'].items():assert sha(ROOT/rel)==b['sha256'] and (ROOT/rel).stat().st_size==b['bytes']
+        for name in ['ROOT_READBACK.json','ROOT_VISUAL_REVIEW.json','ROOT_CLOSING.json','FINAL_COMPLETION.json','FINAL_GITHUB_RECEIPT.json','ARCHIVE_VERIFICATION_RECEIPT.json']:
+            bindings[phase+'/'+name]=sha(ns/name)
+    assert read(A/'P7_B_BRANCH_DECISION.json')['P7_B_eligible']
+    decision=read(B/'CANDIDATE_MECHANISM_DECISION.json')
+    assert not decision['misallocation_hypothesis_supported_in_both_added96']
+    note='**2026-10-12｜本轮P7-A＋条件单次P7-B全部当前授权候选验证实际完成。** A扩大时间收益成立，B新增96两源C−B均值与共同未观测真实帧未支持耦合；保留现有后处理组合候选，时间条件化观察配置不晋升，条件全官方query扩大未触发。512 matched clean/4096八读出及1024完整新C-D/2048四臂读出、完整独立root、五PDF十四页实际pixel view、匿名所有正负结果逐远端公开与档案均实际完成；预算原新逐query相等各936真实DINO/1024预定位置，16完整资格。仅P7 scope关闭，原S恢复同PID及optimizer、C/N完整扩大/计时/LN继续合法依赖，半小时唯一Luna ACTIVE。\n\n'
+    p=ROOT/'docs/RESEARCH_HISTORY.md';s=p.read_text()
+    for anchor in ['## 1. 当前状态：先读这一节\n\n','### 9.4 更新日志（新记录加在最上面）\n\n']:
+        assert s.count(anchor)==1;s=s.replace(anchor,anchor+note,1)
+    p.write_text(s)
+    archive(BASE/'archive_candidate_closing','ARCHIVE_VERIFICATION_RECEIPT.json')
+    scope='complete authorized P7_A enlarged historical clean matched panel and conditional single P7_B temporal-guided observation experiment; no full official-query expansion because actual coupling condition not established'
+    write(BASE/'ROOT_CLOSING.json',dict(status='complete',scope=scope,bindings=bindings,archive_sha256=sha(BASE/'ARCHIVE_VERIFICATION_RECEIPT.json'),actual_root=True,actual_PDF_pixel_view=True,actual_remote_publication=True,actual_archive=True,PDFs=5,pages=14,whole_S_C_N_task_complete=False,production_promoted=False,full_official_query_expansion=False,CPU_only=True,GT_read=True,time=time.time()))
+    write(BASE/'FINAL_COMPLETION.json',dict(status='complete',scope=scope,root_closing_sha256=sha(BASE/'ROOT_CLOSING.json'),actual_root=True,actual_PDF_pixel_view=True,actual_remote_publication=True,actual_archive=True,phase_A_complete=True,phase_B_complete=True,whole_S_C_N_task_complete=False,production_promoted=False,full_official_query_expansion=False,CPU_only=True,GT_read=True,time=time.time()))
+    print('P7_CANDIDATE_AUTHORIZED_SCOPE_ACTUAL_CLOSED')
+
+if __name__=='__main__':
+    if sys.argv[1]=='candidate':candidate()
+    else:run(sys.argv[1])
