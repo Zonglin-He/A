@@ -10,6 +10,10 @@ CHECKOUT=ROOT.parent/'visual-grounding-public-A';BRANCH='research/stvg-opd-paper
 
 def git(*args,env=None):return subprocess.check_output(['git',*args],cwd=CHECKOUT,text=True,env=env).strip()
 
+def projection_write(path,value):
+    if path.exists():assert read(path)==value,'immutable projection changed: '+str(path)
+    else:write(path,value)
+
 def run(phase,closing=False):
     verify();ns=A if phase=='A' else B;pub=OUT/('P7_'+phase);assert read(ns/'ROOT_READBACK.json')['status']=='pass' and read(ns/'ROOT_VISUAL_REVIEW.json')['status']=='pass'
     assert git('remote','get-url','origin')=='https://github.com/Zonglin-He/A.git';subprocess.run(['git','fetch','--quiet','origin','main',BRANCH],cwd=CHECKOUT,check=True)
@@ -32,7 +36,7 @@ def run(phase,closing=False):
         'scripts/run_stvg_opd_temporal_capture_p7a_v1.py','scripts/continue_stvg_opd_temporal_guided_p7_v1.py',
         'scripts/score_stvg_opd_temporal_capture_p7a_v1.py','scripts/run_stvg_opd_temporal_guided_p7b_v1.py',
         'scripts/score_stvg_opd_temporal_guided_p7b_v1.py','scripts/report_stvg_opd_temporal_guided_p7_v1.py',
-        'scripts/audit_stvg_opd_p7_public_v1.py','scripts/publish_stvg_opd_p7_phase_v1.py']
+        'scripts/audit_stvg_opd_p7_public_v1.py','scripts/publish_stvg_opd_p7_phase_v1.py','scripts/close_stvg_opd_p7_phase_v1.py']
     for name in source_names:copy(ROOT/name,name)
     for name in ['ROWS.jsonl.gz','REPORT.md']:copy(pub/name,str((pub/name).relative_to(ROOT)))
     # Preserve every scalar and parent vector; deterministic compression is
@@ -63,17 +67,25 @@ def run(phase,closing=False):
     else:
         assert read(ns/'FINAL_COMPLETION.json')['status']=='complete'
         for name in ['ROOT_CLOSING.json','FINAL_COMPLETION.json','ARCHIVE_VERIFICATION_RECEIPT.json','FINAL_GITHUB_RECEIPT.json']:
-            f=ns/name;target=pub/'closing'/name;write(target,dict(original_private_receipt_sha256=sha(f),projection=receipt_metadata(read(f))))
+            f=ns/name;target=pub/'closing'/name;projection_write(target,dict(original_private_receipt_sha256=sha(f),projection=receipt_metadata(read(f))))
         old=read(ns/'PUBLIC_STAGE.json');owned.update(f['path'] for f in old['files'])
     for p in pub.rglob('*.json'):
-        if p.name not in ['SUMMARY.json','PUBLIC_SCALAR_AUDIT.json','SOURCE_MANIFEST.json']:copy(p,str(p.relative_to(ROOT)))
+        if p.name not in ['SUMMARY.json','PUBLIC_SCALAR_AUDIT.json','SOURCE_MANIFEST.json','SOURCE_MANIFEST_CLOSING.json']:copy(p,str(p.relative_to(ROOT)))
     result=subprocess.run([str(ROOT/'.conda/tubedetr/bin/python'),'-B',str(CHECKOUT/'scripts/audit_stvg_opd_p7_public_v1.py'),str(CHECKOUT),phase],capture_output=True,text=True,
         env={**os.environ,'CUDA_VISIBLE_DEVICES':'','OMP_NUM_THREADS':'2','OPENBLAS_NUM_THREADS':'2'});assert result.returncode==0,result.stdout+result.stderr
     audit=json.loads(result.stdout);assert audit['status']=='pass'
     if not closing:
         write(ns/'PUBLIC_SCALAR_AUDIT.json',dict(audit,actual_public_checkout=True,time=time.time()));write(pub/'PUBLIC_SCALAR_AUDIT.json',audit)
-        write(pub/'SOURCE_MANIFEST.json',dict(status='pass',scope='exact complete source/scalar/PDF whitelist',files=bindings))
-    for name in ['PUBLIC_SCALAR_AUDIT.json','SOURCE_MANIFEST.json']:copy(pub/name,str((pub/name).relative_to(ROOT)))
+    copy(pub/'PUBLIC_SCALAR_AUDIT.json',str((pub/'PUBLIC_SCALAR_AUDIT.json').relative_to(ROOT)))
+    # Closing adds receipts and a finite closure helper. Bind the current
+    # entire whitelist, including preserved first-phase PDFs/scalars, rather
+    # than leaving the initial source manifest stale after those additions.
+    manifest_rel=str((pub/'SOURCE_MANIFEST.json').relative_to(ROOT))
+    current_bindings={rel:dict(sha256=sha(CHECKOUT/rel),bytes=(CHECKOUT/rel).stat().st_size)
+        for rel in sorted(owned) if rel!=manifest_rel}
+    manifest_source=pub/('SOURCE_MANIFEST_CLOSING.json' if closing else 'SOURCE_MANIFEST.json')
+    write(manifest_source,dict(status='pass',scope='exact complete current source/scalar/PDF/closure whitelist; excludes self hash',files=current_bindings))
+    copy(manifest_source,manifest_rel)
     entries=[]
     for relative in sorted(owned):
         p=CHECKOUT/relative;data=p.read_bytes();entries.append(dict(path=relative,bytes=len(data),sha256=sha(p),blob_sha=hashlib.sha1(b'blob '+str(len(data)).encode()+b'\0'+data).hexdigest()))
