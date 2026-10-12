@@ -1,0 +1,1285 @@
+% Reviewer-response working copy; figures/style/bibliography require the original project.
+% !TEX program = pdflatex
+% CVPR 2026 Introduction, Related Work, and Methodology draft; official style files are unmodified.
+\documentclass[10pt,twocolumn,letterpaper]{article}
+\usepackage[review]{cvpr}
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{booktabs}
+\usepackage{cuted}
+\usepackage{caption}
+\definecolor{cvprblue}{rgb}{0.21,0.49,0.74}
+\usepackage[pagebackref,breaklinks,colorlinks,allcolors=cvprblue]{hyperref}
+\def\paperID{*****}
+\def\confName{CVPR}
+\def\confYear{2026}
+\clubpenalty=10000
+\widowpenalty=10000
+\title{Sparse Specialist Feedback for Spatial Test-Time Adaptation
+	in Spatio-Temporal Video Grounding}
+\author{Anonymous authors}
+\newcommand{\mvIoU}{\ensuremath{m_{\mathrm{vIoU}}}}
+\newcommand{\mtIoU}{\ensuremath{m_{\mathrm{tIoU}}}}
+\newcommand{\msIoU}{\ensuremath{m_{\mathrm{sIoU}}}}
+
+\begin{document}
+\AddToHookNext{cmd/@maketitle/after}{%
+  \par\noindent
+  \begin{minipage}{\textwidth}
+  \captionsetup{type=figure}
+  \centering
+  \includegraphics[width=\textwidth]{figures/motivation.pdf}
+  \caption{\textbf{Temporal--spatial mismatch in STVG.}
+  For the same query, the three models obtain high temporal IoU (tIoU) but low spatial IoU (sIoU), illustrating that event localization and referent localization can diverge.
+  Green dashed boxes and green timelines indicate ground truth; coral boxes and timelines indicate predictions.
+  The scores on the right correspond to this example.}
+  \label{fig:motivation}
+  \end{minipage}\par
+}
+\maketitle
+
+\begin{abstract}
+Spatio-temporal video grounding must recover an event interval and the trajectory
+of a language-specified instance under deployment shifts. We study sparse
+specialist-guided spatial test-time adaptation through a 1,792-parameter
+decoder interface. On-policy localization actions are scored against one
+frozen grounding specialist, and their reward-weighted distribution guides
+the current-query spatial update while the native temporal interval is retained.
+The fixed system increases mean video IoU from 20.017 to 22.583 on HC-STVG-v2
+and from 11.129 to 14.097 on VidSTG. Common-state comparisons distinguish the
+system gain from the spatial objective: they do not establish stable OPD
+superiority over direct regression, and output-budget controls reveal
+dataset-dependent tradeoffs. A cached temporal--spatial factorial study finds
+that an existing actionness projection adds 3.823 and 2.079 percentage points
+to OPD on two historical 32-parent panels, with no established OPD-specific
+interaction. These results identify a reproducible compact adaptation system
+and clarify which benefits are attributable to sparse feedback, spatial
+readout and temporal coverage.
+\end{abstract}
+
+\section{Introduction}
+\label{sec:introduction}
+
+Spatio-temporal video grounding (STVG) aims to localize the instance
+referred to by a natural-language query in a video, returning
+the interval in which the described event occurs and a sequence of
+bounding boxes tracing its participant~\cite{vidstg,tubedetr}.
+The task links language understanding to event localization and object
+tracking, with applications in video retrieval and embodied
+perception~\cite{tastvg}. Recent advances have improved joint
+space--time decoding~\cite{tubedetr}, target-aware query
+representations~\cite{tastvg}, and collaborative reasoning over
+appearance and motion~\cite{dualstream,e3m}. Nevertheless, a model
+trained on one dataset may encounter markedly different scenes,
+appearances, motion patterns, and linguistic expressions after
+deployment. Video corruptions, including missing or frozen frames,
+blur, occlusion, and exposure changes, further alter the evidence on
+which grounding depends~\cite{tadcorruptions,vitta}.
+
+Adapting such a model through additional supervised training requires
+newly annotated target videos, including event boundaries and
+framewise boxes. These annotations are costly to obtain whenever the
+deployment distribution changes. Test-time adaptation (TTA) instead
+updates a pretrained model using incoming unlabeled
+inputs~\cite{tent,cotta}, allowing its predictions to respond to
+target-domain observations without a new annotation stage. We study
+this setting for STVG, focusing on cross-dataset transfer and video
+corruptions, and allow a frozen expert
+to supply sparse spatial observations during inference.
+
+
+Test-time adaptation relies on measurable surrogate objectives to update
+a model without target annotations. In classification-oriented settings,
+such as image classification, time-series recognition, and video action
+recognition, adaptation typically operates on a class distribution or
+its underlying representation. Entropy minimization, prediction
+consistency, and feature alignment consequently provide practical
+self-supervised signals~\cite{tent,cotta,vitta}. Although these signals
+are imperfect, they offer a common basis for optimizing model
+predictions under distribution shifts~\cite{pitfalls}. Grounding tasks,
+however, demand more than confidence in a predicted category.
+In image-based visual grounding (VG), the model must establish a
+correspondence between a referring expression and a particular visual
+region~\cite{mdetr,groundingdino}. Detecting a semantically relevant
+object does not necessarily identify the intended referent, especially
+when multiple instances share similar appearances or attributes.
+Consequently, confidence in object detection and consistency of
+predicted regions provide only partial evidence of grounding
+correctness.
+
+The challenge becomes more involved when grounding extends from
+images to videos. Spatial video grounding (SVG) requires identifying
+and maintaining the referred instance across frames, where changes
+in appearance, occlusion, and visually similar distractors complicate
+referent association~\cite{tempcd}. Temporal video grounding (TVG),
+by contrast, seeks the interval in which a language-described event
+occurs, requiring temporal relevance and event boundaries to be
+distinguished from surrounding video content~\cite{videoopd}.
+Spatio-temporal video grounding (STVG) unifies these requirements:
+the model must identify the correct instance, determine when the
+described event occurs, and localize that instance throughout the
+corresponding interval~\cite{vidstg,tubedetr,e3m}. These decisions
+are interdependent, yet the evidence supporting them is heterogeneous.
+A correctly localized object may remain visible before or after the
+queried event, while an accurately identified temporal interval may
+still contain several plausible target instances. Hence, correctness
+of an individual spatial or temporal cue does not establish
+correctness of the complete spatio-temporal tube.
+Figure~\ref{fig:motivation} illustrates this mismatch: accurate temporal
+localization can coexist with spatial predictions that miss the referred target.
+Under test-time
+distribution shifts, this coupling makes adaptation particularly
+challenging: without target annotations, the model must learn from
+partial and potentially unreliable evidence while distinguishing
+localization, temporal relevance, and referent identity. A central
+challenge for STVG-TTA is therefore how to convert such heterogeneous
+test-time evidence into effective corrections of a jointly structured
+grounding prediction.
+
+
+Pretrained image grounding models offer a practical source of
+frame-level localization evidence~\cite{groundingdino}. Their
+predictions can help localize an instance, while the surrounding
+event and its temporal boundaries remain properties of the video
+query. We therefore use the STVG model's native temporal interval to
+select where spatial observations are collected and retain that
+interval as the temporal component of its output. Within the selected
+event, a frozen Grounding DINO model supplies reference boxes on a
+small number of frames. These references provide localized feedback
+for adapting the student's spatial predictions over the video.
+
+A frame-level specialist reference specifies one localization
+hypothesis, but the student's prediction can be refined in several
+nearby directions. Direct box regression treats the reference
+coordinates as a fixed target; it does not explicitly compare these
+alternatives as the student's output changes. Moreover, pseudo-boxes
+from pretrained vision--language detectors can contain localization
+noise, as documented in open-vocabulary detection~\cite{sasdet}.
+On-policy distillation provides another learning interface: it
+obtains feedback on the current student's generated outputs and uses
+that feedback for the next update. GKD develops this principle for
+sequence models~\cite{gkd}, while Video-OPD applies it to
+student-generated outputs in temporal video grounding~\cite{videoopd}.
+Relative-entropy policy improvement further provides a way to turn
+scalar evaluations into a distributional target~\cite{reps,mpo}.
+Together, these ideas motivate learning from the relative quality of
+localizations sampled around the current student prediction instead
+of prescribing a single box as its training target.
+
+We study a specialist-guided
+STVG-TTA framework built on on-policy spatial distribution
+distillation. Around each current student box, we define a local
+action distribution and sample candidate localizations. Their
+agreement with the fixed Grounding DINO reference supplies a
+geometric reward, which reweights the sampled actions into a
+feedback-improved distribution. We distill this distribution through
+the student's lightweight spatial decoder and regenerate candidate
+actions after each update. In this way, the supervision follows the
+student's changing spatial predictions. Because the adapted decoder
+is shared across frames, observations at a few locations can
+influence the predicted trajectory beyond those frames.
+
+The same query-specific feedback presents a different challenge in an
+online stream. Two consecutive video--query pairs may involve
+different people, objects, and actions even when they share aspects of
+the target domain. A correction that benefits one referred instance
+may consequently be less useful for the next, while shifts in
+appearance or capture conditions may persist across multiple
+arrivals. Continual TTA studies have shown that indiscriminate online
+updates can accumulate errors or lose previously useful
+knowledge~\cite{cotta,rotta}. For STVG, the unit of correction is
+particularly instance-dependent: each query identifies a different
+spatio-temporal target, but the decoder parameters are shared across
+the stream. This motivates distinguishing the model state used to
+correct the current instance from the state inherited by subsequent
+queries.
+
+Our dual-timescale update implements this distinction with a compact
+spatial adaptation interface. A query residual and selected LayerNorm
+parameters are optimized together and used in full to predict the
+current tube. Afterward, the residual and optimizer state are reset,
+while only an attenuated fraction of the LayerNorm displacement is
+carried into the initialization for the next arrival. The full local
+state therefore serves the current instance, whereas the inherited
+state evolves more gradually across the target stream. Both operate
+within the original STVG model and its native temporal interval.
+
+We evaluate the framework on bidirectional cross-dataset transfer
+between VidSTG and HC-STVG and examine robustness under same-domain
+clean inputs and video corruptions at multiple severities. We further
+study the roles of specialist feedback, on-policy sampling, decoder
+adaptation, and cross-query parameter consolidation, together with
+the cost of sparse specialist access.
+
+Our contributions are threefold:
+\begin{itemize}
+\item We formulate sparse specialist-guided spatial adaptation for STVG,
+keeping the temporal interval explicit and distinguishing frame-level
+reference agreement from complete language-conditioned tube accuracy.
+\item We implement on-policy spatial distribution distillation through a
+compact decoder interface and evaluate the fixed system on complete official
+cross-domain populations, including complete negative results and matched
+direct-regression controls.
+\item We provide controlled evidence separating spatial objective, parameter
+readout and temporal coverage. Common-state and output-budget controls delimit
+OPD's advantage; cached Query/LN diagnostics and temporal--spatial factorial
+readouts identify useful mechanisms without claiming universal superiority or
+an established benefit from state inheritance.
+\end{itemize}
+
+\section{Related Work}
+\label{sec:related-work}
+
+\subsection{Spatio-Temporal Video Grounding}
+
+STVG architectures integrate language, object identity, and temporal structure
+to predict the trajectory of a referred instance.
+The VidSTG work uses spatio-temporal graph reasoning to model object relations
+under multi-form language queries~\cite{vidstg}.
+STVGBert directly predicts spatial boxes and temporal boundaries through a
+visual--linguistic transformer~\cite{stvgb}, while TubeDETR combines multimodal
+video--text encoding with space--time decoding~\cite{tubedetr}.
+Subsequent architectures strengthen the association of the target across
+frames: STCAT introduces a video-level multimodal template~\cite{stcat},
+CoSTA couples temporal and spatial predictions through an entangled
+query~\cite{costa}, and CG-STVG refines instance context to guide successive
+decoding stages~\cite{cgstvg}.
+This line of work provides joint tube-prediction architectures on which
+test-time spatial adaptation can operate.
+
+Within this joint prediction process, appearance and event dynamics provide
+complementary information.
+Collaborative static and dynamic streams explicitly model these two sources
+and exchange information between them~\cite{dualstream}.
+TA-STVG further organizes target-aware reasoning hierarchically, extracting
+target-relevant temporal cues before activating fine-grained spatial
+attributes~\cite{tastvg}.
+This distinction motivates our choice of adaptation interface: the native
+temporal prediction defines the event scope, and the existing spatial decoder
+receives the specialist-guided update.
+
+Pretrained vision--language models also provide transferable localization
+knowledge for STVG.
+VideoGrounding-DINO extends image grounding representations to open-vocabulary
+video grounding~\cite{videodino}.
+E3M performs query-time visual and textual modulation and alternates temporal
+relevance estimation with spatial region identification~\cite{e3m}.
+The PG-TAF framework introduced with OmniGround pairs temporal grounding by
+a multimodal large language model with spatial propagation within the
+selected segment~\cite{omniground}.
+Our framework uses this access to pretrained spatial knowledge to adapt an
+existing STVG model: a frozen specialist supplies reference boxes within the native
+interval, geometric overlap evaluates student-generated candidates, and the student's updated decoder
+produces the final trajectory.
+
+\subsection{Test-Time Adaptation and Online State}
+
+TTA extracts learning signals from unlabeled target inputs to update a
+deployed model.
+Tent minimizes prediction entropy through normalization
+parameters~\cite{tent}; MEMO minimizes the entropy of the marginal prediction
+over augmented views of a test example~\cite{memo}.
+Test-time prompt tuning applies confidence selection and augmentation-based
+entropy minimization to vision--language prompts~\cite{tpt}.
+EATA selects reliable, nonredundant samples and regularizes updates to
+preserve source knowledge~\cite{eata}, while SAR combines reliable sample
+selection with sharpness-aware entropy minimization~\cite{sar}.
+For video models, ViTTA aligns online feature statistics with training
+statistics and enforces consistency across temporal
+augmentations~\cite{vitta}.
+These objectives use confidence, invariance, or distribution alignment as
+adaptation signals; their relationship to task accuracy depends on the target
+setting~\cite{pitfalls}.
+For STVG, we introduce spatial agreement with an external grounding
+specialist as feedback about the referred instance's location.
+
+Continual adaptation additionally determines how information from earlier
+inputs influences subsequent predictions.
+CoTTA combines a weight-averaged teacher with augmentation-averaged
+predictions and stochastic restoration of source parameters~\cite{cotta}.
+NOTE addresses temporal correlation through instance-aware normalization and
+prediction-balanced memory~\cite{note}, while RoTTA combines robust
+normalization with a memory bank that considers uncertainty and
+timeliness~\cite{rotta}.
+ROID averages source and adapted weights to preserve generalization alongside
+certainty and diversity weighting and prior correction~\cite{roid}.
+HisTPT retains information in local, hard-sample, and global knowledge banks
+and retrieves it to regularize test-time prompt updates~\cite{histpt}.
+These approaches organize the retention of learned information across a
+stream.
+We organize the spatial decoder state by its lifetime, using a query-specific
+component for the current instance and a gradually consolidated LayerNorm
+component to initialize later queries.
+
+\subsection{Language-Conditioned Grounding Specialists}
+
+Open-vocabulary detectors make pretrained localization knowledge accessible
+through language.
+ViLD transfers image and text representations from a vision--language teacher
+to a region-based detector~\cite{vild}.
+OWL-ViT combines contrastive image--text pretraining with transformer-based
+detection~\cite{owlvit}, and Detic expands detector vocabularies using
+image-level supervision~\cite{detic}.
+OWLv2 scales this capability through self-training on image--text pairs with
+pseudo-box annotations~\cite{owlv2}.
+Together, these works establish mechanisms for localizing concepts beyond
+the categories with task-specific box annotations.
+
+Grounded pretraining further connects object locations to descriptive
+language, which is the interface required by STVG queries.
+MDETR conditions detection on raw text through joint image--text
+reasoning~\cite{mdetr}, and GLIP unifies object detection and phrase grounding
+during pretraining~\cite{glip}.
+Grounding DINO combines grounded pretraining with a feature enhancer,
+language-guided query selection, and a cross-modality decoder for open-set
+localization~\cite{groundingdino}.
+Foundation models also support adaptation of the detector itself: Gao
+\etal use a prompt-based mean-teacher framework and instance memory for
+test-time adaptive object detection~\cite{ttaod}.
+In our framework, Grounding DINO remains frozen and returns spatial evidence
+at a sparse set of event frames.
+Agreement between these observations and student-sampled boxes supplies the
+reward used to update the STVG decoder, connecting frame-level specialist
+knowledge to the student's full video trajectory.
+
+\subsection{On-Policy Distillation and Compact Updates}
+
+Distillation for structured prediction depends on which model generates
+the outputs used for supervision.
+Sequence-level knowledge distillation trains a student on sequences produced
+by a teacher~\cite{seqkd}.
+GKD instead obtains teacher feedback on student-generated sequences,
+connecting supervision to the outputs encountered under the student's own
+generation process~\cite{gkd}.
+We apply this principle to continuous localization actions: candidate boxes
+are sampled around the current student prediction and evaluated by
+geometric agreement with the fixed specialist reference.
+Fresh candidates are drawn after each spatial update, so each distillation
+round evaluates the behavior of the updated student.
+
+Relative-entropy policy improvement provides a mechanism for converting
+these action evaluations into a target distribution.
+REPS constrains information loss during policy improvement~\cite{reps}.
+MPO alternates construction of a nonparametric improved distribution with
+fitting a parametric policy in an off-policy reinforcement learning
+setting~\cite{mpo}; V-MPO develops on-policy policy iteration using a learned
+state-value function~\cite{vmpo}.
+Our localization objective uses the same principle of reward-based
+reweighting, with rewards computed directly from specialist-box IoU.
+The resulting target policy is an exponential reweighting of the current box
+policy, and forward-KL distillation fits that target through the spatial
+decoder state.
+This formulation connects sparse specialist observations to a distributional
+update of the deployed grounder.
+
+Compact adaptation interfaces specify where this distributional update enters
+the pretrained model.
+Visual prompt tuning learns input-space prompts while keeping the backbone
+fixed~\cite{vpt}, and LoRA introduces trainable low-rank weight updates into
+frozen transformers~\cite{lora}.
+Within continual TTA, EcoTTA adapts small auxiliary networks and uses
+self-distilled regularization against the frozen original
+network~\cite{ecotta}.
+Our interface consists of a second-pass spatial query residual and selected
+LayerNorm affine parameters in the final spatial decoder block, totaling
+1,792 trainable parameters.
+The complete adapted state generates the current tube; the query residual
+and optimizer then reset, while an attenuated LayerNorm displacement is
+consolidated into the inherited state.
+This separation lets the same compact interface express current-query
+specialization and gradual state evolution across the stream.
+
+\section{Methodology}
+\label{sec:methodology}
+
+\begin{figure*}[t]
+  \centering
+  \includegraphics[width=\textwidth]{figures/pipeline.pdf}
+  \caption{\textbf{Overview of One World, Two Timescales.}
+  TA-STVG predicts a native tube, whose temporal interval determines the frames queried by the frozen Grounding DINO specialist.
+  Over $S$ on-policy rounds, student-generated spatial actions are scored by their IoU with specialist boxes, reweighted into $q\propto\pi e^{R/\tau}$, and distilled through $\mathcal L_{\mathrm{OPD}}$ into the query residual $r$ and selected LayerNorm parameters $\lambda$.
+  The full adapted state produces the current tube.
+  The purple carryover path attenuates the LayerNorm displacement while retaining the inherited state, as specified in \eqref{eq:slow-writeback}; the query residual and optimizer state reset before the next query.}
+  \label{fig:pipeline}
+\end{figure*}
+
+\subsection{Problem Setup and Overview}
+\label{sec:overview}
+
+We consider an online stream of video--query pairs
+$x_n=(\widetilde V_n,Q_n)$, where $\widetilde V_n$ is the video observed at
+arrival $n$ and $Q_n$ specifies the referred target.
+Let $\mathcal T_n$ denote the sampled frames.
+A pretrained STVG model predicts a joint tube
+$Y_n=(I_n,B_n)$, where $I_n=[s_n,e_n]$ specifies the temporal extent of the
+queried event and $B_n=\{b_{n,t}:t\in\mathcal T_n\}$ gives the framewise
+trajectory of the referred instance.
+
+Our goal is to adapt this pretrained grounder to an unlabeled target stream
+using sparse spatial feedback from a single frozen grounding specialist.
+The key difficulty is that such feedback is informative only at a few observed
+frames, whereas STVG requires a complete tube over an event. Moreover, the
+specialist prediction is itself an external hypothesis and therefore should
+guide the student's behavior without replacing the student's grounding
+process.
+
+Our key idea is to formulate spatial correction as \emph{on-policy
+	distribution distillation}. The STVG model first uses its native temporal
+prediction to determine where specialist evidence should be collected
+(Sec.~\ref{sec:temporal-scope}). We then turn the student's spatial output into
+a local action policy. The student generates localization actions from its
+current policy, while IoU with the fixed Grounding DINO box evaluates
+these actions and induces a feedback-improved policy. Distilling this improved policy back into a compact
+decoder state updates the student's complete spatial trajectory
+(Sec.~\ref{sec:spatial-opd}).
+
+The adapted state is finally organized at two timescales
+(Sec.~\ref{sec:state-lifecycle}). The complete spatial update is used to
+specialize the model to the current query, whereas only a small LayerNorm
+component evolves across queries. This design couples strong current-query
+adaptation with conservative online state evolution within a single STVG
+model.
+
+Figure~\ref{fig:pipeline} summarizes the complete pipeline.
+
+
+\subsection{Event-Scoped Specialist Feedback}
+\label{sec:temporal-scope}
+
+A spatial specialist can only inspect a limited number of video frames.
+Querying arbitrary frames from a long untrimmed video would spend this budget
+on observations that may lie outside the event described by the language
+query. STVG already provides a useful structure for allocating this budget:
+its temporal prediction estimates the portion of the video in which the
+referred event occurs. We therefore use the student's native temporal
+prediction as an \emph{event scope} for acquiring spatial feedback.
+
+For each arrival, the original native tube provides the fixed interval
+$I_n^0=[s_n^0,e_n^0)$. The inherited adaptive state provides the
+spatial Before prediction; it does not redefine this cached temporal scope.
+Spatial updates retain $I_n^0$ in the final output, so an event portion
+outside this interval cannot be recovered by this method.
+Let $\tau(t)$ denote the physical timestamp of sampled frame
+$t\in\mathcal T_n$.
+We partition the physical duration of $I_n^0$ into $K$ equal-width bins and
+select the available frame nearest to each bin center $c_{n,k}$:
+\begin{equation}
+	t_{n,k}
+	=
+	\arg\min_{t\in\mathcal T_n\cap I_n^0}
+	\left|\tau(t)-c_{n,k}\right|,
+	\qquad k=1,\ldots,K .
+	\label{eq:event-sampling}
+\end{equation}
+The resulting frames provide sparse observations distributed across the
+student-predicted event rather than concentrated at a single temporal
+location.
+
+For each selected frame $t_{n,k}$, the frozen Grounding DINO specialist takes
+the frame and referring expression and returns candidate boxes
+$\{(\widetilde b_{n,k,j},c_{n,k,j})\}_{j=1}^{J_{n,k}}$.
+After applying a fixed admission rule, we retain the highest-scoring valid
+candidate
+$\bar b_{n,k}=\widetilde b_{n,k,j^\star}$ with
+$j^\star=\arg\max_j c_{n,k,j}$.
+We collect these observations as
+$\Omega_n=\{(t_{n,k},\bar b_{n,k})\}$.
+The fixed admission rule requires mixed entity/phrase confidence at least
+0.35 and a margin of at least 0.05 over the next distinct candidate after
+duplicate suppression at IoU 0.5. These rules use no target GT.
+When no observation is admitted, no spatial optimizer step is taken and
+After equals the inherited Before prediction. Before can differ from the
+frozen source prediction because preceding arrivals may have changed
+LayerNorm state; the query residual and optimizer still reset.
+
+This module converts the native temporal prediction into an efficient
+specialist-acquisition region. Its output is not a spatial trajectory; it is a
+small set of event-scoped observations that will be used to evaluate the
+student's own localization behaviors. The next module therefore addresses the
+central spatial problem: how to propagate these sparse observations to the
+full STVG tube.
+
+
+\subsection{On-Policy Spatial Distribution Distillation}
+\label{sec:spatial-opd}
+
+Sparse specialist observations supply reference boxes rather than a
+complete trajectory. We compare local student-generated actions by their
+IoU with each fixed reference, then fit the resulting weighted target.
+This interface differs from directly minimizing L1/GIoU to the reference
+in its local sampling and iterative reward reweighting. Its value relative
+to direct regression is an empirical question evaluated with a matched
+Direct control; distributional supervision alone does not establish a
+stronger or semantically richer teacher signal.
+
+\paragraph{Lightweight spatial adaptation interface.}
+We first expose a compact set of parameters through which spatial feedback can
+modify the STVG decoder. For arrival $n$, the adaptive state is
+$\phi_n=[r_n,\lambda_n]\in\mathbb R^{1792}$.
+Here, $r_n\in\mathbb R^{256}$ is a residual added to the second-pass spatial
+query, while $\lambda_n\in\mathbb R^{1536}$ contains the affine parameters of
+three LayerNorm operations in the final spatial decoder block.
+All other model parameters remain fixed.
+
+The state is initialized with $r_n^{(0)}=0$ and the LayerNorm state inherited
+from the previous arrival. Under state $\phi$, the spatial decoder produces
+$B_n(\phi)=\{b_{n,t}(\phi):t\in\mathcal T_n\}$.
+Because the same adaptive state participates in spatial decoding across the
+sampled sequence, updates inferred from a few observed frames can change the
+student's trajectory beyond those observations.
+
+\paragraph{Student spatial action policy.}
+The next question is how to expose multiple plausible localization behaviors
+around the current prediction. We use the deterministic student box as the
+center of an explicit local action policy.
+For an observed frame $t\in\Omega_n$, let
+$b_{n,t}(\phi)\in(0,1)^4$ denote the normalized center--size prediction and
+define its unconstrained representation
+$\mu_{n,t}(\phi)=\operatorname{logit}(b_{n,t}(\phi))$.
+The student policy is
+\begin{equation}
+	\pi_{\phi,t}(z)
+	=
+	\mathcal N
+	\!\left(
+	z;\mu_{n,t}(\phi),\sigma^2 I
+	\right).
+	\label{eq:spatial-policy}
+\end{equation}
+An action is mapped back to a valid normalized box through
+$a(z)=\operatorname{sigmoid}(z)$.
+
+The logit coordinate system is useful here because it provides an unconstrained
+space for symmetric local exploration while preserving valid box coordinates
+after the inverse mapping. The deterministic STVG prediction remains the mean
+of the policy, so introducing the stochastic policy does not replace the
+student's ordinary spatial readout.
+
+At distillation round $s$, we draw $M$ actions around the current policy mean.
+Using antithetic Gaussian noise gives
+$z_{n,t,m}^{(s)}=\mu_{n,t}^{(s)}+\sigma\epsilon_m$ with
+$\epsilon_{m+M/2}=-\epsilon_m$.
+Thus each round explores a balanced local neighborhood around the
+\emph{current} student prediction.
+
+\paragraph{Specialist-guided policy improvement.}
+Having generated student actions, we compare them with the same fixed
+specialist observation. For each sampled action, our geometric reward is
+$R_{n,t}(z)=\operatorname{IoU}(a(z),\bar b_{n,t})$.
+These rewards are used to improve the current student policy under a
+KL regularizer:
+\begin{equation}
+	q_{n,t}^{(s)}
+	=
+	\arg\max_q
+	\left[
+	\mathbb E_{z\sim q} R_{n,t}(z)
+	-
+	\tau
+	D_{\mathrm{KL}}
+	\!\left(
+	q\,\|\,\pi_{\phi_n^{(s)},t}
+	\right)
+	\right].
+	\label{eq:policy-improvement}
+\end{equation}
+This objective balances two goals: moving probability mass toward actions
+favored by the specialist while retaining the behavioral support of the
+current student. It admits the closed-form solution
+\begin{equation}
+	q_{n,t}^{(s)}(z)
+	=
+	\frac{
+		\pi_{\phi_n^{(s)},t}(z)
+		\exp\!\left(R_{n,t}(z)/\tau\right)
+	}{
+		Z_{n,t}^{(s)}
+	} .
+	\label{eq:improved-policy}
+\end{equation}
+
+Since the candidate actions are sampled from
+$\pi_{\phi_n^{(s)},t}$ itself, their normalized feedback weights are
+$w_{n,t,m}^{(s)}
+\propto
+\exp(R_{n,t}(z_{n,t,m}^{(s)})/\tau)$.
+The resulting $q_{n,t}^{(s)}$ can therefore be interpreted as a
+\emph{feedback-improved version of the student's own spatial policy}: the
+student determines which localization behaviors are explored, and the
+specialist determines how probability should be redistributed among them.
+
+
+\paragraph{On-policy distribution distillation.}
+The feedback-improved policy $q_{n,t}^{(s)}$ encodes the
+specialist's preference over localization actions generated
+by the current student. To transfer this feedback into the
+spatial decoder, we project the improved policy onto the
+student's parameterized Gaussian policy family by minimizing
+the forward KL divergence:
+\begin{equation}
+	\mathcal L_{\mathrm{OPD}}^{(s)}(\phi)
+	=
+	\frac{1}{|\Omega_n|}
+	\sum_{t\in\Omega_n}
+	D_{\mathrm{KL}}
+	\left(
+	\operatorname{sg}[q_{n,t}^{(s)}]
+	\,\|\, \pi_{\phi,t}
+	\right).
+	\label{eq:opd-objective}
+\end{equation}
+
+We optimize this objective using the actions sampled from
+the current student policy and their specialist-derived
+importance weights. With the improved policy held fixed,
+the forward-KL gradient is estimated through the weighted
+student log-likelihood. Our implementation uses an
+analytically centered likelihood estimator, which yields
+the same parameter gradient as the sample-weighted
+likelihood under the fixed-covariance Gaussian policy
+and antithetic sampling. The resulting gradients update
+the spatial query residual and decoder LayerNorm parameters,
+transferring the specialist's relative preferences into
+the student's localization behavior.
+
+For fixed action samples and detached weights, the sample-weighted
+Gaussian likelihood has the equivalent weighted-regression form
+\begin{equation}
+\mathcal L_{\mathrm{sample}}^{(s)}(\phi)
+=\frac{1}{2\sigma^2|\Omega_n|}
+\sum_{t\in\Omega_n}\left\|\mu_{n,t}(\phi)
+-\sum_m w_{n,t,m}^{(s)}\operatorname{sg}[z_{n,t,m}^{(s)}]\right\|_2^2+C.
+\label{eq:weighted-regression}
+\end{equation}
+Here $C$ is independent of the updated mean. The distinction from Direct
+therefore lies in the locally constructed target and its resampling across
+rounds, rather than escaping regression mathematically. If all sampled IoU
+rewards are zero at one observation, its weights are uniform and its
+antithetic centered correction vanishes at the sampling mean. This does
+not imply a query-wide no-op: other observations and shared decoder state
+can still move its box. Zero reward can limit both correction toward an
+accurate distant reference and movement toward a poor reference.
+
+The distillation target evolves with the student.
+After each optimization step, the updated spatial decoder
+induces a new action policy, from which fresh localization
+actions are sampled and evaluated against the specialist
+evidence. This alternating process of policy improvement
+and distillation progressively adapts the student's spatial
+predictions within its evolving action distribution. After
+$S$ rounds, we use the final adapted state
+$\phi_n^\star=\phi_n^{(S)}$ to generate the spatial trajectory
+over the native event interval.
+
+
+
+\subsection{Query Reset and LayerNorm Writeback}
+\label{sec:state-lifecycle}
+
+The spatial state optimized above is tailored to the current referred instance,
+but online adaptation also determines the initialization from which future
+queries will be processed. The implementation assigns these roles different lifetimes: both parameter
+groups form the current output, while the query residual and optimizer reset
+before the next arrival. A small LayerNorm displacement is retained by the
+fixed writeback rule. Its utility is an empirical question for matched
+state-lifecycle controls.
+
+We therefore decompose the adapted state
+$\phi_n^\star=[r_n^\star,\lambda_n^\star]$ by lifetime.
+For the current query, both components are used without attenuation.
+Let $B_n^\star=B_n(\phi_n^\star)$; the final STVG output is
+$Y_n^{\mathrm{out}}=(I_n^0,B_n^\star|_{I_n^0})$.
+This fast state allows the current prediction to exploit the complete spatial
+adaptation capacity.
+
+After producing the current tube, the query residual is reset.
+Only the LayerNorm component contributes to the state of the next arrival.
+If $\lambda_n^G$ denotes the inherited LayerNorm state before adaptation, the
+slow state evolves as
+\begin{equation}
+	\lambda_{n+1}^{G}
+	=
+	(1-\alpha)\lambda_n^{G}
+	+
+	\alpha\lambda_n^\star .
+	\label{eq:slow-writeback}
+\end{equation}
+The optimizer is reinitialized together with the query residual at the next
+arrival.
+
+This lifecycle gives the two parameter groups distinct functions.
+The query residual supplies 256 local coordinates and the selected
+LayerNorm parameters supply 1,536 shared coordinates. This describes the
+implemented state lifecycle; it does not establish that both groups are
+necessary or that retaining LayerNorm state causally improves grounding.
+
+% Standalone Experiments section. Requires amsmath, graphicx, and booktabs,
+% which are already loaded by the user's existing CVPR main.tex.
+% The following names are safe in text, tables, captions, and math mode.
+\providecommand{\mvIoU}{\ensuremath{\mathrm{m}_{\mathrm{vIoU}}}}
+\providecommand{\mtIoU}{\ensuremath{\mathrm{m}_{\mathrm{tIoU}}}}
+\providecommand{\msIoU}{\ensuremath{\mathrm{m}_{\mathrm{sIoU}}}}
+
+\section{Experiments}
+\label{sec:experiments}
+
+We evaluate our method under natural cross-domain shifts and
+same-domain video corruptions. Our experiments investigate
+whether sparse specialist feedback improves cross-domain grounding,
+how on-policy distillation converts this feedback into spatial
+corrections, and how adaptation to the current query interacts
+with information retained across an online stream.
+
+\subsection{Experimental Setup}
+\label{sec:experimental-setup}
+
+\paragraph{Datasets and protocols.}
+We conduct experiments on VidSTG~\cite{vidstg} and HC-STVG-v2,
+which associate language queries with temporal event intervals
+and spatial object trajectories. TA-STVG~\cite{tastvg} serves as
+the pretrained STVG backbone. Our primary setting is bidirectional
+cross-domain transfer: VidSTG $\rightarrow$ HC-STVG-v2 and
+HC-STVG-v2 $\rightarrow$ VidSTG. We evaluate all official target
+queries, comprising 3,482 queries from 237 parent videos on
+HC-STVG-v2 and 10,303 queries from 732 videos on VidSTG.
+Predictions are obtained under three fixed stream orders, with
+the adaptive state initialized independently for each order.
+No target-domain annotations are used for adaptation.
+
+For same-domain robustness, we use the corresponding in-domain
+checkpoint and one fixed query per parent video (237 queries
+on HC-STVG-v2 and 732 on VidSTG). We evaluate clean videos
+and five types of transient corruption: frame dropping, frame
+freezing, motion blur, occlusion, and exposure changes. Each
+corruption affects 2.5\%, 5\%, or 10\% of the video's physical
+duration. Each condition begins from an independently initialized
+source model.
+
+\paragraph{Evaluation metrics.}
+Following standard STVG evaluation, we report mean video IoU
+(\mvIoU), temporal IoU (\mtIoU), and spatial IoU (\msIoU),
+along with the percentage of queries whose video IoU exceeds
+0.3 and 0.5 (R@0.3 and R@0.5). The full cross-domain table
+uses query-level averages over the three stream orders. For
+paired comparisons, we first average queries and orders within
+each parent video and then use 10,000 paired parent-level
+bootstrap resamples to obtain 95\% confidence intervals.
+
+\paragraph{Implementation details.}
+We use a single frozen Grounding DINO~\cite{groundingdino}
+to provide frame-level references. Unless specified otherwise,
+we uniformly select $K=4$ frames within the native predicted
+event interval and use the highest-scoring admitted reference
+at each selected frame. The student samples $M=32$ antithetic
+Gaussian localization actions per observed frame and round.
+Only a 256-dimensional spatial query residual and 1,536
+LayerNorm affine parameters are trainable, totaling 1,792
+parameters. For the VidSTG target, we use learning rate
+$0.03$, exploration scale $\sigma=0.1$, temperature $\tau=0.25$,
+10 distillation rounds, and LayerNorm consolidation factor
+$\alpha=1/8$. For the HC-STVG-v2 target, the corresponding
+values are $0.01$, $0.025$, $0.05$, 40, and $1/16$.
+The settings are fixed using development subsets of 32 parent
+videos per target; no evaluation labels are used during an
+adaptation stream. We separately report analyses excluding these
+parents. The remaining sources have historical evaluation exposure
+and are not described as a newly untouched confirmation population. The final round determines the current
+prediction, while the native temporal interval remains unchanged.
+
+\subsection{Cross-Domain Grounding}
+\label{sec:cross-domain-results}
+
+\paragraph{Motivating spatial failures.}
+We first examine source-trained TA-STVG and
+TubeDETR~\cite{tubedetr} predictions under the two cross-domain
+transfers. Even when the predicted temporal interval has
+$tIoU>0.5$, spatial localization can remain incorrect.
+Among such temporally successful predictions, 38.0\% of
+TA-STVG and 43.6\% of TubeDETR outputs on HC-STVG-v2 have
+spatial IoU at most 0.5. The corresponding rates on VidSTG
+are 55.3\% and 34.8\%. These conditional results identify a
+persistent spatial correction opportunity after an event has
+been located, motivating the use of the native interval as
+the scope for acquiring additional spatial evidence.
+
+\paragraph{Main results.}
+Table~\ref{tab:cross-domain-main} reports the full official
+cross-domain evaluation. We compare with Source Only and
+STVG adaptations of Tent~\cite{tent} and SAR~\cite{sar},
+and parameter-free DINO Refine using exactly the same four
+admitted references. DINO Refine interpolates absolute center--size
+boxes between admitted anchors with nearest endpoint extension;
+it is not an update at only four frame positions.
+An in-domain supervised model is shown separately as a
+reference trained with target-domain annotations.
+
+\begin{table*}[t]
+	\centering
+	\caption{Cross-domain STVG results on all official target queries.
+		All values are percentages. Tent/SAR here retain the original
+        evaluated configurations; separately calibrated configurations are
+        not substituted before their complete formal evaluation.
+        The in-domain supervised reference
+		uses target-domain training labels and is not a TTA baseline.
+		Bold indicates the best result among methods without target
+		training annotations; ties are left unbolded.}
+	\label{tab:cross-domain-main}
+	\setlength{\tabcolsep}{8pt}
+	\small
+	\begin{tabular}{lccccc}
+		\toprule
+		Method & \mvIoU{} $\uparrow$ & \mtIoU{} $\uparrow$ &
+		\msIoU{} $\uparrow$ & R@0.3 $\uparrow$ & R@0.5 $\uparrow$ \\
+		\midrule
+		\multicolumn{6}{l}{\textit{VidSTG $\rightarrow$ HC-STVG-v2}} \\
+		\midrule
+		Source Only         & 20.017 & 40.311 & 48.550 & 27.570 & 7.639 \\
+		Tent-STVG           & 16.598 & 33.333 & 48.536 & 20.132 & 5.035 \\
+		SAR-STVG            & 19.939 & 40.152 & 48.556 & 27.465 & 7.486 \\
+		DINO Refine          & 20.673 & 40.311 & 43.631 & 28.920 & 9.075 \\
+		\textbf{Ours}       & \textbf{22.583} & 40.311 & \textbf{53.625} &
+		\textbf{32.970} & \textbf{11.784} \\
+		\midrule
+		In-domain (supervised) & 29.056 & 57.280 & 49.332 & 45.951 & 14.302 \\
+		\midrule
+		\multicolumn{6}{l}{\textit{HC-STVG-v2 $\rightarrow$ VidSTG}} \\
+		\midrule
+		Source Only         & 11.129 & 31.703 & 32.758 & 12.831 & 3.300 \\
+		Tent-STVG           & 8.721 & 24.973 & 32.767 & 9.774 & 2.271 \\
+		SAR-STVG            & 11.129 & 31.703 & 32.758 & 12.831 & 3.300 \\
+		DINO Refine          & 13.985 & 31.703 & 35.710 & \textbf{18.024} & 6.920 \\
+		\textbf{Ours}       & \textbf{14.097} & 31.703 & \textbf{39.855} &
+		17.904 & \textbf{7.037} \\
+		\midrule
+		In-domain (supervised) & 19.296 & 42.750 & 42.325 & 28.137 & 13.103 \\
+		\bottomrule
+	\end{tabular}
+\end{table*}
+
+Our method improves whole-tube localization in both directions.
+On HC-STVG-v2, \mvIoU{} increases from 20.017\% to 22.583\%,
+with gains of 5.400 and 4.145 percentage points at R@0.3
+and R@0.5. On VidSTG, \mvIoU{} increases from 11.129\%
+to 14.097\%, while R@0.5 increases from 3.300\% to 7.037\%.
+The gains arise from spatial correction: \mtIoU{} is unchanged,
+while \msIoU{} increases from 48.550\% to 53.625\% on
+HC-STVG-v2 and from 32.758\% to 39.855\% on VidSTG.
+Thus, a small number of frame-level references can improve
+localization across the predicted event through parameter
+updates to the shared spatial decoder.
+
+Excluding the 32 development parent videos per target,
+the paired parent-level improvement over Source Only is
+$+2.409$ percentage points (95\% CI: $[1.891,2.907]$)
+on the remaining 205 HC-STVG-v2 parents and $+3.329$
+points ($[3.017,3.646]$) on the remaining 700 VidSTG
+parents. The improvements remain positive after this
+exclusion, supporting the generality of the gains within
+the evaluated cross-domain populations.
+
+\subsection{Robustness to Video Corruptions}
+\label{sec:robustness}
+
+Natural domain shifts change the distribution of scenes
+and queries, whereas transient corruption disrupts the
+video evidence within the same domain. We examine whether
+spatial adaptation remains useful under these localized
+changes. Table~\ref{tab:robustness} reports the clean
+results, individual corruption families at 5\% coverage,
+and means across the five families at each severity level.
+
+\begin{table*}[t]
+	\centering
+	\caption{Same-domain robustness under transient video
+		corruptions. The first block reports clean performance and
+		individual corruption types at 5\% physical-time coverage.
+		The second block averages the five types at each severity.
+		All entries are \mvIoU{} (\%); $\Delta$ is measured in
+		percentage points.}
+	\label{tab:robustness}
+	\setlength{\tabcolsep}{7pt}
+	\small
+	\begin{tabular}{lcccccc}
+		\toprule
+		& \multicolumn{3}{c}{HC-STVG-v2} & \multicolumn{3}{c}{VidSTG} \\
+		\cmidrule(lr){2-4}\cmidrule(lr){5-7}
+		Condition & Frozen & Ours & $\Delta$ & Frozen & Ours & $\Delta$ \\
+		\midrule
+		Clean            & 30.684 & 34.450 & +3.766 & 21.224 & 23.679 & +2.456 \\
+		Frame Drop       & 29.961 & 33.490 & +3.529 & 19.257 & 21.295 & +2.039 \\
+		Frame Freeze     & 30.631 & 34.555 & +3.925 & 21.269 & 23.357 & +2.088 \\
+		Motion Blur      & 30.524 & 33.617 & +3.093 & 20.979 & 23.009 & +2.030 \\
+		Occlusion        & 30.400 & 33.432 & +3.033 & 20.875 & 23.077 & +2.201 \\
+		Exposure         & 30.536 & 34.347 & +3.811 & 21.208 & 23.345 & +2.137 \\
+		\midrule
+		\multicolumn{7}{l}{\textit{Mean across corruption families}} \\
+		\midrule
+		2.5\% coverage   & 30.698 & 34.230 & +3.532 & 20.931 & 23.215 & +2.284 \\
+		5\% coverage     & 30.410 & 33.888 & +3.478 & 20.718 & 22.817 & +2.099 \\
+		10\% coverage    & 29.807 & 33.347 & +3.540 & 20.183 & 22.361 & +2.178 \\
+		\bottomrule
+	\end{tabular}
+\end{table*}
+
+Our method improves \mvIoU{} on clean inputs and under
+every evaluated corruption. At 5\% coverage, improvements
+range from 3.033 to 3.925 percentage points on HC-STVG-v2
+and from 2.030 to 2.201 on VidSTG. Across the full set of
+sixteen clean and corrupted conditions per target, all
+paired parent-bootstrap intervals for Ours minus Frozen
+are positive.
+
+The gains also persist as the affected duration increases.
+Averaged over corruption families, the improvements at
+10\% coverage are 3.540 and 2.178 percentage points on
+HC-STVG-v2 and VidSTG, respectively. This complements
+the cross-domain evaluation by showing that the spatial
+updates remain useful under changes to the incoming video
+signal without updating the pretrained encoders.
+
+\subsection{Understanding On-Policy Spatial Distillation}
+\label{sec:opd-ablation}
+
+Our spatial objective uses rewards assigned to actions
+sampled from the current student policy, then refreshes
+those actions after each update. We isolate the role of
+these choices with three controlled variants. \emph{Direct}
+minimizes L1/GIoU (weights 5/2) to the same admitted references,
+using the same trainable interface, rounds and stream lifecycle. \emph{Shuffled
+	Feedback} preserves the sampled actions and reward values
+but randomizes their correspondence. \emph{Fixed Rollout}
+retains candidates drawn from the initial student policy
+rather than refreshing them during adaptation. Both variants
+use the same specialist observations and trainable interface.
+
+\begin{table*}[t]
+	\centering
+	\caption{Effect of feedback correspondence and on-policy
+		sampling. Entries are paired \mvIoU{} differences (percentage
+		points) between the full method and each variant, with 95\%
+		parent-bootstrap confidence intervals. Cross-domain rows
+		use clean inputs; same-domain rows average five corruption
+		families at 5\% coverage on fixed 128-parent cohorts.}
+	\label{tab:opd-ablation}
+	\setlength{\tabcolsep}{5pt}
+	\small
+	\begin{tabular}{lccc}
+		\toprule
+		Setting & Full $-$ Direct & Full $-$ Shuffled & Full $-$ Fixed Rollout \\
+		\midrule
+		VidSTG $\rightarrow$ HC-STVG-v2
+		& $+0.576\;[-0.236,1.433]$ & $+3.837\;[2.257,5.335]$ & $+1.124\;[-0.233,2.244]$ \\
+		HC-STVG-v2 $\rightarrow$ VidSTG
+		& $-0.213\;[-0.625,0.216]$ & $+8.820\;[6.861,10.979]$ & $+3.860\;[2.415,5.334]$ \\
+		HC-STVG-v2 (corrupt)
+		& $+0.603\;[-1.069,2.267]$ & $+6.320\;[4.595,7.991]$ & $+3.357\;[1.942,4.691]$ \\
+		VidSTG (corrupt)
+		& $+0.523\;[-0.343,1.494]$ & $+10.222\;[7.455,13.033]$ & $+2.579\;[0.579,4.487]$ \\
+		\bottomrule
+	\end{tabular}
+\end{table*}
+
+\paragraph{Direct regression.}
+The Full-minus-Direct intervals in Table~\ref{tab:opd-ablation}
+span zero in all four settings. The paired means are $+0.576$
+points on cross-domain HC-STVG-v2 and $-0.213$ on cross-domain
+VidSTG. These comparisons do not establish stable average OPD
+superiority; reward correspondence and policy-refresh ablations test
+specific choices within OPD rather than replace this direct comparator.
+
+\paragraph{Feedback correspondence.}
+Table~\ref{tab:opd-ablation} shows that the full method
+outperforms Shuffled Feedback in all four settings, with
+paired gains of 3.837--10.222 percentage points. Since
+shuffling retains the reward distribution but destroys its
+association with the sampled localization actions, these
+results establish that useful feedback depends on assigning
+higher weight to the appropriate student-generated actions.
+
+\paragraph{Policy refresh.}
+Refreshing the action distribution also improves grounding
+in several settings. Compared with Fixed Rollout, the full
+method gains 3.860 points on cross-domain VidSTG and
+3.357 and 2.579 points on the same-domain corruption
+panels. This shows that reevaluating actions around the
+updated prediction can make feedback more effective than
+reusing the initial action distribution. The corresponding
+cross-domain HC-STVG-v2 contrast has a positive mean but
+a confidence interval overlapping zero.
+
+\subsection{Fast Adaptation and Slow State Evolution}
+\label{sec:state-ablation}
+
+We next examine which parameters carry spatial correction
+and how their updates influence subsequent queries.
+\emph{Query-only} adapts the 256-dimensional query residual;
+\emph{LN-only} adapts the 1,536 LayerNorm affine parameters.
+The joint variant with $\alpha=0$ adapts both groups for
+the current query but performs no cross-query writeback.
+The full method uses both groups locally and retains a
+fraction of the LayerNorm displacement across queries.
+
+\begin{table*}[t]
+	\centering
+	\caption{Parameter and state ablations. Entries are paired
+		\mvIoU{} differences (percentage points) between the full
+		method and each variant, with 95\% parent-bootstrap
+		confidence intervals. The cohorts and settings match
+		Table~\ref{tab:opd-ablation}.}
+	\label{tab:state-ablation}
+	\setlength{\tabcolsep}{6pt}
+	\small
+	\begin{tabular}{lccc}
+		\toprule
+		Setting & Full $-$ Query-only & Full $-$ LN-only & Full $-$ $\alpha=0$ \\
+		\midrule
+		VidSTG $\rightarrow$ HC-STVG-v2
+		& $+1.182\;[-0.070,2.247]$ & $-0.170\;[-0.734,0.296]$ & $+0.238\;[0.011,0.488]$ \\
+		HC-STVG-v2 $\rightarrow$ VidSTG
+		& $+3.322\;[2.048,4.608]$ & $+0.464\;[0.090,0.909]$ & $+0.258\;[-0.182,0.691]$ \\
+		HC-STVG-v2 (corrupt)
+		& $+3.942\;[2.686,5.152]$ & $+0.009\;[-0.490,0.468]$ & $+0.217\;[-0.279,0.673]$ \\
+		VidSTG (corrupt)
+		& $+1.438\;[-0.676,3.415]$ & $+0.420\;[-0.034,0.936]$ & $+0.480\;[-0.257,1.211]$ \\
+		\bottomrule
+	\end{tabular}
+\end{table*}
+
+As shown in Table~\ref{tab:state-ablation}, the two
+parameter groups contribute differently across datasets.
+On cross-domain VidSTG, the full method exceeds Query-only
+by 3.322 points and LN-only by 0.464 points. On
+HC-STVG-v2, LN-only captures much of the full gain,
+particularly under same-domain corruption. The contrast
+indicates that the LayerNorm parameters are an important
+adaptation interface, while the query residual has a positive contrast in this particular
+VidSTG panel. Its indispensable contribution is not established: the enlarged
+matched state controls and independent LN-only stream remain outstanding.
+
+We also analyze the state inherited from preceding queries.
+Let $v_F$, $v_B$, and $v_A$ denote performance from the
+frozen source state, the inherited state before adapting
+the current query, and the fully adapted current state.
+Then $v_A-v_F=(v_B-v_F)+(v_A-v_B)$. Excluding development
+sources from the full cross-domain population, the inherited
+component $v_B-v_F$ is $+2.054$ points on HC-STVG-v2
+and $+1.699$ on VidSTG, while the current-query component
+$v_A-v_B$ is $+0.355$ and $+1.629$, respectively. Thus,
+performance depends on both the current correction and
+the state from which it begins, with substantially different
+balances across targets.
+
+The $\alpha=0$ intervention directly tests the effect of
+cross-query consolidation. Its difference from the full
+method is positive on cross-domain HC-STVG-v2
+($+0.238$ points, 95\% CI $[0.011,0.488]$); the other
+three comparisons have intervals spanning zero. The
+inherited-state decomposition and this intervention answer
+different questions: the former describes the state of the
+full online model, whereas the latter isolates the effect
+of the writeback rule.
+
+\subsection{Specialist Observation Budget}
+\label{sec:observation-budget}
+
+We vary the number of uniformly sampled event frames,
+$K\in\{1,2,4,8\}$, while keeping the remaining configuration
+fixed. Table~\ref{tab:budget} summarizes the resulting
+cross-domain improvements and recorded decoder-fitting
+costs on the fixed 128-parent cohorts.
+
+\begin{table*}[t]
+	\centering
+	\caption{Specialist observation budget on cross-domain
+		clean inputs. Improvements are parent-averaged \mvIoU{}
+		percentage points over Frozen, with 95\% paired confidence
+		intervals. Fit time is measured per arrival and excludes
+		shared capture and specialist inference.}
+	\label{tab:budget}
+	\setlength{\tabcolsep}{9pt}
+	\small
+	\begin{tabular}{ccccc}
+		\toprule
+		& \multicolumn{2}{c}{HC-STVG-v2 target} & \multicolumn{2}{c}{VidSTG target} \\
+		\cmidrule(lr){2-3}\cmidrule(lr){4-5}
+		$K$ & $\Delta\mvIoU$ (pp) & Fit (s) & $\Delta\mvIoU$ (pp) & Fit (s) \\
+		\midrule
+		1 & $+0.655\;[-0.791,1.928]$ & 1.326
+		& $+2.249\;[0.985,3.483]$ & 0.322 \\
+		2 & $+0.664\;[-0.739,1.859]$ & 1.351
+		& $+3.649\;[2.205,5.081]$ & 0.334 \\
+		4 & $+1.346\;[-0.046,2.526]$ & 1.356
+		& $+3.871\;[2.430,5.290]$ & 0.347 \\
+		8 & $+0.342\;[-1.393,1.884]$ & 1.413
+		& $+4.458\;[2.847,6.078]$ & 0.343 \\
+		\bottomrule
+	\end{tabular}
+\end{table*}
+
+The method obtains improvements from sparse observations.
+On VidSTG, all four budgets have positive paired confidence
+intervals relative to Frozen; increasing $K$ from one to
+four increases the mean gain from 2.249 to 3.871 points.
+The differences between $K=2$ and $K=4$, and between
+$K=4$ and $K=8$, are less conclusive. On HC-STVG-v2,
+$K=4$ yields the highest mean gain among the tested
+budgets, while the additional observations at $K=8$
+do not improve the mean. The main four-frame configuration was fixed before this
+budget evaluation; these results do not select a new test-set budget.
+
+A specialist reference is acquired once per selected
+frame and reused across distillation rounds. Consequently,
+the optimization cost is separate from the cost of
+specialist observations. For the default $K=4$, the
+recorded fitting stage takes 1.356 seconds per arrival
+on HC-STVG-v2 and 0.347 seconds on VidSTG. These are
+fit-stage measurements, not full end-to-end inference
+times.
+
+\subsection{Analysis of Spatial Corrections}
+\label{sec:correction-analysis}
+
+\paragraph{Corrections beyond observed frames.}
+We separate admitted observed frames, unobserved real decoder frames
+inside Native WHEN, interpolation-only frames inside Native, and
+annotated event frames outside Native. On the matched P2 population
+excluding development parents, the current After-minus-Before change
+on unobserved real decoder frames is $+5.419$ points on cross-domain
+VidSTG (95\% parent CI $[2.594,8.278]$) and $-0.581$ on
+cross-domain HC-STVG-v2 ($[-3.238,1.865]$). The corresponding
+After-minus-DINO differences are $+2.647$ ($[-0.146,5.777]$)
+and $+4.394$ ($[0.193,8.450]$). These contrasts distinguish the
+current spatial update from the complete online model's advantage
+over parameter-free refinement. Common observed/unobserved parent
+intersections are reported separately: for HC, the latter interval
+then spans zero. Interpolation alone is not evidence of a learned
+decoder change, and geometric changes outside Native WHEN do not
+recover temporal coverage.
+
+\paragraph{Expert quality and local actionability.}
+Using the actual saved rewards, we stratify expert frames by
+expert--GT IoU $Q\geq0.5$ or $Q<0.5$ and by whether any first-round
+action has positive reward. In the low-$Q$/all-zero strata,
+Full-minus-Direct current frame-IoU changes are $+11.520$ points
+on cross-domain HC ($[4.066,19.682]$, 22 parents) and $+9.751$
+under HC corruption ($[1.474,18.744]$, 32 parents). The analogous
+Vid intervals span zero. However, high-$Q$/all-zero frames favor
+Direct in the HC comparisons, by $29.329$ and $40.875$ points on
+only 5 and 11 parents. These descriptive geometric strata suggest
+a conditional conservative-update tradeoff, not a universal
+reliability advantage or verified identity-error detector.
+Full and Direct have their own inherited Before states.
+All-zero first-round reward occurs in 1.274--6.593\% of the
+high-$Q$ observations across the four settings. It remains a
+correction failure mode, even though the predeclared resource
+trigger for a changed-reward pilot is not met.
+
+\paragraph{Qualitative behavior.}
+Aligned Native/Before/After/GT examples show both improvements and
+regressions, with the four real specialist observations and sampled
+intermediate frames marked. Specialist agreement can increase while
+GT overlap decreases. Geometric disagreement alone does not establish
+an identity switch; such an attribution requires instance evidence
+and inspection of the actual sequence.
+
+\paragraph{Offline spatial and temporal headroom.}
+On the matched 128-parent cross-domain populations, the Native,
+GT-space/Native-time, and Native-space/GT-time video IoUs are
+22.156, 42.239, and 51.417\% for HC, and 14.466, 36.614,
+and 38.213\% for VidSTG. The temporal oracle uses only the
+original native trajectory and its supported interpolation;
+unpredicted frames are never filled with GT spatial boxes.
+Temporal headroom is at least as large as spatial headroom in
+these settings, so the motivating spatial errors do not imply a
+universal dominant spatial bottleneck. Native WHEN covers about
+56\% of annotated event support. These offline interventions are
+diagnostic ceilings, not deployable comparisons or an additive
+decomposition of task error.
+
+\paragraph{Complementary temporal corrections.}
+We finally inspect temporal refinement with spatial boxes
+held fixed, using a separate diagnostic set of 32 parent
+videos per target. An existing actionness-based temporal
+projection improves \mvIoU{} over the native interval by
+$+3.755$ points on HC-STVG-v2 and $+1.634$ on VidSTG.
+An offline ground-truth-guided temporal-head diagnostic
+reveals further capacity for correction, particularly
+on VidSTG. These Native-space controls demonstrate deployable temporal headroom.
+Their interaction with spatial adaptation requires a matched factorial comparison.
+Our main method concentrates on spatial correction
+within the native event scope. Joint temporal adaptation is not
+part of the evaluated primary method.
+
+
+	
+	
+\subsection{Common-State Spatial and Parameter-Mean Controls}
+The new common-state study uses every original matched cell, preserving Full's
+initial state, observations and saved reference. All four primary Full-minus-
+Direct intervals span zero. Full-minus-Capped-Direct is negative in both Vid
+settings: cross-domain $-0.410\;[-0.718,-0.117]$ pp and same-domain corruption
+$-0.303\;[-0.620,-0.006]$ pp. The cap bounds output movement; it does not force
+exact norm equality. These controls are conditional on Full history rather
+than three independent online streams.
+
+The corrected Native-support Query observability study uses all 64 existing
+development parents. Query-observable parameter-mean gains are $+0.002$ pp on
+HC and $-0.004$ pp on Vid, while HC Query-minus-LN mean is
+$-0.147\;[-0.238,-0.072]$ pp. Candidate oracle and expert-top1 readouts are
+distinct from the deployed true parameter mean. Complete signed-pair replay
+finds median reward-margin-to-temperature ratios of 0.02056 and 0.01162,
+corresponding to 1.028\% and 0.581\% pair retention. Unequal positive/negative
+amplitudes contribute a midpoint term; the equal-amplitude tanh illustration
+alone is insufficient. These observations support mean-readout shrinkage in
+this scope without identifying its unique causal role or selecting a new
+temperature. Full Query-level OPD is not introduced.
+
+\subsection{Matched Temporal--Spatial Readouts}
+We cross frozen Native WHEN (T0) and the unchanged existing Actionness
+Projection (T1) with frozen Native, Full OPD, common-state Direct and Capped
+Direct. Exact cache matching admits all original P6 parents (32 per target)
+and both existing orders, totaling 128 Common-State cells. The primary panel
+uses original order1; the secondary clusters both orders within the same
+parents. The other 1,664 cells lack complete corresponding temporal captures
+and are not represented as a full extension. Every readout is sealed before
+offline scoring; missing decoder support has zero IoU and no GT completion.
+
+\begin{table}[t]
+\centering\small
+\caption{Primary cached time--space contrasts (pp), 32 historical parents per target; 10,000 paired parent bootstrap, unadjusted 95\% CI.}\label{tab:time-space}
+\begin{tabular}{lcc}\toprule
+Contrast & HC & Vid \\
+\midrule
+OPD T1 $-$ T0 & $+3.823\;[+0.336,+7.169]$ & $+2.079\;[+0.269,+4.259]$ \\
+OPD/Native interaction & $+0.068\;[-0.794,+0.905]$ & $+0.445\;[-0.663,+1.479]$ \\
+OPD $-$ cap at T1 & $+0.397\;[-0.574,+1.404]$ & $-0.472\;[-1.148,+0.201]$ \\
+\bottomrule\end{tabular}\end{table}
+Actionness Projection improves the OPD readout in both targets, but neither
+primary interaction interval excludes zero. OPD-minus-cap at projected time
+also spans zero in both primary panels; the two-order Vid comparison is
+$-0.771\;[-1.680,-0.020]$ pp. Mean annotated event coverage increases by
+19.146 and 5.315 pp, with 1,087 and 1,275 newly included annotated frames
+outside Native and no added frames outside decoder support. Four HC and one
+Vid parents lose more than 5 pp under OPD's temporal change. Fixed-event
+spatial IoU stays unchanged for each spatial readout. This supports useful
+temporal coverage recovery without establishing an OPD-specific joint
+mechanism or an independently validated new temporal adaptation method.
+
+\section{Conclusion}
+Sparse specialist feedback can improve a compact STVG spatial adaptation
+system under the fixed cross-domain protocol. The current evidence supports
+the complete system gain and distinguishes temporal coverage, spatial
+objective and parameter readout; stable OPD-over-Direct superiority,
+indispensable Query residuals and causal gains from inherited state remain
+unestablished. Enlarged state, calibrated baseline and full deployment timing
+claims require completion of their original locked evaluations. We retain the
+fixed Full method and report conditional negative controls rather than
+promote a new Query or temporal method from these diagnostics.
+
+
+	{\small
+		\bibliographystyle{ieeenat_fullname}
+		\bibliography{references}
+	}
+\end{document}

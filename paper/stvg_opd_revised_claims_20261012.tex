@@ -1,0 +1,113 @@
+\documentclass[11pt]{article}
+\usepackage[margin=0.8in]{geometry}
+\usepackage{amsmath,amssymb,booktabs,hyperref}
+\title{Sparse Specialist Feedback for Spatial Test-Time Adaptation in Spatio-Temporal Video Grounding}
+\author{Anonymous working revision}
+\date{12 October 2026}
+\begin{document}\maketitle
+\begin{abstract}
+Spatio-temporal video grounding must recover an event interval and the trajectory
+of a language-specified instance under deployment shifts. We study sparse
+specialist-guided spatial test-time adaptation through a 1,792-parameter
+decoder interface. On-policy localization actions are scored against one
+frozen grounding specialist, and their reward-weighted distribution guides
+the current-query spatial update while the native temporal interval is retained.
+The fixed system increases mean video IoU from 20.017 to 22.583 on HC-STVG-v2
+and from 11.129 to 14.097 on VidSTG. Common-state comparisons distinguish the
+system gain from the spatial objective: they do not establish stable OPD
+superiority over direct regression, and output-budget controls reveal
+dataset-dependent tradeoffs. A cached temporal--spatial factorial study finds
+that an existing actionness projection adds 3.823 and 2.079 percentage points
+to OPD on two historical 32-parent panels, with no established OPD-specific
+interaction. These results identify a reproducible compact adaptation system
+and clarify which benefits are attributable to sparse feedback, spatial
+readout and temporal coverage.
+\end{abstract}
+\section{Revised contributions}
+Our contributions are threefold:
+\begin{itemize}
+\item We formulate sparse specialist-guided spatial adaptation for STVG,
+keeping the temporal interval explicit and distinguishing frame-level
+reference agreement from complete language-conditioned tube accuracy.
+\item We implement on-policy spatial distribution distillation through a
+compact decoder interface and evaluate the fixed system on complete official
+cross-domain populations, including complete negative results and matched
+direct-regression controls.
+\item We provide controlled evidence separating spatial objective, parameter
+readout and temporal coverage. Common-state and output-budget controls delimit
+OPD's advantage; cached Query/LN diagnostics and temporal--spatial factorial
+readouts identify useful mechanisms without claiming universal superiority or
+an established benefit from state inheritance.
+\end{itemize}
+
+\section{Common-State Spatial and Parameter-Mean Controls}
+The new common-state study uses every original matched cell, preserving Full's
+initial state, observations and saved reference. All four primary Full-minus-
+Direct intervals span zero. Full-minus-Capped-Direct is negative in both Vid
+settings: cross-domain $-0.410\;[-0.718,-0.117]$ pp and same-domain corruption
+$-0.303\;[-0.620,-0.006]$ pp. The cap bounds output movement; it does not force
+exact norm equality. These controls are conditional on Full history rather
+than three independent online streams.
+
+The corrected Native-support Query observability study uses all 64 existing
+development parents. Query-observable parameter-mean gains are $+0.002$ pp on
+HC and $-0.004$ pp on Vid, while HC Query-minus-LN mean is
+$-0.147\;[-0.238,-0.072]$ pp. Candidate oracle and expert-top1 readouts are
+distinct from the deployed true parameter mean. Complete signed-pair replay
+finds median reward-margin-to-temperature ratios of 0.02056 and 0.01162,
+corresponding to 1.028\% and 0.581\% pair retention. Unequal positive/negative
+amplitudes contribute a midpoint term; the equal-amplitude tanh illustration
+alone is insufficient. These observations support mean-readout shrinkage in
+this scope without identifying its unique causal role or selecting a new
+temperature. Full Query-level OPD is not introduced.
+
+\section{Matched Temporal--Spatial Readouts}
+We cross frozen Native WHEN (T0) and the unchanged existing Actionness
+Projection (T1) with frozen Native, Full OPD, common-state Direct and Capped
+Direct. Exact cache matching admits all original P6 parents (32 per target)
+and both existing orders, totaling 128 Common-State cells. The primary panel
+uses original order1; the secondary clusters both orders within the same
+parents. The other 1,664 cells lack complete corresponding temporal captures
+and are not represented as a full extension. Every readout is sealed before
+offline scoring; missing decoder support has zero IoU and no GT completion.
+
+\begin{table}[t]
+\centering\small
+\caption{Primary cached time--space contrasts (pp), 32 historical parents per target; 10,000 paired parent bootstrap, unadjusted 95\% CI.}\label{tab:time-space}
+\begin{tabular}{lcc}\toprule
+Contrast & HC & Vid \\
+\midrule
+OPD T1 $-$ T0 & $+3.823\;[+0.336,+7.169]$ & $+2.079\;[+0.269,+4.259]$ \\
+OPD/Native interaction & $+0.068\;[-0.794,+0.905]$ & $+0.445\;[-0.663,+1.479]$ \\
+OPD $-$ cap at T1 & $+0.397\;[-0.574,+1.404]$ & $-0.472\;[-1.148,+0.201]$ \\
+\bottomrule\end{tabular}\end{table}
+Actionness Projection improves the OPD readout in both targets, but neither
+primary interaction interval excludes zero. OPD-minus-cap at projected time
+also spans zero in both primary panels; the two-order Vid comparison is
+$-0.771\;[-1.680,-0.020]$ pp. Mean annotated event coverage increases by
+19.146 and 5.315 pp, with 1,087 and 1,275 newly included annotated frames
+outside Native and no added frames outside decoder support. Four HC and one
+Vid parents lose more than 5 pp under OPD's temporal change. Fixed-event
+spatial IoU stays unchanged for each spatial readout. This supports useful
+temporal coverage recovery without establishing an OPD-specific joint
+mechanism or an independently validated new temporal adaptation method.
+
+\section{Conclusion}
+Sparse specialist feedback can improve a compact STVG spatial adaptation
+system under the fixed cross-domain protocol. The current evidence supports
+the complete system gain and distinguishes temporal coverage, spatial
+objective and parameter readout; stable OPD-over-Direct superiority,
+indispensable Query residuals and causal gains from inherited state remain
+unestablished. Enlarged state, calibrated baseline and full deployment timing
+claims require completion of their original locked evaluations. We retain the
+fixed Full method and report conditional negative controls rather than
+promote a new Query or temporal method from these diagnostics.
+
+
+\section{Revision status}
+This standalone file previews the revised claims and completed O/Q0/cached
+factorial evidence. The additive full manuscript preserves the original
+CVPR style, figure and bibliography references, which require the original
+project assets. Calibration, expanded state, LN-only and complete deployment
+timing remain in the original S/C/N queues; no results for them are invented.
+\end{document}
