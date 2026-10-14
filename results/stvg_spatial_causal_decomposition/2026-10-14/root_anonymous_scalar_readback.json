@@ -1,0 +1,122 @@
+{
+  "schema_version": 1,
+  "created_utc": "2026-10-14T09:51:10+00:00",
+  "status": "PASS",
+  "scope": {
+    "purpose": "Independent leaf-by-leaf comparison of three anonymous JSON exports against their sealed source readbacks.",
+    "normalization": "Deterministic hc2_NNN to HCN+1 and vidstg_NNN to VN+1 alias normalization; remove only source GT_source_bindings and explicitly named path/file fields before comparison.",
+    "redaction_accounting": "GT-source binding removal is recorded separately from path/file fields; no non-GT input hash bindings are excluded.",
+    "limits": "This verifies export fidelity only, not metric computation or scientific conclusions. No raw media, query prose, GT coordinates, or model tensors/states were opened."
+  },
+  "files": {
+    "offline_oracle_custody": {
+      "anonymous_relative_path": "results/stvg_spatial_causal_decomposition/2026-10-14/offline_oracle_custody.json",
+      "anonymous_sha256": "ce26aaf805def27c40f86ba82e2ee725ff8a553079f9ecedd66f38edffeebacd",
+      "anonymous_bytes": 4628,
+      "source_relative_path": "artifacts/stvg_spatial_causal_decomposition_v1/OFFLINE_ORACLE_CUSTODY_READBACK.json",
+      "source_sha256": "b277a89863f65d96576188c7aa870cce9c7e1e15a07ffb5269a979295b8fb906",
+      "source_bytes": 4668,
+      "source_case_alias_occurrences_normalized": 8,
+      "source_leaf_count_after_permitted_redactions": 119,
+      "anonymous_leaf_count_after_permitted_redactions": 119,
+      "equal_scalar_leaf_count": 119,
+      "scalar_value_mismatch_count": 0,
+      "structure_mismatch_count": 0,
+      "mismatch_paths": [],
+      "source_redactions": {
+        "gt_binding_nodes": 0,
+        "gt_binding_leaves": 0,
+        "path_nodes": 0,
+        "path_leaves": 0
+      },
+      "anonymous_redactions": {
+        "gt_binding_nodes": 0,
+        "gt_binding_leaves": 0,
+        "path_nodes": 0,
+        "path_leaves": 0
+      },
+      "anonymous_payload_key_scan": {
+        "query_or_prompt_payload_key_count": 0,
+        "coordinate_or_box_payload_key_count": 0,
+        "rgb_video_pixel_payload_key_count": 0,
+        "tensor_or_weight_payload_key_count": 0
+      }
+    },
+    "phase1_all_metrics": {
+      "anonymous_relative_path": "results/stvg_spatial_causal_decomposition/2026-10-14/phase1_all_metrics.json",
+      "anonymous_sha256": "fa1096fb24f135f17bf7cd80ae94513e0703f29b14b849c8c258e3861f94bfe1",
+      "anonymous_bytes": 116099,
+      "source_relative_path": "artifacts/stvg_spatial_causal_decomposition_v1/phase1/ROOT_AMPLITUDE_READBACK.json",
+      "source_sha256": "1baf23ed120f837047653136ba23d4798217876a366309597814b88c5ac6fee9",
+      "source_bytes": 117200,
+      "source_case_alias_occurrences_normalized": 112,
+      "source_leaf_count_after_permitted_redactions": 2906,
+      "anonymous_leaf_count_after_permitted_redactions": 2906,
+      "equal_scalar_leaf_count": 2906,
+      "scalar_value_mismatch_count": 0,
+      "structure_mismatch_count": 0,
+      "mismatch_paths": [],
+      "source_redactions": {
+        "gt_binding_nodes": 1,
+        "gt_binding_leaves": 4,
+        "path_nodes": 0,
+        "path_leaves": 0
+      },
+      "anonymous_redactions": {
+        "gt_binding_nodes": 0,
+        "gt_binding_leaves": 0,
+        "path_nodes": 0,
+        "path_leaves": 0
+      },
+      "anonymous_payload_key_scan": {
+        "query_or_prompt_payload_key_count": 0,
+        "coordinate_or_box_payload_key_count": 0,
+        "rgb_video_pixel_payload_key_count": 0,
+        "tensor_or_weight_payload_key_count": 0
+      }
+    },
+    "pool_teacher_all_diagnostics": {
+      "anonymous_relative_path": "results/stvg_spatial_causal_decomposition/2026-10-14/pool_teacher_all_diagnostics.json",
+      "anonymous_sha256": "6859f802feffbfe36f03645a4241cc023c5cc01c2696f86d9f0d6ce363ff540a",
+      "anonymous_bytes": 119854,
+      "source_relative_path": "artifacts/stvg_spatial_causal_decomposition_v1/POOL_TEACHER_DIAGNOSIS.json",
+      "source_sha256": "1223cf9bb44a67f171ca0c815761853156c660cc2da184a60e43da124dff924d",
+      "source_bytes": 119934,
+      "source_case_alias_occurrences_normalized": 16,
+      "source_leaf_count_after_permitted_redactions": 2251,
+      "anonymous_leaf_count_after_permitted_redactions": 2251,
+      "equal_scalar_leaf_count": 2251,
+      "scalar_value_mismatch_count": 0,
+      "structure_mismatch_count": 0,
+      "mismatch_paths": [],
+      "source_redactions": {
+        "gt_binding_nodes": 0,
+        "gt_binding_leaves": 0,
+        "path_nodes": 0,
+        "path_leaves": 0
+      },
+      "anonymous_redactions": {
+        "gt_binding_nodes": 0,
+        "gt_binding_leaves": 0,
+        "path_nodes": 0,
+        "path_leaves": 0
+      },
+      "anonymous_payload_key_scan": {
+        "query_or_prompt_payload_key_count": 0,
+        "coordinate_or_box_payload_key_count": 1,
+        "rgb_video_pixel_payload_key_count": 0,
+        "tensor_or_weight_payload_key_count": 0
+      }
+    }
+  },
+  "overall_counts": {
+    "anonymous_json_files": 3,
+    "equal_scalar_leaf_count": 5276,
+    "scalar_value_mismatch_count": 0,
+    "structure_mismatch_count": 0,
+    "source_GT_binding_leaves_removed": 4,
+    "explicit_path_or_file_leaves_removed": 0,
+    "source_input_bindings_leaf_count_compared": 5
+  },
+  "previous_receipt": "artifacts/stvg_spatial_causal_decomposition_v1/ROOT_ANONYMOUS_SCALAR_READBACK.json (preserved; not overwritten)"
+}
