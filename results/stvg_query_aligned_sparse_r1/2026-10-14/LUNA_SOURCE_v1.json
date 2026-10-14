@@ -1,0 +1,152 @@
+{
+  "schema": "stvg_query_alignment_independent_source_readback_v1",
+  "status": "completed_static_review_with_findings",
+  "scope": "source_and_allowlisted_metadata_only",
+  "root": "/home/wwww/visual grounding",
+  "reviewed_scripts": {
+    "scripts/stvg_query_alignment_inputs_v1.py": {
+      "sha256": "6f55cfd334d10e78e4c782e048e2abdd296f9051899342258953b9c046f74688",
+      "runtime_pin_match": true
+    },
+    "scripts/run_stvg_query_alignment_v1.py": {
+      "sha256": "ede7504436d8005c0acd565cd6c4f77b5503c500fefa5c2c24ca930634f706a5",
+      "runtime_pin_match": true
+    },
+    "scripts/launch_stvg_query_alignment_v1.py": {
+      "sha256": "952ff19885adc25b36fb94b1fee49e969245682063d3c7288e5dc702972668dc",
+      "runtime_pin_match": true
+    },
+    "scripts/stvg_query_alignment_resource_guard_v1.py": {
+      "sha256": "69360c0ff6df9f56ef5c262f1f000087cb1f8d0a8e7336b524acf5b1530b96ab",
+      "runtime_pin_match": true
+    }
+  },
+  "allowlisted_metadata": {
+    "DESIGN_LOCK.json": {
+      "sha256": "c2164231553411714549d89e4fbf9156b141ca2ebac364bb8343ba2547c0ac47",
+      "status": "locked",
+      "scope": "Query_Aligned_Sparse_R1_P0A_P0B_P0C_conditional_P1",
+      "case_count": 8,
+      "maximum_model_calls": 528,
+      "max_frames_per_visual_request": 8,
+      "max_facts_tokens": 384,
+      "max_preference_tokens": 256,
+      "input_token_cap": 4096,
+      "elapsed_deadline": null,
+      "historically_exposed": true,
+      "fresh_unseen_claim": false,
+      "controls": [
+        "base",
+        "ID_swap",
+        "display_order_swap",
+        "wrong_query"
+      ]
+    },
+    "RUNTIME.json": {
+      "sha256": "d3aae55854e77903b742df9027dc713599beb87220b7307ec1ef505be8c422d5",
+      "status": "locked",
+      "maximum_model_calls": 528,
+      "GT_read": false,
+      "reviewed_script_pins_match": true
+    },
+    "CPU_CONTRACTS.json": {
+      "sha256": "b20dbd2bdad5de64353eccaf2a2c2e877017d566a30f1b68c1117b6f5914cbd4",
+      "status": "pass",
+      "CPU_only": true,
+      "GPU_used": false,
+      "GT_read": false,
+      "RGB_video_read": false,
+      "model_calls": 0,
+      "synthetic_only": true,
+      "check_count": 11
+    },
+    "SCHEMA_CPU_CONTRACTS.json": {
+      "sha256": "391a49aa85c2e4259231fb8df80db6f1e206d22592d563b325ff0899335a0a78",
+      "status": "pass",
+      "CPU_only": true,
+      "GT_read": false,
+      "model_calls": 0,
+      "contract_count": 8
+    },
+    "ACTUAL_PROCESSOR_CPU_CONTRACT.json": {
+      "sha256": "655909d24608908f96674047ffa3934e06de659ffc05ab50208cffb30406931b",
+      "status": "pass",
+      "CPU_only": true,
+      "GT_read": false,
+      "model_calls": 0,
+      "actual_frame_count": 8,
+      "short_clips": 4,
+      "nonuniform_physical_time_correct": true,
+      "input_token_count": 1316
+    },
+    "P0_A_ACTUAL_INTEGRATION.json": {
+      "metadata_projection": {
+        "status": "pass",
+        "scope": "actual_old32_geometry_sparse_CPU_interface_not_teacher_qualification",
+        "candidate_count": 32,
+        "out_of_bounds_candidate_count": 13,
+        "GT_read": false,
+        "CPU_only": true
+      },
+      "records_values_inspected": false,
+      "interpretation": "interface/mapping metadata only; not teacher verification, model fitting, or scientific evaluation"
+    }
+  },
+  "interface_checks": {
+    "canonical_ID_mapping": "static_pass: visible ID1 maps to A and ID2 maps to B; ID swap changes the candidate-to-ID map while order swap changes panel order; the pair-binding candidate order is rebuilt from the visible IDs",
+    "query_free_facts": "static_pass: the facts builder receives no query parameter; original caption is used only for direct B and text-only C alignment; invalid facts skip C alignment",
+    "B_C_visual_budget": "static_pass: both B and C facts receive the same rendered video list and visual note; each request has eight sampled physical frames arranged as four two-frame clips; generation caps are 256 tokens for preferences and 384 for facts",
+    "physical_timestamps": "static_pass: display timestamps use physical_frame_id relative to video_bounds and source fps; each two-frame clip gets fps divided by its physical-frame gap; the CPU processor contract reports four grids and correct nonuniform physical time",
+    "sparse_supervision": "static_pass_with_scope_limit: missing receipt yields zero anchors and the synthetic gradient contract restricts gradients to receipt-listed positions; P0-A source integration uses explicitly forced CPU-only receipts and records zero actual teacher-verified anchors and zero student fits",
+    "resource_guard": "static_pass_with_caveats: launcher checks the dedicated cgroup, starts the monitor before the child, and signals only stvg-query-alignment-001.service; the design lock has no elapsed deadline"
+  },
+  "findings": [
+    {
+      "id": "response_status_does_not_reflect_parse_acceptance",
+      "severity": "medium",
+      "file": "scripts/run_stvg_query_alignment_v1.py",
+      "lines": "51-58",
+      "detail": "Parser failures are stored as parsed.status=invalid_output at lines 51-54, but the enclosing response is unconditionally written with status=accepted_actual_teacher_response at line 55. The facts control flow checks the nested status, but any downstream reader that trusts the envelope status can count malformed or truncated output as accepted.",
+      "minimal_fix": "Set the envelope status from parsed validity and the truncation flag, or name the field as response_generated and require downstream readers to inspect parsed.status."
+    },
+    {
+      "id": "resource_sampling_failure_is_fail_open",
+      "severity": "low",
+      "file": "scripts/stvg_query_alignment_resource_guard_v1.py",
+      "lines": "31-46",
+      "detail": "Sampling exceptions are recorded, after which the monitor continues without stopping the owned unit. Persistent cgroup or nvidia-smi failures therefore disable the effective headroom check and can rewrite the sampling-error receipt every 250 ms.",
+      "minimal_fix": "Have the controller treat persistent sampling failure as loss of guard coverage and stop only the owned unit, with bounded/backed-off error reporting."
+    },
+    {
+      "id": "guard_depends_on_launcher_entrypoint",
+      "severity": "low",
+      "file": "scripts/launch_stvg_query_alignment_v1.py",
+      "lines": "16-33",
+      "detail": "The monitor is started by the launcher; the worker script itself does not start or assert the monitor. Running run_stvg_query_alignment_v1.py directly bypasses the guard. The intended launch path must remain the launcher inside its dedicated service."
+    }
+  ],
+  "scope_limits": {
+    "scripts_read": [
+      "scripts/stvg_query_alignment_inputs_v1.py",
+      "scripts/run_stvg_query_alignment_v1.py",
+      "scripts/launch_stvg_query_alignment_v1.py",
+      "scripts/stvg_query_alignment_resource_guard_v1.py"
+    ],
+    "metadata_read": [
+      "artifacts/stvg_hierarchical_evidence_guided_v1/DESIGN_LOCK.json",
+      "artifacts/stvg_hierarchical_evidence_guided_v1/RUNTIME.json",
+      "artifacts/stvg_hierarchical_evidence_guided_v1/CPU_CONTRACTS.json",
+      "artifacts/stvg_hierarchical_evidence_guided_v1/SCHEMA_CPU_CONTRACTS.json",
+      "artifacts/stvg_hierarchical_evidence_guided_v1/ACTUAL_PROCESSOR_CPU_CONTRACT.json",
+      "allowlisted top-level metadata projection of artifacts/stvg_hierarchical_evidence_guided_v1/P0_A_ACTUAL_INTEGRATION.json"
+    ],
+    "case_records_opened": false,
+    "GT_read": false,
+    "RGB_video_read": false,
+    "query_or_caption_values_read": false,
+    "model_calls": 0,
+    "GPU_used": false,
+    "science_result_claim": false,
+    "worker_status_or_outputs_reviewed": false
+  }
+}

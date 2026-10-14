@@ -1,0 +1,22 @@
+{
+  "status": "source_and_saved_cache_capability_audit_not_new_instance_forward",
+  "scope": "current_single_spatial_trajectory_and_aux_decoder_layers_not_verified_other_instances",
+  "source_hashes": {
+    "external/TA-STVG/models/pipeline.py": "7c9723d8110192ffd80deaf624752165ad0399a7be28480ef70e3eeb30ae49f3",
+    "external/TA-STVG/models/grounding_model/query_decoder.py": "9cb4062b5f91403853b697f5901501969956c799e79f07ef47a581e28d6cf79c",
+    "scripts/run_stvg_mllm_source_v1.py": "03182e653bc69d2151f31c2c2170ef4cdaac589e9908b775dfd6cf7df73e4eea"
+  },
+  "findings": [
+    "one spatial content query initialized from weighted video/text representation",
+    "query_decoder expands one per-frame query to [t,1,256], not multiple object instance queries",
+    "aux_outputs are decoder-layer predictions, not independently validated referent hypotheses",
+    "old cold capture caches final boxes and two offset records; does not save aux trajectories"
+  ],
+  "actual_verified_different_instance_candidates": 0,
+  "identity_pool_expansion_executed": false,
+  "random_translation_is_not_object_hypothesis": true,
+  "conclusion": "local geometry correction only supported by currently accessible saved outputs; no universal claim that TA-STVG can never yield alternative instances",
+  "GT_read": false,
+  "new_model_forward": 0,
+  "time": 1791944812.1183405
+}
