@@ -1,0 +1,59 @@
+{
+  "status": "complete_actual_finite_measurement",
+  "teacher": "STVG-R1-7B",
+  "teacher_revision": "c0db00d019bf746f54b67770b82261b2161fed59",
+  "teacher_parameter_count": 8292166656,
+  "dtype": "BF16",
+  "attention": "SDPA",
+  "quantized": false,
+  "source_checkpoints": {
+    "HC2_target_source_VidSTG_sha256": "5ab12c86363ef0ce0ee006c00fd11c6b659c3a9b2cb01a4f2c613efe22a2aa83",
+    "VidSTG_target_source_HCSTVG2_sha256": "47d8f15841cd57e7bbf5a10e8bf23b1054d23b753e0becbd38a07f3dd60d5036"
+  },
+  "target_sources_per_domain": 4,
+  "temporal": {
+    "active_parameters": 512,
+    "lr": 0.01,
+    "tau": 1.0,
+    "l2": 0.001,
+    "optimizer": "Adam",
+    "steps": 5,
+    "reset_per_query": true,
+    "zero_initialization": "Projection_endpoint_actionness_prior"
+  },
+  "spatial": {
+    "active_parameters": 1792,
+    "steps": 5,
+    "optimizer": "Adam",
+    "samples": 32,
+    "config_source_sha256": "fffa324298cf86e00a6445c737be92050983466ecaf20ba036ace685f9a7d1d2",
+    "HC2": {
+      "lr": 0.01,
+      "sigma": 0.025,
+      "tau": 0.05,
+      "writeback": 0.0625
+    },
+    "VidSTG": {
+      "lr": 0.03,
+      "sigma": 0.1,
+      "tau": 0.25,
+      "writeback": 0.125
+    }
+  },
+  "method_requests": 64,
+  "diagnostic_requests": 96,
+  "student_fits": 16,
+  "student_optimizer_steps": 80,
+  "shuffle_CPU_fits": 8,
+  "shuffle_optimizer_steps": 40,
+  "observed_OOM_count": 0,
+  "own_worker_exit_codes": [
+    0,
+    0,
+    0
+  ],
+  "CURRENT_protected_sha256": "146a2caf1633544a844ea33106c83c022c0bebad5f3f49a87bb5f81e6f8568d4",
+  "method_is_not_promoted": true,
+  "resource_guard_limitations": "sampling errors fail open; live cgroup enforcement receipt not retained; no future OOM guarantee",
+  "recorded_cost_scope": "teacher input-preprocess/inference components and student source+fit+readout timer; excludes model load/canonical decode/asset preparation; not cold end-to-end TTA latency"
+}

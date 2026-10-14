@@ -1,0 +1,13 @@
+# Main protocol: temporal caption/query adaptation with spatial OPD
+
+This report covers one historically exposed, development-only cohort of eight cases: four HC (`HC01`–`HC04`) and four VidSTG (`V01`–`V04`). The results do not constitute a fresh confirmation set. Ground-truth metrics were read only after the student and diagnostic predictions were sealed; this is a post-seal evaluation, not a no-GT run.
+
+The comparison arms are `F` (frozen baseline), `Projection` (native frozen temporal projection), `T` (caption/query-trained temporal readout), `S` (spatial OPD), and `TS` (combined temporal and spatial adaptation). At zero temporal initialization the readout preserves the Projection interval. The temporal readout uses 512 active parameters and five fixed optimizer steps per case. The spatial OPD path is constrained to 1,792 active parameters and five actual steps per case in this run. A selected student pseudo-reference supplies spatial supervision; it is not an independent geometry teacher. The final five-step output is reported, not a ground-truth-selected checkpoint.
+
+Teacher labels are support, contradict, or insufficient. These categorical scores are not calibrated temporal IoU. Metrics are official per-case video IoU (`m_vIoU`), temporal IoU (`m_tIoU`), and dense ground-truth spatial IoU (`m_sIoU_dense_GT`), averaged over four cases per dataset. Aggregate `delta_vs_F_pp` values are percentage-point changes from the frozen baseline. The report also shows T relative to Projection, since Projection already has a nontrivial temporal readout.
+
+The main observations are bounded to this eight-case panel. Temporal adaptation improves aggregate m_vIoU and m_tIoU over both F and Projection in both datasets, with a much smaller increment over Projection on VidSTG. Spatial-only results are below Projection on the aggregate spatial metrics, and TS retains lower dense-GT m_sIoU than F; these are observed outcomes for this selected pseudo-reference setup and do not establish that OPD as a method is invalid. The combined arm's spatial metric does not improve merely because temporal metrics do.
+
+The logged fixed temporal KL+L2 objective ended above its initial value in 7/8 cases; only V01 ended lower. The reported delta is initial minus final, so negative values indicate an increase. This flags optimization instability in the fixed five-step configuration. Spatial loss is measured on fresh on-policy samples, so it is not a fixed-target convergence trace. No tuning or GT-based step selection followed.
+
+No method is promoted to deployment by this result. Training-set overlap of the teacher is unknown, and no fresh confirmation cohort was evaluated. The protected current method was reported unchanged.
