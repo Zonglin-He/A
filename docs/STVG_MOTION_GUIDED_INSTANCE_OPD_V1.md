@@ -94,3 +94,7 @@ V03旧ID2正增益重复出现，而Source自蒸馏和固定旧ID3下降，排�
 |V07|1|+0.000000|+0.000000|+0.000000|
 
 旧Vid均值由V04正增益与V02负增益共同决定；HC04大幅下降。新增HC08/V07的零完整指标变化不代表参考身份正确。17次Source冷捕获、21fit全部保存计时，以及包含失败/修正成本的阶段launch-to-exit时间见 actual_cost_all_paths.json；这些嵌套和可能重叠的时间不可简单相加当部署延迟。
+
+## 公开与有限关闭
+
+初批61文件1669409bytes在main与research共同提交 `1dce5fcaed1d4cc3745a00fe52005735cdc9afc3` 实际逐远端bytes/SHA256/Gitblob/mode/tree及两refs核验通过。三页PDF、全私人像素审查、独立root/匿名全部scalar及档案check-snapshot-check齐全；当前固定16例诊断ROOT_CLOSING/FINAL完成，仅此有限scope，不是稳定方法资格。最终closing追加收据与后续postclose档案以动态收据为准。
