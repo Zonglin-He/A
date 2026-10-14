@@ -1,0 +1,26 @@
+{
+  "status": "pass",
+  "scope": "Independent CPU source/candidate custody and geometry audit only; not Teacher accuracy, GT quality, or tracking evidence.",
+  "totals": {
+    "source_cases": 8,
+    "raw_union_rows": 43,
+    "legal_candidate_rows": 18,
+    "rejected_rows": 25,
+    "source_candidates_included_and_legal": 8,
+    "old_teacher_scalar_reads": 160,
+    "old_teacher_score_file_count_expected": 160,
+    "new_teacher_sealed_call_count_metadata_only": 42
+  },
+  "actual_preparation_readback_pass": true,
+  "unused_synthetic_helper_precision_and_order_are_not_actual_execution": 6,
+  "findings": [
+    "Preparation uses only the caller-independent old Teacher referent-support scalar and original-minus-masked scalar to rank windows; tie order is descending score then ascending row-major window_id. The union is Source 0, marked Top-3 rank order, then previously unseen masked Top-3 rank order.",
+    "Preparation computes in float64 after reading float32 Source boxes and JSON grid coordinates. The authored helper casts coordinates to float32 and rounds translated centers to float32; per-case numeric differences and legal-set disagreements are recorded and must not be treated as identical arithmetic.",
+    "Preparation records duplicate-delta and whole-hypothesis-out-of-bounds rejections without clipping. Candidate and rejection geometry, source state, positions, frame IDs, and times were independently recomputed from CPU cache metadata and old grid windows.",
+    "The sealed Teacher barrier reports 42 calls and binds them to the exact candidate input barrier hash. No current Teacher result body, reason text, or job prompt was opened.",
+    "Helper candidate order is Source plus row-major window order, while sealed preparation uses Source then marked score-rank order followed by new masked score-rank IDs; helper order must not be reused for sealed label bindings.",
+    "Helper Top-3 IDs match exact preparation ranking when masked rows are supplied with the same original-minus-masked scalar objective.",
+    "The helper's float32 round-trip rejects 6 candidates that the sealed preparation accepts under float64 source-plus-delta geometry. All six are exact upper-edge contacts in the sealed second-position anchor; helper cxcywh roundoff makes x2 or y2 exceed 1.0 by 1.49e-8 to 2.98e-8, so its strict candidate-anchor check rejects before translation. Use the sealed barrier geometry as authority until implementation is reconciled; do not treat helper legality as the sealed candidate set."
+  ],
+  "private_geometry_and_source_paths_excluded": true
+}
