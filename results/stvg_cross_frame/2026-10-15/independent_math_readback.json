@@ -1,0 +1,43 @@
+{
+  "status": "pass",
+  "scope": "CPU-only readback of actual B rollout/loss/gates/Adam proposals and rollback, A path-prefix equality, and source/readout binding",
+  "counts": {
+    "A_prefix_steps": 33,
+    "accepted": 25,
+    "adam_replays": 28,
+    "cases": 8,
+    "fit_path_steps": 35,
+    "fits": 7,
+    "full_readout_checks": 7,
+    "no_information_steps": 5,
+    "no_update_cases": 1,
+    "proposals": 28,
+    "rejected": 3,
+    "rollback_checks": 3,
+    "sealed_receipts": 8,
+    "source_binding_checks": 8,
+    "train_gate_checks": 28,
+    "validation_gate_checks": 24
+  },
+  "max_abs_errors": {
+    "adam_parameters": 1.1920928955078125e-07,
+    "adam_state": 1.862645149230957e-09,
+    "iou": 0.0,
+    "loss": 2.2687017917633057e-06,
+    "per_anchor_loss": 3.069639205932617e-06,
+    "raw_delta": 1.1920928955078125e-07,
+    "rollout_reward": 8.344650268554688e-07,
+    "rollout_weight": 1.4156103134155273e-06
+  },
+  "limitations": [
+    "No GT, annotations, video, RGB, model checkpoint, or GPU was read; no model was loaded and CUDA remained uninitialized.",
+    "Gradients were not recomputed through model activations. CPU Adam was replayed from each sealed gradient and pre-step Adam state; recorded parameter/optimizer/raw-delta errors are float32 roundoff.",
+    "The seven fit cases carry worker source-cold/native/readout assertions; this CPU check verified their bindings against exact prior A readouts but did not rerun the frozen model.",
+    "vidstg_002 had no training anchors and reused exact prior F/T without a new capture or final decode. Source case/state hashes and frame/pixel bindings and the inherited prior source-restored flag match; no A readout exists for this case, so it is inherited evidence, not an in-run reset observation.",
+    "Prior A receipts do not carry case_id; identity was verified from fixed case path/hash/byte count and the serialized payload case_id."
+  ],
+  "GT_read": false,
+  "GPU_or_CUDA_used": false,
+  "cuda_initialized": false,
+  "model_loaded": false
+}
