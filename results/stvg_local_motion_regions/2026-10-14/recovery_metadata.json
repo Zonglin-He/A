@@ -1,0 +1,88 @@
+{
+  "count": 3,
+  "records": [
+    {
+      "capture": {
+        "GPU_used": false,
+        "GT_read": false,
+        "case_outputs": 0,
+        "reason": "Rejected components omit dense masks to limit RAM; diagnostic cycle summary incorrectly assumed every rejected component had a dense mask. Reconstruct rejected mask transiently from saved connected-component labels only; accepted regions/config unchanged.",
+        "status": "captured",
+        "teacher_called": false
+      },
+      "capture_sha256": "3ca9e502a3bffa247a6995b5a25bf519c4866d15285ddd241b2fb8594c393f7c",
+      "recovery_id": "rejected_component_mask001",
+      "resolution": {
+        "GPU_used": false,
+        "generator_barrier_sha256": "b9699427b1848819da26a4d5f4aa2750e019fe53e88af2b0c4626d5750ca180f",
+        "geometry_sha256": "70f39e9b75e474cbcadea6b06cfc7dc342065500d9ccc0deb234aa54c3761d80",
+        "scope": "CPU engineering dispatch only; original failure and source preserved",
+        "status": "pass"
+      },
+      "resolution_sha256": "7f48ac733ece1e850d0938d31795288feff79591502961401d013e26fde81f20",
+      "source_snapshot_sha256": [
+        {
+          "filename": "run_stvg_local_motion_regions_v1.py",
+          "sha256": "dde18ed228d11fdd106024953db0f9c2ae051f16912c48b561d63101c44127f0"
+        }
+      ]
+    },
+    {
+      "capture": {
+        "GPU_used": false,
+        "captured_source_sha256": "4d78d7e045d8c77dac2f0e7dbf82084be139cfcc3f37570d1b727bdea4c0bd0e",
+        "new_candidate_generation": false,
+        "scope": "postseal CPU reader used old proposal window_id instead of physical center identity; assertion rejected before any result was written",
+        "status": "captured"
+      },
+      "capture_sha256": "e00f3bb8f82b8aeea5f0a58a01df009072099ae4fc0072c4830a1f78758665ec",
+      "recovery_id": "postseal_center_dispatch002",
+      "resolution": {
+        "GPU_used": false,
+        "generator_barrier_sha256": "b9699427b1848819da26a4d5f4aa2750e019fe53e88af2b0c4626d5750ca180f",
+        "geometry_sha256": "70f39e9b75e474cbcadea6b06cfc7dc342065500d9ccc0deb234aa54c3761d80",
+        "scope": "CPU engineering dispatch only; original failure and source preserved",
+        "status": "pass"
+      },
+      "resolution_sha256": "6e7797b33d5c9f6245f0970963b21c5ddb79cc614862504417aba5491b07dc1c",
+      "source_snapshot_sha256": [
+        {
+          "filename": "score_stvg_local_motion_regions_v1.py",
+          "sha256": "4d78d7e045d8c77dac2f0e7dbf82084be139cfcc3f37570d1b727bdea4c0bd0e"
+        }
+      ]
+    },
+    {
+      "capture": {
+        "failed_check_count": 302,
+        "failed_receipt_sha256": "a03642c8e259697cc928c857aff6c8b436d778a1e6c2918d4fa6cea23f6b0e52",
+        "failed_receipt_status": "fail",
+        "failure_count": 93,
+        "status": "preserved_failure_before_reader_schema_correction"
+      },
+      "capture_sha256": "0896aca09bb8b43d83865ce45404c0592ad073eee04df329e6d46d8d7e680d60",
+      "recovery_id": "independent_schema_dispatch003",
+      "resolution": {
+        "GPU_used": false,
+        "GT_loader_shared": true,
+        "candidate_regenerated": false,
+        "final_independent_checks": 302,
+        "final_independent_failures": 0,
+        "final_pass_sha256": "878ca9511255e343f6e7b8d2f624a9421c7e4de0f9698cc40a3f6477685f7d49",
+        "initial_reader_failures": 93,
+        "original_fail_sha256": "a03642c8e259697cc928c857aff6c8b436d778a1e6c2918d4fa6cea23f6b0e52",
+        "scope": "independent CPU reader schema and GT-support dispatch only; no candidate regeneration or changed scientific output",
+        "status": "pass"
+      },
+      "resolution_sha256": "9213f1e9cba9a47df611bd8d75703bcd213a7bfd6928fc97e823479fcb94a90f",
+      "source_snapshot_sha256": [
+        {
+          "filename": "review_stvg_local_motion_regions_v1.initial.py",
+          "sha256": "f25d72b909500abc5ef3a1e1f15cbc9407443ae14d96c2dcd602323129aab244"
+        }
+      ]
+    }
+  ],
+  "schema": "stvg-local-motion-regions-recovery-metadata-v1",
+  "status": "complete"
+}
