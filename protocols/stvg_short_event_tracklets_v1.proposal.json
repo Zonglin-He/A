@@ -1,0 +1,132 @@
+{
+  "schema": "stvg-short-event-tracklets-proposal-v1",
+  "status": "root_approved_finite_cpu_shortLK_stage",
+  "scope": "fixed historical old8 only; no untouched confirmation claim",
+  "scope_artifact": "artifacts/stvg_short_event_tracklets_v1",
+  "question": "Does restarting the existing adjacent-frame LK/RANSAC helper in short windows centered within a previously sealed temporal-QA interval provide more locally usable candidate tracklets, and can adding same-model frozen ROI appearance association help?",
+  "case_ids": [
+    "hc2_000",
+    "hc2_001",
+    "hc2_002",
+    "hc2_003",
+    "vidstg_000",
+    "vidstg_001",
+    "vidstg_002",
+    "vidstg_003"
+  ],
+  "data_authority": {
+    "source_roster": "artifacts/stvg_adjacent_motion_opd_v1/ROSTER_LOCK.json",
+    "fixed_existing_candidate_geometry": "artifacts/stvg_adjacent_motion_opd_v1/CANDIDATE_INPUT_BARRIER.json",
+    "reused_temporal_qa": "artifacts/stvg_temporal_caption_query_spatial_opd_v1/STUDENT_GLOBAL_BARRIER.json plus the eight sealed student/<case_id>.pt files",
+    "canonical_video_and_physical_clock": "artifacts/stvg_target_teacher_distillation_v1/canonical_inputs/<case_id>/REQUEST.json",
+    "source_case_cache": "artifacts/stvg_mllm_candidate_feedback_v1/source_cases/<case_id>.pt",
+    "no_gt_precondition": "all source, candidate, and QA barriers/files must verify their existing source bindings and GT_read=false before any plan is written"
+  },
+  "temporal_centers": {
+    "interval_source": "reused temporal_fit.final_interval from the sealed old-eight QA student output; no new teacher call",
+    "clock": "physical frame IDs with half-open [start,end) semantics, as used by methods/decota_final_simplified_v1/objectives.py:25-34",
+    "rule": "Form four equal-width interval-bin centers. For each center target, choose the nearest source-grid physical frame ID within the QA interval; break an exact tie toward the smaller frame ID.",
+    "failure_rule": "Abort manifest creation if fewer than four source-grid IDs fall in the interval, any target snaps to a duplicate ID, or a selected ID is not in the canonical frame map. Do not silently reduce, move, or replace centers.",
+    "window": "For each center, use physical IDs center-2 through center+2, clipped only to the canonical video's physical coverage. Require the matching local-frame indices to be consecutive. Do not clip the window to the QA interval.",
+    "cross_window_policy": "Every center is an independent reinitialization. Never link tracklets between windows or interpret a repeated seed ID as evidence that the same physical instance was followed."
+  },
+  "candidate_seeds": {
+    "source": "Use exactly the existing displayed_candidate_ids from the sealed P0 candidate barrier, preserving its order.",
+    "limit": "Source plus at most four existing non-Source seeds; cases with fewer candidates remain smaller and are not refilled.",
+    "source_anchor": "At a center, use the frozen Source normalized xyxy prediction at that exact source-grid position.",
+    "seed_anchor": "For each existing non-Source displayed candidate, copy its original normalized anchor_box_xyxy unchanged at every selected center. Do not translate it relative to Source, use its old long-track trajectory to decide eligibility, or create a replacement seed.",
+    "proposal_semantics": "A non-Source anchor is a fixed region proposal hypothesis only; it is not a known object instance or identity. Source uses the actual frozen native prediction at that center.",
+    "geometry_policy": "Do not clip. Preserve an invalid/out-of-bounds seed as an explicit invalid anchor and do not pass it to LK. Preserve every existing displayed candidate ID even if its anchor is invalid.",
+    "selection_policy": "No GT, tracker outcome, QA confidence, or visual inspection may add, remove, or reorder seed IDs."
+  },
+  "matched_components": {
+    "shortLK": {
+      "status": "planned_after_root_review",
+      "method": "Call scripts/stvg_adjacent_affine_tracklet_v1.py::track_adjacent unchanged for each fixed center/seed window, with the shared seed box at the center frame as anchor. shortLK and shortLK_frozenROI must share exact centers, candidate IDs, anchor geometry, and source windows.",
+      "existing_helper_config": {
+        "corner_detector": "Shi-Tomasi cv2.goodFeaturesToTrack",
+        "max_corners": 80,
+        "quality_level": 0.01,
+        "min_distance_px": 5,
+        "block_size": 3,
+        "lk_window": [21, 21],
+        "lk_max_level": 3,
+        "lk_criteria": ["COUNT|EPS", 30, 0.01],
+        "forward_backward_threshold_px": 1.5,
+        "minimum_fb_valid_corners": 4,
+        "minimum_retention": 0.5,
+        "ransac": {
+          "method": "estimateAffinePartial2D/RANSAC",
+          "reprojection_threshold_px": 2.0,
+          "max_iterations": 2000,
+          "confidence": 0.99,
+          "refine_iterations": 10,
+          "minimum_inliers": 4,
+          "minimum_inlier_fraction": 0.5
+        },
+        "out_of_bounds": "explicit Missing; never clip",
+        "failure": "the existing helper stops that direction after the first rejected transition"
+      },
+      "new_tracker": false
+    },
+    "shortLK_frozenROI": {
+      "status": "pending_feature_capture_contract",
+      "shared_inputs": "Must use the exact same centers, source frame windows, candidate IDs, anchor boxes, and existing LK output as shortLK.",
+      "feature_source": "A new frozen forward capture from the existing TA-STVG model only; no new backbone, tracker network, or pretrained tracker.",
+      "required_capture_metadata": [
+        "physical frame ID to feature slice mapping",
+        "feature-map HxW and channel dimension",
+        "original frame dimensions",
+        "resize and padding transform from original pixels to feature-map coordinates",
+        "source checkpoint SHA-256 and model-state SHA-256",
+        "source query/model mode and no-update status"
+      ],
+      "unlocked_choices": [
+        "which existing frozen TA-STVG spatial feature stream to pool",
+        "ROI pooling and normalization definition",
+        "whether association is a per-frame descriptor readout or a constrained LK proposal association",
+        "the exact score and tie/unknown handling"
+      ],
+      "execution": "Do not run this component until the feature capture and association contract is separately reviewed and frozen.",
+      "new_backbone_or_tracker": false
+    }
+  },
+  "manifest_contract": {
+    "builder": "scripts/prepare_stvg_short_event_tracklets_v1.py::build_manifest",
+    "planned_output": "artifacts/stvg_short_event_tracklets_v1/PREPARED_MANIFEST.json",
+    "finite_cpu_runner": "scripts/run_stvg_short_event_tracklets_v1.py",
+    "planned_readout": "one complete case JSON per fixed old-eight case plus one private resized RGB/grayscale npz per case and GLOBAL_TRACKLET_BARRIER.json; no label or model outputs",
+    "per_case_bindings": [
+      "source case SHA and source model-state SHA",
+      "source-grid IDs SHA and reused QA student SHA",
+      "QA physical interval and QA-to-source-grid exact match",
+      "candidate barrier record SHA and exact fixed displayed candidate IDs/window IDs",
+      "canonical REQUEST SHA, source-video SHA, canonical-video SHA and declared canonical pixel SHA",
+      "physical frame IDs and canonical local indices for every short window",
+      "center seed anchor geometry and per-window unique tracklet IDs",
+      "Source uses native prediction at the center; each non-Source proposal copies the original anchor box unchanged at every center",
+      "every center/proposal pair has an independent local tracklet ID; repeated IDs across centers do not imply object identity"
+    ],
+    "plan_only_flags": {
+      "GT_read": false,
+      "RGB_read": false,
+      "video_decoded": false,
+      "model_loaded": false,
+      "GPU_used": false,
+      "teacher_called": false
+    }
+  },
+  "limitations": [
+    "All eight cases are historically exposed development sources.",
+    "A proposal/window ID is not a ground-truth object identity.",
+    "The existing sealed source cache contains no per-frame spatial feature map; the frozen ROI arm requires a new, explicitly bound frozen forward capture.",
+    "This proposal is not an executed experiment, GT readout, object-identity claim, or method promotion."
+  ],
+  "execution_gates": {
+    "root_review_required_before_manifest_or_video_decode": false,
+    "root_review_required_before_shortLK_execution": false,
+    "separate_root_lock_required_for_frozenROI": true,
+    "GT_access_in_this_preparation_stage": false,
+    "GPU_or_model_execution_in_this_preparation_stage": false
+  }
+}
