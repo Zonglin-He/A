@@ -1,0 +1,323 @@
+{
+  "schema": "stvg-native-instance-independent-student-math-readback-v1",
+  "status": "pass",
+  "case_count": 8,
+  "actual_fit_count": 15,
+  "saved_optimizer_steps": 65,
+  "saved_full_model_readouts": 15,
+  "saved_temporal_logits_preserved": 15,
+  "source_capture_calls": 8,
+  "GT_read": false,
+  "GPU_initialized": false,
+  "CPU_only": true,
+  "model_replayed_by_reader": false,
+  "runtime_sha256": "06fbdcc6f1c8ce24b64e8eeae75d37079b693d380bcff14bb85d8348aa95f201",
+  "student_barrier_sha256": "36acab39aa2c720a1448362d24ca9e8d3f5f9c9acde4a6f478e7e8fd1498fd6c",
+  "reference_lock_sha256": "782e604104695481b7094b6efb26f4f4b1afe6a2fdbb68ce6d48be1c015259bc",
+  "roster_sha256": "e33b16ee2751b665f7b6a080167b86b5d4b50879413e23df4ee9abc753c40305",
+  "cases": {
+    "HC01": {
+      "dataset": "HC",
+      "fit_count": 3,
+      "optimizer_steps": 15,
+      "saved_full_model_readout_count": 3,
+      "saved_temporal_logits_preserved_count": 3,
+      "source_state_hash_consistent": true,
+      "saved_source_cold_receipt_self_consistent": true,
+      "model_replayed_by_reader": false,
+      "fits": {
+        "direct": {
+          "steps": 5,
+          "optimizer_steps": 5,
+          "direct_loss_independently_recomputed": true,
+          "adam_moment_and_parameter_update_reconstructed": true,
+          "decoder_autograd_gradient_independently_recomputed": false,
+          "saved_full_model_readout_equals_cached_decoder": true,
+          "model_replayed_by_reader": false,
+          "max_direct_loss_abs_error": 4.76837158203125e-07,
+          "max_direct_adam_parameter_or_state_error": 2.384185791015625e-07,
+          "max_direct_adam_second_moment_consistency_error": 8.940696716308594e-08
+        },
+        "iou": {
+          "steps": 5,
+          "optimizer_steps": 5,
+          "max_abs_errors": {
+            "adam_parameter_abs": 1.1920928955078125e-07,
+            "adam_state_abs": 4.656612873077393e-10,
+            "loss_abs": 5.811452865600586e-07,
+            "mean_abs": 2.384185791015625e-07,
+            "reward_abs": 4.76837158203125e-07,
+            "sample_abs": 0.0,
+            "weight_abs": 6.705522537231445e-07
+          },
+          "reward_semantics": "original_iou",
+          "cross_anchor_reliability_normalization": false
+        },
+        "reliability_weighted_iou": {
+          "steps": 5,
+          "optimizer_steps": 5,
+          "max_abs_errors": {
+            "adam_parameter_abs": 1.1920928955078125e-07,
+            "adam_state_abs": 4.656612873077393e-10,
+            "loss_abs": 5.513429641723633e-07,
+            "mean_abs": 2.384185791015625e-07,
+            "reward_abs": 4.172325134277344e-07,
+            "sample_abs": 0.0,
+            "weight_abs": 4.76837158203125e-07
+          },
+          "reward_semantics": "raw_iou_times_r_t_before_fixed_tau_softmax",
+          "cross_anchor_reliability_normalization": false
+        }
+      }
+    },
+    "HC02": {
+      "dataset": "HC",
+      "fit_count": 3,
+      "optimizer_steps": 15,
+      "saved_full_model_readout_count": 3,
+      "saved_temporal_logits_preserved_count": 3,
+      "source_state_hash_consistent": true,
+      "saved_source_cold_receipt_self_consistent": true,
+      "model_replayed_by_reader": false,
+      "fits": {
+        "direct": {
+          "steps": 5,
+          "optimizer_steps": 5,
+          "direct_loss_independently_recomputed": true,
+          "adam_moment_and_parameter_update_reconstructed": true,
+          "decoder_autograd_gradient_independently_recomputed": false,
+          "saved_full_model_readout_equals_cached_decoder": true,
+          "model_replayed_by_reader": false,
+          "max_direct_loss_abs_error": 5.960464477539063e-08,
+          "max_direct_adam_parameter_or_state_error": 1.1920928955078125e-07,
+          "max_direct_adam_second_moment_consistency_error": 7.275957614183426e-12
+        },
+        "iou": {
+          "steps": 5,
+          "optimizer_steps": 5,
+          "max_abs_errors": {
+            "adam_parameter_abs": 1.1920928955078125e-07,
+            "adam_state_abs": 1.1641532182693481e-10,
+            "loss_abs": 7.748603820800781e-07,
+            "mean_abs": 5.960464477539063e-08,
+            "reward_abs": 5.960464477539062e-07,
+            "sample_abs": 0.0,
+            "weight_abs": 1.4156103134155273e-06
+          },
+          "reward_semantics": "original_iou",
+          "cross_anchor_reliability_normalization": false
+        },
+        "reliability_weighted_iou": {
+          "steps": 5,
+          "optimizer_steps": 5,
+          "max_abs_errors": {
+            "adam_parameter_abs": 1.1920928955078125e-07,
+            "adam_state_abs": 1.1641532182693481e-10,
+            "loss_abs": 5.494803190231323e-07,
+            "mean_abs": 1.1920928955078125e-07,
+            "reward_abs": 7.152557373046875e-07,
+            "sample_abs": 0.0,
+            "weight_abs": 1.1548399925231934e-06
+          },
+          "reward_semantics": "raw_iou_times_r_t_before_fixed_tau_softmax",
+          "cross_anchor_reliability_normalization": false
+        }
+      }
+    },
+    "HC03": {
+      "dataset": "HC",
+      "fit_count": 3,
+      "optimizer_steps": 5,
+      "saved_full_model_readout_count": 3,
+      "saved_temporal_logits_preserved_count": 3,
+      "source_state_hash_consistent": true,
+      "saved_source_cold_receipt_self_consistent": true,
+      "model_replayed_by_reader": false,
+      "fits": {
+        "direct": {
+          "steps": 5,
+          "optimizer_steps": 5,
+          "direct_loss_independently_recomputed": true,
+          "adam_moment_and_parameter_update_reconstructed": true,
+          "decoder_autograd_gradient_independently_recomputed": false,
+          "saved_full_model_readout_equals_cached_decoder": true,
+          "model_replayed_by_reader": false,
+          "max_direct_loss_abs_error": 1.1920928955078125e-07,
+          "max_direct_adam_parameter_or_state_error": 1.1920928955078125e-07,
+          "max_direct_adam_second_moment_consistency_error": 4.547473508864641e-13
+        },
+        "iou": {
+          "steps": 5,
+          "optimizer_steps": 0,
+          "max_abs_errors": {
+            "adam_parameter_abs": 0.0,
+            "adam_state_abs": 0.0,
+            "loss_abs": 0.0,
+            "mean_abs": 0.0,
+            "reward_abs": 0.0,
+            "sample_abs": 0.0,
+            "weight_abs": 0.0
+          },
+          "reward_semantics": "original_iou",
+          "cross_anchor_reliability_normalization": false
+        },
+        "reliability_weighted_iou": {
+          "steps": 5,
+          "optimizer_steps": 0,
+          "max_abs_errors": {
+            "adam_parameter_abs": 0.0,
+            "adam_state_abs": 0.0,
+            "loss_abs": 0.0,
+            "mean_abs": 0.0,
+            "reward_abs": 0.0,
+            "sample_abs": 0.0,
+            "weight_abs": 0.0
+          },
+          "reward_semantics": "raw_iou_times_r_t_before_fixed_tau_softmax",
+          "cross_anchor_reliability_normalization": false
+        }
+      }
+    },
+    "HC04": {
+      "dataset": "HC",
+      "fit_count": 3,
+      "optimizer_steps": 15,
+      "saved_full_model_readout_count": 3,
+      "saved_temporal_logits_preserved_count": 3,
+      "source_state_hash_consistent": true,
+      "saved_source_cold_receipt_self_consistent": true,
+      "model_replayed_by_reader": false,
+      "fits": {
+        "direct": {
+          "steps": 5,
+          "optimizer_steps": 5,
+          "direct_loss_independently_recomputed": true,
+          "adam_moment_and_parameter_update_reconstructed": true,
+          "decoder_autograd_gradient_independently_recomputed": false,
+          "saved_full_model_readout_equals_cached_decoder": true,
+          "model_replayed_by_reader": false,
+          "max_direct_loss_abs_error": 0.0,
+          "max_direct_adam_parameter_or_state_error": 1.1920928955078125e-07,
+          "max_direct_adam_second_moment_consistency_error": 4.547473508864641e-13
+        },
+        "iou": {
+          "steps": 5,
+          "optimizer_steps": 5,
+          "max_abs_errors": {
+            "adam_parameter_abs": 1.1920928955078125e-07,
+            "adam_state_abs": 1.862645149230957e-09,
+            "loss_abs": 2.2687017917633057e-06,
+            "mean_abs": 0.0,
+            "reward_abs": 7.152557373046875e-07,
+            "sample_abs": 0.0,
+            "weight_abs": 4.246830940246582e-07
+          },
+          "reward_semantics": "original_iou",
+          "cross_anchor_reliability_normalization": false
+        },
+        "reliability_weighted_iou": {
+          "steps": 5,
+          "optimizer_steps": 5,
+          "max_abs_errors": {
+            "adam_parameter_abs": 1.1920928955078125e-07,
+            "adam_state_abs": 1.862645149230957e-09,
+            "loss_abs": 9.201467037200928e-07,
+            "mean_abs": 0.0,
+            "reward_abs": 7.152557373046875e-07,
+            "sample_abs": 0.0,
+            "weight_abs": 4.76837158203125e-07
+          },
+          "reward_semantics": "raw_iou_times_r_t_before_fixed_tau_softmax",
+          "cross_anchor_reliability_normalization": false
+        }
+      }
+    },
+    "V01": {
+      "dataset": "VidSTG",
+      "fit_count": 0,
+      "optimizer_steps": 0,
+      "saved_full_model_readout_count": 0,
+      "saved_temporal_logits_preserved_count": 0,
+      "source_state_hash_consistent": true,
+      "saved_source_cold_receipt_self_consistent": true,
+      "model_replayed_by_reader": false,
+      "fits": {}
+    },
+    "V02": {
+      "dataset": "VidSTG",
+      "fit_count": 0,
+      "optimizer_steps": 0,
+      "saved_full_model_readout_count": 0,
+      "saved_temporal_logits_preserved_count": 0,
+      "source_state_hash_consistent": true,
+      "saved_source_cold_receipt_self_consistent": true,
+      "model_replayed_by_reader": false,
+      "fits": {}
+    },
+    "V03": {
+      "dataset": "VidSTG",
+      "fit_count": 0,
+      "optimizer_steps": 0,
+      "saved_full_model_readout_count": 0,
+      "saved_temporal_logits_preserved_count": 0,
+      "source_state_hash_consistent": true,
+      "saved_source_cold_receipt_self_consistent": true,
+      "model_replayed_by_reader": false,
+      "fits": {}
+    },
+    "V04": {
+      "dataset": "VidSTG",
+      "fit_count": 3,
+      "optimizer_steps": 15,
+      "saved_full_model_readout_count": 3,
+      "saved_temporal_logits_preserved_count": 3,
+      "source_state_hash_consistent": true,
+      "saved_source_cold_receipt_self_consistent": true,
+      "model_replayed_by_reader": false,
+      "fits": {
+        "direct": {
+          "steps": 5,
+          "optimizer_steps": 5,
+          "direct_loss_independently_recomputed": true,
+          "adam_moment_and_parameter_update_reconstructed": true,
+          "decoder_autograd_gradient_independently_recomputed": false,
+          "saved_full_model_readout_equals_cached_decoder": true,
+          "model_replayed_by_reader": false,
+          "max_direct_loss_abs_error": 2.384185791015625e-07,
+          "max_direct_adam_parameter_or_state_error": 1.1920928955078125e-07,
+          "max_direct_adam_second_moment_consistency_error": 1.4551915228366852e-11
+        },
+        "iou": {
+          "steps": 5,
+          "optimizer_steps": 5,
+          "max_abs_errors": {
+            "adam_parameter_abs": 1.1920928955078125e-07,
+            "adam_state_abs": 9.094947017729282e-13,
+            "loss_abs": 1.434236764907837e-07,
+            "mean_abs": 5.960464477539063e-08,
+            "reward_abs": 2.384185791015625e-07,
+            "sample_abs": 0.0,
+            "weight_abs": 3.725290298461914e-08
+          },
+          "reward_semantics": "original_iou",
+          "cross_anchor_reliability_normalization": false
+        },
+        "reliability_weighted_iou": {
+          "steps": 5,
+          "optimizer_steps": 5,
+          "max_abs_errors": {
+            "adam_parameter_abs": 1.1920928955078125e-07,
+            "adam_state_abs": 9.094947017729282e-13,
+            "loss_abs": 1.5762634575366974e-07,
+            "mean_abs": 5.960464477539063e-08,
+            "reward_abs": 2.682209014892578e-07,
+            "sample_abs": 0.0,
+            "weight_abs": 4.470348358154297e-08
+          },
+          "reward_semantics": "raw_iou_times_r_t_before_fixed_tau_softmax",
+          "cross_anchor_reliability_normalization": false
+        }
+      }
+    }
+  }
+}
