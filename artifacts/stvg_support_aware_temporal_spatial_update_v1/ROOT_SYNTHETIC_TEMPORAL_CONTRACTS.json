@@ -1,0 +1,63 @@
+{
+  "status": "pass",
+  "CPU_only": true,
+  "synthetic_only": true,
+  "GT_read": false,
+  "modes_checked": [
+    "original_adam",
+    "per_offset_trust",
+    "ridge",
+    "trust",
+    "unconstrained_ridge"
+  ],
+  "path_snapshots_per_mode": 6,
+  "shared_parameters": 512,
+  "checks": [
+    "legacy result keys and six-snapshot path",
+    "original_adam trace exactly matches direct legacy fit",
+    "zero-init Projection readout",
+    "closed-form min-norm ridge equation",
+    "step lies in centered evidence subspace",
+    "constant rewards exact zero-step for every mode",
+    "zero-rank exact no-update",
+    "trust reverse-KL bounds and non-increasing objective",
+    "per-offset targets remain separated when priors differ"
+  ],
+  "mode_results": {
+    "original_adam": {
+      "steps": 5,
+      "final": [
+        0,
+        3
+      ]
+    },
+    "per_offset_trust": {
+      "steps": 5,
+      "final": [
+        0,
+        3
+      ]
+    },
+    "ridge": {
+      "steps": 1,
+      "final": [
+        0,
+        3
+      ]
+    },
+    "trust": {
+      "steps": 5,
+      "final": [
+        0,
+        3
+      ]
+    },
+    "unconstrained_ridge": {
+      "steps": 5,
+      "final": [
+        0,
+        3
+      ]
+    }
+  }
+}

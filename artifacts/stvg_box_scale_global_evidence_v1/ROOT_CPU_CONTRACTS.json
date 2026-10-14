@@ -1,0 +1,67 @@
+{
+  "status": "pass",
+  "CPU_only": true,
+  "synthetic_only": true,
+  "GT_read": false,
+  "model_run": false,
+  "GPU_run": false,
+  "check_groups": [
+    "fixed width-height, center-independent grid and separate baseline",
+    "complete axis coverage, exact scale, legal boundaries and row-major IDs",
+    "final edge starts, exact deduplication, no truncation and one full-frame window",
+    "hard-mask and full-frame Gaussian-blur region replacement",
+    "fixed blur radius 8 and non-crop full-frame context",
+    "448 bicubic letterbox and reproducible output pixel hashes",
+    "single marked window with fixed visible ID 1 and separate row-major receipt ID",
+    "lambda-center 1 DIoU formula and IoU comparison",
+    "NumPy and Torch CPU reward agreement"
+  ],
+  "check_group_count": 9,
+  "grid": {
+    "example_scale_wh": [
+      0.4,
+      0.3
+    ],
+    "x_starts": [
+      0.0,
+      0.4,
+      0.6
+    ],
+    "y_starts": [
+      0.0,
+      0.3,
+      0.6,
+      0.7
+    ],
+    "window_count": 12,
+    "small_scale_window_count_no_truncation": 100,
+    "student_center_changes_grid": false,
+    "row_major_ids_stable": true,
+    "full_normalized_coverage": true,
+    "coarse_full_step_only": true
+  },
+  "pil": {
+    "output_wh": [
+      448,
+      448
+    ],
+    "blur_radius_px": 8,
+    "blur_on_full_frame_before_region_replacement": true,
+    "full_frame_context_preserved": true,
+    "crop": false,
+    "single_marked_window_id": 1,
+    "marked_single_visual_ID": "1",
+    "masked_pixel_sha256": "a9a1033d3be932d68d6c3f0599500177bfa4221555790a6b69ae3609b5c52c3f",
+    "marked_pixel_sha256": "0985e20c847216fa22281f0f36be132ef6dbfdddce5bfeb31a61721e1e1d61df",
+    "mask_fraction": 0.11848958333333333
+  },
+  "overlap_reward": {
+    "lambda_center": 1.0,
+    "identity_iou": 1.0,
+    "identity_diou_reward": 1.0,
+    "shifted_iou": 0.3333333333333333,
+    "shifted_diou_reward": 0.2564102564102564,
+    "numpy_torch_max_abs_error": 0.0
+  },
+  "scope_note": "Single-anchor window evidence only; no multi-frame DP, tube, re-identification, training, GT candidate selection, half-step search, or multiscale grid."
+}
