@@ -1,0 +1,145 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "stvg-sparse-r1-semantic-verification-output-v1",
+  "title": "Sparse STVG-R1 semantic and candidate verification response",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema",
+    "branch",
+    "ranked_ids",
+    "abstain",
+    "abstain_reason",
+    "evaluations"
+  ],
+  "properties": {
+    "schema": {
+      "const": "stvg-sparse-r1-semantic-verification-v1"
+    },
+    "branch": {
+      "enum": [
+        "temporal",
+        "spatial"
+      ]
+    },
+    "ranked_ids": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "uniqueItems": true
+    },
+    "abstain": {
+      "type": "boolean"
+    },
+    "abstain_reason": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "enum": [
+        "insufficient_visual_evidence",
+        "semantic_ambiguity",
+        "candidate_set_inadequate",
+        "other",
+        null
+      ]
+    },
+    "evaluations": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "candidate_id",
+          "semantic",
+          "boundary",
+          "target_support",
+          "evidence_frame_slots",
+          "evidence_note"
+        ],
+        "properties": {
+          "candidate_id": {
+            "type": "string"
+          },
+          "semantic": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "referent_match",
+              "event_relation_match"
+            ],
+            "properties": {
+              "referent_match": {
+                "enum": [
+                  "supported",
+                  "contradicted",
+                  "uncertain"
+                ]
+              },
+              "event_relation_match": {
+                "enum": [
+                  "supported",
+                  "contradicted",
+                  "uncertain"
+                ]
+              }
+            }
+          },
+          "boundary": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "start_boundary",
+              "end_boundary",
+              "extent"
+            ],
+            "properties": {
+              "start_boundary": {
+                "enum": [
+                  "supported",
+                  "contradicted",
+                  "uncertain"
+                ]
+              },
+              "end_boundary": {
+                "enum": [
+                  "supported",
+                  "contradicted",
+                  "uncertain"
+                ]
+              },
+              "extent": {
+                "enum": [
+                  "supported",
+                  "contradicted",
+                  "uncertain"
+                ]
+              }
+            }
+          },
+          "target_support": {
+            "enum": [
+              "supported",
+              "contradicted",
+              "uncertain"
+            ]
+          },
+          "evidence_frame_slots": {
+            "type": "array",
+            "items": {
+              "type": "integer",
+              "minimum": 0,
+              "maximum": 7
+            },
+            "uniqueItems": true
+          },
+          "evidence_note": {
+            "type": "string",
+            "maxLength": 400
+          }
+        }
+      }
+    }
+  }
+}
