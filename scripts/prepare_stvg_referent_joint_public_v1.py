@@ -9,8 +9,10 @@ def main():
  rows=json.loads(initial.read_text());paths=[r['path']for r in rows]
  for r in rows:
   assert hashlib.sha256((A/'public_stage'/r['path']).read_bytes()).hexdigest()==r['sha256']
- for n in ['ROOT_CLOSING','FINAL_COMPLETION','ROOT_PUBLIC_SOURCE_BINDINGS_READBACK','INITIAL_GITHUB_RECEIPT']:
+ for n in ['ROOT_CLOSING','FINAL_COMPLETION','ROOT_PUBLIC_SOURCE_BINDINGS_READBACK','INITIAL_GITHUB_RECEIPT','ARCHIVE_CLOSING_RECEIPT']:
   dest=ROOT/'results/stvg_video_global_referent/2026-10-14'/(n.lower()+'.json');save(dest,json.loads((A/(n+'.json')).read_text()));paths.append(str(dest.relative_to(ROOT)))
+ for n in ['ROOT_CLOSING','FINAL_COMPLETION','ROOT_PUBLIC_SOURCE_BINDINGS_READBACK','INITIAL_GITHUB_RECEIPT','ARCHIVE_CLOSING_RECEIPT']:
+  dest=ROOT/'results/stvg_scene_object_id/2026-10-14'/(n.lower()+'.json');save(dest,json.loads((B/(n+'.json')).read_text()))
  paths+=['docs/STVG_SCENE_OBJECT_ID_V1.md','protocols/stvg_scene_object_id_referent_v1.md']
  paths += [str(p.relative_to(ROOT))for p in sorted((ROOT/'results/stvg_scene_object_id/2026-10-14').glob('*.json'))]
  sources=['prepare_stvg_scene_object_id_v1.py','run_stvg_scene_object_id_teacher_v1.py','launch_stvg_scene_object_id_teacher_v1.py','run_stvg_scene_object_id_student_v1.py','launch_stvg_scene_object_id_student_v1.py','review_stvg_scene_object_id_teacher_v1.py','review_stvg_scene_object_id_spatial_math_v1.py','score_stvg_scene_object_id_postseal_v1.py','render_stvg_scene_object_id_private_v1.py','report_stvg_scene_object_id_v1.py','prepare_stvg_referent_joint_public_v1.py']
