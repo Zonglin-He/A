@@ -39,14 +39,14 @@ def main():
    for key in rr[0]['metrics']:
     vals=[lookup[c,l]['metrics'][key]-lookup[c,r]['metrics'][key]for c in cases if (c,l)in lookup and lookup[c,l]['metrics'][key]is not None and lookup[c,r]['metrics'][key]is not None]
     contrasts.append(dict(dataset=ds,left=l,right=r,metric=key,mean_delta_pp=100*math.fsum(vals)/len(vals)if vals else None,count=len(vals),positive=sum(v>1e-12 for v in vals),negative=sum(v< -1e-12 for v in vals),neutral=sum(abs(v)<=1e-12 for v in vals)))
- bootstrap=[]
- rng=np.random.default_rng(20261015)
+ pairs=[]
  for ds in ['hc2','vidstg']:
-  rr=[x for x in rows if x['dataset']==ds];lookup={(x['case_id'],x['arm']):x for x in rr};ids=sorted({x['case_id'] for x in rr});assert len(ids)==16
+  rr=[x for x in rows if x['dataset']==ds];lookup={(x['case_id'],x['arm']):x for x in rr};ids=sorted({x['case_id']for x in rr});assert len(ids)==16
   assert len({outputs[c]['parent_sha256']for c in ids})==16
   for l,r in [('T_selected','T'),('T_original','T'),('T_selected','T_original'),('selected','F'),('T_tuned','T'),('T_tuned_selected','T_original'),('T_tuned_selected','F'),('T_tuned_selected','T_tuned')]:
-   vals=np.array([lookup[c,l]['metrics']['m_vIoU']-lookup[c,r]['metrics']['m_vIoU']for c in ids]);means=vals[rng.integers(0,16,size=(10000,16))].mean(1);lo,hi=np.quantile(means,[.025,.975]);bootstrap.append(dict(dataset=ds,left=l,right=r,metric='m_vIoU',mean_delta_pp=float(vals.mean()*100),CI95_percentile_pp=[float(lo*100),float(hi*100)],sources=16,replicates=10000,negative_sources=int((vals < -1e-12).sum()),worst_delta_pp=float(vals.min()*100)))
- write(BASE/'PARENT_BOOTSTRAP.json',dict(status='complete',records=bootstrap,one_query_per_parent=True,GT_read=True))
+   vals=[(lookup[c,l]['metrics']['m_vIoU']-lookup[c,r]['metrics']['m_vIoU'])*100 for c in ids]
+   pairs.append(dict(dataset=ds,left=l,right=r,metric='m_vIoU',mean_delta_pp=math.fsum(vals)/len(vals),sources=16,positive_sources=sum(x>1e-10 for x in vals),negative_sources=sum(x< -1e-10 for x in vals),neutral_sources=sum(abs(x)<=1e-10 for x in vals),worst_delta_pp=min(vals),best_delta_pp=max(vals),per_source_delta_pp=dict(zip(ids,vals))))
+ write(BASE/'PARENT_PAIRED_DELTAS.json',dict(status='complete',records=pairs,one_query_per_parent=True,GT_read=True,bootstrap_executed=False))
  write(BASE/'POSTSEAL_ROWS.json',dict(status='complete',GT_read=True,rows=rows));write(BASE/'POSTSEAL_SUMMARY.json',dict(status='complete',GT_read=True,summary=summaries,contrasts=contrasts,historically_exposed_project_sources=True,development_selection=False))
  for x in summaries:
   if x['metric']=='m_vIoU':print(x)

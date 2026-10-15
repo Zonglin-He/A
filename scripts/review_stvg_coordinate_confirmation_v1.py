@@ -58,7 +58,7 @@ def main():
  files=list(seal['files'])+list(read(BASE/'TEMPORAL_GLOBAL_BARRIER.json')['files'])
  files.append(dict(path=str((BASE.parent/'SPATIAL_SELECTION_LOCK.json').relative_to(ROOT)),sha256=sha(BASE.parent/'SPATIAL_SELECTION_LOCK.json')))
  assert read(BASE/'ROOT_INPUT_RENDER_READBACK.json')['status']=='pass'
- for p in [BASE/'REFERENCE_LOCK.json',BASE/'TEACHER_GLOBAL_BARRIER.json',BASE/'ROOT_READBACK.json',BASE/'ROOT_INPUT_RENDER_READBACK.json',BASE/'CANDIDATE_INPUT_BARRIER.json',BASE/'TEACHER_JOB_LOCK.json',BASE.parent/'TEMPORAL_SELECTION_LOCK.json',BASE.parent/'JOINT_METHOD_LOCK.json']:files.append(dict(path=str(p.relative_to(ROOT)),sha256=sha(p)))
+ for p in [BASE/'REFERENCE_LOCK.json',BASE/'TEACHER_GLOBAL_BARRIER.json',BASE/'ROOT_READBACK.json',BASE/'ROOT_INPUT_RENDER_READBACK.json',BASE/'CANDIDATE_INPUT_BARRIER.json',BASE/'TEACHER_JOB_LOCK.json',BASE.parent/'TEMPORAL_SELECTION_LOCK.json',BASE.parent/'JOINT_METHOD_LOCK.json',BASE.parent/'NO_BOOTSTRAP_AUTHORITY004.json']:files.append(dict(path=str(p.relative_to(ROOT)),sha256=sha(p)))
  write(BASE/'GLOBAL_PREDICTION_BARRIER.json',dict(status='complete',count=32,GT_read=False,files=files,scorer_sha256=sha(ROOT/'scripts/score_stvg_coordinate_confirmation_v1.py')))
  print('root pass',fitcount,steps,checks,err)
 if __name__=='__main__':main()
