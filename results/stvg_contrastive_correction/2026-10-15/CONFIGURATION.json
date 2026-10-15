@@ -1,0 +1,46 @@
+{
+  "status": "locked_actual",
+  "spatial_configs": {
+    "hc2": {
+      "lr": 0.003535533905932738,
+      "samples": 32,
+      "sigma": 0.0125,
+      "steps": 5,
+      "tau": 0.2,
+      "writeback": 0.0625
+    },
+    "vidstg": {
+      "lr": 0.0075,
+      "samples": 32,
+      "sigma": 0.2,
+      "steps": 5,
+      "tau": 1.0,
+      "writeback": 0.125
+    }
+  },
+  "generation": {
+    "max_new_tokens": 16,
+    "do_sample": false,
+    "use_cache": true,
+    "torch_dtype": "bfloat16",
+    "attn_implementation": "sdpa",
+    "device_map": "auto",
+    "max_memory": {
+      "0": "20GiB",
+      "cpu": "4GiB"
+    },
+    "local_files_only": true,
+    "trust_remote_code": false
+  },
+  "temporal": "exact existing Offset-Trust predictions",
+  "student": "TA-STVG Source, episodic reset, Query/LN 1792",
+  "teacher": "STVG-R1-7B frozen unquantized BF16",
+  "candidate_pool": "exact original new_crop, 1 Source plus 8 Weight-free alternatives",
+  "pairwise_outputs": [
+    "Source",
+    "Alternative",
+    "Uncertain"
+  ],
+  "bootstrap_executed": false,
+  "GT_before_prediction_seal": false
+}
