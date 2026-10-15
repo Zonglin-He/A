@@ -1,0 +1,2666 @@
+{
+  "GPU_used": false,
+  "GT_derived_metrics_read": true,
+  "arms": [
+    "F",
+    "T",
+    "Episodic_Native",
+    "Episodic_T",
+    "Before_Native",
+    "Before_T",
+    "After_Native",
+    "After_T"
+  ],
+  "case_count": 32,
+  "duplicate_prediction_seal_entries": 128,
+  "input_hashes": {
+    "gt_exposure_metadata_sha256": "d034918a0b8cf34ba087cd8863061f635c2cc4b8746ae41023558143fc544a40",
+    "independent_optimizer_math_readback_sha256": "351fc3a35e9a1056a60a5238d0bf7e68433c8c09db0763ae1bc6fb19d3b0de71",
+    "parent_paired_deltas_sha256": "dca292fd70f5bc969228ba9e805283b0b0bdfc3d3fc9be36ed336d3d88c55b10",
+    "postseal_rows_sha256": "bfa61ac3aee69196370e697251a3ed0b8ef3fb03214f917cf7cebce5f1ca6fe9",
+    "postseal_summary_sha256": "8df147f5b62149ade2c657db1afcce94c76660a6175d58a94272e7d166874aee",
+    "prediction_seal_sha256": "dc6a4a4afdb5cb721afc077a6603ddd5e27535ab178e8844384cbbaf88dac3c9",
+    "root_state_chain_readback_sha256": "78ed2f4681cbfb81487eccd9eb5fa32654171e4c0b49bf0c9c08f87ad21b0e2c",
+    "student_global_barrier_sha256": "d887469bc9f21fb6ba0664716c80a4229f8f2dd53c34afda0e9ad3248c998017"
+  },
+  "maximum_paired_mean_abs_error": 0.0,
+  "maximum_summary_mean_abs_error": 0.0,
+  "metrics": [
+    "m_vIoU",
+    "m_tIoU",
+    "m_sIoU_dense_GT",
+    "m_sIoU_supervised_GT",
+    "m_sIoU_unsupervised_GT"
+  ],
+  "model_loaded": false,
+  "new_GT_label_read": false,
+  "null_metric_cells_in_rows": {
+    "hc2/After_Native/m_sIoU_supervised_GT": 18,
+    "hc2/After_T/m_sIoU_supervised_GT": 18,
+    "hc2/Before_Native/m_sIoU_supervised_GT": 18,
+    "hc2/Before_T/m_sIoU_supervised_GT": 18,
+    "hc2/Episodic_Native/m_sIoU_supervised_GT": 18,
+    "hc2/Episodic_T/m_sIoU_supervised_GT": 18,
+    "hc2/F/m_sIoU_supervised_GT": 18,
+    "hc2/T/m_sIoU_supervised_GT": 18,
+    "vidstg/After_Native/m_sIoU_supervised_GT": 21,
+    "vidstg/After_T/m_sIoU_supervised_GT": 21,
+    "vidstg/Before_Native/m_sIoU_supervised_GT": 21,
+    "vidstg/Before_T/m_sIoU_supervised_GT": 21,
+    "vidstg/Episodic_Native/m_sIoU_supervised_GT": 21,
+    "vidstg/Episodic_T/m_sIoU_supervised_GT": 21,
+    "vidstg/F/m_sIoU_supervised_GT": 21,
+    "vidstg/T/m_sIoU_supervised_GT": 21
+  },
+  "orders_per_domain": 3,
+  "paired_cells_audited": 72,
+  "paired_cells_expected": 72,
+  "paired_null_source_comparisons": 0,
+  "paired_signs_and_tails": [
+    {
+      "best_delta_pp": 0.9537331680825378,
+      "count": 16,
+      "dataset": "hc2",
+      "left": "Before_Native",
+      "mean_delta_pp": 0.11361605368877137,
+      "metric": "m_vIoU",
+      "negative_cases": [
+        "HC04",
+        "HC07",
+        "HC14",
+        "HC15"
+      ],
+      "negative_count": 4,
+      "neutral_cases": [
+        "HC03",
+        "HC11",
+        "HC12",
+        "HC16"
+      ],
+      "neutral_count": 4,
+      "order": "order1",
+      "positive_cases": [
+        "HC01",
+        "HC02",
+        "HC05",
+        "HC06",
+        "HC08",
+        "HC09",
+        "HC10",
+        "HC13"
+      ],
+      "positive_count": 8,
+      "right": "F",
+      "worst_delta_pp": -0.37445423682826995
+    },
+    {
+      "best_delta_pp": 0.905071983007999,
+      "count": 16,
+      "dataset": "hc2",
+      "left": "Before_Native",
+      "mean_delta_pp": 0.12825238024825894,
+      "metric": "m_sIoU_dense_GT",
+      "negative_cases": [
+        "HC01",
+        "HC03",
+        "HC04",
+        "HC07",
+        "HC14",
+        "HC15"
+      ],
+      "negative_count": 6,
+      "neutral_cases": [
+        "HC16"
+      ],
+      "neutral_count": 1,
+      "order": "order1",
+      "positive_cases": [
+        "HC02",
+        "HC05",
+        "HC06",
+        "HC08",
+        "HC09",
+        "HC10",
+        "HC11",
+        "HC12",
+        "HC13"
+      ],
+      "positive_count": 9,
+      "right": "F",
+      "worst_delta_pp": -0.6876210024560847
+    },
+    {
+      "best_delta_pp": 6.4904943602355765,
+      "count": 16,
+      "dataset": "hc2",
+      "left": "After_Native",
+      "mean_delta_pp": 0.46375455867200965,
+      "metric": "m_vIoU",
+      "negative_cases": [
+        "HC02",
+        "HC08",
+        "HC10",
+        "HC14"
+      ],
+      "negative_count": 4,
+      "neutral_cases": [
+        "HC01",
+        "HC03",
+        "HC06",
+        "HC11",
+        "HC12",
+        "HC13",
+        "HC15"
+      ],
+      "neutral_count": 7,
+      "order": "order1",
+      "positive_cases": [
+        "HC04",
+        "HC05",
+        "HC07",
+        "HC09",
+        "HC16"
+      ],
+      "positive_count": 5,
+      "right": "Before_Native",
+      "worst_delta_pp": -0.9210896705047822
+    },
+    {
+      "best_delta_pp": 7.092311131921225,
+      "count": 16,
+      "dataset": "hc2",
+      "left": "After_Native",
+      "mean_delta_pp": 0.6908400812727425,
+      "metric": "m_sIoU_dense_GT",
+      "negative_cases": [
+        "HC02",
+        "HC08",
+        "HC10",
+        "HC14"
+      ],
+      "negative_count": 4,
+      "neutral_cases": [
+        "HC01",
+        "HC03",
+        "HC06",
+        "HC11",
+        "HC12",
+        "HC13",
+        "HC15"
+      ],
+      "neutral_count": 7,
+      "order": "order1",
+      "positive_cases": [
+        "HC04",
+        "HC05",
+        "HC07",
+        "HC09",
+        "HC16"
+      ],
+      "positive_count": 5,
+      "right": "Before_Native",
+      "worst_delta_pp": -1.15223343898751
+    },
+    {
+      "best_delta_pp": 0.8088975909771201,
+      "count": 16,
+      "dataset": "hc2",
+      "left": "After_Native",
+      "mean_delta_pp": 0.047090474572067255,
+      "metric": "m_vIoU",
+      "negative_cases": [
+        "HC04",
+        "HC07",
+        "HC08",
+        "HC14",
+        "HC15"
+      ],
+      "negative_count": 5,
+      "neutral_cases": [
+        "HC03",
+        "HC11",
+        "HC12",
+        "HC16"
+      ],
+      "neutral_count": 4,
+      "order": "order1",
+      "positive_cases": [
+        "HC01",
+        "HC02",
+        "HC05",
+        "HC06",
+        "HC09",
+        "HC10",
+        "HC13"
+      ],
+      "positive_count": 7,
+      "right": "Episodic_Native",
+      "worst_delta_pp": -0.40397117764508494
+    },
+    {
+      "best_delta_pp": 0.8162696855897766,
+      "count": 16,
+      "dataset": "hc2",
+      "left": "After_Native",
+      "mean_delta_pp": 0.05646920272131635,
+      "metric": "m_sIoU_dense_GT",
+      "negative_cases": [
+        "HC01",
+        "HC03",
+        "HC04",
+        "HC07",
+        "HC08",
+        "HC14",
+        "HC15"
+      ],
+      "negative_count": 7,
+      "neutral_cases": [
+        "HC16"
+      ],
+      "neutral_count": 1,
+      "order": "order1",
+      "positive_cases": [
+        "HC02",
+        "HC05",
+        "HC06",
+        "HC09",
+        "HC10",
+        "HC11",
+        "HC12",
+        "HC13"
+      ],
+      "positive_count": 8,
+      "right": "Episodic_Native",
+      "worst_delta_pp": -0.7206288424997487
+    },
+    {
+      "best_delta_pp": 0.9062006073876527,
+      "count": 16,
+      "dataset": "hc2",
+      "left": "Before_T",
+      "mean_delta_pp": 0.12000226606345764,
+      "metric": "m_vIoU",
+      "negative_cases": [
+        "HC01",
+        "HC03",
+        "HC04",
+        "HC07",
+        "HC14",
+        "HC15"
+      ],
+      "negative_count": 6,
+      "neutral_cases": [
+        "HC11",
+        "HC12",
+        "HC16"
+      ],
+      "neutral_count": 3,
+      "order": "order1",
+      "positive_cases": [
+        "HC02",
+        "HC05",
+        "HC06",
+        "HC08",
+        "HC09",
+        "HC10",
+        "HC13"
+      ],
+      "positive_count": 7,
+      "right": "T",
+      "worst_delta_pp": -0.4445005009521441
+    },
+    {
+      "best_delta_pp": 0.905071983007999,
+      "count": 16,
+      "dataset": "hc2",
+      "left": "Before_T",
+      "mean_delta_pp": 0.12825238024825894,
+      "metric": "m_sIoU_dense_GT",
+      "negative_cases": [
+        "HC01",
+        "HC03",
+        "HC04",
+        "HC07",
+        "HC14",
+        "HC15"
+      ],
+      "negative_count": 6,
+      "neutral_cases": [
+        "HC16"
+      ],
+      "neutral_count": 1,
+      "order": "order1",
+      "positive_cases": [
+        "HC02",
+        "HC05",
+        "HC06",
+        "HC08",
+        "HC09",
+        "HC10",
+        "HC11",
+        "HC12",
+        "HC13"
+      ],
+      "positive_count": 9,
+      "right": "T",
+      "worst_delta_pp": -0.6876210024560847
+    },
+    {
+      "best_delta_pp": 6.6982938468144955,
+      "count": 16,
+      "dataset": "hc2",
+      "left": "After_T",
+      "mean_delta_pp": 0.512361603475646,
+      "metric": "m_vIoU",
+      "negative_cases": [
+        "HC02",
+        "HC08",
+        "HC10"
+      ],
+      "negative_count": 3,
+      "neutral_cases": [
+        "HC01",
+        "HC03",
+        "HC06",
+        "HC11",
+        "HC12",
+        "HC13",
+        "HC15"
+      ],
+      "neutral_count": 7,
+      "order": "order1",
+      "positive_cases": [
+        "HC04",
+        "HC05",
+        "HC07",
+        "HC09",
+        "HC14",
+        "HC16"
+      ],
+      "positive_count": 6,
+      "right": "Before_T",
+      "worst_delta_pp": -0.9210896705047822
+    },
+    {
+      "best_delta_pp": 7.092311131921225,
+      "count": 16,
+      "dataset": "hc2",
+      "left": "After_T",
+      "mean_delta_pp": 0.6908400812727425,
+      "metric": "m_sIoU_dense_GT",
+      "negative_cases": [
+        "HC02",
+        "HC08",
+        "HC10",
+        "HC14"
+      ],
+      "negative_count": 4,
+      "neutral_cases": [
+        "HC01",
+        "HC03",
+        "HC06",
+        "HC11",
+        "HC12",
+        "HC13",
+        "HC15"
+      ],
+      "neutral_count": 7,
+      "order": "order1",
+      "positive_cases": [
+        "HC04",
+        "HC05",
+        "HC07",
+        "HC09",
+        "HC16"
+      ],
+      "positive_count": 5,
+      "right": "Before_T",
+      "worst_delta_pp": -1.15223343898751
+    },
+    {
+      "best_delta_pp": 0.8026677669238258,
+      "count": 16,
+      "dataset": "hc2",
+      "left": "After_T",
+      "mean_delta_pp": 0.055797877759610356,
+      "metric": "m_vIoU",
+      "negative_cases": [
+        "HC01",
+        "HC03",
+        "HC04",
+        "HC07",
+        "HC08",
+        "HC14",
+        "HC15"
+      ],
+      "negative_count": 7,
+      "neutral_cases": [
+        "HC11",
+        "HC12",
+        "HC16"
+      ],
+      "neutral_count": 3,
+      "order": "order1",
+      "positive_cases": [
+        "HC02",
+        "HC05",
+        "HC06",
+        "HC09",
+        "HC10",
+        "HC13"
+      ],
+      "positive_count": 6,
+      "right": "Episodic_T",
+      "worst_delta_pp": -0.4652698077780404
+    },
+    {
+      "best_delta_pp": 0.8162696855897766,
+      "count": 16,
+      "dataset": "hc2",
+      "left": "After_T",
+      "mean_delta_pp": 0.05646920272131635,
+      "metric": "m_sIoU_dense_GT",
+      "negative_cases": [
+        "HC01",
+        "HC03",
+        "HC04",
+        "HC07",
+        "HC08",
+        "HC14",
+        "HC15"
+      ],
+      "negative_count": 7,
+      "neutral_cases": [
+        "HC16"
+      ],
+      "neutral_count": 1,
+      "order": "order1",
+      "positive_cases": [
+        "HC02",
+        "HC05",
+        "HC06",
+        "HC09",
+        "HC10",
+        "HC11",
+        "HC12",
+        "HC13"
+      ],
+      "positive_count": 8,
+      "right": "Episodic_T",
+      "worst_delta_pp": -0.7206288424997487
+    },
+    {
+      "best_delta_pp": 0.4684416097259336,
+      "count": 16,
+      "dataset": "hc2",
+      "left": "Before_Native",
+      "mean_delta_pp": 0.06868413801704917,
+      "metric": "m_vIoU",
+      "negative_cases": [
+        "HC07",
+        "HC14",
+        "HC15"
+      ],
+      "negative_count": 3,
+      "neutral_cases": [
+        "HC03",
+        "HC04",
+        "HC11",
+        "HC12",
+        "HC13"
+      ],
+      "neutral_count": 5,
+      "order": "order2",
+      "positive_cases": [
+        "HC01",
+        "HC02",
+        "HC05",
+        "HC06",
+        "HC08",
+        "HC09",
+        "HC10",
+        "HC16"
+      ],
+      "positive_count": 8,
+      "right": "F",
+      "worst_delta_pp": -0.15727059395077847
+    },
+    {
+      "best_delta_pp": 0.5374011921246868,
+      "count": 16,
+      "dataset": "hc2",
+      "left": "Before_Native",
+      "mean_delta_pp": 0.09142054966304607,
+      "metric": "m_sIoU_dense_GT",
+      "negative_cases": [
+        "HC03",
+        "HC07",
+        "HC14",
+        "HC15"
+      ],
+      "negative_count": 4,
+      "neutral_cases": [
+        "HC04",
+        "HC12",
+        "HC13"
+      ],
+      "neutral_count": 3,
+      "order": "order2",
+      "positive_cases": [
+        "HC01",
+        "HC02",
+        "HC05",
+        "HC06",
+        "HC08",
+        "HC09",
+        "HC10",
+        "HC11",
+        "HC16"
+      ],
+      "positive_count": 9,
+      "right": "F",
+      "worst_delta_pp": -0.3395886499844458
+    },
+    {
+      "best_delta_pp": 6.8237889882238445,
+      "count": 16,
+      "dataset": "hc2",
+      "left": "After_Native",
+      "mean_delta_pp": 0.49127959074413946,
+      "metric": "m_vIoU",
+      "negative_cases": [
+        "HC02",
+        "HC08",
+        "HC10",
+        "HC14"
+      ],
+      "negative_count": 4,
+      "neutral_cases": [
+        "HC01",
+        "HC03",
+        "HC06",
+        "HC11",
+        "HC12",
+        "HC13",
+        "HC15"
+      ],
+      "neutral_count": 7,
+      "order": "order2",
+      "positive_cases": [
+        "HC04",
+        "HC05",
+        "HC07",
+        "HC09",
+        "HC16"
+      ],
+      "positive_count": 5,
+      "right": "Before_Native",
+      "worst_delta_pp": -0.7882571517158654
+    },
+    {
+      "best_delta_pp": 7.473536591360319,
+      "count": 16,
+      "dataset": "hc2",
+      "left": "After_Native",
+      "mean_delta_pp": 0.715085870956294,
+      "metric": "m_sIoU_dense_GT",
+      "negative_cases": [
+        "HC02",
+        "HC08",
+        "HC10",
+        "HC14"
+      ],
+      "negative_count": 4,
+      "neutral_cases": [
+        "HC01",
+        "HC03",
+        "HC06",
+        "HC11",
+        "HC12",
+        "HC13",
+        "HC15"
+      ],
+      "neutral_count": 7,
+      "order": "order2",
+      "positive_cases": [
+        "HC04",
+        "HC05",
+        "HC07",
+        "HC09",
+        "HC16"
+      ],
+      "positive_count": 5,
+      "right": "Before_Native",
+      "worst_delta_pp": -1.007669588144372
+    },
+    {
+      "best_delta_pp": 0.25042474040420926,
+      "count": 16,
+      "dataset": "hc2",
+      "left": "After_Native",
+      "mean_delta_pp": 0.029683590972474843,
+      "metric": "m_vIoU",
+      "negative_cases": [
+        "HC07",
+        "HC14",
+        "HC15"
+      ],
+      "negative_count": 3,
+      "neutral_cases": [
+        "HC03",
+        "HC04",
+        "HC11",
+        "HC12",
+        "HC13"
+      ],
+      "neutral_count": 5,
+      "order": "order2",
+      "positive_cases": [
+        "HC01",
+        "HC02",
+        "HC05",
+        "HC06",
+        "HC08",
+        "HC09",
+        "HC10",
+        "HC16"
+      ],
+      "positive_count": 8,
+      "right": "Episodic_Native",
+      "worst_delta_pp": -0.21787254866748595
+    },
+    {
+      "best_delta_pp": 0.3718123581051169,
+      "count": 16,
+      "dataset": "hc2",
+      "left": "After_Native",
+      "mean_delta_pp": 0.04388316181965484,
+      "metric": "m_sIoU_dense_GT",
+      "negative_cases": [
+        "HC03",
+        "HC07",
+        "HC14",
+        "HC15"
+      ],
+      "negative_count": 4,
+      "neutral_cases": [
+        "HC04",
+        "HC12",
+        "HC13"
+      ],
+      "neutral_count": 3,
+      "order": "order2",
+      "positive_cases": [
+        "HC01",
+        "HC02",
+        "HC05",
+        "HC06",
+        "HC08",
+        "HC09",
+        "HC10",
+        "HC11",
+        "HC16"
+      ],
+      "positive_count": 9,
+      "right": "Episodic_Native",
+      "worst_delta_pp": -0.3395886499844458
+    },
+    {
+      "best_delta_pp": 0.5326716926724373,
+      "count": 16,
+      "dataset": "hc2",
+      "left": "Before_T",
+      "mean_delta_pp": 0.07297312278914161,
+      "metric": "m_vIoU",
+      "negative_cases": [
+        "HC03",
+        "HC07",
+        "HC14",
+        "HC15"
+      ],
+      "negative_count": 4,
+      "neutral_cases": [
+        "HC04",
+        "HC11",
+        "HC12",
+        "HC13"
+      ],
+      "neutral_count": 4,
+      "order": "order2",
+      "positive_cases": [
+        "HC01",
+        "HC02",
+        "HC05",
+        "HC06",
+        "HC08",
+        "HC09",
+        "HC10",
+        "HC16"
+      ],
+      "positive_count": 8,
+      "right": "T",
+      "worst_delta_pp": -0.15965375747992172
+    },
+    {
+      "best_delta_pp": 0.5374011921246868,
+      "count": 16,
+      "dataset": "hc2",
+      "left": "Before_T",
+      "mean_delta_pp": 0.09142054966304607,
+      "metric": "m_sIoU_dense_GT",
+      "negative_cases": [
+        "HC03",
+        "HC07",
+        "HC14",
+        "HC15"
+      ],
+      "negative_count": 4,
+      "neutral_cases": [
+        "HC04",
+        "HC12",
+        "HC13"
+      ],
+      "neutral_count": 3,
+      "order": "order2",
+      "positive_cases": [
+        "HC01",
+        "HC02",
+        "HC05",
+        "HC06",
+        "HC08",
+        "HC09",
+        "HC10",
+        "HC11",
+        "HC16"
+      ],
+      "positive_count": 9,
+      "right": "T",
+      "worst_delta_pp": -0.3395886499844458
+    },
+    {
+      "best_delta_pp": 7.058340114062512,
+      "count": 16,
+      "dataset": "hc2",
+      "left": "After_T",
+      "mean_delta_pp": 0.5390742237264411,
+      "metric": "m_vIoU",
+      "negative_cases": [
+        "HC02",
+        "HC08",
+        "HC10"
+      ],
+      "negative_count": 3,
+      "neutral_cases": [
+        "HC01",
+        "HC03",
+        "HC06",
+        "HC11",
+        "HC12",
+        "HC13",
+        "HC15"
+      ],
+      "neutral_count": 7,
+      "order": "order2",
+      "positive_cases": [
+        "HC04",
+        "HC05",
+        "HC07",
+        "HC09",
+        "HC14",
+        "HC16"
+      ],
+      "positive_count": 6,
+      "right": "Before_T",
+      "worst_delta_pp": -0.7882571517158654
+    },
+    {
+      "best_delta_pp": 7.473536591360319,
+      "count": 16,
+      "dataset": "hc2",
+      "left": "After_T",
+      "mean_delta_pp": 0.715085870956294,
+      "metric": "m_sIoU_dense_GT",
+      "negative_cases": [
+        "HC02",
+        "HC08",
+        "HC10",
+        "HC14"
+      ],
+      "negative_count": 4,
+      "neutral_cases": [
+        "HC01",
+        "HC03",
+        "HC06",
+        "HC11",
+        "HC12",
+        "HC13",
+        "HC15"
+      ],
+      "neutral_count": 7,
+      "order": "order2",
+      "positive_cases": [
+        "HC04",
+        "HC05",
+        "HC07",
+        "HC09",
+        "HC16"
+      ],
+      "positive_count": 5,
+      "right": "Before_T",
+      "worst_delta_pp": -1.007669588144372
+    },
+    {
+      "best_delta_pp": 0.25042474040420926,
+      "count": 16,
+      "dataset": "hc2",
+      "left": "After_T",
+      "mean_delta_pp": 0.03548135473608934,
+      "metric": "m_vIoU",
+      "negative_cases": [
+        "HC03",
+        "HC07",
+        "HC14",
+        "HC15"
+      ],
+      "negative_count": 4,
+      "neutral_cases": [
+        "HC04",
+        "HC11",
+        "HC12",
+        "HC13"
+      ],
+      "neutral_count": 4,
+      "order": "order2",
+      "positive_cases": [
+        "HC01",
+        "HC02",
+        "HC05",
+        "HC06",
+        "HC08",
+        "HC09",
+        "HC10",
+        "HC16"
+      ],
+      "positive_count": 8,
+      "right": "Episodic_T",
+      "worst_delta_pp": -0.1666599298160376
+    },
+    {
+      "best_delta_pp": 0.3718123581051169,
+      "count": 16,
+      "dataset": "hc2",
+      "left": "After_T",
+      "mean_delta_pp": 0.04388316181965484,
+      "metric": "m_sIoU_dense_GT",
+      "negative_cases": [
+        "HC03",
+        "HC07",
+        "HC14",
+        "HC15"
+      ],
+      "negative_count": 4,
+      "neutral_cases": [
+        "HC04",
+        "HC12",
+        "HC13"
+      ],
+      "neutral_count": 3,
+      "order": "order2",
+      "positive_cases": [
+        "HC01",
+        "HC02",
+        "HC05",
+        "HC06",
+        "HC08",
+        "HC09",
+        "HC10",
+        "HC11",
+        "HC16"
+      ],
+      "positive_count": 9,
+      "right": "Episodic_T",
+      "worst_delta_pp": -0.3395886499844458
+    },
+    {
+      "best_delta_pp": 1.0835610213107083,
+      "count": 16,
+      "dataset": "hc2",
+      "left": "Before_Native",
+      "mean_delta_pp": 0.11845234473976635,
+      "metric": "m_vIoU",
+      "negative_cases": [
+        "HC04",
+        "HC14"
+      ],
+      "negative_count": 2,
+      "neutral_cases": [
+        "HC03",
+        "HC08",
+        "HC11",
+        "HC12",
+        "HC15"
+      ],
+      "neutral_count": 5,
+      "order": "order3",
+      "positive_cases": [
+        "HC01",
+        "HC02",
+        "HC05",
+        "HC06",
+        "HC07",
+        "HC09",
+        "HC10",
+        "HC13",
+        "HC16"
+      ],
+      "positive_count": 9,
+      "right": "F",
+      "worst_delta_pp": -0.26998033708531266
+    },
+    {
+      "best_delta_pp": 1.0333453335420795,
+      "count": 16,
+      "dataset": "hc2",
+      "left": "Before_Native",
+      "mean_delta_pp": 0.1277751186825279,
+      "metric": "m_sIoU_dense_GT",
+      "negative_cases": [
+        "HC01",
+        "HC03",
+        "HC04",
+        "HC14"
+      ],
+      "negative_count": 4,
+      "neutral_cases": [
+        "HC08",
+        "HC11",
+        "HC15"
+      ],
+      "neutral_count": 3,
+      "order": "order3",
+      "positive_cases": [
+        "HC02",
+        "HC05",
+        "HC06",
+        "HC07",
+        "HC09",
+        "HC10",
+        "HC12",
+        "HC13",
+        "HC16"
+      ],
+      "positive_count": 9,
+      "right": "F",
+      "worst_delta_pp": -0.5071948078601785
+    },
+    {
+      "best_delta_pp": 6.676546180506704,
+      "count": 16,
+      "dataset": "hc2",
+      "left": "After_Native",
+      "mean_delta_pp": 0.4870726621750084,
+      "metric": "m_vIoU",
+      "negative_cases": [
+        "HC02",
+        "HC10"
+      ],
+      "negative_count": 2,
+      "neutral_cases": [
+        "HC01",
+        "HC03",
+        "HC06",
+        "HC11",
+        "HC12",
+        "HC13",
+        "HC15"
+      ],
+      "neutral_count": 7,
+      "order": "order3",
+      "positive_cases": [
+        "HC04",
+        "HC05",
+        "HC07",
+        "HC08",
+        "HC09",
+        "HC14",
+        "HC16"
+      ],
+      "positive_count": 7,
+      "right": "Before_Native",
+      "worst_delta_pp": -0.8520509899091921
+    },
+    {
+      "best_delta_pp": 7.303175297949105,
+      "count": 16,
+      "dataset": "hc2",
+      "left": "After_Native",
+      "mean_delta_pp": 0.7055840739111126,
+      "metric": "m_sIoU_dense_GT",
+      "negative_cases": [
+        "HC02",
+        "HC08",
+        "HC10",
+        "HC14"
+      ],
+      "negative_count": 4,
+      "neutral_cases": [
+        "HC01",
+        "HC03",
+        "HC06",
+        "HC11",
+        "HC12",
+        "HC13",
+        "HC15"
+      ],
+      "neutral_count": 7,
+      "order": "order3",
+      "positive_cases": [
+        "HC04",
+        "HC05",
+        "HC07",
+        "HC09",
+        "HC16"
+      ],
+      "positive_count": 5,
+      "right": "Before_Native",
+      "worst_delta_pp": -1.0800490436633003
+    },
+    {
+      "best_delta_pp": 0.9278857951605768,
+      "count": 16,
+      "dataset": "hc2",
+      "left": "After_Native",
+      "mean_delta_pp": 0.07524486912606092,
+      "metric": "m_vIoU",
+      "negative_cases": [
+        "HC04",
+        "HC07",
+        "HC14",
+        "HC16"
+      ],
+      "negative_count": 4,
+      "neutral_cases": [
+        "HC03",
+        "HC08",
+        "HC11",
+        "HC12",
+        "HC15"
+      ],
+      "neutral_count": 5,
+      "order": "order3",
+      "positive_cases": [
+        "HC01",
+        "HC02",
+        "HC05",
+        "HC06",
+        "HC09",
+        "HC10",
+        "HC13"
+      ],
+      "positive_count": 7,
+      "right": "Episodic_Native",
+      "worst_delta_pp": -0.29518897148971823
+    },
+    {
+      "best_delta_pp": 0.9416325364673961,
+      "count": 16,
+      "dataset": "hc2",
+      "left": "After_Native",
+      "mean_delta_pp": 0.07073593379395525,
+      "metric": "m_sIoU_dense_GT",
+      "negative_cases": [
+        "HC01",
+        "HC03",
+        "HC04",
+        "HC07",
+        "HC14",
+        "HC16"
+      ],
+      "negative_count": 6,
+      "neutral_cases": [
+        "HC08",
+        "HC11",
+        "HC15"
+      ],
+      "neutral_count": 3,
+      "order": "order3",
+      "positive_cases": [
+        "HC02",
+        "HC05",
+        "HC06",
+        "HC09",
+        "HC10",
+        "HC12",
+        "HC13"
+      ],
+      "positive_count": 7,
+      "right": "Episodic_Native",
+      "worst_delta_pp": -0.5478766416317615
+    },
+    {
+      "best_delta_pp": 1.0333418220353385,
+      "count": 16,
+      "dataset": "hc2",
+      "left": "Before_T",
+      "mean_delta_pp": 0.11798973595260694,
+      "metric": "m_vIoU",
+      "negative_cases": [
+        "HC01",
+        "HC03",
+        "HC04",
+        "HC14"
+      ],
+      "negative_count": 4,
+      "neutral_cases": [
+        "HC08",
+        "HC11",
+        "HC12",
+        "HC15"
+      ],
+      "neutral_count": 4,
+      "order": "order3",
+      "positive_cases": [
+        "HC02",
+        "HC05",
+        "HC06",
+        "HC07",
+        "HC09",
+        "HC10",
+        "HC13",
+        "HC16"
+      ],
+      "positive_count": 8,
+      "right": "T",
+      "worst_delta_pp": -0.3262326445899688
+    },
+    {
+      "best_delta_pp": 1.0333453335420795,
+      "count": 16,
+      "dataset": "hc2",
+      "left": "Before_T",
+      "mean_delta_pp": 0.1277751186825279,
+      "metric": "m_sIoU_dense_GT",
+      "negative_cases": [
+        "HC01",
+        "HC03",
+        "HC04",
+        "HC14"
+      ],
+      "negative_count": 4,
+      "neutral_cases": [
+        "HC08",
+        "HC11",
+        "HC15"
+      ],
+      "neutral_count": 3,
+      "order": "order3",
+      "positive_cases": [
+        "HC02",
+        "HC05",
+        "HC06",
+        "HC07",
+        "HC09",
+        "HC10",
+        "HC12",
+        "HC13",
+        "HC16"
+      ],
+      "positive_count": 9,
+      "right": "T",
+      "worst_delta_pp": -0.5071948078601785
+    },
+    {
+      "best_delta_pp": 6.897443336951925,
+      "count": 16,
+      "dataset": "hc2",
+      "left": "After_T",
+      "mean_delta_pp": 0.5374010786582597,
+      "metric": "m_vIoU",
+      "negative_cases": [
+        "HC02",
+        "HC08",
+        "HC10"
+      ],
+      "negative_count": 3,
+      "neutral_cases": [
+        "HC01",
+        "HC03",
+        "HC06",
+        "HC11",
+        "HC12",
+        "HC13",
+        "HC15"
+      ],
+      "neutral_count": 7,
+      "order": "order3",
+      "positive_cases": [
+        "HC04",
+        "HC05",
+        "HC07",
+        "HC09",
+        "HC14",
+        "HC16"
+      ],
+      "positive_count": 6,
+      "right": "Before_T",
+      "worst_delta_pp": -0.8520509899091921
+    },
+    {
+      "best_delta_pp": 7.303175297949105,
+      "count": 16,
+      "dataset": "hc2",
+      "left": "After_T",
+      "mean_delta_pp": 0.7055840739111126,
+      "metric": "m_sIoU_dense_GT",
+      "negative_cases": [
+        "HC02",
+        "HC08",
+        "HC10",
+        "HC14"
+      ],
+      "negative_count": 4,
+      "neutral_cases": [
+        "HC01",
+        "HC03",
+        "HC06",
+        "HC11",
+        "HC12",
+        "HC13",
+        "HC15"
+      ],
+      "neutral_count": 7,
+      "order": "order3",
+      "positive_cases": [
+        "HC04",
+        "HC05",
+        "HC07",
+        "HC09",
+        "HC16"
+      ],
+      "positive_count": 5,
+      "right": "Before_T",
+      "worst_delta_pp": -1.0800490436633003
+    },
+    {
+      "best_delta_pp": 0.9243724176444368,
+      "count": 16,
+      "dataset": "hc2",
+      "left": "After_T",
+      "mean_delta_pp": 0.07882482283137336,
+      "metric": "m_vIoU",
+      "negative_cases": [
+        "HC01",
+        "HC03",
+        "HC04",
+        "HC07",
+        "HC14",
+        "HC16"
+      ],
+      "negative_count": 6,
+      "neutral_cases": [
+        "HC08",
+        "HC11",
+        "HC12",
+        "HC15"
+      ],
+      "neutral_count": 4,
+      "order": "order3",
+      "positive_cases": [
+        "HC02",
+        "HC05",
+        "HC06",
+        "HC09",
+        "HC10",
+        "HC13"
+      ],
+      "positive_count": 6,
+      "right": "Episodic_T",
+      "worst_delta_pp": -0.35223566170434206
+    },
+    {
+      "best_delta_pp": 0.9416325364673961,
+      "count": 16,
+      "dataset": "hc2",
+      "left": "After_T",
+      "mean_delta_pp": 0.07073593379395525,
+      "metric": "m_sIoU_dense_GT",
+      "negative_cases": [
+        "HC01",
+        "HC03",
+        "HC04",
+        "HC07",
+        "HC14",
+        "HC16"
+      ],
+      "negative_count": 6,
+      "neutral_cases": [
+        "HC08",
+        "HC11",
+        "HC15"
+      ],
+      "neutral_count": 3,
+      "order": "order3",
+      "positive_cases": [
+        "HC02",
+        "HC05",
+        "HC06",
+        "HC09",
+        "HC10",
+        "HC12",
+        "HC13"
+      ],
+      "positive_count": 7,
+      "right": "Episodic_T",
+      "worst_delta_pp": -0.5478766416317615
+    },
+    {
+      "best_delta_pp": 1.49388612709494,
+      "count": 16,
+      "dataset": "vidstg",
+      "left": "Before_Native",
+      "mean_delta_pp": 0.0953659636395588,
+      "metric": "m_vIoU",
+      "negative_cases": [
+        "V06",
+        "V13",
+        "V15"
+      ],
+      "negative_count": 3,
+      "neutral_cases": [
+        "V01",
+        "V03",
+        "V04",
+        "V05",
+        "V07",
+        "V09",
+        "V10",
+        "V12",
+        "V16"
+      ],
+      "neutral_count": 9,
+      "order": "order1",
+      "positive_cases": [
+        "V02",
+        "V08",
+        "V11",
+        "V14"
+      ],
+      "positive_count": 4,
+      "right": "F",
+      "worst_delta_pp": -0.48054217428471907
+    },
+    {
+      "best_delta_pp": 2.819379550509471,
+      "count": 16,
+      "dataset": "vidstg",
+      "left": "Before_Native",
+      "mean_delta_pp": 0.3060322715116408,
+      "metric": "m_sIoU_dense_GT",
+      "negative_cases": [
+        "V06",
+        "V10",
+        "V13",
+        "V15"
+      ],
+      "negative_count": 4,
+      "neutral_cases": [
+        "V03",
+        "V05",
+        "V12",
+        "V16"
+      ],
+      "neutral_count": 4,
+      "order": "order1",
+      "positive_cases": [
+        "V01",
+        "V02",
+        "V04",
+        "V07",
+        "V08",
+        "V09",
+        "V11",
+        "V14"
+      ],
+      "positive_count": 8,
+      "right": "F",
+      "worst_delta_pp": -0.9442745867298541
+    },
+    {
+      "best_delta_pp": 6.456714242811524,
+      "count": 16,
+      "dataset": "vidstg",
+      "left": "After_Native",
+      "mean_delta_pp": 0.7857169017560796,
+      "metric": "m_vIoU",
+      "negative_cases": [
+        "V06"
+      ],
+      "negative_count": 1,
+      "neutral_cases": [
+        "V01",
+        "V03",
+        "V04",
+        "V05",
+        "V07",
+        "V08",
+        "V09",
+        "V10",
+        "V13",
+        "V16"
+      ],
+      "neutral_count": 10,
+      "order": "order1",
+      "positive_cases": [
+        "V02",
+        "V11",
+        "V12",
+        "V14",
+        "V15"
+      ],
+      "positive_count": 5,
+      "right": "Before_Native",
+      "worst_delta_pp": -0.7323927631167126
+    },
+    {
+      "best_delta_pp": 11.03677177463016,
+      "count": 16,
+      "dataset": "vidstg",
+      "left": "After_Native",
+      "mean_delta_pp": 1.8995046446924961,
+      "metric": "m_sIoU_dense_GT",
+      "negative_cases": [
+        "V01",
+        "V06",
+        "V07"
+      ],
+      "negative_count": 3,
+      "neutral_cases": [
+        "V03",
+        "V05",
+        "V08",
+        "V09",
+        "V10",
+        "V13",
+        "V16"
+      ],
+      "neutral_count": 7,
+      "order": "order1",
+      "positive_cases": [
+        "V02",
+        "V04",
+        "V11",
+        "V12",
+        "V14",
+        "V15"
+      ],
+      "positive_count": 6,
+      "right": "Before_Native",
+      "worst_delta_pp": -2.3786037961227606
+    },
+    {
+      "best_delta_pp": 1.09289889223122,
+      "count": 16,
+      "dataset": "vidstg",
+      "left": "After_Native",
+      "mean_delta_pp": 0.06697312586084869,
+      "metric": "m_vIoU",
+      "negative_cases": [
+        "V06",
+        "V13",
+        "V15"
+      ],
+      "negative_count": 3,
+      "neutral_cases": [
+        "V01",
+        "V03",
+        "V04",
+        "V05",
+        "V07",
+        "V09",
+        "V10",
+        "V12",
+        "V16"
+      ],
+      "neutral_count": 9,
+      "order": "order1",
+      "positive_cases": [
+        "V02",
+        "V08",
+        "V11",
+        "V14"
+      ],
+      "positive_count": 4,
+      "right": "Episodic_Native",
+      "worst_delta_pp": -0.4481287570198958
+    },
+    {
+      "best_delta_pp": 2.311837740163325,
+      "count": 16,
+      "dataset": "vidstg",
+      "left": "After_Native",
+      "mean_delta_pp": 0.20143954236918288,
+      "metric": "m_sIoU_dense_GT",
+      "negative_cases": [
+        "V06",
+        "V10",
+        "V13",
+        "V15"
+      ],
+      "negative_count": 4,
+      "neutral_cases": [
+        "V03",
+        "V05",
+        "V12",
+        "V16"
+      ],
+      "neutral_count": 4,
+      "order": "order1",
+      "positive_cases": [
+        "V01",
+        "V02",
+        "V04",
+        "V07",
+        "V08",
+        "V09",
+        "V11",
+        "V14"
+      ],
+      "positive_count": 8,
+      "right": "Episodic_Native",
+      "worst_delta_pp": -0.9442745867298541
+    },
+    {
+      "best_delta_pp": 1.49388612709494,
+      "count": 16,
+      "dataset": "vidstg",
+      "left": "Before_T",
+      "mean_delta_pp": 0.08695801085087836,
+      "metric": "m_vIoU",
+      "negative_cases": [
+        "V06",
+        "V13",
+        "V15"
+      ],
+      "negative_count": 3,
+      "neutral_cases": [
+        "V03",
+        "V04",
+        "V05",
+        "V07",
+        "V09",
+        "V10",
+        "V12",
+        "V16"
+      ],
+      "neutral_count": 8,
+      "order": "order1",
+      "positive_cases": [
+        "V01",
+        "V02",
+        "V08",
+        "V11",
+        "V14"
+      ],
+      "positive_count": 5,
+      "right": "T",
+      "worst_delta_pp": -0.48054217428471907
+    },
+    {
+      "best_delta_pp": 2.819379550509471,
+      "count": 16,
+      "dataset": "vidstg",
+      "left": "Before_T",
+      "mean_delta_pp": 0.3060322715116408,
+      "metric": "m_sIoU_dense_GT",
+      "negative_cases": [
+        "V06",
+        "V10",
+        "V13",
+        "V15"
+      ],
+      "negative_count": 4,
+      "neutral_cases": [
+        "V03",
+        "V05",
+        "V12",
+        "V16"
+      ],
+      "neutral_count": 4,
+      "order": "order1",
+      "positive_cases": [
+        "V01",
+        "V02",
+        "V04",
+        "V07",
+        "V08",
+        "V09",
+        "V11",
+        "V14"
+      ],
+      "positive_count": 8,
+      "right": "T",
+      "worst_delta_pp": -0.9442745867298541
+    },
+    {
+      "best_delta_pp": 6.831737574131969,
+      "count": 16,
+      "dataset": "vidstg",
+      "left": "After_T",
+      "mean_delta_pp": 0.7956545931260945,
+      "metric": "m_vIoU",
+      "negative_cases": [
+        "V01",
+        "V06"
+      ],
+      "negative_count": 2,
+      "neutral_cases": [
+        "V03",
+        "V04",
+        "V05",
+        "V07",
+        "V08",
+        "V09",
+        "V10",
+        "V13",
+        "V16"
+      ],
+      "neutral_count": 9,
+      "order": "order1",
+      "positive_cases": [
+        "V02",
+        "V11",
+        "V12",
+        "V14",
+        "V15"
+      ],
+      "positive_count": 5,
+      "right": "Before_T",
+      "worst_delta_pp": -0.7323927631167126
+    },
+    {
+      "best_delta_pp": 11.03677177463016,
+      "count": 16,
+      "dataset": "vidstg",
+      "left": "After_T",
+      "mean_delta_pp": 1.8995046446924961,
+      "metric": "m_sIoU_dense_GT",
+      "negative_cases": [
+        "V01",
+        "V06",
+        "V07"
+      ],
+      "negative_count": 3,
+      "neutral_cases": [
+        "V03",
+        "V05",
+        "V08",
+        "V09",
+        "V10",
+        "V13",
+        "V16"
+      ],
+      "neutral_count": 7,
+      "order": "order1",
+      "positive_cases": [
+        "V02",
+        "V04",
+        "V11",
+        "V12",
+        "V14",
+        "V15"
+      ],
+      "positive_count": 6,
+      "right": "Before_T",
+      "worst_delta_pp": -2.3786037961227606
+    },
+    {
+      "best_delta_pp": 1.09289889223122,
+      "count": 16,
+      "dataset": "vidstg",
+      "left": "After_T",
+      "mean_delta_pp": 0.06514979654096602,
+      "metric": "m_vIoU",
+      "negative_cases": [
+        "V06",
+        "V13",
+        "V15"
+      ],
+      "negative_count": 3,
+      "neutral_cases": [
+        "V03",
+        "V04",
+        "V05",
+        "V07",
+        "V09",
+        "V10",
+        "V12",
+        "V16"
+      ],
+      "neutral_count": 8,
+      "order": "order1",
+      "positive_cases": [
+        "V01",
+        "V02",
+        "V08",
+        "V11",
+        "V14"
+      ],
+      "positive_count": 5,
+      "right": "Episodic_T",
+      "worst_delta_pp": -0.4481287570198958
+    },
+    {
+      "best_delta_pp": 2.311837740163325,
+      "count": 16,
+      "dataset": "vidstg",
+      "left": "After_T",
+      "mean_delta_pp": 0.20143954236918288,
+      "metric": "m_sIoU_dense_GT",
+      "negative_cases": [
+        "V06",
+        "V10",
+        "V13",
+        "V15"
+      ],
+      "negative_count": 4,
+      "neutral_cases": [
+        "V03",
+        "V05",
+        "V12",
+        "V16"
+      ],
+      "neutral_count": 4,
+      "order": "order1",
+      "positive_cases": [
+        "V01",
+        "V02",
+        "V04",
+        "V07",
+        "V08",
+        "V09",
+        "V11",
+        "V14"
+      ],
+      "positive_count": 8,
+      "right": "Episodic_T",
+      "worst_delta_pp": -0.9442745867298541
+    },
+    {
+      "best_delta_pp": 1.3606030352881715,
+      "count": 16,
+      "dataset": "vidstg",
+      "left": "Before_Native",
+      "mean_delta_pp": 0.19298649701326157,
+      "metric": "m_vIoU",
+      "negative_cases": [
+        "V15"
+      ],
+      "negative_count": 1,
+      "neutral_cases": [
+        "V01",
+        "V03",
+        "V04",
+        "V07",
+        "V09",
+        "V10",
+        "V12",
+        "V16"
+      ],
+      "neutral_count": 8,
+      "order": "order2",
+      "positive_cases": [
+        "V02",
+        "V05",
+        "V06",
+        "V08",
+        "V11",
+        "V13",
+        "V14"
+      ],
+      "positive_count": 7,
+      "right": "F",
+      "worst_delta_pp": -0.08928973547876959
+    },
+    {
+      "best_delta_pp": 6.363157458651814,
+      "count": 16,
+      "dataset": "vidstg",
+      "left": "Before_Native",
+      "mean_delta_pp": 0.8743099322175809,
+      "metric": "m_sIoU_dense_GT",
+      "negative_cases": [
+        "V10",
+        "V15"
+      ],
+      "negative_count": 2,
+      "neutral_cases": [
+        "V03",
+        "V12",
+        "V16"
+      ],
+      "neutral_count": 3,
+      "order": "order2",
+      "positive_cases": [
+        "V01",
+        "V02",
+        "V04",
+        "V05",
+        "V06",
+        "V07",
+        "V08",
+        "V09",
+        "V11",
+        "V13",
+        "V14"
+      ],
+      "positive_count": 11,
+      "right": "F",
+      "worst_delta_pp": -0.351292901806588
+    },
+    {
+      "best_delta_pp": 5.992710496461923,
+      "count": 16,
+      "dataset": "vidstg",
+      "left": "After_Native",
+      "mean_delta_pp": 0.7672659937398849,
+      "metric": "m_vIoU",
+      "negative_cases": [
+        "V06"
+      ],
+      "negative_count": 1,
+      "neutral_cases": [
+        "V01",
+        "V03",
+        "V04",
+        "V05",
+        "V07",
+        "V08",
+        "V09",
+        "V10",
+        "V13",
+        "V16"
+      ],
+      "neutral_count": 10,
+      "order": "order2",
+      "positive_cases": [
+        "V02",
+        "V11",
+        "V12",
+        "V14",
+        "V15"
+      ],
+      "positive_count": 5,
+      "right": "Before_Native",
+      "worst_delta_pp": -0.9078960576070355
+    },
+    {
+      "best_delta_pp": 9.016301753622113,
+      "count": 16,
+      "dataset": "vidstg",
+      "left": "After_Native",
+      "mean_delta_pp": 1.650423759432253,
+      "metric": "m_sIoU_dense_GT",
+      "negative_cases": [
+        "V01",
+        "V06",
+        "V07"
+      ],
+      "negative_count": 3,
+      "neutral_cases": [
+        "V03",
+        "V05",
+        "V08",
+        "V09",
+        "V10",
+        "V13",
+        "V16"
+      ],
+      "neutral_count": 7,
+      "order": "order2",
+      "positive_cases": [
+        "V02",
+        "V04",
+        "V11",
+        "V12",
+        "V14",
+        "V15"
+      ],
+      "positive_count": 6,
+      "right": "Before_Native",
+      "worst_delta_pp": -1.5214800502798664
+    },
+    {
+      "best_delta_pp": 0.9519457168741141,
+      "count": 16,
+      "dataset": "vidstg",
+      "left": "After_Native",
+      "mean_delta_pp": 0.14614275121835682,
+      "metric": "m_vIoU",
+      "negative_cases": [
+        "V15"
+      ],
+      "negative_count": 1,
+      "neutral_cases": [
+        "V01",
+        "V03",
+        "V04",
+        "V07",
+        "V09",
+        "V10",
+        "V12",
+        "V16"
+      ],
+      "neutral_count": 8,
+      "order": "order2",
+      "positive_cases": [
+        "V02",
+        "V05",
+        "V06",
+        "V08",
+        "V11",
+        "V13",
+        "V14"
+      ],
+      "positive_count": 7,
+      "right": "Episodic_Native",
+      "worst_delta_pp": -0.015064145739529522
+    },
+    {
+      "best_delta_pp": 3.800468991300712,
+      "count": 16,
+      "dataset": "vidstg",
+      "left": "After_Native",
+      "mean_delta_pp": 0.52063631781488,
+      "metric": "m_sIoU_dense_GT",
+      "negative_cases": [
+        "V04",
+        "V10",
+        "V15"
+      ],
+      "negative_count": 3,
+      "neutral_cases": [
+        "V03",
+        "V12",
+        "V16"
+      ],
+      "neutral_count": 3,
+      "order": "order2",
+      "positive_cases": [
+        "V01",
+        "V02",
+        "V05",
+        "V06",
+        "V07",
+        "V08",
+        "V09",
+        "V11",
+        "V13",
+        "V14"
+      ],
+      "positive_count": 10,
+      "right": "Episodic_Native",
+      "worst_delta_pp": -0.351292901806588
+    },
+    {
+      "best_delta_pp": 1.37178576112999,
+      "count": 16,
+      "dataset": "vidstg",
+      "left": "Before_T",
+      "mean_delta_pp": 0.19078142161481407,
+      "metric": "m_vIoU",
+      "negative_cases": [
+        "V15"
+      ],
+      "negative_count": 1,
+      "neutral_cases": [
+        "V03",
+        "V04",
+        "V07",
+        "V09",
+        "V10",
+        "V12",
+        "V16"
+      ],
+      "neutral_count": 7,
+      "order": "order2",
+      "positive_cases": [
+        "V01",
+        "V02",
+        "V05",
+        "V06",
+        "V08",
+        "V11",
+        "V13",
+        "V14"
+      ],
+      "positive_count": 8,
+      "right": "T",
+      "worst_delta_pp": -0.08928973547876959
+    },
+    {
+      "best_delta_pp": 6.363157458651814,
+      "count": 16,
+      "dataset": "vidstg",
+      "left": "Before_T",
+      "mean_delta_pp": 0.8743099322175809,
+      "metric": "m_sIoU_dense_GT",
+      "negative_cases": [
+        "V10",
+        "V15"
+      ],
+      "negative_count": 2,
+      "neutral_cases": [
+        "V03",
+        "V12",
+        "V16"
+      ],
+      "neutral_count": 3,
+      "order": "order2",
+      "positive_cases": [
+        "V01",
+        "V02",
+        "V04",
+        "V05",
+        "V06",
+        "V07",
+        "V08",
+        "V09",
+        "V11",
+        "V13",
+        "V14"
+      ],
+      "positive_count": 11,
+      "right": "T",
+      "worst_delta_pp": -0.351292901806588
+    },
+    {
+      "best_delta_pp": 6.408056653936301,
+      "count": 16,
+      "dataset": "vidstg",
+      "left": "After_T",
+      "mean_delta_pp": 0.7768579028635724,
+      "metric": "m_vIoU",
+      "negative_cases": [
+        "V01",
+        "V06"
+      ],
+      "negative_count": 2,
+      "neutral_cases": [
+        "V03",
+        "V04",
+        "V05",
+        "V07",
+        "V08",
+        "V09",
+        "V10",
+        "V13",
+        "V16"
+      ],
+      "neutral_count": 9,
+      "order": "order2",
+      "positive_cases": [
+        "V02",
+        "V11",
+        "V12",
+        "V14",
+        "V15"
+      ],
+      "positive_count": 5,
+      "right": "Before_T",
+      "worst_delta_pp": -0.9078960576070355
+    },
+    {
+      "best_delta_pp": 9.016301753622113,
+      "count": 16,
+      "dataset": "vidstg",
+      "left": "After_T",
+      "mean_delta_pp": 1.650423759432253,
+      "metric": "m_sIoU_dense_GT",
+      "negative_cases": [
+        "V01",
+        "V06",
+        "V07"
+      ],
+      "negative_count": 3,
+      "neutral_cases": [
+        "V03",
+        "V05",
+        "V08",
+        "V09",
+        "V10",
+        "V13",
+        "V16"
+      ],
+      "neutral_count": 7,
+      "order": "order2",
+      "positive_cases": [
+        "V02",
+        "V04",
+        "V11",
+        "V12",
+        "V14",
+        "V15"
+      ],
+      "positive_count": 6,
+      "right": "Before_T",
+      "worst_delta_pp": -1.5214800502798664
+    },
+    {
+      "best_delta_pp": 1.0108286525380206,
+      "count": 16,
+      "dataset": "vidstg",
+      "left": "After_T",
+      "mean_delta_pp": 0.15017651704237955,
+      "metric": "m_vIoU",
+      "negative_cases": [
+        "V15"
+      ],
+      "negative_count": 1,
+      "neutral_cases": [
+        "V03",
+        "V04",
+        "V07",
+        "V09",
+        "V10",
+        "V12",
+        "V16"
+      ],
+      "neutral_count": 7,
+      "order": "order2",
+      "positive_cases": [
+        "V01",
+        "V02",
+        "V05",
+        "V06",
+        "V08",
+        "V11",
+        "V13",
+        "V14"
+      ],
+      "positive_count": 8,
+      "right": "Episodic_T",
+      "worst_delta_pp": -0.015064145739529522
+    },
+    {
+      "best_delta_pp": 3.800468991300712,
+      "count": 16,
+      "dataset": "vidstg",
+      "left": "After_T",
+      "mean_delta_pp": 0.52063631781488,
+      "metric": "m_sIoU_dense_GT",
+      "negative_cases": [
+        "V04",
+        "V10",
+        "V15"
+      ],
+      "negative_count": 3,
+      "neutral_cases": [
+        "V03",
+        "V12",
+        "V16"
+      ],
+      "neutral_count": 3,
+      "order": "order2",
+      "positive_cases": [
+        "V01",
+        "V02",
+        "V05",
+        "V06",
+        "V07",
+        "V08",
+        "V09",
+        "V11",
+        "V13",
+        "V14"
+      ],
+      "positive_count": 10,
+      "right": "Episodic_T",
+      "worst_delta_pp": -0.351292901806588
+    },
+    {
+      "best_delta_pp": 3.7876386554381245,
+      "count": 16,
+      "dataset": "vidstg",
+      "left": "Before_Native",
+      "mean_delta_pp": 0.2803132223017725,
+      "metric": "m_vIoU",
+      "negative_cases": [
+        "V06",
+        "V13",
+        "V15"
+      ],
+      "negative_count": 3,
+      "neutral_cases": [
+        "V01",
+        "V03",
+        "V04",
+        "V07",
+        "V09",
+        "V10",
+        "V12",
+        "V16"
+      ],
+      "neutral_count": 8,
+      "order": "order3",
+      "positive_cases": [
+        "V02",
+        "V05",
+        "V08",
+        "V11",
+        "V14"
+      ],
+      "positive_count": 5,
+      "right": "F",
+      "worst_delta_pp": -0.6456763249063913
+    },
+    {
+      "best_delta_pp": 5.352026848195268,
+      "count": 16,
+      "dataset": "vidstg",
+      "left": "Before_Native",
+      "mean_delta_pp": 0.7002208847152029,
+      "metric": "m_sIoU_dense_GT",
+      "negative_cases": [
+        "V06",
+        "V13",
+        "V15"
+      ],
+      "negative_count": 3,
+      "neutral_cases": [
+        "V03",
+        "V12",
+        "V16"
+      ],
+      "neutral_count": 3,
+      "order": "order3",
+      "positive_cases": [
+        "V01",
+        "V02",
+        "V04",
+        "V05",
+        "V07",
+        "V08",
+        "V09",
+        "V10",
+        "V11",
+        "V14"
+      ],
+      "positive_count": 10,
+      "right": "F",
+      "worst_delta_pp": -0.7619137382340213
+    },
+    {
+      "best_delta_pp": 4.372154471494777,
+      "count": 16,
+      "dataset": "vidstg",
+      "left": "After_Native",
+      "mean_delta_pp": 0.6728713172610962,
+      "metric": "m_vIoU",
+      "negative_cases": [
+        "V06"
+      ],
+      "negative_count": 1,
+      "neutral_cases": [
+        "V01",
+        "V03",
+        "V04",
+        "V05",
+        "V07",
+        "V08",
+        "V09",
+        "V10",
+        "V13",
+        "V16"
+      ],
+      "neutral_count": 10,
+      "order": "order3",
+      "positive_cases": [
+        "V02",
+        "V11",
+        "V12",
+        "V14",
+        "V15"
+      ],
+      "positive_count": 5,
+      "right": "Before_Native",
+      "worst_delta_pp": -0.6430593292263781
+    },
+    {
+      "best_delta_pp": 10.760947565620537,
+      "count": 16,
+      "dataset": "vidstg",
+      "left": "After_Native",
+      "mean_delta_pp": 1.852023167292213,
+      "metric": "m_sIoU_dense_GT",
+      "negative_cases": [
+        "V01",
+        "V06",
+        "V07"
+      ],
+      "negative_count": 3,
+      "neutral_cases": [
+        "V03",
+        "V05",
+        "V08",
+        "V09",
+        "V10",
+        "V13",
+        "V16"
+      ],
+      "neutral_count": 7,
+      "order": "order3",
+      "positive_cases": [
+        "V02",
+        "V04",
+        "V11",
+        "V12",
+        "V14",
+        "V15"
+      ],
+      "positive_count": 6,
+      "right": "Before_Native",
+      "worst_delta_pp": -1.3001266866499217
+    },
+    {
+      "best_delta_pp": 1.7584253120569215,
+      "count": 16,
+      "dataset": "vidstg",
+      "left": "After_Native",
+      "mean_delta_pp": 0.139074800028079,
+      "metric": "m_vIoU",
+      "negative_cases": [
+        "V06",
+        "V13",
+        "V15"
+      ],
+      "negative_count": 3,
+      "neutral_cases": [
+        "V01",
+        "V03",
+        "V04",
+        "V07",
+        "V09",
+        "V10",
+        "V12",
+        "V16"
+      ],
+      "neutral_count": 8,
+      "order": "order3",
+      "positive_cases": [
+        "V02",
+        "V05",
+        "V08",
+        "V11",
+        "V14"
+      ],
+      "positive_count": 5,
+      "right": "Episodic_Native",
+      "worst_delta_pp": -0.5436422504634636
+    },
+    {
+      "best_delta_pp": 3.15756659284524,
+      "count": 16,
+      "dataset": "vidstg",
+      "left": "After_Native",
+      "mean_delta_pp": 0.5481466781724618,
+      "metric": "m_sIoU_dense_GT",
+      "negative_cases": [
+        "V06",
+        "V13",
+        "V15"
+      ],
+      "negative_count": 3,
+      "neutral_cases": [
+        "V03",
+        "V12",
+        "V16"
+      ],
+      "neutral_count": 3,
+      "order": "order3",
+      "positive_cases": [
+        "V01",
+        "V02",
+        "V04",
+        "V05",
+        "V07",
+        "V08",
+        "V09",
+        "V10",
+        "V11",
+        "V14"
+      ],
+      "positive_count": 10,
+      "right": "Episodic_Native",
+      "worst_delta_pp": -0.7619137382340213
+    },
+    {
+      "best_delta_pp": 3.882499244936505,
+      "count": 16,
+      "dataset": "vidstg",
+      "left": "Before_T",
+      "mean_delta_pp": 0.27425144256044864,
+      "metric": "m_vIoU",
+      "negative_cases": [
+        "V06",
+        "V13",
+        "V15"
+      ],
+      "negative_count": 3,
+      "neutral_cases": [
+        "V03",
+        "V04",
+        "V07",
+        "V09",
+        "V10",
+        "V12",
+        "V16"
+      ],
+      "neutral_count": 7,
+      "order": "order3",
+      "positive_cases": [
+        "V01",
+        "V02",
+        "V05",
+        "V08",
+        "V11",
+        "V14"
+      ],
+      "positive_count": 6,
+      "right": "T",
+      "worst_delta_pp": -0.6456763249063913
+    },
+    {
+      "best_delta_pp": 5.352026848195268,
+      "count": 16,
+      "dataset": "vidstg",
+      "left": "Before_T",
+      "mean_delta_pp": 0.7002208847152029,
+      "metric": "m_sIoU_dense_GT",
+      "negative_cases": [
+        "V06",
+        "V13",
+        "V15"
+      ],
+      "negative_count": 3,
+      "neutral_cases": [
+        "V03",
+        "V12",
+        "V16"
+      ],
+      "neutral_count": 3,
+      "order": "order3",
+      "positive_cases": [
+        "V01",
+        "V02",
+        "V04",
+        "V05",
+        "V07",
+        "V08",
+        "V09",
+        "V10",
+        "V11",
+        "V14"
+      ],
+      "positive_count": 10,
+      "right": "T",
+      "worst_delta_pp": -0.7619137382340213
+    },
+    {
+      "best_delta_pp": 4.816560461942576,
+      "count": 16,
+      "dataset": "vidstg",
+      "left": "After_T",
+      "mean_delta_pp": 0.6947729111397044,
+      "metric": "m_vIoU",
+      "negative_cases": [
+        "V01",
+        "V06"
+      ],
+      "negative_count": 2,
+      "neutral_cases": [
+        "V03",
+        "V04",
+        "V05",
+        "V07",
+        "V08",
+        "V09",
+        "V10",
+        "V13",
+        "V16"
+      ],
+      "neutral_count": 9,
+      "order": "order3",
+      "positive_cases": [
+        "V02",
+        "V11",
+        "V12",
+        "V14",
+        "V15"
+      ],
+      "positive_count": 5,
+      "right": "Before_T",
+      "worst_delta_pp": -0.6430593292263781
+    },
+    {
+      "best_delta_pp": 10.760947565620537,
+      "count": 16,
+      "dataset": "vidstg",
+      "left": "After_T",
+      "mean_delta_pp": 1.852023167292213,
+      "metric": "m_sIoU_dense_GT",
+      "negative_cases": [
+        "V01",
+        "V06",
+        "V07"
+      ],
+      "negative_count": 3,
+      "neutral_cases": [
+        "V03",
+        "V05",
+        "V08",
+        "V09",
+        "V10",
+        "V13",
+        "V16"
+      ],
+      "neutral_count": 7,
+      "order": "order3",
+      "positive_cases": [
+        "V02",
+        "V04",
+        "V11",
+        "V12",
+        "V14",
+        "V15"
+      ],
+      "positive_count": 6,
+      "right": "Before_T",
+      "worst_delta_pp": -1.3001266866499217
+    },
+    {
+      "best_delta_pp": 1.9300459443508111,
+      "count": 16,
+      "dataset": "vidstg",
+      "left": "After_T",
+      "mean_delta_pp": 0.15156154626414625,
+      "metric": "m_vIoU",
+      "negative_cases": [
+        "V06",
+        "V13",
+        "V15"
+      ],
+      "negative_count": 3,
+      "neutral_cases": [
+        "V03",
+        "V04",
+        "V07",
+        "V09",
+        "V10",
+        "V12",
+        "V16"
+      ],
+      "neutral_count": 7,
+      "order": "order3",
+      "positive_cases": [
+        "V01",
+        "V02",
+        "V05",
+        "V08",
+        "V11",
+        "V14"
+      ],
+      "positive_count": 6,
+      "right": "Episodic_T",
+      "worst_delta_pp": -0.5436422504634636
+    },
+    {
+      "best_delta_pp": 3.15756659284524,
+      "count": 16,
+      "dataset": "vidstg",
+      "left": "After_T",
+      "mean_delta_pp": 0.5481466781724618,
+      "metric": "m_sIoU_dense_GT",
+      "negative_cases": [
+        "V06",
+        "V13",
+        "V15"
+      ],
+      "negative_count": 3,
+      "neutral_cases": [
+        "V03",
+        "V12",
+        "V16"
+      ],
+      "neutral_count": 3,
+      "order": "order3",
+      "positive_cases": [
+        "V01",
+        "V02",
+        "V04",
+        "V05",
+        "V07",
+        "V08",
+        "V09",
+        "V10",
+        "V11",
+        "V14"
+      ],
+      "positive_count": 10,
+      "right": "Episodic_T",
+      "worst_delta_pp": -0.7619137382340213
+    }
+  ],
+  "prediction_seal_file_entries": 301,
+  "rows_audited": 768,
+  "rows_expected": 768,
+  "schema": "stvg-reference-carry-independent-postseal-scalar-readback-v1",
+  "scope": "independent reaggregation of sealed postseal rows, summaries and per-source paired deltas; no label loader, new GT scoring, model or GPU",
+  "sealed_prediction_file_bytes_verified": 115922588,
+  "sealed_prediction_unique_files_verified": 173,
+  "status": "pass",
+  "stream_count": 6,
+  "summary_all_null_cells": 0,
+  "summary_cells_audited": 240,
+  "summary_cells_expected": 240,
+  "time": 1792051567.3618839
+}
