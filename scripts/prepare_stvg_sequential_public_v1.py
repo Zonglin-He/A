@@ -45,7 +45,7 @@ def main():
    rel=prefix+p.name
    if rel not in {x['path']for x in items}:emit(rel,source=p)
   emit('docs/STVG_WEIGHTFREE_COORDINATE_REPORT.md',source=ROOT/'docs/STVG_WEIGHTFREE_COORDINATE_REPORT.md')
-  for p in [B/'ROOT_POLICY_ARITHMETIC_READBACK.json',B/'ROOT_TEMPORAL_ARITHMETIC_READBACK.json',B/'ROOT_VISUAL_REVIEW.json',B/'ROOT_ANONYMOUS_SCALAR_READBACK.json',B/'PUBLIC_SCALAR_AUDIT.json',B/'confirmation/ROOT_READBACK.json',B/'confirmation/ROOT_INPUT_RENDER_READBACK.json']:
+  for p in [B/'ROOT_POLICY_ARITHMETIC_READBACK.json',B/'ROOT_TEMPORAL_ARITHMETIC_READBACK.json',B/'ROOT_VISUAL_REVIEW.json',B/'ROOT_ANONYMOUS_SCALAR_READBACK.json',B/'PUBLIC_SCALAR_AUDIT.json',B/'ROOT_ENGINEERING_RECOVERY_READBACK.json',B/'confirmation/ROOT_READBACK.json',B/'confirmation/ROOT_INPUT_RENDER_READBACK.json']:
    emit(prefix+('CONFIRMATION_'if p.parent.name=='confirmation'else'')+p.name,source=p)
  # Content safety: no raw data assets, credentials or private query texts included.
  def audit_json(v):
@@ -63,6 +63,6 @@ def main():
   elif p.suffix=='.json':audit_json(read(p))
  assert len({i['path']for i in items})==len(items)
  write(B/('PUBLIC_'+mode.upper()+'_MANIFEST.json'),items)
- write(B/('ROOT_PUBLIC_'+mode.upper()+'_BINDINGS.json'),dict(status='pass',scope=mode,file_count=len(items),bytes=sum(x['bytes']for x in items),completed_stages=done,new_spatial_fits=total,private_media_queries_gt_coordinates_weights_excluded=True))
+ write(B/('ROOT_PUBLIC_'+mode.upper()+'_BINDINGS.json'),dict(status='pass',scope=mode,file_count=len(items),bytes=sum(x['bytes']for x in items),completed_stages=done,development_new_spatial_fits=total,confirmation_new_spatial_fits=(sum(x['actual_fit_count']for x in read(B/'confirmation/STUDENT_GLOBAL_BARRIER.json')['files'])if mode=='final'else 0),total_new_spatial_fits=(total+sum(x['actual_fit_count']for x in read(B/'confirmation/STUDENT_GLOBAL_BARRIER.json')['files'])if mode=='final'else total),private_media_queries_gt_coordinates_weights_excluded=True))
  print(mode,len(items),sum(x['bytes']for x in items),done)
 if __name__=='__main__':main()

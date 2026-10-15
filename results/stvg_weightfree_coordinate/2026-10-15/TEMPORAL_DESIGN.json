@@ -1,0 +1,64 @@
+{
+  "status": "locked",
+  "cohort": "same 32 exposed development sources only",
+  "initial": {
+    "lr": 0.01,
+    "steps": 5,
+    "tau_T": 1.0,
+    "l2": 0.001
+  },
+  "stages": [
+    {
+      "name": "T01_lr",
+      "parameter": "lr",
+      "values": [
+        0.0,
+        0.0003,
+        0.001,
+        0.003,
+        0.01,
+        0.03
+      ]
+    },
+    {
+      "name": "T02_tau",
+      "parameter": "tau_T",
+      "values": [
+        0.25,
+        0.5,
+        1.0,
+        2.0,
+        4.0
+      ]
+    },
+    {
+      "name": "T03_steps",
+      "parameter": "steps",
+      "values": [
+        1,
+        3,
+        5,
+        10,
+        20
+      ]
+    },
+    {
+      "name": "T04_l2",
+      "parameter": "l2",
+      "values": [
+        0.0,
+        0.0001,
+        0.001,
+        0.01,
+        0.1
+      ]
+    }
+  ],
+  "selection": "maximum development T+S mean official vIoU with spatial winner frozen; ties retain incumbent then ascending value",
+  "fixed": "same four candidates, sealed captions/alignment and frozen hidden features; no new MLLM calls; spatial observation clock stays original QA",
+  "zero_lr": "explicit Projection-only ablation, never claimed as learned adaptation",
+  "ineligible": "same four original Native fallbacks",
+  "confirmation_selection": false,
+  "not_full_backbone_reexecution": true,
+  "revision": "002 before any temporal trial: same final joint objective as spatial coordinates; Temporal-only retained as attribution control"
+}
