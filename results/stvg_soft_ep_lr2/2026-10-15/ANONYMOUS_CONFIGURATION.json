@@ -1,0 +1,115 @@
+{
+  "schema": "stvg-soft-ep-lr2-anonymous-configuration-v1",
+  "status": "complete",
+  "GT_read": false,
+  "lr2": {
+    "configs_by_domain": {
+      "hc2": {
+        "lr": 0.007071067811865476,
+        "sigma": 0.0125,
+        "tau": 0.2,
+        "steps": 5,
+        "writeback": 0.0625,
+        "samples": 32
+      },
+      "vidstg": {
+        "lr": 0.015,
+        "sigma": 0.2,
+        "tau": 1.0,
+        "steps": 5,
+        "writeback": 0.125,
+        "samples": 32
+      }
+    },
+    "response_settings": {
+      "mu": 0.25,
+      "cg_max_iter": 16,
+      "cg_rtol": 0.001,
+      "response_ratio": 0.75,
+      "response_abs_tolerance": 1e-07,
+      "backtracking": [
+        1.0,
+        0.5,
+        0.25,
+        0.125
+      ]
+    },
+    "optimizer": {
+      "name": "Adam",
+      "betas": [
+        0.9,
+        0.999
+      ],
+      "eps": 1e-08,
+      "weight_decay": 0.0
+    },
+    "active_parameter_count": 1792,
+    "episodic": true,
+    "query_adam_reset": true,
+    "ln_carry": false,
+    "temporal_input": "exact prior Offset-Trust output reuse",
+    "reference_role": "frozen_original_weightfree_R1_Top1_new_crop"
+  },
+  "M0_arm": {
+    "fit_type": "exact historical validated current5 fit and complete Student output reuse",
+    "source_lr1_configs_by_domain": {
+      "hc2": {
+        "lr": 0.003535533905932738,
+        "sigma": 0.0125,
+        "tau": 0.2,
+        "steps": 5,
+        "writeback": 0.0625,
+        "samples": 32
+      },
+      "vidstg": {
+        "lr": 0.0075,
+        "sigma": 0.2,
+        "tau": 1.0,
+        "steps": 5,
+        "writeback": 0.125,
+        "samples": 32
+      }
+    },
+    "reused_arm_row_count": 64,
+    "new_lr2_fit_invocations": 0
+  },
+  "M0matched_arm": {
+    "fit_type": "fresh validated OPD fit at LR2 settings",
+    "configs_by_domain": {
+      "hc2": {
+        "lr": 0.007071067811865476,
+        "sigma": 0.0125,
+        "tau": 0.2,
+        "steps": 5,
+        "writeback": 0.0625,
+        "samples": 32
+      },
+      "vidstg": {
+        "lr": 0.015,
+        "sigma": 0.2,
+        "tau": 1.0,
+        "steps": 5,
+        "writeback": 0.125,
+        "samples": 32
+      }
+    },
+    "fit_invocation_count": 23
+  },
+  "provenance": {
+    "lr2_design_lock_sha256": "a9b7d86475260ea565d921a9c9d7af96056eaec326d02f446c02dc4ed377c1b5",
+    "lr1_design_lock_sha256": "fed6c78396304ca3d5a2f04a70a6013b883e340b68aca008272f1f63d1c60604",
+    "optimizer_fitter_source": {
+      "path": "scripts/stvg_soft_ep_fit_v1.py",
+      "sha256": "c4cdc5d5274b94ff77b1be8175e33fef836f88e82c4c50bff9629caac28e1382",
+      "bytes": 7853
+    }
+  },
+  "limitations": {
+    "inherited_finite_difference_discrepancy_percent_range": [
+      7.64,
+      19.58
+    ],
+    "high_accuracy_complete_decoder_FD_qualification": false,
+    "saved_math_audit_scope": "saved reward/q/loss/Adam/CG/rollback/equal-norm witnesses; no independent backward or complete Jacobian qualification"
+  }
+}
