@@ -1,0 +1,78 @@
+{
+  "status": "locked",
+  "scope": "last bounded evidence-constrained algorithm iteration then fresh confirmation and official Table1 execution",
+  "student": "TA-STVG source checkpoints",
+  "teacher": "frozen STVG-R1-7B",
+  "development_sources": 32,
+  "fresh_confirmation_sources": 32,
+  "no_new_neural_proposal_models": true,
+  "bootstrap_executed": false,
+  "round1": {
+    "arms": [
+      "projection",
+      "original",
+      "stable",
+      "offset_trust"
+    ],
+    "fixed_old_spatial_reference": true,
+    "shared_parameters": 512,
+    "stable_objective": "original averaged candidate KL + L2",
+    "trust_objective": "sum offset candidate KL + lambda_grid*sum fullgrid KL(p0||p_theta)+L2",
+    "tau_T": 1.0,
+    "lambda_grid": 1.0,
+    "l2": 0.001,
+    "max_iterations": 50,
+    "positive_step_size": 1.0,
+    "optimizer": "L-BFGS with deterministic Armijo backtracking, monotonic accepted objective",
+    "selection_eligible": [
+      "stable",
+      "offset_trust"
+    ],
+    "selection_endpoint": "mean across two domain means of full T+fixed-S vIoU, seal before development GT",
+    "tie_preference": "offset_trust",
+    "no_information_no_update": true,
+    "nonzero_update_and_decode_changes_reported": true
+  },
+  "round2": {
+    "arms": [
+      "old_crop",
+      "new_crop",
+      "old_scene",
+      "new_scene"
+    ],
+    "spatial_configs_source_sha256": "93e763623e5217f620a6616bd430696372f2edcc97464fb8070711852d902074",
+    "proposal": "unchanged SelectiveSearch256/GrabCut24/DIS 8new+Source",
+    "training_anchors": 4,
+    "factor1": "original QA interval versus frozen Round1 winner interval",
+    "factor2": "crop contact versus fullscene IDs, same candidate pool within clock",
+    "selection_endpoint": "mean of two domain means of joint vIoU",
+    "tie_preference": [
+      "new_scene",
+      "new_crop",
+      "old_scene",
+      "old_crop"
+    ],
+    "proposal_completeness_change_deferred": true,
+    "output_preservation": "conditional independent ablation after primary2x2, no simultaneous proposal changes"
+  },
+  "confirmation": {
+    "exclude_all_previous64": true,
+    "exclude_old8": true,
+    "selection_forbidden": true,
+    "historical_exposure_disclosed": true,
+    "stop_algorithm_search_after_confirmation": true
+  },
+  "Table1": {
+    "authorized_after_freeze": true,
+    "queries": 13785,
+    "hc_split": "official validation",
+    "vid_split": "official test",
+    "episodic": true,
+    "single_GPU_worker": true,
+    "all_predictions_seal_before_GT": true,
+    "no_old_YOLO_SAM_queue_resume": true
+  },
+  "protected_CURRENT_sha256": "146a2caf1633544a844ea33106c83c022c0bebad5f3f49a87bb5f81e6f8568d4",
+  "GT_oracle_fits": 0,
+  "time": 1792031025.2846522
+}
