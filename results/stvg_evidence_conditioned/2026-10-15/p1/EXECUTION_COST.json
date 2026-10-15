@@ -1,0 +1,33 @@
+{
+  "status": "complete",
+  "GT_read": false,
+  "actual_generations": 320,
+  "accepted_prefix_reused": 1,
+  "new_generations_in_revision002": 319,
+  "cold_model_loads": 2,
+  "revision002_pipeline_elapsed_seconds": 441.1011185646057,
+  "failed_first_worker_elapsed_seconds": 40.290629625320435,
+  "overall_wall_from_first_worker_launch_seconds": 758.0203614234924,
+  "student_stage_wall_seconds": 95.74421975202858,
+  "teacher_generate_and_request_cost": {
+    "total_generate_seconds": 282.19635286554694,
+    "total_request_seconds": 296.05518610123545,
+    "total_input_tokens": 583896,
+    "total_visual_tokens": 409600,
+    "total_output_tokens": 9042,
+    "maximum_GPU_peak_bytes": 17314840576,
+    "cold_start_count": 2,
+    "scope": "generation/request sums exclude both cold-load intervals and failed attempt overhead; those remain in preserved unit logs"
+  },
+  "actual_fit_invocations": 12,
+  "fits_with_accepted_optimizer_steps": 10,
+  "accepted_optimizer_steps": 42,
+  "source_capture_and_complete_decoder_readouts_included_in_student_stage": true,
+  "reused_stages": [
+    "weight-free candidate generation and exact input arrays",
+    "existing Temporal teacher feedback and Offset-Trust results",
+    "historical comparison predictions"
+  ],
+  "full_raw_video_to_final_method_cold_latency_remeasured": false,
+  "limitation": "These are complete costs of this actual bounded cache-reusing experiment, including failed-attempt disclosure. They are not a fresh end-to-end method latency or a full Table1 estimate."
+}
