@@ -1,0 +1,75 @@
+{
+  "schema": "stvg-ecld-p0-support-readback-v1",
+  "status": "pass",
+  "scope": "independent CPU replay of saved new_crop action rewards and fixed-reference optimizer records; no GT/postseal/media access",
+  "GT_read": false,
+  "postseal_or_score_read": false,
+  "RGB_or_video_read": false,
+  "model_or_GPU_run": false,
+  "CPU_only": true,
+  "interpretation": {
+    "support_is_not_semantic_correctness": true,
+    "reward_variance_is_not_a_gradient_reachability_or_direction_guarantee": true,
+    "anchor_references_are_imperfect_teacher_pseudo_targets": true,
+    "development_historical_exposure": {
+      "temporal_selection_used_development_GT": true,
+      "spatial_selection_used_development_GT": true,
+      "confirmation_used_for_selection": false,
+      "this_readback_did_not_open_or_use_GT": true
+    },
+    "mechanics": {
+      "reward": "original aligned IoU of sigmoid(logit-space action) against the selected anchor box",
+      "samples": "32 fixed antithetic Gaussian actions per anchor and optimizer round",
+      "policy": "q = softmax(IoU / tau); q and actions are detached in the score-function term",
+      "control_variate": "per-anchor KL(mean || rollout_mean) minus sum((q - 1/32) * logp); exact all-equal q is uniform and optimizer_step returns without Adam update",
+      "reliability": "loss is mean(reliability_i * per_anchor_loss_i), so weights are external, unnormalized by sum(reliability); global informative flag is exact reward inequality across all anchors",
+      "validation": "an additional label-free gate accepts only if weighted mean anchor IoU does not fall by more than 1e-7; rejected proposal restores state and Adam state and stops",
+      "scope": "1792 spatial parameters; independent reader checks saved gradients/update vectors and state deltas but does not independently run decoder backward"
+    },
+    "potential_next_mechanism": "A pre-registered eligible-support or per-anchor informative gate may be tested as a new method; this audit does not claim one is effective and does not treat reward variance as an identity signal."
+  },
+  "counts": {
+    "cases": 32,
+    "cases_with_new_crop_anchors": 23,
+    "cases_without_new_crop_anchors": 9,
+    "new_crop_anchor_count": 49,
+    "actual_new_crop_fits": 7,
+    "exact_parent_reused_fits": 16,
+    "no_reference_no_update": 2,
+    "parent_reused_no_fit_no_anchor": 7,
+    "fit_rounds_audited": 111,
+    "proposed_optimizer_steps": 96,
+    "accepted_optimizer_steps": 95,
+    "rejected_optimizer_steps": 1,
+    "no_information_rounds": 15,
+    "skipped_rounds": 4,
+    "anchor_round_rows": 241,
+    "anchor_round_reward_variance_gt_1e6": 214,
+    "anchor_round_reward_variance_gt_0": 214,
+    "anchor_round_any_positive_reward": 214,
+    "anchor_round_any_reward_gt_1e6": 214
+  },
+  "max_recalculation_errors": {
+    "reward": 9.423875196867826e-07,
+    "q": 1.0886741591553672e-08,
+    "loss": 3.295088304641758e-08,
+    "reference_iou": 2.5164627359686165e-07,
+    "state_delta": 2.3283064365386963e-10,
+    "parent_copy": 0.0
+  },
+  "tolerances": {
+    "reward_iou": 3e-06,
+    "probability": 2e-06,
+    "loss": 0.0002,
+    "reference_iou": 3e-06,
+    "state_delta": 2e-07
+  },
+  "root_full_readback_sha256": "453142df73ff545aec0a3fde23fef721148ba05c81761f67ff134823d918c36c",
+  "source_bindings": {
+    "current_source_hash_inventory_complete": true,
+    "historical_runtime_import_pin_coverage_complete": false,
+    "provenance_limit": "The selected saved fits and math are independently re-read; the historical RUNTIME006 pin set omits some transitive Python imports listed above, so this readback does not claim byte-complete historical runtime provenance."
+  },
+  "P1_status": "prepared_not_measured",
+  "full13785_started": false
+}

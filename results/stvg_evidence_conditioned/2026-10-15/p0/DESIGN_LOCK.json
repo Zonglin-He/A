@@ -1,0 +1,118 @@
+{
+  "schema": "stvg-evidence-conditioned-study-v1",
+  "status": "locked",
+  "authority_attachment_sha256": "45e30ae0ff3139e029048cc0ac2792cdcf121410fb0482f0e38546c48ae8479f",
+  "question": "Can matched student-conditioned feedback and anchor-local evidence/actionability admission improve actual full-decoder localization?",
+  "cohort": "same 32 historically exposed development sources, 16/domain; no independent-confirmation claim",
+  "roster_path": "artifacts/stvg_evidence_constrained_v1/DEVELOPMENT_ROSTER_LOCK.json",
+  "roster_sha256": "c152cf69cc3f71e83011bb2838d54577ee26ac773315607bc9ab032b80deb0ab",
+  "temporal": "fixed existing offset_trust, exact old selected intervals",
+  "temporal_phase_path": "artifacts/stvg_evidence_constrained_v1/round2_prompt009",
+  "candidate_inputs": "exact old new_crop candidate pools/context+local videos; no proposal or frame change in P1",
+  "historical_reference_phase_path": "artifacts/stvg_evidence_constrained_v1/round2_prompt009",
+  "arms": {
+    "A": {
+      "teacher": "neutral",
+      "fitter": "original_validated"
+    },
+    "B": {
+      "teacher": "student_conditioned",
+      "fitter": "original_validated"
+    },
+    "C": {
+      "teacher": "neutral",
+      "fitter": "evidence_aware"
+    },
+    "D": {
+      "teacher": "student_conditioned",
+      "fitter": "evidence_aware"
+    }
+  },
+  "source_and_temporal_controls": [
+    "F",
+    "T"
+  ],
+  "historical_original_top1_control": true,
+  "teacher_protocols_same_output_options": true,
+  "teacher_main_call_cap": 256,
+  "teacher_control_call_cap": 64,
+  "teacher_output_token_cap": 160,
+  "control_aliases": [
+    "HC01",
+    "HC02",
+    "HC03",
+    "HC04",
+    "V01",
+    "V02",
+    "V03",
+    "V04"
+  ],
+  "control_center_slots": [
+    0,
+    2
+  ],
+  "control_uses_GT_selection": false,
+  "spatial_configs": {
+    "hc2": {
+      "lr": 0.003535533905932738,
+      "sigma": 0.0125,
+      "tau": 0.2,
+      "steps": 5,
+      "writeback": 0.0625,
+      "samples": 32
+    },
+    "vidstg": {
+      "lr": 0.0075,
+      "sigma": 0.2,
+      "tau": 1.0,
+      "steps": 5,
+      "writeback": 0.125,
+      "samples": 32
+    }
+  },
+  "evidence_gate": {
+    "source_id": 1,
+    "minimum_presence": 0.6,
+    "grounded_fields": {
+      "actor_role": "matched",
+      "action_evidence": "visible",
+      "object_extent": "complete"
+    },
+    "novelty": "1-IoU(native,reference), external multiplicative weight",
+    "novelty_epsilon": 1e-06,
+    "reward_population_variance_epsilon": 1e-12,
+    "overlap_iou_epsilon": 1e-06,
+    "minimum_overlap_fraction": 0.03125,
+    "external_normalization": "sum(a*anchor_loss)/sum(a), no update if sum(a)=0",
+    "reference_step_validation": "same weighted reference IoU non-decrease 1e-7; reject restores optimizer and state"
+  },
+  "P0": "GT-free saved rollout audit + matched ID/visual-null controls; report support variance ESS novelty reachability separately",
+  "P1": "32 cases, 4 arms S and TS, exact same info/frames/config; seal all before scoring",
+  "optional_modules": {
+    "cold_start": "disabled unless audit shows reliable references with low support across multiple sources; requires separate matched controls before implementation",
+    "boundary_verification": "separate experiment, not mixed into P1",
+    "student_aware_proposals": "only one budget-matched followup if coverage is supported as bottleneck, proposed 3global+3local+2temporal; not P1"
+  },
+  "model_count_changed": false,
+  "DINO_SAM_YOLO_enabled": false,
+  "new_teacher_download": false,
+  "GT_before_global_predictions": false,
+  "GT_oracle_fits": false,
+  "bootstrap_executed": false,
+  "parameter_search": false,
+  "max_new_spatial_fits": 128,
+  "resources": {
+    "single_gpu_worker": true,
+    "memory_high_GiB": 16,
+    "memory_max_GiB": 20,
+    "memory_swap_max_GiB": 1,
+    "host_free_min_GiB": 6,
+    "GPU_free_min_GiB": 4,
+    "disk_floor_GiB": 30
+  },
+  "selection": "after complete dev measurement, compare A/B/C/D same dual-domain equal-weight mean, no per-domain recipe picking; include negative tails; no prompt/threshold retries",
+  "confirmation": "new registered sources not used to choose this recipe; old evaluated 32 cannot be called untouched if used in design",
+  "full13785": "old full stays paused; new conditional full only after method freeze and fresh confirmation, not launched by P0/P1 controller",
+  "CURRENT_promoted": false,
+  "time_unix": 1792042332.1608307
+}
