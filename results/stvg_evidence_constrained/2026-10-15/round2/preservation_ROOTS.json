@@ -1,0 +1,37 @@
+{
+  "status": "pass",
+  "receipts": {
+    "ROOT_INPUT_READBACK.json": {
+      "status": "pass",
+      "scope": "exact reuse of complete round2 independently pixel/geometry-read input and references, no new teacher or input construction",
+      "case_count": 32,
+      "GT_read": false,
+      "CPU_only": true,
+      "private_receipt_sha256": "40d8f5b2c163a38de18d415d1df08d2928360eeeb2392db8e1913342aa377d41"
+    },
+    "ROOT_TEMPORAL_READBACK.json": {
+      "status": "pass",
+      "case_count": 32,
+      "fit_count": 28,
+      "check_count": 4284,
+      "max_objective_error": 2.1337098754514727e-15,
+      "independent_NumPy_loss_and_every_grid_decode": true,
+      "GT_read": false,
+      "CPU_only": true,
+      "private_receipt_sha256": "6e25aacd173ddfba4b1ebddd460e2f908803699e6595078e1858d30edc67e011"
+    },
+    "ROOT_SPATIAL_READBACK.json": {
+      "status": "pass",
+      "case_count": 32,
+      "new_fit_count": 23,
+      "check_count": 736,
+      "max_reference_iou_error": 2.958270831632248e-07,
+      "preservation_penalty_checks": 460,
+      "max_preservation_penalty_error": 5.151716095386227e-09,
+      "GT_read": false,
+      "CPU_only": true,
+      "scope": "independent reference geometry, saved optimizer rollback and actual full-vs-cached final decoder; not independent backward",
+      "private_receipt_sha256": "0a023b0fe7c99064c74295b794645f096c420e293158701dee51b341d3fc8063"
+    }
+  }
+}

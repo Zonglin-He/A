@@ -1,0 +1,39 @@
+{
+  "status": "pass",
+  "receipts": {
+    "ROOT_INPUT_READBACK.json": {
+      "status": "pass",
+      "case_count": 32,
+      "GT_read": false,
+      "CPU_only": true,
+      "scope": "all geometric/pixel files exact-reused from independently read complete round2; 128 new_crop prompts independently reconstructed with the exact original crop template; no new rendering or candidate search",
+      "corrected_job_count": 128,
+      "exact_reused_response_count": 384,
+      "private_receipt_sha256": "61214c2d10c38e94ad7ad4d4c25e83e8fd7267b638913efb498863aef6879cca"
+    },
+    "ROOT_TEMPORAL_READBACK.json": {
+      "status": "pass",
+      "case_count": 32,
+      "fit_count": 28,
+      "check_count": 4284,
+      "max_objective_error": 2.1337098754514727e-15,
+      "independent_NumPy_loss_and_every_grid_decode": true,
+      "GT_read": false,
+      "CPU_only": true,
+      "private_receipt_sha256": "6e25aacd173ddfba4b1ebddd460e2f908803699e6595078e1858d30edc67e011"
+    },
+    "ROOT_SPATIAL_READBACK.json": {
+      "status": "pass",
+      "case_count": 32,
+      "new_fit_count": 7,
+      "check_count": 1244,
+      "max_reference_iou_error": 2.6837649969024824e-07,
+      "preservation_penalty_checks": 0,
+      "max_preservation_penalty_error": 0.0,
+      "GT_read": false,
+      "CPU_only": true,
+      "scope": "independent reference geometry, saved optimizer rollback and actual full-vs-cached final decoder; not independent backward",
+      "private_receipt_sha256": "cbdc0f78b171491bdb0fb00eadc3aa6f3193817411c32f9d91984ff6b6ca2cd5"
+    }
+  }
+}

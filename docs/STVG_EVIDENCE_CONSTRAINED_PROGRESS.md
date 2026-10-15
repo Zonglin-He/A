@@ -1,32 +1,41 @@
-# Evidence-constrained STVG: completed Round1, continuing matched spatial study
+# Evidence-Constrained STVG: final controlled development rounds
 
-Status: partial. Only the first temporal comparison is complete. Round2, new32 confirmation and official13785-query Table1 are not complete. This report does not promote CURRENT.
+Status: algorithm frozen; fresh32 confirmation and official13785-query Table1 are not yet complete. CURRENT is unchanged.
 
-## Controlled temporal comparison
+## Matched event clock × visual presentation
 
-Same32 historically exposed development parents (16 per direction), frozen TA-STVG source features, original sealed Caption–Query feedback and fixed spatial references. All predictions were sealed before development GT scoring; there are no GT-derived references or GT Oracle fits. No Bootstrap.
+All32 historically exposed development parents (16/domain), same offset-trust temporal objective, fixed domain-specific Spatial configurations. Every phase sealed all predictions before scoring. No GT generates references or accepts parameter steps; development GT selects one global recipe. No Bootstrap.
 
-|Temporal arm|HC T-only vIoU (%)|Vid T-only vIoU (%)|HC T+fixed-S (%)|Vid T+fixed-S (%)|
-|---|---:|---:|---:|---:|
-|projection|33.172911|9.742885|33.485816|10.331769|
-|original|30.564737|9.465615|30.843203|10.067195|
-|stable|30.529070|9.917721|30.785915|10.575237|
-|offset_trust|34.066991|9.966696|34.402504|10.572476|
+|Spatial input|HC T+S vIoU (%)|Vid T+S vIoU (%)|
+|---|---:|---:|
+|old_crop|34.402504|10.572476|
+|new_crop|34.643557|10.784159|
+|old_scene|33.326287|9.819991|
+|new_scene|33.930655|9.690997|
 
-Original is the old fixed five-step Adam. Stable fits the same averaged candidate KL+L2 with positive-step L-BFGS/Armijo. Offset-trust fits per-offset candidate KL plus full-grid KL(p0||p_theta), lambda1 and L2 .001, tau1, max50 accepted iterations. This is one locked comparison, not a temperature/learning-rate search.
+The original factorial changed crop prompt JSON whitespace together with the clock. It is retained in full as an implementation-confounded measurement, not a clean clock contrast. A separate correction changed only128 new_crop prompts to the exact original serialization: pixels, geometry, clock, model and parameters stayed fixed; other384 logical teacher records reused exact original responses. Seven changed-reference cases received actual new Spatial fits and full Student readouts; the remaining outputs were verified exact reference/config/seed reuse. The corrected global equal-domain mean selects new_crop. The improvement is small and is not an independent generalization estimate.
 
-28 inputs were usable and4 explicitly fell back for unavailable temporal input. Original final objective decreased in9/28 fits; both revised objectives decreased in28/28 with nonzero parameter updates. Stable changed24 complete decoded intervals and offset-trust changed22. All28 offset-trust fits hit the50-iteration cap: monotonic descent is established, convergence is not. The independent NumPy reader verified6012 objective/grid-decode checks with max error below2.14e-15. These proxy losses do not establish that MLLM preferences are correct.
+Original-matrix new_crop HC/Vid was 33.756115/10.750632%; corrected is 34.643557/10.784159%. Whitespace was not assumed semantically harmless.
 
-The prelocked global equal-domain T+fixed-S endpoint selects offset_trust over stable. Development selection is disclosed; these scores are not an untouched test estimate. Projection and original remain reported controls.
+Original512 logical WHO jobs comprised128 exact historical response reuses and384 new calls;58 actual new Spatial fits/full redecodes. The matched correction added128 calls and7 actual fits. These are not512 new Student fits. Proposal reconstruction is not universally deterministic: exact matching cached centers are reused, while new centers use the unchanged locked algorithm.
 
-## Next bounded stages
+## One prelocked output-preservation ablation
 
-Round2 fixes temporal and spatial update parameters and compares old/new event clock × crop/full-scene IDs. Same-center cached proposals and masks are reused exactly; new centers use the unchanged SelectiveSearch256/GrabCut24/DIS, up to8new+Source mechanism. Full-scene and crop within each clock share candidate geometry and IDs. Original algorithms can be non-deterministic on fresh replay, so regenerated candidates are never silently called exact cache reuse.
+|Fixed reference|HC T+S (%)|Vid T+S (%)|
+|---|---:|---:|
+|new_crop original update|34.643557|10.784159|
+|new_crop + fixed lambda1 preservation|34.646900|10.749830|
 
-An old-cache replay mismatch stopped CPU preparation before new R1/Student/GT. The preserved old partial input and a separate engineering revision keep the original frozen sources unchanged. The student entry imports and temporal interval-to-seal bindings were checked before any new Student fit.
+Exactly4 corrected-winner cases met the prelocked reference-improves/unsupervised-frame-harms trigger. The single fixed lambda1 penalty received23 actual fits/full redecodes and no new teacher search. Its equal-domain mean is lower; it is not selected. The earlier old_crop preservation run also remains exported with its negative result, but cannot select the corrected method. No lambda sweep follows.
 
-Further32 sources exclude all64 previous coordinate parents and the route original8, plus enumerated old teacher/development registries; this is a recorded-registry exclusion, not a universal never-seen claim. Source capture is complete, adaptation/confirmation scoring has not run. The algorithm will freeze before confirmation, and confirmation cannot choose another recipe. Full official Table1 uses HC validation3482 + Vid test10303 queries, episodic F/T/S/TS with all predictions sealed before GT. Old Native YOLO/SAM queues remain stopped. No new detector, segmenter, DINO or CURRENT promotion.
+## Frozen method and next execution
 
-Only one prelocked output-preservation ablation is allowed if the chosen spatial arm meets the declared drift condition; no new algorithm or parameter grid follows. External teacher training overlap remains unresolved.
+One global recipe: offset-aware full-grid-trust temporal adaptation; spatial observation centers conditioned on its adapted interval; original crop-contact Object-ID prompt; unchanged Selective Search256 / GrabCut24 / DIS candidate algorithm and up-to8 new candidates plus Source; existing domain-specific1792-parameter validated IoU-OPD. Output preservation is off. No new detector, SAM, DINO or method search.
 
-All anonymous rows, including negative, neutral and null outcomes, are exported. Raw queries, frames, masks, coordinates, annotation files, weights and cached hidden tensors are excluded.
+Temporal objective decline is not teacher correctness. All28 usable development trust fits made nonzero512-parameter updates and hit the50-iteration cap; no convergence claim. Four explicit missing temporal inputs fell back. Wrong teacher preferences and remaining full-Tube negative cases are preserved.
+
+The fresh32 roster excludes enumerated prior64 coordinate parents, original8 and additional recorded teacher/development source registries. This is a registered-roster exclusion, not a globally unseen-data claim. Its method lock precedes new teacher/adaptation/GT; results cannot choose another recipe. The official episodic Table1 is HC validation3482 + Vid test10303 queries. It will seal Frozen/Temporal/Spatial/T+S before final GT scoring; old canceled baselines are not called complete or restarted.
+
+Input root independently checked source RGB hashes, serialized tensor bytes, masks, geometry and marked-scene digests. Full-scene images were not independently rerendered. Eight private panels from two fixed cases were actually viewed; partial/overlapping candidates and edge-positioned ID labels remain limitations. Historical E mask NPZ files were absent from its old candidate-barrier SHA list; exact copied current mask bytes were checked, without claiming a nonexistent historical seal.
+
+All positive, negative, neutral and null scalar rows are public. Private video/query/mask/annotation/weights/hidden-state payloads are excluded. Frozen external R1 training-data overlap remains unresolved. No paper-wide or Table1 completion is claimed.
