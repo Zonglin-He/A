@@ -1,0 +1,75 @@
+{
+  "status": "locked",
+  "design": {
+    "status": "locked",
+    "count": 16,
+    "arms": [
+      "FULL_ORDER",
+      "A_ORDER"
+    ],
+    "old_controls": [
+      "Full_E1",
+      "A"
+    ],
+    "ordered_prompt_template": "Select one candidate using the following priority order. 1. Referent identity: determine which entity the query refers to, rather than choosing the most active participant. 2. Relation and role: keep candidates for that entity only when its observable actor, affected-object or recipient role and relations agree with the query. Do not interchange participants. 3. Visible extent: among candidates compatible with that identity and role, prefer the region covering the complete visible target entity rather than a part or a region mixing other entities and background. Greater area alone is not evidence of completeness. 4. Abstention: if no candidate reliably satisfies identity, role and visible target extent, return 0. Apply these checks internally; do not output explanations. ",
+    "original_criteria": "Select the ID whose outlined region best corresponds to the complete referent in the query, including its action/role. Do not select a body part or a nearby different object. If none is reliable, return 0. ",
+    "all_exposed_development": true,
+    "domain_counts": {
+      "hc2": 8,
+      "vidstg": 8
+    },
+    "new_prompt_versions": 1,
+    "new_visual_policy": false,
+    "frozen_Temporal": true,
+    "original_OPD_fullstep": true,
+    "no_backtracking_or_extent_change": true,
+    "no_GT_decisions": true,
+    "bootstrap": false,
+    "CURRENT_change": false,
+    "GT_read": false
+  },
+  "control_input_readback": {
+    "status": "pass",
+    "count": 64,
+    "system_template_AST_exact": true,
+    "original_generation_repetition_penalty": 1.05,
+    "original_generation_cap": 96,
+    "Full_original_padding_preserved": true,
+    "oldA_token_policy_fixed_not_recomputed": true,
+    "original_full_teacher_system_source_sha256": "8323084ec66139727ca8bb09510be964f9d2af5feb8f747cd1cb637924b10787",
+    "GT_read": false
+  },
+  "native_qualification": {
+    "status": "pass",
+    "count": 2,
+    "records": [
+      {
+        "dataset": "hc2",
+        "no_prune_native_greedy_exact": true,
+        "A_cached_uncached_checks": 2,
+        "GT_read": false
+      },
+      {
+        "dataset": "vidstg",
+        "no_prune_native_greedy_exact": true,
+        "A_cached_uncached_checks": 2,
+        "GT_read": false
+      }
+    ],
+    "new_visual_encodings": 2,
+    "clock_proof": {
+      "original_function_sha256": "374c69c222cdf752df826d96e0406ffc6baa5228f40b39c613380200343b6bb5",
+      "corrected_function_sha256": "30474ede10869f55ae54459583d152a6d54f5d1e44b216f3f3a1999b6ff2e278",
+      "scope": "single uniform-grid seconds dtype coercion; no other AST changes"
+    },
+    "model_load_seconds": 7.036855906015262,
+    "GT_read": false
+  },
+  "new_main_WHO_generations": 128,
+  "new_main_visual_encoder_passes": 0,
+  "qualification_shared_visual_passes": 2,
+  "qualification_short_generation_decodes": 6,
+  "actual_new_fits": 28,
+  "no_Temporal_prompt_or_token_or_OPD_change": true,
+  "GT_read": false
+}
