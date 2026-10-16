@@ -1,0 +1,87 @@
+{
+  "status": "locked",
+  "trial_id": "LR_080",
+  "recipe": "lite_fullstep",
+  "response_scope": "full_grid",
+  "lr_multiplier": 0.8,
+  "configs": {
+    "hc2": {
+      "M2": {
+        "lr": 0.004000000000000001,
+        "sigma": 0.025,
+        "tau": 0.1,
+        "steps": 5,
+        "writeback": 0.0625,
+        "samples": 32
+      }
+    },
+    "vidstg": {
+      "M2": {
+        "lr": 0.024,
+        "sigma": 0.4,
+        "tau": 0.5,
+        "steps": 3,
+        "writeback": 0.125,
+        "samples": 32
+      }
+    }
+  },
+  "response_settings": {
+    "hc2": {
+      "M1": {
+        "mu": 0.125,
+        "cg_max_iter": 16,
+        "cg_rtol": 0.001,
+        "response_ratio": 0.8660254037844386,
+        "response_abs_tolerance": 1e-07,
+        "backtracking": [
+          1.0,
+          0.5,
+          0.25,
+          0.125
+        ]
+      },
+      "M2": {
+        "mu": 0.125,
+        "cg_max_iter": 16,
+        "cg_rtol": 0.001,
+        "response_ratio": 0.8660254037844386,
+        "response_abs_tolerance": 1e-07,
+        "backtracking": [
+          1.0,
+          0.5,
+          0.25,
+          0.125
+        ]
+      }
+    },
+    "vidstg": {
+      "M1": {
+        "mu": 0.125,
+        "cg_max_iter": 16,
+        "cg_rtol": 0.001,
+        "response_ratio": 1.0,
+        "response_abs_tolerance": 1e-07,
+        "backtracking": [
+          1.0,
+          0.5,
+          0.25,
+          0.125
+        ]
+      },
+      "M2": {
+        "mu": 0.125,
+        "cg_max_iter": 16,
+        "cg_rtol": 0.001,
+        "response_ratio": 1.0,
+        "response_abs_tolerance": 1e-07,
+        "backtracking": [
+          1.0,
+          0.5,
+          0.25,
+          0.125
+        ]
+      }
+    }
+  }
+}

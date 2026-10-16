@@ -1,0 +1,50 @@
+{
+  "status": "documented",
+  "configuration_fields_are_not_all_active_switches": true,
+  "all_recipes": {
+    "trainable_parameters": 1792,
+    "query_residual_parameters": 256,
+    "LN_parameters": 1536,
+    "query_LN_Adam_reset_per_query": true,
+    "online_LN_writeback_enabled": false,
+    "antithetic_samples": 32,
+    "flat_skip": true,
+    "loss": "Gaussian IoU on-policy distillation",
+    "GT_used_for_online_acceptance": false
+  },
+  "lite_backtrack": {
+    "reference_reliability_weights": "equal weights",
+    "control_variate": false,
+    "analytic_current_policy_KL": false,
+    "response_direction_filter": true,
+    "response_amplitude_acceptance": false,
+    "equal_norm_diagnostic_forward": false,
+    "teacher_reference_IoU_gate": true,
+    "backtracking": [
+      1,
+      0.5,
+      0.25,
+      0.125
+    ],
+    "stop_after_rejected_update": true
+  },
+  "lite_fullstep": {
+    "inherits": "lite_backtrack",
+    "backtracking": [
+      1.0
+    ]
+  },
+  "temporal_lite": {
+    "parameters": 512,
+    "optimizer": "original L-BFGS",
+    "candidate_supervision": "shared candidates multiplied by offset count",
+    "parameter_L2": false,
+    "per_offset_full_grid_trust": true
+  },
+  "historical_fields": [
+    "writeback remains in inherited configuration but is not an online state carry switch",
+    "response_ratio/amplitude tolerances remain in parent settings but Lite removes the amplitude acceptance check",
+    "parent backtracking settings do not override lite_fullstep single full-step behavior"
+  ],
+  "lr_center_identity": "1.0 center uses SCOPE_FG only when strict input/runtime identity passes; it is not a separate GPU run"
+}

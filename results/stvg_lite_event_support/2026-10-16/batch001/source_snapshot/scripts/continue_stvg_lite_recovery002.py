@@ -1,0 +1,76 @@
+"""One finite engineering continuation; reuses all completed L001 GPU work."""
+from pathlib import Path
+import os
+import subprocess
+import sys
+import threading
+import time
+import traceback
+ROOT=Path(__file__).resolve().parents[1]
+sys.path.insert(0,str(ROOT))
+from scripts.stvg_lite_event_common_v1 import BASE,read,write,sha,make_trial
+from scripts.stvg_lite_recovery002_common import verify_recovery
+from scripts import launch_stvg_instance_identity_v1 as resource
+UNIT='stvg-lite-recovery002.service'
+EXEC=BASE/'execution_recovery002'
+PY=ROOT/'.conda/tubedetr/bin/python'
+
+
+def stage(name,script,*args,gpu=False):
+    verify_recovery()
+    if gpu:
+        v=resource.sample();g=1024**3
+        assert v['available']>=8*g and v['gpu_free']>=26*g and v['disk_free']>=30*g
+    resource.STAGE=name;out=EXEC/name;out.mkdir(parents=True,exist_ok=False)
+    write(BASE/'RECOVERY_STATUS002.json',dict(status='running',stage=name,GT_read=False,time=time.time()),mutable=True)
+    with(out/'worker.log').open('xb')as log:
+        p=subprocess.Popen([str(PY),'-B','scripts/'+script,*args],cwd=ROOT,env=dict(os.environ,PYTHONPATH=str(ROOT),PYTHONUNBUFFERED='1',OMP_NUM_THREADS='2',OPENBLAS_NUM_THREADS='2'),stdout=log,stderr=subprocess.STDOUT)
+        write(out/'LAUNCH.json',dict(status='running',stage=name,worker_pid=p.pid,controller_pid=os.getpid(),GT_read=False,time=time.time()))
+        code=p.wait()
+    write(out/'WORKER_EXIT.json',dict(status='exited',stage=name,exit_code=code,GT_read=False,time=time.time()))
+    if code:raise RuntimeError(name+' failed '+str(code))
+
+
+def unit(name,script,*args):
+    subprocess.run(['systemd-run','--user','--wait','--collect','--unit='+name,'--property=MemoryHigh=16G','--property=MemoryMax=20G','--property=MemorySwapMax=1G','--working-directory='+str(ROOT),'--setenv=PYTHONPATH='+str(ROOT),'--setenv=PYTHONUNBUFFERED=1','--setenv=OMP_NUM_THREADS=2','--setenv=OPENBLAS_NUM_THREADS=2',str(PY),'-B','scripts/'+script,*args],cwd=ROOT,check=True)
+
+
+def main():
+    verify_recovery();EXEC.mkdir(exist_ok=False)
+    resource.BASE=EXEC;resource.UNIT=UNIT;resource.STAGE='reader002'
+    g=1024**3
+    props=dict(x.split('=',1)for x in subprocess.check_output(['systemctl','--user','show',UNIT,'--property=MemoryHigh,MemoryMax,MemorySwapMax'],text=True).splitlines()if'='in x)
+    assert [int(props[k])for k in ('MemoryHigh','MemoryMax','MemorySwapMax')]==[16*g,20*g,g]
+    stop=threading.Event();threading.Thread(target=resource.monitor,args=(stop,),daemon=True).start()
+    try:
+        assert read(BASE/'execution/L001_student/WORKER_EXIT.json')['exit_code']==0
+        assert read(BASE/'trials/L001/STUDENT_GLOBAL_BARRIER.json')['count']==128
+        write(BASE/'STATUS.json',dict(status='running',stage='L001_independent_reader002',done=1,total=5,GT_read=False,time=time.time()),mutable=True)
+        stage('L001_root002','review_stvg_lite_event002.py','L001')
+        stage('L001_score','measure_stvg_lite_event_v1.py','L001')
+        if not(BASE/'trials/L002/DESIGN_LOCK.json').exists():make_trial('L002','lite_fullstep')
+        assert not(BASE/'trials/L002/STUDENT_GLOBAL_BARRIER.json').exists()
+        write(BASE/'STATUS.json',dict(status='running',stage='spatial_combination_L002',done=2,total=3,GT_read=False,time=time.time()),mutable=True)
+        stage('L002_student','run_stvg_lite_event_student_v1.py','L002',gpu=True)
+        stage('L002_root002','review_stvg_lite_event002.py','L002')
+        stage('L002_score','measure_stvg_lite_event_v1.py','L002')
+        stage('temporal','run_stvg_temporal_lite128_v1.py','--run')
+        stage('temporal_root','readback_stvg_temporal_lite128_v1.py')
+        stage('temporal_score','score_stvg_temporal_lite128_v1.py','--score')
+        stage('structure','select_stvg_lite_event_v1.py')
+        write(BASE/'RECOVERY_STATUS002.json',dict(status='running',stage='event_support_and_five_LR',GT_read=False,time=time.time()),mutable=True)
+        unit('stvg-lite-event-final-search-001','continue_stvg_lite_event_search002.py','--dispatch')
+        assert read(BASE/'FINAL_RECIPE_LOCK.json')['status']=='locked'
+        write(BASE/'RECOVERY_STATUS002.json',dict(status='running',stage='reclocked_complete_and_confirmation',GT_read=False,time=time.time()),mutable=True)
+        unit('stvg-lite-complete-001','continue_stvg_lite_complete002.py')
+        assert read(BASE/'MEASUREMENT_COMPLETION.json')['status']=='complete_pending_independent_study_view_public_archive'
+        write(BASE/'RECOVERY_STATUS002.json',dict(status='complete_pending_independent_study_view_public_archive',stage='root_handoff',GT_read=True,time=time.time()),mutable=True)
+    finally:stop.set()
+
+
+if __name__=='__main__':
+    try:main()
+    except BaseException as e:
+        write(BASE/'RECOVERY_FAILURE002.json',dict(status='failed',stage='required_root_review',error_type=type(e).__name__,error=str(e),traceback=traceback.format_exc(),GT_read=False,time=time.time()),mutable=True)
+        write(BASE/'RECOVERY_STATUS002.json',dict(status='failed',stage='required_root_review',GT_read=False,time=time.time()),mutable=True)
+        raise
