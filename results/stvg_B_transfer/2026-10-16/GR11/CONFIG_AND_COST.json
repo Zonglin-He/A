@@ -1,0 +1,133 @@
+{
+  "status": "complete",
+  "count": 16,
+  "design": {
+    "status": "locked",
+    "count": 16,
+    "domain_counts": {
+      "hc2": 8,
+      "vidstg": 8
+    },
+    "baseline": "exact prior B00",
+    "arms": [
+      "G10",
+      "R01",
+      "GR11"
+    ],
+    "extent_factor": 1.25,
+    "extent_center_fixed": true,
+    "step_scales": {
+      "full": [
+        1.0
+      ],
+      "backtrack": [
+        1.0,
+        0.5,
+        0.25,
+        0.125
+      ]
+    },
+    "gate": "unchanged finite and equal-anchor mean Teacher IoU gain >= -1e-7; rollback and rejection early stop unchanged",
+    "no_GT_construction": true,
+    "no_new_teacher": true,
+    "all_exposed_development": true,
+    "bootstrap": false,
+    "CURRENT_change": false,
+    "official_fullset": false,
+    "GT_read": false
+  },
+  "actual_recipe": "lite_backtrack",
+  "configs": {
+    "hc2": {
+      "M2": {
+        "lr": 0.004500000000000001,
+        "sigma": 0.025,
+        "tau": 0.1,
+        "steps": 5,
+        "writeback": 0.0625,
+        "samples": 32
+      }
+    },
+    "vidstg": {
+      "M2": {
+        "lr": 0.027,
+        "sigma": 0.4,
+        "tau": 0.5,
+        "steps": 3,
+        "writeback": 0.125,
+        "samples": 32
+      }
+    }
+  },
+  "response_settings": {
+    "hc2": {
+      "M1": {
+        "mu": 0.125,
+        "cg_max_iter": 16,
+        "cg_rtol": 0.001,
+        "response_ratio": 0.8660254037844386,
+        "response_abs_tolerance": 1e-07,
+        "backtracking": [
+          1.0,
+          0.5,
+          0.25,
+          0.125
+        ]
+      },
+      "M2": {
+        "mu": 0.125,
+        "cg_max_iter": 16,
+        "cg_rtol": 0.001,
+        "response_ratio": 0.8660254037844386,
+        "response_abs_tolerance": 1e-07,
+        "backtracking": [
+          1.0,
+          0.5,
+          0.25,
+          0.125
+        ]
+      }
+    },
+    "vidstg": {
+      "M1": {
+        "mu": 0.125,
+        "cg_max_iter": 16,
+        "cg_rtol": 0.001,
+        "response_ratio": 1.0,
+        "response_abs_tolerance": 1e-07,
+        "backtracking": [
+          1.0,
+          0.5,
+          0.25,
+          0.125
+        ]
+      },
+      "M2": {
+        "mu": 0.125,
+        "cg_max_iter": 16,
+        "cg_rtol": 0.001,
+        "response_ratio": 1.0,
+        "response_abs_tolerance": 1e-07,
+        "backtracking": [
+          1.0,
+          0.5,
+          0.25,
+          0.125
+        ]
+      }
+    }
+  },
+  "new_external_Teacher_calls": 0,
+  "new_backbones": 0,
+  "new_Temporal_calls": 0,
+  "actual_fits": 16,
+  "nonzero_final": 16,
+  "worker_wall_seconds": {
+    "worker": 182.03102188394405,
+    "root": 2.069383729947731
+  },
+  "score_wall_seconds": 12.153294566087425,
+  "inherited_source_Teacher_cost": "prior B native evidence; not a zero-cost raw deployment pipeline",
+  "unchanged_rejection": true,
+  "GT_read": false
+}
