@@ -1,0 +1,198 @@
+{
+  "status": "locked",
+  "completion_scope": "pending_reclocked_confirmation",
+  "method_validation_status": "pending_reclocked_confirmation",
+  "selected_spatial_recipe": "lite_fullstep",
+  "selected_response_scope": "full_grid",
+  "configs": {
+    "hc2": {
+      "lr": 0.004500000000000001,
+      "sigma": 0.025,
+      "tau": 0.1,
+      "steps": 5,
+      "writeback": 0.0625,
+      "samples": 32
+    },
+    "vidstg": {
+      "lr": 0.027,
+      "sigma": 0.4,
+      "tau": 0.5,
+      "steps": 3,
+      "writeback": 0.125,
+      "samples": 32
+    }
+  },
+  "response_settings": {
+    "hc2": {
+      "mu": 0.125,
+      "cg_max_iter": 16,
+      "cg_rtol": 0.001,
+      "response_ratio": 0.8660254037844386,
+      "response_abs_tolerance": 1e-07,
+      "backtracking": [
+        1.0,
+        0.5,
+        0.25,
+        0.125
+      ]
+    },
+    "vidstg": {
+      "mu": 0.125,
+      "cg_max_iter": 16,
+      "cg_rtol": 0.001,
+      "response_ratio": 1.0,
+      "response_abs_tolerance": 1e-07,
+      "backtracking": [
+        1.0,
+        0.5,
+        0.25,
+        0.125
+      ]
+    }
+  },
+  "selected_temporal": "temporal_lite",
+  "lr_factors_by_domain": {
+    "hc2": 0.9,
+    "vidstg": 0.9
+  },
+  "lr_search": {
+    "hc2": {
+      "scores_pp_by_factor": {
+        "0.8": 29.890349617568145,
+        "0.9": 29.894382221283987,
+        "1.0": 29.894280956154915,
+        "1.1": 29.888476376388983,
+        "1.2": 29.87545913035548
+      },
+      "selected_factor": 0.9,
+      "selected_mean_vIoU_pp": 29.894382221283987,
+      "tie_rule": "closest to center 1.0, then lower factor"
+    },
+    "vidstg": {
+      "scores_pp_by_factor": {
+        "0.8": 13.863530985223571,
+        "0.9": 13.917258262649563,
+        "1.0": 13.843186752238587,
+        "1.1": 13.59097124441773,
+        "1.2": 13.57925527634955
+      },
+      "selected_factor": 0.9,
+      "selected_mean_vIoU_pp": 13.917258262649563,
+      "tie_rule": "closest to center 1.0, then lower factor"
+    },
+    "factor_scores_pp": {
+      "hc2": {
+        "0.8": 29.890349617568145,
+        "0.9": 29.894382221283987,
+        "1.0": 29.894280956154915,
+        "1.1": 29.888476376388983,
+        "1.2": 29.87545913035548
+      },
+      "vidstg": {
+        "0.8": 13.863530985223571,
+        "0.9": 13.917258262649563,
+        "1.0": 13.843186752238587,
+        "1.1": 13.59097124441773,
+        "1.2": 13.57925527634955
+      }
+    },
+    "configs_by_factor": {
+      "0.8": {
+        "hc2": {
+          "lr": 0.004000000000000001,
+          "sigma": 0.025,
+          "tau": 0.1,
+          "steps": 5,
+          "writeback": 0.0625,
+          "samples": 32
+        },
+        "vidstg": {
+          "lr": 0.024,
+          "sigma": 0.4,
+          "tau": 0.5,
+          "steps": 3,
+          "writeback": 0.125,
+          "samples": 32
+        }
+      },
+      "0.9": {
+        "hc2": {
+          "lr": 0.004500000000000001,
+          "sigma": 0.025,
+          "tau": 0.1,
+          "steps": 5,
+          "writeback": 0.0625,
+          "samples": 32
+        },
+        "vidstg": {
+          "lr": 0.027,
+          "sigma": 0.4,
+          "tau": 0.5,
+          "steps": 3,
+          "writeback": 0.125,
+          "samples": 32
+        }
+      },
+      "1.0": {
+        "hc2": {
+          "lr": 0.005000000000000001,
+          "sigma": 0.025,
+          "tau": 0.1,
+          "steps": 5,
+          "writeback": 0.0625,
+          "samples": 32
+        },
+        "vidstg": {
+          "lr": 0.03,
+          "sigma": 0.4,
+          "tau": 0.5,
+          "steps": 3,
+          "writeback": 0.125,
+          "samples": 32
+        }
+      },
+      "1.1": {
+        "hc2": {
+          "lr": 0.005500000000000001,
+          "sigma": 0.025,
+          "tau": 0.1,
+          "steps": 5,
+          "writeback": 0.0625,
+          "samples": 32
+        },
+        "vidstg": {
+          "lr": 0.033,
+          "sigma": 0.4,
+          "tau": 0.5,
+          "steps": 3,
+          "writeback": 0.125,
+          "samples": 32
+        }
+      },
+      "1.2": {
+        "hc2": {
+          "lr": 0.006000000000000001,
+          "sigma": 0.025,
+          "tau": 0.1,
+          "steps": 5,
+          "writeback": 0.0625,
+          "samples": 32
+        },
+        "vidstg": {
+          "lr": 0.036,
+          "sigma": 0.4,
+          "tau": 0.5,
+          "steps": 3,
+          "writeback": 0.125,
+          "samples": 32
+        }
+      }
+    }
+  },
+  "GT_read": true,
+  "GT_used_for_online_reference_or_step": false,
+  "CURRENT_promoted": false,
+  "suite_final": false,
+  "confirmation_status": "pending_reclocked_confirmation",
+  "bootstrap_executed": false
+}
