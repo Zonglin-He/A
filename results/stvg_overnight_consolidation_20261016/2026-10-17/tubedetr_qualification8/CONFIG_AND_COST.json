@@ -1,0 +1,22 @@
+{
+  "status": "pass",
+  "count": 8,
+  "checkpoints": {
+    "hc2": {
+      "path": "checkpoints/tubedetr_hcstvg2_res224_stride2.pth",
+      "sha256": "c646a8b7131bb28806c350e16479cd8bb31d4425ccb15129b26a6e4d38dd4222",
+      "source_training_direction": "native released domain-specific weights; not TA cross-domain weights"
+    },
+    "vidstg": {
+      "path": "checkpoints/tubedetr_vidstg_res224_stride2.pth",
+      "sha256": "2802c66049b2e7986a826b4bbd291eb8521446cfba6fee03b56729438bf44213",
+      "source_training_direction": "native released domain-specific weights; not TA cross-domain weights"
+    }
+  },
+  "native_offsets": 1,
+  "trainable_parameters": 512,
+  "step": "engineering-only one SGD proposal toward own boxes +0.01, learning rate 1; no Teacher/GT",
+  "no_downloads": true,
+  "not_TA_cross_domain_weights": true,
+  "GT_read": false
+}
