@@ -1,0 +1,23 @@
+{
+  "status": "locked",
+  "variant": "source_seeded_foreground_hypothesis_v1",
+  "question": "can RGB-conditioned instance-like evidence near the Source prior improve over generic background/part proposals?",
+  "proposal_budget": "preserve Source1 and old nonSource2..8; replace lowest-ranked old slot9 with one new hypothesis, same total nine candidates; if fewer slots add one up to nine; invalid hypothesis leaves original pool unchanged",
+  "generation": "Source normalized box as generic position prior; expand width/height1.25, inside Source probable foreground, central half-size ellipse sure foreground, annulus probable background, outside expanded box sure background; three GrabCut iterations; entire foreground retained, no LCC; existing five-frame DIS propagation",
+  "fixed_coefficients": {
+    "expansion": 1.25,
+    "central_fraction": 0.5,
+    "grabcut_iterations": 3,
+    "minimum_mask_pixels": 32
+  },
+  "new_weights": false,
+  "new_model": false,
+  "new_semantic_prompt": false,
+  "geometry_GT_access": false,
+  "limitation": "not independent referent discovery: cannot reliably recover an object outside wrong Source prior; foreground may merge background; replacing slot9 can remove useful old proposal; preserve negative cases",
+  "rationale": "complete-pool audit shows frequent background/part alternatives and zero nonSource >=.5 on25 exact GT windows; not proof of incorrect identity for every alternative. Source has7 such windows and provides a testable prior.",
+  "E0": "corrected common Temporal and Spatial interfaces, original exact current proposals",
+  "E1": "same corrected interfaces and response-guided Lite OPD; one replaced proposal",
+  "E2": "exact E1 Teacher references, original validated OPD with same parameters",
+  "GT_read": false
+}
