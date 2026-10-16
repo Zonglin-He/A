@@ -1,0 +1,801 @@
+{
+  "status": "complete",
+  "design": {
+    "status": "locked",
+    "count": 16,
+    "arms": [
+      "FULL_ORDER",
+      "A_ORDER"
+    ],
+    "old_controls": [
+      "Full_E1",
+      "A"
+    ],
+    "ordered_prompt_template": "Select one candidate using the following priority order. 1. Referent identity: determine which entity the query refers to, rather than choosing the most active participant. 2. Relation and role: keep candidates for that entity only when its observable actor, affected-object or recipient role and relations agree with the query. Do not interchange participants. 3. Visible extent: among candidates compatible with that identity and role, prefer the region covering the complete visible target entity rather than a part or a region mixing other entities and background. Greater area alone is not evidence of completeness. 4. Abstention: if no candidate reliably satisfies identity, role and visible target extent, return 0. Apply these checks internally; do not output explanations. ",
+    "original_criteria": "Select the ID whose outlined region best corresponds to the complete referent in the query, including its action/role. Do not select a body part or a nearby different object. If none is reliable, return 0. ",
+    "all_exposed_development": true,
+    "domain_counts": {
+      "hc2": 8,
+      "vidstg": 8
+    },
+    "new_prompt_versions": 1,
+    "new_visual_policy": false,
+    "frozen_Temporal": true,
+    "original_OPD_fullstep": true,
+    "no_backtracking_or_extent_change": true,
+    "no_GT_decisions": true,
+    "bootstrap": false,
+    "CURRENT_change": false,
+    "GT_read": false
+  },
+  "configs": {
+    "hc2": {
+      "M2": {
+        "lr": 0.004500000000000001,
+        "sigma": 0.025,
+        "tau": 0.1,
+        "steps": 5,
+        "writeback": 0.0625,
+        "samples": 32
+      }
+    },
+    "vidstg": {
+      "M2": {
+        "lr": 0.027,
+        "sigma": 0.4,
+        "tau": 0.5,
+        "steps": 3,
+        "writeback": 0.125,
+        "samples": 32
+      }
+    }
+  },
+  "response_settings": {
+    "hc2": {
+      "M1": {
+        "mu": 0.125,
+        "cg_max_iter": 16,
+        "cg_rtol": 0.001,
+        "response_ratio": 0.8660254037844386,
+        "response_abs_tolerance": 1e-07,
+        "backtracking": [
+          1.0,
+          0.5,
+          0.25,
+          0.125
+        ]
+      },
+      "M2": {
+        "mu": 0.125,
+        "cg_max_iter": 16,
+        "cg_rtol": 0.001,
+        "response_ratio": 0.8660254037844386,
+        "response_abs_tolerance": 1e-07,
+        "backtracking": [
+          1.0,
+          0.5,
+          0.25,
+          0.125
+        ]
+      }
+    },
+    "vidstg": {
+      "M1": {
+        "mu": 0.125,
+        "cg_max_iter": 16,
+        "cg_rtol": 0.001,
+        "response_ratio": 1.0,
+        "response_abs_tolerance": 1e-07,
+        "backtracking": [
+          1.0,
+          0.5,
+          0.25,
+          0.125
+        ]
+      },
+      "M2": {
+        "mu": 0.125,
+        "cg_max_iter": 16,
+        "cg_rtol": 0.001,
+        "response_ratio": 1.0,
+        "response_abs_tolerance": 1e-07,
+        "backtracking": [
+          1.0,
+          0.5,
+          0.25,
+          0.125
+        ]
+      }
+    }
+  },
+  "recipe": "lite_fullstep",
+  "response_scope": "full_grid",
+  "visual_tokens_kept": 1280,
+  "visual_tokens_original": 1280,
+  "max_new_tokens": 96,
+  "repetition_penalty": 1.05,
+  "requests": [
+    {
+      "case_id": "R006",
+      "dataset": "hc2",
+      "slot": 0,
+      "parse_status": "valid",
+      "visible_id": 3,
+      "truncated": false,
+      "generated_tokens": 7,
+      "wall_seconds": 0.8106046980246902
+    },
+    {
+      "case_id": "R006",
+      "dataset": "hc2",
+      "slot": 1,
+      "parse_status": "valid",
+      "visible_id": 9,
+      "truncated": false,
+      "generated_tokens": 7,
+      "wall_seconds": 0.4156348048709333
+    },
+    {
+      "case_id": "R006",
+      "dataset": "hc2",
+      "slot": 2,
+      "parse_status": "valid",
+      "visible_id": 9,
+      "truncated": false,
+      "generated_tokens": 7,
+      "wall_seconds": 0.39017505501396954
+    },
+    {
+      "case_id": "R006",
+      "dataset": "hc2",
+      "slot": 3,
+      "parse_status": "valid",
+      "visible_id": 5,
+      "truncated": false,
+      "generated_tokens": 7,
+      "wall_seconds": 0.3591246239375323
+    },
+    {
+      "case_id": "R001",
+      "dataset": "hc2",
+      "slot": 0,
+      "parse_status": "valid",
+      "visible_id": 1,
+      "truncated": false,
+      "generated_tokens": 6,
+      "wall_seconds": 0.3457438051700592
+    },
+    {
+      "case_id": "R001",
+      "dataset": "hc2",
+      "slot": 1,
+      "parse_status": "valid",
+      "visible_id": 1,
+      "truncated": false,
+      "generated_tokens": 6,
+      "wall_seconds": 0.34797301003709435
+    },
+    {
+      "case_id": "R001",
+      "dataset": "hc2",
+      "slot": 2,
+      "parse_status": "valid",
+      "visible_id": 1,
+      "truncated": false,
+      "generated_tokens": 6,
+      "wall_seconds": 0.3412003491539508
+    },
+    {
+      "case_id": "R001",
+      "dataset": "hc2",
+      "slot": 3,
+      "parse_status": "valid",
+      "visible_id": 1,
+      "truncated": false,
+      "generated_tokens": 6,
+      "wall_seconds": 0.3385669009294361
+    },
+    {
+      "case_id": "R005",
+      "dataset": "hc2",
+      "slot": 0,
+      "parse_status": "valid",
+      "visible_id": 1,
+      "truncated": false,
+      "generated_tokens": 6,
+      "wall_seconds": 0.3450392191298306
+    },
+    {
+      "case_id": "R005",
+      "dataset": "hc2",
+      "slot": 1,
+      "parse_status": "valid",
+      "visible_id": 1,
+      "truncated": false,
+      "generated_tokens": 6,
+      "wall_seconds": 0.35986185912042856
+    },
+    {
+      "case_id": "R005",
+      "dataset": "hc2",
+      "slot": 2,
+      "parse_status": "valid",
+      "visible_id": 1,
+      "truncated": false,
+      "generated_tokens": 6,
+      "wall_seconds": 0.34661140805110335
+    },
+    {
+      "case_id": "R005",
+      "dataset": "hc2",
+      "slot": 3,
+      "parse_status": "valid",
+      "visible_id": 1,
+      "truncated": false,
+      "generated_tokens": 6,
+      "wall_seconds": 0.3439971040934324
+    },
+    {
+      "case_id": "R002",
+      "dataset": "hc2",
+      "slot": 0,
+      "parse_status": "valid",
+      "visible_id": 1,
+      "truncated": false,
+      "generated_tokens": 7,
+      "wall_seconds": 0.35221781488507986
+    },
+    {
+      "case_id": "R002",
+      "dataset": "hc2",
+      "slot": 1,
+      "parse_status": "valid",
+      "visible_id": 6,
+      "truncated": false,
+      "generated_tokens": 7,
+      "wall_seconds": 0.35383658902719617
+    },
+    {
+      "case_id": "R002",
+      "dataset": "hc2",
+      "slot": 2,
+      "parse_status": "valid",
+      "visible_id": 6,
+      "truncated": false,
+      "generated_tokens": 6,
+      "wall_seconds": 0.3514244931284338
+    },
+    {
+      "case_id": "R002",
+      "dataset": "hc2",
+      "slot": 3,
+      "parse_status": "valid",
+      "visible_id": 6,
+      "truncated": false,
+      "generated_tokens": 7,
+      "wall_seconds": 0.36019571404904127
+    },
+    {
+      "case_id": "R003",
+      "dataset": "hc2",
+      "slot": 0,
+      "parse_status": "valid",
+      "visible_id": 1,
+      "truncated": false,
+      "generated_tokens": 7,
+      "wall_seconds": 0.3601291279774159
+    },
+    {
+      "case_id": "R003",
+      "dataset": "hc2",
+      "slot": 1,
+      "parse_status": "valid",
+      "visible_id": 1,
+      "truncated": false,
+      "generated_tokens": 7,
+      "wall_seconds": 0.3637914729770273
+    },
+    {
+      "case_id": "R003",
+      "dataset": "hc2",
+      "slot": 2,
+      "parse_status": "valid",
+      "visible_id": 7,
+      "truncated": false,
+      "generated_tokens": 7,
+      "wall_seconds": 0.36471572099253535
+    },
+    {
+      "case_id": "R003",
+      "dataset": "hc2",
+      "slot": 3,
+      "parse_status": "valid",
+      "visible_id": 1,
+      "truncated": false,
+      "generated_tokens": 6,
+      "wall_seconds": 0.3444748120382428
+    },
+    {
+      "case_id": "R004",
+      "dataset": "hc2",
+      "slot": 0,
+      "parse_status": "valid",
+      "visible_id": 1,
+      "truncated": false,
+      "generated_tokens": 6,
+      "wall_seconds": 0.34232398215681314
+    },
+    {
+      "case_id": "R004",
+      "dataset": "hc2",
+      "slot": 1,
+      "parse_status": "valid",
+      "visible_id": 1,
+      "truncated": false,
+      "generated_tokens": 6,
+      "wall_seconds": 0.33661210210993886
+    },
+    {
+      "case_id": "R004",
+      "dataset": "hc2",
+      "slot": 2,
+      "parse_status": "valid",
+      "visible_id": 1,
+      "truncated": false,
+      "generated_tokens": 6,
+      "wall_seconds": 0.34022079687565565
+    },
+    {
+      "case_id": "R004",
+      "dataset": "hc2",
+      "slot": 3,
+      "parse_status": "valid",
+      "visible_id": 3,
+      "truncated": false,
+      "generated_tokens": 6,
+      "wall_seconds": 0.344104508170858
+    },
+    {
+      "case_id": "R007",
+      "dataset": "hc2",
+      "slot": 0,
+      "parse_status": "valid",
+      "visible_id": 1,
+      "truncated": false,
+      "generated_tokens": 6,
+      "wall_seconds": 0.35939523205161095
+    },
+    {
+      "case_id": "R007",
+      "dataset": "hc2",
+      "slot": 1,
+      "parse_status": "valid",
+      "visible_id": 1,
+      "truncated": false,
+      "generated_tokens": 7,
+      "wall_seconds": 0.3562116401735693
+    },
+    {
+      "case_id": "R007",
+      "dataset": "hc2",
+      "slot": 2,
+      "parse_status": "valid",
+      "visible_id": 0,
+      "truncated": false,
+      "generated_tokens": 7,
+      "wall_seconds": 0.35016593895852566
+    },
+    {
+      "case_id": "R007",
+      "dataset": "hc2",
+      "slot": 3,
+      "parse_status": "valid",
+      "visible_id": 4,
+      "truncated": false,
+      "generated_tokens": 7,
+      "wall_seconds": 0.3628957881592214
+    },
+    {
+      "case_id": "R008",
+      "dataset": "hc2",
+      "slot": 0,
+      "parse_status": "valid",
+      "visible_id": 9,
+      "truncated": false,
+      "generated_tokens": 7,
+      "wall_seconds": 0.3575572781264782
+    },
+    {
+      "case_id": "R008",
+      "dataset": "hc2",
+      "slot": 1,
+      "parse_status": "valid",
+      "visible_id": 9,
+      "truncated": false,
+      "generated_tokens": 7,
+      "wall_seconds": 0.3650821219198406
+    },
+    {
+      "case_id": "R008",
+      "dataset": "hc2",
+      "slot": 2,
+      "parse_status": "valid",
+      "visible_id": 9,
+      "truncated": false,
+      "generated_tokens": 7,
+      "wall_seconds": 0.3721428280696273
+    },
+    {
+      "case_id": "R008",
+      "dataset": "hc2",
+      "slot": 3,
+      "parse_status": "valid",
+      "visible_id": 1,
+      "truncated": false,
+      "generated_tokens": 7,
+      "wall_seconds": 0.3755388220306486
+    },
+    {
+      "case_id": "R010",
+      "dataset": "vidstg",
+      "slot": 0,
+      "parse_status": "valid",
+      "visible_id": 1,
+      "truncated": false,
+      "generated_tokens": 7,
+      "wall_seconds": 0.36532149091362953
+    },
+    {
+      "case_id": "R010",
+      "dataset": "vidstg",
+      "slot": 1,
+      "parse_status": "valid",
+      "visible_id": 3,
+      "truncated": false,
+      "generated_tokens": 7,
+      "wall_seconds": 0.36515657301060855
+    },
+    {
+      "case_id": "R010",
+      "dataset": "vidstg",
+      "slot": 2,
+      "parse_status": "valid",
+      "visible_id": 1,
+      "truncated": false,
+      "generated_tokens": 7,
+      "wall_seconds": 0.3735435570124537
+    },
+    {
+      "case_id": "R010",
+      "dataset": "vidstg",
+      "slot": 3,
+      "parse_status": "valid",
+      "visible_id": 3,
+      "truncated": false,
+      "generated_tokens": 7,
+      "wall_seconds": 0.4223071781452745
+    },
+    {
+      "case_id": "R015",
+      "dataset": "vidstg",
+      "slot": 0,
+      "parse_status": "valid",
+      "visible_id": 9,
+      "truncated": false,
+      "generated_tokens": 6,
+      "wall_seconds": 0.35235816705971956
+    },
+    {
+      "case_id": "R015",
+      "dataset": "vidstg",
+      "slot": 1,
+      "parse_status": "valid",
+      "visible_id": 0,
+      "truncated": false,
+      "generated_tokens": 7,
+      "wall_seconds": 0.3586256019771099
+    },
+    {
+      "case_id": "R015",
+      "dataset": "vidstg",
+      "slot": 2,
+      "parse_status": "valid",
+      "visible_id": 9,
+      "truncated": false,
+      "generated_tokens": 7,
+      "wall_seconds": 0.3875345119740814
+    },
+    {
+      "case_id": "R015",
+      "dataset": "vidstg",
+      "slot": 3,
+      "parse_status": "valid",
+      "visible_id": 9,
+      "truncated": false,
+      "generated_tokens": 7,
+      "wall_seconds": 0.3749813388567418
+    },
+    {
+      "case_id": "R009",
+      "dataset": "vidstg",
+      "slot": 0,
+      "parse_status": "valid",
+      "visible_id": 9,
+      "truncated": false,
+      "generated_tokens": 6,
+      "wall_seconds": 0.45017295982688665
+    },
+    {
+      "case_id": "R009",
+      "dataset": "vidstg",
+      "slot": 1,
+      "parse_status": "valid",
+      "visible_id": 8,
+      "truncated": false,
+      "generated_tokens": 7,
+      "wall_seconds": 0.3843176690861583
+    },
+    {
+      "case_id": "R009",
+      "dataset": "vidstg",
+      "slot": 2,
+      "parse_status": "valid",
+      "visible_id": 8,
+      "truncated": false,
+      "generated_tokens": 7,
+      "wall_seconds": 0.3697156978305429
+    },
+    {
+      "case_id": "R009",
+      "dataset": "vidstg",
+      "slot": 3,
+      "parse_status": "valid",
+      "visible_id": 1,
+      "truncated": false,
+      "generated_tokens": 6,
+      "wall_seconds": 0.3654164138715714
+    },
+    {
+      "case_id": "R011",
+      "dataset": "vidstg",
+      "slot": 0,
+      "parse_status": "valid",
+      "visible_id": 1,
+      "truncated": false,
+      "generated_tokens": 7,
+      "wall_seconds": 0.35823876108042896
+    },
+    {
+      "case_id": "R011",
+      "dataset": "vidstg",
+      "slot": 1,
+      "parse_status": "valid",
+      "visible_id": 0,
+      "truncated": false,
+      "generated_tokens": 7,
+      "wall_seconds": 0.4100824201013893
+    },
+    {
+      "case_id": "R011",
+      "dataset": "vidstg",
+      "slot": 2,
+      "parse_status": "valid",
+      "visible_id": 1,
+      "truncated": false,
+      "generated_tokens": 7,
+      "wall_seconds": 0.3803728180937469
+    },
+    {
+      "case_id": "R011",
+      "dataset": "vidstg",
+      "slot": 3,
+      "parse_status": "valid",
+      "visible_id": 1,
+      "truncated": false,
+      "generated_tokens": 7,
+      "wall_seconds": 0.3833418940193951
+    },
+    {
+      "case_id": "R012",
+      "dataset": "vidstg",
+      "slot": 0,
+      "parse_status": "valid",
+      "visible_id": 5,
+      "truncated": false,
+      "generated_tokens": 7,
+      "wall_seconds": 0.3973230051342398
+    },
+    {
+      "case_id": "R012",
+      "dataset": "vidstg",
+      "slot": 1,
+      "parse_status": "valid",
+      "visible_id": 0,
+      "truncated": false,
+      "generated_tokens": 7,
+      "wall_seconds": 0.3870878980960697
+    },
+    {
+      "case_id": "R012",
+      "dataset": "vidstg",
+      "slot": 2,
+      "parse_status": "valid",
+      "visible_id": 0,
+      "truncated": false,
+      "generated_tokens": 7,
+      "wall_seconds": 0.3738825689069927
+    },
+    {
+      "case_id": "R012",
+      "dataset": "vidstg",
+      "slot": 3,
+      "parse_status": "valid",
+      "visible_id": 5,
+      "truncated": false,
+      "generated_tokens": 7,
+      "wall_seconds": 0.3691674480214715
+    },
+    {
+      "case_id": "R013",
+      "dataset": "vidstg",
+      "slot": 0,
+      "parse_status": "valid",
+      "visible_id": 1,
+      "truncated": false,
+      "generated_tokens": 7,
+      "wall_seconds": 0.3724053790792823
+    },
+    {
+      "case_id": "R013",
+      "dataset": "vidstg",
+      "slot": 1,
+      "parse_status": "valid",
+      "visible_id": 1,
+      "truncated": false,
+      "generated_tokens": 10,
+      "wall_seconds": 0.4030221509747207
+    },
+    {
+      "case_id": "R013",
+      "dataset": "vidstg",
+      "slot": 2,
+      "parse_status": "valid",
+      "visible_id": 1,
+      "truncated": false,
+      "generated_tokens": 7,
+      "wall_seconds": 0.40036900201812387
+    },
+    {
+      "case_id": "R013",
+      "dataset": "vidstg",
+      "slot": 3,
+      "parse_status": "valid",
+      "visible_id": 1,
+      "truncated": false,
+      "generated_tokens": 7,
+      "wall_seconds": 0.36720303096808493
+    },
+    {
+      "case_id": "R014",
+      "dataset": "vidstg",
+      "slot": 0,
+      "parse_status": "valid",
+      "visible_id": 3,
+      "truncated": false,
+      "generated_tokens": 7,
+      "wall_seconds": 0.38072300306521356
+    },
+    {
+      "case_id": "R014",
+      "dataset": "vidstg",
+      "slot": 1,
+      "parse_status": "valid",
+      "visible_id": 1,
+      "truncated": false,
+      "generated_tokens": 7,
+      "wall_seconds": 0.3684359050821513
+    },
+    {
+      "case_id": "R014",
+      "dataset": "vidstg",
+      "slot": 2,
+      "parse_status": "valid",
+      "visible_id": 7,
+      "truncated": false,
+      "generated_tokens": 7,
+      "wall_seconds": 0.36887701600790024
+    },
+    {
+      "case_id": "R014",
+      "dataset": "vidstg",
+      "slot": 3,
+      "parse_status": "valid",
+      "visible_id": 8,
+      "truncated": false,
+      "generated_tokens": 7,
+      "wall_seconds": 0.3574520780239254
+    },
+    {
+      "case_id": "R016",
+      "dataset": "vidstg",
+      "slot": 0,
+      "parse_status": "valid",
+      "visible_id": 1,
+      "truncated": false,
+      "generated_tokens": 7,
+      "wall_seconds": 0.3650542439427227
+    },
+    {
+      "case_id": "R016",
+      "dataset": "vidstg",
+      "slot": 1,
+      "parse_status": "valid",
+      "visible_id": 3,
+      "truncated": false,
+      "generated_tokens": 7,
+      "wall_seconds": 0.3533015619032085
+    },
+    {
+      "case_id": "R016",
+      "dataset": "vidstg",
+      "slot": 2,
+      "parse_status": "valid",
+      "visible_id": 1,
+      "truncated": false,
+      "generated_tokens": 7,
+      "wall_seconds": 0.3585690720938146
+    },
+    {
+      "case_id": "R016",
+      "dataset": "vidstg",
+      "slot": 3,
+      "parse_status": "valid",
+      "visible_id": 1,
+      "truncated": false,
+      "generated_tokens": 7,
+      "wall_seconds": 0.3649583440274
+    }
+  ],
+  "qualification": {
+    "status": "pass",
+    "count": 2,
+    "records": [
+      {
+        "dataset": "hc2",
+        "no_prune_native_greedy_exact": true,
+        "A_cached_uncached_checks": 2,
+        "GT_read": false
+      },
+      {
+        "dataset": "vidstg",
+        "no_prune_native_greedy_exact": true,
+        "A_cached_uncached_checks": 2,
+        "GT_read": false
+      }
+    ],
+    "new_visual_encodings": 2,
+    "clock_proof": {
+      "original_function_sha256": "374c69c222cdf752df826d96e0406ffc6baa5228f40b39c613380200343b6bb5",
+      "corrected_function_sha256": "30474ede10869f55ae54459583d152a6d54f5d1e44b216f3f3a1999b6ff2e278",
+      "scope": "single uniform-grid seconds dtype coercion; no other AST changes"
+    },
+    "model_load_seconds": 7.036855906015262,
+    "GT_read": false
+  },
+  "new_visual_encodings": 0,
+  "new_generations": 64,
+  "model_load_seconds": 6.134297675918788,
+  "loop_seconds": 33.500350679969415,
+  "worker_seconds": {
+    "teacher": 56.90539776394144,
+    "teacher_root": 0.5588311729952693,
+    "student_prepare": 2.3522624131292105,
+    "student_worker": 145.80265643214807,
+    "student_root": 2.5349209918640554
+  },
+  "actual_fits": 12,
+  "accepted_steps": 47,
+  "nonzero_updates": 12,
+  "inherited_inputs_and_captions_not_free": true,
+  "GT_read": false
+}
