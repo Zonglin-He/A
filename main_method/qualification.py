@@ -53,6 +53,9 @@ def processor():
 
 def gpu_source():
     import collections,gc
+    import sys
+    from .runtime import interpreter
+    assert Path(sys.prefix).resolve()==Path(interpreter('gpu_equivalence')).parent.parent.resolve(), 'Source qualification requires the original Student environment'
     import torch
     from . import engine
     from scripts.stvg_soft_ep_coordinate_common_v1 import load_case

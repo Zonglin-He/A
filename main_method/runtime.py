@@ -11,6 +11,14 @@ import time
 ROOT = Path(os.environ.get('STVG_WORKSPACE_ROOT', Path(__file__).resolve().parents[1]))
 BASE = ROOT / 'artifacts/stvg_main_qwen_v1'
 
+def interpreter(stage):
+    """Keep incompatible Teacher and Student libraries in separate processes."""
+    environment = '.venv/stvg_qwen35_geometry_v1' if stage in ('temporal_teacher','spatial_teacher') else '.conda/tubedetr'
+    executable = ROOT / environment / 'bin/python'
+    if not executable.is_file():
+        raise FileNotFoundError(executable)
+    return str(executable)
+
 def read(path):
     return json.loads(Path(path).read_text())
 

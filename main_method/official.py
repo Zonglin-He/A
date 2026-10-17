@@ -22,7 +22,7 @@ import time
 from typing import Any
 
 from . import pipeline
-from .runtime import BASE, ROOT, read, sha
+from .runtime import BASE, ROOT, read, sha, interpreter
 
 
 BATCH_SIZE = 128
@@ -433,7 +433,7 @@ def _run_stage(scope: str, stage: str, *, expected_count: int, log_root: Path) -
     launch_path = attempt_dir / f"{stem}.LAUNCH.json"
     exit_path = attempt_dir / f"{stem}.EXIT.json"
     log_path = attempt_dir / f"{stem}.log"
-    argv = [sys.executable, "-m", "main_method.run", stage, "--scope", scope]
+    argv = [interpreter(stage), "-B", "-m", "main_method.run", stage, "--scope", scope]
     resources = _resource_guard(needs_gpu=stage in GPU_STAGES)
     started = time.time()
     with log_path.open("ab") as log:
@@ -443,7 +443,7 @@ def _run_stage(scope: str, stage: str, *, expected_count: int, log_root: Path) -
         except BaseException as exc:
             _write_json(launch_path, {
                 "status": "spawn_failed", "stage": stage, "scope": scope,
-                "argv": ["<sys.executable>", *argv[1:]], "pid": None,
+                "argv": argv, "pid": None,
                 "log_path": str(log_path.relative_to(ROOT)), "started_epoch": started,
                 "resources_before_launch": resources, "GT_read": False,
             })

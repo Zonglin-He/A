@@ -20,6 +20,12 @@ frozen code lock. Individual stage commands are exposed by
 GPU lease. Private datasets, checkpoints and environment installations are not
 published; place the existing verified assets at their recorded local paths.
 The compatible Qwen environment is isolated from the Student/R1 environments.
+The dispatcher explicitly uses `.venv/stvg_qwen35_geometry_v1/bin/python` for
+the two Teacher stages and `.conda/tubedetr/bin/python` for Student, fits,
+readouts and scoring. Teacher GPU leasing never installs the legacy Student
+loader into the Qwen process. Individual stages reject an incompatible Python
+environment before loading a model. Start the supervisor with the Student
+environment; these process boundaries do not change the frozen algorithm.
 
 Code cleanup materializes a dependency-only tree under `main_method_release/code`;
 all included source bytes and pure pairwise-function extraction are checked.
