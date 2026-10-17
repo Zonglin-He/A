@@ -1,0 +1,33 @@
+{
+  "source_train_per_domain": 36,
+  "source_validation_per_domain": 12,
+  "target_per_domain": 16,
+  "target_historically_exposed": true,
+  "source_target_parent_overlap_each_direction": 0,
+  "source_candidates_use_destination_domain_LR_steps": true,
+  "preparation": "additional source-supervised training; target critic frozen",
+  "candidate_count": 6,
+  "spatial_states": [
+    "Source",
+    "Direct actual complete Student"
+  ],
+  "temporal": "Native + highest legal boundary distribution hypotheses with different Uniform4 inputs",
+  "external_Actionness_projection": false,
+  "action_scores_used_for_candidates_or_critic": false,
+  "original_Student_internal_gates_unchanged": true,
+  "temporal_parameter_adaptation": false,
+  "episodic_1792": true,
+  "LN_writeback": 0,
+  "critic": {
+    "seed": 20261017,
+    "epochs": 80,
+    "batch_queries": 4,
+    "lr": 0.001,
+    "weight_decay": 0.0001
+  },
+  "uniform_joint_prior": true,
+  "temperature": 1,
+  "source_model_unchanged": true,
+  "restored_DINO_P7A_CURRENT_unchanged": true,
+  "Qwen_official_paused": true
+}
