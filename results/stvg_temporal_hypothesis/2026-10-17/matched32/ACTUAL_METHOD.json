@@ -1,0 +1,43 @@
+{
+  "count": 32,
+  "per_domain": 16,
+  "development_exposed": true,
+  "Source": "cross-domain TA-STVG",
+  "source_checkpoint_sha256_by_target": {
+    "hc2": [
+      "5ab12c86363ef0ce0ee006c00fd11c6b659c3a9b2cb01a4f2c613efe22a2aa83"
+    ],
+    "vidstg": [
+      "47d8f15841cd57e7bbf5a10e8bf23b1054d23b753e0becbd38a07f3dd60d5036"
+    ]
+  },
+  "Teacher": "frozen STVG-R1-7B",
+  "revision": "c0db00d019bf746f54b67770b82261b2161fed59",
+  "frames_per_hypothesis": 8,
+  "hypotheses": 2,
+  "Native_hypothesis": "actual FP32 two-offset native MAP merge",
+  "Alternative": "largest Native joint endpoint score with different real sampled frames; stable row-major tie, no Expand/Contract",
+  "probability": "conditional on two retained joint offset states, not merged-interval marginal",
+  "reward": "three-label P(A)-P(B), uncalibrated semantic signal not GT correctness",
+  "Teacher_target": "Native prior tilted by exp(reward/tau1)",
+  "objective": "candidate KL + sum offset full-grid Native trust KL",
+  "config": {
+    "tau_T": 1.0,
+    "l2": 0.0,
+    "lambda_grid": 1.0,
+    "max_iter": 50,
+    "memory": 10,
+    "gradient_tolerance": 1e-10,
+    "armijo_c1": 0.0001,
+    "initial_step": 1.0,
+    "backtrack_factor": 0.5,
+    "max_backtracks": 40
+  },
+  "parameters": 512,
+  "empty_truncated_equal_reward_no_second_hypothesis": "exact Native, no retry",
+  "external_Actionness_Projection": false,
+  "internal_frozen_backbone_action_gates": true,
+  "Spatial": "same revised R1 Direct and original episodic1792 Gaussian OPD/fullstep rollback response",
+  "CURRENT_changed": false,
+  "old_A_result_sha256": "971845c31dfa2f6e4c917a18ed429fd9492008fec28020a6fce9dbffbcf4fc33"
+}
