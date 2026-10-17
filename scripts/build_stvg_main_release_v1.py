@@ -275,6 +275,16 @@ def build_closure() -> dict[str, object]:
             continue
         if name in included:
             continue
+        # Python executes every existing package initializer before importing
+        # a submodule. Preserve those bytes and their own import dependencies;
+        # replacing a real package with an implicit namespace is not cleanup.
+        ancestor = path.parent
+        while ancestor != ROOT and ancestor.is_relative_to(ROOT):
+            initializer = ancestor / '__init__.py'
+            if initializer.is_file() and initializer != path:
+                imports[name].add(rel(initializer))
+                pending.append(initializer)
+            ancestor = ancestor.parent
         raw = path.read_bytes()
         text = raw.decode("utf-8")
         tree = ast.parse(text, filename=name)
