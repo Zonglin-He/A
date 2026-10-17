@@ -1,0 +1,122 @@
+{
+  "count": 32,
+  "per_domain": 16,
+  "development_exposed": true,
+  "Source": "cross-domain TA-STVG",
+  "checkpoint_sha256_by_target": {
+    "hc2": [
+      "5ab12c86363ef0ce0ee006c00fd11c6b659c3a9b2cb01a4f2c613efe22a2aa83"
+    ],
+    "vidstg": [
+      "47d8f15841cd57e7bbf5a10e8bf23b1054d23b753e0becbd38a07f3dd60d5036"
+    ]
+  },
+  "Teacher": "frozen STVG-R1-7B",
+  "Teacher_revision": "c0db00d019bf746f54b67770b82261b2161fed59",
+  "frames": 8,
+  "clock": "uniform full legal clip, original physical timestamps and Native red1 hints",
+  "SEM": "query-free caption + A support + frozen grounder new-text complete fusion/decoders",
+  "DIRECT": "same video and SEM A gate, strict seconds, one-cell native Gaussian grid target",
+  "PARA": "no video, query paraphrase and its own support gate",
+  "Native_student_grid": true,
+  "external_Actionness_Projection": false,
+  "internal_frozen_native_action_gates": true,
+  "parameters": 512,
+  "objective": "KL(Teacher||Student)+KL(Native||Student)",
+  "optimizer": {
+    "tau_T": 1.0,
+    "l2": 0.0,
+    "lambda_grid": 1.0,
+    "max_iter": 50,
+    "memory": 10,
+    "gradient_tolerance": 1e-10,
+    "armijo_c1": 0.0001,
+    "initial_step": 1.0,
+    "backtrack_factor": 0.5,
+    "max_backtracks": 40
+  },
+  "full_time": "SEM_STUDENT prelocked without GT",
+  "Spatial_parameters": 1792,
+  "Spatial_configs": {
+    "hc2": {
+      "M2": {
+        "lr": 0.004500000000000001,
+        "sigma": 0.025,
+        "tau": 0.1,
+        "steps": 5,
+        "writeback": 0.0625,
+        "samples": 32
+      }
+    },
+    "vidstg": {
+      "M2": {
+        "lr": 0.027,
+        "sigma": 0.4,
+        "tau": 0.5,
+        "steps": 3,
+        "writeback": 0.125,
+        "samples": 32
+      }
+    }
+  },
+  "Spatial_response_settings": {
+    "hc2": {
+      "M1": {
+        "mu": 0.125,
+        "cg_max_iter": 16,
+        "cg_rtol": 0.001,
+        "response_ratio": 0.8660254037844386,
+        "response_abs_tolerance": 1e-07,
+        "backtracking": [
+          1.0,
+          0.5,
+          0.25,
+          0.125
+        ]
+      },
+      "M2": {
+        "mu": 0.125,
+        "cg_max_iter": 16,
+        "cg_rtol": 0.001,
+        "response_ratio": 0.8660254037844386,
+        "response_abs_tolerance": 1e-07,
+        "backtracking": [
+          1.0,
+          0.5,
+          0.25,
+          0.125
+        ]
+      }
+    },
+    "vidstg": {
+      "M1": {
+        "mu": 0.125,
+        "cg_max_iter": 16,
+        "cg_rtol": 0.001,
+        "response_ratio": 1.0,
+        "response_abs_tolerance": 1e-07,
+        "backtracking": [
+          1.0,
+          0.5,
+          0.25,
+          0.125
+        ]
+      },
+      "M2": {
+        "mu": 0.125,
+        "cg_max_iter": 16,
+        "cg_rtol": 0.001,
+        "response_ratio": 1.0,
+        "response_abs_tolerance": 1e-07,
+        "backtracking": [
+          1.0,
+          0.5,
+          0.25,
+          0.125
+        ]
+      }
+    }
+  },
+  "Spatial_recipe": "original lite_fullstep Gaussian with reference rejection/rollback/early stop",
+  "CURRENT_changed": false
+}
