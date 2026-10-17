@@ -51,12 +51,12 @@ def prepare():
                 dev[c].append(min(cand,key=lambda r:digest('query/'+r['key']))['key'])
         counts[c]={role:dict(queries=sum(r['role']==role for r in rows[c]),
             sources=len({r['group'] for r in rows[c] if r['role']==role})) for role in ('K','D_fit','D_select','D_seal')}
-    sources=['private-authorization-e87fbb5d62ea','private-authorization-606f3f30b0fb','private-authorization-0cca20cea6f9']
+    sources=['5c632b10-6d60-48e7-8e9a-da55a2220446','06aa89c6-4d0f-4cd3-816c-dea3e8ccd891','da31008b-1050-4360-b3dd-b9c90c7984a5']
     files=['vg_tta/closure_replay_v1.py','scripts/run_closure_v1.py','vg_tta/shared_state_v1.py',
         'vg_tta/time_space_repair_v1.py','methods/CURRENT_METHOD.json']
     write(OUT/'LOCK.json',dict(rows=rows,dev_keys=dev,guard_keys=sorted(kkeys),graph_keys=old['graph_keys'],counts=counts,
         boundary=old['boundary'],spatial_lr=old['spatial_lr'],configs=full['configs'],
-        attachments={x:sha(Path('./private_authorization_notes')/x/'pasted-text.txt') for x in sources},
+        attachments={x:sha(Path('/home/wwww/.codex/attachments')/x/'pasted-text.txt') for x in sources},
         pins={f:sha(ROOT/f) for f in files},created=time.time(),max_rounds=5,
         dev_backward_max=60000,dev_DINO_max=4096,numerical_forwards_max=1000,
         role_policy='Union source and identical media; K includes prior four graph probes. One SHA-picked query/source in fit/select, all remaining queries preserve same source role.',

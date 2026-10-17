@@ -105,7 +105,7 @@ def notebook():
     nb.cells=[
         nbformat.v4.new_markdown_cell('## tl;dr\n本 notebook 核验 DeCoTA heuristic 机制实验。结论以封存预测和 QA_RESULTS 为准；这是历史名单机制复核，不是未接触测试集上的新确认。'),
         nbformat.v4.new_markdown_cell('## Context & Methods\n两 backbone × 两方向。每方向 32 开发源，评估 64/23 源。源级配对 bootstrap 10,000 次；随机条件先在源内平均。\n### Key Assumptions\n开发标签仅用于外层 gate/prior 选参；GT-anchor 是单独诊断。空间参数不更新。对照不做按评估结果择优拼接。'),
-        nbformat.v4.new_code_cell("from pathlib import Path\nimport json, numpy as np\nroot=Path('./artifacts/decota_heuristic_study_v1')\nread=lambda f:json.loads((root/f).read_text())\nqa=read('QA_RESULTS.json');qa"),
+        nbformat.v4.new_code_cell("from pathlib import Path\nimport json, numpy as np\nroot=Path('/home/wwww/visual grounding/artifacts/decota_heuristic_study_v1')\nread=lambda f:json.loads((root/f).read_text())\nqa=read('QA_RESULTS.json');qa"),
         nbformat.v4.new_markdown_cell('## Data\n独立视频数不是 backbone 次数、随机种子数或专家帧数的乘积。'),
         nbformat.v4.new_code_cell("lock=read('lock.json')\ncounts={s:{g:len(v) for g,v in gs.items()} for s,gs in lock['rows'].items()}\nassert counts=={'development':{'hc_to_vid':32,'vid_to_hc':32},'evaluation':{'hc_to_vid':64,'vid_to_hc':23}}\nassert qa['temporal_episodes']==302 and qa['main_parity']==174\ncounts"),
         nbformat.v4.new_markdown_cell('## Results\n固定主方法的部署 2×2。单位 corrected vIoU%。'),
