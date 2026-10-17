@@ -1,50 +1,18 @@
-# Query–Caption Temporal + Direct Spatial OPD
+# STVG: DINO P7-A + online Gaussian OPD
 
-The single research method is registered in `methods/MAIN_METHOD.json`.
-One frozen Qwen3.5-9B provides both event descriptions/preferences and sparse
-Direct geometry. Temporal uses the original 512-parameter merged-interval KL
-adapter and marginal MAP. Spatial uses the original 1792-parameter episodic
-Gaussian OPD, complete response control and rollback. No external Actionness,
-DINO, cross-query state inheritance or tuning is part of this entry point.
+当前按用户要求恢复历史DINO版本：Source原生时间I0内获取Uniform4稀疏参考，
+Actionness投影给出输出时间I1；1792参数Gaussian OPD更新Query残差和Decoder LN。
+Query与Adam逐条重置，LN按原比例跨Query保留。两域原参数保持，不重新调参。
 
-```bash
-.venv/stvg_qwen35_geometry_v1/bin/python -B -m main_method.run prepare
-.venv/stvg_qwen35_geometry_v1/bin/python -B -m main_method.qualification cpu
-.venv/stvg_qwen35_geometry_v1/bin/python -B -m main_method.qualification processor
-```
+- 主方法入口：`methods.stvg_opd_p7a_v1.predictor.P7AOPDPredictor`
+- [当前方法注册](methods/MAIN_METHOD.json)
+- [原始方法说明](methods/stvg_opd_p7a_v1/README.md)
+- [本次恢复验证协议](protocols/stvg_dino_rollback_verify32_v1.md)
+- [历史原始P7-A协议](protocols/stvg_opd_p7a_paper_revalidation_v1.md)
+- [验证入口](scripts/verify_stvg_dino_rollback_v1.py)
 
-The serial supervisor is `python -B -m main_method.controller`. It refuses to
-run new models without a remotely verified cleanup-publication receipt and a
-frozen code lock. Individual stage commands are exposed by
-`python -m main_method.run --help`; source/Teacher/readout stages own the common
-GPU lease. Private datasets, checkpoints and environment installations are not
-published; place the existing verified assets at their recorded local paths.
-The compatible Qwen environment is isolated from the Student/R1 environments.
-The dispatcher explicitly uses `.venv/stvg_qwen35_geometry_v1/bin/python` for
-the two Teacher stages and `.conda/tubedetr/bin/python` for Student, fits,
-readouts and scoring. Teacher GPU leasing never installs the legacy Student
-loader into the Qwen process. Individual stages reject an incompatible Python
-environment before loading a model. Start the supervisor with the Student
-environment; these process boundaries do not change the frozen algorithm.
-
-Code cleanup materializes a dependency-only tree under `main_method_release/code`;
-all included source bytes and pure pairwise-function extraction are checked.
-Historical source has a local recoverable tar snapshot and remains recoverable
-from the parent Git commit. Existing results and negative findings are retained.
-Unrelated running research services and their working source dependencies are
-not removed. Legacy names in retained primitive dependencies do not activate
-historical launchers; only `main_method` is the current execution entry.
-
-The official population is HC2 validation 3482 queries/237 videos and VidSTG
-test 10303 queries/732 videos. A fixed old development32 first checks actual
-end-to-end integration and cost; it is not independent confirmation and cannot
-select a new recipe. The official, three component rows, original corruption
-families/severities, sparse propagation and K=1/2/4/8 analyses remain distinct
-measured groups. Every group requires actual prediction seals, independent
-readback, post-seal GT evaluation, privacy/pixel review and verified publication.
-Preparation, engineering qualification and complete scientific measurement are
-reported separately. Figure 1 and manuscript writing are not part of this run.
-
-See `protocols/stvg_main_qwen_v1.md`. Existing QC results have not established
-an extra benefit over the same marginal decoder without updates; that control
-and the historical failed confirmation remain in the research record.
+Qwen官方实验与自动接续已由用户暂停；已完成结果和未完成产物均保留。
+本次32历史来源的实现回归验证、完整预测封存与独立评分已完成。
+正式全量与其他历史队列尚未重启；[验证报告](results/stvg_dino_rollback/2026-10-17/verification32/REPORT.md)保留完整正负结果。
+验证完成状态、全部正负结果与限制以实际ROOT/CPU和远端公开收据为准。
+权重、私有媒体、标注、Query/Caption文本、原始响应和缓存不公开。

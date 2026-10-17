@@ -1,0 +1,65 @@
+{
+  "status": "user_selected_historical_DINO_P7A_restored_verified32",
+  "method": "Historical P7-A: DINO + actionness projection + online Gaussian OPD",
+  "entrypoint": "methods.stvg_opd_p7a_v1.predictor.P7AOPDPredictor",
+  "selection_authority": "explicit user rollback, attachment d5af5269-ca81-4ca9-b3d2-5b02467aff90",
+  "configuration_file": "methods/decota_spatial_opd_v1/configs.json",
+  "spatial_configurations": {
+    "hc2": {
+      "lr": 0.01,
+      "sigma": 0.025,
+      "tau": 0.05,
+      "steps": 40,
+      "writeback": 0.0625,
+      "samples": 32
+    },
+    "vidstg": {
+      "lr": 0.03,
+      "sigma": 0.1,
+      "tau": 0.25,
+      "steps": 10,
+      "writeback": 0.125,
+      "samples": 32
+    }
+  },
+  "temporal": {
+    "source_frozen": true,
+    "trainable_temporal_parameters": 0,
+    "Native_I0_observation": true,
+    "output_I1": "original actionness projection",
+    "center_fraction": {
+      "hc2": 1.0,
+      "vidstg": 0.5
+    },
+    "prior_weight": 0.1,
+    "epsilon": 1e-06
+  },
+  "spatial": {
+    "teacher": "Grounding DINO tiny",
+    "frozen": true,
+    "planned_observations": 4,
+    "active_parameters": 1792,
+    "Gaussian_samples": 32,
+    "QR_and_Adam_reset_each_Query": true,
+    "LN_fractional_carry": true
+  },
+  "validation_scope": "artifacts/stvg_dino_rollback32_v1",
+  "validation_status": "complete32; Source/Gaussian/Adam/projection/online carry/full readout and postseal independent scalar checks pass; publication pending",
+  "Qwen_status": "paused_by_user, all partial evidence retained; do not auto resume",
+  "official_full_experiments": "not restarted",
+  "protocol": "protocols/stvg_dino_rollback_verify32_v1.md",
+  "Source_checkpoints": {
+    "hc2": {
+      "path": "checkpoints/TASTVG_VidSTG.pth",
+      "sha256": "5ab12c86363ef0ce0ee006c00fd11c6b659c3a9b2cb01a4f2c613efe22a2aa83",
+      "source_dataset": "vidstg"
+    },
+    "vidstg": {
+      "path": "checkpoints/TASTVG_HCSTVG2.pth",
+      "sha256": "47d8f15841cd57e7bbf5a10e8bf23b1054d23b753e0becbd38a07f3dd60d5036",
+      "source_dataset": "hcstvg2"
+    }
+  },
+  "public_report": "results/stvg_dino_rollback/2026-10-17/verification32/REPORT.md",
+  "user_selected_regardless_of_development_score": true
+}

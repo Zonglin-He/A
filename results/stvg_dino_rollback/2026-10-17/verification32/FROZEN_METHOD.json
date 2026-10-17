@@ -1,0 +1,38 @@
+{
+  "status": "locked_before_model_and_GT",
+  "count": 32,
+  "entrypoint": "methods.stvg_opd_p7a_v1.predictor.P7AOPDPredictor",
+  "configurations": {
+    "hc2": {
+      "lr": 0.01,
+      "sigma": 0.025,
+      "tau": 0.05,
+      "steps": 40,
+      "writeback": 0.0625,
+      "samples": 32
+    },
+    "vidstg": {
+      "lr": 0.03,
+      "sigma": 0.1,
+      "tau": 0.25,
+      "steps": 10,
+      "writeback": 0.125,
+      "samples": 32
+    }
+  },
+  "temporal": {
+    "center_fraction": {
+      "hc2": 1.0,
+      "vidstg": 0.5
+    },
+    "prior_weight": 0.1,
+    "epsilon": 1e-06,
+    "two_offset_physical_envelope": true
+  },
+  "one_frozen_DINO": true,
+  "Native_I0_observation_projected_I1_output": true,
+  "online_LN_carry_Query_and_Adam_reset": true,
+  "verification_only_no_official_full_restart": true,
+  "cohort": "historically exposed original locked P0 order1 first16 per target; no outcome selection",
+  "GT_read": false
+}
