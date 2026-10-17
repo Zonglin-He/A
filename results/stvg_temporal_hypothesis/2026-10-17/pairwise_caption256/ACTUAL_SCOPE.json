@@ -1,0 +1,45 @@
+{
+  "status": "measured",
+  "count": 256,
+  "per_domain": 128,
+  "cohort": "original exposed core256, one query per independent parent, not independent confirmation",
+  "Student_backbone": "TA-STVG",
+  "source_checkpoint_sha256_by_target": {
+    "hc2": [
+      "5ab12c86363ef0ce0ee006c00fd11c6b659c3a9b2cb01a4f2c613efe22a2aa83"
+    ],
+    "vidstg": [
+      "47d8f15841cd57e7bbf5a10e8bf23b1054d23b753e0becbd38a07f3dd60d5036"
+    ]
+  },
+  "Teachers": {
+    "R1": {
+      "repository": "XiaowenZhang/stvg-r1-model-7b",
+      "revision": "c0db00d019bf746f54b67770b82261b2161fed59",
+      "weight_mode": "original BF16 frozen checkpoint"
+    },
+    "QWEN": {
+      "repository": "Qwen/Qwen3.5-9B",
+      "revision": "c202236235762e1c871ad0ccb60c8ee5ba337b9a",
+      "weight_mode": "native BF16 with required FP32 hybrid components, frozen"
+    }
+  },
+  "descriptions": "same original512 R1 captions, exact sealed bytes for both judges",
+  "new_text_prefills": {
+    "R1": 496,
+    "QWEN": 496
+  },
+  "new_video_or_caption_generation": 0,
+  "source_prefix_replay_for_retired_caches": 2,
+  "Student_parameters": 512,
+  "external_Actionness": false,
+  "original_independent_negative_results_preserved": true,
+  "no_production_or_PAPER_promotion": true,
+  "GT_use": "offline evaluation only after all two-arm256 actual predictions and ROOT sealed",
+  "R1_training_exposure": "official target-domain-supervised teacher; no independent checkpoint-bound parent overlap certification",
+  "semantic_panel": {
+    "model_assisted_completed": 44,
+    "pending": 468,
+    "new_identity_role_labels": 0
+  }
+}
