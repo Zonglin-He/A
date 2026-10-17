@@ -1,0 +1,20 @@
+{
+  "status": "locked",
+  "count": 32,
+  "epsilon_S": 0.01,
+  "gamma": 1.0,
+  "same_budget_both_domains_and_steps": true,
+  "duality": "M1 Euclidean projection of original raw Adam direction; M2 normalized OPD target Jacobian QCQP with same U KL budget",
+  "M0": "exact sealed old original-response OPD, not plain-Adam ablation",
+  "M1_M2": "same original finite/reference acceptance AND actual nonlinear U KL<=epsilon; original fullstep and reject rollback/early-stop, no extra shrink schedule",
+  "invalid_logit": "whole Query Source no-op retained; pre-adaptation chart-valid diagnostic separate",
+  "params": 1792,
+  "Gaussian_samples": 32,
+  "steps_sigma_tau_LR_and_references_original": true,
+  "M2_LR_note": "new target solver replaces direction; original Adam trace retained but its LR is not an effective M2 direction parameter",
+  "no_GT_tuning": true,
+  "no_new_Teacher_or_Temporal": true,
+  "not_paper_method": true,
+  "one_fixed_round_only": true,
+  "GT_read": false
+}
