@@ -1,0 +1,52 @@
+{
+  "status": "locked",
+  "count": 64,
+  "per_domain": 32,
+  "execution_order": [
+    "anneal",
+    "tube"
+  ],
+  "new_Teacher_calls": 0,
+  "new_Temporal_fits": 0,
+  "diffusion_training": false,
+  "old_decoder_aligned22_scope_remains_paused": true,
+  "anneal": {
+    "arms": [
+      "constant",
+      "coarse_to_fine",
+      "reverse"
+    ],
+    "stages": 3,
+    "scale_factors": [
+      1.0,
+      0.7071067811865475,
+      0.5
+    ],
+    "constant_factor": 0.7637626158259734,
+    "same_standard_noise_per_case_scale_slot": true,
+    "rejected_proposal": "restore parameters AND Adam state; proceed to next stage in all3 arms",
+    "recipe": "lite_fullstep",
+    "historical_original_OPD": "HC5/Vid3 original early-stop only historical baseline, not matched primary",
+    "primary": "coarse_to_fine minus reverse AND constant, actual Student outcomes and stage displacements",
+    "same_original_reference_acceptance_and_protection": true
+  },
+  "tube": {
+    "arms": [
+      "P0_F",
+      "P0_O",
+      "P0_R",
+      "P0_R_to_S"
+    ],
+    "lambda0": 1.0,
+    "lambda_time_seconds": 1.0,
+    "time_operator": "(r_next-r)/sqrt(actual physical delta seconds /1second)",
+    "reward_positions": "every original native-grid position for valid completion, fixed before GT",
+    "protection_and_acceptance_positions": "original sparse Teacher positions and original full-grid-minus-sparse protection, NOT recomputed from dense reward positions",
+    "updater": "same fixed-sigma original Gaussian OPD/Adam/M2/fullstep/early-stop; no new Jacobian target optimizer",
+    "no_reference_or_invalid_logit": "whole-query Source no-op kept in denominator",
+    "P0_R": "external proposal diagnostic, not Student TTA"
+  },
+  "evaluation": "all64 predictions seal before GT; fixed original Teacher anchors, other native GT positions, off-grid interpolated GT positions; unknown preserved; paired source t95 separately by domain, no success or significance gate for feasibility",
+  "CURRENT_sha256": "146a2caf1633544a844ea33106c83c022c0bebad5f3f49a87bb5f81e6f8568d4",
+  "GT_read": false
+}
