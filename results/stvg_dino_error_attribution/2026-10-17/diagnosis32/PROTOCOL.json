@@ -1,0 +1,30 @@
+{
+  "status": "locked",
+  "count": 32,
+  "cohort": "previously exposed HC16/Vid16; all retained",
+  "scope": "saved-output CPU diagnostics and actual pixel review only",
+  "new_models": 0,
+  "new_training": 0,
+  "new_teacher_calls": 0,
+  "contrasts": {
+    "Direct": "episodic Source to final Direct, fixed Native interval",
+    "OPD_current": "inherited Before to final P7-A, fixed projection interval"
+  },
+  "support": [
+    "admitted observed GT frames",
+    "unobserved native-grid GT frames",
+    "benchmark interpolated GT frames"
+  ],
+  "harm": "strict negative paired vIoU on fixed interval; dense-s harm additionally reported, no threshold selection",
+  "pixels": "all32 sources, all four planned anchors, two largest absolute unobserved-native changes per method where GT exists",
+  "labels": "model-assisted; identity from actual pixels plus full Query; low IoU is not identity; unknown/mixed retained",
+  "target_GT": "offline diagnosis only after original prediction seals; no training, routing or method promotion",
+  "existing_512_panel_unchanged": true,
+  "inputs": {
+    "artifacts/stvg_joint_event_critic_v1/PLAN_LOCK.json": "36c1700fa4af490be2b0213661e2d91f5559b6abefb5a5b6bd95f6576da0c827",
+    "artifacts/stvg_joint_event_critic_v1/POSTSEAL_RESULTS.json": "48e665cda6ceca6043d255ecd0a9d731d790a39bef286696d698d84fc55f3f31",
+    "artifacts/stvg_joint_event_critic_v1/SELECTION_BARRIER.json": "f747f9a2f749e6e17dc6d94121b737ba084ccdbc0b42de8f094a7ca7e36af712",
+    "artifacts/stvg_dino_rollback32_v1/PLAN_LOCK.json": "5c1f62ffc8c543028435d98e768531750c5d69fa6a2e6159d4ff0af4ca23a309",
+    "artifacts/stvg_dino_rollback32_v1/POSTSEAL_RESULTS.json": "d29a7188d8e27153a1555271c1609b98f9752395b3f7f4a9c9dd0cf9b4be88bf"
+  }
+}

@@ -1,0 +1,466 @@
+{
+  "status": "complete",
+  "count": 32,
+  "planned_anchor_views": 128,
+  "independent_human_labels": 0,
+  "model_assisted": true,
+  "existing_512_panel_unchanged": true,
+  "codes": {
+    "CI": "visible target identity consistent; extent reasonable in viewed image, not GT certification",
+    "CP": "visible target identity consistent; partial/uncertain full extent",
+    "WI": "visible different target/participant; target annotation plus pixels, not low IoU alone",
+    "MX": "merged instances or target-plus-other-object extent",
+    "UN": "identity/role uncertain",
+    "NA": "no admitted reference"
+  },
+  "rows": [
+    {
+      "source_alias": "H001",
+      "slots": [
+        "CP",
+        "CI",
+        "CI",
+        "CI"
+      ],
+      "notes": "Same visible referent at four anchors; first reference truncates lower visible body. Positive localization control retained.",
+      "actual_panel_sha256": "fa0a6be4ce03261f645470333cfc08a0fa846770bcdb9b5ec1acd61001b20075",
+      "status": "actually_viewed",
+      "annotator": "Codex visual inspection; model-assisted, not independent human annotation",
+      "semantic_role_unknown": false
+    },
+    {
+      "source_alias": "H002",
+      "slots": [
+        "CI",
+        "CI",
+        "WI",
+        "WI"
+      ],
+      "notes": "First two anchors follow the annotated actor; later anchors move to the interaction counterpart. Both final decoders follow that counterpart at reviewed unobserved frames.",
+      "actual_panel_sha256": "f87ba962b3bd7ac68327bcaca824b1cfb68af2676682ca66db4f8a33d0a769e6",
+      "status": "actually_viewed",
+      "annotator": "Codex visual inspection; model-assisted, not independent human annotation",
+      "semantic_role_unknown": false
+    },
+    {
+      "source_alias": "H003",
+      "slots": [
+        "WI",
+        "WI",
+        "WI",
+        "WI"
+      ],
+      "notes": "References repeatedly enclose the foreground counterpart rather than the queried actor shown with the annotation; post-update trajectories move toward that counterpart.",
+      "actual_panel_sha256": "b4938783908baa59e546ebbca70aee7fb066f67579cc23e5c69427f77d1ef725",
+      "status": "actually_viewed",
+      "annotator": "Codex visual inspection; model-assisted, not independent human annotation",
+      "semantic_role_unknown": false
+    },
+    {
+      "source_alias": "H004",
+      "slots": [
+        "CI",
+        "CP",
+        "CP",
+        "CP"
+      ],
+      "notes": "References retain the queried actor but several include only the visible upper extent. One late annotation overlay lies on another actor; query/annotation/pixel consistency unresolved, not silently relabeled.",
+      "actual_panel_sha256": "686faa83028fae12df61b71afc02d123881f50694e1c5a1c9db3c5919c043bc3",
+      "status": "actually_viewed",
+      "annotator": "Codex visual inspection; model-assisted, not independent human annotation",
+      "semantic_role_unknown": true
+    },
+    {
+      "source_alias": "H005",
+      "slots": [
+        "MX",
+        "WI",
+        "WI",
+        "WI"
+      ],
+      "notes": "Early rectangle includes an interloper; later references consistently follow the interaction counterpart. Reviewed final trajectories leave the previously correct target.",
+      "actual_panel_sha256": "20a0f3f0987144019f4d8ebb5fbcdd9d4903ee9972371a9078dec8d651c86599",
+      "status": "actually_viewed",
+      "annotator": "Codex visual inspection; model-assisted, not independent human annotation",
+      "semantic_role_unknown": false
+    },
+    {
+      "source_alias": "H006",
+      "slots": [
+        "WI",
+        "NA",
+        "WI",
+        "NA"
+      ],
+      "notes": "Admitted references enclose a different clothed person from the queried unclothed actor; annotation extent in crowded frames is additionally uncertain.",
+      "actual_panel_sha256": "f098893304e96457811afca32f712433cc74442bb78194a6d1a16f9bb10b8665",
+      "status": "actually_viewed",
+      "annotator": "Codex visual inspection; model-assisted, not independent human annotation",
+      "semantic_role_unknown": false
+    },
+    {
+      "source_alias": "H007",
+      "slots": [
+        "CI",
+        "CI",
+        "CI",
+        "CP"
+      ],
+      "notes": "Same visible target retained; final distant reference covers only upper visible extent. Both methods also improve other frames.",
+      "actual_panel_sha256": "84392cd6127310fd5e8d8b83ce8d551d6237e2c6db388d1ed9c0b9a4b8c0eb59",
+      "status": "actually_viewed",
+      "annotator": "Codex visual inspection; model-assisted, not independent human annotation",
+      "semantic_role_unknown": false
+    },
+    {
+      "source_alias": "H008",
+      "slots": [
+        "MX",
+        "MX",
+        "MX",
+        "NA"
+      ],
+      "notes": "Admitted rectangles merge two interacting actors rather than isolate the queried actor. This is extent/instance separation evidence, not proof of a persistent identity switch.",
+      "actual_panel_sha256": "8ae3e423bb863c31f5a6552226454b86232592c69635263084072b54cb7b5b32",
+      "status": "actually_viewed",
+      "annotator": "Codex visual inspection; model-assisted, not independent human annotation",
+      "semantic_role_unknown": false
+    },
+    {
+      "source_alias": "H009",
+      "slots": [
+        "WI",
+        "CI",
+        "CI",
+        "CI"
+      ],
+      "notes": "First reference encloses another road user; later references follow queried target. Positive outcome despite mixed references retained.",
+      "actual_panel_sha256": "4a9fca288816327fbc22233652a60d4c9dd25acbbc06035221e75233c5253c9f",
+      "status": "actually_viewed",
+      "annotator": "Codex visual inspection; model-assisted, not independent human annotation",
+      "semantic_role_unknown": false
+    },
+    {
+      "source_alias": "H010",
+      "slots": [
+        "WI",
+        "WI",
+        "WI",
+        "CI"
+      ],
+      "notes": "First three references follow the stationary interaction counterpart; final reference follows queried moving actor. Direct final output switches toward counterpart at reviewed nonobserved frames; current OPD differs.",
+      "actual_panel_sha256": "a58026ccd76e94418a585a24835f51ad3e0ae67d1207cfaef5cf9040eabe1ede",
+      "status": "actually_viewed",
+      "annotator": "Codex visual inspection; model-assisted, not independent human annotation",
+      "semantic_role_unknown": false
+    },
+    {
+      "source_alias": "H011",
+      "slots": [
+        "NA",
+        "CI",
+        "CI",
+        "CI"
+      ],
+      "notes": "References follow visible queried actor. Event-support and non-event changes differ; positive vIoU and negative dense sIoU are both retained.",
+      "actual_panel_sha256": "a49f513e4ccbbe477add56f863c693a44f5b435d952a140f7d5c0d341aa4a3fb",
+      "status": "actually_viewed",
+      "annotator": "Codex visual inspection; model-assisted, not independent human annotation",
+      "semantic_role_unknown": false
+    },
+    {
+      "source_alias": "H012",
+      "slots": [
+        "NA",
+        "NA",
+        "WI",
+        "WI"
+      ],
+      "notes": "Admitted references enclose a different visible actor. Several annotation boxes are broad or inconsistent with queried actor; retain annotation uncertainty rather than infer identity from overlap.",
+      "actual_panel_sha256": "38147596d7bd2ab0364cf0627a59c87f994ec5fff8ccbfc5b9d1ce05e52fd8b5",
+      "status": "actually_viewed",
+      "annotator": "Codex visual inspection; model-assisted, not independent human annotation",
+      "semantic_role_unknown": true
+    },
+    {
+      "source_alias": "H013",
+      "slots": [
+        "CI",
+        "CI",
+        "CI",
+        "CI"
+      ],
+      "notes": "References follow the distinctive queried referent; first annotation overlay lies on a different actor. Later overlays agree. This inconsistency remains unresolved.",
+      "actual_panel_sha256": "238f40cec3fa930d87ee4b52118c2b945f96608f1a596183f014c09066402656",
+      "status": "actually_viewed",
+      "annotator": "Codex visual inspection; model-assisted, not independent human annotation",
+      "semantic_role_unknown": true
+    },
+    {
+      "source_alias": "H014",
+      "slots": [
+        "NA",
+        "CI",
+        "NA",
+        "CI"
+      ],
+      "notes": "Admitted references track the distinctive queried referent; other slots abstain. Annotation extent is broad and overlaps other actors, so exact geometric correctness is uncertain.",
+      "actual_panel_sha256": "7039185263655372e56637399f9c811beca2cd020c8bb6ceb8c4e4dff197555f",
+      "status": "actually_viewed",
+      "annotator": "Codex visual inspection; model-assisted, not independent human annotation",
+      "semantic_role_unknown": true
+    },
+    {
+      "source_alias": "H015",
+      "slots": [
+        "WI",
+        "CI",
+        "CI",
+        "CI"
+      ],
+      "notes": "First reference follows a different older actor, later references follow the queried actor. No reference anchor has an exact GT box, so geometry remains unknown there.",
+      "actual_panel_sha256": "b24670892df3597d94e20f37f92d45e1a752d43ac30ca5aa49d166206687630b",
+      "status": "actually_viewed",
+      "annotator": "Codex visual inspection; model-assisted, not independent human annotation",
+      "semantic_role_unknown": false
+    },
+    {
+      "source_alias": "H016",
+      "slots": [
+        "CI",
+        "CI",
+        "CI",
+        "CI"
+      ],
+      "notes": "References retain queried actor. Reviewed OPD unobserved frames already follow a different actor before the current update and remain unchanged afterward; this is inherited-state failure, not evidence that the current update caused an identity switch. Direct improves under its own episodic contrast. OPD fixed-time vIoU stays zero.",
+      "actual_panel_sha256": "9e57b3e0807f8d890862fd299f7f249439a166ed9f79c0ed3c5db9adf580d640",
+      "status": "actually_viewed",
+      "annotator": "Codex visual inspection; model-assisted, not independent human annotation",
+      "semantic_role_unknown": false
+    },
+    {
+      "source_alias": "V001",
+      "slots": [
+        "CI",
+        "CI",
+        "CI",
+        "CI"
+      ],
+      "notes": "References retain the visible target. Exact GT boxes absent at planned anchors; cannot infer anchor geometry quality from missing annotations.",
+      "actual_panel_sha256": "4612c2f1cde94e8cbe9288e2f007e7913e3f515afd7ae5bc269c4bbf9a26387f",
+      "status": "actually_viewed",
+      "annotator": "Codex visual inspection; model-assisted, not independent human annotation",
+      "semantic_role_unknown": false
+    },
+    {
+      "source_alias": "V002",
+      "slots": [
+        "WI",
+        "CI",
+        "NA",
+        "WI"
+      ],
+      "notes": "Admitted references alternate between queried/annotated actor and an interaction counterpart; both adaptation outcomes are retained.",
+      "actual_panel_sha256": "c2e947bac2344644dd3ff38e2081834d12cc5763319a40f7619116ce5feafeb1",
+      "status": "actually_viewed",
+      "annotator": "Codex visual inspection; model-assisted, not independent human annotation",
+      "semantic_role_unknown": false
+    },
+    {
+      "source_alias": "V003",
+      "slots": [
+        "NA",
+        "CI",
+        "CI",
+        "CI"
+      ],
+      "notes": "References follow the annotated answer entity of an interrogative relation query. Do not treat the noun describing the other participant as the answer identity.",
+      "actual_panel_sha256": "8c158e8d2116bc8548bb52911fd67ae127fbecf45a61ffe6962ec7ba60bdfe9a",
+      "status": "actually_viewed",
+      "annotator": "Codex visual inspection; model-assisted, not independent human annotation",
+      "semantic_role_unknown": false
+    },
+    {
+      "source_alias": "V004",
+      "slots": [
+        "NA",
+        "NA",
+        "NA",
+        "NA"
+      ],
+      "notes": "No admitted references; source no-op is retained. Interrogative target has object-sized annotation, not a full-person box.",
+      "actual_panel_sha256": "bf3002c0c37c4b883c170857da8f8228f89c6a278786d6c12faba567eb9dd82f",
+      "status": "actually_viewed",
+      "annotator": "Codex visual inspection; model-assisted, not independent human annotation",
+      "semantic_role_unknown": false
+    },
+    {
+      "source_alias": "V005",
+      "slots": [
+        "NA",
+        "UN",
+        "UN",
+        "UN"
+      ],
+      "notes": "Foreground photographer references differ from a side actor in available annotation overlays; Query relation is visually ambiguous, so target/role correctness remains unknown.",
+      "actual_panel_sha256": "d6cd992aedad1f00f7ee88969a36419149f2a229e7cd6dcb3c3b434165dd55a7",
+      "status": "actually_viewed",
+      "annotator": "Codex visual inspection; model-assisted, not independent human annotation",
+      "semantic_role_unknown": true
+    },
+    {
+      "source_alias": "V006",
+      "slots": [
+        "CI",
+        "CI",
+        "CI",
+        "CI"
+      ],
+      "notes": "References follow queried visible actor. Native interval has no event overlap and anchors lack exact GT; dense trajectory degradation remains visible despite unchanged zero vIoU.",
+      "actual_panel_sha256": "53ce76e0c54c99153a1184c0295174f6532afd583be2e0e515f90426b4a73263",
+      "status": "actually_viewed",
+      "annotator": "Codex visual inspection; model-assisted, not independent human annotation",
+      "semantic_role_unknown": false
+    },
+    {
+      "source_alias": "V007",
+      "slots": [
+        "NA",
+        "NA",
+        "MX",
+        "MX"
+      ],
+      "notes": "Admitted rectangles include both rider and mount instead of isolating person. Extent/object-mixture issue, not evidence of another human identity.",
+      "actual_panel_sha256": "d1627da7d794bb90854561228e1c14ad3e9f8101ca111c7ceec03858548fec00",
+      "status": "actually_viewed",
+      "annotator": "Codex visual inspection; model-assisted, not independent human annotation",
+      "semantic_role_unknown": false
+    },
+    {
+      "source_alias": "V008",
+      "slots": [
+        "CI",
+        "CI",
+        "CI",
+        "CI"
+      ],
+      "notes": "References follow same visible diver. Later orientation differs from anchor views and decoder boxes broaden. No exact anchor GT; negative dense change is not a proven pure propagation cause.",
+      "actual_panel_sha256": "53eb8307e25180908f422eaf8dd101374b9b695ff37463763e315c8515522c7c",
+      "status": "actually_viewed",
+      "annotator": "Codex visual inspection; model-assisted, not independent human annotation",
+      "semantic_role_unknown": false
+    },
+    {
+      "source_alias": "V009",
+      "slots": [
+        "CI",
+        "CI",
+        "CI",
+        "CI"
+      ],
+      "notes": "References retain queried adult amid interacting children. Positive geometry control retained.",
+      "actual_panel_sha256": "2c317059043220c3ad47b5f42fa749356b743efaa1360df3bcbfc2334dd01bfc",
+      "status": "actually_viewed",
+      "annotator": "Codex visual inspection; model-assisted, not independent human annotation",
+      "semantic_role_unknown": false
+    },
+    {
+      "source_alias": "V010",
+      "slots": [
+        "CI",
+        "CI",
+        "NA",
+        "CI"
+      ],
+      "notes": "Admitted references retain queried adult; absent-view slot abstains. Positive control retained.",
+      "actual_panel_sha256": "f996764356caff2f8336b1c4cf7db31c9744e43117a94eb7ca98d85c0930a3b6",
+      "status": "actually_viewed",
+      "annotator": "Codex visual inspection; model-assisted, not independent human annotation",
+      "semantic_role_unknown": false
+    },
+    {
+      "source_alias": "V011",
+      "slots": [
+        "CI",
+        "CI",
+        "CI",
+        "CI"
+      ],
+      "notes": "References retain queried child in a different action phase. Exact anchor GT absent; OPD dense trajectory loss and unchanged zero vIoU are retained.",
+      "actual_panel_sha256": "46c141b3dc4ab54ee6f3b3ebaac96beb50b6068edc691da7f2d50bd68e0277a1",
+      "status": "actually_viewed",
+      "annotator": "Codex visual inspection; model-assisted, not independent human annotation",
+      "semantic_role_unknown": false
+    },
+    {
+      "source_alias": "V012",
+      "slots": [
+        "WI",
+        "WI",
+        "WI",
+        "WI"
+      ],
+      "notes": "References enclose one performer whereas annotated answer entity is the other, also visibly associated with the queried object. Not inferred merely from low IoU.",
+      "actual_panel_sha256": "8b9d793d225e40cce70a0140ec441e9c17f30d1681246b35cced349bb2ce4462",
+      "status": "actually_viewed",
+      "annotator": "Codex visual inspection; model-assisted, not independent human annotation",
+      "semantic_role_unknown": false
+    },
+    {
+      "source_alias": "V013",
+      "slots": [
+        "CI",
+        "CI",
+        "CI",
+        "CI"
+      ],
+      "notes": "References follow queried visible referent across posture change; positive propagation control.",
+      "actual_panel_sha256": "c30cd0e9c642470959ae75dc90a7f3417d20c661eb2c52724185842547b06d75",
+      "status": "actually_viewed",
+      "annotator": "Codex visual inspection; model-assisted, not independent human annotation",
+      "semantic_role_unknown": false
+    },
+    {
+      "source_alias": "V014",
+      "slots": [
+        "CI",
+        "CP",
+        "CP",
+        "CP"
+      ],
+      "notes": "Same queried adult at all anchors. Later references truncate arm/interaction extent relative to annotated full-body region. OPD harms observed and unobserved positions; Direct improves. Not a clean wrong-person case nor a proven pure unobserved-only failure.",
+      "actual_panel_sha256": "848734ce16859fd1a72ca53fb07f9bb6f0f41b1b94c3b9ee42b0cdf18b6cf7ea",
+      "status": "actually_viewed",
+      "annotator": "Codex visual inspection; model-assisted, not independent human annotation",
+      "semantic_role_unknown": false
+    },
+    {
+      "source_alias": "V015",
+      "slots": [
+        "WI",
+        "WI",
+        "WI",
+        "WI"
+      ],
+      "notes": "References consistently follow a visibly different participant from annotated answer entity. Relation phrasing does not uniquely resolve target in these views, so semantic-role certainty remains unknown even though annotated-identity mismatch is visible.",
+      "actual_panel_sha256": "7847eb51af6e0f42993adeb0cfc697b5f7731c5d163fa71f0790959f1fcac030",
+      "status": "actually_viewed",
+      "annotator": "Codex visual inspection; model-assisted, not independent human annotation",
+      "semantic_role_unknown": true
+    },
+    {
+      "source_alias": "V016",
+      "slots": [
+        "NA",
+        "NA",
+        "NA",
+        "NA"
+      ],
+      "notes": "No admitted references; no current adaptation; preserve no-op denominator.",
+      "actual_panel_sha256": "0d8b4f0feae49a03a5047b7e1c28da0bba86faf5321176dec45ac5aa0889b0cd",
+      "status": "actually_viewed",
+      "annotator": "Codex visual inspection; model-assisted, not independent human annotation",
+      "semantic_role_unknown": false
+    }
+  ]
+}
