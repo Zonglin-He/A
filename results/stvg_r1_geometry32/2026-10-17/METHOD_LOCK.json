@@ -1,0 +1,128 @@
+{
+  "status": "locked",
+  "count": 32,
+  "anchors": 128,
+  "upstream": "https://github.com/seilk/LocalizationHeads",
+  "upstream_commit": "9ffe219d20ec376eb4dd14d42c54bb3299ffdb4a",
+  "single_sample_not_paper_fixed_head_reproduction": true,
+  "head_config": {
+    "top_k": 5,
+    "sum_threshold": "official chord elbow",
+    "entropy_threshold": 0.001,
+    "bottom_row_focus_threshold": 0.05,
+    "gaussian_sigma": 1.0,
+    "binary": "above mean",
+    "bbox": "enclose all positive mask; no largest-component invention"
+  },
+  "head_map": "last input text token, original all-key causal softmax, take only explicitly separate anchor image tokens; true rectangular grid, no image-key renormalization; no anchor padding",
+  "direct_prompt_variants": 1,
+  "direct_max_new_tokens": 256,
+  "shared_prefill": true,
+  "model": "same frozen STVG-R1-7B; no base model",
+  "R1_inputs": "unmarked context4 plus native-aspect anchor image plus full Query; never Student/DINO geometry",
+  "coordinate_protocol": "actual processor-resized image width/height pixels, never normalized1000",
+  "Student": {
+    "configs": {
+      "hc2": {
+        "M2": {
+          "lr": 0.004500000000000001,
+          "sigma": 0.025,
+          "tau": 0.1,
+          "steps": 5,
+          "writeback": 0.0625,
+          "samples": 32
+        }
+      },
+      "vidstg": {
+        "M2": {
+          "lr": 0.027,
+          "sigma": 0.4,
+          "tau": 0.5,
+          "steps": 3,
+          "writeback": 0.125,
+          "samples": 32
+        }
+      }
+    },
+    "response_settings": {
+      "hc2": {
+        "M1": {
+          "mu": 0.125,
+          "cg_max_iter": 16,
+          "cg_rtol": 0.001,
+          "response_ratio": 0.8660254037844386,
+          "response_abs_tolerance": 1e-07,
+          "backtracking": [
+            1.0,
+            0.5,
+            0.25,
+            0.125
+          ]
+        },
+        "M2": {
+          "mu": 0.125,
+          "cg_max_iter": 16,
+          "cg_rtol": 0.001,
+          "response_ratio": 0.8660254037844386,
+          "response_abs_tolerance": 1e-07,
+          "backtracking": [
+            1.0,
+            0.5,
+            0.25,
+            0.125
+          ]
+        }
+      },
+      "vidstg": {
+        "M1": {
+          "mu": 0.125,
+          "cg_max_iter": 16,
+          "cg_rtol": 0.001,
+          "response_ratio": 1.0,
+          "response_abs_tolerance": 1e-07,
+          "backtracking": [
+            1.0,
+            0.5,
+            0.25,
+            0.125
+          ]
+        },
+        "M2": {
+          "mu": 0.125,
+          "cg_max_iter": 16,
+          "cg_rtol": 0.001,
+          "response_ratio": 1.0,
+          "response_abs_tolerance": 1e-07,
+          "backtracking": [
+            1.0,
+            0.5,
+            0.25,
+            0.125
+          ]
+        }
+      }
+    },
+    "recipe": "lite_fullstep",
+    "parameters": 1792,
+    "state": "episodic",
+    "Temporal": "sealed T2 unchanged"
+  },
+  "stage1_arms": [
+    "Current_WF",
+    "R1_DIRECT",
+    "R1_HEADS",
+    "DINO"
+  ],
+  "stage1_max_R1_generations": 128,
+  "stage1_max_DINO_calls": 128,
+  "stage1_max_new_Spatial_fits": 96,
+  "second_stage": "only if neither R1-only arm establishes >=.1pp mean Full-minus-Current and nonnegative both domain means, with paired t95 lower>0 in at least one domain; lock before new GT",
+  "second_stage_cap": {
+    "R1_selection_calls": 128,
+    "Spatial_fits": 32
+  },
+  "D2": "same R1 sparse refs and Source center/log-width-height residual interpolation in physical time within T2; nearest boundary residual within interval, Source outside; no weights/extra trackers",
+  "no_search": true,
+  "no_CURRENT_change": true,
+  "GT_read": false
+}
