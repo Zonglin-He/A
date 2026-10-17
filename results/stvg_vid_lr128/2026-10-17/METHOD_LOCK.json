@@ -1,0 +1,19 @@
+{
+  "status": "locked",
+  "count": 128,
+  "dataset": "vidstg",
+  "arms": {
+    "LR_CURRENT": 0.027,
+    "LR_HALF": 0.0135,
+    "LR_QUARTER": 0.00675
+  },
+  "only_changed_parameter": "Spatial Adam lr",
+  "baseline": "exact whole-query sealed T2+B reuse",
+  "same_Temporal_Caption_WHO_references_Gaussian32_seed_sigma_tau_steps_mu_acceptance_rollback": true,
+  "new_Teacher_calls": 0,
+  "new_Temporal_fits": 0,
+  "maximum_new_Spatial_fits": 256,
+  "selection": "largest mean vIoU on all exposed Vid128; ties within1e-9 prefer current then half then quarter; report all arms and intervals, not independent confirmation",
+  "no_automatic_paper_or_CURRENT_change": true,
+  "GT_read": false
+}
