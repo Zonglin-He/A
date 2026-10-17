@@ -1,0 +1,118 @@
+{
+  "status": "scaffold_only_not_execution_lock",
+  "model": "Qwen/Qwen3.5-9B",
+  "revision": "c202236235762e1c871ad0ccb60c8ee5ba337b9a",
+  "dtype": "bfloat16",
+  "temporal": "sealed T2 and R1 Caption feedback unchanged",
+  "Student": {
+    "parameters": 1792,
+    "recipe": "lite_fullstep",
+    "configs": {
+      "hc2": {
+        "M2": {
+          "lr": 0.004500000000000001,
+          "sigma": 0.025,
+          "tau": 0.1,
+          "steps": 5,
+          "writeback": 0.0625,
+          "samples": 32
+        }
+      },
+      "vidstg": {
+        "M2": {
+          "lr": 0.027,
+          "sigma": 0.4,
+          "tau": 0.5,
+          "steps": 3,
+          "writeback": 0.125,
+          "samples": 32
+        }
+      }
+    },
+    "response_settings": {
+      "hc2": {
+        "M1": {
+          "mu": 0.125,
+          "cg_max_iter": 16,
+          "cg_rtol": 0.001,
+          "response_ratio": 0.8660254037844386,
+          "response_abs_tolerance": 1e-07,
+          "backtracking": [
+            1.0,
+            0.5,
+            0.25,
+            0.125
+          ]
+        },
+        "M2": {
+          "mu": 0.125,
+          "cg_max_iter": 16,
+          "cg_rtol": 0.001,
+          "response_ratio": 0.8660254037844386,
+          "response_abs_tolerance": 1e-07,
+          "backtracking": [
+            1.0,
+            0.5,
+            0.25,
+            0.125
+          ]
+        }
+      },
+      "vidstg": {
+        "M1": {
+          "mu": 0.125,
+          "cg_max_iter": 16,
+          "cg_rtol": 0.001,
+          "response_ratio": 1.0,
+          "response_abs_tolerance": 1e-07,
+          "backtracking": [
+            1.0,
+            0.5,
+            0.25,
+            0.125
+          ]
+        },
+        "M2": {
+          "mu": 0.125,
+          "cg_max_iter": 16,
+          "cg_rtol": 0.001,
+          "response_ratio": 1.0,
+          "response_abs_tolerance": 1e-07,
+          "backtracking": [
+            1.0,
+            0.5,
+            0.25,
+            0.125
+          ]
+        }
+      }
+    },
+    "episodic": true
+  },
+  "new_arms": [
+    "QWEN_OPD",
+    "QWEN_D2"
+  ],
+  "same_exact_sealed_references_for_both_arms": true,
+  "D2": "reuse unchanged previous Source-relative center/log-size interpolation in physical time, Source outside T2",
+  "maximum_formal_requests": 128,
+  "maximum_extra_synthetic_qualification_requests": 2,
+  "maximum_new_Student_fits": 32,
+  "source_and_Temporal_models_new": 0,
+  "metadata_processes_may_be_concurrent_but_models_serial": true,
+  "proposed_resource_limit": {
+    "wall_hours": 8,
+    "host_high_GiB": 16,
+    "host_max_GiB": 24,
+    "swap_GiB": 1,
+    "disk_floor_GiB": 30,
+    "actual_GPU_qualification_pending": true
+  },
+  "selection": "manual multidimensional review: reference coverage/quality, Full-minus-T2, paired tails, nonanchor spatial quality, cost and structural simplicity; no mandatory t95-excludes-zero gate on development32",
+  "no_per_domain_OPD_D2_splicing": true,
+  "no_Temporal_Teacher_migration": true,
+  "no_single_Teacher_claim": true,
+  "no_auto_larger_models_Prompt_heads_optimizer_search": true,
+  "CURRENT_unchanged": true,
+  "GT_read": false
+}
