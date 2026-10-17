@@ -1,0 +1,110 @@
+{
+  "count": 32,
+  "Teacher": "frozen STVG-R1-7B",
+  "revision": "c0db00d019bf746f54b67770b82261b2161fed59",
+  "anchors_per_Query": 1,
+  "slot": 0,
+  "candidate_actions": 4,
+  "policy": "fixed_support_Gaussian_logit_distillation_not_on_policy",
+  "configs": {
+    "hc2": {
+      "M2": {
+        "lr": 0.004500000000000001,
+        "sigma": 0.025,
+        "tau": 0.1,
+        "steps": 5,
+        "writeback": 0.0625,
+        "samples": 4
+      }
+    },
+    "vidstg": {
+      "M2": {
+        "lr": 0.027,
+        "sigma": 0.4,
+        "tau": 0.5,
+        "steps": 3,
+        "writeback": 0.125,
+        "samples": 4
+      }
+    }
+  },
+  "response_settings": {
+    "hc2": {
+      "M1": {
+        "mu": 0.125,
+        "cg_max_iter": 16,
+        "cg_rtol": 0.001,
+        "response_ratio": 0.8660254037844386,
+        "response_abs_tolerance": 1e-07,
+        "backtracking": [
+          1.0,
+          0.5,
+          0.25,
+          0.125
+        ]
+      },
+      "M2": {
+        "mu": 0.125,
+        "cg_max_iter": 16,
+        "cg_rtol": 0.001,
+        "response_ratio": 0.8660254037844386,
+        "response_abs_tolerance": 1e-07,
+        "backtracking": [
+          1.0,
+          0.5,
+          0.25,
+          0.125
+        ]
+      }
+    },
+    "vidstg": {
+      "M1": {
+        "mu": 0.125,
+        "cg_max_iter": 16,
+        "cg_rtol": 0.001,
+        "response_ratio": 1.0,
+        "response_abs_tolerance": 1e-07,
+        "backtracking": [
+          1.0,
+          0.5,
+          0.25,
+          0.125
+        ]
+      },
+      "M2": {
+        "mu": 0.125,
+        "cg_max_iter": 16,
+        "cg_rtol": 0.001,
+        "response_ratio": 1.0,
+        "response_abs_tolerance": 1e-07,
+        "backtracking": [
+          1.0,
+          0.5,
+          0.25,
+          0.125
+        ]
+      }
+    }
+  },
+  "trainable_parameters": 1792,
+  "recipe": "lite_fullstep",
+  "common_hard_reference": "permutation_averaged_semantic_argmax",
+  "same_admission_and_reference_acceptance": true,
+  "GEOM": "(1-p0)*softmax(IoU(candidate,hard_reference)/tau)",
+  "PREF": "permutation_averaged_p_i_keeping_abstention_mass",
+  "CURRENT_changed": false,
+  "development_not_confirmation": true,
+  "Student_backbone": "TA-STVG",
+  "source_training_domain_by_target": {
+    "hc2": "VidSTG",
+    "vidstg": "HC-STVG2"
+  },
+  "source_checkpoint_sha256_by_target": {
+    "hc2": [
+      "5ab12c86363ef0ce0ee006c00fd11c6b659c3a9b2cb01a4f2c613efe22a2aa83"
+    ],
+    "vidstg": [
+      "47d8f15841cd57e7bbf5a10e8bf23b1054d23b753e0becbd38a07f3dd60d5036"
+    ]
+  }
+}
