@@ -10,7 +10,7 @@
 \begin{document}
 \maketitle
 \begin{abstract}
-Spatio-temporal video grounding requires both an event interval and the trajectory of a language-specified instance. We adapt a pretrained grounding model using frozen language--video feedback, without target annotations. A two-candidate temporal branch compares a Native interval with a distinct alternative selected by frozen time scores; Caption--Query consistency supervises a 512-parameter update while full-grid distribution preservation retains the original temporal support. The resulting interval determines sparse spatial observations. A fixed Query--Caption evidence policy allocates a compact visual budget, and actual Teacher-selected candidate boxes reward on-policy Gaussian actions. A 1,792-parameter spatial interface realizes these preferences through the existing response-filtered update and complete decoded acceptance. The method resets to Source for every query. Its optimization is organized as evidence-conditioned distribution improvement followed by restricted parameter realization. We evaluate the temporal and spatial branches separately, distinguish observation conditioning from metric coupling, and retain the previously completed negative exploration controls. The integrated two-candidate Full evaluation is being executed under a frozen manifest; the manuscript does not substitute historical four-candidate results for that evaluation.
+Spatio-temporal video grounding requires both an event interval and the trajectory of a language-specified instance. We adapt a pretrained grounding model using frozen language--video feedback, without target annotations. A two-candidate temporal branch compares a Native interval with a distinct alternative selected by frozen time scores; Caption--Query consistency supervises a 512-parameter update while full-grid distribution preservation retains the original temporal support. The resulting interval determines sparse spatial observations. A fixed Query--Caption evidence policy allocates a compact visual budget, and actual Teacher-selected candidate boxes reward on-policy Gaussian actions. A 1,792-parameter spatial interface realizes these preferences through the existing response-filtered update and complete decoded acceptance. The method resets to Source for every query. Its optimization is organized as evidence-conditioned distribution improvement followed by restricted parameter realization. We evaluate the temporal and spatial branches separately, distinguish observation conditioning from metric coupling, and retain the previously completed negative exploration controls. The integrated two-candidate Full evaluation uses actual newly executed spatial evidence and complete Student outputs; historical four-candidate results remain separate controls.
 \end{abstract}
 
 \section{Introduction}
@@ -120,7 +120,7 @@ Arm & HC & VidSTG\\\midrule
 Frozen &21.6512&9.8439\\
 T2 Temporal-only &26.3319&10.2868\\
 True Native-clock B Spatial-only &22.1313&10.2628\\
-Full T2+B &pending&pending\\\bottomrule
+Full T2+B &26.7252&10.6331\\\bottomrule
 \end{tabular}
 \end{table}
 
