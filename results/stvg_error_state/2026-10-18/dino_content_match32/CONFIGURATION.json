@@ -1,0 +1,62 @@
+{
+  "scale": {
+    "hc2": [
+      0.08805019583603152,
+      0.03796878948819179,
+      0.2445728236645117,
+      0.21037521441041293
+    ],
+    "vidstg": [
+      0.022542142662651282,
+      0.011027737123363815,
+      0.06612943552390567,
+      0.02918426580581821
+    ]
+  },
+  "seed": 20261018,
+  "count": 32,
+  "per_domain": 16,
+  "threshold": 0.35,
+  "references": "exact original repaired fixed24 actions, Source trajectories and FP32 anchor boxes",
+  "content": "nearest initial native proposal versus first argmax native final mean sigmoid target-token score",
+  "mask": "identical geometry-nearest exclusion for both conditions; only appended content changes",
+  "feedback_gate": "both domains: more accepted anchors AND positive known-anchor gated IoU correction AND better gated correction than nearest",
+  "query_unit": true,
+  "old_target_exposure": true,
+  "no_stage1_fit": true,
+  "no_parameter_search": true,
+  "weights_frozen": true,
+  "GT_after_all32_sealed": true,
+  "GPU_seconds_cap": 900,
+  "conditional_OPD": {
+    "only_after_gate": true,
+    "rounds": 3,
+    "samples_per_round": 8,
+    "fixed_samples": 24,
+    "update": "mu+mean(y-a)",
+    "same_E_scale_seed_threshold": true,
+    "GPU_seconds_cap": 900,
+    "wall_seconds_cap": 2400
+  },
+  "source_checkpoints": {
+    "hc2": {
+      "backbone": "TA-STVG",
+      "source_dataset": "vidstg",
+      "checkpoint": "checkpoints/TASTVG_VidSTG.pth",
+      "sha256": "5ab12c86363ef0ce0ee006c00fd11c6b659c3a9b2cb01a4f2c613efe22a2aa83",
+      "load_time_validation": "scripts/run_spatial_regression_alignment_v1.py:model_load validates SHA before load"
+    },
+    "vidstg": {
+      "backbone": "TA-STVG",
+      "source_dataset": "hcstvg2",
+      "checkpoint": "checkpoints/TASTVG_HCSTVG2.pth",
+      "sha256": "47d8f15841cd57e7bbf5a10e8bf23b1054d23b753e0becbd38a07f3dd60d5036",
+      "load_time_validation": "scripts/run_spatial_regression_alignment_v1.py:model_load validates SHA before load"
+    }
+  },
+  "DINO_weight_SHA256": "1a2412ef99bd74bcd3c2a246fa1e48581f8889a1300c9051974741314fc042f3",
+  "pretrained_weight_updates": 0,
+  "stage1_student_updates": 0,
+  "original_frame_budget": 4,
+  "no_new_Source_calls": true
+}
