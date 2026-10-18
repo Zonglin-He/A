@@ -1,0 +1,41 @@
+{
+  "status": "locked",
+  "count": 32,
+  "per_domain": 16,
+  "configuration": {
+    "temperature": 0.1,
+    "center_scale": 0.25,
+    "step_size": 0.5,
+    "rounds": 2,
+    "candidates_per_round": 17
+  },
+  "arms": [
+    "E_MBR",
+    "Independent_scoped",
+    "Independent_projection",
+    "Previous_projection",
+    "Joint_direct",
+    "Joint_fixed",
+    "Joint_live",
+    "Joint_shuffle"
+  ],
+  "mechanism": "fixed physical-time anchor-between tent6D joint dense Layout feedback; scoped independent marginal-amplitude and both projection controls",
+  "new_GPU_seconds": 0,
+  "new_Source_captures": 0,
+  "new_DINO_calls": 0,
+  "new_model_training": 0,
+  "new_head": 0,
+  "actual_update_branches": 4,
+  "actual_fit_episodes": 128,
+  "actual_rounds": 256,
+  "changed_state": "current-query tent6D or matched independent center state only; inactive latent axes excluded and frozen",
+  "MBR_and_E_sizes_and_planned_positions_fixed": true,
+  "no_parameter_search": true,
+  "all32_outputs_before_NEW_GT": true,
+  "no_intermediate_GT_gate": true,
+  "development_exposed": true,
+  "prior_GT_informed_mechanism_choice": true,
+  "independent_confirmation": false,
+  "CPU_seconds_cap": 600,
+  "decision": "Expand only if both-domain Joint_live minus E complete-v and unobserved actual-s positive, and Joint_live minus Fixed/Shuffle/Direct/matchedIndependent/bothProjections complete-v positive; CIs remain uncertainty"
+}
