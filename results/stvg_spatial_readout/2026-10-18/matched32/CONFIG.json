@@ -1,0 +1,54 @@
+{
+  "status": "actual_frozen_configuration",
+  "count": 32,
+  "targets_per_domain": 16,
+  "cohort": "historically exposed development, same rollback/critic32",
+  "time": "frozen Source Native physical interval, all arms identical",
+  "state": "episodic Source reset per query;1792 Query+last decoder block LN parameters",
+  "cross_query_LN_writeback": 0,
+  "domain_configurations": {
+    "vidstg": {
+      "lr": 0.03,
+      "sigma": 0.1,
+      "tau": 0.25,
+      "steps": 10,
+      "writeback": 0.125,
+      "samples": 32
+    },
+    "hc2": {
+      "lr": 0.01,
+      "sigma": 0.025,
+      "tau": 0.05,
+      "steps": 40,
+      "writeback": 0.0625,
+      "samples": 32
+    }
+  },
+  "stored_writeback_field_not_applied_in_episodic_pilot": true,
+  "frames": "original Uniform4 physical Native positions; no change",
+  "DINO": {
+    "frozen_FP32": true,
+    "same_forward_for_two_pipelines": true,
+    "original_NMS_score": "min(target occurrence token mean, whole non-stopword alphabetic token mean)",
+    "new_NMS_score": "target occurrence token mean",
+    "NMS_IoU": 0.5,
+    "TopK": 3,
+    "TopK_before_invalid_geometry_filter": true,
+    "admission_score": 0.35,
+    "admission_distinct_margin": 0.05,
+    "prompt_input_and_TargetTokenSpan_unchanged": true,
+    "noncontext_branch_unchanged": true
+  },
+  "layers": {
+    "count": 6,
+    "state": "original matched OPD final parameters only",
+    "feedback": "original accepted Top1 DINO anchor mean IoU",
+    "tie": "first argmax",
+    "empty_fallback": 6,
+    "one_layer_for_complete_tube": true,
+    "combined_with_new_ranking": false
+  },
+  "all32_sealed_before_new_GT": true,
+  "new_models_trained": 0,
+  "weight_changes_in_production": 0
+}
