@@ -1,0 +1,107 @@
+{
+  "status": "complete",
+  "count": 32,
+  "development": true,
+  "backbone": "TA-STVG",
+  "source_domains_and_checkpoint_hashes": {
+    "hc2": {
+      "center_fraction": 1.0,
+      "source_dataset": "vidstg",
+      "checkpoint_sha256": "5ab12c86363ef0ce0ee006c00fd11c6b659c3a9b2cb01a4f2c613efe22a2aa83",
+      "prior_weight": 0.1,
+      "epsilon": 1e-06
+    },
+    "vidstg": {
+      "center_fraction": 0.5,
+      "source_dataset": "hcstvg2",
+      "checkpoint_sha256": "47d8f15841cd57e7bbf5a10e8bf23b1054d23b753e0becbd38a07f3dd60d5036",
+      "prior_weight": 0.1,
+      "epsilon": 1e-06
+    }
+  },
+  "cached_DINO_expert": {
+    "model": "Grounding DINO",
+    "weights_sha256": "1a2412ef99bd74bcd3c2a246fa1e48581f8889a1300c9051974741314fc042f3",
+    "provenance": "original verified capture reused; no new checkpoint inference or expert call"
+  },
+  "source_calibration": {
+    "hc2": {
+      "scale": [
+        0.022542142662651282,
+        0.011027737123363815,
+        0.06612943552390567,
+        0.02918426580581821
+      ],
+      "truncation": 18.056884634893116,
+      "source_train_queries": 36,
+      "eligible_queries": 35,
+      "known_planned_anchors": 113,
+      "singleton_or_empty_queries": 1,
+      "quantile": 0.95,
+      "validation_used": false,
+      "target_GT_used": false
+    },
+    "vidstg": {
+      "scale": [
+        0.08805019583603152,
+        0.03796878948819179,
+        0.2445728236645117,
+        0.21037521441041293
+      ],
+      "truncation": 30.734017210649714,
+      "source_train_queries": 36,
+      "eligible_queries": 22,
+      "known_planned_anchors": 76,
+      "singleton_or_empty_queries": 14,
+      "quantile": 0.95,
+      "validation_used": false,
+      "target_GT_used": false
+    }
+  },
+  "target_to_source_calibration": {
+    "hc2": "vidstg",
+    "vidstg": "hc2"
+  },
+  "source_train": 72,
+  "source_validation_used": 0,
+  "original_admitted_frames": {
+    "hc2": 56,
+    "vidstg": 50
+  },
+  "retained_candidates": {
+    "hc2": 168,
+    "vidstg": 144
+  },
+  "pool": "original <=3 post-NMS probe boxes at original admitted frames; no raw900 recovery or new admission",
+  "A_exact_old_global_correction": true,
+  "D_exact_C_choices_and_delta_with_sizes_identity": true,
+  "candidate_selection": "exact finite global truncatedLS; no absolute-delta/Student-distance prior",
+  "source_scale_and_cutoff_locked_before_target_outputs": true,
+  "all32_outputs_sealed_before_target_GT_and_old_labels": true,
+  "old_labels": "model-assisted original Top1 only; unknown roles conservatively UN; no labels for alternative identities",
+  "competition_diagnostic_clarification": {
+    "status": "clarified",
+    "raw_runner_fields_preserved": true,
+    "runner_gap": "nearest distinct finite proposal; not necessarily an independently stationary association mode",
+    "derived_gap": "DIAGNOSTICS per_query_competition: distinct self-consistent candidate/outlier assignment modes",
+    "scientific_prediction_or_metric_changes": false,
+    "no_new_reliability_gate": true
+  },
+  "no_new_GPU_models_experts_training_Student_updates": true,
+  "new_pixels_or_identity_labels": 0,
+  "CPU_generation_seconds": 1.2150904189329594,
+  "CPU_score_seconds": 3.3200725570786744,
+  "cached_CPU_cost_not_online_end_to_end": true,
+  "result_sha256": "a4d759778178b8d54a5b5122c83273bc476572af064d0a9e464ac5af63c028d4",
+  "calibration_sha256": "36992f0ebb8f845b5091ebea7f3fb001f541fb63ff09e79deb62c0dd30547b77",
+  "code_pins": {
+    "vg_tta/stvg_joint_robust_correction32_v1.py": "772c6f4ff5350c2d5d7cb40a9e36cfd15cb5133e00356f8ad15900527bbc9aaa",
+    "scripts/run_stvg_joint_robust_correction32_v1.py": "94b8a3ffe6446fbddc98408a0254f47dbca9a4bf86bcba2e884de7d7170e6029",
+    "scripts/score_stvg_joint_robust_correction32_v1.py": "09de0643634ee07e1998186e11a1f3c7431eeacf6bfcf74abcd4495f89f2179d",
+    "protocols/stvg_joint_robust_correction32_v1.md": "687629b3e40cadb530834be274fe04e253789636d53a8ae163ac085057466004",
+    "vg_tta/stvg_error_state_correction_v1.py": "0e016c9ac71ea632ba0189f55efd71f250acac393f9bd57670e21dcf7448ad06",
+    "vg_tta/tastvg_oracle_event5_v1.py": "d902db704277a79f2a8d2a2a7ff09fdbf1402b1912c05ee62f7083161b7713a3"
+  },
+  "registries_unchanged": true,
+  "no_confirmation_dense_OPD_or_new_gate": true
+}
