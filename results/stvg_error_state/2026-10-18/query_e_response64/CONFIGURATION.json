@@ -89,9 +89,29 @@
   "predecessor_commit": "833fb8e9fd738ee5cc7c1077f297c7f7fea167e5",
   "original_fit_commit": "288f2876732b714c3c9d6d1f1312df1102e84da9",
   "cohort": "exact original HC32/Vid32 already exposed development parents; no reselection",
-  "source_checkpoint_pins": {},
+  "source_checkpoint_pins": {
+    "checkpoints/TASTVG_VidSTG.pth": "5ab12c86363ef0ce0ee006c00fd11c6b659c3a9b2cb01a4f2c613efe22a2aa83",
+    "checkpoints/TASTVG_HCSTVG2.pth": "47d8f15841cd57e7bbf5a10e8bf23b1054d23b753e0becbd38a07f3dd60d5036"
+  },
   "native_decoder_source_pin": {
     "external/TA-STVG/models/grounding_model/query_decoder.py": "9cb4062b5f91403853b697f5901501969956c799e79f07ef47a581e28d6cf79c"
   },
-  "scope": "same native forward function; full-chain versus detach only changes backward graph in local test"
+  "scope": "same native forward function; full-chain versus detach only changes backward graph in local test",
+  "source_checkpoints": {
+    "hc2": {
+      "backbone": "TA-STVG",
+      "source_dataset": "vidstg",
+      "checkpoint": "checkpoints/TASTVG_VidSTG.pth",
+      "sha256": "5ab12c86363ef0ce0ee006c00fd11c6b659c3a9b2cb01a4f2c613efe22a2aa83",
+      "load_time_validation": "scripts/run_spatial_regression_alignment_v1.py:model_load validates SHA before load"
+    },
+    "vidstg": {
+      "backbone": "TA-STVG",
+      "source_dataset": "hcstvg2",
+      "checkpoint": "checkpoints/TASTVG_HCSTVG2.pth",
+      "sha256": "47d8f15841cd57e7bbf5a10e8bf23b1054d23b753e0becbd38a07f3dd60d5036",
+      "load_time_validation": "scripts/run_spatial_regression_alignment_v1.py:model_load validates SHA before load"
+    }
+  },
+  "legacy_writeback_config_field_unused": true
 }
