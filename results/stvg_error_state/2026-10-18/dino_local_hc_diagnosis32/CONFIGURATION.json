@@ -1,0 +1,31 @@
+{
+  "count": 32,
+  "HC": 16,
+  "Vid": 16,
+  "backbone": "TA-STVG",
+  "same_source_checkpoints_as_d9f0c700": true,
+  "source_checkpoints": {
+    "hc2": {
+      "backbone": "TA-STVG",
+      "source_dataset": "vidstg",
+      "checkpoint": "checkpoints/TASTVG_VidSTG.pth",
+      "sha256": "5ab12c86363ef0ce0ee006c00fd11c6b659c3a9b2cb01a4f2c613efe22a2aa83",
+      "load_time_validation": "scripts/run_spatial_regression_alignment_v1.py:model_load validates SHA before load"
+    },
+    "vidstg": {
+      "backbone": "TA-STVG",
+      "source_dataset": "hcstvg2",
+      "checkpoint": "checkpoints/TASTVG_HCSTVG2.pth",
+      "sha256": "47d8f15841cd57e7bbf5a10e8bf23b1054d23b753e0becbd38a07f3dd60d5036",
+      "load_time_validation": "scripts/run_spatial_regression_alignment_v1.py:model_load validates SHA before load"
+    }
+  },
+  "threshold": 0.35,
+  "denominator": 24,
+  "time": "unchanged final-MBR",
+  "no_new_GT_or_scoring": true,
+  "no_new_models": true,
+  "no_amplitude_search": true,
+  "norm": "existing source scales; applied center normalized by E width/height",
+  "old_target_exposure": true
+}
