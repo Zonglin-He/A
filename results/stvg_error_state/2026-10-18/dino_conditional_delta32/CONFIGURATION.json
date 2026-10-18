@@ -1,0 +1,70 @@
+{
+  "count": 32,
+  "per_domain": 16,
+  "selection": "lexicographically first16 aliases/domain of prior fixed64; no scores/GT/quality filter",
+  "seed": 20261018,
+  "rounds": 3,
+  "samples_per_round": 8,
+  "total_samples": 24,
+  "scale": {
+    "hc2": [
+      0.08805019583603152,
+      0.03796878948819179,
+      0.2445728236645117,
+      0.21037521441041293
+    ],
+    "vidstg": [
+      0.022542142662651282,
+      0.011027737123363815,
+      0.06612943552390567,
+      0.02918426580581821
+    ]
+  },
+  "distribution": "unit-covariance Gaussian over source-normalized shared4 correction, mean initialized E/scale",
+  "distill": "mu_new=mu+mean(teacher_action-sampled_action). Same population update at fixed mean for zero-mean Gaussian, different finite-sample estimator; not old empirical KL optimum.",
+  "teacher_target": "mean across anchors with original target-token score>=.35 of corrected box minus original Source in(cx,cy,logw,logh), divided by source scale",
+  "invalid": "any cxcywh coordinate outside open(0,1) at any anchor => entire action teacher no-op; no clamp or rejection resampling",
+  "no_E_support": "all new arms exact E no-op, no teacher encoding; retained in denominator",
+  "content": "nearest initial native proposal by IoU, deterministic first argmax; its original content embedding",
+  "attention": "900 original queries unchanged context; each external replaces matched native slot in its own attention support; external-external isolated",
+  "one_correction": "exact old one-correction output and trace reused; no new teacher or fit for this invariant baseline",
+  "fixed": "same24 initial actions, fresh conditional feedback, one correction-difference mean update",
+  "dynamic": "same24 epsilon split8x3, current corrected mean each round, fresh conditional feedback at changed paths",
+  "teacher_budget_per_arm": "24 logical reference queries per encoded anchor, <=4 anchors; unique decoder work separately reported",
+  "native_replay_tolerance": 0.0,
+  "cloned_reference_box_tolerance": 0.0001,
+  "time": "same frozen final physical distribution MBR interval in all arms; no temporal update",
+  "pretrained_weights_frozen": true,
+  "GT": "only after all32 outputs sealed; old exposed development cohort, no new target selection",
+  "GPU_seconds_cap": 900,
+  "wall_seconds_cap": 2400,
+  "CURRENT_unchanged": true,
+  "second_backbone": false,
+  "new_training": false,
+  "status": "single_update_fix_locked_before_new_model_outputs_GT",
+  "old_plan_SHA256": "9856d08828e4dfb1919cbb1452741162e3ce49969bdd2570a3e4434b7663c980",
+  "old_feedback_and_predictions_preserved": true,
+  "old_target_GT_exposure_acknowledged": true,
+  "new_GT_after_all32_predictions": true,
+  "teacher_noop_means_zero_distribution_contribution": true,
+  "stop": "Feedback remains scarce or accepted feedback remains harmful => stop interface. Dynamic must beat E and fixed to motivate more work; no automatic expansion or parameter change.",
+  "source_checkpoints": {
+    "hc2": {
+      "backbone": "TA-STVG",
+      "source_dataset": "vidstg",
+      "checkpoint": "checkpoints/TASTVG_VidSTG.pth",
+      "sha256": "5ab12c86363ef0ce0ee006c00fd11c6b659c3a9b2cb01a4f2c613efe22a2aa83",
+      "load_time_validation": "scripts/run_spatial_regression_alignment_v1.py:model_load validates SHA before load"
+    },
+    "vidstg": {
+      "backbone": "TA-STVG",
+      "source_dataset": "hcstvg2",
+      "checkpoint": "checkpoints/TASTVG_HCSTVG2.pth",
+      "sha256": "47d8f15841cd57e7bbf5a10e8bf23b1054d23b753e0becbd38a07f3dd60d5036",
+      "load_time_validation": "scripts/run_spatial_regression_alignment_v1.py:model_load validates SHA before load"
+    }
+  },
+  "DINO_weight_SHA256": "1a2412ef99bd74bcd3c2a246fa1e48581f8889a1300c9051974741314fc042f3",
+  "old_commit": "60c617cc431f829c1b1a34dffb065dae201ccf4e",
+  "old_teacher_implementation_verbatim": true
+}

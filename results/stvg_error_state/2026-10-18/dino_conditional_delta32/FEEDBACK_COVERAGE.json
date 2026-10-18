@@ -1,0 +1,2141 @@
+{
+  "status": "complete",
+  "groups": {
+    "hc2": {
+      "Fixed_sample_distill": {
+        "queries": 16,
+        "active": 16,
+        "queries_with_any_feedback": 5,
+        "all_identity_queries": 11,
+        "E_exact_outputs": 11,
+        "candidates": 384,
+        "legal_candidates": 306,
+        "candidates_with_any_feedback": 8,
+        "accepted_anchor_feedback": 9,
+        "actual_attempted_anchor_refs": 1224,
+        "all_identity_rounds": 11,
+        "all_identity_rounds_exact_noop": true
+      },
+      "On_policy_distill": {
+        "queries": 16,
+        "active": 16,
+        "queries_with_any_feedback": 5,
+        "all_identity_queries": 11,
+        "E_exact_outputs": 11,
+        "candidates": 384,
+        "legal_candidates": 307,
+        "candidates_with_any_feedback": 8,
+        "accepted_anchor_feedback": 9,
+        "actual_attempted_anchor_refs": 1228,
+        "all_identity_rounds": 41,
+        "all_identity_rounds_exact_noop": true
+      }
+    },
+    "vidstg": {
+      "Fixed_sample_distill": {
+        "queries": 16,
+        "active": 12,
+        "queries_with_any_feedback": 12,
+        "all_identity_queries": 0,
+        "E_exact_outputs": 4,
+        "candidates": 288,
+        "legal_candidates": 276,
+        "candidates_with_any_feedback": 86,
+        "accepted_anchor_feedback": 121,
+        "actual_attempted_anchor_refs": 1104,
+        "all_identity_rounds": 0,
+        "all_identity_rounds_exact_noop": true
+      },
+      "On_policy_distill": {
+        "queries": 16,
+        "active": 12,
+        "queries_with_any_feedback": 12,
+        "all_identity_queries": 0,
+        "E_exact_outputs": 4,
+        "candidates": 288,
+        "legal_candidates": 274,
+        "candidates_with_any_feedback": 82,
+        "accepted_anchor_feedback": 110,
+        "actual_attempted_anchor_refs": 1096,
+        "all_identity_rounds": 7,
+        "all_identity_rounds_exact_noop": true
+      }
+    }
+  },
+  "rows": [
+    {
+      "alias": "H007",
+      "dataset": "hc2",
+      "active": true,
+      "arms": {
+        "Fixed_sample_distill": {
+          "rounds": [
+            {
+              "round": 0,
+              "candidates": 24,
+              "legal_candidates": 4,
+              "invalid_candidates": 20,
+              "candidates_with_any_feedback": 0,
+              "identity_candidates": 24,
+              "accepted_anchor_feedback": 0,
+              "attempted_anchor_references": 16,
+              "exact_noop_if_all_identity": true,
+              "mean_displacement_norm": 0.0
+            }
+          ],
+          "any_feedback": false,
+          "wholly_identity": true,
+          "output_E_exact": true,
+          "mean_E_displacement_l2": 0.0
+        },
+        "On_policy_distill": {
+          "rounds": [
+            {
+              "round": 0,
+              "candidates": 8,
+              "legal_candidates": 0,
+              "invalid_candidates": 8,
+              "candidates_with_any_feedback": 0,
+              "identity_candidates": 8,
+              "accepted_anchor_feedback": 0,
+              "attempted_anchor_references": 0,
+              "exact_noop_if_all_identity": true,
+              "mean_displacement_norm": 0.0
+            },
+            {
+              "round": 1,
+              "candidates": 8,
+              "legal_candidates": 0,
+              "invalid_candidates": 8,
+              "candidates_with_any_feedback": 0,
+              "identity_candidates": 8,
+              "accepted_anchor_feedback": 0,
+              "attempted_anchor_references": 0,
+              "exact_noop_if_all_identity": true,
+              "mean_displacement_norm": 0.0
+            },
+            {
+              "round": 2,
+              "candidates": 8,
+              "legal_candidates": 4,
+              "invalid_candidates": 4,
+              "candidates_with_any_feedback": 0,
+              "identity_candidates": 8,
+              "accepted_anchor_feedback": 0,
+              "attempted_anchor_references": 16,
+              "exact_noop_if_all_identity": true,
+              "mean_displacement_norm": 0.0
+            }
+          ],
+          "any_feedback": false,
+          "wholly_identity": true,
+          "output_E_exact": true,
+          "mean_E_displacement_l2": 0.0
+        }
+      }
+    },
+    {
+      "alias": "V010",
+      "dataset": "vidstg",
+      "active": true,
+      "arms": {
+        "Fixed_sample_distill": {
+          "rounds": [
+            {
+              "round": 0,
+              "candidates": 24,
+              "legal_candidates": 24,
+              "invalid_candidates": 0,
+              "candidates_with_any_feedback": 8,
+              "identity_candidates": 16,
+              "accepted_anchor_feedback": 8,
+              "attempted_anchor_references": 96,
+              "exact_noop_if_all_identity": true,
+              "mean_displacement_norm": 0.4081856313833755
+            }
+          ],
+          "any_feedback": true,
+          "wholly_identity": false,
+          "output_E_exact": false,
+          "mean_E_displacement_l2": 0.4081856313833755
+        },
+        "On_policy_distill": {
+          "rounds": [
+            {
+              "round": 0,
+              "candidates": 8,
+              "legal_candidates": 8,
+              "invalid_candidates": 0,
+              "candidates_with_any_feedback": 4,
+              "identity_candidates": 4,
+              "accepted_anchor_feedback": 4,
+              "attempted_anchor_references": 32,
+              "exact_noop_if_all_identity": true,
+              "mean_displacement_norm": 0.5040542699057436
+            },
+            {
+              "round": 1,
+              "candidates": 8,
+              "legal_candidates": 8,
+              "invalid_candidates": 0,
+              "candidates_with_any_feedback": 2,
+              "identity_candidates": 6,
+              "accepted_anchor_feedback": 2,
+              "attempted_anchor_references": 32,
+              "exact_noop_if_all_identity": true,
+              "mean_displacement_norm": 0.0866808789080857
+            },
+            {
+              "round": 2,
+              "candidates": 8,
+              "legal_candidates": 8,
+              "invalid_candidates": 0,
+              "candidates_with_any_feedback": 1,
+              "identity_candidates": 7,
+              "accepted_anchor_feedback": 1,
+              "attempted_anchor_references": 32,
+              "exact_noop_if_all_identity": true,
+              "mean_displacement_norm": 0.38491784066124124
+            }
+          ],
+          "any_feedback": true,
+          "wholly_identity": false,
+          "output_E_exact": false,
+          "mean_E_displacement_l2": 0.8607122459303547
+        }
+      }
+    },
+    {
+      "alias": "H008",
+      "dataset": "hc2",
+      "active": true,
+      "arms": {
+        "Fixed_sample_distill": {
+          "rounds": [
+            {
+              "round": 0,
+              "candidates": 24,
+              "legal_candidates": 23,
+              "invalid_candidates": 1,
+              "candidates_with_any_feedback": 0,
+              "identity_candidates": 24,
+              "accepted_anchor_feedback": 0,
+              "attempted_anchor_references": 92,
+              "exact_noop_if_all_identity": true,
+              "mean_displacement_norm": 0.0
+            }
+          ],
+          "any_feedback": false,
+          "wholly_identity": true,
+          "output_E_exact": true,
+          "mean_E_displacement_l2": 0.0
+        },
+        "On_policy_distill": {
+          "rounds": [
+            {
+              "round": 0,
+              "candidates": 8,
+              "legal_candidates": 7,
+              "invalid_candidates": 1,
+              "candidates_with_any_feedback": 0,
+              "identity_candidates": 8,
+              "accepted_anchor_feedback": 0,
+              "attempted_anchor_references": 28,
+              "exact_noop_if_all_identity": true,
+              "mean_displacement_norm": 0.0
+            },
+            {
+              "round": 1,
+              "candidates": 8,
+              "legal_candidates": 8,
+              "invalid_candidates": 0,
+              "candidates_with_any_feedback": 0,
+              "identity_candidates": 8,
+              "accepted_anchor_feedback": 0,
+              "attempted_anchor_references": 32,
+              "exact_noop_if_all_identity": true,
+              "mean_displacement_norm": 0.0
+            },
+            {
+              "round": 2,
+              "candidates": 8,
+              "legal_candidates": 8,
+              "invalid_candidates": 0,
+              "candidates_with_any_feedback": 0,
+              "identity_candidates": 8,
+              "accepted_anchor_feedback": 0,
+              "attempted_anchor_references": 32,
+              "exact_noop_if_all_identity": true,
+              "mean_displacement_norm": 0.0
+            }
+          ],
+          "any_feedback": false,
+          "wholly_identity": true,
+          "output_E_exact": true,
+          "mean_E_displacement_l2": 0.0
+        }
+      }
+    },
+    {
+      "alias": "H010",
+      "dataset": "hc2",
+      "active": true,
+      "arms": {
+        "Fixed_sample_distill": {
+          "rounds": [
+            {
+              "round": 0,
+              "candidates": 24,
+              "legal_candidates": 18,
+              "invalid_candidates": 6,
+              "candidates_with_any_feedback": 2,
+              "identity_candidates": 22,
+              "accepted_anchor_feedback": 2,
+              "attempted_anchor_references": 72,
+              "exact_noop_if_all_identity": true,
+              "mean_displacement_norm": 0.061364984085338144
+            }
+          ],
+          "any_feedback": true,
+          "wholly_identity": false,
+          "output_E_exact": false,
+          "mean_E_displacement_l2": 0.061364984085338144
+        },
+        "On_policy_distill": {
+          "rounds": [
+            {
+              "round": 0,
+              "candidates": 8,
+              "legal_candidates": 6,
+              "invalid_candidates": 2,
+              "candidates_with_any_feedback": 1,
+              "identity_candidates": 7,
+              "accepted_anchor_feedback": 1,
+              "attempted_anchor_references": 24,
+              "exact_noop_if_all_identity": true,
+              "mean_displacement_norm": 0.08603326045071553
+            },
+            {
+              "round": 1,
+              "candidates": 8,
+              "legal_candidates": 7,
+              "invalid_candidates": 1,
+              "candidates_with_any_feedback": 1,
+              "identity_candidates": 7,
+              "accepted_anchor_feedback": 1,
+              "attempted_anchor_references": 28,
+              "exact_noop_if_all_identity": true,
+              "mean_displacement_norm": 0.12325435196645958
+            },
+            {
+              "round": 2,
+              "candidates": 8,
+              "legal_candidates": 6,
+              "invalid_candidates": 2,
+              "candidates_with_any_feedback": 0,
+              "identity_candidates": 8,
+              "accepted_anchor_feedback": 0,
+              "attempted_anchor_references": 24,
+              "exact_noop_if_all_identity": true,
+              "mean_displacement_norm": 0.0
+            }
+          ],
+          "any_feedback": true,
+          "wholly_identity": false,
+          "output_E_exact": false,
+          "mean_E_displacement_l2": 0.1759623453760583
+        }
+      }
+    },
+    {
+      "alias": "H018",
+      "dataset": "hc2",
+      "active": true,
+      "arms": {
+        "Fixed_sample_distill": {
+          "rounds": [
+            {
+              "round": 0,
+              "candidates": 24,
+              "legal_candidates": 24,
+              "invalid_candidates": 0,
+              "candidates_with_any_feedback": 0,
+              "identity_candidates": 24,
+              "accepted_anchor_feedback": 0,
+              "attempted_anchor_references": 96,
+              "exact_noop_if_all_identity": true,
+              "mean_displacement_norm": 0.0
+            }
+          ],
+          "any_feedback": false,
+          "wholly_identity": true,
+          "output_E_exact": true,
+          "mean_E_displacement_l2": 0.0
+        },
+        "On_policy_distill": {
+          "rounds": [
+            {
+              "round": 0,
+              "candidates": 8,
+              "legal_candidates": 8,
+              "invalid_candidates": 0,
+              "candidates_with_any_feedback": 0,
+              "identity_candidates": 8,
+              "accepted_anchor_feedback": 0,
+              "attempted_anchor_references": 32,
+              "exact_noop_if_all_identity": true,
+              "mean_displacement_norm": 0.0
+            },
+            {
+              "round": 1,
+              "candidates": 8,
+              "legal_candidates": 8,
+              "invalid_candidates": 0,
+              "candidates_with_any_feedback": 0,
+              "identity_candidates": 8,
+              "accepted_anchor_feedback": 0,
+              "attempted_anchor_references": 32,
+              "exact_noop_if_all_identity": true,
+              "mean_displacement_norm": 0.0
+            },
+            {
+              "round": 2,
+              "candidates": 8,
+              "legal_candidates": 8,
+              "invalid_candidates": 0,
+              "candidates_with_any_feedback": 0,
+              "identity_candidates": 8,
+              "accepted_anchor_feedback": 0,
+              "attempted_anchor_references": 32,
+              "exact_noop_if_all_identity": true,
+              "mean_displacement_norm": 0.0
+            }
+          ],
+          "any_feedback": false,
+          "wholly_identity": true,
+          "output_E_exact": true,
+          "mean_E_displacement_l2": 0.0
+        }
+      }
+    },
+    {
+      "alias": "H022",
+      "dataset": "hc2",
+      "active": true,
+      "arms": {
+        "Fixed_sample_distill": {
+          "rounds": [
+            {
+              "round": 0,
+              "candidates": 24,
+              "legal_candidates": 23,
+              "invalid_candidates": 1,
+              "candidates_with_any_feedback": 2,
+              "identity_candidates": 22,
+              "accepted_anchor_feedback": 2,
+              "attempted_anchor_references": 92,
+              "exact_noop_if_all_identity": true,
+              "mean_displacement_norm": 0.10263368518319206
+            }
+          ],
+          "any_feedback": true,
+          "wholly_identity": false,
+          "output_E_exact": false,
+          "mean_E_displacement_l2": 0.10263368518319206
+        },
+        "On_policy_distill": {
+          "rounds": [
+            {
+              "round": 0,
+              "candidates": 8,
+              "legal_candidates": 8,
+              "invalid_candidates": 0,
+              "candidates_with_any_feedback": 0,
+              "identity_candidates": 8,
+              "accepted_anchor_feedback": 0,
+              "attempted_anchor_references": 32,
+              "exact_noop_if_all_identity": true,
+              "mean_displacement_norm": 0.0
+            },
+            {
+              "round": 1,
+              "candidates": 8,
+              "legal_candidates": 8,
+              "invalid_candidates": 0,
+              "candidates_with_any_feedback": 1,
+              "identity_candidates": 7,
+              "accepted_anchor_feedback": 1,
+              "attempted_anchor_references": 32,
+              "exact_noop_if_all_identity": true,
+              "mean_displacement_norm": 0.2127438836210316
+            },
+            {
+              "round": 2,
+              "candidates": 8,
+              "legal_candidates": 7,
+              "invalid_candidates": 1,
+              "candidates_with_any_feedback": 1,
+              "identity_candidates": 7,
+              "accepted_anchor_feedback": 1,
+              "attempted_anchor_references": 28,
+              "exact_noop_if_all_identity": true,
+              "mean_displacement_norm": 0.08572430684015538
+            }
+          ],
+          "any_feedback": true,
+          "wholly_identity": false,
+          "output_E_exact": false,
+          "mean_E_displacement_l2": 0.28191018204888363
+        }
+      }
+    },
+    {
+      "alias": "H023",
+      "dataset": "hc2",
+      "active": true,
+      "arms": {
+        "Fixed_sample_distill": {
+          "rounds": [
+            {
+              "round": 0,
+              "candidates": 24,
+              "legal_candidates": 24,
+              "invalid_candidates": 0,
+              "candidates_with_any_feedback": 0,
+              "identity_candidates": 24,
+              "accepted_anchor_feedback": 0,
+              "attempted_anchor_references": 96,
+              "exact_noop_if_all_identity": true,
+              "mean_displacement_norm": 0.0
+            }
+          ],
+          "any_feedback": false,
+          "wholly_identity": true,
+          "output_E_exact": true,
+          "mean_E_displacement_l2": 0.0
+        },
+        "On_policy_distill": {
+          "rounds": [
+            {
+              "round": 0,
+              "candidates": 8,
+              "legal_candidates": 8,
+              "invalid_candidates": 0,
+              "candidates_with_any_feedback": 0,
+              "identity_candidates": 8,
+              "accepted_anchor_feedback": 0,
+              "attempted_anchor_references": 32,
+              "exact_noop_if_all_identity": true,
+              "mean_displacement_norm": 0.0
+            },
+            {
+              "round": 1,
+              "candidates": 8,
+              "legal_candidates": 8,
+              "invalid_candidates": 0,
+              "candidates_with_any_feedback": 0,
+              "identity_candidates": 8,
+              "accepted_anchor_feedback": 0,
+              "attempted_anchor_references": 32,
+              "exact_noop_if_all_identity": true,
+              "mean_displacement_norm": 0.0
+            },
+            {
+              "round": 2,
+              "candidates": 8,
+              "legal_candidates": 8,
+              "invalid_candidates": 0,
+              "candidates_with_any_feedback": 0,
+              "identity_candidates": 8,
+              "accepted_anchor_feedback": 0,
+              "attempted_anchor_references": 32,
+              "exact_noop_if_all_identity": true,
+              "mean_displacement_norm": 0.0
+            }
+          ],
+          "any_feedback": false,
+          "wholly_identity": true,
+          "output_E_exact": true,
+          "mean_E_displacement_l2": 0.0
+        }
+      }
+    },
+    {
+      "alias": "H031",
+      "dataset": "hc2",
+      "active": true,
+      "arms": {
+        "Fixed_sample_distill": {
+          "rounds": [
+            {
+              "round": 0,
+              "candidates": 24,
+              "legal_candidates": 21,
+              "invalid_candidates": 3,
+              "candidates_with_any_feedback": 0,
+              "identity_candidates": 24,
+              "accepted_anchor_feedback": 0,
+              "attempted_anchor_references": 84,
+              "exact_noop_if_all_identity": true,
+              "mean_displacement_norm": 0.0
+            }
+          ],
+          "any_feedback": false,
+          "wholly_identity": true,
+          "output_E_exact": true,
+          "mean_E_displacement_l2": 0.0
+        },
+        "On_policy_distill": {
+          "rounds": [
+            {
+              "round": 0,
+              "candidates": 8,
+              "legal_candidates": 5,
+              "invalid_candidates": 3,
+              "candidates_with_any_feedback": 0,
+              "identity_candidates": 8,
+              "accepted_anchor_feedback": 0,
+              "attempted_anchor_references": 20,
+              "exact_noop_if_all_identity": true,
+              "mean_displacement_norm": 0.0
+            },
+            {
+              "round": 1,
+              "candidates": 8,
+              "legal_candidates": 8,
+              "invalid_candidates": 0,
+              "candidates_with_any_feedback": 0,
+              "identity_candidates": 8,
+              "accepted_anchor_feedback": 0,
+              "attempted_anchor_references": 32,
+              "exact_noop_if_all_identity": true,
+              "mean_displacement_norm": 0.0
+            },
+            {
+              "round": 2,
+              "candidates": 8,
+              "legal_candidates": 8,
+              "invalid_candidates": 0,
+              "candidates_with_any_feedback": 0,
+              "identity_candidates": 8,
+              "accepted_anchor_feedback": 0,
+              "attempted_anchor_references": 32,
+              "exact_noop_if_all_identity": true,
+              "mean_displacement_norm": 0.0
+            }
+          ],
+          "any_feedback": false,
+          "wholly_identity": true,
+          "output_E_exact": true,
+          "mean_E_displacement_l2": 0.0
+        }
+      }
+    },
+    {
+      "alias": "H032",
+      "dataset": "hc2",
+      "active": true,
+      "arms": {
+        "Fixed_sample_distill": {
+          "rounds": [
+            {
+              "round": 0,
+              "candidates": 24,
+              "legal_candidates": 22,
+              "invalid_candidates": 2,
+              "candidates_with_any_feedback": 2,
+              "identity_candidates": 22,
+              "accepted_anchor_feedback": 3,
+              "attempted_anchor_references": 88,
+              "exact_noop_if_all_identity": true,
+              "mean_displacement_norm": 0.04234973965075093
+            }
+          ],
+          "any_feedback": true,
+          "wholly_identity": false,
+          "output_E_exact": false,
+          "mean_E_displacement_l2": 0.04234973965075093
+        },
+        "On_policy_distill": {
+          "rounds": [
+            {
+              "round": 0,
+              "candidates": 8,
+              "legal_candidates": 8,
+              "invalid_candidates": 0,
+              "candidates_with_any_feedback": 0,
+              "identity_candidates": 8,
+              "accepted_anchor_feedback": 0,
+              "attempted_anchor_references": 32,
+              "exact_noop_if_all_identity": true,
+              "mean_displacement_norm": 0.0
+            },
+            {
+              "round": 1,
+              "candidates": 8,
+              "legal_candidates": 7,
+              "invalid_candidates": 1,
+              "candidates_with_any_feedback": 0,
+              "identity_candidates": 8,
+              "accepted_anchor_feedback": 0,
+              "attempted_anchor_references": 28,
+              "exact_noop_if_all_identity": true,
+              "mean_displacement_norm": 0.0
+            },
+            {
+              "round": 2,
+              "candidates": 8,
+              "legal_candidates": 7,
+              "invalid_candidates": 1,
+              "candidates_with_any_feedback": 2,
+              "identity_candidates": 6,
+              "accepted_anchor_feedback": 3,
+              "attempted_anchor_references": 28,
+              "exact_noop_if_all_identity": true,
+              "mean_displacement_norm": 0.1270492189522526
+            }
+          ],
+          "any_feedback": true,
+          "wholly_identity": false,
+          "output_E_exact": false,
+          "mean_E_displacement_l2": 0.1270492189522526
+        }
+      }
+    },
+    {
+      "alias": "H035",
+      "dataset": "hc2",
+      "active": true,
+      "arms": {
+        "Fixed_sample_distill": {
+          "rounds": [
+            {
+              "round": 0,
+              "candidates": 24,
+              "legal_candidates": 24,
+              "invalid_candidates": 0,
+              "candidates_with_any_feedback": 0,
+              "identity_candidates": 24,
+              "accepted_anchor_feedback": 0,
+              "attempted_anchor_references": 96,
+              "exact_noop_if_all_identity": true,
+              "mean_displacement_norm": 0.0
+            }
+          ],
+          "any_feedback": false,
+          "wholly_identity": true,
+          "output_E_exact": true,
+          "mean_E_displacement_l2": 0.0
+        },
+        "On_policy_distill": {
+          "rounds": [
+            {
+              "round": 0,
+              "candidates": 8,
+              "legal_candidates": 8,
+              "invalid_candidates": 0,
+              "candidates_with_any_feedback": 0,
+              "identity_candidates": 8,
+              "accepted_anchor_feedback": 0,
+              "attempted_anchor_references": 32,
+              "exact_noop_if_all_identity": true,
+              "mean_displacement_norm": 0.0
+            },
+            {
+              "round": 1,
+              "candidates": 8,
+              "legal_candidates": 8,
+              "invalid_candidates": 0,
+              "candidates_with_any_feedback": 0,
+              "identity_candidates": 8,
+              "accepted_anchor_feedback": 0,
+              "attempted_anchor_references": 32,
+              "exact_noop_if_all_identity": true,
+              "mean_displacement_norm": 0.0
+            },
+            {
+              "round": 2,
+              "candidates": 8,
+              "legal_candidates": 8,
+              "invalid_candidates": 0,
+              "candidates_with_any_feedback": 0,
+              "identity_candidates": 8,
+              "accepted_anchor_feedback": 0,
+              "attempted_anchor_references": 32,
+              "exact_noop_if_all_identity": true,
+              "mean_displacement_norm": 0.0
+            }
+          ],
+          "any_feedback": false,
+          "wholly_identity": true,
+          "output_E_exact": true,
+          "mean_E_displacement_l2": 0.0
+        }
+      }
+    },
+    {
+      "alias": "H037",
+      "dataset": "hc2",
+      "active": true,
+      "arms": {
+        "Fixed_sample_distill": {
+          "rounds": [
+            {
+              "round": 0,
+              "candidates": 24,
+              "legal_candidates": 10,
+              "invalid_candidates": 14,
+              "candidates_with_any_feedback": 0,
+              "identity_candidates": 24,
+              "accepted_anchor_feedback": 0,
+              "attempted_anchor_references": 40,
+              "exact_noop_if_all_identity": true,
+              "mean_displacement_norm": 0.0
+            }
+          ],
+          "any_feedback": false,
+          "wholly_identity": true,
+          "output_E_exact": true,
+          "mean_E_displacement_l2": 0.0
+        },
+        "On_policy_distill": {
+          "rounds": [
+            {
+              "round": 0,
+              "candidates": 8,
+              "legal_candidates": 5,
+              "invalid_candidates": 3,
+              "candidates_with_any_feedback": 0,
+              "identity_candidates": 8,
+              "accepted_anchor_feedback": 0,
+              "attempted_anchor_references": 20,
+              "exact_noop_if_all_identity": true,
+              "mean_displacement_norm": 0.0
+            },
+            {
+              "round": 1,
+              "candidates": 8,
+              "legal_candidates": 1,
+              "invalid_candidates": 7,
+              "candidates_with_any_feedback": 0,
+              "identity_candidates": 8,
+              "accepted_anchor_feedback": 0,
+              "attempted_anchor_references": 4,
+              "exact_noop_if_all_identity": true,
+              "mean_displacement_norm": 0.0
+            },
+            {
+              "round": 2,
+              "candidates": 8,
+              "legal_candidates": 4,
+              "invalid_candidates": 4,
+              "candidates_with_any_feedback": 0,
+              "identity_candidates": 8,
+              "accepted_anchor_feedback": 0,
+              "attempted_anchor_references": 16,
+              "exact_noop_if_all_identity": true,
+              "mean_displacement_norm": 0.0
+            }
+          ],
+          "any_feedback": false,
+          "wholly_identity": true,
+          "output_E_exact": true,
+          "mean_E_displacement_l2": 0.0
+        }
+      }
+    },
+    {
+      "alias": "H043",
+      "dataset": "hc2",
+      "active": true,
+      "arms": {
+        "Fixed_sample_distill": {
+          "rounds": [
+            {
+              "round": 0,
+              "candidates": 24,
+              "legal_candidates": 21,
+              "invalid_candidates": 3,
+              "candidates_with_any_feedback": 1,
+              "identity_candidates": 23,
+              "accepted_anchor_feedback": 1,
+              "attempted_anchor_references": 84,
+              "exact_noop_if_all_identity": true,
+              "mean_displacement_norm": 0.046349255490258714
+            }
+          ],
+          "any_feedback": true,
+          "wholly_identity": false,
+          "output_E_exact": false,
+          "mean_E_displacement_l2": 0.046349255490258714
+        },
+        "On_policy_distill": {
+          "rounds": [
+            {
+              "round": 0,
+              "candidates": 8,
+              "legal_candidates": 7,
+              "invalid_candidates": 1,
+              "candidates_with_any_feedback": 0,
+              "identity_candidates": 8,
+              "accepted_anchor_feedback": 0,
+              "attempted_anchor_references": 28,
+              "exact_noop_if_all_identity": true,
+              "mean_displacement_norm": 0.0
+            },
+            {
+              "round": 1,
+              "candidates": 8,
+              "legal_candidates": 7,
+              "invalid_candidates": 1,
+              "candidates_with_any_feedback": 1,
+              "identity_candidates": 7,
+              "accepted_anchor_feedback": 1,
+              "attempted_anchor_references": 28,
+              "exact_noop_if_all_identity": true,
+              "mean_displacement_norm": 0.13904776647077616
+            },
+            {
+              "round": 2,
+              "candidates": 8,
+              "legal_candidates": 7,
+              "invalid_candidates": 1,
+              "candidates_with_any_feedback": 0,
+              "identity_candidates": 8,
+              "accepted_anchor_feedback": 0,
+              "attempted_anchor_references": 28,
+              "exact_noop_if_all_identity": true,
+              "mean_displacement_norm": 0.0
+            }
+          ],
+          "any_feedback": true,
+          "wholly_identity": false,
+          "output_E_exact": false,
+          "mean_E_displacement_l2": 0.13904776647077616
+        }
+      }
+    },
+    {
+      "alias": "H045",
+      "dataset": "hc2",
+      "active": true,
+      "arms": {
+        "Fixed_sample_distill": {
+          "rounds": [
+            {
+              "round": 0,
+              "candidates": 24,
+              "legal_candidates": 7,
+              "invalid_candidates": 17,
+              "candidates_with_any_feedback": 0,
+              "identity_candidates": 24,
+              "accepted_anchor_feedback": 0,
+              "attempted_anchor_references": 28,
+              "exact_noop_if_all_identity": true,
+              "mean_displacement_norm": 0.0
+            }
+          ],
+          "any_feedback": false,
+          "wholly_identity": true,
+          "output_E_exact": true,
+          "mean_E_displacement_l2": 0.0
+        },
+        "On_policy_distill": {
+          "rounds": [
+            {
+              "round": 0,
+              "candidates": 8,
+              "legal_candidates": 4,
+              "invalid_candidates": 4,
+              "candidates_with_any_feedback": 0,
+              "identity_candidates": 8,
+              "accepted_anchor_feedback": 0,
+              "attempted_anchor_references": 16,
+              "exact_noop_if_all_identity": true,
+              "mean_displacement_norm": 0.0
+            },
+            {
+              "round": 1,
+              "candidates": 8,
+              "legal_candidates": 0,
+              "invalid_candidates": 8,
+              "candidates_with_any_feedback": 0,
+              "identity_candidates": 8,
+              "accepted_anchor_feedback": 0,
+              "attempted_anchor_references": 0,
+              "exact_noop_if_all_identity": true,
+              "mean_displacement_norm": 0.0
+            },
+            {
+              "round": 2,
+              "candidates": 8,
+              "legal_candidates": 3,
+              "invalid_candidates": 5,
+              "candidates_with_any_feedback": 0,
+              "identity_candidates": 8,
+              "accepted_anchor_feedback": 0,
+              "attempted_anchor_references": 12,
+              "exact_noop_if_all_identity": true,
+              "mean_displacement_norm": 0.0
+            }
+          ],
+          "any_feedback": false,
+          "wholly_identity": true,
+          "output_E_exact": true,
+          "mean_E_displacement_l2": 0.0
+        }
+      }
+    },
+    {
+      "alias": "H050",
+      "dataset": "hc2",
+      "active": true,
+      "arms": {
+        "Fixed_sample_distill": {
+          "rounds": [
+            {
+              "round": 0,
+              "candidates": 24,
+              "legal_candidates": 24,
+              "invalid_candidates": 0,
+              "candidates_with_any_feedback": 0,
+              "identity_candidates": 24,
+              "accepted_anchor_feedback": 0,
+              "attempted_anchor_references": 96,
+              "exact_noop_if_all_identity": true,
+              "mean_displacement_norm": 0.0
+            }
+          ],
+          "any_feedback": false,
+          "wholly_identity": true,
+          "output_E_exact": true,
+          "mean_E_displacement_l2": 0.0
+        },
+        "On_policy_distill": {
+          "rounds": [
+            {
+              "round": 0,
+              "candidates": 8,
+              "legal_candidates": 8,
+              "invalid_candidates": 0,
+              "candidates_with_any_feedback": 0,
+              "identity_candidates": 8,
+              "accepted_anchor_feedback": 0,
+              "attempted_anchor_references": 32,
+              "exact_noop_if_all_identity": true,
+              "mean_displacement_norm": 0.0
+            },
+            {
+              "round": 1,
+              "candidates": 8,
+              "legal_candidates": 8,
+              "invalid_candidates": 0,
+              "candidates_with_any_feedback": 0,
+              "identity_candidates": 8,
+              "accepted_anchor_feedback": 0,
+              "attempted_anchor_references": 32,
+              "exact_noop_if_all_identity": true,
+              "mean_displacement_norm": 0.0
+            },
+            {
+              "round": 2,
+              "candidates": 8,
+              "legal_candidates": 8,
+              "invalid_candidates": 0,
+              "candidates_with_any_feedback": 0,
+              "identity_candidates": 8,
+              "accepted_anchor_feedback": 0,
+              "attempted_anchor_references": 32,
+              "exact_noop_if_all_identity": true,
+              "mean_displacement_norm": 0.0
+            }
+          ],
+          "any_feedback": false,
+          "wholly_identity": true,
+          "output_E_exact": true,
+          "mean_E_displacement_l2": 0.0
+        }
+      }
+    },
+    {
+      "alias": "H058",
+      "dataset": "hc2",
+      "active": true,
+      "arms": {
+        "Fixed_sample_distill": {
+          "rounds": [
+            {
+              "round": 0,
+              "candidates": 24,
+              "legal_candidates": 24,
+              "invalid_candidates": 0,
+              "candidates_with_any_feedback": 0,
+              "identity_candidates": 24,
+              "accepted_anchor_feedback": 0,
+              "attempted_anchor_references": 96,
+              "exact_noop_if_all_identity": true,
+              "mean_displacement_norm": 0.0
+            }
+          ],
+          "any_feedback": false,
+          "wholly_identity": true,
+          "output_E_exact": true,
+          "mean_E_displacement_l2": 0.0
+        },
+        "On_policy_distill": {
+          "rounds": [
+            {
+              "round": 0,
+              "candidates": 8,
+              "legal_candidates": 8,
+              "invalid_candidates": 0,
+              "candidates_with_any_feedback": 0,
+              "identity_candidates": 8,
+              "accepted_anchor_feedback": 0,
+              "attempted_anchor_references": 32,
+              "exact_noop_if_all_identity": true,
+              "mean_displacement_norm": 0.0
+            },
+            {
+              "round": 1,
+              "candidates": 8,
+              "legal_candidates": 8,
+              "invalid_candidates": 0,
+              "candidates_with_any_feedback": 0,
+              "identity_candidates": 8,
+              "accepted_anchor_feedback": 0,
+              "attempted_anchor_references": 32,
+              "exact_noop_if_all_identity": true,
+              "mean_displacement_norm": 0.0
+            },
+            {
+              "round": 2,
+              "candidates": 8,
+              "legal_candidates": 8,
+              "invalid_candidates": 0,
+              "candidates_with_any_feedback": 0,
+              "identity_candidates": 8,
+              "accepted_anchor_feedback": 0,
+              "attempted_anchor_references": 32,
+              "exact_noop_if_all_identity": true,
+              "mean_displacement_norm": 0.0
+            }
+          ],
+          "any_feedback": false,
+          "wholly_identity": true,
+          "output_E_exact": true,
+          "mean_E_displacement_l2": 0.0
+        }
+      }
+    },
+    {
+      "alias": "H060",
+      "dataset": "hc2",
+      "active": true,
+      "arms": {
+        "Fixed_sample_distill": {
+          "rounds": [
+            {
+              "round": 0,
+              "candidates": 24,
+              "legal_candidates": 24,
+              "invalid_candidates": 0,
+              "candidates_with_any_feedback": 0,
+              "identity_candidates": 24,
+              "accepted_anchor_feedback": 0,
+              "attempted_anchor_references": 96,
+              "exact_noop_if_all_identity": true,
+              "mean_displacement_norm": 0.0
+            }
+          ],
+          "any_feedback": false,
+          "wholly_identity": true,
+          "output_E_exact": true,
+          "mean_E_displacement_l2": 0.0
+        },
+        "On_policy_distill": {
+          "rounds": [
+            {
+              "round": 0,
+              "candidates": 8,
+              "legal_candidates": 8,
+              "invalid_candidates": 0,
+              "candidates_with_any_feedback": 0,
+              "identity_candidates": 8,
+              "accepted_anchor_feedback": 0,
+              "attempted_anchor_references": 32,
+              "exact_noop_if_all_identity": true,
+              "mean_displacement_norm": 0.0
+            },
+            {
+              "round": 1,
+              "candidates": 8,
+              "legal_candidates": 8,
+              "invalid_candidates": 0,
+              "candidates_with_any_feedback": 0,
+              "identity_candidates": 8,
+              "accepted_anchor_feedback": 0,
+              "attempted_anchor_references": 32,
+              "exact_noop_if_all_identity": true,
+              "mean_displacement_norm": 0.0
+            },
+            {
+              "round": 2,
+              "candidates": 8,
+              "legal_candidates": 8,
+              "invalid_candidates": 0,
+              "candidates_with_any_feedback": 0,
+              "identity_candidates": 8,
+              "accepted_anchor_feedback": 0,
+              "attempted_anchor_references": 32,
+              "exact_noop_if_all_identity": true,
+              "mean_displacement_norm": 0.0
+            }
+          ],
+          "any_feedback": false,
+          "wholly_identity": true,
+          "output_E_exact": true,
+          "mean_E_displacement_l2": 0.0
+        }
+      }
+    },
+    {
+      "alias": "H061",
+      "dataset": "hc2",
+      "active": true,
+      "arms": {
+        "Fixed_sample_distill": {
+          "rounds": [
+            {
+              "round": 0,
+              "candidates": 24,
+              "legal_candidates": 13,
+              "invalid_candidates": 11,
+              "candidates_with_any_feedback": 1,
+              "identity_candidates": 23,
+              "accepted_anchor_feedback": 1,
+              "attempted_anchor_references": 52,
+              "exact_noop_if_all_identity": true,
+              "mean_displacement_norm": 0.04797232040900557
+            }
+          ],
+          "any_feedback": true,
+          "wholly_identity": false,
+          "output_E_exact": false,
+          "mean_E_displacement_l2": 0.04797232040900557
+        },
+        "On_policy_distill": {
+          "rounds": [
+            {
+              "round": 0,
+              "candidates": 8,
+              "legal_candidates": 5,
+              "invalid_candidates": 3,
+              "candidates_with_any_feedback": 0,
+              "identity_candidates": 8,
+              "accepted_anchor_feedback": 0,
+              "attempted_anchor_references": 20,
+              "exact_noop_if_all_identity": true,
+              "mean_displacement_norm": 0.0
+            },
+            {
+              "round": 1,
+              "candidates": 8,
+              "legal_candidates": 2,
+              "invalid_candidates": 6,
+              "candidates_with_any_feedback": 0,
+              "identity_candidates": 8,
+              "accepted_anchor_feedback": 0,
+              "attempted_anchor_references": 8,
+              "exact_noop_if_all_identity": true,
+              "mean_displacement_norm": 0.0
+            },
+            {
+              "round": 2,
+              "candidates": 8,
+              "legal_candidates": 6,
+              "invalid_candidates": 2,
+              "candidates_with_any_feedback": 1,
+              "identity_candidates": 7,
+              "accepted_anchor_feedback": 1,
+              "attempted_anchor_references": 24,
+              "exact_noop_if_all_identity": true,
+              "mean_displacement_norm": 0.1439168558717416
+            }
+          ],
+          "any_feedback": true,
+          "wholly_identity": false,
+          "output_E_exact": false,
+          "mean_E_displacement_l2": 0.1439168558717416
+        }
+      }
+    },
+    {
+      "alias": "V012",
+      "dataset": "vidstg",
+      "active": false,
+      "arms": {
+        "Fixed_sample_distill": {
+          "rounds": [],
+          "any_feedback": false,
+          "wholly_identity": false,
+          "output_E_exact": true,
+          "mean_E_displacement_l2": 0.0
+        },
+        "On_policy_distill": {
+          "rounds": [],
+          "any_feedback": false,
+          "wholly_identity": false,
+          "output_E_exact": true,
+          "mean_E_displacement_l2": 0.0
+        }
+      }
+    },
+    {
+      "alias": "V015",
+      "dataset": "vidstg",
+      "active": true,
+      "arms": {
+        "Fixed_sample_distill": {
+          "rounds": [
+            {
+              "round": 0,
+              "candidates": 24,
+              "legal_candidates": 24,
+              "invalid_candidates": 0,
+              "candidates_with_any_feedback": 6,
+              "identity_candidates": 18,
+              "accepted_anchor_feedback": 6,
+              "attempted_anchor_references": 96,
+              "exact_noop_if_all_identity": true,
+              "mean_displacement_norm": 0.3464449414977063
+            }
+          ],
+          "any_feedback": true,
+          "wholly_identity": false,
+          "output_E_exact": false,
+          "mean_E_displacement_l2": 0.3464449414977063
+        },
+        "On_policy_distill": {
+          "rounds": [
+            {
+              "round": 0,
+              "candidates": 8,
+              "legal_candidates": 8,
+              "invalid_candidates": 0,
+              "candidates_with_any_feedback": 2,
+              "identity_candidates": 6,
+              "accepted_anchor_feedback": 2,
+              "attempted_anchor_references": 32,
+              "exact_noop_if_all_identity": true,
+              "mean_displacement_norm": 0.2985290684719552
+            },
+            {
+              "round": 1,
+              "candidates": 8,
+              "legal_candidates": 8,
+              "invalid_candidates": 0,
+              "candidates_with_any_feedback": 3,
+              "identity_candidates": 5,
+              "accepted_anchor_feedback": 3,
+              "attempted_anchor_references": 32,
+              "exact_noop_if_all_identity": true,
+              "mean_displacement_norm": 0.3552703100109416
+            },
+            {
+              "round": 2,
+              "candidates": 8,
+              "legal_candidates": 8,
+              "invalid_candidates": 0,
+              "candidates_with_any_feedback": 0,
+              "identity_candidates": 8,
+              "accepted_anchor_feedback": 0,
+              "attempted_anchor_references": 32,
+              "exact_noop_if_all_identity": true,
+              "mean_displacement_norm": 0.0
+            }
+          ],
+          "any_feedback": true,
+          "wholly_identity": false,
+          "output_E_exact": false,
+          "mean_E_displacement_l2": 0.5818984052745304
+        }
+      }
+    },
+    {
+      "alias": "V016",
+      "dataset": "vidstg",
+      "active": true,
+      "arms": {
+        "Fixed_sample_distill": {
+          "rounds": [
+            {
+              "round": 0,
+              "candidates": 24,
+              "legal_candidates": 24,
+              "invalid_candidates": 0,
+              "candidates_with_any_feedback": 1,
+              "identity_candidates": 23,
+              "accepted_anchor_feedback": 1,
+              "attempted_anchor_references": 96,
+              "exact_noop_if_all_identity": true,
+              "mean_displacement_norm": 0.04678520641095194
+            }
+          ],
+          "any_feedback": true,
+          "wholly_identity": false,
+          "output_E_exact": false,
+          "mean_E_displacement_l2": 0.04678520641095194
+        },
+        "On_policy_distill": {
+          "rounds": [
+            {
+              "round": 0,
+              "candidates": 8,
+              "legal_candidates": 8,
+              "invalid_candidates": 0,
+              "candidates_with_any_feedback": 0,
+              "identity_candidates": 8,
+              "accepted_anchor_feedback": 0,
+              "attempted_anchor_references": 32,
+              "exact_noop_if_all_identity": true,
+              "mean_displacement_norm": 0.0
+            },
+            {
+              "round": 1,
+              "candidates": 8,
+              "legal_candidates": 8,
+              "invalid_candidates": 0,
+              "candidates_with_any_feedback": 0,
+              "identity_candidates": 8,
+              "accepted_anchor_feedback": 0,
+              "attempted_anchor_references": 32,
+              "exact_noop_if_all_identity": true,
+              "mean_displacement_norm": 0.0
+            },
+            {
+              "round": 2,
+              "candidates": 8,
+              "legal_candidates": 8,
+              "invalid_candidates": 0,
+              "candidates_with_any_feedback": 1,
+              "identity_candidates": 7,
+              "accepted_anchor_feedback": 1,
+              "attempted_anchor_references": 32,
+              "exact_noop_if_all_identity": true,
+              "mean_displacement_norm": 0.1403554042864154
+            }
+          ],
+          "any_feedback": true,
+          "wholly_identity": false,
+          "output_E_exact": false,
+          "mean_E_displacement_l2": 0.1403554042864154
+        }
+      }
+    },
+    {
+      "alias": "V022",
+      "dataset": "vidstg",
+      "active": false,
+      "arms": {
+        "Fixed_sample_distill": {
+          "rounds": [],
+          "any_feedback": false,
+          "wholly_identity": false,
+          "output_E_exact": true,
+          "mean_E_displacement_l2": 0.0
+        },
+        "On_policy_distill": {
+          "rounds": [],
+          "any_feedback": false,
+          "wholly_identity": false,
+          "output_E_exact": true,
+          "mean_E_displacement_l2": 0.0
+        }
+      }
+    },
+    {
+      "alias": "V024",
+      "dataset": "vidstg",
+      "active": true,
+      "arms": {
+        "Fixed_sample_distill": {
+          "rounds": [
+            {
+              "round": 0,
+              "candidates": 24,
+              "legal_candidates": 24,
+              "invalid_candidates": 0,
+              "candidates_with_any_feedback": 2,
+              "identity_candidates": 22,
+              "accepted_anchor_feedback": 2,
+              "attempted_anchor_references": 96,
+              "exact_noop_if_all_identity": true,
+              "mean_displacement_norm": 0.3709955700987222
+            }
+          ],
+          "any_feedback": true,
+          "wholly_identity": false,
+          "output_E_exact": false,
+          "mean_E_displacement_l2": 0.3709955700987222
+        },
+        "On_policy_distill": {
+          "rounds": [
+            {
+              "round": 0,
+              "candidates": 8,
+              "legal_candidates": 8,
+              "invalid_candidates": 0,
+              "candidates_with_any_feedback": 1,
+              "identity_candidates": 7,
+              "accepted_anchor_feedback": 1,
+              "attempted_anchor_references": 32,
+              "exact_noop_if_all_identity": true,
+              "mean_displacement_norm": 0.0844252219702086
+            },
+            {
+              "round": 1,
+              "candidates": 8,
+              "legal_candidates": 8,
+              "invalid_candidates": 0,
+              "candidates_with_any_feedback": 0,
+              "identity_candidates": 8,
+              "accepted_anchor_feedback": 0,
+              "attempted_anchor_references": 32,
+              "exact_noop_if_all_identity": true,
+              "mean_displacement_norm": 0.0
+            },
+            {
+              "round": 2,
+              "candidates": 8,
+              "legal_candidates": 8,
+              "invalid_candidates": 0,
+              "candidates_with_any_feedback": 1,
+              "identity_candidates": 7,
+              "accepted_anchor_feedback": 1,
+              "attempted_anchor_references": 32,
+              "exact_noop_if_all_identity": true,
+              "mean_displacement_norm": 1.1973976366234735
+            }
+          ],
+          "any_feedback": true,
+          "wholly_identity": false,
+          "output_E_exact": false,
+          "mean_E_displacement_l2": 1.1229700193282015
+        }
+      }
+    },
+    {
+      "alias": "V025",
+      "dataset": "vidstg",
+      "active": true,
+      "arms": {
+        "Fixed_sample_distill": {
+          "rounds": [
+            {
+              "round": 0,
+              "candidates": 24,
+              "legal_candidates": 12,
+              "invalid_candidates": 12,
+              "candidates_with_any_feedback": 5,
+              "identity_candidates": 19,
+              "accepted_anchor_feedback": 5,
+              "attempted_anchor_references": 48,
+              "exact_noop_if_all_identity": true,
+              "mean_displacement_norm": 0.17762040486610997
+            }
+          ],
+          "any_feedback": true,
+          "wholly_identity": false,
+          "output_E_exact": false,
+          "mean_E_displacement_l2": 0.17762040486610997
+        },
+        "On_policy_distill": {
+          "rounds": [
+            {
+              "round": 0,
+              "candidates": 8,
+              "legal_candidates": 4,
+              "invalid_candidates": 4,
+              "candidates_with_any_feedback": 1,
+              "identity_candidates": 7,
+              "accepted_anchor_feedback": 1,
+              "attempted_anchor_references": 16,
+              "exact_noop_if_all_identity": true,
+              "mean_displacement_norm": 0.20163098909335309
+            },
+            {
+              "round": 1,
+              "candidates": 8,
+              "legal_candidates": 4,
+              "invalid_candidates": 4,
+              "candidates_with_any_feedback": 2,
+              "identity_candidates": 6,
+              "accepted_anchor_feedback": 2,
+              "attempted_anchor_references": 16,
+              "exact_noop_if_all_identity": true,
+              "mean_displacement_norm": 0.28753087879575023
+            },
+            {
+              "round": 2,
+              "candidates": 8,
+              "legal_candidates": 2,
+              "invalid_candidates": 6,
+              "candidates_with_any_feedback": 1,
+              "identity_candidates": 7,
+              "accepted_anchor_feedback": 1,
+              "attempted_anchor_references": 8,
+              "exact_noop_if_all_identity": true,
+              "mean_displacement_norm": 0.1277555875115966
+            }
+          ],
+          "any_feedback": true,
+          "wholly_identity": false,
+          "output_E_exact": false,
+          "mean_E_displacement_l2": 0.427177652065575
+        }
+      }
+    },
+    {
+      "alias": "V026",
+      "dataset": "vidstg",
+      "active": true,
+      "arms": {
+        "Fixed_sample_distill": {
+          "rounds": [
+            {
+              "round": 0,
+              "candidates": 24,
+              "legal_candidates": 24,
+              "invalid_candidates": 0,
+              "candidates_with_any_feedback": 20,
+              "identity_candidates": 4,
+              "accepted_anchor_feedback": 41,
+              "attempted_anchor_references": 96,
+              "exact_noop_if_all_identity": true,
+              "mean_displacement_norm": 0.41374556524235856
+            }
+          ],
+          "any_feedback": true,
+          "wholly_identity": false,
+          "output_E_exact": false,
+          "mean_E_displacement_l2": 0.41374556524235856
+        },
+        "On_policy_distill": {
+          "rounds": [
+            {
+              "round": 0,
+              "candidates": 8,
+              "legal_candidates": 8,
+              "invalid_candidates": 0,
+              "candidates_with_any_feedback": 7,
+              "identity_candidates": 1,
+              "accepted_anchor_feedback": 15,
+              "attempted_anchor_references": 32,
+              "exact_noop_if_all_identity": true,
+              "mean_displacement_norm": 0.5646684336274125
+            },
+            {
+              "round": 1,
+              "candidates": 8,
+              "legal_candidates": 8,
+              "invalid_candidates": 0,
+              "candidates_with_any_feedback": 7,
+              "identity_candidates": 1,
+              "accepted_anchor_feedback": 11,
+              "attempted_anchor_references": 32,
+              "exact_noop_if_all_identity": true,
+              "mean_displacement_norm": 0.7127821869238712
+            },
+            {
+              "round": 2,
+              "candidates": 8,
+              "legal_candidates": 8,
+              "invalid_candidates": 0,
+              "candidates_with_any_feedback": 5,
+              "identity_candidates": 3,
+              "accepted_anchor_feedback": 11,
+              "attempted_anchor_references": 32,
+              "exact_noop_if_all_identity": true,
+              "mean_displacement_norm": 0.36765110300548937
+            }
+          ],
+          "any_feedback": true,
+          "wholly_identity": false,
+          "output_E_exact": false,
+          "mean_E_displacement_l2": 0.4774820621138063
+        }
+      }
+    },
+    {
+      "alias": "V036",
+      "dataset": "vidstg",
+      "active": true,
+      "arms": {
+        "Fixed_sample_distill": {
+          "rounds": [
+            {
+              "round": 0,
+              "candidates": 24,
+              "legal_candidates": 24,
+              "invalid_candidates": 0,
+              "candidates_with_any_feedback": 9,
+              "identity_candidates": 15,
+              "accepted_anchor_feedback": 17,
+              "attempted_anchor_references": 96,
+              "exact_noop_if_all_identity": true,
+              "mean_displacement_norm": 0.1639267127363736
+            }
+          ],
+          "any_feedback": true,
+          "wholly_identity": false,
+          "output_E_exact": false,
+          "mean_E_displacement_l2": 0.1639267127363736
+        },
+        "On_policy_distill": {
+          "rounds": [
+            {
+              "round": 0,
+              "candidates": 8,
+              "legal_candidates": 8,
+              "invalid_candidates": 0,
+              "candidates_with_any_feedback": 2,
+              "identity_candidates": 6,
+              "accepted_anchor_feedback": 4,
+              "attempted_anchor_references": 32,
+              "exact_noop_if_all_identity": true,
+              "mean_displacement_norm": 0.2637795806043522
+            },
+            {
+              "round": 1,
+              "candidates": 8,
+              "legal_candidates": 8,
+              "invalid_candidates": 0,
+              "candidates_with_any_feedback": 5,
+              "identity_candidates": 3,
+              "accepted_anchor_feedback": 6,
+              "attempted_anchor_references": 32,
+              "exact_noop_if_all_identity": true,
+              "mean_displacement_norm": 0.376700759266818
+            },
+            {
+              "round": 2,
+              "candidates": 8,
+              "legal_candidates": 8,
+              "invalid_candidates": 0,
+              "candidates_with_any_feedback": 5,
+              "identity_candidates": 3,
+              "accepted_anchor_feedback": 7,
+              "attempted_anchor_references": 32,
+              "exact_noop_if_all_identity": true,
+              "mean_displacement_norm": 0.42864787884601513
+            }
+          ],
+          "any_feedback": true,
+          "wholly_identity": false,
+          "output_E_exact": false,
+          "mean_E_displacement_l2": 0.33006995570456266
+        }
+      }
+    },
+    {
+      "alias": "V037",
+      "dataset": "vidstg",
+      "active": true,
+      "arms": {
+        "Fixed_sample_distill": {
+          "rounds": [
+            {
+              "round": 0,
+              "candidates": 24,
+              "legal_candidates": 24,
+              "invalid_candidates": 0,
+              "candidates_with_any_feedback": 2,
+              "identity_candidates": 22,
+              "accepted_anchor_feedback": 2,
+              "attempted_anchor_references": 96,
+              "exact_noop_if_all_identity": true,
+              "mean_displacement_norm": 0.23213390179515958
+            }
+          ],
+          "any_feedback": true,
+          "wholly_identity": false,
+          "output_E_exact": false,
+          "mean_E_displacement_l2": 0.23213390179515958
+        },
+        "On_policy_distill": {
+          "rounds": [
+            {
+              "round": 0,
+              "candidates": 8,
+              "legal_candidates": 8,
+              "invalid_candidates": 0,
+              "candidates_with_any_feedback": 0,
+              "identity_candidates": 8,
+              "accepted_anchor_feedback": 0,
+              "attempted_anchor_references": 32,
+              "exact_noop_if_all_identity": true,
+              "mean_displacement_norm": 0.0
+            },
+            {
+              "round": 1,
+              "candidates": 8,
+              "legal_candidates": 8,
+              "invalid_candidates": 0,
+              "candidates_with_any_feedback": 2,
+              "identity_candidates": 6,
+              "accepted_anchor_feedback": 2,
+              "attempted_anchor_references": 32,
+              "exact_noop_if_all_identity": true,
+              "mean_displacement_norm": 0.6964016917085826
+            },
+            {
+              "round": 2,
+              "candidates": 8,
+              "legal_candidates": 8,
+              "invalid_candidates": 0,
+              "candidates_with_any_feedback": 0,
+              "identity_candidates": 8,
+              "accepted_anchor_feedback": 0,
+              "attempted_anchor_references": 32,
+              "exact_noop_if_all_identity": true,
+              "mean_displacement_norm": 0.0
+            }
+          ],
+          "any_feedback": true,
+          "wholly_identity": false,
+          "output_E_exact": false,
+          "mean_E_displacement_l2": 0.6964016917085826
+        }
+      }
+    },
+    {
+      "alias": "V038",
+      "dataset": "vidstg",
+      "active": true,
+      "arms": {
+        "Fixed_sample_distill": {
+          "rounds": [
+            {
+              "round": 0,
+              "candidates": 24,
+              "legal_candidates": 24,
+              "invalid_candidates": 0,
+              "candidates_with_any_feedback": 13,
+              "identity_candidates": 11,
+              "accepted_anchor_feedback": 18,
+              "attempted_anchor_references": 96,
+              "exact_noop_if_all_identity": true,
+              "mean_displacement_norm": 0.3487964537369623
+            }
+          ],
+          "any_feedback": true,
+          "wholly_identity": false,
+          "output_E_exact": false,
+          "mean_E_displacement_l2": 0.3487964537369623
+        },
+        "On_policy_distill": {
+          "rounds": [
+            {
+              "round": 0,
+              "candidates": 8,
+              "legal_candidates": 8,
+              "invalid_candidates": 0,
+              "candidates_with_any_feedback": 4,
+              "identity_candidates": 4,
+              "accepted_anchor_feedback": 6,
+              "attempted_anchor_references": 32,
+              "exact_noop_if_all_identity": true,
+              "mean_displacement_norm": 0.536125862522765
+            },
+            {
+              "round": 1,
+              "candidates": 8,
+              "legal_candidates": 8,
+              "invalid_candidates": 0,
+              "candidates_with_any_feedback": 2,
+              "identity_candidates": 6,
+              "accepted_anchor_feedback": 3,
+              "attempted_anchor_references": 32,
+              "exact_noop_if_all_identity": true,
+              "mean_displacement_norm": 0.286684303383902
+            },
+            {
+              "round": 2,
+              "candidates": 8,
+              "legal_candidates": 8,
+              "invalid_candidates": 0,
+              "candidates_with_any_feedback": 3,
+              "identity_candidates": 5,
+              "accepted_anchor_feedback": 4,
+              "attempted_anchor_references": 32,
+              "exact_noop_if_all_identity": true,
+              "mean_displacement_norm": 0.301396007695878
+            }
+          ],
+          "any_feedback": true,
+          "wholly_identity": false,
+          "output_E_exact": false,
+          "mean_E_displacement_l2": 0.7817317765161124
+        }
+      }
+    },
+    {
+      "alias": "V042",
+      "dataset": "vidstg",
+      "active": true,
+      "arms": {
+        "Fixed_sample_distill": {
+          "rounds": [
+            {
+              "round": 0,
+              "candidates": 24,
+              "legal_candidates": 24,
+              "invalid_candidates": 0,
+              "candidates_with_any_feedback": 2,
+              "identity_candidates": 22,
+              "accepted_anchor_feedback": 2,
+              "attempted_anchor_references": 96,
+              "exact_noop_if_all_identity": true,
+              "mean_displacement_norm": 0.15948782092137012
+            }
+          ],
+          "any_feedback": true,
+          "wholly_identity": false,
+          "output_E_exact": false,
+          "mean_E_displacement_l2": 0.15948782092137012
+        },
+        "On_policy_distill": {
+          "rounds": [
+            {
+              "round": 0,
+              "candidates": 8,
+              "legal_candidates": 8,
+              "invalid_candidates": 0,
+              "candidates_with_any_feedback": 1,
+              "identity_candidates": 7,
+              "accepted_anchor_feedback": 1,
+              "attempted_anchor_references": 32,
+              "exact_noop_if_all_identity": true,
+              "mean_displacement_norm": 0.33746416941289814
+            },
+            {
+              "round": 1,
+              "candidates": 8,
+              "legal_candidates": 8,
+              "invalid_candidates": 0,
+              "candidates_with_any_feedback": 1,
+              "identity_candidates": 7,
+              "accepted_anchor_feedback": 1,
+              "attempted_anchor_references": 32,
+              "exact_noop_if_all_identity": true,
+              "mean_displacement_norm": 0.12226734590769475
+            },
+            {
+              "round": 2,
+              "candidates": 8,
+              "legal_candidates": 8,
+              "invalid_candidates": 0,
+              "candidates_with_any_feedback": 0,
+              "identity_candidates": 8,
+              "accepted_anchor_feedback": 0,
+              "attempted_anchor_references": 32,
+              "exact_noop_if_all_identity": true,
+              "mean_displacement_norm": 0.0
+            }
+          ],
+          "any_feedback": true,
+          "wholly_identity": false,
+          "output_E_exact": false,
+          "mean_E_displacement_l2": 0.43719917983286816
+        }
+      }
+    },
+    {
+      "alias": "V044",
+      "dataset": "vidstg",
+      "active": false,
+      "arms": {
+        "Fixed_sample_distill": {
+          "rounds": [],
+          "any_feedback": false,
+          "wholly_identity": false,
+          "output_E_exact": true,
+          "mean_E_displacement_l2": 0.0
+        },
+        "On_policy_distill": {
+          "rounds": [],
+          "any_feedback": false,
+          "wholly_identity": false,
+          "output_E_exact": true,
+          "mean_E_displacement_l2": 0.0
+        }
+      }
+    },
+    {
+      "alias": "V048",
+      "dataset": "vidstg",
+      "active": true,
+      "arms": {
+        "Fixed_sample_distill": {
+          "rounds": [
+            {
+              "round": 0,
+              "candidates": 24,
+              "legal_candidates": 24,
+              "invalid_candidates": 0,
+              "candidates_with_any_feedback": 12,
+              "identity_candidates": 12,
+              "accepted_anchor_feedback": 13,
+              "attempted_anchor_references": 96,
+              "exact_noop_if_all_identity": true,
+              "mean_displacement_norm": 1.8617167955669378
+            }
+          ],
+          "any_feedback": true,
+          "wholly_identity": false,
+          "output_E_exact": false,
+          "mean_E_displacement_l2": 1.8617167955669378
+        },
+        "On_policy_distill": {
+          "rounds": [
+            {
+              "round": 0,
+              "candidates": 8,
+              "legal_candidates": 8,
+              "invalid_candidates": 0,
+              "candidates_with_any_feedback": 4,
+              "identity_candidates": 4,
+              "accepted_anchor_feedback": 5,
+              "attempted_anchor_references": 32,
+              "exact_noop_if_all_identity": true,
+              "mean_displacement_norm": 2.408305319481854
+            },
+            {
+              "round": 1,
+              "candidates": 8,
+              "legal_candidates": 8,
+              "invalid_candidates": 0,
+              "candidates_with_any_feedback": 5,
+              "identity_candidates": 3,
+              "accepted_anchor_feedback": 5,
+              "attempted_anchor_references": 32,
+              "exact_noop_if_all_identity": true,
+              "mean_displacement_norm": 0.9740831972228102
+            },
+            {
+              "round": 2,
+              "candidates": 8,
+              "legal_candidates": 8,
+              "invalid_candidates": 0,
+              "candidates_with_any_feedback": 4,
+              "identity_candidates": 4,
+              "accepted_anchor_feedback": 4,
+              "attempted_anchor_references": 32,
+              "exact_noop_if_all_identity": true,
+              "mean_displacement_norm": 1.2317965018710975
+            }
+          ],
+          "any_feedback": true,
+          "wholly_identity": false,
+          "output_E_exact": false,
+          "mean_E_displacement_l2": 2.9102804275256116
+        }
+      }
+    },
+    {
+      "alias": "V056",
+      "dataset": "vidstg",
+      "active": false,
+      "arms": {
+        "Fixed_sample_distill": {
+          "rounds": [],
+          "any_feedback": false,
+          "wholly_identity": false,
+          "output_E_exact": true,
+          "mean_E_displacement_l2": 0.0
+        },
+        "On_policy_distill": {
+          "rounds": [],
+          "any_feedback": false,
+          "wholly_identity": false,
+          "output_E_exact": true,
+          "mean_E_displacement_l2": 0.0
+        }
+      }
+    },
+    {
+      "alias": "V061",
+      "dataset": "vidstg",
+      "active": true,
+      "arms": {
+        "Fixed_sample_distill": {
+          "rounds": [
+            {
+              "round": 0,
+              "candidates": 24,
+              "legal_candidates": 24,
+              "invalid_candidates": 0,
+              "candidates_with_any_feedback": 6,
+              "identity_candidates": 18,
+              "accepted_anchor_feedback": 6,
+              "attempted_anchor_references": 96,
+              "exact_noop_if_all_identity": true,
+              "mean_displacement_norm": 0.20840651049598216
+            }
+          ],
+          "any_feedback": true,
+          "wholly_identity": false,
+          "output_E_exact": false,
+          "mean_E_displacement_l2": 0.20840651049598216
+        },
+        "On_policy_distill": {
+          "rounds": [
+            {
+              "round": 0,
+              "candidates": 8,
+              "legal_candidates": 8,
+              "invalid_candidates": 0,
+              "candidates_with_any_feedback": 3,
+              "identity_candidates": 5,
+              "accepted_anchor_feedback": 3,
+              "attempted_anchor_references": 32,
+              "exact_noop_if_all_identity": true,
+              "mean_displacement_norm": 0.37025001422161746
+            },
+            {
+              "round": 1,
+              "candidates": 8,
+              "legal_candidates": 8,
+              "invalid_candidates": 0,
+              "candidates_with_any_feedback": 1,
+              "identity_candidates": 7,
+              "accepted_anchor_feedback": 1,
+              "attempted_anchor_references": 32,
+              "exact_noop_if_all_identity": true,
+              "mean_displacement_norm": 0.21952479543450695
+            },
+            {
+              "round": 2,
+              "candidates": 8,
+              "legal_candidates": 8,
+              "invalid_candidates": 0,
+              "candidates_with_any_feedback": 2,
+              "identity_candidates": 6,
+              "accepted_anchor_feedback": 2,
+              "attempted_anchor_references": 32,
+              "exact_noop_if_all_identity": true,
+              "mean_displacement_norm": 0.1813196295301141
+            }
+          ],
+          "any_feedback": true,
+          "wholly_identity": false,
+          "output_E_exact": false,
+          "mean_E_displacement_l2": 0.49264221682824955
+        }
+      }
+    }
+  ],
+  "all_identity_rounds_exact_noop": 59,
+  "GT_not_used_for_coverage": true
+}
