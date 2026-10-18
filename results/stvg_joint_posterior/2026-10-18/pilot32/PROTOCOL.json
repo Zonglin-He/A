@@ -1,0 +1,62 @@
+{
+  "status": "locked_before_new_model",
+  "source_train_per_domain": 36,
+  "source_validation_per_domain": 12,
+  "target_per_domain": 16,
+  "target_status": "previously exposed development, including prior oracle diagnosis; never independent test",
+  "source_binding002_sha256": "738a0912cf12fd2ea60058ab7c228afb13bf5192db00e85f2fb72c2822bbfbef",
+  "source_payload_barrier_sha256": "9db6f41c2a9f1a78d70c8c848dc9d76f60ff879bfd06df1b5ef4b6819527bd73",
+  "target_payload_barrier_sha256": "9d5bb2d04b8c38c32816ad0755f148e03c0aa2673783cfc6aad2b431b1802623",
+  "kinds": [
+    "joint_diffusion",
+    "joint_deterministic",
+    "separated_diffusion"
+  ],
+  "representation": "2 legal interval logits +32 event-relative normalized cxcywh logit knots; spatial loss only inside original annotated source support",
+  "conditioning": "fixed preupdate frozen Student appearance/motion maps pooled8x8/resampled32 full-context times; dynamic4-point ROI; all Query tokens",
+  "association": "binary source geometric inlier IoU>=.5 vs nonmatch, outside-event labels unknown; other-instance and no-match marginalized together; NOT calibrated identity classifier",
+  "prior_training": {
+    "seed": 20261018,
+    "epochs": 60,
+    "batch_size": 6,
+    "lr": 0.0003,
+    "weight_decay": 0.0001,
+    "clip_gradient": 1.0,
+    "sigma_min": 0.03,
+    "sigma_max": 2.0,
+    "selection": "minimum fixed-noise source validation loss only",
+    "joint_and_separated_same_noise": true
+  },
+  "deterministic_training": "same architecture/features/train steps; supervised Source/Direct corrupted-state correction; state-noise law differs from GT-centered diffusion DSM, disclosed control limitation",
+  "posterior": {
+    "samples": 4,
+    "levels": 16,
+    "sigma_max": 2.0,
+    "sigma_min": 0.03,
+    "observation_step": 0.02,
+    "component_step_cap": 0.2,
+    "aggregation": "mean latent state of four fixed-seed posterior samples; no target selection"
+  },
+  "transfer_gate": "joint diffusion must exceed matched all-anchor episodic Direct mean vIoU AND mean tIoU in EACH target domain; no CI threshold, no model/config selection on target",
+  "adaptation_if_gate_passes": "new fixed implementation: actual frozen Decoder outputs; spatial1792 plus temporal512 residual interface; source-only engineering qualification before target model updates; no output-to-parameter regression masquerading as score guidance",
+  "budgets": {
+    "new_source_captures": 96,
+    "new_target_captures": 32,
+    "new_DINO_calls": 0,
+    "new_Qwen_calls": 0,
+    "maximum_prior_models": 6,
+    "maximum_association_models": 2,
+    "maximum_target_parameter_fits_if_gate": 32
+  },
+  "CURRENT_unchanged": true,
+  "external_actionness_projection": false,
+  "backbone_internal_action_gates_retained": true,
+  "data_count": {
+    "source_train": 72,
+    "source_validation": 24,
+    "target_HC": 16,
+    "target_Vid": 16,
+    "parent_disjointness": true,
+    "source_binding": "original video + query + used segment + targetID, binding002"
+  }
+}

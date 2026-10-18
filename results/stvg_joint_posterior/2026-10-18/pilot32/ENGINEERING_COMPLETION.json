@@ -1,0 +1,57 @@
+{
+  "status": "pass",
+  "Source_feature_captures": 128,
+  "source_count": 96,
+  "target_count": 32,
+  "Source_boxes_and_Native_time_exact_all128": true,
+  "Native_interval_codec_exact128": true,
+  "source_spatial_supervision_all_adjacent_actual_annotation_frames": true,
+  "source_event_boundaries_clipped_to_actual_input_grid": {
+    "hc2": 0,
+    "vidstg": 15
+  },
+  "checkpoint_files": {
+    "checkpoints/TASTVG_VidSTG.pth": "5ab12c86363ef0ce0ee006c00fd11c6b659c3a9b2cb01a4f2c613efe22a2aa83",
+    "checkpoints/TASTVG_HCSTVG2.pth": "47d8f15841cd57e7bbf5a10e8bf23b1054d23b753e0becbd38a07f3dd60d5036"
+  },
+  "cpu_contract": {
+    "status": "pass",
+    "affine_ROI_value_and_derivative": true,
+    "observation_finite_difference_checks": 4,
+    "empty_observation_exact_zero": true,
+    "coupling": [
+      {
+        "separated": false,
+        "parameters": 171268,
+        "time_from_space": 0.29141730070114136,
+        "space_from_time": 7.0697526931762695
+      },
+      {
+        "separated": true,
+        "parameters": 171268,
+        "time_from_space": 0.0,
+        "space_from_time": 0.0
+      }
+    ]
+  },
+  "root_scalar": {
+    "status": "pass",
+    "count": 32,
+    "independent_scalar_and_CI_checks": 1110,
+    "source_only_selection": true,
+    "separated_cross_derivatives_zero": true,
+    "all_predictions_sealed_before_target_GT": true
+  },
+  "actual_pixel_review": {
+    "queries": 5,
+    "output_cells": 100,
+    "new_identity_labels": 0
+  },
+  "recovery": {
+    "first_training": "float64 time-unit vs float32 grid_sample; completed one source association head, zero prior updates; corrected dtype and resumed immutable head",
+    "first_export": "credential checker matched literal token-prefix denylist in its own source; full-token pattern correction only",
+    "diagnostic_render": "additional positive panel written; immutable old plan rejected replacement, preserved old plan and recorded new completion separately"
+  },
+  "no_prediction_GT_or_model_changes_from_export": true,
+  "production_registries_unchanged": true
+}
