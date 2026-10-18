@@ -1,0 +1,50 @@
+{
+  "scale": {
+    "hc2": [
+      0.08805019583603152,
+      0.03796878948819179,
+      0.2445728236645117,
+      0.21037521441041293
+    ],
+    "vidstg": [
+      0.022542142662651282,
+      0.011027737123363815,
+      0.06612943552390567,
+      0.02918426580581821
+    ]
+  },
+  "seed": 20261018,
+  "count": 32,
+  "per_domain": 16,
+  "threshold": 0.35,
+  "changed_factor": "only high-content query native-attention exclusion: geometry-nearest A versus content-source B",
+  "fixed_reference_and_content": true,
+  "native_initial_and_six_layers_saved": true,
+  "one_update_denominator": 24,
+  "MBR_unchanged": true,
+  "continued_dynamic": "only if B coverage>A and B once vIoU>E in both domains; same32 3x8, each sum/24",
+  "no_target_tuning": true,
+  "no_new_GT_before_all32_seal": true,
+  "old_target_development_exposure": true,
+  "GPU_seconds_cap": 900,
+  "source_checkpoints": {
+    "hc2": {
+      "backbone": "TA-STVG",
+      "source_dataset": "vidstg",
+      "checkpoint": "checkpoints/TASTVG_VidSTG.pth",
+      "sha256": "5ab12c86363ef0ce0ee006c00fd11c6b659c3a9b2cb01a4f2c613efe22a2aa83",
+      "load_time_validation": "scripts/run_spatial_regression_alignment_v1.py:model_load validates SHA before load"
+    },
+    "vidstg": {
+      "backbone": "TA-STVG",
+      "source_dataset": "hcstvg2",
+      "checkpoint": "checkpoints/TASTVG_HCSTVG2.pth",
+      "sha256": "47d8f15841cd57e7bbf5a10e8bf23b1054d23b753e0becbd38a07f3dd60d5036",
+      "load_time_validation": "scripts/run_spatial_regression_alignment_v1.py:model_load validates SHA before load"
+    }
+  },
+  "DINO_weight_SHA256": "1a2412ef99bd74bcd3c2a246fa1e48581f8889a1300c9051974741314fc042f3",
+  "covariance": "unit Gaussian in source-scaled shared4 coordinates; same original24 noise",
+  "pretrained_parameter_updates": 0,
+  "source_E_cost_excluded": true
+}
