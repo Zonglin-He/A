@@ -1,0 +1,458 @@
+{
+  "status": "complete",
+  "count": 64,
+  "primary_queries_per_domain": 16,
+  "expert_queries_per_domain": 16,
+  "arms": [
+    "A_no_learning",
+    "B_Direct",
+    "C_sparse_OPD",
+    "D_dense_OPD",
+    "F_fixed_rollout"
+  ],
+  "external_variables": 20,
+  "features": "1 plus mean Source cx cy w h over all original decoder frames",
+  "configurations": {
+    "lr": 0.01,
+    "tau": 0.25,
+    "steps": 5,
+    "samples": 32,
+    "standardized_sigma": 1.0,
+    "Adam_reset_each_expert": true
+  },
+  "role_order": [
+    {
+      "alias": "H035",
+      "dataset": "hc2",
+      "role": "expert",
+      "domain_arrival": 0
+    },
+    {
+      "alias": "H111",
+      "dataset": "hc2",
+      "role": "no_expert",
+      "domain_arrival": 1
+    },
+    {
+      "alias": "H076",
+      "dataset": "hc2",
+      "role": "expert",
+      "domain_arrival": 2
+    },
+    {
+      "alias": "H097",
+      "dataset": "hc2",
+      "role": "no_expert",
+      "domain_arrival": 3
+    },
+    {
+      "alias": "H102",
+      "dataset": "hc2",
+      "role": "expert",
+      "domain_arrival": 4
+    },
+    {
+      "alias": "H103",
+      "dataset": "hc2",
+      "role": "no_expert",
+      "domain_arrival": 5
+    },
+    {
+      "alias": "H128",
+      "dataset": "hc2",
+      "role": "expert",
+      "domain_arrival": 6
+    },
+    {
+      "alias": "H101",
+      "dataset": "hc2",
+      "role": "no_expert",
+      "domain_arrival": 7
+    },
+    {
+      "alias": "H018",
+      "dataset": "hc2",
+      "role": "expert",
+      "domain_arrival": 8
+    },
+    {
+      "alias": "H007",
+      "dataset": "hc2",
+      "role": "no_expert",
+      "domain_arrival": 9
+    },
+    {
+      "alias": "H045",
+      "dataset": "hc2",
+      "role": "expert",
+      "domain_arrival": 10
+    },
+    {
+      "alias": "H106",
+      "dataset": "hc2",
+      "role": "no_expert",
+      "domain_arrival": 11
+    },
+    {
+      "alias": "H050",
+      "dataset": "hc2",
+      "role": "expert",
+      "domain_arrival": 12
+    },
+    {
+      "alias": "H010",
+      "dataset": "hc2",
+      "role": "no_expert",
+      "domain_arrival": 13
+    },
+    {
+      "alias": "H066",
+      "dataset": "hc2",
+      "role": "expert",
+      "domain_arrival": 14
+    },
+    {
+      "alias": "H061",
+      "dataset": "hc2",
+      "role": "no_expert",
+      "domain_arrival": 15
+    },
+    {
+      "alias": "H031",
+      "dataset": "hc2",
+      "role": "expert",
+      "domain_arrival": 16
+    },
+    {
+      "alias": "H043",
+      "dataset": "hc2",
+      "role": "no_expert",
+      "domain_arrival": 17
+    },
+    {
+      "alias": "H119",
+      "dataset": "hc2",
+      "role": "expert",
+      "domain_arrival": 18
+    },
+    {
+      "alias": "H115",
+      "dataset": "hc2",
+      "role": "no_expert",
+      "domain_arrival": 19
+    },
+    {
+      "alias": "H008",
+      "dataset": "hc2",
+      "role": "expert",
+      "domain_arrival": 20
+    },
+    {
+      "alias": "H023",
+      "dataset": "hc2",
+      "role": "no_expert",
+      "domain_arrival": 21
+    },
+    {
+      "alias": "H090",
+      "dataset": "hc2",
+      "role": "expert",
+      "domain_arrival": 22
+    },
+    {
+      "alias": "H117",
+      "dataset": "hc2",
+      "role": "no_expert",
+      "domain_arrival": 23
+    },
+    {
+      "alias": "H060",
+      "dataset": "hc2",
+      "role": "expert",
+      "domain_arrival": 24
+    },
+    {
+      "alias": "H092",
+      "dataset": "hc2",
+      "role": "no_expert",
+      "domain_arrival": 25
+    },
+    {
+      "alias": "H032",
+      "dataset": "hc2",
+      "role": "expert",
+      "domain_arrival": 26
+    },
+    {
+      "alias": "H078",
+      "dataset": "hc2",
+      "role": "no_expert",
+      "domain_arrival": 27
+    },
+    {
+      "alias": "H074",
+      "dataset": "hc2",
+      "role": "expert",
+      "domain_arrival": 28
+    },
+    {
+      "alias": "H022",
+      "dataset": "hc2",
+      "role": "no_expert",
+      "domain_arrival": 29
+    },
+    {
+      "alias": "H058",
+      "dataset": "hc2",
+      "role": "expert",
+      "domain_arrival": 30
+    },
+    {
+      "alias": "H037",
+      "dataset": "hc2",
+      "role": "no_expert",
+      "domain_arrival": 31
+    },
+    {
+      "alias": "V042",
+      "dataset": "vidstg",
+      "role": "expert",
+      "domain_arrival": 0
+    },
+    {
+      "alias": "V111",
+      "dataset": "vidstg",
+      "role": "no_expert",
+      "domain_arrival": 1
+    },
+    {
+      "alias": "V016",
+      "dataset": "vidstg",
+      "role": "expert",
+      "domain_arrival": 2
+    },
+    {
+      "alias": "V121",
+      "dataset": "vidstg",
+      "role": "no_expert",
+      "domain_arrival": 3
+    },
+    {
+      "alias": "V118",
+      "dataset": "vidstg",
+      "role": "expert",
+      "domain_arrival": 4
+    },
+    {
+      "alias": "V056",
+      "dataset": "vidstg",
+      "role": "no_expert",
+      "domain_arrival": 5
+    },
+    {
+      "alias": "V104",
+      "dataset": "vidstg",
+      "role": "expert",
+      "domain_arrival": 6
+    },
+    {
+      "alias": "V125",
+      "dataset": "vidstg",
+      "role": "no_expert",
+      "domain_arrival": 7
+    },
+    {
+      "alias": "V010",
+      "dataset": "vidstg",
+      "role": "expert",
+      "domain_arrival": 8
+    },
+    {
+      "alias": "V116",
+      "dataset": "vidstg",
+      "role": "no_expert",
+      "domain_arrival": 9
+    },
+    {
+      "alias": "V112",
+      "dataset": "vidstg",
+      "role": "expert",
+      "domain_arrival": 10
+    },
+    {
+      "alias": "V038",
+      "dataset": "vidstg",
+      "role": "no_expert",
+      "domain_arrival": 11
+    },
+    {
+      "alias": "V094",
+      "dataset": "vidstg",
+      "role": "expert",
+      "domain_arrival": 12
+    },
+    {
+      "alias": "V012",
+      "dataset": "vidstg",
+      "role": "no_expert",
+      "domain_arrival": 13
+    },
+    {
+      "alias": "V015",
+      "dataset": "vidstg",
+      "role": "expert",
+      "domain_arrival": 14
+    },
+    {
+      "alias": "V097",
+      "dataset": "vidstg",
+      "role": "no_expert",
+      "domain_arrival": 15
+    },
+    {
+      "alias": "V102",
+      "dataset": "vidstg",
+      "role": "expert",
+      "domain_arrival": 16
+    },
+    {
+      "alias": "V110",
+      "dataset": "vidstg",
+      "role": "no_expert",
+      "domain_arrival": 17
+    },
+    {
+      "alias": "V048",
+      "dataset": "vidstg",
+      "role": "expert",
+      "domain_arrival": 18
+    },
+    {
+      "alias": "V044",
+      "dataset": "vidstg",
+      "role": "no_expert",
+      "domain_arrival": 19
+    },
+    {
+      "alias": "V127",
+      "dataset": "vidstg",
+      "role": "expert",
+      "domain_arrival": 20
+    },
+    {
+      "alias": "V025",
+      "dataset": "vidstg",
+      "role": "no_expert",
+      "domain_arrival": 21
+    },
+    {
+      "alias": "V120",
+      "dataset": "vidstg",
+      "role": "expert",
+      "domain_arrival": 22
+    },
+    {
+      "alias": "V087",
+      "dataset": "vidstg",
+      "role": "no_expert",
+      "domain_arrival": 23
+    },
+    {
+      "alias": "V022",
+      "dataset": "vidstg",
+      "role": "expert",
+      "domain_arrival": 24
+    },
+    {
+      "alias": "V024",
+      "dataset": "vidstg",
+      "role": "no_expert",
+      "domain_arrival": 25
+    },
+    {
+      "alias": "V082",
+      "dataset": "vidstg",
+      "role": "expert",
+      "domain_arrival": 26
+    },
+    {
+      "alias": "V106",
+      "dataset": "vidstg",
+      "role": "no_expert",
+      "domain_arrival": 27
+    },
+    {
+      "alias": "V036",
+      "dataset": "vidstg",
+      "role": "expert",
+      "domain_arrival": 28
+    },
+    {
+      "alias": "V026",
+      "dataset": "vidstg",
+      "role": "no_expert",
+      "domain_arrival": 29
+    },
+    {
+      "alias": "V037",
+      "dataset": "vidstg",
+      "role": "expert",
+      "domain_arrival": 30
+    },
+    {
+      "alias": "V061",
+      "dataset": "vidstg",
+      "role": "no_expert",
+      "domain_arrival": 31
+    }
+  ],
+  "exact_original64_plan_sha256": "4bf70a24d559c7f26e9b47d694585ba572f34d1305e310411738be4b559e3e67",
+  "split_rule": "Domain namespace SHA256-seeded PCG64 permutation; first16 expert, remaining16 no-expert; interleave E,N",
+  "split_seed": 20261018,
+  "counts": {
+    "hc2": {
+      "expert": 16,
+      "no_expert": 16,
+      "valid_expert": 16
+    },
+    "vidstg": {
+      "expert": 16,
+      "no_expert": 16,
+      "valid_expert": 14
+    }
+  },
+  "W_zero_per_domain_independent_per_branch": true,
+  "W_only_cross_query_carry": true,
+  "Adam_reset_per_expert": true,
+  "action": "One4d standardized Gaussian action transforms the entire tube; source scale from existing opposite-source E calibration",
+  "expert_outputs_identical_E": true,
+  "current_no_expert_teacher_unavailable": true,
+  "no_expert_optimizer_steps": 0,
+  "input_projection": "Only Source/logits ZIP storages0,1,2 and byteorder; no mixed-source pickle; source-derived clock and planned positions",
+  "raw_storage_Source_time_positions_independently_exact_on_all32_experts": true,
+  "old_A_baseline_metrics_exact_all64": true,
+  "numerical_dtype": "CPU float64 external learner, original FP32 Source storages exactly converted",
+  "Source_checkpoints": {
+    "hc2": {
+      "source": "vidstg",
+      "checkpoint_SHA256": "5ab12c86363ef0ce0ee006c00fd11c6b659c3a9b2cb01a4f2c613efe22a2aa83"
+    },
+    "vidstg": {
+      "source": "hcstvg2",
+      "checkpoint_SHA256": "47d8f15841cd57e7bbf5a10e8bf23b1054d23b753e0becbd38a07f3dd60d5036"
+    }
+  },
+  "CI": "paired parent bootstrap10000 conditional on one fixed SAVED online state history; not stream-order uncertainty",
+  "historically_exposed_development": true,
+  "independent_confirmation": false,
+  "all64_predictions_sealed_before_new_GT": true,
+  "CURRENT_MAIN_PAPER_unchanged": true,
+  "paused_LN_and_second_backbone_not_resumed": true,
+  "CPU_audit_numerical_recovery": {
+    "status": "CPU_audit_only_revision",
+    "reason": "Exact same-call recorded Torch mean remains bit-exact; independent NumPy matrix-vector accumulation differs at float64 roundoff, checked at1e-12. Direct NumPy GIoU denominator floor aligned with original1e-7. No learned state, input, prediction, reward, hyperparameter or metric changed.",
+    "original_audit_sha256": "178704616afc81d836172d94eab05bbfcc8b23602229ae468d57f52174148c84",
+    "new_audit_sha256": "ad489457d1982614dd0a4921bc178e91e459466cb80fb4a809a53d62d1a7ef8a",
+    "new_models_or_updates": 0
+  }
+}
