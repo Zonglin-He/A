@@ -1,0 +1,27 @@
+{
+  "status": "source_checked_not_layer_measured",
+  "installed_HF_SHA256": "2edceefe72771500574f7b1485ed8c503db0d2509c1c0bcefb61c5611b50872e",
+  "decoder_layers": 6,
+  "checks": {
+    "reference_dependent_positional_embedding": true,
+    "box_size_scaled_deformable_sampling": true,
+    "iterative_logit_reference_addition": true,
+    "forward_refinement_despite_detach": true,
+    "score_from_hidden_text_dot_product": true
+  },
+  "reference_effect": "Reference changes positional embeddings and spatial sampling center/extent; subsequent box predictions feed next layer.",
+  "classification": "Final target score comes from final hidden state dot text embeddings, not from output-box overlap.",
+  "detach": "Stops gradient through iterative reference; does not stop forward coordinate refinement. No gradient updates here.",
+  "wrapper": "Uses final normalized intermediate hidden, penultimate refined reference and final bbox/class heads; ordinary native replay and clones were qualified in prior actual run.",
+  "unknown": [
+    "native initial900 reference",
+    "per-layer reference and sampling locations",
+    "per-layer hidden/text score",
+    "first-layer versus cumulative loss",
+    "overshoot versus recovery path",
+    "frozen/native-reference counterfactual"
+  ],
+  "native_final_proxy_not_initial": true,
+  "native_probe_original_image_clipping_and_roundtrip": true,
+  "no_new_forward": true
+}

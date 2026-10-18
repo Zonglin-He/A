@@ -1,0 +1,31 @@
+{
+  "count": 32,
+  "per_domain": 16,
+  "prior_commit": "a3de927f8655da16a83407ba36b8b0f4c8df2578",
+  "threshold": 0.35,
+  "unchanged_source_and_E_MBR": true,
+  "only_cached_scalars_and_predictions": true,
+  "GT_read": false,
+  "model_calls": 0,
+  "new_predictions": 0,
+  "exact_native_slot_score_match_required": true,
+  "fallback_placeholder_ID_excluded": true,
+  "CPU_seconds_cap": 600,
+  "current_registry_SHA256": "0e460c6084b096b7c0eccc82247f1f08a3844a7cacd864e5268cae13716dc0de",
+  "source_checkpoints": {
+    "hc2": {
+      "backbone": "TA-STVG",
+      "source_dataset": "vidstg",
+      "checkpoint": "checkpoints/TASTVG_VidSTG.pth",
+      "sha256": "5ab12c86363ef0ce0ee006c00fd11c6b659c3a9b2cb01a4f2c613efe22a2aa83",
+      "load_time_validation": "scripts/run_spatial_regression_alignment_v1.py:model_load validates SHA before load"
+    },
+    "vidstg": {
+      "backbone": "TA-STVG",
+      "source_dataset": "hcstvg2",
+      "checkpoint": "checkpoints/TASTVG_HCSTVG2.pth",
+      "sha256": "47d8f15841cd57e7bbf5a10e8bf23b1054d23b753e0becbd38a07f3dd60d5036",
+      "load_time_validation": "scripts/run_spatial_regression_alignment_v1.py:model_load validates SHA before load"
+    }
+  }
+}
