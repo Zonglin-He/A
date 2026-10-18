@@ -86,7 +86,7 @@ Keep positive controls: H008 gains0.056928pp complete vIoU despite its gated tea
 
 ## Scope and decision
 
-Saved sampled-GT quality is available for43/64 HC planned nodes; actual teacher feedback occurs at25 known and8 unknown nodes. Unknown feedback is not counted as failure. All16 HC queries remain in complete/observed endpoints; zero gated contribution means no observed accepted contribution at known nodes, not a correctness label for unknown feedback. Vid teacher-quality comparison uses10 active known queries; all16 remain in complete vIoU.
+Saved sampled-GT quality is available for45/64 HC planned nodes; actual teacher feedback occurs at25 known and8 unknown nodes. Unknown feedback is not counted as failure. All16 HC queries remain in complete/observed endpoints; zero gated contribution means no observed accepted contribution at known nodes, not a correctness label for unknown feedback. Vid teacher-quality comparison uses10 active known queries; all16 remain in complete vIoU.
 
 The previously measured HC decline remains -0.030264pp complete vIoU and -0.291001pp observed actual sIoU; unobserved actual nodes remain exact E. Teacher added value above E is not established. Finite admitted-input subtraction materially changes the average correction; simple direction cancellation is not the dominant evidence, and overshoot remains unisolated. Do not adjust threshold, candidate count or step size from these diagnostic GT values. No dynamic OPD, expanded cohort or method promotion.
 

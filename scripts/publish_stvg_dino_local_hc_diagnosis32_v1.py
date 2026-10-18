@@ -29,7 +29,7 @@ def unrelated():
 
 def main():
     verify();assert read(P/'ROOT_INDEPENDENT_AUDIT.json')['status']=='pass'
-    pub=D/'publication';pub.mkdir(exist_ok=True)
+    pub=D/'publication/correction001';pub.mkdir(exist_ok=True)
     origin=git('remote','get-url','origin').decode().strip()
     assert origin in ['https://github.com/Zonglin-He/A.git','https://github.com/Zonglin-He/A','git@github.com:Zonglin-He/A.git']
     files=read(D/'PUBLIC_FILES_FINAL.json')['files']+['scripts/publish_stvg_dino_local_hc_diagnosis32_v1.py'];assert len(files)==len(set(files))
@@ -69,7 +69,7 @@ def main():
         assert len(identity)==4 and all(identity)
         authorenv=dict(os.environ,GIT_AUTHOR_NAME=identity[0],GIT_AUTHOR_EMAIL=identity[1],
                        GIT_COMMITTER_NAME=identity[2],GIT_COMMITTER_EMAIL=identity[3])
-        commit=git('commit-tree',tree,'-p',parent,data=b'Diagnose HC teacher feedback, finite24 aggregation and applied local correction using saved caches\n',env=authorenv).decode().strip()
+        commit=git('commit-tree',tree,'-p',parent,data=b'Correct HC cached known-node count from 43 to actual 45; derive report support from per-node records\n',env=authorenv).decode().strip()
         assert set(git('diff-tree','--no-commit-id','--name-only','-r',commit).decode().splitlines())==set(files)
         plan=dict(commit=commit,tree=tree,parent=parent,old_refs=old,files=manifest)
         put(planfile,plan)
