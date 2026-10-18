@@ -1,0 +1,13 @@
+# Independent review and root disposition
+
+Exactly one existing GPT-6.1 Sol/max reviewer read the locked mechanism, implementation, execution fixes and all sealed results; it did not run models, generate candidates, evaluate new GT, edit files or publish. Root independently executed, audited and decided.
+
+Measurement valid; original passed=false retained. This is actual latent on-policy distribution adaptation, not another ranking-only qualification:96 fit episodes/192 round slots,154 informative branch-rounds,1,834 unique actual whole-trajectory decoder calls /3,668 offset PosDecoder calls. Root separately verified2,496 candidate records (shared paths count repeatedly),192 likelihood/reward/state rounds,96 mean readouts,1,280 official metric scalars and96 parent bootstraps. CPU verification does not independently reexecute the GPU decoder; physical calls and frozen model hashes cover that execution.
+
+Live full-v versus E HC+0.000008450pp/Vid-0.000000434pp; actual-unobserved-s+0.000016041/-0.000004283pp. These are practically unchanged, not useful adaptation or proof of stability. Live does not establish improvement over fixed, mean, shuffle or direct search. Time fixed exactly. Signed positives can include tiny floating-point sized changes.
+
+Saved actual candidate rollouts are not uniformly immobile: active-query mean tube L2 response0.021232/0.008898, largest coordinate changes0.447386/0.214491. But finite initial32 plus E GT-best full-v diagnostic headroom is only+0.014628/+0.002348pp. This is neither a global latent capability bound nor the old artificial independent-center support. Do not attribute everything to teacher or optimizer.
+
+Active-only reward range/tau0.006189/0.004000; teacher-base TV0.000693/0.000461; minimum teacher ESS15.998799/15.999692 out of16. Final per-node center displacement3.90e-7/3.57e-7 normalized coordinates. Nonconstant reward and real state update coexist with an extremely weak tilt and near-E mean readout. Reward improved20/30 informative HC rounds and16/22 Vid rounds; GT-v improved19/4. Those counts alone do not prove correctness. AUC0.600/0.356 has only15/6 defined parents and wide intervals.
+
+Close this exact fixed-scale/sparse-reward/two-round Gaussian-mean interface. No source-free justification for sigma/tau/step/round scans, enlarging data, reviving ROI variants, new experts, new heads/training or changing backbone. Earlier pathwise derivative mismatch was avoided here; avoiding it did not automatically create useful feedback or a capable finite policy support. No universal impossibility claim about OPD. CURRENT/MAIN/PAPER remain unchanged. No materially distinct evidence-supported next experiment was identified by review.
