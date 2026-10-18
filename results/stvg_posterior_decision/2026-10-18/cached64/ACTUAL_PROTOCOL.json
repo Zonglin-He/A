@@ -1,0 +1,140 @@
+{
+  "status": "complete",
+  "scope": "T0/S0 initial cached64 finite development screen",
+  "queries": 64,
+  "unique_parents_per_domain": 32,
+  "historically_exposed": true,
+  "backbone": "TA-STVG",
+  "source_domains_and_checkpoint_hashes": {
+    "hc2": {
+      "center_fraction": 1.0,
+      "source_dataset": "vidstg",
+      "checkpoint_sha256": "5ab12c86363ef0ce0ee006c00fd11c6b659c3a9b2cb01a4f2c613efe22a2aa83",
+      "prior_weight": 0.1,
+      "epsilon": 1e-06
+    },
+    "vidstg": {
+      "center_fraction": 0.5,
+      "source_dataset": "hcstvg2",
+      "checkpoint_sha256": "47d8f15841cd57e7bbf5a10e8bf23b1054d23b753e0becbd38a07f3dd60d5036",
+      "prior_weight": 0.1,
+      "epsilon": 1e-06
+    }
+  },
+  "primary_geometry": "fixed original online After",
+  "sensitivity_geometries": [
+    "Source",
+    "Before"
+  ],
+  "no_new_GPU_models_DINO_training_or_Student_updates": true,
+  "probability": "original float32 full endpoint logits; float64 strict s<e probabilities; independent-view product pushed through min-start/max-end envelope",
+  "posterior_calibration_not_established": true,
+  "decision_grid": "sorted union physical frame IDs; all a<b, [fid[a],fid[b]+1), including q=0 actions",
+  "temporal_tie": "row-major first numeric maximum",
+  "greedy_gain": ".5 sum q(I) 1{f in I and current hits<2}",
+  "greedy_ties": "exact float64 equality; greatest minimum physical distance; first point closest to input [first,last+1) midpoint; then earlier ID",
+  "layouts": {
+    "N": "original Native Uniform4",
+    "U": "original full-input Uniform4",
+    "P": "greedy merged-q capped-two-hit coverage",
+    "projection_uniform4": "auxiliary original projection Uniform4"
+  },
+  "subgroup_bins": {
+    "short": [
+      "event_length_bin",
+      "Q1"
+    ],
+    "fast": [
+      "motion_bin",
+      "Q4"
+    ],
+    "small": [
+      "target_area_bin",
+      "Q1"
+    ]
+  },
+  "minimum_evaluable_parents": 8,
+  "subgroup_small_sample_status": "UNKNOWN, never PASS",
+  "T0_gates": {
+    "Native_gain_pp": 0.5,
+    "projection_noninferiority_margin_pp": -0.5,
+    "critical_mean_risk_pp": -1
+  },
+  "S0_gates": {
+    "P_minus_N": 0.05,
+    "baseline_P_minus_U_nonnegative": 0,
+    "preGT_posterior_added_value_P_minus_U_strictly_positive": true,
+    "zero_hit_increase_limit": 0.05,
+    "critical_coverage_mean_risk": -0.05
+  },
+  "preGT_analysis_clarification": {
+    "status": "locked_before_any_new_scoring",
+    "S0_posterior_value": "P\u2212N>=.05 and P\u2212U>0 both domains; exact equality to U does not establish posterior allocation value",
+    "coverage_layout_pass_vs_prior": "Noninferior-to-U alone is insufficient if U exactly matches every parent coverage; keep U engineering baseline without new core claim",
+    "critical_subgroups": {
+      "min_parent": 8,
+      "short": "event Q1",
+      "fast": "speed_sizes_sec Q4",
+      "small": "target area Q1"
+    },
+    "S0_critical_coverage_risk_below": -0.05,
+    "T0_critical_vIoU_risk_pp_below": -1.0,
+    "T0_risk_references": [
+      "Native",
+      "projection"
+    ],
+    "T0_primary_extension": "not available: original full P1 After payloads retired; cannot replace with coreB geometry",
+    "one_S0_extension": "fixed existing64 additional source cases from PLAN, never choose on GT",
+    "no_relaxation_after_scores": true
+  },
+  "evaluation_lock": {
+    "status": "locked_before_new_GT_scoring",
+    "scorer_sha256": "20ac0e95147538726995a2beec719296c97a78581a93f6f48098a87630e61a03",
+    "analysis_gate_sha256": "94f0e12e3a402dec70fccc690cbf170545bc09ac1532bd7f47bcc0e7aaad6fe7",
+    "initial_barrier_sha256": "ad609401d042fdb5fc03ec568ba3bfe3f43f2982d29f0e1dafb42fa12899f818",
+    "source_code_AST_pass": true
+  },
+  "bootstrap": {
+    "unit": "parent; exactly one query per parent",
+    "draws": 10000,
+    "seed": 20261018,
+    "confidence": 0.95,
+    "multiplicity_adjusted": false
+  },
+  "algorithm_CPU": {
+    "readouts_wall_seconds": 5.355688960989937,
+    "T0_sum_seconds": 3.3831701250746846,
+    "S0_sum_seconds": 0.4221142379101366
+  },
+  "independent_numerical_audit_CPU_seconds": 103.87455527693965,
+  "CPU_caps_seconds": {
+    "T0": 3600,
+    "S0": 3600
+  },
+  "sole_extension": {
+    "prelocked_additional_queries": 64,
+    "performed": false,
+    "trigger": false,
+    "selection": "first32 unique parents/domain in source-case lexicographic case_id order, excluding initial parents; no GT criteria"
+  },
+  "T0_matched_After_extension_available": false,
+  "retired_original_P1_payloads_not_replaced": true,
+  "untriggered_stages": [
+    "S1 real expert acquisition/fit",
+    "J0 crossed/Direct",
+    "online stream",
+    "second backbone",
+    "C0 confirmation"
+  ],
+  "production_registries_unchanged": true,
+  "GT_only_after_all64_readouts_sealed": true,
+  "scientific_pins": {
+    "vg_tta/stvg_posterior_decision_tree_v1.py": "cdac34c30f8bd7841160158953a39d5b0706bd00b84c0e2c64e431f3968b48f6",
+    "scripts/run_stvg_posterior_decision_tree_v1.py": "0ce180581babcc7db5bf30826ad421a54b8c682dd106f602426d7d3eaa7a13de",
+    "protocols/stvg_posterior_decision_tree_v1.md": "a274d7cb91396b65150e9e0b3e4752fed5622d2140297eeda3704b5841e41824",
+    "scripts/stvg_temporal_marginal_decode_util256_v1.py": "3846d4569ed57d03a124a9317b6a72a5493de5bf02775398e65612ad7a73dad6",
+    "methods/decota_final_simplified_v1/observations.py": "24563668ebab04fdb133ecef8e628bf87d3d266cb1dbff33cf624365ebf79c82"
+  },
+  "plan_sha256": "2d9ac6c30ece5748d2161af3b07f8728ed0ac30f23c84887b7dba727ded6061f",
+  "readout_barrier_sha256": "ad609401d042fdb5fc03ec568ba3bfe3f43f2982d29f0e1dafb42fa12899f818"
+}
