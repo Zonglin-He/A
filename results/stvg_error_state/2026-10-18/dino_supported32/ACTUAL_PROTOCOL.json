@@ -1,0 +1,127 @@
+{
+  "status": "complete",
+  "count": 32,
+  "new_formal_groups": 1,
+  "primary": "Before/final_MBR",
+  "Source_sensitivity": true,
+  "development_exposed": true,
+  "backbone": "TA-STVG",
+  "source_domains_and_checkpoint_hashes": {
+    "hc2": {
+      "center_fraction": 1.0,
+      "source_dataset": "vidstg",
+      "checkpoint_sha256": "5ab12c86363ef0ce0ee006c00fd11c6b659c3a9b2cb01a4f2c613efe22a2aa83",
+      "prior_weight": 0.1,
+      "epsilon": 1e-06
+    },
+    "vidstg": {
+      "center_fraction": 0.5,
+      "source_dataset": "hcstvg2",
+      "checkpoint_sha256": "47d8f15841cd57e7bbf5a10e8bf23b1054d23b753e0becbd38a07f3dd60d5036",
+      "prior_weight": 0.1,
+      "epsilon": 1e-06
+    }
+  },
+  "cached_DINO_expert": {
+    "model": "Grounding DINO",
+    "weights_sha256": "1a2412ef99bd74bcd3c2a246fa1e48581f8889a1300c9051974741314fc042f3",
+    "provenance": "original verified capture reused; no new checkpoint inference or expert call"
+  },
+  "original_admitted_frames": {
+    "hc2": 56,
+    "vidstg": 50
+  },
+  "retained_candidates": {
+    "hc2": 168,
+    "vidstg": 144
+  },
+  "beta": 0.0625,
+  "beta_shared_both_domains": true,
+  "beta_grid": [
+    0.0,
+    0.0625,
+    0.125,
+    0.25,
+    0.5,
+    1.0,
+    2.0
+  ],
+  "zero_reference_not_eligible": true,
+  "score_transform": "log(max(max(scores,1e-12)))-log(max(score,1e-12))",
+  "penalty": "beta*old cutoff*relative log cost",
+  "scores": "original DINO target-token occurrence scores in context branch; original score in non-context branch; not event/role probabilities",
+  "old_geometry_source_calibration_unchanged": true,
+  "old_geometry_source_calibration": {
+    "hc2": {
+      "scale": [
+        0.022542142662651282,
+        0.011027737123363815,
+        0.06612943552390567,
+        0.02918426580581821
+      ],
+      "truncation": 18.056884634893116,
+      "source_train_queries": 36,
+      "eligible_queries": 35,
+      "known_planned_anchors": 113,
+      "singleton_or_empty_queries": 1,
+      "quantile": 0.95,
+      "validation_used": false,
+      "target_GT_used": false
+    },
+    "vidstg": {
+      "scale": [
+        0.08805019583603152,
+        0.03796878948819179,
+        0.2445728236645117,
+        0.21037521441041293
+      ],
+      "truncation": 30.734017210649714,
+      "source_train_queries": 36,
+      "eligible_queries": 22,
+      "known_planned_anchors": 76,
+      "singleton_or_empty_queries": 14,
+      "quantile": 0.95,
+      "validation_used": false,
+      "target_GT_used": false
+    }
+  },
+  "source_train_only_transform_diagnostics": 72,
+  "source_validation_only_shared_beta_selection": 24,
+  "source_validation_primary": "actual unobserved Decoder sIoU change, equal-domain/equal-query",
+  "source_validation_secondary": "full vIoU under FIXED source Native time, not invented source MBR",
+  "all_new_E_and_factorial_diagnostic_outputs_sealed_before_target_GT": true,
+  "old_ABCD_results_sha256": "a4d759778178b8d54a5b5122c83273bc476572af064d0a9e464ac5af63c028d4",
+  "no_new_models_experts_training_Student_updates": true,
+  "no_new_visual_labels": true,
+  "CPU_cost": {
+    "source_calibration_seconds": 1.0018289859872311,
+    "target_generation_seconds": 0.8042558270972222,
+    "serialized_scoring_pass_seconds": 3.294471000088379,
+    "first_unserialized_CPU_scoring_pass_repeated_for_export": true,
+    "not_fresh_online_end_to_end": true
+  },
+  "JSON_recovery": {
+    "status": "explained",
+    "failure": "NumPy int64 behavior count rejected by strict JSON serializer after all32 CPU evaluations",
+    "recovery": "convert np.generic to native scalars ONLY at JSON boundary; original pinned scorer unchanged",
+    "original_scorer_sha256": "7508a8561b5c4092aac2f37097e0c2557aec46c185f9575c92a54a45c79a6c3e",
+    "wrapper_sha256": "e6fdc968a5799af8f3af547a61cfa379ceee37a4f51856e21d4b5e59f207d2c4",
+    "all32_prediction_seals_unchanged": true,
+    "new_models_experts_training_or_prediction_generation": 0,
+    "repeated_postseal_CPU_scoring_for_export": true,
+    "earlier_unserialized_evaluation_not_counted_as_independent_replication": true
+  },
+  "original_prediction_and_scorer_pins_unchanged": true,
+  "code_pins": {
+    "vg_tta/stvg_dino_supported_correction32_v1.py": "48b80bbf155ea2f7d1a61f9153f8e3cce4e9f48134a6095b5c31ffe1f57a4df7",
+    "scripts/run_stvg_dino_supported_correction32_v1.py": "ef05ee01939e12c2c8d0b61cb1c59b5d8a6a97367680bdfcf4b1cb93512eaca0",
+    "scripts/score_stvg_dino_supported_correction32_v1.py": "7508a8561b5c4092aac2f37097e0c2557aec46c185f9575c92a54a45c79a6c3e",
+    "protocols/stvg_dino_supported_correction32_v1.md": "c840761adb2f24bfa83cf6e1a94b263a40a7005daae73ee117f87ae1c6daa2f6",
+    "vg_tta/stvg_joint_robust_correction32_v1.py": "772c6f4ff5350c2d5d7cb40a9e36cfd15cb5133e00356f8ad15900527bbc9aaa",
+    "vg_tta/stvg_error_state_correction_v1.py": "0e016c9ac71ea632ba0189f55efd71f250acac393f9bd57670e21dcf7448ad06",
+    "vg_tta/tastvg_oracle_event5_v1.py": "d902db704277a79f2a8d2a2a7ff09fdbf1402b1912c05ee62f7083161b7713a3"
+  },
+  "production_registries_unchanged": true,
+  "no_more_combination_rule_search": true,
+  "no_dense_OPD_or_confirmation_started": true
+}
