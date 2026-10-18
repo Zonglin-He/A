@@ -1,0 +1,71 @@
+{
+  "status": "stage1_complete_not_qualified",
+  "decision": "stop_this_frozen_critic_before_joint_OPD",
+  "candidate_headroom_vs_E_pp": {
+    "hc2": {
+      "n": 32,
+      "mean": 7.509696782622626,
+      "CI95": [
+        4.089003002761482,
+        11.424672692533772
+      ],
+      "positive": 26,
+      "negative": 0,
+      "neutral": 6
+    },
+    "vidstg": {
+      "n": 32,
+      "mean": 2.948920225385392,
+      "CI95": [
+        1.3286602569144965,
+        4.922612672307724
+      ],
+      "positive": 20,
+      "negative": 0,
+      "neutral": 12
+    }
+  },
+  "Joint_E_macro": {
+    "mean_pp": -0.44227164853300116,
+    "CI95_pp": [
+      -2.8348145175091815,
+      1.6503161494282197
+    ]
+  },
+  "Joint_E_pp": {
+    "hc2": {
+      "n": 32,
+      "mean": 1.196673964021263,
+      "CI95": [
+        -1.3022654376475833,
+        3.9372594476714005
+      ],
+      "positive": 15,
+      "negative": 10,
+      "neutral": 7
+    },
+    "vidstg": {
+      "n": 32,
+      "mean": -2.0812172610872652,
+      "CI95": [
+        -6.13324136115494,
+        0.9550978289321047
+      ],
+      "positive": 5,
+      "negative": 17,
+      "neutral": 10
+    }
+  },
+  "interpretation": [
+    "All four primary ranking intervals include chance; positive ranking evidence is unestablished, not proven universally reversed.",
+    "Vid fixed-MBR spatial selection loses3.347768pp with95%CI[-7.069891,-.801421]; oracle spatial gain available there is only.509860pp.",
+    "Fixed-E time selection loses.368601pp HC and gains.973622pp Vid, both intervals include0; not reliable bidirectional event evidence.",
+    "HC Joint v gain accompanies tIoU loss; do not call it better event-boundary localization.",
+    "Candidate oracle headroom exists in both domains, but this fixed source-trained reward does not meet the prespecified gate. No optimizer rescue experiment is warranted."
+  ],
+  "uncertain_results_not_automatic_expansion": true,
+  "actual_OPD_fits": 0,
+  "network_updates": 0,
+  "no_new_critic_training": true,
+  "not_backbone_agnostic_system": true
+}

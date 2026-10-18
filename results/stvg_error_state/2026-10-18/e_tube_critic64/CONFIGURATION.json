@@ -1,0 +1,107 @@
+{
+  "status": "locked_before_new_target_outputs_GT",
+  "count": 64,
+  "per_domain": 32,
+  "max_tubes": 768,
+  "spatial": [
+    "Source",
+    "half_E_delta",
+    "E"
+  ],
+  "temporal": "old final MBR plus top3 OTHER distinct positive-mass final physical intervals; no frame-fingerprint restriction",
+  "raw_critic_frozen": true,
+  "old_critic_transfer_failure_preserved": true,
+  "source_normalized_feature_maps_cache_missing": 64,
+  "max_Source_captures": 64,
+  "GPU_seconds_cap": 300,
+  "wall_seconds_cap": 900,
+  "gate": "Both domain query-mean temporal and spatial strict-GT-pair accuracies have bootstrap95% lower >.5, both domain Joint-E means >=0 and equal-domain paired macro95% lower >0. Missing/uncertain => no automatic stage2.",
+  "pair_GT_tie_tolerance": 1e-08,
+  "critic_ties": "exact tie half credit; deterministic first row-major selection",
+  "source_stage2_scaling": {
+    "hc2": {
+      "geometry_scale": [
+        0.022542142662651282,
+        0.011027737123363815,
+        0.06612943552390567,
+        0.02918426580581821
+      ],
+      "critic_reward_std": 6.238401919990775,
+      "source_validation_queries": 12,
+      "GT_opened_for_calibration": false
+    },
+    "vidstg": {
+      "geometry_scale": [
+        0.08805019583603152,
+        0.03796878948819179,
+        0.2445728236645117,
+        0.21037521441041293
+      ],
+      "critic_reward_std": 1.8034767104526,
+      "source_validation_queries": 12,
+      "GT_opened_for_calibration": false
+    }
+  },
+  "stage2": {
+    "conditional_only": true,
+    "rounds": 5,
+    "temporal_samples": 8,
+    "spatial_samples": 4,
+    "time_variables": "2 endpoint exponential-tilt coefficients on normalized physical endpoints; full legal q support retained; init0",
+    "spatial_variables": "4 normalized correction means, init E_delta/source_scale, unit covariance Gaussian",
+    "learning_rate": 0.05,
+    "optimizer": "plain SGD maximize detached conditional LOO critic advantages; reward/source validation score std",
+    "feedback": "raw frozen event critic, no geometric reward",
+    "final": "round5 time full-distribution MBR, spatial corrected mean",
+    "arms": [
+      "E_MBR",
+      "T_only",
+      "S_only",
+      "Joint_OPD",
+      "Fixed_initial_rollout",
+      "One_shot_search"
+    ],
+    "fixed": "same first8x4 actions every round and same160 scoring calls; gradients at current distribution",
+    "search": "initial distribution40 time x4 spatial tubes,160 total; highest critic tube",
+    "seed": 20261018,
+    "network_updates": 0,
+    "new_safety_gates": 0,
+    "max_queries": 64,
+    "max_rounds": 5,
+    "source_only_scaling_locked_before_target_GT": true,
+    "two_first_queries_actual_timing_required": true
+  },
+  "new_DINO_calls": 0,
+  "new_Qwen_calls": 0,
+  "new_source_training": 0,
+  "new_QR_LN_updates": 0,
+  "old_before_replay": 0,
+  "independent_confirmation": false,
+  "backbone": "TA-STVG",
+  "source_checkpoints": {
+    "hc2": {
+      "backbone": "TA-STVG",
+      "source_dataset": "vidstg",
+      "checkpoint": "checkpoints/TASTVG_VidSTG.pth",
+      "sha256": "5ab12c86363ef0ce0ee006c00fd11c6b659c3a9b2cb01a4f2c613efe22a2aa83",
+      "load_time_validation": "scripts/run_spatial_regression_alignment_v1.py:model_load validates SHA before load"
+    },
+    "vidstg": {
+      "backbone": "TA-STVG",
+      "source_dataset": "hcstvg2",
+      "checkpoint": "checkpoints/TASTVG_HCSTVG2.pth",
+      "sha256": "47d8f15841cd57e7bbf5a10e8bf23b1054d23b753e0becbd38a07f3dd60d5036",
+      "load_time_validation": "scripts/run_spatial_regression_alignment_v1.py:model_load validates SHA before load"
+    }
+  },
+  "critic_checkpoints": {
+    "hc2": {
+      "source_domain": "vidstg",
+      "sha256": "7846574a28371ddb9d8b24387982e3a386209c15cba044a192fccfb3fcb573d9"
+    },
+    "vidstg": {
+      "source_domain": "hc2",
+      "sha256": "2e44c7dba2695a0f007a370a8c8d76dca05113ff7c78e9152fce1422ca074506"
+    }
+  }
+}
