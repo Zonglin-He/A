@@ -104,8 +104,8 @@ def main():
         both_refs_fresh_CAS=True,all_actual_HTTP_bytes_SHA256_Gitblob_fetched_mode_tree=True,
         unrelated_untracked_preserved=True,tracked_and_index_clean=True,registries_unchanged=True,
         private_media_GT_coordinates_weights_raw_candidates_and_original_text_excluded=True,
-        external20_state_online_inference=True,no_confirmation_or_dense_OPD=True,
-        new_Source_forwards=0,new_DINO_frames=0,new_training=0,backbone_updates=0,external_optimizer_steps=read(P/'ACTUAL_COSTS.json')['external_optimizer_steps'])
+        external20_state_online_inference=True,no_independent_confirmation_or_backbone_OPD=True,external_Dense_OPD_actually_executed=True,
+        new_Source_forwards=0,new_DINO_frames=0,new_source_training=0,backbone_updates=0,external_optimizer_steps=read(P/'ACTUAL_COSTS.json')['external_optimizer_steps'])
     put(pub/'FINAL_GITHUB_RECEIPT.json',receipt)
     print(json.dumps({k:v for k,v in receipt.items()if k!='files'}),flush=True)
 
