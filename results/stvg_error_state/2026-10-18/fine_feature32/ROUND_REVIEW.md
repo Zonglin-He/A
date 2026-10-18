@@ -1,0 +1,11 @@
+# Round review — GPT-6.1 Sol, root disposition
+
+The human replaced the initial Luna static reviewer with GPT-6.1 Sol for completed-result and subsequent-round reviews. This is an automated scientific review, not new annotation or independent human validation.
+
+Fine qualification remains completed/valid/gate=false. Fine-minus-Coarse unobserved actual s has positive paired intervals in both domains, while Fine-minus-same-layer-downsampled complete-v and actual-s intervals cross zero. Do not claim a confirmed pure-resolution effect or reliable improvement over E. HC meaningful-headroom raw/posterior miss rates worsen despite slightly higher AUC; ranking quality against perturbations does not settle E-relative correction. Preserve NH011 gains, NH013 losses and NV001 severe actual-node loss, all32 denominators and unknown GT.
+
+No continuation with this Fine single-direction teacher, layer search or temperature change. A materially different, bounded next experiment is eligible under the human's overnight authorization: use only original Coarse caches and independently normalized forward and reverse patch affinities. A candidate region projected back onto each anchor is evaluated against the original DINO region; per-anchor sqrt(forward soft-IoU times reverse soft-IoU), then equal anchor mean. No new expert or trained module, and no fine-layer selection.
+
+The next protocol must retain old single-direction actual OPD update controls, matched two-step Fixed/Live/noise, synchronous forward/reverse target shuffle, exact first-step checks and strict no-ref fallback. It can seal all new direct/fixed/live/shuffled outputs before evaluation without an intermediate GT gate. This does not change the failed Fine gate. Stop the new interface if actual full-v and unobserved actual-s gains are not both positive across both domains; feedback gains without Live-over-Fixed do not establish on-policy value.
+
+Root accepts only this one next mechanism for a small cached test. This is not a claim that many-to-one matching is the measured root cause: uniform affinity can leave the proposed symmetric reward unchanged, and wrong backgrounds may also be bidirectionally consistent. Record reward scales, E-relative ranks and actual step amplitudes; do not silently recalibrate to obtain a result.
