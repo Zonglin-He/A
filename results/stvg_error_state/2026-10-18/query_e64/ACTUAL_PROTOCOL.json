@@ -1,0 +1,96 @@
+{
+  "status": "complete",
+  "count": 64,
+  "per_domain": 32,
+  "arms": [
+    "Source_MBR",
+    "E_MBR",
+    "Sparse_OPD",
+    "Dense_OPD",
+    "Fixed_rollout",
+    "Dense_Direct"
+  ],
+  "active_variables": 256,
+  "active_parameter": "spatial.query_residual",
+  "configs": {
+    "hc2": {
+      "lr": 0.01,
+      "sigma": 0.025,
+      "tau": 0.05,
+      "steps": 40,
+      "writeback": 0.0625,
+      "samples": 32
+    },
+    "vidstg": {
+      "lr": 0.03,
+      "sigma": 0.1,
+      "tau": 0.25,
+      "steps": 10,
+      "writeback": 0.125,
+      "samples": 32
+    }
+  },
+  "source_checkpoint": {
+    "hc2": {
+      "source": "vidstg",
+      "checkpoint_SHA256": "5ab12c86363ef0ce0ee006c00fd11c6b659c3a9b2cb01a4f2c613efe22a2aa83"
+    },
+    "vidstg": {
+      "source": "hcstvg2",
+      "checkpoint_SHA256": "47d8f15841cd57e7bbf5a10e8bf23b1054d23b753e0becbd38a07f3dd60d5036"
+    }
+  },
+  "cohort": "Exact previously locked HC32+Vid32 from Source-expanded256; no reselection",
+  "initial": "Frozen Source every query and arm; u=0 and empty Adam; episodic",
+  "backbone_LN_attention_bbox_head_frozen": true,
+  "teacher": "Exact prior sealed E trajectory; float32 training reference shared by all fits; no refresh",
+  "sparse": "Same E at all four original planned positions; not GT-known filtering",
+  "dense": "All actual decoder frames, per-frame mean; no extra sparse term",
+  "original_Gaussian_control_variate_likelihood": true,
+  "native_endpoint_logit_extension": true,
+  "current_policy_resampling": [
+    "Sparse_OPD",
+    "Dense_OPD"
+  ],
+  "fixed_rollout": "First samples/rewards/weights/rollout mean reused; likelihood remains evaluated at current Student",
+  "direct_loss": "mean[5 L1 + 2(1-GIoU)]",
+  "all_arms_final_preplanned_step": true,
+  "final_student_not_E_overlay": true,
+  "temporal": "Exact frozen Source final-distribution MBR for all six outputs; no temporal adaptation",
+  "source_prefix": "Exact frozen-prefix reproduction where decoder input cache unavailable; only selected64; no historical Before",
+  "all64_sealed_before_GT": true,
+  "known_development_exposure": true,
+  "independent_confirmation": false,
+  "counts": {
+    "hc2": {
+      "queries": 32,
+      "valid_support": 32,
+      "optimizer_steps": {
+        "Sparse_OPD": 1126,
+        "Dense_OPD": 1279,
+        "Fixed_rollout": 1280,
+        "Dense_Direct": 1280
+      }
+    },
+    "vidstg": {
+      "queries": 32,
+      "valid_support": 24,
+      "optimizer_steps": {
+        "Sparse_OPD": 220,
+        "Dense_OPD": 220,
+        "Fixed_rollout": 220,
+        "Dense_Direct": 240
+      }
+    }
+  },
+  "original_paused_LN_fit_outputs_unused": true,
+  "second_backbone_not_started": true,
+  "CURRENT_MAIN_PAPER_unchanged": true,
+  "audit_only_precision_recovery": {
+    "status": "audit_only_numerical_precision_correction",
+    "reason": "Saved FP32 Adam moments vs independent FP64 recurrence; absolute-only2e-5 rejected6.52e-5 on large second moment. Both absolute and relative errors now recorded, allclose rtol2e-6 atol2e-5. Parameter-step and objective checks unchanged.",
+    "scientific_code_pins_unchanged": true,
+    "input_state_update_prediction_score_unchanged": true,
+    "new_model_or_score_calls": 0
+  }
+}
