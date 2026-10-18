@@ -1,0 +1,97 @@
+{
+  "configs": {
+    "hc2": {
+      "lr": 0.01,
+      "sigma": 0.025,
+      "tau": 0.05,
+      "steps": 40,
+      "writeback": 0.0625,
+      "samples": 32
+    },
+    "vidstg": {
+      "lr": 0.03,
+      "sigma": 0.1,
+      "tau": 0.25,
+      "steps": 10,
+      "writeback": 0.125,
+      "samples": 32
+    }
+  },
+  "count": 64,
+  "per_domain": 32,
+  "local_rounds": {
+    "hc2": [
+      0,
+      19,
+      39
+    ],
+    "vidstg": [
+      0,
+      4,
+      9
+    ]
+  },
+  "local_slots": 192,
+  "fixed_extra_case": {
+    "alias": "H008",
+    "arm": "Sparse_OPD",
+    "rounds": [
+      2,
+      5
+    ]
+  },
+  "extra_not_in_primary_summary": true,
+  "local_factors": {
+    "amplitude": [
+      1.0,
+      0.5
+    ],
+    "first_moment": [
+      "history",
+      "current_only"
+    ],
+    "reference_backward": [
+      "detach",
+      "full_chain"
+    ]
+  },
+  "local_metric": "all directions share original Adam second moment and original proposal QR norm before amplitude",
+  "FD_steps": [
+    0.001,
+    0.0005
+  ],
+  "FD_numerical_diagnostic_not_parameter_search": true,
+  "control_arms": [
+    "Sparse_control",
+    "Dense_control"
+  ],
+  "control_scales": [
+    1.0,
+    0.5,
+    0.25,
+    0.125
+  ],
+  "control_accept": "same frozen rollout FP64 surrogate <= before + 1e-7*(1+abs(before)); log physical displacement; no GT gate",
+  "control_reject": "restore QR and complete Adam state, next original scheduled round; no extra rounds",
+  "control_accept_optimizer": "commit original Adam proposed moments even when QR step is scaled",
+  "pretrained_frozen": true,
+  "query_only_256": true,
+  "E_fixed": true,
+  "clock": "original final MBR interval",
+  "local_not_full_adaptation_performance": true,
+  "historical_development": true,
+  "new_DINO_calls": 0,
+  "new_Temporal_updates": 0,
+  "max_fits": 128,
+  "GPU_seconds_cap": 2700,
+  "no_automatic_expansion": true,
+  "status": "actual_prelocked_configuration",
+  "predecessor_commit": "833fb8e9fd738ee5cc7c1077f297c7f7fea167e5",
+  "original_fit_commit": "288f2876732b714c3c9d6d1f1312df1102e84da9",
+  "cohort": "exact original HC32/Vid32 already exposed development parents; no reselection",
+  "source_checkpoint_pins": {},
+  "native_decoder_source_pin": {
+    "external/TA-STVG/models/grounding_model/query_decoder.py": "9cb4062b5f91403853b697f5901501969956c799e79f07ef47a581e28d6cf79c"
+  },
+  "scope": "same native forward function; full-chain versus detach only changes backward graph in local test"
+}
