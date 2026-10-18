@@ -1,0 +1,21 @@
+# Student-conditioned DINO: finite32 trajectory distillation
+
+Question: can the frozen visual detector give useful feedback at the states actually visited by an external trajectory student, beyond fixed E?
+
+Use original fixed64, lexicographically first16 aliases/domain (HC16/Vid16), one query/parent, historically exposed development. No effect-based selection. Source trajectories, E, original four physical anchor positions and final-distribution MBR are exact reused. All pretrained weights frozen. No Source recapture, critic, Qwen, SAM, source training, QR, LN, temporal update, second backbone or history replay.
+
+Student is N(mu,I) on source-normalized shared4 correction (cx,cy,logw,logh). mu0=E_delta/source_scale; scales are the existing opposite-source-domain calibration, unchanged. Native trajectory motion is retained. Every query resets. No per-frame correction freedom.
+
+Teacher: encode each original anchor image/text once using the original cached text and target occurrence. Retain the native900 queries. An added student reference gets the content embedding of the nearest initial native proposal by IoU (stable first argmax). The self-attention mask prevents native queries reading added queries and prevents added queries interacting. An added query attends native queries except its matched slot, plus itself. Native clone controls must reproduce native final boxes within1e-4; ordinary replay is exact. The only temporary configuration change is query count for attention-mask expansion, restored in finally; no package source or weight edit.
+
+This is a new research interface, not an official arbitrary-box API. DINO score is text support, not identity probability. Corrected boxes with original target-token score>=.35 provide one equally weighted correction observation per anchor. Their shared correction relative to Source gives a teacher Gaussian mean. With no accepted anchors, or any student anchor coordinate outside open(0,1), that entire action is a no-op target. No clamps, sample rejection, new identity head or GT masks.
+
+Distill the mixture of teacher Gaussians to the student via exact forward-KL M-projection: mu_new=mean(teacher means). This is the analytic optimum, no Adam/LR search. Teacher outputs detached. It is not the previous fixed-E IoU reward or QR likelihood optimizer. It tests state-conditioned feedback and on-policy resampling; it does not alone establish an OPD advantage over all other distillation objectives.
+
+Arms: E+MBR, one conditional correction at E,24 initial Gaussian samples then one distillation,8 current Gaussian samples/round for3 rounds with new visual decoder feedback each round. All three new arms allocate24 logical references/anchor, one-correction uses24 identical references and deduplicates their actual compute. Fixed and dynamic each process24 distinct sampled states with the same initial epsilon sequence. One correction is an inexpensive control, not a matched unique-query search. Record unique queries, decoder passes/time and full encoding-forward time separately. Original full encode includes its native decoder; do not mislabel it pure encoder time. No-score/no-reference samples stay in all denominators.
+
+First two within roster, one/domain, qualify and time. Overall GPU lease900s, created-to-seal/score wall2400s,16/20GiB memory high/max,Swap1GiB,host6GiB/GPU4GiB,disk30GiB guards. No automatic retry or deadline reset. All32 outputs sealed before new GT. Compare complete vIoU, actual unobserved-frame sIoU excluding original4 slots, signed query-level bootstrap intervals and negative tail. Missing GT is unknown. Time identical is an invariant.
+
+Interface qualification failure stops without target scoring or tuning. One-correction worse than E in either domain stops this interface after reporting all32. Dynamic must beat E and fixed both directions to support expansion; otherwise retain negative/inconclusive scope. No automatic full dataset, parameter sweep, or subsequent method launch.
+
+Implementation basis: installed Transformers GroundingDino decoder and official [Grounding DINO transformer](https://github.com/IDEA-Research/GroundingDINO/blob/main/groundingdino/models/GroundingDINO/transformer.py), native reference/content preparation. External isolated queries and source-normalized trajectory distillation are new experimental code here.
