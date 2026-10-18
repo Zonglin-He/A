@@ -1,0 +1,58 @@
+{
+  "status": "locked",
+  "counts": {
+    "source_train_per_domain": 43,
+    "source_validation_per_domain": 16,
+    "target_per_domain": 16
+  },
+  "excluded_target_parent_counts": {
+    "hc2": 5,
+    "vidstg": 0
+  },
+  "seed": 20261018,
+  "GPU_cap_seconds": 3600,
+  "source_only_training": true,
+  "source_validation_historically_exposed": true,
+  "target_development_exposed": true,
+  "module": {
+    "bins": 33,
+    "roi_size": 7,
+    "context_scale": 1.5,
+    "project_channels": 32,
+    "hidden": 128,
+    "refinement_stages": 2,
+    "bin_range_source_train_quantile": 0.95,
+    "bin_range_floor": 0.25,
+    "bin_range_ceiling": 2.0,
+    "initial_nonzero_logit": -4.0
+  },
+  "training": {
+    "epochs": 30,
+    "validation_every": 5,
+    "steps_per_epoch": 6,
+    "batch_size": 64,
+    "lr": 0.001,
+    "weight_decay": 0.0001,
+    "gradient_clip": 5.0,
+    "loss": "mean two-stage (interpolated boundary CE +5L1+2GIoU)",
+    "start_kinds": [
+      "E",
+      "Native",
+      "E-center-noise"
+    ],
+    "select": "source-validation complete vIoU maximum among trained checkpoints, ties earliest"
+  },
+  "target_configuration": {
+    "rounds": 2,
+    "candidates_per_round": 17,
+    "teacher_samples": 32,
+    "center_scale": 0.25,
+    "temperature": 0.1,
+    "step_size": 0.5,
+    "planned_nodes_width_height_time_fixed": true,
+    "source_gate": "both source domains center-only direct2 vIoU and unobserved actual sIoU improve E; otherwise stop before target",
+    "no_new_DINO": true
+  },
+  "registries_unchanged": true,
+  "DFINE_scope": "inspired two-stage nonuniform edge-distribution refinement, no GO-LSD, not a full D-FINE reproduction"
+}
