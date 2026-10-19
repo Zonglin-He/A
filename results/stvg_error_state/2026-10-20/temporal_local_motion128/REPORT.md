@@ -1,0 +1,13 @@
+# R30 Local motion sampling: engineering qualification failed, no task scores
+
+The frozen spatial predictions/config and65-node time grid were not changed. This does not establish a negative result for dense local motion or OPD. No full temporal prediction, GT access or scoring occurred. Original104 pins and recovery111 pins are intact.
+
+Initial attempt loaded the existing Source, then an overly strict metadata-count equality stopped before any network forward: RC001 metadata501 vs FFmpeg500, all original positions0..499 valid. Recovery001 separately locked the original runtime rule (planned IDs must exist), without changing RGB command, sampling, candidates or scientific settings. Original failure/PLAN/code/COST preserved.
+
+Recovery passed both original-offset projected-motion exact assertions, then stopped on the first Dense8 batch-versus-single control. Saved center max relative difference is0.0201416015625 and max absolute0.0234375; the locked fullclip threshold is8eps16=0.0078125. The assertion tested the complete8-frame single output, but the full batch output was not attached to the partial until after that assertion. Therefore its fullclip maximum is unavailable. The batch center and single full projection are retained with a receipt and permit the reported center diagnostic. Original motion control tensors were also only attached after this assertion; their pass is supported by execution reaching the later assertion, not by retained raw controls. This retention gap is disclosed.
+
+Four Swin and four projection calls completed (two original offset controls, one batch of8 clips, one single clip). No fusion, decoder, head, expert, training, student or spatial update. Aggregate GPU lease with3s reserves per attempt21.2548958913s: first10.0848208691s plus recovery11.1700750221s. Peak allocated4,534,534,656 bytes, reserved5,398,069,248 bytes. Extra CPU diagnostic wall not separately instrumented.
+
+The exact batch8 engineering configuration closes according to the locked rule: no larger tolerance, no silent batch fallback, no smaller scientific matrix. Numerical kernel choice is a possible explanation, not a demonstrated cause. A source-level clip mixing bug has not been established. The next research decision must distinguish numerical qualification from teacher information, and must not cite this as a vIoU loss or as failed OPD. No CURRENT/MAIN/PAPER promotion.
+
+Actual attempted entries: scripts/run_stvg_temporal_local_motion128_v1.py and scripts/run_stvg_temporal_local_motion128_recovery001.py. No scoring entry was executed. All proposed scoring code is published as unexecuted code, not evidence of task completion.

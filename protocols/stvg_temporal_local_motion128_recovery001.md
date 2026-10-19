@@ -1,0 +1,7 @@
+# R30 decode recovery001, before any network forward or GT
+
+Original104 pins/PLAN/code retained byte-exact. First RC001 metadata501 versus FFmpeg500; original65 positions0..499 valid. Original production runtime already selects these existing positions without requiring metadata frame_count exact. New helper only replaces extra count equality with max planned ID validity. Pixel decode command, dense/sparse indices, sample center, clip/grid/model, thresholds, matrix, statistics and scientific gates unchanged. No selected node/frame changes. All original failed artifacts retained.
+
+First attempt loaded Source then stopped before any motion/projection/fusion/decoder/head: all0. Lease7.084820869s+3reserve=10.084820869s retained. Recovery phase cap889.915179131s including3reserve, owned RuntimeMax886/stop3, so aggregate≤900. First2 complete matrix must fit remaining cap; do not reduce controls/batch/panel. Actual recovery code/score/publisher are separate *_recovery001 files and PLAN_LOCK_RECOVERY001 includes original104 pins plus actual recovery files, original PLAN and original COST. COST_RECOVERY001 GPU_seconds sums failed+successful phase, components separately reported.
+
+Original raw predictions do not exist, GT_EXPOSURE absent. No inference repeated because original calls0; model loading repeats and is paid. Original source metadata is recorded as metadata, actual FFmpeg count recorded separately. All original plan method/space freezes and publish/GT controls apply. This is an engineering recovery, not a method result.
