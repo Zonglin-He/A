@@ -1,0 +1,49 @@
+{
+  "status": "locked_before_new_prediction_GT",
+  "count": 128,
+  "seeds": [
+    41,
+    42,
+    43
+  ],
+  "configuration": {
+    "lr": 0.01,
+    "steps": 40,
+    "samples": 32,
+    "tau": 0.05
+  },
+  "policies": {
+    "N005F025": [
+      0.05,
+      0.25
+    ],
+    "N005F050": [
+      0.05,
+      0.5
+    ],
+    "N010F050": [
+      0.1,
+      0.5
+    ]
+  },
+  "old_results": "results/stvg_error_state/2026-10-19/referdino_native_opd_hc128/RESULTS_PUBLIC.json",
+  "old_predictions": "artifacts/stvg_referdino_native_opd_hc128_v1",
+  "teacher": "same cached native ReferDINO selected8, fixed",
+  "policy_coordinates": "actual corrected student cx,cy,logw,logh",
+  "objective": "exact equally weighted mixture NLL, target and actions and covariance stop gradient; NO old Gaussian KL baseline or control variate",
+  "Fixed": "fresh initial mean AND initial size covariance each round; current student mean receives likelihood gradient",
+  "Live": "fresh current decoded mean AND current size covariance, detached within each round",
+  "selection": "rank old Live +3 new Live by mean full-vIoU, tie1e-9 then outside8 s, then measured fit time then name; all seeds pooled as within-parent metric means; retain all tradeoffs/tails",
+  "confirmation": "only after selection lock, same reserved32; no tuning on these outcomes; retain oldLive Direct E and selected Fixed/Live",
+  "total_new_fits": 2304,
+  "total_configured_updates": 92160,
+  "GPU_seconds_cap": 4800,
+  "chunk_GPU_cap": 900,
+  "chunks": 8,
+  "chunk_size": 16,
+  "deadline_epoch": 1792422046.1599874,
+  "created_epoch": 1792404046.1599886,
+  "new_development_Source_or_teacher_calls": 0,
+  "no_new_experts_or_trained_models": true,
+  "no_additional_structure_iteration": true
+}
