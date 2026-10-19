@@ -1,0 +1,11 @@
+# Root scientific and engineering review
+
+Both saved independent audit implementations pass. No agent, model or GPU was spawned for this diagnosis.
+
+Scientific finding: DINO has demonstrably correct target boxes on some E far/scale/other-instance errors, but original scoring, E-reference selection and conditional decoding do not preserve them consistently. Native Top1 globally harms this panel. Conditional state variation offers one newly admitted correct physical frame and one common-admitted novel better frame; neither establishes useful large-error closed-loop refresh. Existing sparse-state targets were E-selected references (32 exact), so previous state negatives cannot stand in for a corrected-reference experiment. They also do not disappear.
+
+Boundaries: all64 are exposed developers; identity unknown on HC; Vid co-overlap is other-instance evidence, not a semantic causal diagnosis; thresholds prelocked; selection-breakpoint analysis is postseal; missing40 slots stay unknown; conditional traces available only original32 with legality/admission attrition. Sample replicates are nested by frame/query. Four-anchor readouts leave unobserved actual nodes unchanged. No new OPD performance is claimed. Correct native candidate availability is an indispensable fixed-feedback control for any future refresh claim, not proof that deterministic teacher refresh can never help.
+
+Engineering: initial18 partial files preserved, canonical64 sealed before new annotation access, source/prediction/formal/production pins rechecked; independent scalar IoU/metrics/aggregation plus refresh/selection audit pass. No expert/model/new candidates/parameter changes/training/student updates. Public allowlist excludes raw geometry, identifiers, text, annotations, media, weights and raw features. Publication must verify both refs and exact remote bytes before closure.
+
+Decision: complete this cache diagnosis; preserve E/Fine research baselines and all negative/positive cases. No automatic follow-up or deployment promotion. The promising but unproven remaining route is sparse competing-reference/association evidence that can alter the full model trajectory, with fixed native evidence and actual state refresh separately controlled.
