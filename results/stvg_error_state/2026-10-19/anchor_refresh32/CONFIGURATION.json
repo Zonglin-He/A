@@ -1,0 +1,41 @@
+{
+  "status": "locked",
+  "count": 32,
+  "per_domain": 16,
+  "arms": [
+    "Source_MBR",
+    "E_MBR",
+    "Anchor_local",
+    "Initial_delta",
+    "Persistent_delta",
+    "Persistent_shuffle",
+    "Persistent_allnodes"
+  ],
+  "new_Source_captures": 0,
+  "new_DINO_calls": 0,
+  "new_training_runs": 0,
+  "new_heads": 0,
+  "new_OPD": 0,
+  "pretrained_weights_frozen": true,
+  "second_pass_only": true,
+  "content_fullmemory_native": true,
+  "reference_schedules": [
+    "initial1",
+    "all6"
+  ],
+  "readout": "zE+zDINOcondition-zEcondition",
+  "main_updates_only_unobserved_actual_nodes": true,
+  "pilot_aliases": [
+    "NH001",
+    "NV001"
+  ],
+  "GPU_seconds_cap": 900,
+  "overnight_GPU_remaining_seconds": 6923.933406163938,
+  "MBR_fixed": true,
+  "E_retained": true,
+  "GT_after_full32_seal": true,
+  "development_exposed": true,
+  "independent_confirmation": false,
+  "no_parameter_search": true,
+  "decision": "Both-domain Persistent_delta minus E complete-v and unobserved actual-s positive, Persistent_delta minus Initial_delta and Persistent_shuffle complete-v positive; retain CI and tails, no automatic OPD"
+}

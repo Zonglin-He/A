@@ -1,0 +1,15 @@
+# Reviewer and root disposition
+
+The same existing GPT-6.1 Sol/max reviewer read the proposed mechanism, actual TA-STVG code and relevant project history, then the static implementation and sealed RESULTS/ROOT audit/LAYER response. Reviewer performed only read-only inspection, not model/candidate/GT execution or edits. Root independently executed, audited and decided.
+
+This mechanism is not equivalent to old initial full-reference reseeding, isq/itq object pooling or ClosureReplay native-reference derivative controls. Current native absolute heads overwrite reference boxes. Refreshing only retained DINO anchors at all six layers therefore retains a new position-conditioning path into within-offset self-attention and per-frame cross-attention. Neither this connection nor DAB-DETR's trained results guarantee useful target propagation.
+
+Static fixes applied before prepare/model execution: nested exception cleanup always releases lease and independently attempts actual GPU cost persistence even if partial saving fails; controller scope accurately says qualification/no OPD. Copied/no-injection/native all-six-layer exactness, global-to-offset mapping, nonanchor own-path carry, fixed input hash, same-condition exact E and main planned-node preservation are explicit contracts.
+
+Measurement valid, original gate=false. Root independently verifies64 actual native all-six comparisons,1968 reference replacements/carry checks,164 final assemblies,40672 differential-readout coordinates,1120 localization metric scalars and80 paired parent bootstrap results. No GPU audit rerun.196 full-trajectory calls =392 offset PosDecoder calls, GPU36.945801s;0 new Source/DINO/experts/training/backward/OPD.
+
+Persistent conditioning amplifies active-query final raw unobserved center response relative to initial-only: HC0.00097574 versus0.00001064, Vid0.00007299 versus0.0000002666, roughly92/274 times. Responses exist; this is not evidence that they correct localization. Persistent minus E full-v HC-0.020310pp/Vid-0.003091pp, actual-unobserved-s-0.047214/-0.003046pp; intervals cross0. Do not call the mean sign universal harm. Initial-only nearly zero; Persistent_allnodes full-v-0.084461/-0.043493pp with HC interval strictly negative. Auxiliary allnodes cannot rescue the primary gate. Severe full-v loss below-5pp is0 in both domains for both persistent readouts, not proof of meaningful improvement.
+
+Direct selected-anchor replacement improves complete-v+0.263624[+0.031822,+0.531398]/+0.115594[+0.001785,+0.285097]pp, but unobserved actual nodes remain exactly E. Retain this local geometric positive evidence; it is not dense propagation or an OPD result and does not certify identity correctness.
+
+Root decision: stop this exact persistent-reference differential-output interface, do not scan layers, blend strengths or thresholds, and do not connect it to OPD. Old seven configuration outcomes and CURRENT/MAIN/PAPER unchanged. Broader conditioning/OPD are not universally excluded. A future mechanism must change feedback information or its supported use, not relabel this failed head readout.
