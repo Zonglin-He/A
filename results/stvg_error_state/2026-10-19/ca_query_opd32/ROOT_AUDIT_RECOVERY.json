@@ -1,0 +1,225 @@
+{
+  "status": "audit_only_recovery_pass",
+  "original_audit_sha256": "f983fa79f5d4ec292b369fd672b0c93ff3531f35c44a46f9b158a9ffd8b50582",
+  "original_failure": {
+    "status": "audit_only_recovery",
+    "original_sha256": "f983fa79f5d4ec292b369fd672b0c93ff3531f35c44a46f9b158a9ffd8b50582",
+    "failure": "Independent NumPy cosine field absolute3e-7 assert; largest observed3.348819e-7 at probabilitymax.487671; not predictions or task scoring",
+    "new_check": "FP32 scale aware32eps*max probability+1e-12, independent NumPy recipe retained; additional bit-exact regeneration of original CPU recipe for every supported alias",
+    "no_model_candidate_prediction_or_GT_metric_changed": true
+  },
+  "rule": "32*eps_FP32*global_reference_max+1e-12",
+  "unchanged_model_candidates_predictions_metrics_decision": true,
+  "independent_NumPy_and_exact_execution_recipe_separate_checks": true,
+  "not_attributed_solely_to_ROI_cast": true,
+  "per_alias_cosine_checks": [
+    {
+      "alias": "NH001",
+      "max_error": 4.4218650300381634e-08,
+      "global_reference_max": 0.060730789117383915,
+      "threshold": 2.3167057518533293e-07,
+      "error_threshold_ratio": 0.19086865159724056,
+      "failed_original_abs3e_7": false
+    },
+    {
+      "alias": "NH002",
+      "max_error": 8.749645586184074e-08,
+      "global_reference_max": 0.1196493382222429,
+      "threshold": 4.5642700335023076e-07,
+      "error_threshold_ratio": 0.19169868395078712,
+      "failed_original_abs3e_7": false
+    },
+    {
+      "alias": "NH003",
+      "max_error": 3.143920264403466e-07,
+      "global_reference_max": 0.42532485542986664,
+      "threshold": 1.6224865630106607e-06,
+      "error_threshold_ratio": 0.19377172890539424,
+      "failed_original_abs3e_7": true
+    },
+    {
+      "alias": "NH004",
+      "max_error": 1.0591015218996969e-07,
+      "global_reference_max": 0.1663143119716143,
+      "threshold": 6.344397511124203e-07,
+      "error_threshold_ratio": 0.1669349248754793,
+      "failed_original_abs3e_7": false
+    },
+    {
+      "alias": "NH005",
+      "max_error": 7.568962124768208e-08,
+      "global_reference_max": 0.12396687939883627,
+      "threshold": 4.7289711587080484e-07,
+      "error_threshold_ratio": 0.16005515514364108,
+      "failed_original_abs3e_7": false
+    },
+    {
+      "alias": "NH006",
+      "max_error": 1.6894914089959912e-07,
+      "global_reference_max": 0.20835791328158226,
+      "threshold": 7.948233620665828e-07,
+      "error_threshold_ratio": 0.21256187092981568,
+      "failed_original_abs3e_7": false
+    },
+    {
+      "alias": "NH007",
+      "max_error": 9.543135804507274e-08,
+      "global_reference_max": 0.1275549248956387,
+      "threshold": 4.865844232163952e-07,
+      "error_threshold_ratio": 0.19612497542411514,
+      "failed_original_abs3e_7": false
+    },
+    {
+      "alias": "NH008",
+      "max_error": 1.0618847292448441e-07,
+      "global_reference_max": 0.1079941003874808,
+      "threshold": 4.119657994517547e-07,
+      "error_threshold_ratio": 0.25776040891209984,
+      "failed_original_abs3e_7": false
+    },
+    {
+      "alias": "NH009",
+      "max_error": 4.4754710933764263e-08,
+      "global_reference_max": 0.058310577562600906,
+      "threshold": 2.2243820078506815e-07,
+      "error_threshold_ratio": 0.20120065157786765,
+      "failed_original_abs3e_7": false
+    },
+    {
+      "alias": "NH010",
+      "max_error": 1.0875786431163714e-07,
+      "global_reference_max": 0.1953434448611583,
+      "threshold": 7.451771049696285e-07,
+      "error_threshold_ratio": 0.14594901478631692,
+      "failed_original_abs3e_7": false
+    },
+    {
+      "alias": "NH011",
+      "max_error": 3.3488191619746033e-07,
+      "global_reference_max": 0.48767145502899784,
+      "threshold": 1.8603199660224832e-06,
+      "error_threshold_ratio": 0.180013074263491,
+      "failed_original_abs3e_7": true
+    },
+    {
+      "alias": "NH013",
+      "max_error": 4.366553213452917e-08,
+      "global_reference_max": 0.07262989916780849,
+      "threshold": 2.7706207775805847e-07,
+      "error_threshold_ratio": 0.15760198034990425,
+      "failed_original_abs3e_7": false
+    },
+    {
+      "alias": "NH014",
+      "max_error": 3.697353291240435e-08,
+      "global_reference_max": 0.04592602563203704,
+      "threshold": 1.7519488439955537e-07,
+      "error_threshold_ratio": 0.21104230890715542,
+      "failed_original_abs3e_7": false
+    },
+    {
+      "alias": "NH015",
+      "max_error": 1.5724702450564676e-07,
+      "global_reference_max": 0.10876904979572515,
+      "threshold": 4.1492199684038215e-07,
+      "error_threshold_ratio": 0.37897972559439574,
+      "failed_original_abs3e_7": false
+    },
+    {
+      "alias": "NH016",
+      "max_error": 1.7877061675442008e-07,
+      "global_reference_max": 0.3869896894746197,
+      "threshold": 1.4762495102638996e-06,
+      "error_threshold_ratio": 0.12109783306377686,
+      "failed_original_abs3e_7": false
+    },
+    {
+      "alias": "NV001",
+      "max_error": 1.753202639592777e-07,
+      "global_reference_max": 0.23522110560696166,
+      "threshold": 8.97298308376166e-07,
+      "error_threshold_ratio": 0.19538682099663537,
+      "failed_original_abs3e_7": false
+    },
+    {
+      "alias": "NV002",
+      "max_error": 7.881290306488431e-08,
+      "global_reference_max": 0.12175607271669854,
+      "threshold": 4.6446355766562856e-07,
+      "error_threshold_ratio": 0.16968587042866,
+      "failed_original_abs3e_7": false
+    },
+    {
+      "alias": "NV004",
+      "max_error": 2.205722897941076e-07,
+      "global_reference_max": 0.44589508936812744,
+      "threshold": 1.7009557781682108e-06,
+      "error_threshold_ratio": 0.12967549928408237,
+      "failed_original_abs3e_7": false
+    },
+    {
+      "alias": "NV005",
+      "max_error": 9.256269309365628e-08,
+      "global_reference_max": 0.14077154405370224,
+      "threshold": 5.370018241794672e-07,
+      "error_threshold_ratio": 0.17236942022513804,
+      "failed_original_abs3e_7": false
+    },
+    {
+      "alias": "NV007",
+      "max_error": 5.2172106374676064e-08,
+      "global_reference_max": 0.08111832513911402,
+      "threshold": 3.094428531002579e-07,
+      "error_threshold_ratio": 0.16860013360131657,
+      "failed_original_abs3e_7": false
+    },
+    {
+      "alias": "NV008",
+      "max_error": 2.8636752760768935e-08,
+      "global_reference_max": 0.05273571395182703,
+      "threshold": 2.0117178381281674e-07,
+      "error_threshold_ratio": 0.1423497481506374,
+      "failed_original_abs3e_7": false
+    },
+    {
+      "alias": "NV010",
+      "max_error": 6.8194704570812e-09,
+      "global_reference_max": 0.014456629654751483,
+      "threshold": 5.514866561413377e-08,
+      "error_threshold_ratio": 0.12365612805205342,
+      "failed_original_abs3e_7": false
+    },
+    {
+      "alias": "NV011",
+      "max_error": 1.944163996597803e-07,
+      "global_reference_max": 0.18720863732319304,
+      "threshold": 7.141452768981668e-07,
+      "error_threshold_ratio": 0.2722364845766571,
+      "failed_original_abs3e_7": false
+    },
+    {
+      "alias": "NV012",
+      "max_error": 1.0964296925930483e-07,
+      "global_reference_max": 0.1470260930968877,
+      "threshold": 5.608610353122242e-07,
+      "error_threshold_ratio": 0.19549043765942484,
+      "failed_original_abs3e_7": false
+    },
+    {
+      "alias": "NV014",
+      "max_error": 9.071849020603207e-08,
+      "global_reference_max": 0.09369990655609456,
+      "threshold": 3.574377773288519e-07,
+      "error_threshold_ratio": 0.25380218868854687,
+      "failed_original_abs3e_7": false
+    },
+    {
+      "alias": "NV016",
+      "max_error": 1.0863794262794269e-07,
+      "global_reference_max": 0.14214742522102883,
+      "threshold": 5.422503943062929e-07,
+      "error_threshold_ratio": 0.2003464520609975,
+      "failed_original_abs3e_7": false
+    }
+  ]
+}
