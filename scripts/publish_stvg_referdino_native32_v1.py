@@ -112,7 +112,7 @@ def main():
         all32_outputs_before_new_GT=True,original_predictions_unchanged=True,
         independent_confirmation=False,new_Source_calls=0,new_DINO_T_image_calls=40,new_ReferDINO_query_calls=33,trained_heads=0,pretrained_expert_replaced_by_ReferDINO=True,
         actual_OPD_run=False,temporary_state_updates=0,new_network_weight_updates=0,
-        new_GT_access_and_task_scoring_after_seal=True,HC_and_Vid_separately_no_dual_domain_gate=True)
+        new_GT_access_and_task_scoring_after_seal=True,native_cost_gate_passed=True,predeclared_dual_positive_near5pp_quality_gate_not_met=True)
     put(pub/'FINAL_GITHUB_RECEIPT.json',receipt)
     print(json.dumps({k:v for k,v in receipt.items()if k!='files'}),flush=True)
 
