@@ -1,0 +1,9 @@
+# Existing GPT-6.1 Sol/max review and root disposition
+
+The existing reviewer read the runner, protocol, frozen dataset-specific candidate, sealed REPRODUCTION/ROOT_INDEPENDENT_AUDIT and report generator. No child model/GT scoring/file mutation. Reviewer accepted measurement validity and candidate selection boundaries with no blocker. The report file was still being generated at its read boundary; root subsequently read the saved REPORT and verified consistency. Do not imply another independent human or dataset review.
+
+Actual same-cache rerun: templates rebuilt,96actualfits/192rounds/direct;4256tensor/array fields exact0;288output arrays exact. FirstFixedLive and actual secondLive state remain. Root NumPy probability/gradient/state/readout maximum1.11e-16; fullROI and original GTmetric audit remain historical. New all32 output barrier before reading old scores; inherited RESULTS bytes exact original, no newGT scoring or scientific confirmation. Raw caches and parents excluded from public export.
+
+Human-authorized candidate: HCstep1/Vidstep.5,tau.1 and all otherFineCenter settings fixed. Dataset-specific numerical hyperparameters are allowed. Both used target panels are now disclosed as development for selection; offline targetdevelopment GT used, no online/perquery GT selection and no finaltest-dependent switching. HCstep advantage remains uncertain/concentrated. New prospective evaluation not started. Actual rerun used oldstep.5 in both domains and does not evaluate this new candidate.
+
+Current production registrations remain pinned/unchanged. Root accepts review and closes only this finite deterministic reproduction after publication/archive. No other branch/heartbeat resume or automatic formal evaluation. Old common-parameter protocol remains historical, not a future criterion of method generality.
