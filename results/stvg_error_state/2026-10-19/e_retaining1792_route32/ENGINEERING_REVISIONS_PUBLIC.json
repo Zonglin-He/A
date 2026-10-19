@@ -1,0 +1,37 @@
+{
+  "revisions": [
+    {
+      "reason": "Inherited absolute mean-gradient diagnostic failed after6 sealed queries. Add float32-scale tolerance with mandatory independent double-loss gradient verification when >2e-5; actual loss/gradient/Adam/candidates/config unchanged. Resume sealed cases without recomputation.",
+      "replacement_pins": {
+        "vg_tta/stvg_e_retaining1792_v1.py": "45a3c1f779c9e1d6062e153d53d010d07eb836c35464e5e24f122c51bed2d75e",
+        "scripts/run_stvg_e_retaining1792_route32_v1.py": "876440a5435cb0137a587360db26231e7ba905cfcef0d0af19d2ed92aea3f37c"
+      },
+      "failed_allocation_seconds": 53.27578470506705,
+      "GT_access": false
+    },
+    {
+      "reason": "Post-run terminology correction only: optimizer is original Adam with ordinary likelihood autograd, not natural gradient. No executable code, outputs, config or selection changed.",
+      "replacement_pins": {
+        "protocols/stvg_e_retaining1792_route32_v1.md": "8638a3ce71191228b289fbf414251e5901829b64af96d9158772d3087ce43e0c"
+      },
+      "failed_allocation_seconds": 0,
+      "GT_access": false
+    }
+  ],
+  "updates_and_outputs_not_changed_by_numeric_audit_fix": true,
+  "old_six_sealed_queries_reused": true,
+  "all_failed_GPU_charged": true,
+  "maximum_mean_gradient_errors": {
+    "cross_device_E_map": 4.440892098500626e-16,
+    "Adam_state": 2.384185791015625e-07,
+    "reward": 0.0,
+    "policy_gradient": 0.00019073486328125
+  },
+  "CPU_audit_cross_device_log_exp_comparison": {
+    "original_strict_bitwise_failed": true,
+    "tolerance": 5e-13,
+    "maximum_observed_error": 4.440892098500626e-16,
+    "zero_state_E_bitwise_check_preserved": true,
+    "no_model_or_prediction_rerun": true
+  }
+}
