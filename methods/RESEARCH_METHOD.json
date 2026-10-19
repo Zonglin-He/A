@@ -1,0 +1,51 @@
+{
+  "version": "stvg_referdino_opd_v1",
+  "role": "unique_current_frozen_research_entry",
+  "status": "frozen_implementation_configuration_not_an_efficacy_promotion",
+  "entrypoint": "methods.stvg_referdino_opd_v1.predictor.ReferDINOOPDPredictor",
+  "run": "python -m methods.stvg_referdino_opd_v1.run",
+  "offline_score": "python -m methods.stvg_referdino_opd_v1.score",
+  "configuration": "methods/stvg_referdino_opd_v1/config.json",
+  "configuration_sha256": "578bf0b4ec42cd6b3075ab7c473962187b73d45c6ccd74233813bcccce12ed22",
+  "tau": 0.2,
+  "scales": [
+    0.05,
+    0.25
+  ],
+  "lr": 0.01,
+  "steps": 40,
+  "samples": 32,
+  "seeds": [
+    41,
+    42,
+    43
+  ],
+  "default_seed": 41,
+  "temporary_state_parameters": 2048,
+  "network_weight_updates": 0,
+  "cross_query_state": "none; state and optimizer reset",
+  "temporal": "frozen Source finalMBR",
+  "E": "four original GroundingDINO-T observations + supported global correction",
+  "teacher": "native ReferDINO ryt_mevis_swinb eight positions; frozen",
+  "source": "TA-STVG pretrained on VidSTG",
+  "primary_target": "HC",
+  "Vid_gain_required": false,
+  "results": "results/stvg_error_state/2026-10-19/referdino_final/REPORT.md",
+  "formal_results": "results/stvg_error_state/2026-10-19/referdino_final/FORMAL_RESULTS_PUBLIC.json",
+  "development": "results/stvg_error_state/2026-10-19/referdino_final/TEMPERATURE_RESULTS_PUBLIC.json",
+  "historical_deployment": "methods/CURRENT_METHOD.json",
+  "no_more_algorithm_search": true,
+  "evaluation": {
+    "confirmed_increment_vs_E_in_this_cohort": false,
+    "confirmed_OPD_advantage_vs_Direct_and_Fixed_in_this_cohort": false,
+    "at_least2pp_increment_supported_in_this_cohort": false,
+    "status": "completed_frozen_research_version",
+    "temperature": 0.2,
+    "formal32_complete": true,
+    "audit": "pass",
+    "efficacy_not_preassumed": true,
+    "algorithm_iteration_ended": true,
+    "publication_receipt": "maintained in local research archive; immutable GitHub commit provides publication identity"
+  },
+  "dependency_lock": "methods/stvg_referdino_opd_v1/DEPENDENCIES.json"
+}

@@ -1,3 +1,15 @@
+# Current research review entry — 2026-10-19
+
+Start with [the unique research manifest](methods/RESEARCH_METHOD.json), [frozen config](methods/stvg_referdino_opd_v1/config.json), [predictor guide](methods/stvg_referdino_opd_v1/README.md), and [final temperature/full-chain report](results/stvg_error_state/2026-10-19/referdino_final/REPORT.md).
+
+Current research is HC episodic adaptation of2048 temporary content states with frozen TA-STVG, four-frame DINO E initialization and native eight-frame ReferDINO supervision. The current spatial policy is the target-size-normalized two-scale mixture. Source finalMBR is fixed. No cross-query LN state, new network training or new expert is part of this version.
+
+The implementation/configuration is frozen; efficacy is determined by the signed results and uncertainty in the report, not by this entry. MAIN/PAPER/WORKING all point to the same research manifest. CURRENT_METHOD retains the historical deployment separately.
+
+## Historical review log below
+
+The following dated material records prior research and its then-current status. Words such as “latest”, “running” or “current” below refer to those historical entries and do not authorize execution or override the manifest above. Historical paths and negative results remain available.
+
 # 代码与研究审阅入口
 
 ## 2026-10-05：冻结 DeCoTA 正式论文实验已启动，旧全 query corruption 队列已停
