@@ -1,0 +1,11 @@
+# Scientific and engineering review
+
+This is a reference-input intervention plus matched feedback-uptake probe. It is not ordinary full OPD or evidence that every OPD requires a changing teacher. Query content, other native references, real spatial layers, pruning, matching, temporal and mask modules remain. Intervened query survival and final selection are disclosed; do not equate selecting another native query with correcting the student's query.
+
+Historical HC data exposure is disclosed. Uniform parent selection, independent reserve for this scheme, prelocked parameters, fixed physical support, actual S1 and equal old/refreshed student budgets are preserved. All prediction branches sealed before GT. Full parent metrics, outside8 actual metrics, unknowns, severe failures and signed results are retained. No GT gating/selection, new observation position, learned mapper/head or pretrained-weight update.
+
+Native-noop and initial-reference roundtrip checks are engineering controls. Saved lineage/Adam/metric audit confirms implementation; it does not prove the injected interface remains semantically reliable. Teacher-local advantages, transmission through student decoder, and refresh advantage are separate questions. Candidate coincidence measures are descriptive geometry, not identities.
+
+Resource costs include new Source/teacher/student work and engineering failures, with cached acquisition and loading semantics disclosed. The first capture failed before model inference because a legacy CPU helper set CUDA_VISIBLE_DEVICES empty; isolate its exact pool conversion. A later hash guard stopped when root added teacher audit instrumentation during capture; preserve already sealed cases and resume the remaining cases with new declared pins. Neither recovery changes scientific configuration or overwrites predictions.
+
+Measured conclusion: native teacher local advantage remains; S1 fixed-feedback transfer small positive, no2–3pp gain; initial-reference-over-native and refresh-over-old advantages not established. Apparent recovered boxes mostly select another lineage (T0 48/49), so not counted as direct injected-query corrections. Close this configuration without full OPD or automatic sweeps; do not generalize to all OPD. Independent canonical E reconstruction128 exact.

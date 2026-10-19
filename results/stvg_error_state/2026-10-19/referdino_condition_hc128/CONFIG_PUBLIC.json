@@ -1,0 +1,28 @@
+{
+  "count": 128,
+  "reserved_parent_count": 32,
+  "configuration": {
+    "lr": 0.01,
+    "steps": 40,
+    "optimizer": "Adam .9/.999 eps1e-8 wd0",
+    "loss": "mean anchors 5L1+2(1-GIoU)",
+    "state": "8 independent 256D content vectors before temporal self-attention, original two offsets",
+    "reference_slot": "native winning track initial proposal ancestor per frame, locked before conditioning",
+    "reference_projection": "cxcywh individually clamp1e-5..1-1e-5 for native sigmoid initial reference; count every changed element",
+    "teacher": "single frozen ryt_mevis_swinb.pth",
+    "frames": 8,
+    "student_time": "original E finalMBR",
+    "GPU_seconds_cap": 1800,
+    "per_stage_cap": 900,
+    "full_OPD": false
+  },
+  "selection_seed": 2026101901,
+  "selection": "parent uniform shuffle then uniform query, excludes NH16 parents, hold32 before128",
+  "historical_exposure": "official HC dev split has old Source/full-method scoring; reserved32 excluded current interface design/selection, NOT globally never exposed",
+  "NH16_engineering_only": true,
+  "all_outputs_sealed_before_new_GT": true,
+  "no_new_experts_or_trained_models": true,
+  "teacher_inputs": "same8 full RGB/text for native/T(S0)/T(S1), no extra observation positions",
+  "student_states": "S0=E; S1=40-step update to T(S0); from same S1 another40 old vs refreshed feedback; fresh identical Adam for both",
+  "no_automatic_full_OPD_or_confirmation": true
+}
