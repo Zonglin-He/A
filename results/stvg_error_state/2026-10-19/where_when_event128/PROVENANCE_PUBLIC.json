@@ -1,0 +1,104 @@
+{
+  "plan_sha256": "8773e40268e9dce95f40497a7fbfd65e2d5cacdaca62970d0540985bdf48de4b",
+  "configuration": {
+    "teacher": "frozen ryt_mevis_swinb",
+    "frames": 8,
+    "new_Source": 0,
+    "new_DINO_T": 0,
+    "new_spatial_updates": 0,
+    "new_experts": 0,
+    "new_teacher_video_queries": 128,
+    "new_teacher_image_frames": 1024,
+    "policy_updates": 0,
+    "association": "global mean8 IoU argmax, lowest query tie, retain zero overlap diagnostic",
+    "event_rule": "all lexical VERB seeds or copular predicate; nonsubject subtrees, word-balanced subword-mean logits",
+    "interval_rule": "Voronoi-cell-edge contiguous intervals plus original MBR/full video, half-open physical frames; duration-weighted inside-minus-outside mean; fullspan contrast unknown; no event/flat response returns MBR; tie nearest MBR then earlier endpoints",
+    "readouts": [
+      "NativeConfidence",
+      "EventNative",
+      "EventE",
+      "EventLive41",
+      "EventLive42",
+      "EventLive43"
+    ],
+    "new_temporal_OPD": false,
+    "parameter_search": false
+  },
+  "frozen_spatial_config": {
+    "version": "stvg_referdino_opd_v1",
+    "status": "frozen_research_configuration",
+    "dataset": "hc2",
+    "source_dataset": "vidstg",
+    "scales": [
+      0.05,
+      0.25
+    ],
+    "tau": 0.2,
+    "lr": 0.01,
+    "steps": 40,
+    "samples": 32,
+    "seeds": [
+      41,
+      42,
+      43
+    ],
+    "default_seed": 41,
+    "state_shape": [
+      8,
+      256
+    ],
+    "temporal": "Source finalMBR, frozen",
+    "E": "original four-frame GroundingDINO-T supported global correction",
+    "teacher": "native ReferDINO ryt_mevis_swinb eight original positions",
+    "source_checkpoint": "checkpoints/TASTVG_VidSTG.pth",
+    "ReferDINO_checkpoint": "checkpoints/referdino/ryt_mevis_swinb.pth",
+    "no_network_training": true,
+    "E_calibration": {
+      "scale": [
+        0.08805019583603152,
+        0.03796878948819179,
+        0.2445728236645117,
+        0.21037521441041293
+      ],
+      "truncation": 30.734017210649714,
+      "source_train_queries": 36,
+      "eligible_queries": 22,
+      "known_planned_anchors": 76,
+      "singleton_or_empty_queries": 14,
+      "model_hash": "fbb1ed8871d6c2aa093879efefc2ee500bb7de5e0fe1c25b809c5393d010f3c7",
+      "quantile": 0.95,
+      "validation_used": false,
+      "target_GT_used": false
+    },
+    "E_calibration_provenance": "source-domain train calibration, frozen before target outcomes",
+    "selection_record": "results/stvg_error_state/2026-10-19/referdino_final/SELECTION_PUBLIC.json"
+  },
+  "checkpoint_pins": {
+    "checkpoints/referdino/ryt_mevis_swinb.pth": "87e5356c6c463efec4f736c3348d1fbfba9bfaaa8181d51d15a8404295a5a9e3",
+    "checkpoints/groundingdino-b/groundingdino_swinb_cogcoor.pth": "46270f7a822e6906b655b729c90613e48929d0f2bb8b9b76fd10a856f3ac6ab7"
+  },
+  "code_pins": {
+    "vg_tta/stvg_where_when_event128_v1.py": "777e8b0845f0ebd0d69347f404c526375f9ac3c7b3575625cd58ff12e882e5e5",
+    "scripts/run_stvg_where_when_event128_v1.py": "72f6e3ba5b478d43cdee8f83c7e3202fd3c12da102a82e9d4b9ec263d95e3f0e",
+    "scripts/score_stvg_where_when_event128_v1.py": "c5c35928ac92fd475f0b0f18471d9e71f88f99f7da7c7d67a3cb0f0251c8d4d2",
+    "protocols/stvg_where_when_event128_v1.md": "bb00191ef7a974bdcc663aadd6917861f5dccd18be15447d9ef3e1190cfc2ebf",
+    "methods/stvg_referdino_opd_v1/config.json": "578bf0b4ec42cd6b3075ab7c473962187b73d45c6ccd74233813bcccce12ed22",
+    "methods/stvg_referdino_opd_v1/experts.py": "3cff5c2acdc6ddd5bc57002c6de42758d704be870dcc7e094e9e7c3c7d3d1d7f",
+    "vg_tta/stvg_referdino_condition_hc128_v1.py": "608bcf9301974c18243e2f994ef621a3665f1dca24c48dd525a1f2a4e5f7627c",
+    "external/ReferDINO/models/GroundingDINO/groundingdino.py": "084e1f37fe79ff3729923dd23d2c169f17ea5bb8abb29500e40c227ccd7e0ca6",
+    "external/ReferDINO/models/GroundingDINO/utils.py": "9a22006954d1280997bdf499c5a5728193ef1eddf5a924555baf54aa2368d36a"
+  },
+  "cohort": "existing exposed RC128; not independent confirmation",
+  "all_sealed_before_new_GT": true,
+  "new_spatial_updates": 0,
+  "new_temporal_OPD": false,
+  "private_excluded": [
+    "RGB",
+    "original captions",
+    "parent source identifiers",
+    "annotations",
+    "weights",
+    "raw premax logits and features",
+    "raw trajectories"
+  ]
+}

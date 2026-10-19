@@ -1,0 +1,87 @@
+{
+  "status": "locked_before_new_inference_and_GT",
+  "count": 128,
+  "seeds": [
+    41,
+    42,
+    43
+  ],
+  "created_epoch": 1792417105.479006,
+  "deadline_epoch": 1792427905.4790065,
+  "GPU_seconds_cap": 900,
+  "frozen_spatial_config": {
+    "version": "stvg_referdino_opd_v1",
+    "status": "frozen_research_configuration",
+    "dataset": "hc2",
+    "source_dataset": "vidstg",
+    "scales": [
+      0.05,
+      0.25
+    ],
+    "tau": 0.2,
+    "lr": 0.01,
+    "steps": 40,
+    "samples": 32,
+    "seeds": [
+      41,
+      42,
+      43
+    ],
+    "default_seed": 41,
+    "state_shape": [
+      8,
+      256
+    ],
+    "temporal": "Source finalMBR, frozen",
+    "E": "original four-frame GroundingDINO-T supported global correction",
+    "teacher": "native ReferDINO ryt_mevis_swinb eight original positions",
+    "source_checkpoint": "checkpoints/TASTVG_VidSTG.pth",
+    "ReferDINO_checkpoint": "checkpoints/referdino/ryt_mevis_swinb.pth",
+    "no_network_training": true,
+    "E_calibration": {
+      "scale": [
+        0.08805019583603152,
+        0.03796878948819179,
+        0.2445728236645117,
+        0.21037521441041293
+      ],
+      "truncation": 30.734017210649714,
+      "source_train_queries": 36,
+      "eligible_queries": 22,
+      "known_planned_anchors": 76,
+      "singleton_or_empty_queries": 14,
+      "model_hash": "fbb1ed8871d6c2aa093879efefc2ee500bb7de5e0fe1c25b809c5393d010f3c7",
+      "quantile": 0.95,
+      "validation_used": false,
+      "target_GT_used": false
+    },
+    "E_calibration_provenance": "source-domain train calibration, frozen before target outcomes",
+    "selection_record": "results/stvg_error_state/2026-10-19/referdino_final/SELECTION_PUBLIC.json"
+  },
+  "cohort": "all existing RC128, exposed development, not confirmation",
+  "GT_read": false,
+  "configuration": {
+    "teacher": "frozen ryt_mevis_swinb",
+    "frames": 8,
+    "new_Source": 0,
+    "new_DINO_T": 0,
+    "new_spatial_updates": 0,
+    "new_experts": 0,
+    "new_teacher_video_queries": 128,
+    "new_teacher_image_frames": 1024,
+    "policy_updates": 0,
+    "association": "global mean8 IoU argmax, lowest query tie, retain zero overlap diagnostic",
+    "event_rule": "all lexical VERB seeds or copular predicate; nonsubject subtrees, word-balanced subword-mean logits",
+    "interval_rule": "Voronoi-cell-edge contiguous intervals plus original MBR/full video, half-open physical frames; duration-weighted inside-minus-outside mean; fullspan contrast unknown; no event/flat response returns MBR; tie nearest MBR then earlier endpoints",
+    "readouts": [
+      "NativeConfidence",
+      "EventNative",
+      "EventE",
+      "EventLive41",
+      "EventLive42",
+      "EventLive43"
+    ],
+    "new_temporal_OPD": false,
+    "parameter_search": false
+  }
+}
