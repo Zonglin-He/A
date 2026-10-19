@@ -1,0 +1,7 @@
+# Root scientific review
+
+Explicit GT causal intervention, not an unlabeled model improvement. Protocol and original32 roster/parameters locked before extraction. True labels only where annotations exist at the original planned physical positions; zero-time-overlap/no-support samples retained. Candidate oracle selects full fixed-time tube vIoU among original E assignment means, not per-anchor optimum or continuous four-dimensional optimum. True-reference E versus GT-subset oracle isolates scoring/association from this finite representation. Same-support GT/DINO state controls separate coordinate accuracy and additional labeled anchors. Old direct is reused only exact support/label/config matches.
+
+All three questions are measured on same NH/NV32. GT state is fixed2 achieved optimizer performance, not a state-space upper bound or novel OPD. Original layers/weights frozen; sparse labels do not magically imply dense supervision. No automatic method admission, parameter tuning or rollout follows. Per-domain 5pp diagnostic screen is not achievable-gain proof; paired uncertainty and sample influence remain necessary. Root independent CPU geometry/metrics/Adam/aggregation audit plus fixed GPU finite-difference receipts, not a second complete GPU execution.
+
+Old negative reference/state/trajectory experiments preserved. Public export includes all signed/unknown outcomes and costs; raw annotation/box coordinates/identities/media/weights/features excluded. Both refs and actual remote bytes must be verified before closure.

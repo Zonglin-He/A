@@ -1,0 +1,71 @@
+{
+  "count": 32,
+  "cohort": "NH16/NV16 exposed development, original cache replay",
+  "GT_assisted_diagnostic": true,
+  "arms": [
+    "E_MBR",
+    "Fine_center",
+    "Old_DINO_state",
+    "Candidate_combo_oracle",
+    "Local_best_mean",
+    "GT_E_known4",
+    "GT_mean_known4",
+    "GT_subset_oracle_known4",
+    "GT_E_matched",
+    "GT_state_known4",
+    "GT_state_matched",
+    "DINO_state_matched"
+  ],
+  "state": "existing final-layer transient ca_qcontent bias256",
+  "rounds": 2,
+  "Adam": {
+    "hc2": 0.01,
+    "vidstg": 0.03,
+    "betas": [
+      0.9,
+      0.999
+    ],
+    "eps": 1e-08
+  },
+  "source_scales": {
+    "hc2": {
+      "scale": [
+        0.08805019583603152,
+        0.03796878948819179,
+        0.2445728236645117,
+        0.21037521441041293
+      ],
+      "truncation": 30.734017210649714,
+      "source_train_queries": 36,
+      "eligible_queries": 22,
+      "known_planned_anchors": 76,
+      "singleton_or_empty_queries": 14,
+      "model_hash": "fbb1ed8871d6c2aa093879efefc2ee500bb7de5e0fe1c25b809c5393d010f3c7",
+      "quantile": 0.95,
+      "validation_used": false,
+      "target_GT_used": false
+    },
+    "vidstg": {
+      "scale": [
+        0.022542142662651282,
+        0.011027737123363815,
+        0.06612943552390567,
+        0.02918426580581821
+      ],
+      "truncation": 18.056884634893116,
+      "source_train_queries": 36,
+      "eligible_queries": 35,
+      "known_planned_anchors": 113,
+      "singleton_or_empty_queries": 1,
+      "model_hash": "ee72f0d9a50c573a115bd7cfc2329c860745a1cf3dab83af1be7787c11b3c218",
+      "quantile": 0.95,
+      "validation_used": false,
+      "target_GT_used": false
+    }
+  },
+  "E_beta": 0.0625,
+  "temporal": "unchanged finalMBR",
+  "capacity_screen_pp": 5,
+  "no_target_GT_for_parameter_selection": true,
+  "GT_for_oracle_selection_and_diagnostic_supervision": true
+}
