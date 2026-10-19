@@ -1,0 +1,199 @@
+{
+  "original_experiment": {
+    "GPU_allocation_seconds": 66.08655494684353,
+    "cost_gate": {
+      "status": "pass",
+      "ratio": 0.36399704540689254,
+      "limit": 1.5,
+      "rows": [
+        {
+          "alias": "NH001",
+          "dataset": "hc2",
+          "T_expert_seconds": 0.47615295415744185,
+          "T_forward_seconds": 0.3698155649472028,
+          "T_peak_allocated_bytes": 1815398400,
+          "T_peak_reserved_bytes": 1935671296,
+          "T_calls": 4,
+          "Refer_expert_seconds": 0.16979302698746324,
+          "Refer_cost": {
+            "expert_seconds": 0.16979302698746324,
+            "preprocess_seconds": 0.0176941379904747,
+            "forward_seconds": 0.15186789305880666,
+            "postprocess_seconds": 0.00023099593818187714,
+            "peak_allocated_bytes": 1918147072,
+            "peak_reserved_bytes": 2707423232
+          },
+          "ratio": 0.356593454907602
+        },
+        {
+          "alias": "NH002",
+          "dataset": "hc2",
+          "T_expert_seconds": 0.5557831979822367,
+          "T_forward_seconds": 0.42257383675314486,
+          "T_peak_allocated_bytes": 1891592704,
+          "T_peak_reserved_bytes": 2537553920,
+          "T_calls": 4,
+          "Refer_expert_seconds": 0.17313456488773227,
+          "Refer_cost": {
+            "expert_seconds": 0.17313456488773227,
+            "preprocess_seconds": 0.007526606088504195,
+            "forward_seconds": 0.16536564892157912,
+            "postprocess_seconds": 0.00024230987764894962,
+            "peak_allocated_bytes": 1992535040,
+            "peak_reserved_bytes": 3200253952
+          },
+          "ratio": 0.3115145717184235
+        },
+        {
+          "alias": "NV001",
+          "dataset": "vidstg",
+          "T_expert_seconds": 0.5852720949333161,
+          "T_forward_seconds": 0.4545592872891575,
+          "T_peak_allocated_bytes": 2041921024,
+          "T_peak_reserved_bytes": 3225419776,
+          "T_calls": 4,
+          "Refer_expert_seconds": 0.24997382215224206,
+          "Refer_cost": {
+            "expert_seconds": 0.24997382215224206,
+            "preprocess_seconds": 0.010539497015997767,
+            "forward_seconds": 0.23891485994681716,
+            "postprocess_seconds": 0.0005194651894271374,
+            "peak_allocated_bytes": 2265136640,
+            "peak_reserved_bytes": 4429185024
+          },
+          "ratio": 0.42710702306885695
+        },
+        {
+          "alias": "NV002",
+          "dataset": "vidstg",
+          "T_expert_seconds": 0.5843402550090104,
+          "T_forward_seconds": 0.45376735692843795,
+          "T_peak_allocated_bytes": 2047892480,
+          "T_peak_reserved_bytes": 3225419776,
+          "T_calls": 4,
+          "Refer_expert_seconds": 0.20845573605038226,
+          "Refer_cost": {
+            "expert_seconds": 0.20845573605038226,
+            "preprocess_seconds": 0.008306246949359775,
+            "forward_seconds": 0.1999177159741521,
+            "postprocess_seconds": 0.00023177312687039375,
+            "peak_allocated_bytes": 2265157120,
+            "peak_reserved_bytes": 4429185024
+          },
+          "ratio": 0.3567369084424415
+        }
+      ],
+      "warmups": {
+        "T": {
+          "expert_seconds": 1.0687600001692772,
+          "calls": 4
+        },
+        "Refer": {
+          "expert_seconds": 0.2128070378676057,
+          "preprocess_seconds": 0.021738390903919935,
+          "forward_seconds": 0.1874307959806174,
+          "postprocess_seconds": 0.003637850983068347
+        }
+      },
+      "loading": {
+        "T_load_seconds": 1.5200093749444932,
+        "Refer_load_seconds": 1.9715208548586816
+      },
+      "GT_read": false,
+      "parameters": 247872944,
+      "load_audit": {
+        "missing": [],
+        "unexpected": [
+          "bert.embeddings.position_ids"
+        ],
+        "all_learned_parameters_covered": true
+      },
+      "kernel_error": 5.960464477539063e-08,
+      "hardware": "NVIDIA GeForce RTX 5090",
+      "GPU_allocation_at_gate_seconds": 19.767454306827858,
+      "counts": {
+        "T_measured_forwards": 16,
+        "T_warmup_forwards": 4,
+        "Refer_measured_queries": 4,
+        "Refer_warmup_queries": 1
+      },
+      "full32_allowed": true
+    },
+    "Refer_completed_queries": 32,
+    "Refer_warmup_queries": 1,
+    "Refer_total_expert_seconds": 6.381041132146493,
+    "Refer_total_forward_seconds": 5.64981308253482,
+    "Refer_max_peak_allocated_bytes": 2712310272,
+    "T_forwards": 20,
+    "Source_forwards": 0,
+    "training_OPD_updates": 0,
+    "scoring_CPU_seconds": 6.680688570952043,
+    "RGB_decode_model_load_setup_cost_excluded_from_perquery_gate": true,
+    "old_cache_cost_excluded": true
+  },
+  "corrected_gate": {
+    "status": "pass",
+    "ratio": 0.4315135264973751,
+    "limit": 1.5,
+    "rows": [
+      {
+        "alias": "NH001",
+        "dataset": "hc2",
+        "T_expert_seconds_without_audit_hashing": 0.4342682238202542,
+        "T_forward_seconds": 0.31277129612863064,
+        "Refer_same_sealed_expert_seconds": 0.16979302698746324,
+        "ratio": 0.3909865324563591,
+        "T_peak_allocated_bytes": 1815398400,
+        "max_numerical_error_vs_original": 0.0
+      },
+      {
+        "alias": "NH002",
+        "dataset": "hc2",
+        "T_expert_seconds_without_audit_hashing": 0.4527570139616728,
+        "T_forward_seconds": 0.3322337339632213,
+        "Refer_same_sealed_expert_seconds": 0.17313456488773227,
+        "ratio": 0.3824006245044911,
+        "T_peak_allocated_bytes": 1891592704,
+        "max_numerical_error_vs_original": 0.0
+      },
+      {
+        "alias": "NV001",
+        "dataset": "vidstg",
+        "T_expert_seconds_without_audit_hashing": 0.4856686508283019,
+        "T_forward_seconds": 0.36595253529958427,
+        "Refer_same_sealed_expert_seconds": 0.24997382215224206,
+        "ratio": 0.51470034503136,
+        "T_peak_allocated_bytes": 2041921024,
+        "max_numerical_error_vs_original": 0.0
+      },
+      {
+        "alias": "NV002",
+        "dataset": "vidstg",
+        "T_expert_seconds_without_audit_hashing": 0.48439077008515596,
+        "T_forward_seconds": 0.369026750093326,
+        "Refer_same_sealed_expert_seconds": 0.20845573605038226,
+        "ratio": 0.4303462182273533,
+        "T_peak_allocated_bytes": 2047892480,
+        "max_numerical_error_vs_original": 0.0
+      }
+    ],
+    "T_warmup_seconds": 0.8564529782161117,
+    "extra_T_forwards": 20,
+    "new_Refer_queries": 0,
+    "new_Source_OPD_training": 0,
+    "GPU_allocation_seconds": 13.908589227125049,
+    "GT_read": false,
+    "weights_unchanged": true,
+    "reason": "Original T audit=True included diagnostic input hashing in model prehook and expert timing; rerun exactly same four T queries audit=False, preserve original gate and all predictions. Ref timers already excluded outside RGB receipt hashing.",
+    "quality_not_used_for_correction": true,
+    "raw_RGB_decode_and_loading_excluded_both": true
+  },
+  "aggregate_GPU_allocation_seconds": 79.99514417396858,
+  "total_new_T_image_forwards": 40,
+  "total_new_Refer_query_forwards": 33,
+  "unique_Refer32_times8": 256,
+  "Refer_duplicate_warmup_frames": 8,
+  "no_Source_training_OPD": 0,
+  "setup_costs": "Separate local CPU dependencies/build/BERT materialization; not included in perquery expert ratios. Build001 missing ninja and002 space-containing linker path repaired before native inference; original logs preserved.",
+  "timing_limitation": "Four prelocked queries, one warmup each model; corrected denominator audit=False after initial audit-overhead discrepancy, same exact inputs/results. No timed-mask-upsample/video-render; full native mask decoder included, output task is boxes."
+}

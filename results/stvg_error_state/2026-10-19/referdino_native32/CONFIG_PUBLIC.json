@@ -1,0 +1,1010 @@
+{
+  "teachers": [
+    "original cached DINO-T baseline",
+    "single frozen ReferDINO ryt_mevis_swinb"
+  ],
+  "count": 32,
+  "per_domain": 16,
+  "pilots": [
+    "NH001",
+    "NH002",
+    "NV001",
+    "NV002"
+  ],
+  "frames": 8,
+  "keep_original4": true,
+  "selection": "native sigmoid(logits).mean(time).max(class).argmax(query), common track",
+  "full_original_caption": true,
+  "what_skip": false,
+  "AMP": false,
+  "short_side": 360,
+  "crop_len": 36,
+  "tracking_alpha": 0.1,
+  "cost_ratio_limit": 1.5,
+  "cost_gate": "sum4 steady expert times ratio, one same-input warmup each model separately counted",
+  "GPU_seconds_cap": 900,
+  "new_training_OPD": 0,
+  "time": "original E finalMBR unchanged",
+  "arms": [
+    "E_MBR",
+    "Ref_E_MBR",
+    "Ref_direct8_MBR"
+  ],
+  "GT_only_after_gate_and_all32_seal": true,
+  "source_calibration_unchanged": true,
+  "no_new_confidence_threshold": true,
+  "E_references": "same native singleton selected track at original4 only",
+  "direct": "linear physical time xyxy, endpoint hold",
+  "development_exposed": true,
+  "formerly_skipped": [
+    "NV003",
+    "NV006",
+    "NV009",
+    "NV013",
+    "NV015"
+  ],
+  "continued_quality_target": "both domain full-v means positive and at least one near5pp, uncertainty/concentration checked; no automatic OPD",
+  "no_automatic_followup": true,
+  "positions": [
+    {
+      "alias": "NH001",
+      "dataset": "hc2",
+      "positions4": [
+        15,
+        24,
+        33,
+        42
+      ],
+      "positions8": [
+        0,
+        7,
+        15,
+        24,
+        33,
+        42,
+        53,
+        64
+      ],
+      "physical_frame_ids8": [
+        0,
+        55,
+        118,
+        188,
+        259,
+        329,
+        415,
+        499
+      ]
+    },
+    {
+      "alias": "NH002",
+      "dataset": "hc2",
+      "positions4": [
+        38,
+        41,
+        44,
+        47
+      ],
+      "positions8": [
+        0,
+        9,
+        19,
+        38,
+        41,
+        44,
+        47,
+        64
+      ],
+      "physical_frame_ids8": [
+        0,
+        71,
+        149,
+        297,
+        321,
+        344,
+        368,
+        498
+      ]
+    },
+    {
+      "alias": "NH003",
+      "dataset": "hc2",
+      "positions4": [
+        25,
+        30,
+        35,
+        40
+      ],
+      "positions8": [
+        0,
+        12,
+        25,
+        30,
+        35,
+        40,
+        52,
+        64
+      ],
+      "physical_frame_ids8": [
+        0,
+        113,
+        235,
+        282,
+        329,
+        376,
+        489,
+        599
+      ]
+    },
+    {
+      "alias": "NH004",
+      "dataset": "hc2",
+      "positions4": [
+        12,
+        15,
+        18,
+        21
+      ],
+      "positions8": [
+        0,
+        12,
+        15,
+        18,
+        21,
+        42,
+        53,
+        64
+      ],
+      "physical_frame_ids8": [
+        0,
+        94,
+        118,
+        141,
+        165,
+        329,
+        415,
+        499
+      ]
+    },
+    {
+      "alias": "NH005",
+      "dataset": "hc2",
+      "positions4": [
+        13,
+        27,
+        42,
+        56
+      ],
+      "positions8": [
+        0,
+        13,
+        20,
+        27,
+        34,
+        42,
+        56,
+        64
+      ],
+      "physical_frame_ids8": [
+        0,
+        123,
+        188,
+        254,
+        320,
+        395,
+        526,
+        599
+      ]
+    },
+    {
+      "alias": "NH006",
+      "dataset": "hc2",
+      "positions4": [
+        36,
+        39,
+        42,
+        45
+      ],
+      "positions8": [
+        0,
+        18,
+        36,
+        39,
+        42,
+        45,
+        54,
+        64
+      ],
+      "physical_frame_ids8": [
+        0,
+        169,
+        338,
+        366,
+        394,
+        422,
+        507,
+        598
+      ]
+    },
+    {
+      "alias": "NH007",
+      "dataset": "hc2",
+      "positions4": [
+        29,
+        32,
+        36,
+        39
+      ],
+      "positions8": [
+        0,
+        14,
+        29,
+        32,
+        36,
+        39,
+        51,
+        64
+      ],
+      "physical_frame_ids8": [
+        0,
+        110,
+        227,
+        250,
+        282,
+        305,
+        399,
+        498
+      ]
+    },
+    {
+      "alias": "NH008",
+      "dataset": "hc2",
+      "positions4": [
+        16,
+        19,
+        22,
+        25
+      ],
+      "positions8": [
+        0,
+        16,
+        19,
+        22,
+        25,
+        44,
+        54,
+        64
+      ],
+      "physical_frame_ids8": [
+        0,
+        151,
+        179,
+        207,
+        235,
+        414,
+        508,
+        599
+      ]
+    },
+    {
+      "alias": "NH009",
+      "dataset": "hc2",
+      "positions4": [
+        35,
+        41,
+        46,
+        52
+      ],
+      "positions8": [
+        0,
+        17,
+        26,
+        35,
+        41,
+        46,
+        52,
+        64
+      ],
+      "physical_frame_ids8": [
+        0,
+        133,
+        204,
+        274,
+        321,
+        360,
+        407,
+        498
+      ]
+    },
+    {
+      "alias": "NH010",
+      "dataset": "hc2",
+      "positions4": [
+        38,
+        44,
+        51,
+        57
+      ],
+      "positions8": [
+        0,
+        9,
+        19,
+        28,
+        38,
+        44,
+        51,
+        57
+      ],
+      "physical_frame_ids8": [
+        0,
+        68,
+        143,
+        211,
+        286,
+        331,
+        384,
+        429
+      ]
+    },
+    {
+      "alias": "NH011",
+      "dataset": "hc2",
+      "positions4": [
+        23,
+        24,
+        25,
+        26
+      ],
+      "positions8": [
+        0,
+        11,
+        23,
+        24,
+        25,
+        26,
+        45,
+        64
+      ],
+      "physical_frame_ids8": [
+        0,
+        87,
+        181,
+        188,
+        196,
+        204,
+        353,
+        499
+      ]
+    },
+    {
+      "alias": "NH012",
+      "dataset": "hc2",
+      "positions4": [
+        42,
+        45,
+        47,
+        50
+      ],
+      "positions8": [
+        0,
+        10,
+        21,
+        42,
+        45,
+        47,
+        50,
+        64
+      ],
+      "physical_frame_ids8": [
+        0,
+        79,
+        165,
+        329,
+        352,
+        368,
+        391,
+        498
+      ]
+    },
+    {
+      "alias": "NH013",
+      "dataset": "hc2",
+      "positions4": [
+        35,
+        43,
+        51,
+        60
+      ],
+      "positions8": [
+        0,
+        8,
+        17,
+        26,
+        35,
+        43,
+        51,
+        60
+      ],
+      "physical_frame_ids8": [
+        0,
+        63,
+        133,
+        204,
+        274,
+        336,
+        399,
+        469
+      ]
+    },
+    {
+      "alias": "NH014",
+      "dataset": "hc2",
+      "positions4": [
+        19,
+        23,
+        28,
+        32
+      ],
+      "positions8": [
+        0,
+        9,
+        19,
+        23,
+        28,
+        32,
+        48,
+        64
+      ],
+      "physical_frame_ids8": [
+        0,
+        85,
+        179,
+        216,
+        263,
+        300,
+        450,
+        598
+      ]
+    },
+    {
+      "alias": "NH015",
+      "dataset": "hc2",
+      "positions4": [
+        19,
+        30,
+        41,
+        52
+      ],
+      "positions8": [
+        0,
+        9,
+        19,
+        30,
+        41,
+        52,
+        58,
+        64
+      ],
+      "physical_frame_ids8": [
+        0,
+        85,
+        179,
+        282,
+        386,
+        489,
+        545,
+        599
+      ]
+    },
+    {
+      "alias": "NH016",
+      "dataset": "hc2",
+      "positions4": [
+        6,
+        8,
+        9,
+        11
+      ],
+      "positions8": [
+        6,
+        8,
+        9,
+        11,
+        24,
+        37,
+        50,
+        64
+      ],
+      "physical_frame_ids8": [
+        47,
+        63,
+        71,
+        87,
+        188,
+        290,
+        392,
+        499
+      ]
+    },
+    {
+      "alias": "NV001",
+      "dataset": "vidstg",
+      "positions4": [
+        32,
+        37,
+        43,
+        48
+      ],
+      "positions8": [
+        0,
+        16,
+        32,
+        37,
+        43,
+        48,
+        81,
+        114
+      ],
+      "physical_frame_ids8": [
+        0,
+        77,
+        154,
+        178,
+        207,
+        231,
+        389,
+        548
+      ]
+    },
+    {
+      "alias": "NV002",
+      "dataset": "vidstg",
+      "positions4": [
+        98,
+        104,
+        110,
+        116
+      ],
+      "positions8": [
+        0,
+        49,
+        98,
+        104,
+        110,
+        116,
+        156,
+        197
+      ],
+      "physical_frame_ids8": [
+        0,
+        236,
+        471,
+        500,
+        528,
+        557,
+        749,
+        946
+      ]
+    },
+    {
+      "alias": "NV003",
+      "dataset": "vidstg",
+      "positions4": [
+        8,
+        15,
+        22,
+        29
+      ],
+      "positions8": [
+        8,
+        15,
+        22,
+        29,
+        39,
+        49,
+        59,
+        70
+      ],
+      "physical_frame_ids8": [
+        408,
+        442,
+        475,
+        509,
+        557,
+        605,
+        653,
+        705
+      ]
+    },
+    {
+      "alias": "NV004",
+      "dataset": "vidstg",
+      "positions4": [
+        7,
+        11,
+        16,
+        20
+      ],
+      "positions8": [
+        0,
+        7,
+        11,
+        16,
+        20,
+        27,
+        34,
+        49
+      ],
+      "physical_frame_ids8": [
+        0,
+        42,
+        66,
+        96,
+        120,
+        162,
+        204,
+        294
+      ]
+    },
+    {
+      "alias": "NV005",
+      "dataset": "vidstg",
+      "positions4": [
+        6,
+        11,
+        16,
+        21
+      ],
+      "positions8": [
+        0,
+        3,
+        6,
+        8,
+        11,
+        16,
+        21,
+        25
+      ],
+      "physical_frame_ids8": [
+        422,
+        435,
+        450,
+        460,
+        475,
+        500,
+        525,
+        545
+      ]
+    },
+    {
+      "alias": "NV006",
+      "dataset": "vidstg",
+      "positions4": [
+        5,
+        11,
+        16,
+        22
+      ],
+      "positions8": [
+        0,
+        5,
+        8,
+        11,
+        16,
+        19,
+        22,
+        28
+      ],
+      "physical_frame_ids8": [
+        431,
+        456,
+        474,
+        492,
+        522,
+        540,
+        558,
+        594
+      ]
+    },
+    {
+      "alias": "NV007",
+      "dataset": "vidstg",
+      "positions4": [
+        9,
+        20,
+        31,
+        42
+      ],
+      "positions8": [
+        0,
+        9,
+        14,
+        20,
+        31,
+        42,
+        49,
+        57
+      ],
+      "physical_frame_ids8": [
+        0,
+        54,
+        84,
+        120,
+        186,
+        252,
+        294,
+        342
+      ]
+    },
+    {
+      "alias": "NV008",
+      "dataset": "vidstg",
+      "positions4": [
+        5,
+        8,
+        11,
+        14
+      ],
+      "positions8": [
+        0,
+        1,
+        2,
+        3,
+        5,
+        8,
+        11,
+        14
+      ],
+      "physical_frame_ids8": [
+        183,
+        186,
+        189,
+        192,
+        198,
+        207,
+        216,
+        225
+      ]
+    },
+    {
+      "alias": "NV009",
+      "dataset": "vidstg",
+      "positions4": [
+        19,
+        24,
+        29,
+        34
+      ],
+      "positions8": [
+        0,
+        19,
+        24,
+        29,
+        34,
+        46,
+        58,
+        82
+      ],
+      "physical_frame_ids8": [
+        329,
+        384,
+        399,
+        414,
+        429,
+        465,
+        501,
+        573
+      ]
+    },
+    {
+      "alias": "NV010",
+      "dataset": "vidstg",
+      "positions4": [
+        11,
+        17,
+        24,
+        30
+      ],
+      "positions8": [
+        0,
+        5,
+        8,
+        11,
+        17,
+        24,
+        30,
+        37
+      ],
+      "physical_frame_ids8": [
+        492,
+        522,
+        540,
+        558,
+        594,
+        636,
+        672,
+        714
+      ]
+    },
+    {
+      "alias": "NV011",
+      "dataset": "vidstg",
+      "positions4": [
+        11,
+        21,
+        31,
+        41
+      ],
+      "positions8": [
+        0,
+        5,
+        11,
+        21,
+        31,
+        41,
+        47,
+        54
+      ],
+      "physical_frame_ids8": [
+        1391,
+        1421,
+        1457,
+        1517,
+        1577,
+        1637,
+        1673,
+        1715
+      ]
+    },
+    {
+      "alias": "NV012",
+      "dataset": "vidstg",
+      "positions4": [
+        16,
+        28,
+        40,
+        53
+      ],
+      "positions8": [
+        16,
+        28,
+        40,
+        53,
+        89,
+        125,
+        162,
+        199
+      ],
+      "physical_frame_ids8": [
+        114,
+        204,
+        294,
+        384,
+        654,
+        918,
+        1187,
+        1457
+      ]
+    },
+    {
+      "alias": "NV013",
+      "dataset": "vidstg",
+      "positions4": [
+        8,
+        12,
+        17,
+        21
+      ],
+      "positions8": [
+        8,
+        12,
+        17,
+        21,
+        61,
+        101,
+        141,
+        181
+      ],
+      "physical_frame_ids8": [
+        552,
+        572,
+        596,
+        615,
+        807,
+        999,
+        1191,
+        1383
+      ]
+    },
+    {
+      "alias": "NV014",
+      "dataset": "vidstg",
+      "positions4": [
+        17,
+        30,
+        43,
+        57
+      ],
+      "positions8": [
+        17,
+        30,
+        43,
+        57,
+        92,
+        128,
+        163,
+        199
+      ],
+      "physical_frame_ids8": [
+        432,
+        510,
+        588,
+        672,
+        882,
+        1097,
+        1307,
+        1523
+      ]
+    },
+    {
+      "alias": "NV015",
+      "dataset": "vidstg",
+      "positions4": [
+        30,
+        50,
+        69,
+        89
+      ],
+      "positions8": [
+        0,
+        15,
+        30,
+        40,
+        50,
+        69,
+        89,
+        106
+      ],
+      "physical_frame_ids8": [
+        0,
+        72,
+        144,
+        192,
+        240,
+        331,
+        427,
+        509
+      ]
+    },
+    {
+      "alias": "NV016",
+      "dataset": "vidstg",
+      "positions4": [
+        29,
+        40,
+        50,
+        61
+      ],
+      "positions8": [
+        0,
+        8,
+        15,
+        29,
+        40,
+        50,
+        61,
+        73
+      ],
+      "physical_frame_ids8": [
+        657,
+        695,
+        730,
+        800,
+        855,
+        905,
+        960,
+        1020
+      ]
+    }
+  ]
+}

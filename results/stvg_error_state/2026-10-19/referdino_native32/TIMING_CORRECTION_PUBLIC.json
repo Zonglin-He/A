@@ -1,0 +1,57 @@
+{
+  "status": "pass",
+  "ratio": 0.4315135264973751,
+  "limit": 1.5,
+  "rows": [
+    {
+      "alias": "NH001",
+      "dataset": "hc2",
+      "T_expert_seconds_without_audit_hashing": 0.4342682238202542,
+      "T_forward_seconds": 0.31277129612863064,
+      "Refer_same_sealed_expert_seconds": 0.16979302698746324,
+      "ratio": 0.3909865324563591,
+      "T_peak_allocated_bytes": 1815398400,
+      "max_numerical_error_vs_original": 0.0
+    },
+    {
+      "alias": "NH002",
+      "dataset": "hc2",
+      "T_expert_seconds_without_audit_hashing": 0.4527570139616728,
+      "T_forward_seconds": 0.3322337339632213,
+      "Refer_same_sealed_expert_seconds": 0.17313456488773227,
+      "ratio": 0.3824006245044911,
+      "T_peak_allocated_bytes": 1891592704,
+      "max_numerical_error_vs_original": 0.0
+    },
+    {
+      "alias": "NV001",
+      "dataset": "vidstg",
+      "T_expert_seconds_without_audit_hashing": 0.4856686508283019,
+      "T_forward_seconds": 0.36595253529958427,
+      "Refer_same_sealed_expert_seconds": 0.24997382215224206,
+      "ratio": 0.51470034503136,
+      "T_peak_allocated_bytes": 2041921024,
+      "max_numerical_error_vs_original": 0.0
+    },
+    {
+      "alias": "NV002",
+      "dataset": "vidstg",
+      "T_expert_seconds_without_audit_hashing": 0.48439077008515596,
+      "T_forward_seconds": 0.369026750093326,
+      "Refer_same_sealed_expert_seconds": 0.20845573605038226,
+      "ratio": 0.4303462182273533,
+      "T_peak_allocated_bytes": 2047892480,
+      "max_numerical_error_vs_original": 0.0
+    }
+  ],
+  "T_warmup_seconds": 0.8564529782161117,
+  "extra_T_forwards": 20,
+  "new_Refer_queries": 0,
+  "new_Source_OPD_training": 0,
+  "GPU_allocation_seconds": 13.908589227125049,
+  "GT_read": false,
+  "weights_unchanged": true,
+  "reason": "Original T audit=True included diagnostic input hashing in model prehook and expert timing; rerun exactly same four T queries audit=False, preserve original gate and all predictions. Ref timers already excluded outside RGB receipt hashing.",
+  "quality_not_used_for_correction": true,
+  "raw_RGB_decode_and_loading_excluded_both": true
+}

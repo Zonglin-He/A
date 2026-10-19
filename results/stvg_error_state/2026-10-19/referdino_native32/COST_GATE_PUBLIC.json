@@ -1,0 +1,118 @@
+{
+  "status": "pass",
+  "ratio": 0.36399704540689254,
+  "limit": 1.5,
+  "rows": [
+    {
+      "alias": "NH001",
+      "dataset": "hc2",
+      "T_expert_seconds": 0.47615295415744185,
+      "T_forward_seconds": 0.3698155649472028,
+      "T_peak_allocated_bytes": 1815398400,
+      "T_peak_reserved_bytes": 1935671296,
+      "T_calls": 4,
+      "Refer_expert_seconds": 0.16979302698746324,
+      "Refer_cost": {
+        "expert_seconds": 0.16979302698746324,
+        "preprocess_seconds": 0.0176941379904747,
+        "forward_seconds": 0.15186789305880666,
+        "postprocess_seconds": 0.00023099593818187714,
+        "peak_allocated_bytes": 1918147072,
+        "peak_reserved_bytes": 2707423232
+      },
+      "ratio": 0.356593454907602
+    },
+    {
+      "alias": "NH002",
+      "dataset": "hc2",
+      "T_expert_seconds": 0.5557831979822367,
+      "T_forward_seconds": 0.42257383675314486,
+      "T_peak_allocated_bytes": 1891592704,
+      "T_peak_reserved_bytes": 2537553920,
+      "T_calls": 4,
+      "Refer_expert_seconds": 0.17313456488773227,
+      "Refer_cost": {
+        "expert_seconds": 0.17313456488773227,
+        "preprocess_seconds": 0.007526606088504195,
+        "forward_seconds": 0.16536564892157912,
+        "postprocess_seconds": 0.00024230987764894962,
+        "peak_allocated_bytes": 1992535040,
+        "peak_reserved_bytes": 3200253952
+      },
+      "ratio": 0.3115145717184235
+    },
+    {
+      "alias": "NV001",
+      "dataset": "vidstg",
+      "T_expert_seconds": 0.5852720949333161,
+      "T_forward_seconds": 0.4545592872891575,
+      "T_peak_allocated_bytes": 2041921024,
+      "T_peak_reserved_bytes": 3225419776,
+      "T_calls": 4,
+      "Refer_expert_seconds": 0.24997382215224206,
+      "Refer_cost": {
+        "expert_seconds": 0.24997382215224206,
+        "preprocess_seconds": 0.010539497015997767,
+        "forward_seconds": 0.23891485994681716,
+        "postprocess_seconds": 0.0005194651894271374,
+        "peak_allocated_bytes": 2265136640,
+        "peak_reserved_bytes": 4429185024
+      },
+      "ratio": 0.42710702306885695
+    },
+    {
+      "alias": "NV002",
+      "dataset": "vidstg",
+      "T_expert_seconds": 0.5843402550090104,
+      "T_forward_seconds": 0.45376735692843795,
+      "T_peak_allocated_bytes": 2047892480,
+      "T_peak_reserved_bytes": 3225419776,
+      "T_calls": 4,
+      "Refer_expert_seconds": 0.20845573605038226,
+      "Refer_cost": {
+        "expert_seconds": 0.20845573605038226,
+        "preprocess_seconds": 0.008306246949359775,
+        "forward_seconds": 0.1999177159741521,
+        "postprocess_seconds": 0.00023177312687039375,
+        "peak_allocated_bytes": 2265157120,
+        "peak_reserved_bytes": 4429185024
+      },
+      "ratio": 0.3567369084424415
+    }
+  ],
+  "warmups": {
+    "T": {
+      "expert_seconds": 1.0687600001692772,
+      "calls": 4
+    },
+    "Refer": {
+      "expert_seconds": 0.2128070378676057,
+      "preprocess_seconds": 0.021738390903919935,
+      "forward_seconds": 0.1874307959806174,
+      "postprocess_seconds": 0.003637850983068347
+    }
+  },
+  "loading": {
+    "T_load_seconds": 1.5200093749444932,
+    "Refer_load_seconds": 1.9715208548586816
+  },
+  "GT_read": false,
+  "parameters": 247872944,
+  "load_audit": {
+    "missing": [],
+    "unexpected": [
+      "bert.embeddings.position_ids"
+    ],
+    "all_learned_parameters_covered": true
+  },
+  "kernel_error": 5.960464477539063e-08,
+  "hardware": "NVIDIA GeForce RTX 5090",
+  "GPU_allocation_at_gate_seconds": 19.767454306827858,
+  "counts": {
+    "T_measured_forwards": 16,
+    "T_warmup_forwards": 4,
+    "Refer_measured_queries": 4,
+    "Refer_warmup_queries": 1
+  },
+  "full32_allowed": true
+}
