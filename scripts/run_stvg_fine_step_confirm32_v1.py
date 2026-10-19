@@ -25,14 +25,17 @@ def capture():
  from scripts.run_stvg_dino_supported_expanded256_recovery002 import capture as forward
  from methods.decota_final_simplified_v1.tensors import state_hash
  p=verify();auth=read(D/'DEADLINE_AUTHORIZATION.json');assert auth['status']=='explicit_user_authorized_extension';lease=gpu();tick=time.perf_counter();domain=None;model=None;cache=collections.OrderedDict();files=[]
+ def guard():
+  verify();assert time.perf_counter()-tick<p['GPU_cap_seconds'],'900sec GPU cap';assert torch.cuda.mem_get_info()[0]>4*2**30
  try:
   for ix,r in enumerate(p['records']):
    verify();assert time.perf_counter()-tick<p['GPU_cap_seconds'];assert torch.cuda.mem_get_info()[0]>4*2**30;ds=r['dataset'];a=r['alias']
    if domain!=ds:
     if model is not None:assert state_hash(model.state_dict())==mh;del model;gc.collect();torch.cuda.empty_cache()
-    model=model_for('vidstg'if ds=='hc2'else'hcstvg2');domain=ds;mh=state_hash(model.state_dict());cache.clear()
+    guard();model=model_for('vidstg'if ds=='hc2'else'hcstvg2');domain=ds;mh=state_hash(model.state_dict());cache.clear();guard()
    fine=[];mask=[];h1=model.vis_encoder[0].body.layer3.register_forward_hook(lambda m,args,out:fine.append(out.detach().float().cpu()));h2=model.vis_encoder.register_forward_pre_hook(lambda m,args:mask.append(args[0].mask.detach().cpu()))
-   try:row,recs,base,native,expert,inp,seconds=forward(model,ds,r['query_ordinal'],cache)
+   try:
+    guard();row,recs,base,native,expert,inp,seconds=forward(model,ds,r['query_ordinal'],cache);guard()
    finally:h1.remove();h2.remove()
    old=load(ROOT/r['source_path']);e=load(ROOT/r['prediction_path']);assert torch.equal(native['boxes'].cpu(),old['Source'])and all(torch.equal(x.cpu(),y)for x,y in zip(base.zero['logits'],old['logits']));assert list(row['frame_ids'])==e['frame_ids'];n=len(e['frame_ids']);assert len(fine)==len(mask)==2;maps=torch.empty(n,*fine[0].shape[1:]);valid=torch.empty(n,*fine[0].shape[-2:],dtype=torch.bool)
    for off in [0,1]:maps[off::2]=fine[off];valid[off::2]=~F.interpolate(mask[off][:,None].float(),size=maps.shape[-2:],mode='nearest')[:,0].bool()
@@ -41,7 +44,7 @@ def capture():
    del base,native,expert,old,e,maps,valid,fine,mask;gc.collect();torch.cuda.empty_cache()
    if ix==1:
     elapsed=time.perf_counter()-tick;put(D/'PILOT2_TIMING.json',dict(count=2,elapsed_seconds=elapsed,rough32_seconds=16*elapsed,not_guaranteed=True));assert 16*elapsed<p['GPU_cap_seconds'],'pilot extrapolation exceeds cap'
-  assert state_hash(model.state_dict())==mh;verify();put(D/'FEATURE_BARRIER.json',dict(status='complete',count=32,files=files,GPU_seconds=time.perf_counter()-tick,GT_read=False))
+  assert state_hash(model.state_dict())==mh;guard();put(D/'FEATURE_BARRIER.json',dict(status='complete',count=32,files=files,GPU_seconds=time.perf_counter()-tick,GT_read=False))
  finally:lease.close();put(D/'GPU_STOP.json',dict(GPU_seconds=time.perf_counter()-tick,all_partials_preserved=True))
 
 def measure():
@@ -49,7 +52,9 @@ def measure():
  from vg_tta.stvg_roi_layout_opd32_v1 import build
  from vg_tta.stvg_fine_roi_scoped_opd32_v1 import scope,scoped_fit
  from vg_tta.stvg_discriminative_dense32_v1 import noise
- p=verify();torch.set_num_threads(4);bar=read(D/'FEATURE_BARRIER.json');assert bar['count']==32;files=[];start=time.perf_counter()
+ p=verify();torch.set_num_threads(4);bar=read(D/'FEATURE_BARRIER.json');assert bar['count']==32
+ for receipt in bar['files']:assert sha(ROOT/receipt['path'])==receipt['sha256']
+ files=[];start=time.perf_counter()
  for r in p['records']:
   verify();assert time.perf_counter()-start<p['CPU_cap_seconds'];a=r['alias'];x=load(D/'features'/(a+'.pt'));E=x['E'].double();ctx=build(x['maps'],x['valid'],x['positions'],x['boxes']);_,allowed=scope(x['frame_ids'],x['planned_positions'],x['interval']);eps=noise('step-confirm32-v1|'+a,len(E));fits={}
   for arm,step,mode in [('Fixed_step05',.5,'Fixed_dense'),('Live_step05',.5,'On_policy_dense'),('Fixed_step10',1.,'Fixed_dense'),('Live_step10',1.,'On_policy_dense')]:
