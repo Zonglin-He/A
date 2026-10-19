@@ -1,0 +1,82 @@
+{
+  "B_official_HF": {
+    "status": "verified",
+    "repository": "IDEA-Research/grounding-dino-base",
+    "revision": "12bdfa3120f3e7ec7b434d90674b3396eccf88eb",
+    "files": [
+      {
+        "file": "config.json",
+        "bytes": 1737,
+        "sha256": "eda416dae6f49419ff831b1c190ec430a060b19aae688dbaf2425a075b650608"
+      },
+      {
+        "file": "preprocessor_config.json",
+        "bytes": 457,
+        "sha256": "8454179ba95e2ad22947835aad7b45862a601fc0055ab88bf1ee70892d3aea60"
+      },
+      {
+        "file": "special_tokens_map.json",
+        "bytes": 125,
+        "sha256": "b6d346be366a7d1d48332dbc9fdf3bf8960b5d879522b7799ddba59e76237ee3"
+      },
+      {
+        "file": "tokenizer.json",
+        "bytes": 711396,
+        "sha256": "d241a60d5e8f04cc1b2b3e9ef7a4921b27bf526d9f6050ab90f9267a1f9e5c66"
+      },
+      {
+        "file": "tokenizer_config.json",
+        "bytes": 1237,
+        "sha256": "d40ab645b68211910b9170d22433d43186a6ec8ee6fd10ba170524b25bf4fb56"
+      },
+      {
+        "file": "vocab.txt",
+        "bytes": 231508,
+        "sha256": "07eced375cec144d27c900241f3e339478dec958f92fddbc551f295c992038a3"
+      },
+      {
+        "file": "model.safetensors",
+        "bytes": 933400872,
+        "sha256": "5548f844c928c4b6f411fa8cbcc2bfa8dbbba437cb1d513975519f93c2a9ed21"
+      }
+    ],
+    "seconds": 305.13711857795715
+  },
+  "existing_official_original_B": {
+    "status": "downloaded_and_verified",
+    "model": "GroundingDINO-B",
+    "backbone": "Swin-B",
+    "source": "https://github.com/IDEA-Research/GroundingDINO/releases/download/v0.1.0-alpha2/groundingdino_swinb_cogcoor.pth",
+    "release": "v0.1.0-alpha2",
+    "bytes": 938057991,
+    "sha256": "46270f7a822e6906b655b729c90613e48929d0f2bb8b9b76fd10a856f3ac6ab7",
+    "sha256_matches_official_linked_HF_LFS": true,
+    "HF_metadata_source": "https://huggingface.co/api/models/ShilongLiu/GroundingDINO/tree/main",
+    "config_revision": "856dde20aee659246248e20734ef9ba5214f5e44",
+    "config_url": "https://raw.githubusercontent.com/IDEA-Research/GroundingDINO/856dde20aee659246248e20734ef9ba5214f5e44/groundingdino/config/GroundingDINO_SwinB_cfg.py",
+    "config_sha256": "6c6a3b89b6df23fd90d247b21211dceffca3ea82d96c23859fdc7f28958e985b",
+    "zip_CRC_checked": true,
+    "zip_members": 1044,
+    "model_loaded": false,
+    "inference_run": false,
+    "current_teacher_changed": false,
+    "downloaded_UTC": "2026-10-19T06:06:54.280652+00:00"
+  },
+  "T_snapshot": ".cache/grounding_dino_http_v1/models--IDEA-Research--grounding-dino-tiny/snapshots/a2bb814dd30d776dcf7e30523b00659f4f141c71",
+  "T_sha256": "1a2412ef99bd74bcd3c2a246fa1e48581f8889a1300c9051974741314fc042f3",
+  "TA": {
+    "hc2": {
+      "checkpoint": "checkpoints/TASTVG_VidSTG.pth",
+      "sha256": "5ab12c86363ef0ce0ee006c00fd11c6b659c3a9b2cb01a4f2c613efe22a2aa83"
+    },
+    "vidstg": {
+      "checkpoint": "checkpoints/TASTVG_HCSTVG2.pth",
+      "sha256": "47d8f15841cd57e7bbf5a10e8bf23b1054d23b753e0becbd38a07f3dd60d5036"
+    }
+  },
+  "official_sources": [
+    "https://github.com/IDEA-Research/GroundingDINO",
+    "https://huggingface.co/IDEA-Research/grounding-dino-base"
+  ],
+  "HF_reason": "Use official Transformers B conversion to preserve identical implementation/processor to existing T; original .pth already local but not mixed into HF inference."
+}
