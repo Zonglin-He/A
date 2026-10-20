@@ -1,0 +1,139 @@
+{
+  "status": "finite_strength_check_completed_no_established_net_gain",
+  "development_point_selection": "KL1",
+  "not_proof_coefficient1_globally_optimal": true,
+  "net_over_Strong": {
+    "KL1": {
+      "mean": 0.05894061598530293,
+      "CI95": [
+        -0.21345309062151321,
+        0.33045221071867137
+      ],
+      "parents": 128
+    },
+    "KL0p3": {
+      "mean": 0.03006358586234127,
+      "CI95": [
+        -0.3285072627034055,
+        0.41333666216175163
+      ],
+      "parents": 128
+    },
+    "KL0p1": {
+      "mean": 0.012779702744268366,
+      "CI95": [
+        -0.3839352628090536,
+        0.4394038058512199
+      ],
+      "parents": 128
+    }
+  },
+  "contribution_expansion": {
+    "KL0p1": {
+      "groups": {
+        "coefficient1_positive": {
+          "parents": 37,
+          "coefficient1_contribution_to_all128_pp": 0.46633865585492223,
+          "new_contribution_to_all128_pp": 0.669015330538078,
+          "new_positive": 35,
+          "new_negative": 1,
+          "new_flat": 1
+        },
+        "coefficient1_negative": {
+          "parents": 32,
+          "coefficient1_contribution_to_all128_pp": -0.4073980398696192,
+          "new_contribution_to_all128_pp": -0.5613615938707296,
+          "new_positive": 1,
+          "new_negative": 30,
+          "new_flat": 1
+        },
+        "coefficient1_flat": {
+          "parents": 59,
+          "coefficient1_contribution_to_all128_pp": 0.0,
+          "new_contribution_to_all128_pp": -0.09487403392308011,
+          "new_positive": 13,
+          "new_negative": 13,
+          "new_flat": 33
+        }
+      },
+      "positive_contribution_increase_pp": 0.27379548358492023,
+      "negative_contribution_change_pp": -0.3199563968259549,
+      "net_change_pp": -0.04616091324103462,
+      "posthoc_GT_explanation_only": true
+    },
+    "KL0p3": {
+      "groups": {
+        "coefficient1_positive": {
+          "parents": 37,
+          "coefficient1_contribution_to_all128_pp": 0.46633865585492223,
+          "new_contribution_to_all128_pp": 0.6004814002156016,
+          "new_positive": 37,
+          "new_negative": 0,
+          "new_flat": 0
+        },
+        "coefficient1_negative": {
+          "parents": 32,
+          "coefficient1_contribution_to_all128_pp": -0.4073980398696192,
+          "new_contribution_to_all128_pp": -0.51477668314837,
+          "new_positive": 0,
+          "new_negative": 31,
+          "new_flat": 1
+        },
+        "coefficient1_flat": {
+          "parents": 59,
+          "coefficient1_contribution_to_all128_pp": 0.0,
+          "new_contribution_to_all128_pp": -0.05564113120489026,
+          "new_positive": 6,
+          "new_negative": 12,
+          "new_flat": 41
+        }
+      },
+      "positive_contribution_increase_pp": 0.17184867756071104,
+      "negative_contribution_change_pp": -0.2007257076836727,
+      "net_change_pp": -0.028877030122961694,
+      "posthoc_GT_explanation_only": true
+    }
+  },
+  "process": {
+    "KL0p1": {
+      "admission_fraction": 0.51220703125,
+      "unique_sampled_intervals": 601.421875,
+      "unique_admitted_intervals": 449.6927083333333,
+      "initial_preference_KL": 0.07390732257883652,
+      "final_preupdate_preference_KL": 0.03466933607222627,
+      "final_preupdate_global_KL": 0.07195699956822671,
+      "final_preupdate_weighted_global_KL": 0.007195699956822672,
+      "eta_norm": 14.09490260706734,
+      "posterior_L1": 0.2767353422118402
+    },
+    "KL0p3": {
+      "admission_fraction": 0.5135233561197917,
+      "unique_sampled_intervals": 600.2890625,
+      "unique_admitted_intervals": 448.6927083333333,
+      "initial_preference_KL": 0.07390732257883652,
+      "final_preupdate_preference_KL": 0.034493938647592266,
+      "final_preupdate_global_KL": 0.04897585280221208,
+      "final_preupdate_weighted_global_KL": 0.014692755840663624,
+      "eta_norm": 12.091926904594857,
+      "posterior_L1": 0.21667869797292902
+    },
+    "KL1": {
+      "admission_fraction": 0.5155110677083333,
+      "unique_sampled_intervals": 599.21875,
+      "unique_admitted_intervals": 447.6223958333333,
+      "initial_preference_KL": 0.07390732257883652,
+      "final_preupdate_preference_KL": 0.04303136343487594,
+      "final_preupdate_global_KL": 0.021848347290224644,
+      "eta_norm": 8.706530274222663,
+      "posterior_L1": 0.1338328916512199,
+      "final_preupdate_weighted_global_KL": 0.021848347290224644
+    }
+  },
+  "interpretation": "Weaker protection materially enlarges posterior changes and both positive and harmful corrections, without establishing net benefit over Strong or coefficient1. The hypothesis that coefficient1 alone suppresses a large useful gain is weakened within this fixed feedback/optimizer/readout configuration and tested strength range.",
+  "no_universal_OPD_or_teacher_impossibility_claim": true,
+  "no_new_independent_on_policy_controls": true,
+  "not_independent_confirmation": true,
+  "Strong_unchanged": true,
+  "no_promotion": true,
+  "no_further_coefficient_search_or_automatic_followup": true
+}
