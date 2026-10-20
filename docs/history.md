@@ -31,3 +31,5 @@ GitHub同步完成：实现提交 [87294995](https://github.com/Zonglin-He/A/com
 2026-10-20 16:45 北京时间执行更新：55项CPU工程检查通过；此前真实HC回归、Vid缓存命中回归均逐位复现旧封存预测。锁定TA专用有限计划后启动，plan SHA256 `d95e1fa35f4e854d4981edf2ffb0ca0a7087988cd1d59ba91ad3a038fa4634af`。当前是正式推理运行中，未完成全量评分，不发布或推断新成绩。每个完整方向全部封存后才独立读GT评分；遇错停止，不跳过样本或自动重试。
 
 正式评估启动代码已同步：提交 [e95459b5](https://github.com/Zonglin-He/A/commit/e95459b55998c3e16ceb637358ecc9b15f6eb119)，远端main和research均以freshCAS非强制快进；重新fetch逐一核对330文件、2,555,220字节与本地SHA256及tree完全一致，旧历史仍是祖先。此次只发布实现、冻结协议和运行状态，不宣称完整评估已完成或已产生正式成绩。回执见 docs/publication.json。
+
+2026-10-20 运行监控授权：用户要求一个Luna/max子代理每30分钟巡检，异常报告根代理并允许自行修复工程故障。已建立本聊天专用heartbeat `ta-stvg-luna`，复用唯一 `ta_luna_watch`（gpt-6-luna、max），正常不通知；根代理核证后按冻结计划恢复，不改科学配置、跳过样本或影响无关服务。TA全部结果同步核验后暂停监控，CG仍待TA全部完成。此前已暂停的研究自动化保持暂停。
