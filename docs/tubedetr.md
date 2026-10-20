@@ -106,3 +106,16 @@ VidOR作者发布的验证视频包 SHA256 为 `40dd102b43ecd2ed70f2dc38ee082583
 用户随后明确确认两台机器都统一上述SHA256的1902条文件，正式HC清单选择已确定，见 [cross_machine_agreement.json](../results/tubedetr/cross_machine_agreement.json)。确认回执独立保存，运行中的VidSTG协议及其预测身份不改写；实际双机RGB逐位核对状态单列。
 
 用户另明确本机需要TubeDETR两方向五行消融。独立离线等待器已经接入；完整封存后复用当前预测，不增加GPU适应任务，详见 [tubedetr_ablation.md](tubedetr_ablation.md)。
+
+2026-10-21 HC2→VidSTG完整10303条预测已封存，主表、效率、五行消融指标在本地生成。HC预检曾把ffprobe的原始599帧与默认rawvideo输出索引599直接比较；相同二进制、相同现有HC解码命令实际输出600帧（时间戳同步复制1帧），原129节点RGB与独立完整解码选帧逐位一致。修复仅作用于预检：HC按默认RGB输出计数并核对输出字节数，Vid继续使用原始帧号；没有改解码函数、输入帧网格、清单、模型或配置，也没有跳过query。恢复证据见 [preflight_recovery.json](../results/tubedetr/preflight_recovery.json)。主队列可校验并复用已完成的完整评分与定性产物，避免续跑覆盖；详细进度仍以本地当前日志与progress为准，不能把一个方向的完成称为两方向主实验与消融整体完成。
+
+预检可独立运行：
+
+```bash
+.conda/tubedetr/bin/python -B tools/preflight_tubedetr_media.py \
+  --manifest data/evaluation/hc2.jsonl \
+  --ffprobe /path/to/registered/ffprobe \
+  --output results/tubedetr/hc2_media_preflight.json
+```
+
+这里的ffprobe必须是本地资产登记中FFmpeg的同目录配套工具。HC使用相同rawvideo/RGB输出选项，但写入空设备，利用完整结束进度和输出字节数核对实际输出帧支持，避免在内存或磁盘保存全量RGB。若已存在预检回执，主队列只接受相同完整清单、相同工具哈希、正确帧语义且无过滤的pass回执。恢复前先核对进程身份，将旧失败回执和日志归档保留，再启动既有主续跑与离线消融入口；不能仅删除失败标记并跳过预检。

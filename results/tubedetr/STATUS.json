@@ -1,6 +1,6 @@
 {
-  "status": "complete_VidSTG_formal_running_HC1902_media_acquiring",
-  "as_of": "2026-10-20T17:47:25.205396+08:00",
+  "status": "complete_VidSTG_scored_HC1902_formal_resumed",
+  "as_of": "2026-10-21T07:55:51.961493+08:00",
   "base_commit": "c5afd0a7584e98f47fc8e0bde2d92b54b9ba488e",
   "branch": "tubedetr",
   "implementation_sha256": "f30171f520aa10fa6a879ca84077e043f444e5d947e8110c42bf9b292c9d349b",
@@ -30,18 +30,18 @@
       "status": "complete_and_whole_SHA256_verified"
     }
   },
-  "CPU_tests": "20 passed",
+  "CPU_tests": "26 passed",
   "single_frozen_ReferDINO_service": "real GPU pass, repeated identical eight-frame inputs bitexact",
   "physical_frames": "two real inputs pass independent streaming selection",
   "native_pretrained_TubeDETR_pipeline": "pass; results/tubedetr/qualification.json",
-  "formal_combinations_completed": 0,
-  "task_accuracy_claims": false,
+  "formal_combinations_completed": 2,
+  "task_accuracy_claims": true,
   "blockers": [],
   "old_results_rewritten": false,
   "pending_work": [
-    "finish10303-query paired VidSTG inference and independent full scoring",
-    "finish1902-query HC2 media acquisition and paired full inference/scoring",
-    "publish final sealed main results"
+    "finish1902-query paired HC2 inference and independent full scoring",
+    "finishHC2 five-row offline score and both-direction ablation report",
+    "publish complete final sealed results"
   ],
   "cross_machine_RGB_parity_verified": false,
   "formal_HC2_queries": 1902,
@@ -49,5 +49,6 @@
   "formal_HC2_annotation_sha256": "61f7a2a74d39c13dd380540d4ac819edb7abcde1826d44229e539d128bf3260c",
   "decoder": "complete native codec build; all732 VidSTG videos decode",
   "previous_partial_run": "94 queries retained under old decoder; unscored; formal run restarts complete population",
-  "cross_machine_HC1902_annotation_policy": "confirmed_by_user_for_both_machines"
+  "cross_machine_HC1902_annotation_policy": "confirmed_by_user_for_both_machines",
+  "HC2_media_preflight": "pass all1902; HC default RGB output support; no query filtering"
 }

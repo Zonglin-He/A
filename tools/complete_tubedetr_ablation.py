@@ -188,4 +188,8 @@ if __name__ == '__main__':
     except BaseException as error:
         write(ROOT/'outputs/tubedetr_ablation/failure.json',dict(status='failed',error_type=type(error).__name__,
             message=str(error),extra_GPU_episodes=0))
+        path = ROOT/'outputs/tubedetr_ablation/status.json'
+        status = json.loads(path.read_text()) if path.exists() else {}
+        write(path, {**status, 'status':'failed', 'error_type':type(error).__name__,
+                     'message':str(error), 'extra_GPU_episodes':0})
         raise

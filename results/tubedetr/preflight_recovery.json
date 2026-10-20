@@ -1,0 +1,63 @@
+{
+  "status": "full_HC1902_preflight_passed_continuation_launched",
+  "as_of": "2026-10-21T07:48:13.535727+08:00",
+  "root_cause": "HC indexes default FFmpeg rawvideo output; ffprobe counts native source frames. Timestamp synchronization can duplicate source frames.",
+  "offending_media_sha256": "7722dd3eac14b209d248f77a29d420fd98f1c3802d5b9df5a9c4cde26c1acae1",
+  "native_frames": 599,
+  "unchanged_HC_default_output_frames": 600,
+  "default_output_bytes": 552960000,
+  "default_sync_duplicated_frames": 1,
+  "maximum_requested_zero_based_index": 599,
+  "actual_sampled_frames": 129,
+  "unchanged_decoder_matches_independent_full_RGB_selection_bitexact": true,
+  "sampled_RGB_sha256": "3c60f6df4f3b47889cd42485ed9eb989c8a6d03d84fb90c9e99ee733f4136749",
+  "implementation_sha256": "f30171f520aa10fa6a879ca84077e043f444e5d947e8110c42bf9b292c9d349b",
+  "decoder_sha256": "e213bf064c167e313cf672d4952cad87ce9ebefa4e6d6ddaea7996d827eccc36",
+  "original_artifacts_sha256": {
+    "configs/default.json": "3b61b2d82779457f557f93b788f79e428eb957650689dba8fb53485ca1a2f91a",
+    "configs/tubedetr.json": "7df6009d3139552626215ef58a2d8c3924f71a3d9486ad92a7b4b62d1dd57b32",
+    "data/evaluation/hc2.jsonl": "365904987e66a9c08c3c855915eacc4cbb275c36ccdbad1dabd0bc007fcd4162",
+    "data/evaluation/vidstg.jsonl": "3c21d1e35d70e528a8ecc31f6e191504c95700d3363b12fb0212d59dea5ac09d",
+    "results/tubedetr/qualification.json": "1ccafd466621be47fb70e1729299929add6322eb82baf18221233cae0c76a86a",
+    "outputs/tubedetr/hc2_to_vid/sealed.json": "a8be51566abec32d9367a36dced44270e113b0bf65075d18fe30dfe682554895",
+    "outputs/tubedetr/hc2_to_vid/metrics.json": "86de8cf363b0fe0d96cef7327b36efda069dca44f657ea17e3848fa8a75bdaa2",
+    "outputs/tubedetr/hc2_to_vid/efficiency.json": "969af6a3474478b3a3e0e3d4a44c48fafebf3b44ab09b3368bb3b7b6eee0fc1e",
+    "outputs/tubedetr_ablation/hc2_to_vid/metrics_five_rows.json": "195daa8f6f326f18245482e0a8b33c23c32cd01d95a3cd4bca8b13b0f53b6744",
+    "outputs/tubedetr_ablation/hc2_to_vid/receipt.json": "092dcf3ea8b0de031b3d333c24a738ef2f4619894118bc0bb3870929b339542e"
+  },
+  "model_or_configuration_changed": false,
+  "manifest_or_media_changed": false,
+  "query_filtering": false,
+  "old_Vid_predictions_or_scores_rewritten": false,
+  "labels_read_during_preflight": false,
+  "source_repair_files_sha256": {
+    "tools/preflight_tubedetr_media.py": "f87c323ebdcfd369577a0b2f5b51e31cb4c9d2c9c083a73ac1c7a634edb64cae",
+    "tools/complete_tubedetr_main.py": "41c28c052d111934b453b0d4a441b8e76c995cc2a6b88d156b32f3aa4b3aaea3",
+    "tools/complete_tubedetr_ablation.py": "b8f9c9e208a07ab17d62d76a0d1880da25147be3b7f7fb103db3b1043e2cdc15",
+    "tests/test_tubedetr_preflight.py": "f48b10c20b6ecf08d1116d0107ba335e3bd8c003890a90bb3b5cf5b9c4429255",
+    "tests/test_tubedetr_queue.py": "427bd33818ec916ddb194f494da9d7a25c2756533d1f98e50f2e3b8564353a26"
+  },
+  "CPU_tests": "26 passed",
+  "resumed_at": "2026-10-21T07:55:20.653594+08:00",
+  "media_preflight_sha256": "20d411191e951f7b0517fcf12c1ed30d6c94c5a32291c5df98ea422544c93770",
+  "full_media_preflight": {
+    "status": "pass",
+    "queries": 1902,
+    "videos": 1902,
+    "no_queries_filtered": true,
+    "ffprobe_sha256": "b2b5f2e7a128354e2760257440a24685f200690cf928d1e6d863ec9fc1f651c6",
+    "manifest_sha256": "365904987e66a9c08c3c855915eacc4cbb275c36ccdbad1dabd0bc007fcd4162",
+    "frame_index_domain": "HC default FFmpeg RGB output",
+    "ffmpeg_sha256": "e213bf064c167e313cf672d4952cad87ce9ebefa4e6d6ddaea7996d827eccc36",
+    "videos_with_output_count_different_from_native": 359,
+    "codecs": {
+      "h264": 1902
+    },
+    "all_actual_decoded_frame_counts_cover_fixed_input_grid": true,
+    "media_inventory_sha256": "e7e1525f58d105a119d3bcd87b5e6ba270b660517ebd3737d63d6fef67316c1d",
+    "labels_read": false
+  },
+  "old_failure_evidence_preserved": true,
+  "completed_VidSTG_results_reused": true,
+  "formal_combinations_completed_before_resume": 2
+}
