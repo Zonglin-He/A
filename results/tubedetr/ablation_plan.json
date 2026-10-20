@@ -1,0 +1,210 @@
+{
+  "status": "frozen_offline_ablation_plan",
+  "backbone": "TubeDETR",
+  "seed": 41,
+  "implementation_sha256": "f30171f520aa10fa6a879ca84077e043f444e5d947e8110c42bf9b292c9d349b",
+  "configuration_sha256": "3b61b2d82779457f557f93b788f79e428eb957650689dba8fb53485ca1a2f91a",
+  "adapter_configuration_sha256": "7df6009d3139552626215ef58a2d8c3924f71a3d9486ad92a7b4b62d1dd57b32",
+  "qualification_sha256": "1ccafd466621be47fb70e1729299929add6322eb82baf18221233cae0c76a86a",
+  "directions": {
+    "hc2_to_vid": {
+      "dataset": "vidstg",
+      "queries": 10303,
+      "parents": 732,
+      "population_sha256": "588694917c6bcf9ec6efcb66c693cb7fb0d3015c27f4fadac4eb733182a9c915",
+      "manifest_sha256": "3c21d1e35d70e528a8ecc31f6e191504c95700d3363b12fb0212d59dea5ac09d",
+      "source_checkpoint": "checkpoints/tubedetr/hc2_k2_res224.pth",
+      "source_checkpoint_sha256": "c646a8b7131bb28806c350e16479cd8bb31d4425ccb15129b26a6e4d38dd4222",
+      "configuration": {
+        "dataset": "vidstg",
+        "source_dataset": "hc2",
+        "scales": [
+          0.05,
+          0.25
+        ],
+        "tau": 0.5,
+        "lr": 0.01,
+        "steps": 30,
+        "samples": 32,
+        "seeds": [
+          41
+        ],
+        "default_seed": 41,
+        "state_shape": [
+          8,
+          256
+        ],
+        "temporal": "0.5 high-resolution posterior + 0.5 native six-layer mean; physical MBR",
+        "E": "eight-frame native ReferDINO singleton robust correction",
+        "teacher": "same native ReferDINO eight-frame evidence reused for initialization and OPD",
+        "source_checkpoint": "checkpoints/tubedetr/hc2_k2_res224.pth",
+        "ReferDINO_checkpoint": "checkpoints/referdino/ryt_mevis_swinb.pth",
+        "no_network_training": true,
+        "E_calibration": {
+          "scale": [
+            0.022542142662651282,
+            0.011027737123363815,
+            0.06612943552390567,
+            0.02918426580581821
+          ],
+          "truncation": 18.056884634893116,
+          "source_train_queries": 36,
+          "eligible_queries": 35,
+          "known_planned_anchors": 113,
+          "singleton_or_empty_queries": 1,
+          "model_hash": "ee72f0d9a50c573a115bd7cfc2329c860745a1cf3dab83af1be7787c11b3c218",
+          "quantile": 0.95,
+          "validation_used": false,
+          "target_GT_used": false
+        },
+        "E_calibration_provenance": "source-domain train calibration, frozen before target outcomes",
+        "output_alpha": 1.0,
+        "initialization_gamma": 1.0,
+        "backbone": "TubeDETR",
+        "upstream_revision": "d70c0eed94da09a9a5e4329c937230ecfb1d3ee6",
+        "stride": 2,
+        "native_resolution": 224,
+        "strong_resolution": 448,
+        "Source_temporal": "official native full-grid MAP; end frame + 1",
+        "calibration_policy": "transfer the existing frozen calibration unchanged; do not claim TubeDETR-specific source calibration",
+        "source_checkpoint_sha256": "c646a8b7131bb28806c350e16479cd8bb31d4425ccb15129b26a6e4d38dd4222"
+      }
+    },
+    "vid_to_hc2": {
+      "dataset": "hc2",
+      "queries": 1902,
+      "parents": 227,
+      "population_sha256": "98a7b896e6aa424eec12c850fb4cba3a84839e97f59b223282f299d03c32f563",
+      "manifest_sha256": "365904987e66a9c08c3c855915eacc4cbb275c36ccdbad1dabd0bc007fcd4162",
+      "source_checkpoint": "checkpoints/tubedetr/vidstg_k2_res224.pth",
+      "source_checkpoint_sha256": "2802c66049b2e7986a826b4bbd291eb8521446cfba6fee03b56729438bf44213",
+      "configuration": {
+        "dataset": "hc2",
+        "source_dataset": "vidstg",
+        "scales": [
+          0.05,
+          0.25
+        ],
+        "tau": 0.14,
+        "lr": 0.014,
+        "steps": 40,
+        "samples": 32,
+        "seeds": [
+          41
+        ],
+        "default_seed": 41,
+        "state_shape": [
+          8,
+          256
+        ],
+        "temporal": "0.5 high-resolution posterior + 0.5 native six-layer mean; physical MBR",
+        "E": "eight-frame native ReferDINO singleton robust correction",
+        "teacher": "same native ReferDINO eight-frame evidence reused for initialization and OPD",
+        "source_checkpoint": "checkpoints/tubedetr/vidstg_k2_res224.pth",
+        "ReferDINO_checkpoint": "checkpoints/referdino/ryt_mevis_swinb.pth",
+        "no_network_training": true,
+        "E_calibration": {
+          "scale": [
+            0.08805019583603152,
+            0.03796878948819179,
+            0.2445728236645117,
+            0.21037521441041293
+          ],
+          "truncation": 30.734017210649714,
+          "source_train_queries": 36,
+          "eligible_queries": 22,
+          "known_planned_anchors": 76,
+          "singleton_or_empty_queries": 14,
+          "model_hash": "fbb1ed8871d6c2aa093879efefc2ee500bb7de5e0fe1c25b809c5393d010f3c7",
+          "quantile": 0.95,
+          "validation_used": false,
+          "target_GT_used": false
+        },
+        "E_calibration_provenance": "source-domain train calibration, frozen before target outcomes",
+        "output_alpha": 1.0,
+        "initialization_gamma": 0.5,
+        "backbone": "TubeDETR",
+        "upstream_revision": "d70c0eed94da09a9a5e4329c937230ecfb1d3ee6",
+        "stride": 2,
+        "native_resolution": 224,
+        "strong_resolution": 448,
+        "Source_temporal": "official native full-grid MAP; end frame + 1",
+        "calibration_policy": "transfer the existing frozen calibration unchanged; do not claim TubeDETR-specific source calibration",
+        "source_checkpoint_sha256": "2802c66049b2e7986a826b4bbd291eb8521446cfba6fee03b56729438bf44213"
+      }
+    }
+  },
+  "arms": {
+    "Source": {
+      "box_array": "Source",
+      "interval_array": "Native_interval"
+    },
+    "Spatial": {
+      "box_array": "Live",
+      "interval_array": "Native_interval"
+    },
+    "Temporal": {
+      "box_array": "Source",
+      "interval_array": "Strong_interval"
+    },
+    "WithoutOPD": {
+      "box_array": "E_Ref",
+      "interval_array": "Strong_interval"
+    },
+    "Full": {
+      "box_array": "Live",
+      "interval_array": "Strong_interval"
+    }
+  },
+  "main_metric_fields": [
+    "m_vIoU",
+    "vIoU@0.3",
+    "vIoU@0.5",
+    "m_tIoU",
+    "m_sIoU"
+  ],
+  "supplementary_metric_fields": [
+    "tIoU_ge_0_5",
+    "tIoU_zero",
+    "boundary_MAE_seconds",
+    "observed_actual_sIoU"
+  ],
+  "additional_diagnostics": [
+    "unobserved_actual_sIoU",
+    "observed_GT_nodes",
+    "unobserved_GT_nodes"
+  ],
+  "metric_count_note": "The explicit main table has5 columns and supplement has4; unobserved spatial IoU is retained separately.",
+  "comparisons": {
+    "初始化": [
+      "WithoutOPD",
+      "Temporal"
+    ],
+    "空间OPD": [
+      "Full",
+      "WithoutOPD"
+    ],
+    "时间分支": [
+      "Full",
+      "Spatial"
+    ],
+    "整个空间分支": [
+      "Full",
+      "Temporal"
+    ],
+    "整体收益": [
+      "Full",
+      "Source"
+    ]
+  },
+  "main_estimand": "equal queries",
+  "supplementary_estimands": [
+    "equal parent",
+    "parent-cluster bootstrap"
+  ],
+  "same_complete_predictions_as_main_experiment": true,
+  "extra_GPU_episodes": 0,
+  "cache_equivalence": "Eight positions and initialization depend on native Source and same ReferDINO evidence; spatial OPD does not read Strong, so five rows are exact readouts.",
+  "labels_read_only_after_complete_prediction_seal": true,
+  "old_results_modified": false
+}

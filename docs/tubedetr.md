@@ -104,3 +104,5 @@ VidOR作者发布的验证视频包 SHA256 为 `40dd102b43ecd2ed70f2dc38ee082583
 完整运行曾因精简FFmpeg不支持FLV容器而在第95条输入停止（原文件后缀为.mp4，实际VP6F）；没有数据损坏证据。94条未评分部分输出及旧资格/协议回执保留，不与新运行混合。完整原生解码构建和双方向资格复核通过，见 [decoder_change.json](../results/tubedetr/decoder_change.json)。[全部媒体预检](../results/tubedetr/vidstg_media_preflight.json) 覆盖VidSTG全部732视频及10303 query支持，包含22个VP6F文件；原工程RGB逐位不变，另增FLV选帧的独立全流核对。
 
 用户随后明确确认两台机器都统一上述SHA256的1902条文件，正式HC清单选择已确定，见 [cross_machine_agreement.json](../results/tubedetr/cross_machine_agreement.json)。确认回执独立保存，运行中的VidSTG协议及其预测身份不改写；实际双机RGB逐位核对状态单列。
+
+用户另明确本机需要TubeDETR两方向五行消融。独立离线等待器已经接入；完整封存后复用当前预测，不增加GPU适应任务，详见 [tubedetr_ablation.md](tubedetr_ablation.md)。
