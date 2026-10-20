@@ -15,7 +15,9 @@
 | HC-STVG2（`hc2`） | TA-STVG VidSTG | 0.014 | 0.14 | 40 | 0.5 | 1 |
 | VidSTG（`vidstg`） | TA-STVG HC-STVG2 | 0.01 | 0.5 | 30 | 1 | 1 |
 
-两域均为 seed 41、八个 256 维临时状态、32 个双尺度候选、尺度 `(0.05, 0.25)`。本仓库不保留其他活动方法、配置搜索入口或自动实验队列。
+TA-STVG与CGSTVG完整双向评估说明见 [docs/formal_evaluation.md](docs/formal_evaluation.md)，CG原生接口与权重见 [docs/cgstvg.md](docs/cgstvg.md)。正式结果仅在完整封存评分后更新 [results/formal/report.md](results/formal/report.md)。
+
+两域均为 seed 41、八个 256 维临时状态、32 个双尺度候选、尺度 `(0.05, 0.25)`。本仓库保留一个数值配置和必要backbone接口，不保留参数搜索或循环实验队列。
 
 ## 环境与资产
 
@@ -47,7 +49,7 @@ TORCH_CUDA_ARCH_LIST=12.0 .conda/tubedetr/bin/python -B tools/setup.py --build
 .conda/tubedetr/bin/python -B -m stvg predict --request request.json --output outputs/query.npz
 
 # 固定清单逐条推理；完成全部预测后写 sealed.json。
-.conda/tubedetr/bin/python -B -m stvg evaluate --manifest data/evaluation/development.jsonl --output outputs/evaluation
+.conda/tubedetr/bin/python -B -m stvg evaluate --backbone tastvg --manifest data/evaluation/development.jsonl --output outputs/evaluation
 
 # 独立评分进程；只读取封存预测和标注，不运行模型。
 .conda/tubedetr/bin/python -B -m stvg score --manifest data/evaluation/development.jsonl --labels data/evaluation/development_labels.jsonl --predictions outputs/evaluation --output outputs/evaluation/metrics.json

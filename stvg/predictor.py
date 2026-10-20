@@ -19,6 +19,7 @@ class SingleReferDINOOPDPredictor:
         manifest=json.loads((ROOT/'configs/default.json').read_text())
         self.config=dict(manifest['datasets'][dataset])if config is None else dict(config)
         self.source=source;self.check=check
+        self.parser=None;self.teacher_service=None
     def capture(self,frames,frame_ids,metadata,parses=None):
         start=time.perf_counter();self.check()
         load_start=time.perf_counter()
@@ -27,7 +28,8 @@ class SingleReferDINOOPDPredictor:
         parse_start=time.perf_counter()
         if parses is None:
             from stvg.query import QuerySubjectParser
-            parser=QuerySubjectParser(ROOT/'checkpoints/stanza');parses=dict(subject=parser(metadata['caption'])['subject']);del parser
+            if self.parser is None:self.parser=QuerySubjectParser(ROOT/'checkpoints/stanza')
+            parses=dict(subject=self.parser(metadata['caption'])['subject'])
         model=self.source.cuda();row=dict(input=metadata,frame_ids=list(frame_ids),parses=parses);cost=dict(parse_seconds=time.perf_counter()-parse_start,Source_load_seconds=source_load);tick=time.perf_counter()
         batch,recs,base=frozen_forward(model,frames,row);native=prediction(base.zero['logits'],base.zero['boxes'],recs,frame_ids);torch.cuda.synchronize();cost['Source224_seconds']=time.perf_counter()-tick
         spatial=detached(base.spatial_inputs,'cpu');src=native['boxes'].detach().cpu();logits=detached(base.zero['logits'],'cpu')
@@ -41,9 +43,11 @@ class SingleReferDINOOPDPredictor:
         hu,hq=mass_table(probabilities(hrrecs,detached(hr.zero['logits'],'cpu')));assert hu==U
         strong=.5*hq+.5*np.mean(lq,axis=0);strong_interval=final_mbr(U,strong)['interval'];torch.cuda.synchronize();cost['Source448_seconds']=time.perf_counter()-tick
         del batch,hr;model.cpu();gc.collect();torch.cuda.empty_cache()
-        teacher=refer_native(frames[positions],metadata['caption']);tick=time.perf_counter()
+        if self.teacher_service is None:teacher=refer_native(frames[positions],metadata['caption'])
+        else:teacher=self.teacher_service(frames[positions],metadata['caption'],positions=positions,frame_ids=U,dataset=self.config['dataset'])
+        tick=time.perf_counter()
         E,init=initialize(src.double().numpy(),positions,teacher['boxes'].numpy(),self.config['E_calibration']);cost['ERef_seconds']=time.perf_counter()-tick
-        cost.update(ReferDINO=teacher['cost'],ReferDINO_load_seconds=teacher['model_load_seconds'],ReferDINO_process_seconds=teacher['process_wall_seconds'],ReferDINO_query_forwards=1,ReferDINO_frames=8,independent_GroundingDINO_forwards=0,expert_instances=1,peak_GPU_bytes=max(torch.cuda.max_memory_allocated(),teacher['peak_GPU_bytes']),capture_wall_seconds=time.perf_counter()-start)
+        cost.update(ReferDINO=teacher['cost'],ReferDINO_load_seconds=teacher['model_load_seconds'],ReferDINO_process_seconds=teacher['process_wall_seconds'],ReferDINO_query_forwards=teacher.get('query_forwards',1),ReferDINO_frames=8,independent_GroundingDINO_forwards=0,expert_instances=1,peak_GPU_bytes=max(torch.cuda.max_memory_allocated(),teacher['peak_GPU_bytes']),capture_wall_seconds=time.perf_counter()-start)
         return dict(Source=src,E=E,frame_ids=U,planned_positions=positions,spatial_inputs=spatial,
             teacher_native=teacher,initialization=init,intervals=dict(Native=native_interval,Strong=strong_interval),
             posterior=dict(Native=q,Strong=strong),cost=cost,GT_read=False)

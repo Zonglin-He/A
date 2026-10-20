@@ -42,7 +42,10 @@ def test_request_metadata_rejected_before_decode_or_setup(tmp_path, monkeypatch,
 
 def sealed_fixture(tmp_path):
     manifest = tmp_path / 'manifest.jsonl'
-    manifest.write_text('\n'.join(json.dumps({'id': k}) for k in ('one', 'two')) + '\n')
+    manifest.write_text('\n'.join(json.dumps({
+        'id': k, 'dataset': 'hc2', 'key': k,
+        'metadata': {'source': 'synthetic-parent-' + k, 'fps': 30.0},
+    }) for k in ('one', 'two')) + '\n')
     root = tmp_path / 'predictions'
     root.mkdir()
     entries = {}

@@ -1,4 +1,5 @@
 import ast,typing
+from functools import lru_cache
 
 from pathlib import Path
 
@@ -7,6 +8,7 @@ import numpy as np
 import torch
 ROOT=Path(__file__).resolve().parents[1]
 
+@lru_cache(maxsize=1)
 def official_functions():
  scope=dict(np=np,torch=torch,Dict=typing.Dict,List=typing.List,Tuple=typing.Tuple)
  for relative,names in [('external/TA-STVG/utils/box_utils.py',{'np_box_iou','_box_inter_union','np_box_area'}),('external/TA-STVG/engine/evaluate.py',{'linear_interp'}),('external/TA-STVG/datasets/evaluation/vidstg_eval.py',{'VidSTGiouEvaluator'})]:

@@ -4,13 +4,20 @@ import numpy as np
 
 from stvg.metrics_base import official_functions, ROOT
 
+from functools import lru_cache
+
+@lru_cache(maxsize=1)
+def hc_functions():
+    functions=dict(official_functions())
+    p=ROOT/'external/TA-STVG/datasets/evaluation/hcstvg_eval.py'
+    nodes=[n for n in ast.parse(p.read_text()).body if isinstance(n,ast.ClassDef) and n.name=='HCSTVGiouEvaluator']
+    assert len(nodes)==1
+    exec(compile(ast.Module(body=nodes,type_ignores=[]),str(p),'exec'),functions)
+    return functions
+
 class HC2DenseMetric:
     def __init__(self):
-        self.functions=official_functions()
-        p=ROOT/'external/TA-STVG/datasets/evaluation/hcstvg_eval.py'
-        nodes=[n for n in ast.parse(p.read_text()).body if isinstance(n,ast.ClassDef) and n.name=='HCSTVGiouEvaluator']
-        assert len(nodes)==1
-        exec(compile(ast.Module(body=nodes,type_ignores=[]),str(p),'exec'),self.functions)
+        self.functions=hc_functions()
 
     def __call__(self,boxes,ids,interval,truth,gt_interval):
         tube=self.functions['linear_interp']({int(fid):[np.asarray(box,float).tolist()] for fid,box in zip(ids,boxes)})
