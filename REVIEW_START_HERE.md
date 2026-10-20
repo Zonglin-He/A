@@ -1,3 +1,13 @@
+# Review the single-ReferDINO replacement
+
+The requested current research design is [stvg_single_referdino_opd_v1](methods/stvg_single_referdino_opd_v1/README.md), defined by its [single-expert configuration](methods/stvg_single_referdino_opd_v1/config.json). One native ReferDINO eight-frame track supplies both E_Ref initialization and OPD feedback. Strong time remains TA-STVG-only. No independent GroundingDINO model or detector-cache dependency exists in the new runnable path.
+
+Read the [protocol](protocols/stvg_single_referdino_bidirectional256_v1.md), [new bidirectional report](results/stvg_error_state/2026-10-20/single_referdino_bidirectional256/REPORT.md), [all signed results](results/stvg_error_state/2026-10-20/single_referdino_bidirectional256/RESULTS_PUBLIC.json), and independent audits in the same result directory. HC40/Vid30 are fixed for this rerun; no continued search is authorized by these documents. The prior development nine-grid and interrupted coarse/fine search are retained separately.
+
+Historical CURRENT/RESEARCH/MAIN/PAPER registries below are preserved as provenance and not automatically promoted. Previous two-expert results must not be relabeled as this single-expert method.
+
+## Earlier review entry (historical)
+
 # Current research review entry — 2026-10-19
 
 Start with [the unique research manifest](methods/RESEARCH_METHOD.json), [frozen config](methods/stvg_referdino_opd_v1/config.json), [predictor guide](methods/stvg_referdino_opd_v1/README.md), and [final temperature/full-chain report](results/stvg_error_state/2026-10-19/referdino_final/REPORT.md).
