@@ -70,10 +70,16 @@ def main():
     rows = [json.loads(s) for s in hc_manifest.read_text().splitlines()]
     if len(rows) != 1902:
         raise ValueError('Confirmed complete HC1902 population changed')
+    from stvg.tube_decode import asset_identity
+    probe = Path(asset_identity()['ffmpeg_path']).with_name('ffprobe')
+    run('tools/preflight_tubedetr_media.py', '--manifest', hc_manifest, '--ffprobe', probe,
+        '--output', ROOT/'results/tubedetr/hc2_media_preflight.json')
     protocol = json.loads((ROOT/'data/evaluation/protocol_vidstg.json').read_text())
     protocol.update(populations={'hc2': population_hash(rows)}, dataset='user-confirmed author HC2 validation release',
                     queries=1902, parents=227, annotation_sha256='61f7a2a74d39c13dd380540d4ac819edb7abcde1826d44229e539d128bf3260c',
+                    media_preflight_sha256=sha(ROOT/'results/tubedetr/hc2_media_preflight.json'),
                     input_grid='original HC default FFmpeg output indices; fixed6.4fps; final supported node appended')
+    protocol.pop('supersedes_minimal_decoder_protocol_sha256', None)
     protocol_path = ROOT/'data/evaluation/protocol_hc2.json'
     if protocol_path.exists():
         if json.loads(protocol_path.read_text()) != protocol:
