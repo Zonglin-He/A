@@ -1,0 +1,13 @@
+{
+  "status": "pre_GT_auditor_only_revision",
+  "original_scorer_sha256": "4e4b10317f6ff21fa03ddf57a4d743562b4a31acc81128f65f4f54c063600dda",
+  "original_scorer_unchanged": true,
+  "scientific_predictions_and_labels_unchanged": true,
+  "initial_full_independent_gradient_recursive_Adam_max_state_error": 1.1416335583130932e-07,
+  "original_state_tolerance": 2e-10,
+  "issue": "independent floating-point gradient roundoff accumulates through Adam near zero-gradient coordinates; original full-recursion assertion fails",
+  "correction": "independently verify NumPy gradient/loss at every actual state, then replay exact saved and verified gradient through independent Adam; do not feed rounded independent gradients back across40 steps",
+  "not_task_failure": true,
+  "new_GT": false,
+  "revision_before_any_new_GT": true
+}

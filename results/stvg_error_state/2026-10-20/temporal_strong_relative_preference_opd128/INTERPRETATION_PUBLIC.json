@@ -1,0 +1,123 @@
+{
+  "status": "completed_no_established_two_pp_gain_or_independent_on_policy_value",
+  "method_gain_and_on_policy_assessed_separately": true,
+  "Live_minus_Strong_full_v_pp": {
+    "mean": 0.05894061598530293,
+    "CI95": [
+      -0.21345309062151321,
+      0.33045221071867137
+    ],
+    "parents": 128
+  },
+  "Live_minus_Strong_tIoU_pp": {
+    "mean": -0.5094680761893384,
+    "CI95": [
+      -1.4208340651770586,
+      0.18677739796773207
+    ],
+    "parents": 128
+  },
+  "Live_minus_Direct_full_v_pp": {
+    "mean": 0.0004186357412431056,
+    "CI95": [
+      -0.07775181497555593,
+      0.07173337532292112
+    ],
+    "parents": 128
+  },
+  "Live_minus_Fixed_full_v_pp": {
+    "mean": -0.03282877072282902,
+    "CI95": [
+      -0.08560501502257609,
+      0.013280980467143657
+    ],
+    "parents": 128
+  },
+  "Live_positive_negative_flat": {
+    "positive": 37,
+    "negative": 32,
+    "flat": 59,
+    "below_minus5": 1,
+    "below_minus3": 6,
+    "leave_one_out_mean_range_pp": [
+      0.006705787438599093,
+      0.10989939670470526
+    ],
+    "worst": [
+      {
+        "alias": "RC079",
+        "delta_pp": -6.412824535378793
+      },
+      {
+        "alias": "RC009",
+        "delta_pp": -3.7646677347798585
+      },
+      {
+        "alias": "RC040",
+        "delta_pp": -3.7168897948186785
+      },
+      {
+        "alias": "RC030",
+        "delta_pp": -3.306080418407553
+      },
+      {
+        "alias": "RC128",
+        "delta_pp": -3.169778175213578
+      },
+      {
+        "alias": "RC100",
+        "delta_pp": -3.1213204310819807
+      },
+      {
+        "alias": "RC080",
+        "delta_pp": -2.956152064436135
+      },
+      {
+        "alias": "RC037",
+        "delta_pp": -2.4884670618874476
+      },
+      {
+        "alias": "RC088",
+        "delta_pp": -2.426962235618324
+      },
+      {
+        "alias": "RC042",
+        "delta_pp": -2.360101243770907
+      },
+      {
+        "alias": "RC125",
+        "delta_pp": -2.195620476841148
+      },
+      {
+        "alias": "RC069",
+        "delta_pp": -2.0509844948418787
+      }
+    ],
+    "positive_contribution_pp": 0.4663386558549222,
+    "negative_contribution_pp": -0.40739803986961926
+  },
+  "changed_posterior_fits": 1152,
+  "total_fits": 1152,
+  "Live_process": {
+    "admission_fraction": 0.5155110677083333,
+    "unique_sampled_intervals": 599.21875,
+    "unique_admitted_intervals": 447.6223958333333,
+    "initial_preference_KL": 0.07390732257883652,
+    "final_preupdate_preference_KL": 0.04303136343487594,
+    "initial_global_KL": 0.0,
+    "final_preupdate_global_KL": 0.021848347290224644,
+    "eta_norm": 8.706530274222663,
+    "posterior_L1": 0.1338328916512199
+  },
+  "new_Live_below_minus5_count": 1,
+  "previous_whole_teacher_Live_below_minus5_count": 27,
+  "interpretation": "Combined selective supervision and Strong constraint avoid most previous large regressions, while current configuration yields no established net gain. Their separate causal effects were not ablated. Supervision/update is active; same-feedback Live does not establish independent advantage.",
+  "limits": [
+    "repeatedly exposed RC128 development, not independent confirmation",
+    "both offsets correlated; consistency not correctness",
+    "global B_o not a factor or marginal of B",
+    "tIoU mean declines, CI crosses zero",
+    "Strong remains research temporal baseline; no promotion or automatic followup",
+    "one configuration does not settle all preference OPD or all DenseLocal evidence"
+  ]
+}
