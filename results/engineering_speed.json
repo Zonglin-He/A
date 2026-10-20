@@ -1,0 +1,598 @@
+{
+  "status": "passed",
+  "scope": "engineering regression, not a scientific evaluation or a representative deployment benchmark",
+  "existing_queries": 4,
+  "regression_runs": 12,
+  "all_bitexact": true,
+  "GT_read": false,
+  "expert_calls": 0,
+  "teacher_evidence": "exact existing RGB/text/physical-node cache payloads verified; no new expert forward",
+  "checks": [
+    {
+      "dataset": "hc2",
+      "frozen_weight_sha256": "8227ea6622145080bcd818bd68529ad962b6e9f56ca6d638f7d07f54e21953be",
+      "weights_unchanged": true
+    },
+    {
+      "dataset": "vidstg",
+      "frozen_weight_sha256": "a5ce76a71af828f64514cbc4bcc56ac2986cd2a087dfd8dc5a4a675a6bdc5c24",
+      "weights_unchanged": true
+    }
+  ],
+  "rows": [
+    {
+      "case": "hc2-engineering-01",
+      "dataset": "hc2",
+      "nodes": 65,
+      "phase": "legacy",
+      "all_arrays_bitexact": true,
+      "all_posteriors_gates_hidden_bitexact": true,
+      "RNG_equal": true,
+      "wall_seconds": 11.744966408004984,
+      "capture": {
+        "parse_seconds": 0.24318958586081862,
+        "Source_load_seconds": 1.9301660358905792e-07,
+        "Source224_seconds": 3.8312694299966097,
+        "Source448_seconds": 5.2281553039792925,
+        "ERef_seconds": 0.009501119144260883,
+        "ReferDINO": {
+          "expert_seconds": 0.0,
+          "preprocess_seconds": 0.0,
+          "forward_seconds": 0.0,
+          "postprocess_seconds": 0.0
+        },
+        "ReferDINO_load_seconds": 0.0,
+        "ReferDINO_process_seconds": 0.0,
+        "ReferDINO_query_forwards": 0,
+        "ReferDINO_frames": 8,
+        "independent_GroundingDINO_forwards": 0,
+        "expert_instances": 1,
+        "peak_GPU_bytes": 8304409600,
+        "capture_wall_seconds": 9.970200536074117,
+        "initialization_strength_seconds": 0.009194337064400315
+      },
+      "adapt": {
+        "actual_updates": 40,
+        "fit_seconds": 1.4920094991102815,
+        "decoder_calls": 42
+      },
+      "visual_cache": {
+        "hits": 0,
+        "misses": 8,
+        "entries": 8,
+        "host_bytes": 956788560,
+        "key_and_transfer_seconds": 1.5176341969054192
+      },
+      "peak_allocated_GPU_bytes": 8304409600,
+      "new_expert_calls": 0
+    },
+    {
+      "case": "hc2-engineering-01",
+      "dataset": "hc2",
+      "nodes": 65,
+      "phase": "all",
+      "all_arrays_bitexact": true,
+      "all_posteriors_gates_hidden_bitexact": true,
+      "RNG_equal": true,
+      "wall_seconds": 11.18721318198368,
+      "capture": {
+        "parse_seconds": 0.25227148993872106,
+        "Source_load_seconds": 4.0605664253234863e-07,
+        "Source224_seconds": 3.5407561759930104,
+        "Source448_seconds": 5.102193409111351,
+        "ERef_seconds": 0.00963882589712739,
+        "ReferDINO": {
+          "expert_seconds": 0.0,
+          "preprocess_seconds": 0.0,
+          "forward_seconds": 0.0,
+          "postprocess_seconds": 0.0
+        },
+        "ReferDINO_load_seconds": 0.0,
+        "ReferDINO_process_seconds": 0.0,
+        "ReferDINO_query_forwards": 0,
+        "ReferDINO_frames": 8,
+        "independent_GroundingDINO_forwards": 0,
+        "expert_instances": 1,
+        "peak_GPU_bytes": 8313584640,
+        "capture_wall_seconds": 9.565514273010194,
+        "initialization_strength_seconds": 0.009660734096542
+      },
+      "adapt": {
+        "actual_updates": 40,
+        "fit_seconds": 1.3464213940314949,
+        "decoder_calls": 42
+      },
+      "visual_cache": {
+        "hits": 0,
+        "misses": 8,
+        "entries": 8,
+        "host_bytes": 956788560,
+        "key_and_transfer_seconds": 1.6428498616442084
+      },
+      "peak_allocated_GPU_bytes": 8313584640,
+      "new_expert_calls": 0
+    },
+    {
+      "case": "vidstg-engineering-01",
+      "dataset": "vidstg",
+      "nodes": 154,
+      "phase": "legacy",
+      "all_arrays_bitexact": true,
+      "all_posteriors_gates_hidden_bitexact": true,
+      "RNG_equal": true,
+      "wall_seconds": 16.04214364499785,
+      "capture": {
+        "parse_seconds": 0.24801759095862508,
+        "Source_load_seconds": 4.5588240027427673e-07,
+        "Source224_seconds": 4.479674268048257,
+        "Source448_seconds": 8.466621015919372,
+        "ERef_seconds": 0.009664479177445173,
+        "ReferDINO": {
+          "expert_seconds": 0.0,
+          "preprocess_seconds": 0.0,
+          "forward_seconds": 0.0,
+          "postprocess_seconds": 0.0
+        },
+        "ReferDINO_load_seconds": 0.0,
+        "ReferDINO_process_seconds": 0.0,
+        "ReferDINO_query_forwards": 0,
+        "ReferDINO_frames": 8,
+        "independent_GroundingDINO_forwards": 0,
+        "expert_instances": 1,
+        "peak_GPU_bytes": 17477521408,
+        "capture_wall_seconds": 14.539612002903596,
+        "initialization_strength_seconds": 0.00957281794399023
+      },
+      "adapt": {
+        "actual_updates": 30,
+        "fit_seconds": 1.1644269980024546,
+        "decoder_calls": 32
+      },
+      "visual_cache": {
+        "hits": 0,
+        "misses": 8,
+        "entries": 8,
+        "host_bytes": 2374482572,
+        "key_and_transfer_seconds": 4.2214151243679225
+      },
+      "peak_allocated_GPU_bytes": 17477521408,
+      "new_expert_calls": 0
+    },
+    {
+      "case": "vidstg-engineering-02",
+      "dataset": "vidstg",
+      "nodes": 154,
+      "phase": "legacy",
+      "all_arrays_bitexact": true,
+      "all_posteriors_gates_hidden_bitexact": true,
+      "RNG_equal": true,
+      "wall_seconds": 12.953119108919054,
+      "capture": {
+        "parse_seconds": 0.25151077611371875,
+        "Source_load_seconds": 3.0105002224445343e-07,
+        "Source224_seconds": 3.8061898180749267,
+        "Source448_seconds": 6.001224814914167,
+        "ERef_seconds": 0.009261166909709573,
+        "ReferDINO": {
+          "expert_seconds": 0.0,
+          "preprocess_seconds": 0.0,
+          "forward_seconds": 0.0,
+          "postprocess_seconds": 0.0
+        },
+        "ReferDINO_load_seconds": 0.0,
+        "ReferDINO_process_seconds": 0.0,
+        "ReferDINO_query_forwards": 0,
+        "ReferDINO_frames": 8,
+        "independent_GroundingDINO_forwards": 0,
+        "expert_instances": 1,
+        "peak_GPU_bytes": 2877937152,
+        "capture_wall_seconds": 11.371409479063004,
+        "initialization_strength_seconds": 0.0095502610784024
+      },
+      "adapt": {
+        "actual_updates": 30,
+        "fit_seconds": 1.2412398788146675,
+        "decoder_calls": 32
+      },
+      "visual_cache": {
+        "hits": 8,
+        "misses": 8,
+        "entries": 8,
+        "host_bytes": 2374482572,
+        "key_and_transfer_seconds": 5.933982935966924
+      },
+      "peak_allocated_GPU_bytes": 2877937152,
+      "new_expert_calls": 0
+    },
+    {
+      "case": "vidstg-engineering-03",
+      "dataset": "vidstg",
+      "nodes": 200,
+      "phase": "legacy",
+      "all_arrays_bitexact": true,
+      "all_posteriors_gates_hidden_bitexact": true,
+      "RNG_equal": true,
+      "wall_seconds": 19.77487412490882,
+      "capture": {
+        "parse_seconds": 0.2624808030668646,
+        "Source_load_seconds": 3.871973603963852e-07,
+        "Source224_seconds": 4.889434263110161,
+        "Source448_seconds": 10.272902067983523,
+        "ERef_seconds": 0.010152991162613034,
+        "ReferDINO": {
+          "expert_seconds": 0.0,
+          "preprocess_seconds": 0.0,
+          "forward_seconds": 0.0,
+          "postprocess_seconds": 0.0
+        },
+        "ReferDINO_load_seconds": 0.0,
+        "ReferDINO_process_seconds": 0.0,
+        "ReferDINO_query_forwards": 0,
+        "ReferDINO_frames": 8,
+        "independent_GroundingDINO_forwards": 0,
+        "expert_instances": 1,
+        "peak_GPU_bytes": 22673311744,
+        "capture_wall_seconds": 17.99182940996252,
+        "initialization_strength_seconds": 0.009606861043721437
+      },
+      "adapt": {
+        "actual_updates": 30,
+        "fit_seconds": 1.3898424489889294,
+        "decoder_calls": 32
+      },
+      "visual_cache": {
+        "hits": 8,
+        "misses": 16,
+        "entries": 10,
+        "host_bytes": 4032543144,
+        "key_and_transfer_seconds": 11.470050822710618
+      },
+      "peak_allocated_GPU_bytes": 22673311744,
+      "new_expert_calls": 0
+    },
+    {
+      "case": "vidstg-engineering-01",
+      "dataset": "vidstg",
+      "nodes": 154,
+      "phase": "cache_staging",
+      "all_arrays_bitexact": true,
+      "all_posteriors_gates_hidden_bitexact": true,
+      "RNG_equal": true,
+      "wall_seconds": 16.36728610889986,
+      "capture": {
+        "parse_seconds": 0.2565460449550301,
+        "Source_load_seconds": 5.348119884729385e-07,
+        "Source224_seconds": 4.6098769209347665,
+        "Source448_seconds": 8.583750766934827,
+        "ERef_seconds": 0.02680989308282733,
+        "ReferDINO": {
+          "expert_seconds": 0.0,
+          "preprocess_seconds": 0.0,
+          "forward_seconds": 0.0,
+          "postprocess_seconds": 0.0
+        },
+        "ReferDINO_load_seconds": 0.0,
+        "ReferDINO_process_seconds": 0.0,
+        "ReferDINO_query_forwards": 0,
+        "ReferDINO_frames": 8,
+        "independent_GroundingDINO_forwards": 0,
+        "expert_instances": 1,
+        "peak_GPU_bytes": 17478645248,
+        "capture_wall_seconds": 14.835609152214602,
+        "initialization_strength_seconds": 0.016430390067398548
+      },
+      "adapt": {
+        "actual_updates": 30,
+        "fit_seconds": 1.1778650810010731,
+        "decoder_calls": 32
+      },
+      "visual_cache": {
+        "hits": 0,
+        "misses": 8,
+        "entries": 8,
+        "host_bytes": 2374482572,
+        "key_and_transfer_seconds": 4.36748605594039
+      },
+      "peak_allocated_GPU_bytes": 17478645248,
+      "new_expert_calls": 0
+    },
+    {
+      "case": "vidstg-engineering-02",
+      "dataset": "vidstg",
+      "nodes": 154,
+      "phase": "cache_staging",
+      "all_arrays_bitexact": true,
+      "all_posteriors_gates_hidden_bitexact": true,
+      "RNG_equal": true,
+      "wall_seconds": 9.318891006987542,
+      "capture": {
+        "parse_seconds": 0.2526909839361906,
+        "Source_load_seconds": 2.8009526431560516e-07,
+        "Source224_seconds": 1.982238416094333,
+        "Source448_seconds": 4.230253949994221,
+        "ERef_seconds": 0.009333360940217972,
+        "ReferDINO": {
+          "expert_seconds": 0.0,
+          "preprocess_seconds": 0.0,
+          "forward_seconds": 0.0,
+          "postprocess_seconds": 0.0
+        },
+        "ReferDINO_load_seconds": 0.0,
+        "ReferDINO_process_seconds": 0.0,
+        "ReferDINO_query_forwards": 0,
+        "ReferDINO_frames": 8,
+        "independent_GroundingDINO_forwards": 0,
+        "expert_instances": 1,
+        "peak_GPU_bytes": 2873526784,
+        "capture_wall_seconds": 7.800023051910102,
+        "initialization_strength_seconds": 0.009239508071914315
+      },
+      "adapt": {
+        "actual_updates": 30,
+        "fit_seconds": 1.1825000829994678,
+        "decoder_calls": 32
+      },
+      "visual_cache": {
+        "hits": 8,
+        "misses": 8,
+        "entries": 8,
+        "host_bytes": 2374482572,
+        "key_and_transfer_seconds": 6.167846567928791
+      },
+      "peak_allocated_GPU_bytes": 2873526784,
+      "new_expert_calls": 0
+    },
+    {
+      "case": "vidstg-engineering-01",
+      "dataset": "vidstg",
+      "nodes": 154,
+      "phase": "time_only",
+      "all_arrays_bitexact": true,
+      "all_posteriors_gates_hidden_bitexact": true,
+      "RNG_equal": true,
+      "wall_seconds": 15.965940376976505,
+      "capture": {
+        "parse_seconds": 0.26993051799945533,
+        "Source_load_seconds": 3.3620744943618774e-07,
+        "Source224_seconds": 4.403849349124357,
+        "Source448_seconds": 8.442318813176826,
+        "ERef_seconds": 0.009705684846267104,
+        "ReferDINO": {
+          "expert_seconds": 0.0,
+          "preprocess_seconds": 0.0,
+          "forward_seconds": 0.0,
+          "postprocess_seconds": 0.0
+        },
+        "ReferDINO_load_seconds": 0.0,
+        "ReferDINO_process_seconds": 0.0,
+        "ReferDINO_query_forwards": 0,
+        "ReferDINO_frames": 8,
+        "independent_GroundingDINO_forwards": 0,
+        "expert_instances": 1,
+        "peak_GPU_bytes": 17478645248,
+        "capture_wall_seconds": 14.441040753154084,
+        "initialization_strength_seconds": 0.009589852998033166
+      },
+      "adapt": {
+        "actual_updates": 30,
+        "fit_seconds": 1.1726464070379734,
+        "decoder_calls": 32
+      },
+      "visual_cache": {
+        "hits": 0,
+        "misses": 8,
+        "entries": 8,
+        "host_bytes": 2374482572,
+        "key_and_transfer_seconds": 4.245803446276113
+      },
+      "peak_allocated_GPU_bytes": 17478645248,
+      "new_expert_calls": 0
+    },
+    {
+      "case": "vidstg-engineering-02",
+      "dataset": "vidstg",
+      "nodes": 154,
+      "phase": "time_only",
+      "all_arrays_bitexact": true,
+      "all_posteriors_gates_hidden_bitexact": true,
+      "RNG_equal": true,
+      "wall_seconds": 9.29664890607819,
+      "capture": {
+        "parse_seconds": 0.2590186120942235,
+        "Source_load_seconds": 1.280568540096283e-07,
+        "Source224_seconds": 1.9506051260977983,
+        "Source448_seconds": 4.040544137125835,
+        "ERef_seconds": 0.009667136007919908,
+        "ReferDINO": {
+          "expert_seconds": 0.0,
+          "preprocess_seconds": 0.0,
+          "forward_seconds": 0.0,
+          "postprocess_seconds": 0.0
+        },
+        "ReferDINO_load_seconds": 0.0,
+        "ReferDINO_process_seconds": 0.0,
+        "ReferDINO_query_forwards": 0,
+        "ReferDINO_frames": 8,
+        "independent_GroundingDINO_forwards": 0,
+        "expert_instances": 1,
+        "peak_GPU_bytes": 2873526784,
+        "capture_wall_seconds": 7.664916994981468,
+        "initialization_strength_seconds": 0.00975542119704187
+      },
+      "adapt": {
+        "actual_updates": 30,
+        "fit_seconds": 1.2873139919247478,
+        "decoder_calls": 32
+      },
+      "visual_cache": {
+        "hits": 8,
+        "misses": 8,
+        "entries": 8,
+        "host_bytes": 2374482572,
+        "key_and_transfer_seconds": 5.990508840419352
+      },
+      "peak_allocated_GPU_bytes": 2873526784,
+      "new_expert_calls": 0
+    },
+    {
+      "case": "vidstg-engineering-01",
+      "dataset": "vidstg",
+      "nodes": 154,
+      "phase": "all",
+      "all_arrays_bitexact": true,
+      "all_posteriors_gates_hidden_bitexact": true,
+      "RNG_equal": true,
+      "wall_seconds": 15.42890246794559,
+      "capture": {
+        "parse_seconds": 0.25979554490186274,
+        "Source_load_seconds": 4.3585896492004395e-07,
+        "Source224_seconds": 4.4145152741111815,
+        "Source448_seconds": 8.271256779087707,
+        "ERef_seconds": 0.009196440922096372,
+        "ReferDINO": {
+          "expert_seconds": 0.0,
+          "preprocess_seconds": 0.0,
+          "forward_seconds": 0.0,
+          "postprocess_seconds": 0.0
+        },
+        "ReferDINO_load_seconds": 0.0,
+        "ReferDINO_process_seconds": 0.0,
+        "ReferDINO_query_forwards": 0,
+        "ReferDINO_frames": 8,
+        "independent_GroundingDINO_forwards": 0,
+        "expert_instances": 1,
+        "peak_GPU_bytes": 17478645248,
+        "capture_wall_seconds": 13.950703653972596,
+        "initialization_strength_seconds": 0.009646544931456447
+      },
+      "adapt": {
+        "actual_updates": 30,
+        "fit_seconds": 1.1502662389539182,
+        "decoder_calls": 32
+      },
+      "visual_cache": {
+        "hits": 0,
+        "misses": 8,
+        "entries": 8,
+        "host_bytes": 2374482572,
+        "key_and_transfer_seconds": 4.232316629961133
+      },
+      "peak_allocated_GPU_bytes": 17478645248,
+      "new_expert_calls": 0
+    },
+    {
+      "case": "vidstg-engineering-02",
+      "dataset": "vidstg",
+      "nodes": 154,
+      "phase": "all",
+      "all_arrays_bitexact": true,
+      "all_posteriors_gates_hidden_bitexact": true,
+      "RNG_equal": true,
+      "wall_seconds": 8.888925733976066,
+      "capture": {
+        "parse_seconds": 0.2511267529334873,
+        "Source_load_seconds": 1.1385418474674225e-07,
+        "Source224_seconds": 1.9589774841442704,
+        "Source448_seconds": 4.020203227177262,
+        "ERef_seconds": 0.00916279898956418,
+        "ReferDINO": {
+          "expert_seconds": 0.0,
+          "preprocess_seconds": 0.0,
+          "forward_seconds": 0.0,
+          "postprocess_seconds": 0.0
+        },
+        "ReferDINO_load_seconds": 0.0,
+        "ReferDINO_process_seconds": 0.0,
+        "ReferDINO_query_forwards": 0,
+        "ReferDINO_frames": 8,
+        "independent_GroundingDINO_forwards": 0,
+        "expert_instances": 1,
+        "peak_GPU_bytes": 2873526784,
+        "capture_wall_seconds": 7.177845519967377,
+        "initialization_strength_seconds": 0.008993360912427306
+      },
+      "adapt": {
+        "actual_updates": 30,
+        "fit_seconds": 1.3686814240645617,
+        "decoder_calls": 32
+      },
+      "visual_cache": {
+        "hits": 8,
+        "misses": 8,
+        "entries": 8,
+        "host_bytes": 2374482572,
+        "key_and_transfer_seconds": 6.000574522884563
+      },
+      "peak_allocated_GPU_bytes": 2873526784,
+      "new_expert_calls": 0
+    },
+    {
+      "case": "vidstg-engineering-03",
+      "dataset": "vidstg",
+      "nodes": 200,
+      "phase": "all",
+      "all_arrays_bitexact": true,
+      "all_posteriors_gates_hidden_bitexact": true,
+      "RNG_equal": true,
+      "wall_seconds": 18.475464900955558,
+      "capture": {
+        "parse_seconds": 0.2625927049666643,
+        "Source_load_seconds": 3.310851752758026e-07,
+        "Source224_seconds": 4.934935949044302,
+        "Source448_seconds": 10.084735218202695,
+        "ERef_seconds": 0.009402409195899963,
+        "ReferDINO": {
+          "expert_seconds": 0.0,
+          "preprocess_seconds": 0.0,
+          "forward_seconds": 0.0,
+          "postprocess_seconds": 0.0
+        },
+        "ReferDINO_load_seconds": 0.0,
+        "ReferDINO_process_seconds": 0.0,
+        "ReferDINO_query_forwards": 0,
+        "ReferDINO_frames": 8,
+        "independent_GroundingDINO_forwards": 0,
+        "expert_instances": 1,
+        "peak_GPU_bytes": 22673311744,
+        "capture_wall_seconds": 16.915557871107012,
+        "initialization_strength_seconds": 0.009168830001726747
+      },
+      "adapt": {
+        "actual_updates": 30,
+        "fit_seconds": 1.1861438998021185,
+        "decoder_calls": 32
+      },
+      "visual_cache": {
+        "hits": 8,
+        "misses": 16,
+        "entries": 10,
+        "host_bytes": 4032543144,
+        "key_and_transfer_seconds": 11.619219789514318
+      },
+      "peak_allocated_GPU_bytes": 22673311744,
+      "new_expert_calls": 0
+    }
+  ],
+  "migration": {
+    "old_plan_sha256": "4e0f79f69b9dba066c3c6734f7608de37f59754ca29f4a8f400d99fdef1969b7",
+    "new_plan_sha256": "6c5c2d33a2561004cd45f0b799c9816bab27d63f2c9181a4df2ec03f08ecb862",
+    "old_runtime_fingerprint": "f95bbd0d9c077faa0d5dac19e2bda087493e4011343a897188e4f5dc71c8b27d",
+    "new_runtime_fingerprint": "059775a6d5e2921fc9c94b90e059d9bf5ed3332ca50890cedaece1b0aee16285",
+    "changed_runtime_files": [
+      "stvg/_host.py",
+      "stvg/_visual.py",
+      "stvg/predictor.py",
+      "stvg/temporal.py",
+      "stvg/temporal_capture.py",
+      "stvg/visual_cache.py"
+    ],
+    "all_assets_versions_parameters_manifests_labels_unchanged": true,
+    "GT_used_for_selection": false,
+    "old_outputs_recomputed": false,
+    "queries": {
+      "hc2": 1902,
+      "vidstg": 296
+    },
+    "exact_teacher_evidence_rekeyed": 2325
+  }
+}

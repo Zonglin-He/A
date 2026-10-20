@@ -24,19 +24,23 @@ def residency_forward(original, namespace):
     staged = ("    assert not self.training and not torch.is_grad_enabled()\n"
               "    del vis_res_features\n"
               "    visual_device = vis_features.device\n"
-              "    vis_outputs = vis_outputs.to('cpu')\n"
-              "    vis_features = None\n"
-              "    vis_mask = None\n"
-              "    vis_pos_embed = _host_transfer(vis_pos_embed, 'cpu')\n"
-              "    _host_gc.collect()\n"
-              "    torch.cuda.empty_cache()\n"
+              "    cache_probe = getattr(self.vid.forward, 'cache_will_hit', None)\n"
+              "    visual_cache_hit = cache_probe is not None and cache_probe(videos.tensors, len(videos.tensors))\n"
+              "    if not visual_cache_hit:\n"
+              "        vis_outputs = vis_outputs.to('cpu')\n"
+              "        vis_features = None\n"
+              "        vis_mask = None\n"
+              "        vis_pos_embed = _host_transfer(vis_pos_embed, 'cpu')\n"
+              "        _host_gc.collect()\n"
+              "        torch.cuda.empty_cache()\n"
               "    try:\n"
               "        with torch.no_grad():\n"
               "            vid_features_all = self.vid(videos.tensors, len(videos.tensors))\n"
               "    finally:\n"
-              "        vis_outputs = vis_outputs.to(visual_device)\n"
-              "        vis_features, vis_mask, vis_durations = vis_outputs.decompose()\n"
-              "        vis_pos_embed = _host_transfer(vis_pos_embed, visual_device)\n")
+              "        if not visual_cache_hit:\n"
+              "            vis_outputs = vis_outputs.to(visual_device)\n"
+              "            vis_features, vis_mask, vis_durations = vis_outputs.decompose()\n"
+              "            vis_pos_embed = _host_transfer(vis_pos_embed, visual_device)\n")
     modified = source.replace(anchor, staged)
     # Removing the sole residency insertion reconstructs the original source.
     assert modified.replace(staged, anchor) == source

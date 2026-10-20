@@ -3,6 +3,7 @@ import json,time,gc
 from pathlib import Path
 import numpy as np,torch
 from stvg.source import frozen_forward
+from stvg.temporal_capture import frozen_temporal_forward
 from stvg.tensors import detached
 from stvg.readout import prediction
 from stvg.temporal import probabilities, mass_table, final_mbr
@@ -39,7 +40,7 @@ class SingleReferDINOOPDPredictor:
         lq=[mass_table(probabilities(recs,[x[k]for x in layers]))[1]for k in range(6)]
         native_interval=final_mbr(U,q)['interval'];positions=observation_positions(U,native['indices'])
         del batch,base;gc.collect();torch.cuda.empty_cache();tick=time.perf_counter()
-        with resolution(448):batch,hrrecs,hr=frozen_forward(model,frames,row)
+        with resolution(448):batch,hrrecs,hr=frozen_temporal_forward(model,frames,row,audit=False)
         hu,hq=mass_table(probabilities(hrrecs,detached(hr.zero['logits'],'cpu')));assert hu==U
         strong=.5*hq+.5*np.mean(lq,axis=0);strong_interval=final_mbr(U,strong)['interval'];torch.cuda.synchronize();cost['Source448_seconds']=time.perf_counter()-tick
         del batch,hr;model.cpu();gc.collect();torch.cuda.empty_cache()

@@ -9,10 +9,24 @@ def probabilities(records,logits):
         z=np.asarray(z);assert z.dtype==np.float32 and z.shape==(1,len(rec['frame_ids']),2)and np.isfinite(z).all();v=z[0].astype(np.float64);ij=np.asarray(np.triu_indices(len(v),1));score=v[ij[0],0]+v[ij[1],1];p=np.exp(score-logsumexp(score));assert abs(float(p.sum())-1)<1e-12;grids.append(dict(ids=list(map(int,rec['frame_ids'])),ij=ij,p=p))
     assert len(grids)==2;return grids
 
+# One exact physical grid at a time; at most 256 MiB, no model/query state.
+_GEOMETRY_CACHE = None
+_GEOMETRY_LIMIT_BYTES = 256 * 2**20
+
+
 def mass_table(grids):
-    ids=sorted({x for g in grids for x in g['ids']});idx={x:i for i,x in enumerate(ids)};n=len(ids);s=[];e=[]
-    for g in grids:s.append(np.array([idx[g['ids'][i]]for i in g['ij'][0]]));e.append(np.array([idx[g['ids'][i]]for i in g['ij'][1]]))
-    key=np.minimum(s[0][:,None],s[1][None,:])*n+np.maximum(e[0][:,None],e[1][None,:]);w=grids[0]['p'][:,None]*grids[1]['p'][None,:];M=np.bincount(key.ravel(),weights=w.ravel(),minlength=n*n).reshape(n,n);assert np.isfinite(M).all()and (M>=0).all()and abs(float(M.sum())-1)<1e-12;return ids,M
+    global _GEOMETRY_CACHE
+    signature=tuple((tuple(g['ids']),g['ij'].shape,g['ij'].tobytes())for g in grids)
+    if _GEOMETRY_CACHE is not None and _GEOMETRY_CACHE[0]==signature:
+        _,saved_ids,key=_GEOMETRY_CACHE;ids=list(saved_ids);n=len(ids)
+    else:
+        ids=sorted({x for g in grids for x in g['ids']});idx={x:i for i,x in enumerate(ids)};n=len(ids);s=[];e=[]
+        for g in grids:s.append(np.array([idx[g['ids'][i]]for i in g['ij'][0]]));e.append(np.array([idx[g['ids'][i]]for i in g['ij'][1]]))
+        key=np.minimum(s[0][:,None],s[1][None,:])*n+np.maximum(e[0][:,None],e[1][None,:])
+        key=key.ravel()
+        _GEOMETRY_CACHE=(signature,tuple(ids),key)if key.nbytes<=_GEOMETRY_LIMIT_BYTES else None
+    w=grids[0]['p'][:,None]*grids[1]['p'][None,:]
+    M=np.bincount(key,weights=w.ravel(),minlength=n*n).reshape(n,n);assert np.isfinite(M).all()and (M>=0).all()and abs(float(M.sum())-1)<1e-12;return ids,M
 
 
 def expected_iou_fast(ids,q):

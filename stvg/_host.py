@@ -19,6 +19,9 @@ def inactive_modules_on_host(model):
 
     def before(module, args):
         assert not active[0]
+        probe = getattr(module.forward, 'cache_will_hit', None)
+        if probe is not None and probe(*args):
+            return
         # Those exact modules have already produced the current visual tensors,
         # or will only run after Video Swin returns. No arithmetic is replaced.
         for child in others:

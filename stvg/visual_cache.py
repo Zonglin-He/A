@@ -70,6 +70,20 @@ class DeviceDict(dict):
     def copy(self):return {key:self[key]for key in self.keys()}
 
 
+def call_identity(value):
+    """Cheap mutation-aware identity for a probe and its immediately following call."""
+    if torch.is_tensor(value):
+        try: version = value._version
+        except RuntimeError: version = None
+        return ('tensor', id(value), tuple(value.shape), str(value.dtype), str(value.device), version)
+    if hasattr(value, 'tensors') and hasattr(value, 'mask'):
+        return ('nested', id(value), call_identity(value.tensors), call_identity(value.mask), tuple(value.durations))
+    if isinstance(value, dict): return ('dict', tuple((k, call_identity(v)) for k,v in value.items()))
+    if isinstance(value, (list, tuple)): return (type(value).__name__, tuple(call_identity(v) for v in value))
+    if value is None or isinstance(value, (str, int, float, bool)): return (type(value).__name__, value)
+    raise TypeError('Unsupported cache probe input: '+str(type(value)))
+
+
 class VisualCache:
     def __init__(self, max_bytes=2048*2**20):
         self.max_bytes=int(max_bytes);self.values=OrderedDict();self.model=None
@@ -87,20 +101,40 @@ class VisualCache:
         try:
             for name in ('vis_encoder','vid'):
                 module=getattr(source,name);original=module.forward
-                def cached(*args,_name=name,_module=module,_original=original,**kwargs):
-                    assert not _module.training and not torch.is_grad_enabled()
-                    start=time.perf_counter();h=hashlib.sha256((_name+namespace+str(torch.is_autocast_enabled())+str(torch.get_autocast_dtype('cuda'))).encode());signature((args,kwargs),h);key=h.hexdigest()
-                    first=args[0];device=first.device if torch.is_tensor(first)else first.tensors.device
-                    if key in self.values:
-                        self.hits+=1;entry=self.values.pop(key);self.values[key]=entry
-                        result=DeviceDict(entry,device)if _name=='vid'and isinstance(entry,dict)else transfer(entry,device,clone=True);self.seconds+=time.perf_counter()-start;return result
-                    self.seconds+=time.perf_counter()-start;self.misses+=1;result=_original(*args,**kwargs)
-                    start=time.perf_counter();entry=transfer(result,'cpu',clone=True);size=nbytes(entry)
-                    if size<=self.max_bytes:
-                        while self.values and self.bytes+size>self.max_bytes:
-                            _,old=self.values.popitem(last=False);self.bytes-=nbytes(old)
-                        self.values[key]=entry;self.bytes+=size
-                    self.seconds+=time.perf_counter()-start;return result
+                def make_cached(name, module, original):
+                    pending = [None]
+                    def prepared_key(args, kwargs):
+                        assert not module.training and not torch.is_grad_enabled()
+                        mode = (torch.is_autocast_enabled(), str(torch.get_autocast_dtype('cuda')))
+                        token = (call_identity((args, kwargs)), mode)
+                        if pending[0] is not None and pending[0][0] == token:
+                            return pending[0][1]
+                        start = time.perf_counter()
+                        h=hashlib.sha256((name+namespace+str(mode[0])+mode[1]).encode())
+                        signature((args,kwargs),h);key=h.hexdigest()
+                        self.seconds+=time.perf_counter()-start
+                        pending[0]=(token,key,args,kwargs)
+                        return key
+                    def will_hit(*args, **kwargs):
+                        return prepared_key(args, kwargs) in self.values
+                    def cached(*args, **kwargs):
+                        key=prepared_key(args,kwargs);pending[0]=None
+                        first=args[0];device=first.device if torch.is_tensor(first)else first.tensors.device
+                        start=time.perf_counter()
+                        if key in self.values:
+                            self.hits+=1;entry=self.values.pop(key);self.values[key]=entry
+                            result=DeviceDict(entry,device)if name=='vid'and isinstance(entry,dict)else transfer(entry,device,clone=True)
+                            self.seconds+=time.perf_counter()-start;return result
+                        self.misses+=1;result=original(*args,**kwargs)
+                        start=time.perf_counter();entry=transfer(result,'cpu',clone=True);size=nbytes(entry)
+                        if size<=self.max_bytes:
+                            while self.values and self.bytes+size>self.max_bytes:
+                                _,old=self.values.popitem(last=False);self.bytes-=nbytes(old)
+                            self.values[key]=entry;self.bytes+=size
+                        self.seconds+=time.perf_counter()-start;return result
+                    cached.cache_will_hit=will_hit
+                    return cached
+                cached=make_cached(name,module,original)
                 saved.append((module,original));module.forward=cached
             yield
         finally:
