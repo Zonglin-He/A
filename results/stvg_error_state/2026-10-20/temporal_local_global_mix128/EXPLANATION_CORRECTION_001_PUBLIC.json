@@ -1,0 +1,28 @@
+{
+  "status": "valid_explanation_label_correction",
+  "original_file": "COMPLEMENTARITY_PUBLIC.json",
+  "original_sha256": "271333e1b85e1b80c9145f6303646d41d9fa5b251d5bddeb4e1e71bf35c15cb0",
+  "canonical_corrected_file": "COMPLEMENTARITY_CORRECTED_PUBLIC.json",
+  "source_line": "scripts/score_stvg_temporal_local_global_mix128_v1.py:32",
+  "issue": "Dense_gain_sign_retained_parents actually counted New>Native even in Strong_only/neither, where Dense has no positive gain; rename to New_positive_parents and separately restrict Dense-positive count.",
+  "formula": {
+    "New_positive": "group AND (New-Native)>1e-10pp",
+    "Dense_positive_gain_sign_retained": "group AND (Dense-Native)>1e-10pp AND (New-Native)>1e-10pp"
+  },
+  "old_counts": {
+    "both_improve": 47,
+    "Dense_only": 20,
+    "Strong_only": 4,
+    "neither": 3
+  },
+  "corrected_Dense_positive_counts": {
+    "both_improve": 47,
+    "Dense_only": 20,
+    "Strong_only": 0,
+    "neither": 0
+  },
+  "sealed_predictions_unchanged": true,
+  "all_primary_and_signed_metrics_unchanged": true,
+  "no_new_GT_scoring": true,
+  "new_model_forwards": 0
+}
