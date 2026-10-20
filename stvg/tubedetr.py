@@ -245,6 +245,9 @@ class TubePredictor:
         del hr
         torch.cuda.synchronize()
         strong_seconds = time.perf_counter() - tick
+        # The teacher owns a separate CUDA allocator. Release the completed
+        # high-resolution forward's unused cache before handing it the GPU.
+        torch.cuda.empty_cache()
         source_idle_bytes = torch.cuda.memory_allocated()
         teacher = (self.teacher or refer_native)(frames[positions], metadata['caption'])
         raw, init = initialize(native['source'].double().numpy(), positions, np.asarray(teacher['boxes']), self.config['E_calibration'])

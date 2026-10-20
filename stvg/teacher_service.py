@@ -86,7 +86,12 @@ class PersistentRefer:
 
     def close(self):
         if self.process.is_alive():
-            self.connection.send(None)
+            try:
+                self.connection.send(None)
+            except (BrokenPipeError, EOFError, OSError):
+                # A failed worker may already have closed its pipe. Preserve
+                # the original inference error while still joining our child.
+                pass
         self.process.join(timeout=30)
         if self.process.is_alive():
             self.process.terminate()  # only this explicitly owned worker

@@ -1,45 +1,45 @@
 {
-  "status": "engineering_implemented_assets_in_progress_formal_not_started",
-  "as_of": "2026-10-20T17:01:08.484320+08:00",
+  "status": "real_model_qualification_pass_formal_waiting_for_canonical_data",
+  "as_of": "2026-10-20T17:27:40.237401+08:00",
   "base_commit": "c5afd0a7584e98f47fc8e0bde2d92b54b9ba488e",
   "branch": "tubedetr",
-  "implementation_sha256": "812409d1f93f04fa435175904bf90b778675e90c6bebf914201c4996ccb6f506",
+  "implementation_sha256": "f30171f520aa10fa6a879ca84077e043f444e5d947e8110c42bf9b292c9d349b",
   "assets": {
     "TubeDETR_VidSTG": {
-      "complete_file": false,
-      "verified_chunk_bytes": 1426063360,
+      "complete_file": true,
+      "verified_chunk_bytes": 2963970961,
       "expected_bytes": 2963970961,
-      "status": "downloading"
+      "status": "complete_and_whole_SHA256_verified"
     },
     "TubeDETR_HC2": {
-      "complete_file": false,
-      "verified_chunk_bytes": 1468006400,
+      "complete_file": true,
+      "verified_chunk_bytes": 2963971089,
       "expected_bytes": 2963971089,
-      "status": "downloading"
+      "status": "complete_and_whole_SHA256_verified"
     },
     "ReferDINO": {
       "complete_file": true,
       "verified_chunk_bytes": 1119126392,
       "expected_bytes": 1119126392,
-      "status": "complete"
+      "status": "complete_and_whole_SHA256_verified"
     },
     "VidOR_validation_video": {
-      "complete_file": false,
-      "verified_chunk_bytes": 2105540608,
+      "complete_file": true,
+      "verified_chunk_bytes": 3056763915,
       "expected_bytes": 3056763915,
-      "status": "downloading"
+      "status": "complete_and_whole_SHA256_verified"
     }
   },
   "CPU_tests": "20 passed",
   "single_frozen_ReferDINO_service": "real GPU pass, repeated identical eight-frame inputs bitexact",
   "physical_frames": "two real inputs pass independent streaming selection",
-  "native_pretrained_TubeDETR_pipeline": "pending; bootstrap will run after complete verified checkpoints",
+  "native_pretrained_TubeDETR_pipeline": "pass; results/tubedetr/qualification.json",
   "formal_combinations_completed": 0,
   "task_accuracy_claims": false,
   "blockers": [
-    "HC3482 val_v2.json byte-verified acquisition and complete media",
-    "cross-machine population and RGB agreement",
-    "complete TubeDETR checkpoints and real-pipeline qualification"
+    "HC3482 historical annotation retrieval and official release/split provenance; reconcile with older HC2 validation releases",
+    "complete media for the agreed HC2 evaluation population",
+    "cross-machine population, physical grid and RGB agreement"
   ],
   "old_results_rewritten": false
 }

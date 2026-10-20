@@ -1,0 +1,146 @@
+{
+  "status": "pass",
+  "scope": "two real-input interface checks, not accuracy evidence",
+  "implementation_sha256": "f30171f520aa10fa6a879ca84077e043f444e5d947e8110c42bf9b292c9d349b",
+  "datasets": {
+    "hc2": {
+      "checkpoint_sha256": "2802c66049b2e7986a826b4bbd291eb8521446cfba6fee03b56729438bf44213",
+      "load": {
+        "checkpoint_sha256": "2802c66049b2e7986a826b4bbd291eb8521446cfba6fee03b56729438bf44213",
+        "state_key": "model_ema",
+        "missing": [
+          "transformer.time_embed.te"
+        ],
+        "unexpected": [
+          "transformer.text_encoder.embeddings.position_ids"
+        ],
+        "all_learned_parameters_covered": true,
+        "legacy_pool_size": 2,
+        "stride": 2,
+        "resolution": 224,
+        "upstream_revision": "d70c0eed94da09a9a5e4329c937230ecfb1d3ee6"
+      },
+      "request_sha256": "bff072ee9f4c11a31cd439335468df6cec83c4a0a2cb0f31b9937db357165415",
+      "physical_grid_sha256": "c801c5ee7add130dce7c054b5088f3642b20f785ace135a4e696ce25f985d33e",
+      "real_frames": 129,
+      "zero_replay_bitexact": true,
+      "reset_bitexact": true,
+      "full_reencode_after_adaptation_bitexact": true,
+      "network_state_hash_unchanged": true,
+      "actual_pretrained_content_gradient_finite_nonzero": true,
+      "temporal_layers": 6,
+      "official_native_temporal_postprocess": true,
+      "same_eight_frame_evidence": true,
+      "full_locked_updates": 40,
+      "cost": {
+        "source_seconds": 0.441823354922235,
+        "source_load_seconds": 9.071081876754761e-07,
+        "strong_seconds": 1.6976157436147332,
+        "adaptation_seconds": 0.42255750205367804,
+        "teacher": {
+          "expert_seconds": 0.45985211804509163,
+          "preprocess_seconds": 0.04242257587611675,
+          "forward_seconds": 0.41326974518597126,
+          "postprocess_seconds": 0.004159796983003616
+        },
+        "teacher_load_seconds": 4.063961856067181,
+        "total_seconds": 3.827023700810969,
+        "source_peak_bytes": 3839114752,
+        "teacher_peak_bytes": 2273296384,
+        "peak_combined_allocated_bytes": 12841304064,
+        "actual_updates": 40,
+        "decoder_calls": 43
+      },
+      "GT_read": false
+    },
+    "vidstg": {
+      "checkpoint_sha256": "c646a8b7131bb28806c350e16479cd8bb31d4425ccb15129b26a6e4d38dd4222",
+      "load": {
+        "checkpoint_sha256": "c646a8b7131bb28806c350e16479cd8bb31d4425ccb15129b26a6e4d38dd4222",
+        "state_key": "model_ema",
+        "missing": [
+          "transformer.time_embed.te"
+        ],
+        "unexpected": [
+          "transformer.text_encoder.embeddings.position_ids"
+        ],
+        "all_learned_parameters_covered": true,
+        "legacy_pool_size": 2,
+        "stride": 2,
+        "resolution": 224,
+        "upstream_revision": "d70c0eed94da09a9a5e4329c937230ecfb1d3ee6"
+      },
+      "request_sha256": "87a4344aa05a6cc5eb9437d29e870c0ddfd3fabd2d1447e7990a3949305d1e37",
+      "physical_grid_sha256": "caba832c43f9c87526051ecff7362222c619be6c55f2c474bffaeed682a02bbf",
+      "real_frames": 128,
+      "zero_replay_bitexact": true,
+      "reset_bitexact": true,
+      "full_reencode_after_adaptation_bitexact": true,
+      "network_state_hash_unchanged": true,
+      "actual_pretrained_content_gradient_finite_nonzero": true,
+      "temporal_layers": 6,
+      "official_native_temporal_postprocess": true,
+      "same_eight_frame_evidence": true,
+      "full_locked_updates": 30,
+      "cost": {
+        "source_seconds": 0.32107721269130707,
+        "source_load_seconds": 8.083879947662354e-07,
+        "strong_seconds": 1.382201756350696,
+        "adaptation_seconds": 0.2738119550049305,
+        "teacher": {
+          "expert_seconds": 0.1943985177204013,
+          "preprocess_seconds": 0.020668454468250275,
+          "forward_seconds": 0.1734354356303811,
+          "postprocess_seconds": 0.0002946276217699051
+        },
+        "teacher_load_seconds": 4.063961856067181,
+        "total_seconds": 2.8383653638884425,
+        "source_peak_bytes": 3338277376,
+        "teacher_peak_bytes": 1918897664,
+        "peak_combined_allocated_bytes": 10995004416,
+        "actual_updates": 30,
+        "decoder_calls": 33
+      },
+      "GT_read": false
+    }
+  },
+  "decoder_asset": {
+    "ffmpeg_path": "/home/wwww/stvg/envs/ffmpeg-source/bin/ffmpeg",
+    "ffmpeg_sha256": "0c11f24b44a94b4d2ee6788c5d570a51870ed4835ffe79745bbe5970cd3a13e6",
+    "ffmpeg_version": "8.0.1",
+    "historical_ffmpeg_sha256": "bfec0e82c8497b0b979b1a7812ba1101da3646e8a3330bcb5537badb840a527e",
+    "historical_binary_parity_verified": false,
+    "source_archive_sha256": "05ee0b03119b45c0bdb4df654b96802e909e0a752f72e4fe3794f487229e5a41",
+    "scope": "new TubeDETR adapter environment; no historical TA-STVG bitexact claim"
+  },
+  "runtime_asset": {
+    "files": {
+      "runtime/referdino/bert-from-frozen-teacher/config.json": "419ba88454ddf8606d3f6edfe05d1cada06cf91aed14693d05eefbf7e486b1de",
+      "runtime/referdino/bert-from-frozen-teacher/model.safetensors": "fb64b98f8eeb0fd852c30a53032680a2efc48a29bcff790bd0e15f52d1340575",
+      "runtime/referdino/bert-from-frozen-teacher/special_tokens_map.json": "b6d346be366a7d1d48332dbc9fdf3bf8960b5d879522b7799ddba59e76237ee3",
+      "runtime/referdino/bert-from-frozen-teacher/tokenizer.json": "d241a60d5e8f04cc1b2b3e9ef7a4921b27bf526d9f6050ab90f9267a1f9e5c66",
+      "runtime/referdino/bert-from-frozen-teacher/tokenizer_config.json": "1f92c93d2e31974acffab86d48e80a9357acb18c68346c5472ef1d12c72d5d77",
+      "runtime/referdino/bert-from-frozen-teacher/vocab.txt": "07eced375cec144d27c900241f3e339478dec958f92fddbc551f295c992038a3",
+      "runtime/referdino/cuda_build/MultiScaleDeformableAttention.so": "3144ad561985364ae1d6500f17920babfc96f04aad3bb1f5756164067822d98a",
+      "runtime/tubedetr/roberta-base/config.json": "ef0185e2aae6e06c5f105a285006952c340e20c7dbf43c86ec82601b13fc45e9",
+      "runtime/tubedetr/roberta-base/merges.txt": "1ce1664773c50f3e0cc8842619a93edc4624525b728b188a9e0be33b7726adc5",
+      "runtime/tubedetr/roberta-base/tokenizer.json": "847bbeab6174d66a88898f729d52fa8d355fafe1bea101cf960dd404581df70e",
+      "runtime/tubedetr/roberta-base/tokenizer_config.json": "994f46754c5bf4014f1aa92d34b1374319c3a6b3f702105cd5b742beaecd18ce",
+      "runtime/tubedetr/roberta-base/vocab.json": "9e7f63c2d15d666b52e21d250d2e513b87c9b713cfa6987a82ed89e5e6e50655"
+    },
+    "packages": {
+      "torch": "2.7.0+cu128",
+      "torchvision": "0.22.0+cu128",
+      "transformers": "4.52.4",
+      "numpy": "1.26.4",
+      "scipy": "1.15.3",
+      "timm": "1.0.15",
+      "einops": "0.8.2",
+      "Pillow": "12.2.0"
+    },
+    "python": "3.10.13 (main, Sep 11 2023, 13:44:35) [GCC 11.2.0]"
+  },
+  "elapsed_seconds": 28.025374047458172,
+  "labels_read": false,
+  "development_exposure": "register both input identities as engineering exposure before any later task scoring"
+}

@@ -91,6 +91,10 @@ VidOR作者发布的验证视频包 SHA256 为 `40dd102b43ecd2ed70f2dc38ee082583
 
 本文件描述实现和可执行流程，**不代表已完成四个TubeDETR正式评价组合，也不包含新准确率结论**。
 
-已有单专家真实GPU重复性回执见 [teacher_service_check.json](../results/tubedetr/teacher_service_check.json)：完整checkpoint哈希匹配、两个相同八帧调用逐位一致、一个专家、零独立检测器。这不代替完整学生流水线资格检查。CPU与物理帧工程证据见 [engineering_checks.json](../results/tubedetr/engineering_checks.json)，当前范围见 [STATUS.json](../results/tubedetr/STATUS.json)。
+2026-10-20 两个方向的完整真实模型资格检查已通过，见 [qualification.json](../results/tubedetr/qualification.json)：全部学习参数恢复、实际content梯度有限非零、零状态重放和重置逐位一致、HC40／Vid30固定更新、适应后重新编码逐位一致、完整网络状态哈希不变。检查不读取GT，不产生准确率结论。首次完整调用在Strong前向后遭遇跨进程CUDA allocator闲置缓存占用导致的专家OOM；在专家调用前释放闲置缓存后，同一输入和方法配置通过。关闭已失败专家时保留原始异常。
+
+四份大型资产现已完整下载并核对整文件SHA256。VidSTG完整10303 query／732视频清单已生成，所有必需媒体通过ZIP成员CRC校验，无缺失或过滤；版本和候选总体指纹见 [data_intake.json](../results/tubedetr/data_intake.json)。它仍等待跨机器规范化总体与实际RGB核对，不能由本机回执单方面宣称已统一。
+
+已有单专家真实GPU重复性回执见 [teacher_service_check.json](../results/tubedetr/teacher_service_check.json)：完整checkpoint哈希匹配、两个相同八帧调用逐位一致、一个专家、零独立检测器。CPU与物理帧工程证据见 [engineering_checks.json](../results/tubedetr/engineering_checks.json)，当前范围见 [STATUS.json](../results/tubedetr/STATUS.json)。
 
 补充工具：`tools/acquire_tubedetr_assets.py` 对已授权的四个下载做有限断点恢复；`tools/prepare_tubedetr_run.py --wait-for-assets` 在资产完整后接续真实模型资格检查与完整Vid清单生成，在缺少统一协议时明确停住。`tools/report_tubedetr_efficiency.py` 只汇总完整封存总体；`tools/render_tubedetr_qualitative.py` 只在独立评分后绘制同帧Source／Ours／GT，并披露确定性事后选例规则及不存在的类别。
