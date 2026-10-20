@@ -1,5 +1,7 @@
 # STVG OPD
 
+TubeDETR 独立迁移分支的接口、资产版本核对、工程资格检查和新 query 平均评分入口见 [docs/tubedetr.md](docs/tubedetr.md)。本机只负责 TubeDETR 两个跨域方向；该入口不修改下面保留的 TA-STVG 方法配置或旧结果。
+
 本地独立项目位于 `stvg-opd/`，先进入该目录运行以下命令。当前机器通过忽略的本地链接使用外层数据、权重、运行库、输出和环境，不重复复制；独立克隆时也可以将这些资产放进同名目录。
 
 唯一主方法：**单 ReferDINO 初始化 + 空间 OPD + Strong 时间分支**。

@@ -1,0 +1,22 @@
+{
+  "common": {
+    "backbone": "TubeDETR",
+    "upstream_revision": "d70c0eed94da09a9a5e4329c937230ecfb1d3ee6",
+    "stride": 2,
+    "native_resolution": 224,
+    "strong_resolution": 448,
+    "temporal": "0.5 high-resolution posterior + 0.5 native six-layer mean; physical MBR",
+    "Source_temporal": "official native full-grid MAP; end frame + 1",
+    "calibration_policy": "transfer the existing frozen calibration unchanged; do not claim TubeDETR-specific source calibration"
+  },
+  "datasets": {
+    "hc2": {
+      "source_checkpoint": "checkpoints/tubedetr/vidstg_k2_res224.pth",
+      "source_checkpoint_sha256": "2802c66049b2e7986a826b4bbd291eb8521446cfba6fee03b56729438bf44213"
+    },
+    "vidstg": {
+      "source_checkpoint": "checkpoints/tubedetr/hc2_k2_res224.pth",
+      "source_checkpoint_sha256": "c646a8b7131bb28806c350e16479cd8bb31d4425ccb15129b26a6e4d38dd4222"
+    }
+  }
+}

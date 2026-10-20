@@ -8,6 +8,9 @@ def records(path):
 def write(path,value):
  path=Path(path);path.parent.mkdir(parents=True,exist_ok=True);path.write_text(json.dumps(value,indent=2,ensure_ascii=False)+'\n')
 def predict(args):
+ if getattr(args,'backbone','tastvg')=='tubedetr':
+  from .tube_runner import predict as run
+  return run(args)
  import numpy as np
  from .runtime import ROOT,setup,lease
  from .decode import decode
@@ -23,6 +26,9 @@ def predict(args):
   write(dest.with_suffix('.json'),dict(dataset=ds,key=request.get('key','single-query'),configuration=p.config,prediction_sha256=digest(dest),input_sha256=digest(args.request),expert_count=1,total_seconds=time.perf_counter()-start,capture=out['capture_cost'],adapt=out['cost'],labels_read=False))
  finally:lock.close()
 def evaluate(args):
+ if getattr(args,'backbone','tastvg')=='tubedetr':
+  from .tube_runner import evaluate as run
+  return run(args)
  rows=records(args.manifest);dest=Path(args.output);dest.mkdir(parents=True,exist_ok=True)
  assert len({r['id']for r in rows})==len(rows),'Repeated evaluation IDs'
  assert not (dest/'sealed.json').exists(),'Evaluation already sealed'
@@ -37,13 +43,17 @@ def evaluate(args):
  print('Sealed',len(rows),'predictions')
 def score(args):
  os.environ['CUDA_VISIBLE_DEVICES']=''
- from .evaluation import score as run
- run(args.manifest,args.labels,args.predictions,args.output)
+ if getattr(args,'aggregation','legacy-parent')=='query':
+  from .evaluation_v2 import score as run
+  run(args.manifest,args.labels,args.predictions,args.output,arms=args.arms.split(','))
+ else:
+  from .evaluation import score as run
+  run(args.manifest,args.labels,args.predictions,args.output)
 def main():
  parser=argparse.ArgumentParser(prog='python -m stvg',description='Single ReferDINO initialization + spatial OPD + Strong time')
  sub=parser.add_subparsers(dest='command',required=True)
- p=sub.add_parser('predict',help='Predict one label-free video/text request');p.add_argument('--request',required=True);p.add_argument('--output',required=True);p.set_defaults(run=predict)
- p=sub.add_parser('evaluate',help='Run a fixed manifest and seal all predictions');p.add_argument('--manifest',required=True);p.add_argument('--output',required=True);p.set_defaults(run=evaluate)
- p=sub.add_parser('score',help='Score sealed predictions offline; no model inference');p.add_argument('--manifest',required=True);p.add_argument('--labels',required=True);p.add_argument('--predictions',required=True);p.add_argument('--output',required=True);p.set_defaults(run=score)
+ p=sub.add_parser('predict',help='Predict one label-free video/text request');p.add_argument('--backbone',choices=['tastvg','tubedetr'],default='tastvg');p.add_argument('--request',required=True);p.add_argument('--output',required=True);p.set_defaults(run=predict)
+ p=sub.add_parser('evaluate',help='Run a fixed manifest and seal all predictions');p.add_argument('--backbone',choices=['tastvg','tubedetr'],default='tastvg');p.add_argument('--manifest',required=True);p.add_argument('--output',required=True);p.add_argument('--protocol');p.add_argument('--qualification');p.set_defaults(run=evaluate)
+ p=sub.add_parser('score',help='Score sealed predictions offline; no model inference');p.add_argument('--manifest',required=True);p.add_argument('--labels',required=True);p.add_argument('--predictions',required=True);p.add_argument('--output',required=True);p.add_argument('--aggregation',choices=['legacy-parent','query'],default='legacy-parent');p.add_argument('--arms',default='Source,Full');p.set_defaults(run=score)
  args=parser.parse_args();args.run(args)
 if __name__=='__main__':main()
