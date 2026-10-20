@@ -6,10 +6,10 @@ Only completely sealed, scored and hash-bound jobs contribute numbers. Pending, 
 
 | Backbone | Target | Output | m_vIoU % | vIoU@0.3 % | vIoU@0.5 % | Status |
 |---|---|---|---:|---:|---:|---|
-| tastvg | hc2 | Source | — | — | — | pending |
-| tastvg | hc2 | Full | — | — | — | pending |
-| tastvg | vidstg | Source | — | — | — | pending |
-| tastvg | vidstg | Full | — | — | — | pending |
+| tastvg | hc2 | Source | 24.9948 | 37.8023 | 12.8812 | completed |
+| tastvg | hc2 | Full | 26.8784 | 40.8517 | 14.5636 | completed |
+| tastvg | vidstg | Source | — | — | — | running |
+| tastvg | vidstg | Full | — | — | — | running |
 | cgstvg | hc2 | Source | — | — | — | pending |
 | cgstvg | hc2 | Full | — | — | — | pending |
 | cgstvg | vidstg | Source | — | — | — | pending |
@@ -21,11 +21,11 @@ Official vIoU@ thresholds use strict >0.3 and >0.5. m_sIoU uses the dense fixed-
 
 | Target | Output | m_vIoU % | vIoU@0.3 % | vIoU@0.5 % | m_tIoU % | m_sIoU % | Unobserved actual m_sIoU % |
 |---|---|---:|---:|---:|---:|---:|---:|
-| hc2 | Source | — | — | — | — | — | — |
-| hc2 | Spatial | — | — | — | — | — | — |
-| hc2 | Temporal | — | — | — | — | — | — |
-| hc2 | Full | — | — | — | — | — | — |
-| hc2 | WithoutOPD | — | — | — | — | — | — |
+| hc2 | Source | 24.9948 | 37.8023 | 12.8812 | 48.6473 | 50.6858 | 51.0497 |
+| hc2 | Spatial | 26.1279 | 39.3270 | 14.5636 | 48.6473 | 52.4878 | 52.4640 |
+| hc2 | Temporal | 25.7652 | 39.0641 | 12.1451 | 50.3561 | 50.6858 | 51.0497 |
+| hc2 | Full | 26.8784 | 40.8517 | 14.5636 | 50.3561 | 52.4878 | 52.4640 |
+| hc2 | WithoutOPD | 26.6088 | 40.4311 | 14.5110 | 50.3561 | 51.9112 | 51.9662 |
 | vidstg | Source | — | — | — | — | — | — |
 | vidstg | Spatial | — | — | — | — | — | — |
 | vidstg | Temporal | — | — | — | — | — | — |
@@ -34,11 +34,11 @@ Official vIoU@ thresholds use strict >0.3 and >0.5. m_sIoU uses the dense fixed-
 
 | Target | Output | tIoU>=0.5 % | tIoU=0 % | Boundary MAE seconds | Observed actual m_sIoU % |
 |---|---|---:|---:|---:|---:|
-| hc2 | Source | — | — | — | — |
-| hc2 | Spatial | — | — | — | — |
-| hc2 | Temporal | — | — | — | — |
-| hc2 | Full | — | — | — | — |
-| hc2 | WithoutOPD | — | — | — | — |
+| hc2 | Source | 50.7886 | 7.6236 | 3.2907 | 51.4714 |
+| hc2 | Spatial | 50.7886 | 7.6236 | 3.2907 | 54.1387 |
+| hc2 | Temporal | 51.8402 | 4.8370 | 3.1712 | 51.4714 |
+| hc2 | Full | 51.8402 | 4.8370 | 3.1712 | 54.1387 |
+| hc2 | WithoutOPD | 51.8402 | 4.8370 | 3.1712 | 52.7022 |
 | vidstg | Source | — | — | — | — |
 | vidstg | Spatial | — | — | — | — |
 | vidstg | Temporal | — | — | — | — |
@@ -49,7 +49,7 @@ Official vIoU@ thresholds use strict >0.3 and >0.5. m_sIoU uses the dense fixed-
 
 | Backbone | Target | Full query wall mean s | Adaptation mean s | Complete allocated CUDA peak GiB | Standalone Source total s |
 |---|---|---:|---:|---:|---:|
-| tastvg | hc2 | — | — | — | — |
+| tastvg | hc2 | 8.6510 | 1.1034 | 8.0851 | — |
 | tastvg | vidstg | — | — | — | — |
 | cgstvg | hc2 | — | — | — | — |
 | cgstvg | vidstg | — | — | — | — |
