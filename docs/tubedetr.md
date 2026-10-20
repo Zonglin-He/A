@@ -102,3 +102,5 @@ VidOR作者发布的验证视频包 SHA256 为 `40dd102b43ecd2ed70f2dc38ee082583
 2026-10-20用户确认1902后，已启动完整VidSTG配对正式推理并同时采集HC1902媒体。冻结的VidSTG协议见 [protocol_vidstg.json](../results/tubedetr/protocol_vidstg.json)。`tools/complete_tubedetr_main.py` 是本次已授权实验的有限续跑：等待现有完整Vid封存后离线评分，等待HC全部媒体和完整清单后接续另一个方向，再生成主表、效率及离线定性结果。模型或数据失败即停止，不丢弃query、不调参、不运行其他backbone；最终完整结果落盘后仍需核验并发布。当前状态以本地progress和queue回执为准，本说明不预报准确率。
 
 完整运行曾因精简FFmpeg不支持FLV容器而在第95条输入停止（原文件后缀为.mp4，实际VP6F）；没有数据损坏证据。94条未评分部分输出及旧资格/协议回执保留，不与新运行混合。完整原生解码构建和双方向资格复核通过，见 [decoder_change.json](../results/tubedetr/decoder_change.json)。[全部媒体预检](../results/tubedetr/vidstg_media_preflight.json) 覆盖VidSTG全部732视频及10303 query支持，包含22个VP6F文件；原工程RGB逐位不变，另增FLV选帧的独立全流核对。
+
+用户随后明确确认两台机器都统一上述SHA256的1902条文件，正式HC清单选择已确定，见 [cross_machine_agreement.json](../results/tubedetr/cross_machine_agreement.json)。确认回执独立保存，运行中的VidSTG协议及其预测身份不改写；实际双机RGB逐位核对状态单列。
