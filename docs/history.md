@@ -39,3 +39,5 @@ GitHub同步完成：实现提交 [87294995](https://github.com/Zonglin-He/A/com
 2026-10-20 双数据集划分修复完成：HC extra1580来自保留raw val_v2，无法从当前证据确定作者删减规则，不能称为重复或训练混入；534共有查询的官方bbox同步更正。Vid官方原始JSON与本地完全一致，10303query/732video成员、对象、文本、窗口完全匹配；8558缺最后一框、1745区间end多1帧均按官方loader修正，2727412官方框独立对VidOR逐帧一致。旧正式根移至outputs/superseded/formal_raw3482_20261020，295原预测不删，162复用逐文件/request/runtime哈希通过。新清单和离线标签哈希一起锁定；60项CPU测试通过；没有新GT任务评分、方法改动或调参。新增公开离线转换入口与详尽限制见 docs/split_audit.md、results/formal/split_audit.json；历史256开发成绩保留旧口径，不自动晋升。
 
 修复后执行接续：新TA-only计划SHA256 `4e0f79f69b9dba066c3c6734f7608de37f59754ca29f4a8f400d99fdef1969b7`，包含HC1902、Vid10303及独立标签哈希，已实际启动新controller649926；只复用162条完整兼容预测，原3482计划不恢复。半小时Luna/max监控已用新计划及新计数恢复。当前仍为推理运行中，无正式任务评分，不把数据修复说成新性能结果。
+
+标注修复已公开并核验：提交 [03936491](https://github.com/Zonglin-He/A/commit/0393649115784ba9b9f163435bfbdab211e5227f)，main与research均freshCAS非强制快进；远端重新fetch逐一验证335文件、2,579,816字节与本地SHA256及tree完全一致，历史保留。公开内容不含任何原始标注、媒体或缓存。本次是数据/标签转换纠正和正式运行接续，不是新性能成绩。
