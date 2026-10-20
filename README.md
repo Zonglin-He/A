@@ -1,3 +1,29 @@
+# STVG: final short-decimal single ReferDINO OPD + Strong
+
+Final tested research recipe: [runtime guide](methods/stvg_single_referdino_opd_v1/ROUNDED_README_20261020.md), [configuration](methods/stvg_single_referdino_opd_v1/rounded_config_20261020.json), [final report](results/stvg_error_state/2026-10-20/single_referdino_parameter_search256/rounding/REPORT.md), [five-row results](results/stvg_error_state/2026-10-20/single_referdino_parameter_search256/rounding/FINAL_FIVE_ROW_RESULTS_PUBLIC.json).
+
+HC uses learning rate0.014, temperature0.14,40 updates, initialization gamma0.5 and output alpha1. Vid uses0.01,0.5,30 updates,gamma1 and alpha1. One frozen ReferDINO supplies the same eight observations for initialization and supervision. TA-STVG weights and Strong time remain fixed. Each dataset uses a single fixed configuration on all128 exposed development parents, seed41; these are not independent full-dataset results. Total method gains, initialization gains, OPD increments and remaining harmful cases are reported separately.
+
+```bash
+.conda/tubedetr/bin/python -B -m methods.stvg_single_referdino_opd_v1.rounded_cli \
+  --request /absolute/path/request.json --output /absolute/path/prediction.npz
+```
+
+## Pre-rounding development selection and previous recipes (retained)
+
+# STVG: dataset-tuned single ReferDINO spatial OPD + Strong time
+
+Current selected research recipe: [runtime guide](methods/stvg_single_referdino_opd_v1/TUNED_README_20261020.md), [dataset configuration](methods/stvg_single_referdino_opd_v1/tuned_config_20261020.json), [joint parameter report](results/stvg_error_state/2026-10-20/single_referdino_parameter_search256/REPORT.md), [complete five-row results](results/stvg_error_state/2026-10-20/single_referdino_parameter_search256/SELECTED_FIVE_ROW_RESULTS_PUBLIC.json).
+
+One frozen ReferDINO supplies the same eight boxes to initialization and OPD. Frozen TA-STVG provides Source and Strong time; no independent detector is loaded. The finite HC128/Vid128 search selects one configuration per dataset, with seed41. The report separates initialization tuning, subsequent adaptation, total method gains, signed tails and full-input costs. These exposed development results do not establish independent generalization or a new Live-versus-Fixed advantage. Pretrained model weights and historical CURRENT/RESEARCH/MAIN/PAPER registries remain unchanged.
+
+```bash
+.conda/tubedetr/bin/python -B -m methods.stvg_single_referdino_opd_v1.tuned_gamma_cli \
+  --request /absolute/path/request.json --output /absolute/path/prediction.npz
+```
+
+## Previous single-expert recipe and earlier evidence (historical)
+
 # STVG: single ReferDINO initialization and spatial OPD
 
 The user-selected research design is **`stvg_single_referdino_opd_v1`**: one frozen ReferDINO expert supplies the **same eight native selected-track boxes** for spatial initialization **E_Ref** and OPD supervision. [One-expert configuration](methods/stvg_single_referdino_opd_v1/config.json), [runtime and implementation guide](methods/stvg_single_referdino_opd_v1/README.md), [paired bidirectional protocol](protocols/stvg_single_referdino_bidirectional256_v1.md), [new evaluation](results/stvg_error_state/2026-10-20/single_referdino_bidirectional256/REPORT.md).

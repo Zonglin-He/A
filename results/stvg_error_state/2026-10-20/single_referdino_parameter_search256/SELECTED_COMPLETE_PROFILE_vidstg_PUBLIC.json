@@ -1,0 +1,92 @@
+{
+  "status": "pass",
+  "alias": "BV001",
+  "configuration": {
+    "version": "stvg_single_referdino_opd_v1",
+    "status": "frozen_research_configuration",
+    "dataset": "vidstg",
+    "source_dataset": "hc2",
+    "scales": [
+      0.05,
+      0.25
+    ],
+    "tau": 0.5,
+    "lr": 0.01,
+    "steps": 30,
+    "samples": 32,
+    "seeds": [
+      41
+    ],
+    "default_seed": 41,
+    "state_shape": [
+      8,
+      256
+    ],
+    "temporal": "Strong TA-STVG only, original MBR",
+    "E": "eight-frame native ReferDINO singleton robust correction",
+    "teacher": "same native ReferDINO eight-frame evidence reused for initialization and OPD",
+    "source_checkpoint": "checkpoints/TASTVG_HCSTVG2.pth",
+    "ReferDINO_checkpoint": "checkpoints/referdino/ryt_mevis_swinb.pth",
+    "no_network_training": true,
+    "E_calibration": {
+      "scale": [
+        0.022542142662651282,
+        0.011027737123363815,
+        0.06612943552390567,
+        0.02918426580581821
+      ],
+      "truncation": 18.056884634893116,
+      "source_train_queries": 36,
+      "eligible_queries": 35,
+      "known_planned_anchors": 113,
+      "singleton_or_empty_queries": 1,
+      "model_hash": "ee72f0d9a50c573a115bd7cfc2329c860745a1cf3dab83af1be7787c11b3c218",
+      "quantile": 0.95,
+      "validation_used": false,
+      "target_GT_used": false
+    },
+    "E_calibration_provenance": "source-domain train calibration, frozen before target outcomes",
+    "selection_record": "results/stvg_error_state/2026-10-20/single_referdino_parameter_search256/SELECTION_PUBLIC.json",
+    "output_alpha": 1.0,
+    "initialization_gamma": 1.0,
+    "selection": "coverage-prioritized within0.1pp of protected complete-vIoU maximum; meaningful parent improvement0.1pp; original severe-loss bound; adaptive exposed development selection",
+    "configuration_development_target_GT_used": true
+  },
+  "expert_count": 1,
+  "complete_single_query_wall_seconds": 37.686893183970824,
+  "decode_seconds": 0.4308398379944265,
+  "capture": {
+    "parse_seconds": 0.9137052781879902,
+    "Source_load_seconds": 6.746258286060765,
+    "Source224_seconds": 3.748815346043557,
+    "Source448_seconds": 7.07392768911086,
+    "ERef_seconds": 0.009581611957401037,
+    "ReferDINO": {
+      "expert_seconds": 0.46282277815043926,
+      "preprocess_seconds": 0.024884675163775682,
+      "forward_seconds": 0.43506224383600056,
+      "postprocess_seconds": 0.0028758591506630182
+    },
+    "ReferDINO_load_seconds": 4.024706759955734,
+    "ReferDINO_process_seconds": 6.195920190075412,
+    "ReferDINO_query_forwards": 1,
+    "ReferDINO_frames": 8,
+    "independent_GroundingDINO_forwards": 0,
+    "expert_instances": 1,
+    "peak_GPU_bytes": 21683260928,
+    "capture_wall_seconds": 35.72696031280793,
+    "initialization_strength_seconds": 0.009474706836044788
+  },
+  "adapt": {
+    "actual_updates": 30,
+    "fit_seconds": 1.3030958520248532,
+    "decoder_calls": 32
+  },
+  "peak_GPU_bytes": 21683260928,
+  "selected_output_bitexact": true,
+  "Source_ERef_teacher_Strong_exact": true,
+  "historical_detector_or_prediction_cache_reads_during_full_pipeline": 0,
+  "independent_GroundingDINO_calls": 0,
+  "not_panel_average": true,
+  "GT_read": false
+}
