@@ -1,0 +1,129 @@
+{
+  "hc2": {
+    "measured_matrix_queries": 1,
+    "reused_queries": 127,
+    "actual_complete_single_seed_profile": {
+      "alias": "RC001",
+      "actual_complete_single_seed_wall_seconds": 25.209731019102037,
+      "includes_text_parse": true,
+      "parse_seconds": 1.9348564851097763,
+      "decode_seconds": 0.7071481528691947,
+      "Source_load_seconds": 5.009151794947684,
+      "capture": {
+        "Source224_seconds": 3.320695901988074,
+        "Aux_heads_posterior_seconds": 0.014189210953190923,
+        "Source448_Strong_seconds": 3.730330880964175,
+        "DINO_load_seconds": 0.6357021639123559,
+        "DINO_observation_seconds": 0.6701812779065222,
+        "DINO_image_forwards": 4,
+        "E_seconds": 0.011098847957327962,
+        "ReferDINO": {
+          "expert_seconds": 0.45659746299497783,
+          "preprocess_seconds": 0.023464552126824856,
+          "forward_seconds": 0.4301948139909655,
+          "postprocess_seconds": 0.0029380968771874905
+        },
+        "ReferDINO_load_seconds": 4.422136124921963,
+        "ReferDINO_process_wall_seconds": 6.572287546936423,
+        "peak_GPU_bytes": 8304409600,
+        "capture_seconds": 15.700223326915875
+      },
+      "adapt_seconds": 1.8570493741426617,
+      "updates": 40,
+      "peak_GPU_bytes": 8304409600,
+      "seed": 41,
+      "deterministic_output_errors": {
+        "Source": 0.0,
+        "E": 0.0,
+        "Live41": 0.0,
+        "Strong": 0.0
+      },
+      "GT_read": false,
+      "scope": "first prelocked case per direction; not latency macro over128, cold expert subprocess load charged"
+    },
+    "component_sum_seconds_mean": 22.766221741912887,
+    "component_sum_seconds_median": 22.766221741912887,
+    "component_sum_seconds_range": [
+      22.766221741912887,
+      22.766221741912887
+    ],
+    "component_sum_is_not_direct_wall_measurement": true,
+    "measured_case_peak_allocated_GiB_range": [
+      7.734084129333496,
+      7.734084129333496
+    ],
+    "actual_new_DINO_image_forwards": 4,
+    "actual_new_ReferDINO_eight_frame_queries": 1,
+    "new_Source_offset_forwards": 4,
+    "new_spatial_updates": 120,
+    "reused_spatial_updates": 15240,
+    "parsing_cost": "main matrix uses frozen subject cache; actual complete single-seed profiles re-run parser from original text and verify equality"
+  },
+  "vidstg": {
+    "measured_matrix_queries": 128,
+    "reused_queries": 0,
+    "actual_complete_single_seed_profile": {
+      "alias": "BV001",
+      "actual_complete_single_seed_wall_seconds": 27.04152627615258,
+      "includes_text_parse": true,
+      "parse_seconds": 0.955966723151505,
+      "decode_seconds": 0.3061253840569407,
+      "Source_load_seconds": 3.5138893709518015,
+      "capture": {
+        "Source224_seconds": 3.641859919996932,
+        "Aux_heads_posterior_seconds": 1.8280729588586837,
+        "Source448_Strong_seconds": 6.402030293829739,
+        "DINO_load_seconds": 0.33400766318663955,
+        "DINO_observation_seconds": 0.5899131840560585,
+        "DINO_image_forwards": 4,
+        "E_seconds": 0.0030701851937919855,
+        "ReferDINO": {
+          "expert_seconds": 0.47800535103306174,
+          "preprocess_seconds": 0.02524149394594133,
+          "forward_seconds": 0.44972096709534526,
+          "postprocess_seconds": 0.003042889991775155
+        },
+        "ReferDINO_load_seconds": 4.417332850862294,
+        "ReferDINO_process_wall_seconds": 6.643094429047778,
+        "peak_GPU_bytes": 21692627456,
+        "capture_seconds": 20.19190047797747
+      },
+      "adapt_seconds": 2.0728073499631137,
+      "updates": 40,
+      "peak_GPU_bytes": 21692627456,
+      "seed": 41,
+      "deterministic_output_errors": {
+        "Source": 0.0,
+        "E": 0.0,
+        "Live41": 0.0,
+        "Strong": 0.0
+      },
+      "GT_read": false,
+      "scope": "first prelocked case per direction; not latency macro over128, cold expert subprocess load charged"
+    },
+    "component_sum_seconds_mean": 19.310575776364203,
+    "component_sum_seconds_median": 18.12018494948279,
+    "component_sum_seconds_range": [
+      14.823332203784958,
+      32.77486083214171
+    ],
+    "component_sum_is_not_direct_wall_measurement": true,
+    "measured_case_peak_allocated_GiB_range": [
+      1.8119354248046875,
+      21.116167068481445
+    ],
+    "actual_new_DINO_image_forwards": 380,
+    "actual_new_ReferDINO_eight_frame_queries": 128,
+    "new_Source_offset_forwards": 512,
+    "new_spatial_updates": 8160,
+    "reused_spatial_updates": 0,
+    "parsing_cost": "main matrix uses frozen subject cache; actual complete single-seed profiles re-run parser from original text and verify equality"
+  },
+  "additional_profile_cost": {
+    "queries": 2,
+    "Source_offset_forwards": 8,
+    "ReferDINO_eight_frame_queries": 2,
+    "DINO_image_forwards": 8,
+    "spatial_updates": 80
+  }
+}

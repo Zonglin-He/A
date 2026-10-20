@@ -1,0 +1,7 @@
+# User amendment: seed41 only
+
+The latest explicit user instruction replaces three seeds with one. Primary tables, paired parent intervals and decisions use seed41 only, for both128-parent directions and all five rows. No algorithm/learning rate/temperature/scales/support/model/observation/cohort change. This amendment supersedes the seed count in the original protocol and PLAN_LOCK; originals remain intact.
+
+The original owned worker was stopped with SIGINT immediately after BV038 was atomically saved; the signal arrived during GC cleanup, yielding exit130. This is an intentional user-directed scope change, not scientific failure. The38 completed reverse cases and HC compatibility case contain42/43 work; it is preserved, separately costed and excluded from the primary table. HC cached42/43 results are also preserved and unused in the main table. Remaining90 reverse cases run41 only. No selection among seeds by scores.
+
+Prediction barrier still covers256 parents. Independent selected-seed audit checks256fits/10240steps, plus original runtime analytic-gradient checks on every actually executed update. Source/E/Strong are seed-independent; the41 policy stream and zero-state reset are unchanged. Cost profiles already specify one actual41 run per direction. Original three-seed work is not erased or relabeled as single-seed compute. No pooling across unavailable extra seeds. Publish active revision together with original protocol, actual code, all primary per-parent scores, negative tails and costs.
