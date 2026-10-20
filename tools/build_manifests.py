@@ -16,7 +16,7 @@ sys.path.insert(0, str(ROOT))
 from stvg.runtime import sha
 from stvg.tube_runner import write, population_hash, digest
 
-HC_SHA = '2e22d9370e311ca6c420b90867f5128507f5ab145e4fc120495b7a6336e41156'
+HC_SHA = '61f7a2a74d39c13dd380540d4ac819edb7abcde1826d44229e539d128bf3260c'
 VID_SHA = 'ef769b9823ce2a4da8ff190ab69ccc77b8965181c58384fadc1f81e96fc4f2a7'
 
 
@@ -83,8 +83,8 @@ def build(dataset, annotations, video_root, output, vidor_annotations=None, inve
         return str(path), media_sha[name]
 
     if dataset == 'hc2':
-        if len(raw) != 3482:
-            raise ValueError('Expected all 3482 canonical HC2 validation records')
+        if len(raw) != 1902:
+            raise ValueError('Expected all 1902 user-confirmed author-release HC2 validation records')
         for i, (name, value) in enumerate(raw.items()):
             width = value['width'] if 'width' in value else value['img_size'][1]
             height = value['height'] if 'height' in value else value['img_size'][0]
@@ -125,7 +125,7 @@ def build(dataset, annotations, video_root, output, vidor_annotations=None, inve
                         b = found[0]['bbox']
                         boxes[fid] = [b['xmin'], b['ymin'], b['xmax'], b['ymax']]
                     labels.append(dict(id=key, dataset=dataset, parent=value['vid'], interval=span, boxes=boxes))
-    expected = (3482, 237) if dataset == 'hc2' else (10303, 732)
+    expected = (1902, 227) if dataset == 'hc2' else (10303, 732)
     if (len(rows), len({g['parent'] for g in labels})) != expected:
         raise ValueError('Canonical query/parent count mismatch')
     output.mkdir(parents=True, exist_ok=True)

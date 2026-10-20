@@ -1,4 +1,4 @@
-"""Deterministic input-only engineering fixtures; never a formal HC substitute."""
+"""Deterministic input-only engineering fixtures; full population is built separately."""
 import argparse
 import hashlib
 import json
@@ -24,7 +24,7 @@ def main():
     hc = ROOT/'data/annotations/tastvg_release/data/hc-stvg2/annos/test.json'
     if not hc.exists():
         # Exact member of the author's uncompressed public data.tar, including
-        # an independent saved hash. This 1902-record file is engineering only.
+        # an independent saved hash. This exact 1902-record release was subsequently confirmed by the user.
         payload, _ = get_range('https://huggingface.co/Gstar666/TASTVG/resolve/main/data.tar',
                               181358080, 190237292, 6592634880)
         hc.parent.mkdir(parents=True, exist_ok=True)
@@ -67,7 +67,7 @@ def main():
     write(output/'engineering_exposure.json', dict(status='registered_engineering_exposure',
         selection='fixed hash of annotation key/index before native outputs; no GT selection',
         requests={ds: sha(output/f'engineering_{ds}.json') for ds in ['hc2', 'vidstg']},
-        HC1902_is_formal_replacement=False))
+        HC1902_formal_release_confirmed_by_user=True))
     print('Two deterministic engineering inputs prepared; both registered as development exposure')
 
 

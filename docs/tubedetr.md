@@ -25,7 +25,7 @@ TubeDETR 原生只有一个完整时间网格，内部 k=2 负责 slow/fast 编�
 
 ## 数据版本与跨机器一致性
 
-正式 HC 清单的关键问题是文件版本，不是样本计数的别名：
+正式HC清单已由用户在2026-10-20确认采用作者1902条版本；文件哈希锁定如下，不能只比数量：
 
 | 资产 | 已核对的数量 | 身份与边界 |
 |---|---:|---|
@@ -34,15 +34,15 @@ TubeDETR 原生只有一个完整时间网格，内部 k=2 负责 slow/fast 编�
 | `ShijianW01/hc-stvg2` 的 `annos/test.json` | 1901、227父来源 | SHA256 `543ef809f31ed60f1b8a0514ea185ad4323596d63050087bfa47f2557df8026c`；名字集合是前述1902的严格子集，少1条 |
 | VidSTG 官方 `test_annotations.json` | 4610条原始关系记录，展开10303句，732父视频 | SHA256 `ef769b9823ce2a4da8ff190ab69ccc77b8965181c58384fadc1f81e96fc4f2a7`，与历史完整评价集一致 |
 
-3482的单位是不同视频片段／query；237是去除片段序号与扩展名后的父来源聚类数，不能把237当作评价样本数。历史3482文件的字节指纹已追溯，但原始文件的本机重获和官方发布包链条尚未完成。本机不以1901／1902替代正式HC评价。
+3482的单位是不同视频片段／query；237是去除片段序号与扩展名后的父来源聚类数，不能把237当作评价样本数。历史3482文件的字节指纹已追溯，但原始文件的本机重获和官方发布包链条尚未完成。2026-10-20用户随后明确确认1902条为正确正式清单；本分支据此采用作者1902文件（61f7a2…）和227父来源，1901镜像仍不可替代。3482保留为历史版本追溯对象，旧结果不重写。
 
 VidOR作者发布的验证视频包 SHA256 为 `40dd102b43ecd2ed70f2dc38ee08258315e25919d2f1fb8f43bb235740a83a25`，验证标注包为 `65a06594c7735d8a0c384144ec2acb2227f715ccac2d03a6dee4a507de201516`。标注包已经完整核验，与历史回执一致；媒体完成状态以本地下载回执为准。VidSTG的测试视频来自VidOR validation，不能错误下载VidOR未标注的test替代。
 
-`tools/build_manifests.py` 从原标注建立清单和独立标签，要求完整3482/237或10303/732；缺视频、目标轨迹缺失或数量不符都会失败，不过滤失败 query。输入延续现有物理支持：HC按原默认FFmpeg输出、6.4fps固定节点；Vid按零基 used_segment、至多128节点。标签端点保持已有数据集语义，不用评分结果修正。
+`tools/build_manifests.py` 从原标注建立清单和独立标签，按用户确认版本要求完整1902/227或10303/732；缺视频、目标轨迹缺失或数量不符都会失败，不过滤失败 query。输入延续现有物理支持：HC按原默认FFmpeg输出、6.4fps固定节点；Vid按零基 used_segment、至多128节点。标签端点保持已有数据集语义，不用评分结果修正。
 
 这里的原生输出检查限定为：TubeDETR在上述预先固定输入网格上的完整网络输出，与注入零content的decoder重放一致。TubeDETR论文默认的5fps／最多200帧数据加载路径与这个统一项目网格不同，不能把当前接口检查称为论文默认协议的准确率复现。正式采样协议仍须在跨机器清单中明确锁定；不能在看到目标成绩后改采样。
 
-跨机器应比较同一原标注哈希、完整查询集合、媒体字节、文本、帧网格、标签和指标实现；本地路径不进入 `population_hash`。仅交换3482／10303这样的数量不足以完成统一。目前尚无第一台机器对新规范化清单哈希的回执，不能宣称已经双机一致。
+跨机器应比较同一原标注哈希、完整查询集合、媒体字节、文本、帧网格、标签和指标实现；本地路径不进入 `population_hash`。仅交换3482／10303这样的数量不足以完成统一。用户已确认正式HC采用1902条；完整规范化清单和RGB的双机哈希核对回执尚未收到，不能宣称已经逐字节双机一致。
 
 原HC128、Vid128已曝光的事实保持披露；新选的两条工程输入也登记为开发曝光，不据其GT结果调参。历史逐query曝光映射没有随Git提供，不能把完整划分称为未曝光测试集。
 
@@ -97,4 +97,6 @@ VidOR作者发布的验证视频包 SHA256 为 `40dd102b43ecd2ed70f2dc38ee082583
 
 已有单专家真实GPU重复性回执见 [teacher_service_check.json](../results/tubedetr/teacher_service_check.json)：完整checkpoint哈希匹配、两个相同八帧调用逐位一致、一个专家、零独立检测器。CPU与物理帧工程证据见 [engineering_checks.json](../results/tubedetr/engineering_checks.json)，当前范围见 [STATUS.json](../results/tubedetr/STATUS.json)。
 
-补充工具：`tools/acquire_tubedetr_assets.py` 对已授权的四个下载做有限断点恢复；`tools/prepare_tubedetr_run.py --wait-for-assets` 在资产完整后接续真实模型资格检查与完整Vid清单生成，在缺少统一协议时明确停住。`tools/report_tubedetr_efficiency.py` 只汇总完整封存总体；`tools/render_tubedetr_qualitative.py` 只在独立评分后绘制同帧Source／Ours／GT，并披露确定性事后选例规则及不存在的类别。
+补充工具：`tools/acquire_tubedetr_assets.py` 对已授权的四个下载做有限断点恢复；`tools/prepare_tubedetr_run.py --wait-for-assets` 在资产完整后接续真实模型资格检查与完整Vid清单生成，在缺少统一协议时明确停住。`tools/fetch_hc2_population.py` 从固定版本公开镜像并发取得用户确认的全部1902条媒体，每个成员核对长度与CRC，缺一条也不建立部分正式清单。`tools/report_tubedetr_efficiency.py` 只汇总完整封存总体；`tools/render_tubedetr_qualitative.py` 只在独立评分后绘制同帧Source／Ours／GT，并披露确定性事后选例规则及不存在的类别。
+
+2026-10-20用户确认1902后，已启动完整VidSTG配对正式推理并同时采集HC1902媒体。冻结的VidSTG协议见 [protocol_vidstg.json](../results/tubedetr/protocol_vidstg.json)。`tools/complete_tubedetr_main.py` 是本次已授权实验的有限续跑：等待现有完整Vid封存后离线评分，等待HC全部媒体和完整清单后接续另一个方向，再生成主表、效率及离线定性结果。模型或数据失败即停止，不丢弃query、不调参、不运行其他backbone；最终完整结果落盘后仍需核验并发布。当前状态以本地progress和queue回执为准，本说明不预报准确率。

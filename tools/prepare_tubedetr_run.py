@@ -105,9 +105,9 @@ def main():
     write(status, dict(status='qualification_complete_waiting_for_shared_formal_protocol',
         complete_assets=sorted(verified), qualification='results/tubedetr/qualification.json',
         vidstg_full_manifest='data/evaluation/vidstg.jsonl',
-        HC_required_annotation='data/annotations/hc2/val_v2.json',
-        HC_required_sha256='2e22d9370e311ca6c420b90867f5128507f5ab145e4fc120495b7a6336e41156',
-        missing_requirements=['canonical HC3482 annotations and complete media', 'cross-machine manifest and RGB agreement'],
+        HC_required_annotation='data/annotations/tastvg_release/data/hc-stvg2/annos/test.json',
+        HC_required_sha256='61f7a2a74d39c13dd380540d4ac819edb7abcde1826d44229e539d128bf3260c',
+        missing_requirements=['complete media for user-confirmed HC1902 population', 'cross-machine manifest and RGB agreement'],
         formal_evaluation_started=False, task_metrics_computed=False))
     print('Real-model qualification and VidSTG intake complete. Formal evaluation awaits shared HC/protocol assets.', flush=True)
 
