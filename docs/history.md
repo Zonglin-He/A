@@ -1,6 +1,6 @@
 # 项目历史与当前状态
 
-当前任务：TA-STVG完整双向评估已实际启动，先HC2 3482条、再VidSTG 10303条。CGSTVG暂停，不在自动队列。完成五行消融、效率、定性、核验和GitHub结果同步后才进入CG。冻结数值配置不变。
+当前任务：修正官方标注后的TA-STVG双向评估已重新启动，HC1902条/227父、Vid10303条/732父；162条同输入同模型预测核验复用。旧raw3482任务及295条partial保留归档，CG仍暂停。方法参数、输入采样和专家不变。
 
 ## 清理与此前结果记录
 
@@ -33,3 +33,9 @@ GitHub同步完成：实现提交 [87294995](https://github.com/Zonglin-He/A/com
 正式评估启动代码已同步：提交 [e95459b5](https://github.com/Zonglin-He/A/commit/e95459b55998c3e16ceb637358ecc9b15f6eb119)，远端main和research均以freshCAS非强制快进；重新fetch逐一核对330文件、2,555,220字节与本地SHA256及tree完全一致，旧历史仍是祖先。此次只发布实现、冻结协议和运行状态，不宣称完整评估已完成或已产生正式成绩。回执见 docs/publication.json。
 
 2026-10-20 运行监控授权：用户要求一个Luna/max子代理每30分钟巡检，异常报告根代理并允许自行修复工程故障。已建立本聊天专用heartbeat `ta-stvg-luna`，复用唯一 `ta_luna_watch`（gpt-6-luna、max），正常不通知；根代理核证后按冻结计划恢复，不改科学配置、跳过样本或影响无关服务。TA全部结果同步核验后暂停监控，CG仍待TA全部完成。此前已暂停的研究自动化保持暂停。
+
+2026-10-20 17:27 北京时间划分纠正：直接HTTP Range读取TA官方README所链Gstar666/TASTVG data.tar（revision38e89a5895346d77cba87b0273f9ede95874befc）得到hc-stvg2/annos/test.json1902、train.json9586。raw3482完整包含test1902、另1580不在official train/test；共同成员534条bbox不同，时间/文本/大小相同。原先将raw3482称官方验证划分属核验错误，撤回该命名及基于此总量的正式ETA，旧记录只作历史。已停止自有controller408783/worker408784/teacher408935并核退出，295条partial保留，其中162条属于正确名单；未读GT评分。Luna heartbeat暂停防止误恢复，待完成两数据集审计与划分修复。
+
+2026-10-20 双数据集划分修复完成：HC extra1580来自保留raw val_v2，无法从当前证据确定作者删减规则，不能称为重复或训练混入；534共有查询的官方bbox同步更正。Vid官方原始JSON与本地完全一致，10303query/732video成员、对象、文本、窗口完全匹配；8558缺最后一框、1745区间end多1帧均按官方loader修正，2727412官方框独立对VidOR逐帧一致。旧正式根移至outputs/superseded/formal_raw3482_20261020，295原预测不删，162复用逐文件/request/runtime哈希通过。新清单和离线标签哈希一起锁定；60项CPU测试通过；没有新GT任务评分、方法改动或调参。新增公开离线转换入口与详尽限制见 docs/split_audit.md、results/formal/split_audit.json；历史256开发成绩保留旧口径，不自动晋升。
+
+修复后执行接续：新TA-only计划SHA256 `4e0f79f69b9dba066c3c6734f7608de37f59754ca29f4a8f400d99fdef1969b7`，包含HC1902、Vid10303及独立标签哈希，已实际启动新controller649926；只复用162条完整兼容预测，原3482计划不恢复。半小时Luna/max监控已用新计划及新计数恢复。当前仍为推理运行中，无正式任务评分，不把数据修复说成新性能结果。

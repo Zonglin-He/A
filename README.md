@@ -95,3 +95,5 @@ docs/          方法、资产、评估和历史说明
 ```
 
 本地另有 `data/`、`checkpoints/`、`runtime/`、`outputs/` 和 `.conda/`，均不上传。历史方案从当前工作树移除，仍可通过正常 Git 历史查阅；没有重写或压缩提交历史。见 [docs/history.md](docs/history.md)。
+
+正式数据版本已核对并修正：HC2采用作者公开包1902条，VidSTG10303条；原raw3482口径及Vid端点错误见[划分审计](docs/split_audit.md)。历史128开发成绩保留原标注口径，不当作修正后的完整官方结果。

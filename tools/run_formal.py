@@ -56,7 +56,7 @@ def make_plan(root):
         if any(r['dataset']!=dataset for r in records):raise ValueError('Dataset differs from locked job')
         jobs.append(dict(id=backbone+'-'+dataset,backbone=backbone,dataset=dataset,
             manifest=str(manifest.relative_to(root)),manifest_sha256=digest(manifest),queries=len(records),
-            labels=str(labels.relative_to(root)),visual_cache_mib=0 if dataset=='hc2'else 4096,output=f'outputs/formal/{backbone}/{dataset}'))
+            labels=str(labels.relative_to(root)),labels_sha256=digest(labels),visual_cache_mib=0 if dataset=='hc2'else 4096,output=f'outputs/formal/{backbone}/{dataset}'))
     return dict(schema=1,root=str(root),python=sys.executable,code_and_configuration=files,jobs=jobs,
                 teacher_cache='outputs/formal/teacher_cache',visual_cache_mib=4096,
                 policy='finite sequential jobs; frozen parameters; fail immediately; offline scoring only after complete seal')
@@ -162,11 +162,12 @@ def controller(root,execute=False,resume=False,popen=None):
                 active.update(status='completed',completed_utc=now(),seal_sha256=digest(sealpath));write(statepath,state)
                 metrics=output/'metrics.json'
                 if metrics.exists():raise ValueError('Unbound existing metrics; refusing overwrite')
+                if digest(root/job['labels'])!=job['labels_sha256']:raise ValueError('Frozen offline labels changed before scoring')
                 command=[sys.executable,'-B','-m','stvg','score','--manifest',str(root/job['manifest']),'--labels',str(root/job['labels']),'--predictions',str(output),'--output',str(metrics)]
                 launch(command,root,folder/(job['id']+'-score.log'),state,statepath,active,'score',popen)
                 parsed=json.loads(metrics.read_text())
                 if parsed.get('status')!='scored_sealed_predictions':raise ValueError('Score did not produce a completed report')
-                active.update(status='scored',scored_utc=now(),metrics_sha256=digest(metrics));write(statepath,state)
+                active.update(status='scored',scored_utc=now(),metrics_sha256=digest(metrics),scoring_labels_sha256=job['labels_sha256']);write(statepath,state)
             state.update(status='completed',finished_utc=now(),controller_pid=None);write(statepath,state);return state
         except BaseException as error:
             if active is not None:active.update(status='failed',error_type=type(error).__name__,error=str(error),failed_utc=now())
@@ -202,7 +203,7 @@ def finish_ta_stage(root):
                     current='当前任务：TA-STVG两个完整方向已封存评分，效率和定性检查、五行统一报告已完成，等待GitHub结果同步核验；CGSTVG继续暂停。方法和参数未改。'
                     lines=text.splitlines();lines=[current if line.startswith('当前任务：')else line for line in lines]
                     marker='TA-STVG完整阶段本地完成：'
-                    if marker not in text:lines+=['',marker+'HC2 3482条、VidSTG 10303条全部保留；预测先封存后独立评分，效率与定性产物绑定封存哈希。当前结果见 results/formal/report.md。公开同步尚待核验，不将本地完成写成GitHub已完成。']
+                    if marker not in text:lines+=['',marker+'HC2 1902条、VidSTG 10303条全部保留；预测先封存后独立评分，效率与定性产物绑定封存哈希。当前结果见 results/formal/report.md。公开同步尚待核验，不将本地完成写成GitHub已完成。']
                     history.write_text('\n'.join(lines)+'\n')
                 old=post.get(name)
                 if old and old.get('status')=='completed':

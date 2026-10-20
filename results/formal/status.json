@@ -1,16 +1,31 @@
 {
-  "status": "running",
+  "status": "running_corrected_official_cohorts",
   "stage": "TA-STVG first",
-  "plan_sha256": "d95e1fa35f4e854d4981edf2ffb0ca0a7087988cd1d59ba91ad3a038fa4634af",
+  "plan_sha256": "4e0f79f69b9dba066c3c6734f7608de37f59754ca29f4a8f400d99fdef1969b7",
   "jobs": {
     "tastvg-hc2": {
-      "status": "running"
+      "status": "running",
+      "queries": 1902,
+      "parents": 227,
+      "reused_predictions": 162
     },
     "tastvg-vidstg": {
-      "status": "pending"
+      "status": "pending",
+      "queries": 10303,
+      "parents": 732
     }
   },
-  "CGSTVG": "paused until all TA-STVG work and publication are verified",
+  "CGSTVG": "paused",
   "formal_scores_available": false,
-  "engineering_CPU_tests_passed": 55
+  "engineering_CPU_tests_passed": 60,
+  "hc2": {
+    "previous_raw_queries": 3482,
+    "official_published_evaluation_queries": 1902,
+    "official_train_queries": 9586,
+    "extra_raw_queries": 1580,
+    "shared_queries_with_bbox_revision": 534,
+    "partial_predictions_preserved": 295,
+    "reusable_member_predictions_before_full_receipt_audit": 162
+  },
+  "vidstg": "membership and official labels audit complete; endpoint labels corrected"
 }

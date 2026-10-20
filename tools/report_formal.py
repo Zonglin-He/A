@@ -46,7 +46,7 @@ def efficiency(receipts):
         forwards.append(capture.get('ReferDINO_query_forwards'))
     valid_peaks=[x for x in peaks if x is not None]
     complete=len(valid_peaks)==len(receipts)
-    return dict(queries=len(receipts),actual_full_query_wall_seconds_mean=mean(walls),actual_adapt_seconds_mean=mean(adaptation),
+    return dict(queries=len(receipts),reused_prediction_queries=sum('reused_prediction'in r for r in receipts),actual_full_query_wall_seconds_mean=mean(walls),actual_adapt_seconds_mean=mean(adaptation),
                 full_wall_valid_queries=sum(numeric(v)is not None for v in walls),adapt_valid_queries=sum(numeric(v)is not None for v in adaptation),
                 peak_allocated_cuda_bytes_max=max(valid_peaks)if valid_peaks and complete else None,
                 per_query_peak_allocated_cuda_bytes_mean=mean(peaks)if complete else None,
@@ -55,7 +55,7 @@ def efficiency(receipts):
                 teacher_query_forwards=sum(v for v in forwards if numeric(v)is not None),
                 teacher_query_forwards_known_queries=sum(numeric(v)is not None for v in forwards),
                 teacher_cache_reused_queries=sum(v==0 for v in forwards),
-                interpretation='Actual resident-run query wall includes the expert work actually executed and cache hits. Source224 is a component, not a separately measured Source end-to-end baseline. Complete peak is max(worker allocated CUDA peak, teacher/capture allocated CUDA peak), not their sum; cold uncached latency is not inferred.')
+                interpretation='Actual resident-run query wall includes the expert work actually executed and cache hits. Source224 is a component, not a separately measured Source end-to-end baseline. Complete peak is max(worker allocated CUDA peak, teacher/capture allocated CUDA peak), not their sum; cold uncached latency is not inferred. Reused predictions retain their original measured inference cost, not materialization time; their count is reported separately.')
 
 
 def read_benchmark(output,backbone,dataset,seal):
@@ -113,6 +113,9 @@ def read_job(root,backbone,dataset,state):
         if digest(metrics_path)!=progress.get('metrics_sha256')or digest(seal_path)!=progress.get('seal_sha256'):
             raise ValueError('completion_hash_mismatch')
         metrics=json.loads(metrics_path.read_text());seal=json.loads(seal_path.read_text())
+        if progress.get('scoring_labels_sha256'):
+            plan=json.loads((root/'outputs/formal/plan.json').read_text());job=next(j for j in plan['jobs']if j['id']==key)
+            if progress['scoring_labels_sha256']!=job['labels_sha256']or digest(root/job['labels'])!=job['labels_sha256']:raise ValueError('official_scoring_labels_binding_mismatch')
         if seal.get('status')!='sealed_before_offline_scoring'or seal.get('labels_read')is not False or metrics.get('status')!='scored_sealed_predictions':raise ValueError('not_completed_sealed_and_scored')
         if metrics.get('provenance',{}).get('manifest_sha256')!=seal.get('manifest_sha256'):raise ValueError('score_cohort_binding_mismatch')
         rows=metrics['rows']
@@ -134,7 +137,7 @@ def read_job(root,backbone,dataset,state):
             changes={a+'-'+b:100*(scores[a]['v']-scores[b]['v'])for a,b in [('Full','Source'),('Full','WithoutOPD')]}
             anonymous.append(dict(query=f'Query{i+1:06d}',parent=parents[row['parent']],values=scores,change_vIoU_pp=changes))
         result.update(status='completed',queries=len(rows),parents=len(parents),
-            manifest_sha256=seal['manifest_sha256'],seal_sha256=digest(seal_path),metrics_sha256=digest(metrics_path),
+            manifest_sha256=seal['manifest_sha256'],labels_sha256=progress.get('scoring_labels_sha256'),seal_sha256=digest(seal_path),metrics_sha256=digest(metrics_path),
             query_main_table={a:{k:numeric(summary['query_main_table'][a].get(k))for k in ABLATION+SUPPLEMENT+['m_sIoU_fixed_actual']}for a in ARMS},
             query_paired=safe_numbers(summary.get('query_paired',{})),parent_paired=safe_numbers(summary.get('paired',{})),
             parent_main_table=safe_numbers(summary.get('parent_main_table',{})),

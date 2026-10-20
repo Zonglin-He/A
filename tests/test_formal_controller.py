@@ -133,3 +133,12 @@ def test_postprocessing_finishes_ta_without_queuing_cg(tmp_path,monkeypatch):
     assert all(t['status']=='completed'for t in state['postprocess'].values())
     formal.finish_ta_stage(root)
     assert len(calls)==7
+
+
+def test_changed_offline_labels_reject_frozen_plan_before_launch(tmp_path):
+    root=fixture(tmp_path);formal.controller(root,popen=FakeProcesses())
+    path=root/'data/evaluation/hc2_labels.jsonl';path.write_text('changed annotation version')
+    fake=FakeProcesses()
+    with pytest.raises(ValueError,match='Frozen plan changed'):
+        formal.controller(root,execute=True,resume=True,popen=fake)
+    assert not fake.commands
