@@ -1,3 +1,0 @@
-# OPD optimization geometry
-
-This batch closes only the finite old-cache CPU diagnostic and publishes the new common-state GPU protocol/code while that experiment is running. Read REPORT.md and FINITE_CPU_SCOPE.json. ROUND_SCALAR_MANIFEST.json describes lossless 512KiB gzip segments; concatenate in the listed order. All scalar records, undefined cosines and negative outcomes are retained. Source projections redact only the local authorization attachment pathname, with both SHA256 values recorded. Restricted raw fits, optimizer tensors, candidate/GT boxes, captions, media and weights remain private. The GPU code requires the original local locked artifacts; it is not a portable model-free rerun. No future GPU result is filled into this batch.

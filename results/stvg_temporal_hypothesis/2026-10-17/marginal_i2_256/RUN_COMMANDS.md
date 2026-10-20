@@ -1,5 +1,0 @@
-Use the existing offline conda Student and native-distill Teacher environments. This run uses a new isolated artifact scope; do not overwrite historical outputs.
-
-Run module CPU contracts, then the new dispatcher init. Before launching its controller, create artifacts/stvg_temporal_marginal_i2_256_v1/fresh_prefix (the original RGB helper expects its scope parent to exist). Start the named user systemd unit with MemoryHigh16G/MemoryMax24G/Swap1G, CPUWeight50/IOWeight50 and the repository working directory, executing continue_stvg_temporal_marginal_i2_256_v1.py. This directory preparation was done before the readout stage, with no change to the pinned dispatcher/fitter.
-
-After measurement: audit_stvg_temporal_marginal_i2_256_v1.py; report_stvg_temporal_marginal_i2_256_v1.py report and render; actual pixel/chart inspection and original allowlist/remote verification workflow. Quoted cohort identifiers in exported code are anonymized consistently with SOURCE_BINDINGS; local private run code and original source hashes remain unchanged. Raw data/model caches are intentionally not public.

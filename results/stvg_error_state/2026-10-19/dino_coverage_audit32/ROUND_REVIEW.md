@@ -1,7 +1,0 @@
-# Root scientific and engineering review
-
-Cause established in scope: all5 Vid no-original-observation cases are pre-call target-text gate skips, not post-detection rejection, query crash or observed downstream serialization omission. Original cached what-question context fails category resolution and fallback phrase is empty; exact origin runtime source and subject hashes, earliest NPZ, P1 and Source expert canonical equality, completion logs, sentinel no-model replay and independent AST/budget audit align. Nominal4 and actual0 must be reported separately; copied new-call counters are not historical acquisition counts.
-
-Controls: all11 other Vid queries called4; two individual probes rejected after actual forward. HC16 called64, one query with zero admitted anchors despite4 calls. Later conditional encoding does not add new physical coverage; all5 inactive cases also bypass center/sampled queries.
-
-Repair is a target-conditioned expert-interface feasibility candidate. No unlabeled reliable what-category conversion, actual new DINO correctness or OPD-over-fixed superiority is established. Previously published GT coverage capacity is diagnostic only; NV013 GT unsupported cannot be declared harmless. No new labels, scoring, images, models, experts, student updates or parameter changes in this audit. No automatic route reopening or production promotion. All negative facts and unknowns retained; publisher must verify both refs and remote bytes.

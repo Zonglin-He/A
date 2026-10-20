@@ -1,1 +1,0 @@
-Input-contract pilot only: copying a per-frame pixel limit to a total-video budget caused128resolution/64vision tokens per clip. Not the matched448 Teacher comparison. All32 rows, tails and calls remain; correction was selected from processor-code/token evidence before consulting these scores.

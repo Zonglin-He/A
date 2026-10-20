@@ -1,0 +1,48 @@
+{
+  "status": "completed",
+  "scope": "current inference/scoring data flow, manifests and new public tree; no new experiment",
+  "inference_GT_injection_found": false,
+  "development_parameter_selection_is_data_leakage": false,
+  "selection_policy": "HC128/Vid128 are authorized offline development sets; disclose exposure without calling it online leakage",
+  "datasets": {
+    "hc2": {
+      "development_queries": 128,
+      "development_parents": 128,
+      "full_queries": 3482,
+      "full_parents": 237,
+      "development_parents_in_full": 128,
+      "not_in_current_development_panel_parents": 109
+    },
+    "vidstg": {
+      "development_queries": 128,
+      "development_parents": 128,
+      "full_queries": 10303,
+      "full_parents": 732,
+      "development_parents_in_full": 128,
+      "not_in_current_development_panel_parents": 604
+    }
+  },
+  "exact_development_inputs_in_full": {
+    "hc2": 128,
+    "vidstg": 128
+  },
+  "cross_dataset_video_sha256_overlap": 0,
+  "input_metadata_has_GT_boxes_intervals_or_categories": false,
+  "vidstg_input_support_matches_official_used_segment_all_queries": true,
+  "source_label_tables_replaced_with_empty_maps": true,
+  "teacher_input": [
+    "frames",
+    "caption"
+  ],
+  "per_query_state_and_optimizer_reset": true,
+  "prediction_seal_and_all_hashes_checked_before_labels": true,
+  "schema_checked_before_decode": true,
+  "annotation_guard_checks_resolved_symlinks": true,
+  "new_public_tree_private_data_or_credentials_found": false,
+  "historical_pretraining_contamination_fully_verified": false,
+  "limitations": [
+    "Remaining parents outside the current development panel are not guaranteed historically unexposed.",
+    "Full source-training and upstream pretraining sample manifests are unavailable; complete weight-level contamination exclusion is not established.",
+    "The Git export audit covers the new commit tree; historical commits remain accessible by request."
+  ]
+}
