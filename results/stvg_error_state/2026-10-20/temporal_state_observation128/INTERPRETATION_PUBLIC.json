@@ -1,0 +1,154 @@
+{
+  "status": "completed_exact_acquisition_proxy_not_supported_for_OPD",
+  "new_model_or_GT": false,
+  "source_results_sha256": "34eb86e5afc27b50974a11184c9bcb24ce12e590d901590c7a5569b7becbff38",
+  "actual_state_changed": {
+    "first4_mean_L1": 0.14405823157370484,
+    "round2_final_sets_different": 80,
+    "parents": 128
+  },
+  "first4_full_v_percent": {
+    "Uniform8": 29.476220246032845,
+    "InitialState8": 29.49416400362165,
+    "CurrentState8": 29.49416400362165,
+    "ReflectedState8": 29.539221630188976
+  },
+  "refresh": {
+    "v": {
+      "mean": 0.1743587735608918,
+      "CI95": [
+        -0.08014352244879279,
+        0.5854625594009477
+      ],
+      "parents": 128
+    },
+    "t": {
+      "mean": 0.3146731414263429,
+      "CI95": [
+        -0.12872410587920616,
+        1.0076028449196788
+      ],
+      "parents": 128
+    },
+    "s": {
+      "mean": 0.0,
+      "CI95": [
+        0.0,
+        0.0
+      ],
+      "parents": 128
+    },
+    "boundary_MAE": {
+      "mean": -1.015625,
+      "CI95": [
+        -3.21884765625,
+        0.2421875
+      ],
+      "parents": 128
+    },
+    "tails": {
+      "positive": 12,
+      "negative": 10,
+      "flat": 106,
+      "below_minus5": 0,
+      "below_minus3": 0,
+      "leave_one_out_mean_range_pp": [
+        0.007641855136392967,
+        0.1961038796259863
+      ],
+      "worst": [
+        {
+          "alias": "RC065",
+          "delta_pp": -2.587269696706107
+        },
+        {
+          "alias": "RC066",
+          "delta_pp": -2.1986748740938866
+        },
+        {
+          "alias": "RC119",
+          "delta_pp": -1.90826356686538
+        },
+        {
+          "alias": "RC028",
+          "delta_pp": -1.8145443382638682
+        },
+        {
+          "alias": "RC104",
+          "delta_pp": -1.407091196450991
+        },
+        {
+          "alias": "RC015",
+          "delta_pp": -1.0181480760818207
+        },
+        {
+          "alias": "RC075",
+          "delta_pp": -0.9512275822723376
+        },
+        {
+          "alias": "RC008",
+          "delta_pp": -0.9296345765862135
+        },
+        {
+          "alias": "RC063",
+          "delta_pp": -0.845349527357897
+        },
+        {
+          "alias": "RC058",
+          "delta_pp": -0.00021425263224771182
+        },
+        {
+          "alias": "RC001",
+          "delta_pp": 0.0
+        },
+        {
+          "alias": "RC002",
+          "delta_pp": 0.0
+        }
+      ]
+    }
+  },
+  "refresh_largest_positive": [
+    {
+      "alias": "RC042",
+      "Current_minus_Initial_pp": 21.347407413472244,
+      "Current_minus_Strong_pp": -7.922461951292026,
+      "Initial_minus_Strong_pp": -29.26986936476427
+    },
+    {
+      "alias": "RC116",
+      "Current_minus_Initial_pp": 4.044367974205021,
+      "Current_minus_Strong_pp": 2.3590257798972836,
+      "Initial_minus_Strong_pp": -1.6853421943077374
+    },
+    {
+      "alias": "RC099",
+      "Current_minus_Initial_pp": 2.737285040389814,
+      "Current_minus_Strong_pp": 2.737285040389814,
+      "Initial_minus_Strong_pp": 0.0
+    },
+    {
+      "alias": "RC005",
+      "Current_minus_Initial_pp": 1.9001376981753249,
+      "Current_minus_Strong_pp": 0.0,
+      "Initial_minus_Strong_pp": -1.9001376981753249
+    },
+    {
+      "alias": "RC062",
+      "Current_minus_Initial_pp": 1.5345553786170696,
+      "Current_minus_Strong_pp": 4.916478033705651,
+      "Initial_minus_Strong_pp": 3.381922655088582
+    }
+  ],
+  "decision": "Retain Strong. Close this exact risk-weighted boundary-coverage proxy; no weight or acquisition-budget sweep, OPD or confirmation. Does not establish every state-guided observation policy impossible.",
+  "evidence_limits": [
+    "Current mean does not exceed Strong; all primary intervals cross zero.",
+    "Current fails to exceed wrong-phase Reflected mean; not evidence that correct uncertainty predicts actual observation value.",
+    "Refresh affects final selected sets in80 but final full-v scores differ in22; its mean advantage is concentrated in the largest positive case.",
+    "Cached feature counterfactual; fresh sparse B8 encoding equivalence and deployment latency unmeasured.",
+    "HC128 exposed development; no independent generalization claim."
+  ],
+  "full_global_context_remains": true,
+  "spatial_unchanged": true,
+  "no_auto_followup": true
+}
