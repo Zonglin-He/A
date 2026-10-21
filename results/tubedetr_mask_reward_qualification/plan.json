@@ -1,0 +1,37 @@
+{
+  "status": "frozen_before_mask_signal_outcomes",
+  "queries": 128,
+  "parents": 128,
+  "manifest_sha256": "c7df9b65aa5603b14a132615cc19f71a51a9bd59baf36f38bd28426334ff0ec4",
+  "population_sha256": "2689f56934fcf5753f23b1ed4d1e1fbddc8fa86b08a98e535fa4c6e42e877ab4",
+  "code_sha256": {
+    "tools/mask_reward.py": "74ae71bea73c239837b94eec052357ee81cf291bdd17aafe04d9460b3158ee14",
+    "tools/tubedetr_mask_reward_qualification.py": "718ddde629496da8af670302b1c44953f537188e6bea7f900722e08dd1ff63ff"
+  },
+  "parent_final_seals": {
+    "results/tubedetr_layout_trial": "c8e663149eccf56152670c96b3ea1981331671625183e2881599c120199b500d",
+    "results/tubedetr_reward_mechanism": "a71d83a3ca6cd4732e9f73150c23bcbd49d62ab0eb336b55ca0a7ed6337c919b",
+    "results/tubedetr_reward_trajectory": "6e181162c7b3124e87ae8cc67f7de2cd49f8a29673ede20037adff2e3ec37ab2"
+  },
+  "reference_diagnostic_seal_sha256": "45854bea1ccd7432f84a1e206f6adca9fac2c1a49629f4795f314c1498509c29",
+  "reference_feature_seal_sha256": "8c4ddc1713b1f36d48b32bef50342dd60c627d83cff099fe211c4b75b9c6a809",
+  "maximum_native_teacher_forwards": 128,
+  "expert_instances": 1,
+  "evidence_frames_per_query": 8,
+  "duplicate_box_IoU_threshold": 0.5,
+  "candidate_rewards": [
+    "MaskDice",
+    "MaskContrast"
+  ],
+  "qualification": "pair accuracy>=Geometry AND top1 regret<=Geometry AND at least one strict improvement, equal eligible queries",
+  "candidate_bank": "original sealed policy32",
+  "top1_ties": "average IoU over all tied highest-reward candidates",
+  "no_student_adaptation": true,
+  "no_parameter_search": true,
+  "no_automatic_full_evaluation": true,
+  "frame_text_scores_only_offline_event_support_diagnostic": true,
+  "GT_only_after_complete_reward_seal": true,
+  "Direct_same_continuous_area_gradient_available": true,
+  "development_exposure_disclosed": true,
+  "mask_signal_not_claimed_to_solve_event_or_identity": true
+}

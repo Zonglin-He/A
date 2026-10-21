@@ -4,7 +4,7 @@
     "README.md": "6514df313aecb17d38becca5f686bae3697317fb403aebe4fbf45e700cb656c9",
     "AGENTS.md": "624097c3228bd7ac7712cef854caa974fcbe2b0ee136e7b9d04c6089242a20c0",
     "configs/default.json": "3b61b2d82779457f557f93b788f79e428eb957650689dba8fb53485ca1a2f91a",
-    "docs/history.md": "fc780890875043c130ee15df477103842e44c90f29f5d529014448ddf410671e",
+    "docs/history.md": "44bccdcf8591004b1dcbfab9351a170a7704b3fffead21f6d4d42232bf121fbf",
     "docs/method.md": "5094d5454991584c0cc429f73f436fe88ca2ff465085ca6a60eb34ab405dcc6f",
     "docs/evaluation.md": "a547add064595c193d5d16d407be7e1fd7426de86af90960251b7165ee02b028",
     "docs/assets.md": "635e51768438f4081aec05d28f8ddb09b3d53e6d134efb1f1136eebe7ce6e9a3",
@@ -29,6 +29,7 @@
     "docs/tubedetr_layout_trial.md": "89c95661fce9dcb6987747260886ecae84b2d466c9ab549c75f8d6c2ce9c9a8d",
     "docs/tubedetr_opd_direct_research.md": "39d16d0ce84a2bd8a2a0da79a033066f76cf94718abb4541b42d5e66945b8433",
     "docs/tubedetr_reward_mechanism.md": "9ca23de1617bdbac121666b2ae8ca196dfc249ec16a68eaf6baea0a09d272e4e",
+    "docs/tubedetr_mask_reward_qualification.md": "88be7d50c74a808ebcc5f8439f7fb7858f8dac3bceaccb01de44ac4782554ca5",
     "configs/tubedetr.json": "7df6009d3139552626215ef58a2d8c3924f71a3d9486ad92a7b4b62d1dd57b32",
     "docs/tubedetr.md": "b2bf0645db0c267875e1252137216a6d38cd6f7081e06d0d623c9ce321b860f6",
     "results/tubedetr/engineering_checks.json": "15b86cc9051915dbe2f985e21bc353a3ff0f57a02870c8f56403c49aa1dce83f",
@@ -91,6 +92,7 @@
     "results/tubedetr_reward_trajectory/report.md": "75a02a4f9b2fd1913d776cd42911c9878584f14472459ac4ccfc1ab717404c8d",
     "results/tubedetr_reward_trajectory/summary.json": "0b3cab5f9e4273197cb308fb3c1c6398f80510c972fcb1122763a8ede55d0ba2",
     "results/tubedetr_reward_trajectory/plan.json": "0adda121de3f220a524b4cd79fe7172f2be6c143bca6c60a7fbf693750d696ed",
+    "results/tubedetr_mask_reward_qualification/plan.json": "92ccaaea1fc7fe44f2b525720b32a2a2df29bfac2b7d2b39093c52612ee545ee",
     "stvg/metrics.py": "c8db46913786a9f300984d7d7ca7ab219be30e8c91a1d27781d23155597d5665",
     "stvg/state.py": "e0a469ad993a135371e0b8e864bd67ff5a198f428c8c2181ffda2bdb01601961",
     "stvg/__main__.py": "3e5063d0f2166f704f3f8956b57e21c8caa26e7e6e877087c20f7ff2c3eb238e",
@@ -127,11 +129,13 @@
     "stvg/teacher_service.py": "1196a63b18cc29e793fea830aa276f9fee95dc7adadbcffb4d3c78862d1eb5c0",
     "stvg/temporal.py": "86ecc3c3b340d0f497d05fbe75472498aa51e9138575b28f0deb1325102e23ba",
     "tools/check_frame_alignment.py": "fab366edef497af889c316806c00438b5defeee86f8ce75d99eb8c777f054318",
+    "tools/tubedetr_mask_reward_qualification.py": "718ddde629496da8af670302b1c44953f537188e6bea7f900722e08dd1ff63ff",
     "tools/check_teacher_service.py": "7d48fe6d29c554ff9075dd59987db01a1eb80d33988ff8955a081692f85c6297",
     "tools/acquire_tubedetr_assets.py": "b5a1050cc9f760d157874005b23fa68d9baf5a7727f88d5b5f1cb0a64ed6f512",
     "tools/tubedetr_hc2_development.py": "97896e5ef715f9c279d23a6423e6c7a1375aba4f6645509e571bf23ec2c6d5f5",
     "tools/prepare_tubedetr_run.py": "b8212ff903643c876153b154824095a7d23abcb78045654fc8e24f079d903d54",
     "tools/render_tubedetr_qualitative.py": "e5da98a2a016a623d90546f6562c4f1d23ebced87b9d44f9323f98bd4e6e0a5a",
+    "tools/mask_reward.py": "74ae71bea73c239837b94eec052357ee81cf291bdd17aafe04d9460b3158ee14",
     "tools/tubedetr_vid_development.py": "b0fe509a281ea50de9f552259cd6d4118c50f8816f24237432cfbffa186d1b56",
     "tools/fetch_hc2_population.py": "343ddb836fd272a9f93bc9ab7ab1b35baf2dc3e2334e005705563dd7a56cdda9",
     "tools/tubedetr_vid_spatial_followup.py": "92a8560495586c24283ce08219e8b24c7ce33733465263cf02e6e9ba6bc3ae8c",
@@ -174,6 +178,7 @@
     "tests/test_tubedetr_development.py": "2678db453d37bf2a559845cb14f403823e6deaf8f7ec934faa44101c40785424",
     "tests/test_evaluation_v2.py": "694ddab95610a42a536e41811a8bcd1c73a9d7e975b0c2bf83a2361705ee51ba",
     "tests/test_tubedetr_ablation.py": "069aa692ea72d72e7688b0c38e31f6eb6c47da8ed75327935445c05b43bd0644",
-    "scripts/research_archive.py": "1f7c10a979659d171ffba2e041c216819e515599886ae7a17e3c4fa5d5e11576"
+    "tests/test_mask_reward.py": "38078b5ef014ed82fac07e577fdc3dd158b31ffb76d85870a523cbe7376b84b0",
+    "scripts/research_archive.py": "2f235d1da8b818c27cd00a4ae4319c0f3dcebc90e70a679b6072e22b7bc4876e"
   }
 }
