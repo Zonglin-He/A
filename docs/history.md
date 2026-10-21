@@ -200,3 +200,5 @@ A/B证据策略、精确H4反馈与全部HC64正负结果已公开并逐文件�
 本轮真实64均新RGB/224、八专家缓存全hit，Source/E/位置逐位旧缓存；B额外time0，C/D每query2（每offset1），无448/新专家/参数更新。共享capture均4.0364秒，C额外decoder/head .0430、两DP+重放/搬运finish .0810秒；单路径分项估计C5.1991秒排除outputIO，实际三分支trial5.3211秒/条，封存全wall356.64秒，不能相混。有限同query4483.8835与C .0869秒附加分支差3.7966秒不当64端到端倍率；原始专家miss smoke12.407秒单列且Source已CPU驻留。全部结果/匿名正负/区间损伤/纯时间与成本在results/tube_temporal_hc64；旧源码116哈希、旧回执、formal paused状态保持。当前正式空间无optimizer/可训练state，不依赖scripts或历史outputs；TA接口已验，其他backbone未验，不恢复formalVid/CG。
 
 全64独立保存态结构审计通过：429源码/快照、正式暂停状态/default不变，C/D辅助框动作score/r/时间支持全同；4160节点M合法直方图逐位、4149实际置换，1536层每head/query attention视觉mass最大误差2.98e−7，text/padding0。真实64均无padding格，不能扩写成非空padding实测；合成非空padding验收另存。预算nativeoffset128、原time/position各512，C/D各额外128time，448/新专家/反向0。匿名structure.json及独立只读脚本公开，不读取GT或生成新路径。
+
+BoxFixed独立主线与固定HC64时间验证已公开并逐文件核验：实现提交[1af13d7c](https://github.com/Zonglin-He/A/commit/1af13d7cb4d94b74881477b8de233496ed83afbf)，main/research均freshCAS非强制快进；590文件/56,263,682字节与远端Git blob SHA256/tree完全一致，保留旧历史与全部旧路径。公开本轮负结果/768匿名签名比较/损伤/纯时间/真实成本/迁移与注意力审计，不含数据、标签坐标、视频正文、原始轨迹/mask/特征/状态、权重、私有ID或凭据。默认BoxFixed+Strong；不恢复formalVid/CG，不追加参数搜索。发布回执docs/publication.json由后续文档提交保存。
