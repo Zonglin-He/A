@@ -72,3 +72,5 @@ HC128新奖励结果已公开并逐文件核验：提交 [87f28ca8](https://gith
 
 
 2026-10-21 奖励研究第二阶段完成：HC128同一ReferDINO/同八RGB原生输出128条先封存，selected八框与query及输入哈希逐条严格复核，无新增观测或学生更新。初态同32候选query宏rho布局0.5635、几何0.6120、mask投影0.6406，投影同时提高Point对GT梯度cos至0.4598，不能据此宣称OPD独有优势；Mean缩框及Coverage全图退化经固定缩放反例验证。固定H036/H084/H125的6相同状态/Adam历史和3初态原图导数已核验原路径逐位一致；H125未观测计分节点55主导实际退步。随后54次physical Replay中央差分与内存全reference梯度诊断确认上游层间detach导致原反传图不等于完整forward导数，两种现有loss共同受影响；所有forward框逐位不变，原源码/正式paused state哈希不变。纠正旧“完整Jacobian”和单纯“有限步非线性”的口径，完整导数下H125敏感性仍存在，原Adam大步非线性亦保留。没有恢复formal、运行新适应、改参数、训练网络或增加专家。70项CPU检查通过。综合证据与限制、强Direct及真实状态候选研究方向见docs/reward_study.md和results/reward_study；公开代码副本仅路径/匿名行序/导入转换，原执行源和封存证明本地保留。
+
+奖励研究已公开并逐文件核验：提交 [6a21bf77](https://github.com/Zonglin-He/A/commit/6a21bf7773570695ea897d97c94f7fb03b015d39)，main/research以freshCAS非强制快进；386文件、10,243,099字节的远端Git内容与本地导出SHA256及tree一致，旧历史保留。公开聚合统计与15份审计计算源码，不含私有数据、描述、GT坐标、mask/特征/状态张量。本次只完成机制研究及有限诊断，不宣称新奖励取得适应成绩；正式暂停和唯一注册方法保持不变。
