@@ -6,6 +6,7 @@ REQUIRED=['README.md','AGENTS.md','configs/default.json','docs/history.md','docs
 REQUIRED += ['docs/tubedetr_ablation.md']
 REQUIRED += ['docs/tubedetr_vid_development.md','docs/tubedetr_hc2_development.md','docs/tubedetr_spatial_analysis.md','docs/tubedetr_layout_trial.md']
 REQUIRED += ['docs/tubedetr_opd_direct_research.md']
+REQUIRED += ['docs/tubedetr_reward_mechanism.md']
 def sha(f):return hashlib.sha256(f.read_bytes()).hexdigest()
 REQUIRED += ['configs/tubedetr.json','docs/tubedetr.md','results/tubedetr/engineering_checks.json','results/tubedetr/STATUS.json','results/tubedetr/teacher_service_check.json','results/tubedetr/qualification.json','results/tubedetr/data_intake.json']
 REQUIRED += [str(p.relative_to(ROOT)) for p in (ROOT/'results/tubedetr').rglob('*')
@@ -19,6 +20,10 @@ REQUIRED += [str(p.relative_to(ROOT)) for folder in ['results/tubedetr_spatial_a
 REQUIRED += [str(p.relative_to(ROOT)) for p in (ROOT/'results/tubedetr_layout_trial').rglob('*')
              if p.is_file() and p.suffix in {'.json', '.md'}]
 REQUIRED += [str(p.relative_to(ROOT)) for p in (ROOT/'results/tubedetr_opd_direct_diagnosis').rglob('*')
+             if p.is_file() and p.suffix in {'.json', '.md'}]
+REQUIRED += [str(p.relative_to(ROOT)) for p in (ROOT/'results/tubedetr_reward_mechanism').rglob('*')
+             if p.is_file() and p.suffix in {'.json', '.md'}]
+REQUIRED += [str(p.relative_to(ROOT)) for p in (ROOT/'results/tubedetr_reward_trajectory').rglob('*')
              if p.is_file() and p.suffix in {'.json', '.md'}]
 def check():
  errors=[];warnings=[]
