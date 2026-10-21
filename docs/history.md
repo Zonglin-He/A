@@ -92,3 +92,5 @@ HC128新奖励结果已公开并逐文件核验：提交 [87f28ca8](https://gith
 同32维新状态内公平比较，旧几何2048维只作方法参照；不能单独归因奖励替换。主适应每query实际平均StateOPD18.03秒、Direct16.86秒、DirectMC32.60秒、DirectFullRef22.10秒，setup与反向单列；这是已有缓存下的增量decoder成本，不是端到端时延。初始化阶段及首轮dtype工程失败已保留，未混用产物。全部91个冻结源、正式paused state及主配置哈希不变，未恢复全量Vid或CG、不追加扫描。独立结果见results/state_opd_hc64；主方法不更改。
 
 同轮事后只读trace审计核256个arm-query全部通过，无模型/新候选/新GT评分。StateOPD输出与E同节点IoU均值0.99484、中位数0.99860，平均角点位移仅占归一化图像坐标0.0585%；所有64条protected U上涨，但22条vIoU下降。2486/2557采样轮ESS≥31/32，候选std(U)/tau中位数0.001235，权重多数近均匀。guard仅4/64条路径激活，不能把零增量全归给保护；也不能因ESS高就认定温度为唯一原因，Adam归一化、基底/半径/decoder响应仍耦合。H014旧几何相对E+8.9822pp，新StateOPD对E−0.0146pp，表现为没有保留旧正收益。聚合与匿名案例见results/state_opd_hc64/dynamics.json，portable CPU核验见scripts/state_opd/audit.py。70项CPU检查通过；未根据结果更改配置或追加实验。
+
+HC64真实状态对照已公开并逐文件核验：提交 [4a9b6a0f](https://github.com/Zonglin-He/A/commit/4a9b6a0f33e8e53890a54efe510ebc7063eaa7c7)，main/research均freshCAS非强制快进；398文件/10,836,351字节远端Git内容与本地导出SHA256及tree完全一致，原历史保留。代码/锁定配置/全部64匿名正负结果/成本/portable事后CPU审计公开，不含数据、GT坐标、mask/特征/状态张量、权重或私人描述。新奖励未支持替换几何主方法，未追加调参或恢复formal/CG。旧两个工程失败单列保存，不混入方法结果。最终档案回执见docs/publication.json，本条及回执在随后文档提交保存。
