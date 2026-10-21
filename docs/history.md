@@ -135,3 +135,5 @@ v0实现与完整HC64适应前筛查已公开并逐文件核验：提交[67621fb
 同轮跨锚点探针固定64父来源×8fold，rawSource基线、先切keep7 logits重选同一query、只7 masks/boxes构建3槽，全部512 proposal/predicted maps封存后才读held native mask，所有反馈读出封存后才独立GT。只比较同bank投影−.1G与单跳Source对应2DDice−.1G，无memory/link/适应或参数搜索，held自身不替换。Cross相对Projection完整vIoU+0.0627pp[-.6749,.8779]，观测s+2.8926pp[.8987,5.1162]，未观测s−.1943pp[-1.2383,.8361]；actual错误替换比例54.90→55.33%，替换减少但未建立可靠接纳。macro pair56.63→60.66%，配对+4.03pp[.27,7.88]，说明总体排序正信号未兑现为未观测净收益。Cross相对Source v−.1372pp，19升/44降/1不变。不得把Source新bank与旧ERef-v0相减归因。
 
 本轮下游held隔离全512检查及24真实fold极值扰动逐位复建通过；cached ReferDINO仍含8-frame tracking/temporal上下文，明确非独立7帧教师。14新合成+70原工程测试通过，1536dense核验最大6.66e−16，所有旧源码/registered config/formal paused hashes保持。新模型/专家/decoder/RGB调用0；proposal41.67秒+feedback11.96秒仅缓存CPU增量。执行决定不进入OPD完整适应，不增采样/记忆、不改主方法或恢复formalVid/CG；公开代码、锁定配置、聚合与全部匿名正负、隔离证明和负结果，见docs/score_audit.md与results/score_audit/REPORT.md。
+
+本轮评分审计及全部正负结果已公开并逐文件核验：提交[b9d94762](https://github.com/Zonglin-He/A/commit/b9d94762dca48c3a37f3207fc364c758efa1828c)，main/research均freshCAS非强制快进；503文件、15,269,092字节与远端Git blob SHA256及tree完全一致，旧历史保留。公开内容不含数据、GT坐标、mask/特征/轨迹、权重或私有ID。无新适应结果、未更改唯一注册方法或恢复formal/CG；发布回执及档案在后续文档提交同步。
