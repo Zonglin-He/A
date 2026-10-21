@@ -210,3 +210,5 @@ BoxFixed独立主线与固定HC64时间验证已公开并逐文件核验：实�
 全64新输出先封存后CPU标签，640dense最大6.66e−16、Strong指标差0。新增RGB/encoder/decoder/ReferDINO/反向/更新0；只原model_ema时间头66306冻结参数，384实际head批次末层逐位恢复，192后验/MBR与192旧空间动作/框/score恢复。同Source checkpoint SHA与原捕获runtime资产一致，1152各层规范化/均后验及64MBR独立保存态审计通过，14个融合区间不同于Global、18不同于置换。执行及末尾核验阶段6.515秒不含prepare，当前三读出head/后验/DP及恢复检查均.04497秒/query、inputIO.00988/outputIO.00332；不是部署速度，部署仍需两个offset时间重放及共享224/专家/传播。本轮结果results/tube_fusion_hc64，协议docs/tube_fusion.md，生产配置及所有旧seal/formalVid8405暂停/CG暂停保持。
 
 本轮94项当前工程测试通过（新增4项），档案check通过。公开896条匿名配对signed行，完整Source总体对照、无反馈/置换消融及Strong参考分开；不将CI跨零写为等精度。保存态审计不生成新模型路径或GT分数。后续仅归档与GitHub发布核验，停止实验。
+
+本轮固定缓存六层后验融合代码/配置与全部正负已公开逐文件核验：实现提交[c181e2c4](https://github.com/Zonglin-He/A/commit/c181e2c475ff953ee42270e3fafce16debb02a8b)，main/research均freshCAS非强制快进；602文件/57,504,130字节与远端Git blob SHA256/tree完全一致，保留所有历史。公开896匿名signed、Source整体收益与无反馈/置换消融、8严重损伤、纯时间和缓存/部署成本边界；不上传数据、标签坐标、原始query/视频、权重或原始缓存。正式Vid/CG和生产配置保持，按锁定结论停止反馈方向，无融合权重扫描。发布回执docs/publication.json由后续文档提交保存。
