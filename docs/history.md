@@ -174,3 +174,13 @@ A/B证据策略、精确H4反馈与全部HC64正负结果已公开并逐文件�
 独立保存状态审计711分支逐位prefix/incoming/phi/noise通过，无新路径/Q/GT评分。237/237强制后memory变化，2814后续节点memory/logp全变化；far memory差中位.00586、relative-logit扰动.000390、采样winner margin1.05597，previous-feature/link差far均0，实际far动作0变化。无噪声argmax仍17/2814、far5/2276变化，不能泛称所有读出不敏感。已评分174强制点Teacher即时IoU均+2.5067pp(92升72降10同)，92个局部改善点后续主tail动作均不变，说明当前状态影响未兑现为后续纠正，而非memory未传。公开state_flow.json与复现脚本，原推理/评分源哈希不变。
 
 单点纠正价值、保存状态因果链审计与独立耗时拆分已公开逐文件核验：提交[9478c009](https://github.com/Zonglin-He/A/commit/9478c00996a870f2a1dc50a269558151fc212dce)，main/research均freshCAS非强制快进，551文件/38,778,922字节与远端Git blob SHA256/tree一致，历史保留。全部匿名正负/零query/噪声及动作支持分层/失败资源门槛、缓存成本与冷启动限制公开，不含数据、GT坐标、私人ID、mask/特征/状态张量或权重。未在gate失败后启动新蒸馏或调参，正式Vid与CG仍暂停。发布回执见docs/publication.json，随后文档提交保存。
+
+2026-10-21 用户授权直接针对纠正传播弱和教师错选改算法并做真实适应。独立committed_policy保留封存完整框bank/Strong/8教师/Source缓存，修改外部跨锚点一致性加权与持久证据来源承诺两处；不能作单因素因果归因。56有向跨锚点WLS完整框/ROI支持，排除自身，固定分母14；质量≥.1且至少2外部互证、正支持增量才写入来源状态，后续可靠冲突解除。来源不是已验证身份，相关教师一致跟错仍无法识别。四正有界权重/无可学E偏置，3outer×2路径×10inner、所有组30backwards，outer实际固定utility下降完整Adam回滚但继续下轮。OPD当前硬历史、FixedKD初始教师历史/每轮刷新目标、Direct完整软转移与Q4全部可用梯度，固定初态/精确DP/旧几何等强对照。按新请求全64真实三组适应后封存再GT，无诊断门槛，不覆盖旧结果或恢复formalVid/CG；唯一注册方法不变。协议docs/committed_policy.md，配置scripts/committed_policy/config.json。
+
+本轮28项新CPU合成测试和70项原工程检查通过；Direct全梯度有限差分、H4独立穷举、DP穷举、长期承诺/冲突reset与非空Adam回滚后继续均验证。正式HC64真实三组CPU缓存适应已启动，指纹e3bc150097eef5251428acdebba07d291f35f7f6b69e181ce5273b66b39f38c6；全部116非测试运行依赖及每条旧bank/八证据receipt/seal身份已锁定。全部64×3真实适应后再评分，不按首批结果筛选。低质量规则仅抑制承诺写入和route偏置，不删除合法候选，不能宣称教师错误已解决。
+
+2026-10-21 持久证据来源承诺HC64已真实完成192个arm-query、各30反向且全64先封存后GT；指纹e3bc150097eef5251428acdebba07d291f35f7f6b69e181ce5273b66b39f38c6，seal SHA ebf539aa993e565a9a4710b8233884b4db4ae5ed2287d521eb9a9dd7022a9d39。28新合成/70原工程通过，576dense最大1.11e−15，旧4baseline逐位/指标差0，116冻结源与default/formal pause不变。CommitInitial等E31.0918/50.7055，OPD31.0126/50.5983、KD/Direct31.0615/50.6437（完整v/未观测s%），OPD−Direct v−.0489pp[−.1467,0]、0升1降63同；相对E0升2降62同，H043−3.1306pp、H063−1.9353pp，无v>5pp下降。本版DP31.5294/51.2172，较E v+.4376pp区间跨零且6条>5pp下降，不凭点均值推广。
+
+三组最终均6段非E来源持续≥4节点、最长12，长route正bias并实际选非E的未观测节点23/2query；未做route消融，不作GT或单因素因果证明。真实final reset0次，不能称已解教师错误。OPD替换29未观测节点，其中9有GT：2改善6下降1同，4原≥.5跌破.5；Direct/KD27节点其中7有GT：2改善4下降1同。512锚316通过跨锚点门、2800合法active替代槽1489可commit，质量/见证仅抑制620承诺不删候选；最终teacher25个可评分未观测建议4有害（OPD状态），一致错选仍未解决。三组接受outer189/187/189，拒绝完整Adam回滚仍执行下一轮，非只诊断。缓存适应均.1543/.1538/1.9681秒，全64封存175.59秒，原缓存成本不计入、非端到端。全正负/严重/更新与结构公开results/committed_policy_hc64；不追加GT选参、不改主方法或恢复formalVid/CG。
+
+本轮保存态读出核验（无新路径/Q/GT）另确认OPD teacher/student72节点分歧，非E目标65；非E相对E平均logit−.740625=先验−1.124557+已学特征.302753+承诺.081178，重建误差8.88e−16。四权重[0,4]局部上界仍无法越E仅2/65，不能泛称硬界锁死；共享四权重/当前目标拟合和读出仍有限制。structure.json保留全部匿名计数和真实长状态/行动核验，无route消融不作因果或语义正确性保证。本轮没有按这些事后诊断追加fit或调参。

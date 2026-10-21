@@ -107,3 +107,5 @@ docs/          方法、资产、评估和历史说明
 冻结完整框候选的八特征策略A／四节点后果反馈B，六组HC64真实适应见 [协议](docs/evidence_policy.md) 与 [结果分析](results/evidence_policy_hc64/ANALYSIS.md)。策略已增加未观测节点替换，但没有建立OPD独立优势；全部正负结果保留，正式全量任务仍暂停。
 
 单点教师建议后的学生续走价值与缓存成本拆分见 [协议](docs/correction_value.md)、[结果判断](results/correction_value_hc64/ANALYSIS.md) 及 [成本分项](results/correction_value_hc64/COST.md)。237次干预未建立后续净收益，按预设门槛未进入纠正轨迹蒸馏，全部旧结果保留。
+
+持久证据来源承诺与跨锚点质量加权的HC64真实适应见 [协议](docs/committed_policy.md) 和 [完整判断](results/committed_policy_hc64/ANALYSIS.md)。OPD、Direct、FixedKD各完整执行30次更新；持久状态已影响真实后续选框，但未建立OPD优势，也未解决一致错选。全部正负结果保留，不替换唯一主方法。
