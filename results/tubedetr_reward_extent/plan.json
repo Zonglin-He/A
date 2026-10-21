@@ -1,0 +1,28 @@
+{
+  "status": "frozen_before_extent_diagnosis",
+  "queries": 128,
+  "code_sha256": "be3b4474e29be70fed6abd283fcf0335e9559c584f72483a0a7382dae09f668d",
+  "parent_final_seals": {
+    "results/tubedetr_mask_reward_qualification": "428ec82d0e37491b6dc14faa8c39aabcfc1a16cc0266507538c56adc33347735",
+    "results/tubedetr_correspondence": "5990a37e6f71514085c8cc172dce2256d4148b0cbc9110903da26d5d6eaa2415"
+  },
+  "reference_seals": {
+    "tubedetr_layout_trial": "45854bea1ccd7432f84a1e206f6adca9fac2c1a49629f4795f314c1498509c29",
+    "tubedetr_mask_reward_qualification": "6fbf84cbf122003b60dd150ff30b8051566e42ba44b740520c85b0d5894d5a10",
+    "tubedetr_correspondence": "190dd53025c2f3c1df12b6e5e01a4128fb8d862fa9b0c6bc8cb5ae78071d17e8"
+  },
+  "diagnostics": [
+    "reward-top1 tie averaged GT-relative log area and absolute log area",
+    "fraction chosen area smaller than GT rectangle",
+    "GT rectangle coverage and candidate precision",
+    "IoU and regret exact regression to completed qualifications",
+    "teacher better/not better/noGT8 groups"
+  ],
+  "selection": "same sealed32 candidates by each reward, no GT selection",
+  "GT_only_after_reward_seals": true,
+  "no_GPU": true,
+  "no_new_reward": true,
+  "no_adaptation": true,
+  "posthoc_exploratory_not_causal": true,
+  "not_independent_confirmation": true
+}
