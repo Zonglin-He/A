@@ -27,7 +27,7 @@ OUT=ROOT/'outputs/tubedetr_hc2_development'
 PUBLIC=ROOT/'results/tubedetr_hc2_development'
 OLD=ROOT/'outputs/tubedetr/vid_to_hc2'
 PLAN=PUBLIC/'plan.json'
-GAMMAS=[0.,.05,.1,.25,.5,.75,1.]
+GAMMAS=[0.,.0125,.025,.05,.1,.25,.5,.75,1.]
 BASE=dict(initialization_gamma=.5,lr=.014,tau=.14,steps=40)
 
 
@@ -99,8 +99,10 @@ def prepare():
                                              'results/tubedetr_vid_development/final_seal.json'],
         baseline=BASE,baseline_configuration=old['configuration'],
         diagnosis_sha256=sha(ROOT/'results/tubedetr/hc2_diagnosis.json'),
+        pre_candidate_amendment=dict(prior_plan_sha256=sha(PUBLIC/'plan_v1_before_spatial_followup.json'),
+            reason='User requests deeper spatial analysis; weaker gamma edge checked before any HC candidates'),
         development_code_sha256={str(p.relative_to(ROOT)):sha(p) for p in
-            [ROOT/'tools/tubedetr_hc2_development.py',ROOT/'tools/complete_tubedetr_hc2_development.py']},
+            [ROOT/'tools/tubedetr_hc2_development.py',ROOT/'tools/complete_tubedetr_hc2_development.py',ROOT/'tools/analyze_tubedetr_spatial.py']},
         stages=[dict(name='initialization',gamma=GAMMAS,objective='WithoutOPD complete vIoU; gamma0 control only',
                      reason='Frozen HC initialization accounts for -1.877188pp whereas OPD adds only0.025177pp'),
                 dict(name='learning_rate',lr=[.0035,.007,.014,.028],steps=40,tau=.14,

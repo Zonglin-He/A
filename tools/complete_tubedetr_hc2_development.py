@@ -145,6 +145,8 @@ def main(wait):
             values[dev.pid(p)]=dict(params=p,score=result['datasets']['hc2']['query_means']['Full']['m_vIoU'],
                 metric_means=result['datasets']['hc2']['query_means'],diagnostics=diagnostics,
                 metrics_sha256=sha(root/'metrics.json'))
+        subprocess.run([sys.executable,'-B','tools/analyze_tubedetr_spatial.py','--dataset','hc2'],
+                       cwd=ROOT,check=True,env={**os.environ,'CUDA_VISIBLE_DEVICES':''},stdout=subprocess.DEVNULL)
         return values[dev.pick(values)]['params']
     collect([dev.BASE])
     rates=[dev.parameters(gamma=gamma,lr=lr)for lr in [.0035,.007,.014,.028]]

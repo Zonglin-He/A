@@ -1,0 +1,147 @@
+{
+  "status": "frozen_bounded_spatial_followup_before_new_candidates",
+  "backbone": "TubeDETR",
+  "dataset": "vidstg",
+  "seed": 41,
+  "queries": 128,
+  "parents": 128,
+  "manifest_sha256": "c7df9b65aa5603b14a132615cc19f71a51a9bd59baf36f38bd28426334ff0ec4",
+  "labels_sha256": "6a7faa74bd0dda58008a63b7b351cb41c2235e308641092272a687d5592b4550",
+  "population_sha256": "2689f56934fcf5753f23b1ed4d1e1fbddc8fa86b08a98e535fa4c6e42e877ab4",
+  "implementation_sha256": "f30171f520aa10fa6a879ca84077e043f444e5d947e8110c42bf9b292c9d349b",
+  "baseline_run_sha256": "d7af629e4b13cd2514d15d319268bab02931794ad371946c52da8a491703d9ef",
+  "baseline_prediction_seal_sha256": "a8be51566abec32d9367a36dced44270e113b0bf65075d18fe30dfe682554895",
+  "configuration_sha256": "3b61b2d82779457f557f93b788f79e428eb957650689dba8fb53485ca1a2f91a",
+  "adapter_configuration_sha256": "7df6009d3139552626215ef58a2d8c3924f71a3d9486ad92a7b4b62d1dd57b32",
+  "input_selection": "new input-hash fixed128: one query per parent; seed41; no outcome-based selection",
+  "historical_BV001_128_mapping_available": false,
+  "not_claimed_identical_to_historical_Vid128": true,
+  "full_target_results_previously_seen": true,
+  "development_exposure_registered_before_candidates": true,
+  "original_study_completion_required": [
+    "results/tubedetr/final_seal.json",
+    "results/tubedetr/ablation_seal.json"
+  ],
+  "baseline": {
+    "initialization_gamma": 1.0,
+    "lr": 0.01,
+    "tau": 0.5,
+    "steps": 30
+  },
+  "baseline_configuration": {
+    "dataset": "vidstg",
+    "source_dataset": "hc2",
+    "scales": [
+      0.05,
+      0.25
+    ],
+    "tau": 0.5,
+    "lr": 0.01,
+    "steps": 30,
+    "samples": 32,
+    "seeds": [
+      41
+    ],
+    "default_seed": 41,
+    "state_shape": [
+      8,
+      256
+    ],
+    "temporal": "0.5 high-resolution posterior + 0.5 native six-layer mean; physical MBR",
+    "E": "eight-frame native ReferDINO singleton robust correction",
+    "teacher": "same native ReferDINO eight-frame evidence reused for initialization and OPD",
+    "source_checkpoint": "checkpoints/tubedetr/hc2_k2_res224.pth",
+    "ReferDINO_checkpoint": "checkpoints/referdino/ryt_mevis_swinb.pth",
+    "no_network_training": true,
+    "E_calibration": {
+      "scale": [
+        0.022542142662651282,
+        0.011027737123363815,
+        0.06612943552390567,
+        0.02918426580581821
+      ],
+      "truncation": 18.056884634893116,
+      "source_train_queries": 36,
+      "eligible_queries": 35,
+      "known_planned_anchors": 113,
+      "singleton_or_empty_queries": 1,
+      "model_hash": "ee72f0d9a50c573a115bd7cfc2329c860745a1cf3dab83af1be7787c11b3c218",
+      "quantile": 0.95,
+      "validation_used": false,
+      "target_GT_used": false
+    },
+    "E_calibration_provenance": "source-domain train calibration, frozen before target outcomes",
+    "output_alpha": 1.0,
+    "initialization_gamma": 1.0,
+    "backbone": "TubeDETR",
+    "upstream_revision": "d70c0eed94da09a9a5e4329c937230ecfb1d3ee6",
+    "stride": 2,
+    "native_resolution": 224,
+    "strong_resolution": 448,
+    "Source_temporal": "official native full-grid MAP; end frame + 1",
+    "calibration_policy": "transfer the existing frozen calibration unchanged; do not claim TubeDETR-specific source calibration",
+    "source_checkpoint_sha256": "c646a8b7131bb28806c350e16479cd8bb31d4425ccb15129b26a6e4d38dd4222"
+  },
+  "development_code_sha256": {
+    "tools/tubedetr_vid_spatial_followup.py": "92a8560495586c24283ce08219e8b24c7ce33733465263cf02e6e9ba6bc3ae8c",
+    "tools/tubedetr_vid_development.py": "b0fe509a281ea50de9f552259cd6d4118c50f8816f24237432cfbffa186d1b56",
+    "tools/complete_tubedetr_vid_development.py": "c6327d94bb2f8d76d25dc3fa9e9593fa1e7a22be7c5c91b218d76d5d25a524fa"
+  },
+  "stages": [
+    {
+      "name": "weaker_initialization_optimizer_coupling",
+      "gamma": [
+        0.0125,
+        0.025
+      ],
+      "lr": [
+        0.01,
+        0.02
+      ],
+      "tau": 1.0,
+      "steps": [
+        15,
+        30,
+        60
+      ]
+    }
+  ],
+  "max_new_development_fit_paths": 513,
+  "one_global_profile": true,
+  "output_alpha": 1.0,
+  "unchanged": [
+    "source checkpoint",
+    "single ReferDINO",
+    "same eight observations",
+    "Strong time output",
+    "network weights frozen",
+    "per-query reset",
+    "policy scales",
+    "E calibration"
+  ],
+  "selection_objective": "maximize dev128 dense m_sIoU, subject to m_vIoU and unobserved_actual_sIoU each no worse than the previous locked Vid profile",
+  "no_full_population_parameter_search": true,
+  "selected_profile_full_evaluations": 1,
+  "baseline_retention_policy": "If original profile wins, reuse its already-complete full predictions exactly",
+  "new_full_outputs": "outputs/tubedetr_vid_spatial_followup/full_selected",
+  "old_results_overwritten": false,
+  "labels_read_only_by_offline_scoring_or_controller": true,
+  "prior_selected_sha256": "828b4033a9cd9a73428e96b085f5c677e9731de3a440d159c7092f3b5e9d099a",
+  "reference_profile": "p_3ef0feebc887",
+  "reference_parameters": {
+    "initialization_gamma": 0.05,
+    "lr": 0.02,
+    "tau": 1.0,
+    "steps": 60
+  },
+  "diagnosis_sha256": "581528396f19701a51e611bed8a42a7d74fef628db01ef5b19cf0aa6a561df6a",
+  "dependency_seals": [
+    "results/tubedetr_vid_development/final_seal.json",
+    "results/tubedetr_hc2_development/final_seal.json"
+  ],
+  "tie_policy": "retain prior profile on exact tie; then fewer steps",
+  "no_query_specific_GT_gating": true,
+  "spatial_net_benefit_requires_comparison_to_Source": true,
+  "reason": "60-step OPD improves observed frames but harms dense/unobserved spatial IoU; compare weaker gamma and smaller LR, with real shared-step fits.",
+  "original_results_overwritten": false
+}

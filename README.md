@@ -101,3 +101,5 @@ docs/          方法、资产、评估和历史说明
 TubeDETR两方向五行消融复用同一完整预测，见 [docs/tubedetr_ablation.md](docs/tubedetr_ablation.md)。
 
 TubeDETR新增HC2目标域后续开发：见[HC2离线诊断、128开发与全量协议](docs/tubedetr_hc2_development.md)。
+
+TubeDETR空间诊断及有限耦合复查：见[协议与负结果披露](docs/tubedetr_spatial_analysis.md)。
