@@ -1,6 +1,6 @@
 # 项目历史与当前状态
 
-当前任务：正式HC1902已评分，Vid8405/10303按用户要求暂停并保全，CG暂停。HC128布局奖励对照已完成并发布；本轮完成奖励失败、原生mask和有限decoder导数研究，未启动新奖励适应或调参，注册几何方法及参数保持不变。
+当前任务：正式HC1902已评分，Vid8405/10303按用户要求暂停并保全，CG暂停。HC128布局奖励对照及奖励机制研究已完成并发布；HC64真实状态候选适应已独立封存和评分，未显示相对几何OPD或同奖励Direct的有效收益。注册几何方法及参数保持不变。
 
 ## 清理与此前结果记录
 
@@ -74,3 +74,21 @@ HC128新奖励结果已公开并逐文件核验：提交 [87f28ca8](https://gith
 2026-10-21 奖励研究第二阶段完成：HC128同一ReferDINO/同八RGB原生输出128条先封存，selected八框与query及输入哈希逐条严格复核，无新增观测或学生更新。初态同32候选query宏rho布局0.5635、几何0.6120、mask投影0.6406，投影同时提高Point对GT梯度cos至0.4598，不能据此宣称OPD独有优势；Mean缩框及Coverage全图退化经固定缩放反例验证。固定H036/H084/H125的6相同状态/Adam历史和3初态原图导数已核验原路径逐位一致；H125未观测计分节点55主导实际退步。随后54次physical Replay中央差分与内存全reference梯度诊断确认上游层间detach导致原反传图不等于完整forward导数，两种现有loss共同受影响；所有forward框逐位不变，原源码/正式paused state哈希不变。纠正旧“完整Jacobian”和单纯“有限步非线性”的口径，完整导数下H125敏感性仍存在，原Adam大步非线性亦保留。没有恢复formal、运行新适应、改参数、训练网络或增加专家。70项CPU检查通过。综合证据与限制、强Direct及真实状态候选研究方向见docs/reward_study.md和results/reward_study；公开代码副本仅路径/匿名行序/导入转换，原执行源和封存证明本地保留。
 
 奖励研究已公开并逐文件核验：提交 [6a21bf77](https://github.com/Zonglin-He/A/commit/6a21bf7773570695ea897d97c94f7fb03b015d39)，main/research以freshCAS非强制快进；386文件、10,243,099字节的远端Git内容与本地导出SHA256及tree一致，旧历史保留。公开聚合统计与15份审计计算源码，不含私有数据、描述、GT坐标、mask/特征/状态张量。本次只完成机制研究及有限诊断，不宣称新奖励取得适应成绩；正式暂停和唯一注册方法保持不变。
+
+
+2026-10-21 HC128真实状态候选实验获用户明确授权并启动：固定同一Source有效特征PCA4基底、8×4 latent状态及总content半径4，真实冻结decoder候选、同ReferDINO原生mask投影、全轨迹相对ERef保护；比较StateOPD、Direct、DirectMC、仅恢复reference梯度的DirectFullRef，旧几何OPD保留参照。seed41、sigma0.1、tau0.01、lr0.014，统一五级回溯与Adam完整回滚，最多1321次真实完整轨迹评估allowance，OPD/MC最多40轮，Point/Full最多660提案；不padding、不按GT选停止步。科学配置于任何预测前锁定，数学CPU检查通过。初始化身份检查曾把E校准model identifier与checkpoint文件SHA误作等值，实际均在加载模型前失败，0预测；已改为核官方资产登记文件SHA并分别保留校准摘要，错误日志与首次prepared lock保留，不属于方法负结果。执行指纹fdf458c0dbca4991c3035134caea683f53c68b5bc0b4f2c3b8d47e95d431b0e9，真实PID2743719于16:05北京时间启动；首条StateOPD40轮1321真实轨迹评估及初态Source/E逐位核验已完成，尚无GT方法评分。新独立目录outputs/state_opd_hc128，原几何/布局/全量结果不覆盖；正式Vid与CG持续暂停。协议见docs/state_opd.md。
+
+真实状态试验首查询的DirectMC触发FP64奖励权重×FP32状态梯度赋值错误；原PID2743719退出后，0条完整query产物的日志/锁/源码快照保存在attempt0_dtype_failure，未读GT。修复仅在optimizer边界将流式聚合梯度转换回状态dtype，纯CPU与同目标autograd混精回归通过，科学配置不变；原前两个arm不冒充完整结果复用。新PID2760006、指纹ea28cc8fd6f27d0402541e9f36b3c3a2801443eb2dc0f94a4c8f2f7b22530fdb于16:08北京时间重启；首查询StateOPD、Direct和DirectMC均已实际完成，后者1321前向/1280反向正常完成。旧全量及CG未恢复。
+
+新指纹首条完整query已独立只读核验：四组固定P/basis SHA逐位相同、初态E及protected U相同，OPD/MC初轮候选逐位一致、后续共享噪声流；所有path的guard/U由独立NumPy公式复算误差0，共同接纳单调、预算和反向计数一致，FullRef前向逐位检查通过。真实成本StateOPD21.45秒、Direct30.11秒、MC38.09秒、FullRef36.62秒，均1321次轨迹评估，setup另列。此处不含GT方法成绩，作业继续。
+
+运行中用户补充紧凑、可解释且跨帧一致的表示目标。已明确当前8×4 PCA content仅压缩更新自由度，不自带几何/身份可解释性，也不证明多目标关联成立；不据此中途更换本轮状态或配置，待完整结果解释。
+
+用户运行中将本轮缩至64父来源，固定取原HC128输入顺序前64、每父1query，不读取新GT或按结果选样。原在途run/core/config/指纹及科学参数预算不改；独立scope64控制器在第64条完整NPZ/trace/receipt写出后只停止经PID/startticks/cwd验证的自有worker，另封存scope_hc64，后半64取消。已有完整前缀预测直接保留。CPU评分器仅将N和范围通用化，保持原指标及逐query基线核验，不拿旧128均值作64基线。正式Vid与CG仍暂停。
+
+
+2026-10-21 17:45北京时间HC64真实状态候选实验完成：固定前64父来源、每父1query，全部四组预测及trace/receipt先封存，身份核验后仅自有worker按边界退出，无范围外完整输出。CPU评分完成448项官方/独立dense核对，最大误差9.99e−16；Source/ERef/Strong与旧预测逐位核验，所有正负query保留。ERefStrong/GeometryOPD/StateOPD/Direct/DirectMC/DirectFullRef完整vIoU为31.0918/31.3868/31.0942/31.0965/31.0938/31.1023%，未观测实际节点sIoU为50.7055/51.2469/50.7248/50.7883/50.7800/50.7469%。StateOPD−ERef仅+0.0025pp，−Geometry为−0.2925pp，−DirectFullRef为−0.0080pp（区间[-0.0171,-0.0007]）；没有建立OPD的实质优势。新四组对ERef均无完整vIoU超过5pp下降；StateOPD对旧几何仍损失1条超过5pp完整vIoU及3条超过5pp未观测sIoU的纠正。
+
+同32维新状态内公平比较，旧几何2048维只作方法参照；不能单独归因奖励替换。主适应每query实际平均StateOPD18.03秒、Direct16.86秒、DirectMC32.60秒、DirectFullRef22.10秒，setup与反向单列；这是已有缓存下的增量decoder成本，不是端到端时延。初始化阶段及首轮dtype工程失败已保留，未混用产物。全部91个冻结源、正式paused state及主配置哈希不变，未恢复全量Vid或CG、不追加扫描。独立结果见results/state_opd_hc64；主方法不更改。
+
+同轮事后只读trace审计核256个arm-query全部通过，无模型/新候选/新GT评分。StateOPD输出与E同节点IoU均值0.99484、中位数0.99860，平均角点位移仅占归一化图像坐标0.0585%；所有64条protected U上涨，但22条vIoU下降。2486/2557采样轮ESS≥31/32，候选std(U)/tau中位数0.001235，权重多数近均匀。guard仅4/64条路径激活，不能把零增量全归给保护；也不能因ESS高就认定温度为唯一原因，Adam归一化、基底/半径/decoder响应仍耦合。H014旧几何相对E+8.9822pp，新StateOPD对E−0.0146pp，表现为没有保留旧正收益。聚合与匿名案例见results/state_opd_hc64/dynamics.json，portable CPU核验见scripts/state_opd/audit.py。70项CPU检查通过；未根据结果更改配置或追加实验。

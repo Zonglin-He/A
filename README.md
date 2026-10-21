@@ -57,11 +57,11 @@ TORCH_CUDA_ARCH_LIST=12.0 .conda/tubedetr/bin/python -B tools/setup.py --build
 
 数据泄漏检查见 [docs/data_integrity.md](docs/data_integrity.md)：未发现当前推理链读取GT，128条离线选参合法，开发曝光与完整划分重叠已单独记录。
 
-数据格式、帧号及评估语义见 [docs/evaluation.md](docs/evaluation.md)。当前本地完整清单为 HC 3,482 条查询 / 237 个父来源、Vid 10,303 条查询 / 732 个父视频；它们只是保留的数据清单，**本次整理没有运行这些完整评估**。清单、标注、视频与权重均被 `.gitignore` 排除。
+数据格式、帧号及评估语义见 [docs/evaluation.md](docs/evaluation.md)。核对官方资产后的完整评价清单为 HC2 1,902 条查询 / 227 个父来源、VidSTG 10,303 条查询 / 732 个父视频。此前 raw HC3482 清单已撤销为正式评价范围，来源及标注纠正见 [划分审计](docs/split_audit.md)。HC1902已完整封存并评分；正式Vid在8,405/10,303条按用户要求暂停，尚无完整正式Vid结果。清单、标注、视频与权重均被 `.gitignore` 排除。
 
 ## 已保存结果
 
-[正式结果表](results/report.md)和[全量逐查询结果](results/evaluation.json)保留原 HC128 / Vid128 的五行评价及正负样本。这两批数据已参与开发和选参，不能当作独立完整测试集。
+[开发面板结果表](results/report.md)和[全部开发逐查询结果](results/evaluation.json)保留原 HC128 / Vid128 的五行评价及正负样本。这两批数据已参与开发和选参，不能当作独立完整测试集。
 
 | 目标数据集 | Source vIoU | 完整方法 vIoU | OPD 相对自身初始化＋Strong |
 |---|---:|---:|---:|
@@ -69,6 +69,8 @@ TORCH_CUDA_ARCH_LIST=12.0 .conda/tubedetr/bin/python -B tools/setup.py --build
 | Vid | 14.5827% | 19.7649% | +0.1009 pp，区间跨零 |
 
 Vid 的严重负例保留，不能把完整方法总增益都归于 OPD。方法定义、证据范围及成本见 [docs/method.md](docs/method.md) 和结果表。
+
+独立研究对照见 [HC64真实状态候选报告](results/state_opd_hc64/REPORT.md)及[冻结协议](docs/state_opd.md)：mask投影与整轨迹保护下，StateOPD完整vIoU为31.0942%，同64条ERef＋Strong为31.0918%，旧几何OPD为31.3868%。四组新方法的同32维状态对照没有建立OPD优于Direct的收益；不替换上述唯一主方法。样本范围为原HC128清单前64个父来源，属于已曝光开发数据。
 
 ## 工程检查
 
