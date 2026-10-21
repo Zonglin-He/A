@@ -103,3 +103,5 @@ docs/          方法、资产、评估和历史说明
 候选评分的固定 v0 审计与严格下游留出锚点探针见 [评分审计](docs/score_audit.md) 和 [完整结果](results/score_audit/REPORT.md)。本轮只运行缓存评分，不执行新 OPD/KD/Direct 适应，不改变主方法。
 
 完整原生框范围传播及匹配OPD/FixedKD/Direct的HC64开发对照见 [协议](docs/box_propagation.md) 与 [结果分析](results/box_propagation_hc64/ANALYSIS.md)。这是隔离研究版本，未更改唯一主方法。
+
+冻结完整框候选的八特征策略A／四节点后果反馈B，六组HC64真实适应见 [协议](docs/evidence_policy.md) 与 [结果分析](results/evidence_policy_hc64/ANALYSIS.md)。策略已增加未观测节点替换，但没有建立OPD独立优势；全部正负结果保留，正式全量任务仍暂停。

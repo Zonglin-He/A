@@ -146,3 +146,15 @@ v0实现与完整HC64适应前筛查已公开并逐文件核验：提交[67621fb
 同轮独立无GT结构审核确认512原生框逐位保留，1645事件内未观测节点1478有替代、1036双方向、167fallback；WLS5691/7181方向通过，1085因尺度拒绝，传播面积/native中位0.8473且精确等sx×sy（无额外组件截断，但不保证尺度无收缩偏差）。OPD实际只替换15个事件未观测节点，Direct16、Fixed966。第一条receipt独立复算valid/invalid WLS、unary全量、所有候选成员、相同随机流与inactive memory通过，未生成新路径/读取GT。结构代码独立于冻结run源，见scripts/audit_box_propagation.py和results/box_propagation_hc64/structure.json。
 
 完整框范围传播实现与本轮匹配适应结果已公开并逐文件核验：提交[6dff0367](https://github.com/Zonglin-He/A/commit/6dff03674fe2e62fa238bf323e738915bd75e899)，main/research以freshCAS非强制快进；518文件、17,268,905字节与远端Git blob SHA256及tree完全一致，历史保留。公开全部匿名正负/严重退步/成本/固定DP/候选oracle边界/结构审计，不上传数据、GT坐标、mask/特征/轨迹张量、私有ID或权重。本轮真实适应已完成但不建立OPD优势，不改注册方法/科学参数或恢复formalVid/CG；发布回执在后续文档提交同步。
+
+
+2026-10-21 用户授权冻结完整框bank，执行A/B各OPD/FixedKD/Direct受控HC64试验。A为8特征(原6+delta_u+c*delta_u)与3outer×2路径×最多10inner，B只将teacher即时r改成H4精确离散期望；冻结参考softmax(r/.2)无学生prior/phi，rho=active*r、原memory与previous转移，边界truncate不除H。OPD每outer缓存两当前hardhistory，KD固定最初teacher两路径，Direct每inner重算两softhistory且完整参考prob/memory/target梯度，同outer共享噪声。原prior.7、lr.1、teacherτ.2、clip1/KL.05/memory.2不改；每inner固定S非降检查、失败完整Adam回滚停全fit不读GT。37新合成与70原工程检查通过，H1即时/独立穷举H4/full gradient/storage sharing/margin JSON已验证。
+
+本轮已在CPU实际启动，独立outputs/evidence_policy_hc64，指纹a075662b05e0f7bb5393fcfbda7e14d459aa43e82a2dba87889597a050ff5f9c；只复用上轮64完整bank，六条旧基线逐位继承，不改传播/候选/Strong，不增RGB、Source/decoder或专家调用。所有六组真实输出/路径/receipt全64先封存后GT评分。signed logits间距、prior barrier、实际替换/内层loss/回滚/Q偏好变化和严重退化集成在真实对照，不另开诊断工程。原主方法与正式Vid/CG暂停保持，旧结果不覆盖。
+
+
+2026-10-21 A/B证据策略HC64已实际完成384个arm-query并封存评分，指纹a075662b05e0f7bb5393fcfbda7e14d459aa43e82a2dba87889597a050ff5f9c；seal SHA0af2c4f3d526627706d069a537950edd24e6a1f1968a4ca8fc5aa129d383e54e。六旧基线逐位复用，768dense核验最大1.11e−15，基线指标差0；37新合成与70原工程通过。A OPD/KD/Direct完整vIoU31.0930/31.3064/31.0989%，未观测s50.6948/50.9100/50.7475%；B31.1227/31.2453/31.1048%，未观测50.7581/50.8315/50.8170%。A/B OPD实际替换事件未观测518/529节点（旧15），logit宏间距−1.3115→+.0727/+.0938；表示/拟合不再不动，但净收益未建立。B−A OPD v+.0298pp区间跨零，未观测+.0633pp[.0033,.1584]；B OPD−Direct v+.0179pp[-.1111,.1875]、未观测−.0589pp，−KD v−.1226pp，仍低于固定DP31.3985与旧几何31.3868。B保存状态Q/r有379/4578偏好不同；OPD/KD3768不同历史中132次目标argmax不同，未证明历史纠错优势。
+
+A OPD7条、B OPD/Direct各6条v>5pp下降，全部公开；B未观测GT替换297中144伤害(48.48%)，恢复48/560同时损坏51/805。S非降接纳不保证GT正确；不事后更换接纳。实际均13.3–13.9尝试步、12.5–13.1接受步，由原S回滚停，不声称跑满30。A/B OPD缓存后.146/.149秒，Direct.482/.702秒；全64六组封存158.44秒，未包含旧缓存重网络成本。全部预测/路径在GT前封存，无新增RGB/模型/decoder/专家；111冻结源、主配置及formal paused state哈希不变。结果results/evidence_policy_hc64含完整正负/间距/损失/退化，本轮完成后不追加扫描或恢复formal/CG，唯一主方法不变。
+
+独立只读64保存trace审计通过660配对field/1984 signed行；A/B OPD outer1/2/3分布37/14/13及38/13/13，多数首次outer因S回滚而未刷新，两者各9query完整30步。B margin同保存history代数：legacy6平均+1.2435、新2+.1418、prior1.3332，isE+.9254，64/64 isE权重负、58/64 negative_guard权重负，不能把增加替换全部归因新证据或称因果消融。完整无新GT/路径/Q的机制审计公开mechanism.json。
