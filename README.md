@@ -2,6 +2,8 @@
 
 TubeDETR 独立迁移分支的接口、资产版本核对、工程资格检查和新 query 平均评分入口见 [docs/tubedetr.md](docs/tubedetr.md)。本机只负责 TubeDETR 两个跨域方向；该入口不修改下面保留的 TA-STVG 方法配置或旧结果。
 
+当前ROI奖励初试完整结束后，按用户授权进行同奖励OPD/Direct机制诊断与有针对性的奖励研究，见[后续研究协议](docs/tubedetr_opd_direct_research.md)。当前全量及ROI冻结计划保持不变，旧调参队列继续暂缓。
+
 用户授权的VidSTG离线诊断、原完整实验结束后的固定128有限调参及所选参数全量流程见 [docs/tubedetr_vid_development.md](docs/tubedetr_vid_development.md)。开发与全量结果、曝光和选择轨迹独立保存。
 
 本地独立项目位于 `stvg-opd/`，先进入该目录运行以下命令。当前机器通过忽略的本地链接使用外层数据、权重、运行库、输出和环境，不重复复制；独立克隆时也可以将这些资产放进同名目录。

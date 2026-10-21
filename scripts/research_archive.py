@@ -5,6 +5,7 @@ ROOT=Path(__file__).resolve().parents[1]
 REQUIRED=['README.md','AGENTS.md','configs/default.json','docs/history.md','docs/method.md','docs/evaluation.md','docs/assets.md','docs/assets.json','docs/third_party.json','docs/migration.json','results/report.md','results/evaluation.json','results/runtime.json','results/cost.json','results/migration_checks.json','results/score_regression.json','results/cleanup_checks.json','docs/data_integrity.md','results/data_integrity.json','docs/cleanup.json','docs/publication.json']
 REQUIRED += ['docs/tubedetr_ablation.md']
 REQUIRED += ['docs/tubedetr_vid_development.md','docs/tubedetr_hc2_development.md','docs/tubedetr_spatial_analysis.md','docs/tubedetr_layout_trial.md']
+REQUIRED += ['docs/tubedetr_opd_direct_research.md']
 def sha(f):return hashlib.sha256(f.read_bytes()).hexdigest()
 REQUIRED += ['configs/tubedetr.json','docs/tubedetr.md','results/tubedetr/engineering_checks.json','results/tubedetr/STATUS.json','results/tubedetr/teacher_service_check.json','results/tubedetr/qualification.json','results/tubedetr/data_intake.json']
 REQUIRED += [str(p.relative_to(ROOT)) for p in (ROOT/'results/tubedetr').rglob('*')
@@ -16,6 +17,8 @@ REQUIRED += [str(p.relative_to(ROOT)) for p in (ROOT/'results/tubedetr_hc2_devel
 REQUIRED += [str(p.relative_to(ROOT)) for folder in ['results/tubedetr_spatial_analysis','results/tubedetr_vid_spatial_followup']
              for p in (ROOT/folder).rglob('*') if p.is_file() and p.suffix in {'.json', '.md'}]
 REQUIRED += [str(p.relative_to(ROOT)) for p in (ROOT/'results/tubedetr_layout_trial').rglob('*')
+             if p.is_file() and p.suffix in {'.json', '.md'}]
+REQUIRED += [str(p.relative_to(ROOT)) for p in (ROOT/'results/tubedetr_opd_direct_diagnosis').rglob('*')
              if p.is_file() and p.suffix in {'.json', '.md'}]
 def check():
  errors=[];warnings=[]
