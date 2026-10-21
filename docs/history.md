@@ -125,3 +125,6 @@ HC64轻量传播策略与完整负/正结果已公开并逐文件核验：提交
 
 
 2026-10-21 v0阶段1按附件完成并在适应前终止：32项v0合成CPU测试（含Direct完整有限差分/非空Adam回滚/DP穷举）及70项原工程检查通过。固定HC64全64 bank/初态两学生路径/MemoryGreedy/NoMemoryGreedy/EvidenceDP真实预测先封存后离线GT，指纹38b838b3d74cea3aacccc5b300c59e0ac96b277ecff0f83c44f4b674b06af5d6，384 dense核验误差<1e-15，旧baseline逐位/指标复核通过。候选节点oracle未观测+5.4833pp（248/1365节点>5pp，545 E-only节点仍计分母），GT逐节点读出vIoU34.3111%；反馈macro pair54.9747%、rho.06137，区间分别跨.5/0，仅过最低point筛查不称可靠。MemoryGreedy/NoMemoryGreedy/EvidenceDP完整vIoU28.8461/28.9642/29.3919%，均低于ERef31.0918；Memory相对NoMemory v−.1181pp、未观测s−.3727pp，远节点s−.9762pp。预注册memory两均值不降且至少一项升的门槛失败，gate=false，按附件先诊断通过再适应的顺序未运行真实OPD/FixedKD/Direct更新（0查询/0更新），未看GT后改参数或强行继续。DP62条代理score上涨而38条vIoU下降，15条严重下降，说明fixedscore接纳非GT保证；不把此诊断说成未运行OPD失败。阶段1CPU运行封存18.45秒，queryloop中位.2307/P90.2539秒，仅缓存增量、未冒充端到端时延。独立status/diagnostics/OUTCOME及全匿名正负保存results/propagation_v0_hc64；原正式paused/default及所有旧源哈希不变。
+
+
+v0实现与完整HC64适应前筛查已公开并逐文件核验：提交[67621fb1](https://github.com/Zonglin-He/A/commit/67621fb17fcf0e4f301483c0201d3619f9a7b470)，main/research均freshCAS非强制快进；481文件/13,602,274字节与远端Git blob SHA256及tree一致、原历史保留。全部匿名正负、反馈排序/候选oracle覆盖/距离分箱/固定分数错配公开；没有把未运行的OPD/KD/Direct登记为完成方法成绩。原始数据/GT坐标/预测mask/特征/私有ID及权重不上传，正式暂停与唯一注册方法不变。发布回执及档案在随后文档提交同步。
