@@ -15,3 +15,5 @@ Strong仍为已知时间参考：448原生后验与224六层平均各占一半�
 新时间区间出来后只执行一次最终interval BoxFixed DP，停止，不做交替迭代。`tube_replay`是experimental，不预先声明有效或等精度。协议/输入/缓存命中和实际成本在HC64固定A/B/C/D试验中记录；全部预测封存后离线GT。正式Vid仍暂停于8405/10303，CG继续暂停。
 
 第三方来源/权重版本见[third_party.json](third_party.json)与[assets.json](assets.json)。历史OPD/Strong定义和负结果可由Git历史及[history.md](history.md)恢复，不删除旧源码、数据、权重或缓存。
+
+2026-10-21固定缓存融合验证另见[协议](tube_fusion.md)与[结果](../results/tube_fusion_hc64/ANALYSIS.md)。它只改变六层后验读出，空间不变；整体主对照为未适应Source，不以ERefStrong或Strong为必须超过的内部门槛。完整融合相对Source完整vIoU+2.8297pp，但没有建立比无反馈或置换更好的时间贡献；按本轮规则停止该反馈方向，不扫权重，不自动改变默认生产配置。

@@ -202,3 +202,11 @@ A/B证据策略、精确H4反馈与全部HC64正负结果已公开并逐文件�
 全64独立保存态结构审计通过：429源码/快照、正式暂停状态/default不变，C/D辅助框动作score/r/时间支持全同；4160节点M合法直方图逐位、4149实际置换，1536层每head/query attention视觉mass最大误差2.98e−7，text/padding0。真实64均无padding格，不能扩写成非空padding实测；合成非空padding验收另存。预算nativeoffset128、原time/position各512，C/D各额外128time，448/新专家/反向0。匿名structure.json及独立只读脚本公开，不读取GT或生成新路径。
 
 BoxFixed独立主线与固定HC64时间验证已公开并逐文件核验：实现提交[1af13d7c](https://github.com/Zonglin-He/A/commit/1af13d7cb4d94b74881477b8de233496ed83afbf)，main/research均freshCAS非强制快进；590文件/56,263,682字节与远端Git blob SHA256/tree完全一致，保留旧历史与全部旧路径。公开本轮负结果/768匿名签名比较/损伤/纯时间/真实成本/迁移与注意力审计，不含数据、标签坐标、视频正文、原始轨迹/mask/特征/状态、权重、私有ID或凭据。默认BoxFixed+Strong；不恢复formalVid/CG，不追加参数搜索。发布回执docs/publication.json由后续文档提交保存。
+
+2026-10-21 用户明确整体收益以未适应Source为基础，Strong仅历史精度/成本参考，不作为新空间方案必须超越的门槛。本轮授权空间锁定原BoxFixed，仅用已封存G/T/P各六层hidden经同Source原冻结时间头读出，先逐位核验末层logits/物理后验/MBR和旧BoxFixed动作/框/score，再平均各层归一化物理区间后验；固定比较qG、.5qG+.5qT、.5qG+.5qP，不均logits、不调整attention/context/r、不得新RGB/encoder/decoder/专家/训练。Source基线为原生未适应Source框＋native224末层区间；相同A空间轨迹另看纯时间贡献。全64先封存再GT，独立outputs/tube_fusion_hc64，不覆盖旧结果；若真实反馈仍无优势停止该方向，不扫融合权重，不恢复formalVid/CG。四项纯合成核验已通过，实际头读出核验随后执行。
+
+2026-10-21全局/轨迹六层后验等权缓存融合HC64已实际完成并评分：指纹fa9f761b40c1b4b66272ccb1d221567ca8aa4d0faf71e5c9292e8a882c6cc947，seal SHA76997dd14e54c80ba2c0435a6089f9018e485c96432300413948177631d3ba80。Source_Native224明确为未适应原生Source框/末层时间，不含Strong或ERef；Source/Global6/GlobalTube6/GlobalPermuted6 v26.8938/29.6952/29.7235/29.6977%、t54.8230/55.9613/55.8081/55.9221%、BoundaryMAE2.6821/2.6034/2.6163/2.5990秒。融合−Source v+2.8297pp[.9075,4.8356]，41升22降1同且8条>5pp损伤全部公开，整体收益成立于此开发面板；t+.9851pp区间跨零。融合−Global v+.0283pp[−.1076,.1781]、t−.1532pp，融合−置换v+.0258pp亦跨零、t−.1140pp。固定A空间v差−.0137/−.0161pp，不能把最终选框微小收益当时间贡献。Strong31.3985仅参考，不是门槛；结束该反馈方向的依据是无反馈/置换无优势，不扫融合权重。
+
+全64新输出先封存后CPU标签，640dense最大6.66e−16、Strong指标差0。新增RGB/encoder/decoder/ReferDINO/反向/更新0；只原model_ema时间头66306冻结参数，384实际head批次末层逐位恢复，192后验/MBR与192旧空间动作/框/score恢复。同Source checkpoint SHA与原捕获runtime资产一致，1152各层规范化/均后验及64MBR独立保存态审计通过，14个融合区间不同于Global、18不同于置换。执行及末尾核验阶段6.515秒不含prepare，当前三读出head/后验/DP及恢复检查均.04497秒/query、inputIO.00988/outputIO.00332；不是部署速度，部署仍需两个offset时间重放及共享224/专家/传播。本轮结果results/tube_fusion_hc64，协议docs/tube_fusion.md，生产配置及所有旧seal/formalVid8405暂停/CG暂停保持。
+
+本轮94项当前工程测试通过（新增4项），档案check通过。公开896条匿名配对signed行，完整Source总体对照、无反馈/置换消融及Strong参考分开；不将CI跨零写为等精度。保存态审计不生成新模型路径或GT分数。后续仅归档与GitHub发布核验，停止实验。

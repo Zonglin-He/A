@@ -59,6 +59,12 @@ TORCH_CUDA_ARCH_LIST=12.0 .conda/tubedetr/bin/python -B tools/setup.py --build
 .conda/tubedetr/bin/python -B scripts/research_archive.py check
 ```
 
+## 缓存全局／轨迹时间融合验证
+
+已按固定等权完成[HC64融合验证](results/tube_fusion_hc64/ANALYSIS.md)，空间保持原BoxFixed。未适应Source、全局六层、全局＋真实轨迹、全局＋置换的完整vIoU分别26.8938/29.6952/29.7235/29.6977%。完整融合相对Source +2.8297pp [.9075,4.8356]，但相对关闭反馈仅+.0283pp且区间跨零，tIoU略降；固定空间分析亦未建立时间补充优势。Strong仅作为参考，不作为必须超越的门槛。本轮停止该反馈方向，不扫描融合权重。
+
+本次只通过原冻结时间头读取已封存六层hidden，无新RGB/编码器/decoder/专家；缓存执行阶段6.515秒不代表部署耗时。实验脚本为`scripts/tube_fusion/run.py --run`及封存后独立`score.py --run-after-seal`，默认生产配置未自动切换；全部[正负变化](results/tube_fusion_hc64/signed_changes.tsv)、[固定空间分析](results/tube_fusion_hc64/report.md)和[协议](docs/tube_fusion.md)保留。
+
 ## 历史与数据边界
 
 旧OPD源码、参数及完整正负结果均保留，数值配置在 [configs/legacy_opd.json](configs/legacy_opd.json)；旧主线可按Git提交579757a或私有原源码快照恢复。默认流程不再调用其采样/临时状态/训练。历史[HC128/Vid128结果](results/report.md)、[完整框研究](results/box_propagation_hc64/ANALYSIS.md)、[A/B策略](results/evidence_policy_hc64/ANALYSIS.md)、[单点续走](results/correction_value_hc64/ANALYSIS.md)、[承诺策略负结果](results/committed_policy_hc64/ANALYSIS.md)保留原协议，不能改名为新方法成绩。
