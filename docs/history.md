@@ -241,3 +241,14 @@ BoxFixed独立主线与固定HC64时间验证已公开并逐文件核验：实�
 
 
 双向有限调参、31配置全部匿名signed、双向冻结复核及回退、缓存逐位回归与新全量控制代码已发布并逐文件核验：[e4b317ae](https://github.com/Zonglin-He/A/commit/e4b317aea8895d884b1f97469d58f2e0bde14c13)。main/research均freshCAS非强制快进，688文件/67,265,274字节与远端Git blob/SHA256/tree一致，历史无删改。开发最佳不迁移，最终两域均原参数；不宣称调参收益或全量完成。当前新HC1902→Vid10303运行中，由唯一Luna max半小时巡检；旧formal8405/CG仍暂停。docs/publication.json保存实现核验回执，后续文档提交只保存该证明；全量结果等待完整封存后另行发布。
+
+
+2026-10-22 03:10北京时间半小时巡检确认新全量HC1902已全部seal并CPU评分完成，原controller607450自动切至Vid worker776574/startticks217423834，plan/frozen434源/profile/default/旧formal哈希均不变。HC seal SHA d0eaf834a3af27b8fda22693d03b741d54387fc5e981e82684df6bdec4d41ee3；1902预测与各自receipt及3公开文件逐文件hash复核，3804官方/dense最大1.33e-15，Final/Untuned1902别名相同。HC Source/Final完整v24.9948/26.7597%，v@.3 37.8023/40.4311%、v@.5 12.8812/15.0894%；配对v+1.7649pp，227父query加权cluster95%CI[1.2804,2.2751]，1099升678降125同、266条降>5pp；未观测actual s+1.7881pp[1.0863,2.4902]，t−.0666pp[-.3408,.2169]，不能宣称时间净收益或OPD贡献。当前方法为完整框+Global6，不是旧OPD。完整划分含开发曝光按原声明。HC1839新capture、63完整复用、零visual/RGB LRU命中（精确网格唯一），新capture均wall4.2775s，所有1902均4.1366s是当前配对工作成本、非Source/Final独立端到端。Vid19:10UTC264/10303，RGB153hit/108miss、visual612hit/432miss均58.62%，近期3.5159s/条，剩余估计9.804h为早期输入分布估计；不打断测速、不改配置或据全量再选参。HC报告及全部signed已生成results/boxfixed_full_v1/hc2，等待双域完整结束统一GitHub发布，未宣称已远端上传本次HC结果。旧formal/CG保持暂停。
+
+同turn只读自然正式回执分项：Vid首285条含3完整capture复用；其余164条视觉全命中、118条未命中，命中/未命中query wall均2.5474/4.5373秒，Source224均1.0432/2.5654秒，RGB均.0125/.3145秒；整体285均wall3.3457秒，当前专家wall均.5869秒、Source迁入/出GPU均.1342/.2701秒、posterior.1254秒、DP.00144秒。这是不同query组的早期观测，非同输入受控加速倍数，不称端到端独立单方法性能；不额外开模型或打断任务。私有明细outputs/boxfixed_full_v1/monitor/vidstg_early_timing.json保留，完整域后再统一成本统计。
+
+2026-10-22 用户明确要求先离线验证原骨干/完整框空间轨迹是否已有事件和边界信息，自主探索注意力而非先验否定。根未委派新研究agent、不改运行中的正式队列，仅封存缓存CPU审计：HC64＋父隔离HC32＋Vid32共128query/10017节点，八项主问题先锁定，所有无标签曲线先seal再独立GT；历史曝光如实保留。原生真实TimeDecoder输入用同model_ema仅CPU子图重建256次，1536层hidden核验最大3.33786e-6低于事前1e-4；新RGB/encoder/专家/GPU/更新均0，无标签提取22.3407秒是诊断计算而非部署速度。
+
+未观测事件内外真实−同面积置换位置attention AUC HC64/HC32/Vid32=.6531/.6258/.4684，HC主问题BH q=.0004/.0064但Vid未复现；原空间r/u接近随机，不能当事件概率。目标ROI注意力在起止普遍增大未获支持，HC64起点附近面积校正注意力比事件内部低.01664，95%CI[−.02778,−.00588]。三组hidden变化的边界AUC=.6404/.6640/.6288，BH q=.0004/.0008/.0120；已有时间后验正控更强，事件AUC=.8402/.8256/.7161。明确看到主结果后再做缓存位置/裁剪/原头敏感性，另先seal后GT；排除裁剪边缘35/20/14query仍有hidden关联，但位置/锚点/面积残差仅.5314/.5357/.4911，再扣原boundary后验为.5069/.5270/.4882，CI均跨.5，未建立独立新增时间信息；不把残差阴性当空间时间联合不可能，也不据原相关直接改方法。
+
+独立rank-sum重算245项与主AUC完全一致，原128input/receipt/posterior/signal hash复核、八观察和attention概率关系通过，HC父交集0。434正式源/plan/default/profile不变，Vid实际worker身份及进度4763→4846前进；旧formal/CG不恢复。新代码scripts/temporal_signal_audit、结果results/temporal_signal_audit_v1、协议docs/temporal_signal_audit.md，完整正负及次级层/起终点/事后控制公开，不含query/GT坐标/原始attention/特征/框/权重。没有新时间预测、vIoU成绩、调参或方法采用；下一方法必须证明超出现有时间后验的纠错价值。

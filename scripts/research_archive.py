@@ -16,6 +16,7 @@ REQUIRED += ['configs/tuned_boxfixed_v1.json','docs/tuning_v1.md',
  'results/boxfixed_tuning_v1/decisions.jsonl','results/boxfixed_tuning_v1/signed_trials.tsv',
  'results/boxfixed_tuning_v1/cache_regression.json','results/boxfixed_tuning_v1/confirmation_hc2.json',
  'results/boxfixed_tuning_v1/confirmation_vidstg.json']
+REQUIRED += ['docs/temporal_signal_audit.md'] + [f'results/temporal_signal_audit_v1/{name}' for name in ['report.json','report.md','protocol.json','signed_queries.tsv','sensitivity.json','verification.json','association.svg']]
 def sha(f):return hashlib.sha256(f.read_bytes()).hexdigest()
 def check():
  errors=[];warnings=[]
@@ -54,6 +55,13 @@ def check():
    assert c['proof']['all64_predictions_sealed_before_GT']
    assert profile['datasets'][ds]==c['decision']['final_params']
    assert not c['decision']['accepted']
+  audit=json.loads((ROOT/'results/temporal_signal_audit_v1/report.json').read_text())
+  verify=json.loads((ROOT/'results/temporal_signal_audit_v1/verification.json').read_text())
+  assert audit['proof']['all_128_label_free_signals_before_labels'] and audit['proof']['hidden_layer_checks']==1536
+  assert audit['proof']['maximum_CPU_hidden_absolute_error']<1e-4
+  assert not audit['proof']['CUDA_initialized'] and audit['proof']['new_expert']==audit['proof']['new_encoder']==audit['proof']['parameter_updates']==0
+  assert verify['status']=='pass' and verify['independent_rank_sum_checks']==245 and verify['rank_sum_max_error']==0
+  assert verify['frozen_formal_sources_unchanged']==434
   snap=ROOT/'docs/sources.json'
   if snap.exists():
    old=json.loads(snap.read_text())['files'];changed=[p for p,h in old.items()if not(ROOT/p).is_file()or sha(ROOT/p)!=h]
