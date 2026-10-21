@@ -1,15 +1,17 @@
-# 方法与结果边界
+# 当前方法：完整框固定推理
 
-主方法只使用一个外部专家 ReferDINO。冻结 TA-STVG 使用对应迁移方向的 Source 检查点。原生 224 输入产生空间轨迹、时间预测和真实 decoder 输入；同一 Source 的 448 输入与原生六层时间预测形成 Strong：高分辨率后验占一半，原生六层后验平均占另一半。双 offset 映射和物理时间 MBR 保持原实现。
+用户在2026-10-21明确将空间主线从OPD切换到原BoxFixed。当前空间为同一ReferDINO的ERef初始化、完整原生框传播、原固定评分和精确DP；不使用committed_policy的新评分，不执行OPD/Direct/KD更新。`configs/default.json`只保留当前必需配置。旧OPD数值配置在`configs/legacy_opd.json`，旧源码和结果保留，不重写旧评价。
 
-八个观测位置由原生预测区间与固定覆盖规则确定，不读取 GT。ReferDINO 原生分数选择一条跨帧目标轨迹。相同八框经过原有鲁棒共识估计形成初始化，HC 将 Source 到共识的中心/对数尺寸修正乘 0.5，Vid 乘 1。初始化不是独立检测器输出，也不新增 GroundingDINO。
+一次原生224 Source流程保留原双offset、FP16视觉编码和FP32两遍原生解码顺序，去除为适应创建的可训练残差/LN/优化器。原生预测按既定规则选择八个观察位置。同一次ReferDINO前向选择一条跨帧query，导出其原生八框和软mask logits；仍使用原Source域校准的鲁棒ERef初始化和HC=.5、Vid=1初始化强度。
 
-每条查询创建并重置 `8×256` content 状态和 Adam。状态注入到相应物理帧、相应 offset 的空间 decoder 输入，再由冻结 decoder 预测完整空间轨迹。当前输出框上的双尺度 policy 采样32个反向成对候选：中心按目标宽高归一化，尺寸在对数空间扰动。教师伪框通过固定 `5×L1 + 2×(1−GIoU)` 代价构造目标权重；混合密度损失只更新临时状态。更新后重新解码、重新采样，构成 Live OPD。预训练模型权重不更新。
+软mask只加权已有Source特征对应与原型，不重新决定框边界。双向top20/.1对应以固定WLS估计逐轴平移/缩放，将完整原生框传播到各物理节点，保留前/后两个来源和原始ERef三槽。ESS、方差、尺度和图像交集检验不变，失败保持回退，不将缺失解释为事件不存在。范围RBF与关联余弦构成原u；原加性score为.5*mean_obs(u)+.5*mean_unobs(c*u)+.25*mean_event_edges(cprev*c*L)−.1*mean_all_nodes(G)，由精确DP读出，无训练或GT选取。
 
-最终输出来自学生 decoder，不以采样候选或教师轨迹替代。两域输出 alpha 均为1；时间始终使用 Strong 和原 MBR。本轮工程整理没有修改任何这些运算或数值配置。
+几何、对应、来源、可靠性在`stvg.evidence`/`stvg.spatial`中独立于时间区间构建。interval视图显式读取给定物理区间并恢复原BoxFixed分母/边支持；full_timeline视图不使用Strong event/active/区间内外身份，作为明确的新方法扩展：观察/未观察分母为8/T−8，相邻边支持全时间，保留原置信下权及fallback。全时间辅助轨迹不保证与原裁剪版相同。
 
-最终证据是已曝光的 HC128、Vid128 开发面板，各父来源一条查询、seed41。完整方法相对 Source 的增量包含初始化、空间适应及时间增强，不能全归于 OPD。HC 的适应相对自身初始化有正向开发证据；Vid 的区间跨零且仍有严重损伤。没有新增独立 Live−Fixed 证据，也没有在本次整理中启动全量测试或重新调参。
+Strong仍为已知时间参考：448原生后验与224六层平均各占一半，保持原物理MBR。空间切换的HC64工程回归核验动作、完整框、score和Strong区间；这不是新精度实验。原BoxFixed HC64完整vIoU31.3985%、未观测sIoU50.9672%，属于已曝光开发面板，不是独立全量确认。其他数据方向/骨干未因迁移自动获得新方法有效性证据。
 
-Third-party 来源及版本在 `third_party.json`；主模型权重指纹在 `assets.json`。第三方源码中的版权声明保留；本工程不替上游声明新的授权条款。
+实验时间模式`native224`仅使用原生224最终层后验与原MBR，不运行448，也不构建Strong专用六层融合后验。`tube_replay`使用全时间辅助BoxFixed轨迹，把框读取范围放大1.5倍后构造连续网格覆盖M；r为已有对应可靠性（不是事件/身份概率），缺有效mask/对应时r0。固定alpha=.5，w=1−alpha*r*(1−M)，在原时间decoder每head/query的同帧合法motion视觉token组中保持注意力总量重分配；文本概率不直接修改。实际原生时间memory/query/text/pos/mask/offset完整缓存，最多每offset重放一次必要时间子图，不使用appearance ROI替换motion memory。alpha0走原注意力算术，必须逐位恢复原生输出。
 
-数值一致的工程实现包括精确缓存命中时跳过无效换驻留、448仅时间FP32捕获，以及有限物理区间几何索引复用。它们不改变上述方法和配置；完整验证与执行来源见 [engineering_speed.md](engineering_speed.md)。
+新时间区间出来后只执行一次最终interval BoxFixed DP，停止，不做交替迭代。`tube_replay`是experimental，不预先声明有效或等精度。协议/输入/缓存命中和实际成本在HC64固定A/B/C/D试验中记录；全部预测封存后离线GT。正式Vid仍暂停于8405/10303，CG继续暂停。
+
+第三方来源/权重版本见[third_party.json](third_party.json)与[assets.json](assets.json)。历史OPD/Strong定义和负结果可由Git历史及[history.md](history.md)恢复，不删除旧源码、数据、权重或缓存。

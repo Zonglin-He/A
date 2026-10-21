@@ -48,7 +48,8 @@ def summarize_rows(rows):
   matrix={a:{k:np.asarray([finite_mean([r['values'][a].get(k)for r in groups[p]])for p in parents],dtype=float)for k in fields}for a in arms}
   means={a:{k:finite_mean(x)for k,x in m.items()}for a,m in matrix.items()};paired={};query_paired={}
   rng=np.random.default_rng(20261020);indices=rng.integers(0,len(parents),(10000,len(parents)))
-  for a,b in [('Full','Source'),('Full','WithoutOPD')]:
+  comparisons=[('Full','Source'),('Full','WithoutOPD')]if 'Full'in arms else [('BoxFixed','Source'),('BoxFixed','Initialization')]
+  for a,b in comparisons:
    d=100*(matrix[a]['v']-matrix[b]['v']);paired[a+'-'+b]=dict(mean_pp=float(d.mean()),CI95_pp=np.quantile(d[indices].mean(1),[.025,.975]).tolist(),positive=int((d>1e-10).sum()),negative=int((d< -1e-10).sum()),unchanged=int((abs(d)<=1e-10).sum()),below_minus5=int((d< -5).sum()))
    query_d=100*np.asarray([r['values'][a]['v']-r['values'][b]['v']for r in rr])
    cluster_sums=np.asarray([sum(100*(r['values'][a]['v']-r['values'][b]['v'])for r in groups[p])for p in parents]);cluster_counts=np.asarray([len(groups[p])for p in parents])
@@ -98,7 +99,10 @@ def score(manifest,labels,predictions,output):
   key=r['id'];assert key in truth;g=truth[key];assert g['dataset']==r['dataset'];meta=r['metadata'];dataset=r['dataset'];path=root/seal['files'][key]['path'];assert sha(path)==seal['files'][key]['sha256'];gt={int(k):v for k,v in g['boxes'].items()};span=g['interval'];values={}
   with np.load(path,allow_pickle=False)as z:
    ids=z['frame_ids'].tolist();assert ids==meta['frame_ids'];positions=z['positions8'].tolist();fixed=[f for f in ids if f in gt];observed={ids[p]for p in positions};obs=[f for f in fixed if f in observed];unobs=[f for f in fixed if f not in observed];lookup={f:i for i,f in enumerate(ids)};row=dict(input=meta,frame_ids=ids)
-   for arm,b,kind in [('Source',z['Source'],'Native'),('Spatial',z['Live'],'Native'),('Temporal',z['Source'],'Strong'),('Full',z['Live'],'Strong'),('WithoutOPD',z['E_Ref'],'Strong')]:
+   if 'BoxFixed'in z:
+    combinations=[('Source',z['Source'],'Native'),('Initialization',z['E_Ref'],'Selected'),('BoxFixed',z['BoxFixed'],'Selected')]
+   else:combinations=[('Source',z['Source'],'Native'),('Spatial',z['Live'],'Native'),('Temporal',z['Source'],'Strong'),('Full',z['Live'],'Strong'),('WithoutOPD',z['E_Ref'],'Strong')]
+   for arm,b,kind in combinations:
     iv=z[kind+'_interval'].tolist();v=official(b,row,gt,span,iv,dataset);dense=DenseTube(b,row,gt,span,clip=dataset=='hc2').score(iv);assert max(abs(v[k]-dense[k])for k in ['v','t','s'])<2e-10;checks+=1;pix=xyxy(b,meta['width'],meta['height']);pix=np.maximum(pix,0)if dataset=='hc2'else pix;node={f:float(box_iou(pix[lookup[f]],gt[f]))for f in fixed}
     for name,group in [('fixed_actual_sIoU',fixed),('observed_actual_sIoU',obs),('unobserved_actual_sIoU',unobs)]:v[name]=float(np.mean([node[f]for f in group]))if group else None
     v['boundary_MAE']=(abs(iv[0]-span[0])+abs(iv[1]-span[1]))/2;values[arm]=add_reporting_metrics(v,meta)

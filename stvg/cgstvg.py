@@ -418,7 +418,7 @@ class Predictor:
     use this object in its isolated worker; it is not the default TA predictor.
     """
     def __init__(self, dataset, check=lambda: None):
-        config = json.loads((ROOT / "configs/default.json").read_text())["datasets"][dataset]
+        config = json.loads((ROOT / "configs/legacy_opd.json").read_text())["datasets"][dataset]
         self.config = copy.deepcopy(config)
         self.config["backbone"] = "CG-STVG"
         self.config["source_checkpoint"] = "checkpoints/cgstvg/" + CHECKPOINTS[source_for(dataset)][0]

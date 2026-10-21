@@ -1,30 +1,30 @@
 {
-  "method": "stvg",
+  "method": "BoxFixed",
   "seed": 41,
   "expert_count": 1,
+  "spatial": {
+    "algorithm": "complete_native_box_fixed_score_exact_DP",
+    "confidence_threshold": 0.1,
+    "affinity_temperature": 0.1,
+    "affinity_topk": 20,
+    "max_candidates": 3,
+    "score": ".5 mean_obs(u)+.5 mean_unobs(c*u)+.25 mean_event_edges(cprev*c*L)-.1 mean_all_nodes(G)"
+  },
+  "temporal": {
+    "default": "strong",
+    "native224": "frozen native last-layer posterior and original physical MBR",
+    "tube_replay": {
+      "status": "experimental_unvalidated",
+      "alpha": 0.5,
+      "context_scale": 1.5,
+      "extra_replays_per_offset": 1,
+      "permutation": "cyclic_half_valid_visual_cells_per_frame"
+    }
+  },
   "datasets": {
     "hc2": {
       "dataset": "hc2",
       "source_dataset": "vidstg",
-      "scales": [
-        0.05,
-        0.25
-      ],
-      "tau": 0.14,
-      "lr": 0.014,
-      "steps": 40,
-      "samples": 32,
-      "seeds": [
-        41
-      ],
-      "default_seed": 41,
-      "state_shape": [
-        8,
-        256
-      ],
-      "temporal": "Strong TA-STVG only, original MBR",
-      "E": "eight-frame native ReferDINO singleton robust correction",
-      "teacher": "same native ReferDINO eight-frame evidence reused for initialization and OPD",
       "source_checkpoint": "checkpoints/TASTVG_VidSTG.pth",
       "ReferDINO_checkpoint": "checkpoints/referdino/ryt_mevis_swinb.pth",
       "no_network_training": true,
@@ -46,31 +46,12 @@
         "target_GT_used": false
       },
       "E_calibration_provenance": "source-domain train calibration, frozen before target outcomes",
-      "output_alpha": 1.0,
-      "initialization_gamma": 0.5
+      "initialization_gamma": 0.5,
+      "temporal_mode": "strong"
     },
     "vidstg": {
       "dataset": "vidstg",
       "source_dataset": "hc2",
-      "scales": [
-        0.05,
-        0.25
-      ],
-      "tau": 0.5,
-      "lr": 0.01,
-      "steps": 30,
-      "samples": 32,
-      "seeds": [
-        41
-      ],
-      "default_seed": 41,
-      "state_shape": [
-        8,
-        256
-      ],
-      "temporal": "Strong TA-STVG only, original MBR",
-      "E": "eight-frame native ReferDINO singleton robust correction",
-      "teacher": "same native ReferDINO eight-frame evidence reused for initialization and OPD",
       "source_checkpoint": "checkpoints/TASTVG_HCSTVG2.pth",
       "ReferDINO_checkpoint": "checkpoints/referdino/ryt_mevis_swinb.pth",
       "no_network_training": true,
@@ -92,8 +73,8 @@
         "target_GT_used": false
       },
       "E_calibration_provenance": "source-domain train calibration, frozen before target outcomes",
-      "output_alpha": 1.0,
-      "initialization_gamma": 1.0
+      "initialization_gamma": 1.0,
+      "temporal_mode": "strong"
     }
   }
 }

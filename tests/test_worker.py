@@ -55,8 +55,8 @@ class SyntheticSession:
     def __exit__(self,*args):pass
     def predict(self,record):
         type(self).calls+=1
-        boxes=np.ones((8,4));out={k:boxes.copy()for k in ['Source','E_Ref','Live_raw','Live']}
-        out.update(fit={'positions':list(range(8))},intervals={'Native':[0,8],'Strong':[0,8]},capture_cost={},cost={})
+        boxes=np.ones((8,4));out={k:boxes.copy()for k in ['Source','E_Ref','BoxFixed']}
+        out.update(positions8=list(range(8)),interval=[0,8],temporal_mode='strong',intervals={'Native':[0,8],'Strong':[0,8]},capture_cost={},cost={})
         return out,list(range(8))
 
 

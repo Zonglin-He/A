@@ -221,7 +221,7 @@ def test_synthetic_roi_function_is_not_force_patched():
 def test_cg_config_rebinds_only_backbone_metadata_and_checkpoint():
     import json
     for dataset in ["hc2", "vidstg"]:
-        original = json.loads((cg.ROOT / "configs/default.json").read_text())["datasets"][dataset]
+        original = json.loads((cg.ROOT / "configs/legacy_opd.json").read_text())["datasets"][dataset]
         actual = cg.Predictor(dataset).config
         changed = {k for k in set(original) | set(actual) if original.get(k) != actual.get(k)}
         assert changed == {"backbone", "source_checkpoint", "temporal", "E_calibration_provenance"}

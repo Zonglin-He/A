@@ -1,6 +1,6 @@
 """Label-free sequential inference with frozen models resident on CPU.
 
-No optimizer or temporary content state crosses query boundaries. Evidence cache
+No optimizer or content adaptation is part of this main flow. Evidence cache
 hits require exact RGB, raw text, physical positions and a verified runtime key.
 """
 import argparse
@@ -77,8 +77,10 @@ def resource_guard():
 
 class ResidentSession:
     """An ordered set of independent queries sharing only frozen resources."""
-    def __init__(self, fingerprint, cache_dir=None, visual_cache=None, backbone="tastvg"):
+    def __init__(self, fingerprint, cache_dir=None, visual_cache=None, backbone="tastvg",temporal_mode="strong"):
+        self.temporal_mode=temporal_mode
         self.fingerprint=fingerprint;self.backbone=backbone
+        if backbone!='tastvg':raise NotImplementedError('Current BoxFixed/time replay is verified only on TA-STVG; CG remains paused')
         self.teacher=ResidentTeacher(cache_dir=cache_dir,fingerprint=fingerprint)
         self.predictors={};self.visual_cache=visual_cache;self.decoded=None;self.decode_hits=0;self.decode_misses=0
     def predict(self,record):
@@ -108,7 +110,7 @@ class ResidentSession:
         # Optional pure-visual context supplied by separately verified engineering code.
         ctx=self.visual_cache.context(predictor.source,frames,ids)if self.visual_cache else contextlib.nullcontext()
         try:
-            with ctx:out=predictor.predict(frames,ids,meta,record['key'])
+            with ctx:out=predictor.predict(frames,ids,meta,record['key'],temporal_mode=self.temporal_mode)
         finally:
             predictor.source.cpu()
             if any(p.requires_grad or p.grad is not None for p in predictor.source.parameters()):
@@ -122,12 +124,18 @@ class ResidentSession:
     def __exit__(self,*exc):self.close()
 
 
+def prediction_arrays(out,ids):
+    arrays=dict(Source=out['Source'],E_Ref=out['E_Ref'],BoxFixed=out['BoxFixed'],frame_ids=np.asarray(ids),positions8=np.asarray(out['positions8']),Native_interval=np.asarray(out['intervals']['Native']),Selected_interval=np.asarray(out['interval']))
+    if 'Strong'in out['intervals']:arrays['Strong_interval']=np.asarray(out['intervals']['Strong'])
+    return arrays
+
+
 def request_hash(record):
     # Sampling key is included: an evidence cache may share observations, never a policy rollout.
     return hashlib.sha256(canonical(record)).hexdigest()
 
 
-def run(manifest,output,cache_dir=None,resume_hash=None,visual_cache=None,backbone="tastvg"):
+def run(manifest,output,cache_dir=None,resume_hash=None,visual_cache=None,backbone="tastvg",temporal_mode="strong"):
     """One manifest; no labels argument, imports, scoring or target selection."""
     rows=[json.loads(s)for s in Path(manifest).read_text().splitlines()if s.strip()]
     if len({r['id']for r in rows})!=len(rows):raise ValueError('Repeated evaluation IDs')
@@ -136,16 +144,16 @@ def run(manifest,output,cache_dir=None,resume_hash=None,visual_cache=None,backbo
         if not r['id']or not all(c.isalnum()or c in '_-'for c in r['id']):raise ValueError('Unsafe query ID')
         validate_metadata(r['metadata'])
     fingerprint,proof=runtime_fingerprint(backbone)
-    method_hash=hashlib.sha256(canonical(dict(manifest_sha256=sha(manifest),runtime_fingerprint=fingerprint,backbone=backbone))).hexdigest()
+    method_hash=hashlib.sha256(canonical(dict(manifest_sha256=sha(manifest),runtime_fingerprint=fingerprint,backbone=backbone,temporal_mode=temporal_mode))).hexdigest()
     if resume_hash is not None and resume_hash!=method_hash:raise ValueError('Requested resume hash does not match this run')
     root=Path(output);root.mkdir(parents=True,exist_ok=True)
     run_path=root/'run.json'
-    run_info=dict(schema=1,backbone=backbone,manifest_sha256=sha(manifest),runtime_fingerprint=fingerprint,resume_hash=method_hash,labels_read=False,queries=len(rows))
+    run_info=dict(schema=2,temporal_mode=temporal_mode,backbone=backbone,manifest_sha256=sha(manifest),runtime_fingerprint=fingerprint,resume_hash=method_hash,labels_read=False,queries=len(rows))
     if run_path.exists():
         if json.loads(run_path.read_text())!=run_info:raise ValueError('Existing outputs belong to another run')
     else:atomic_json(run_path,run_info);atomic_json(root/'runtime_fingerprint.json',proof)
     files={}
-    with ResidentSession(fingerprint,cache_dir,visual_cache,backbone)as session:
+    with ResidentSession(fingerprint,cache_dir,visual_cache,backbone,temporal_mode)as session:
         for record in rows:
             key=record['id'];dest=root/'predictions'/(key+'.npz');receipt=dest.with_suffix('.json');binding=request_hash(record)
             if receipt.exists():
@@ -157,13 +165,13 @@ def run(manifest,output,cache_dir=None,resume_hash=None,visual_cache=None,backbo
                 start=time.perf_counter();out,ids=session.predict(record);dest.parent.mkdir(parents=True,exist_ok=True)
                 tmp=dest.with_suffix('.npz.tmp')
                 with tmp.open('wb')as handle:
-                    np.savez(handle,Source=out['Source'],E_Ref=out['E_Ref'],Live_raw=out['Live_raw'],Live=out['Live'],frame_ids=np.asarray(ids),positions8=np.asarray(out['fit']['positions']),Native_interval=out['intervals']['Native'],Strong_interval=out['intervals']['Strong'])
+                    np.savez(handle,**prediction_arrays(out,ids))
                 os.replace(tmp,dest)
-                atomic_json(receipt,dict(resume_hash=method_hash,request_sha256=binding,prediction_sha256=sha(dest),configuration=session.predictors[record['dataset']].config,labels_read=False,total_seconds=time.perf_counter()-start,capture=out['capture_cost'],adapt=out['cost'],engineering=out.get('engineering',{})))
+                atomic_json(receipt,dict(resume_hash=method_hash,request_sha256=binding,prediction_sha256=sha(dest),configuration=session.predictors[record['dataset']].config,labels_read=False,total_seconds=time.perf_counter()-start,capture=out['capture_cost'],spatial_and_temporal=out['cost'],temporal_mode=out['temporal_mode'],engineering=out.get('engineering',{})))
             files[key]=dict(path=str(dest.relative_to(root)),sha256=sha(dest))
             progress=dict(completed=len(files),total=len(rows),id=key,resume_hash=method_hash)
             atomic_json(root/'progress.json',progress);print(json.dumps(progress),flush=True)
-    atomic_json(root/'sealed.json',dict(status='sealed_before_offline_scoring',queries=len(rows),manifest_sha256=sha(manifest),files=files,labels_read=False,resume_hash=method_hash,runtime_fingerprint=fingerprint))
+    atomic_json(root/'sealed.json',dict(status='sealed_before_offline_scoring',schema=2,temporal_mode=temporal_mode,queries=len(rows),manifest_sha256=sha(manifest),files=files,labels_read=False,resume_hash=method_hash,runtime_fingerprint=fingerprint))
     return method_hash
 
 
@@ -171,11 +179,12 @@ def main():
     p=argparse.ArgumentParser(description='Resident STVG inference; no labels or scoring')
     p.add_argument('--manifest',required=True);p.add_argument('--output',required=True)
     p.add_argument('--backbone',choices=['tastvg','cgstvg'],default='tastvg')
+    p.add_argument('--temporal',choices=['strong','native224','tube_replay'],default='strong')
     p.add_argument('--teacher-cache');p.add_argument('--resume-hash')
     p.add_argument('--visual-cache-mib',type=int,default=4096)
     args=p.parse_args();setup();lock=lease()
     from .visual_cache import VisualCache
-    try:run(args.manifest,args.output,args.teacher_cache,args.resume_hash,VisualCache(args.visual_cache_mib*2**20)if args.visual_cache_mib else None,args.backbone)
+    try:run(args.manifest,args.output,args.teacher_cache,args.resume_hash,VisualCache(args.visual_cache_mib*2**20)if args.visual_cache_mib else None,args.backbone,args.temporal)
     finally:lock.close()
 
 if __name__=='__main__':main()

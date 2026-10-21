@@ -1,3 +1,5 @@
+> 历史协议说明：本文件保留原OPD正式评估/骨干接口的恢复记录。当前主线已切换BoxFixed；正式Vid与CG仍暂停，不可用新默认配置恢复旧哈希队列。新BoxFixed与时间重放在其他骨干尚未验证，当前试验见[协议](boxfixed_temporal.md)。
+
 # CG-STVG 迁移适配
 
 本页记录第二个 backbone 的真实接口准备，不替换已登记的 TA-STVG 主入口，也不宣称已经完成 CG 的正式评估。数值配置仍取 `configs/default.json`；本项不重新选参、不训练模型、不新增专家。

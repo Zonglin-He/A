@@ -11,8 +11,8 @@ def main():
  reference=ROOT/f"outputs/reference/predictions/{r['key']}.npz"
  with np.load(out)as new,np.load(reference)as old:
   checked=[]
-  for key in ['Source','E_Ref','Live','frame_ids','Native_interval','Strong_interval']:
+  for key in ['Source','E_Ref','frame_ids','Native_interval','Strong_interval']:
    assert np.array_equal(new[key],old[key]),(ds,key,float(np.max(abs(new[key]-old[key]))));checked.append(key)
- receipt=dict(status='pass',dataset=ds,previously_evaluated_query=True,checked_arrays=checked,all_bitexact=True,new_data_or_parameter_selection=False,GT_read=False,seconds=time.time()-tick)
+ receipt=dict(status='pass',dataset=ds,previously_evaluated_query=True,checked_arrays=checked,all_bitexact=True,new_data_or_parameter_selection=False,scope='native/source/ERef/Strong equivalence only; complete BoxFixed HC64 migration is separately recorded',GT_read=False,seconds=time.time()-tick)
  (out.with_suffix('.check.json')).write_text(json.dumps(receipt,indent=2)+'\n');print(json.dumps(receipt))
 if __name__=='__main__':main()

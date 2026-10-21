@@ -11,9 +11,12 @@ ROOT=Path(__file__).resolve().parents[1]
 
 def test_frozen_parameters():
  c=json.loads((ROOT/'configs/default.json').read_text())
- assert [(c['datasets'][ds]['lr'],c['datasets'][ds]['tau'],c['datasets'][ds]['steps'],c['datasets'][ds]['initialization_gamma'],c['datasets'][ds]['output_alpha'])for ds in ['hc2','vidstg']]==[(.014,.14,40,.5,1.),(.01,.5,30,1.,1.)]
+ assert c['method']=='BoxFixed' and c['temporal']['default']=='strong'
+ old=json.loads((ROOT/'configs/legacy_opd.json').read_text())
  for ds in ['hc2','vidstg']:
-  p=Predictor(ds);assert p.source is None and p.config['samples']==32 and p.config['scales']==[.05,.25]
+  p=Predictor(ds);assert p.source is None
+  assert not {'lr','tau','steps','samples','scales','state_shape'}&set(p.config)
+  for k in ['source_checkpoint','E_calibration','initialization_gamma']:assert p.config[k]==old['datasets'][ds][k]
 
 def test_zero_initialization_and_writeback():
  src=np.tile([.5,.5,.2,.3],(16,1));pos=list(range(0,16,2));c=json.loads((ROOT/'configs/default.json').read_text())['datasets']['hc2']['E_calibration'];e,_=initialize(src,pos,src[pos],c);assert np.array_equal(e,src)

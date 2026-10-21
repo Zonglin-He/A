@@ -2,7 +2,7 @@
 import argparse,json,hashlib,re
 from pathlib import Path
 ROOT=Path(__file__).resolve().parents[1]
-REQUIRED=['README.md','AGENTS.md','configs/default.json','docs/history.md','docs/method.md','docs/evaluation.md','docs/assets.md','docs/assets.json','docs/third_party.json','docs/migration.json','results/report.md','results/evaluation.json','results/runtime.json','results/cost.json','results/migration_checks.json','results/score_regression.json','results/cleanup_checks.json','docs/data_integrity.md','results/data_integrity.json','docs/cleanup.json','docs/publication.json','docs/formal_evaluation.md','docs/cgstvg.md','results/formal/cohorts.json','results/formal/preflight.json','results/formal/report.md','results/formal/results.json','docs/split_audit.md','results/formal/split_audit.json']
+REQUIRED=['results/boxfixed_native_smoke.json','results/tube_temporal_hc64/report.json','results/tube_temporal_hc64/report.md','results/tube_temporal_hc64/ANALYSIS.md','results/tube_temporal_hc64/signed_changes.tsv','results/tube_temporal_hc64/structure.json','configs/legacy_opd.json','docs/boxfixed_temporal.md','results/boxfixed_migration.json','README.md','AGENTS.md','configs/default.json','docs/history.md','docs/method.md','docs/evaluation.md','docs/assets.md','docs/assets.json','docs/third_party.json','docs/migration.json','results/report.md','results/evaluation.json','results/runtime.json','results/cost.json','results/migration_checks.json','results/score_regression.json','results/cleanup_checks.json','docs/data_integrity.md','results/data_integrity.json','docs/cleanup.json','docs/publication.json','docs/formal_evaluation.md','docs/cgstvg.md','results/formal/cohorts.json','results/formal/preflight.json','results/formal/report.md','results/formal/results.json','docs/split_audit.md','results/formal/split_audit.json']
 def sha(f):return hashlib.sha256(f.read_bytes()).hexdigest()
 def check():
  errors=[];warnings=[]
@@ -15,7 +15,12 @@ def check():
    if not(f.parent/target).exists():errors.append(f'{f.relative_to(ROOT)}: missing link {target}')
  if not errors:
   cfg=json.loads((ROOT/'configs/default.json').read_text());r=json.loads((ROOT/'results/evaluation.json').read_text())
-  assert [(cfg['datasets'][ds]['lr'],cfg['datasets'][ds]['tau'],cfg['datasets'][ds]['steps'],cfg['datasets'][ds]['initialization_gamma'],cfg['datasets'][ds]['output_alpha'])for ds in ['hc2','vidstg']]==[(.014,.14,40,.5,1.),(.01,.5,30,1.,1.)]
+  assert cfg['method']=='BoxFixed' and cfg['temporal']['default']=='strong'
+  legacy=json.loads((ROOT/'configs/legacy_opd.json').read_text())
+  assert [(legacy['datasets'][ds]['lr'],legacy['datasets'][ds]['tau'],legacy['datasets'][ds]['steps'],legacy['datasets'][ds]['initialization_gamma'],legacy['datasets'][ds]['output_alpha'])for ds in ['hc2','vidstg']]==[(.014,.14,40,.5,1.),(.01,.5,30,1.,1.)]
+  for ds in ['hc2','vidstg']:
+   assert not {'lr','tau','steps','samples','scales','state_shape'}&set(cfg['datasets'][ds])
+   assert cfg['datasets'][ds]['E_calibration']==legacy['datasets'][ds]['E_calibration']
   for ds,g in r['datasets'].items():
    assert g['parents']==g['queries']==len(g['rows'])==128
    for arm,m in g['means'].items():

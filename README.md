@@ -1,23 +1,8 @@
-# STVG OPD
+# STVG 完整框推理
 
-本地独立项目位于 `stvg-opd/`，先进入该目录运行以下命令。当前机器通过忽略的本地链接使用外层数据、权重、运行库、输出和环境，不重复复制；独立克隆时也可以将这些资产放进同名目录。
+当前主线：**单 ReferDINO ERef 初始化＋完整框传播＋原 BoxFixed 固定评分与精确 DP**。不执行 OPD、参数 TTA 或优化器更新。Strong 保留为已知时间参考，`native224` 与 `tube_replay` 是明确选择的时间模式，后者为实验功能。
 
-唯一主方法：**单 ReferDINO 初始化 + 空间 OPD + Strong 时间分支**。
-
-冻结 TA-STVG 和一个 ReferDINO。ReferDINO 在八个既定位置产生同一条目标轨迹，既用于空间初始化，也用于监督当前视频的临时 content 状态。时间使用 TA-STVG 自身的高分辨率与多层预测融合，再按原物理时间轴进行 MBR 解码。不加载独立 GroundingDINO，不训练模型权重；每条查询独立重置状态及优化器。
-
-## 固定配置
-
-唯一配置文件：[configs/default.json](configs/default.json)。
-
-| 目标数据集 | Source 权重 | 学习率 | 温度 | 步数 | 初始化 γ | 输出 α |
-|---|---|---:|---:|---:|---:|---:|
-| HC-STVG2（`hc2`） | TA-STVG VidSTG | 0.014 | 0.14 | 40 | 0.5 | 1 |
-| VidSTG（`vidstg`） | TA-STVG HC-STVG2 | 0.01 | 0.5 | 30 | 1 | 1 |
-
-TA-STVG与CGSTVG完整双向评估说明见 [docs/formal_evaluation.md](docs/formal_evaluation.md)，CG原生接口与权重见 [docs/cgstvg.md](docs/cgstvg.md)。正式结果仅在完整封存评分后更新 [results/formal/report.md](results/formal/report.md)。
-
-两域均为 seed 41、八个 256 维临时状态、32 个双尺度候选、尺度 `(0.05, 0.25)`。本仓库保留一个数值配置和必要backbone接口，不保留参数搜索或循环实验队列。
+主配置为 [configs/default.json](configs/default.json)。HC 使用 VidSTG Source，Vid 使用 HC2 Source；初始化强度分别0.5和1.0，沿用原源域校准。一个 ReferDINO 在相同八个位置的一次调用同时导出所选query的完整框和软mask；mask加权对应，不通过粗组件重建框。空间代码独立于旧实验，缓存只是可选加速，不依赖历史输出目录。
 
 ## 环境与资产
 
@@ -42,70 +27,42 @@ TORCH_CUDA_ARCH_LIST=12.0 .conda/tubedetr/bin/python -B tools/setup.py --build
 
 ## 统一入口
 
-所有推理与正式评估使用 `python -m stvg`，不依赖旧实验脚本或历史缓存。
+先进入本地 `stvg-opd/`。原始输入只含视频、文本及物理采样网格，不包含GT。按 [输入示例](examples/request.json) 填写路径、哈希和帧号；本地数据、权重、运行库和环境不上传。
 
 ```bash
-# 单条视频与文本。先填写 examples/request.json 中的路径、哈希和真实帧网格。
+# 当前已知参考：BoxFixed + Strong
 .conda/tubedetr/bin/python -B -m stvg predict --request request.json --output outputs/query.npz
-
-# 固定清单逐条推理；完成全部预测后写 sealed.json。
-.conda/tubedetr/bin/python -B -m stvg evaluate --backbone tastvg --manifest data/evaluation/development.jsonl --output outputs/evaluation
-
-# 独立评分进程；只读取封存预测和标注，不运行模型。
-.conda/tubedetr/bin/python -B -m stvg score --manifest data/evaluation/development.jsonl --labels data/evaluation/development_labels.jsonl --predictions outputs/evaluation --output outputs/evaluation/metrics.json
+# 不运行448：BoxFixed + 原生224时间
+.conda/tubedetr/bin/python -B -m stvg predict --request request.json --temporal native224 --output outputs/native.npz
+# 实验性：全轴辅助轨迹→一次缓存时间重放→最终区间BoxFixed
+.conda/tubedetr/bin/python -B -m stvg predict --request request.json --temporal tube_replay --output outputs/tube.npz
+# 标签隔离的manifest批量运行；temporal可显式选择同上模式
+.conda/tubedetr/bin/python -B -m stvg evaluate --manifest inputs.jsonl --output outputs/evaluation --teacher-cache outputs/expert_cache
+# 全部预测封存后，另行离线评分
+.conda/tubedetr/bin/python -B -m stvg score --manifest inputs.jsonl --labels labels.jsonl --predictions outputs/evaluation --output outputs/evaluation/metrics.json
 ```
 
-数据泄漏检查见 [docs/data_integrity.md](docs/data_integrity.md)：未发现当前推理链读取GT，128条离线选参合法，开发曝光与完整划分重叠已单独记录。
+当前完整框/时间重放接入只验证TA-STVG。历史CG适配源码保留，但新入口不自动运行旧OPD，CG与正式Vid队列保持暂停。其他骨干的时间memory/共享decoder需要各自适配，不能据TA结果推广。
 
-数据格式、帧号及评估语义见 [docs/evaluation.md](docs/evaluation.md)。核对官方资产后的完整评价清单为 HC2 1,902 条查询 / 227 个父来源、VidSTG 10,303 条查询 / 732 个父视频。此前 raw HC3482 清单已撤销为正式评价范围，来源及标注纠正见 [划分审计](docs/split_audit.md)。HC1902已完整封存并评分；正式Vid在8,405/10,303条按用户要求暂停，尚无完整正式Vid结果。清单、标注、视频与权重均被 `.gitignore` 排除。
+## 当前算法与验证
 
-## 已保存结果
+[方法定义](docs/method.md)说明完整框范围、原评分及两种空间decode视图。`interval`严格恢复原BoxFixed；`full_timeline`辅助轨迹不使用Strong event/active，是明确的方法扩展。时间重放使用实际缓存的motion/text/query/position/padding，逐head/query只重分配同帧合法视觉attention且保持其总量；不是ROI事件打分。固定alpha0.5、框读取上下文1.5，不训练新头。
 
-[开发面板结果表](results/report.md)和[全部开发逐查询结果](results/evaluation.json)保留原 HC128 / Vid128 的五行评价及正负样本。这两批数据已参与开发和选参，不能当作独立完整测试集。
+[HC64空间迁移证明](results/boxfixed_migration.json)记录2240个张量逐位检查及原DP动作、完整框、score和Strong区间。它是工程回归，原BoxFixed的31.3985%完整vIoU是已曝光HC64开发成绩，不是全量独立测试。新时间功能的固定A/B/C/D比较、先封存后GT和成本口径见 [本轮协议](docs/boxfixed_temporal.md)。
 
-| 目标数据集 | Source vIoU | 完整方法 vIoU | OPD 相对自身初始化＋Strong |
-|---|---:|---:|---:|
-| HC | 25.4635% | 29.0669% | +0.4793 pp |
-| Vid | 14.5827% | 19.7649% | +0.1009 pp，区间跨零 |
-
-Vid 的严重负例保留，不能把完整方法总增益都归于 OPD。方法定义、证据范围及成本见 [docs/method.md](docs/method.md) 和结果表。
-
-独立研究对照见 [HC64真实状态候选报告](results/state_opd_hc64/REPORT.md)及[冻结协议](docs/state_opd.md)：mask投影与整轨迹保护下，StateOPD完整vIoU为31.0942%，同64条ERef＋Strong为31.0918%，旧几何OPD为31.3868%。四组新方法的同32维状态对照没有建立OPD优于Direct的收益；不替换上述唯一主方法。样本范围为原HC128清单前64个父来源，属于已曝光开发数据。
-
-## 工程检查
+本轮[HC64时间验证](results/tube_temporal_hc64/ANALYSIS.md)已完成：Strong/native224/tube_replay/置换的完整vIoU分别31.3985/29.0568/28.8196/29.1586%。轨迹反馈相对native224下降0.2372pp，未达到替代Strong的目标，默认Strong保持。C的缓存重放与两次DP平均0.0810秒；这是额外分支成本，完整分项、缓存命中边界和全部负结果均公开。
 
 ```bash
 .conda/tubedetr/bin/python -B tools/check.py
-# 只对已有样例检查迁移一致性；本地需保留原始参考预测。
-.conda/tubedetr/bin/python -B tools/check.py --smoke hc2
-.conda/tubedetr/bin/python -B tools/check.py --smoke vidstg
+# 只在已有私有资产齐备时，重建旧64条空间迁移回归，不做GT评分
+.conda/tubedetr/bin/python -B tests/boxfixed_migration.py --run
+.conda/tubedetr/bin/python -B scripts/research_archive.py check
 ```
 
-[迁移核验](results/migration_checks.json)记录核心算法函数一致性，[评分回归](results/score_regression.json)记录原256条预测的五行复核。工程整理不改变方法或参数。
+## 历史与数据边界
 
-## 项目结构
+旧OPD源码、参数及完整正负结果均保留，数值配置在 [configs/legacy_opd.json](configs/legacy_opd.json)；旧主线可按Git提交579757a或私有原源码快照恢复。默认流程不再调用其采样/临时状态/训练。历史[HC128/Vid128结果](results/report.md)、[完整框研究](results/box_propagation_hc64/ANALYSIS.md)、[A/B策略](results/evidence_policy_hc64/ANALYSIS.md)、[单点续走](results/correction_value_hc64/ANALYSIS.md)、[承诺策略负结果](results/committed_policy_hc64/ANALYSIS.md)保留原协议，不能改名为新方法成绩。
 
-```text
-stvg/          主方法、模型接口、解码和独立评分
-configs/       唯一固定配置
-tools/         安装与工程检查
-scripts/       项目档案维护
-examples/      请求格式示例
-results/       最终结果与必要核验
-external/      两个模型的官方源码及 CUDA ABI 兼容源码
-docs/          方法、资产、评估和历史说明
-```
+正式评价口径为HC2 1902查询/227来源、VidSTG10303/732，旧raw3482清单撤销原因见[划分审计](docs/split_audit.md)。HC1902旧方法已评分；正式Vid按用户要求停在8405/10303，CG暂停。不得自动恢复。开发128/64选参与曝光均有记录，不将其视为独立测试；[数据检查](docs/data_integrity.md)与[评价语义](docs/evaluation.md)说明标签隔离及官方指标。
 
-本地另有 `data/`、`checkpoints/`、`runtime/`、`outputs/` 和 `.conda/`，均不上传。历史方案从当前工作树移除，仍可通过正常 Git 历史查阅；没有重写或压缩提交历史。见 [docs/history.md](docs/history.md)。
-
-正式数据版本已核对并修正：HC2采用作者公开包1902条，VidSTG10303条；原raw3482口径及Vid端点错误见[划分审计](docs/split_audit.md)。历史128开发成绩保留原标注口径，不当作修正后的完整官方结果。
-
-候选评分的固定 v0 审计与严格下游留出锚点探针见 [评分审计](docs/score_audit.md) 和 [完整结果](results/score_audit/REPORT.md)。本轮只运行缓存评分，不执行新 OPD/KD/Direct 适应，不改变主方法。
-
-完整原生框范围传播及匹配OPD/FixedKD/Direct的HC64开发对照见 [协议](docs/box_propagation.md) 与 [结果分析](results/box_propagation_hc64/ANALYSIS.md)。这是隔离研究版本，未更改唯一主方法。
-
-冻结完整框候选的八特征策略A／四节点后果反馈B，六组HC64真实适应见 [协议](docs/evidence_policy.md) 与 [结果分析](results/evidence_policy_hc64/ANALYSIS.md)。策略已增加未观测节点替换，但没有建立OPD独立优势；全部正负结果保留，正式全量任务仍暂停。
-
-单点教师建议后的学生续走价值与缓存成本拆分见 [协议](docs/correction_value.md)、[结果判断](results/correction_value_hc64/ANALYSIS.md) 及 [成本分项](results/correction_value_hc64/COST.md)。237次干预未建立后续净收益，按预设门槛未进入纠正轨迹蒸馏，全部旧结果保留。
-
-持久证据来源承诺与跨锚点质量加权的HC64真实适应见 [协议](docs/committed_policy.md) 和 [完整判断](results/committed_policy_hc64/ANALYSIS.md)。OPD、Direct、FixedKD各完整执行30次更新；持久状态已影响真实后续选框，但未建立OPD优势，也未解决一致错选。全部正负结果保留，不替换唯一主方法。
+工程目录：`stvg/`正式推理/evidence/spatial/temporal/评价与backbone接口；`configs/`当前及明确标记的历史配置；`scripts/`隔离研究与档案；`tests/`工程验证；`results/`公开匿名指标及证明；`external/`保留上游版权源码。`data/`、`checkpoints/`、`runtime/`、`outputs/`、`.conda/`均为私有本地资产。依赖核查后退出默认入口的历史组件仍可恢复，不删除数据/权重/缓存，不重写Git历史。完整决策见[历史档案](docs/history.md)。
