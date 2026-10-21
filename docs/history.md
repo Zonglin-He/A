@@ -51,3 +51,5 @@ HC1902结果已公开并逐文件核验：提交 [481de74f](https://github.com/Z
 工程加速实现与回归已公开并核验：提交 [33508f50](https://github.com/Zonglin-He/A/commit/33508f50f32dca434fb90e3c0fe268f3f913f303)，main/research以freshCAS非强制快进；343文件、8,967,458字节的远端内容与本地SHA256及tree完全一致，原Git历史保留。已恢复半小时巡检并绑定唯一新计划；正式Vid继续，无额外测速任务。
 
 2026-10-21 HC空间机制离线分析：按用户任务书，在已完整封存的HC1902/227父来源上计算Full−WithoutOPD的恢复、损伤、GT方向、时间重叠、教师质量和传播距离；未读取运行中Vid标签，没有模型/专家前向或调参。未观测实际节点sIoU+0.4979pp，父来源聚类区间[0.3000,0.7092]；Recovery合并帧363/10331，Damage255/24090，两者分母不同；完整vIoU+0.2696pp。教师最低质量四分位未观测增量−0.0950pp（跨零），最高+1.0387pp；仅事后解释，不在线GT筛选。正式worker未保存path/rounds，不能生成真实逐轮cost/ESS曲线；不存在同条件Direct/Fixed正式对照，不能宣称本分析证明OPD优于传统KD。所有预测和标签哈希前后核验、原任务指标重算最大误差1.33e−15、时间分解误差3.28e−16、合成分母/缺帧/几何核对及70项CPU检查通过。结果见 results/formal/spatial_analysis_hc2.md 和JSON，分析代码在scripts/不改变正式plan；Vid继续运行、CG暂停。
+
+HC空间离线分析已公开并逐文件核验：提交 [a8c3aa2d](https://github.com/Zonglin-He/A/commit/a8c3aa2d4e7077c5d419243e0865200898a4246a)，main/research均freshCAS非强制快进；346文件、9,313,578字节与远端Git blob SHA256及tree完全一致，历史保留。公开结果仅聚合数值；逐query/GT/专家缓存不上传。Vid正式推理持续，五行全阶段发布尚待其完成。
