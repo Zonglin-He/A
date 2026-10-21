@@ -75,6 +75,12 @@ TORCH_CUDA_ARCH_LIST=12.0 .conda/tubedetr/bin/python -B tools/setup.py --build
 
 研究入口按锁定顺序为`scripts/interval_pool/development.py`、`diagnose.py`、`intervention.py`、`confirmation.py`和`score.py`；这些是独立研究，禁止覆盖现有sealed目录。`scripts/select_interval_recheck.py`重现无GT名单规则，`audit_interval_pool.py`核对保存态，`summarize_interval_pool.py`只汇总公开封存指标。当前不继续本轮实验，不恢复正式Vid或CG。
 
+## 双向调参与当前全量
+
+新授权的[有限调参](results/boxfixed_tuning_v1/ANALYSIS.md)已完成：HC64实际14配置、Vid64实际17配置，开发最佳有收益，但两方向冻结32父复核均退化，因此全量按预定规则回退原(temperature1,observed.5,guard.1,link.25)，没有将开发最好点冒充稳定改进。全部单因素、邻域、交互和撤回结果及严重损伤保留。
+
+新全量队列使用[显式profile](configs/tuned_boxfixed_v1.json)的原参数完整框＋Global6旧hull＋原MBR，HC1902→Vid10303；生产Strong参考不变，旧formal8405和CG仍暂停。Final/Untuned是alias只算一次，主对照Source。已逐位验收的512MiB RGB/4GiB实际tensor视觉缓存启用；根负责修复，一个Luna max半小时只读巡检。见[运行/恢复/评价协议](docs/tuning_v1.md)，全量运行中不宣称已有完整划分成绩。
+
 ## 历史与数据边界
 
 旧OPD源码、参数及完整正负结果均保留，数值配置在 [configs/legacy_opd.json](configs/legacy_opd.json)；旧主线可按Git提交579757a或私有原源码快照恢复。默认流程不再调用其采样/临时状态/训练。历史[HC128/Vid128结果](results/report.md)、[完整框研究](results/box_propagation_hc64/ANALYSIS.md)、[A/B策略](results/evidence_policy_hc64/ANALYSIS.md)、[单点续走](results/correction_value_hc64/ANALYSIS.md)、[承诺策略负结果](results/committed_policy_hc64/ANALYSIS.md)保留原协议，不能改名为新方法成绩。

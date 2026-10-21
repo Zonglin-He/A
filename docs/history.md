@@ -228,3 +228,13 @@ BoxFixed独立主线与固定HC64时间验证已公开并逐文件核验：实�
 
 
 最后两轮区间研究、双域冻结复核、全面时间审计及全部正负结果已公开逐文件核验：实现提交[6d021fe9](https://github.com/Zonglin-He/A/commit/6d021fe9eea56abe6e2645eb8b8a2cf7ce370334)，main/research均freshCAS非强制快进；633文件/60,681,542字节与远端Git blob SHA256及tree完全一致，原历史保留、无删除。新mixture按双向失败判据淘汰，保留旧Global6研究读出，生产Strong默认不变；不将Vid构造179.75→5.00ms当端到端或精度贡献。全部匿名signed/严重损伤/首条及余31成本/概率映射与暴露边界公开，不含数据、GT坐标、原视频query、mask/特征/状态张量、权重或凭据。正式Vid/CG暂停保持，停止本轮实验；发布回执docs/publication.json由后续文档提交保存。
+
+
+2026-10-22 用户进一步明确授权：上述任务完成后在两个方向按既往单因素/机制解释/粗细邻域方法有限调参，根全程盯调参，锁定后运行新全量队列，可用一个gpt-6-luna/max巡检，异常由根核证修复续跑。此授权覆盖旧本轮“停止调参”约定，但不恢复旧formal8405队列、不混用旧方法预测或改标签。新outputs/boxfixed_tuning_v1使用HC64/Vid64各一query/父，HC复用已验证完整缓存，Vid64一次共享224/八专家捕获已全封存，后续候选均0新增重网络。固定Source/8观察/原完整框候选/初始化gamma/原hull与精确MBR，只调最终时间温度、观测/未观测权重、几何保护、邻帧连接。每方向最多18配置，根逐阶段回读完整v/t/未观测s、严重>5pp损伤与后验熵/长度/实际动作变化；先单因素粗搜，最多4邻域细化、4参数撤回归因及1交互，禁止全笛卡尔/选seed。plan SHA537aac2b6523406788cbce804ee8b3364c29743bdaac9e87dfb266df1cf3744e在首个新GT前锁定。64封存后CPU评分；参数锁定后32×2一次冻结开发复核，若未过事前判据回退原配方，不据复核继续调；所有数据历史曝光如实标记。全量用新独立目录与新不可变profile，不覆盖旧源码/结果或放宽resume指纹。
+
+
+本轮调参实际完成HC14/Vid17配置，所有64预测seal后CPU评分，根逐轮选取与解释保存在results/boxfixed_tuning_v1/decisions.jsonl。开发最佳HC(temperature1.5,obs.75,guard.2,link.25)完整v/t31.1883/57.7346%，较原+1.4931/+1.7732pp、未观测s+1.1807pp；Vid(3,1,.2,.25)23.8144/45.7255%，较原+5.1881/+7.0192pp、未观测s+.8945pp。Vid obs1使未观测直接unary为0，仍有传播候选与link，不能把收益称为更强未观测监督。逐参数撤回和邻值结果保留，不无限扫边界。
+
+随后两域所选配置在一次冻结32父开发复核均失败：HC v−.2159pp/t−.9061pp/未观测s+1.2465pp，Vid−2.1487/−3.0871/−.9330pp，Vid严重Source损伤7vs基线3，按事先判据两域完整退回原(1,.5,.1,.25)，不据复核再选参。Vid开发/复核GT事件时长中位6.6400/2.5192秒、<5秒23/64vs25/32；高温展宽适配长事件开发的解释与此相符，但非受控因果证明。原生224/八专家/候选/gamma和精度评价不变；113工程测试通过。缓存数值回归两域各miss/hit，共4已有query前向、0新专家，Source/E/8位置/全部六层logits/31几何张量逐位；启用512MiB精确RGB和4GiB实际tensor visual LRU，禁止文本/fusion/decoder跨query复用。
+
+用户授权的新全量plan已锁定2ebd134dfd055c8e17e01859b706d56d187b15b8907a8129c49669539d84ea6e，目录outputs/boxfixed_full_v1，HC1902→Vid10303，原formal暂停不改。configs/tuned_boxfixed_v1.json明确两域fallback；Final与Untuned为alias，不重复DP/后验/评分，不冒充独立两次实验。192完整capture严格内容绑定导入，cache原成本不计当前；全部新真实流含Source配对，完整seal后才CPU固定labels/parent-cluster CI，不看full结果调参。首个后台启动PID606545未存活、空log且无state/worker/预测，核/proc及pgrep无自有进程后保留空日志，以Popen新session启动同一plan PID607450，未改冻结代码或参数，原因未证实不编造。单Luna max旧ta_luna_watch复用，只读巡检；ta-stvg-luna原heartbeat按新plan更新为半小时ACTIVE，正常静默，实质故障根核证修复、不重复启动、不放宽hash/混用指纹。所有其他旧队列/CG仍暂停；全量结束后汇总完整signed/严重损伤/效率并发布核验。

@@ -1,0 +1,68 @@
+{
+  "confirmation_seal_sha256": "111ef13831b8d087d9de9b702fdbc8341a0cc3fba2279760813fbbe422561309",
+  "datasets": {
+    "hc2": {
+      "guard_weight": 0.1,
+      "link_weight": 0.25,
+      "observed_weight": 0.5,
+      "temperature": 1.0
+    },
+    "vidstg": {
+      "guard_weight": 0.1,
+      "link_weight": 0.25,
+      "observed_weight": 0.5,
+      "temperature": 1.0
+    }
+  },
+  "expert_count": 1,
+  "method": "BoxFixed complete native propagation + tuned Global6 old hull + original physical MBR",
+  "no_network_training": true,
+  "observations": 8,
+  "production_reference": "Strong unchanged; this is an explicit new full-evaluation profile",
+  "selected_sha256": "1e1374f4d19d71692ca02f19f70f00dc29d15b0ccf532f9c20384561da24608a",
+  "selection_decisions": {
+    "hc2": {
+      "accepted": false,
+      "final_params": {
+        "guard_weight": 0.1,
+        "link_weight": 0.25,
+        "observed_weight": 0.5,
+        "temperature": 1.0
+      },
+      "gates": {
+        "severe_increase_at_most2": true,
+        "t_loss_at_most_point1pp": false,
+        "unobserved_s_loss_at_most_point1pp": true,
+        "v_not_decreased": false
+      },
+      "proposed": {
+        "guard_weight": 0.2,
+        "link_weight": 0.25,
+        "observed_weight": 0.75,
+        "temperature": 1.5
+      }
+    },
+    "vidstg": {
+      "accepted": false,
+      "final_params": {
+        "guard_weight": 0.1,
+        "link_weight": 0.25,
+        "observed_weight": 0.5,
+        "temperature": 1.0
+      },
+      "gates": {
+        "severe_increase_at_most2": false,
+        "t_loss_at_most_point1pp": false,
+        "unobserved_s_loss_at_most_point1pp": false,
+        "v_not_decreased": false
+      },
+      "proposed": {
+        "guard_weight": 0.2,
+        "link_weight": 0.25,
+        "observed_weight": 1.0,
+        "temperature": 3.0
+      }
+    }
+  },
+  "source_resolution": 224
+}

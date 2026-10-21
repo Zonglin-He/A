@@ -10,6 +10,12 @@ REQUIRED += ['docs/interval_pool.md','docs/temporal_audit.md','docs/temporal_sou
  'results/interval_pool/development/signed_errors.tsv']
 for panel in ['intervention_hc64','recheck_hc2','recheck_vidstg']:
  REQUIRED += [f'results/interval_pool/{panel}/{name}'for name in ['report.json','report.md','signed_changes.tsv']]
+REQUIRED += ['configs/tuned_boxfixed_v1.json','docs/tuning_v1.md',
+ 'results/boxfixed_tuning_v1/ANALYSIS.md','results/boxfixed_tuning_v1/summary.json',
+ 'results/boxfixed_tuning_v1/protocol.json','results/boxfixed_tuning_v1/selected.json',
+ 'results/boxfixed_tuning_v1/decisions.jsonl','results/boxfixed_tuning_v1/signed_trials.tsv',
+ 'results/boxfixed_tuning_v1/cache_regression.json','results/boxfixed_tuning_v1/confirmation_hc2.json',
+ 'results/boxfixed_tuning_v1/confirmation_vidstg.json']
 def sha(f):return hashlib.sha256(f.read_bytes()).hexdigest()
 def check():
  errors=[];warnings=[]
@@ -40,6 +46,14 @@ def check():
   for panel in ['intervention_hc64','recheck_hc2','recheck_vidstg']:
    saved=json.loads((ROOT/f'results/interval_pool/{panel}/report.json').read_text())
    assert saved['proof']['all_predictions_sealed_before_GT']and saved['proof']['official_dense_max_absolute_error']<2e-10
+  tuning=json.loads((ROOT/'results/boxfixed_tuning_v1/summary.json').read_text())
+  profile=json.loads((ROOT/'configs/tuned_boxfixed_v1.json').read_text())
+  assert tuning['actual_trials']=={'hc2':14,'vidstg':17}
+  for ds in ['hc2','vidstg']:
+   c=json.loads((ROOT/f'results/boxfixed_tuning_v1/confirmation_{ds}.json').read_text())
+   assert c['proof']['all64_predictions_sealed_before_GT']
+   assert profile['datasets'][ds]==c['decision']['final_params']
+   assert not c['decision']['accepted']
   snap=ROOT/'docs/sources.json'
   if snap.exists():
    old=json.loads(snap.read_text())['files'];changed=[p for p,h in old.items()if not(ROOT/p).is_file()or sha(ROOT/p)!=h]
