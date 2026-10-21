@@ -1,0 +1,2933 @@
+{
+  "status": "development_in_progress",
+  "decisions": [
+    {
+      "stage": "initialization",
+      "reason": "Test weaker global correction first; gamma0 is a temporal-only control, not eligible Full.",
+      "outcome": {
+        "scores": {
+          "0.0": 0.19620509122848728,
+          "0.05": 0.1951774609137639,
+          "0.1": 0.19283897259846347,
+          "0.25": 0.18616030585897148,
+          "0.5": 0.17923637721330576,
+          "0.75": 0.1773065979621631,
+          "1.0": 0.1821234457944659
+        },
+        "selected_nonzero_gamma": 0.05,
+        "zero_control_better": true
+      },
+      "as_of": "2026-10-21T09:53:34.750361+08:00"
+    },
+    {
+      "stage": "learning_rate",
+      "reason": "Small original OPD effect does not tell the direction of LR change; compare both directions.",
+      "outcome": {
+        "tested": [
+          {
+            "initialization_gamma": 0.05,
+            "lr": 0.0025,
+            "tau": 0.5,
+            "steps": 30
+          },
+          {
+            "initialization_gamma": 0.05,
+            "lr": 0.005,
+            "tau": 0.5,
+            "steps": 30
+          },
+          {
+            "initialization_gamma": 0.05,
+            "lr": 0.01,
+            "tau": 0.5,
+            "steps": 30
+          },
+          {
+            "initialization_gamma": 0.05,
+            "lr": 0.02,
+            "tau": 0.5,
+            "steps": 30
+          }
+        ],
+        "selected": {
+          "initialization_gamma": 0.05,
+          "lr": 0.02,
+          "tau": 0.5,
+          "steps": 30
+        },
+        "all_outcomes": {
+          "p_40744e597eff": {
+            "params": {
+              "initialization_gamma": 1.0,
+              "lr": 0.01,
+              "tau": 0.5,
+              "steps": 30
+            },
+            "score": 0.18218161561773588,
+            "metric_means": {
+              "Source": {
+                "m_vIoU": 0.16100805375964855,
+                "vIoU@0.3": 0.21875,
+                "vIoU@0.5": 0.1015625,
+                "m_tIoU": 0.2851757318096646,
+                "m_sIoU": 0.4861641898239857,
+                "tIoU_ge_0_5": 0.2578125,
+                "tIoU_zero": 0.2890625,
+                "boundary_MAE_seconds": 9.083851708716795,
+                "observed_actual_sIoU": 0.5102536444566057,
+                "unobserved_actual_sIoU": 0.48748153622576895,
+                "observed_GT_nodes": 3.328125,
+                "unobserved_GT_nodes": 48.6875
+              },
+              "Spatial": {
+                "m_vIoU": 0.15332790944828928,
+                "vIoU@0.3": 0.21875,
+                "vIoU@0.5": 0.1015625,
+                "m_tIoU": 0.2851757318096646,
+                "m_sIoU": 0.4306949539423415,
+                "tIoU_ge_0_5": 0.2578125,
+                "tIoU_zero": 0.2890625,
+                "boundary_MAE_seconds": 9.083851708716795,
+                "observed_actual_sIoU": 0.47224031473622335,
+                "unobserved_actual_sIoU": 0.4306164910369123,
+                "observed_GT_nodes": 3.328125,
+                "unobserved_GT_nodes": 48.6875
+              },
+              "Temporal": {
+                "m_vIoU": 0.19620509122848728,
+                "vIoU@0.3": 0.2890625,
+                "vIoU@0.5": 0.1640625,
+                "m_tIoU": 0.35222048361861286,
+                "m_sIoU": 0.4861641898239857,
+                "tIoU_ge_0_5": 0.40625,
+                "tIoU_zero": 0.1875,
+                "boundary_MAE_seconds": 8.196232173060782,
+                "observed_actual_sIoU": 0.5102536444566057,
+                "unobserved_actual_sIoU": 0.48748153622576895,
+                "observed_GT_nodes": 3.328125,
+                "unobserved_GT_nodes": 48.6875
+              },
+              "WithoutOPD": {
+                "m_vIoU": 0.1821234457944659,
+                "vIoU@0.3": 0.2421875,
+                "vIoU@0.5": 0.171875,
+                "m_tIoU": 0.35222048361861286,
+                "m_sIoU": 0.4304633383877615,
+                "tIoU_ge_0_5": 0.40625,
+                "tIoU_zero": 0.1875,
+                "boundary_MAE_seconds": 8.196232173060782,
+                "observed_actual_sIoU": 0.4686338073946438,
+                "unobserved_actual_sIoU": 0.4305561782503189,
+                "observed_GT_nodes": 3.328125,
+                "unobserved_GT_nodes": 48.6875
+              },
+              "Full": {
+                "m_vIoU": 0.18218161561773588,
+                "vIoU@0.3": 0.2421875,
+                "vIoU@0.5": 0.171875,
+                "m_tIoU": 0.35222048361861286,
+                "m_sIoU": 0.4306949539423415,
+                "tIoU_ge_0_5": 0.40625,
+                "tIoU_zero": 0.1875,
+                "boundary_MAE_seconds": 8.196232173060782,
+                "observed_actual_sIoU": 0.47224031473622335,
+                "unobserved_actual_sIoU": 0.4306164910369123,
+                "observed_GT_nodes": 3.328125,
+                "unobserved_GT_nodes": 48.6875
+              }
+            },
+            "diagnostics": {
+              "mean_weight_entropy": null,
+              "mean_ESS": null,
+              "mean_state_gradient_norm": null,
+              "pseudo_loss_before": null,
+              "pseudo_loss_after": null
+            },
+            "metrics_sha256": "868c71a9459110a22687d3fbc3ff87885b96650f350ea2997d24163f90e0d698"
+          },
+          "p_20b170e5d5be": {
+            "params": {
+              "initialization_gamma": 0.05,
+              "lr": 0.0025,
+              "tau": 0.5,
+              "steps": 30
+            },
+            "score": 0.19518378130338948,
+            "metric_means": {
+              "Source": {
+                "m_vIoU": 0.16100805375964855,
+                "vIoU@0.3": 0.21875,
+                "vIoU@0.5": 0.1015625,
+                "m_tIoU": 0.2851757318096646,
+                "m_sIoU": 0.4861641898239857,
+                "tIoU_ge_0_5": 0.2578125,
+                "tIoU_zero": 0.2890625,
+                "boundary_MAE_seconds": 9.083851708716795,
+                "observed_actual_sIoU": 0.5102536444566057,
+                "unobserved_actual_sIoU": 0.48748153622576895,
+                "observed_GT_nodes": 3.328125,
+                "unobserved_GT_nodes": 48.6875
+              },
+              "Spatial": {
+                "m_vIoU": 0.1602167358149077,
+                "vIoU@0.3": 0.2265625,
+                "vIoU@0.5": 0.09375,
+                "m_tIoU": 0.2851757318096646,
+                "m_sIoU": 0.48151399104415293,
+                "tIoU_ge_0_5": 0.2578125,
+                "tIoU_zero": 0.2890625,
+                "boundary_MAE_seconds": 9.083851708716795,
+                "observed_actual_sIoU": 0.5054737064314285,
+                "unobserved_actual_sIoU": 0.4830606579061554,
+                "observed_GT_nodes": 3.328125,
+                "unobserved_GT_nodes": 48.6875
+              },
+              "Temporal": {
+                "m_vIoU": 0.19620509122848728,
+                "vIoU@0.3": 0.2890625,
+                "vIoU@0.5": 0.1640625,
+                "m_tIoU": 0.35222048361861286,
+                "m_sIoU": 0.4861641898239857,
+                "tIoU_ge_0_5": 0.40625,
+                "tIoU_zero": 0.1875,
+                "boundary_MAE_seconds": 8.196232173060782,
+                "observed_actual_sIoU": 0.5102536444566057,
+                "unobserved_actual_sIoU": 0.48748153622576895,
+                "observed_GT_nodes": 3.328125,
+                "unobserved_GT_nodes": 48.6875
+              },
+              "WithoutOPD": {
+                "m_vIoU": 0.1951774609137639,
+                "vIoU@0.3": 0.2890625,
+                "vIoU@0.5": 0.15625,
+                "m_tIoU": 0.35222048361861286,
+                "m_sIoU": 0.48151565885390485,
+                "tIoU_ge_0_5": 0.40625,
+                "tIoU_zero": 0.1875,
+                "boundary_MAE_seconds": 8.196232173060782,
+                "observed_actual_sIoU": 0.5055388358713075,
+                "unobserved_actual_sIoU": 0.48304563384361326,
+                "observed_GT_nodes": 3.328125,
+                "unobserved_GT_nodes": 48.6875
+              },
+              "Full": {
+                "m_vIoU": 0.19518378130338948,
+                "vIoU@0.3": 0.2890625,
+                "vIoU@0.5": 0.15625,
+                "m_tIoU": 0.35222048361861286,
+                "m_sIoU": 0.48151399104415293,
+                "tIoU_ge_0_5": 0.40625,
+                "tIoU_zero": 0.1875,
+                "boundary_MAE_seconds": 8.196232173060782,
+                "observed_actual_sIoU": 0.5054737064314285,
+                "unobserved_actual_sIoU": 0.4830606579061554,
+                "observed_GT_nodes": 3.328125,
+                "unobserved_GT_nodes": 48.6875
+              }
+            },
+            "diagnostics": {
+              "mean_weight_entropy": 0.7423732406911598,
+              "mean_ESS": 11.423244533612007,
+              "mean_state_gradient_norm": 0.018317323153481387,
+              "pseudo_loss_before": 3.9677781866353348,
+              "pseudo_loss_after": 3.9525881419376794
+            },
+            "metrics_sha256": "8a2927b3af275568dd716710b9dd4153ea97c9a62240fc6be592f1c1265e96cd"
+          },
+          "p_536752b917d8": {
+            "params": {
+              "initialization_gamma": 0.05,
+              "lr": 0.005,
+              "tau": 0.5,
+              "steps": 30
+            },
+            "score": 0.19518463211796863,
+            "metric_means": {
+              "Source": {
+                "m_vIoU": 0.16100805375964855,
+                "vIoU@0.3": 0.21875,
+                "vIoU@0.5": 0.1015625,
+                "m_tIoU": 0.2851757318096646,
+                "m_sIoU": 0.4861641898239857,
+                "tIoU_ge_0_5": 0.2578125,
+                "tIoU_zero": 0.2890625,
+                "boundary_MAE_seconds": 9.083851708716795,
+                "observed_actual_sIoU": 0.5102536444566057,
+                "unobserved_actual_sIoU": 0.48748153622576895,
+                "observed_GT_nodes": 3.328125,
+                "unobserved_GT_nodes": 48.6875
+              },
+              "Spatial": {
+                "m_vIoU": 0.1602178489192728,
+                "vIoU@0.3": 0.2265625,
+                "vIoU@0.5": 0.09375,
+                "m_tIoU": 0.2851757318096646,
+                "m_sIoU": 0.4814857120864243,
+                "tIoU_ge_0_5": 0.2578125,
+                "tIoU_zero": 0.2890625,
+                "boundary_MAE_seconds": 9.083851708716795,
+                "observed_actual_sIoU": 0.5046799358674011,
+                "unobserved_actual_sIoU": 0.48307465782291364,
+                "observed_GT_nodes": 3.328125,
+                "unobserved_GT_nodes": 48.6875
+              },
+              "Temporal": {
+                "m_vIoU": 0.19620509122848728,
+                "vIoU@0.3": 0.2890625,
+                "vIoU@0.5": 0.1640625,
+                "m_tIoU": 0.35222048361861286,
+                "m_sIoU": 0.4861641898239857,
+                "tIoU_ge_0_5": 0.40625,
+                "tIoU_zero": 0.1875,
+                "boundary_MAE_seconds": 8.196232173060782,
+                "observed_actual_sIoU": 0.5102536444566057,
+                "unobserved_actual_sIoU": 0.48748153622576895,
+                "observed_GT_nodes": 3.328125,
+                "unobserved_GT_nodes": 48.6875
+              },
+              "WithoutOPD": {
+                "m_vIoU": 0.1951774609137639,
+                "vIoU@0.3": 0.2890625,
+                "vIoU@0.5": 0.15625,
+                "m_tIoU": 0.35222048361861286,
+                "m_sIoU": 0.48151565885390485,
+                "tIoU_ge_0_5": 0.40625,
+                "tIoU_zero": 0.1875,
+                "boundary_MAE_seconds": 8.196232173060782,
+                "observed_actual_sIoU": 0.5055388358713075,
+                "unobserved_actual_sIoU": 0.48304563384361326,
+                "observed_GT_nodes": 3.328125,
+                "unobserved_GT_nodes": 48.6875
+              },
+              "Full": {
+                "m_vIoU": 0.19518463211796863,
+                "vIoU@0.3": 0.2890625,
+                "vIoU@0.5": 0.15625,
+                "m_tIoU": 0.35222048361861286,
+                "m_sIoU": 0.4814857120864243,
+                "tIoU_ge_0_5": 0.40625,
+                "tIoU_zero": 0.1875,
+                "boundary_MAE_seconds": 8.196232173060782,
+                "observed_actual_sIoU": 0.5046799358674011,
+                "unobserved_actual_sIoU": 0.48307465782291364,
+                "observed_GT_nodes": 3.328125,
+                "unobserved_GT_nodes": 48.6875
+              }
+            },
+            "diagnostics": {
+              "mean_weight_entropy": 0.742559400466817,
+              "mean_ESS": 11.430981345522564,
+              "mean_state_gradient_norm": 0.02062952971117132,
+              "pseudo_loss_before": 3.9677781866353348,
+              "pseudo_loss_after": 3.933945795121083
+            },
+            "metrics_sha256": "c08f22fe5108d8cba51e6a28e8b7c0d0f8ed35cc55dedc12ee391631194245c5"
+          },
+          "p_a8252273146f": {
+            "params": {
+              "initialization_gamma": 0.05,
+              "lr": 0.01,
+              "tau": 0.5,
+              "steps": 30
+            },
+            "score": 0.19516875054065988,
+            "metric_means": {
+              "Source": {
+                "m_vIoU": 0.16100805375964855,
+                "vIoU@0.3": 0.21875,
+                "vIoU@0.5": 0.1015625,
+                "m_tIoU": 0.2851757318096646,
+                "m_sIoU": 0.4861641898239857,
+                "tIoU_ge_0_5": 0.2578125,
+                "tIoU_zero": 0.2890625,
+                "boundary_MAE_seconds": 9.083851708716795,
+                "observed_actual_sIoU": 0.5102536444566057,
+                "unobserved_actual_sIoU": 0.48748153622576895,
+                "observed_GT_nodes": 3.328125,
+                "unobserved_GT_nodes": 48.6875
+              },
+              "Spatial": {
+                "m_vIoU": 0.16021397335651924,
+                "vIoU@0.3": 0.2265625,
+                "vIoU@0.5": 0.09375,
+                "m_tIoU": 0.2851757318096646,
+                "m_sIoU": 0.4814575785763813,
+                "tIoU_ge_0_5": 0.2578125,
+                "tIoU_zero": 0.2890625,
+                "boundary_MAE_seconds": 9.083851708716795,
+                "observed_actual_sIoU": 0.5044649563939276,
+                "unobserved_actual_sIoU": 0.48308955110063156,
+                "observed_GT_nodes": 3.328125,
+                "unobserved_GT_nodes": 48.6875
+              },
+              "Temporal": {
+                "m_vIoU": 0.19620509122848728,
+                "vIoU@0.3": 0.2890625,
+                "vIoU@0.5": 0.1640625,
+                "m_tIoU": 0.35222048361861286,
+                "m_sIoU": 0.4861641898239857,
+                "tIoU_ge_0_5": 0.40625,
+                "tIoU_zero": 0.1875,
+                "boundary_MAE_seconds": 8.196232173060782,
+                "observed_actual_sIoU": 0.5102536444566057,
+                "unobserved_actual_sIoU": 0.48748153622576895,
+                "observed_GT_nodes": 3.328125,
+                "unobserved_GT_nodes": 48.6875
+              },
+              "WithoutOPD": {
+                "m_vIoU": 0.1951774609137639,
+                "vIoU@0.3": 0.2890625,
+                "vIoU@0.5": 0.15625,
+                "m_tIoU": 0.35222048361861286,
+                "m_sIoU": 0.48151565885390485,
+                "tIoU_ge_0_5": 0.40625,
+                "tIoU_zero": 0.1875,
+                "boundary_MAE_seconds": 8.196232173060782,
+                "observed_actual_sIoU": 0.5055388358713075,
+                "unobserved_actual_sIoU": 0.48304563384361326,
+                "observed_GT_nodes": 3.328125,
+                "unobserved_GT_nodes": 48.6875
+              },
+              "Full": {
+                "m_vIoU": 0.19516875054065988,
+                "vIoU@0.3": 0.2890625,
+                "vIoU@0.5": 0.15625,
+                "m_tIoU": 0.35222048361861286,
+                "m_sIoU": 0.4814575785763813,
+                "tIoU_ge_0_5": 0.40625,
+                "tIoU_zero": 0.1875,
+                "boundary_MAE_seconds": 8.196232173060782,
+                "observed_actual_sIoU": 0.5044649563939276,
+                "unobserved_actual_sIoU": 0.48308955110063156,
+                "observed_GT_nodes": 3.328125,
+                "unobserved_GT_nodes": 48.6875
+              }
+            },
+            "diagnostics": {
+              "mean_weight_entropy": 0.7429495554495521,
+              "mean_ESS": 11.445425229620234,
+              "mean_state_gradient_norm": 0.019719462574281955,
+              "pseudo_loss_before": 3.9677781866353348,
+              "pseudo_loss_after": 3.901210664932214
+            },
+            "metrics_sha256": "4a91836e1d1532c1cf6dabd5b2dea327679758c8fab3af5e00a4eafd5f732ca1"
+          },
+          "p_c98df0923df8": {
+            "params": {
+              "initialization_gamma": 0.05,
+              "lr": 0.02,
+              "tau": 0.5,
+              "steps": 30
+            },
+            "score": 0.19524535145868857,
+            "metric_means": {
+              "Source": {
+                "m_vIoU": 0.16100805375964855,
+                "vIoU@0.3": 0.21875,
+                "vIoU@0.5": 0.1015625,
+                "m_tIoU": 0.2851757318096646,
+                "m_sIoU": 0.4861641898239857,
+                "tIoU_ge_0_5": 0.2578125,
+                "tIoU_zero": 0.2890625,
+                "boundary_MAE_seconds": 9.083851708716795,
+                "observed_actual_sIoU": 0.5102536444566057,
+                "unobserved_actual_sIoU": 0.48748153622576895,
+                "observed_GT_nodes": 3.328125,
+                "unobserved_GT_nodes": 48.6875
+              },
+              "Spatial": {
+                "m_vIoU": 0.16038547721278326,
+                "vIoU@0.3": 0.2265625,
+                "vIoU@0.5": 0.09375,
+                "m_tIoU": 0.2851757318096646,
+                "m_sIoU": 0.4816646684649695,
+                "tIoU_ge_0_5": 0.2578125,
+                "tIoU_zero": 0.2890625,
+                "boundary_MAE_seconds": 9.083851708716795,
+                "observed_actual_sIoU": 0.5101178184094223,
+                "unobserved_actual_sIoU": 0.48308897085327995,
+                "observed_GT_nodes": 3.328125,
+                "unobserved_GT_nodes": 48.6875
+              },
+              "Temporal": {
+                "m_vIoU": 0.19620509122848728,
+                "vIoU@0.3": 0.2890625,
+                "vIoU@0.5": 0.1640625,
+                "m_tIoU": 0.35222048361861286,
+                "m_sIoU": 0.4861641898239857,
+                "tIoU_ge_0_5": 0.40625,
+                "tIoU_zero": 0.1875,
+                "boundary_MAE_seconds": 8.196232173060782,
+                "observed_actual_sIoU": 0.5102536444566057,
+                "unobserved_actual_sIoU": 0.48748153622576895,
+                "observed_GT_nodes": 3.328125,
+                "unobserved_GT_nodes": 48.6875
+              },
+              "WithoutOPD": {
+                "m_vIoU": 0.1951774609137639,
+                "vIoU@0.3": 0.2890625,
+                "vIoU@0.5": 0.15625,
+                "m_tIoU": 0.35222048361861286,
+                "m_sIoU": 0.48151565885390485,
+                "tIoU_ge_0_5": 0.40625,
+                "tIoU_zero": 0.1875,
+                "boundary_MAE_seconds": 8.196232173060782,
+                "observed_actual_sIoU": 0.5055388358713075,
+                "unobserved_actual_sIoU": 0.48304563384361326,
+                "observed_GT_nodes": 3.328125,
+                "unobserved_GT_nodes": 48.6875
+              },
+              "Full": {
+                "m_vIoU": 0.19524535145868857,
+                "vIoU@0.3": 0.28125,
+                "vIoU@0.5": 0.15625,
+                "m_tIoU": 0.35222048361861286,
+                "m_sIoU": 0.4816646684649695,
+                "tIoU_ge_0_5": 0.40625,
+                "tIoU_zero": 0.1875,
+                "boundary_MAE_seconds": 8.196232173060782,
+                "observed_actual_sIoU": 0.5101178184094223,
+                "unobserved_actual_sIoU": 0.48308897085327995,
+                "observed_GT_nodes": 3.328125,
+                "unobserved_GT_nodes": 48.6875
+              }
+            },
+            "diagnostics": {
+              "mean_weight_entropy": 0.7440209825932025,
+              "mean_ESS": 11.486893363989033,
+              "mean_state_gradient_norm": 0.04165688550574487,
+              "pseudo_loss_before": 3.9677781866353348,
+              "pseudo_loss_after": 3.7532558827142144
+            },
+            "metrics_sha256": "1c4b908bb56b3c53c801ba177941c29cd3a00c08bc0a0a56bdd7406d350726b0"
+          }
+        },
+        "next_reason": "LR winner is global128 m_vIoU maximum; next distinguish soft candidate weights from insufficient update size using tau and measured entropy/ESS."
+      },
+      "as_of": "2026-10-21T09:59:06.586310+08:00"
+    },
+    {
+      "stage": "temperature",
+      "reason": "Check sharpening/flattening and recorded entropy/ESS and pseudo-loss; choose by128 localization.",
+      "outcome": {
+        "tested": [
+          {
+            "initialization_gamma": 0.05,
+            "lr": 0.02,
+            "tau": 1.0,
+            "steps": 30
+          },
+          {
+            "initialization_gamma": 0.05,
+            "lr": 0.02,
+            "tau": 0.5,
+            "steps": 30
+          },
+          {
+            "initialization_gamma": 0.05,
+            "lr": 0.02,
+            "tau": 0.25,
+            "steps": 30
+          }
+        ],
+        "selected": {
+          "initialization_gamma": 0.05,
+          "lr": 0.02,
+          "tau": 1.0,
+          "steps": 30
+        },
+        "all_outcomes": {
+          "p_40744e597eff": {
+            "params": {
+              "initialization_gamma": 1.0,
+              "lr": 0.01,
+              "tau": 0.5,
+              "steps": 30
+            },
+            "score": 0.18218161561773588,
+            "metric_means": {
+              "Source": {
+                "m_vIoU": 0.16100805375964855,
+                "vIoU@0.3": 0.21875,
+                "vIoU@0.5": 0.1015625,
+                "m_tIoU": 0.2851757318096646,
+                "m_sIoU": 0.4861641898239857,
+                "tIoU_ge_0_5": 0.2578125,
+                "tIoU_zero": 0.2890625,
+                "boundary_MAE_seconds": 9.083851708716795,
+                "observed_actual_sIoU": 0.5102536444566057,
+                "unobserved_actual_sIoU": 0.48748153622576895,
+                "observed_GT_nodes": 3.328125,
+                "unobserved_GT_nodes": 48.6875
+              },
+              "Spatial": {
+                "m_vIoU": 0.15332790944828928,
+                "vIoU@0.3": 0.21875,
+                "vIoU@0.5": 0.1015625,
+                "m_tIoU": 0.2851757318096646,
+                "m_sIoU": 0.4306949539423415,
+                "tIoU_ge_0_5": 0.2578125,
+                "tIoU_zero": 0.2890625,
+                "boundary_MAE_seconds": 9.083851708716795,
+                "observed_actual_sIoU": 0.47224031473622335,
+                "unobserved_actual_sIoU": 0.4306164910369123,
+                "observed_GT_nodes": 3.328125,
+                "unobserved_GT_nodes": 48.6875
+              },
+              "Temporal": {
+                "m_vIoU": 0.19620509122848728,
+                "vIoU@0.3": 0.2890625,
+                "vIoU@0.5": 0.1640625,
+                "m_tIoU": 0.35222048361861286,
+                "m_sIoU": 0.4861641898239857,
+                "tIoU_ge_0_5": 0.40625,
+                "tIoU_zero": 0.1875,
+                "boundary_MAE_seconds": 8.196232173060782,
+                "observed_actual_sIoU": 0.5102536444566057,
+                "unobserved_actual_sIoU": 0.48748153622576895,
+                "observed_GT_nodes": 3.328125,
+                "unobserved_GT_nodes": 48.6875
+              },
+              "WithoutOPD": {
+                "m_vIoU": 0.1821234457944659,
+                "vIoU@0.3": 0.2421875,
+                "vIoU@0.5": 0.171875,
+                "m_tIoU": 0.35222048361861286,
+                "m_sIoU": 0.4304633383877615,
+                "tIoU_ge_0_5": 0.40625,
+                "tIoU_zero": 0.1875,
+                "boundary_MAE_seconds": 8.196232173060782,
+                "observed_actual_sIoU": 0.4686338073946438,
+                "unobserved_actual_sIoU": 0.4305561782503189,
+                "observed_GT_nodes": 3.328125,
+                "unobserved_GT_nodes": 48.6875
+              },
+              "Full": {
+                "m_vIoU": 0.18218161561773588,
+                "vIoU@0.3": 0.2421875,
+                "vIoU@0.5": 0.171875,
+                "m_tIoU": 0.35222048361861286,
+                "m_sIoU": 0.4306949539423415,
+                "tIoU_ge_0_5": 0.40625,
+                "tIoU_zero": 0.1875,
+                "boundary_MAE_seconds": 8.196232173060782,
+                "observed_actual_sIoU": 0.47224031473622335,
+                "unobserved_actual_sIoU": 0.4306164910369123,
+                "observed_GT_nodes": 3.328125,
+                "unobserved_GT_nodes": 48.6875
+              }
+            },
+            "diagnostics": {
+              "mean_weight_entropy": null,
+              "mean_ESS": null,
+              "mean_state_gradient_norm": null,
+              "pseudo_loss_before": null,
+              "pseudo_loss_after": null
+            },
+            "metrics_sha256": "868c71a9459110a22687d3fbc3ff87885b96650f350ea2997d24163f90e0d698"
+          },
+          "p_20b170e5d5be": {
+            "params": {
+              "initialization_gamma": 0.05,
+              "lr": 0.0025,
+              "tau": 0.5,
+              "steps": 30
+            },
+            "score": 0.19518378130338948,
+            "metric_means": {
+              "Source": {
+                "m_vIoU": 0.16100805375964855,
+                "vIoU@0.3": 0.21875,
+                "vIoU@0.5": 0.1015625,
+                "m_tIoU": 0.2851757318096646,
+                "m_sIoU": 0.4861641898239857,
+                "tIoU_ge_0_5": 0.2578125,
+                "tIoU_zero": 0.2890625,
+                "boundary_MAE_seconds": 9.083851708716795,
+                "observed_actual_sIoU": 0.5102536444566057,
+                "unobserved_actual_sIoU": 0.48748153622576895,
+                "observed_GT_nodes": 3.328125,
+                "unobserved_GT_nodes": 48.6875
+              },
+              "Spatial": {
+                "m_vIoU": 0.1602167358149077,
+                "vIoU@0.3": 0.2265625,
+                "vIoU@0.5": 0.09375,
+                "m_tIoU": 0.2851757318096646,
+                "m_sIoU": 0.48151399104415293,
+                "tIoU_ge_0_5": 0.2578125,
+                "tIoU_zero": 0.2890625,
+                "boundary_MAE_seconds": 9.083851708716795,
+                "observed_actual_sIoU": 0.5054737064314285,
+                "unobserved_actual_sIoU": 0.4830606579061554,
+                "observed_GT_nodes": 3.328125,
+                "unobserved_GT_nodes": 48.6875
+              },
+              "Temporal": {
+                "m_vIoU": 0.19620509122848728,
+                "vIoU@0.3": 0.2890625,
+                "vIoU@0.5": 0.1640625,
+                "m_tIoU": 0.35222048361861286,
+                "m_sIoU": 0.4861641898239857,
+                "tIoU_ge_0_5": 0.40625,
+                "tIoU_zero": 0.1875,
+                "boundary_MAE_seconds": 8.196232173060782,
+                "observed_actual_sIoU": 0.5102536444566057,
+                "unobserved_actual_sIoU": 0.48748153622576895,
+                "observed_GT_nodes": 3.328125,
+                "unobserved_GT_nodes": 48.6875
+              },
+              "WithoutOPD": {
+                "m_vIoU": 0.1951774609137639,
+                "vIoU@0.3": 0.2890625,
+                "vIoU@0.5": 0.15625,
+                "m_tIoU": 0.35222048361861286,
+                "m_sIoU": 0.48151565885390485,
+                "tIoU_ge_0_5": 0.40625,
+                "tIoU_zero": 0.1875,
+                "boundary_MAE_seconds": 8.196232173060782,
+                "observed_actual_sIoU": 0.5055388358713075,
+                "unobserved_actual_sIoU": 0.48304563384361326,
+                "observed_GT_nodes": 3.328125,
+                "unobserved_GT_nodes": 48.6875
+              },
+              "Full": {
+                "m_vIoU": 0.19518378130338948,
+                "vIoU@0.3": 0.2890625,
+                "vIoU@0.5": 0.15625,
+                "m_tIoU": 0.35222048361861286,
+                "m_sIoU": 0.48151399104415293,
+                "tIoU_ge_0_5": 0.40625,
+                "tIoU_zero": 0.1875,
+                "boundary_MAE_seconds": 8.196232173060782,
+                "observed_actual_sIoU": 0.5054737064314285,
+                "unobserved_actual_sIoU": 0.4830606579061554,
+                "observed_GT_nodes": 3.328125,
+                "unobserved_GT_nodes": 48.6875
+              }
+            },
+            "diagnostics": {
+              "mean_weight_entropy": 0.7423732406911598,
+              "mean_ESS": 11.423244533612007,
+              "mean_state_gradient_norm": 0.018317323153481387,
+              "pseudo_loss_before": 3.9677781866353348,
+              "pseudo_loss_after": 3.9525881419376794
+            },
+            "metrics_sha256": "8a2927b3af275568dd716710b9dd4153ea97c9a62240fc6be592f1c1265e96cd"
+          },
+          "p_536752b917d8": {
+            "params": {
+              "initialization_gamma": 0.05,
+              "lr": 0.005,
+              "tau": 0.5,
+              "steps": 30
+            },
+            "score": 0.19518463211796863,
+            "metric_means": {
+              "Source": {
+                "m_vIoU": 0.16100805375964855,
+                "vIoU@0.3": 0.21875,
+                "vIoU@0.5": 0.1015625,
+                "m_tIoU": 0.2851757318096646,
+                "m_sIoU": 0.4861641898239857,
+                "tIoU_ge_0_5": 0.2578125,
+                "tIoU_zero": 0.2890625,
+                "boundary_MAE_seconds": 9.083851708716795,
+                "observed_actual_sIoU": 0.5102536444566057,
+                "unobserved_actual_sIoU": 0.48748153622576895,
+                "observed_GT_nodes": 3.328125,
+                "unobserved_GT_nodes": 48.6875
+              },
+              "Spatial": {
+                "m_vIoU": 0.1602178489192728,
+                "vIoU@0.3": 0.2265625,
+                "vIoU@0.5": 0.09375,
+                "m_tIoU": 0.2851757318096646,
+                "m_sIoU": 0.4814857120864243,
+                "tIoU_ge_0_5": 0.2578125,
+                "tIoU_zero": 0.2890625,
+                "boundary_MAE_seconds": 9.083851708716795,
+                "observed_actual_sIoU": 0.5046799358674011,
+                "unobserved_actual_sIoU": 0.48307465782291364,
+                "observed_GT_nodes": 3.328125,
+                "unobserved_GT_nodes": 48.6875
+              },
+              "Temporal": {
+                "m_vIoU": 0.19620509122848728,
+                "vIoU@0.3": 0.2890625,
+                "vIoU@0.5": 0.1640625,
+                "m_tIoU": 0.35222048361861286,
+                "m_sIoU": 0.4861641898239857,
+                "tIoU_ge_0_5": 0.40625,
+                "tIoU_zero": 0.1875,
+                "boundary_MAE_seconds": 8.196232173060782,
+                "observed_actual_sIoU": 0.5102536444566057,
+                "unobserved_actual_sIoU": 0.48748153622576895,
+                "observed_GT_nodes": 3.328125,
+                "unobserved_GT_nodes": 48.6875
+              },
+              "WithoutOPD": {
+                "m_vIoU": 0.1951774609137639,
+                "vIoU@0.3": 0.2890625,
+                "vIoU@0.5": 0.15625,
+                "m_tIoU": 0.35222048361861286,
+                "m_sIoU": 0.48151565885390485,
+                "tIoU_ge_0_5": 0.40625,
+                "tIoU_zero": 0.1875,
+                "boundary_MAE_seconds": 8.196232173060782,
+                "observed_actual_sIoU": 0.5055388358713075,
+                "unobserved_actual_sIoU": 0.48304563384361326,
+                "observed_GT_nodes": 3.328125,
+                "unobserved_GT_nodes": 48.6875
+              },
+              "Full": {
+                "m_vIoU": 0.19518463211796863,
+                "vIoU@0.3": 0.2890625,
+                "vIoU@0.5": 0.15625,
+                "m_tIoU": 0.35222048361861286,
+                "m_sIoU": 0.4814857120864243,
+                "tIoU_ge_0_5": 0.40625,
+                "tIoU_zero": 0.1875,
+                "boundary_MAE_seconds": 8.196232173060782,
+                "observed_actual_sIoU": 0.5046799358674011,
+                "unobserved_actual_sIoU": 0.48307465782291364,
+                "observed_GT_nodes": 3.328125,
+                "unobserved_GT_nodes": 48.6875
+              }
+            },
+            "diagnostics": {
+              "mean_weight_entropy": 0.742559400466817,
+              "mean_ESS": 11.430981345522564,
+              "mean_state_gradient_norm": 0.02062952971117132,
+              "pseudo_loss_before": 3.9677781866353348,
+              "pseudo_loss_after": 3.933945795121083
+            },
+            "metrics_sha256": "c08f22fe5108d8cba51e6a28e8b7c0d0f8ed35cc55dedc12ee391631194245c5"
+          },
+          "p_a8252273146f": {
+            "params": {
+              "initialization_gamma": 0.05,
+              "lr": 0.01,
+              "tau": 0.5,
+              "steps": 30
+            },
+            "score": 0.19516875054065988,
+            "metric_means": {
+              "Source": {
+                "m_vIoU": 0.16100805375964855,
+                "vIoU@0.3": 0.21875,
+                "vIoU@0.5": 0.1015625,
+                "m_tIoU": 0.2851757318096646,
+                "m_sIoU": 0.4861641898239857,
+                "tIoU_ge_0_5": 0.2578125,
+                "tIoU_zero": 0.2890625,
+                "boundary_MAE_seconds": 9.083851708716795,
+                "observed_actual_sIoU": 0.5102536444566057,
+                "unobserved_actual_sIoU": 0.48748153622576895,
+                "observed_GT_nodes": 3.328125,
+                "unobserved_GT_nodes": 48.6875
+              },
+              "Spatial": {
+                "m_vIoU": 0.16021397335651924,
+                "vIoU@0.3": 0.2265625,
+                "vIoU@0.5": 0.09375,
+                "m_tIoU": 0.2851757318096646,
+                "m_sIoU": 0.4814575785763813,
+                "tIoU_ge_0_5": 0.2578125,
+                "tIoU_zero": 0.2890625,
+                "boundary_MAE_seconds": 9.083851708716795,
+                "observed_actual_sIoU": 0.5044649563939276,
+                "unobserved_actual_sIoU": 0.48308955110063156,
+                "observed_GT_nodes": 3.328125,
+                "unobserved_GT_nodes": 48.6875
+              },
+              "Temporal": {
+                "m_vIoU": 0.19620509122848728,
+                "vIoU@0.3": 0.2890625,
+                "vIoU@0.5": 0.1640625,
+                "m_tIoU": 0.35222048361861286,
+                "m_sIoU": 0.4861641898239857,
+                "tIoU_ge_0_5": 0.40625,
+                "tIoU_zero": 0.1875,
+                "boundary_MAE_seconds": 8.196232173060782,
+                "observed_actual_sIoU": 0.5102536444566057,
+                "unobserved_actual_sIoU": 0.48748153622576895,
+                "observed_GT_nodes": 3.328125,
+                "unobserved_GT_nodes": 48.6875
+              },
+              "WithoutOPD": {
+                "m_vIoU": 0.1951774609137639,
+                "vIoU@0.3": 0.2890625,
+                "vIoU@0.5": 0.15625,
+                "m_tIoU": 0.35222048361861286,
+                "m_sIoU": 0.48151565885390485,
+                "tIoU_ge_0_5": 0.40625,
+                "tIoU_zero": 0.1875,
+                "boundary_MAE_seconds": 8.196232173060782,
+                "observed_actual_sIoU": 0.5055388358713075,
+                "unobserved_actual_sIoU": 0.48304563384361326,
+                "observed_GT_nodes": 3.328125,
+                "unobserved_GT_nodes": 48.6875
+              },
+              "Full": {
+                "m_vIoU": 0.19516875054065988,
+                "vIoU@0.3": 0.2890625,
+                "vIoU@0.5": 0.15625,
+                "m_tIoU": 0.35222048361861286,
+                "m_sIoU": 0.4814575785763813,
+                "tIoU_ge_0_5": 0.40625,
+                "tIoU_zero": 0.1875,
+                "boundary_MAE_seconds": 8.196232173060782,
+                "observed_actual_sIoU": 0.5044649563939276,
+                "unobserved_actual_sIoU": 0.48308955110063156,
+                "observed_GT_nodes": 3.328125,
+                "unobserved_GT_nodes": 48.6875
+              }
+            },
+            "diagnostics": {
+              "mean_weight_entropy": 0.7429495554495521,
+              "mean_ESS": 11.445425229620234,
+              "mean_state_gradient_norm": 0.019719462574281955,
+              "pseudo_loss_before": 3.9677781866353348,
+              "pseudo_loss_after": 3.901210664932214
+            },
+            "metrics_sha256": "4a91836e1d1532c1cf6dabd5b2dea327679758c8fab3af5e00a4eafd5f732ca1"
+          },
+          "p_c98df0923df8": {
+            "params": {
+              "initialization_gamma": 0.05,
+              "lr": 0.02,
+              "tau": 0.5,
+              "steps": 30
+            },
+            "score": 0.19524535145868857,
+            "metric_means": {
+              "Source": {
+                "m_vIoU": 0.16100805375964855,
+                "vIoU@0.3": 0.21875,
+                "vIoU@0.5": 0.1015625,
+                "m_tIoU": 0.2851757318096646,
+                "m_sIoU": 0.4861641898239857,
+                "tIoU_ge_0_5": 0.2578125,
+                "tIoU_zero": 0.2890625,
+                "boundary_MAE_seconds": 9.083851708716795,
+                "observed_actual_sIoU": 0.5102536444566057,
+                "unobserved_actual_sIoU": 0.48748153622576895,
+                "observed_GT_nodes": 3.328125,
+                "unobserved_GT_nodes": 48.6875
+              },
+              "Spatial": {
+                "m_vIoU": 0.16038547721278326,
+                "vIoU@0.3": 0.2265625,
+                "vIoU@0.5": 0.09375,
+                "m_tIoU": 0.2851757318096646,
+                "m_sIoU": 0.4816646684649695,
+                "tIoU_ge_0_5": 0.2578125,
+                "tIoU_zero": 0.2890625,
+                "boundary_MAE_seconds": 9.083851708716795,
+                "observed_actual_sIoU": 0.5101178184094223,
+                "unobserved_actual_sIoU": 0.48308897085327995,
+                "observed_GT_nodes": 3.328125,
+                "unobserved_GT_nodes": 48.6875
+              },
+              "Temporal": {
+                "m_vIoU": 0.19620509122848728,
+                "vIoU@0.3": 0.2890625,
+                "vIoU@0.5": 0.1640625,
+                "m_tIoU": 0.35222048361861286,
+                "m_sIoU": 0.4861641898239857,
+                "tIoU_ge_0_5": 0.40625,
+                "tIoU_zero": 0.1875,
+                "boundary_MAE_seconds": 8.196232173060782,
+                "observed_actual_sIoU": 0.5102536444566057,
+                "unobserved_actual_sIoU": 0.48748153622576895,
+                "observed_GT_nodes": 3.328125,
+                "unobserved_GT_nodes": 48.6875
+              },
+              "WithoutOPD": {
+                "m_vIoU": 0.1951774609137639,
+                "vIoU@0.3": 0.2890625,
+                "vIoU@0.5": 0.15625,
+                "m_tIoU": 0.35222048361861286,
+                "m_sIoU": 0.48151565885390485,
+                "tIoU_ge_0_5": 0.40625,
+                "tIoU_zero": 0.1875,
+                "boundary_MAE_seconds": 8.196232173060782,
+                "observed_actual_sIoU": 0.5055388358713075,
+                "unobserved_actual_sIoU": 0.48304563384361326,
+                "observed_GT_nodes": 3.328125,
+                "unobserved_GT_nodes": 48.6875
+              },
+              "Full": {
+                "m_vIoU": 0.19524535145868857,
+                "vIoU@0.3": 0.28125,
+                "vIoU@0.5": 0.15625,
+                "m_tIoU": 0.35222048361861286,
+                "m_sIoU": 0.4816646684649695,
+                "tIoU_ge_0_5": 0.40625,
+                "tIoU_zero": 0.1875,
+                "boundary_MAE_seconds": 8.196232173060782,
+                "observed_actual_sIoU": 0.5101178184094223,
+                "unobserved_actual_sIoU": 0.48308897085327995,
+                "observed_GT_nodes": 3.328125,
+                "unobserved_GT_nodes": 48.6875
+              }
+            },
+            "diagnostics": {
+              "mean_weight_entropy": 0.7440209825932025,
+              "mean_ESS": 11.486893363989033,
+              "mean_state_gradient_norm": 0.04165688550574487,
+              "pseudo_loss_before": 3.9677781866353348,
+              "pseudo_loss_after": 3.7532558827142144
+            },
+            "metrics_sha256": "1c4b908bb56b3c53c801ba177941c29cd3a00c08bc0a0a56bdd7406d350726b0"
+          },
+          "p_e5a03abb9d22": {
+            "params": {
+              "initialization_gamma": 0.05,
+              "lr": 0.02,
+              "tau": 1.0,
+              "steps": 30
+            },
+            "score": 0.195271373043158,
+            "metric_means": {
+              "Source": {
+                "m_vIoU": 0.16100805375964855,
+                "vIoU@0.3": 0.21875,
+                "vIoU@0.5": 0.1015625,
+                "m_tIoU": 0.2851757318096646,
+                "m_sIoU": 0.4861641898239857,
+                "tIoU_ge_0_5": 0.2578125,
+                "tIoU_zero": 0.2890625,
+                "boundary_MAE_seconds": 9.083851708716795,
+                "observed_actual_sIoU": 0.5102536444566057,
+                "unobserved_actual_sIoU": 0.48748153622576895,
+                "observed_GT_nodes": 3.328125,
+                "unobserved_GT_nodes": 48.6875
+              },
+              "Spatial": {
+                "m_vIoU": 0.16039179807168244,
+                "vIoU@0.3": 0.2265625,
+                "vIoU@0.5": 0.0859375,
+                "m_tIoU": 0.2851757318096646,
+                "m_sIoU": 0.4816351363215199,
+                "tIoU_ge_0_5": 0.2578125,
+                "tIoU_zero": 0.2890625,
+                "boundary_MAE_seconds": 9.083851708716795,
+                "observed_actual_sIoU": 0.5100283831150388,
+                "unobserved_actual_sIoU": 0.48306495456458576,
+                "observed_GT_nodes": 3.328125,
+                "unobserved_GT_nodes": 48.6875
+              },
+              "Temporal": {
+                "m_vIoU": 0.19620509122848728,
+                "vIoU@0.3": 0.2890625,
+                "vIoU@0.5": 0.1640625,
+                "m_tIoU": 0.35222048361861286,
+                "m_sIoU": 0.4861641898239857,
+                "tIoU_ge_0_5": 0.40625,
+                "tIoU_zero": 0.1875,
+                "boundary_MAE_seconds": 8.196232173060782,
+                "observed_actual_sIoU": 0.5102536444566057,
+                "unobserved_actual_sIoU": 0.48748153622576895,
+                "observed_GT_nodes": 3.328125,
+                "unobserved_GT_nodes": 48.6875
+              },
+              "WithoutOPD": {
+                "m_vIoU": 0.1951774609137639,
+                "vIoU@0.3": 0.2890625,
+                "vIoU@0.5": 0.15625,
+                "m_tIoU": 0.35222048361861286,
+                "m_sIoU": 0.48151565885390485,
+                "tIoU_ge_0_5": 0.40625,
+                "tIoU_zero": 0.1875,
+                "boundary_MAE_seconds": 8.196232173060782,
+                "observed_actual_sIoU": 0.5055388358713075,
+                "unobserved_actual_sIoU": 0.48304563384361326,
+                "observed_GT_nodes": 3.328125,
+                "unobserved_GT_nodes": 48.6875
+              },
+              "Full": {
+                "m_vIoU": 0.195271373043158,
+                "vIoU@0.3": 0.28125,
+                "vIoU@0.5": 0.15625,
+                "m_tIoU": 0.35222048361861286,
+                "m_sIoU": 0.4816351363215199,
+                "tIoU_ge_0_5": 0.40625,
+                "tIoU_zero": 0.1875,
+                "boundary_MAE_seconds": 8.196232173060782,
+                "observed_actual_sIoU": 0.5100283831150388,
+                "unobserved_actual_sIoU": 0.48306495456458576,
+                "observed_GT_nodes": 3.328125,
+                "unobserved_GT_nodes": 48.6875
+              }
+            },
+            "diagnostics": {
+              "mean_weight_entropy": 0.8928665566372946,
+              "mean_ESS": 19.053374229483264,
+              "mean_state_gradient_norm": 0.0156469164752707,
+              "pseudo_loss_before": 3.9677781866353348,
+              "pseudo_loss_after": 3.749553594105837
+            },
+            "metrics_sha256": "4d56714377aff580b256c2fac7b4c8e429699c182262e35ac7ab47ed6c9a7b9f"
+          },
+          "p_22163b26e528": {
+            "params": {
+              "initialization_gamma": 0.05,
+              "lr": 0.02,
+              "tau": 0.25,
+              "steps": 30
+            },
+            "score": 0.19510804407940394,
+            "metric_means": {
+              "Source": {
+                "m_vIoU": 0.16100805375964855,
+                "vIoU@0.3": 0.21875,
+                "vIoU@0.5": 0.1015625,
+                "m_tIoU": 0.2851757318096646,
+                "m_sIoU": 0.4861641898239857,
+                "tIoU_ge_0_5": 0.2578125,
+                "tIoU_zero": 0.2890625,
+                "boundary_MAE_seconds": 9.083851708716795,
+                "observed_actual_sIoU": 0.5102536444566057,
+                "unobserved_actual_sIoU": 0.48748153622576895,
+                "observed_GT_nodes": 3.328125,
+                "unobserved_GT_nodes": 48.6875
+              },
+              "Spatial": {
+                "m_vIoU": 0.1603150100769728,
+                "vIoU@0.3": 0.2265625,
+                "vIoU@0.5": 0.0859375,
+                "m_tIoU": 0.2851757318096646,
+                "m_sIoU": 0.48154695052875085,
+                "tIoU_ge_0_5": 0.2578125,
+                "tIoU_zero": 0.2890625,
+                "boundary_MAE_seconds": 9.083851708716795,
+                "observed_actual_sIoU": 0.5089967758567514,
+                "unobserved_actual_sIoU": 0.48301161175478285,
+                "observed_GT_nodes": 3.328125,
+                "unobserved_GT_nodes": 48.6875
+              },
+              "Temporal": {
+                "m_vIoU": 0.19620509122848728,
+                "vIoU@0.3": 0.2890625,
+                "vIoU@0.5": 0.1640625,
+                "m_tIoU": 0.35222048361861286,
+                "m_sIoU": 0.4861641898239857,
+                "tIoU_ge_0_5": 0.40625,
+                "tIoU_zero": 0.1875,
+                "boundary_MAE_seconds": 8.196232173060782,
+                "observed_actual_sIoU": 0.5102536444566057,
+                "unobserved_actual_sIoU": 0.48748153622576895,
+                "observed_GT_nodes": 3.328125,
+                "unobserved_GT_nodes": 48.6875
+              },
+              "WithoutOPD": {
+                "m_vIoU": 0.1951774609137639,
+                "vIoU@0.3": 0.2890625,
+                "vIoU@0.5": 0.15625,
+                "m_tIoU": 0.35222048361861286,
+                "m_sIoU": 0.48151565885390485,
+                "tIoU_ge_0_5": 0.40625,
+                "tIoU_zero": 0.1875,
+                "boundary_MAE_seconds": 8.196232173060782,
+                "observed_actual_sIoU": 0.5055388358713075,
+                "unobserved_actual_sIoU": 0.48304563384361326,
+                "observed_GT_nodes": 3.328125,
+                "unobserved_GT_nodes": 48.6875
+              },
+              "Full": {
+                "m_vIoU": 0.19510804407940394,
+                "vIoU@0.3": 0.28125,
+                "vIoU@0.5": 0.15625,
+                "m_tIoU": 0.35222048361861286,
+                "m_sIoU": 0.48154695052875085,
+                "tIoU_ge_0_5": 0.40625,
+                "tIoU_zero": 0.1875,
+                "boundary_MAE_seconds": 8.196232173060782,
+                "observed_actual_sIoU": 0.5089967758567514,
+                "unobserved_actual_sIoU": 0.48301161175478285,
+                "observed_GT_nodes": 3.328125,
+                "unobserved_GT_nodes": 48.6875
+              }
+            },
+            "diagnostics": {
+              "mean_weight_entropy": 0.5267026827462049,
+              "mean_ESS": 5.828929566866474,
+              "mean_state_gradient_norm": 0.04014376973970381,
+              "pseudo_loss_before": 3.9677781866353348,
+              "pseudo_loss_after": 3.7767024556148905
+            },
+            "metrics_sha256": "b44cbece694d1c145401c89582d311c2ccd2e2d48b14d476648bbf31f85e080f"
+          }
+        },
+        "measured_prior_entropy": 0.7440209825932025,
+        "next_reason": "High normalized entropy motivates testing sharper feedback first; both directions are retained. Next compare saved steps to distinguish under-updating from pseudo-label overfitting."
+      },
+      "as_of": "2026-10-21T10:01:44.901882+08:00"
+    },
+    {
+      "stage": "steps",
+      "reason": "Check whether additional updates help or damage;60 prefixes must reproduce any saved30 result.",
+      "outcome": {
+        "tested": [
+          {
+            "initialization_gamma": 0.05,
+            "lr": 0.02,
+            "tau": 1.0,
+            "steps": 15
+          },
+          {
+            "initialization_gamma": 0.05,
+            "lr": 0.02,
+            "tau": 1.0,
+            "steps": 30
+          },
+          {
+            "initialization_gamma": 0.05,
+            "lr": 0.02,
+            "tau": 1.0,
+            "steps": 60
+          }
+        ],
+        "selected": {
+          "initialization_gamma": 0.05,
+          "lr": 0.02,
+          "tau": 1.0,
+          "steps": 60
+        },
+        "all_outcomes": {
+          "p_40744e597eff": {
+            "params": {
+              "initialization_gamma": 1.0,
+              "lr": 0.01,
+              "tau": 0.5,
+              "steps": 30
+            },
+            "score": 0.18218161561773588,
+            "metric_means": {
+              "Source": {
+                "m_vIoU": 0.16100805375964855,
+                "vIoU@0.3": 0.21875,
+                "vIoU@0.5": 0.1015625,
+                "m_tIoU": 0.2851757318096646,
+                "m_sIoU": 0.4861641898239857,
+                "tIoU_ge_0_5": 0.2578125,
+                "tIoU_zero": 0.2890625,
+                "boundary_MAE_seconds": 9.083851708716795,
+                "observed_actual_sIoU": 0.5102536444566057,
+                "unobserved_actual_sIoU": 0.48748153622576895,
+                "observed_GT_nodes": 3.328125,
+                "unobserved_GT_nodes": 48.6875
+              },
+              "Spatial": {
+                "m_vIoU": 0.15332790944828928,
+                "vIoU@0.3": 0.21875,
+                "vIoU@0.5": 0.1015625,
+                "m_tIoU": 0.2851757318096646,
+                "m_sIoU": 0.4306949539423415,
+                "tIoU_ge_0_5": 0.2578125,
+                "tIoU_zero": 0.2890625,
+                "boundary_MAE_seconds": 9.083851708716795,
+                "observed_actual_sIoU": 0.47224031473622335,
+                "unobserved_actual_sIoU": 0.4306164910369123,
+                "observed_GT_nodes": 3.328125,
+                "unobserved_GT_nodes": 48.6875
+              },
+              "Temporal": {
+                "m_vIoU": 0.19620509122848728,
+                "vIoU@0.3": 0.2890625,
+                "vIoU@0.5": 0.1640625,
+                "m_tIoU": 0.35222048361861286,
+                "m_sIoU": 0.4861641898239857,
+                "tIoU_ge_0_5": 0.40625,
+                "tIoU_zero": 0.1875,
+                "boundary_MAE_seconds": 8.196232173060782,
+                "observed_actual_sIoU": 0.5102536444566057,
+                "unobserved_actual_sIoU": 0.48748153622576895,
+                "observed_GT_nodes": 3.328125,
+                "unobserved_GT_nodes": 48.6875
+              },
+              "WithoutOPD": {
+                "m_vIoU": 0.1821234457944659,
+                "vIoU@0.3": 0.2421875,
+                "vIoU@0.5": 0.171875,
+                "m_tIoU": 0.35222048361861286,
+                "m_sIoU": 0.4304633383877615,
+                "tIoU_ge_0_5": 0.40625,
+                "tIoU_zero": 0.1875,
+                "boundary_MAE_seconds": 8.196232173060782,
+                "observed_actual_sIoU": 0.4686338073946438,
+                "unobserved_actual_sIoU": 0.4305561782503189,
+                "observed_GT_nodes": 3.328125,
+                "unobserved_GT_nodes": 48.6875
+              },
+              "Full": {
+                "m_vIoU": 0.18218161561773588,
+                "vIoU@0.3": 0.2421875,
+                "vIoU@0.5": 0.171875,
+                "m_tIoU": 0.35222048361861286,
+                "m_sIoU": 0.4306949539423415,
+                "tIoU_ge_0_5": 0.40625,
+                "tIoU_zero": 0.1875,
+                "boundary_MAE_seconds": 8.196232173060782,
+                "observed_actual_sIoU": 0.47224031473622335,
+                "unobserved_actual_sIoU": 0.4306164910369123,
+                "observed_GT_nodes": 3.328125,
+                "unobserved_GT_nodes": 48.6875
+              }
+            },
+            "diagnostics": {
+              "mean_weight_entropy": null,
+              "mean_ESS": null,
+              "mean_state_gradient_norm": null,
+              "pseudo_loss_before": null,
+              "pseudo_loss_after": null
+            },
+            "metrics_sha256": "868c71a9459110a22687d3fbc3ff87885b96650f350ea2997d24163f90e0d698"
+          },
+          "p_20b170e5d5be": {
+            "params": {
+              "initialization_gamma": 0.05,
+              "lr": 0.0025,
+              "tau": 0.5,
+              "steps": 30
+            },
+            "score": 0.19518378130338948,
+            "metric_means": {
+              "Source": {
+                "m_vIoU": 0.16100805375964855,
+                "vIoU@0.3": 0.21875,
+                "vIoU@0.5": 0.1015625,
+                "m_tIoU": 0.2851757318096646,
+                "m_sIoU": 0.4861641898239857,
+                "tIoU_ge_0_5": 0.2578125,
+                "tIoU_zero": 0.2890625,
+                "boundary_MAE_seconds": 9.083851708716795,
+                "observed_actual_sIoU": 0.5102536444566057,
+                "unobserved_actual_sIoU": 0.48748153622576895,
+                "observed_GT_nodes": 3.328125,
+                "unobserved_GT_nodes": 48.6875
+              },
+              "Spatial": {
+                "m_vIoU": 0.1602167358149077,
+                "vIoU@0.3": 0.2265625,
+                "vIoU@0.5": 0.09375,
+                "m_tIoU": 0.2851757318096646,
+                "m_sIoU": 0.48151399104415293,
+                "tIoU_ge_0_5": 0.2578125,
+                "tIoU_zero": 0.2890625,
+                "boundary_MAE_seconds": 9.083851708716795,
+                "observed_actual_sIoU": 0.5054737064314285,
+                "unobserved_actual_sIoU": 0.4830606579061554,
+                "observed_GT_nodes": 3.328125,
+                "unobserved_GT_nodes": 48.6875
+              },
+              "Temporal": {
+                "m_vIoU": 0.19620509122848728,
+                "vIoU@0.3": 0.2890625,
+                "vIoU@0.5": 0.1640625,
+                "m_tIoU": 0.35222048361861286,
+                "m_sIoU": 0.4861641898239857,
+                "tIoU_ge_0_5": 0.40625,
+                "tIoU_zero": 0.1875,
+                "boundary_MAE_seconds": 8.196232173060782,
+                "observed_actual_sIoU": 0.5102536444566057,
+                "unobserved_actual_sIoU": 0.48748153622576895,
+                "observed_GT_nodes": 3.328125,
+                "unobserved_GT_nodes": 48.6875
+              },
+              "WithoutOPD": {
+                "m_vIoU": 0.1951774609137639,
+                "vIoU@0.3": 0.2890625,
+                "vIoU@0.5": 0.15625,
+                "m_tIoU": 0.35222048361861286,
+                "m_sIoU": 0.48151565885390485,
+                "tIoU_ge_0_5": 0.40625,
+                "tIoU_zero": 0.1875,
+                "boundary_MAE_seconds": 8.196232173060782,
+                "observed_actual_sIoU": 0.5055388358713075,
+                "unobserved_actual_sIoU": 0.48304563384361326,
+                "observed_GT_nodes": 3.328125,
+                "unobserved_GT_nodes": 48.6875
+              },
+              "Full": {
+                "m_vIoU": 0.19518378130338948,
+                "vIoU@0.3": 0.2890625,
+                "vIoU@0.5": 0.15625,
+                "m_tIoU": 0.35222048361861286,
+                "m_sIoU": 0.48151399104415293,
+                "tIoU_ge_0_5": 0.40625,
+                "tIoU_zero": 0.1875,
+                "boundary_MAE_seconds": 8.196232173060782,
+                "observed_actual_sIoU": 0.5054737064314285,
+                "unobserved_actual_sIoU": 0.4830606579061554,
+                "observed_GT_nodes": 3.328125,
+                "unobserved_GT_nodes": 48.6875
+              }
+            },
+            "diagnostics": {
+              "mean_weight_entropy": 0.7423732406911598,
+              "mean_ESS": 11.423244533612007,
+              "mean_state_gradient_norm": 0.018317323153481387,
+              "pseudo_loss_before": 3.9677781866353348,
+              "pseudo_loss_after": 3.9525881419376794
+            },
+            "metrics_sha256": "8a2927b3af275568dd716710b9dd4153ea97c9a62240fc6be592f1c1265e96cd"
+          },
+          "p_536752b917d8": {
+            "params": {
+              "initialization_gamma": 0.05,
+              "lr": 0.005,
+              "tau": 0.5,
+              "steps": 30
+            },
+            "score": 0.19518463211796863,
+            "metric_means": {
+              "Source": {
+                "m_vIoU": 0.16100805375964855,
+                "vIoU@0.3": 0.21875,
+                "vIoU@0.5": 0.1015625,
+                "m_tIoU": 0.2851757318096646,
+                "m_sIoU": 0.4861641898239857,
+                "tIoU_ge_0_5": 0.2578125,
+                "tIoU_zero": 0.2890625,
+                "boundary_MAE_seconds": 9.083851708716795,
+                "observed_actual_sIoU": 0.5102536444566057,
+                "unobserved_actual_sIoU": 0.48748153622576895,
+                "observed_GT_nodes": 3.328125,
+                "unobserved_GT_nodes": 48.6875
+              },
+              "Spatial": {
+                "m_vIoU": 0.1602178489192728,
+                "vIoU@0.3": 0.2265625,
+                "vIoU@0.5": 0.09375,
+                "m_tIoU": 0.2851757318096646,
+                "m_sIoU": 0.4814857120864243,
+                "tIoU_ge_0_5": 0.2578125,
+                "tIoU_zero": 0.2890625,
+                "boundary_MAE_seconds": 9.083851708716795,
+                "observed_actual_sIoU": 0.5046799358674011,
+                "unobserved_actual_sIoU": 0.48307465782291364,
+                "observed_GT_nodes": 3.328125,
+                "unobserved_GT_nodes": 48.6875
+              },
+              "Temporal": {
+                "m_vIoU": 0.19620509122848728,
+                "vIoU@0.3": 0.2890625,
+                "vIoU@0.5": 0.1640625,
+                "m_tIoU": 0.35222048361861286,
+                "m_sIoU": 0.4861641898239857,
+                "tIoU_ge_0_5": 0.40625,
+                "tIoU_zero": 0.1875,
+                "boundary_MAE_seconds": 8.196232173060782,
+                "observed_actual_sIoU": 0.5102536444566057,
+                "unobserved_actual_sIoU": 0.48748153622576895,
+                "observed_GT_nodes": 3.328125,
+                "unobserved_GT_nodes": 48.6875
+              },
+              "WithoutOPD": {
+                "m_vIoU": 0.1951774609137639,
+                "vIoU@0.3": 0.2890625,
+                "vIoU@0.5": 0.15625,
+                "m_tIoU": 0.35222048361861286,
+                "m_sIoU": 0.48151565885390485,
+                "tIoU_ge_0_5": 0.40625,
+                "tIoU_zero": 0.1875,
+                "boundary_MAE_seconds": 8.196232173060782,
+                "observed_actual_sIoU": 0.5055388358713075,
+                "unobserved_actual_sIoU": 0.48304563384361326,
+                "observed_GT_nodes": 3.328125,
+                "unobserved_GT_nodes": 48.6875
+              },
+              "Full": {
+                "m_vIoU": 0.19518463211796863,
+                "vIoU@0.3": 0.2890625,
+                "vIoU@0.5": 0.15625,
+                "m_tIoU": 0.35222048361861286,
+                "m_sIoU": 0.4814857120864243,
+                "tIoU_ge_0_5": 0.40625,
+                "tIoU_zero": 0.1875,
+                "boundary_MAE_seconds": 8.196232173060782,
+                "observed_actual_sIoU": 0.5046799358674011,
+                "unobserved_actual_sIoU": 0.48307465782291364,
+                "observed_GT_nodes": 3.328125,
+                "unobserved_GT_nodes": 48.6875
+              }
+            },
+            "diagnostics": {
+              "mean_weight_entropy": 0.742559400466817,
+              "mean_ESS": 11.430981345522564,
+              "mean_state_gradient_norm": 0.02062952971117132,
+              "pseudo_loss_before": 3.9677781866353348,
+              "pseudo_loss_after": 3.933945795121083
+            },
+            "metrics_sha256": "c08f22fe5108d8cba51e6a28e8b7c0d0f8ed35cc55dedc12ee391631194245c5"
+          },
+          "p_a8252273146f": {
+            "params": {
+              "initialization_gamma": 0.05,
+              "lr": 0.01,
+              "tau": 0.5,
+              "steps": 30
+            },
+            "score": 0.19516875054065988,
+            "metric_means": {
+              "Source": {
+                "m_vIoU": 0.16100805375964855,
+                "vIoU@0.3": 0.21875,
+                "vIoU@0.5": 0.1015625,
+                "m_tIoU": 0.2851757318096646,
+                "m_sIoU": 0.4861641898239857,
+                "tIoU_ge_0_5": 0.2578125,
+                "tIoU_zero": 0.2890625,
+                "boundary_MAE_seconds": 9.083851708716795,
+                "observed_actual_sIoU": 0.5102536444566057,
+                "unobserved_actual_sIoU": 0.48748153622576895,
+                "observed_GT_nodes": 3.328125,
+                "unobserved_GT_nodes": 48.6875
+              },
+              "Spatial": {
+                "m_vIoU": 0.16021397335651924,
+                "vIoU@0.3": 0.2265625,
+                "vIoU@0.5": 0.09375,
+                "m_tIoU": 0.2851757318096646,
+                "m_sIoU": 0.4814575785763813,
+                "tIoU_ge_0_5": 0.2578125,
+                "tIoU_zero": 0.2890625,
+                "boundary_MAE_seconds": 9.083851708716795,
+                "observed_actual_sIoU": 0.5044649563939276,
+                "unobserved_actual_sIoU": 0.48308955110063156,
+                "observed_GT_nodes": 3.328125,
+                "unobserved_GT_nodes": 48.6875
+              },
+              "Temporal": {
+                "m_vIoU": 0.19620509122848728,
+                "vIoU@0.3": 0.2890625,
+                "vIoU@0.5": 0.1640625,
+                "m_tIoU": 0.35222048361861286,
+                "m_sIoU": 0.4861641898239857,
+                "tIoU_ge_0_5": 0.40625,
+                "tIoU_zero": 0.1875,
+                "boundary_MAE_seconds": 8.196232173060782,
+                "observed_actual_sIoU": 0.5102536444566057,
+                "unobserved_actual_sIoU": 0.48748153622576895,
+                "observed_GT_nodes": 3.328125,
+                "unobserved_GT_nodes": 48.6875
+              },
+              "WithoutOPD": {
+                "m_vIoU": 0.1951774609137639,
+                "vIoU@0.3": 0.2890625,
+                "vIoU@0.5": 0.15625,
+                "m_tIoU": 0.35222048361861286,
+                "m_sIoU": 0.48151565885390485,
+                "tIoU_ge_0_5": 0.40625,
+                "tIoU_zero": 0.1875,
+                "boundary_MAE_seconds": 8.196232173060782,
+                "observed_actual_sIoU": 0.5055388358713075,
+                "unobserved_actual_sIoU": 0.48304563384361326,
+                "observed_GT_nodes": 3.328125,
+                "unobserved_GT_nodes": 48.6875
+              },
+              "Full": {
+                "m_vIoU": 0.19516875054065988,
+                "vIoU@0.3": 0.2890625,
+                "vIoU@0.5": 0.15625,
+                "m_tIoU": 0.35222048361861286,
+                "m_sIoU": 0.4814575785763813,
+                "tIoU_ge_0_5": 0.40625,
+                "tIoU_zero": 0.1875,
+                "boundary_MAE_seconds": 8.196232173060782,
+                "observed_actual_sIoU": 0.5044649563939276,
+                "unobserved_actual_sIoU": 0.48308955110063156,
+                "observed_GT_nodes": 3.328125,
+                "unobserved_GT_nodes": 48.6875
+              }
+            },
+            "diagnostics": {
+              "mean_weight_entropy": 0.7429495554495521,
+              "mean_ESS": 11.445425229620234,
+              "mean_state_gradient_norm": 0.019719462574281955,
+              "pseudo_loss_before": 3.9677781866353348,
+              "pseudo_loss_after": 3.901210664932214
+            },
+            "metrics_sha256": "4a91836e1d1532c1cf6dabd5b2dea327679758c8fab3af5e00a4eafd5f732ca1"
+          },
+          "p_c98df0923df8": {
+            "params": {
+              "initialization_gamma": 0.05,
+              "lr": 0.02,
+              "tau": 0.5,
+              "steps": 30
+            },
+            "score": 0.19524535145868857,
+            "metric_means": {
+              "Source": {
+                "m_vIoU": 0.16100805375964855,
+                "vIoU@0.3": 0.21875,
+                "vIoU@0.5": 0.1015625,
+                "m_tIoU": 0.2851757318096646,
+                "m_sIoU": 0.4861641898239857,
+                "tIoU_ge_0_5": 0.2578125,
+                "tIoU_zero": 0.2890625,
+                "boundary_MAE_seconds": 9.083851708716795,
+                "observed_actual_sIoU": 0.5102536444566057,
+                "unobserved_actual_sIoU": 0.48748153622576895,
+                "observed_GT_nodes": 3.328125,
+                "unobserved_GT_nodes": 48.6875
+              },
+              "Spatial": {
+                "m_vIoU": 0.16038547721278326,
+                "vIoU@0.3": 0.2265625,
+                "vIoU@0.5": 0.09375,
+                "m_tIoU": 0.2851757318096646,
+                "m_sIoU": 0.4816646684649695,
+                "tIoU_ge_0_5": 0.2578125,
+                "tIoU_zero": 0.2890625,
+                "boundary_MAE_seconds": 9.083851708716795,
+                "observed_actual_sIoU": 0.5101178184094223,
+                "unobserved_actual_sIoU": 0.48308897085327995,
+                "observed_GT_nodes": 3.328125,
+                "unobserved_GT_nodes": 48.6875
+              },
+              "Temporal": {
+                "m_vIoU": 0.19620509122848728,
+                "vIoU@0.3": 0.2890625,
+                "vIoU@0.5": 0.1640625,
+                "m_tIoU": 0.35222048361861286,
+                "m_sIoU": 0.4861641898239857,
+                "tIoU_ge_0_5": 0.40625,
+                "tIoU_zero": 0.1875,
+                "boundary_MAE_seconds": 8.196232173060782,
+                "observed_actual_sIoU": 0.5102536444566057,
+                "unobserved_actual_sIoU": 0.48748153622576895,
+                "observed_GT_nodes": 3.328125,
+                "unobserved_GT_nodes": 48.6875
+              },
+              "WithoutOPD": {
+                "m_vIoU": 0.1951774609137639,
+                "vIoU@0.3": 0.2890625,
+                "vIoU@0.5": 0.15625,
+                "m_tIoU": 0.35222048361861286,
+                "m_sIoU": 0.48151565885390485,
+                "tIoU_ge_0_5": 0.40625,
+                "tIoU_zero": 0.1875,
+                "boundary_MAE_seconds": 8.196232173060782,
+                "observed_actual_sIoU": 0.5055388358713075,
+                "unobserved_actual_sIoU": 0.48304563384361326,
+                "observed_GT_nodes": 3.328125,
+                "unobserved_GT_nodes": 48.6875
+              },
+              "Full": {
+                "m_vIoU": 0.19524535145868857,
+                "vIoU@0.3": 0.28125,
+                "vIoU@0.5": 0.15625,
+                "m_tIoU": 0.35222048361861286,
+                "m_sIoU": 0.4816646684649695,
+                "tIoU_ge_0_5": 0.40625,
+                "tIoU_zero": 0.1875,
+                "boundary_MAE_seconds": 8.196232173060782,
+                "observed_actual_sIoU": 0.5101178184094223,
+                "unobserved_actual_sIoU": 0.48308897085327995,
+                "observed_GT_nodes": 3.328125,
+                "unobserved_GT_nodes": 48.6875
+              }
+            },
+            "diagnostics": {
+              "mean_weight_entropy": 0.7440209825932025,
+              "mean_ESS": 11.486893363989033,
+              "mean_state_gradient_norm": 0.04165688550574487,
+              "pseudo_loss_before": 3.9677781866353348,
+              "pseudo_loss_after": 3.7532558827142144
+            },
+            "metrics_sha256": "1c4b908bb56b3c53c801ba177941c29cd3a00c08bc0a0a56bdd7406d350726b0"
+          },
+          "p_e5a03abb9d22": {
+            "params": {
+              "initialization_gamma": 0.05,
+              "lr": 0.02,
+              "tau": 1.0,
+              "steps": 30
+            },
+            "score": 0.195271373043158,
+            "metric_means": {
+              "Source": {
+                "m_vIoU": 0.16100805375964855,
+                "vIoU@0.3": 0.21875,
+                "vIoU@0.5": 0.1015625,
+                "m_tIoU": 0.2851757318096646,
+                "m_sIoU": 0.4861641898239857,
+                "tIoU_ge_0_5": 0.2578125,
+                "tIoU_zero": 0.2890625,
+                "boundary_MAE_seconds": 9.083851708716795,
+                "observed_actual_sIoU": 0.5102536444566057,
+                "unobserved_actual_sIoU": 0.48748153622576895,
+                "observed_GT_nodes": 3.328125,
+                "unobserved_GT_nodes": 48.6875
+              },
+              "Spatial": {
+                "m_vIoU": 0.16039179807168244,
+                "vIoU@0.3": 0.2265625,
+                "vIoU@0.5": 0.0859375,
+                "m_tIoU": 0.2851757318096646,
+                "m_sIoU": 0.4816351363215199,
+                "tIoU_ge_0_5": 0.2578125,
+                "tIoU_zero": 0.2890625,
+                "boundary_MAE_seconds": 9.083851708716795,
+                "observed_actual_sIoU": 0.5100283831150388,
+                "unobserved_actual_sIoU": 0.48306495456458576,
+                "observed_GT_nodes": 3.328125,
+                "unobserved_GT_nodes": 48.6875
+              },
+              "Temporal": {
+                "m_vIoU": 0.19620509122848728,
+                "vIoU@0.3": 0.2890625,
+                "vIoU@0.5": 0.1640625,
+                "m_tIoU": 0.35222048361861286,
+                "m_sIoU": 0.4861641898239857,
+                "tIoU_ge_0_5": 0.40625,
+                "tIoU_zero": 0.1875,
+                "boundary_MAE_seconds": 8.196232173060782,
+                "observed_actual_sIoU": 0.5102536444566057,
+                "unobserved_actual_sIoU": 0.48748153622576895,
+                "observed_GT_nodes": 3.328125,
+                "unobserved_GT_nodes": 48.6875
+              },
+              "WithoutOPD": {
+                "m_vIoU": 0.1951774609137639,
+                "vIoU@0.3": 0.2890625,
+                "vIoU@0.5": 0.15625,
+                "m_tIoU": 0.35222048361861286,
+                "m_sIoU": 0.48151565885390485,
+                "tIoU_ge_0_5": 0.40625,
+                "tIoU_zero": 0.1875,
+                "boundary_MAE_seconds": 8.196232173060782,
+                "observed_actual_sIoU": 0.5055388358713075,
+                "unobserved_actual_sIoU": 0.48304563384361326,
+                "observed_GT_nodes": 3.328125,
+                "unobserved_GT_nodes": 48.6875
+              },
+              "Full": {
+                "m_vIoU": 0.195271373043158,
+                "vIoU@0.3": 0.28125,
+                "vIoU@0.5": 0.15625,
+                "m_tIoU": 0.35222048361861286,
+                "m_sIoU": 0.4816351363215199,
+                "tIoU_ge_0_5": 0.40625,
+                "tIoU_zero": 0.1875,
+                "boundary_MAE_seconds": 8.196232173060782,
+                "observed_actual_sIoU": 0.5100283831150388,
+                "unobserved_actual_sIoU": 0.48306495456458576,
+                "observed_GT_nodes": 3.328125,
+                "unobserved_GT_nodes": 48.6875
+              }
+            },
+            "diagnostics": {
+              "mean_weight_entropy": 0.8928665566372946,
+              "mean_ESS": 19.053374229483264,
+              "mean_state_gradient_norm": 0.0156469164752707,
+              "pseudo_loss_before": 3.9677781866353348,
+              "pseudo_loss_after": 3.749553594105837
+            },
+            "metrics_sha256": "4d56714377aff580b256c2fac7b4c8e429699c182262e35ac7ab47ed6c9a7b9f"
+          },
+          "p_22163b26e528": {
+            "params": {
+              "initialization_gamma": 0.05,
+              "lr": 0.02,
+              "tau": 0.25,
+              "steps": 30
+            },
+            "score": 0.19510804407940394,
+            "metric_means": {
+              "Source": {
+                "m_vIoU": 0.16100805375964855,
+                "vIoU@0.3": 0.21875,
+                "vIoU@0.5": 0.1015625,
+                "m_tIoU": 0.2851757318096646,
+                "m_sIoU": 0.4861641898239857,
+                "tIoU_ge_0_5": 0.2578125,
+                "tIoU_zero": 0.2890625,
+                "boundary_MAE_seconds": 9.083851708716795,
+                "observed_actual_sIoU": 0.5102536444566057,
+                "unobserved_actual_sIoU": 0.48748153622576895,
+                "observed_GT_nodes": 3.328125,
+                "unobserved_GT_nodes": 48.6875
+              },
+              "Spatial": {
+                "m_vIoU": 0.1603150100769728,
+                "vIoU@0.3": 0.2265625,
+                "vIoU@0.5": 0.0859375,
+                "m_tIoU": 0.2851757318096646,
+                "m_sIoU": 0.48154695052875085,
+                "tIoU_ge_0_5": 0.2578125,
+                "tIoU_zero": 0.2890625,
+                "boundary_MAE_seconds": 9.083851708716795,
+                "observed_actual_sIoU": 0.5089967758567514,
+                "unobserved_actual_sIoU": 0.48301161175478285,
+                "observed_GT_nodes": 3.328125,
+                "unobserved_GT_nodes": 48.6875
+              },
+              "Temporal": {
+                "m_vIoU": 0.19620509122848728,
+                "vIoU@0.3": 0.2890625,
+                "vIoU@0.5": 0.1640625,
+                "m_tIoU": 0.35222048361861286,
+                "m_sIoU": 0.4861641898239857,
+                "tIoU_ge_0_5": 0.40625,
+                "tIoU_zero": 0.1875,
+                "boundary_MAE_seconds": 8.196232173060782,
+                "observed_actual_sIoU": 0.5102536444566057,
+                "unobserved_actual_sIoU": 0.48748153622576895,
+                "observed_GT_nodes": 3.328125,
+                "unobserved_GT_nodes": 48.6875
+              },
+              "WithoutOPD": {
+                "m_vIoU": 0.1951774609137639,
+                "vIoU@0.3": 0.2890625,
+                "vIoU@0.5": 0.15625,
+                "m_tIoU": 0.35222048361861286,
+                "m_sIoU": 0.48151565885390485,
+                "tIoU_ge_0_5": 0.40625,
+                "tIoU_zero": 0.1875,
+                "boundary_MAE_seconds": 8.196232173060782,
+                "observed_actual_sIoU": 0.5055388358713075,
+                "unobserved_actual_sIoU": 0.48304563384361326,
+                "observed_GT_nodes": 3.328125,
+                "unobserved_GT_nodes": 48.6875
+              },
+              "Full": {
+                "m_vIoU": 0.19510804407940394,
+                "vIoU@0.3": 0.28125,
+                "vIoU@0.5": 0.15625,
+                "m_tIoU": 0.35222048361861286,
+                "m_sIoU": 0.48154695052875085,
+                "tIoU_ge_0_5": 0.40625,
+                "tIoU_zero": 0.1875,
+                "boundary_MAE_seconds": 8.196232173060782,
+                "observed_actual_sIoU": 0.5089967758567514,
+                "unobserved_actual_sIoU": 0.48301161175478285,
+                "observed_GT_nodes": 3.328125,
+                "unobserved_GT_nodes": 48.6875
+              }
+            },
+            "diagnostics": {
+              "mean_weight_entropy": 0.5267026827462049,
+              "mean_ESS": 5.828929566866474,
+              "mean_state_gradient_norm": 0.04014376973970381,
+              "pseudo_loss_before": 3.9677781866353348,
+              "pseudo_loss_after": 3.7767024556148905
+            },
+            "metrics_sha256": "b44cbece694d1c145401c89582d311c2ccd2e2d48b14d476648bbf31f85e080f"
+          },
+          "p_c4e5ec2477ec": {
+            "params": {
+              "initialization_gamma": 0.05,
+              "lr": 0.02,
+              "tau": 1.0,
+              "steps": 15
+            },
+            "score": 0.1951780965689836,
+            "metric_means": {
+              "Source": {
+                "m_vIoU": 0.16100805375964855,
+                "vIoU@0.3": 0.21875,
+                "vIoU@0.5": 0.1015625,
+                "m_tIoU": 0.2851757318096646,
+                "m_sIoU": 0.4861641898239857,
+                "tIoU_ge_0_5": 0.2578125,
+                "tIoU_zero": 0.2890625,
+                "boundary_MAE_seconds": 9.083851708716795,
+                "observed_actual_sIoU": 0.5102536444566057,
+                "unobserved_actual_sIoU": 0.48748153622576895,
+                "observed_GT_nodes": 3.328125,
+                "unobserved_GT_nodes": 48.6875
+              },
+              "Spatial": {
+                "m_vIoU": 0.16022713140173778,
+                "vIoU@0.3": 0.2265625,
+                "vIoU@0.5": 0.09375,
+                "m_tIoU": 0.2851757318096646,
+                "m_sIoU": 0.48148167091895105,
+                "tIoU_ge_0_5": 0.2578125,
+                "tIoU_zero": 0.2890625,
+                "boundary_MAE_seconds": 9.083851708716795,
+                "observed_actual_sIoU": 0.5045855952915297,
+                "unobserved_actual_sIoU": 0.48310659780968546,
+                "observed_GT_nodes": 3.328125,
+                "unobserved_GT_nodes": 48.6875
+              },
+              "Temporal": {
+                "m_vIoU": 0.19620509122848728,
+                "vIoU@0.3": 0.2890625,
+                "vIoU@0.5": 0.1640625,
+                "m_tIoU": 0.35222048361861286,
+                "m_sIoU": 0.4861641898239857,
+                "tIoU_ge_0_5": 0.40625,
+                "tIoU_zero": 0.1875,
+                "boundary_MAE_seconds": 8.196232173060782,
+                "observed_actual_sIoU": 0.5102536444566057,
+                "unobserved_actual_sIoU": 0.48748153622576895,
+                "observed_GT_nodes": 3.328125,
+                "unobserved_GT_nodes": 48.6875
+              },
+              "WithoutOPD": {
+                "m_vIoU": 0.1951774609137639,
+                "vIoU@0.3": 0.2890625,
+                "vIoU@0.5": 0.15625,
+                "m_tIoU": 0.35222048361861286,
+                "m_sIoU": 0.48151565885390485,
+                "tIoU_ge_0_5": 0.40625,
+                "tIoU_zero": 0.1875,
+                "boundary_MAE_seconds": 8.196232173060782,
+                "observed_actual_sIoU": 0.5055388358713075,
+                "unobserved_actual_sIoU": 0.48304563384361326,
+                "observed_GT_nodes": 3.328125,
+                "unobserved_GT_nodes": 48.6875
+              },
+              "Full": {
+                "m_vIoU": 0.1951780965689836,
+                "vIoU@0.3": 0.2890625,
+                "vIoU@0.5": 0.15625,
+                "m_tIoU": 0.35222048361861286,
+                "m_sIoU": 0.48148167091895105,
+                "tIoU_ge_0_5": 0.40625,
+                "tIoU_zero": 0.1875,
+                "boundary_MAE_seconds": 8.196232173060782,
+                "observed_actual_sIoU": 0.5045855952915297,
+                "unobserved_actual_sIoU": 0.48310659780968546,
+                "observed_GT_nodes": 3.328125,
+                "unobserved_GT_nodes": 48.6875
+              }
+            },
+            "diagnostics": {
+              "mean_weight_entropy": 0.8927942487703051,
+              "mean_ESS": 19.023158576881414,
+              "mean_state_gradient_norm": 0.011224049277825544,
+              "pseudo_loss_before": 3.9677781866353348,
+              "pseudo_loss_after": 3.9032006941553474
+            },
+            "metrics_sha256": "cfead30f52ac35c802fa1871f3d2dd6fbbbab0387b4cdbfc5c4b6f1280afdb12"
+          },
+          "p_3ef0feebc887": {
+            "params": {
+              "initialization_gamma": 0.05,
+              "lr": 0.02,
+              "tau": 1.0,
+              "steps": 60
+            },
+            "score": 0.19664391920711335,
+            "metric_means": {
+              "Source": {
+                "m_vIoU": 0.16100805375964855,
+                "vIoU@0.3": 0.21875,
+                "vIoU@0.5": 0.1015625,
+                "m_tIoU": 0.2851757318096646,
+                "m_sIoU": 0.4861641898239857,
+                "tIoU_ge_0_5": 0.2578125,
+                "tIoU_zero": 0.2890625,
+                "boundary_MAE_seconds": 9.083851708716795,
+                "observed_actual_sIoU": 0.5102536444566057,
+                "unobserved_actual_sIoU": 0.48748153622576895,
+                "observed_GT_nodes": 3.328125,
+                "unobserved_GT_nodes": 48.6875
+              },
+              "Spatial": {
+                "m_vIoU": 0.1608111381694417,
+                "vIoU@0.3": 0.21875,
+                "vIoU@0.5": 0.0859375,
+                "m_tIoU": 0.2851757318096646,
+                "m_sIoU": 0.4789333495169146,
+                "tIoU_ge_0_5": 0.2578125,
+                "tIoU_zero": 0.2890625,
+                "boundary_MAE_seconds": 9.083851708716795,
+                "observed_actual_sIoU": 0.5281906107956745,
+                "unobserved_actual_sIoU": 0.4795122115799879,
+                "observed_GT_nodes": 3.328125,
+                "unobserved_GT_nodes": 48.6875
+              },
+              "Temporal": {
+                "m_vIoU": 0.19620509122848728,
+                "vIoU@0.3": 0.2890625,
+                "vIoU@0.5": 0.1640625,
+                "m_tIoU": 0.35222048361861286,
+                "m_sIoU": 0.4861641898239857,
+                "tIoU_ge_0_5": 0.40625,
+                "tIoU_zero": 0.1875,
+                "boundary_MAE_seconds": 8.196232173060782,
+                "observed_actual_sIoU": 0.5102536444566057,
+                "unobserved_actual_sIoU": 0.48748153622576895,
+                "observed_GT_nodes": 3.328125,
+                "unobserved_GT_nodes": 48.6875
+              },
+              "WithoutOPD": {
+                "m_vIoU": 0.1951774609137639,
+                "vIoU@0.3": 0.2890625,
+                "vIoU@0.5": 0.15625,
+                "m_tIoU": 0.35222048361861286,
+                "m_sIoU": 0.48151565885390485,
+                "tIoU_ge_0_5": 0.40625,
+                "tIoU_zero": 0.1875,
+                "boundary_MAE_seconds": 8.196232173060782,
+                "observed_actual_sIoU": 0.5055388358713075,
+                "unobserved_actual_sIoU": 0.48304563384361326,
+                "observed_GT_nodes": 3.328125,
+                "unobserved_GT_nodes": 48.6875
+              },
+              "Full": {
+                "m_vIoU": 0.19664391920711335,
+                "vIoU@0.3": 0.28125,
+                "vIoU@0.5": 0.1640625,
+                "m_tIoU": 0.35222048361861286,
+                "m_sIoU": 0.4789333495169146,
+                "tIoU_ge_0_5": 0.40625,
+                "tIoU_zero": 0.1875,
+                "boundary_MAE_seconds": 8.196232173060782,
+                "observed_actual_sIoU": 0.5281906107956745,
+                "unobserved_actual_sIoU": 0.4795122115799879,
+                "observed_GT_nodes": 3.328125,
+                "unobserved_GT_nodes": 48.6875
+              }
+            },
+            "diagnostics": {
+              "mean_weight_entropy": 0.8938979257714651,
+              "mean_ESS": 19.193855738748695,
+              "mean_state_gradient_norm": 0.049461993925804866,
+              "pseudo_loss_before": 3.9677781866353348,
+              "pseudo_loss_after": 3.2623773779162155
+            },
+            "metrics_sha256": "adbadbed897769cf293775d772821e16b5f9d6c830e2a03e4f74d2c70bb0c055"
+          }
+        },
+        "next_reason": "Compare localization and pseudo-loss at15/30/60; a lower pseudo-loss with lower localization is a development sign of misaligned teacher fitting, not a reason to increase the budget. Recheck nearby gamma at the best optimizer."
+      },
+      "as_of": "2026-10-21T10:04:22.193175+08:00"
+    },
+    {
+      "stage": "gamma_neighbours",
+      "reason": "Recheck initialization/optimizer coupling with at most two adjacent gamma values.",
+      "outcome": {
+        "tested": [
+          {
+            "initialization_gamma": 0.1,
+            "lr": 0.02,
+            "tau": 1.0,
+            "steps": 60
+          }
+        ],
+        "selected": {
+          "initialization_gamma": 0.05,
+          "lr": 0.02,
+          "tau": 1.0,
+          "steps": 60
+        },
+        "all_outcomes": {
+          "p_40744e597eff": {
+            "params": {
+              "initialization_gamma": 1.0,
+              "lr": 0.01,
+              "tau": 0.5,
+              "steps": 30
+            },
+            "score": 0.18218161561773588,
+            "metric_means": {
+              "Source": {
+                "m_vIoU": 0.16100805375964855,
+                "vIoU@0.3": 0.21875,
+                "vIoU@0.5": 0.1015625,
+                "m_tIoU": 0.2851757318096646,
+                "m_sIoU": 0.4861641898239857,
+                "tIoU_ge_0_5": 0.2578125,
+                "tIoU_zero": 0.2890625,
+                "boundary_MAE_seconds": 9.083851708716795,
+                "observed_actual_sIoU": 0.5102536444566057,
+                "unobserved_actual_sIoU": 0.48748153622576895,
+                "observed_GT_nodes": 3.328125,
+                "unobserved_GT_nodes": 48.6875
+              },
+              "Spatial": {
+                "m_vIoU": 0.15332790944828928,
+                "vIoU@0.3": 0.21875,
+                "vIoU@0.5": 0.1015625,
+                "m_tIoU": 0.2851757318096646,
+                "m_sIoU": 0.4306949539423415,
+                "tIoU_ge_0_5": 0.2578125,
+                "tIoU_zero": 0.2890625,
+                "boundary_MAE_seconds": 9.083851708716795,
+                "observed_actual_sIoU": 0.47224031473622335,
+                "unobserved_actual_sIoU": 0.4306164910369123,
+                "observed_GT_nodes": 3.328125,
+                "unobserved_GT_nodes": 48.6875
+              },
+              "Temporal": {
+                "m_vIoU": 0.19620509122848728,
+                "vIoU@0.3": 0.2890625,
+                "vIoU@0.5": 0.1640625,
+                "m_tIoU": 0.35222048361861286,
+                "m_sIoU": 0.4861641898239857,
+                "tIoU_ge_0_5": 0.40625,
+                "tIoU_zero": 0.1875,
+                "boundary_MAE_seconds": 8.196232173060782,
+                "observed_actual_sIoU": 0.5102536444566057,
+                "unobserved_actual_sIoU": 0.48748153622576895,
+                "observed_GT_nodes": 3.328125,
+                "unobserved_GT_nodes": 48.6875
+              },
+              "WithoutOPD": {
+                "m_vIoU": 0.1821234457944659,
+                "vIoU@0.3": 0.2421875,
+                "vIoU@0.5": 0.171875,
+                "m_tIoU": 0.35222048361861286,
+                "m_sIoU": 0.4304633383877615,
+                "tIoU_ge_0_5": 0.40625,
+                "tIoU_zero": 0.1875,
+                "boundary_MAE_seconds": 8.196232173060782,
+                "observed_actual_sIoU": 0.4686338073946438,
+                "unobserved_actual_sIoU": 0.4305561782503189,
+                "observed_GT_nodes": 3.328125,
+                "unobserved_GT_nodes": 48.6875
+              },
+              "Full": {
+                "m_vIoU": 0.18218161561773588,
+                "vIoU@0.3": 0.2421875,
+                "vIoU@0.5": 0.171875,
+                "m_tIoU": 0.35222048361861286,
+                "m_sIoU": 0.4306949539423415,
+                "tIoU_ge_0_5": 0.40625,
+                "tIoU_zero": 0.1875,
+                "boundary_MAE_seconds": 8.196232173060782,
+                "observed_actual_sIoU": 0.47224031473622335,
+                "unobserved_actual_sIoU": 0.4306164910369123,
+                "observed_GT_nodes": 3.328125,
+                "unobserved_GT_nodes": 48.6875
+              }
+            },
+            "diagnostics": {
+              "mean_weight_entropy": null,
+              "mean_ESS": null,
+              "mean_state_gradient_norm": null,
+              "pseudo_loss_before": null,
+              "pseudo_loss_after": null
+            },
+            "metrics_sha256": "868c71a9459110a22687d3fbc3ff87885b96650f350ea2997d24163f90e0d698"
+          },
+          "p_20b170e5d5be": {
+            "params": {
+              "initialization_gamma": 0.05,
+              "lr": 0.0025,
+              "tau": 0.5,
+              "steps": 30
+            },
+            "score": 0.19518378130338948,
+            "metric_means": {
+              "Source": {
+                "m_vIoU": 0.16100805375964855,
+                "vIoU@0.3": 0.21875,
+                "vIoU@0.5": 0.1015625,
+                "m_tIoU": 0.2851757318096646,
+                "m_sIoU": 0.4861641898239857,
+                "tIoU_ge_0_5": 0.2578125,
+                "tIoU_zero": 0.2890625,
+                "boundary_MAE_seconds": 9.083851708716795,
+                "observed_actual_sIoU": 0.5102536444566057,
+                "unobserved_actual_sIoU": 0.48748153622576895,
+                "observed_GT_nodes": 3.328125,
+                "unobserved_GT_nodes": 48.6875
+              },
+              "Spatial": {
+                "m_vIoU": 0.1602167358149077,
+                "vIoU@0.3": 0.2265625,
+                "vIoU@0.5": 0.09375,
+                "m_tIoU": 0.2851757318096646,
+                "m_sIoU": 0.48151399104415293,
+                "tIoU_ge_0_5": 0.2578125,
+                "tIoU_zero": 0.2890625,
+                "boundary_MAE_seconds": 9.083851708716795,
+                "observed_actual_sIoU": 0.5054737064314285,
+                "unobserved_actual_sIoU": 0.4830606579061554,
+                "observed_GT_nodes": 3.328125,
+                "unobserved_GT_nodes": 48.6875
+              },
+              "Temporal": {
+                "m_vIoU": 0.19620509122848728,
+                "vIoU@0.3": 0.2890625,
+                "vIoU@0.5": 0.1640625,
+                "m_tIoU": 0.35222048361861286,
+                "m_sIoU": 0.4861641898239857,
+                "tIoU_ge_0_5": 0.40625,
+                "tIoU_zero": 0.1875,
+                "boundary_MAE_seconds": 8.196232173060782,
+                "observed_actual_sIoU": 0.5102536444566057,
+                "unobserved_actual_sIoU": 0.48748153622576895,
+                "observed_GT_nodes": 3.328125,
+                "unobserved_GT_nodes": 48.6875
+              },
+              "WithoutOPD": {
+                "m_vIoU": 0.1951774609137639,
+                "vIoU@0.3": 0.2890625,
+                "vIoU@0.5": 0.15625,
+                "m_tIoU": 0.35222048361861286,
+                "m_sIoU": 0.48151565885390485,
+                "tIoU_ge_0_5": 0.40625,
+                "tIoU_zero": 0.1875,
+                "boundary_MAE_seconds": 8.196232173060782,
+                "observed_actual_sIoU": 0.5055388358713075,
+                "unobserved_actual_sIoU": 0.48304563384361326,
+                "observed_GT_nodes": 3.328125,
+                "unobserved_GT_nodes": 48.6875
+              },
+              "Full": {
+                "m_vIoU": 0.19518378130338948,
+                "vIoU@0.3": 0.2890625,
+                "vIoU@0.5": 0.15625,
+                "m_tIoU": 0.35222048361861286,
+                "m_sIoU": 0.48151399104415293,
+                "tIoU_ge_0_5": 0.40625,
+                "tIoU_zero": 0.1875,
+                "boundary_MAE_seconds": 8.196232173060782,
+                "observed_actual_sIoU": 0.5054737064314285,
+                "unobserved_actual_sIoU": 0.4830606579061554,
+                "observed_GT_nodes": 3.328125,
+                "unobserved_GT_nodes": 48.6875
+              }
+            },
+            "diagnostics": {
+              "mean_weight_entropy": 0.7423732406911598,
+              "mean_ESS": 11.423244533612007,
+              "mean_state_gradient_norm": 0.018317323153481387,
+              "pseudo_loss_before": 3.9677781866353348,
+              "pseudo_loss_after": 3.9525881419376794
+            },
+            "metrics_sha256": "8a2927b3af275568dd716710b9dd4153ea97c9a62240fc6be592f1c1265e96cd"
+          },
+          "p_536752b917d8": {
+            "params": {
+              "initialization_gamma": 0.05,
+              "lr": 0.005,
+              "tau": 0.5,
+              "steps": 30
+            },
+            "score": 0.19518463211796863,
+            "metric_means": {
+              "Source": {
+                "m_vIoU": 0.16100805375964855,
+                "vIoU@0.3": 0.21875,
+                "vIoU@0.5": 0.1015625,
+                "m_tIoU": 0.2851757318096646,
+                "m_sIoU": 0.4861641898239857,
+                "tIoU_ge_0_5": 0.2578125,
+                "tIoU_zero": 0.2890625,
+                "boundary_MAE_seconds": 9.083851708716795,
+                "observed_actual_sIoU": 0.5102536444566057,
+                "unobserved_actual_sIoU": 0.48748153622576895,
+                "observed_GT_nodes": 3.328125,
+                "unobserved_GT_nodes": 48.6875
+              },
+              "Spatial": {
+                "m_vIoU": 0.1602178489192728,
+                "vIoU@0.3": 0.2265625,
+                "vIoU@0.5": 0.09375,
+                "m_tIoU": 0.2851757318096646,
+                "m_sIoU": 0.4814857120864243,
+                "tIoU_ge_0_5": 0.2578125,
+                "tIoU_zero": 0.2890625,
+                "boundary_MAE_seconds": 9.083851708716795,
+                "observed_actual_sIoU": 0.5046799358674011,
+                "unobserved_actual_sIoU": 0.48307465782291364,
+                "observed_GT_nodes": 3.328125,
+                "unobserved_GT_nodes": 48.6875
+              },
+              "Temporal": {
+                "m_vIoU": 0.19620509122848728,
+                "vIoU@0.3": 0.2890625,
+                "vIoU@0.5": 0.1640625,
+                "m_tIoU": 0.35222048361861286,
+                "m_sIoU": 0.4861641898239857,
+                "tIoU_ge_0_5": 0.40625,
+                "tIoU_zero": 0.1875,
+                "boundary_MAE_seconds": 8.196232173060782,
+                "observed_actual_sIoU": 0.5102536444566057,
+                "unobserved_actual_sIoU": 0.48748153622576895,
+                "observed_GT_nodes": 3.328125,
+                "unobserved_GT_nodes": 48.6875
+              },
+              "WithoutOPD": {
+                "m_vIoU": 0.1951774609137639,
+                "vIoU@0.3": 0.2890625,
+                "vIoU@0.5": 0.15625,
+                "m_tIoU": 0.35222048361861286,
+                "m_sIoU": 0.48151565885390485,
+                "tIoU_ge_0_5": 0.40625,
+                "tIoU_zero": 0.1875,
+                "boundary_MAE_seconds": 8.196232173060782,
+                "observed_actual_sIoU": 0.5055388358713075,
+                "unobserved_actual_sIoU": 0.48304563384361326,
+                "observed_GT_nodes": 3.328125,
+                "unobserved_GT_nodes": 48.6875
+              },
+              "Full": {
+                "m_vIoU": 0.19518463211796863,
+                "vIoU@0.3": 0.2890625,
+                "vIoU@0.5": 0.15625,
+                "m_tIoU": 0.35222048361861286,
+                "m_sIoU": 0.4814857120864243,
+                "tIoU_ge_0_5": 0.40625,
+                "tIoU_zero": 0.1875,
+                "boundary_MAE_seconds": 8.196232173060782,
+                "observed_actual_sIoU": 0.5046799358674011,
+                "unobserved_actual_sIoU": 0.48307465782291364,
+                "observed_GT_nodes": 3.328125,
+                "unobserved_GT_nodes": 48.6875
+              }
+            },
+            "diagnostics": {
+              "mean_weight_entropy": 0.742559400466817,
+              "mean_ESS": 11.430981345522564,
+              "mean_state_gradient_norm": 0.02062952971117132,
+              "pseudo_loss_before": 3.9677781866353348,
+              "pseudo_loss_after": 3.933945795121083
+            },
+            "metrics_sha256": "c08f22fe5108d8cba51e6a28e8b7c0d0f8ed35cc55dedc12ee391631194245c5"
+          },
+          "p_a8252273146f": {
+            "params": {
+              "initialization_gamma": 0.05,
+              "lr": 0.01,
+              "tau": 0.5,
+              "steps": 30
+            },
+            "score": 0.19516875054065988,
+            "metric_means": {
+              "Source": {
+                "m_vIoU": 0.16100805375964855,
+                "vIoU@0.3": 0.21875,
+                "vIoU@0.5": 0.1015625,
+                "m_tIoU": 0.2851757318096646,
+                "m_sIoU": 0.4861641898239857,
+                "tIoU_ge_0_5": 0.2578125,
+                "tIoU_zero": 0.2890625,
+                "boundary_MAE_seconds": 9.083851708716795,
+                "observed_actual_sIoU": 0.5102536444566057,
+                "unobserved_actual_sIoU": 0.48748153622576895,
+                "observed_GT_nodes": 3.328125,
+                "unobserved_GT_nodes": 48.6875
+              },
+              "Spatial": {
+                "m_vIoU": 0.16021397335651924,
+                "vIoU@0.3": 0.2265625,
+                "vIoU@0.5": 0.09375,
+                "m_tIoU": 0.2851757318096646,
+                "m_sIoU": 0.4814575785763813,
+                "tIoU_ge_0_5": 0.2578125,
+                "tIoU_zero": 0.2890625,
+                "boundary_MAE_seconds": 9.083851708716795,
+                "observed_actual_sIoU": 0.5044649563939276,
+                "unobserved_actual_sIoU": 0.48308955110063156,
+                "observed_GT_nodes": 3.328125,
+                "unobserved_GT_nodes": 48.6875
+              },
+              "Temporal": {
+                "m_vIoU": 0.19620509122848728,
+                "vIoU@0.3": 0.2890625,
+                "vIoU@0.5": 0.1640625,
+                "m_tIoU": 0.35222048361861286,
+                "m_sIoU": 0.4861641898239857,
+                "tIoU_ge_0_5": 0.40625,
+                "tIoU_zero": 0.1875,
+                "boundary_MAE_seconds": 8.196232173060782,
+                "observed_actual_sIoU": 0.5102536444566057,
+                "unobserved_actual_sIoU": 0.48748153622576895,
+                "observed_GT_nodes": 3.328125,
+                "unobserved_GT_nodes": 48.6875
+              },
+              "WithoutOPD": {
+                "m_vIoU": 0.1951774609137639,
+                "vIoU@0.3": 0.2890625,
+                "vIoU@0.5": 0.15625,
+                "m_tIoU": 0.35222048361861286,
+                "m_sIoU": 0.48151565885390485,
+                "tIoU_ge_0_5": 0.40625,
+                "tIoU_zero": 0.1875,
+                "boundary_MAE_seconds": 8.196232173060782,
+                "observed_actual_sIoU": 0.5055388358713075,
+                "unobserved_actual_sIoU": 0.48304563384361326,
+                "observed_GT_nodes": 3.328125,
+                "unobserved_GT_nodes": 48.6875
+              },
+              "Full": {
+                "m_vIoU": 0.19516875054065988,
+                "vIoU@0.3": 0.2890625,
+                "vIoU@0.5": 0.15625,
+                "m_tIoU": 0.35222048361861286,
+                "m_sIoU": 0.4814575785763813,
+                "tIoU_ge_0_5": 0.40625,
+                "tIoU_zero": 0.1875,
+                "boundary_MAE_seconds": 8.196232173060782,
+                "observed_actual_sIoU": 0.5044649563939276,
+                "unobserved_actual_sIoU": 0.48308955110063156,
+                "observed_GT_nodes": 3.328125,
+                "unobserved_GT_nodes": 48.6875
+              }
+            },
+            "diagnostics": {
+              "mean_weight_entropy": 0.7429495554495521,
+              "mean_ESS": 11.445425229620234,
+              "mean_state_gradient_norm": 0.019719462574281955,
+              "pseudo_loss_before": 3.9677781866353348,
+              "pseudo_loss_after": 3.901210664932214
+            },
+            "metrics_sha256": "4a91836e1d1532c1cf6dabd5b2dea327679758c8fab3af5e00a4eafd5f732ca1"
+          },
+          "p_c98df0923df8": {
+            "params": {
+              "initialization_gamma": 0.05,
+              "lr": 0.02,
+              "tau": 0.5,
+              "steps": 30
+            },
+            "score": 0.19524535145868857,
+            "metric_means": {
+              "Source": {
+                "m_vIoU": 0.16100805375964855,
+                "vIoU@0.3": 0.21875,
+                "vIoU@0.5": 0.1015625,
+                "m_tIoU": 0.2851757318096646,
+                "m_sIoU": 0.4861641898239857,
+                "tIoU_ge_0_5": 0.2578125,
+                "tIoU_zero": 0.2890625,
+                "boundary_MAE_seconds": 9.083851708716795,
+                "observed_actual_sIoU": 0.5102536444566057,
+                "unobserved_actual_sIoU": 0.48748153622576895,
+                "observed_GT_nodes": 3.328125,
+                "unobserved_GT_nodes": 48.6875
+              },
+              "Spatial": {
+                "m_vIoU": 0.16038547721278326,
+                "vIoU@0.3": 0.2265625,
+                "vIoU@0.5": 0.09375,
+                "m_tIoU": 0.2851757318096646,
+                "m_sIoU": 0.4816646684649695,
+                "tIoU_ge_0_5": 0.2578125,
+                "tIoU_zero": 0.2890625,
+                "boundary_MAE_seconds": 9.083851708716795,
+                "observed_actual_sIoU": 0.5101178184094223,
+                "unobserved_actual_sIoU": 0.48308897085327995,
+                "observed_GT_nodes": 3.328125,
+                "unobserved_GT_nodes": 48.6875
+              },
+              "Temporal": {
+                "m_vIoU": 0.19620509122848728,
+                "vIoU@0.3": 0.2890625,
+                "vIoU@0.5": 0.1640625,
+                "m_tIoU": 0.35222048361861286,
+                "m_sIoU": 0.4861641898239857,
+                "tIoU_ge_0_5": 0.40625,
+                "tIoU_zero": 0.1875,
+                "boundary_MAE_seconds": 8.196232173060782,
+                "observed_actual_sIoU": 0.5102536444566057,
+                "unobserved_actual_sIoU": 0.48748153622576895,
+                "observed_GT_nodes": 3.328125,
+                "unobserved_GT_nodes": 48.6875
+              },
+              "WithoutOPD": {
+                "m_vIoU": 0.1951774609137639,
+                "vIoU@0.3": 0.2890625,
+                "vIoU@0.5": 0.15625,
+                "m_tIoU": 0.35222048361861286,
+                "m_sIoU": 0.48151565885390485,
+                "tIoU_ge_0_5": 0.40625,
+                "tIoU_zero": 0.1875,
+                "boundary_MAE_seconds": 8.196232173060782,
+                "observed_actual_sIoU": 0.5055388358713075,
+                "unobserved_actual_sIoU": 0.48304563384361326,
+                "observed_GT_nodes": 3.328125,
+                "unobserved_GT_nodes": 48.6875
+              },
+              "Full": {
+                "m_vIoU": 0.19524535145868857,
+                "vIoU@0.3": 0.28125,
+                "vIoU@0.5": 0.15625,
+                "m_tIoU": 0.35222048361861286,
+                "m_sIoU": 0.4816646684649695,
+                "tIoU_ge_0_5": 0.40625,
+                "tIoU_zero": 0.1875,
+                "boundary_MAE_seconds": 8.196232173060782,
+                "observed_actual_sIoU": 0.5101178184094223,
+                "unobserved_actual_sIoU": 0.48308897085327995,
+                "observed_GT_nodes": 3.328125,
+                "unobserved_GT_nodes": 48.6875
+              }
+            },
+            "diagnostics": {
+              "mean_weight_entropy": 0.7440209825932025,
+              "mean_ESS": 11.486893363989033,
+              "mean_state_gradient_norm": 0.04165688550574487,
+              "pseudo_loss_before": 3.9677781866353348,
+              "pseudo_loss_after": 3.7532558827142144
+            },
+            "metrics_sha256": "1c4b908bb56b3c53c801ba177941c29cd3a00c08bc0a0a56bdd7406d350726b0"
+          },
+          "p_e5a03abb9d22": {
+            "params": {
+              "initialization_gamma": 0.05,
+              "lr": 0.02,
+              "tau": 1.0,
+              "steps": 30
+            },
+            "score": 0.195271373043158,
+            "metric_means": {
+              "Source": {
+                "m_vIoU": 0.16100805375964855,
+                "vIoU@0.3": 0.21875,
+                "vIoU@0.5": 0.1015625,
+                "m_tIoU": 0.2851757318096646,
+                "m_sIoU": 0.4861641898239857,
+                "tIoU_ge_0_5": 0.2578125,
+                "tIoU_zero": 0.2890625,
+                "boundary_MAE_seconds": 9.083851708716795,
+                "observed_actual_sIoU": 0.5102536444566057,
+                "unobserved_actual_sIoU": 0.48748153622576895,
+                "observed_GT_nodes": 3.328125,
+                "unobserved_GT_nodes": 48.6875
+              },
+              "Spatial": {
+                "m_vIoU": 0.16039179807168244,
+                "vIoU@0.3": 0.2265625,
+                "vIoU@0.5": 0.0859375,
+                "m_tIoU": 0.2851757318096646,
+                "m_sIoU": 0.4816351363215199,
+                "tIoU_ge_0_5": 0.2578125,
+                "tIoU_zero": 0.2890625,
+                "boundary_MAE_seconds": 9.083851708716795,
+                "observed_actual_sIoU": 0.5100283831150388,
+                "unobserved_actual_sIoU": 0.48306495456458576,
+                "observed_GT_nodes": 3.328125,
+                "unobserved_GT_nodes": 48.6875
+              },
+              "Temporal": {
+                "m_vIoU": 0.19620509122848728,
+                "vIoU@0.3": 0.2890625,
+                "vIoU@0.5": 0.1640625,
+                "m_tIoU": 0.35222048361861286,
+                "m_sIoU": 0.4861641898239857,
+                "tIoU_ge_0_5": 0.40625,
+                "tIoU_zero": 0.1875,
+                "boundary_MAE_seconds": 8.196232173060782,
+                "observed_actual_sIoU": 0.5102536444566057,
+                "unobserved_actual_sIoU": 0.48748153622576895,
+                "observed_GT_nodes": 3.328125,
+                "unobserved_GT_nodes": 48.6875
+              },
+              "WithoutOPD": {
+                "m_vIoU": 0.1951774609137639,
+                "vIoU@0.3": 0.2890625,
+                "vIoU@0.5": 0.15625,
+                "m_tIoU": 0.35222048361861286,
+                "m_sIoU": 0.48151565885390485,
+                "tIoU_ge_0_5": 0.40625,
+                "tIoU_zero": 0.1875,
+                "boundary_MAE_seconds": 8.196232173060782,
+                "observed_actual_sIoU": 0.5055388358713075,
+                "unobserved_actual_sIoU": 0.48304563384361326,
+                "observed_GT_nodes": 3.328125,
+                "unobserved_GT_nodes": 48.6875
+              },
+              "Full": {
+                "m_vIoU": 0.195271373043158,
+                "vIoU@0.3": 0.28125,
+                "vIoU@0.5": 0.15625,
+                "m_tIoU": 0.35222048361861286,
+                "m_sIoU": 0.4816351363215199,
+                "tIoU_ge_0_5": 0.40625,
+                "tIoU_zero": 0.1875,
+                "boundary_MAE_seconds": 8.196232173060782,
+                "observed_actual_sIoU": 0.5100283831150388,
+                "unobserved_actual_sIoU": 0.48306495456458576,
+                "observed_GT_nodes": 3.328125,
+                "unobserved_GT_nodes": 48.6875
+              }
+            },
+            "diagnostics": {
+              "mean_weight_entropy": 0.8928665566372946,
+              "mean_ESS": 19.053374229483264,
+              "mean_state_gradient_norm": 0.0156469164752707,
+              "pseudo_loss_before": 3.9677781866353348,
+              "pseudo_loss_after": 3.749553594105837
+            },
+            "metrics_sha256": "4d56714377aff580b256c2fac7b4c8e429699c182262e35ac7ab47ed6c9a7b9f"
+          },
+          "p_22163b26e528": {
+            "params": {
+              "initialization_gamma": 0.05,
+              "lr": 0.02,
+              "tau": 0.25,
+              "steps": 30
+            },
+            "score": 0.19510804407940394,
+            "metric_means": {
+              "Source": {
+                "m_vIoU": 0.16100805375964855,
+                "vIoU@0.3": 0.21875,
+                "vIoU@0.5": 0.1015625,
+                "m_tIoU": 0.2851757318096646,
+                "m_sIoU": 0.4861641898239857,
+                "tIoU_ge_0_5": 0.2578125,
+                "tIoU_zero": 0.2890625,
+                "boundary_MAE_seconds": 9.083851708716795,
+                "observed_actual_sIoU": 0.5102536444566057,
+                "unobserved_actual_sIoU": 0.48748153622576895,
+                "observed_GT_nodes": 3.328125,
+                "unobserved_GT_nodes": 48.6875
+              },
+              "Spatial": {
+                "m_vIoU": 0.1603150100769728,
+                "vIoU@0.3": 0.2265625,
+                "vIoU@0.5": 0.0859375,
+                "m_tIoU": 0.2851757318096646,
+                "m_sIoU": 0.48154695052875085,
+                "tIoU_ge_0_5": 0.2578125,
+                "tIoU_zero": 0.2890625,
+                "boundary_MAE_seconds": 9.083851708716795,
+                "observed_actual_sIoU": 0.5089967758567514,
+                "unobserved_actual_sIoU": 0.48301161175478285,
+                "observed_GT_nodes": 3.328125,
+                "unobserved_GT_nodes": 48.6875
+              },
+              "Temporal": {
+                "m_vIoU": 0.19620509122848728,
+                "vIoU@0.3": 0.2890625,
+                "vIoU@0.5": 0.1640625,
+                "m_tIoU": 0.35222048361861286,
+                "m_sIoU": 0.4861641898239857,
+                "tIoU_ge_0_5": 0.40625,
+                "tIoU_zero": 0.1875,
+                "boundary_MAE_seconds": 8.196232173060782,
+                "observed_actual_sIoU": 0.5102536444566057,
+                "unobserved_actual_sIoU": 0.48748153622576895,
+                "observed_GT_nodes": 3.328125,
+                "unobserved_GT_nodes": 48.6875
+              },
+              "WithoutOPD": {
+                "m_vIoU": 0.1951774609137639,
+                "vIoU@0.3": 0.2890625,
+                "vIoU@0.5": 0.15625,
+                "m_tIoU": 0.35222048361861286,
+                "m_sIoU": 0.48151565885390485,
+                "tIoU_ge_0_5": 0.40625,
+                "tIoU_zero": 0.1875,
+                "boundary_MAE_seconds": 8.196232173060782,
+                "observed_actual_sIoU": 0.5055388358713075,
+                "unobserved_actual_sIoU": 0.48304563384361326,
+                "observed_GT_nodes": 3.328125,
+                "unobserved_GT_nodes": 48.6875
+              },
+              "Full": {
+                "m_vIoU": 0.19510804407940394,
+                "vIoU@0.3": 0.28125,
+                "vIoU@0.5": 0.15625,
+                "m_tIoU": 0.35222048361861286,
+                "m_sIoU": 0.48154695052875085,
+                "tIoU_ge_0_5": 0.40625,
+                "tIoU_zero": 0.1875,
+                "boundary_MAE_seconds": 8.196232173060782,
+                "observed_actual_sIoU": 0.5089967758567514,
+                "unobserved_actual_sIoU": 0.48301161175478285,
+                "observed_GT_nodes": 3.328125,
+                "unobserved_GT_nodes": 48.6875
+              }
+            },
+            "diagnostics": {
+              "mean_weight_entropy": 0.5267026827462049,
+              "mean_ESS": 5.828929566866474,
+              "mean_state_gradient_norm": 0.04014376973970381,
+              "pseudo_loss_before": 3.9677781866353348,
+              "pseudo_loss_after": 3.7767024556148905
+            },
+            "metrics_sha256": "b44cbece694d1c145401c89582d311c2ccd2e2d48b14d476648bbf31f85e080f"
+          },
+          "p_c4e5ec2477ec": {
+            "params": {
+              "initialization_gamma": 0.05,
+              "lr": 0.02,
+              "tau": 1.0,
+              "steps": 15
+            },
+            "score": 0.1951780965689836,
+            "metric_means": {
+              "Source": {
+                "m_vIoU": 0.16100805375964855,
+                "vIoU@0.3": 0.21875,
+                "vIoU@0.5": 0.1015625,
+                "m_tIoU": 0.2851757318096646,
+                "m_sIoU": 0.4861641898239857,
+                "tIoU_ge_0_5": 0.2578125,
+                "tIoU_zero": 0.2890625,
+                "boundary_MAE_seconds": 9.083851708716795,
+                "observed_actual_sIoU": 0.5102536444566057,
+                "unobserved_actual_sIoU": 0.48748153622576895,
+                "observed_GT_nodes": 3.328125,
+                "unobserved_GT_nodes": 48.6875
+              },
+              "Spatial": {
+                "m_vIoU": 0.16022713140173778,
+                "vIoU@0.3": 0.2265625,
+                "vIoU@0.5": 0.09375,
+                "m_tIoU": 0.2851757318096646,
+                "m_sIoU": 0.48148167091895105,
+                "tIoU_ge_0_5": 0.2578125,
+                "tIoU_zero": 0.2890625,
+                "boundary_MAE_seconds": 9.083851708716795,
+                "observed_actual_sIoU": 0.5045855952915297,
+                "unobserved_actual_sIoU": 0.48310659780968546,
+                "observed_GT_nodes": 3.328125,
+                "unobserved_GT_nodes": 48.6875
+              },
+              "Temporal": {
+                "m_vIoU": 0.19620509122848728,
+                "vIoU@0.3": 0.2890625,
+                "vIoU@0.5": 0.1640625,
+                "m_tIoU": 0.35222048361861286,
+                "m_sIoU": 0.4861641898239857,
+                "tIoU_ge_0_5": 0.40625,
+                "tIoU_zero": 0.1875,
+                "boundary_MAE_seconds": 8.196232173060782,
+                "observed_actual_sIoU": 0.5102536444566057,
+                "unobserved_actual_sIoU": 0.48748153622576895,
+                "observed_GT_nodes": 3.328125,
+                "unobserved_GT_nodes": 48.6875
+              },
+              "WithoutOPD": {
+                "m_vIoU": 0.1951774609137639,
+                "vIoU@0.3": 0.2890625,
+                "vIoU@0.5": 0.15625,
+                "m_tIoU": 0.35222048361861286,
+                "m_sIoU": 0.48151565885390485,
+                "tIoU_ge_0_5": 0.40625,
+                "tIoU_zero": 0.1875,
+                "boundary_MAE_seconds": 8.196232173060782,
+                "observed_actual_sIoU": 0.5055388358713075,
+                "unobserved_actual_sIoU": 0.48304563384361326,
+                "observed_GT_nodes": 3.328125,
+                "unobserved_GT_nodes": 48.6875
+              },
+              "Full": {
+                "m_vIoU": 0.1951780965689836,
+                "vIoU@0.3": 0.2890625,
+                "vIoU@0.5": 0.15625,
+                "m_tIoU": 0.35222048361861286,
+                "m_sIoU": 0.48148167091895105,
+                "tIoU_ge_0_5": 0.40625,
+                "tIoU_zero": 0.1875,
+                "boundary_MAE_seconds": 8.196232173060782,
+                "observed_actual_sIoU": 0.5045855952915297,
+                "unobserved_actual_sIoU": 0.48310659780968546,
+                "observed_GT_nodes": 3.328125,
+                "unobserved_GT_nodes": 48.6875
+              }
+            },
+            "diagnostics": {
+              "mean_weight_entropy": 0.8927942487703051,
+              "mean_ESS": 19.023158576881414,
+              "mean_state_gradient_norm": 0.011224049277825544,
+              "pseudo_loss_before": 3.9677781866353348,
+              "pseudo_loss_after": 3.9032006941553474
+            },
+            "metrics_sha256": "cfead30f52ac35c802fa1871f3d2dd6fbbbab0387b4cdbfc5c4b6f1280afdb12"
+          },
+          "p_3ef0feebc887": {
+            "params": {
+              "initialization_gamma": 0.05,
+              "lr": 0.02,
+              "tau": 1.0,
+              "steps": 60
+            },
+            "score": 0.19664391920711335,
+            "metric_means": {
+              "Source": {
+                "m_vIoU": 0.16100805375964855,
+                "vIoU@0.3": 0.21875,
+                "vIoU@0.5": 0.1015625,
+                "m_tIoU": 0.2851757318096646,
+                "m_sIoU": 0.4861641898239857,
+                "tIoU_ge_0_5": 0.2578125,
+                "tIoU_zero": 0.2890625,
+                "boundary_MAE_seconds": 9.083851708716795,
+                "observed_actual_sIoU": 0.5102536444566057,
+                "unobserved_actual_sIoU": 0.48748153622576895,
+                "observed_GT_nodes": 3.328125,
+                "unobserved_GT_nodes": 48.6875
+              },
+              "Spatial": {
+                "m_vIoU": 0.1608111381694417,
+                "vIoU@0.3": 0.21875,
+                "vIoU@0.5": 0.0859375,
+                "m_tIoU": 0.2851757318096646,
+                "m_sIoU": 0.4789333495169146,
+                "tIoU_ge_0_5": 0.2578125,
+                "tIoU_zero": 0.2890625,
+                "boundary_MAE_seconds": 9.083851708716795,
+                "observed_actual_sIoU": 0.5281906107956745,
+                "unobserved_actual_sIoU": 0.4795122115799879,
+                "observed_GT_nodes": 3.328125,
+                "unobserved_GT_nodes": 48.6875
+              },
+              "Temporal": {
+                "m_vIoU": 0.19620509122848728,
+                "vIoU@0.3": 0.2890625,
+                "vIoU@0.5": 0.1640625,
+                "m_tIoU": 0.35222048361861286,
+                "m_sIoU": 0.4861641898239857,
+                "tIoU_ge_0_5": 0.40625,
+                "tIoU_zero": 0.1875,
+                "boundary_MAE_seconds": 8.196232173060782,
+                "observed_actual_sIoU": 0.5102536444566057,
+                "unobserved_actual_sIoU": 0.48748153622576895,
+                "observed_GT_nodes": 3.328125,
+                "unobserved_GT_nodes": 48.6875
+              },
+              "WithoutOPD": {
+                "m_vIoU": 0.1951774609137639,
+                "vIoU@0.3": 0.2890625,
+                "vIoU@0.5": 0.15625,
+                "m_tIoU": 0.35222048361861286,
+                "m_sIoU": 0.48151565885390485,
+                "tIoU_ge_0_5": 0.40625,
+                "tIoU_zero": 0.1875,
+                "boundary_MAE_seconds": 8.196232173060782,
+                "observed_actual_sIoU": 0.5055388358713075,
+                "unobserved_actual_sIoU": 0.48304563384361326,
+                "observed_GT_nodes": 3.328125,
+                "unobserved_GT_nodes": 48.6875
+              },
+              "Full": {
+                "m_vIoU": 0.19664391920711335,
+                "vIoU@0.3": 0.28125,
+                "vIoU@0.5": 0.1640625,
+                "m_tIoU": 0.35222048361861286,
+                "m_sIoU": 0.4789333495169146,
+                "tIoU_ge_0_5": 0.40625,
+                "tIoU_zero": 0.1875,
+                "boundary_MAE_seconds": 8.196232173060782,
+                "observed_actual_sIoU": 0.5281906107956745,
+                "unobserved_actual_sIoU": 0.4795122115799879,
+                "observed_GT_nodes": 3.328125,
+                "unobserved_GT_nodes": 48.6875
+              }
+            },
+            "diagnostics": {
+              "mean_weight_entropy": 0.8938979257714651,
+              "mean_ESS": 19.193855738748695,
+              "mean_state_gradient_norm": 0.049461993925804866,
+              "pseudo_loss_before": 3.9677781866353348,
+              "pseudo_loss_after": 3.2623773779162155
+            },
+            "metrics_sha256": "adbadbed897769cf293775d772821e16b5f9d6c830e2a03e4f74d2c70bb0c055"
+          },
+          "p_083367df9baf": {
+            "params": {
+              "initialization_gamma": 0.1,
+              "lr": 0.02,
+              "tau": 1.0,
+              "steps": 60
+            },
+            "score": 0.19530997527954383,
+            "metric_means": {
+              "Source": {
+                "m_vIoU": 0.16100805375964855,
+                "vIoU@0.3": 0.21875,
+                "vIoU@0.5": 0.1015625,
+                "m_tIoU": 0.2851757318096646,
+                "m_sIoU": 0.4861641898239857,
+                "tIoU_ge_0_5": 0.2578125,
+                "tIoU_zero": 0.2890625,
+                "boundary_MAE_seconds": 9.083851708716795,
+                "observed_actual_sIoU": 0.5102536444566057,
+                "unobserved_actual_sIoU": 0.48748153622576895,
+                "observed_GT_nodes": 3.328125,
+                "unobserved_GT_nodes": 48.6875
+              },
+              "Spatial": {
+                "m_vIoU": 0.16046616645435685,
+                "vIoU@0.3": 0.2265625,
+                "vIoU@0.5": 0.0859375,
+                "m_tIoU": 0.2851757318096646,
+                "m_sIoU": 0.47315682185816976,
+                "tIoU_ge_0_5": 0.2578125,
+                "tIoU_zero": 0.2890625,
+                "boundary_MAE_seconds": 9.083851708716795,
+                "observed_actual_sIoU": 0.5197872917905569,
+                "unobserved_actual_sIoU": 0.47387132407277516,
+                "observed_GT_nodes": 3.328125,
+                "unobserved_GT_nodes": 48.6875
+              },
+              "Temporal": {
+                "m_vIoU": 0.19620509122848728,
+                "vIoU@0.3": 0.2890625,
+                "vIoU@0.5": 0.1640625,
+                "m_tIoU": 0.35222048361861286,
+                "m_sIoU": 0.4861641898239857,
+                "tIoU_ge_0_5": 0.40625,
+                "tIoU_zero": 0.1875,
+                "boundary_MAE_seconds": 8.196232173060782,
+                "observed_actual_sIoU": 0.5102536444566057,
+                "unobserved_actual_sIoU": 0.48748153622576895,
+                "observed_GT_nodes": 3.328125,
+                "unobserved_GT_nodes": 48.6875
+              },
+              "WithoutOPD": {
+                "m_vIoU": 0.19283897259846347,
+                "vIoU@0.3": 0.2890625,
+                "vIoU@0.5": 0.15625,
+                "m_tIoU": 0.35222048361861286,
+                "m_sIoU": 0.47443243827320525,
+                "tIoU_ge_0_5": 0.40625,
+                "tIoU_zero": 0.1875,
+                "boundary_MAE_seconds": 8.196232173060782,
+                "observed_actual_sIoU": 0.49777306404286376,
+                "unobserved_actual_sIoU": 0.47593058360687934,
+                "observed_GT_nodes": 3.328125,
+                "unobserved_GT_nodes": 48.6875
+              },
+              "Full": {
+                "m_vIoU": 0.19530997527954383,
+                "vIoU@0.3": 0.2890625,
+                "vIoU@0.5": 0.15625,
+                "m_tIoU": 0.35222048361861286,
+                "m_sIoU": 0.47315682185816976,
+                "tIoU_ge_0_5": 0.40625,
+                "tIoU_zero": 0.1875,
+                "boundary_MAE_seconds": 8.196232173060782,
+                "observed_actual_sIoU": 0.5197872917905569,
+                "unobserved_actual_sIoU": 0.47387132407277516,
+                "observed_GT_nodes": 3.328125,
+                "unobserved_GT_nodes": 48.6875
+              }
+            },
+            "diagnostics": {
+              "mean_weight_entropy": 0.8962845048736192,
+              "mean_ESS": 19.40538704321743,
+              "mean_state_gradient_norm": 0.06082478289769522,
+              "pseudo_loss_before": 3.852683110572996,
+              "pseudo_loss_after": 3.1726452917189247
+            },
+            "metrics_sha256": "1610c6e6e63b06ae0d96bf2857c54dc53d0f5f1ab5fbf8a5ce266c5e9ab591fa"
+          }
+        }
+      },
+      "as_of": "2026-10-21T10:06:57.116058+08:00"
+    },
+    {
+      "stage": "full_selected",
+      "reason": "One selected global profile on all10303; exact128 caches reused, Strong time outputs reused.",
+      "outcome": {
+        "initialization_gamma": 0.05,
+        "lr": 0.02,
+        "tau": 1.0,
+        "steps": 60
+      },
+      "as_of": "2026-10-21T10:06:57.253164+08:00"
+    }
+  ],
+  "not_independent_confirmation": true,
+  "full_results_not_used_to_rank_profiles": true
+}

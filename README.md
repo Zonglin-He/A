@@ -99,3 +99,5 @@ docs/          方法、资产、评估和历史说明
 本地另有 `data/`、`checkpoints/`、`runtime/`、`outputs/` 和 `.conda/`，均不上传。历史方案从当前工作树移除，仍可通过正常 Git 历史查阅；没有重写或压缩提交历史。见 [docs/history.md](docs/history.md)。
 
 TubeDETR两方向五行消融复用同一完整预测，见 [docs/tubedetr_ablation.md](docs/tubedetr_ablation.md)。
+
+TubeDETR新增HC2目标域后续开发：见[HC2离线诊断、128开发与全量协议](docs/tubedetr_hc2_development.md)。
