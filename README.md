@@ -101,3 +101,5 @@ docs/          方法、资产、评估和历史说明
 正式数据版本已核对并修正：HC2采用作者公开包1902条，VidSTG10303条；原raw3482口径及Vid端点错误见[划分审计](docs/split_audit.md)。历史128开发成绩保留原标注口径，不当作修正后的完整官方结果。
 
 候选评分的固定 v0 审计与严格下游留出锚点探针见 [评分审计](docs/score_audit.md) 和 [完整结果](results/score_audit/REPORT.md)。本轮只运行缓存评分，不执行新 OPD/KD/Direct 适应，不改变主方法。
+
+完整原生框范围传播及匹配OPD/FixedKD/Direct的HC64开发对照见 [协议](docs/box_propagation.md) 与 [结果分析](results/box_propagation_hc64/ANALYSIS.md)。这是隔离研究版本，未更改唯一主方法。
