@@ -1,0 +1,46 @@
+{
+  "status": "frozen_before_CDF_qualification_outcomes",
+  "queries": 128,
+  "parents": 128,
+  "tail_probability": 0.025,
+  "candidate_signals": [
+    "MaskCDF",
+    "TransportCDF"
+  ],
+  "candidate_bank": "Original diagnostic bank45 entries including policy32 and13 diagnostic/reference boxes; evaluate only policy32; no new candidates",
+  "code_sha256": {
+    "tools/cdf_extent_reward.py": "8bfaa087d0e5d801e7c564d54e6e9cdc3584c5ba93404093023ce253fa4f4262",
+    "tools/tubedetr_cdf_qualification.py": "0507ca0d993d2e4ab4d57746b453e2f702f733eed88cbad6be03bda04cb064f6",
+    "tools/mask_reward.py": "74ae71bea73c239837b94eec052357ee81cf291bdd17aafe04d9460b3158ee14"
+  },
+  "parent_final_seals": {
+    "results/tubedetr_reward_extent": "05a7f4c9b732514a123e547abb97a54bd0c5acc94728db0d3dfb3058a99cc31e",
+    "results/tubedetr_mask_reward_qualification": "428ec82d0e37491b6dc14faa8c39aabcfc1a16cc0266507538c56adc33347735",
+    "results/tubedetr_correspondence": "5990a37e6f71514085c8cc172dce2256d4148b0cbc9110903da26d5d6eaa2415"
+  },
+  "reference_seals": {
+    "base": "45854bea1ccd7432f84a1e206f6adca9fac2c1a49629f4795f314c1498509c29",
+    "mask": "bf97a886f220ae4c6a4db819de6c84b4ed39526585b6366c5d6aefa745cfb6f7",
+    "transport": "190dd53025c2f3c1df12b6e5e01a4128fb8d862fa9b0c6bc8cb5ae78071d17e8"
+  },
+  "transport_reconstruction_atol": 1e-06,
+  "qualification": "pair_accuracy>=Geometry AND top1_IoU_regret<=Geometry AND at least one strict improvement; original tie-aware aggregation",
+  "reward": "negative mean absolute deviation of valid-image marginalCDF at left/right/top/bottom from [.025,.975,.025,.975]",
+  "mass": "original selected native softmask OR frozen other-frame transported support, no threshold or GT selection",
+  "CDF_precision": "float64",
+  "outside_image": "CDF saturates; no geometric penalty, no candidate filtering",
+  "zero_support": "zero reward, all candidate ties retained",
+  "Direct_same_continuous_CDF_gradient": true,
+  "no_GPU": true,
+  "new_teacher_forwards": 0,
+  "student_fits": 0,
+  "parameter_candidates": 0,
+  "maximum_query_banks": 128,
+  "GT_only_after_complete_reward_seal": true,
+  "no_automatic_adaptation": true,
+  "no_automatic_full_evaluation": true,
+  "development_exposure_disclosed": true,
+  "not_independent_confirmation": true,
+  "protocol_version": 2,
+  "engineering_recovery_sha256": "4bb84e99a06b555bb1153d4ac4be30e407c0df3699be19e58150515ea79c9dca"
+}

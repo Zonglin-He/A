@@ -1,0 +1,108 @@
+{
+  "status": "complete_frozen_reward_diagnosis",
+  "queries": 16,
+  "metrics": {
+    "SourceStrong": {
+      "v": 18.401566273370452,
+      "s": 41.04339179624309,
+      "t": 35.75999052724047
+    },
+    "CandidateRerank": {
+      "v": 16.140793365608246,
+      "s": 37.154868792038286,
+      "t": 35.75999052724047
+    },
+    "PolicyCenter": {
+      "v": 17.888129462714925,
+      "s": 40.14612347525085,
+      "t": 35.75999052724047
+    },
+    "AllStartDirect": {
+      "v": 16.59894330918216,
+      "s": 37.64562755506388,
+      "t": 35.75999052724047
+    }
+  },
+  "reward_ranks": {
+    "support_only": {
+      "pair_accuracy": 0.44358974358974357,
+      "spearman": -0.1541458541458541
+    },
+    "association_only": {
+      "pair_accuracy": 0.4421245421245421,
+      "spearman": -0.17262737262737263
+    },
+    "protection_only": {
+      "pair_accuracy": 0.5608058608058608,
+      "spearman": 0.13646353646353646
+    },
+    "without_protection": {
+      "pair_accuracy": 0.4472527472527472,
+      "spearman": -0.12847152847152843
+    },
+    "full_reward": {
+      "pair_accuracy": 0.45934065934065926,
+      "spearman": -0.10199800199800203
+    }
+  },
+  "field_quality": {
+    "observed": {
+      "mean_enrichment": 0.08094050603155684,
+      "weighted_enrichment": 0.31606483557044807,
+      "positive_hypothesis_fraction": 0.4098484848484848,
+      "confidence": 0.12592302531455501
+    },
+    "unobserved": {
+      "mean_enrichment": 0.05773689316698429,
+      "weighted_enrichment": 0.2320776304955052,
+      "positive_hypothesis_fraction": 0.373219376980647,
+      "confidence": 0.05830599215091061
+    }
+  },
+  "mean_candidate_parts_std": [
+    0.029759732700767927,
+    0.01253176384489052,
+    0.0013996902380313259,
+    0.007750711072731065
+  ],
+  "mean_Direct_reward_improvement": 0.0003706216812133789,
+  "differences": {
+    "PolicyCenter-AllStartDirect": {
+      "queries": 16,
+      "parents": 16,
+      "mean_pp": 1.289186153532762,
+      "CI95_pp": [
+        0.30289674938157257,
+        2.387958106047115
+      ],
+      "equal_parent_mean_pp": 1.2891861535327618,
+      "wins": 8,
+      "losses": 5,
+      "ties": 3,
+      "below_minus5": 0
+    },
+    "AllStartDirect-SourceStrong": {
+      "queries": 16,
+      "parents": 16,
+      "mean_pp": -1.8026229641882836,
+      "CI95_pp": [
+        -3.554597433885176,
+        -0.2851974770319961
+      ],
+      "equal_parent_mean_pp": -1.8026229641882836,
+      "wins": 5,
+      "losses": 8,
+      "ties": 3,
+      "below_minus5": 2
+    }
+  },
+  "same_reward_and_U": true,
+  "all21_common_candidate_starts": true,
+  "initial_and_both_step_checkpoints_available": true,
+  "old_eight_Direct_bitexact": true,
+  "Direct_not_tuned": true,
+  "not_equal_compute": true,
+  "posthoc_diagnostic_not_independent_confirmation": true,
+  "GT_only_after_complete_followup_seal": true,
+  "no_new_reward_or_teacher": true
+}

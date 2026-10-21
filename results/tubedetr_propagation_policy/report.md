@@ -1,0 +1,283 @@
+# TubeDETR＋轻量序列传播策略：固定16条初试
+
+先封存最多4候选，再离线核验未观测候选上界；只以事前总体条件接续全部16条，不按GT筛query或调参。重网络仅公共准备一次；v0小模块6零初始权重、Source先验.7、2路径×最多3更新、lr.1/clip1/先验KL.05；固定不含记忆自奖励的代理分数下降则回退停止。OPD在硬学生历史上逐状态枚举四个动作的forward KL；固定路径KD在冻结伪教师历史；DirectSoft为完整梯度soft-history forward KL，不声称松弛是离散历史的精确梯度。固定图精确最大化共同固定检查评分，不奖励记忆自匹配。身份漂移仅以低IoU延续代理诊断，不冒充身份标注。
+
+{
+  "status": "complete_finite_cached_propagation_policy_trial",
+  "queries": 16,
+  "coverage": {
+    "status": "complete",
+    "queries": 16,
+    "eligible_queries": 16,
+    "unobserved_GT_frames": 754,
+    "eligible_unobserved_frames": 458,
+    "candidate_oracle_minus_Source_unobserved_pp": 4.874564232913844,
+    "improvable_by_5pp_frames": 137,
+    "reward_pair_accuracy": 0.6962199042501399,
+    "reward_spearman": 0.3923900911726915,
+    "memory_minus_no_memory_unobserved_pp": 0.008582258456537456,
+    "static_metrics": {
+      "SourceStrong": {
+        "v": 18.401566273370452,
+        "s": 41.04339179624309,
+        "t": 35.75999052724047
+      },
+      "EvidenceMemory": {
+        "v": 14.828005831155055,
+        "s": 33.96516226787165,
+        "t": 35.75999052724047
+      },
+      "EvidenceNoMemory": {
+        "v": 14.821857429571933,
+        "s": 33.95607629664326,
+        "t": 35.75999052724047
+      },
+      "FixedGraph": {
+        "v": 15.157105800844734,
+        "s": 34.73968919068844,
+        "t": 35.75999052724047
+      }
+    },
+    "proceed_to_all16_adaptation": true,
+    "criterion": "Predeclared whole-panel scientific routing only: oracle gain>=1pp; reliable unobserved frames exist; feedback pair>0.5 and Spearman>0. No GT in method stop/revert/candidate selection",
+    "oracle_unrealizable_upper_bound": true,
+    "GT_offline_only": true,
+    "not_independent_confirmation": true
+  },
+  "metrics": {
+    "SourceStrong": {
+      "v": 18.401566273370452,
+      "s": 41.04339179624309,
+      "t": 35.75999052724047
+    },
+    "InitialPolicy": {
+      "v": 18.401566273370452,
+      "s": 41.04339179624309,
+      "t": 35.75999052724047
+    },
+    "FixedGraph": {
+      "v": 15.157105800844734,
+      "s": 34.73968919068844,
+      "t": 35.75999052724047
+    },
+    "EvidenceMemory": {
+      "v": 14.828005831155055,
+      "s": 33.96516226787165,
+      "t": 35.75999052724047
+    },
+    "EvidenceNoMemory": {
+      "v": 14.821857429571933,
+      "s": 33.95607629664326,
+      "t": 35.75999052724047
+    },
+    "OPD": {
+      "v": 18.133403663625497,
+      "s": 40.46651085147403,
+      "t": 35.75999052724047
+    },
+    "FixedPathKD": {
+      "v": 18.401566273370452,
+      "s": 41.04339179624309,
+      "t": 35.75999052724047
+    },
+    "DirectSoft": {
+      "v": 17.92736258397248,
+      "s": 40.2475922043427,
+      "t": 35.75999052724047
+    },
+    "LegacyLayout3Direct": {
+      "v": 18.503029444136352,
+      "s": 40.37804209386932,
+      "t": 35.75999052724047
+    }
+  },
+  "unobserved_dense_sIoU": {
+    "SourceStrong": 41.06633617480787,
+    "InitialPolicy": 41.06633617480787,
+    "FixedGraph": 34.79615432590085,
+    "EvidenceMemory": 33.99163145665972,
+    "EvidenceNoMemory": 33.98212288211838,
+    "OPD": 40.48105376201663,
+    "FixedPathKD": 41.06633617480787,
+    "DirectSoft": 40.266662775409806,
+    "LegacyLayout3Direct": 40.414538803106616
+  },
+  "observed_sIoU": {
+    "SourceStrong": 40.8551046287888,
+    "InitialPolicy": 40.8551046287888,
+    "FixedGraph": 29.065664007524774,
+    "EvidenceMemory": 29.065664007524774,
+    "EvidenceNoMemory": 29.065664007524774,
+    "OPD": 36.49030591044436,
+    "FixedPathKD": 40.8551046287888,
+    "DirectSoft": 36.048119912424504,
+    "LegacyLayout3Direct": 37.3865567227118
+  },
+  "far_unobserved_sIoU": {
+    "SourceStrong": 59.286286987610204,
+    "InitialPolicy": 59.286286987610204,
+    "FixedGraph": 52.49401619313261,
+    "EvidenceMemory": 51.96531649943509,
+    "EvidenceNoMemory": 51.96531649943509,
+    "OPD": 59.286286987610204,
+    "FixedPathKD": 59.286286987610204,
+    "DirectSoft": 59.286286987610204,
+    "LegacyLayout3Direct": 56.31847236431242
+  },
+  "unobserved_degraded_query_fraction": {
+    "SourceStrong": 0.0,
+    "InitialPolicy": 0.0,
+    "FixedGraph": 0.4375,
+    "EvidenceMemory": 0.4375,
+    "EvidenceNoMemory": 0.4375,
+    "OPD": 0.125,
+    "FixedPathKD": 0.0,
+    "DirectSoft": 0.1875,
+    "LegacyLayout3Direct": 0.3125
+  },
+  "low_IoU_continuation": {
+    "SourceStrong": {
+      "unobserved_low_IoU_fraction": 0.5753908392465378,
+      "bad_after_bad": 0.9086240310077519
+    },
+    "InitialPolicy": {
+      "unobserved_low_IoU_fraction": 0.5753908392465378,
+      "bad_after_bad": 0.9086240310077519
+    },
+    "FixedGraph": {
+      "unobserved_low_IoU_fraction": 0.6328492628675585,
+      "bad_after_bad": 0.8622604207802144
+    },
+    "EvidenceMemory": {
+      "unobserved_low_IoU_fraction": 0.640062313182024,
+      "bad_after_bad": 0.9255707449098661
+    },
+    "EvidenceNoMemory": {
+      "unobserved_low_IoU_fraction": 0.640062313182024,
+      "bad_after_bad": 0.9255707449098661
+    },
+    "OPD": {
+      "unobserved_low_IoU_fraction": 0.5753908392465378,
+      "bad_after_bad": 0.8729492522466901
+    },
+    "FixedPathKD": {
+      "unobserved_low_IoU_fraction": 0.5753908392465378,
+      "bad_after_bad": 0.9086240310077519
+    },
+    "DirectSoft": {
+      "unobserved_low_IoU_fraction": 0.5753908392465378,
+      "bad_after_bad": 0.8729492522466901
+    },
+    "LegacyLayout3Direct": {
+      "unobserved_low_IoU_fraction": 0.5615619062310239,
+      "bad_after_bad": 0.8478088578088578
+    }
+  },
+  "differences": {
+    "OPD-FixedPathKD": {
+      "queries": 16,
+      "parents": 16,
+      "mean_pp": -0.2681626097449531,
+      "CI95_pp": [
+        -1.0010664895328587,
+        0.23680665744367355
+      ],
+      "equal_parent_mean_pp": -0.2681626097449531,
+      "wins": 1,
+      "losses": 2,
+      "ties": 13,
+      "below_minus5": 0
+    },
+    "OPD-DirectSoft": {
+      "queries": 16,
+      "parents": 16,
+      "mean_pp": 0.2060410796530139,
+      "CI95_pp": [
+        0.0,
+        0.6181232389590418
+      ],
+      "equal_parent_mean_pp": 0.2060410796530139,
+      "wins": 1,
+      "losses": 0,
+      "ties": 15,
+      "below_minus5": 0
+    },
+    "OPD-FixedGraph": {
+      "queries": 16,
+      "parents": 16,
+      "mean_pp": 2.9762978627807612,
+      "CI95_pp": [
+        -5.479849547956214,
+        11.474994630695006
+      ],
+      "equal_parent_mean_pp": 2.9762978627807612,
+      "wins": 7,
+      "losses": 4,
+      "ties": 5,
+      "below_minus5": 2
+    },
+    "OPD-SourceStrong": {
+      "queries": 16,
+      "parents": 16,
+      "mean_pp": -0.2681626097449531,
+      "CI95_pp": [
+        -1.0010664895328587,
+        0.23680665744367355
+      ],
+      "equal_parent_mean_pp": -0.2681626097449531,
+      "wins": 1,
+      "losses": 2,
+      "ties": 13,
+      "below_minus5": 0
+    }
+  },
+  "execution_cost": {
+    "OPD": {
+      "mean_seconds": 0.20726932666730136,
+      "median_seconds": 0.16636974271386862,
+      "P90_seconds": 0.19855490513145924,
+      "mean_attempted_updates": 3.0,
+      "mean_accepted_updates": 2.9375,
+      "paths_per_update": 2,
+      "max_backwards": 3,
+      "heavy_calls": 0
+    },
+    "FixedPathKD": {
+      "mean_seconds": 0.05072445113910362,
+      "median_seconds": 0.050428940914571285,
+      "P90_seconds": 0.05434903595596552,
+      "mean_attempted_updates": 3.0,
+      "mean_accepted_updates": 3.0,
+      "paths_per_update": 2,
+      "max_backwards": 3,
+      "heavy_calls": 0
+    },
+    "DirectSoft": {
+      "mean_seconds": 0.32171253161504865,
+      "median_seconds": 0.31636031391099095,
+      "P90_seconds": 0.3463276023976505,
+      "mean_attempted_updates": 3.0,
+      "mean_accepted_updates": 2.9375,
+      "paths_per_update": 2,
+      "max_backwards": 3,
+      "heavy_calls": 0
+    }
+  },
+  "common_preparation": {
+    "mean_heavy_source_seconds": 0.4063743182341568,
+    "mean_evidence_candidate_seconds": 0.35977048007771373,
+    "source_decoder_calls_per_query": 1,
+    "new_teacher_calls": 0,
+    "teacher_and_Strong_are_exact_cached_not_new_end_to_end": true
+  },
+  "frozen_time": true,
+  "original_plus_new_output_module": true,
+  "not_original_algorithm_equivalent_acceleration": true,
+  "no_GT_memory_gating": true,
+  "development_exposure_disclosed": true,
+  "no_parameter_search": true,
+  "Direct_not_fairly_tuned": true,
+  "DirectSoft_full_gradients_and_relaxation_disclosed": true,
+  "not_independent_confirmation": true,
+  "not_full_population": true
+}

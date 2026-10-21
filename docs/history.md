@@ -1,3 +1,15 @@
+2026-10-21 附件v0固定16条完整：候选oracle+4.8746pp、一般排序69.62%，但替代Source的315次反馈top1仅108胜207负；OPD18.1334低于Source18.4016，固定KD不改框，Direct17.9274。OPD−Direct+.2060pp仅1条vIoU正差/15并列，不宣称优势。缓存适应0重decoder，OPD中位.166s；停止扩大数据/策略复杂度，保留负结果及独立分析。见[终态分析](../results/tubedetr_propagation_policy/analysis.md)。
+
+2026-10-21 按用户附件固定轻量序列传播头v0：三候选、六零权重、Source先验.7、2路径×最多3轮、lr.1、完整Direct软历史梯度、无记忆自奖励的固定检查/回退。先同16条候选上界/反馈/有无记忆诊断，再按冻结整体条件决定轻量对照；不筛query、不新全量。原模型加输出模块，不称原decoder等价加速。早期准备已停并归档，旧调参不恢复。见[实现协议](tubedetr_propagation_policy.md)和[用户v0规范](tubedetr_propagation_v0_spec.md)。
+
+2026-10-21 通用原型完整诊断：全21起点Direct旧8路径逐位回归，优化reward提升但定位下降；支持/关联候选pair约44%，保护约56%，低置信尺度修正9/16回Source仍低于SourceStrong。策略中心较保守不能称OPD探索优势。保留全部负结果、不扩大训练/全量；下一问题仅普通学生特征的前景背景辨别，尚未实施。详见[置信与下一资格](tubedetr_universal_confidence.md)。
+
+2026-10-21 通用TubeDETR初试16条完整：实际候选有差异且oracle较好，但当前全轨迹奖励pair排序0.4593/Spearman−0.102，选出结果低于SourceStrong。新增相同冻结奖励/U的16条分解，并从全部21共同候选出发补齐Direct两步与所有checkpoint（原8起点终点逐位回归），避免不充分基线；无新奖励/调参/全量。详见[分解与强Direct](tubedetr_universal_diagnosis.md)。
+
+2026-10-21 用户将主线改为通用空间证据传播→LayerNorm参数梯度子空间→真实完整轨迹→统一奖励→保留分量的策略搜索，先实现TubeDETR版本。冻结同16条、21候选+8真实新中心和8起点Direct2步的有界接口初试；时间固定Strong、不使用旧query residual/E_Ref输出修正，核心与适配器隔离。不是已确认的新蒸馏或跨骨干通用性。CDF128已完整失败；未运行估计器准备归档。详见[TubeDETR通用版本](tubedetr_universal_trial.md)。
+
+2026-10-21 按范围失配证据实现并冻结原Vid128内容四边CDF资格：原生软mask与封存跨帧支持两个信号，固定2.5%/97.5%，同Direct连续梯度，无新教师/GPU/适应/参数搜索；工程61项通过。全部奖励封存后独立GT评分，旧统计回归，不自动适应或全量。详见[CDF资格](tubedetr_cdf.md)。
+
 2026-10-21 独立CPU范围诊断128/128完整：在教师较好的61条，MaskDice更频繁选择小于GT的框、提高框内精度但降低GT范围覆盖及IoU；原所有regret精确复核。区域mask Dice与STVG矩形IoU并非等价，数学反例与真实描述性分解分别保留。纠正跨帧80.85%为GT矩形端点包含率、非像素身份真值。下一轮限定内容边界CDF资格假设，尚未实现/冻结，不自动适应或全量。详见[范围诊断与决策](tubedetr_reward_extent.md)。
 
 2026-10-21 跨帧支持传递资格128/128完整：TransportDice排序74.2740%低于几何74.9952%，top1 regret高2.352803pp，未通过。62/1024观测支持为空；GT条件对应精度80.85%不能替代奖励有效性。未做适应或扩大搜索；后续先离线分解教师污染、覆盖与时间间隔，保留负结果。详见[完整资格](tubedetr_correspondence.md)。
