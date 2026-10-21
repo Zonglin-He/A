@@ -160,3 +160,15 @@ A OPD7条、B OPD/Direct各6条v>5pp下降，全部公开；B未观测GT替换29
 独立只读64保存trace审计通过660配对field/1984 signed行；A/B OPD outer1/2/3分布37/14/13及38/13/13，多数首次outer因S回滚而未刷新，两者各9query完整30步。B margin同保存history代数：legacy6平均+1.2435、新2+.1418、prior1.3332，isE+.9254，64/64 isE权重负、58/64 negative_guard权重负，不能把增加替换全部归因新证据或称因果消融。完整无新GT/路径/Q的机制审计公开mechanism.json。
 
 A/B证据策略、精确H4反馈与全部HC64正负结果已公开并逐文件核验：提交[c16760ec](https://github.com/Zonglin-He/A/commit/c16760ecbf0b4dea9a35e8717e0d70f40633db91)，main/research均freshCAS非强制快进，533文件/35,097,468字节与远端Git blob SHA256/tree一致，原历史保留。公开完整匿名指标/严重损伤/logit与实际优化轨迹聚合/无GT保存状态机制审计及其复现脚本；不上传数据、GT坐标、mask/特征/轨迹张量、私有ID或权重。没有把弱点估计登记为OPD优势，唯一主方法与formalVid/CG暂停不变。发布回执见docs/publication.json，由随后文档提交保存。
+
+
+2026-10-21 用户授权先做HC64单次纠正价值与耗时拆分，再按结果决定是否进入纠正轨迹蒸馏。独立correction_value使用同64完整bank/最终B_OPD八权重/Q4/Strong，冻结参数；单条独立seed41学生采样路径，固定Strong物理节点区间四分位每格至多一分歧点(最多4)，必须有后续active未观测节点，不看GT。独立Student/Teacher/Random分支只强制当前一次，其后相同学生/噪声各自memory续走；2动作Teacher=Random必然，policy/noise-only分歧单列。主评价严格排除强制点，预选无tailGT点与空query差0保留全64，按query平均与10000父bootstrap；Teacher−Student及Teacher−Random两主tail95CI下界都>0才进入新蒸馏，否则保存负/不确定结果停止，不改变反馈/预算。16项新core/score合成通过，同prefix/相同原动作完整复现/无GT选点/空值与支持/随机性核验通过，独立只读源码审查无阻断。正式Vid/CG与注册主配置不改。
+
+另固定前16缓存B三组的原样成本重放已完成，48/48所有权重/梯度/loss/接纳/Adam哈希/最终框逐位一致，exclusive计时守恒残差0，6合成通过。profile指纹3c83d74c7d7486ff1d30b1b44acddf222f9aa7974a9e3bea5f8258b61c2aafe7；耗时只拆当前实现，不给新精度成绩；首OPD冷进程启动峰单列，不当作接纳开销或方法速度退化。新增重网络/decoder/专家/RGB和GT读取均0。
+
+
+2026-10-21 HC64单点纠正价值实验已实际完成并评分：指纹eba054b4ba27b85a02c522a421f52575ce30655b01000f1e3a2d463cf7c1ec3f，seal SHA1e2641f329fd1689326cd27208f6336e1e9c9f34b25bc4213dd8d87b2e0bd379；62/64query预选237点，2无点仍保留，203点/60query主tail有GT，所有预选无GT点差0按query汇总。先全64封存后GT，839dense核验最大1.11e−15，CurrentGreedy逐位/指标等旧B_OPD，115源/default/formal paused哈希不变。22新合成与70原工程通过，无新参数更新/模型/decoder/专家/RGB。
+
+排除强制点的active未观测tail：Teacher−Student+.0078826pp[0,.0236479]，1升0降63同；Random−Student+.0716693pp[0,.2071252]，2升0降62同；Teacher−Random−.0637866pp[−.1913599,0]。教师只改变3/2814次后续active未观测动作，全在随后3节点内，第4及以后0/2276动作/GT定位变化。237点中93为2动作、144为3动作，167Teacher=Random完整相同；101真策略分歧的Teacher尾部收益0，136仅采样分歧有极小正信号。无tail跨.5恢复/损坏或query严重退化，绝大多数没变，不能称有效保护。辅助完整v+.0539pp区间跨零且包含强制点，不能当后续收益。资源gate=inconclusive/false，两主CI下界没有均>0，按用户顺序不进入新纠正轨迹蒸馏、不改反馈/预算/记忆。运行封存21.66秒仅缓存阶段，完整正负/所有分层/成本见results/correction_value_hc64。
+
+独立保存状态审计711分支逐位prefix/incoming/phi/noise通过，无新路径/Q/GT评分。237/237强制后memory变化，2814后续节点memory/logp全变化；far memory差中位.00586、relative-logit扰动.000390、采样winner margin1.05597，previous-feature/link差far均0，实际far动作0变化。无噪声argmax仍17/2814、far5/2276变化，不能泛称所有读出不敏感。已评分174强制点Teacher即时IoU均+2.5067pp(92升72降10同)，92个局部改善点后续主tail动作均不变，说明当前状态影响未兑现为后续纠正，而非memory未传。公开state_flow.json与复现脚本，原推理/评分源哈希不变。
