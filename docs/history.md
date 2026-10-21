@@ -116,3 +116,6 @@ HC64真实状态对照已公开并逐文件核验：提交 [4a9b6a0f](https://gi
 
 
 2026-10-21 20:04北京时间轻量传播策略HC64已真实完成并评分：运行指纹56f2951ad16528eae281cf51002ac05f196cae84a7216b1d045e97830e91e16b，全部64来源预测/路径/候选/receipt先封存后GT，448项官方/独立dense核验误差≤9.99e-16。固定3轮×2路径，三适应组各3次实际Adam/反向，只更新query内6权重；Direct完整软记忆/关联/目标反传，固定KD只生成两教师路径再复用。重网络、decoder、专家、RGB调用0，正式paused及注册配置哈希不变。ERefStrong/Geometry/FixedPropagation/OPD/FixedKD/Direct完整vIoU为31.0918/31.3868/31.1687/31.2165/31.2716/31.2826%，未观测sIoU50.7055/51.2469/51.3409/51.5249/51.5584/51.6015%；OPD相对E+0.1248pp（区间跨零），对FixedKD−0.0551、Direct−0.0661pp，未建立OPD优势。OPD 10改善/15退步/39不变，所有新组共同H035严重下降约10.45pp，不能仅归因OPD。全64临时权重均更新，OPD实际改变158未观测节点；但与固定KD最终仅8query/20节点不同，vIoU仅4query不同。事后candidate GT诊断189/1365未观测节点存在>5pp更好候选，分布45query；固定未观测节点GT读出vIoU32.9824仅作oracle诊断，未在线选择。共享固定证据/候选CPU均耗.0984/.0335秒，OPD.0621秒，含4组输出的64运行阶段29.01秒，非端到端部署成本。还核实本版qE可由显式thetaE=(0,.1,1,.1,.1,0)精确表示，不能声称必须蒸馏才能得到教师策略；FixedPropagation是强基线。新结果results/propagation_opd_hc64及ANALYSIS，保存全部正负与失败；不续扫参、不改主方法、不恢复formal/CG。
+
+
+HC64轻量传播策略与完整负/正结果已公开并逐文件核验：提交[7d778f9d](https://github.com/Zonglin-He/A/commit/7d778f9d1f18273454efd44f310913b3f95e7bb1)，main/research均freshCAS非强制快进，465文件/13,030,375字节与远端Git blob SHA256/tree一致、历史保留。107项新数学/缓存工程检查和70项原工程检查通过；新方法真实更新/完整梯度、所有inactive fallback及实际计数均核验。全部匿名query正负指标、严重损伤和候选oracle边界公开；不含数据、GT坐标、mask/特征/临时状态或私有ID。档案与发布回执在后续文档提交同步；正式队列保持暂停，不继续参数扫描。
