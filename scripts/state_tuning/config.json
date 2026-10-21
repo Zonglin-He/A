@@ -1,0 +1,52 @@
+{
+  "queries": 64,
+  "arms": [
+    "StateOPD",
+    "Direct",
+    "DirectMC",
+    "DirectFullRef"
+  ],
+  "selected": {
+    "seed": 41,
+    "sigma": 0.31,
+    "tau": 0.00037,
+    "basis_dimensions": 256,
+    "radius": null,
+    "lr": 0.014,
+    "opd_rounds": 40,
+    "direct_steps": 660,
+    "forward_budget": 1321,
+    "samples": 32
+  },
+  "reward": "unchanged native mask projection and whole trajectory guard",
+  "calibration_rule": {
+    "ratios": [
+      0.5,
+      1.0,
+      2.0
+    ],
+    "scale_reference": "median L2 of exact original geometric content / sqrt(2048)",
+    "selection": "largest sigma with mean candidate guard-zero fraction >=0.8; else smallest",
+    "temperature": "max(1e-6, median per-query std(candidate U)), two significant digits",
+    "seed": 41,
+    "candidates": 32,
+    "labels": false
+  },
+  "summaries": [
+    {
+      "sigma": 0.15,
+      "median_std_U": 0.00015983896344392065,
+      "mean_guard_zero_fraction": 0.94482421875
+    },
+    {
+      "sigma": 0.31,
+      "median_std_U": 0.0003663983091802879,
+      "mean_guard_zero_fraction": 0.88916015625
+    },
+    {
+      "sigma": 0.61,
+      "median_std_U": 0.0012105748306937068,
+      "mean_guard_zero_fraction": 0.78515625
+    }
+  ]
+}
