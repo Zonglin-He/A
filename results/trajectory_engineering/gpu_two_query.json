@@ -1,0 +1,457 @@
+{
+  "status": "pass",
+  "queries": 2,
+  "all_same_acceptance_and_final_modes": true,
+  "rows": [
+    {
+      "query": 1,
+      "reward_max_abs_error": 1.6653345369377348e-16,
+      "gradient_max_abs_error": 5.551115123125783e-17,
+      "repeated_reward_timings": {
+        "dense_scalar": {
+          "seconds_per32": 0.03677263618446887,
+          "CUDA_stream_seconds_per32": 0.036763427734375
+        },
+        "sparse_scalar": {
+          "seconds_per32": 0.017227663705125452,
+          "CUDA_stream_seconds_per32": 0.017218812561035156
+        },
+        "sparse_batch": {
+          "seconds_per32": 0.0004365251865237951,
+          "CUDA_stream_seconds_per32": 0.0004325632095336914
+        }
+      },
+      "arms": {
+        "TrajectoryOPD": {
+          "state_max_abs_error": 0.0,
+          "boxes_max_abs_error": 0.0,
+          "same_final_mode": true,
+          "same_all_acceptance_decisions": true,
+          "same_callcounts": true,
+          "old_seconds": 4.445047477260232,
+          "new_seconds": 3.9962233006954193,
+          "old_evals": 248,
+          "new_evals": 248,
+          "profiling": {
+            "categories": {
+              "replay_setup": {
+                "calls": 1,
+                "evaluations": 1,
+                "host_wall_seconds": 0.035192349925637245,
+                "CUDA_stream_seconds": 0.03524240112304688
+              },
+              "decoder_forward": {
+                "calls": 248,
+                "evaluations": 248,
+                "host_wall_seconds": 3.6746131381951272,
+                "CUDA_stream_seconds": 3.670509342193602
+              },
+              "reward_forward": {
+                "calls": 31,
+                "evaluations": 248,
+                "host_wall_seconds": 0.02506424579769373,
+                "CUDA_stream_seconds": 0.026789983928203583
+              },
+              "policy_fit": {
+                "calls": 7,
+                "evaluations": 7,
+                "host_wall_seconds": 0.050699993036687374,
+                "CUDA_stream_seconds": 0.050066944122314445
+              }
+            },
+            "arm_wall_seconds": 3.9962233006954193,
+            "arm_CUDA_stream_seconds": 3.996187255859375,
+            "other_host_wall_seconds": 0.21065357374027371,
+            "other_CUDA_stream_seconds": 0.213578584492208,
+            "CUDA_events_enabled": true,
+            "scope": "Disjoint setup, decoder forward, reward forward, backward, and policy-fit intervals; arm totals enclose these intervals and are not additional costs. Host and CUDA intervals overlap and must not be added. CUDA intervals include stream launch gaps; setup separately contains its numerical checks. Other is the residual, including event bookkeeping, trace transfer, and scalar synchronization.",
+            "backward_scope": "Autograd of the complete reward through the frozen decoder to content state; includes reward and decoder backward"
+          }
+        },
+        "Direct": {
+          "state_max_abs_error": 0.0,
+          "boxes_max_abs_error": 0.0,
+          "same_final_mode": true,
+          "same_all_acceptance_decisions": true,
+          "same_callcounts": true,
+          "old_seconds": 0.9325584573671222,
+          "new_seconds": 0.8534720870666206,
+          "old_evals": 25,
+          "new_evals": 25,
+          "profiling": {
+            "categories": {
+              "replay_setup": {
+                "calls": 1,
+                "evaluations": 1,
+                "host_wall_seconds": 0.05459406692534685,
+                "CUDA_stream_seconds": 0.05458835220336914
+              },
+              "decoder_forward": {
+                "calls": 25,
+                "evaluations": 25,
+                "host_wall_seconds": 0.381333636585623,
+                "CUDA_stream_seconds": 0.3798914222717285
+              },
+              "reward_forward": {
+                "calls": 25,
+                "evaluations": 25,
+                "host_wall_seconds": 0.018927034456282854,
+                "CUDA_stream_seconds": 0.019651903986930848
+              },
+              "decoder_reward_backward": {
+                "calls": 10,
+                "evaluations": 10,
+                "host_wall_seconds": 0.1765477736480534,
+                "CUDA_stream_seconds": 0.17796825408935546
+              },
+              "policy_fit": {
+                "calls": 10,
+                "evaluations": 10,
+                "host_wall_seconds": 0.0042713177390396595,
+                "CUDA_stream_seconds": 0.003815839959308505
+              }
+            },
+            "arm_wall_seconds": 0.8534720870666206,
+            "arm_CUDA_stream_seconds": 0.8533757934570313,
+            "other_host_wall_seconds": 0.2177982577122748,
+            "other_CUDA_stream_seconds": 0.21746002094633887,
+            "CUDA_events_enabled": true,
+            "scope": "Disjoint setup, decoder forward, reward forward, backward, and policy-fit intervals; arm totals enclose these intervals and are not additional costs. Host and CUDA intervals overlap and must not be added. CUDA intervals include stream launch gaps; setup separately contains its numerical checks. Other is the residual, including event bookkeeping, trace transfer, and scalar synchronization.",
+            "backward_scope": "Autograd of the complete reward through the frozen decoder to content state; includes reward and decoder backward"
+          }
+        },
+        "DirectMulti": {
+          "state_max_abs_error": 0.0,
+          "boxes_max_abs_error": 0.0,
+          "same_final_mode": true,
+          "same_all_acceptance_decisions": true,
+          "same_callcounts": true,
+          "old_seconds": 2.0552114313468337,
+          "new_seconds": 2.0091645112261176,
+          "old_evals": 74,
+          "new_evals": 74,
+          "profiling": {
+            "categories": {
+              "replay_setup": {
+                "calls": 1,
+                "evaluations": 1,
+                "host_wall_seconds": 0.04742609988898039,
+                "CUDA_stream_seconds": 0.047422080993652346
+              },
+              "decoder_forward": {
+                "calls": 74,
+                "evaluations": 74,
+                "host_wall_seconds": 1.1067082644440234,
+                "CUDA_stream_seconds": 1.1020088911056516
+              },
+              "reward_forward": {
+                "calls": 74,
+                "evaluations": 74,
+                "host_wall_seconds": 0.05417031794786453,
+                "CUDA_stream_seconds": 0.05751228791475298
+              },
+              "decoder_reward_backward": {
+                "calls": 29,
+                "evaluations": 29,
+                "host_wall_seconds": 0.5323836524039507,
+                "CUDA_stream_seconds": 0.5351577262878419
+              },
+              "policy_fit": {
+                "calls": 29,
+                "evaluations": 29,
+                "host_wall_seconds": 0.012627230025827885,
+                "CUDA_stream_seconds": 0.012830592084676025
+              }
+            },
+            "arm_wall_seconds": 2.0091645112261176,
+            "arm_CUDA_stream_seconds": 2.0090137939453125,
+            "other_host_wall_seconds": 0.25584894651547074,
+            "other_CUDA_stream_seconds": 0.2540822155587379,
+            "CUDA_events_enabled": true,
+            "scope": "Disjoint setup, decoder forward, reward forward, backward, and policy-fit intervals; arm totals enclose these intervals and are not additional costs. Host and CUDA intervals overlap and must not be added. CUDA intervals include stream launch gaps; setup separately contains its numerical checks. Other is the residual, including event bookkeeping, trace transfer, and scalar synchronization.",
+            "backward_scope": "Autograd of the complete reward through the frozen decoder to content state; includes reward and decoder backward"
+          }
+        },
+        "DirectMC": {
+          "state_max_abs_error": 0.0,
+          "boxes_max_abs_error": 0.0,
+          "same_final_mode": true,
+          "same_all_acceptance_decisions": true,
+          "same_callcounts": true,
+          "old_seconds": 9.097499841824174,
+          "new_seconds": 9.037161813117564,
+          "old_evals": 256,
+          "new_evals": 256,
+          "profiling": {
+            "categories": {
+              "replay_setup": {
+                "calls": 1,
+                "evaluations": 1,
+                "host_wall_seconds": 0.04926338326185942,
+                "CUDA_stream_seconds": 0.04926131057739258
+              },
+              "decoder_forward": {
+                "calls": 256,
+                "evaluations": 256,
+                "host_wall_seconds": 4.217355515342206,
+                "CUDA_stream_seconds": 4.1988628473281855
+              },
+              "reward_forward": {
+                "calls": 256,
+                "evaluations": 256,
+                "host_wall_seconds": 0.2104619978927076,
+                "CUDA_stream_seconds": 0.2225670084953308
+              },
+              "decoder_reward_backward": {
+                "calls": 224,
+                "evaluations": 224,
+                "host_wall_seconds": 4.070038005709648,
+                "CUDA_stream_seconds": 4.082938406944275
+              },
+              "policy_fit": {
+                "calls": 7,
+                "evaluations": 7,
+                "host_wall_seconds": 0.047709481325000525,
+                "CUDA_stream_seconds": 0.04727327990531922
+              }
+            },
+            "arm_wall_seconds": 9.037161813117564,
+            "arm_CUDA_stream_seconds": 9.037091796875,
+            "other_host_wall_seconds": 0.4423334295861423,
+            "other_CUDA_stream_seconds": 0.4361889436244972,
+            "CUDA_events_enabled": true,
+            "scope": "Disjoint setup, decoder forward, reward forward, backward, and policy-fit intervals; arm totals enclose these intervals and are not additional costs. Host and CUDA intervals overlap and must not be added. CUDA intervals include stream launch gaps; setup separately contains its numerical checks. Other is the residual, including event bookkeeping, trace transfer, and scalar synchronization.",
+            "backward_scope": "Autograd of the complete reward through the frozen decoder to content state; includes reward and decoder backward"
+          }
+        }
+      }
+    },
+    {
+      "query": 2,
+      "reward_max_abs_error": 8.326672684688674e-17,
+      "gradient_max_abs_error": 1.249000902703301e-16,
+      "repeated_reward_timings": {
+        "dense_scalar": {
+          "seconds_per32": 0.03640659041702747,
+          "CUDA_stream_seconds_per32": 0.036401715087890626
+        },
+        "sparse_scalar": {
+          "seconds_per32": 0.01808591219596565,
+          "CUDA_stream_seconds_per32": 0.01807749786376953
+        },
+        "sparse_batch": {
+          "seconds_per32": 0.0005365458782762289,
+          "CUDA_stream_seconds_per32": 0.0005330560207366943
+        }
+      },
+      "arms": {
+        "TrajectoryOPD": {
+          "state_max_abs_error": 0.0,
+          "boxes_max_abs_error": 0.0,
+          "same_final_mode": true,
+          "same_all_acceptance_decisions": true,
+          "same_callcounts": true,
+          "old_seconds": 4.7857384737581015,
+          "new_seconds": 4.120380291249603,
+          "old_evals": 254,
+          "new_evals": 254,
+          "profiling": {
+            "categories": {
+              "replay_setup": {
+                "calls": 1,
+                "evaluations": 1,
+                "host_wall_seconds": 0.034221832640469074,
+                "CUDA_stream_seconds": 0.03421830368041992
+              },
+              "decoder_forward": {
+                "calls": 254,
+                "evaluations": 254,
+                "host_wall_seconds": 3.7878973274491727,
+                "CUDA_stream_seconds": 3.779610283851622
+              },
+              "reward_forward": {
+                "calls": 68,
+                "evaluations": 254,
+                "host_wall_seconds": 0.04957269364967942,
+                "CUDA_stream_seconds": 0.052946176052093494
+              },
+              "policy_fit": {
+                "calls": 6,
+                "evaluations": 6,
+                "host_wall_seconds": 0.038505792152136564,
+                "CUDA_stream_seconds": 0.03814608049392701
+              }
+            },
+            "arm_wall_seconds": 4.120380291249603,
+            "arm_CUDA_stream_seconds": 4.12034716796875,
+            "other_host_wall_seconds": 0.21018264535814524,
+            "other_CUDA_stream_seconds": 0.2154263238906875,
+            "CUDA_events_enabled": true,
+            "scope": "Disjoint setup, decoder forward, reward forward, backward, and policy-fit intervals; arm totals enclose these intervals and are not additional costs. Host and CUDA intervals overlap and must not be added. CUDA intervals include stream launch gaps; setup separately contains its numerical checks. Other is the residual, including event bookkeeping, trace transfer, and scalar synchronization.",
+            "backward_scope": "Autograd of the complete reward through the frozen decoder to content state; includes reward and decoder backward"
+          }
+        },
+        "Direct": {
+          "state_max_abs_error": 0.0,
+          "boxes_max_abs_error": 0.0,
+          "same_final_mode": true,
+          "same_all_acceptance_decisions": true,
+          "same_callcounts": true,
+          "old_seconds": 0.5448025269433856,
+          "new_seconds": 0.5159947802312672,
+          "old_evals": 15,
+          "new_evals": 15,
+          "profiling": {
+            "categories": {
+              "replay_setup": {
+                "calls": 1,
+                "evaluations": 1,
+                "host_wall_seconds": 0.050746627151966095,
+                "CUDA_stream_seconds": 0.050740833282470706
+              },
+              "decoder_forward": {
+                "calls": 15,
+                "evaluations": 15,
+                "host_wall_seconds": 0.220288987737149,
+                "CUDA_stream_seconds": 0.21954249572753903
+              },
+              "reward_forward": {
+                "calls": 15,
+                "evaluations": 15,
+                "host_wall_seconds": 0.010492144152522087,
+                "CUDA_stream_seconds": 0.011026432037353515
+              },
+              "decoder_reward_backward": {
+                "calls": 3,
+                "evaluations": 3,
+                "host_wall_seconds": 0.05640159407630563,
+                "CUDA_stream_seconds": 0.058016191482543944
+              },
+              "policy_fit": {
+                "calls": 3,
+                "evaluations": 3,
+                "host_wall_seconds": 0.001427268609404564,
+                "CUDA_stream_seconds": 0.0005238720048218966
+              }
+            },
+            "arm_wall_seconds": 0.5159947802312672,
+            "arm_CUDA_stream_seconds": 0.5159396362304688,
+            "other_host_wall_seconds": 0.17663815850391984,
+            "other_CUDA_stream_seconds": 0.17608981169573967,
+            "CUDA_events_enabled": true,
+            "scope": "Disjoint setup, decoder forward, reward forward, backward, and policy-fit intervals; arm totals enclose these intervals and are not additional costs. Host and CUDA intervals overlap and must not be added. CUDA intervals include stream launch gaps; setup separately contains its numerical checks. Other is the residual, including event bookkeeping, trace transfer, and scalar synchronization.",
+            "backward_scope": "Autograd of the complete reward through the frozen decoder to content state; includes reward and decoder backward"
+          }
+        },
+        "DirectMulti": {
+          "state_max_abs_error": 0.0,
+          "boxes_max_abs_error": 0.0,
+          "same_final_mode": true,
+          "same_all_acceptance_decisions": true,
+          "same_callcounts": true,
+          "old_seconds": 1.003702675923705,
+          "new_seconds": 0.9633385739289224,
+          "old_evals": 36,
+          "new_evals": 36,
+          "profiling": {
+            "categories": {
+              "replay_setup": {
+                "calls": 1,
+                "evaluations": 1,
+                "host_wall_seconds": 0.0475950101390481,
+                "CUDA_stream_seconds": 0.047589790344238284
+              },
+              "decoder_forward": {
+                "calls": 36,
+                "evaluations": 36,
+                "host_wall_seconds": 0.5357366539537907,
+                "CUDA_stream_seconds": 0.5327357473373413
+              },
+              "reward_forward": {
+                "calls": 36,
+                "evaluations": 36,
+                "host_wall_seconds": 0.02605795254930854,
+                "CUDA_stream_seconds": 0.027516480028629303
+              },
+              "decoder_reward_backward": {
+                "calls": 8,
+                "evaluations": 8,
+                "host_wall_seconds": 0.1521678939461708,
+                "CUDA_stream_seconds": 0.1521449947357178
+              },
+              "policy_fit": {
+                "calls": 8,
+                "evaluations": 8,
+                "host_wall_seconds": 0.0037607066333293915,
+                "CUDA_stream_seconds": 0.00410601595044136
+              }
+            },
+            "arm_wall_seconds": 0.9633385739289224,
+            "arm_CUDA_stream_seconds": 0.9631448364257813,
+            "other_host_wall_seconds": 0.1980203567072749,
+            "other_CUDA_stream_seconds": 0.19905180802941325,
+            "CUDA_events_enabled": true,
+            "scope": "Disjoint setup, decoder forward, reward forward, backward, and policy-fit intervals; arm totals enclose these intervals and are not additional costs. Host and CUDA intervals overlap and must not be added. CUDA intervals include stream launch gaps; setup separately contains its numerical checks. Other is the residual, including event bookkeeping, trace transfer, and scalar synchronization.",
+            "backward_scope": "Autograd of the complete reward through the frozen decoder to content state; includes reward and decoder backward"
+          }
+        },
+        "DirectMC": {
+          "state_max_abs_error": 0.0,
+          "boxes_max_abs_error": 0.0,
+          "same_final_mode": true,
+          "same_all_acceptance_decisions": true,
+          "same_callcounts": true,
+          "old_seconds": 7.645369101315737,
+          "new_seconds": 8.364599682856351,
+          "old_evals": 222,
+          "new_evals": 222,
+          "profiling": {
+            "categories": {
+              "replay_setup": {
+                "calls": 1,
+                "evaluations": 1,
+                "host_wall_seconds": 0.0467688231728971,
+                "CUDA_stream_seconds": 0.046765697479248046
+              },
+              "decoder_forward": {
+                "calls": 222,
+                "evaluations": 222,
+                "host_wall_seconds": 4.282294134609401,
+                "CUDA_stream_seconds": 4.264582275390623
+              },
+              "reward_forward": {
+                "calls": 222,
+                "evaluations": 222,
+                "host_wall_seconds": 0.19326517870649695,
+                "CUDA_stream_seconds": 0.2071541122794152
+              },
+              "decoder_reward_backward": {
+                "calls": 160,
+                "evaluations": 160,
+                "host_wall_seconds": 3.355782149825245,
+                "CUDA_stream_seconds": 3.3614043207168596
+              },
+              "policy_fit": {
+                "calls": 5,
+                "evaluations": 5,
+                "host_wall_seconds": 0.035734848119318485,
+                "CUDA_stream_seconds": 0.03558662366867066
+              }
+            },
+            "arm_wall_seconds": 8.364599682856351,
+            "arm_CUDA_stream_seconds": 8.364556640625,
+            "other_host_wall_seconds": 0.45075454842299223,
+            "other_CUDA_stream_seconds": 0.44906361109018356,
+            "CUDA_events_enabled": true,
+            "scope": "Disjoint setup, decoder forward, reward forward, backward, and policy-fit intervals; arm totals enclose these intervals and are not additional costs. Host and CUDA intervals overlap and must not be added. CUDA intervals include stream launch gaps; setup separately contains its numerical checks. Other is the residual, including event bookkeeping, trace transfer, and scalar synchronization.",
+            "backward_scope": "Autograd of the complete reward through the frozen decoder to content state; includes reward and decoder backward"
+          }
+        }
+      }
+    }
+  ],
+  "seconds": 65.98063207603991,
+  "GT_read": false,
+  "new_encoder_expert_forwards": 0,
+  "scope": "Two existing queries; same256 budget dense/scalar vs sparse/batched reward. Timings are incremental regression, not final full-panel deployment cost."
+}
