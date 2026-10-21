@@ -158,3 +158,5 @@ v0实现与完整HC64适应前筛查已公开并逐文件核验：提交[67621fb
 A OPD7条、B OPD/Direct各6条v>5pp下降，全部公开；B未观测GT替换297中144伤害(48.48%)，恢复48/560同时损坏51/805。S非降接纳不保证GT正确；不事后更换接纳。实际均13.3–13.9尝试步、12.5–13.1接受步，由原S回滚停，不声称跑满30。A/B OPD缓存后.146/.149秒，Direct.482/.702秒；全64六组封存158.44秒，未包含旧缓存重网络成本。全部预测/路径在GT前封存，无新增RGB/模型/decoder/专家；111冻结源、主配置及formal paused state哈希不变。结果results/evidence_policy_hc64含完整正负/间距/损失/退化，本轮完成后不追加扫描或恢复formal/CG，唯一主方法不变。
 
 独立只读64保存trace审计通过660配对field/1984 signed行；A/B OPD outer1/2/3分布37/14/13及38/13/13，多数首次outer因S回滚而未刷新，两者各9query完整30步。B margin同保存history代数：legacy6平均+1.2435、新2+.1418、prior1.3332，isE+.9254，64/64 isE权重负、58/64 negative_guard权重负，不能把增加替换全部归因新证据或称因果消融。完整无新GT/路径/Q的机制审计公开mechanism.json。
+
+A/B证据策略、精确H4反馈与全部HC64正负结果已公开并逐文件核验：提交[c16760ec](https://github.com/Zonglin-He/A/commit/c16760ecbf0b4dea9a35e8717e0d70f40633db91)，main/research均freshCAS非强制快进，533文件/35,097,468字节与远端Git blob SHA256/tree一致，原历史保留。公开完整匿名指标/严重损伤/logit与实际优化轨迹聚合/无GT保存状态机制审计及其复现脚本；不上传数据、GT坐标、mask/特征/轨迹张量、私有ID或权重。没有把弱点估计登记为OPD优势，唯一主方法与formalVid/CG暂停不变。发布回执见docs/publication.json，由随后文档提交保存。
