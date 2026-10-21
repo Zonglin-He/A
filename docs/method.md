@@ -17,3 +17,6 @@ Strong仍为已知时间参考：448原生后验与224六层平均各占一半�
 第三方来源/权重版本见[third_party.json](third_party.json)与[assets.json](assets.json)。历史OPD/Strong定义和负结果可由Git历史及[history.md](history.md)恢复，不删除旧源码、数据、权重或缓存。
 
 2026-10-21固定缓存融合验证另见[协议](tube_fusion.md)与[结果](../results/tube_fusion_hc64/ANALYSIS.md)。它只改变六层后验读出，空间不变；整体主对照为未适应Source，不以ERefStrong或Strong为必须超过的内部门槛。完整融合相对Source完整vIoU+2.8297pp，但没有建立比无反馈或置换更好的时间贡献；按本轮规则停止该反馈方向，不扫权重，不自动改变默认生产配置。
+
+
+最后两轮时间读出试验已完成，见[完整结果与研究定版](../results/interval_pool/ANALYSIS.md)。Global6是224两个offset每层分别经旧hull构造物理区间分布、再平均六层、原精确tIoU-MBR后执行原BoxFixed的研究读出；不运行448或额外decoder。替代的12完整区间等权mixture在HC64和双向32父冻结开发复核均未过判据，故不采用、不续扫权重。原Global6+BoxFixed相对Source有整体收益信号，但不能写成独立确认、OPD优势或空间反哺时间；生产Strong默认保持。轻量要求按包含同ReferDINO的实际共享捕获与各阶段成本报告，不能只报缓存后概率毫秒。

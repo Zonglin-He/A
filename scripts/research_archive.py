@@ -3,6 +3,13 @@ import argparse,json,hashlib,re
 from pathlib import Path
 ROOT=Path(__file__).resolve().parents[1]
 REQUIRED=['docs/tube_fusion.md','scripts/tube_fusion/config.json','results/tube_fusion_hc64/report.json','results/tube_fusion_hc64/report.md','results/tube_fusion_hc64/ANALYSIS.md','results/tube_fusion_hc64/signed_changes.tsv','results/tube_fusion_hc64/structure.json','results/boxfixed_native_smoke.json','results/tube_temporal_hc64/report.json','results/tube_temporal_hc64/report.md','results/tube_temporal_hc64/ANALYSIS.md','results/tube_temporal_hc64/signed_changes.tsv','results/tube_temporal_hc64/structure.json','configs/legacy_opd.json','docs/boxfixed_temporal.md','results/boxfixed_migration.json','README.md','AGENTS.md','configs/default.json','docs/history.md','docs/method.md','docs/evaluation.md','docs/assets.md','docs/assets.json','docs/third_party.json','docs/migration.json','results/report.md','results/evaluation.json','results/runtime.json','results/cost.json','results/migration_checks.json','results/score_regression.json','results/cleanup_checks.json','docs/data_integrity.md','results/data_integrity.json','docs/cleanup.json','docs/publication.json','docs/formal_evaluation.md','docs/cgstvg.md','results/formal/cohorts.json','results/formal/preflight.json','results/formal/report.md','results/formal/results.json','docs/split_audit.md','results/formal/split_audit.json']
+REQUIRED += ['docs/interval_pool.md','docs/temporal_audit.md','docs/temporal_sources.md',
+ 'scripts/interval_pool/config.json','results/interval_pool/ANALYSIS.md','results/interval_pool/decision.json',
+ 'results/interval_pool/cohort_provenance.json','results/interval_pool/engineering.json',
+ 'results/interval_pool/development/error_attribution.md','results/interval_pool/development/diagnostics.json',
+ 'results/interval_pool/development/signed_errors.tsv']
+for panel in ['intervention_hc64','recheck_hc2','recheck_vidstg']:
+ REQUIRED += [f'results/interval_pool/{panel}/{name}'for name in ['report.json','report.md','signed_changes.tsv']]
 def sha(f):return hashlib.sha256(f.read_bytes()).hexdigest()
 def check():
  errors=[];warnings=[]
@@ -26,6 +33,13 @@ def check():
    for arm,m in g['means'].items():
     for k,v in m.items():
      x=[row['values'][arm][k]for row in g['rows']if row['values'][arm][k]is not None];assert abs(sum(x)/len(x)-v)<1e-12
+  decision=json.loads((ROOT/'results/interval_pool/decision.json').read_text())
+  passed=all(all(g.values())for g in decision['direction_gates'].values())
+  assert decision['mix_passed_preregistered_two_direction_gate']==passed
+  assert decision['selected_research_temporal']==('Mix_MBR'if passed else'Global6_Hull_MBR')
+  for panel in ['intervention_hc64','recheck_hc2','recheck_vidstg']:
+   saved=json.loads((ROOT/f'results/interval_pool/{panel}/report.json').read_text())
+   assert saved['proof']['all_predictions_sealed_before_GT']and saved['proof']['official_dense_max_absolute_error']<2e-10
   snap=ROOT/'docs/sources.json'
   if snap.exists():
    old=json.loads(snap.read_text())['files'];changed=[p for p,h in old.items()if not(ROOT/p).is_file()or sha(ROOT/p)!=h]

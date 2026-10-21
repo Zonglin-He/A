@@ -65,6 +65,16 @@ TORCH_CUDA_ARCH_LIST=12.0 .conda/tubedetr/bin/python -B tools/setup.py --build
 
 本次只通过原冻结时间头读取已封存六层hidden，无新RGB/编码器/decoder/专家；缓存执行阶段6.515秒不代表部署耗时。实验脚本为`scripts/tube_fusion/run.py --run`及封存后独立`score.py --run-after-seal`，默认生产配置未自动切换；全部[正负变化](results/tube_fusion_hc64/signed_changes.tsv)、[固定空间分析](results/tube_fusion_hc64/report.md)和[协议](docs/tube_fusion.md)保留。
 
+## 最后两轮时间研究与轻量目标
+
+已完成[归因＋单方案干预＋双向冻结复核](results/interval_pool/ANALYSIS.md)。唯一新方案是12个完整物理区间分布等权混合，保留原精确MBR和BoxFixed；HC64相对旧Global6完整v/t下降3.2209/6.6697pp，两域各32父复核亦分别下降0.5715/2.3750pp、1.0251/1.7805pp。按预注册判据淘汰混合，不扫描第三组权重。
+
+研究保留**原BoxFixed＋Global6旧hull＋原MBR**。其相对未适应Source的完整vIoU点增量在HC32为+4.4253pp（CI跨零）、Vid32为+8.2804pp [3.5570,13.5748]；全划分历史已曝光，只能称冻结父隔离开发复核。生产默认仍Strong，研究读出没有自动注册。完整框传播与六层全局读出的收益，不能写成失败空间时间反馈或OPD的优势。
+
+新混合的Vid后验构造约179.75→5.00ms，但准确率下降，不能以更快替代涨点。两域实际共享capture均3.5968/3.8904秒，包含同一八帧专家，RGB另列；缓存毫秒不等于部署总耗时，首次模型加载和稳态分开。协议见[interval_pool](docs/interval_pool.md)，[时间瓶颈排序](docs/temporal_audit.md)、[原论文核查](docs/temporal_sources.md)、[工程核验](results/interval_pool/engineering.json)及全部匿名signed结果一并保留。
+
+研究入口按锁定顺序为`scripts/interval_pool/development.py`、`diagnose.py`、`intervention.py`、`confirmation.py`和`score.py`；这些是独立研究，禁止覆盖现有sealed目录。`scripts/select_interval_recheck.py`重现无GT名单规则，`audit_interval_pool.py`核对保存态，`summarize_interval_pool.py`只汇总公开封存指标。当前不继续本轮实验，不恢复正式Vid或CG。
+
 ## 历史与数据边界
 
 旧OPD源码、参数及完整正负结果均保留，数值配置在 [configs/legacy_opd.json](configs/legacy_opd.json)；旧主线可按Git提交579757a或私有原源码快照恢复。默认流程不再调用其采样/临时状态/训练。历史[HC128/Vid128结果](results/report.md)、[完整框研究](results/box_propagation_hc64/ANALYSIS.md)、[A/B策略](results/evidence_policy_hc64/ANALYSIS.md)、[单点续走](results/correction_value_hc64/ANALYSIS.md)、[承诺策略负结果](results/committed_policy_hc64/ANALYSIS.md)保留原协议，不能改名为新方法成绩。
