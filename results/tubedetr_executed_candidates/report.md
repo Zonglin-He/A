@@ -1,0 +1,70 @@
+# TubeDETR 执行后候选与Direct方向搜索机制探针
+
+{
+  "status": "complete_mechanistic_probe",
+  "queries": 16,
+  "actual_decodes_per_query_per_set": 17,
+  "arms": {
+    "DirectSearch": {
+      "m_vIoU": 17.83179803031439,
+      "m_sIoU": 39.96940807465846,
+      "diagnostic_oracle_v": 17.847590028058747,
+      "diagnostic_oracle_s": 40.045987514759574,
+      "zero_selected_queries": 0,
+      "reward_selection_hurts_dense_queries": 6,
+      "reward_selection_hurts_volume_queries": 5,
+      "queries_with_negative_local_prediction_but_positive_finite_reward": 1
+    },
+    "OPDSearch": {
+      "m_vIoU": 17.829631260246444,
+      "m_sIoU": 39.97822233280723,
+      "diagnostic_oracle_v": 17.849066775033744,
+      "diagnostic_oracle_s": 40.04915220806271,
+      "zero_selected_queries": 0,
+      "reward_selection_hurts_dense_queries": 7,
+      "reward_selection_hurts_volume_queries": 7,
+      "queries_with_negative_local_prediction_but_positive_finite_reward": 2
+    }
+  },
+  "no_new_teacher": true,
+  "no_parameter_search": true,
+  "GT_only_after_complete_candidate_seal": true,
+  "GT_oracle_is_not_deployable": true,
+  "same_forward_count_not_same_backward_cost": true,
+  "OPD_backwards_per_query": 4,
+  "Direct_backwards_per_query": 1,
+  "not_independent_confirmation": true,
+  "not_a_new_method_or_full_evaluation": true,
+  "OPD_minus_Direct_pp": {
+    "m_vIoU": {
+      "queries": 16,
+      "parents": 16,
+      "mean_pp": -0.002166770067949208,
+      "CI95_pp": [
+        -0.015538378623803882,
+        0.008392543211867961
+      ],
+      "equal_parent_mean_pp": -0.002166770067949208,
+      "wins": 8,
+      "losses": 5,
+      "ties": 3,
+      "below_minus5": 0
+    },
+    "m_sIoU": {
+      "queries": 16,
+      "parents": 16,
+      "mean_pp": 0.008814258148761805,
+      "CI95_pp": [
+        -0.016364158097357088,
+        0.04194339804989406
+      ],
+      "equal_parent_mean_pp": 0.008814258148761805,
+      "wins": 9,
+      "losses": 5,
+      "ties": 2,
+      "below_minus5": 0
+    }
+  }
+}
+
+各17次真实decoder候选执行，OPD四次backward对Direct一次，不能称等算力。候选按相同原Layout3奖励选、GT仅完整seal后诊断；oracle不可部署，16条不是新方法成绩。

@@ -38,4 +38,4 @@ Layout3OPD相对同奖励Direct的m_vIoU为−0.031324pp（父bootstrap95%CI[−
 
 至多检查两个奖励信号：(1)候选矩形与选中软mask的面积精度/覆盖率平衡（连续面积积分的soft Dice）；(2)减去去重后替代query的最大同类分数，考察竞争证据是否有用。分母同时保留矩形面积与mask总量，避免仅以内部平均前景奖励任意缩框。两者均可向Direct提供同样的连续面积积分梯度，不能故意detach使Direct失效。另将逐帧文本分数对真实事件支持的排序作为诊断，不先把它宣称事件概率或遮挡标签，不直接用于GT门控。
 
-先冻结完整预算/代码，再在同一已封存32候选上计算并封存新奖励，完整后独立CPU读GT。与Geometry、Layout3同时报告成对排序、top1 IoU regret、错误教师与八观测无GT分组；只有新奖励在完整面板的排序和regret上至少不劣于几何且有一项改善，才考虑下一轮适应验证。资格筛选属已曝光开发，不当独立显著性结论。没有改善则保留负结果、分析信号缺口，不自动全量或扩大搜索。当前尚未实现或运行此mask资格阶段。
+先冻结完整预算/代码，再在同一已封存32候选上计算并封存新奖励，完整后独立CPU读GT。与Geometry、Layout3同时报告成对排序、top1 IoU regret、错误教师与八观测无GT分组；只有新奖励在完整面板的排序和regret上至少不劣于几何且有一项改善，才考虑下一轮适应验证。资格筛选属已曝光开发，不当独立显著性结论。没有改善则保留负结果、分析信号缺口，不自动全量或扩大搜索。此mask资格阶段已完成且两信号均未通过，详见[tubedetr_mask_reward_qualification.md](tubedetr_mask_reward_qualification.md)。之后同16条实际decoder候选搜索及Jacobian分解也完整，分别见[实际候选](tubedetr_executed_candidates.md)、[观测约束](tubedetr_observability.md)。下一资格阶段改为[跨帧对应传递](tubedetr_correspondence.md)，不是继续调mask参数。

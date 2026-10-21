@@ -1,0 +1,63 @@
+# TubeDETR 观测Jacobian与Adam更新分解探针
+
+{
+  "status": "complete_mechanistic_probe",
+  "queries": 16,
+  "mean_observation_Jacobian_rank": 32.0,
+  "arms": {
+    "Direct": {
+      "null_energy_fraction": 0.520200884910901,
+      "linear_observation_null_ratio": 5.2683449809240975e-15,
+      "responses": {
+        "full": {
+          "m_vIoU_change_pp": 0.0021065322645143826,
+          "m_sIoU_change_pp": 0.0016779667386440027,
+          "observed_center_displacement": 0.0005986834478496669,
+          "unobserved_center_displacement": 3.520392759008869e-05
+        },
+        "parallel": {
+          "m_vIoU_change_pp": 0.0019648084053577233,
+          "m_sIoU_change_pp": 0.0023039740949365103,
+          "observed_center_displacement": 0.0005993471748231391,
+          "unobserved_center_displacement": 2.5415572024530167e-05
+        },
+        "null": {
+          "m_vIoU_change_pp": 0.00013828270405177162,
+          "m_sIoU_change_pp": -0.0006374845212118817,
+          "observed_center_displacement": 2.3447954974312278e-07,
+          "unobserved_center_displacement": 1.069606389168457e-05
+        }
+      }
+    },
+    "OPD": {
+      "null_energy_fraction": 0.5331203600965023,
+      "linear_observation_null_ratio": 5.2364808175551356e-15,
+      "responses": {
+        "full": {
+          "m_vIoU_change_pp": 0.001676842377671561,
+          "m_sIoU_change_pp": 0.0012641898653888584,
+          "observed_center_displacement": 0.0006138190625505727,
+          "unobserved_center_displacement": 3.1278177314147205e-05
+        },
+        "parallel": {
+          "m_vIoU_change_pp": 0.00155826282598738,
+          "m_sIoU_change_pp": 0.0013187942948477906,
+          "observed_center_displacement": 0.0006142579162638322,
+          "unobserved_center_displacement": 2.4647438198044548e-05
+        },
+        "null": {
+          "m_vIoU_change_pp": 0.00012649951445780228,
+          "m_sIoU_change_pp": -3.981930030525643e-05,
+          "observed_center_displacement": 2.632733972044975e-07,
+          "unobserved_center_displacement": 1.2420851078507815e-05
+        }
+      }
+    }
+  },
+  "no_GT_component_selection": true,
+  "one_step_not_multistep_evidence": true,
+  "not_new_method_performance": true,
+  "GT_only_after_complete_response_seal": true
+}
+
+固定16条、仅初始单步局部线性分解；不按GT选择分量，不证明投影后多步收益或OPD优势。

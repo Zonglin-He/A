@@ -1,0 +1,162 @@
+{
+  "status": "complete_qualification_only",
+  "queries": 128,
+  "eligible_queries": 102,
+  "rewards": {
+    "Geometry": {
+      "pair_accuracy": 0.7499521155096089,
+      "spearman": 0.5898780305709308,
+      "top1_IoU_regret": 0.12199660888339448
+    },
+    "Layout3": {
+      "pair_accuracy": 0.7467712000450087,
+      "spearman": 0.5784275832212136,
+      "top1_IoU_regret": 0.12652465361667622
+    },
+    "MaskDice": {
+      "pair_accuracy": 0.7447300212245908,
+      "spearman": 0.5618900443246782,
+      "top1_IoU_regret": 0.1476968295101787
+    },
+    "MaskContrast": {
+      "pair_accuracy": 0.6164519817348052,
+      "spearman": 0.2574612007070354,
+      "top1_IoU_regret": 0.23149871084523277
+    }
+  },
+  "qualification": {
+    "MaskDice": {
+      "passed_development_signal_gate": false,
+      "not_an_adaptation_success_claim": true,
+      "pair_accuracy_difference_pp": {
+        "queries": 93,
+        "parents": 93,
+        "mean_pp": -0.5222094285018166,
+        "CI95_pp": [
+          -2.952953324393148,
+          1.9879492091263582
+        ],
+        "equal_parent_mean_pp": -0.5222094285018167,
+        "wins": 34,
+        "losses": 59,
+        "ties": 0,
+        "below_minus5": 29
+      },
+      "regret_difference_pp": {
+        "queries": 102,
+        "parents": 102,
+        "mean_pp": 2.570022062678421,
+        "CI95_pp": [
+          0.7474928345578623,
+          4.396316675939262
+        ],
+        "equal_parent_mean_pp": 2.570022062678421,
+        "wins": 57,
+        "losses": 29,
+        "ties": 16,
+        "below_minus5": 10
+      }
+    },
+    "MaskContrast": {
+      "passed_development_signal_gate": false,
+      "not_an_adaptation_success_claim": true,
+      "pair_accuracy_difference_pp": {
+        "queries": 93,
+        "parents": 93,
+        "mean_pp": -13.350013377480371,
+        "CI95_pp": [
+          -16.707874737928503,
+          -9.991165755183557
+        ],
+        "equal_parent_mean_pp": -13.35001337748037,
+        "wins": 17,
+        "losses": 76,
+        "ties": 0,
+        "below_minus5": 69
+      },
+      "regret_difference_pp": {
+        "queries": 102,
+        "parents": 102,
+        "mean_pp": 10.950210196183832,
+        "CI95_pp": [
+          8.357221975105881,
+          13.677131057619652
+        ],
+        "equal_parent_mean_pp": 10.950210196183834,
+        "wins": 74,
+        "losses": 12,
+        "ties": 16,
+        "below_minus5": 4
+      }
+    }
+  },
+  "eligible_alternatives_mean": 2.376953125,
+  "frames_without_eligible_alternatives": 50,
+  "no_student_adaptation": true,
+  "no_full_population_evaluation": true,
+  "not_independent_confirmation": true,
+  "alternative_query_not_claimed_distinct_semantic_identity": true,
+  "frame_scores_not_claimed_event_probabilities_or_occlusion_labels": true,
+  "aggregation": "mean eligible frames per query then equal eligible queries; policy32 only; ties averaged for top1 regret",
+  "no_GT_observation": {
+    "queries": 26,
+    "rewards": {
+      "Geometry": {
+        "pair_accuracy": null,
+        "top1_IoU_regret": null
+      },
+      "Layout3": {
+        "pair_accuracy": null,
+        "top1_IoU_regret": null
+      },
+      "MaskDice": {
+        "pair_accuracy": null,
+        "top1_IoU_regret": null
+      },
+      "MaskContrast": {
+        "pair_accuracy": null,
+        "top1_IoU_regret": null
+      }
+    }
+  },
+  "teacher_not_better": {
+    "queries": 41,
+    "rewards": {
+      "Geometry": {
+        "pair_accuracy": 0.6143628471101239,
+        "top1_IoU_regret": 0.23358490188140024
+      },
+      "Layout3": {
+        "pair_accuracy": 0.6005725533258658,
+        "top1_IoU_regret": 0.24814249213753214
+      },
+      "MaskDice": {
+        "pair_accuracy": 0.605719028590078,
+        "top1_IoU_regret": 0.2292318329706615
+      },
+      "MaskContrast": {
+        "pair_accuracy": 0.44066023959434786,
+        "top1_IoU_regret": 0.3063278489647015
+      }
+    }
+  },
+  "native_text_score_event_support": {
+    "mean_query_AUC": 0.6512272192827747,
+    "eligible_queries": 81,
+    "AUC_minus_chance_pp": {
+      "queries": 81,
+      "parents": 81,
+      "mean_pp": 15.122721928277482,
+      "CI95_pp": [
+        7.715038947677835,
+        22.187977660199873
+      ],
+      "equal_parent_mean_pp": 15.122721928277485,
+      "wins": 59,
+      "losses": 20,
+      "ties": 2,
+      "below_minus5": 20
+    },
+    "not_used_as_a_gate": true
+  }
+}

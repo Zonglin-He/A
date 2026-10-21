@@ -1,0 +1,33 @@
+{
+  "status": "frozen_before_correspondence_outcomes",
+  "queries": 128,
+  "max_grid_side": 32,
+  "adjacent_pairs_per_query": 7,
+  "max_pair_similarities": 939524096,
+  "code_sha256": {
+    "tools/tubedetr_correspondence_qualification.py": "6fd76686defb7ffb60e4f35534f03009567113b8802042a9e07f68f0701e8985",
+    "tools/mask_reward.py": "74ae71bea73c239837b94eec052357ee81cf291bdd17aafe04d9460b3158ee14"
+  },
+  "parent_final_seals": {
+    "results/tubedetr_observability": "9332c2a5e489c1cdc5f65fd302e41cc6a215f0551a784dc8bf68abd16889a717",
+    "results/tubedetr_mask_reward_qualification": "428ec82d0e37491b6dc14faa8c39aabcfc1a16cc0266507538c56adc33347735"
+  },
+  "reference_seals": {
+    "features_seal.json": "8c4ddc1713b1f36d48b32bef50342dd60c627d83cff099fe211c4b75b9c6a809",
+    "diagnostic_seal.json": "45854bea1ccd7432f84a1e206f6adca9fac2c1a49629f4795f314c1498509c29"
+  },
+  "signal": "TransportDice only: adjacent-frame mutual cosine-nearest patches, teacher box seeds in OTHER frame; average transported supports then fixed3x3 average pooling; continuous rectangle/softsupport Dice",
+  "grid": "valid image center sampling, maxside32 preserving aspect; channel cosine; mutual argmax no threshold",
+  "empty_support": "zero reward with existing tie-aware regret; no query or frame dropping",
+  "selection_gate": "pair_accuracy>=Geometry and top1_IoU_regret<=Geometry with at least one strict improvement",
+  "no_new_teacher": true,
+  "no_new_observations": true,
+  "no_student_adaptation": true,
+  "no_parameter_search": true,
+  "no_GT_signal_selection": true,
+  "GT_only_after_full_reward_seal": true,
+  "no_automatic_full_evaluation": true,
+  "Direct_continuous_gradient_available": true,
+  "not_independent_confirmation": true,
+  "development_exposure_disclosed": true
+}

@@ -1,0 +1,64 @@
+# 跨帧对应传递信号资格
+
+{
+  "status": "complete_signal_qualification",
+  "queries": 128,
+  "rewards": {
+    "Geometry": {
+      "pair_accuracy": 0.7499521155096089,
+      "spearman": 0.5898780305709308,
+      "top1_IoU_regret": 0.12199660888339448
+    },
+    "Layout3": {
+      "pair_accuracy": 0.7467712000450087,
+      "spearman": 0.5784275832212136,
+      "top1_IoU_regret": 0.12652465361667622
+    },
+    "TransportDice": {
+      "pair_accuracy": 0.7427400475536431,
+      "spearman": 0.5848496480156758,
+      "top1_IoU_regret": 0.14552464152292147
+    }
+  },
+  "empty_transport_frames": 62,
+  "mean_mutual_edges_per_pair": 188.54464285714286,
+  "mean_observation_frame_gap": 108.79799107142857,
+  "GT_conditional_correspondence_precision": 0.8084590625104286,
+  "GT_only_after_complete_seal": true,
+  "no_adaptation": true,
+  "no_new_expert": true,
+  "not_independent_confirmation": true,
+  "passed_development_signal_gate": false,
+  "differences": {
+    "pair_accuracy": {
+      "queries": 93,
+      "parents": 93,
+      "mean_pp": -0.7212067955965898,
+      "CI95_pp": [
+        -3.185104526358504,
+        1.676579604707881
+      ],
+      "equal_parent_mean_pp": -0.72120679559659,
+      "wins": 46,
+      "losses": 47,
+      "ties": 0,
+      "below_minus5": 21
+    },
+    "top1_IoU_regret": {
+      "queries": 102,
+      "parents": 102,
+      "mean_pp": 2.3528032639526977,
+      "CI95_pp": [
+        0.10902051372254926,
+        4.713861133135676
+      ],
+      "equal_parent_mean_pp": 2.3528032639526986,
+      "wins": 56,
+      "losses": 32,
+      "ties": 14,
+      "below_minus5": 13
+    }
+  }
+}
+
+仅原Vid128/八帧/已有ReferDINO特征；双向互近邻不保证语义身份。连续面积积分可同样给Direct使用。未做学生适应或新全量。
