@@ -1,0 +1,136 @@
+{
+  "status": "frozen_fixed128_layout_reward_pilot",
+  "dataset": "vidstg",
+  "backbone": "TubeDETR",
+  "queries": 128,
+  "parents": 128,
+  "manifest": "data/evaluation/tubedetr_vid_dev128.jsonl",
+  "manifest_sha256": "c7df9b65aa5603b14a132615cc19f71a51a9bd59baf36f38bd28426334ff0ec4",
+  "labels": "data/evaluation/tubedetr_vid_dev128_labels.jsonl",
+  "labels_sha256": "6a7faa74bd0dda58008a63b7b351cb41c2235e308641092272a687d5592b4550",
+  "population_sha256": "2689f56934fcf5753f23b1ed4d1e1fbddc8fa86b08a98e535fa4c6e42e877ab4",
+  "seed": 41,
+  "reference_full_manifest_sha256": "3c21d1e35d70e528a8ecc31f6e191504c95700d3363b12fb0212d59dea5ac09d",
+  "teacher_checkpoint": "checkpoints/referdino/ryt_mevis_swinb.pth",
+  "teacher_checkpoint_sha256": "87e5356c6c463efec4f736c3348d1fbfba9bfaaa8181d51d15a8404295a5a9e3",
+  "implementation_sha256": "f30171f520aa10fa6a879ca84077e043f444e5d947e8110c42bf9b292c9d349b",
+  "configuration": {
+    "dataset": "vidstg",
+    "source_dataset": "hc2",
+    "scales": [
+      0.05,
+      0.25
+    ],
+    "tau": 1.0,
+    "lr": 0.02,
+    "steps": 60,
+    "samples": 32,
+    "seeds": [
+      41
+    ],
+    "default_seed": 41,
+    "state_shape": [
+      8,
+      256
+    ],
+    "temporal": "0.5 high-resolution posterior + 0.5 native six-layer mean; physical MBR",
+    "E": "eight-frame native ReferDINO singleton robust correction",
+    "teacher": "same native ReferDINO eight-frame evidence reused for initialization and OPD",
+    "source_checkpoint": "checkpoints/tubedetr/hc2_k2_res224.pth",
+    "ReferDINO_checkpoint": "checkpoints/referdino/ryt_mevis_swinb.pth",
+    "no_network_training": true,
+    "E_calibration": {
+      "scale": [
+        0.022542142662651282,
+        0.011027737123363815,
+        0.06612943552390567,
+        0.02918426580581821
+      ],
+      "truncation": 18.056884634893116,
+      "source_train_queries": 36,
+      "eligible_queries": 35,
+      "known_planned_anchors": 113,
+      "singleton_or_empty_queries": 1,
+      "model_hash": "ee72f0d9a50c573a115bd7cfc2329c860745a1cf3dab83af1be7787c11b3c218",
+      "quantile": 0.95,
+      "validation_used": false,
+      "target_GT_used": false
+    },
+    "E_calibration_provenance": "source-domain train calibration, frozen before target outcomes",
+    "output_alpha": 1.0,
+    "initialization_gamma": 0.05,
+    "backbone": "TubeDETR",
+    "upstream_revision": "d70c0eed94da09a9a5e4329c937230ecfb1d3ee6",
+    "stride": 2,
+    "native_resolution": 224,
+    "strong_resolution": 448,
+    "Source_temporal": "official native full-grid MAP; end frame + 1",
+    "calibration_policy": "transfer the existing frozen calibration unchanged; do not claim TubeDETR-specific source calibration",
+    "source_checkpoint_sha256": "c646a8b7131bb28806c350e16479cd8bb31d4425ccb15129b26a6e4d38dd4222"
+  },
+  "prior_selected_sha256": "828b4033a9cd9a73428e96b085f5c677e9731de3a440d159c7092f3b5e9d099a",
+  "reference_profile": "p_3ef0feebc887",
+  "reference_predictions": "outputs/tubedetr_vid_development/full_selected/p_3ef0feebc887",
+  "output": "outputs/tubedetr_layout_trial",
+  "code_sha256": {
+    "tools/complete_tubedetr_layout_trial.py": "c32ad09b39d1028dde671132e2784a5b79c319ff4bd707d53bb0e6042ade73f6",
+    "tools/tubedetr_vid_development.py": "b0fe509a281ea50de9f552259cd6d4118c50f8816f24237432cfbffa186d1b56",
+    "tools/complete_tubedetr_vid_development.py": "c6327d94bb2f8d76d25dc3fa9e9593fa1e7a22be7c5c91b218d76d5d25a524fa",
+    "tools/layout_trial/__init__.py": "8d321e5b9d27f376500d170129b3cfa279d3b72a900e4ed8300d845ae589a90b",
+    "tools/layout_trial/calibration.py": "35682410060c44218f5675b8e0faa53b79306e3f896faeda0737f79b29c1a58c",
+    "tools/layout_trial/diagnostics.py": "156a8fe5e5deae6e48f74717f1bbe0b7fdad7bbdf877843e5f1e01b6d3afcc6a",
+    "tools/layout_trial/features.py": "ba6fd3ee0e4148bb9f5dcd78931c51f28bd5153f5eb2a7a1d36e4a85f1751feb",
+    "tools/layout_trial/reward.py": "c169a623eabd54236b70566d947bada3ad10e1b48270cd2668e8295d6f4a39b4",
+    "tools/layout_trial/worker.py": "b5b1c87727d6bc57256d5614e5e6541f83135461615d7fc42c164c5c30c29e9f"
+  },
+  "adaptation_arms": [
+    "Layout3OPD",
+    "Layout1OPD",
+    "Layout3Direct",
+    "GeometryDirect"
+  ],
+  "geometry_OPD": "exact existing selected-profile cache on identical128",
+  "feature": "ReferDINO.pixel_decoder output from the same original eight-frame inference, stride4, float32",
+  "reward": "mean cosine at ordered3x3 ROI cells; both ROIs sample one same-frame feature map",
+  "ROI_sampling": "shared6x6 bilinear lattice, each2x2 average gives3x3; pooled1x1 averages same36 samples; normalize after pooling",
+  "coordinate_policy": "original normalized cxcywh; resize preserves aspect; stride4 feature canvas valid_ratio; no box clipping, outside samples zero",
+  "temperature": "one global value per layout reward, match initial32-candidate entropy to geometric OPD tau on fixed128; no GT",
+  "OPD": "original Live loop/Adam/noise/sampling/mixture-gradient/reset; replace feedback weights only",
+  "initialization": "same single ReferDINO eight-box consensus/E_Ref as current selected profile, unchanged",
+  "direct": "same frozen student/content/initialization and same layout3 or geometry objective; equal fixed lr and60-step budget, no separate Direct optimization search",
+  "direct_comparison_scope": "pilot only; not a fair-tuned final proof that OPD is necessary",
+  "new_expert_instances": 1,
+  "expert_evidence_must_match_frozen_native_boxes_bitexact": true,
+  "geometry_reward_not_mixed_into_layout_weights": true,
+  "network_weights_frozen": true,
+  "per_query_reset": true,
+  "extra_full_population_evaluation": false,
+  "GT_parameter_search": false,
+  "old_queues_deferred": true,
+  "maximum_new_adaptation_paths": 513,
+  "qualification": "first fixed query reproduces current full geometric OPD exactly before new reward comparisons",
+  "reward_diagnostic": "common32 policy candidates plus fixed teacher/source shifts, scales, aspect changes and native alternative-query boxes; offline GT ranking only",
+  "minimum_controls": [
+    "geometry OPD",
+    "pooled1 OPD",
+    "layout3 OPD",
+    "layout3 Direct",
+    "geometry Direct"
+  ],
+  "cross_attention_not_in_this_pilot": true,
+  "not_claimed_new_relative_to_historical_Fine_ROI": true,
+  "no_claim_of_adversarial_robustness_or_superiority": true,
+  "development_panel_and_full_target_previously_exposed": true,
+  "literature": [
+    {
+      "title": "Distilling Object Detectors With Fine-Grained Feature Imitation",
+      "year": 2019,
+      "url": "https://openaccess.thecvf.com/content_CVPR_2019/html/Wang_Distilling_Object_Detectors_With_Fine-Grained_Feature_Imitation_CVPR_2019_paper.html"
+    },
+    {
+      "title": "Focal and Global Knowledge Distillation for Detectors",
+      "year": 2022,
+      "url": "https://openaccess.thecvf.com/content/CVPR2022/html/Yang_Focal_and_Global_Knowledge_Distillation_for_Detectors_CVPR_2022_paper.html"
+    }
+  ]
+}

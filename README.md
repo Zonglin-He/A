@@ -103,3 +103,5 @@ TubeDETR两方向五行消融复用同一完整预测，见 [docs/tubedetr_ablat
 TubeDETR新增HC2目标域后续开发：见[HC2离线诊断、128开发与全量协议](docs/tubedetr_hc2_development.md)。
 
 TubeDETR空间诊断及有限耦合复查：见[协议与负结果披露](docs/tubedetr_spatial_analysis.md)。
+
+当前后续优先级：先完成正在运行的Vid全量，再进行[单ReferDINO ROI布局奖励固定128初试](docs/tubedetr_layout_trial.md)；旧调参队列按用户指示暂缓。

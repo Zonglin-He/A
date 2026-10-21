@@ -1,10 +1,10 @@
 {
   "status": "snapshot",
   "files": {
-    "README.md": "4e42adef9df1416830171abc51c09ee600385e3d3620064c39d635b08e1ab143",
+    "README.md": "1a233849eaa59a3e24f9ef2c20f825f209f16d478efd2b5ee9c697f7911b2610",
     "AGENTS.md": "624097c3228bd7ac7712cef854caa974fcbe2b0ee136e7b9d04c6089242a20c0",
     "configs/default.json": "3b61b2d82779457f557f93b788f79e428eb957650689dba8fb53485ca1a2f91a",
-    "docs/history.md": "96fa69f69d245c6725cae6be3bcefb7cd6985ed877f7469535f1f5fcd8901d0e",
+    "docs/history.md": "ca251330122029f0b54288a9824949e7ddffb22aeb9b50615d40f70bbc602d1c",
     "docs/method.md": "5094d5454991584c0cc429f73f436fe88ca2ff465085ca6a60eb34ab405dcc6f",
     "docs/evaluation.md": "a547add064595c193d5d16d407be7e1fd7426de86af90960251b7165ee02b028",
     "docs/assets.md": "635e51768438f4081aec05d28f8ddb09b3d53e6d134efb1f1136eebe7ce6e9a3",
@@ -26,6 +26,7 @@
     "docs/tubedetr_vid_development.md": "ab18360a14a969dcfe5ccabebc6f3e7f14869dcd9b14602c2e5007c3005649ad",
     "docs/tubedetr_hc2_development.md": "8f174d75b8bb8dcb32180eefd6be8fbed2f5f342a93720c863db081940994764",
     "docs/tubedetr_spatial_analysis.md": "27673b5e9c63c32e5169e207bcac242d33acb8e98ec7457503872525456fa108",
+    "docs/tubedetr_layout_trial.md": "89c95661fce9dcb6987747260886ecae84b2d466c9ab549c75f8d6c2ce9c9a8d",
     "configs/tubedetr.json": "7df6009d3139552626215ef58a2d8c3924f71a3d9486ad92a7b4b62d1dd57b32",
     "docs/tubedetr.md": "b2bf0645db0c267875e1252137216a6d38cd6f7081e06d0d623c9ce321b860f6",
     "results/tubedetr/engineering_checks.json": "15b86cc9051915dbe2f985e21bc353a3ff0f57a02870c8f56403c49aa1dce83f",
@@ -62,6 +63,7 @@
     "results/tubedetr_spatial_analysis/vidstg.json": "581528396f19701a51e611bed8a42a7d74fef628db01ef5b19cf0aa6a561df6a",
     "results/tubedetr_spatial_analysis/vidstg.md": "9680dd1bccc00d85f0b4c4218606aca7ea85f34c1de12a2ce76fa41cbf29965d",
     "results/tubedetr_vid_spatial_followup/plan.json": "8c48be323bd77f66353cf6100b58bb422c818cc5ace5e597a68fe33c3fec5e09",
+    "results/tubedetr_layout_trial/plan.json": "b61cff0b5e803ef6c492adf65c94f247748b173613032560d70f20d6a0f53362",
     "stvg/metrics.py": "c8db46913786a9f300984d7d7ca7ab219be30e8c91a1d27781d23155597d5665",
     "stvg/state.py": "e0a469ad993a135371e0b8e864bd67ff5a198f428c8c2181ffda2bdb01601961",
     "stvg/__main__.py": "3e5063d0f2166f704f3f8956b57e21c8caa26e7e6e877087c20f7ff2c3eb238e",
@@ -115,6 +117,7 @@
     "tools/complete_tubedetr_main.py": "41c28c052d111934b453b0d4a441b8e76c995cc2a6b88d156b32f3aa4b3aaea3",
     "tools/build_manifests.py": "122a5f8d22e2fe2a30b08d70a2c7db39978d2bb7047f719681151526e27f4988",
     "tools/prepare_engineering_inputs.py": "03636b1227fc770fbe190a7bb7d2e9173d5f9bbf15c222fac2287b619b5a2259",
+    "tools/complete_tubedetr_layout_trial.py": "c32ad09b39d1028dde671132e2784a5b79c319ff4bd707d53bb0e6042ade73f6",
     "tools/audit_tubedetr_vid.py": "ec83c701dcdc88683f5e6b4d765dc3e01d4a03aa3e890e44d392391dd2cb1337",
     "tools/complete_tubedetr_hc2_development.py": "f2d34ac0d3a6f4cc3d7165cfb5b8be49ea087a290895a31705d3902d959e9099",
     "tools/remote_archive.py": "9ec941b462668af126902ef670a69abc9dd5bec1a1c9a94b619e4c6354a70cc1",
@@ -122,9 +125,16 @@
     "tools/qualify_tubedetr.py": "7bcba82b2ee9cef0374d6350ed71a91dd23e7f7defdeda854a30bf1ccd61e104",
     "tools/complete_tubedetr_vid_development.py": "c6327d94bb2f8d76d25dc3fa9e9593fa1e7a22be7c5c91b218d76d5d25a524fa",
     "tools/audit_tubedetr_hc2.py": "30dfbb2ef259b1480c6afca37164236b46772c7d977142f0607915523acd6f41",
+    "tools/layout_trial/reward.py": "c169a623eabd54236b70566d947bada3ad10e1b48270cd2668e8295d6f4a39b4",
+    "tools/layout_trial/worker.py": "b5b1c87727d6bc57256d5614e5e6541f83135461615d7fc42c164c5c30c29e9f",
+    "tools/layout_trial/diagnostics.py": "156a8fe5e5deae6e48f74717f1bbe0b7fdad7bbdf877843e5f1e01b6d3afcc6a",
+    "tools/layout_trial/features.py": "ba6fd3ee0e4148bb9f5dcd78931c51f28bd5153f5eb2a7a1d36e4a85f1751feb",
+    "tools/layout_trial/calibration.py": "35682410060c44218f5675b8e0faa53b79306e3f896faeda0737f79b29c1a58c",
+    "tools/layout_trial/__init__.py": "8d321e5b9d27f376500d170129b3cfa279d3b72a900e4ed8300d845ae589a90b",
     "tests/test_boundaries.py": "593073c6c308e4a380b4bcef7373ced2f9c0d3e7bebed5d50bbff2de6da41a5a",
     "tests/test_tubedetr_queue.py": "427bd33818ec916ddb194f494da9d7a25c2756533d1f98e50f2e3b8564353a26",
     "tests/test_core.py": "6fe0ac19d0a33c5b09ace2e8e4ca2737894601d0de026c7a5676f7302695e296",
+    "tests/test_layout_reward.py": "7f5fca3cb2310b6ffcd20bf14c39c00105d0848555a71340dee451120c67a13f",
     "tests/test_tubedetr.py": "902dffb319537d5c7ffcf7e568a0736df65b725181e7c1c47ac98dc47a9a43b3",
     "tests/test_tubedetr_hc2_development.py": "3c14fc481508e3b2f60bc6c677fc40ff7533551454713d5db3c335f0e379a07c",
     "tests/test_tubedetr_preflight.py": "f48b10c20b6ecf08d1116d0107ba335e3bd8c003890a90bb3b5cf5b9c4429255",
@@ -132,6 +142,6 @@
     "tests/test_tubedetr_development.py": "2678db453d37bf2a559845cb14f403823e6deaf8f7ec934faa44101c40785424",
     "tests/test_evaluation_v2.py": "694ddab95610a42a536e41811a8bcd1c73a9d7e975b0c2bf83a2361705ee51ba",
     "tests/test_tubedetr_ablation.py": "069aa692ea72d72e7688b0c38e31f6eb6c47da8ed75327935445c05b43bd0644",
-    "scripts/research_archive.py": "f26a462b594a8fd16fe8f14df6852022b6eb361369105fcbadaf589164399d0c"
+    "scripts/research_archive.py": "1c2273f9e03a71f59e745d90015526f52836999642742ee8cb6764808958fdcb"
   }
 }
