@@ -128,3 +128,10 @@ HC64轻量传播策略与完整负/正结果已公开并逐文件核验：提交
 
 
 v0实现与完整HC64适应前筛查已公开并逐文件核验：提交[67621fb1](https://github.com/Zonglin-He/A/commit/67621fb17fcf0e4f301483c0201d3619f9a7b470)，main/research均freshCAS非强制快进；481文件/13,602,274字节与远端Git blob SHA256及tree一致、原历史保留。全部匿名正负、反馈排序/候选oracle覆盖/距离分箱/固定分数错配公开；没有把未运行的OPD/KD/Direct登记为完成方法成绩。原始数据/GT坐标/预测mask/特征/私有ID及权重不上传，正式暂停与唯一注册方法不变。发布回执及档案在随后文档提交同步。
+
+
+2026-10-21 固定v0候选评分审计与held-anchor缓存探针完成：旧64候选、路径、预测、失败gate未改，0新OPD/KD/Direct适应。EvidenceDP实际746个有GT替换中456伤害(61.126%)，平均节点IoU−5.2015pp；这些伤害在实际邻居上下文全部正ΔS，含incoming/outgoing复核误差2.32e−16。Memory/NoMemory损伤比例亦约62%，support为456/486个Memory坏替换最大正反馈项。219有GT观测节点原生框57.6332%、E53.2302%、mask组件45.0919%；77个Memory观测坏替换中38有更好的native但全选坏组件(17native仍在bank、21被NMS删)，39native自身也差；65坏组件中59面积小于GT，不能把问题全归教师或全归传播距离。几何质量不能单独判语义身份。结果results/score_audit/fixed与mechanism，全匿名正负保留。
+
+同轮跨锚点探针固定64父来源×8fold，rawSource基线、先切keep7 logits重选同一query、只7 masks/boxes构建3槽，全部512 proposal/predicted maps封存后才读held native mask，所有反馈读出封存后才独立GT。只比较同bank投影−.1G与单跳Source对应2DDice−.1G，无memory/link/适应或参数搜索，held自身不替换。Cross相对Projection完整vIoU+0.0627pp[-.6749,.8779]，观测s+2.8926pp[.8987,5.1162]，未观测s−.1943pp[-1.2383,.8361]；actual错误替换比例54.90→55.33%，替换减少但未建立可靠接纳。macro pair56.63→60.66%，配对+4.03pp[.27,7.88]，说明总体排序正信号未兑现为未观测净收益。Cross相对Source v−.1372pp，19升/44降/1不变。不得把Source新bank与旧ERef-v0相减归因。
+
+本轮下游held隔离全512检查及24真实fold极值扰动逐位复建通过；cached ReferDINO仍含8-frame tracking/temporal上下文，明确非独立7帧教师。14新合成+70原工程测试通过，1536dense核验最大6.66e−16，所有旧源码/registered config/formal paused hashes保持。新模型/专家/decoder/RGB调用0；proposal41.67秒+feedback11.96秒仅缓存CPU增量。执行决定不进入OPD完整适应，不增采样/记忆、不改主方法或恢复formalVid/CG；公开代码、锁定配置、聚合与全部匿名正负、隔离证明和负结果，见docs/score_audit.md与results/score_audit/REPORT.md。
