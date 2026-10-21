@@ -1,0 +1,84 @@
+{
+  "status": "research_v0_not_registered",
+  "dataset": "hc2",
+  "queries": 64,
+  "selection": "same_first64_development_parents_one_query_each",
+  "seed": 41,
+  "max_candidates": 3,
+  "rounds": 3,
+  "paths": 2,
+  "lr": 0.1,
+  "gradient_clip_norm": 1.0,
+  "teacher_tau": 0.2,
+  "prior_weight": 0.05,
+  "original_prior": 0.7,
+  "memory_write_max": 0.2,
+  "feedback_weights": {
+    "support": 1.0,
+    "link": 0.25,
+    "memory": 0.1,
+    "guard": 0.1
+  },
+  "confidence_threshold": 0.1,
+  "component_relative_threshold": 0.5,
+  "duplicate_iou": 0.7,
+  "component_connectivity": 4,
+  "geometry": "G=1-exp(-d^2); d=norm(relative_center,log_size)/2",
+  "initial_weights": [
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0
+  ],
+  "policy_features": [
+    "memory_cosine",
+    "previous_selected_feature_cosine",
+    "sparse_link",
+    "original_candidate_feature_cosine",
+    "negative_bounded_geometry",
+    "is_original"
+  ],
+  "student_logits": "log(pi0)+linear_features_no_temperature",
+  "teacher_logits": "(u+.25*link+.1*memorycos-.1*G)/.2_no_pi0",
+  "loss": "sum(c*forwardKL(qE||pi))/(sum(c)+1e-12)+.05*mean_all_paths_nodes(reverseKL(pi||pi0))",
+  "memory_write": "omega=.2*c*u(selected); normalized convex memory; no forced observation reset",
+  "acceptance": "greedy_fixed_evidence_score_non_decrease_tolerance1e-12_else_restore_Adam_and_weights_and_stop",
+  "fixed_score": ".5*mean_obs(u)+.5*mean_unobs(c*u)+.25*mean_event_edges(cprev*c*L)-.1*mean_all_nodes(G)",
+  "fixed_score_has_memory": false,
+  "Direct_relaxation_temperature": 1.0,
+  "arms": [
+    "OPD",
+    "FixedKD",
+    "Direct"
+  ],
+  "controls": [
+    "MemoryGreedy",
+    "NoMemoryGreedy",
+    "EvidenceDP"
+  ],
+  "initial_trajectory": "saved_ERef_with_Strong_single_ReferDINO_initialization_retained",
+  "gate": {
+    "candidate_macro_unobserved_oracle_gain_pp_gt": 0.0,
+    "feedback_macro_pair_accuracy_gt": 0.5,
+    "feedback_macro_Spearman_gt": 0.0,
+    "memory_both_v_and_unobs_mean_difference_ge": -1e-12,
+    "memory_at_least_one_difference_gt": 1e-12,
+    "stage2": "only_if_all_three_gates_pass_no_GT_based_parameter_changes",
+    "CI": "reported_not_used_for_gate"
+  },
+  "gate_exposure": "GT_used_only_for_whole_development_prototype_go_no_go_and_evaluation_never_per_query_online_selection",
+  "attachment_sha256": "341660f37c9830a0c68238e76b784b65abce285dc7b6b8e665008c78fa42f5de",
+  "time": "same_Strong_and_MBR",
+  "new_RGB_encoder_decoder_expert_calls": 0,
+  "network_weights_frozen": true,
+  "reset_per_query": true,
+  "parameter_search": false,
+  "distance_bins_normalized_by_median_anchor_gap": [
+    0.0,
+    0.25,
+    0.5,
+    "infinity"
+  ]
+}

@@ -119,3 +119,9 @@ HC64真实状态对照已公开并逐文件核验：提交 [4a9b6a0f](https://gi
 
 
 HC64轻量传播策略与完整负/正结果已公开并逐文件核验：提交[7d778f9d](https://github.com/Zonglin-He/A/commit/7d778f9d1f18273454efd44f310913b3f95e7bb1)，main/research均freshCAS非强制快进，465文件/13,030,375字节与远端Git blob SHA256/tree一致、历史保留。107项新数学/缓存工程检查和70项原工程检查通过；新方法真实更新/完整梯度、所有inactive fallback及实际计数均核验。全部匿名query正负指标、严重损伤和候选oracle边界公开；不含数据、GT坐标、mask/特征/临时状态或私有ID。档案与发布回执在后续文档提交同步；正式队列保持暂停，不继续参数扫描。
+
+
+2026-10-21 用户提供v0附件并授权按其执行：新独立propagation_v0，原HC64结果不覆盖、注册方法和formal/CG暂停不变。附件要求候选上限/反馈/历史净收益诊断先于适应；本次固定3候选连通区域(.5相对峰值、IoU.7)、独立前后map及cycle加权支持、无agreement置信惩罚，phi0全0原框先验.7，学生六特征排除u，teacher温度.2且不加pi0，memory写入上限.2*c*u，normclip1、lr.1、prior KL.05、Σc损失归一化与真实greedy fixedscore下降回滚停止。保留有限图精确DP、memory/no-memory诊断与固定KD/完整梯度软Direct，最多3轮×2路径。未在看本轮GT后选工程阈值，附件哈希锁配置。阶段1全64先封存再离线GT诊断，预先锁全方案go/no-go门槛；任何一项不通过就按附件停止适应，不因结果调参或自动扩大backbone。全流程仅缓存CPU，无新重网络/专家/RGB。详见docs/propagation_v0.md。
+
+
+2026-10-21 v0阶段1按附件完成并在适应前终止：32项v0合成CPU测试（含Direct完整有限差分/非空Adam回滚/DP穷举）及70项原工程检查通过。固定HC64全64 bank/初态两学生路径/MemoryGreedy/NoMemoryGreedy/EvidenceDP真实预测先封存后离线GT，指纹38b838b3d74cea3aacccc5b300c59e0ac96b277ecff0f83c44f4b674b06af5d6，384 dense核验误差<1e-15，旧baseline逐位/指标复核通过。候选节点oracle未观测+5.4833pp（248/1365节点>5pp，545 E-only节点仍计分母），GT逐节点读出vIoU34.3111%；反馈macro pair54.9747%、rho.06137，区间分别跨.5/0，仅过最低point筛查不称可靠。MemoryGreedy/NoMemoryGreedy/EvidenceDP完整vIoU28.8461/28.9642/29.3919%，均低于ERef31.0918；Memory相对NoMemory v−.1181pp、未观测s−.3727pp，远节点s−.9762pp。预注册memory两均值不降且至少一项升的门槛失败，gate=false，按附件先诊断通过再适应的顺序未运行真实OPD/FixedKD/Direct更新（0查询/0更新），未看GT后改参数或强行继续。DP62条代理score上涨而38条vIoU下降，15条严重下降，说明fixedscore接纳非GT保证；不把此诊断说成未运行OPD失败。阶段1CPU运行封存18.45秒，queryloop中位.2307/P90.2539秒，仅缓存增量、未冒充端到端时延。独立status/diagnostics/OUTCOME及全匿名正负保存results/propagation_v0_hc64；原正式paused/default及所有旧源哈希不变。
