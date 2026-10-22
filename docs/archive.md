@@ -132,3 +132,12 @@ event/independent-increment qualification. No main/default/full change or contex
 coupling weight scan. All signed outcomes, mathematical checks and source snapshots
 preserved. Next signal requires actual native first-pass boundary outputs, not another
 transform of the same clause feedback; no claimed result before execution.
+
+[Actual pre/post native temporal passes](../results/native_event_pass_hc64_v1/ANALYSIS.md)
+retain original observer/no-op, mismatched-first/selfhull/direct controls and failed
+short-event qualification. [Crossed native spatial/text interventions](../results/native_event_spatial_text_hc64_v1/ANALYSIS.md)
+retain the strongly negative calibrated-teacher result, equalarea placement control,
+all signed tails and separately bound postseal conditional/footprint audit. No pass/
+erasure gain scans or default/full change. A distinct positive target-preserving
+prefusion feature view remains untested; do not claim it completed from ROI-prior
+or target-removal experiments. Original48+434 frozen sources remain intact.

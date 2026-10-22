@@ -645,3 +645,54 @@ ENDPOINT distribution alongside second-pass, without using foreground scores as 
 newquery/weight scans or additional visual/expert computation.
 
 Shared native episode and marginal-preserving coupling stages published at939b5f58d31eb6ac32fbcbebf3087d3f664fa692; main/research complete748files/53,618,772bytes/tree/hash/ancestor verified. All signed negatives, independently bound postseal audits and original frozen methods retained. No qualified new direction; next separate locked signal is actual first-pass trained-recipe boundary outputs, no foreground-score feedback. Paper remains paused.
+
+Overnight branch15 actual native pre/post query-refinement boundary reading completed,
+fp5021a8954fb215962205005ac18b08c71692d7886299026d2a678379e1cba72a.
+Official recipe train uses positive iteration/max_iter, extra refinement onlynegative;
+eval defaultnegative. Observe actual first/second hidden with non-replacing scoped
+hook, originalFull text/prefusion and native two passes unchanged. Head both actual
+six-layer states, originaloffsethull; primary fixed positive .5First6+.5Second6.
+Second64hidden/logits/q/Source boxes bitwise; self/native/Source/oldselfhull aliases.
+Primaryt+.2229/v+.1003pp vsG6,bothCIcross0,6wins4harms54ties0losses>5pp; Source
+short-.0299/long+1.7158. Directfirstt+.0975/v+.0177,12wins11harms41ties; mismatch
+reversedfirstt-11.8807,all64selfhullt+1.5213. No qualification, no passweight/layer/
+gate scan or posthoc directfirst promotion. Official recipe mismatch is not established
+as a major root cause or exact private checkpoint training-history proof. No internal
+foreground/actionness scores used as new feedback.2CPUobserver/order/exceptioncleanup
+checks,1152official/densechecksmax6.66e-16;24.88sworker inclloading/researchrecording,
+128fusionoffset/64native/256originaldecodercalls/128originalhead+256extraheadcalls,
+0newRGB/visualencoder/text/expert/observations/optimizer. Firsthiddenalreadycomputed
+in native deployment; incremental firsthead/posterior cost not deployed/measured here.
+[Signed results](../results/native_event_pass_hc64_v1/ANALYSIS.md).
+Next own factorial source-head feasibility crosses real spatial target-vs-matched
+feature replacement with Full-vs-Identity captions; prior text-only/TTS erasure/
+global mean null/ROI attention are distinct incomplete controls, not grounds to claim
+this actual native interaction already tested. Fixed spatial/eight observations and
+fullpause unchanged. No trained D-TSG/CAEM reproduction or causal probability claim.
+
+Overnight branch16 actual native spatial-by-event-text interaction completed,
+fp9641c73db84a32df754f1a21bc57f0b9f6f71580e64addd055b7c5dcbdf8ab67.
+Original fulltime BoxFixed auxiliary path, soft complete-box cellfootprint replacement
+in BOTH prefusion2D/3D with valid outside mean; equalarea180reflected control; Full
+versus existing Identity captions, six actual native reads/query. Full/Identity64hidden/
+logits/q/Source boxes bitwise, textonly/sharpen/native/Source aliases. No newexpert,
+observation,querylearning or internalforeground feedback. Native physicaltime/MBR/
+actual final completeboxDP unchanged. Primaryfactorial interactiont-5.2898CI[-9.6036,
+-1.1131]/v-3.5268CI[-6.4871,-.7793]ppvsG6,25wins36harms3ties26losses>5pp; Source
+short-4.0571/long-4.1756. DirectInteractiont34.3938%,SpatialOnly53.5893% below55.9613;
+no feedback calibration or promotion, stop spatialerasure/maskgain/ratio sweeps.
+Matchedpairrank53.62%CI[50.37,56.81] doesn't override failed final teacher quality.
+Separately bound postseal interventionaudit: expectedtruet Full.45967,TargetErase
+.41672,ControlErase.46160; Identity.44575/.40414/.43241. Targetcontent affects native
+time response but much effect shared withidentity. Meanmask15.558cells/target-control
+overlap.19348,maxareaerror2.13e-14,nooutside-backgroundfallbacks. Not causal eventtruth
+or additional decoded methods. Conditional noevent/nominal head outputs need not be
+calibrated negative evidence.3CPUcoverage/reflection/padding/fallbackchecks,
+1408official/densechecksmax1.11e-15;81.36sworker inclloading/researchrecording,
+64identitytext/768fusionoffset/384native replay,0RGB/visualencoder/expert/observations/
+optimizer. [All signed controls](../results/native_event_spatial_text_hc64_v1/ANALYSIS.md).
+No direction qualified; Source paperHC1902/Vid1373 remains pauseduntil07decision.
+Next separate fixed hypothesis retains target+context in a positive original-caption
+feature view BEFORE full fusion, rather than inverse erased/identity posteriors.
+This differs old decoder ROI bias/pixelunioncrop. Native safetycorner and feature
+residual/padding behavior must be preserved/audited; no source/hash/default upgrade.
