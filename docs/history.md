@@ -307,3 +307,8 @@ RC025/029 recover;RC042/016 move toward stronger changes but wrong inner boundar
 Scoring first final JSON write failed on NumPy integer; original code/log preserved,
 separate CPU serializer adapter completed same metrics with sealed outputs unchanged.
 [Complete boundary-feedback result](../results/boundary_feedback_hc64_v1/ANALYSIS.md).
+
+Boundary-feedback implementation and complete signed development results published
+at9d9ceb1a396c275fd8461800456105c4409db77c on main/research;480 files/37,954,286
+bytes/full tree verified. Archive ancestry retained. No candidate promoted and no
+full resume. Private publication/engineering/score receipts retained.
