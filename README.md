@@ -75,3 +75,8 @@ absent from the current inference tree. See [archive policy](docs/archive.md) an
 User-authorized HC2 temporal calibration is recorded separately in the
 [bounded tuning report](results/temporal_hc_v2/REPORT.md). Its selected profile failed
 the fixed validation; it is not part of the maintained inference method.
+
+[Broader HC temporal readout study](results/temporal_hc_v3/REPORT.md) reports all16
+additional configurations and a preserved failed Source validation gate. Its frozen
+start-temperature candidate is undergoing a separately labeled exploratory HC full
+comparison; it has not replaced the main method.

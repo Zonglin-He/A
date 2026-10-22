@@ -1,0 +1,49 @@
+{
+  "status": "locked_before_panel_labels",
+  "user_authorization": "2026-10-22 user explicitly requested continuing to inspect and tune additional temporal-branch parameters after v2 failed",
+  "dataset": "hc2",
+  "panel_manifest_sha256": "c1370dbfa44c9d1727a9e3287bbc5fb4cc651709447a2bf1d357b3f9b128a061",
+  "selection": "SHA256 fixed seed on input parent IDs, one SHA-ranked query/parent; first64 tune, next32 validation. Never selected by full outcomes.",
+  "tune_parents": 64,
+  "validation_parents": 32,
+  "seed": 20261022,
+  "exposure": "All official full outcomes have already been evaluated; this is disclosed target-domain development and a post-selection full rerun, not a new independent test.",
+  "axes": {
+    "start_temperature": [
+      0.75,
+      1.0,
+      1.25
+    ],
+    "end_temperature": [
+      0.75,
+      1.0,
+      1.25
+    ],
+    "hull_weight": [
+      0.0,
+      0.5,
+      1.0
+    ],
+    "last_layers": [
+      1,
+      3,
+      6
+    ],
+    "risk_power": [
+      0.5,
+      1.0,
+      2.0
+    ]
+  },
+  "maximum_trials": 18,
+  "selection_rule": "Primary tIoU. Same gates as v2: tune t gain>=.3pp, v loss<=.1pp, unobserved loss<=.1pp, severe-v vs Source<=baseline+2. Root sequential one-axis coarse11, up to4 justified refinements and one combination plus component controls within18. Select t then v. No v2 validation used.",
+  "validation_rule": "One frozen candidate on new32 parents, t gain>=.2pp and >Source, v/unobserved loss<=.1pp, severe<=baseline+2. No validation fallback, gate relaxation or retuning.",
+  "fixed": "Frozen native Source forward, input RGB/grids/precision, same ReferDINO/eight observations, ERef, complete-box propagation, spatial objective. No actioness rule/448/replay/training/new teacher. Default old hull+MBR positive control; changing output-only offset composition and MBR utility is explicitly investigated, not falsely represented as unchanged.",
+  "previous_protocol_sha256": "3d1a19d3ac4c03050dbb716975f4dec10ca85e37942f57532cce07f786b25be0",
+  "previous_validation_excluded": true,
+  "capture_code_sha256": "a1f6af9c263a0672746369d04a92258cab0cb28a622c4ac1869c5fc5513c3808",
+  "source_provider_plan_sha256": "85d13696c99b0de93a0cd2b49201ab51bf35fe1baaa485a14e5e4594cc0c3b32",
+  "source_provider_runtime_fingerprint": "fc4210a80c895a374d90af44d11986428a50d754245e653690f25be5869f328f",
+  "labels_sha256": "af9162edbae2f455a40ac1a4f2a7a1441cd93f09d5950d8efa919b4f12a528db",
+  "provider_model_and_teacher_reuse": "Original unmodified native224 capture provider and exact original evidence runtime fingerprint. New temporal predictions have their own plan/code fingerprint. No old resume receipt is accepted as a new result."
+}

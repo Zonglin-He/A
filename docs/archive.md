@@ -27,3 +27,8 @@ This does not load a model or labels. It is optional for users without those pri
 Source/evidence maintenance: `python tools/archive.py check`, then `snapshot`, then
 `check`. The source inventory excludes itself to avoid a recursive digest and excludes
 private assets. Publication receipts separately identify verified commit/tree/bytes.
+
+Later explicit user authorization added bounded HC temporal research tools and
+reports(v2/v3). These are separate from the sole maintained inference entrypoint.
+The new exploratory full freezes its own current core source snapshot and plan;
+never change those bound files while running or reuse the old full fingerprint.

@@ -74,3 +74,29 @@ interval overexpansion. No validation retuning, fallback selection, gate relaxat
 or new full launch. Default and old complete published full remain unchanged.
 32 CPU engineering checks passed. All signed positive/negative evidence retained.
 [Temporal tuning report](../results/temporal_hc_v2/REPORT.md).
+
+2026-10-22 — User explicitly requested continuing temporal tuning after v2 failed.
+New v3 protocol excludes all96 v2 parents; new64 tune/32 validation are fixed
+before labels. Additional distinct knobs: separate start/end temperatures,
+offset hull strength versus mixture, last-layer ensemble depth, MBR IoU utility
+curvature. Source forward/eight expert observations/spatial weights fixed; all
+old evidence retained. New output-only readout changes are explicit and not
+claimed to preserve old hull/MBR. Root supervises; no reuse of failed validation
+to pick fallback, no new full until a new fixed validation passes.
+
+2026-10-22 — V3 broader temporal search completed16 profiles. Selected start
+temperature1.5/end1, original six layers/hull/MBR, frozen before new32 validation.
+Tune t+.5326/v−.0271pp; validation t+.3683/v+.4105pp versus previous Global6.
+All relative-previous protections pass but Source t gate fails(−.4775pp); original
+protocol/failed eligibility retained, no fallback/retuning. Under the user’s explicit
+request to rerun full, a separate pre-full exploratory extension locks only this
+profile for HC1902 descriptive assessment. It is not labeled validation-passed or
+promoted to main; full results will not select parameters. Old v1/Vid remain unchanged.
+
+2026-10-22 — New exploratory HC1902 full started in mainline private outputs/
+hc_temporal_full_v3_exploratory with fingerprintf33e75a4652dfc369277b92e90cb63e3014b0c046f13a9ed02e9975828cb208d.
+Original plan and all core source hashes frozen before launch; original Source/E/
+Global6 interval/spatial outputs must match per query. New source capture costs
+exclude reused original expert generation. Existing heartbeat reused for this
+queue and existing Luna reused for read-only monitoring; no new agent/automation.
+[All16 parameter profiles, preserved failed Source gate and rationale](../results/temporal_hc_v3/REPORT.md).
