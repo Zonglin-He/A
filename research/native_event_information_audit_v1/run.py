@@ -1,0 +1,46 @@
+"""Independent CPU GT-supervised parent-heldout information audit; no STVG output."""
+import os,sys,time,json,hashlib
+os.environ.update(CUDA_VISIBLE_DEVICES='',OMP_NUM_THREADS='1',OPENBLAS_NUM_THREADS='1',MKL_NUM_THREADS='1')
+from pathlib import Path
+R=Path(__file__).resolve().parents[2];sys.path.insert(0,str(R));PROVIDER=R.parent/'stvg-opd'
+from research.joint_event_v1.run import read,put,sha
+D=R/'outputs/native_event_information_audit_v1';P=R/'results/native_event_information_audit_v1';L=R/'outputs/overnight_event_loop_20261023';SOURCE=R/'outputs/native_event_target_semantic_v1'
+FEATURES=['NativeLastHidden','TargetASAU','TargetSemanticP','RandomMatchedP','PositionPrior','MembershipAffine','NativeHiddenPlusMembership']
+def prepare():
+ assert not(D/'plan.json').exists();parent=read(SOURCE/'plan.json');code={str(f.relative_to(R)):sha(f)for f in Path(__file__).parent.glob('*.py')};p=dict(schema='native_event_information_audit_v1',kind='EXPLICIT_GT_SUPERVISED_POSTSEAL_DIAGNOSTIC_NOT_METHOD',features=FEATURES,items=parent['items'],labels=parent['labels'],development_labels_sha256=parent['development_labels_sha256'],code=code,source_seal_sha256=sha(SOURCE/'sealed.json'),source_score_receipt_sha256=sha(SOURCE/'score_receipt.json'),source_plan_sha256=sha(SOURCE/'plan.json'),parent_dense_projection_seal_sha256=sha(R/'outputs/native_event_dense_projection_v2/sealed.json'),design_sha256=sha(L/'next_information_audit_design.md'),bootstrap_seed=20261022,heldout='Entire parent excluded, within each exposed panel separately; no heldout GT used to fit that fold. Other parents true labels deliberately supply supervisedfeedback for availabilitydiagnostic.',fit='Fixed weighted ridge1/scalar, eachquery totalweight1/eachframeequalwithinquery; training-only mean/RMS, unpenalizedintercept. No parameter/layer/hyper scan. Unbounded score not calibratedprobability.',feature_scope='Native official lasttimehidden256 unitnorm,TargetASAu256unitnorm,semanticp34/60,matchedrandomp,physicaltime+time², nativeposterior membership,hiddenconcatmembership. Same native saved nodes16–200. Wrongplacement heldoutnativehidden halfcycle, native prior remains own original.',GT_use='Offline supervised capacity diagnostic ONLY. No unsupervised method claim, no final STVG interval/box/prediction, no MBR/DP, no promotion/full qualification.',source48=parent['paper_code'],provider434=parent['provider_sources'],new_model_calls=0,new_experts=0,new_observations=0,new_final_STVG_predictions=0,all_source128_presealed=True,maximum_CPU_seconds=1200)
+ p['fingerprint']=hashlib.sha256(json.dumps(p,sort_keys=True).encode()).hexdigest();put(D/'plan.json',p);put(P/'protocol.json',{k:v for k,v in p.items()if k not in ['items','labels','code','source48','provider434']})
+ for f in code:
+  dest=D/'source_snapshot'/f;dest.parent.mkdir(parents=True,exist_ok=True);dest.write_bytes((R/f).read_bytes())
+ put(D/'state.json',dict(status='prepared',fingerprint=p['fingerprint']));print(p['fingerprint'])
+def verify():
+ p=read(D/'plan.json');assert read(R/'outputs/tastvg_paper_v1/state.json')['status']=='paused_by_user';assert sha(SOURCE/'sealed.json')==p['source_seal_sha256']and sha(SOURCE/'score_receipt.json')==p['source_score_receipt_sha256']
+ for root,key in [(R,'code'),(R,'source48'),(PROVIDER,'provider434')]:
+  for f,h in p[key].items():assert sha(root/f)==h
+ assert sha(R/'outputs/native_event_dense_projection_v2/sealed.json')==p['parent_dense_projection_seal_sha256'];return p
+
+def audit():
+ import numpy as np,torch
+ from research.native_event_information_audit_v1.core import moments,combine,fit_predict,holdout_stats,auc
+ from research.native_event_semantic_prototype_v1.core import membership
+ torch.set_num_threads(1);p=verify();seal=read(SOURCE/'sealed.json');assert seal['count']==128 and not seal['GT_read'];put(D/'pre_GT_receipt.json',dict(all128_input_predictions_presealed=True,source_seal_sha256=sha(SOURCE/'sealed.json'),GT_used_only_offline_supervised_diagnostic=True,method_predictions=0));put(D/'state.json',dict(status='CPU_supervised_diagnostic',pid=os.getpid()));begin=time.perf_counter();reports={};private={}
+ for group in ['HC64','hc2_recheck','vidstg_recheck']:
+  ds='vidstg'if group=='vidstg_recheck'else'hc2'
+  if group=='HC64':lf=R/'data/evaluation/development_labels.jsonl';assert sha(lf)==p['development_labels_sha256'];gt={x['id']:x for x in map(json.loads,lf.read_text().splitlines())if x['dataset']=='hc2'}
+  else:
+   f=p['labels'][ds];lf=PROVIDER/f['path'];assert sha(lf)==f['sha256'];gt={x['id']:x for x in map(json.loads,lf.read_text().splitlines())}
+  data=[];items=[x for x in p['items']if x['group']==group]
+  for item in items:
+   e=seal['files'][item['alias']];assert sha(SOURCE/e['trace_path'])==e['trace_sha256'];t=torch.load(SOURCE/e['trace_path'],weights_only=False,map_location='cpu');cf=PROVIDER/item['capture']['path'];assert sha(cf)==item['capture']['sha256'];cap=torch.load(cf,weights_only=False,map_location='cpu');ids=np.asarray(cap['frame_ids']);truth=gt[item['key']]['interval'];y=((ids>=truth[0])&(ids<truth[1])).astype(float);parts=[np.asarray(o['hidden'])[-1,0]for o in cap['temporal_cache']['offsets']];h=np.stack([parts[j%2][j//2]for j in range(len(ids))]).astype(float);h/=np.maximum(np.linalg.norm(h,axis=1,keepdims=True),1e-30);u=np.asarray(t['head_inputs']['TargetContext'],float).copy();u/=np.maximum(np.linalg.norm(u,axis=1,keepdims=True),1e-30);m=membership(t['q']['NativeG6']);pos=(ids-ids[0])/max(ids[-1]-ids[0],1);X=dict(NativeLastHidden=h,TargetASAU=u,TargetSemanticP=t['semantic_p']['TargetContext'],RandomMatchedP=t['random_p'],PositionPrior=np.c_[pos,pos**2],MembershipAffine=m[:,None],NativeHiddenPlusMembership=np.c_[h,m]);assert set(X)==set(FEATURES)and all(len(v)==len(ids)for v in X.values());data.append(dict(alias=item['alias'],parent=str(item['parent']),X=X,y=y,m=m))
+  parents=[x['parent']for x in data];stats={a:[moments(x['X'][a],x['y'])for x in data]for a in FEATURES};rows=[];folds=[]
+  for i,x in enumerate(data):
+   assert time.perf_counter()-begin<p['maximum_CPU_seconds'];scores={'NativeMembership':x['m']};ex=None
+   for a in FEATURES:
+    train,exclude=holdout_stats(stats[a],parents,i);assert all(parents[j]!=parents[i]for j in range(len(data))if j not in exclude);scores[a]=fit_predict(train,x['X'][a]);ex=exclude
+    if a=='NativeLastHidden':scores['ShiftedHeldoutHidden']=fit_predict(train,np.roll(x['X'][a],len(x['y'])//2,axis=0))
+   values={a:auc(z,x['y'])for a,z in scores.items()};rows.append(dict(query=x['alias'],nodes=len(x['y']),positive_nodes=int(x['y'].sum()),negative_nodes=int(len(x['y'])-x['y'].sum()),AUC=values));folds.append(dict(query=x['alias'],excluded_parent_members=sorted(ex),training_queries=len(data)-len(ex),train_heldout_parent_intersection=0));private[x['alias']]=dict(scores=scores,y=x['y'],fold=folds[-1]);put(D/'progress.json',dict(group=group,completed=i+1,total=len(data),CPU_seconds=time.perf_counter()-begin))
+  names=list(rows[0]['AUC']);rng=np.random.default_rng(20261022);valid=[i for i,x in enumerate(rows)if x['AUC']['NativeMembership']is not None];n=len(valid);assert n>0;ix=rng.integers(0,n,(10000,n));means={a:float(np.mean([rows[i]['AUC'][a]for i in valid]))for a in names};paired={}
+  for a,b in [(a,'NativeMembership')for a in names if a!='NativeMembership']+[(a,'PositionPrior')for a in ['NativeLastHidden','TargetASAU','TargetSemanticP','NativeHiddenPlusMembership']]+[('NativeLastHidden','ShiftedHeldoutHidden'),('TargetSemanticP','RandomMatchedP'),('NativeHiddenPlusMembership','MembershipAffine')]:
+   v=np.array([rows[i]['AUC'][a]-rows[i]['AUC'][b]for i in valid]);paired[a+'-'+b]=dict(mean=float(v.mean()),CI95=np.quantile(v[ix].mean(1),[.025,.975]).tolist(),improved=int((v>1e-10).sum()),harmed=int((v< -1e-10).sum()),tie=int((abs(v)<=1e-10).sum()))
+  reports[group]=dict(queries=len(rows),parents=len(set(parents)),effective_AUC_queries=n,empty_class_excluded=len(rows)-n,means=means,paired=paired,rows=rows,folds=folds);put(D/(group+'_parent_exclusion_private.json'),dict(parents=parents,folds=folds))
+ verify();assert not torch.cuda.is_initialized();torch.save(private,D/'private_supervised_diagnostic_scores.pt');report=dict(kind='Explicit GT-supervised offline information availability diagnostic,NOTunsupervisedTTA/methodqualification',panels=reports,CPU_seconds=time.perf_counter()-begin,model_calls=0,final_STVG_predictions=0,qualifies_method=False,source48_provider434_unchanged=True,GT_supervision_disclosed=True,checks='FiveCPUtests; all heldout parents excluded; queryequal/frameequal; no perframe random split; threepanels separate; original native variablesampling; no hyperparameterselection',plan_sha256=sha(D/'plan.json'));put(P/'report.json',report);put(D/'receipt.json',dict(report_sha256=sha(P/'report.json'),private_scores_sha256=sha(D/'private_supervised_diagnostic_scores.pt'),plan_sha256=sha(D/'plan.json'),CUDA_initialized=False,new_final_STVG_predictions=0,method_qualified=False));put(D/'state.json',dict(status='completed_offline_supervised_diagnostic',fingerprint=p['fingerprint']));print(json.dumps({g:dict(means=x['means'],effective=x['effective_AUC_queries'])for g,x in reports.items()},indent=2))
+if __name__=='__main__':globals()[sys.argv[1]]()
