@@ -74,3 +74,9 @@ corrections are isolated in event_presence_v1/v2. They remove no-update guards a
 retain matched controls; neither meets broad-improvement/low-harm goals. Their
 [complete signed results](../results/event_presence_hc64_v2/ANALYSIS.md) and calibration
 failure are retained. No maintained runtime change or automatic paper-full resume.
+
+Overnight user-authorized native text intervention is a completed negative, with
+[all matched controls and signed outcomes](../results/native_event_text_hc64_v1/ANALYSIS.md).
+A separately locked native motion/appearance cache intervention tests another
+mechanism. No core/default change or additional expert. The07:00 user-authorized
+resume/new-plan decision remains separate from these development outcomes.

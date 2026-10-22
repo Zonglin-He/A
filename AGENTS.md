@@ -65,3 +65,14 @@ correction and bounded paired decisions are measured, including all negative tai
 No candidate meets broad-improvement/low-harm aims well enough for main promotion.
 Full remains pausedHC1902/Vid1373. Preserve all three study plans/results and the
 48 maintained/434 provider frozen sources; no automatic full resume or parameter scan.
+
+Latest explicit user authorization (2026-10-23): actively iterate event-discriminating
+feedback until07:00 Asia/Shanghai today. Native trained temporal ability and papers
+may be used; real text interventions are one branch, not the entire search. No added
+expert model/observations, no spatial change, no mere ReferDINO score normalization
+or stronger abstention. Keep fixed protocols, sealed-before-score and all negatives.
+At deadline, user explicitly authorizes verified SAME-plan original paper resume if
+no direction works; otherwise finite tuning/frozen new temporal plan and corresponding
+full rerun. This supersedes the prior indefinite paper pause only for that deadline
+decision. No early full resume or mixing new-method fingerprints into old receipts.
+Continuation ledger: outputs/overnight_event_loop_20261023/state.json.

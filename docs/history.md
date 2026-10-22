@@ -384,3 +384,31 @@ sixlayer recomputation with exact text-independent visual memoization. Primary
 q0*qControl/qEvent, old q0²/qId/sharpen/individual masks/reversed effect controls.
 First actualHC query restores original hidden/posterior/Source boxes bitwise;
 4 visual misses/12hits across4 text forwards,0 expert calls. Full remains paused.
+
+Overnight branch1 actualHC64 complete: full native hidden/posterior/boxes restore
+bitwise64; all64 seal before scoring. Selective text feedback−G6 completev−5.3244pp,
+t−8.7718pp,17timewins/42harms/5ties and32time losses>5pp. Same-length/near-prior
+721,976 pair macro accuracy46.74% vs native52.14%; no useful event-ranking evidence.
+Protected text does not ensure identity invariance: event-mask Source geometryIoU
+mean.7794,7/64 below.5; identity-only11/64 below.5. All failures retained; stop this
+ratio branch rather than tune weights. Scorer NestedTensor import failure preserved;
+independent CPU path-only adapter runs original pinned scorer,1024 checks max9.99e-16.
+No prediction/source/hash change or inference rerun. Native256queries/512textforwards,
+visual256miss/768hit,0experts. [Full signed result](../results/native_event_text_hc64_v1/ANALYSIS.md).
+
+Overnight branch2 launched: native_event_motion_hc64_v1
+fp5b7e969d8e21e44000d426ceebc36ad75611e8967ac323606a648e0c6b82e742.
+Full text fixed, compare native pre-fusion motion temporal-mean replacement against
+appearance replacement, individual contrasts/directNull/sharpen/reverse controls.
+OriginalFP16 fusion+FP32 two-pass native replay must recover hidden/posterior bitwise.
+First7 queries pass no-op;0newRGB/visual/text/expert forward, cached fusion only.
+PaperHC1902/Vid1373 stays paused; no early full resume or method promotion.
+
+Overnight branch2 actualHC64 complete:64 native pre-fusion hidden/posterior recover
+bitwise; all64 sealed before1152 official/dense checks(max9.99e-16). SelectiveMotion
+v−2.4442pp/t−5.2222pp,29timewins/34harms,30time losses>5pp; no Source/G6 gain.
+Both directNull arms also lose~3.9pp tIoU. Matched-pair score accuracy52.81%CIcross.5
+vs native52.14%; low-native-support quartile posterior mass.000912→.042626 andTV.5786.
+No calibrated event-absence likelihood established; stop this ratio, not weight scan.
+Actual384fusion offsets/192native replays in46.85s,0newRGB/visual/text/expert forwards.
+[Complete signed result](../results/native_event_motion_hc64_v1/ANALYSIS.md).
