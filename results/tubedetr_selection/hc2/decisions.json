@@ -1,0 +1,90 @@
+[
+  {
+    "stage": "cross_score",
+    "reason_before": "Remove self-reference advantage or use independent advantage only for admission; compare every candidate against E on the same other anchor",
+    "candidates": [
+      {
+        "selection_mode": "cross_score",
+        "margin": 0.0,
+        "cycle_floor": 0.1,
+        "agreement_floor": 0.0,
+        "guard": 0.4
+      },
+      {
+        "selection_mode": "cross_score",
+        "margin": 0.02,
+        "cycle_floor": 0.1,
+        "agreement_floor": 0.0,
+        "guard": 0.4
+      },
+      {
+        "selection_mode": "cross_score",
+        "margin": 0.05,
+        "cycle_floor": 0.1,
+        "agreement_floor": 0.0,
+        "guard": 0.4
+      }
+    ],
+    "selected": {
+      "selection_mode": "cross_score",
+      "margin": 0.0,
+      "cycle_floor": 0.1,
+      "agreement_floor": 0.0,
+      "guard": 0.4
+    }
+  },
+  {
+    "stage": "cross_gate",
+    "reason_before": "Remove self-reference advantage or use independent advantage only for admission; compare every candidate against E on the same other anchor",
+    "candidates": [
+      {
+        "selection_mode": "cross_gate",
+        "margin": 0.0,
+        "cycle_floor": 0.1,
+        "agreement_floor": 0.0,
+        "guard": 0.4
+      },
+      {
+        "selection_mode": "cross_gate",
+        "margin": 0.02,
+        "cycle_floor": 0.1,
+        "agreement_floor": 0.0,
+        "guard": 0.4
+      },
+      {
+        "selection_mode": "cross_gate",
+        "margin": 0.05,
+        "cycle_floor": 0.1,
+        "agreement_floor": 0.0,
+        "guard": 0.4
+      }
+    ],
+    "selected": {
+      "selection_mode": "cross_gate",
+      "margin": 0.0,
+      "cycle_floor": 0.1,
+      "agreement_floor": 0.0,
+      "guard": 0.4
+    }
+  },
+  {
+    "stage": "agreement",
+    "reason_before": "Check whether two different anchors must agree in extent, without semantic identity claims",
+    "candidates": [
+      {
+        "selection_mode": "cross_agreement",
+        "margin": 0.0,
+        "cycle_floor": 0.1,
+        "agreement_floor": 0.5,
+        "guard": 0.4
+      },
+      {
+        "selection_mode": "cross_agreement",
+        "margin": 0.0,
+        "cycle_floor": 0.1,
+        "agreement_floor": 0.8,
+        "guard": 0.4
+      }
+    ]
+  }
+]

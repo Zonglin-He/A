@@ -1,0 +1,58 @@
+{
+  "scope": "fixed128 scoring and admission validation only",
+  "new_full_allowed": false,
+  "production_configuration_changed": false,
+  "development_exposure": "same previously exposed panels; selection intervals are descriptive",
+  "datasets": {
+    "vidstg": {
+      "fixed_candidate_parameters": {
+        "gamma": 0.0,
+        "admission": 0.4,
+        "guard": 2.0,
+        "link": 1.0,
+        "mode": "relative_residual",
+        "alpha": 1.0,
+        "beta": 0.5
+      },
+      "selection_parameters": {
+        "selection_mode": "cross_agreement",
+        "margin": 0.0,
+        "cycle_floor": 0.1,
+        "agreement_floor": 0.8,
+        "guard": 2.0
+      },
+      "point_guardrails_pass": true,
+      "practical_target_0_1pp": false,
+      "prediction_seal_sha256": "882812eeadf11bef8bb0ef4f22458d0d0a4306736f9bf4be46ea7a14be90c739",
+      "active_selection_fields": [
+        "selection_mode",
+        "margin",
+        "cycle_floor",
+        "agreement_floor",
+        "guard"
+      ]
+    },
+    "hc2": {
+      "fixed_candidate_parameters": {
+        "gamma": 0.025,
+        "admission": 0.7,
+        "guard": 0.4,
+        "link": 1.0,
+        "mode": "original"
+      },
+      "selection_parameters": {
+        "selection_mode": "observe_protection",
+        "margin": 0.0,
+        "cycle_floor": 0.1,
+        "agreement_floor": 0.0,
+        "guard": 0.4
+      },
+      "point_guardrails_pass": true,
+      "practical_target_0_1pp": true,
+      "prediction_seal_sha256": "579ffb5c891c27bcc10e01fbdc14268d485f68d6304815fcdd53a65753b13814",
+      "active_selection_fields": [
+        "selection_mode"
+      ]
+    }
+  }
+}
