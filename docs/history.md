@@ -572,3 +572,5 @@ read as positive native event evidence. A bounded next branch may test whether
 middle-event support distinguishes correct first/last occurrences, with unchanged
 endpoint-only, full-as-middle, wrong-time-middle and event-count controls. This is
 not proof middle events will repair the short cases; full remains paused to07:00.
+
+Joint-offset context and duration-conditional native clause placement published ate2aa54be5f07490b46fdc6c005c5b3119d5bcd52; bothrefs and complete694files/50,627,128bytes/tree/hash/ancestry verified. All signed negative controls preserved. No qualified direction or full/default change. Next fixed branch is actual omitted-middle positive event reads, with unchanged endpoint and same-count/mismatched evidence controls.
