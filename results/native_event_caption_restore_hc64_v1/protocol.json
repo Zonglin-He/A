@@ -1,0 +1,59 @@
+{
+  "schema": "native_event_caption_restore_hc64_v1",
+  "primary": "CaptionRestorationFusion",
+  "arms": [
+    "NativeG6",
+    "CaptionRestorationFusion",
+    "DirectCaptionView",
+    "DenseFillFusion",
+    "UniformRestorationFusion",
+    "SpatialPermutationFusion",
+    "TemporalRankFusion",
+    "NativeSelfMixture",
+    "NoView"
+  ],
+  "count": 64,
+  "code": {
+    "research/native_event_caption_restore_v1/score.py": "aba7093dc79be02cc146304a31485c1834d4abad3f8fc997bfa50bc62a3888e3",
+    "research/native_event_caption_restore_v1/controller.py": "b034ca616a79e273f81f3b3252978e5dd48ce7ea09d5a1202094e5ad276c5e5a",
+    "research/native_event_caption_restore_v1/test_core.py": "f5194241350c68b6f0a855d96f8ab75a3922789fd899bcd56e93231cbf8ed76a",
+    "research/native_event_caption_restore_v1/core.py": "035dc952d8929fa6f79b3e1b0ee70fd06b5b232facb509200b2def58d8027356",
+    "research/native_event_caption_restore_v1/run.py": "4ce29d5a273abe6d5185201ab11e4f61b006420d2d125e58f1b5841c4393c1b1",
+    "research/native_event_caption_restore_v1/export_summary.py": "ea79c692d62995a6ba13ab2c879c3f443a537913e92ca8a2aa1ccca9fc79986f",
+    "research/native_event_caption_restore_v1/analyze.py": "422a0dd848577bd0a7f2e60814f9eb6d1f1e2a69ff2c50419a8bcb72b0e92c11",
+    "research/joint_event_v1/run.py": "1c096fb629d80f21f72def635cf81b91667ed432f9497ac9b667ad152dc2a0d5",
+    "research/boundary_feedback_v1/score.py": "75f4323799b3b45881aac37dd67acfb566f748516f5f5f34b75803bfd51c7ae0",
+    "research/native_event_spatial_text_v1/core.py": "4ece149be15fc9de426e5952f71ec20cc51cfcdab1a6cb260981d63dec7f93a2",
+    "research/native_event_support_view_v1/core.py": "672040fc161f48af3dc8806d71b230648a21722d094bf8ccab5c9d98199250ca"
+  },
+  "text_seal_sha256": "8df7a32aaa185477c775db495e1ae06e1649e8e474f2057118c5a93c39c1efa3",
+  "phase_seal_sha256": "4a48935134d49154fe445e30ff64e0ec51374f73d8e2a21c9c3ada46c99c06aa",
+  "labels_sha256": "f6ccc8581199c803040fbf0e5d39fbc659f7f0a7d041ccbf9b022e6b736317f2",
+  "support_seal_sha256": "9bd9bf87531f4cb37ff465081df9bde6853df23d521dff80220da13910a95e3b",
+  "design_sha256": "a6e6b5280210ccea35b8122dd8390c881fdfa7630a11cf2623fe137e8a97ace7",
+  "authorization": "User bounded overnight event research using existing native frozen source and same8 observations; space fixed",
+  "rationale": "Targetdrift ormissinginteractioncontext are concrete competing failures. Restore ORIGINALfeatures outsidefixed1.5trajectorycontext using actualtrainedSource COMPLETEcaption-to-gridattention; matched-strengthcontrols separate spatialplacement from merely lessperturbation.",
+  "fixed": {
+    "attention": "Observe ORIGINALlastspatiallayer self_attn existing averagedheadweights without modifyingargs/kernel/need_weights/outputs. Textrows ORIGINALcaptionBPE only, excludeaddedsubjectprefix/specials, assertCPUtokenizerIDs matchcachedFull. Meantextrows andsum appearance/motionkeys samecell. Not eventprobability orcausality.",
+    "restoration": "Attention dividedbyvalidperframe maximum. OriginalROI W1; outsideoriginalvalidweightsA/maxA. ZeroattentionfallbackW1 recorded. DenseFill=oldinside-meanfill ofoutside2D/3D; W*original+(1-W)*DenseFill FP32thenFP16; inside/paddingexact. FulltimeauxBoxFixed/all65/wholecaption/nativefusion/twooffset/sixlayers/hull/MBR/spaceDPunchanged. DENSEoriginalkeymask, originalSource safetycorner unchanged.",
+    "controls": "DenseFillFusion exactlyaliasoldFillOnly; UniformusesEXACTsameoutsideperframemean, SpatialPermutationreversessameoutsideweightmultiset, TemporalRankreassignssamecurrentmultiset byreversedtimeattentionrank. AllsameOriginalROI/currentrestorationmass. Noquality/GT/confidencegate. DirectCaption sameinformation; originalself/source/noop.",
+    "scope": "Prospectivefeaturecontextrestoration, notposthocpromotedFillOnly orattentiongain/layer/weightscan; native3D fullclipcontextremains. Match controls do not constitute known false events."
+  },
+  "new_RGB": 0,
+  "new_visual_encoder": 0,
+  "new_text_encoder": 0,
+  "new_expert": 0,
+  "new_observations": 0,
+  "new_optimizer": 0,
+  "weights_frozen": true,
+  "GT_in_inference": false,
+  "all64_seal_before_new_GT": true,
+  "maximum_GPU_seconds": 1200,
+  "stop_epoch": 1792708800,
+  "exposure": "Repeatedly exposed HC64 development; not independent confirmation",
+  "qualification": "PrimarySource/G6actualt/fullvpositive,improved>harmed,Source shortANDlongtimepositive,captionrestoration beyond DenseFill/uniform/spatialpermutation/temporalrank;fixeddual-domainrecheck. No context/fusionweightscan orposthoc controlpromotion.",
+  "references": [
+    "https://github.com/HengLan/TA-STVG/blob/904ad0c344eb12fe34513f97a33f93118f6d3be4/models/grounding_model/modal_encoder.py"
+  ],
+  "fingerprint": "9dcb64beed68db0894459dcde7b46524c5e24773d9752447adeb341461172d18"
+}
