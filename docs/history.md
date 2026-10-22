@@ -340,3 +340,22 @@ Joint-event stages1/2/3 implementation, fixed protocols, all signed positives an
 negatives published at51073d070f7cac0dc15613de1ac2087a2b4be885 on main/research;
 513 files/39,685,424 bytes/complete remote tree verified with archive ancestry.
 Full remains paused and no research candidate is promoted.
+
+2026-10-22 — User requests teacher event-vs-object information audit and realHC64
+feedback correction, without reducing harms merely by abstention. The frozen teacher
+classification is token-max referred-object focal supervision, not event-boundary
+supervision. Predicate/noun correlation median.866, noun in-sample R2mean.689;
+predicate minus noun event-anchor AUC+.0206 CI[-.0450,.0881]. Conditional high-noun
+predicate AUC.5278 CIcross.5; presence is a response proxy, not visibility GT.
+Two isolated fixed tests complete: V1 other-slot nuisance OLS has49/64 extreme
+calibration extrapolations and t−.1396pp; V2 same-target leave-one-time nuisance OLS
+t+.0964pp CI[-.4647,.6708], v+.1444pp CIcross0, time13win/16harm, shortt−.8801pp,
+long+.3454pp. Neither establishes reliable event feedback or low-harm broad improvement.
+All arms use same unguarded full-posterior reweight+physical MBR; no membership
+protection/CV-veto/new optimizer steps. Matched raw-verb/ownership/noun/shift controls
+retained; best control not promoted posthoc. 128decisions sealed before new scores,
+1792 official/dense checks max6.66e-16,320 control pairs bitwise,18 spatial and18 denseMBR
+replays pass. Frozen48+434 unchanged, no model/expert/encoder/decoder forward or RGB read.
+Premature V1 scorer invocation rejected absent seal before labels; log retained,
+same code rerun after seal without prediction/fingerprint changes. Paper full stays
+pausedHC1902/Vid1373; no default/full promotion. [Evidence and signed results](../results/event_presence_hc64_v2/ANALYSIS.md).

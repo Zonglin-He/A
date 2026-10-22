@@ -68,3 +68,9 @@ The low-harm variant has limited coverage and no reliable temporal gain; broader
 pair correction causes more harms. All versions, matched controls and negative
 tails are retained in the [joint-event analysis](../results/joint_event_hc64_v3/ANALYSIS.md).
 Do not convert the research candidate into a default or resume the paused paper full.
+
+The user-authorized event-vs-presence teacher audit and two fixed HC64 feedback
+corrections are isolated in event_presence_v1/v2. They remove no-update guards and
+retain matched controls; neither meets broad-improvement/low-harm goals. Their
+[complete signed results](../results/event_presence_hc64_v2/ANALYSIS.md) and calibration
+failure are retained. No maintained runtime change or automatic paper-full resume.

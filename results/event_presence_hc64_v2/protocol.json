@@ -1,0 +1,52 @@
+{
+  "schema": "event_presence_hc64_v2",
+  "queries": 64,
+  "arms": [
+    "NativeG6",
+    "Conditional",
+    "RawVerb",
+    "Ownership",
+    "Noun",
+    "ShiftConditional"
+  ],
+  "primary": "Conditional",
+  "rationale": "V1 between-slot nuisance calibration extrapolates49/64 beyond3sd. Replace ONLY nuisance estimator by leave-one-time-out same-target calibration; no score/guard/weight/readout change.",
+  "fixed": {
+    "calibration": "per-anchor OLS verb on nominal logit in other7 times of SAME selected track, held-out time residual; no GT/event-negative assumption",
+    "projection": "same ridge1 normalized six-layer hidden, both offsets, full8 plus8LOO for all arms; no CV veto",
+    "posterior": "same calibrated occupancy masks and matched-uniform-null log softIoU, q0*exp(score), original physical MBR; NO membership mass preservation or no-update guard",
+    "shifted": "roll calibrated conditional logit profiles by floor(T/4), restore native occupancy; same readout",
+    "space": "unchanged complete-box geometry and DP per final interval; also fixed native-space evaluation"
+  },
+  "role_groups_sha256": "1f83552bef5d87fcd4fd65490854f2fd4281cd22430cfb1a538d2b6cdd0971d9",
+  "paper_plan_sha256": "432e69b50ddb77cd5dc1282810959a4341678faa09b3a1f318d484a8c4494d47",
+  "code": {
+    "research/event_presence_v2/score.py": "48941aa0d4aee6dc87eee6768286da2afdc7e1496689ecd8f652ad4c9149d94d",
+    "research/event_presence_v2/test_core.py": "7abd20594b38a82f497660467fb3fa9539b6e0875f180d04fbdf0a767c3f3ad6",
+    "research/event_presence_v2/core.py": "523d92413248cf925bfbbb6c2b0844aaed70659548d2f2853485038de37269db",
+    "research/event_presence_v2/run.py": "12e770b8405e5c15257587be984bc3de8f0663011c03f5513ed7cd641dc4112e",
+    "research/event_presence_v1/core.py": "027823d343f9fdf1e5d14337be635a6d9b35bf695ad2cb6c329d5df0a53f02be",
+    "research/joint_event_v1/core.py": "db95b15b96489be62eae02b920dfdcfe0d06a1c08e6248258f18959aef1c089c",
+    "research/joint_event_v1/run.py": "1c096fb629d80f21f72def635cf81b91667ed432f9497ac9b667ad152dc2a0d5",
+    "research/joint_event_v2/core.py": "ca57a3d6cea0c019c708d2f8a119e9b0148973a530372638001001aabd02a730",
+    "research/boundary_feedback_v1/score.py": "75f4323799b3b45881aac37dd67acfb566f748516f5f5f34b75803bfd51c7ae0"
+  },
+  "labels_sha256": "f6ccc8581199c803040fbf0e5d39fbc659f7f0a7d041ccbf9b022e6b736317f2",
+  "no_GT_in_inference": true,
+  "all64_seal_before_new_GT": true,
+  "new_model_forwards": 0,
+  "new_expert": 0,
+  "new_visual_decoder": 0,
+  "query_steps": 0,
+  "maximum_CPU_seconds": 600,
+  "exposure": "same repeatedly exposed64 parents, development only; preceding label-based teacher audit disclosed",
+  "automatic_resume": false,
+  "references": [
+    "https://github.com/iSEE-Laboratory/ReferDINO",
+    "https://seung-hun-lee.github.io/projects/TGL/"
+  ],
+  "mechanism_limit": "regression cannot create missing event information; action-specific residual is a testable hypothesis, not calibrated event probability",
+  "v1_plan_sha256": "ed59c40f1cdb13eecd0021f78b380800858b737b14b7711b5f64441a0bf1b8f1",
+  "v1_seal_sha256": "fa27f6f28b5d6ec060d37e1d28fc3ac7d6dddb1526007840e925cb8749771fb9",
+  "fingerprint": "3ed24e7208294def4bc49b83bab7f74e69c43df6415173935b98437c117c296d"
+}
