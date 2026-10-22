@@ -47,6 +47,8 @@ REQUIRED += [str(p.relative_to(ROOT)) for p in (ROOT/'results/tubedetr_universal
              if p.is_file() and p.suffix in {'.json', '.md'}]
 REQUIRED += [str(p.relative_to(ROOT)) for p in (ROOT/'results/tubedetr_propagation_policy').rglob('*') if p.is_file() and p.suffix in {'.json', '.md'}]
 REQUIRED += [str(p.relative_to(ROOT)) for p in (ROOT/'results/tubedetr_boxfixed_development').rglob('*') if p.is_file() and p.suffix in {'.json', '.md'}]
+REQUIRED += ['docs/llava_st_development.md']
+REQUIRED += [str(p.relative_to(ROOT)) for p in (ROOT/'results/llava_st_development').rglob('*') if p.is_file() and p.suffix in {'.json', '.md'}]
 def check():
  errors=[];warnings=[]
  for name in REQUIRED:

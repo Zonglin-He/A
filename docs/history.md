@@ -1,3 +1,5 @@
+2026-10-22 用户明确新主干LLaVA-ST-Qwen2-7B、原两域各128来源选参后全量：下载固定官方合并权重版本，隔离环境使用官方Transformers提交，旧环境和所有冻结预测不改。新增真实第一级STP 9×9/3584维接口及原生生成时间，维度适配精确回归；Source/Ours同一原生区间，不伪造Global6/MBR。冻结最多24空间数值profile/域、两域锁定后Vid10303/HC1902，资格不通过停止。112项CPU工程检查及839键meta结构检查通过，但本条记录时权重未完整、实际GPU资格与128尚未执行，控制器等待完整下载seal。官方训练含VidSTG衍生指令，仅一个合并checkpoint，不称严格双源跨域或未见域。见[LLaVA-ST协议](llava_st_development.md)。
+
 2026-10-22 时间泄漏有界审计：全部Vid10303/HC1902输入来源、帧网格、八观察和封存预测/receipt及时间指标重算通过；两条已有query屏蔽标注实际前向与原Source/Native/Global6逐位一致、标注访问0。未发现当前v2直接时间GT注入；已确认128与全量重叠及研究曝光，不称独立测试。均匀无文本/图像/logits的原MBR基线tIoU35.2839/42.1105，当前Global636.5756/45.5828，时间提升不能全归语义。历史v1标签hash访问与修复披露，105检查通过，无教师/更新/新全量、生产不改。见[时间审计](tubedetr_temporal_leakage_audit.md)。
 
 2026-10-22 候选覆盖与评分续验证终态：固定原两域128、时间/候选坐标不变，先诊断旧准入漏掉HC1207个改善槽，再有界检验cycle解耦、背景对比及教师内四系数校准；实际Vid16+7/HC13+7配置，5504条预测/receipt核验。严格校准v2排除留出观察的source和target两角色，v1工程产物归档不用。Vid较上轮dense仅+.001483pp且区间跨0，HC仍同ERef仅3来源改善，均未达更明显稳定目标，不晋升或跑全量。102工程检查通过；所有负结果保留，生产/旧seal不改。见[协议](tubedetr_selection_coverage.md)、[完整报告](../results/tubedetr_selection_coverage/report.md)。
