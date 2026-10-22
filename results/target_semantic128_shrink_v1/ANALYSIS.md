@@ -1,83 +1,125 @@
-# Parent-isolated128 development: one-round semantic prototype regularization
+# Expanded target-semantic prototype study: completed, not qualified
 
-Status: acquisition/prediction protocol locked; **no new development or confirmation
-metrics yet**. The user's07deadline and original-paper fallback were explicitly
-cancelled. OriginalpaperHC1902/Vid1373 remains paused. No temporal default is changed.
+The four-family experiment is complete. **One-round common-mean shrinkage reduces
+serious harms but does not establish improved event discrimination or stable HC
+increment.** No new full evaluation was started. The user-cancelled07fallback remains
+disabled and originalpaperHC1902/Vid1373 remains paused.
 
-The main candidate remains complete-trajectory-conditioned, target-support learned
-word semantics. This is not cross-query network training: prototypes are estimated
-inside each video. Previously observed instability can reflect pseudo-label feedback,
-domain transfer and repeated development selection; it cannot be called established
-supervised-training overfitting from the HC64/fixed-panel gap alone.
+## Locked selection and one-time confirmation
 
-## Four families, no stacked corrections
+Input SHA selected128 official parents/direction, onequery/parent, from the full
+227/732parent pools. Each direction has64development and64confirmation parents.
+These are prospective candidate partitions, not pristine tests: old full results
+were already exposed. New labels did not choose the cohort. All256 acquisitions and
+all18arm predictions sealed before new scoring. Only development labels selected
+kappa and the separate beta control, threevalues each; there was no stacked shrink+
+beta, increased capacity, ROI/layer/step scan or perquery GT choice.
 
-| Family | Fixed change | Finite strengths |
-|---|---|---|
-| Original two-round | original TargetSemanticLoop2 | none |
-| Original one-round | only the first original update | none |
-| **One-round prototype shrinkage** | both means shrink to opposite-parity unconditional mean | kappa1,4,16 |
-| One-round weaker evidence | same original means; beta multiplies interval evidence | beta.25,.5,.75 |
+The fixed rule selected **kappa16** and **beta.75**. No configuration passed every
+development admission condition, so the predeclared fallback selection froze the
+maximum balanced complete-v utility **as an unqualified diagnostic**, not for full
+admission. The configuration file preceded the one-time confirmation evaluation.
+No confirmation result selected another configuration. Unselected configurations
+were not GT scored on confirmation.
 
-Kappa is a common-mean pseudo-count in units of fitted frames. Both prototypes and
-the unconditional mean use only the opposite temporal parity. Formula preserves
-the original Bernoulli class-sum likelihood, inclusive interval sum, native prior,
-physical MBR and unchanged complete-box DP. There is no shrink+beta combination,
-new layer/head/capacity, ROI radius choice, confidence rejection or extra query step.
-The baseline restoration checks preserve original one- and two-round results.
+## Four-family results
 
-A weaker-feedback control is independently selected with the same three-value budget.
-Shrinkage beating the original loop does not prove better prototype estimation if
-matched weaker evidence explains the gain. The protocol separately reports that
-mechanism comparison and matched random/time/position controls; less movement alone
-is never a successful result.
+All cells are ΔtIoU / Δcomplete vIoU percentage points relative to unchanged Global6.
+Each cell uses64 parents/queries, with queryweights identical to parentweights here.
+The final official full protocol remains queryweighted across all queries.
 
-## Larger fixed cohort and selection boundary
+| Frozen family | HC development | HC confirmation | Vid development | Vid confirmation |
+|---|---:|---:|---:|---:|
+| Original2round |−0.1849 /−0.0486|−0.5237 /−0.4156|−0.5884 /−0.3431|+2.1439 /+1.8491|
+| Original1round |−0.1113 /+0.0164|−0.1105 /−0.1976|−0.4795 /−0.1157|+1.8825 /+1.4841|
+| **1round+shrink kappa16** |**+0.4274 /+0.3209**|**+0.0914 /−0.0268**|**−0.4953 /−0.1748**|**+1.1331 /+0.6891**|
+| 1round+weak beta.75 |+0.2656 /+0.1555|+0.0895 /−0.0649|−0.4132 /−0.0995|+1.2910 /+0.8848|
 
-Input SHA chooses128 distinct official parents from each complete227/732parent pool,
-one query per parent, without labels or candidate outcomes. Within each direction,
-64 parents are development and64 are confirmation. Confirmation is prospective for
-this candidate's selection: all official full results and older panels have historical
-exposure, so it is not renamed an untouched test. One query/parent makes this a
-parent-balanced development estimand; final official full remains query weighted.
+HC confirmation shrink−Global6: timeCI[-0.9398,+1.0692], complete-vCI[-0.6166,+0.5277].
+Vid confirmation: timeCI[-0.1711,+2.6100], complete-vCI[-0.0029,+1.5292]. These
+intervals do not establish positive population gains. HC shrink time improves23,
+harms17,ties24; Vid improves21,harms16,ties27. Relative to Source, confirmation
+shrink time changes are HCshort−0.1923/long+0.6107, Vidshort+1.3354/long+4.5283pp.
+HC complete-v relative to Source still increases+3.3926pp, Vid+4.8505pp, but these
+include the preserved spatial framework and must not be presented as time-module
+increment. Failed HC short Source and Global6 complete-v conditions remain failures.
 
-Only development labels choose kappa and the separate beta control. Each family has
-three strengths. Among configurations passing predeclared per-domain Source/G6/time/
-complete-v/short-long/win–harm/serious-tail conditions, maximize equally weighted
-per-domain complete-v gain; ties prefer the smaller numeric strength. If none passes,
-the maximum utility configuration is explicitly frozen only for a diagnostic
-confirmation, never as automatic full admission. Confirmation runs once after the
-configuration file is written and hashed. Unselected confirmation predictions remain
-sealed and are not GT scored. Full rules and matched-control conditions are in the
-locked code and design; no post-result threshold change or control promotion.
+Seriousdecline means morethan5pp relative to Global6. Confirmation time losses fall
+from20 to11 queries; complete-v losses from8 to3. Their sum28→14 counts two metrics,
+not distinct queries. The union also falls20→11 here because the serious-v losses
+are contained in the serious-time query sets. This is real harm reduction but does
+not by itself establish generalization or event-specific correction.
 
-## Source-only acquisition and retained failures
+Shrink−weak confirmation time is HC+0.0019pp CI[-0.5573,+0.5600], Vid−0.1579pp
+CI[-1.0661,+0.5094]; complete-v is HC+0.0381 and Vid−0.1957pp. There is no reliable
+prototype-estimation advantage over ordinary evidence weakening.
 
-Compact paper caches preserve geometry and temporal logits but not every native
-word-head input. Necessary Source224 features are reconstructed with identical
-inputs, checkpoint, seeds, precision and offsets. Existing paper or content-bound
-complete-capture geometry is reused. Otherwise the original capture is allowed only
-with an old expert payload: a hard-failing cached-teacher adapter cannot launch a
-ReferDINO forward. Source/E/Full/interval/eight-position outputs must all equal the
-already sealed official outputs bitwise before semantic acquisition is accepted.
-Only target/global/reflected/wrong-time learned heads are read; original head all-key
-no-op is exact. No spatial parameter, extra expert model or observation changes.
-Actual RGB/Source/reuse/semantic costs are recorded by real worker identity.
+## Why scalar mean shrinkage mostly weakens the update
 
-Acquisitionv1 safely stopped on a missing raw expert payload after7 saved queries;
-there were0 new expert calls. The same selected member has a valid paper geometry
-receipt. v2 introduced Source-only reconstruction with that geometry but lacked the
-compact `native_interval` field; it stopped before accepting any new member. Its
-Source/code/logs remain intact. v3 derives the interval from original final-layer
-native logits using the unchanged native rule; it does not copy a GT interval.
-The7 completed v1 semantic/capture/receipt files are migrated byte-for-byte under a
-new plan, with explicit hashes and no recomputation. These are engineering failures,
-not negative method outcomes or fingerprint exemptions. See the separate collection
-protocols; all remain isolated from frozen48maintained/434provider source files.
+The independent source-only algebra audit verifies a structural property. Let P and
+N be positive/negative softweight sums in one fitted temporal parity, and let mu0
+be the unconditional mean. Complementary weights imply both centered prototypes
+lie on the same line. Applying the same scalar kappa gives
 
-Five CPU tests pass: original one-round exact restoration, formula/opposite-parity
-fit, monotonic prototype shrinkage, constant/no-feedback no-op and axis permutation/
-no-stack constraints. All256 candidate predictions must seal before new GT scoring.
-Labels are accessed only by an independent CPU evaluator for the requested split;
-confirmation coordinates are not JSON-parsed during development. No final results
-or success are asserted before sealed evaluation.
+    delta_shrink = gamma * delta_original
+    gamma = P*N/(P+N) * [1/(P+kappa) + 1/(N+kappa)].
+
+Across512 actual fitted folds, the maximum absolute vector discrepancy is1.39e-16
+and relative discrepancy5.07e-15. Thus this shrinkage preserves the prototype-contrast
+direction. Nonlinear Bernoulli curvature can change exact scores, but to first order
+it primarily changes evidence strength. It does not separately repair unreliable
+semantic coordinates. This explains why it can reduce harm while resembling beta.
+It does not prove every regularizer or prototype method ineffective.
+
+## Candidate ranking and implementation checks
+
+Post-confirmation candidate audit uses top64 original-prior candidates, matching
+samegridspan and priorratio<=2. GT only evaluates their quality; no oracle interval
+enters inference. Samegridspan is not exact physical-duration equality; gap counts
+are saved. Queryweighted pair accuracy on HC confirmation is originalone47.15%,
+shrink46.47%, weak47.15%; nativeposterior51.95% on the matched set. Only62/64 queries
+have candidate quality disagreement; all remain in final task metrics. Shrink does
+not repair the raw evidence ranking in this test. On Vid confirmation, raw evidence
+is57.88%→57.97%, a tiny uncertain change. Weak scaling cannot add raw ranking
+information, although combining with a native prior can change posterior ranking.
+
+A separate provider-vs-maintained-path regression recovers **all128 prior Global and
+Target semantic probabilities AND pre-head vectors bitwise**. This excludes this
+particular implementation-path discrepancy as an explanation for the older HC64
+optimism. It does not make old/new panels comparable samples or establish no other
+bug exists. OriginalSource/E/Full/interval/eight-position checks also pass all256
+new acquisitions.
+
+A source-only contribution audit finds median HC clipconfidence below.1 on97.06%
+of coordinates, accounting for91.44% of absolute current logevidence; corresponding
+Vid figures95.00% and57.76%. Clipconfidence here is reconstructed from clippedp and
+is an approximation, not true relevance. Lowconfidence coordinates may still carry
+useful negative information: these statistics identify a class-allocation hypothesis,
+not permission to drop dimensions, amplify scores or claim a root cause. Original
+training uses wordhead frame-mean logits and BCE wordtags, not frame-event labels.
+No class weighting candidate is scored or adopted in this phase.
+
+## Evidence, cost and state
+
+[Development report](develop_report.json), [confirmation](confirm_report.json),
+[all dev signed rows](develop_signed.tsv), [all confirm signed rows](confirm_signed.tsv),
+[dev severe tails](develop_severe.tsv), [confirm severe tails](confirm_severe.tsv),
+[frozen configuration](FROZEN_CONFIG.json), [failed qualification](QUALIFICATION.json),
+[candidate audit](CANDIDATE_RANK_AUDIT.json), [direction audit](DIRECTION_AUDIT.json),
+[class audit](CLASS_CONTRIBUTION_AUDIT.json), [implementation bridge](BRIDGE_AUDIT.json)
+and [verification](VERIFICATION.json) preserve both positive and negative outcomes.
+
+Actual source acquisitionv3 takes1023s, including249 Source queries/2490 additional
+semantic ASA reads;7 prior complete records are imported byte-for-byte. Two earlier
+Source passes failed before accepting their member and remain overhead in preserved
+v1/v2 logs, not fresh successful inference or a method result. Earlier7 costs are not
+added as new v3 time. RGB/Source/semantic work is research acquisition, not deployment
+speed. Additional engineering bridge uses512 ASA reads/15.21s, no Source visual/
+fusion/time forward. CPU all-arm prediction44.70s, no model/expert/observation. No
+expert call, new expert model, added observation, training,448 or320 occurs.
+
+Five CPU core tests pass. Independent official/dense metric checks total7168 with
+maximum error below2e-10. Source48/provider434 remain unchanged. This phase changes
+no maintained default. Starting a full despite the failed admission would require
+an explicit user decision accepting the recorded tradeoff, not relabelling the
+candidate as having passed.

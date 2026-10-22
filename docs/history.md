@@ -810,3 +810,6 @@ actualworker393710/227597532 collecting; first70 complete with0expertcalls and e
 oldoutputs, newworker counters separate from migratedoldcosts. Five CPU one-round/
 shrinkage tests pass; 64develop/64confirm per direction and three kappa/three beta
 values locked before newGT. [Research protocol](../results/target_semantic128_shrink_v1/ANALYSIS.md).
+
+
+Expanded128 four-family phase completed: fp6d212c43bed31821575dd13f6f291ad3422c102b177921e2b5aa2cabae94e4cd, acquisition256seal andall18arm predictionsseal beforeGT,64dev/64confirm per direction. Dev selectedShrinkK16/WeakB075 asdiagnostic because nofeasibleconfig; frozenbeforeonceconfirm. HCconfirmt+.0914/v−.0268ppvsG6/Source short−.1923; Vidt+1.1331/v+.6891, allprimaryCIs cross0. Time severe20→11 andv severe8→3, butshrinkweakadvantage notestablished. Matchedrawcandidate HC47.15→46.47%, scalarprototypecontrastdirection mathematicallyunchanged to1.39e−16. Provider-vs-mainline128target/globalp/u bitwise, exclude that interface discrepancy. Allsigned and [completeanalysis](../results/target_semantic128_shrink_v1/ANALYSIS.md) retained. No newfull/old07fallback. Usertradeoffquestion pending: preservepriorSource short/longgate+continuefix or explicitlyacceptk16full; do not silently bypass. All9ownedstageidentitiesexited, GPUlease free.

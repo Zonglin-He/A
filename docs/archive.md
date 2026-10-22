@@ -168,3 +168,6 @@ allfixedfailures remain preserved. New Source-only reconstruction strictly reuse
 old expert evidence/geometry; cache misses cannot call a new expert. Acquisition
 v1/v2 source/logs and7savedoutputs preserved, v3 explicit byte-compatible migration.
 No newmetrics or fulladmission yet. Originalpaper continues paused, no07fallback.
+
+
+[Completed128target-semantic study](../results/target_semantic128_shrink_v1/ANALYSIS.md) retains failedqualification, allsigned/severe, oncefrozenconfirmation, Sourceonlydirection/classcomposition andindependentpostGT ranking audits. Common-mean scalarshrink reducesharms mainlybystrength ratherthanverifiedbetterranking; no newfull/defaultchange. OldSourcefailures preserved, no07fallback afterusercancellation.
