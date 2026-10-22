@@ -1,0 +1,35 @@
+{
+  "scope": "fixed128 development only",
+  "new_full_allowed": false,
+  "production_configuration_changed": false,
+  "datasets": {
+    "vidstg": {
+      "diagnostic_profile": {
+        "gamma": 0.0,
+        "admission": 0.4,
+        "guard": 2.0,
+        "link": 1.0,
+        "mode": "relative_residual",
+        "alpha": 1.0,
+        "beta": 0.5
+      },
+      "spatial_guardrails_pass": false,
+      "new_method_promoted": false,
+      "reason": "Vid dense guardrail failed",
+      "prediction_seal_sha256": "b21dec3ae715caf37e59d3e52c3f5d60a43de0cb4df9611d861b034715c01ae4"
+    },
+    "hc2": {
+      "diagnostic_profile": {
+        "gamma": 0.025,
+        "admission": 0.7,
+        "guard": 0.4,
+        "link": 1.0,
+        "mode": "original"
+      },
+      "spatial_guardrails_pass": true,
+      "new_method_promoted": false,
+      "reason": "Previous parameter-only original method retained; new candidates did not improve it",
+      "prediction_seal_sha256": "0ba515aac05590efc5f2037f9b3cfff9f0e6c5a961858dc09920a5493278168a"
+    }
+  }
+}
