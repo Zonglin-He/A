@@ -1,0 +1,50 @@
+{
+  "schema": "native_event_text_hc64_v1",
+  "authorization": "User native-event information loop until2026-10-23 07:00 Asia/Shanghai, no added expert",
+  "primary": "Selective",
+  "arms": [
+    "NativeG6",
+    "Selective",
+    "EventOnly",
+    "ControlOnly",
+    "IdentityContrast",
+    "Sharpen",
+    "ReverseSelective"
+  ],
+  "queries": 64,
+  "code": {
+    "research/native_event_text_v1/score.py": "8443032a8ded4b39c7febdf533b9f81cb7e18f7e181afb1c43a30ebf5f47c8ac",
+    "research/native_event_text_v1/controller.py": "d71227cf44b19b9e528f2d744fbe344f336fb60f2f243b276e21a2c405217f1a",
+    "research/native_event_text_v1/test_core.py": "45c1cb8783981acf93e9e529f909e798cd9f075cc6fec67529b607c3e6dd6e6b",
+    "research/native_event_text_v1/core.py": "8ec1c658c13159bd9836c63405eda0e1f0b74be05e5ea38e46651209ea85da2f",
+    "research/native_event_text_v1/run.py": "3f41467a0ae40dcb5e6530789a51661e67008ca70d62ae55f5c50dca10f26ddf",
+    "research/joint_event_v1/run.py": "1c096fb629d80f21f72def635cf81b91667ed432f9497ac9b667ad152dc2a0d5",
+    "research/boundary_feedback_v1/score.py": "75f4323799b3b45881aac37dd67acfb566f748516f5f5f34b75803bfd51c7ae0"
+  },
+  "labels_sha256": "f6ccc8581199c803040fbf0e5d39fbc659f7f0a7d041ccbf9b022e6b736317f2",
+  "manifest_sha256": "25bb82e71489ec35aca2e821dde6330d07b29107d551300922f51abe38a10f4b",
+  "difference_from_25daec": "Old actually recomputed whole static phrase at final-layer readout and usedq0^2/qStatic. Here main-clause predicate token IDs masked before true RoBERTa encoding, equal BPE-count function-token masking protects same subject subtree, identical token positions/masks; both native offsets/sixlayers. Primary q0*qControl/qEvent separates action-specific response from generic masked-text perturbation; identity q0^2/qId retained only old-route control.",
+  "fixed": {
+    "event": "only root/main-clause coordinated verb tokens; preserve noun-attached identity predicates",
+    "control": "same number of nonprotected function-word BPEs in deterministic text order; record unsupported if unavailable, no GT",
+    "identity": "original queried nominal dependency subtree, same forced subject prefix; diagnostic not guaranteed identity equivalence",
+    "readout": "unit difference-of-differences logqControl-logqEvent on native support + originalq0, original physicalMBR",
+    "space": "reuse same capture complete-box geometry/teacher8 and DP, fixed-native-space metrics also",
+    "visual": "exact native VisualCache4GiB text-independent encoders only; real text encoder/fusion/native two-pass/time head recomputed per intervention"
+  },
+  "new_expert": 0,
+  "new_observations": 0,
+  "query_steps": 0,
+  "weights_frozen": true,
+  "GT_in_inference": false,
+  "all64_seal_before_new_GT": true,
+  "exposure": "repeated HC64 development; not independent; fixed recheck required",
+  "maximum_GPU_seconds": 3600,
+  "stop_epoch": 1792708800,
+  "references": [
+    "https://github.com/CFM-MSG/CAEM_Code",
+    "https://arxiv.org/abs/2207.13457"
+  ],
+  "literature_scope": "CAEM/D-TSG train debiasing/event matching; we only test a frozen-native intervention, not reproduce their learned causal estimators",
+  "fingerprint": "1dfe044804731753fdf7b0ba52d048ad260463000ea506b652c0cc5eb77241b9"
+}

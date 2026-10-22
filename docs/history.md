@@ -364,3 +364,23 @@ Teacher event-information audit and both fixed conditional-feedback HC64 tests
 published at76e6f5de4fa277bbbd760f5dedc150820e8bd1b6 on main/research;538 files/
 41,031,483 bytes/complete tree verified, historical ancestry retained. No candidate
 promoted; paper full remains pausedHC1902/Vid1373.
+
+2026-10-23 — User authorizes active, case-driven native temporal/event-information
+research until07:00 Asia/Shanghai today, not only ReferDINO response normalization.
+No additional expert model/observations; space fixed. Real text interventions are
+one branch, not a mandated exclusive route; old25daec full/static negative must be
+audited before reuse. At deadline, if no direction validates, user explicitly permits
+verified same-plan resume of paused paper queueHC1902/Vid1373; if a direction validates,
+finish finite tuning, freeze distinct compatible plan and run full. Never mix new
+method outputs/fingerprints into old receipts, hide failures or force-stop unrelated jobs.
+Private continuation ledger:outputs/overnight_event_loop_20261023/state.json.
+
+Overnight branch1 fixed: native_event_text_hc64_v1 fp1dfe044804731753fdf7b0ba52d048ad260463000ea506b652c0cc5eb77241b9.
+Old25daec did real static-caption forwards and lost9.3220pp tIoU, so not represented
+as a first-ever intervention. New branch masks only main-clause predicate BPE IDs
+before actual RoBERTa encoding; protects queried nominal subtree, matches control
+mask BPE count and original token/attention positions; native two-pass/two-offset
+sixlayer recomputation with exact text-independent visual memoization. Primary
+q0*qControl/qEvent, old q0²/qId/sharpen/individual masks/reversed effect controls.
+First actualHC query restores original hidden/posterior/Source boxes bitwise;
+4 visual misses/12hits across4 text forwards,0 expert calls. Full remains paused.
