@@ -100,3 +100,9 @@ Global6 interval/spatial outputs must match per query. New source capture costs
 exclude reused original expert generation. Existing heartbeat reused for this
 queue and existing Luna reused for read-only monitoring; no new agent/automation.
 [All16 parameter profiles, preserved failed Source gate and rationale](../results/temporal_hc_v3/REPORT.md).
+
+V3 full positive/negative development evidence and exact exploratory protocol/source
+published at c261d9e5f2ebeb16a3a6070eb37bc6b41d9b7945 to main/research.
+Remote334 files/13,582,128bytes and exact tree verified; archive ancestry preserved.
+Full job continues with its original frozen sources; no default upgrade or full
+accuracy claim. Source gate remains failed and validation intervals cross zero.
