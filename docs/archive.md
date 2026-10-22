@@ -102,3 +102,10 @@ preserves positive averages and failed short-event qualification. Swapped-order 
 self-order controls prevent claiming validated chronological event reasoning. No
 full/default change; next test preserves the full-caption native query while reading
 positive subevents, with exact no-op and matched native clause controls.
+
+[Shared Full temporal query](../results/native_event_shared_query_hc64_v1/ANALYSIS.md)
+retains positive clause means but no reliable incremental benefit or short-event repair.
+[Same-feedback query projection](../results/native_event_projection_hc64_v1/ANALYSIS.md)
+reduces pseudo-loss on52/52 supported descriptions, but self/reversal optimizer controls
+match or exceed its small actual gain. Complete signed negatives and unchanged old
+optimizer budget are retained; no main/default update or full resume.

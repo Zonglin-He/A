@@ -511,3 +511,28 @@ ancestry preserved. Positive clause averages and all short/severe harms public;
 no qualified new method or main/default change. Next shared Full native query
 test isolates conditioning drift across positive subevents; original paper remains
 pausedHC1902/Vid1373 until07:00 authorized decision.
+
+Overnight branch8 full-caption query sharing across positive clause memories completed,
+fpdb4cd8dcabbcc7b8fe4f76dd8c426077d54387b5cb5c117115ce72ca609b9763.
+Primaryv+1.7062/t+2.5820pp vsG6,30timewins21harms13ties,9time losses>5pp.
+Compared with unshared clauses,t+.1126pp CI[-.2079,.4321];shortt-6.1812,long+4.8157.
+Sharing the actual Full-caption native query is not an effective short-event repair;
+Full query is not a pure identity representation. All64 Full/native/source aliases
+bitwise;1152official/dense checks max6.66e-16. Actual336 replaced secondpass calls,
+50.42s research worker;0RGB/visual encoder/expert/optimizer, not deployment timing.
+[All signed outcomes](../results/native_event_shared_query_hc64_v1/ANALYSIS.md).
+
+Overnight branch9 same-feedback native temporal-query projection completed,
+fp12f6937c047984b1d5f5b045aa5c5315fdfa097b6679be7f8dc42453c57bd626.
+Keep OLD optimizer256 state/10steps/lr.01/radius.1, change only feedback from old
+ReferDINO proxy to sealed positive native clause target.52/52 primary loss decreases,
+but actualt+.3105pp CI[-.1429,.7576],v+.2415ppCI[-.0426,.5276] vsG6;
+13timewins10harms41ties,shortt-.2232,long+.4465. Same-budgetSelfHullQueryt+.3232
+and reversed-clauseQueryt+.4877 also improve slightly, so target-specific advantage
+is not established. Primary is2.2715pp below identical direct feedback in time.
+All64 native hidden/final logits/zero-state/parent aliases restore; native differentiable
+posterior error1.97e-16;1152official/dense checks max6.66e-16.1560total optimizersteps,
+3560time-decoder calls,45.34s worker including loading/research recording;0newencoder,
+text/expert/observation.48+434 frozen files unchanged. No promotion/query-budget scan.
+[Signed results and loss audit](../results/native_event_projection_hc64_v1/ANALYSIS.md).
+Paper remains pausedHC1902/Vid1373 until authorized07:00 decision; no early resume.
