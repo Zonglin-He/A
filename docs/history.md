@@ -335,3 +335,8 @@ original reports/receipts preserved, all scalar scores/means/CIs/predictions unc
 48 maintained/434 provider hashes unchanged; HC1902 scored/Vid1373 saved/full paused.
 No profile promotion, fallback selection, GT-duration mixture or automatic resume.
 [All three studies and complete signed outcomes](../results/joint_event_hc64_v3/ANALYSIS.md).
+
+Joint-event stages1/2/3 implementation, fixed protocols, all signed positives and
+negatives published at51073d070f7cac0dc15613de1ac2087a2b4be885 on main/research;
+513 files/39,685,424 bytes/complete remote tree verified with archive ancestry.
+Full remains paused and no research candidate is promoted.
