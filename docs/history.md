@@ -1,3 +1,5 @@
+2026-10-22 LLaVA-ST Vid原128有限选参锁定：20个配置全部完整seal及独立CPU评分，选gamma1/准入.05/保护.025/连接.5。选中128预测/receipt全hash核验；m_vIoU13.9164→18.4904（+4.5740pp），dense+5.9213pp、未观察+5.6031pp，时间不变45.9839。描述性配对bootstrap区间分别[1.4085,7.6551]/[.9299,10.6175]/[.6243,10.2649]pp，未经选参校正且面板已曝光，不是独立稳定性确认；12条v下降>5pp。HC128捕获在跑，尚无HC锁或任一新全量。全部正负配置和范围见results/llava_st_development/vidstg/development_report.md。
+
 2026-10-22 LLaVA-ST资格显存修复v2：官方14文件16,203,228,377字节完整publisher hash通过；首轮资格在SigLIP100图eager attention分配3.17GiB时OOM，无128捕获/评分。原失败代码/plan/日志完整归档。新隔离接口只按4图视觉编码并释放未用中间层，100帧/权重/FP16/STP/时间/空间参数网格不变；原两资格增加8图对4+4数值检查，113项CPU工程检查通过。新计划f2b1316d399e70ea6c9c709425bb0d10c4f5289580f504d0035dbc334f4743c3，两域实际资格均通过，8图vs4+4视觉输出逐位相同、max_abs_error0；完整checkpoint无missing/unexpected/mismatched keys，权重前后hash不变。已进入Vid128捕获，HC128顺序接续；无新128成绩，监控仍只读。
 
 2026-10-22 用户明确新主干LLaVA-ST-Qwen2-7B、原两域各128来源选参后全量：下载固定官方合并权重版本，隔离环境使用官方Transformers提交，旧环境和所有冻结预测不改。新增真实第一级STP 9×9/3584维接口及原生生成时间，维度适配精确回归；Source/Ours同一原生区间，不伪造Global6/MBR。冻结最多24空间数值profile/域、两域锁定后Vid10303/HC1902，资格不通过停止。112项CPU工程检查及839键meta结构检查通过，但本条记录时权重未完整、实际GPU资格与128尚未执行，控制器等待完整下载seal。官方训练含VidSTG衍生指令，仅一个合并checkpoint，不称严格双源跨域或未见域。见[LLaVA-ST协议](llava_st_development.md)。
