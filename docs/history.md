@@ -1,3 +1,5 @@
+2026-10-22 空间损伤分析与仅参数128续验证：按用户最新约束撤回未数据执行的机制草稿，不改原传播/候选/评分/特征/时间代码。旧全量Vid疑问句−.8123pp、陈述句+.3447pp；固定128发现修改框普遍收缩、尺寸误差升高及评分选择损失，GT分组只诊断。原函数四标量各域有限10profile：Vid选gamma0/准入.4/保护2/连接1，Full19.6532（旧19.6015，Temporal19.6738）；HC选.025/.7/.4/1，Full27.7187（旧27.3153，Temporal27.6495），相对Temporal区间均跨0。原配置128逐条数组回归，86检查通过，无新前向/教师/全量，原所有绑定代码和旧全量seal哈希不变。见[参数验证与成因](tubedetr_boxfixed_parameter_followup.md)、[完整128结果](../results/tubedetr_boxfixed_followup/parameter_report.md)。
+
 2026-10-22 BoxFixed + Global6双域新全量终态：固定128独立父来源各21配置锁定后，Vid10303/732与HC1902/227均完整预测seal和独立CPU评分，controller正常退出。Source/Spatial/Temporal/Full m_vIoU：Vid13.1169/12.8396/16.2644/15.9698，HC15.4251/15.4017/25.7844/25.8211。Full−Temporal Vid−.2946pp、HC+.0367pp，后者父聚类区间跨0；不宣称空间模块稳定收益。原fullmetrics中两项覆盖/改动均值仅复用128 receipt范围，新增两域独立scope audit，原seals不改。完整定位/观测未观测重算及receipt核验通过；无全量反馈调参、无新GPU/旧队列恢复。汇总见[双域终态](../results/tubedetr_boxfixed_development/terminal_report.md)。最终发布逐文件核验后删除已完成监控。
 
 2026-10-22 BoxFixed工程隔离v2：把推理校验里的GT文件hash移至完整预测seal后的CPU评分，推理guard提前，新增禁止hash读标签单测，86项通过。v1全部准备/部分profile归档；新plan和全新预测重新执行128，只有内容与教师指纹相同的原生专家缓存精确复用，不跨代码续预测，不改候选范围/选择目标。
