@@ -21,6 +21,7 @@ REQUIRED += ['docs/joint_boundary_readout.md'] + [f'results/joint_boundary_reado
 REQUIRED += ['docs/generic_tube_readout.md'] + [f'results/{trial}/{name}' for trial in ['interval_state_readout_v1','action_interval_readout_v1','rank_interval_readout_v1','generic_tube_readout_v1'] for name in ['report.json','report.md','decision.json','protocol.json','signed_queries.tsv']]
 REQUIRED += ['results/generic_tube_readout_v1/verification.json','results/interval_state_readout_v1/development_case_audit.json']
 REQUIRED += ['results/strong_vs_global6_audit/report.md','results/strong_vs_global6_audit/analysis.json']
+REQUIRED += [f'results/branch_decomposition_v1/{name}'for name in ['report.json','report.md','protocol.json','signed_queries.tsv','verification.json']]
 def sha(f):return hashlib.sha256(f.read_bytes()).hexdigest()
 def check():
  errors=[];warnings=[]
@@ -82,6 +83,10 @@ def check():
    saved=json.loads((ROOT/f'results/{trial}/report.json').read_text())
    assert saved['proof']['all128_new_predictions_before_new_GT_scores'] and saved['proof']['official_dense_max_error']<2e-10
    assert not saved['decision']['validated_candidate']
+  branch=json.loads((ROOT/'results/branch_decomposition_v1/report.json').read_text())
+  assert branch['coverage']['complete224_six']==64 and branch['coverage']['complete448']==1 and branch['coverage']['missing448']==63
+  assert branch['proof']['all_new_predictions_sealed_before_labels'] and branch['proof']['official_dense_maxerror']<2e-10
+  assert not branch['decision']['full64_branch_question_complete'] and not branch['decision']['new_lightweight_algorithm_validated']
   snap=ROOT/'docs/sources.json'
   if snap.exists():
    old=json.loads(snap.read_text())['files'];changed=[p for p,h in old.items()if not(ROOT/p).is_file()or sha(ROOT/p)!=h]
