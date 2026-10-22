@@ -145,3 +145,32 @@ Temporal v4/v5 code, strict group criterion, pause correction and all signed out
 published at f51883f8683553c47c015a4f29bf5567bad09816 on main/research; exact remote395
 files/30,698,716bytes/tree and historical archive ancestry verified. Source qualification
 remains failed and full remains paused. This receipt introduces no experiment or selection.
+
+2026-10-22 — User authorized case-based temporal continuation, spatial fixed and
+full paused until both Source duration groups positive. In v5 recheck8 harmed long
+events,7 had final-layer t at least as good as all shallower individual layers;
+P157 is a counterexample. New v6 tests final-anchor refinement continuation with
+no fitted scalar: same-sign log-probability deltas bounded by the preceding/final
+step minimum. Global6/Source references, unbounded contrast, bounded continuation,
+reverse control; only two forward candidates eligible. Five fixed modes, no sweep,
+128 tune/same35 exposed development recheck, no full on failure.
+
+2026-10-22 — V6 completed5 fixed modes, no candidate passed strict Source groups;
+no35 recheck/full. Bounded layer continuation gained long+.0978pp but lost short
+-.3445pp versus Source. No continuation-strength sweep. Further case audit finds
+Global6 boundary outside final3 layer-readout range in19/40 harmed long tune queries
+and11/19 helped short tune queries. V7 therefore tests one constrained original-MBR
+readout, with early-layer constraint and simple last3-average controls. Original
+Global6 posterior unchanged; no layer-count/width/weight scan. Full remains paused.
+
+2026-10-22 — V7 primary late-bracket has tune Source short+.1393/long+.2365pp,
+but fails original extra tune+.5pp and Global6 preservation gates. A separate
+Source-objective mechanism extension was frozen before35 predictions; failed
+original eligibility retained, no control fallback. Same35 exposed recheck gives
+Source short+1.3590/long−.7984pp, overall−.1203pp; Source qualification fails.
+P131 partially repairs+6.107pp versusG6, but P132 loses7.805pp from a correctG6
+interval; late consensus cannot certify correctness.50 CPU checks pass;1059
+new cached prediction records sealed/scored;0newGPU/experts;40 core and434 provider
+files unchanged. Full remains paused338, default/spatial unchanged.
+[Case-based continuation](../results/temporal_hc_v6/REPORT.md) and
+[deep-supported MBR recheck](../results/temporal_hc_v7/REPORT.md).

@@ -1,0 +1,29 @@
+{
+  "status": "frozen_Source_objective_mechanism_recheck_before_predictions",
+  "utc": "2026-10-22T09:57:29.270294+00:00",
+  "candidate": "late_bracket",
+  "params": {
+    "mode": "late_bracket"
+  },
+  "reason": "Latest explicit user goal is both duration groups above Source. The sole preregistered primary mechanism passes those two tuning group means but fails the additional original v7 tune+.5pp / Global6 preservation gates. Preserve original failed eligibility; independently test the frozen mechanism on Source objective rather than claim original protocol passed.",
+  "original_v7_eligible": false,
+  "original_gates": {
+    "t_above_Source": false,
+    "t_not_below_Global6": false,
+    "v_above_Source": true,
+    "v_protection": false,
+    "unobserved_protection": true,
+    "severe_protection": true,
+    "short_and_long_strictly_above_Source": true
+  },
+  "tune_Source_group_t_gain_pp": [
+    0.13931806776638178,
+    0.23654821435016773
+  ],
+  "tune_report_sha256": "dc9cfcdd85543ac68053929103c426d676026860515f981ce7ea1d50feaafefb",
+  "original_protocol_sha256": "4068ef53e45a364eb5902c0acdfca2d388ca3363c1f43b79539dca3f40e9f1ed",
+  "Source_qualification_rule": "On both fixed128 and same35: short<=5s and long>5s t gains versus Source strictly>0; overall t>Source, fullv>=Source, severe v declines versusSource<=originalGlobal6+2 on35. All Global6 tradeoffs and CIs public. No label-based online choices. No fallback or protocol rewrite after35.",
+  "full": "No full if either duration group fails on35. No resume of old failed v3. A Source-qualified new run would need its own frozen code/plan/fingerprint; no inference upgrade under the failed original v7 protocol.",
+  "exposure": "Same35 used previously and for baseline case audit. This is an exposed development mechanism recheck, not new independent validation.",
+  "new_GPU_or_expert_calls": 0
+}

@@ -39,3 +39,8 @@ user rejected its failed Source gate. Both short<=5s and long>5s gains must be s
 positive versus Source on tuning and the declared recheck; no exploratory bypass.
 No current temporal research candidate has passed this criterion. Research tools
 are not registered in the sole maintained inference entrypoint.
+
+Case-based temporal v6/v7 are isolated cached-only research. Both failed the
+required Source duration-group qualification. No full resumed, no new model or
+expert forward, and no source-fingerprint waiver. Their code/tests and signed
+results are retained without registering them in the main inference entrypoint.

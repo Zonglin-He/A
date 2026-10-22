@@ -85,3 +85,8 @@ because Source superiority was not established. It has not replaced the main met
 [strict short/long temporal study](results/temporal_hc_v5/REPORT.md) preserve the next
 negative results. The selected MBR3 control did not keep long-event tIoU above Source
 on the fixed development recheck. No full restart or inference-default change follows.
+
+The follow-up [case-based temporal studies](results/temporal_hc_v7/REPORT.md) test
+final-layer continuation and a deep-supported MBR constraint. Neither meets both
+Source duration-group requirements on the fixed development recheck; all signed
+results and repaired/harmed examples are preserved. The default is not upgraded.
