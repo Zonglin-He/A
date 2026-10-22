@@ -231,3 +231,9 @@ No old actionness teacher, external time expert or unaligned cosine loss is prom
 progressed during the audit. HC stage is complete, full paper package still running.
 [Historical audit](temporal_adaptation_audit.md) and
 [saved scalar checks](../results/temporal_adaptation_audit_v1/SAVED_SCALAR_AUDIT.json).
+
+Historical temporal audit plus completed HC-stage signed results published at
+2a58edea00e6eb2cde37b237863da682faf5f6b9 on main/research;446 public files,
+36,826,854 bytes and complete remote tree verified with archive ancestry retained.
+Audit performed0 new model/head forwards, fits, expert calls or GT scoring;
+active48+434 runtime files unchanged. Dual-domain paper package remains in progress.
