@@ -538,3 +538,37 @@ text/expert/observation.48+434 frozen files unchanged. No promotion/query-budget
 Paper remains pausedHC1902/Vid1373 until authorized07:00 decision; no early resume.
 
 Shared-query and same-feedback temporal projection stages published at4733acc8da3611b9565fd41ba510494c959b06e6,664files/48,849,806bytes. Bothrefs, complete remote bytes/hashes/tree and archive ancestry verified. No qualified new method; paper remains paused.
+
+Overnight branch10 joint cached temporal-offset context completed,
+fp5b70fdc72970fc0c20c124e185c4f69173de349d01ddccbde43f61d4f0642e0f.
+All original Full-caption per-node7kwargs/time positions unchanged, interleave65
+nodes into same trained frozen time decoder. Original separate Fullhidden/logits/G6
+restore bitwise64; same-grid parity-blocked attention isolates cross-offset exchange.
+Primaryt-1.9682/v-.7916pp vsG6,14timewins42harms8ties17losses>5pp;
+vsidenticalblocked t-.5821ppCI[-1.0490,-.2010],v-.3297pp. Source t-.8299pp;
+shortSource-.5105,long-.9113. More temporal interaction is not a useful repair in
+this frozen setting; do not scan density/time slots. Blocked/separate kernels differ
+2.38419e-6 hiddenmax, recorded as intervention numerical drift, not equivalent
+acceleration.1152official/dense checks max9.99e-16,3CPU tests,320decodercalls,
+21.36s worker including loading/recording;0newRGB/encoder/text/fusion/expert/optimizer.
+[Full signed results](../results/native_event_joint_offset_hc64_v1/ANALYSIS.md).
+
+Overnight branch11 native event placement conditional on original grid-span length
+completed,fp581f174d6d8d92f4e1944bb31244b3c3d523dd3efa0bc2a6ae7c141622680666.
+Real native clause evidence has matched-duration ranking57.33%CI[53.41,61.42], but
+rawhull changes length. Preserve native marginal mass for every discrete j-i span,
+redistribute location by exact same sealed clause teacher. No new weight/bin/fit.
+Primaryt+.1103/v+.0862pp vsG6,bothCIcross0,17wins15harms32ties;shortSource-1.2156,
+long+1.8767. ConditionalSelfHullt-.4896,ConditionalReverset-2.4303; semantic
+placement is less harmful than mismatches, but insufficient for robust final gains.
+Do not equate this weak positive with no event information, or with qualified method.
+5.55e-17maximum span-mass error; physical durations within a group vary up to3frames,
+so not exact seconds-prior preservation.3CPU tests,1152official/densechecks max6.66e-16,
+64native-targetno-op/parent/source/DP exact;5.91sCPUcache,0newmodel/expert.
+[All signed controls](../results/native_event_conditional_hc64_v1/ANALYSIS.md).
+New evidence inventory:21/52 supported descriptions have3..5 main actions; previous
+native reads evaluated ONLY first+last. Their middle predicates have not yet been
+read as positive native event evidence. A bounded next branch may test whether
+middle-event support distinguishes correct first/last occurrences, with unchanged
+endpoint-only, full-as-middle, wrong-time-middle and event-count controls. This is
+not proof middle events will repair the short cases; full remains paused to07:00.

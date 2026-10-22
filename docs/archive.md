@@ -109,3 +109,9 @@ retains positive clause means but no reliable incremental benefit or short-event
 reduces pseudo-loss on52/52 supported descriptions, but self/reversal optimizer controls
 match or exceed its small actual gain. Complete signed negatives and unchanged old
 optimizer budget are retained; no main/default update or full resume.
+
+[Joint native offset context](../results/native_event_joint_offset_hc64_v1/ANALYSIS.md)
+is worse than the same-grid blocked-attention control; no density/position scan.
+[Native duration-conditional clause placement](../results/native_event_conditional_hc64_v1/ANALYSIS.md)
+preserves original grid-span priors but does not qualify; keep complete signed controls
+and distinction from physical-duration preservation. No main/full upgrade.
