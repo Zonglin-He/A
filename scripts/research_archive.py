@@ -22,6 +22,7 @@ REQUIRED += ['docs/generic_tube_readout.md'] + [f'results/{trial}/{name}' for tr
 REQUIRED += ['results/generic_tube_readout_v1/verification.json','results/interval_state_readout_v1/development_case_audit.json']
 REQUIRED += ['results/strong_vs_global6_audit/report.md','results/strong_vs_global6_audit/analysis.json']
 REQUIRED += [f'results/branch_decomposition_v1/{name}'for name in ['report.json','report.md','protocol.json','signed_queries.tsv','verification.json']]
+REQUIRED += ['results/branch_decomposition_v1/prepared_supplement.json']
 def sha(f):return hashlib.sha256(f.read_bytes()).hexdigest()
 def check():
  errors=[];warnings=[]

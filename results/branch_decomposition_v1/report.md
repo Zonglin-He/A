@@ -6,7 +6,7 @@
 
 The64 complete224 six-layer posteriors and previous fusion decisions/metrics are present. Historical student caches and prediction archives contain the final Strong interval, not its distribution or448 hidden/logits. One engineering capture retains the full Strong posterior. Its Source/ERef/frame IDs/eight observations/224 hidden are bitwise equal to H001.
 
-For that one case only, q448=2qStrong−q224six is nonnegative, sums to1 within floating precision and reconstructs the saved Strong distribution and interval exactly. The64 matched mean comparison cannot identify the missing448-only mean. The final MBR decision is non-injective: many distributions yield the same interval. It is invalid to invent the missing distribution from that decision.
+For that one case only, q448=2qStrong−q224six is nonnegative, sums to1 within floating precision and reconstructs the saved Strong distribution and interval exactly. The64 matched mean comparison cannot identify the missing448-only mean. The final MBR decision is non-injective: many distributions yield the same interval. It is invalid to invent the missing distribution from that decision. The human has now authorized the fixed63-query supplement after the active full evaluation completes.
 
 ## One complete case, H001
 
@@ -47,7 +47,7 @@ This candidate is a **prepared hypothesis, not evaluated or selected**. Full448-
 
 ## Minimal missing evidence, prepared only
 
-The private fixed supplement plan lists63 original queries after the active full queue finishes:126 original448 offset forwards,0 new224 forwards,0 expert calls,0 spatial decoder,0 training. It preserves the exact inputs/checkpoint/precision/seed/two-offset/native flow and saves both per-offset logits and posterior. Reconstruct the historical equal fusion and require every old Strong interval, without weakening source hashes; seal before labels. This is outside the current cache-only scope and remains unstarted pending explicit authorization. No model job or automation was scheduled.
+The private fixed supplement plan lists63 original queries after the active full queue finishes:126 original448 offset forwards,0 new224 forwards,0 expert calls,0 spatial decoder,0 training. It preserves the exact inputs/checkpoint/precision/seed/two-offset/native flow and saves both per-offset logits and posterior. Reconstruct the historical equal fusion and require every old Strong interval, without weakening source hashes; seal before labels. The human explicitly authorized this extension, conditional on the current full evaluation finishing. The supplement is prepared and source/input/asset locked, but no model has started. The existing half-hour heartbeat was updated to continue this stage after full publication; no new automation was created.
 
 After coverage is complete, the planned table is448-only /224six /full fusion /fixed-offset0 fusion /offset1 sensitivity, with common spatial trajectory and actual finalDP reported separately. No per-query GT branch choice or weight sweep. Only then decide whether the prepared lightweight candidate has precision and actual cost value.
 
@@ -56,3 +56,7 @@ After coverage is complete, the planned table is448-only /224six /full fusion /f
 One new cached query prediction panel sealed before locked-label scoring; 8 official/dense comparisons max error 5.55e-17. All other64 results are existing-score reaggregation. Source/ERef/positions/hidden binding and originalG/F predictions recover exactly. No RGB/model/head/decoder/expert/GPU/parameter update. All434 active-full sources and plan remain unchanged.
 
 All64 have repeated development exposure. No new production method, no448-only full-panel mean and no cross-backbone precision claim. Detailed signed evidence and explicit coverage are in report.json/signed_queries.tsv. Private queries, raw boundaries/boxes/posteriors/features, video and checkpoints remain excluded.
+
+## Authorized deferred execution
+
+The approved63-query supplement is now locked to fingerprint `4015113aed7a56a88e7bf5c4bbec032c4e32ccfa849628f833d9a0c65a961dcb`. Ten semantic/barrier tests and actual early-run refusal pass; CUDA visibility survives module import without initialization. The hard gate requires full state `complete_published`, both domains scored, old owned processes exited and the sharedGPU lock. See prepared_supplement.json for exact commands and budgets. No further confirmation is required. Two preparation-only versions with syntax/import-environment issues produced no model calls or predictions; their plans/source snapshots are retained privately, not resumed.

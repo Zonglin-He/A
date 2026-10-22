@@ -1,0 +1,32 @@
+{
+  "status": "authorized_waiting_for_full_publication",
+  "plan_fingerprint": "4015113aed7a56a88e7bf5c4bbec032c4e32ccfa849628f833d9a0c65a961dcb",
+  "queries": 63,
+  "additional448_offsets": 126,
+  "new224_forwards": 0,
+  "new_expert_calls": 0,
+  "training": 0,
+  "full_evaluation_must_be_complete_published": true,
+  "models_started": 0,
+  "formal_sources_unchanged": 434,
+  "barrier_test": {
+    "status": "pass",
+    "barrier_actual_run_refused_before_GPU": true,
+    "prepared_state_unchanged": true,
+    "models_started": 0,
+    "semantic_tests": 10,
+    "GPU_visibility_import_preserved": true,
+    "all_sources_syntax_checked": true,
+    "fingerprint": "4015113aed7a56a88e7bf5c4bbec032c4e32ccfa849628f833d9a0c65a961dcb"
+  },
+  "active_heartbeat": "ta-stvg-luna",
+  "schedule": "Existing half-hour heartbeat retained; no new automation. Root publishes current full results, then starts the supplement only after hard barriers and old process exit checks.",
+  "complete_branch_comparison_N": 64,
+  "single_offset_comparison_N": 63,
+  "primary_lightweight": "SingleFusion0 fixed;offset1 sensitivity, noGT branch picking or weight sweep",
+  "commands": {
+    "preflight": ".conda/tubedetr/bin/python -B scripts/branch_decomposition/supplement.py --preflight",
+    "run": ".conda/tubedetr/bin/python -B scripts/branch_decomposition/supplement.py --run",
+    "score": "CUDA_VISIBLE_DEVICES='' .conda/tubedetr/bin/python -B scripts/branch_decomposition/supplement_score.py"
+  }
+}
