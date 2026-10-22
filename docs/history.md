@@ -288,3 +288,22 @@ Event/query experiment code, fixed protocol, complete signed outcomes and negati
 analysis published at50ed82b9c6049d82d3f6140f13b166d945559cec to main/research.
 466files/37,503,162bytes/tree fully verified; history ancestor preserved. Heartbeat
 paused after experiment completion; paper full remains pausedHC1902/Vid1373.
+
+2026-10-22 — User authorizes a new lightweight HC64 boundary-feedback test, not more
+query steps. Implemented isolated dense text-conditioned hidden change contrast,
+computed separately on native offsets with2-frame neighborhoods and six layers;
+primary BoundaryCell preserves original posterior mass per eight-anchor-membership
+class. Compare unrestricted BoundaryGlobal, same-value temporal ShiftCell, old
+raw-event RawCell with identical preservation, bitwise NativeG6 and frozen Source.
+All64 five-arm predictions sealed before new CPU labels;0 model/expert/decoder
+forwards,0 optimizer steps. BoundaryCell−G6 completev+.0779/t+.0817pp, both CIs span0;
+short t+1.1898pp/long−.2008pp. RawCell overallt+.3114pp is higher, still hurts short
+events. New feedback differentiates2282/2283 nontrivial old evidence classes and
+posterior-expectedt improves+.1956pp, but does not establish reliable final gains.
+RC025/029 recover;RC042/016 move toward stronger changes but wrong inner boundaries.
+17 temporal harms,2>5pp;0 complete-v losses>5pp. No method/default/full promotion.
+768 official/dense checks max6.66e-16 and9 independent denseMBR checks max1.55e-15;
+48 maintained+434 provider hashes exact, full remains pausedHC1902/Vid1373.
+Scoring first final JSON write failed on NumPy integer; original code/log preserved,
+separate CPU serializer adapter completed same metrics with sealed outputs unchanged.
+[Complete boundary-feedback result](../results/boundary_feedback_hc64_v1/ANALYSIS.md).

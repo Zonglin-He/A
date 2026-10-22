@@ -51,3 +51,11 @@ and private qualitative review. Its new plan supersedes the preceding temporal
 admission stop for this relative-best choice only, preserving all failed gates and
 paused queues. The in-progress protocol/code release does not claim new completed
 results or authorize further tuning. Runtime-bound files stay immutable.
+
+Latest bounded HC64 boundary-feedback study is complete in
+[boundary_feedback_hc64_v1](../results/boundary_feedback_hc64_v1/ANALYSIS.md).
+Its isolated research code is not a maintained inference mode. The study uses only
+receipt-bound hidden/posterior/spatial caches, adds no query steps/model calls,
+preserves all signed positives/negatives, and is not adopted after inconclusive
+net gains and remaining long-event harms. Full paper evaluation remains explicitly
+paused with HC1902 scored and Vid1373 saved; no automatic resume follows this study.

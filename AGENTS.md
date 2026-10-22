@@ -53,3 +53,8 @@ HC experiment on old event-token misranking and learned real temporal-query corr
 Paper state is paused_by_user at Vid1373; HC1902 sealed/scored retained. No automatic
 full resume. New isolated tools/output may implement that authorized experiment; keep
 all paper-bound48 and archived434 sources, spatial method, seeds/evidence unchanged.
+
+Latest bounded boundary-feedback HC64 study is completed, with full still paused.
+Its dense hidden-change candidate has inconclusive final gains and long-event harms;
+do not promote it, select a fallback control, increase query steps or resume full.
+All isolated code and signed results are retained; no maintained runtime files changed.
