@@ -76,3 +76,15 @@ no direction works; otherwise finite tuning/frozen new temporal plan and corresp
 full rerun. This supersedes the prior indefinite paper pause only for that deadline
 decision. No early full resume or mixing new-method fingerprints into old receipts.
 Continuation ledger: outputs/overnight_event_loop_20261023/state.json.
+
+Latest user steering (2026-10-23 before07): the07deadline and original-paper fallback
+are CANCELLED. Original paper remains pausedHC1902/Vid1373. Continue target-region
+semantic prototype generalization research, expanded to128officialparents/direction,
+fixedinput-only64select/64confirm split. Finite declared parameter selection is now
+authorized: originaltwo/one-round, one-round prototype-mean shrinkage and separate
+one-round weaker-evidence control; do not stack corrections or increase modelcapacity.
+No new experts/observations/spatial changes. Source-only feature reconstruction may
+reuse strictly bound cached expert evidence, with exact original Source/Full checks;
+never start an expert on a cache miss. Freeze before one-time candidate confirmation;
+exposed officialfull/development data remains exposed. After supported generalization,
+freeze an independent temporal-method full plan; no mixing oldpaperfingerprints.

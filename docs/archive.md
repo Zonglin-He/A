@@ -159,3 +159,12 @@ restorationstrength andpermutationcontrols; no confidence/GT gate orpaperfullres
 
 
 Overnight branch29: [actor–argument Source context](../results/native_event_role_context_hc64_v1/ANALYSIS.md), fp971bce8e1c2432ccb62b49dc0fb75a757e182e54af0b049d66d5d23eee7c6a05. Actual59 auxiliarySource text reads, original64Full/cachednativebitwise,3CPUtests/1408metricchecks,33.12s cachedresearchworker. Primaryt+.1847/v+.1799ppCIcross0,Source short−.3016/long+1.7372,21win12harm31tie/2severe time. Equal-extra-key reflected and Sourceactor controls plus private postseal visual review prevent attributing rescues to correct event objects. Auxiliaryobjecttime alone harms−3.0207t. Allsignedpositive/negative retained; no recheck/promotion/scan/newexpert/observation/visualencoder/optimizer. Source48/provider434 and paperHC1902/Vid1373 unchanged; original07deadline decision still required.
+
+User cancels07deadline and authorizes larger target-semantic study. The [128-parent
+one-round/shrinkage protocol](../results/target_semantic128_shrink_v1/ANALYSIS.md)
+fixes64select/64confirmation per direction and three strengths each for shrinkage
+and a separate weak-evidence control, with no stacked corrections. Old29studies and
+allfixedfailures remain preserved. New Source-only reconstruction strictly reuses
+old expert evidence/geometry; cache misses cannot call a new expert. Acquisition
+v1/v2 source/logs and7savedoutputs preserved, v3 explicit byte-compatible migration.
+No newmetrics or fulladmission yet. Originalpaper continues paused, no07fallback.

@@ -767,3 +767,46 @@ Separate [postseal information-supply audit](../results/native_event_information
 
 
 Overnight branch29: [actor–argument Source context](../results/native_event_role_context_hc64_v1/ANALYSIS.md), fp971bce8e1c2432ccb62b49dc0fb75a757e182e54af0b049d66d5d23eee7c6a05. Actual59 auxiliarySource text reads, original64Full/cachednativebitwise,3CPUtests/1408metricchecks,33.12s cachedresearchworker. Primaryt+.1847/v+.1799ppCIcross0,Source short−.3016/long+1.7372,21win12harm31tie/2severe time. Equal-extra-key reflected and Sourceactor controls plus private postseal visual review prevent attributing rescues to correct event objects. Auxiliaryobjecttime alone harms−3.0207t. Allsignedpositive/negative retained; no recheck/promotion/scan/newexpert/observation/visualencoder/optimizer. Source48/provider434 and paperHC1902/Vid1373 unchanged; original07deadline decision still required.
+
+2026-10-23 user cancels07deadline and automatic original-paper fallback, accepts
+TargetSemanticLoop2 as the research direction and authorizes expanded128data and
+finite tuning. Paper stays pausedHC1902/Vid1373. Private fallback helper now hard
+rejects the cancellation flag; before-cancel helper snapshot retained. Sameheartbeat
+returns half-hour research, no newautomation. Original29negative/positive/fixedfail
+records preserved; independent29entry/7fixeddual eligibility digest is a prior-data
+audit, not a new method or basis to override user cancellation.
+New input-only SHA selection:128officialparents from each full227/732parentpool,
+onequery/parent;64development+64confirmation per direction. Confirmation is prospective
+for newcandidate selection only: officialfull and earlier panels were already exposed.
+Four planned families: originaltwo/originalone, one-round shrinkage kappa1/4/16, and
+separate one-round feedback beta.25/.5/.75. No stacked shrink+beta/ROI/extraquery budget.
+Compactpaper captures lack original time features. Isolated acquisition fp97e78ac9567a7eba3e45886d2c89bbe116d85ad28bd500643cf57783f976e9ac
+reconstructs exact frozenSource224 and geometry using strictly cached old expert
+payloads only; cached teacher _call hardfails, no added expert/observation. Original
+Source/E/Full/intervals/eightpositions must match all sealed official references before
+collecting target/global/reflected/wrongtime semantic features. Original48/434 remain
+fixed and no originalfull resumed. Initial prepared-only import-order issue was caught
+beforelaunch; oldplan/source retained under maintenance/target_semantic128_collect_prepared_v0,
+0models/0predictions, newplan not hashwaiver.
+
+Expandedsemantic acquisitionv1 engineering stop after7savedqueries: selected8thHC
+member has no directly indexed rawexpertpayload, likely a prior completecapture import.
+Hard cache-only boundary prevented allnewReferDINO calls; original worker391325/
+227559956 exited and sharedlease released. This is acquisition/cachecoverage failure,
+not a negative method result. Preserve v1plan/code/logs/7capture+semantic+receiptbytes.
+Next separatev2 acquires Source timefeatures only and reuses hash-bound existing
+paper/complete-index geometry when available, never regeneratesexpert evidence;
+7saved rows require explicit byte-for-byte compatibility migration, no rescoring or
+fingerprint relaxation. All inputselection/seed/semantichead/math/folds remainfixed.
+
+Acquisitionv2 compact-geometry adapter stopped before accepting new rows because
+`from_native` requires the missing original native interval field. v2plan/source/
+logs/7importedfiles preserved; oldworker393253/227591456 exited,0newexpert. v3
+fp5fe16ed1e8780c7b7096cdc3803507187ffb7c0eef5595e4bd76a5f856de5635
+derives that interval solely from original final-layer native logits and unchanged
+nativeprobabilities/MBR; alloriginalSource/E/Full/interval/positions muststillmatch.
+The7v1 semantic/capture/receiptbytes exactmigrate, no oldhashwaiver or new GT. v3
+actualworker393710/227597532 collecting; first70 complete with0expertcalls and exact
+oldoutputs, newworker counters separate from migratedoldcosts. Five CPU one-round/
+shrinkage tests pass; 64develop/64confirm per direction and three kappa/three beta
+values locked before newGT. [Research protocol](../results/target_semantic128_shrink_v1/ANALYSIS.md).
