@@ -698,3 +698,29 @@ This differs old decoder ROI bias/pixelunioncrop. Native safetycorner and featur
 residual/padding behavior must be preserved/audited; no source/hash/default upgrade.
 
 Native pass and crossed native spatial/event-text stages published atd60c70160fdd23d3cf571c7c862864a3f9ee8150; bothrefs complete782files/55,644,975bytes/tree/SHA/ancestor verified. Six actual owned controller/predictor/scorer identities exited; all signed negatives and isolated postseal audit receipts preserved. No method passed qualification or full/default change. Next fixed branch is a positive target-preserving source-feature view, not an inverse-nullteacher.
+
+Overnight branch17 positive target-preserving prefusion featureview completed,
+fpc26fec8aad71656eed942c9a21b021d711c3eaf5a2848338589dbc864f8361b4.
+Originalfullcaption/all65nodes,fulltimeBoxFixedauxiliarytrack1.5extent; retaininside
+2D/3Dvalues,filloutsidevalidwithinsidemean andexcludeoutsideattentionkeys BEFORE
+nativefusion. Matchedreflectedview/mask-only/fill-only/direct/nativecontrols. Original
+Source safetycorner remains; actualtarget/controlkeycountdifference<=1, notclaimed
+identical. Full64hidden/logits/q/Sourceboxesbitwise;3CPUinside/padding/reflection/
+fallbacktests,1280official/densechecksmax8.88e-16.70.80sworker inclloading/research,
+640fusionoffset/320native,0RGB/visualencoder/text/expert/observations/optimizer.
+Primaryt-.6913/v-.2456ppvsG6,30wins26harms8ties16severetime losses;bothCIcross0.
+Source short+1.6448/long+.1417 butnotqualified(belowG6andcomponents). DirectSupport
+t49.1827,ReflectedFusion53.8812 vsnative55.9613. MaskOnlyt+.0970(26wins29harms),
+FillOnlyt+.5633/v+.4454(31wins25harms,Source short+1.0609/long+1.8650) isCONTROL,
+notpromoted;14severetimeharms. [All signed outcomes](../results/native_event_support_view_hc64_v1/ANALYSIS.md).
+Separately boundpostseal [supportaudit](../results/native_event_support_view_hc64_v1/support_audit.json):
+meanauxIoU.5191/targetcoverage.7535,keep33.74cells,reflectedoverlap.4081,11emptyROI
+frames(allRC011)fallbackoriginalvalid,noqueryskip. RC011coverage.036/IoU.0196,
+FillOnlyt-14.04pp;RC042coverage.7244loses63.16,RC041.8841loses26.75,RC015.7151
+loses24.68. Targetdrift andmissinginteractioncontext are competing explanations,
+notprovedbytargetGT;RC023coverage.4504yetgains47.54 refutesGTcoverage-as-selection.
+No default/fullupgrade orcontext/fusionweightscan. Newnext hypothesis will restore
+originalspatialfeatures where FULL nativecaptionattention supportscontext, withEXACT
+same-strengthuniform/permutedrestorationcontrols toseparate semanticplacement from
+mereconservativeweakening. It is not posthoc FillOnlypromotion oralreadytestedresult.
+PaperpausedHC1902/Vid1373; original48+434 remainsunchanged.

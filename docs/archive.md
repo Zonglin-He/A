@@ -141,3 +141,10 @@ all signed tails and separately bound postseal conditional/footprint audit. No p
 erasure gain scans or default/full change. A distinct positive target-preserving
 prefusion feature view remains untested; do not claim it completed from ROI-prior
 or target-removal experiments. Original48+434 frozen sources remain intact.
+
+[Positive prefusion target-support views](../results/native_event_support_view_hc64_v1/ANALYSIS.md)
+retain primaryfailure, matchedplacement andcomponent/directcontrols. Separatelybound
+postseal targetcoverage/safetycorner audit preserves allgoodandbadcases. Positive
+FillOnlycomponentmeans are notqualifiedmainresults anddonot authorizepromotion or
+sweeps. A prospective distinct nativecaption-contextrestoration test must beatmatched
+restorationstrength andpermutationcontrols; no confidence/GT gate orpaperfullresume.
