@@ -1,0 +1,69 @@
+{
+  "status": "locked_before_full",
+  "dataset": "vidstg",
+  "parameters": {
+    "gamma": 0.0125,
+    "admission": 0.4,
+    "guard": 0.4,
+    "link": 0.5
+  },
+  "profile_id": "2c927f7c6a0bf4e5",
+  "plan_sha256": "a906c62b7d3a849de468c39f0e21b37fdf122a6aca8b30a3d6e3dfbfd7feb8a2",
+  "dev_metrics": {
+    "status": "complete",
+    "dataset": "vidstg",
+    "queries": 128,
+    "parameters": {
+      "gamma": 0.0125,
+      "admission": 0.4,
+      "guard": 0.4,
+      "link": 0.5
+    },
+    "means": {
+      "Source": {
+        "v": 16.10080537596486,
+        "s": 48.61641898239857,
+        "t": 28.517573180966455
+      },
+      "Spatial": {
+        "v": 16.42568476793508,
+        "s": 48.65231511675406,
+        "t": 28.517573180966455
+      },
+      "Temporal": {
+        "v": 19.673753778451914,
+        "s": 48.61641898239857,
+        "t": 35.1476375483856
+      },
+      "Full": {
+        "v": 19.601517845428994,
+        "s": 47.68772314367595,
+        "t": 35.1476375483856
+      }
+    },
+    "unobserved_sIoU": {
+      "Source": 48.59164469006397,
+      "Spatial": 48.717931387029836,
+      "Temporal": 48.59164469006397,
+      "Full": 47.75113472302267
+    },
+    "observed_sIoU": {
+      "Source": 51.02536444566057,
+      "Spatial": 50.42408913713998,
+      "Temporal": 51.02536444566057,
+      "Full": 50.36872421940547
+    },
+    "Full_minus_Temporal_pp": -0.072235933022916,
+    "loss_over5pp_queries": 3,
+    "prediction_seal_sha256": "8b12a3d21e4aa5f7d42cbbd4ad2de6c712b13fc8221893dc8e63028add1dc0b6",
+    "all_predictions_sealed_before_labels": true,
+    "mean_admitted_frames": 34.375,
+    "mean_changed_from_ERef_frames": 13.234375,
+    "not_independent_confirmation": true
+  },
+  "profiles_tested": 21,
+  "dev_prediction_seal_sha256": "8b12a3d21e4aa5f7d42cbbd4ad2de6c712b13fc8221893dc8e63028add1dc0b6",
+  "selection_objective": "fixed128 equal-query Full m_vIoU; original baseline always eligible, exact ties retain baseline",
+  "full_not_used_for_selection": true,
+  "development_exposed": true
+}
