@@ -283,3 +283,8 @@ CPU/GPU sigmoid check0outputs/1 expert extra preserved;64 successful (65 actual)
 Final scorer np.int64 serialization recovered by separate CPU adapter, no inference
 or fingerprint change. Full stays pausedHC1902/Vid1373, no automatic resume.
 [Experimental result](../results/event_query_hc64_v1/ANALYSIS.md).
+
+Event/query experiment code, fixed protocol, complete signed outcomes and negative
+analysis published at50ed82b9c6049d82d3f6140f13b166d945559cec to main/research.
+466files/37,503,162bytes/tree fully verified; history ancestor preserved. Heartbeat
+paused after experiment completion; paper full remains pausedHC1902/Vid1373.
