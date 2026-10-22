@@ -20,6 +20,7 @@ REQUIRED += ['docs/temporal_signal_audit.md'] + [f'results/temporal_signal_audit
 REQUIRED += ['docs/joint_boundary_readout.md'] + [f'results/joint_boundary_readout_{v}/{name}' for v in ['v1','v2'] for name in ['report.json','report.md','decision.json','protocol.json','signed_queries.tsv','verification.json','formal_guard.json']]
 REQUIRED += ['docs/generic_tube_readout.md'] + [f'results/{trial}/{name}' for trial in ['interval_state_readout_v1','action_interval_readout_v1','rank_interval_readout_v1','generic_tube_readout_v1'] for name in ['report.json','report.md','decision.json','protocol.json','signed_queries.tsv']]
 REQUIRED += ['results/generic_tube_readout_v1/verification.json','results/interval_state_readout_v1/development_case_audit.json']
+REQUIRED += ['results/strong_vs_global6_audit/report.md','results/strong_vs_global6_audit/analysis.json']
 def sha(f):return hashlib.sha256(f.read_bytes()).hexdigest()
 def check():
  errors=[];warnings=[]
