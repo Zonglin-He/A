@@ -18,6 +18,8 @@ REQUIRED += ['configs/tuned_boxfixed_v1.json','docs/tuning_v1.md',
  'results/boxfixed_tuning_v1/confirmation_vidstg.json']
 REQUIRED += ['docs/temporal_signal_audit.md'] + [f'results/temporal_signal_audit_v1/{name}' for name in ['report.json','report.md','protocol.json','signed_queries.tsv','sensitivity.json','verification.json','association.svg']]
 REQUIRED += ['docs/joint_boundary_readout.md'] + [f'results/joint_boundary_readout_{v}/{name}' for v in ['v1','v2'] for name in ['report.json','report.md','decision.json','protocol.json','signed_queries.tsv','verification.json','formal_guard.json']]
+REQUIRED += ['docs/generic_tube_readout.md'] + [f'results/{trial}/{name}' for trial in ['interval_state_readout_v1','action_interval_readout_v1','rank_interval_readout_v1','generic_tube_readout_v1'] for name in ['report.json','report.md','decision.json','protocol.json','signed_queries.tsv']]
+REQUIRED += ['results/generic_tube_readout_v1/verification.json','results/interval_state_readout_v1/development_case_audit.json']
 def sha(f):return hashlib.sha256(f.read_bytes()).hexdigest()
 def check():
  errors=[];warnings=[]
@@ -68,6 +70,17 @@ def check():
    assert joint['proof']['all128_predictions_before_GT'] and joint['proof']['official_dense_checks']==count
    assert joint['proof']['official_dense_max_error']<2e-10 and joint['proof']['network_calls']==0
    assert not joint['decision']['validated_lightweight_candidate'] and not joint['decision']['production_changed']
+  generic=json.loads((ROOT/'results/generic_tube_readout_v1/report.json').read_text())
+  verified=json.loads((ROOT/'results/generic_tube_readout_v1/verification.json').read_text())
+  assert generic['proof']['network_calls']==generic['proof']['GPU_calls']==generic['proof']['parameter_updates']==0
+  assert generic['proof']['constant_quality_temporal_utility_max_error']<2e-12
+  assert not generic['decision']['validated_candidate'] and not generic['decision']['production_changed']
+  assert verified['status']=='pass' and verified['frozen_formal_sources_unchanged']==434
+  assert verified['unchanged_source_baseline_and_candidate_arrays']==4096
+  for trial in ['interval_state_readout_v1','action_interval_readout_v1','rank_interval_readout_v1','generic_tube_readout_v1']:
+   saved=json.loads((ROOT/f'results/{trial}/report.json').read_text())
+   assert saved['proof']['all128_new_predictions_before_new_GT_scores'] and saved['proof']['official_dense_max_error']<2e-10
+   assert not saved['decision']['validated_candidate']
   snap=ROOT/'docs/sources.json'
   if snap.exists():
    old=json.loads(snap.read_text())['files'];changed=[p for p,h in old.items()if not(ROOT/p).is_file()or sha(ROOT/p)!=h]

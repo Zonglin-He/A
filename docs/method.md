@@ -20,3 +20,6 @@ Strong仍为已知时间参考：448原生后验与224六层平均各占一半�
 
 
 最后两轮时间读出试验已完成，见[完整结果与研究定版](../results/interval_pool/ANALYSIS.md)。Global6是224两个offset每层分别经旧hull构造物理区间分布、再平均六层、原精确tIoU-MBR后执行原BoxFixed的研究读出；不运行448或额外decoder。替代的12完整区间等权mixture在HC64和双向32父冻结开发复核均未过判据，故不采用、不续扫权重。原Global6+BoxFixed相对Source有整体收益信号，但不能写成独立确认、OPD优势或空间反哺时间；生产Strong默认保持。轻量要求按包含同ReferDINO的实际共享捕获与各阶段成本报告，不能只报缓存后概率毫秒。
+
+
+2026-10-22最新通用接口约束：新研究读出禁止依赖actionness或其他架构特定辅助头，见[通用缓存读出实测](generic_tube_readout.md)。新prototype仅读区间后验、完整框轨迹与框候选，但实际评分未过采用判据，不能当当前方法或涨点模块。内部头历史分支retired，不参与主线或新门控；正在运行的全量方案保持原配置。
