@@ -359,3 +359,8 @@ replays pass. Frozen48+434 unchanged, no model/expert/encoder/decoder forward or
 Premature V1 scorer invocation rejected absent seal before labels; log retained,
 same code rerun after seal without prediction/fingerprint changes. Paper full stays
 pausedHC1902/Vid1373; no default/full promotion. [Evidence and signed results](../results/event_presence_hc64_v2/ANALYSIS.md).
+
+Teacher event-information audit and both fixed conditional-feedback HC64 tests
+published at76e6f5de4fa277bbbd760f5dedc150820e8bd1b6 on main/research;538 files/
+41,031,483 bytes/complete tree verified, historical ancestry retained. No candidate
+promoted; paper full remains pausedHC1902/Vid1373.
