@@ -202,3 +202,7 @@ passed. Main/ablation/stage/extent share one capture per query. Full package rem
 in progress; per-domain seals precede CPU scoring, then matched16-parent timing
 and private qualitative review. Old full already complete; v3 paused338 never resumed.
 [Locked TA paper package](../results/tastvg_paper_v1/RUNNING.md).
+
+Frozen TA paper implementation/protocol published at5b943d5524b0b69c12830e3575f73ceb8ca3b024
+on main/research;436files/34,844,204bytes/whole tree and archive ancestry verified.
+Queue remains running, no new paper result completion claimed.
