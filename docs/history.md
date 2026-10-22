@@ -696,3 +696,5 @@ Next separate fixed hypothesis retains target+context in a positive original-cap
 feature view BEFORE full fusion, rather than inverse erased/identity posteriors.
 This differs old decoder ROI bias/pixelunioncrop. Native safetycorner and feature
 residual/padding behavior must be preserved/audited; no source/hash/default upgrade.
+
+Native pass and crossed native spatial/event-text stages published atd60c70160fdd23d3cf571c7c862864a3f9ee8150; bothrefs complete782files/55,644,975bytes/tree/SHA/ancestor verified. Six actual owned controller/predictor/scorer identities exited; all signed negatives and isolated postseal audit receipts preserved. No method passed qualification or full/default change. Next fixed branch is a positive target-preserving source-feature view, not an inverse-nullteacher.
