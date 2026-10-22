@@ -50,3 +50,27 @@ research/stvg-opd-paper-hc2-revision-v2; remote tree and all274 files/6031045byt
 verified, retaining clean single-method code and archived ancestry. Exact238 public
 frozen sources match c310af58;196 private installed runtime dependency sources remain
 hash-bound, not exported. Publication adds no GPU/model/GT scoring.
+
+2026-10-22 — User explicitly authorized mechanism-led HC2 temporal tuning followed
+by a new full HC evaluation. Old published v1 remains immutable. New protocol in
+outputs/temporal_hc_v2 locks a SHA-ranked official96-parent panel (64tune/32validation),
+18 temporal profiles maximum: endpoint temperature, layer slope and duration tilt only.
+Spatial weights/teacher/observations/ERef/precision/old hull/physical MBR fixed.
+Old HC64 had only31 exact query IDs in HC1902 (62 parent IDs overlap); old temperature
+1.5 improved old development but harmed prior32 recheck, so no blind temperature repeat.
+New96 captures use unmodified old provider with exact old expert runtime fingerprint
+and explicit evidence reuse; Source/ERef/native intervals bitwise checked against v1
+before panel labels. No old resume hash exemption. Fresh temporal outputs have new
+plan/code/receipt bindings. All official full outcomes were already exposed, so this
+is disclosed target development and post-selection full rerun, not independent test.
+Root supervises sequential tuning; one locked validation, no validation retuning.
+
+2026-10-22 — HC temporal v2 bounded search completed:96 official captures sealed
+(6 complete reuse/90 native Source captures/0 new expert forwards),64 tuning parents,
+14 profiles, then one fixed32-parent validation. Selected tau1.5 improved tuning
+t+.8584/v+.2973pp but validation failed t−1.5605/v−1.0859pp versus Global6.
+Fixed-space control localizes the loss to time; short/already-good events suffer
+interval overexpansion. No validation retuning, fallback selection, gate relaxation
+or new full launch. Default and old complete published full remain unchanged.
+32 CPU engineering checks passed. All signed positive/negative evidence retained.
+[Temporal tuning report](../results/temporal_hc_v2/REPORT.md).

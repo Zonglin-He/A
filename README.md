@@ -71,3 +71,7 @@ remain in the [research archive](https://github.com/Zonglin-He/A/tree/archive/re
 absent from the current inference tree. See [archive policy](docs/archive.md) and
 [history](docs/history.md). Upstream source and revisions are retained under
 [external/](external) and [third_party.json](docs/third_party.json).
+
+User-authorized HC2 temporal calibration is recorded separately in the
+[bounded tuning report](results/temporal_hc_v2/REPORT.md). Its selected profile failed
+the fixed validation; it is not part of the maintained inference method.
