@@ -80,3 +80,13 @@ Overnight user-authorized native text intervention is a completed negative, with
 A separately locked native motion/appearance cache intervention tests another
 mechanism. No core/default change or additional expert. The07:00 user-authorized
 resume/new-plan decision remains separate from these development outcomes.
+
+Native overlapping context branch is also a completed negative; all signed arms
+and exact no-op proofs are [retained](../results/native_event_context_hc64_v1/ANALYSIS.md).
+No deployed temporal default change; next cache-only test isolates actual context
+innovation from same-window original-logit confidence. Full remains paused.
+
+The [context-innovation follow-up](../results/native_event_innovation_hc64_v1/ANALYSIS.md)
+retains same-information cropped-logit controls and all signed outcomes. It nearly
+restores NativeG6 but does not pass the declared development screen; no promotion
+or claim of independent validation. All48+434 frozen sources remain unchanged.

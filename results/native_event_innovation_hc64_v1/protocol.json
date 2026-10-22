@@ -1,0 +1,65 @@
+{
+  "schema": "native_event_innovation_hc64_v1",
+  "primary": "ContextInnovation",
+  "arms": [
+    "NativeG6",
+    "ContextInnovation",
+    "SameInformationContext",
+    "CensoredContext",
+    "Sharpen",
+    "ReverseInnovation",
+    "NoInnovation"
+  ],
+  "count": 64,
+  "authorization": "Same user overnight research authorization, no new expert, space fixed",
+  "code": {
+    "research/native_event_innovation_v1/score.py": "37bfc87680806f58fabf5f8a9068267c1097e8891271fd8441eed2ea83bacca1",
+    "research/native_event_innovation_v1/controller.py": "dae12f03511162ac81ecda4f9239e7b50614b2caf240fcfa6999bd9b50cfe3e4",
+    "research/native_event_innovation_v1/run.py": "ee6d112f8c75166dc15c16d90705e38d94187e067ec568349cc44816dde167dd",
+    "research/native_event_innovation_v1/export_summary.py": "3bded427abbd8d4c1b52fd0d846cf16a24a52c60e28500be6ee95e656dcb6b4f",
+    "research/native_event_innovation_v1/analyze.py": "7fdb617f5abb13a50b879f6630d834cd8a9b1ab90fd3661cdd640a02f2595df5",
+    "research/joint_event_v1/run.py": "1c096fb629d80f21f72def635cf81b91667ed432f9497ac9b667ad152dc2a0d5",
+    "research/boundary_feedback_v1/score.py": "75f4323799b3b45881aac37dd67acfb566f748516f5f5f34b75803bfd51c7ae0",
+    "research/native_event_text_v1/core.py": "8ec1c658c13159bd9836c63405eda0e1f0b74be05e5ea38e46651209ea85da2f",
+    "research/native_event_context_v1/core.py": "ce7c34d6c20d7491d6b1fb51e7eac2c37920c24a53995c782b6dc22a57d1e399"
+  },
+  "context_seal_sha256": "301c384d4acd1c0d72981f6010b33e1c19db2d85ac2e4fc82ca533b660be9ef0",
+  "text_seal_sha256": "8df7a32aaa185477c775db495e1ae06e1649e8e474f2057118c5a93c39c1efa3",
+  "labels_sha256": "f6ccc8581199c803040fbf0e5d39fbc659f7f0a7d041ccbf9b022e6b736317f2",
+  "rationale": "Context primary loses6.8349pp tIoU and shortens8.648s to7.293s while candidate ranking53.96%. Full-information q0\u00b2/uFull loses10.4859pp: repeated original confidence/structural-hull removal can dominate new context evidence. RC059 end collapses320frames; RC056 shrinks both boundaries. Test context-induced changes versus exactly same cropped support/hull using unchanged full-context logits, rather than dividing by an uninformative hull.",
+  "fixed": {
+    "windows": {
+      "Prefix": [
+        0,
+        48
+      ],
+      "Suffix": [
+        16,
+        64
+      ]
+    },
+    "same_information": "For each window slice all6 original Full logits at identical physical IDs and parity, then construct original two-offset hull/mean. No fusion/decoder rerun. Call resulting posterior bW.",
+    "primary": "q0*exp(mean of censored log(qContextW/bW)); joint or available-boundary marginal as parent; unavailable endpoints unknown. Cancels confidence and support geometry already present in original logits. Unit exponent, no scan.",
+    "controls": "SameInformationContext q0*exp(mean censored log(bW/uW)); prior CensoredContext; Sharpen; reverse innovation; qContext=bW exact no-op",
+    "space": "same original per-interval complete-box DP and same Source/NativeG6 outputs"
+  },
+  "GT_in_inference": false,
+  "all64_seal_before_new_GT": true,
+  "new_expert": 0,
+  "new_observations": 0,
+  "new_RGB": 0,
+  "new_visual_encoder": 0,
+  "new_text_encoder": 0,
+  "new_decoder": 0,
+  "new_optimizer": 0,
+  "maximum_CPU_seconds": 600,
+  "stop_epoch": 1792708800,
+  "exposure": "Repeatedly exposed HC64 development, not independent",
+  "qualification": "Positive temporal and complete-v increments over Source and NativeG6, more improvements than harms, inspect severe and short/long tails and same-information controls; frozen cross-domain recheck before main adoption",
+  "references": [
+    "https://arxiv.org/abs/2012.02646",
+    "https://ojs.aaai.org/index.php/AAAI/article/view/6897"
+  ],
+  "scope": "Mechanism correction using cached context outputs; no claim conditional posterior is calibrated under event truncation.",
+  "fingerprint": "9d2ac4cc4279135b638f336bf89e449a9ab0a7d4d360ee0c3bf39431bdac6e3a"
+}

@@ -419,3 +419,32 @@ and entire tree verified, archive ancestry retained. Neither promoted. Next sepa
 branch card tests actual overlapping native temporal contexts with explicit boundary
 censoring and structural-hull/sharpen/reverse controls; not launched at this receipt.
 Original paper remains pausedHC1902/Vid1373 until07:00 user-authorized decision.
+
+Overnight branch3 real overlapping contexts completed, fp4b9f91a28171b76554b5835684944407c545e30a0d3af316e22f2725b0debe92.
+Full text/raw projected feature values preserved; prefix0..48/suffix16..64 use
+original two-offset native initialization/decoder and crop-censored endpoints.
+All64 full hidden/posterior bitwise, structural-null no-op64;1152 official/dense
+checks max8.88e-16. Primaryv−3.4506/t−6.8349pp,14timewins44harms;shortt−2.4362,
+long−7.9562. Matched candidate accuracy53.96%CI[51.74,56.14] does not translate
+to final gains. Original mean length8.648s falls7.293s; same-information q0²/uFull
+control6.680s,t−10.4859pp. Concrete RC059 native t82.19→13.29%,end moves−320frames;
+RC05682.89→36.84%,both endpoints move inward. New context is not automatically
+useful/calibrated feedback. Next isolate context-induced innovation from original
+logit confidence with same-window full-logit control; no context/weight scan.
+Actual384fusion offsets/192replays46.09s,0RGB/visual/text/expert calls.
+[All signed outputs](../results/native_event_context_hc64_v1/ANALYSIS.md).
+
+Overnight branch4 ContextInnovation cache-only test completed,
+fp9d2ac4cc4279135b638f336bf89e449a9ab0a7d4d360ee0c3bf39431bdac6e3a.
+Compare real context qW with exactly same cropped-grid posterior from unchanged
+full-context sixlayer endpoint logits bW, not an uninformative null. This separates
+new context response from repeatedly using existing confidence. Primaryv−.2470pp/
+t−.1596pp vsG6,CIcross0;26timewins25harms13ties,9time losses>5pp. Source comparison
+v+2.5544/t+.9787pp does not erase Global6 and short-event failures:shortt−1.1780pp,
+long+.1000pp. SameInformationContext t−9.2426pp; removing repeated confidence
+explains recovery but no positive net mechanism established. Matched candidate
+accuracy53.40%,increment vsNative+1.27ppCI[−1.72,+4.15]pp.1024official/dense checks
+max8.88e-16; all64 no-innovation/parent arms exact,CPU4.90s,0model/expert/optimizer
+forwards. No promotion. [Signed result](../results/native_event_innovation_hc64_v1/ANALYSIS.md).
+Next isolate context content from cropped temporal-position rebasing; no stronger
+guard, exponent scan or early paper resume.
