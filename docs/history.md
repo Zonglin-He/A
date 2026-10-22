@@ -601,3 +601,5 @@ rare independent ordered assignments can force bad endpoints; AND chronology is
 unverified. Do not turn order mass into stronger rejection. See
 [phase evidence audit](../results/native_event_all_phase_hc64_v1/PHASE_AUDIT.md).
 Paper remains pausedHC1902/Vid1373 until07:00 authorized decision.
+
+Actual30-middle-event branch and postseal phase evidence audit published at41a0696adb9e6a879cc5889048246cb384cfd16e; main/research complete713files/51,644,446bytes/hash/tree/ancestry verified. No new method qualified. Next separate fixed branch will condition actual positive subevent reads on a shared Source-defined temporal episode, with same-size shifted/global/context-only controls, no chronology assumption or online GT gate. Paper remains paused.
