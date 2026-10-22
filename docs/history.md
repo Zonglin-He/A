@@ -574,3 +574,30 @@ endpoint-only, full-as-middle, wrong-time-middle and event-count controls. This 
 not proof middle events will repair the short cases; full remains paused to07:00.
 
 Joint-offset context and duration-conditional native clause placement published ate2aa54be5f07490b46fdc6c005c5b3119d5bcd52; bothrefs and complete694files/50,627,128bytes/tree/hash/ancestry verified. All signed negative controls preserved. No qualified direction or full/default change. Next fixed branch is actual omitted-middle positive event reads, with unchanged endpoint and same-count/mismatched evidence controls.
+
+Overnight branch12 genuine omitted-middle native events completed,
+fpc58d1b4c902b00d77d72a248ebdf1098935df6d92093b4aa104a97f43cb14ad9.
+Actually read30 previously omitted positive middle texts in21of52 main-AND queries,
+using same frozen native Source text/fusion/two-pass decoder; Full64 text/hidden/q/
+Source boxes bitwise. Exact3D joint assignment all event starts/ends monotone;
+31two-event descriptions MUST alias old endpoint-only, not excluded to reduce harms.
+Primaryt+.5778/v+.4421pp vsG6,28timewins23harms13ties13losses>5pp; allCIcross0.
+Compared to oldEndpointOrdered t-1.3613CI[-2.9573,-.0688],v-.8716CI[-2.0122,-.0702].
+On predeclared21 new-information members time-4.1487pp. WrongMiddlet56.6692% exceeds
+primary56.5392%; FullAsMiddle57.5741%,SelfCount57.3609%. Source short-6.8640pp,
+long+3.9033; no qualification. Stop additional phase/order/count weight scans.
+3CPU math checks (3event brute force, overlap allowed,2event bitwise old helper),
+1280official/dense checks max6.66e-16. Actual94textforwards including30newmiddle,
+188fusionoffsets/94native replays/36.04s inclloading/research recording;0newRGB,
+visualencoder/expert/observation/optimizer. Not deployment end-to-end cost.
+[All signed outcomes](../results/native_event_all_phase_hc64_v1/ANALYSIS.md).
+Postseal audit separately binds auditcode/labels/seal/scored-report hashes, no online
+GT/rules:30middle posterior mean any-overlap with full event=.9095, only3majority
+outside; mean Source-box overlap withFull=.7731, only2below.5 (proxies only).
+RC056 phase identity/conditioning proxy collapses.0357 and valid-order mass1.03e-5;
+RC041 box proxy stays.88/.89 yet all-phase time loses23.55pp vsendpoint, so neither
+wrong identity nor wholly absent event overlap explains every failure. Normalizing
+rare independent ordered assignments can force bad endpoints; AND chronology is
+unverified. Do not turn order mass into stronger rejection. See
+[phase evidence audit](../results/native_event_all_phase_hc64_v1/PHASE_AUDIT.md).
+Paper remains pausedHC1902/Vid1373 until07:00 authorized decision.

@@ -115,3 +115,10 @@ is worse than the same-grid blocked-attention control; no density/position scan.
 [Native duration-conditional clause placement](../results/native_event_conditional_hc64_v1/ANALYSIS.md)
 preserves original grid-span priors but does not qualify; keep complete signed controls
 and distinction from physical-duration preservation. No main/full upgrade.
+
+[Actual omitted-middle native event reads](../results/native_event_all_phase_hc64_v1/ANALYSIS.md)
+reduce accuracy relative to the endpoint-only counterpart despite30new genuine
+native event text responses. Preserve two-event31aliases and complete count/wrong-
+time/full-as-middle controls. [Postseal phase audit](../results/native_event_all_phase_hc64_v1/PHASE_AUDIT.md)
+separates identity/conditioning proxies from full-event overlap and order-assignment
+failure; no online GT/order-probability veto or universal negative claim.
