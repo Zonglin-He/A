@@ -1,3 +1,5 @@
+2026-10-22 时间泄漏有界审计：全部Vid10303/HC1902输入来源、帧网格、八观察和封存预测/receipt及时间指标重算通过；两条已有query屏蔽标注实际前向与原Source/Native/Global6逐位一致、标注访问0。未发现当前v2直接时间GT注入；已确认128与全量重叠及研究曝光，不称独立测试。均匀无文本/图像/logits的原MBR基线tIoU35.2839/42.1105，当前Global636.5756/45.5828，时间提升不能全归语义。历史v1标签hash访问与修复披露，105检查通过，无教师/更新/新全量、生产不改。见[时间审计](tubedetr_temporal_leakage_audit.md)。
+
 2026-10-22 候选覆盖与评分续验证终态：固定原两域128、时间/候选坐标不变，先诊断旧准入漏掉HC1207个改善槽，再有界检验cycle解耦、背景对比及教师内四系数校准；实际Vid16+7/HC13+7配置，5504条预测/receipt核验。严格校准v2排除留出观察的source和target两角色，v1工程产物归档不用。Vid较上轮dense仅+.001483pp且区间跨0，HC仍同ERef仅3来源改善，均未达更明显稳定目标，不晋升或跑全量。102工程检查通过；所有负结果保留，生产/旧seal不改。见[协议](tubedetr_selection_coverage.md)、[完整报告](../results/tubedetr_selection_coverage/report.md)。
 
 2026-10-22 固定候选的评分/准入128验证完成：用户要求继续解决选择问题、时间不动、不跑全量。先精确捕获旧bank并封存诊断，再冻结最多12配置；实际Vid12/HC10，加两域各一个ERef-only事后控制，合计3072条预测及receipt全部核验。候选、时间、Source、八观察逐位不变；原控制逐数组回归。Vid交叉评分/一致性.8，dense+.080552pp、未观察+.081603pp、v+.069309pp相对Temporal，开发描述性空间区间下界为正，但低于+.1pp工程目标。HC观察保护控制最优，dense+.130526pp、未观察+.133564pp；同初始化控制后收益只来自3来源，空间区间跨0。94工程检查通过，无新神经网络调用或全量，全部负配置保留。见[评分/准入设计](tubedetr_selection.md)、[完整结果](../results/tubedetr_selection/report.md)、[归因与边界](../results/tubedetr_selection/interpretation.md)。
