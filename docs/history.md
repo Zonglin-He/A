@@ -312,3 +312,26 @@ Boundary-feedback implementation and complete signed development results publish
 at9d9ceb1a396c275fd8461800456105c4409db77c on main/research;480 files/37,954,286
 bytes/full tree verified. Archive ancestry retained. No candidate promoted and no
 full resume. Private publication/engineering/score receipts retained.
+
+2026-10-22 — User requests real HC64 joint event-boundary feedback, improve more
+queries with fewer harms; space fixed and full still paused. Three bounded,
+case-driven studies complete on the same64 exposed parents. V1 builds target-identity-
+relative predicate token margins from saved ReferDINO8, disposable ridge1 projections
+to saved six-layer hidden, whole-interval soft semantic IoU and18-view/LOO guard.
+No new visual/decoder/expert forward, backbone update or query optimizer step.
+V1 guarded v+.1904/t+.4586pp but all22 accepted intervals expand and score/log-length
+correlation.9353. V2 subtracts a time-uniform mask with identical semantic mass;
+constant masks now reward no interval. Same projections, no weight scan/refit.
+V2 guarded v+.0996/t+.0129pp,4v improvements/2 harms/58 ties;7 changed intervals,
+0 severe v/t harms. Low coverage and near-zero temporal gain, not a new main method.
+V3 applies exactly this feedback to at most9 one-node paired-boundary neighbors;
+17v gains/16 harms, t−.2927pp and6 temporal harms>5pp. More corrections do not
+establish reliable selection; shifted-semantic controls not clearly beaten.
+All192 records sealed before their corresponding CPU scores,64 unique parents,
+2304 official/dense checks max6.66e-16,18 independent box-path replays exact.
+Post-seal role/margin audit64 exact and12 text-resource hashes match the frozen
+paper assets. Lower-is-better MAE count orientation corrected in summaries only;
+original reports/receipts preserved, all scalar scores/means/CIs/predictions unchanged.
+48 maintained/434 provider hashes unchanged; HC1902 scored/Vid1373 saved/full paused.
+No profile promotion, fallback selection, GT-duration mixture or automatic resume.
+[All three studies and complete signed outcomes](../results/joint_event_hc64_v3/ANALYSIS.md).

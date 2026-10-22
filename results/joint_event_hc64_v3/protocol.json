@@ -1,0 +1,45 @@
+{
+  "schema": "joint_event_hc64_v3",
+  "queries": 64,
+  "arms": [
+    "NativeG6",
+    "LocalGuard",
+    "Local",
+    "ShiftLocalGuard",
+    "RawLocalGuard"
+  ],
+  "primary": "LocalGuard",
+  "rationale": "V2 removes extent bias but modifies7/64 despite39 having predictive projections. Isolate whether posterior MBR masks usable local semantic corrections.",
+  "fixed": {
+    "candidate_set": "native start/end each moved by at most1 original physical sampled node, valid s<e, identical eight-anchor membership; at most9 pairs",
+    "local": "highest combined full-view excess whole-event score; ties prefer native then smallest total boundary movement",
+    "guard": "same both-offset positive LOO skill and all18-view score improvement plus no predicate score loss; select maximum worst-view gain among feasible local pairs",
+    "shifted": "same floor(T/4) logit profile shift and native occupancy restoration as v2",
+    "unchanged": "all semantic/projector/mask/null correction/evidence/space unchanged; no reward scale, temperature or radius sweep"
+  },
+  "v1_seal_sha256": "dd427520ffea99b8a8c4d3ad2d84c25f9ffbd20c2427b326746f885a2a8a4dc7",
+  "v2_seal_sha256": "14be0cb21f9b559473000c782215fb90e2ed2183cc84428170ac162949e5118b",
+  "v2_plan_sha256": "44135903bb0c34c47a4db8c4d12b7bd3840c205a38e0585aebcdaa11a3de1cd5",
+  "code": {
+    "research/joint_event_v3/score.py": "fbc66ba000a911f0d945d91169894f4d5a3f8d03391f2779443a68c8dcd1fe83",
+    "research/joint_event_v3/run.py": "bcbf15cb094279fdd0faf84e4118f10fe61c516cd2c5905fe4ffbf21c88941a4",
+    "research/joint_event_v3/test_local.py": "4028a4bba74337a02f84e3f475e4dfaf365f7661b19908010aaac02da199deed",
+    "research/joint_event_v1/core.py": "db95b15b96489be62eae02b920dfdcfe0d06a1c08e6248258f18959aef1c089c",
+    "research/joint_event_v1/run.py": "1c096fb629d80f21f72def635cf81b91667ed432f9497ac9b667ad152dc2a0d5",
+    "research/joint_event_v2/core.py": "ca57a3d6cea0c019c708d2f8a119e9b0148973a530372638001001aabd02a730",
+    "research/boundary_feedback_v1/score.py": "75f4323799b3b45881aac37dd67acfb566f748516f5f5f34b75803bfd51c7ae0"
+  },
+  "paper_plan_sha256": "432e69b50ddb77cd5dc1282810959a4341678faa09b3a1f318d484a8c4494d47",
+  "labels_sha256": "f6ccc8581199c803040fbf0e5d39fbc659f7f0a7d041ccbf9b022e6b736317f2",
+  "maximum_CPU_seconds": 600,
+  "GT_in_inference": false,
+  "all64_seal_before_new_GT": true,
+  "new_visual_forwards": 0,
+  "new_expert": 0,
+  "new_projection_fits": 0,
+  "query_steps": 0,
+  "exposure": "same64 exposed iterative development; no independent efficacy claim or automatic method selection",
+  "full_status": "paused_by_user",
+  "automatic_resume": false,
+  "fingerprint": "cb7f3ba66a49ee60cd1e84c95bfda07ea28ff79fd781b1f21358e4dfe225d286"
+}

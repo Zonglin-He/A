@@ -59,3 +59,12 @@ receipt-bound hidden/posterior/spatial caches, adds no query steps/model calls,
 preserves all signed positives/negatives, and is not adopted after inconclusive
 net gains and remaining long-event harms. Full paper evaluation remains explicitly
 paused with HC1902 scored and Vid1373 saved; no automatic resume follows this study.
+
+The subsequent user-authorized joint-event study has three completed, separately
+locked HC64 development stages: semantic interval completeness, matched-uniform
+null correction, and bounded local pair correction. Its temporary query-local
+linear projections are isolated research, not a deployed model or backbone training.
+The low-harm variant has limited coverage and no reliable temporal gain; broader
+pair correction causes more harms. All versions, matched controls and negative
+tails are retained in the [joint-event analysis](../results/joint_event_hc64_v3/ANALYSIS.md).
+Do not convert the research candidate into a default or resume the paused paper full.

@@ -58,3 +58,10 @@ Latest bounded boundary-feedback HC64 study is completed, with full still paused
 Its dense hidden-change candidate has inconclusive final gains and long-event harms;
 do not promote it, select a fallback control, increase query steps or resume full.
 All isolated code and signed results are retained; no maintained runtime files changed.
+
+Subsequent explicit user authorization for joint event-boundary HC64 feedback has
+been executed in three isolated fixed stages. Whole-interval semantics, matched-null
+correction and bounded paired decisions are measured, including all negative tails.
+No candidate meets broad-improvement/low-harm aims well enough for main promotion.
+Full remains pausedHC1902/Vid1373. Preserve all three study plans/results and the
+48 maintained/434 provider frozen sources; no automatic full resume or parameter scan.
