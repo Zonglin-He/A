@@ -8,7 +8,7 @@ REQUIRED += ['docs/tubedetr_vid_development.md','docs/tubedetr_hc2_development.m
 REQUIRED += ['docs/tubedetr_opd_direct_research.md']
 REQUIRED += ['docs/tubedetr_reward_mechanism.md']
 REQUIRED += ['docs/tubedetr_mask_reward_qualification.md']
-REQUIRED += ['docs/tubedetr_executed_candidates.md','docs/tubedetr_observability.md','docs/tubedetr_correspondence.md','docs/tubedetr_reward_extent.md','docs/tubedetr_cdf.md','docs/tubedetr_universal_trial.md','docs/tubedetr_universal_diagnosis.md','docs/tubedetr_universal_confidence.md','docs/tubedetr_propagation_policy.md','docs/tubedetr_propagation_v0_spec.md']
+REQUIRED += ['docs/tubedetr_executed_candidates.md','docs/tubedetr_observability.md','docs/tubedetr_correspondence.md','docs/tubedetr_reward_extent.md','docs/tubedetr_cdf.md','docs/tubedetr_universal_trial.md','docs/tubedetr_universal_diagnosis.md','docs/tubedetr_universal_confidence.md','docs/tubedetr_propagation_policy.md','docs/tubedetr_propagation_v0_spec.md','docs/tubedetr_boxfixed_development.md']
 def sha(f):return hashlib.sha256(f.read_bytes()).hexdigest()
 REQUIRED += ['configs/tubedetr.json','docs/tubedetr.md','results/tubedetr/engineering_checks.json','results/tubedetr/STATUS.json','results/tubedetr/teacher_service_check.json','results/tubedetr/qualification.json','results/tubedetr/data_intake.json']
 REQUIRED += [str(p.relative_to(ROOT)) for p in (ROOT/'results/tubedetr').rglob('*')
@@ -46,6 +46,7 @@ REQUIRED += [str(p.relative_to(ROOT)) for p in (ROOT/'results/tubedetr_universal
 REQUIRED += [str(p.relative_to(ROOT)) for p in (ROOT/'results/tubedetr_universal_confidence').rglob('*')
              if p.is_file() and p.suffix in {'.json', '.md'}]
 REQUIRED += [str(p.relative_to(ROOT)) for p in (ROOT/'results/tubedetr_propagation_policy').rglob('*') if p.is_file() and p.suffix in {'.json', '.md'}]
+REQUIRED += [str(p.relative_to(ROOT)) for p in (ROOT/'results/tubedetr_boxfixed_development').rglob('*') if p.is_file() and p.suffix in {'.json', '.md'}]
 def check():
  errors=[];warnings=[]
  for name in REQUIRED:

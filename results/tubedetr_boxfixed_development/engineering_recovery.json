@@ -1,0 +1,24 @@
+{
+  "status": "engineering_recovery_before_full",
+  "stopped": [
+    {
+      "key": "boxfixed_controller",
+      "pid": 3983513,
+      "cmdline": ".conda/tubedetr/bin/python -B -u tools/tubedetr_boxfixed_development.py "
+    },
+    {
+      "key": "boxfixed_worker",
+      "pid": 4018623,
+      "cmdline": "/home/wwww/stvg/A/.conda/tubedetr/bin/python -B -u tools/tubedetr_boxfixed_development.py --stage profile --dataset vidstg --request /home/wwww/stvg/A/outputs/tubedetr_boxfixed_development/vidstg/requests/92709df8084963af.json "
+    }
+  ],
+  "old_plan_sha256": "5f9482bf8dfda42bc3bc94f6f0fe7698f92c1f401a0c67bc43c64a9889102cf1",
+  "problem": "checked() hashed label files before inference guard; no parsed labels or GT-derived actions, but forbidden file access",
+  "fix": "Only input-manifest hashes in inference; label-file hashes after complete prediction seal in CPU score",
+  "numeric_method_or_grid_changed": false,
+  "no_fingerprint_bypass": true,
+  "new_prediction_output_required": true,
+  "teacher_cache_reuse": "exact same teacher implementation/checkpoint and actual RGB/caption; all payload/context hashes rechecked",
+  "archive": "/home/wwww/stvg/A/outputs/tubedetr_boxfixed_pre_gt_hash_guard_fix",
+  "old_profile_results_not_used_for_new_selection": true
+}

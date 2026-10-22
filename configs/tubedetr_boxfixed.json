@@ -1,0 +1,81 @@
+{
+  "method": "TubeDETR BoxFixed + native224 Global6 + physical MBR",
+  "upstream_commit": "5bd213f7bdb4241d4d759ab4fb8b20f8f7117b57",
+  "datasets": {
+    "vidstg": {
+      "dataset": "vidstg",
+      "source_dataset": "hc2",
+      "source_checkpoint": "checkpoints/tubedetr/hc2_k2_res224.pth",
+      "ReferDINO_checkpoint": "checkpoints/referdino/ryt_mevis_swinb.pth",
+      "no_network_training": true,
+      "E_calibration": {
+        "scale": [
+          0.022542142662651282,
+          0.011027737123363815,
+          0.06612943552390567,
+          0.02918426580581821
+        ],
+        "truncation": 18.056884634893116,
+        "source_train_queries": 36,
+        "eligible_queries": 35,
+        "known_planned_anchors": 113,
+        "singleton_or_empty_queries": 1,
+        "model_hash": "ee72f0d9a50c573a115bd7cfc2329c860745a1cf3dab83af1be7787c11b3c218",
+        "quantile": 0.95,
+        "validation_used": false,
+        "target_GT_used": false
+      },
+      "E_calibration_provenance": "source-domain train calibration, frozen before target outcomes",
+      "initialization_gamma": 1.0,
+      "temporal_mode": "native_Global6",
+      "source_checkpoint_sha256": "c646a8b7131bb28806c350e16479cd8bb31d4425ccb15129b26a6e4d38dd4222",
+      "stride": 2,
+      "native_resolution": 224,
+      "upstream_revision": "d70c0eed94da09a9a5e4329c937230ecfb1d3ee6",
+      "backbone": "TubeDETR"
+    },
+    "hc2": {
+      "dataset": "hc2",
+      "source_dataset": "vidstg",
+      "source_checkpoint": "checkpoints/tubedetr/vidstg_k2_res224.pth",
+      "ReferDINO_checkpoint": "checkpoints/referdino/ryt_mevis_swinb.pth",
+      "no_network_training": true,
+      "E_calibration": {
+        "scale": [
+          0.08805019583603152,
+          0.03796878948819179,
+          0.2445728236645117,
+          0.21037521441041293
+        ],
+        "truncation": 30.734017210649714,
+        "source_train_queries": 36,
+        "eligible_queries": 22,
+        "known_planned_anchors": 76,
+        "singleton_or_empty_queries": 14,
+        "model_hash": "fbb1ed8871d6c2aa093879efefc2ee500bb7de5e0fe1c25b809c5393d010f3c7",
+        "quantile": 0.95,
+        "validation_used": false,
+        "target_GT_used": false
+      },
+      "E_calibration_provenance": "source-domain train calibration, frozen before target outcomes",
+      "initialization_gamma": 0.5,
+      "temporal_mode": "native_Global6",
+      "source_checkpoint_sha256": "2802c66049b2e7986a826b4bbd291eb8521446cfba6fee03b56729438bf44213",
+      "stride": 2,
+      "native_resolution": 224,
+      "upstream_revision": "d70c0eed94da09a9a5e4329c937230ecfb1d3ee6",
+      "backbone": "TubeDETR"
+    }
+  },
+  "fixed_affinity": {
+    "temperature": 0.1,
+    "topk": 20
+  },
+  "fixed_temporal": {
+    "native_resolution": 224,
+    "layers": 6,
+    "temperature": 1,
+    "no448": true,
+    "no_fake_offsets": true
+  }
+}

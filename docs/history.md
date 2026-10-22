@@ -1,3 +1,7 @@
+2026-10-22 BoxFixed工程隔离v2：把推理校验里的GT文件hash移至完整预测seal后的CPU评分，推理guard提前，新增禁止hash读标签单测，86项通过。v1全部准备/部分profile归档；新plan和全新预测重新执行128，只有内容与教师指纹相同的原生专家缓存精确复用，不跨代码续预测，不改候选范围/选择目标。
+
+2026-10-22 用户授权读取GitHub最新方法并重启TubeDETR双方向：从main5bd213f7隔离移植完整教师框BoxFixed、固定评分精确DP和原物理MBR，TubeDETR接入原生224六层Global6而非TA双offset/448。两域已有query Source/Native逐位检查通过，85项工程测试通过。沿用既有两域128独立父来源面板，冻结有限gamma→准入→保护→连接→最多2邻居复查，两域都锁配置再依次10303/1902完整运行；所有旧结果和TA工作区不动，不复活OPD。见[新开发与全量协议](tubedetr_boxfixed_development.md)。
+
 2026-10-21 附件v0固定16条完整：候选oracle+4.8746pp、一般排序69.62%，但替代Source的315次反馈top1仅108胜207负；OPD18.1334低于Source18.4016，固定KD不改框，Direct17.9274。OPD−Direct+.2060pp仅1条vIoU正差/15并列，不宣称优势。缓存适应0重decoder，OPD中位.166s；停止扩大数据/策略复杂度，保留负结果及独立分析。见[终态分析](../results/tubedetr_propagation_policy/analysis.md)。
 
 2026-10-21 按用户附件固定轻量序列传播头v0：三候选、六零权重、Source先验.7、2路径×最多3轮、lr.1、完整Direct软历史梯度、无记忆自奖励的固定检查/回退。先同16条候选上界/反馈/有无记忆诊断，再按冻结整体条件决定轻量对照；不筛query、不新全量。原模型加输出模块，不称原decoder等价加速。早期准备已停并归档，旧调参不恢复。见[实现协议](tubedetr_propagation_policy.md)和[用户v0规范](tubedetr_propagation_v0_spec.md)。
