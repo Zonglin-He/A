@@ -47,3 +47,9 @@ package. Preserve previous failed Source gates. New queue outputs/tastvg_paper_v
 has its own code/plan fingerprints, complete-member lists1902/10303 and same8
 expert observations. Reuse prior exact Source/Full, collect all auxiliary arms
 once/query. Do not restore old paused v3/formal/CG queues or run other backbones.
+
+Latest explicit user instruction (2026-10-22): pause the TA paper full and execute a bounded
+HC experiment on old event-token misranking and learned real temporal-query correction.
+Paper state is paused_by_user at Vid1373; HC1902 sealed/scored retained. No automatic
+full resume. New isolated tools/output may implement that authorized experiment; keep
+all paper-bound48 and archived434 sources, spatial method, seeds/evidence unchanged.

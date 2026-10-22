@@ -248,3 +248,38 @@ was spatial, not temporal. Withdraw token extraction/real query connection as ne
 recommendations; exact event-supervised optimized temporal delta remains unverified,
 not established absent across all history. Main full/spatial/code unchanged.
 [Audit correction](temporal_adaptation_audit.md#9-补充纠正事件token与时间query并非尚未尝试).
+
+2026-10-22 — Latest user pauses paper full for bounded event-feedback/query experiment.
+Verified owned controller/worker identities; stopped controller scheduling then interrupted
+worker at next committed query boundary. HC1902 remains sealed/scored; Vid1373 complete
+receipt/prediction/capture hashes preserved,0 unbound outputs. Both owned PIDs exited;
+GPU lease available. Original plan/48 maintained+434 provider hashes unchanged.
+State explicitly paused_by_user; no automatic resume. Proof in private maintenance.
+Old event-token/query reports remain baselines; new experiment addresses interval
+misranking and actual learned time-query response, not repeated token discovery.
+
+2026-10-22 — Bounded HC64 temporal-query experiment locked after user pause. Old
+HC128 saved event readout harms82/improves45 in tIoU;63 harmed still have anchor
+AUC>.5. Compare NativeG6, archived LegacyContrast, prior-anchored RawDirect/RawQuery,
+and predictive leave-one-anchor-out Direct/Query. One fixed256 shared temporal delta,
+10 Adam steps/.01/radius.1; no GT state choice or sweep, same spatial geometry/DP.
+Old semantic tensor directory missing; permit same ReferDINO original8-only semantic
+capture per query, no new Source encoder. All64 seal before CPU labels.
+First pilot semantic check recomputed sigmoid on CPU versus native CUDA output;
+0 semantic outputs/1 expert query attempted. Preserve plan/code/log at private
+maintenance/event_query_premax_check_v0_20261022, compare native CUDA sigmoid and
+exact raw logits instead, without changing inference or relaxing numeric tolerance.
+Restart has a newly locked fingerprint; no GT read or scientific negative implied.
+
+2026-10-22 — Event/query HC64 experiment completed and scored, no new method gain.
+64 same8 ReferDINO semantic queries restore native boxes bitwise;0 new Source encoders.
+Two256-delta fits/query,1280 actual Adam steps. RawQuery−G6 v−.0870/t−.2186pp;
+PredictiveQuery−G6−.1924/−.4172pp, all primary CIs span0.63/64 losses decrease/arm,
+17 temporal harms each. Radius never clips; only24.1%/13.1% KL absorbed, no universal
+query-capacity failure claim. Same evidence-pattern boundary ambiguity remains.
+All64 seal before labels;896 official/Dense checks max7.77e-16; four opposite-case
+final query reinsertion checks exact. Frozen48+434 sources unchanged. First semantic
+CPU/GPU sigmoid check0outputs/1 expert extra preserved;64 successful (65 actual).
+Final scorer np.int64 serialization recovered by separate CPU adapter, no inference
+or fingerprint change. Full stays pausedHC1902/Vid1373, no automatic resume.
+[Experimental result](../results/event_query_hc64_v1/ANALYSIS.md).
