@@ -16,9 +16,9 @@ loaders require it; upstream training utilities do not register a new project me
 Locally, stvg-mainline is the maintained clean tree. The completed stvg-opd
 checkout and its linked private assets stay in place as the frozen full-run archive.
 Its old code fingerprint must remain unchanged. Do not run cleanup inference concurrently
-or use this refactor to resume its old receipts. Import the final public reports into
-this clean tree after both domains seal/score, then publish this tree rather than
-re-exporting the archived research checkout.
+or use this refactor to resume its old receipts. Final public reports are now imported into
+this clean tree after both domains sealed/scored. Continue publishing this tree rather
+than re-exporting the archived research checkout.
 
 To reproduce the cached cleanup audit against an archived runtime with its private
 saved captures, run `python tools/verify_saved.py --reference-root /path/to/archived-runtime`.

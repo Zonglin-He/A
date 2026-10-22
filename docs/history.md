@@ -44,3 +44,9 @@ Original434 sources and all seals unchanged;24,410 official/dense scorer checks 
 Actual costs split original/resumed worker counters; original imported capture cost is
 excluded. Corrected generic scorer wording: Final aliases Untuned, so only one posterior/DP
 is computed. [Complete report](../results/boxfixed_full_v1/REPORT.md).
+
+Full results published at `5d8b2c09e0d2e0d62f3a01dec03de53684bcf3e6` to main and
+research/stvg-opd-paper-hc2-revision-v2; remote tree and all274 files/6031045bytes
+verified, retaining clean single-method code and archived ancestry. Exact238 public
+frozen sources match c310af58;196 private installed runtime dependency sources remain
+hash-bound, not exported. Publication adds no GPU/model/GT scoring.
