@@ -412,3 +412,10 @@ vs native52.14%; low-native-support quartile posterior mass.000912→.042626 and
 No calibrated event-absence likelihood established; stop this ratio, not weight scan.
 Actual384fusion offsets/192native replays in46.85s,0newRGB/visual/text/expert forwards.
 [Complete signed result](../results/native_event_motion_hc64_v1/ANALYSIS.md).
+
+Overnight text/motion branches and complete signed positives/negatives published
+atcdf99674c63dc9ce544998349c728d2e98c62d7f on main/research;565files/42,728,638bytes
+and entire tree verified, archive ancestry retained. Neither promoted. Next separate
+branch card tests actual overlapping native temporal contexts with explicit boundary
+censoring and structural-hull/sharpen/reverse controls; not launched at this receipt.
+Original paper remains pausedHC1902/Vid1373 until07:00 user-authorized decision.
