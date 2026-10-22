@@ -503,3 +503,11 @@ veto. Next test full-caption query reuse in actual clause decoder, not rejection
 keep original subject/whole-frame context in native time query while clause memory
 changes. Existing old full-caption object-query/attention negatives remain controls
 and preconditions; do not call the interface itself new.
+
+Position-preserving native contexts, positive subevent composition and joint-order
+follow-up published at7027d8f096c914cb3e679fd6fef5856f1aabfdd8 on main/research.
+637files/47,077,326bytes and complete remote tree/files/hash verified; archive
+ancestry preserved. Positive clause averages and all short/severe harms public;
+no qualified new method or main/default change. Next shared Full native query
+test isolates conditioning drift across positive subevents; original paper remains
+pausedHC1902/Vid1373 until07:00 authorized decision.
