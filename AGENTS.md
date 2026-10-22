@@ -39,3 +39,11 @@ Latest temporal admission: require strictly positive Source tIoU gains separatel
 for GT-duration<=5s and>5s in tuning AND fixed recheck. GT grouping is offline only;
 never choose inference parameters from GT duration. V5 MBR3 failed long-event recheck;
 no automatic fallback, resume, default upgrade or full launch from its tune success.
+
+Latest explicit user authorization supersedes the prior stop-until-Source-group
+gate for this next fixed evaluation: choose relatively best originalGlobal6
+(temp1,sixlayer mean,old hull,original MBR) and run TA-STVG-only dual-domain paper
+package. Preserve previous failed Source gates. New queue outputs/tastvg_paper_v1
+has its own code/plan fingerprints, complete-member lists1902/10303 and same8
+expert observations. Reuse prior exact Source/Full, collect all auxiliary arms
+once/query. Do not restore old paused v3/formal/CG queues or run other backbones.

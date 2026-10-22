@@ -179,3 +179,26 @@ Case-based v6/v7 implementation, full signed outcomes and all repaired/harmed ca
 published at e64803ec5dc0664dd916b1aecae8144371c0ed58 on main/research. Remote422
 files/34,658,271bytes/tree fully verified with archive ancestry preserved. Source
 long-event qualification remains failed; no full resume or default promotion.
+
+2026-10-22 — Latest user explicitly authorizes relatively best frozen full despite
+failed Source group gate, then TA-STVG-only paper task. Choose originalGlobal6
+temperature1/sixlayer mean/original hull+MBR, unchanged BoxFixed. Same35 totalt/v
+beats the newer MBR3/late-bracket candidates; no claim Source temporal gate passed.
+Reuse already-complete Source/Full after bitwise verification; new dual-domain
+collection supplies interpolation/OursS/two space ablations/stage and extent analysis
+from one capture/query. Third-party generic TTA not verified; historical projectOPD
+HC1902 Source/ERef/positions/native time all exactly match, a separately labeled
+reference; incompleteVid8405 is rejected, never resumed. Initial zero-execution
+preflight expected192 official cache hits but159 inputs match current official lists;
+all159 aliases passed. Archived preflight plan/sources, fix regression to verify all192
+math captures plus159 formal aliases, without promoting33 unmatched cache entries.
+No model/GPU/expert call occurred in the failed preflight.
+
+2026-10-22 — New TA-only paper queue launched at10:42:49UTC with own frozen
+45dd2a86 fingerprint/432e69b5 planSHA. Controller3673523/start223111135, HCworker
+3673524/start223111140; actual process identity, lock and matching receipts healthy.
+55 CPU checks,192 cached mathematical regressions and159 exact official aliases
+passed. Main/ablation/stage/extent share one capture per query. Full package remains
+in progress; per-domain seals precede CPU scoring, then matched16-parent timing
+and private qualitative review. Old full already complete; v3 paused338 never resumed.
+[Locked TA paper package](../results/tastvg_paper_v1/RUNNING.md).

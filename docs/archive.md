@@ -44,3 +44,10 @@ Case-based temporal v6/v7 are isolated cached-only research. Both failed the
 required Source duration-group qualification. No full resumed, no new model or
 expert forward, and no source-fingerprint waiver. Their code/tests and signed
 results are retained without registering them in the main inference entrypoint.
+
+Latest direct user instruction authorizes the fixed TA-STVG-only paper package,
+including dual-domain panel collection, module/stage/extent analyses, fair timing
+and private qualitative review. Its new plan supersedes the preceding temporal
+admission stop for this relative-best choice only, preserving all failed gates and
+paused queues. The in-progress protocol/code release does not claim new completed
+results or authorize further tuning. Runtime-bound files stay immutable.
