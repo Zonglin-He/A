@@ -1,0 +1,38 @@
+{
+  "status": "locked_before_v4_trials",
+  "user_authorization": "2026-10-22 explicit pause full and continue temporal tuning; target must beat Source, spatial fixed",
+  "dataset": "hc2",
+  "tune_parents": 128,
+  "validation_parents": 35,
+  "queries": 163,
+  "panel_manifest_sha256": "d2b5ae3a4c9ace52c4f01f7aaa76544dbbc0e19c46257a58f870c471595b1f9b",
+  "selection": "Reuse only the first64 tuning parents of v2 and v3. Exclude both old32 validation cohorts from tuning. All remaining35 official parents form the next fixed validation, one SHA-ranked query/parent. Do not add new validation cohorts after these results.",
+  "prior_validation_used_for_tuning": false,
+  "source_is_primary": true,
+  "exposure": "Official full v1 and earlier development results already exposed; target-domain development, not independent test. No paused new-full predictions scored or used for selection.",
+  "maximum_trials": 24,
+  "selection_rule": "Select by Candidate minus Source tIoU on combined128. Require at least+.5pp versus Source, nonnegative t gain versus previous Global6, vIoU versus Source>=0 and versus Global6>=-.1pp, unobservedspace versus Global6>=-.1pp, serious v declines versus Source<=Global6+4. Show separate64-cohort Source deltas and reject if either is negative. Root sequential mechanism stages, up to4 justified refinements and2 combinations within24, no per-query GT choices.",
+  "validation_rule": "Freeze exactly one profile before the remaining35-parent validation. Require tIoU >Source and >=Global6, fullv>=Source and >=Global6-.1pp, unobservedspace>=Global6-.1pp and severe-v<=Global6+2. Preserve CIs. If Source superiority fails do not run any full, including exploratory full; no fallback selection, no gate exceptions. All full launch awaits this outcome.",
+  "fixed": "Spatial BoxFixed code/weights,Source forward/precision/input grids/eight ReferDINO observations/ERef, official scorer and labels fixed. No actioness/448/training/extra teacher or full restart. Only cached endpoint/interval posterior and temporal decisions change.",
+  "new_axes": [
+    "cross-offset interval-agreement weighting before original hull",
+    "cross-layer posterior pooling",
+    "ambiguity-conditioned start temperature",
+    "Source-posterior retention controlled by layer disagreement",
+    "interval posterior tail mass control"
+  ],
+  "controls": [
+    "Original Global6",
+    "Original Source temporal readout",
+    "prior frozen start1.5",
+    "prior MBR utility power2",
+    "prior common temperature1.5"
+  ],
+  "source_provider_plan_sha256": "85d13696c99b0de93a0cd2b49201ab51bf35fe1baaa485a14e5e4594cc0c3b32",
+  "source_provider_runtime_fingerprint": "fc4210a80c895a374d90af44d11986428a50d754245e653690f25be5869f328f",
+  "labels_sha256": "af9162edbae2f455a40ac1a4f2a7a1441cd93f09d5950d8efa919b4f12a528db",
+  "paused_new_full_fingerprint": "f33e75a4652dfc369277b92e90cb63e3014b0c046f13a9ed02e9975828cb208d",
+  "paused_full_resume_authorized": false,
+  "paused_full_status_sha256": "48c3b667f5db5706498dc20372302fe349869e69b6c33ac36b59f476897c87c2",
+  "created_utc": "2026-10-22T09:12:19.746502+00:00"
+}

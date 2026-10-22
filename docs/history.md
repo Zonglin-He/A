@@ -106,3 +106,37 @@ published at c261d9e5f2ebeb16a3a6070eb37bc6b41d9b7945 to main/research.
 Remote334 files/13,582,128bytes and exact tree verified; archive ancestry preserved.
 Full job continues with its original frozen sources; no default upgrade or full
 accuracy claim. Source gate remains failed and validation intervals cross zero.
+
+2026-10-22 — User explicitly rejected launching full without exceeding Source.
+Root acknowledges the exploratory launch was an execution error. Paused at338/1902;
+all338 prediction/receipt/capture hashes verified, no orphan files, own controller
+and worker exited, heartbeat PAUSED. Original code/plan/results preserved.
+No paused-full scoring or automatic resume. New temporal v4 is Source-primary:128
+prior tuning parents only; prior validation parents excluded, last35 parents fixed
+for one validation. Spatial code/weights and original forward/eight observations
+fixed. No full launch unless Source-primary validation passes, no exploratory bypass.
+
+2026-10-22 — Source-primary v4 completed24 cached profiles. Frozen entropy-
+conditioned start calibration+IoU3 had tune Source t+.9591/v+1.3243pp, but
+remaining35 recheck Source t−.2713pp and Global6 v−.9331pp. Failed gates preserved,
+no full resume/launch,338 old outputs remain paused; no spatial modifications.
+The remaining35 has now been exposed and must not be relabeled untouched.
+
+2026-10-22 — User explicitly added both short and long event increments must
+be positive. Before v5 validation, lock Source as reference, existing<=5s/>5s
+GT-duration groups for offline evaluation only, strict positive group gains on
+tuning and fixed recheck, no full if either fails. Rank by worst-group gain among
+admitted profiles; no GT-conditioned inference or post-hoc duration threshold.
+
+2026-10-22 — Temporal v5 finished12 cached profiles with no new GPU/expert calls.
+Internal boundary-peak penalties systematically traded short gains for long losses;
+endpoint-radius0/2 and measured MBR3 combinations did not fix that behavior.
+Before recheck, transparently amended pairing-only eligibility to freeze the sole
+Source-positive-two-group tuning control MBR3, matching the user's latest objective.
+Same35 exposed development recheck: short Source t+.8493pp but long−.6587pp,
+overall−.1847pp. Strict group criterion and original protections fail. No fallback,
+full resume or default/spatial change. All signed results and parent CIs preserved.
+44 CPU tests pass; paused40 core files/provider434 remain exact. The338 paused
+predictions remain valid saved evidence, not a basis for selection or full claims.
+[Source-primary v4 report](../results/temporal_hc_v4/REPORT.md) and
+[strict short/long v5 report](../results/temporal_hc_v5/REPORT.md).

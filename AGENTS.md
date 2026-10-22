@@ -27,3 +27,15 @@ using fresh expected-head checks, preserving ancestry and the research archive b
 Verify remote tree and file bytes. Never publish media, query text, GT coordinates,
 weights, raw masks/features/states/caches, credentials, environments or local asset links.
 Never restore the old broad research export over the clean main branch.
+
+Latest user correction (2026-10-22): exploratory HC full is paused_by_user at338.
+Never resume it automatically or bypass a failed Source temporal gate by calling
+a run exploratory. Continue only authorized temporal development; spatial code,
+weights, evidence and Source forward remain fixed. New full requires the frozen
+candidate to beat Source on the declared fixed validation. Global6-only improvement
+is insufficient. Preserve all paused outputs, receipts and original source snapshots.
+
+Latest temporal admission: require strictly positive Source tIoU gains separately
+for GT-duration<=5s and>5s in tuning AND fixed recheck. GT grouping is offline only;
+never choose inference parameters from GT duration. V5 MBR3 failed long-event recheck;
+no automatic fallback, resume, default upgrade or full launch from its tune success.

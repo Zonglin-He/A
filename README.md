@@ -78,5 +78,10 @@ the fixed validation; it is not part of the maintained inference method.
 
 [Broader HC temporal readout study](results/temporal_hc_v3/REPORT.md) reports all16
 additional configurations and a preserved failed Source validation gate. Its frozen
-start-temperature candidate is undergoing a separately labeled exploratory HC full
-comparison; it has not replaced the main method.
+start-temperature full comparison was explicitly paused by the user at338 queries
+because Source superiority was not established. It has not replaced the main method.
+
+[Source-primary calibration](results/temporal_hc_v4/REPORT.md) and
+[strict short/long temporal study](results/temporal_hc_v5/REPORT.md) preserve the next
+negative results. The selected MBR3 control did not keep long-event tIoU above Source
+on the fixed development recheck. No full restart or inference-default change follows.

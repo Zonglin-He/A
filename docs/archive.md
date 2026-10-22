@@ -32,3 +32,10 @@ Later explicit user authorization added bounded HC temporal research tools and
 reports(v2/v3). These are separate from the sole maintained inference entrypoint.
 The new exploratory full freezes its own current core source snapshot and plan;
 never change those bound files while running or reuse the old full fingerprint.
+
+User-authorized temporal development v4/v5 adds isolated cached readout modules and
+complete signed reports. The v3 exploratory full is explicitly paused at338 after the
+user rejected its failed Source gate. Both short<=5s and long>5s gains must be strictly
+positive versus Source on tuning and the declared recheck; no exploratory bypass.
+No current temporal research candidate has passed this criterion. Research tools
+are not registered in the sole maintained inference entrypoint.

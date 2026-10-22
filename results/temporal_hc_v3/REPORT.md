@@ -1,6 +1,6 @@
 # HC2 temporal readout: broader parameter search and exploratory full comparison
 
-The selected start-temperature profile improves the previous Global6 on both development panels, but **does not pass the original validation Source-superiority gate**. That failure is preserved. The maintained main method is unchanged. A separate, explicitly exploratory HC1902 full comparison is now running under the user’s request to rerun full. It is not labeled validation-passed or an independent confirmation.
+The selected start-temperature profile improves the previous Global6 on both development panels, but **does not pass the original validation Source-superiority gate**. That failure is preserved. The maintained main method is unchanged. A separate exploratory HC1902 full comparison was started but the user rejected this launch because the Source gate had failed. It is now paused at338 verified queries; no scoring or automatic resume is authorized. This launch was an execution error, not an acceptable substitute for passing the gate. It is not labeled validation-passed or an independent confirmation.
 
 ## Scope and implementation
 
@@ -60,4 +60,4 @@ The original user requested tuning followed by full reevaluation. To assess the 
 
 The new HC1902 queue has fingerprint `f33e75a4652dfc369277b92e90cb63e3014b0c046f13a9ed02e9975828cb208d`. It stores independent predictions/receipts and compact native logits/geometry, reuses original content-bound expert evidence, and must recover every old Source/ERef/Global6 interval and BoxFixed trajectory bitwise. The completed old HC/Vid full remains immutable; VidSTG is not rerun. The main CLI and default configuration remain BoxFixed + original Global6 + original physical MBR.
 
-After all1902 predictions seal, a separate CPU scorer uses fixed official labels, verifies old Source/Previous full metrics, and reports Source/Previous/Candidate plus fixed-space time control, all signed effects, serious declines and parent-cluster intervals. No partial-full result selects parameters. A complete outcome is pending; no full improvement is claimed here.
+After all1902 predictions seal, a separate CPU scorer uses fixed official labels, verifies old Source/Previous full metrics, and reports Source/Previous/Candidate plus fixed-space time control, all signed effects, serious declines and parent-cluster intervals. No partial-full result selects parameters. The user paused this full at338/1902 and no full score exists. All338 prediction/receipt/capture hashes were verified, no orphan files remained, and controller/worker exited. No full improvement is claimed. Further full launch requires actual Source-primary validation, with no exploratory exception.

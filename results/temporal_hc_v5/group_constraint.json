@@ -1,0 +1,19 @@
+{
+  "status": "explicit_user_constraint_before_pairing_validation",
+  "user_request": "要让长短事件增量都为正，这样就好了",
+  "reference": "Source",
+  "threshold_seconds": 5,
+  "short": "GT_duration<=5s",
+  "long": "GT_duration>5s",
+  "both_groups_strictly_positive": true,
+  "applies_to": [
+    "128-parent tuning",
+    "fixed35 development recheck"
+  ],
+  "inference_GT_use": false,
+  "full_launch_if_either_group_nonpositive": false,
+  "previous_failed_full_resume": false,
+  "selection": "Among profiles passing all original numerical protections and both strict Source group gains, prioritize larger worst-group Source tIoU gain, then overall Source tIoU and fullv. User steering supersedes the prior overall-only ranking; locked before pairing validation.",
+  "original_protocol_sha256": "7394f0bb46138c90b939649aa7780fcc0936f24f0b8c984cb9a611762bcf4cc3",
+  "utc": "2026-10-22T09:30:35.042107+00:00"
+}
