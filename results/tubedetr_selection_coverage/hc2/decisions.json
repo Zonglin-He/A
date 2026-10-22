@@ -1,0 +1,134 @@
+[
+  {
+    "stage": "geometry_cycle_weight_True",
+    "reason_before": "Recover same preexisting geometric candidates masked by old cycle threshold; distinguish gate from repeated unary attenuation",
+    "candidates": [
+      {
+        "policy": "expanded",
+        "contrast": 0.0,
+        "cycle_floor": 0.1,
+        "unary_cycle_weight": true,
+        "guard": 0.4
+      },
+      {
+        "policy": "expanded",
+        "contrast": 0.0,
+        "cycle_floor": 0.25,
+        "unary_cycle_weight": true,
+        "guard": 0.4
+      },
+      {
+        "policy": "expanded",
+        "contrast": 0.0,
+        "cycle_floor": 0.4,
+        "unary_cycle_weight": true,
+        "guard": 0.4
+      }
+    ],
+    "selected": {
+      "policy": "previous",
+      "selection": {
+        "selection_mode": "observe_protection",
+        "margin": 0.0,
+        "cycle_floor": 0.1,
+        "agreement_floor": 0.0,
+        "guard": 0.4
+      }
+    }
+  },
+  {
+    "stage": "geometry_cycle_weight_False",
+    "reason_before": "Recover same preexisting geometric candidates masked by old cycle threshold; distinguish gate from repeated unary attenuation",
+    "candidates": [
+      {
+        "policy": "expanded",
+        "contrast": 0.0,
+        "cycle_floor": 0.1,
+        "unary_cycle_weight": false,
+        "guard": 0.4
+      },
+      {
+        "policy": "expanded",
+        "contrast": 0.0,
+        "cycle_floor": 0.25,
+        "unary_cycle_weight": false,
+        "guard": 0.4
+      },
+      {
+        "policy": "expanded",
+        "contrast": 0.0,
+        "cycle_floor": 0.4,
+        "unary_cycle_weight": false,
+        "guard": 0.4
+      }
+    ],
+    "selected": {
+      "policy": "previous",
+      "selection": {
+        "selection_mode": "observe_protection",
+        "margin": 0.0,
+        "cycle_floor": 0.1,
+        "agreement_floor": 0.0,
+        "guard": 0.4
+      }
+    }
+  },
+  {
+    "stage": "foreground_background_contrast",
+    "reason_before": "Use local background to test whether raw foreground cosine rewards common image features; fixed candidate coordinates and evidence",
+    "candidates": [
+      {
+        "policy": "expanded",
+        "contrast": 0.5,
+        "cycle_floor": 0.1,
+        "unary_cycle_weight": false,
+        "guard": 0.4
+      },
+      {
+        "policy": "expanded",
+        "contrast": 0.5,
+        "cycle_floor": 0.25,
+        "unary_cycle_weight": false,
+        "guard": 0.4
+      },
+      {
+        "policy": "expanded",
+        "contrast": 0.5,
+        "cycle_floor": 0.4,
+        "unary_cycle_weight": false,
+        "guard": 0.4
+      },
+      {
+        "policy": "expanded",
+        "contrast": 1.0,
+        "cycle_floor": 0.1,
+        "unary_cycle_weight": false,
+        "guard": 0.4
+      },
+      {
+        "policy": "expanded",
+        "contrast": 1.0,
+        "cycle_floor": 0.25,
+        "unary_cycle_weight": false,
+        "guard": 0.4
+      },
+      {
+        "policy": "expanded",
+        "contrast": 1.0,
+        "cycle_floor": 0.4,
+        "unary_cycle_weight": false,
+        "guard": 0.4
+      }
+    ],
+    "selected": {
+      "policy": "previous",
+      "selection": {
+        "selection_mode": "observe_protection",
+        "margin": 0.0,
+        "cycle_floor": 0.1,
+        "agreement_floor": 0.0,
+        "guard": 0.4
+      }
+    }
+  }
+]

@@ -1,0 +1,1233 @@
+{
+  "protocol_version": 2,
+  "engineering_recovery_sha256": "0f37f81e6bf9a38eeea8a82a4d57a34992df74d46f5b401c8e7cfa86af3c213a",
+  "status": "frozen_before_teacher_calibration_or_scores",
+  "date": "2026-10-22",
+  "upstream_commit": "5bd213f7bdb4241d4d759ab4fb8b20f8f7117b57",
+  "upstream_source_provenance_sha256": "2a864ad9e566fcedc66953427b02db24d9ab60f8fbeed9a8bbee19d09eafb0c1",
+  "interface_qualification_sha256": "56229ac52319d1912921011fb0f67a9e9994be8ce61982b0c949814a100db5b1",
+  "configuration_sha256": "5068546e926139ddf87030bac897fe71645464c45fa15a1e4467a10753e30b1e",
+  "method": "TubeDETR BoxFixed + native224 Global6 + physical MBR",
+  "datasets": {
+    "vidstg": {
+      "manifest": "data/evaluation/tubedetr_vid_dev128.jsonl",
+      "manifest_sha256": "c7df9b65aa5603b14a132615cc19f71a51a9bd59baf36f38bd28426334ff0ec4",
+      "labels": "data/evaluation/tubedetr_vid_dev128_labels.jsonl",
+      "labels_sha256": "6a7faa74bd0dda58008a63b7b351cb41c2235e308641092272a687d5592b4550",
+      "full_manifest": "data/evaluation/vidstg.jsonl",
+      "full_manifest_sha256": "3c21d1e35d70e528a8ecc31f6e191504c95700d3363b12fb0212d59dea5ac09d",
+      "full_labels": "data/evaluation/vidstg_labels.jsonl",
+      "full_labels_sha256": "b4e094b86df5cbfcf69fd2dc598a83e7993268e6912fada3f06b9aa25859ae56",
+      "full_queries": 10303,
+      "full_parents": 732,
+      "development_queries": 128,
+      "development_parents": 128,
+      "old_reference": "outputs/tubedetr/hc2_to_vid",
+      "old_prediction_seal_sha256": "a8be51566abec32d9367a36dced44270e113b0bf65075d18fe30dfe682554895",
+      "configuration": {
+        "dataset": "vidstg",
+        "source_dataset": "hc2",
+        "source_checkpoint": "checkpoints/tubedetr/hc2_k2_res224.pth",
+        "ReferDINO_checkpoint": "checkpoints/referdino/ryt_mevis_swinb.pth",
+        "no_network_training": true,
+        "E_calibration": {
+          "scale": [
+            0.022542142662651282,
+            0.011027737123363815,
+            0.06612943552390567,
+            0.02918426580581821
+          ],
+          "truncation": 18.056884634893116,
+          "source_train_queries": 36,
+          "eligible_queries": 35,
+          "known_planned_anchors": 113,
+          "singleton_or_empty_queries": 1,
+          "model_hash": "ee72f0d9a50c573a115bd7cfc2329c860745a1cf3dab83af1be7787c11b3c218",
+          "quantile": 0.95,
+          "validation_used": false,
+          "target_GT_used": false
+        },
+        "E_calibration_provenance": "source-domain train calibration, frozen before target outcomes",
+        "initialization_gamma": 1.0,
+        "temporal_mode": "native_Global6",
+        "source_checkpoint_sha256": "c646a8b7131bb28806c350e16479cd8bb31d4425ccb15129b26a6e4d38dd4222",
+        "stride": 2,
+        "native_resolution": 224,
+        "upstream_revision": "d70c0eed94da09a9a5e4329c937230ecfb1d3ee6",
+        "backbone": "TubeDETR"
+      },
+      "old_development_plan_sha256": "bdfae56cd7c7291245986a582b46f3995f6f3f8a791629bbf2d36c52b34763a2"
+    },
+    "hc2": {
+      "manifest": "data/evaluation/tubedetr_hc2_dev128.jsonl",
+      "manifest_sha256": "4cf05614ed1fe083b0c117ad0b8e8ddd952b688ccbccb9a56fcdace5942b1664",
+      "labels": "data/evaluation/tubedetr_hc2_dev128_labels.jsonl",
+      "labels_sha256": "e3dbbfd43d8da836106afd45d6055ac9b22008a41f5dcf3ef1c816e515e609fe",
+      "full_manifest": "data/evaluation/hc2.jsonl",
+      "full_manifest_sha256": "365904987e66a9c08c3c855915eacc4cbb275c36ccdbad1dabd0bc007fcd4162",
+      "full_labels": "data/evaluation/hc2_labels.jsonl",
+      "full_labels_sha256": "9e5408be46903b6228c6a0e78b12b89437ea055c05afc18a653135fc189b46d7",
+      "full_queries": 1902,
+      "full_parents": 227,
+      "development_queries": 128,
+      "development_parents": 128,
+      "old_reference": "outputs/tubedetr/vid_to_hc2",
+      "old_prediction_seal_sha256": "552329cb96973abffe2444616c02bfdf033e50a07c7b2aa7371981001e9d2783",
+      "configuration": {
+        "dataset": "hc2",
+        "source_dataset": "vidstg",
+        "source_checkpoint": "checkpoints/tubedetr/vidstg_k2_res224.pth",
+        "ReferDINO_checkpoint": "checkpoints/referdino/ryt_mevis_swinb.pth",
+        "no_network_training": true,
+        "E_calibration": {
+          "scale": [
+            0.08805019583603152,
+            0.03796878948819179,
+            0.2445728236645117,
+            0.21037521441041293
+          ],
+          "truncation": 30.734017210649714,
+          "source_train_queries": 36,
+          "eligible_queries": 22,
+          "known_planned_anchors": 76,
+          "singleton_or_empty_queries": 14,
+          "model_hash": "fbb1ed8871d6c2aa093879efefc2ee500bb7de5e0fe1c25b809c5393d010f3c7",
+          "quantile": 0.95,
+          "validation_used": false,
+          "target_GT_used": false
+        },
+        "E_calibration_provenance": "source-domain train calibration, frozen before target outcomes",
+        "initialization_gamma": 0.5,
+        "temporal_mode": "native_Global6",
+        "source_checkpoint_sha256": "2802c66049b2e7986a826b4bbd291eb8521446cfba6fee03b56729438bf44213",
+        "stride": 2,
+        "native_resolution": 224,
+        "upstream_revision": "d70c0eed94da09a9a5e4329c937230ecfb1d3ee6",
+        "backbone": "TubeDETR"
+      },
+      "old_development_plan_sha256": "63cdbdaac46072ccd1834401a92f0be75b165a9f172a8591c24c0fcd638941aa"
+    }
+  },
+  "dataset_order": [
+    "vidstg",
+    "hc2"
+  ],
+  "code_sha256": {
+    "stvg/__init__.py": "210b19476f4f5f781cbbfde31ce0dfdfbc8ed5f0497c0382d067b3d1a589554e",
+    "stvg/__main__.py": "3e5063d0f2166f704f3f8956b57e21c8caa26e7e6e877087c20f7ff2c3eb238e",
+    "stvg/_attention.py": "541cabf5d4a84091b726f0820415b86707f8c66967b82297f50b7bd39a510fe5",
+    "stvg/_host.py": "e30ab54ec857ba4fd787e1b9f3a710db194061e295385c4f08f98374215b2d47",
+    "stvg/_visual.py": "cad63b966e0823ab73553af5dcfaac12fd86f183de1577463388b09ba5ba942c",
+    "stvg/capture.py": "ceb50086cf52907ec73c6c5bff0b86ee560d0ae3cdfee0c43c3673078d095d6e",
+    "stvg/consensus.py": "c8539c78a8ec278866e5bc077e55911ffaae85e9efc44cc7262a4dc58488c34c",
+    "stvg/decode.py": "3c5d0237a97c650970a76266874bcd83b1f77f302a70dda842fa38f9c22be2a8",
+    "stvg/evaluation.py": "3b7d3fb733e2a68c12684d62dcf62bf867e880add1e32797f17bc1b43562ff0f",
+    "stvg/evaluation_v2.py": "6da4f0a5e2e25b57531499e99c42a4d0899b36542934bb31ed745aaa6abb7426",
+    "stvg/geometry.py": "af65160a5f799ebe8a2b15656402ad7f900868d463f3fbf28481e6e7f6e9d7a7",
+    "stvg/initialization.py": "21168f4a6740e5b4f306863bd1b852587cc71ed8d15dd0dc3b8b643da70e7842",
+    "stvg/inputs.py": "f9023daa8737cabc71045ef5dd4199e0d9b7823bcc6eb8430b1097f6159759f7",
+    "stvg/metrics.py": "c8db46913786a9f300984d7d7ca7ab219be30e8c91a1d27781d23155597d5665",
+    "stvg/metrics_base.py": "d55ad205971585fae9fd0a1de1408e87add2f57caa98c45eb54ca8f79712545b",
+    "stvg/metrics_hc.py": "1e59e0b6bcba3ac79dabf1355c4fee0ad039099828c9a0d3602aab4622223265",
+    "stvg/policy.py": "e300c3cca414765a4eb526d3c713069d7733ad55b655f61adb61b44458249cbc",
+    "stvg/positions.py": "d22e4fbceea353f060276ff09d4d298f87e99116ff1624328048b7ee86541d15",
+    "stvg/predictor.py": "91bdf1525be1b59ce5862bc511b3829a378fc58f3da80274a77d77b792b90070",
+    "stvg/query.py": "cb0cac6ea1b71cb80c61b42201e4740a24f3a8aeeafb25e13baa98e739520637",
+    "stvg/readout.py": "b3d809b220e01bc26108e64e1f260849e2c07cd74fbb075817ea872891330e85",
+    "stvg/runtime.py": "4b1fcfbfeefec90643c0c92621f4a1d28339aa5c1bf68ad8d7f69ab413176381",
+    "stvg/source.py": "07f983481f68d115f5ce4e4bea39651d2482db76c7da490d6618a9e9e06ef776",
+    "stvg/source_loader.py": "f480f9c30cec9ea468ef60f4707c4928c04acdca038aeea556cf9674dafe41de",
+    "stvg/source_replay.py": "618f540b97b845566ab2a62718d90da068786f04302502398898adf400a4e990",
+    "stvg/state.py": "e0a469ad993a135371e0b8e864bd67ff5a198f428c8c2181ffda2bdb01601961",
+    "stvg/teacher.py": "46c1d136f9c94a7d32e7fa8023254816d9b7f85fe75ac5fcc701bc343dca7a7f",
+    "stvg/teacher_bridge.py": "a1f929791ead5404d3eb2ba287f22cbb3fe140ae68b2b9b444e9529a2200733a",
+    "stvg/teacher_service.py": "1196a63b18cc29e793fea830aa276f9fee95dc7adadbcffb4d3c78862d1eb5c0",
+    "stvg/teacher_worker.py": "ce015658ea382acda9b127d7292a75c22715282dfff6f6990da131da91f75800",
+    "stvg/temporal.py": "86ecc3c3b340d0f497d05fbe75472498aa51e9138575b28f0deb1325102e23ba",
+    "stvg/tensors.py": "d964125abb7934d6c9385f6facd1cab9707db948e55e595c9b489fc5b909a40f",
+    "stvg/tube_decode.py": "6aa1ef80b9ad4218448d4b226f445a2e3bc0bc1fca910e2bfd237299731afa8d",
+    "stvg/tube_runner.py": "21839697e9c1b2ac753ebdbc1a3dd8052c2a6e84ea1ab7527aff5ac363a19a76",
+    "stvg/tubedetr.py": "da502783773f49a44f3c15931eef39cf5f4d6f8e2cf3199eecc70471b1504ba8",
+    "tests/test_boxfixed_tube_isolation.py": "614d76e2495793982a044d8cf73920c06a2fcf1f97351e627d3e1eb73e087a97",
+    "tests/test_boxfixed_tube_profiles.py": "4568ea679dd64e5c9f15bf42e26afdec18fd987c381af013b79deb7e79152864",
+    "tests/test_boxfixed_tube_upstream.py": "145a807ebe0f89edb0f8b5a369dfb69f6915f8d0c4749062c4b537604ff00004",
+    "tools/boxfixed_tube/__init__.py": "6b98cf56509d3765ef436278d71f62928948804a10e9f12daa7cc0646fdde519",
+    "tools/boxfixed_tube/_spatial_math.py": "5bc273271a08dabffa086aff663795400e084b70a60e1dcd98d80099a2039e2e",
+    "tools/boxfixed_tube/adapter.py": "d4de1c8d6232e7013de76c1dad7abe8a1139812c31d9a786a15bd4fa4bd7bdbf",
+    "tools/boxfixed_tube/evidence.py": "f35fc5d25edbf525ec135ebc1ef8b2ac39a4a66f406fd1e03659ecadf1b2bbe6",
+    "tools/boxfixed_tube/profiles.py": "810bd2dbf120f8581b764e7a94ba3ce662eefd25e2e2431c9bff6dcdde641a82",
+    "tools/boxfixed_tube/spatial.py": "2f00768a32e151b244b0025a714d56a99537d79c9096f1347d708a84fe852875",
+    "tools/boxfixed_tube/teacher_service.py": "e2a1d54f8c9d6f1c932b79d3c0a18fbed643d488c1ae534472cc3f16a891a630",
+    "tools/boxfixed_tube/teacher_worker.py": "86fd5875ca3064e8327938fadf4a6d60076aaad7d5a9f800c9e183b8cfc9801a",
+    "tools/tubedetr_boxfixed_development.py": "0760b5a829bf36457c15f133846a2414ae25a9bd103a9377a2133f148f2d82a8",
+    "tools/tubedetr_boxfixed_prepare.py": "57e9754fa39ad254c6c9a82cd679eb21ec9a549c33e462886ed8d9aaae5eecc5",
+    "tools/tubedetr_boxfixed_qualify.py": "6544ed6aa4c4c3651ef2476d02f0228deb49b4e5effabc4bb2a0a12a1e1cf4c6",
+    "tools/boxfixed_followup/refinement.py": "8348b397b6a81ac388c4ac5d094afcc27e42ec20b0e462adb31f3d56d7960c1b",
+    "tools/boxfixed_followup/refinement_run.py": "4202c74d828a63284a4e4dd0a6d79501e67160b3a454818df2e20fece8cd7a29",
+    "tests/test_boxfixed_spatial_refinement.py": "4e2c0100c5ea8b6768f11def3a1a52f306ae19f638d26e39fce3e5bb7f3a0d43",
+    "tools/boxfixed_followup/selection.py": "cf458e89ee7af38781ab5ae49d8bd579ce9b3d37f8c960b7db22a7deedb11b15",
+    "tools/boxfixed_followup/selection_capture.py": "7804700f979b9efc36c24ca05524d0a01111a27911e591db13d4669539430ece",
+    "tools/boxfixed_followup/selection_run.py": "51b73bc1462e5f504cd19fc632b8e1fc1e742599021e629d2942c7e7f8f441c1",
+    "tests/test_boxfixed_selection.py": "12556082800849ea2855ad90123fa2c525757335bd19b73bc76efd591edb95b8",
+    "tools/boxfixed_followup/coverage.py": "873756ef12283970df861b6c76c14e16f40263520089a7aca9e16f925a2f75ee",
+    "tools/boxfixed_followup/coverage_run.py": "5ef2c877a5dd355c69bc0515fe8fa4109b8a831f6eb4f8343a2615bf2f859f21",
+    "tests/test_boxfixed_coverage.py": "e8620015141753a95a4b487be76a669cd622239de47bcce4f82088736da0ccb1",
+    "tools/boxfixed_followup/teacher_calibration.py": "790d78f8c1951436d289f54bfb2bf5245432896e1c6cf932fb2bd5b1bee8b188",
+    "tools/boxfixed_followup/calibration_run.py": "10cdcba12a304df4a3b3083f63a6dffadc778c029f2a08bc5cc466353058c43c",
+    "tests/test_teacher_score_calibration.py": "e164878c3079e2542210fd7db0320191524212c80d383c869ca7b6a1038a7d23"
+  },
+  "teacher_fingerprint": "4dc81beee7e232f406c0a2b1a87ff2167d38a06d58846f4d1b9d55d2ce21014b",
+  "gamma_grid": [
+    0.0,
+    0.0125,
+    0.025,
+    0.05,
+    0.1,
+    0.25,
+    0.5,
+    0.75,
+    1.0
+  ],
+  "admission_grid": [
+    0.4,
+    0.7
+  ],
+  "guard_grid": [
+    0.1,
+    0.4,
+    1.0
+  ],
+  "link_grid": [
+    1.0
+  ],
+  "max_profiles_per_dataset": 7,
+  "max_coupling_profiles": 2,
+  "feature_affinity": {
+    "temperature": 0.1,
+    "topk": 20
+  },
+  "temporal": {
+    "native_resolution": 224,
+    "layers": 6,
+    "temperature": 1,
+    "no448": true,
+    "no_fake_offsets": true
+  },
+  "one_teacher": true,
+  "no_optimizer_or_OPD": true,
+  "all_old_results_immutable": true,
+  "GT_only_after_each_complete_prediction_seal": true,
+  "full_evaluation_after_both128_profile_locks": false,
+  "no_full_feedback_into_tuning": true,
+  "all_development_and_prior_full_exposure_disclosed": true,
+  "selection_objective": "maximum complete128 equal-query Full m_vIoU with original profile always eligible; exact tie retains original",
+  "run_scope": "two fixed128 panels only; small candidate modifications and bounded parameters",
+  "parent_plan_sha256": "a906c62b7d3a849de468c39f0e21b37fdf122a6aca8b30a3d6e3dfbfd7feb8a2",
+  "parent_final_seal_sha256": "60a83b66337773b5c3b199b93bc5cd2b9472cd9cbbe7087f33a88f7895dc0d81",
+  "previous_parameter_completion_sha256": "a155c545bf45d2ab2bf48918e983e6565ec0fe2a01a7e7cef60163cd75812f7b",
+  "diagnosis_sha256": {
+    "results/tubedetr_boxfixed_followup/diagnosis.json": "5530a3e89abe7bc10fab499ef0aae18fcc56044d4c753685269353574a2d021f",
+    "results/tubedetr_boxfixed_followup/extent_diagnosis.json": "efe67d762a72e7d6d794908021b4a76d82c02442905dc983ee36a21db5180f17"
+  },
+  "new_full_allowed": false,
+  "no_new_GPU_or_teacher_calls": true,
+  "mechanisms": [
+    "center_preserve",
+    "relative_residual"
+  ],
+  "alpha_grid": [
+    0.25,
+    0.5,
+    1.0
+  ],
+  "beta_grid": [
+    0.0,
+    0.25,
+    0.5
+  ],
+  "selection": "Previous coverage incumbent always eligible. Require both spatial means and v at least previous and Temporal; maximize minimum dense/unobserved gain. Practical goal both >=.25pp, >=10 improving parents vs ERef and stability audit. No score search after fixed6 combinations.",
+  "refinement_order": "incumbent and gamma0 controls; each family alpha grid with beta0; each family best alpha with beta .25/.5; best diagnostic configuration guard grid then admission grid; no further search",
+  "speculative_modifications": "Only unobserved candidate coordinates; same evidence, three states, upstream scoring definitions and exact DP. Observed teacher proposals unchanged. New candidates use gamma0 to isolate inherited initialization calibration.",
+  "exposure": "Both panels previously exposed repeatedly. Post-selection bootstrap is descriptive, not independent confirmation.",
+  "incumbents": {
+    "vidstg": {
+      "status": "complete_fixed128_validation_only",
+      "parameters": {
+        "gamma": 0.0,
+        "admission": 0.4,
+        "guard": 2.0,
+        "link": 1.0
+      },
+      "profile_id": "35bb041f13bf1a46",
+      "plan_sha256": "a6dfcad00911c05041fc46e2e61d93ea7673fb21b9e3022de19b6ec78e522e52",
+      "profiles_tested": 10,
+      "metrics": {
+        "status": "complete",
+        "dataset": "vidstg",
+        "queries": 128,
+        "parameters": {
+          "gamma": 0.0,
+          "admission": 0.4,
+          "guard": 2.0,
+          "link": 1.0
+        },
+        "means": {
+          "Source": {
+            "v": 16.10080537596486,
+            "s": 48.61641898239857,
+            "t": 28.517573180966455
+          },
+          "Spatial": {
+            "v": 16.618245299867212,
+            "s": 48.974942635054916,
+            "t": 28.517573180966455
+          },
+          "Temporal": {
+            "v": 19.673753778451914,
+            "s": 48.61641898239857,
+            "t": 35.1476375483856
+          },
+          "Full": {
+            "v": 19.653171664248557,
+            "s": 48.530362062796925,
+            "t": 35.1476375483856
+          }
+        },
+        "unobserved_sIoU": {
+          "Source": 48.59164469006397,
+          "Spatial": 49.04281146231323,
+          "Temporal": 48.59164469006397,
+          "Full": 48.58924341453199
+        },
+        "observed_sIoU": {
+          "Source": 51.02536444566057,
+          "Spatial": 50.39635092095851,
+          "Temporal": 51.02536444566057,
+          "Full": 50.41845885272026
+        },
+        "Full_minus_Temporal_pp": -0.02058211420335928,
+        "loss_over5pp_queries": 0,
+        "prediction_seal_sha256": "7a5a7d5dd38a951217f2faf6b0602c9c7563281411b2da13d764c3d885fb0c12",
+        "all_predictions_sealed_before_labels": true,
+        "mean_admitted_frames": 34.375,
+        "mean_changed_from_ERef_frames": 5.3046875,
+        "not_independent_confirmation": true
+      },
+      "prediction_seal_sha256": "7a5a7d5dd38a951217f2faf6b0602c9c7563281411b2da13d764c3d885fb0c12",
+      "incumbent_128_predictions_bitexact": true,
+      "all_original_code_hashes_unchanged": true,
+      "new_model_or_teacher_calls": 0,
+      "new_full_predictions": 0,
+      "development_exposed": true,
+      "independent_confirmation": false,
+      "full_not_started": true
+    },
+    "hc2": {
+      "status": "complete_fixed128_validation_only",
+      "parameters": {
+        "gamma": 0.025,
+        "admission": 0.7,
+        "guard": 0.4,
+        "link": 1.0
+      },
+      "profile_id": "0c5df084c433b2fb",
+      "plan_sha256": "a6dfcad00911c05041fc46e2e61d93ea7673fb21b9e3022de19b6ec78e522e52",
+      "profiles_tested": 10,
+      "metrics": {
+        "status": "complete",
+        "dataset": "hc2",
+        "queries": 128,
+        "parameters": {
+          "gamma": 0.025,
+          "admission": 0.7,
+          "guard": 0.4,
+          "link": 1.0
+        },
+        "means": {
+          "Source": {
+            "v": 14.28857846273586,
+            "s": 57.59668707703081,
+            "t": 23.193250853116336
+          },
+          "Spatial": {
+            "v": 14.153477185799042,
+            "s": 57.45368159025546,
+            "t": 23.193250853116336
+          },
+          "Temporal": {
+            "v": 27.649544778378964,
+            "s": 57.59668707703081,
+            "t": 48.1901288427885
+          },
+          "Full": {
+            "v": 27.718720816852272,
+            "s": 57.63098936440984,
+            "t": 48.1901288427885
+          }
+        },
+        "unobserved_sIoU": {
+          "Source": 57.562702404437886,
+          "Spatial": 57.41777792544491,
+          "Temporal": 57.562702404437886,
+          "Full": 57.57155881605678
+        },
+        "observed_sIoU": {
+          "Source": 59.96104124582759,
+          "Spatial": 60.27641740182226,
+          "Temporal": 59.96104124582759,
+          "Full": 61.68124901752407
+        },
+        "Full_minus_Temporal_pp": 0.06917603847330783,
+        "loss_over5pp_queries": 0,
+        "prediction_seal_sha256": "f27a86dc2bb9e1907a9779320855c5d88d7eaf8591a8fe02d88e2b50a7118395",
+        "all_predictions_sealed_before_labels": true,
+        "mean_admitted_frames": 9.9609375,
+        "mean_changed_from_ERef_frames": 4.8515625,
+        "not_independent_confirmation": true
+      },
+      "prediction_seal_sha256": "f27a86dc2bb9e1907a9779320855c5d88d7eaf8591a8fe02d88e2b50a7118395",
+      "incumbent_128_predictions_bitexact": true,
+      "all_original_code_hashes_unchanged": true,
+      "new_model_or_teacher_calls": 0,
+      "new_full_predictions": 0,
+      "development_exposed": true,
+      "independent_confirmation": false,
+      "full_not_started": true
+    }
+  },
+  "previous_completion_sha256": "33265aa94f1a195c53db7dabe8e6f7cc8cfc2732ba128fae6e9d141fefc0674b",
+  "candidate_profiles": {
+    "vidstg": {
+      "status": "complete_fixed128_only",
+      "parameters": {
+        "gamma": 0.0,
+        "admission": 0.4,
+        "guard": 2.0,
+        "link": 1.0,
+        "mode": "relative_residual",
+        "alpha": 1.0,
+        "beta": 0.5
+      },
+      "profile_id": "b84cf10837cc6826",
+      "metrics": {
+        "status": "complete",
+        "dataset": "vidstg",
+        "queries": 128,
+        "parameters": {
+          "gamma": 0.0,
+          "admission": 0.4,
+          "guard": 2.0,
+          "link": 1.0,
+          "mode": "relative_residual",
+          "alpha": 1.0,
+          "beta": 0.5
+        },
+        "means": {
+          "Source": {
+            "v": 16.10080537596486,
+            "s": 48.61641898239857,
+            "t": 28.517573180966455
+          },
+          "Spatial": {
+            "v": 16.668116999491215,
+            "s": 49.127683874863884,
+            "t": 28.517573180966455
+          },
+          "Temporal": {
+            "v": 19.673753778451914,
+            "s": 48.61641898239857,
+            "t": 35.1476375483856
+          },
+          "Full": {
+            "v": 19.699881141353703,
+            "s": 48.582456363873426,
+            "t": 35.1476375483856
+          }
+        },
+        "unobserved_sIoU": {
+          "Source": 48.59164469006397,
+          "Spatial": 49.203168221053474,
+          "Temporal": 48.59164469006397,
+          "Full": 48.64108242154062
+        },
+        "observed_sIoU": {
+          "Source": 51.02536444566057,
+          "Spatial": 50.39635092095851,
+          "Temporal": 51.02536444566057,
+          "Full": 50.42290400924768
+        },
+        "Full_minus_Temporal_pp": 0.026127362901787056,
+        "loss_over5pp_queries": 1,
+        "prediction_seal_sha256": "b21dec3ae715caf37e59d3e52c3f5d60a43de0cb4df9611d861b034715c01ae4",
+        "all_predictions_sealed_before_labels": true,
+        "mean_admitted_frames": 34.375,
+        "mean_changed_from_ERef_frames": 16.4453125,
+        "not_independent_confirmation": true
+      },
+      "profiles": 14,
+      "qualifies_for_spatial_promotion": false,
+      "incumbent": {
+        "status": "complete",
+        "dataset": "vidstg",
+        "queries": 128,
+        "parameters": {
+          "gamma": 0.0,
+          "admission": 0.4,
+          "guard": 2.0,
+          "link": 1.0,
+          "mode": "original"
+        },
+        "means": {
+          "Source": {
+            "v": 16.10080537596486,
+            "s": 48.61641898239857,
+            "t": 28.517573180966455
+          },
+          "Spatial": {
+            "v": 16.618245299867212,
+            "s": 48.974942635054916,
+            "t": 28.517573180966455
+          },
+          "Temporal": {
+            "v": 19.673753778451914,
+            "s": 48.61641898239857,
+            "t": 35.1476375483856
+          },
+          "Full": {
+            "v": 19.653171664248557,
+            "s": 48.530362062796925,
+            "t": 35.1476375483856
+          }
+        },
+        "unobserved_sIoU": {
+          "Source": 48.59164469006397,
+          "Spatial": 49.04281146231323,
+          "Temporal": 48.59164469006397,
+          "Full": 48.58924341453199
+        },
+        "observed_sIoU": {
+          "Source": 51.02536444566057,
+          "Spatial": 50.39635092095851,
+          "Temporal": 51.02536444566057,
+          "Full": 50.41845885272026
+        },
+        "Full_minus_Temporal_pp": -0.02058211420335928,
+        "loss_over5pp_queries": 0,
+        "prediction_seal_sha256": "b62c0dcd381e8ee36c6175b08c65f91ffff61b6abda387cc6c91976870d8c164",
+        "all_predictions_sealed_before_labels": true,
+        "mean_admitted_frames": 34.375,
+        "mean_changed_from_ERef_frames": 5.3046875,
+        "not_independent_confirmation": true
+      },
+      "plan_sha256": "1c68ca2b5352a356043dc9a8c9a9831e4b77da73ee6481926d2acbe14e600f1a",
+      "incumbent_all_arrays_bitexact": true,
+      "no_full_run": true,
+      "no_new_neural_calls": true,
+      "independent_confirmation": false,
+      "note": "Selection is exposed-development evidence only. If qualification fails, best diagnostic configuration is not promoted."
+    },
+    "hc2": {
+      "status": "complete_fixed128_only",
+      "parameters": {
+        "gamma": 0.025,
+        "admission": 0.7,
+        "guard": 0.4,
+        "link": 1.0,
+        "mode": "original"
+      },
+      "profile_id": "d7e44e6dc1a77366",
+      "metrics": {
+        "status": "complete",
+        "dataset": "hc2",
+        "queries": 128,
+        "parameters": {
+          "gamma": 0.025,
+          "admission": 0.7,
+          "guard": 0.4,
+          "link": 1.0,
+          "mode": "original"
+        },
+        "means": {
+          "Source": {
+            "v": 14.28857846273586,
+            "s": 57.59668707703081,
+            "t": 23.193250853116336
+          },
+          "Spatial": {
+            "v": 14.153477185799042,
+            "s": 57.45368159025546,
+            "t": 23.193250853116336
+          },
+          "Temporal": {
+            "v": 27.649544778378964,
+            "s": 57.59668707703081,
+            "t": 48.1901288427885
+          },
+          "Full": {
+            "v": 27.718720816852272,
+            "s": 57.63098936440984,
+            "t": 48.1901288427885
+          }
+        },
+        "unobserved_sIoU": {
+          "Source": 57.562702404437886,
+          "Spatial": 57.41777792544491,
+          "Temporal": 57.562702404437886,
+          "Full": 57.57155881605678
+        },
+        "observed_sIoU": {
+          "Source": 59.96104124582759,
+          "Spatial": 60.27641740182226,
+          "Temporal": 59.96104124582759,
+          "Full": 61.68124901752407
+        },
+        "Full_minus_Temporal_pp": 0.06917603847330783,
+        "loss_over5pp_queries": 0,
+        "prediction_seal_sha256": "0ba515aac05590efc5f2037f9b3cfff9f0e6c5a961858dc09920a5493278168a",
+        "all_predictions_sealed_before_labels": true,
+        "mean_admitted_frames": 9.9609375,
+        "mean_changed_from_ERef_frames": 4.8515625,
+        "not_independent_confirmation": true
+      },
+      "profiles": 15,
+      "qualifies_for_spatial_promotion": true,
+      "incumbent": {
+        "status": "complete",
+        "dataset": "hc2",
+        "queries": 128,
+        "parameters": {
+          "gamma": 0.025,
+          "admission": 0.7,
+          "guard": 0.4,
+          "link": 1.0,
+          "mode": "original"
+        },
+        "means": {
+          "Source": {
+            "v": 14.28857846273586,
+            "s": 57.59668707703081,
+            "t": 23.193250853116336
+          },
+          "Spatial": {
+            "v": 14.153477185799042,
+            "s": 57.45368159025546,
+            "t": 23.193250853116336
+          },
+          "Temporal": {
+            "v": 27.649544778378964,
+            "s": 57.59668707703081,
+            "t": 48.1901288427885
+          },
+          "Full": {
+            "v": 27.718720816852272,
+            "s": 57.63098936440984,
+            "t": 48.1901288427885
+          }
+        },
+        "unobserved_sIoU": {
+          "Source": 57.562702404437886,
+          "Spatial": 57.41777792544491,
+          "Temporal": 57.562702404437886,
+          "Full": 57.57155881605678
+        },
+        "observed_sIoU": {
+          "Source": 59.96104124582759,
+          "Spatial": 60.27641740182226,
+          "Temporal": 59.96104124582759,
+          "Full": 61.68124901752407
+        },
+        "Full_minus_Temporal_pp": 0.06917603847330783,
+        "loss_over5pp_queries": 0,
+        "prediction_seal_sha256": "0ba515aac05590efc5f2037f9b3cfff9f0e6c5a961858dc09920a5493278168a",
+        "all_predictions_sealed_before_labels": true,
+        "mean_admitted_frames": 9.9609375,
+        "mean_changed_from_ERef_frames": 4.8515625,
+        "not_independent_confirmation": true
+      },
+      "plan_sha256": "1c68ca2b5352a356043dc9a8c9a9831e4b77da73ee6481926d2acbe14e600f1a",
+      "incumbent_all_arrays_bitexact": true,
+      "no_full_run": true,
+      "no_new_neural_calls": true,
+      "independent_confirmation": false,
+      "note": "Selection is exposed-development evidence only. If qualification fails, best diagnostic configuration is not promoted."
+    }
+  },
+  "scoring_scope": "Same fixed candidate coordinates; per-query four-coefficient closed-form ridge score using held-out teacher-target pseudo responses; no dataset GT online",
+  "new_neural_calls": 0,
+  "qualification_plan_sha256": "28368f20c037ce324833b84f235feb8f5762aa4d77fe468017a5e98bb75d6477",
+  "diagnosis_seal_sha256": "dd88c96422ae7a05ed924f5e55265ba5740c35310231ea25d5cae36ab080f466",
+  "margin_grid": [
+    0.0,
+    0.02,
+    0.05
+  ],
+  "agreement_grid": [
+    0.5,
+    0.8
+  ],
+  "cycle_floor": 0.1,
+  "order": "original and observation-protection controls; cross-score/cross-gate margin grids; best cross-score with two agreement thresholds; global best guard grid; no expansion",
+  "candidate_banks": {
+    "vidstg": "a513d3f450be9563a46ae18832345a8603d22f39cf855889f16c02ae9cab8d80",
+    "hc2": "cce2581cbe3a9f69c6bb98669a3f05f13a2a87a11790d10d3d7858e4cd17b1cf"
+  },
+  "previous_selections": {
+    "vidstg": {
+      "status": "complete_fixed128_only",
+      "parameters": {
+        "selection_mode": "cross_agreement",
+        "margin": 0.0,
+        "cycle_floor": 0.1,
+        "agreement_floor": 0.8,
+        "guard": 2.0
+      },
+      "profile_id": "fc6bbecf5bc81bd5",
+      "metrics": {
+        "status": "complete",
+        "dataset": "vidstg",
+        "queries": 128,
+        "parameters": {
+          "selection_mode": "cross_agreement",
+          "margin": 0.0,
+          "cycle_floor": 0.1,
+          "agreement_floor": 0.8,
+          "guard": 2.0
+        },
+        "means": {
+          "Source": {
+            "v": 16.10080537596486,
+            "s": 48.61641898239857,
+            "t": 28.517573180966455
+          },
+          "Spatial": {
+            "v": 16.372468855315034,
+            "s": 49.05434684332497,
+            "t": 28.517573180966455
+          },
+          "Temporal": {
+            "v": 19.673753778451914,
+            "s": 48.61641898239857,
+            "t": 35.1476375483856
+          },
+          "Full": {
+            "v": 19.743062551344394,
+            "s": 48.69697146202634,
+            "t": 35.1476375483856
+          }
+        },
+        "unobserved_sIoU": {
+          "Source": 48.59164469006397,
+          "Spatial": 49.04139052767486,
+          "Temporal": 48.59164469006397,
+          "Full": 48.673247726266425
+        },
+        "observed_sIoU": {
+          "Source": 51.02536444566057,
+          "Spatial": 51.02536444566057,
+          "Temporal": 51.02536444566057,
+          "Full": 51.02536444566057
+        },
+        "Full_minus_Temporal_pp": 0.06930877289248237,
+        "loss_over5pp_queries": 0,
+        "prediction_seal_sha256": "882812eeadf11bef8bb0ef4f22458d0d0a4306736f9bf4be46ea7a14be90c739",
+        "all_predictions_sealed_before_labels": true,
+        "mean_admitted_frames": 34.375,
+        "mean_changed_from_ERef_frames": 5.828125,
+        "not_independent_confirmation": true
+      },
+      "profiles": 12,
+      "incumbent": {
+        "status": "complete",
+        "dataset": "vidstg",
+        "queries": 128,
+        "parameters": {
+          "selection_mode": "original",
+          "margin": 0.0,
+          "cycle_floor": 0.1,
+          "agreement_floor": 0.0,
+          "guard": 2.0
+        },
+        "means": {
+          "Source": {
+            "v": 16.10080537596486,
+            "s": 48.61641898239857,
+            "t": 28.517573180966455
+          },
+          "Spatial": {
+            "v": 16.668116999491215,
+            "s": 49.127683874863884,
+            "t": 28.517573180966455
+          },
+          "Temporal": {
+            "v": 19.673753778451914,
+            "s": 48.61641898239857,
+            "t": 35.1476375483856
+          },
+          "Full": {
+            "v": 19.699881141353703,
+            "s": 48.582456363873426,
+            "t": 35.1476375483856
+          }
+        },
+        "unobserved_sIoU": {
+          "Source": 48.59164469006397,
+          "Spatial": 49.203168221053474,
+          "Temporal": 48.59164469006397,
+          "Full": 48.64108242154062
+        },
+        "observed_sIoU": {
+          "Source": 51.02536444566057,
+          "Spatial": 50.39635092095851,
+          "Temporal": 51.02536444566057,
+          "Full": 50.42290400924768
+        },
+        "Full_minus_Temporal_pp": 0.026127362901787056,
+        "loss_over5pp_queries": 1,
+        "prediction_seal_sha256": "e1e177d150b41a06c5e437878ead406146d59e25564551526e735002e4fde442",
+        "all_predictions_sealed_before_labels": true,
+        "mean_admitted_frames": 34.375,
+        "mean_changed_from_ERef_frames": 16.4453125,
+        "not_independent_confirmation": true
+      },
+      "qualifies": true,
+      "practical_positive_target": false,
+      "candidate_parameters": {
+        "gamma": 0.0,
+        "admission": 0.4,
+        "guard": 2.0,
+        "link": 1.0,
+        "mode": "relative_residual",
+        "alpha": 1.0,
+        "beta": 0.5
+      },
+      "plan_sha256": "d74883e14a7dbd3740976b516f388052cbe5d4965d5d767e9d66cde50eaa80c4",
+      "prediction_seal_sha256": "882812eeadf11bef8bb0ef4f22458d0d0a4306736f9bf4be46ea7a14be90c739",
+      "new_full_predictions": 0,
+      "independent_confirmation": false
+    },
+    "hc2": {
+      "status": "complete_fixed128_only",
+      "parameters": {
+        "selection_mode": "observe_protection",
+        "margin": 0.0,
+        "cycle_floor": 0.1,
+        "agreement_floor": 0.0,
+        "guard": 0.4
+      },
+      "profile_id": "81eecac925f82781",
+      "metrics": {
+        "status": "complete",
+        "dataset": "hc2",
+        "queries": 128,
+        "parameters": {
+          "selection_mode": "observe_protection",
+          "margin": 0.0,
+          "cycle_floor": 0.1,
+          "agreement_floor": 0.0,
+          "guard": 0.4
+        },
+        "means": {
+          "Source": {
+            "v": 14.28857846273586,
+            "s": 57.59668707703081,
+            "t": 23.193250853116336
+          },
+          "Spatial": {
+            "v": 14.28643425801422,
+            "s": 57.613347964349416,
+            "t": 23.193250853116336
+          },
+          "Temporal": {
+            "v": 27.649544778378964,
+            "s": 57.59668707703081,
+            "t": 48.1901288427885
+          },
+          "Full": {
+            "v": 27.731566178793464,
+            "s": 57.72721287549668,
+            "t": 48.1901288427885
+          }
+        },
+        "unobserved_sIoU": {
+          "Source": 57.562702404437886,
+          "Spatial": 57.58020892039792,
+          "Temporal": 57.562702404437886,
+          "Full": 57.69626615440764
+        },
+        "observed_sIoU": {
+          "Source": 59.96104124582759,
+          "Spatial": 59.92691914836371,
+          "Temporal": 59.96104124582759,
+          "Full": 59.92691914836371
+        },
+        "Full_minus_Temporal_pp": 0.08202140041450047,
+        "loss_over5pp_queries": 0,
+        "prediction_seal_sha256": "579ffb5c891c27bcc10e01fbdc14268d485f68d6304815fcdd53a65753b13814",
+        "all_predictions_sealed_before_labels": true,
+        "mean_admitted_frames": 9.9609375,
+        "mean_changed_from_ERef_frames": 0.296875,
+        "not_independent_confirmation": true
+      },
+      "profiles": 10,
+      "incumbent": {
+        "status": "complete",
+        "dataset": "hc2",
+        "queries": 128,
+        "parameters": {
+          "selection_mode": "original",
+          "margin": 0.0,
+          "cycle_floor": 0.1,
+          "agreement_floor": 0.0,
+          "guard": 0.4
+        },
+        "means": {
+          "Source": {
+            "v": 14.28857846273586,
+            "s": 57.59668707703081,
+            "t": 23.193250853116336
+          },
+          "Spatial": {
+            "v": 14.153477185799042,
+            "s": 57.45368159025546,
+            "t": 23.193250853116336
+          },
+          "Temporal": {
+            "v": 27.649544778378964,
+            "s": 57.59668707703081,
+            "t": 48.1901288427885
+          },
+          "Full": {
+            "v": 27.718720816852272,
+            "s": 57.63098936440984,
+            "t": 48.1901288427885
+          }
+        },
+        "unobserved_sIoU": {
+          "Source": 57.562702404437886,
+          "Spatial": 57.41777792544491,
+          "Temporal": 57.562702404437886,
+          "Full": 57.57155881605678
+        },
+        "observed_sIoU": {
+          "Source": 59.96104124582759,
+          "Spatial": 60.27641740182226,
+          "Temporal": 59.96104124582759,
+          "Full": 61.68124901752407
+        },
+        "Full_minus_Temporal_pp": 0.06917603847330783,
+        "loss_over5pp_queries": 0,
+        "prediction_seal_sha256": "8fc9009c97174cdfa0f7da49b6c38648136be7e60c8885aa5163d33d5ef7f882",
+        "all_predictions_sealed_before_labels": true,
+        "mean_admitted_frames": 9.9609375,
+        "mean_changed_from_ERef_frames": 4.8515625,
+        "not_independent_confirmation": true
+      },
+      "qualifies": true,
+      "practical_positive_target": true,
+      "candidate_parameters": {
+        "gamma": 0.025,
+        "admission": 0.7,
+        "guard": 0.4,
+        "link": 1.0,
+        "mode": "original"
+      },
+      "plan_sha256": "d74883e14a7dbd3740976b516f388052cbe5d4965d5d767e9d66cde50eaa80c4",
+      "prediction_seal_sha256": "579ffb5c891c27bcc10e01fbdc14268d485f68d6304815fcdd53a65753b13814",
+      "new_full_predictions": 0,
+      "independent_confirmation": false
+    }
+  },
+  "scope": "Score/admission only; same raw candidate coordinates, teacher, Source, eight anchors, time; allow preexisting geometric proposals to recover from old cycle mask",
+  "appearance": "fixed Source prototype contrast with 2x native-box outer ring; valid-image outside-box fallback; no renormalization of prototype difference",
+  "cycle_grid": [
+    0.1,
+    0.25,
+    0.4
+  ],
+  "contrast_grid": [
+    0.5,
+    1.0
+  ],
+  "trial_order": "previous control; relaxed geometric cross score with/without unary cycle weight at each floor; contrast .5/1 at each floor without unary cycle weight; one guard check on best expanded policy; no further search",
+  "evidence_seals": {
+    "vidstg": "ca29aa7d3067a7fc454de3f30b710d5fc66c4592877f5f5ba4b11085ed46a48c",
+    "hc2": "3e750fcd3c90c4438e5cc9a2e9e3c439534c8359510b4600f11b6bd2c9cea48f"
+  },
+  "parent_coverage_final_sha256": "910c10d5fb42a2a8180709bce346693c7f7c5bb1db8922751f35da62ea66f5c4",
+  "coverage_selections": {
+    "vidstg": {
+      "status": "complete_fixed128_only",
+      "parameters": {
+        "policy": "expanded",
+        "contrast": 0.0,
+        "cycle_floor": 0.4,
+        "unary_cycle_weight": true,
+        "guard": 2.0
+      },
+      "profile_id": "f0147194414bf7d2",
+      "metrics": {
+        "status": "complete",
+        "dataset": "vidstg",
+        "queries": 128,
+        "parameters": {
+          "policy": "expanded",
+          "contrast": 0.0,
+          "cycle_floor": 0.4,
+          "unary_cycle_weight": true,
+          "guard": 2.0
+        },
+        "means": {
+          "Source": {
+            "v": 16.10080537596486,
+            "s": 48.61641898239857,
+            "t": 28.517573180966455
+          },
+          "Spatial": {
+            "v": 16.378580264580194,
+            "s": 49.060089652534735,
+            "t": 28.517573180966455
+          },
+          "Temporal": {
+            "v": 19.673753778451914,
+            "s": 48.61641898239857,
+            "t": 35.1476375483856
+          },
+          "Full": {
+            "v": 19.744895173657483,
+            "s": 48.69845445971458,
+            "t": 35.1476375483856
+          }
+        },
+        "unobserved_sIoU": {
+          "Source": 48.59164469006397,
+          "Spatial": 49.04742873179227,
+          "Temporal": 48.59164469006397,
+          "Full": 48.674861831279294
+        },
+        "observed_sIoU": {
+          "Source": 51.02536444566057,
+          "Spatial": 51.02536444566057,
+          "Temporal": 51.02536444566057,
+          "Full": 51.02536444566057
+        },
+        "Full_minus_Temporal_pp": 0.0711413952055702,
+        "loss_over5pp_queries": 0,
+        "prediction_seal_sha256": "277f7b67e1bbbeea77aaeabf76bff6e9c6968c27f39c094adc82d83ff7f3c9d9",
+        "all_predictions_sealed_before_labels": true,
+        "mean_admitted_frames": 12.8515625,
+        "mean_changed_from_ERef_frames": 5.5703125,
+        "not_independent_confirmation": true
+      },
+      "profiles": 16,
+      "previous": {
+        "status": "complete",
+        "dataset": "vidstg",
+        "queries": 128,
+        "parameters": {
+          "policy": "previous",
+          "selection": {
+            "selection_mode": "cross_agreement",
+            "margin": 0.0,
+            "cycle_floor": 0.1,
+            "agreement_floor": 0.8,
+            "guard": 2.0
+          }
+        },
+        "means": {
+          "Source": {
+            "v": 16.10080537596486,
+            "s": 48.61641898239857,
+            "t": 28.517573180966455
+          },
+          "Spatial": {
+            "v": 16.372468855315034,
+            "s": 49.05434684332497,
+            "t": 28.517573180966455
+          },
+          "Temporal": {
+            "v": 19.673753778451914,
+            "s": 48.61641898239857,
+            "t": 35.1476375483856
+          },
+          "Full": {
+            "v": 19.743062551344394,
+            "s": 48.69697146202634,
+            "t": 35.1476375483856
+          }
+        },
+        "unobserved_sIoU": {
+          "Source": 48.59164469006397,
+          "Spatial": 49.04139052767486,
+          "Temporal": 48.59164469006397,
+          "Full": 48.673247726266425
+        },
+        "observed_sIoU": {
+          "Source": 51.02536444566057,
+          "Spatial": 51.02536444566057,
+          "Temporal": 51.02536444566057,
+          "Full": 51.02536444566057
+        },
+        "Full_minus_Temporal_pp": 0.06930877289248237,
+        "loss_over5pp_queries": 0,
+        "prediction_seal_sha256": "4ada8ff2707c8e60a68adef0cb8304dbd0fbc4963cc82d35c602eac9e14629a6",
+        "all_predictions_sealed_before_labels": true,
+        "mean_admitted_frames": null,
+        "mean_changed_from_ERef_frames": 5.828125,
+        "not_independent_confirmation": true
+      },
+      "point_guardrails_pass": true,
+      "spatial_0_25pp_target": false,
+      "plan_sha256": "3cd002222308444c1d814baef9f9209da525d600e4a2f47ff556976851910d48",
+      "prediction_seal_sha256": "277f7b67e1bbbeea77aaeabf76bff6e9c6968c27f39c094adc82d83ff7f3c9d9",
+      "new_full_predictions": 0,
+      "independent_confirmation": false
+    },
+    "hc2": {
+      "status": "complete_fixed128_only",
+      "parameters": {
+        "policy": "previous",
+        "selection": {
+          "selection_mode": "observe_protection",
+          "margin": 0.0,
+          "cycle_floor": 0.1,
+          "agreement_floor": 0.0,
+          "guard": 0.4
+        }
+      },
+      "profile_id": "65861a0c904b2f66",
+      "metrics": {
+        "status": "complete",
+        "dataset": "hc2",
+        "queries": 128,
+        "parameters": {
+          "policy": "previous",
+          "selection": {
+            "selection_mode": "observe_protection",
+            "margin": 0.0,
+            "cycle_floor": 0.1,
+            "agreement_floor": 0.0,
+            "guard": 0.4
+          }
+        },
+        "means": {
+          "Source": {
+            "v": 14.28857846273586,
+            "s": 57.59668707703081,
+            "t": 23.193250853116336
+          },
+          "Spatial": {
+            "v": 14.28643425801422,
+            "s": 57.613347964349416,
+            "t": 23.193250853116336
+          },
+          "Temporal": {
+            "v": 27.649544778378964,
+            "s": 57.59668707703081,
+            "t": 48.1901288427885
+          },
+          "Full": {
+            "v": 27.731566178793464,
+            "s": 57.72721287549668,
+            "t": 48.1901288427885
+          }
+        },
+        "unobserved_sIoU": {
+          "Source": 57.562702404437886,
+          "Spatial": 57.58020892039792,
+          "Temporal": 57.562702404437886,
+          "Full": 57.69626615440764
+        },
+        "observed_sIoU": {
+          "Source": 59.96104124582759,
+          "Spatial": 59.92691914836371,
+          "Temporal": 59.96104124582759,
+          "Full": 59.92691914836371
+        },
+        "Full_minus_Temporal_pp": 0.08202140041450047,
+        "loss_over5pp_queries": 0,
+        "prediction_seal_sha256": "8a92e4556f092e31533869705945c56441439dc59176e09762c8f010dfcad584",
+        "all_predictions_sealed_before_labels": true,
+        "mean_admitted_frames": null,
+        "mean_changed_from_ERef_frames": 0.296875,
+        "not_independent_confirmation": true
+      },
+      "profiles": 13,
+      "previous": {
+        "status": "complete",
+        "dataset": "hc2",
+        "queries": 128,
+        "parameters": {
+          "policy": "previous",
+          "selection": {
+            "selection_mode": "observe_protection",
+            "margin": 0.0,
+            "cycle_floor": 0.1,
+            "agreement_floor": 0.0,
+            "guard": 0.4
+          }
+        },
+        "means": {
+          "Source": {
+            "v": 14.28857846273586,
+            "s": 57.59668707703081,
+            "t": 23.193250853116336
+          },
+          "Spatial": {
+            "v": 14.28643425801422,
+            "s": 57.613347964349416,
+            "t": 23.193250853116336
+          },
+          "Temporal": {
+            "v": 27.649544778378964,
+            "s": 57.59668707703081,
+            "t": 48.1901288427885
+          },
+          "Full": {
+            "v": 27.731566178793464,
+            "s": 57.72721287549668,
+            "t": 48.1901288427885
+          }
+        },
+        "unobserved_sIoU": {
+          "Source": 57.562702404437886,
+          "Spatial": 57.58020892039792,
+          "Temporal": 57.562702404437886,
+          "Full": 57.69626615440764
+        },
+        "observed_sIoU": {
+          "Source": 59.96104124582759,
+          "Spatial": 59.92691914836371,
+          "Temporal": 59.96104124582759,
+          "Full": 59.92691914836371
+        },
+        "Full_minus_Temporal_pp": 0.08202140041450047,
+        "loss_over5pp_queries": 0,
+        "prediction_seal_sha256": "8a92e4556f092e31533869705945c56441439dc59176e09762c8f010dfcad584",
+        "all_predictions_sealed_before_labels": true,
+        "mean_admitted_frames": null,
+        "mean_changed_from_ERef_frames": 0.296875,
+        "not_independent_confirmation": true
+      },
+      "point_guardrails_pass": true,
+      "spatial_0_25pp_target": false,
+      "plan_sha256": "3cd002222308444c1d814baef9f9209da525d600e4a2f47ff556976851910d48",
+      "prediction_seal_sha256": "8a92e4556f092e31533869705945c56441439dc59176e09762c8f010dfcad584",
+      "new_full_predictions": 0,
+      "independent_confirmation": false
+    }
+  },
+  "noise_margin_grid": [
+    0.0,
+    0.25,
+    0.5
+  ],
+  "link_multiplier_grid": [
+    0.0,
+    1.0
+  ],
+  "ridge": 1.0,
+  "feature_RMS_floor": 0.01,
+  "minimum_training_pairs": 8,
+  "minimum_teacher_targets": 4,
+  "admission": "Keep observed ERef; original existing side must be geometrically available with own cycle>=.1; teacher-only CV excludes held observation from both source and target training roles, beats zero; predicted IoU advantage minus noise buffer >0"
+}
