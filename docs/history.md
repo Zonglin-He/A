@@ -140,3 +140,8 @@ full resume or default/spatial change. All signed results and parent CIs preserv
 predictions remain valid saved evidence, not a basis for selection or full claims.
 [Source-primary v4 report](../results/temporal_hc_v4/REPORT.md) and
 [strict short/long v5 report](../results/temporal_hc_v5/REPORT.md).
+
+Temporal v4/v5 code, strict group criterion, pause correction and all signed outcomes
+published at f51883f8683553c47c015a4f29bf5567bad09816 on main/research; exact remote395
+files/30,698,716bytes/tree and historical archive ancestry verified. Source qualification
+remains failed and full remains paused. This receipt introduces no experiment or selection.
