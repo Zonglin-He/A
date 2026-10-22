@@ -455,3 +455,51 @@ published atdd5d4780ca0c912a379bd0fd926e5cde12db7906 on main/research.592files/
 Neither primary passes predeclared qualification; no method promotion. Next scoped
 mechanism card keeps original full-grid temporal positions in real context replay.
 Original paperHC1902/Vid1373 remains paused until07:00 authorized decision.
+
+Overnight branch5 global-grid position preservation completed,
+fpf405056accc58b028610910f24a353be56ab1876677734346a289b6ff48e643c.
+Scoped frozen time_embed hook supplies original temporal slots during prefix/suffix
+replay;64Full hidden/posterior and64Prefix posterior restore bitwise,6CPU checks.
+Primaryv+.1781pp/t−.4506pp vsG6,22timewins22harms20ties,10losses>5pp;
+shortt−.7680,long−.3696pp. Versus rebased innovationt−.2909ppCIcross0.
+Matched candidate accuracy49.09%CIcross.5. Position-rebasing hypothesis not supported
+as the main cause or a useful correction; stop, no offset/weight sweep.1024official/
+dense checks max8.88e-16,384fusion offsets/192replays45.29s,0RGB/encoder/expert calls.
+[All signed outputs](../results/native_event_position_hc64_v1/ANALYSIS.md).
+Failure-caption audit finds compound action descriptions (approach+sit;raise+pour+look),
+so next separate test asks whether actual native predictions of original positive
+subevent clauses can jointly recover full-event boundaries. No claim yet of cause.
+
+Overnight branch6 positive native subevent composition completed,
+fp664ad2efebb61a9478b921322de333752df476ec1e82020413e6bba330a0de98.
+Existing query-only Source Stanza selects52/64 same-subject main-AND descriptions,
+reads first/last actual clauses with same frozen native model, combines interval
+envelope then fixed half Full fusion. No LLM/VLM/expert added;12unsupported exactNative.
+All64 reencoded Full text/hidden/posterior/Source boxes bitwise. Primaryv+1.6502pp
+CI[.1936,3.1828],t+2.4693ppCI[−.1304,4.9675] vsG6,30timewins21harms13ties,11losses>5pp.
+VersusSourcev+4.4516/t+3.6077pp. Self-hull alreadyt+1.5166pp; clause-minus-self+.9527pp
+CIcross0. Shortt−5.7702pp,long+4.5696pp, so not adopted. Matched score accuracy57.64%,
+supported59.40%; all signed controls retained.1152official/dense checks max6.66e-16.
+Actual168text/native queries336fusion offsets49.03s,0RGB/visual/expert/optimizer calls.
+[Evidence](../results/native_event_composition_hc64_v1/ANALYSIS.md).
+Offline failure auditRC014/054/026 shows final-action query can select an EARLIER
+occurrence, so unordered hull spans incompatible phases. Next fixed cache-only test
+jointly enforces nondecreasing first/last starts AND ends (overlap allowed), keeping
+identical evidence/half fusion and role-only/swapped/self-order controls. No guarantee
+that AND implies chronology; no GT/order-probability acceptance gate or weight scan.
+
+Overnight branch7 cached joint semantic order completed,
+fp2c053719d4877aa6bd59ae4f0f4098516f258a8bb19db16b98f154c7a9a673b7.
+Primaryv+1.3136/t+1.9392pp vsG6,28timewins23harms13ties;shortt−6.4844,long+4.0863.
+Swapping first/last order is nearly identical(57.8953 vs57.9005tIoU), while same-info
+self-order reaches57.5333. New chronological relation does not explain stable gains
+or repair short harms. Keep positive means but no method qualification/promotion;
+no order/weight scan.1280official/dense checks max6.66e-16,3.81sCPU,0model/expert calls.
+[All signed arms](../results/native_event_order_hc64_v1/ANALYSIS.md).
+Positive clause source-box proxy drifts from Full:mean firstIoU.8038,last.7479,
+with8last clauses below.5 (proxy only, not identity truth). RC014 lastIoU.287 and
+25.21pp time harm;RC056 lastIoU.066 but time improves, so drift is not a correctness
+veto. Next test full-caption query reuse in actual clause decoder, not rejection:
+keep original subject/whole-frame context in native time query while clause memory
+changes. Existing old full-caption object-query/attention negatives remain controls
+and preconditions; do not call the interface itself new.

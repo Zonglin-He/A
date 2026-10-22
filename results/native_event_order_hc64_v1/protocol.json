@@ -1,0 +1,57 @@
+{
+  "schema": "native_event_order_hc64_v1",
+  "primary": "OrderedClauseFusion",
+  "arms": [
+    "NativeG6",
+    "OrderedClauseFusion",
+    "DirectOrdered",
+    "RoleOnlyFusion",
+    "SwappedOrderFusion",
+    "SelfOrderFusion",
+    "ClauseFusion",
+    "SelfHullFusion",
+    "NoComposition"
+  ],
+  "count": 64,
+  "code": {
+    "research/native_event_order_v1/score.py": "9d4a4c2f80d685096269176e57f1bd399fafe88b273bf7b6d075c30e3dcca22b",
+    "research/native_event_order_v1/controller.py": "1f60bff37a83ffa41739828d3be47b94a2236671d67b4d26b34b3dced0d711ea",
+    "research/native_event_order_v1/test_core.py": "2c715cb48c249422a8c89d266d00a2d29f407e9c04fa4acab8b5af361e7a6d61",
+    "research/native_event_order_v1/core.py": "930dedaeb57d3c73c32bef8031f120a64842234ed270affc5be9b8b59fa5845c",
+    "research/native_event_order_v1/run.py": "e1fae8cca2f24f13ae2352117ca8e0796bab566b540a93c5b52568ec779c9db7",
+    "research/native_event_order_v1/export_summary.py": "daec38dc0354a6a85ab3753620d16ed6f4064bff9021feed215d894f800e6a61",
+    "research/native_event_order_v1/analyze.py": "4bc63d0f3f3848c2f336bac429f4827745228bebbf7ff9a84395b4861e128c86",
+    "research/joint_event_v1/run.py": "1c096fb629d80f21f72def635cf81b91667ed432f9497ac9b667ad152dc2a0d5",
+    "research/boundary_feedback_v1/score.py": "75f4323799b3b45881aac37dd67acfb566f748516f5f5f34b75803bfd51c7ae0"
+  },
+  "parent_seal_sha256": "4a48935134d49154fe445e30ff64e0ec51374f73d8e2a21c9c3ada46c99c06aa",
+  "labels_sha256": "f6ccc8581199c803040fbf0e5d39fbc659f7f0a7d041ccbf9b022e6b736317f2",
+  "supported": 52,
+  "authorization": "Same overnight user research loop; unchanged positive clause evidence, no expert, no model or spatial changes",
+  "rationale": "Unordered clause hull gains2.4693pp time but short events lose5.7702pp. CasesRC014/RC054/RC026 show the final-action standalone posterior selecting an earlier occurrence; unordered hull mixes incompatible phases. Test fixed textual first/last narrative order to disambiguate occurrences jointly, not another fusion weight. Offline boundary audit does NOT show first-start intrinsically better; success must come from joint order constraints, not an assumed marginal advantage.",
+  "fixed": {
+    "primary": "Using exact same first/last positive native posteriors, condition pairs on startFirst<=startLast AND endFirst<=endLast (overlap permitted), then output[startFirst,endLast]. Mix half with originalq0. Original MBR and complete-box DP; no thresholds/weight scan.",
+    "controls": "DirectOrdered same information; RoleOnlyFusion first-start/last-end without inner order; SwappedOrderFusion exchanges semantic first/last roles; SelfOrderFusion uses two copies of unchanged original posterior; retain parent unordered ClauseFusion/SelfHullFusion; no-composition exact",
+    "scope": "Same52/64 query-only inherited-subject main AND cases; all unsupported unchanged. Narrative AND need not always be chronological, a stated limitation; do not claim a guaranteed temporal relation. Valid-order probability logged for all, never an acceptance gate.",
+    "GT": "All new predictions sealed before independent new scoring; old cases used only offline hypothesis development, not query-level online choice",
+    "space": "Original complete-box geometry/expert8/physicalgrid and all preserved Source/Native outputs"
+  },
+  "new_RGB": 0,
+  "new_visual_encoder": 0,
+  "new_text_encoder": 0,
+  "new_decoder": 0,
+  "new_expert": 0,
+  "new_optimizer": 0,
+  "GT_in_inference": false,
+  "all64_seal_before_new_GT": true,
+  "maximum_CPU_seconds": 600,
+  "stop_epoch": 1792708800,
+  "exposure": "Repeatedly exposed HC64 development; not independent confirmation",
+  "qualification": "Positive actual temporal and complete-v increments over Source and Global6, more improvements than harms, severe/short-long audit, beat same-information expansion controls, frozen HC/Vid recheck before adoption",
+  "references": [
+    "https://github.com/minghangz/TFVTG",
+    "https://www.ecva.net/papers/eccv_2024/papers_ECCV/papers/10687.pdf",
+    "https://openaccess.thecvf.com/content/CVPR2023/html/Yang_DeCo_Decomposition_and_Reconstruction_for_Compositional_Temporal_Grounding_via_Coarse-To-Fine_CVPR_2023_paper.html"
+  ],
+  "fingerprint": "2c053719d4877aa6bd59ae4f0f4098516f258a8bb19db16b98f154c7a9a673b7"
+}

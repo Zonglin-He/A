@@ -90,3 +90,15 @@ The [context-innovation follow-up](../results/native_event_innovation_hc64_v1/AN
 retains same-information cropped-logit controls and all signed outcomes. It nearly
 restores NativeG6 but does not pass the declared development screen; no promotion
 or claim of independent validation. All48+434 frozen sources remain unchanged.
+
+Original-position [context replay](../results/native_event_position_hc64_v1/ANALYSIS.md)
+fails to improve time; stop position offsets. Positive [native clause composition](../results/native_event_composition_hc64_v1/ANALYSIS.md)
+has average gains but fails short-event qualification; its complete controls and
+severe harms are retained. A separate cache-only joint-order test isolates whether
+first/last action occurrences can select coherent event endpoints; no main promotion.
+
+The [joint-order follow-up](../results/native_event_order_hc64_v1/ANALYSIS.md)
+preserves positive averages and failed short-event qualification. Swapped-order and
+self-order controls prevent claiming validated chronological event reasoning. No
+full/default change; next test preserves the full-caption native query while reading
+positive subevents, with exact no-op and matched native clause controls.

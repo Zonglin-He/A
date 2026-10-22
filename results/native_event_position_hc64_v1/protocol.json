@@ -1,0 +1,73 @@
+{
+  "schema": "native_event_position_hc64_v1",
+  "primary": "GlobalPositionInnovation",
+  "arms": [
+    "NativeG6",
+    "GlobalPositionInnovation",
+    "ContextInnovation",
+    "CensoredContext",
+    "Sharpen",
+    "ReverseGlobalPosition",
+    "NoInnovation"
+  ],
+  "count": 64,
+  "code": {
+    "research/native_event_position_v1/score.py": "2fb2103f8fc018721ce060d8fcf7c549e165b05c846c81f9e23f6d609599a013",
+    "research/native_event_position_v1/controller.py": "6c984765519beb6169fbe1062803249f40edb1ebf20c2c0df4b8be42870bee36",
+    "research/native_event_position_v1/test_core.py": "64cddeb4c1cf7c16676d5a22bf7105fa717b7857626a9829daff1db0cdbf8029",
+    "research/native_event_position_v1/core.py": "f63ef593dffbbe2aa9bd0ac85f1564cd01d2f09dd121982995fb903cfdb06f41",
+    "research/native_event_position_v1/run.py": "f322f1c5a0ad38e8c86f2b78f34701dbbc7f3c1a9d46c608d8d354d5411f9233",
+    "research/native_event_position_v1/export_summary.py": "251fdd64c29e1dc3e8dcce6cf9f8504f5c8bfc1f461d8fd6078e3138d106b557",
+    "research/native_event_position_v1/analyze.py": "dd936c01d51d45b44ac5f25c75300872cefadbb986b0089ecffd1fcd7e8b6f9e",
+    "research/joint_event_v1/run.py": "1c096fb629d80f21f72def635cf81b91667ed432f9497ac9b667ad152dc2a0d5",
+    "research/boundary_feedback_v1/score.py": "75f4323799b3b45881aac37dd67acfb566f748516f5f5f34b75803bfd51c7ae0",
+    "research/native_event_text_v1/core.py": "8ec1c658c13159bd9836c63405eda0e1f0b74be05e5ea38e46651209ea85da2f",
+    "research/native_event_context_v1/core.py": "ce7c34d6c20d7491d6b1fb51e7eac2c37920c24a53995c782b6dc22a57d1e399"
+  },
+  "text_seal_sha256": "8df7a32aaa185477c775db495e1ae06e1649e8e474f2057118c5a93c39c1efa3",
+  "context_seal_sha256": "301c384d4acd1c0d72981f6010b33e1c19db2d85ac2e4fc82ca533b660be9ef0",
+  "prior_seal_sha256": "c04abe9e8e5a62e33ea178b4db42a5a5d982ac47e8a42379f37290bd8ba878cf",
+  "labels_sha256": "f6ccc8581199c803040fbf0e5d39fbc659f7f0a7d041ccbf9b022e6b736317f2",
+  "authorization": "User authorized overnight event-information research, same frozen backbone/evidence and space; no additional expert",
+  "rationale": "Real contexts change both content and temporal position numbering. Suffix native slots8..32/31 become0..24/23; preserve original full-grid embeddings to isolate content effect. ContextInnovation t\u2212.1596pp with short-event harm is not adopted.",
+  "fixed": {
+    "windows": {
+      "Full": [
+        0,
+        64
+      ],
+      "Prefix": [
+        0,
+        48
+      ],
+      "Suffix": [
+        16,
+        64
+      ]
+    },
+    "position": "scoped hook on ground_decoder.time_embed, original full_offset_length output sliced at actual original offset indices; shared by original spatial/time branches in both native passes. No weight/state_dict edit.",
+    "no_op": "Full hidden/posterior bitwise64 and Prefix posterior bitwise64 against previous context. Full/Prefix positional values equal native. All four hook calls per replay validated; hook always removed.",
+    "primary": "same censored joint/one-boundary evidence log(qGlobalPositionWindow/bSameFullLogitsWindow), averaged two contexts, q0*exp(effect), original physical MBR and complete-box DP",
+    "controls": "previous rebased ContextInnovation, CensoredContext, Sharpen, reversed global-position evidence, exact no-innovation",
+    "space": "same original expert8/geometry/DP; Source/NativeG6 outputs exact aliases"
+  },
+  "new_RGB": 0,
+  "new_visual_encoder": 0,
+  "new_text_encoder": 0,
+  "new_expert": 0,
+  "new_observations": 0,
+  "new_optimizer": 0,
+  "weights_frozen": true,
+  "GT_in_inference": false,
+  "all64_seal_before_new_GT": true,
+  "maximum_GPU_seconds": 1200,
+  "stop_epoch": 1792708800,
+  "exposure": "Repeatedly exposed HC64 development, not independent",
+  "qualification": "Positive temporal and complete-v increments over Source and NativeG6, more improvements than harms, inspect severe and short/long tails and same-information controls; frozen cross-domain recheck before main adoption",
+  "references": [
+    "https://arxiv.org/abs/2111.04321",
+    "https://aclanthology.org/2022.findings-emnlp.326/"
+  ],
+  "scope": "Frozen positional-context feasibility test, not a trained temporal debiasing reproduction; projected3D features remain from original clips, no raw-video temporal recrop.",
+  "fingerprint": "f405056accc58b028610910f24a353be56ab1876677734346a289b6ff48e643c"
+}

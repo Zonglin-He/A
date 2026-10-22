@@ -1,0 +1,57 @@
+{
+  "schema": "native_event_composition_hc64_v1",
+  "primary": "ClauseFusion",
+  "arms": [
+    "NativeG6",
+    "ClauseFusion",
+    "DirectClauses",
+    "SelfHullFusion",
+    "IdentityHullFusion",
+    "MaskedEventFusion",
+    "ReverseClauseFusion",
+    "NoComposition"
+  ],
+  "count": 64,
+  "code": {
+    "research/native_event_composition_v1/score.py": "745fc39215fa80734ac1e3e7a19b00f90628b9693b59c7b7de8dcf7de899e511",
+    "research/native_event_composition_v1/controller.py": "3807fa4e18300051f9a1fd55b25a5c891c3f375791b2c8858ae57f473959115b",
+    "research/native_event_composition_v1/test_core.py": "6484155f2bd28134760de3e8498adf179e7f4b83cc24c0eba1d63cc1d3874cbe",
+    "research/native_event_composition_v1/core.py": "9e39e87e97773673986f50d078219bfd13a5599e801f0622f24a8e7d55b6a961",
+    "research/native_event_composition_v1/run.py": "8e67da321026c2ce5865804c01a6d10e7dc8ee165a21566c309355c48f25e4ff",
+    "research/native_event_composition_v1/export_summary.py": "145e666f8212df622a502d67176cce22ff1251ebfcce12f98f08bb04c83f2c16",
+    "research/native_event_composition_v1/analyze.py": "39a1a70a58d38d39fb5b413d3f324555f4cc332928925061a9732c016bcf3d35",
+    "research/joint_event_v1/run.py": "1c096fb629d80f21f72def635cf81b91667ed432f9497ac9b667ad152dc2a0d5",
+    "research/boundary_feedback_v1/score.py": "75f4323799b3b45881aac37dd67acfb566f748516f5f5f34b75803bfd51c7ae0"
+  },
+  "text_seal_sha256": "8df7a32aaa185477c775db495e1ae06e1649e8e474f2057118c5a93c39c1efa3",
+  "decompositions_sha256": "fe8bc21e4ebb5cd9aaa8317b5afaf7ebdffcbf7d805c0fc2647a5cd915abbcf4",
+  "supported": 52,
+  "labels_sha256": "f6ccc8581199c803040fbf0e5d39fbc659f7f0a7d041ccbf9b022e6b736317f2",
+  "authorization": "Same user overnight loop; no added expert model/observations, existing source query parser and frozen original temporal model only",
+  "rationale": "Concrete remaining failures describe multiple same-person actions:approach+sit,raise+pour+turn. Full-caption endpoints may select one primitive rather than span the described compound event. Test genuine positive subevent reads, not masked/static absence likelihood ratios or mere position perturbation.",
+  "fixed": {
+    "decomposition": "Existing Source Stanza parser only. Single main VERB plus main-chain VERB conjs, one inherited subject, no explicit new subject or before/after/while/until/when/unless/or/but relation. Retain original nominal identity subtree and actual predicate/arguments. Read first and last conjunct only, max2 texts; all unsupported captions keep full posterior exactly. No GT/quality selection or learned grammar.",
+    "readout": "Native original two-offset sixlayer posterior for each positive clause. Exact distribution of minimal envelope of first+last independent intervals, not averaging boxes or choosing GT-best subevent. Primary0.5qFull+0.5qClauseEnvelope, original physical MBR and spatial DP; no ratio/parameter updates or weight sweep.",
+    "controls": "DirectClauses same information; SelfHullFusion uses repeated original qFull to isolate mere interval expansion; IdentityHullFusion uses prior same-target nominal query; MaskedEventFusion uses existing predicate-masked posterior; ReverseClauseFusion reverses both clause posterior placements; NoComposition exact no-op. Same supported set for all intervention arms.",
+    "replay": "Reuse cached full visual projected features, no RGB/vision/model expansion. Actual native RoBERTa+resizer, FP16 fusion and original FP32 two-pass decoder. Full reencoded text tuple and hidden/posterior must restore bitwise64; Original subject prefix fixed for all clauses.",
+    "space": "Same complete-box geometry, same expert8 and DP; both actual per-interval output and fixed NativeG6 spatial path evaluated"
+  },
+  "GT_in_inference": false,
+  "all64_seal_before_new_GT": true,
+  "new_expert": 0,
+  "new_observations": 0,
+  "new_RGB": 0,
+  "new_visual_encoder": 0,
+  "new_optimizer": 0,
+  "maximum_GPU_seconds": 1200,
+  "stop_epoch": 1792708800,
+  "exposure": "Repeatedly exposed HC64 development; not independent confirmation",
+  "qualification": "Positive actual temporal and complete-v increments over Source and Global6, more improvements than harms, severe/short-long audit, beat same-information expansion controls, frozen HC/Vid recheck before adoption",
+  "references": [
+    "https://github.com/minghangz/TFVTG",
+    "https://www.ecva.net/papers/eccv_2024/papers_ECCV/papers/10687.pdf",
+    "https://openaccess.thecvf.com/content/CVPR2023/html/Yang_DeCo_Decomposition_and_Reconstruction_for_Compositional_Temporal_Grounding_via_Coarse-To-Fine_CVPR_2023_paper.html"
+  ],
+  "scope": "TFVTG uses extra LLM/VLM and DeCo trains representations; neither reproduced. This is weaker deterministic main-AND composition through the existing trained native temporal model only.",
+  "fingerprint": "664ad2efebb61a9478b921322de333752df476ec1e82020413e6bba330a0de98"
+}
