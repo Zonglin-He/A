@@ -140,3 +140,42 @@ Hard与OPD在全部256含clean记录中各自loss均下降（本轮重算256/256
 一项最小后续验证的设计（**本轮未运行，也不自动排队**）：在现有HC64完整hidden缓存上，先做固定原生头的全六层零态恢复与候选反馈审计；反馈必须来自同一允许证据、在接入前证明有别于原预测复制，且不能用GT选择。若没有这种反馈，停止在接口层，不继续调学习率；若存在，再单独锁定直接使用同反馈/同预算66k头/原生不更新三臂，并固定空间支持。不要同时更换解码器、反馈和更新位置。原样本已曝光，结果只能称开发。
 
 在当前约束下，**已经有可以复用的工程接口与反例，但还没有被现有缓存证明可靠的新通用时间教师**。不能承诺接上旧适应就能弥补HC时间缺口。本轮只完成审计，主全量继续原指纹、原代码、原参数；不改变论文主线或生产注册。
+
+
+## 9. 补充纠正：事件token与时间query并非尚未尝试
+
+2026-10-22，用户提醒后按实际机制检索Git，补读11个旧代码/报告对象。
+前一版审计覆盖不全；随后提出“ReferDINO事件token＋真实时间query”时，
+遗漏了已完成的相近实验。这不是新发现的研究方向，不能改名后重复提出。
+以下数值本轮仅回读旧公开报告，没有重新评分、拟合或重算置信区间。
+
+| 已完成实验 | 与新建议的重叠 | 旧结果与边界 |
+|---|---|---|
+| 2026-10-19 ReferDINO事件token，HC128 | 同八帧，同ReferDINO；实际hook时间融合后的pre-max对象×文本token logits，VERB/关系/非主语参数按原字符到subword映射；固定整条track | E事件读出完整v21.0454/t39.0239%，原E+MBR27.2103/51.4395%，差−6.1649/−12.4156pp；事件内外AUC70.306%、候选排序61.550%，不能把有排序信息等同最终读出有效 |
+| 2026-10-18共享文本偏移，HC16/Vid16 | 真正256维临时offset、两步Adam、冻结模型、固定DINO空间监督；修改第二pass主体token memory | 26支持查询均降低空间目标，52实际非零更新；时间logits变，但32/32 MBR均不变。没有直接事件监督，也没有优化时间query_tgt |
+| 2026-10-18对象条件query，HC16/Vid16 | 原生已训练motion聚合，真实重建第二pass itq；经过原时间decoder | 时间独立完整v−.345158/+.030346pp，t−.250114/+.356880pp，各CI跨0；无optimizer/新时间伪标签，不是学习query偏移 |
+| 2026-10-20目标×事件query，HC128 | 同Refer八框插值、已有Source motion/text、事件occupancy；真实写入query_tgt，原decoder/head重执行 | ROcc0Mix完整v+.027266pp，CI[−.349571,+.293016]；t+.053356pp。没有时间query反传，旧真实OPD状态仅用于条件输入，不是本轮新OPD |
+| 旧query-only OPD64 | 256维残差、真实decoder、Adam | 代码明确QUERY=spatial.query_residual，hook PosDecoder；不能算已做时间query适应 |
+
+第一项源码已经保留token词组，而非最终max-confidence；上一条建议将“保留token信息”
+当作下一步，是重复了旧工作。旧语义缓存是否仍在当前磁盘可用，本轮未建立；Git中公开
+代码/结果可核。不能据缺少当前compact字段就断言全历史未采过这些字段。
+
+其中事件token将分数按词组均值形成八点曲线，采用物理Voronoi单元的区间内外均值差
+直接选择区间。原报告显示平均预测长度由视频42.08%变58.41%，并非简单只追短峰。
+该分数未经事件概率校准；同track时E/Live共享相同语义，空间仅在切换track时改变反馈。
+这约束具体监督/读出，而不是证明所有token语义或所有时间query无效。
+
+目标×事件query试验明确`torch.no_grad()`、参数冻结，并把重建向量实际写入
+`query_tgt`后执行TimeDecoder；不是改未生效的query_content。因此“找到生效query接口”
+也不是新的贡献。尚未在本轮核到完全相同的“事件监督反传学习真实时间query偏移＋当前
+六层Global6＋完整框传播”的执行收据；这是一项有限的检索结论，不能称全项目从未做过。
+
+后续如继续，应以旧19be2f47事件反馈和fc369f37真实query为既有基线，明确改变的是
+反馈可靠性、监督到query的转化还是最终读出；不能仅把既有token监督与query接口拼接，
+便预期有新信息或称新方案已成立。本轮不启动重跑，不改当前全量或空间分支。
+
+原始证据：[事件token报告](https://github.com/Zonglin-He/A/blob/19be2f47/results/stvg_error_state/2026-10-19/where_when_event128/REPORT.md)、
+[共享文本适应解释](https://github.com/Zonglin-He/A/blob/77d139a9/results/stvg_error_state/2026-10-18/shared_text_query32/MEASURED_INTERPRETATION.md)、
+[对象query报告](https://github.com/Zonglin-He/A/blob/d0bc2395/results/stvg_error_state/2026-10-18/object_condition32/REPORT.md)、
+[目标事件query报告](https://github.com/Zonglin-He/A/blob/fc369f37/results/stvg_error_state/2026-10-20/temporal_event_query128/REPORT.md)。

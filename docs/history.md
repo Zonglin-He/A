@@ -237,3 +237,14 @@ Historical temporal audit plus completed HC-stage signed results published at
 36,826,854 bytes and complete remote tree verified with archive ancestry retained.
 Audit performed0 new model/head forwards, fits, expert calls or GT scoring;
 active48+434 runtime files unchanged. Dual-domain paper package remains in progress.
+
+2026-10-22 — User prompted recheck corrects incomplete historical audit: ReferDINO
+pre-max event-token feedback(HC128), shared text256 adaptation(HC16/Vid16), actual
+second-pass object itq reconstruction and target×event query(HC128) were already
+implemented and measured.11 source/report blobs inspected; no new inference/GT/fit.
+EventE−MBR completev−6.1649pp; shared-text32 intervals all unchanged; object-query
+HC−.3452/Vid+.0303pp; event-query ROcc0Mix+.0273pp CI crosses0. Query-onlyOPD64
+was spatial, not temporal. Withdraw token extraction/real query connection as new
+recommendations; exact event-supervised optimized temporal delta remains unverified,
+not established absent across all history. Main full/spatial/code unchanged.
+[Audit correction](temporal_adaptation_audit.md#9-补充纠正事件token与时间query并非尚未尝试).
