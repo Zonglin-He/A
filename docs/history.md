@@ -724,3 +724,5 @@ originalspatialfeatures where FULL nativecaptionattention supportscontext, withE
 same-strengthuniform/permutedrestorationcontrols toseparate semanticplacement from
 mereconservativeweakening. It is not posthoc FillOnlypromotion oralreadytestedresult.
 PaperpausedHC1902/Vid1373; original48+434 remainsunchanged.
+
+Positive supportview and separate failureaudit published at653fba8589ebfe23d439732681e0d18ea4c5513a; bothrefs complete799files/56,668,773bytes/tree/SHA/ancestorverified. Allownedstudyprocessesexited. PrimaryfailedG6/components; FillOnlyremainscontrol. Next prospectivecaption-supportedfeaturecontextrestoration has same-strengthuniform/spatialpermutation/time-rankcontrols, notposthocconservativepromotion. PaperHC1902/Vid1373pauseduntil07decision.
