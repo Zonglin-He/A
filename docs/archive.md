@@ -122,3 +122,13 @@ native event text responses. Preserve two-event31aliases and complete count/wron
 time/full-as-middle controls. [Postseal phase audit](../results/native_event_all_phase_hc64_v1/PHASE_AUDIT.md)
 separates identity/conditioning proxies from full-event overlap and order-assignment
 failure; no online GT/order-probability veto or universal negative claim.
+
+[Actual shared episode reads](../results/native_event_episode_context_hc64_v1/ANALYSIS.md)
+and separately bound [window audit](../results/native_event_episode_context_hc64_v1/WINDOW_AUDIT.md)
+retain correct/shifted contexts, short-event expansion and Source-window exclusion.
+[Marginal-preserving occurrence coupling](../results/native_event_coupling_hc64_v1/ANALYSIS.md)
+retains independent, antimonotone, reflected and self controls. Neither passes short-
+event/independent-increment qualification. No main/default/full change or context/
+coupling weight scan. All signed outcomes, mathematical checks and source snapshots
+preserved. Next signal requires actual native first-pass boundary outputs, not another
+transform of the same clause feedback; no claimed result before execution.

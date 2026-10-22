@@ -603,3 +603,43 @@ unverified. Do not turn order mass into stronger rejection. See
 Paper remains pausedHC1902/Vid1373 until07:00 authorized decision.
 
 Actual30-middle-event branch and postseal phase evidence audit published at41a0696adb9e6a879cc5889048246cb384cfd16e; main/research complete713files/51,644,446bytes/hash/tree/ancestry verified. No new method qualified. Next separate fixed branch will condition actual positive subevent reads on a shared Source-defined temporal episode, with same-size shifted/global/context-only controls, no chronology assumption or online GT gate. Paper remains paused.
+
+Overnight branch13 actual shared episode native positive event reading completed,
+fp50985c2ddad735218142a1c4bce25580a46b78d71f2e448cf4d5534041fc4327.
+Original NativeG6 endpoints define>=49node window before actual Full/First/Last
+reads; samewidth shifted First/Last, original full-offset timepositions and FP16
+visual values retained. Odd-start windows reorder local parity, no frame-value/index
+rebasing. All64 global Full text/hidden/q/Source boxes and oldclause aliases bitwise.
+Primaryt+2.1919/v+1.4140pp vsG6,31wins21harms12ties11losses>5pp; tCIcross0.
+Versus oldglobalclauses t-.2775CI[-1.4190,.8216]; Source short-4.7402/long+5.3873.
+Context alone t-.2687; matchedshift t-3.0975; selfhullt+1.2859. No qualification.
+Postseal independently bound window audit:40windows contain the full true event,
+12cut it; changes vsglobalclauses+1.1702/-5.3807t respectively. Supported short10
+ALLfullycovered yet predict9.879s vsGT4.024s (Native8.820s); exclusion alone cannot
+explain short harms. Correct/shifted meanGTcoverage.9613/.7547, so shiftedcontrol is
+not guaranteed semantically wrong or pure semantic isolation. Do notGT-selectwindows.
+3CPU math tests,1152official/densechecksmax6.66e-16,71.37sworker inclloading/research;
+168text/648fusionoffset/324native replay,0RGB/visualencoder/expert/observation/optimizer.
+Not deployment timing. [All signed controls](../results/native_event_episode_context_hc64_v1/ANALYSIS.md),
+[window/case audit](../results/native_event_episode_context_hc64_v1/WINDOW_AUDIT.md).
+
+Overnight branch14 exact occurrence-rank coupling completed,
+fp46210896e7b7c81045aff1f448bf4623588b8f2c9986e8a8ba876875e22cea88.
+Keep both genuine global clause INTERVAL marginals; sort by physical midpoint,
+exact common-quantile coupling before envelope. No new model, rare-order conditioning,
+GTgate, newweight or probability truncation. Antimonotone/reflected/direct/self and
+archived independent/selfhull controls. Primaryt+2.2841/v+1.3933pp vsG6,29wins20harms
+15ties9losses>5pp; tCIcross0. Versus independent t-.1852CI[-.8226,.4073],versusanti
++.2908CIcross0; Source short-5.4940/long+5.6952. Reflectedlastt-7.7790vsG6; selfcoupling
+exact same64decisions. Matched rank50.43%CI[48.28,52.66],no feedback ranking gain.
+3CPU mathchecks,1280official/densechecksmax6.66e-16;3.84sCPU inclresearch recording,
+0newmodel/encoder/text/fusion/decoder/expert/observation/optimizer. No qualification;
+stop occurrence-cost/bin/weight scans. [Signed outcomes](../results/native_event_coupling_hc64_v1/ANALYSIS.md).
+All48+434 frozen sources and original spatial/evidence remain unchanged; paperpaused
+HC1902/Vid1373, no earlyfullresume. Official native training/evaluation code audit
+now identifies a distinct untested next signal: training calls positive iteration/max_iter
+and supervises first temporal pass; evaluation default-1 performs extra query refinement
+and returns second pass only. This is supplied recipe evidence, not checkpoint-history
+proof or established cause. Next bounded experiment may retain trained first-pass native
+ENDPOINT distribution alongside second-pass, without using foreground scores as feedback,
+newquery/weight scans or additional visual/expert computation.
