@@ -643,3 +643,5 @@ and returns second pass only. This is supplied recipe evidence, not checkpoint-h
 proof or established cause. Next bounded experiment may retain trained first-pass native
 ENDPOINT distribution alongside second-pass, without using foreground scores as feedback,
 newquery/weight scans or additional visual/expert computation.
+
+Shared native episode and marginal-preserving coupling stages published at939b5f58d31eb6ac32fbcbebf3087d3f664fa692; main/research complete748files/53,618,772bytes/tree/hash/ancestor verified. All signed negatives, independently bound postseal audits and original frozen methods retained. No qualified new direction; next separate locked signal is actual first-pass trained-recipe boundary outputs, no foreground-score feedback. Paper remains paused.
