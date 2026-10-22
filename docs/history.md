@@ -174,3 +174,8 @@ new cached prediction records sealed/scored;0newGPU/experts;40 core and434 provi
 files unchanged. Full remains paused338, default/spatial unchanged.
 [Case-based continuation](../results/temporal_hc_v6/REPORT.md) and
 [deep-supported MBR recheck](../results/temporal_hc_v7/REPORT.md).
+
+Case-based v6/v7 implementation, full signed outcomes and all repaired/harmed cases
+published at e64803ec5dc0664dd916b1aecae8144371c0ed58 on main/research. Remote422
+files/34,658,271bytes/tree fully verified with archive ancestry preserved. Source
+long-event qualification remains failed; no full resume or default promotion.
