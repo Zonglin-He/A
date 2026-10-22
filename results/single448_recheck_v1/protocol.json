@@ -1,0 +1,29 @@
+{
+  "schema": "single448_real_end_to_end_recheck_v1",
+  "arms": [
+    "Strong",
+    "Global6",
+    "Single448_0",
+    "Single448_1"
+  ],
+  "selection_sha256": "c59a0e54b3f9a6bc9f6b7e601054aa31d6482bc9afd1b95efc0e5b39737dcb94",
+  "screen_decision_sha256": "75e2ab199c026c1fff4609fa33d37d2fddc787cbdf2a1b4363b13644cffebb86",
+  "protocol": "Existing HC32/Vid32 DEVELOPMENT RECHECK, historically exposed, no independent-generalization claim. Fixed448 offset0 primary/offset1 sensitivity, no queryGT choice. Original Strong and Global6 identical224/eight-observation/full-box workflow. Only temporal extra branch differs. All64xarms predictions seal before labels. Full/oldformal/CG stay paused.",
+  "timing_indices": [
+    0,
+    10,
+    21,
+    31
+  ],
+  "timing": "Four FIXED queries/domain, eight total. Each timed arm independently executes rawRGB decode, native224 both offsets, one ReferDINO eight-observation request without evidence cache, ERef/complete-box propagation, its actual required extra high-res views, physical posterior/MBR/BoxFixed. Resident model and teacher processes; startup/load separately. Cyclic arm order by timing-query index, no RGB/visual/evidence cache substitution in timed runs. Other precision queries reuse existing224/evidence and are NOT called end-to-end timings. Actual query wall includes actual CPU/GPU transfers, parse and final DP; artifact persistence reported separately. First query startup and all-versus-excluding-first timing both reported. No diagnostic per-module synchronization.",
+  "counts": {
+    "queries": 64,
+    "accuracy_query_arm_results": 256,
+    "complete_timing_runs": 32,
+    "teacher_forwards": 32,
+    "experts_per_run": 1,
+    "observations_per_run": 8,
+    "training": 0
+  },
+  "fingerprint": "842400b86bfb52e1e463354c979ab2a19dab63bb5b93480230620273a4ff2af0"
+}
