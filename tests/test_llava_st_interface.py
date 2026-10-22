@@ -61,3 +61,16 @@ def test_invalid_track_keeps_valid_native_time_in_offline_score(tmp_path,monkeyp
     monkeypatch.setattr(run,'sha',safe)
     import pytest
     with pytest.raises(AssertionError):run.score('hc2',request)
+
+
+def test_vision_microbatch_preserves_all_frames_and_order():
+    from types import SimpleNamespace
+    from tools.llava_st.backbone import batched_vision_forward
+    seen=[]
+    def network(images,output_hidden_states):
+        assert output_hidden_states;seen.append(len(images));f=images[:,0,0,0,None,None].expand(-1,729,3).clone();return SimpleNamespace(hidden_states=(f-1,f))
+    tower=SimpleNamespace(vision_tower=network,device='cpu',dtype=torch.float32)
+    images=torch.arange(10,dtype=torch.float32)[:,None,None,None].expand(-1,3,2,2)
+    result,unused=batched_vision_forward(tower,images)
+    assert seen==[4,4,2]and unused is None and result.shape==(10,729,3)
+    assert torch.equal(result[:,0,0],torch.arange(10,dtype=torch.float32))

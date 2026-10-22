@@ -45,11 +45,15 @@ def qualify():
     from tools.llava_st.teacher_service import Teacher
     teacher=Teacher(OUT/'teacher_cache',p['teacher_fingerprint'])
     for ds in p['dataset_order']:
-        _,rows=rows_for(ds);row=rows[0];c,frames,ids=native(model,tok,proc,row);target=OUT/'qualification'/ds;target.mkdir(parents=True,exist_ok=True);path=target/'capture.pt';torch.save(c,path)
+        _,rows=rows_for(ds);row=rows[0];
+        from stvg.tube_decode import decode
+        from tools.llava_st.backbone import vision_batch_parity
+        parity_frames,_=decode(row['metadata'],row['dataset']);parity=vision_batch_parity(model,proc,parity_frames);del parity_frames
+        c,frames,ids=native(model,tok,proc,row);target=OUT/'qualification'/ds;target.mkdir(parents=True,exist_ok=True);path=target/'capture.pt';torch.save(c,path)
         assert c['valid'],(ds,c['reason'],'see private native text in qualification capture')
         assert c['features'].shape[1:]==(81,3584)and len(set(c['positions8']))==8
         c,receipt=get_capture(model,tok,proc,teacher,row,p,cached_native=(c,frames,ids));b,actions,_=decode_spatial(c,p,ds,baseline(ds));assert np.isfinite(b).all()and b.shape==c['Source'].shape;torch.save(c,target/'complete_capture.pt')
-        checks.append(dict(dataset=ds,previously_evaluated_input=True,native_track_valid=True,frame_nodes=len(c['frame_ids']),generated_track_points=c['generated_track_points'],seconds=c['seconds'],feature_shape=list(c['evidence'].features.shape),capture_sha256=sha(path),complete_capture_sha256=sha(target/'complete_capture.pt'),teacher_queries=receipt['teacher_queries'],labels_read=False))
+        checks.append(dict(dataset=ds,vision_microbatch_parity=parity,previously_evaluated_input=True,native_track_valid=True,frame_nodes=len(c['frame_ids']),generated_track_points=c['generated_track_points'],seconds=c['seconds'],feature_shape=list(c['evidence'].features.shape),capture_sha256=sha(path),complete_capture_sha256=sha(target/'complete_capture.pt'),teacher_queries=receipt['teacher_queries'],labels_read=False))
     assert state_hash(model.state_dict())==before and all(not w.requires_grad and w.grad is None for w in model.parameters())
     write(PUBLIC/'qualification.json',dict(status='pass',checks=checks,model_load=audit,model_weights_unchanged=True,teacher_requests=2,new_teacher_calls=sum(x['teacher_queries']for x in checks),default_BoxFixed_output_finite=True,not_scientific_performance=True,plan_sha256=sha(PLAN)));teacher.close();lock.close()
 

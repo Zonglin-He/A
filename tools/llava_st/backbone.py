@@ -4,10 +4,40 @@ from contextlib import contextmanager
 from pathlib import Path
 import numpy as np
 import torch
+from types import MethodType
 ROOT=Path(__file__).resolve().parents[2]
 UPSTREAM=ROOT/'runtime/llava_st/upstream'
 CHECKPOINT=ROOT/'checkpoints/llava-st/LLaVA-ST-Qwen2-7B'
 REVISION='bacf6d61e1de27a78fc0025083aa445d3d41b0b3'
+
+
+def batched_vision_forward(tower,images):
+    """Same independent per-image SigLIP; retain only the final hidden state.
+
+    Official encode_images discards the second return value. Original tower
+    stores every hidden layer for all100 images and eagerly materializes their
+    attention matrices, which exceeds this device. No frame is dropped and
+    temporal STP still receives the complete100-image feature tensor at once.
+    """
+    assert torch.is_tensor(images) and images.ndim==4
+    features=[]
+    for chunk in images.split(4):
+        outputs=tower.vision_tower(chunk.to(device=tower.device,dtype=tower.dtype),output_hidden_states=True)
+        features.append(outputs.hidden_states[-1].to(images.dtype));del outputs
+    result=torch.cat(features,dim=0);assert result.shape[-2]==729
+    return result,None
+
+
+@torch.inference_mode()
+def vision_batch_parity(model,processor,frames):
+    """One8-image full-vs4+4 comparison on a predeclared qualification input."""
+    assert len(frames)>=8
+    tower=model.get_vision_tower();pixels=processor.preprocess(frames[:8],return_tensors='pt')['pixel_values'].to(device=tower.device,dtype=tower.dtype)
+    original=tower.vision_tower(pixels,output_hidden_states=True);reference=original.hidden_states[-1].clone();del original
+    batched,_=tower(pixels);diff=(reference.float()-batched.float()).abs()
+    result=dict(images=8,microbatch=4,max_abs_error=float(diff.max()),bitexact=bool(torch.equal(reference,batched)),allclose_atol002_rtol002=bool(torch.allclose(reference,batched,atol=.002,rtol=.002)),no_temporal_mixing_in_SigLIP=True,all100_frames_retained_for_STP=True)
+    assert result['allclose_atol002_rtol002'],result
+    del pixels,reference,batched,diff;torch.cuda.empty_cache();return result
 
 
 def native_functions():
@@ -53,6 +83,7 @@ def load():
     learned=set(dict(model.named_parameters()));assert not(set(info['missing_keys'])&learned),info
     assert not info['unexpected_keys']and not info.get('mismatched_keys'),info
     model.eval().requires_grad_(False);model.model.init_vision_config(tokenizer);model.config.max_frame=100
+    model.get_vision_tower().forward=MethodType(batched_vision_forward,model.get_vision_tower())
     return model,tokenizer,model.get_vision_tower().image_processor,dict(loading_info=info,vocab_size=vocab,coordinate_tokens=300,precision='fp16_no_quantization',attention='sdpa',upstream_revision=REVISION,vision_weights='entirely from same merged checkpoint; no auxiliary base weights',configuration_compatibility='flatten legacy text_config.vocab_size into Qwen2 config; 151660 frozen base rows+300 coordinate rows, no resize/reinitialization')
 
 

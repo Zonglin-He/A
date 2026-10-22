@@ -1,0 +1,78 @@
+{
+  "status": "pass",
+  "checks": [
+    {
+      "dataset": "vidstg",
+      "vision_microbatch_parity": {
+        "images": 8,
+        "microbatch": 4,
+        "max_abs_error": 0.0,
+        "bitexact": true,
+        "allclose_atol002_rtol002": true,
+        "no_temporal_mixing_in_SigLIP": true,
+        "all100_frames_retained_for_STP": true
+      },
+      "previously_evaluated_input": true,
+      "native_track_valid": true,
+      "frame_nodes": 100,
+      "generated_track_points": 4,
+      "seconds": 2.448667636141181,
+      "feature_shape": [
+        100,
+        81,
+        3584
+      ],
+      "capture_sha256": "6f54677426ebfd5e3f30a16091f947528bdee52f9bf666f770c7e933d1437ca3",
+      "complete_capture_sha256": "3598b3219a91e14c3918aeaa3ae032e568ab0c02209b90d39bb4279890610a2d",
+      "teacher_queries": 1,
+      "labels_read": false
+    },
+    {
+      "dataset": "hc2",
+      "vision_microbatch_parity": {
+        "images": 8,
+        "microbatch": 4,
+        "max_abs_error": 0.0,
+        "bitexact": true,
+        "allclose_atol002_rtol002": true,
+        "no_temporal_mixing_in_SigLIP": true,
+        "all100_frames_retained_for_STP": true
+      },
+      "previously_evaluated_input": true,
+      "native_track_valid": true,
+      "frame_nodes": 100,
+      "generated_track_points": 8,
+      "seconds": 2.8404328506439924,
+      "feature_shape": [
+        100,
+        81,
+        3584
+      ],
+      "capture_sha256": "c973b95c01ba679eb0b3c16980525c4b6a1e1868865c91dd019a893e766be13a",
+      "complete_capture_sha256": "e6f66121e685cf3518e2c28629e09194d33cd5b7774db9d4275fa07ef3ccd82d",
+      "teacher_queries": 1,
+      "labels_read": false
+    }
+  ],
+  "model_load": {
+    "loading_info": {
+      "missing_keys": [],
+      "unexpected_keys": [],
+      "mismatched_keys": [],
+      "error_msgs": []
+    },
+    "vocab_size": 151660,
+    "coordinate_tokens": 300,
+    "precision": "fp16_no_quantization",
+    "attention": "sdpa",
+    "upstream_revision": "bacf6d61e1de27a78fc0025083aa445d3d41b0b3",
+    "vision_weights": "entirely from same merged checkpoint; no auxiliary base weights",
+    "configuration_compatibility": "flatten legacy text_config.vocab_size into Qwen2 config; 151660 frozen base rows+300 coordinate rows, no resize/reinitialization"
+  },
+  "model_weights_unchanged": true,
+  "teacher_requests": 2,
+  "new_teacher_calls": 2,
+  "default_BoxFixed_output_finite": true,
+  "not_scientific_performance": true,
+  "plan_sha256": "f2b1316d399e70ea6c9c709425bb0d10c4f5289580f504d0035dbc334f4743c3"
+}
