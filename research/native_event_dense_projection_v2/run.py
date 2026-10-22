@@ -1,0 +1,53 @@
+"""Cached-only semantic three-state boundary test, same information and two rounds."""
+import os,sys,time,json,hashlib,traceback
+from pathlib import Path
+R=Path(__file__).resolve().parents[2];sys.path.insert(0,str(R));PROVIDER=R.parent/'stvg-opd'
+from research.joint_event_v1.run import sha,read,put,records,B
+D=R/'outputs/native_event_dense_projection_v2';P=R/'results/native_event_dense_projection_v2';L=R/'outputs/overnight_event_loop_20261023';FIRST=R/'outputs/native_event_semantic_prototype_hc64_v1';RECHECK=R/'outputs/native_event_semantic_recheck_v1'
+ARMS=['NativeG6','DenseTemporalProjectionLoop2','OneStepProjection','DirectSecondRoundFeedback','ParentDirectTarget','ReflectedProjectionLoop2','RandomProjectionLoop2','ReversedSemanticProjectionLoop2','NativePositionProjectionLoop2','ShuffledTemporalProjectionLoop2','SharpenOriginal','ConstantFeedbackNoOp']
+CONTROLS=['ReflectedProjectionLoop2','RandomProjectionLoop2','ReversedSemanticProjectionLoop2','NativePositionProjectionLoop2','ShuffledTemporalProjectionLoop2','SharpenOriginal']
+PARENT=R/'outputs/native_event_target_semantic_v1'
+def who():return dict(pid=os.getpid(),startticks=int(Path('/proc/self/stat').read_text().rsplit(')',1)[1].split()[19]))
+def verify():
+ p=read(D/'plan.json');assert sha(L/'dense_projection_grid_migration.json')==p['migration_receipt_sha256'];assert read(R/'outputs/tastvg_paper_v1/state.json')['status']=='paused_by_user';assert sha(PARENT/'sealed.json')==p['parent_seal_sha256']and sha(PARENT/'score_receipt.json')==p['parent_score_receipt_sha256']
+ for root,key in [(R,'code'),(R,'paper_code'),(PROVIDER,'provider_sources')]:
+  for f,h in p[key].items():assert sha(root/f)==h,f
+ assert time.time()<p['stop_epoch'];return p
+
+def prepare():
+ assert not(D/'plan.json').exists();parent=read(PARENT/'plan.json');code={str(f.relative_to(R)):sha(f)for f in Path(__file__).parent.glob('*.py')}
+ for f in ['research/joint_event_v1/core.py','research/native_event_semantic_prototype_v1/core.py','research/native_event_semantic_recheck_v1/score.py','research/joint_event_v1/run.py']:code[f]=sha(R/f)
+ assert set(CONTROLS)<=set(ARMS);migration=read(L/'dense_projection_grid_migration.json');assert migration['original_processes_exited']
+ p=dict(migration_receipt_sha256=sha(L/'dense_projection_grid_migration.json'),migration_partial_files=migration['partial_files'],migration_old_plan_sha256=migration['old_plan_sha256'],native_grid='Exact source/capture length,HC65;Vid16to200; no resampling or fixed65 assumption',schema='native_event_dense_projection_v2',primary='DenseTemporalProjectionLoop2',qualification_controls=CONTROLS,arms=ARMS,count=128,items=parent['items'],labels=parent['labels'],development_labels_sha256=parent['development_labels_sha256'],code=code,paper_code=parent['paper_code'],provider_sources=parent['provider_sources'],assets=parent['assets'],parent_files=read(PARENT/'sealed.json')['files'],parent_plan_sha256=sha(PARENT/'plan.json'),parent_seal_sha256=sha(PARENT/'sealed.json'),parent_score_receipt_sha256=sha(PARENT/'score_receipt.json'),seed=20260920,bootstrap_seed=20261022,maximum_CPU_seconds=1200,stop_epoch=1792708800,authorization='User accepts temporary visual-language projection/pseudolabel refinement inboundedovernightloop; source/space/evidence8 unchanged',design_sha256=sha(L/'next_dense_projection_design.md'),fixed=dict(features='Actual original six native timehidden each layer unitnorm, concat/sqrt6; no interpolation/newquery/token interface; Source already supervisedtime features, not guaranteedalignedto semanticteacher',projection='EXACT old ridge_predict, same train-only centering/std/RMSfeature scale/ridge1. Oppositeparity allnodes fit current dense learnedsemanticLLR, predicted*std+mean restores originalLLRunits. Disposable leastsquares, no network weights or SGD.',loop='Exactly2rounds originalTargetContext semantic positive/negative prototypes fromcurrentq; project heldoutLLR; inclusive SUM; q0fixed prior. No sigmoid/occupancy/extraexpert/newobservations/steps or rejection.',controls='OneStep; DirectSecondRoundFeedback EXACTsame rawsecondLLR; ParentDirectTarget exactstage25; reflected/random/reversed p; originalquery_timepositiononly; halfcycle hiddenpermutation; sharpen/constant/nativealiases.',limitations='Old8anchorReferDINOmarginridge plusoccupancycalibration isnotthisdense learnedSource-word feedback. Reuses interface, no interfaceinnovationclaim. Crossoffsets NOTindependent: q0alreadyboth and LLRprototypesdepend otherparityseed. Projection cannotinventeventlabels. Positiononlycontrol haslearnedtiming andisnotknownnull.'),qualification='EACHHC64/HC32/Vid32actualSource/G6tANDfullvpositive,Source shortANDlongpositive,win>harm,beyondpredeclaredreflected/random/reversed/position/shuffled/sharpen; sameinfoDirectSecondRoundFeedback/ParentDirectTarget/OneStep reported, no controlpromotion/ridge/layer/round/strengthscan.',new_model_calls=0,new_expert=0,new_observations=0,new_optimizer_steps=0,temporary_linear_projection=True,GT_in_inference=False,all128_seal_before_GT=True)
+ p['fingerprint']=hashlib.sha256(json.dumps(p,sort_keys=True).encode()).hexdigest();put(D/'plan.json',p);put(P/'protocol.json',{k:v for k,v in p.items()if k not in ['items','labels','code','paper_code','provider_sources','assets','parent_files']})
+ for f in code:
+  dest=D/'source_snapshot'/f;dest.parent.mkdir(parents=True,exist_ok=True);dest.write_bytes((R/f).read_bytes())
+ put(D/'state.json',dict(status='prepared',fingerprint=p['fingerprint']));print(p['fingerprint'])
+
+def predict():
+ os.environ.update(CUDA_VISIBLE_DEVICES='',OMP_NUM_THREADS='1',OPENBLAS_NUM_THREADS='1',MKL_NUM_THREADS='1')
+ import torch,numpy as np
+ sys.path.insert(0,str(R/'external/TA-STVG'));import utils.misc,utils.video_list
+ from stvg.temporal import final_mbr
+ from stvg.spatial import SpatialGeometry,evidence_dp
+ from research.native_event_dense_projection_v2.core import loop,hidden_features,position_features
+ from research.native_event_semantic_prototype_v1.core import update,inclusive_scores
+ p=verify();torch.set_num_threads(1);start=time.perf_counter();put(D/'state.json',dict(status='predicting_CPU_dense_projection',fingerprint=p['fingerprint'],**who()));files={}
+ for item in p['items']:
+  verify();assert time.perf_counter()-start<p['maximum_CPU_seconds'];k=item['alias']
+  if k in p['migration_partial_files']:
+   import shutil
+   e=p['migration_partial_files'][k];base=R/'outputs/native_event_dense_projection_v1'
+   for a,b in [('path','sha256'),('trace_path','trace_sha256')]:
+    assert sha(base/e[a])==e[b];dest=D/e[a];dest.parent.mkdir(parents=True,exist_ok=True);assert not dest.exists();shutil.copy2(base/e[a],dest);assert sha(dest)==e[b]
+   files[k]=dict(**e,migrated_exact=True,old_plan_sha256=p['migration_old_plan_sha256']);put(D/'progress.json',dict(completed=len(files),total=128,migrated_exact=len([x for x in files.values()if x.get('migrated_exact')]),seconds=time.perf_counter()-start,**who()));continue
+  e=p['parent_files'][k];assert sha(PARENT/e['path'])==e['sha256']and sha(PARENT/e['trace_path'])==e['trace_sha256'];old=torch.load(PARENT/e['trace_path'],weights_only=False,map_location='cpu');cf=PROVIDER/item['capture']['path'];assert sha(cf)==item['capture']['sha256'];cap=torch.load(cf,weights_only=False,map_location='cpu');ids=cap['frame_ids'];q0=old['q']['NativeG6'];prob=old['semantic_p']['TargetContext'];x=hidden_features(cap['temporal_cache']['offsets']);pos=position_features(cap['temporal_cache']['offsets']);assert x.shape==(len(ids),1536)and pos.shape==(len(ids),256);primary,steps=loop(prob,q0,x);reflected,rsteps=loop(old['semantic_p']['ReflectedContext'],q0,x);random,randomsteps=loop(old['random_p'],q0,x);reverse,vsteps=loop(prob[::-1],q0,x);position,psteps=loop(prob,q0,pos);shuffled,ssteps=loop(prob,q0,np.roll(x,len(x)//2,axis=0));constant,csteps=loop(np.broadcast_to(prob[0],prob.shape),q0,x);assert np.array_equal(constant,q0);qs=dict(NativeG6=q0,DenseTemporalProjectionLoop2=primary,OneStepProjection=steps[0]['q'],DirectSecondRoundFeedback=update(q0,inclusive_scores(steps[1]['raw_L'])),ParentDirectTarget=old['q']['TargetSemanticLoop2'],ReflectedProjectionLoop2=reflected,RandomProjectionLoop2=random,ReversedSemanticProjectionLoop2=reverse,NativePositionProjectionLoop2=position,ShuffledTemporalProjectionLoop2=shuffled,SharpenOriginal=old['q']['SharpenOriginal'],ConstantFeedbackNoOp=constant);assert set(qs)==set(ARMS)
+  iv={a:final_mbr(ids,q)['interval']for a,q in qs.items()};geom=SpatialGeometry.__new__(SpatialGeometry);geom.__dict__.update(cap['geometry']);arrays={a:evidence_dp(geom.for_interval(iv[a]))['final'].numpy()for a in ARMS}
+  with np.load(PARENT/e['path'],allow_pickle=False)as z:
+   for a,b in [('NativeG6','NativeG6'),('ParentDirectTarget','TargetSemanticLoop2'),('SharpenOriginal','SharpenOriginal'),('ConstantFeedbackNoOp','NativeG6')]:assert np.array_equal(arrays[a],z[b])and iv[a]==z[b+'_interval'].tolist()
+   arrays['Source']=z['Source'].copy();iv['Source']=z['Source_interval'].tolist()
+  f=D/'predictions'/f'{k}.npz';assert not f.exists();f.parent.mkdir(parents=True,exist_ok=True);np.savez_compressed(f,**arrays,**{a+'_interval':v for a,v in iv.items()},frame_ids=ids,positions8=cap['planned_positions']);tr=D/'traces'/f'{k}.pt';tr.parent.mkdir(parents=True,exist_ok=True);torch.save(dict(q=qs,steps=steps,control_steps=dict(reflected=rsteps,random=randomsteps,reversed=vsteps,position=psteps,shuffled=ssteps),GT_read=False),tr);files[k]=dict(path=str(f.relative_to(D)),sha256=sha(f),trace_path=str(tr.relative_to(D)),trace_sha256=sha(tr));put(D/'progress.json',dict(completed=len(files),total=128,seconds=time.perf_counter()-start,**who()));print(k,iv['NativeG6'],iv['DenseTemporalProjectionLoop2'],flush=True)
+ verify();assert len(files)==128 and not torch.cuda.is_initialized();put(D/'sealed.json',dict(count=128,files=files,plan_sha256=sha(D/'plan.json'),GT_read=False,counts=dict(new_model_calls=0,new_RGB=0,new_visual_encoder=0,new_text_encoder=0,new_fusion=0,new_ASA_head=0,new_expert=0,new_observations=0,new_optimizer_steps=0,ridge_fits_current_worker=32*7*2*2,ridge_fits_including_exact96=128*7*2*2,migrated_exact_predictions=96),seconds=time.perf_counter()-start));put(D/'state.json',dict(status='sealed',fingerprint=p['fingerprint']))
+if __name__=='__main__':
+ try:globals()[sys.argv[1]]()
+ except BaseException:put(D/f'failure-{time.time_ns()}.json',dict(error=traceback.format_exc(),**who(),partial_preserved=True));put(D/'state.json',dict(status='engineering_failed',partial_preserved=True));raise
