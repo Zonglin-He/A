@@ -536,3 +536,5 @@ posterior error1.97e-16;1152official/dense checks max6.66e-16.1560total optimize
 text/expert/observation.48+434 frozen files unchanged. No promotion/query-budget scan.
 [Signed results and loss audit](../results/native_event_projection_hc64_v1/ANALYSIS.md).
 Paper remains pausedHC1902/Vid1373 until authorized07:00 decision; no early resume.
+
+Shared-query and same-feedback temporal projection stages published at4733acc8da3611b9565fd41ba510494c959b06e6,664files/48,849,806bytes. Bothrefs, complete remote bytes/hashes/tree and archive ancestry verified. No qualified new method; paper remains paused.
