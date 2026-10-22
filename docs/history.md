@@ -254,3 +254,11 @@ BoxFixed独立主线与固定HC64时间验证已公开并逐文件核验：实�
 独立rank-sum重算245项与主AUC完全一致，原128input/receipt/posterior/signal hash复核、八观察和attention概率关系通过，HC父交集0。434正式源/plan/default/profile不变，Vid实际worker身份及进度4763→4846前进；旧formal/CG不恢复。新代码scripts/temporal_signal_audit、结果results/temporal_signal_audit_v1、协议docs/temporal_signal_audit.md，完整正负及次级层/起终点/事后控制公开，不含query/GT坐标/原始attention/特征/框/权重。没有新时间预测、vIoU成绩、调参或方法采用；下一方法必须证明超出现有时间后验的纠错价值。
 
 缓存时间信号审计代码、128匿名正负关联、全部次级层/起终点/事后敏感性与独立核验已公开逐文件验证：[1160b1bb](https://github.com/Zonglin-He/A/commit/1160b1bbb4ec52f40614ddda95385ad63a572c57)。main/research均freshCAS非强制快进，702文件/73,944,036字节与远端Git blob SHA256/tree一致，历史无删除。空间/时间原配置及正式434源不变，无新预测/训练/专家/GPU。当前HC full已封存但其公开文件暂留本地，Vid完整域尚在运行；本次离线审计提交明确排除独立的待统一全量报告，不宣称双域完成或新方法涨点。发布回执docs/publication.json由后续文档提交保存。
+
+2026-10-22 用户进一步明确授权用已有缓存对原时间头错误/后验含混样本验证真实边界纠正，若有效再形成轻量联合读出，不打断全量。根直接执行独立scripts/joint_boundary_readout，无新agent/模型/专家/GPU。候选固定原12个layer/offset MBR＋Global6，原期望tIoU主分数＋有界hidden边界变化×轨迹attention进入/退出证据；保留hidden-only/同面积置换/无门控/纯证据对照。全部HC64/HC32/Vid32共128条新时间区间和最终完整框DP均先seal后GT，Source总体、Global6主对照与固定同一空间轨迹的纯时间贡献分开；GT错误子集从不作为在线门控。
+
+首轮v1两档.05/.10的绝对含混门控只覆盖3/128，HC64的25个tIoU<.5原错误均未覆盖，无法充分检验纠错。保留原全部plan/预测/结果，明确另做一次有界v2修正：HC64无标签后验分歧中位数.2970975637锁定门控并固定用于HC32/Vid32，lambda仅.10/.25，不再扫；覆盖32/14/14，实际改动Joint10为5/2/1、Joint25为10/6/1。每轮全部128都先封存，v2事后修正不伪装首次事前协议；32组历史曝光，只称父隔离开发复核。
+
+v2 Joint10较当前Global6，HC64/HC32/Vid32 t增量−.1175/+.4082/+.0732pp，full v−.0263/+.2664/+.0028pp，三域均0跨tIoU.5救回/0损坏；同空间v−.0175/+.2732/+.0028pp。Joint25 HC64 t−.7302pp[−1.5899,−.0295]、v−.4525pp，增强没有修复。纯联合证据EvidenceOnly HC64 t−3.5678pp[−6.3779,−.9443]、1救回/3原正确被损坏，Vid亦负；不只先验保守，当前反馈排序不可靠。HiddenOnly在Vid点估+2.1656pp t但区间跨零、HC两组为负，不事后挑采用。真实空间在HC64未超过置换；按预锁HC64主候选判据无一通过，故不固化新联合配置、不据HC32小正向反选、不改生产或在跑全量，也不继续第三次门控/权重搜索。
+
+原候选GT oracle t+7.6795/12.2520/8.6647pp只是包含基线的构造上限；25/11/23个原错误中仅8/2/4个有候选可跨.5。两个轮次5632项官方/dense最大1.44e-15，独立2816个物理区间tIoU误差0、1920项先验utility界/门控不变/Source和候选特征跨轮逐位一致；8语义测试通过。434正式源/plan未变，原worker身份及5276→5342进度前进；旧formal/CG保持暂停。结果results/joint_boundary_readout_v1/v2、协议docs/joint_boundary_readout.md，完整signed/严重/七子集/成本和负结果保留并公开，无query/GT坐标/原始轨迹或特征/权重。无新网络调用，未把CPU缓存增量当部署速度，未登记时空联合不可能的路线级结论。
