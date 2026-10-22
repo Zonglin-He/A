@@ -37,3 +37,7 @@ Source=原生空间/Native时间；Spatial=BoxFixed/Native；Temporal=Source/Glo
 ## 工程隔离恢复v2
 
 v1计划校验在安装推理guard之前打开标签文件计算哈希，未解析坐标或使用标注，但不符合严格不访问标签文件的约束。已保存旧代码、计划、128证据及部分profile至outputs/tubedetr_boxfixed_pre_gt_hash_guard_fix，停止仅本流程的进程。新checked仅检查输入manifest和代码；GPU/profile在校验前装guard，标签hash与解析移到完整seal后的CPUscore。新增单测显式用不可访问的标签路径证明推理校验不打开它，86检查通过。v2全新预测输出重做128，不绕过指纹或续用旧预测；仅教师实现/权重/实际RGB/文本相同、context及payload哈希完全匹配的原生教师缓存复用。数值方法、网格与选择目标不变，不用v1的profile成绩选参。详细回执见engineering_recovery.json。
+
+## 双方向完整终态（2026-10-22）
+
+两域128各21配置均完成锁定，Vid10303/732、HC1902/227均已完整预测封存和独立CPU评分，运行控制器正常终态。详见[完整汇总](../results/tubedetr_boxfixed_development/terminal_report.md)、[逐项结果和父聚类区间](../results/tubedetr_boxfixed_development/terminal_summary.json)、[调用计数与成本口径](../results/tubedetr_boxfixed_development/execution_audit.json)。当前v2 plan/code与原seal保持不可变；fullmetrics覆盖/改动两项仅128复用子集，分别用metric_scope_audit澄清，定位指标不受影响。完整结果不回流调参，旧暂停队列不恢复。最终发布与远端字节核验后结束半小时监控。

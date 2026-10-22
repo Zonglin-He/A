@@ -1,0 +1,410 @@
+{
+  "status": "complete",
+  "checked_at": "2026-10-22T07:41:23.934362+00:00",
+  "plan_sha256": "a906c62b7d3a849de468c39f0e21b37fdf122a6aca8b30a3d6e3dfbfd7feb8a2",
+  "upstream_main": "5bd213f7bdb4241d4d759ab4fb8b20f8f7117b57",
+  "method": "TubeDETR BoxFixed + Global6 + original physical MBR; no OPD/448/training",
+  "datasets": {
+    "vidstg": {
+      "queries": 10303,
+      "parents": 732,
+      "parameters": {
+        "gamma": 0.0125,
+        "admission": 0.4,
+        "guard": 0.4,
+        "link": 0.5
+      },
+      "means": {
+        "Source": {
+          "v": 13.116927200869647,
+          "s": 41.43789381359137,
+          "t": 28.67402104763812
+        },
+        "Spatial": {
+          "v": 12.839582864053249,
+          "s": 40.858792497215475,
+          "t": 28.67402104763812
+        },
+        "Temporal": {
+          "v": 16.26439352769619,
+          "s": 41.43789381359137,
+          "t": 36.57563023741112
+        },
+        "Full": {
+          "v": 15.969794914375218,
+          "s": 40.742112429094945,
+          "t": 36.57563023741112
+        }
+      },
+      "observed_sIoU": {
+        "Source": 42.82628955010402,
+        "Spatial": 44.37709960273348,
+        "Temporal": 42.82628955010402,
+        "Full": 44.77309489643071
+      },
+      "unobserved_sIoU": {
+        "Source": 41.43038576319615,
+        "Spatial": 40.80553233159284,
+        "Temporal": 41.43038576319615,
+        "Full": 40.6804533467278
+      },
+      "paired_comparisons": {
+        "Full_minus_Temporal": {
+          "v": {
+            "queries": 10303,
+            "parents": 732,
+            "mean_pp": -0.2945986133209698,
+            "CI95_pp": [
+              -0.44352345797056825,
+              -0.1528471304552672
+            ],
+            "equal_parent_mean_pp": -0.4175582947324675,
+            "wins": 4670,
+            "losses": 3834,
+            "ties": 1799,
+            "below_minus5": 401
+          },
+          "s": {
+            "queries": 10303,
+            "parents": 732,
+            "mean_pp": -0.6957813844964252,
+            "CI95_pp": [
+              -0.9531004722775875,
+              -0.45379829681008377
+            ],
+            "equal_parent_mean_pp": -0.9618103306049983,
+            "wins": 5386,
+            "losses": 4301,
+            "ties": 616,
+            "below_minus5": 812
+          },
+          "t": {
+            "queries": 10303,
+            "parents": 732,
+            "mean_pp": 0.0,
+            "CI95_pp": [
+              0.0,
+              0.0
+            ],
+            "equal_parent_mean_pp": 0.0,
+            "wins": 0,
+            "losses": 0,
+            "ties": 10303,
+            "below_minus5": 0
+          },
+          "unobserved_sIoU": {
+            "queries": 10303,
+            "parents": 732,
+            "mean_pp": -0.7499324164683451,
+            "CI95_pp": [
+              -1.0017431881789323,
+              -0.5115940350722605
+            ],
+            "equal_parent_mean_pp": -0.9960311081367114,
+            "wins": 5379,
+            "losses": 4244,
+            "ties": 680,
+            "below_minus5": 741
+          }
+        },
+        "Spatial_minus_Source": {
+          "v": {
+            "queries": 10303,
+            "parents": 732,
+            "mean_pp": -0.2773443368163987,
+            "CI95_pp": [
+              -0.39527859948156985,
+              -0.16023964569815904
+            ],
+            "equal_parent_mean_pp": -0.38055653200179645,
+            "wins": 3839,
+            "losses": 3320,
+            "ties": 3144,
+            "below_minus5": 442
+          },
+          "s": {
+            "queries": 10303,
+            "parents": 732,
+            "mean_pp": -0.5791013163759086,
+            "CI95_pp": [
+              -0.7859376532770744,
+              -0.38451845869387247
+            ],
+            "equal_parent_mean_pp": -0.760654954372757,
+            "wins": 5316,
+            "losses": 4332,
+            "ties": 655,
+            "below_minus5": 721
+          },
+          "t": {
+            "queries": 10303,
+            "parents": 732,
+            "mean_pp": 0.0,
+            "CI95_pp": [
+              0.0,
+              0.0
+            ],
+            "equal_parent_mean_pp": 0.0,
+            "wins": 0,
+            "losses": 0,
+            "ties": 10303,
+            "below_minus5": 0
+          }
+        },
+        "Temporal_minus_Source": {
+          "v": {
+            "queries": 10303,
+            "parents": 732,
+            "mean_pp": 3.1474663268265437,
+            "CI95_pp": [
+              2.708413217088488,
+              3.612205139245978
+            ],
+            "equal_parent_mean_pp": 3.8457958093981186,
+            "wins": 5244,
+            "losses": 3055,
+            "ties": 2004,
+            "below_minus5": 1224
+          },
+          "s": {
+            "queries": 10303,
+            "parents": 732,
+            "mean_pp": 0.0,
+            "CI95_pp": [
+              0.0,
+              0.0
+            ],
+            "equal_parent_mean_pp": 0.0,
+            "wins": 0,
+            "losses": 0,
+            "ties": 10303,
+            "below_minus5": 0
+          },
+          "t": {
+            "queries": 10303,
+            "parents": 732,
+            "mean_pp": 7.901609189773,
+            "CI95_pp": [
+              6.974033701896469,
+              8.874752114377653
+            ],
+            "equal_parent_mean_pp": 8.672164621253584,
+            "wins": 5814,
+            "losses": 3354,
+            "ties": 1135,
+            "below_minus5": 2306
+          }
+        }
+      },
+      "prediction_seal_sha256": "2eaeb2d4b45c1c89423434ea53ff649c8b4ee28e68f58b9b0337411c1cc5aadc",
+      "final_seal_sha256": "a96403866158236f582b958cf2870b86561cf0b0872c3a62e45b8fc3395edb73",
+      "coverage_metadata_subset_queries": 128
+    },
+    "hc2": {
+      "queries": 1902,
+      "parents": 227,
+      "parameters": {
+        "gamma": 0.025,
+        "admission": 0.4,
+        "guard": 0.4,
+        "link": 0.5
+      },
+      "means": {
+        "Source": {
+          "v": 15.425086700559776,
+          "s": 55.89458542601735,
+          "t": 26.800738955102155
+        },
+        "Spatial": {
+          "v": 15.40171160524432,
+          "s": 55.890902029945465,
+          "t": 26.800738955102155
+        },
+        "Temporal": {
+          "v": 25.78437474216269,
+          "s": 55.89458542601735,
+          "t": 45.58281600816047
+        },
+        "Full": {
+          "v": 25.821066974628685,
+          "s": 56.01671909283422,
+          "t": 45.58281600816047
+        }
+      },
+      "observed_sIoU": {
+        "Source": 57.05074663715837,
+        "Spatial": 58.47923947042813,
+        "Temporal": 57.05074663715837,
+        "Full": 59.21769371176884
+      },
+      "unobserved_sIoU": {
+        "Source": 55.876569165426396,
+        "Spatial": 55.8441882265727,
+        "Temporal": 55.876569165426396,
+        "Full": 55.96462911186908
+      },
+      "paired_comparisons": {
+        "Full_minus_Temporal": {
+          "v": {
+            "queries": 1902,
+            "parents": 227,
+            "mean_pp": 0.03669223246599257,
+            "CI95_pp": [
+              -0.23211257770420785,
+              0.3082637083172266
+            ],
+            "equal_parent_mean_pp": 0.045567948844287394,
+            "wins": 929,
+            "losses": 914,
+            "ties": 59,
+            "below_minus5": 93
+          },
+          "s": {
+            "queries": 1902,
+            "parents": 227,
+            "mean_pp": 0.12213366681685725,
+            "CI95_pp": [
+              -0.32948796976945005,
+              0.5758693718758049
+            ],
+            "equal_parent_mean_pp": -0.05527697033733241,
+            "wins": 956,
+            "losses": 939,
+            "ties": 7,
+            "below_minus5": 166
+          },
+          "t": {
+            "queries": 1902,
+            "parents": 227,
+            "mean_pp": 0.0,
+            "CI95_pp": [
+              0.0,
+              0.0
+            ],
+            "equal_parent_mean_pp": 0.0,
+            "wins": 0,
+            "losses": 0,
+            "ties": 1902,
+            "below_minus5": 0
+          },
+          "unobserved_sIoU": {
+            "queries": 1902,
+            "parents": 227,
+            "mean_pp": 0.08805994644269147,
+            "CI95_pp": [
+              -0.3561690076754859,
+              0.5337812831868657
+            ],
+            "equal_parent_mean_pp": -0.09902023685291782,
+            "wins": 951,
+            "losses": 941,
+            "ties": 10,
+            "below_minus5": 159
+          }
+        },
+        "Spatial_minus_Source": {
+          "v": {
+            "queries": 1902,
+            "parents": 227,
+            "mean_pp": -0.02337509531545469,
+            "CI95_pp": [
+              -0.2823930426859068,
+              0.24162954506122308
+            ],
+            "equal_parent_mean_pp": 0.009015098434785474,
+            "wins": 671,
+            "losses": 680,
+            "ties": 551,
+            "below_minus5": 80
+          },
+          "s": {
+            "queries": 1902,
+            "parents": 227,
+            "mean_pp": -0.0036833960718744446,
+            "CI95_pp": [
+              -0.3758775523170687,
+              0.36499268268180346
+            ],
+            "equal_parent_mean_pp": -0.06825756789424106,
+            "wins": 1018,
+            "losses": 869,
+            "ties": 15,
+            "below_minus5": 118
+          },
+          "t": {
+            "queries": 1902,
+            "parents": 227,
+            "mean_pp": 0.0,
+            "CI95_pp": [
+              0.0,
+              0.0
+            ],
+            "equal_parent_mean_pp": 0.0,
+            "wins": 0,
+            "losses": 0,
+            "ties": 1902,
+            "below_minus5": 0
+          }
+        },
+        "Temporal_minus_Source": {
+          "v": {
+            "queries": 1902,
+            "parents": 227,
+            "mean_pp": 10.359288041602921,
+            "CI95_pp": [
+              9.576321867226707,
+              11.134143997134577
+            ],
+            "equal_parent_mean_pp": 10.20678581055989,
+            "wins": 1400,
+            "losses": 391,
+            "ties": 111,
+            "below_minus5": 206
+          },
+          "s": {
+            "queries": 1902,
+            "parents": 227,
+            "mean_pp": 0.0,
+            "CI95_pp": [
+              0.0,
+              0.0
+            ],
+            "equal_parent_mean_pp": 0.0,
+            "wins": 0,
+            "losses": 0,
+            "ties": 1902,
+            "below_minus5": 0
+          },
+          "t": {
+            "queries": 1902,
+            "parents": 227,
+            "mean_pp": 18.782077053058316,
+            "CI95_pp": [
+              17.504040965462504,
+              20.04477777726295
+            ],
+            "equal_parent_mean_pp": 18.45463411455988,
+            "wins": 1432,
+            "losses": 406,
+            "ties": 64,
+            "below_minus5": 281
+          }
+        }
+      },
+      "prediction_seal_sha256": "d91993d84c5dabb7f4a938ad6de7a9d968ec9bcd7e4bbcf52c3e8b48fc1f8f01",
+      "final_seal_sha256": "1745b992ebb7644e40d327352f2eac24ca3542f8d589f1feed7ab1be326c5b09",
+      "coverage_metadata_subset_queries": 128
+    }
+  },
+  "both_development_profiles_tested": 21,
+  "selection_locked_before_either_full": true,
+  "full_population_used_to_retune": false,
+  "development_and_full_overlap": true,
+  "not_independent_confirmation": true,
+  "parent_bootstrap_repeats": 5000,
+  "parent_bootstrap_seed": 41,
+  "bootstrap_does_not_adjust_for_development_selection": true,
+  "all_receipt_hashes_verified": true,
+  "NPZ_payloads_rescanned": false,
+  "immutable_original_seals_preserved": true
+}

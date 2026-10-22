@@ -1,3 +1,5 @@
+2026-10-22 BoxFixed + Global6双域新全量终态：固定128独立父来源各21配置锁定后，Vid10303/732与HC1902/227均完整预测seal和独立CPU评分，controller正常退出。Source/Spatial/Temporal/Full m_vIoU：Vid13.1169/12.8396/16.2644/15.9698，HC15.4251/15.4017/25.7844/25.8211。Full−Temporal Vid−.2946pp、HC+.0367pp，后者父聚类区间跨0；不宣称空间模块稳定收益。原fullmetrics中两项覆盖/改动均值仅复用128 receipt范围，新增两域独立scope audit，原seals不改。完整定位/观测未观测重算及receipt核验通过；无全量反馈调参、无新GPU/旧队列恢复。汇总见[双域终态](../results/tubedetr_boxfixed_development/terminal_report.md)。最终发布逐文件核验后删除已完成监控。
+
 2026-10-22 BoxFixed工程隔离v2：把推理校验里的GT文件hash移至完整预测seal后的CPU评分，推理guard提前，新增禁止hash读标签单测，86项通过。v1全部准备/部分profile归档；新plan和全新预测重新执行128，只有内容与教师指纹相同的原生专家缓存精确复用，不跨代码续预测，不改候选范围/选择目标。
 
 2026-10-22 用户授权读取GitHub最新方法并重启TubeDETR双方向：从main5bd213f7隔离移植完整教师框BoxFixed、固定评分精确DP和原物理MBR，TubeDETR接入原生224六层Global6而非TA双offset/448。两域已有query Source/Native逐位检查通过，85项工程测试通过。沿用既有两域128独立父来源面板，冻结有限gamma→准入→保护→连接→最多2邻居复查，两域都锁配置再依次10303/1902完整运行；所有旧结果和TA工作区不动，不复活OPD。见[新开发与全量协议](tubedetr_boxfixed_development.md)。
