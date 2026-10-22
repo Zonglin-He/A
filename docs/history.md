@@ -29,3 +29,18 @@ to main and research/stvg-opd-paper-hc2-revision-v2. Remote tree and all 250 fil
 (1,585,327 bytes) verified. Archive branch retains the original 852-file tree and
 commit ancestry. Publication receipt: [docs/publication.json](publication.json).
 The active full queue retained all 434 original source hashes and continued advancing.
+
+2026-10-22 — Complete official full evaluation finished: HC2 1902/227 and VidSTG10303/732
+sealed before separate CPU scoring. Both jobs scored; controller/worker/teacher/scorer
+exited and shared GPU lock released. Full vIoU Source→Final is24.9948→26.7597
+(HC,+1.7649pp, parent-cluster CI[1.2804,2.2751]) and11.7777→14.2685
+(Vid,+2.4908pp,CI[2.1351,2.8504]). Unobserved sIoU gains1.7881/2.3067pp;
+tIoU changes−.0666/+.9617pp. All severe declines266/1149 and every signed row
+retained. This is ERef+BoxFixed+Global6, not OPD or spatial-to-temporal feedback.
+No full-result selection or parameter changes. Independent publication audit verified
+12205 prediction/receipt hashes, all raw Final/Untuned aliases, signed means/thresholds/
+counts and 10000-resample parent-cluster intervals with zero aggregation error.
+Original434 sources and all seals unchanged;24,410 official/dense scorer checks pass.
+Actual costs split original/resumed worker counters; original imported capture cost is
+excluded. Corrected generic scorer wording: Final aliases Untuned, so only one posterior/DP
+is computed. [Complete report](../results/boxfixed_full_v1/REPORT.md).

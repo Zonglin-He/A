@@ -13,8 +13,8 @@ trial launchers and historical result trees are not installed or reachable here.
 The frozen upstream TA-STVG and ReferDINO code is preserved intact because the model
 loaders require it; upstream training utilities do not register a new project method.
 
-Locally, stvg-mainline is the maintained clean tree. The separately running stvg-opd
-checkout and its linked private assets stay in place until full evaluation finishes.
+Locally, stvg-mainline is the maintained clean tree. The completed stvg-opd
+checkout and its linked private assets stay in place as the frozen full-run archive.
 Its old code fingerprint must remain unchanged. Do not run cleanup inference concurrently
 or use this refactor to resume its old receipts. Import the final public reports into
 this clean tree after both domains seal/score, then publish this tree rather than

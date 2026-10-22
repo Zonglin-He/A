@@ -25,5 +25,7 @@ transfers, native source, expert, geometry and temporal/DP readout in actual end
 cost. Segment cache counters by worker identity and startticks; do not subtract across
 process resets or report imported old capture cost as current execution time.
 
-Current full predictions remain private and pending until both domains seal and score.
-Cleanup performs no new GT scoring or model inference.
+Both full sets are sealed and scored; private predictions remain local. The complete
+[public report](../results/boxfixed_full_v1/REPORT.md) includes all signed/severe changes,
+thresholds, temporal errors, parent-cluster CIs and segmented receipt costs. Publication
+reads saved scores and verifies hashes/aggregation; it performs no new GT scoring or inference.

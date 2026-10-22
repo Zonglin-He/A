@@ -1,0 +1,334 @@
+{
+  "dataset": "hc2",
+  "efficiency": {
+    "RGB_hits": 0,
+    "Source224_captures": 1839,
+    "Source448_calls": 0,
+    "Source_peak_allocated_GPU_bytes": 2361246208,
+    "expert_forwards": 1839,
+    "expert_peak_allocated_GPU_bytes": 2714788352,
+    "extra_decoder_calls": 0,
+    "groups": {
+      "all": {
+        "mean_query_wall_seconds": 4.1366076185274965,
+        "median_query_wall_seconds": 3.9603351166006178,
+        "queries": 1902
+      },
+      "complete_capture_hits": {
+        "mean_query_wall_seconds": 0.024386159048253107,
+        "median_query_wall_seconds": 0.02222792897373438,
+        "queries": 63
+      },
+      "fresh_captures": {
+        "mean_query_wall_seconds": 4.277483068199706,
+        "median_query_wall_seconds": 3.9697223850525916,
+        "queries": 1839
+      }
+    },
+    "scope": "Current work only, cache-hit original computation excluded. Query wall executes BOTH Untuned and Final, not a standalone method timing. Source/expert allocated peaks are separate processes, not whole-device NVML peak.",
+    "updates": 0,
+    "visual_hit_fraction": 0.0,
+    "visual_hits": 0,
+    "visual_misses": 7356
+  },
+  "exposure": "Official complete split includes historically exposed development/tuning/recheck examples. Not a pristine zero-shot test. Profiles frozen before full results; no full-result parameter selection.",
+  "means": {
+    "Final": {
+      "boundary_MAE_seconds": 3.2826403054744384,
+      "end_error_seconds": 3.4167632732345847,
+      "interval_length_seconds": 8.87405689540794,
+      "length_error_seconds": 3.7074516623929634,
+      "length_ratio_to_GT": 1.4273206816961994,
+      "m_sIoU": 0.5353036373724771,
+      "m_sIoU_fixed_actual": 0.5351023455561379,
+      "m_sIoU_observed_actual": 0.5761215139504844,
+      "m_sIoU_unobserved_actual": 0.5283787192377649,
+      "m_tIoU": 0.485807890360671,
+      "m_vIoU": 0.26759674713583226,
+      "start_error_seconds": 3.148517337714291,
+      "tIoU_eq_0": 0.06624605678233439,
+      "tIoU_ge_05": 0.501577287066246,
+      "vIoU@0.3": 0.4043112513144059,
+      "vIoU@0.5": 0.1508937960042061,
+      "vIoU_ge_03": 0.4043112513144059,
+      "vIoU_ge_05": 0.1508937960042061
+    },
+    "Source": {
+      "boundary_MAE_seconds": 3.2906900403847423,
+      "end_error_seconds": 3.4577738693189266,
+      "interval_length_seconds": 8.729403361144351,
+      "length_error_seconds": 3.597492512748739,
+      "length_ratio_to_GT": 1.3961595897454213,
+      "m_sIoU": 0.5068577755030251,
+      "m_sIoU_fixed_actual": 0.5106855675490266,
+      "m_sIoU_observed_actual": 0.5147143008177046,
+      "m_sIoU_unobserved_actual": 0.5104972298984195,
+      "m_tIoU": 0.4864734502336978,
+      "m_vIoU": 0.2499475237820813,
+      "start_error_seconds": 3.1236062114505576,
+      "tIoU_eq_0": 0.07623554153522608,
+      "tIoU_ge_05": 0.5078864353312302,
+      "vIoU@0.3": 0.37802313354363826,
+      "vIoU@0.5": 0.1288117770767613,
+      "vIoU_ge_03": 0.37802313354363826,
+      "vIoU_ge_05": 0.1288117770767613
+    },
+    "Untuned": {
+      "boundary_MAE_seconds": 3.2826403054744384,
+      "end_error_seconds": 3.4167632732345847,
+      "interval_length_seconds": 8.87405689540794,
+      "length_error_seconds": 3.7074516623929634,
+      "length_ratio_to_GT": 1.4273206816961994,
+      "m_sIoU": 0.5353036373724771,
+      "m_sIoU_fixed_actual": 0.5351023455561379,
+      "m_sIoU_observed_actual": 0.5761215139504844,
+      "m_sIoU_unobserved_actual": 0.5283787192377649,
+      "m_tIoU": 0.485807890360671,
+      "m_vIoU": 0.26759674713583226,
+      "start_error_seconds": 3.148517337714291,
+      "tIoU_eq_0": 0.06624605678233439,
+      "tIoU_ge_05": 0.501577287066246,
+      "vIoU@0.3": 0.4043112513144059,
+      "vIoU@0.5": 0.1508937960042061,
+      "vIoU_ge_03": 0.4043112513144059,
+      "vIoU_ge_05": 0.1508937960042061
+    }
+  },
+  "paired": {
+    "Final-Source": {
+      "boundary_MAE_seconds": {
+        "CI95": [
+          -0.03337324152267367,
+          0.016162522759503264
+        ],
+        "declined_over5pp": null,
+        "decreased": 792,
+        "increased": 739,
+        "mean": -0.008049734910304045,
+        "parents": 227,
+        "queries": 1902,
+        "unchanged": 371,
+        "unit": "seconds"
+      },
+      "observed_actual_sIoU": {
+        "CI95": [
+          5.126891584170077,
+          7.143278731063678
+        ],
+        "declined_over5pp": 341,
+        "decreased": 497,
+        "increased": 1323,
+        "mean": 6.140721313277988,
+        "parents": 227,
+        "queries": 1880,
+        "unchanged": 60,
+        "unit": "pp"
+      },
+      "t": {
+        "CI95": [
+          -0.3408207893645323,
+          0.2168842492580882
+        ],
+        "declined_over5pp": 275,
+        "decreased": 738,
+        "increased": 757,
+        "mean": -0.06655598730268333,
+        "parents": 227,
+        "queries": 1902,
+        "unchanged": 407,
+        "unit": "pp"
+      },
+      "unobserved_actual_sIoU": {
+        "CI95": [
+          1.086334677317521,
+          2.4902193706421705
+        ],
+        "declined_over5pp": 378,
+        "decreased": 667,
+        "increased": 1224,
+        "mean": 1.7881489339345427,
+        "parents": 227,
+        "queries": 1902,
+        "unchanged": 11,
+        "unit": "pp"
+      },
+      "v": {
+        "CI95": [
+          1.2804466057990265,
+          2.2750715092864895
+        ],
+        "declined_over5pp": 266,
+        "decreased": 678,
+        "increased": 1099,
+        "mean": 1.7649223353750902,
+        "parents": 227,
+        "queries": 1902,
+        "unchanged": 125,
+        "unit": "pp"
+      }
+    },
+    "Final-Untuned": {
+      "boundary_MAE_seconds": {
+        "CI95": [
+          0.0,
+          0.0
+        ],
+        "declined_over5pp": null,
+        "decreased": 0,
+        "increased": 0,
+        "mean": 0.0,
+        "parents": 227,
+        "queries": 1902,
+        "unchanged": 1902,
+        "unit": "seconds"
+      },
+      "observed_actual_sIoU": {
+        "CI95": [
+          0.0,
+          0.0
+        ],
+        "declined_over5pp": 0,
+        "decreased": 0,
+        "increased": 0,
+        "mean": 0.0,
+        "parents": 227,
+        "queries": 1880,
+        "unchanged": 1880,
+        "unit": "pp"
+      },
+      "t": {
+        "CI95": [
+          0.0,
+          0.0
+        ],
+        "declined_over5pp": 0,
+        "decreased": 0,
+        "increased": 0,
+        "mean": 0.0,
+        "parents": 227,
+        "queries": 1902,
+        "unchanged": 1902,
+        "unit": "pp"
+      },
+      "unobserved_actual_sIoU": {
+        "CI95": [
+          0.0,
+          0.0
+        ],
+        "declined_over5pp": 0,
+        "decreased": 0,
+        "increased": 0,
+        "mean": 0.0,
+        "parents": 227,
+        "queries": 1902,
+        "unchanged": 1902,
+        "unit": "pp"
+      },
+      "v": {
+        "CI95": [
+          0.0,
+          0.0
+        ],
+        "declined_over5pp": 0,
+        "decreased": 0,
+        "increased": 0,
+        "mean": 0.0,
+        "parents": 227,
+        "queries": 1902,
+        "unchanged": 1902,
+        "unit": "pp"
+      }
+    },
+    "Untuned-Source": {
+      "boundary_MAE_seconds": {
+        "CI95": [
+          -0.03337324152267367,
+          0.016162522759503264
+        ],
+        "declined_over5pp": null,
+        "decreased": 792,
+        "increased": 739,
+        "mean": -0.008049734910304045,
+        "parents": 227,
+        "queries": 1902,
+        "unchanged": 371,
+        "unit": "seconds"
+      },
+      "observed_actual_sIoU": {
+        "CI95": [
+          5.126891584170077,
+          7.143278731063678
+        ],
+        "declined_over5pp": 341,
+        "decreased": 497,
+        "increased": 1323,
+        "mean": 6.140721313277988,
+        "parents": 227,
+        "queries": 1880,
+        "unchanged": 60,
+        "unit": "pp"
+      },
+      "t": {
+        "CI95": [
+          -0.3408207893645323,
+          0.2168842492580882
+        ],
+        "declined_over5pp": 275,
+        "decreased": 738,
+        "increased": 757,
+        "mean": -0.06655598730268333,
+        "parents": 227,
+        "queries": 1902,
+        "unchanged": 407,
+        "unit": "pp"
+      },
+      "unobserved_actual_sIoU": {
+        "CI95": [
+          1.086334677317521,
+          2.4902193706421705
+        ],
+        "declined_over5pp": 378,
+        "decreased": 667,
+        "increased": 1224,
+        "mean": 1.7881489339345427,
+        "parents": 227,
+        "queries": 1902,
+        "unchanged": 11,
+        "unit": "pp"
+      },
+      "v": {
+        "CI95": [
+          1.2804466057990265,
+          2.2750715092864895
+        ],
+        "declined_over5pp": 266,
+        "decreased": 678,
+        "increased": 1099,
+        "mean": 1.7649223353750902,
+        "parents": 227,
+        "queries": 1902,
+        "unchanged": 125,
+        "unit": "pp"
+      }
+    }
+  },
+  "parents": 227,
+  "profile": {
+    "guard_weight": 0.1,
+    "link_weight": 0.25,
+    "observed_weight": 0.5,
+    "temperature": 1.0
+  },
+  "proof": {
+    "CPU_only": true,
+    "all_predictions_sealed_before_GT": true,
+    "identical_Final_Untuned_aliases": 1902,
+    "labels_sha256": "af9162edbae2f455a40ac1a4f2a7a1441cd93f09d5950d8efa919b4f12a528db",
+    "official_dense_checks": 3804,
+    "official_dense_max_error": 1.3322676295501878e-15,
+    "plan_sha256": "85d13696c99b0de93a0cd2b49201ab51bf35fe1baaa485a14e5e4594cc0c3b32",
+    "seal_sha256": "d0eaf834a3af27b8fda22693d03b741d54387fc5e981e82684df6bdec4d41ee3"
+  },
+  "queries": 1902,
+  "status": "completed_full_official_evaluation"
+}

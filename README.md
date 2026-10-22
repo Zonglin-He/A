@@ -56,13 +56,13 @@ verified 512 MiB RGB LRU. These affect reuse, not model inputs or precision.
 
 ## Results and history
 
-The current official full evaluation is still running. HC2 has 1,902 queries from
-227 parent sources; VidSTG has 10,303 queries from 732. Full results will be imported
-only after both domains seal and score under the frozen protocol. The development
-panels have prior exposure and are not independent test confirmations.
+The complete official evaluation is sealed and scored: HC2 has 1,902 queries from
+227 parents and VidSTG10,303 queries from732. [Full results and signed changes](results/boxfixed_full_v1/REPORT.md)
+show vIoU24.9948→26.7597 on HC2 and11.7777→14.2685 on VidSTG. The development
+panels have prior exposure; these complete splits are not pristine independent confirmations.
 
-This is a source cleanup, not a new experimental result. The existing full job keeps
-its original immutable source checkout and fingerprint; it is not restarted with this
+This is a source cleanup, not a new experimental result. The completed full job retains
+its original immutable source checkout and fingerprint; it was not restarted with this
 refactor. Cached compatibility covers 192 saved captures and is described in the
 verification receipt; no new GPU run was performed for this cleanup.
 

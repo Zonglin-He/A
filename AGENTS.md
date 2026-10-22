@@ -11,12 +11,11 @@ calibration/gamma, input decoding, offset/padding mappings, fixed score and MBR.
 read GT in inference. Score only sealed predictions, independently on CPU. Cache reuse
 must be content bound; no fingerprint exception or cross-code resume.
 
-The active full job runs from the separate immutable stvg-opd checkout. Do not edit,
-pull, reset, rename or delete its frozen files while it is active. Its original plan
+The completed full job is archived in the separate immutable stvg-opd checkout. Do not edit,
+pull, reset, rename or delete its frozen files or mutate its sealed full outputs. Its original plan
 fingerprint is 2ebd134dfd055c8e17e01859b706d56d187b15b8907a8129c49669539d84ea6e.
 This maintained source tree has a different source fingerprint and must not resume
-that job. Read progress there; import completed public summaries here only after both
-domains have sealed/scored. Preserve all private saved predictions and old source snapshots.
+that job. Both domains have sealed/scored; their public summaries are imported here. Preserve all private saved predictions and old source snapshots.
 
 Run CPU engineering tests and appropriate compatibility checks. No new GPU experiments
 or parameter changes are authorized by the cleanup. Record material changes in

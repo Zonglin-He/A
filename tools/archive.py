@@ -3,7 +3,7 @@ import argparse,hashlib,json,re,sys
 from pathlib import Path
 ROOT=Path(__file__).resolve().parents[1]
 PRIVATE={'.git','.conda','.venv','outputs','runtime','checkpoints','data','__pycache__','.pytest_cache'}
-EXT={'.py','.md','.json','.txt','.yml','.yaml','.ini','.cpp','.cu','.cuh','.h','.sh'}
+EXT={'.py','.md','.json','.txt','.yml','.yaml','.ini','.cpp','.cu','.cuh','.h','.sh','.tsv','.csv'}
 
 def files():
  for p in sorted(ROOT.rglob('*')):
