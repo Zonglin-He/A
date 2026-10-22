@@ -1,19 +1,30 @@
-# STVG project
+# Main method
 
-The current main inference method is one ReferDINO ERef initialization plus complete native-box propagation and the original BoxFixed fixed score/exact DP. The user explicitly replaced the earlier spatial OPD mainline on 2026-10-21. `configs/default.json` is authoritative; `python -m stvg` is the public entry. Strong is the established temporal reference. `native224` and `tube_replay` are explicit modes; tube replay remains experimental until evaluated. Do not restart spatial OPD research, add experts, sweep parameters or run new experiments without a user request.
+Maintain only TA-STVG BoxFixed + Global6 + original physical MBR. Read docs/history.md,
+docs/method.md and docs/archive.md before edits. configs/default.json is authoritative.
+Do not add research modes, OPD, training, extra teachers, 448, conditional replay or
+parameter sweeps without explicit user authorization. Original TA-STVG and ReferDINO
+sources are necessary frozen dependencies, not experimental alternatives to remove.
 
-Read `docs/history.md`, `docs/method.md` and relevant saved results before changes. Preserve complete native boxes, ERef calibration/strength, dataset decoding, one expert/eight observations, physical frame/offset/padding mappings and offline-only scoring. No network weights are trained and the main flow has no optimizer or temporary trainable state. Inference must never read GT. Core `stvg` modules must not import `scripts.*` or depend on historical output/lock/gate directories. Cache reuse is optional and content-bound; raw video/text/checkpoints must remain a supported entry.
+Keep complete native teacher box extents, one expert/eight observations, original ERef
+calibration/gamma, input decoding, offset/padding mappings, fixed score and MBR. Never
+read GT in inference. Score only sealed predictions, independently on CPU. Cache reuse
+must be content bound; no fingerprint exception or cross-code resume.
 
-The authorized HC64 temporal trial is fixed: A old BoxFixed+Strong, B native224, C one tube replay, D area/r/time/budget matched fixed spatial permutation; alpha=.5, context1.5, no448 in B/C/D. Full-timeline auxiliary geometry/DP must not use Strong event support. All predictions seal before independent GT scoring; include signed negative results and same-space temporal evaluation. Do not restore formal Vid or CG jobs; respect shared `runtime/gpu.lock` and never signal unrelated services. Other backbone adapters require separate verification.
+The active full job runs from the separate immutable stvg-opd checkout. Do not edit,
+pull, reset, rename or delete its frozen files while it is active. Its original plan
+fingerprint is 2ebd134dfd055c8e17e01859b706d56d187b15b8907a8129c49669539d84ea6e.
+This maintained source tree has a different source fingerprint and must not resume
+that job. Read progress there; import completed public summaries here only after both
+domains have sealed/scored. Preserve all private saved predictions and old source snapshots.
 
-Historical code/config/results/negative findings are retained. `configs/legacy_opd.json`, Git commit 579757aca0df45b106eb14825c088791c56a2f3b and the private source snapshot in `outputs/maintenance/boxfixed_switch_20261021/legacy` preserve the old protocol. Verify historical results against their exact old snapshot; never alter old receipts or relax frozen source hashes to accept new mainline code.
+Run CPU engineering tests and appropriate compatibility checks. No new GPU experiments
+or parameter changes are authorized by the cleanup. Record material changes in
+ docs/history.md, then python tools/archive.py check, snapshot, check. These are source
+and evidence checks, not model experiments.
 
-Run appropriate engineering checks and migration/zero-feedback regressions. Update `docs/history.md` for material changes. Run `.conda/tubedetr/bin/python -B scripts/research_archive.py check`, then `snapshot`, then `check`; these validate saved evidence, not inference.
-
-Publish code/config/reproducibility and all signed results to Zonglin-He/A; preserve Git history and verify remote commit/tree/bytes. Exclude data, annotations, weights, raw masks/features/states/caches, environments, private queries and credentials. Never delete private assets or unrelated user changes as part of mainline restructuring.
-
-The 2026-10-21 cached fusion request uses Source_Native224 (unadapted native boxes/time) as the overall baseline. Strong is only a precision/cost reference, never a required gate. Spatial BoxFixed and all attention/evidence parameters stay fixed. Only saved G/T/P six-layer hidden may pass through the same frozen head; average normalized physical interval posteriors, then fixed .5/.5 fusion. No new RGB/encoder/decoder/expert or updates. The HC64 trial is completed in results/tube_fusion_hc64: overall vIoU gain versus Source, but no demonstrated feedback advantage over Global6/permuted. End this feedback direction; no mixture sweep or formal/CG resume. Preserve the production configuration and all earlier seals.
-
-The final two-round interval study is completed in results/interval_pool. HC64 attribution does not support hull as the main harm: effective tIoU>=.5/.7 mass increases. The only mixture candidate failed both frozen32-parent development rechecks (HC v/t -.5715/-2.3750pp; Vid -1.0251/-1.7805pp versus old Hull_MBR). Retain Global6+old hull+original MBR as research readout; production default remains Strong. No third temperature/weight/length sweep, extra decoder or formal/CG resume. Distinguish overall Source gains from temporal component gains, historical exposure from independent confirmation, and posterior construction speed from deployment. Full signed results/costs, severity audit and original-paper sources are linked from docs/interval_pool.md. The goal remains joint precision and actual cost; no new method benefit is registered for the failed mixture.
-
-Latest user authorization 2026-10-22 supersedes the previous no-new-tuning rule for a bounded two-direction tuning task only: scripts/boxfixed_tuning and outputs/boxfixed_tuning_v1 plan. Root reviews each tuning stage; same64 development parents per domain and <=18 unique configurations/domain, one-factor coarse search then bounded mechanism-based refinement and attribution. Fixed Source/eight observations/complete native-box candidates/gamma/precision/labels/old hull/MBR, no extra experts/448/conditional replay/training. After profiles freeze, once-only32-parent development recheck; retain fallback if preregistered criterion fails. New full official1902/10303 runs are authorized after lock, with exactly one Luna max monitor and root repairs; use a NEW immutable queue/output, never silently resume or mix the older paused formal run. Preserve all old frozen source snapshots/hashes and negative results. Full evaluation is not a tuning set.
+Publish only an explicit clean source/evidence tree to Zonglin-He/A main and research,
+using fresh expected-head checks, preserving ancestry and the research archive branch.
+Verify remote tree and file bytes. Never publish media, query text, GT coordinates,
+weights, raw masks/features/states/caches, credentials, environments or local asset links.
+Never restore the old broad research export over the clean main branch.

@@ -36,21 +36,12 @@ def runtime_fingerprint(backbone="tastvg"):
         actual=sha(ROOT/relative)
         if actual!=expected:raise ValueError('Frozen asset checksum changed: '+relative)
         checked[relative]=actual
-    if backbone not in ['tastvg','cgstvg']:raise ValueError('Unsupported backbone')
-    if backbone=='cgstvg':
-        from .cgstvg import CHECKPOINTS
-        for filename,expected in CHECKPOINTS.values():
-            relative='checkpoints/cgstvg/'+filename;actual=sha(ROOT/relative)
-            if actual!=expected:raise ValueError('CG checkpoint checksum changed: '+relative)
-            checked[relative]=actual
+    if backbone!='tastvg':raise ValueError('Only the TA-STVG main method is supported')
     paths=set()
     for directory in ['stvg','external/TA-STVG','external/ReferDINO','runtime/referdino/python']:
         for path in (ROOT/directory).rglob('*'):
             if path.is_file() and not {'.git','__pycache__','build'}.intersection(path.parts) and path.suffix in {'.py','.yaml','.yml','.json','.cpp','.cu','.cuh','.h'}:
                 paths.add(path)
-    if backbone=='cgstvg':
-        for path in (ROOT/'external/CGSTVG').rglob('*'):
-            if path.is_file() and not {'.git','__pycache__','build'}.intersection(path.parts) and path.suffix in {'.py','.yaml','.yml','.json'}:paths.add(path)
     paths.update((ROOT/relative)for relative in ['configs/default.json','requirements.txt','requirements-teacher.txt','docs/assets.json'])
     paths.add(ROOT/'runtime/referdino/cuda_build/MultiScaleDeformableAttention.so')
     code={str(p.relative_to(ROOT)):sha(p)for p in sorted(paths)}
@@ -77,10 +68,10 @@ def resource_guard():
 
 class ResidentSession:
     """An ordered set of independent queries sharing only frozen resources."""
-    def __init__(self, fingerprint, cache_dir=None, visual_cache=None, backbone="tastvg",temporal_mode="strong"):
+    def __init__(self, fingerprint, cache_dir=None, visual_cache=None, backbone="tastvg",temporal_mode="global6"):
         self.temporal_mode=temporal_mode
         self.fingerprint=fingerprint;self.backbone=backbone
-        if backbone!='tastvg':raise NotImplementedError('Current BoxFixed/time replay is verified only on TA-STVG; CG remains paused')
+        if backbone!='tastvg':raise NotImplementedError('Only TA-STVG BoxFixed+Global6 is supported')
         self.teacher=ResidentTeacher(cache_dir=cache_dir,fingerprint=fingerprint)
         self.predictors={};self.visual_cache=visual_cache;self.decoded=None;self.decode_hits=0;self.decode_misses=0
     def predict(self,record):
@@ -99,11 +90,7 @@ class ResidentSession:
         torch.manual_seed(20260920);np.random.seed(20260920);torch.cuda.reset_peak_memory_stats()
         source_load_start=time.perf_counter();source_first_load=dataset not in self.predictors
         if dataset not in self.predictors:
-            if self.backbone=='tastvg':
-                predictor=Predictor(dataset,check=resource_guard);predictor.source=load_source(predictor.config)
-            else:
-                from .cgstvg import Predictor as CGPredictor,load_source as load_cg
-                predictor=CGPredictor(dataset,check=resource_guard);predictor.source,predictor.load_audit=load_cg(dataset,'cpu')
+            predictor=Predictor(dataset,check=resource_guard);predictor.source=load_source(predictor.config)
             predictor.teacher_service=self.teacher;self.predictors[dataset]=predictor
         source_load_seconds=time.perf_counter()-source_load_start if source_first_load else 0.
         predictor=self.predictors[dataset]
@@ -126,16 +113,16 @@ class ResidentSession:
 
 def prediction_arrays(out,ids):
     arrays=dict(Source=out['Source'],E_Ref=out['E_Ref'],BoxFixed=out['BoxFixed'],frame_ids=np.asarray(ids),positions8=np.asarray(out['positions8']),Native_interval=np.asarray(out['intervals']['Native']),Selected_interval=np.asarray(out['interval']))
-    if 'Strong'in out['intervals']:arrays['Strong_interval']=np.asarray(out['intervals']['Strong'])
+    arrays['Global6_interval']=np.asarray(out['interval'])
     return arrays
 
 
 def request_hash(record):
-    # Sampling key is included: an evidence cache may share observations, never a policy rollout.
+    # Input key is included: shared evidence never changes per-query output binding.
     return hashlib.sha256(canonical(record)).hexdigest()
 
 
-def run(manifest,output,cache_dir=None,resume_hash=None,visual_cache=None,backbone="tastvg",temporal_mode="strong"):
+def run(manifest,output,cache_dir=None,resume_hash=None,visual_cache=None,backbone="tastvg",temporal_mode="global6"):
     """One manifest; no labels argument, imports, scoring or target selection."""
     rows=[json.loads(s)for s in Path(manifest).read_text().splitlines()if s.strip()]
     if len({r['id']for r in rows})!=len(rows):raise ValueError('Repeated evaluation IDs')
@@ -178,8 +165,8 @@ def run(manifest,output,cache_dir=None,resume_hash=None,visual_cache=None,backbo
 def main():
     p=argparse.ArgumentParser(description='Resident STVG inference; no labels or scoring')
     p.add_argument('--manifest',required=True);p.add_argument('--output',required=True)
-    p.add_argument('--backbone',choices=['tastvg','cgstvg'],default='tastvg')
-    p.add_argument('--temporal',choices=['strong','native224','tube_replay'],default='strong')
+    p.add_argument('--backbone',choices=['tastvg'],default='tastvg')
+    p.add_argument('--temporal',choices=['global6'],default='global6')
     p.add_argument('--teacher-cache');p.add_argument('--resume-hash')
     p.add_argument('--visual-cache-mib',type=int,default=4096)
     args=p.parse_args();setup();lock=lease()

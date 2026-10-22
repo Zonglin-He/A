@@ -2,7 +2,6 @@
 from contextlib import contextmanager
 import gc
 import torch
-from stvg.capture import frozen_forward as capture007
 
 
 @contextmanager
@@ -43,8 +42,3 @@ def inactive_modules_on_host(model):
     finally:
         pre.remove(); post.remove()
         after(None, None, None)
-
-
-def frozen_forward(model, frames, row):
-    with inactive_modules_on_host(model):
-        return capture007(model, frames, row)

@@ -22,10 +22,10 @@ def fixture(empty=False):
     return ev,E,native
 
 
-def test_geometry_independent_of_interval_and_fulltimeline_support():
+def test_geometry_independent_of_explicit_interval_support():
     ev,E,native=fixture();g=build_geometry(ev,E,native)
     assert not hasattr(g,'event')and not hasattr(g,'active')
-    original=g.boxes.clone();a=g.for_interval([0,7]);b=g.for_full_timeline()
+    original=g.boxes.clone();a=g.for_interval([0,7]);b=g.for_interval([int(g.frame_ids[0]),int(g.frame_ids[-1])+1])
     assert torch.equal(a.boxes,b.boxes)and torch.equal(g.boxes,original)
     assert not a.active[3:].any()and b.event.all()
     assert b.score_counts==dict(observed=8,unobserved=3,event_edges=10,all_nodes=11)
@@ -43,7 +43,7 @@ def test_empty_mask_native_boxes_retained_and_temporal_reliability_separate():
     assert g.temporal_reliability().eq(0).all()
     assert not g.reliable[~g.observed].any()
     assert torch.equal(g.boxes[ev.positions,1],native)
-    view=g.for_full_timeline();out=evidence_dp(view)
+    view=g.for_interval([int(g.frame_ids[0]),int(g.frame_ids[-1])+1]);out=evidence_dp(view)
     assert out['actions'][~g.observed].eq(0).all()
     assert torch.isfinite(view.score_unary).all()and torch.isfinite(view.score_pair).all()
 

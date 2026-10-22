@@ -1,6 +1,0 @@
-import os,json,numpy as np
-from pathlib import Path
-ROOT=Path(os.environ.get('STVG_PROJECT_ROOT', Path(__file__).resolve().parents[2])).expanduser().resolve();p=ROOT/'outputs/layout_reward_dev/research/data_audit.json';x=json.loads(p.read_text());a=x['aggregate'];qs=x['queries'];out={}
-for name in ['layout_spearman','geometry_spearman','layout_weighted_IoU_gain','geometry_reweight_same_candidates_IoU_gain','oracle_IoU_gain','layout_ESS','layout_reward_std']:
- z=np.array([q['ranking'].get(name,{}).get('mean',np.nan) for q in qs]);z=z[np.isfinite(z)];out[name]=dict(valid_queries=len(z),query_macro_mean=float(z.mean()),query_median=float(np.median(z)))
-rr=[q for q in qs if 'mean'in q['ranking'].get('layout_spearman',{}) and 'mean'in q['ranking'].get('geometry_spearman',{})];delta=np.array([q['ranking']['layout_spearman']['mean']-q['ranking']['geometry_spearman']['mean'] for q in rr]);rng=np.random.default_rng(20261021);idx=rng.integers(0,len(delta),(10000,len(delta)));out['paired_layout_minus_geometry_rho']=dict(valid_queries=len(delta),mean=float(delta.mean()),CI95=np.quantile(delta[idx].mean(1),[.025,.975]).tolist());a['query_macro_candidate_diagnostics']=out;p.write_text(json.dumps(x,indent=2,allow_nan=True)+'\n');print(json.dumps(out,indent=2))

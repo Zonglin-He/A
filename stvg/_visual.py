@@ -11,7 +11,6 @@ import textwrap
 
 import torch
 
-from stvg._attention import frozen_forward as capture010
 from stvg.capture import transfer
 
 
@@ -60,8 +59,3 @@ def frozen_visual_host(model):
         yield
     finally:
         cls.forward = original
-
-
-def frozen_forward(model, frames, row):
-    with frozen_visual_host(model):
-        return capture010(model, frames, row)

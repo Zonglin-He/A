@@ -1,7 +1,7 @@
 """Complete-box geometry and exact fixed-score trajectory decoding.
 
 Geometry never receives an event interval. Temporal support is an explicit
-decode view; full_timeline is a declared extension, not legacy equivalence.
+decode view; the main method accepts only explicit event intervals.
 """
 from __future__ import annotations
 import copy
@@ -117,9 +117,6 @@ class SpatialGeometry:
     def for_interval(self,interval):
         return BoxFixedBank(self,interval=interval,mode='interval')
 
-    def for_full_timeline(self):
-        return BoxFixedBank(self,mode='full_timeline')
-
     def temporal_reliability(self):
         """Existing cycle reliability, zero if no side has a valid mask seed.
 
@@ -141,22 +138,18 @@ def build_geometry(evidence,E,native_boxes):
 
 
 class BoxFixedBank:
-    """An interval/full-timeline scoring view on immutable spatial geometry."""
+    """An explicit-interval scoring view on immutable spatial geometry."""
     temporal_reliability=SpatialGeometry.temporal_reliability
     @scoped_single_thread
     def __init__(self,geometry,*,interval=None,mode='interval'):
-        require(mode in ('interval','full_timeline'),'Unknown spatial decode mode')
+        require(mode=='interval','Only the main explicit-interval decoder is supported')
         self.__dict__.update(geometry.__dict__)
         self.mode=mode;self.metadata={**geometry.metadata,'decode_mode':mode}
-        if mode=='interval':
-            require(interval is not None,'Explicit physical interval required')
-            span=cpu(interval,torch.float64)
-            require(span.shape==(2,)and bool(torch.isfinite(span).all())and span[1]>span[0],'Explicit physical interval required')
-            self.interval=span
-            self.event=(self.frame_ids>=span[0])&(self.frame_ids<span[1])
-        else:
-            require(interval is None,'full_timeline must not receive a temporal interval')
-            self.interval=None;self.event=torch.ones(self.frames,dtype=torch.bool)
+        require(interval is not None,'Explicit physical interval required')
+        span=cpu(interval,torch.float64)
+        require(span.shape==(2,)and bool(torch.isfinite(span).all())and span[1]>span[0],'Explicit physical interval required')
+        self.interval=span
+        self.event=(self.frame_ids>=span[0])&(self.frame_ids<span[1])
         self.active=self.event & self.reliable
         self.valid=geometry.valid.clone()
         self.valid[~(self.active|self.observed),1:]=False

@@ -11,15 +11,8 @@
     "score": ".5 mean_obs(u)+.5 mean_unobs(c*u)+.25 mean_event_edges(cprev*c*L)-.1 mean_all_nodes(G)"
   },
   "temporal": {
-    "default": "strong",
-    "native224": "frozen native last-layer posterior and original physical MBR",
-    "tube_replay": {
-      "status": "experimental_unvalidated",
-      "alpha": 0.5,
-      "context_scale": 1.5,
-      "extra_replays_per_offset": 1,
-      "permutation": "cyclic_half_valid_visual_cells_per_frame"
-    }
+    "default": "global6",
+    "algorithm": "two native224 offsets; independent old hull at each of six layers; arithmetic posterior mean; original physical MBR"
   },
   "datasets": {
     "hc2": {
@@ -47,7 +40,7 @@
       },
       "E_calibration_provenance": "source-domain train calibration, frozen before target outcomes",
       "initialization_gamma": 0.5,
-      "temporal_mode": "strong"
+      "temporal_mode": "global6"
     },
     "vidstg": {
       "dataset": "vidstg",
@@ -74,7 +67,7 @@
       },
       "E_calibration_provenance": "source-domain train calibration, frozen before target outcomes",
       "initialization_gamma": 1.0,
-      "temporal_mode": "strong"
+      "temporal_mode": "global6"
     }
   }
 }

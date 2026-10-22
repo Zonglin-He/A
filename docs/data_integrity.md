@@ -1,22 +1,24 @@
-# 数据隔离审计
+# Data and publication boundaries
 
-历史审计主体对应旧 OPD 主线，原回执与曝光计数保留。2026-10-21 当前主线已切换为 BoxFixed；当前流程没有可训练临时状态或优化器。新时间试验仍使用原 HC64 已曝光开发面板，全部四组预测封存后才读取标签，证据与预算核验见 [当前协议](boxfixed_temporal.md)。128/64 开发选参不属于在线 GT 泄漏，开发成绩也不当作独立测试。
+Inference accepts video, caption and predetermined physical input support. No target
+boxes/event interval/GT-dependent choice enters ERef, teacher inference, propagation,
+time readout or final decoding. Source construction replaces the two upstream annotation
+loads with empty mappings. The guard checks surface paths and resolved symlinks; it is
+an engineering boundary, not a sandbox for arbitrary Python.
 
-原审计核对当时推理链、封存评分边界、本地清单与新公开提交内容。没有发现真实框、事件区间、GT类别进入当时推理或在线输出选择的路径。HC128／Vid128用于离线开发和选参是已授权的实验设定，**不算数据泄漏**；结果仍按开发数据标明。
+The scorer validates the complete prediction seal and hashes before reading labels.
+Synthetic engineering tests cover rejection paths. Cleanup does not read real labels
+or score new predictions. Saved-capture compatibility reads only existing model outputs.
 
-推理只接收视频、查询及预定物理帧支持。Source构造时将两次注释加载替换为空映射，actioness为零；主体词来自文本解析。ReferDINO进程只接收RGB及原始查询。初始化、监督和最终选择没有读取GT；临时状态和优化器逐query重置。Vid的start_frame/end_frame全部对应官方used_segment输入支持，不是事件GT边界。
+HC2 official 1902/227 and VidSTG 10303/732 lists use the corrected official membership
+and endpoint conversion. Historical raw3482 and older metric reports are archived with
+their original provenance; they must not be mixed with the current full protocol.
+Development panels have exposure and are not independent tests. Full target evaluation
+cannot be used to retune the frozen profile. Historical exposure and corrections are
+available in the research archive at c310af5888dca78d6ea7b0a280cb67d209a90337.
 
-审计收紧了三个工程边界：输入字段在解码前检查；评分先核验清单和全部预测封存哈希再打开标签；注释访问防护同时检查表面路径和软链接真实路径。这些是防止误接标签的防护，不是对不可信任任意Python代码的沙箱。新增合成文件测试不读取真实标注。
-
-| 清单 | 查询数 | 父来源数 | 与当前开发面板重叠父数 | 不在当前开发面板父数 |
-|---|---:|---:|---:|---:|
-| HC2当前官方包评估划分 | 1902 | 227 | 122 | 105 |
-| VidSTG完整可用划分 | 10303 | 732 | 128 | 604 |
-
-Vid128及HC67个开发query直接属于当前完整清单，HC另61个raw开发query不在当前官方包评估名单中；开发曝光继续按父来源登记，HC1902中1011条与当前开发父来源重叠。输入和独立标签ID/数据集一一对应，跨HC/Vid完整清单的视频SHA256交集为零。不在当前面板不等于历史未曝光，完整划分也不能整体称为未参与开发的确认集。
-
-新公开树不包含数据、标注、真实请求正文、权重、缓存或凭据；使用明确文件清单导出，所有私有资产链接被排除。真实request.json、JSONL、媒体、模型与凭据后缀另外纳入忽略规则。Git历史按要求保留，本结论不声称清除了历史公开记录。
-
-未保存全部Source训练及上游预训练的逐视频来源，不能据此证明所有预训练污染都不存在。可确认的是当前代码未发现在线GT注入，当前开发曝光已量化，公开导出边界已检查。详见 [审计回执](../results/data_integrity.json)。
-
-2026-10-20追加审计纠正：原审计只核对本地数据流隔离，没有证明本地raw3482与作者实际公开评测成员一致。现已发现并修正HC标注版本错配及Vid端点转换错误，不能将“无在线GT注入”扩写成“官方数据版本完全正确”。历史开发指标保留原口径，不重新选参。详见[划分审计](split_audit.md)。
+The public tree excludes videos, raw requests/query text, annotations, weights, raw
+masks/features/states/caches, local links, environments and credentials. An explicit
+source list is exported and remote file bytes verified. Private assets and all old
+saved predictions remain local. No claim about absent upstream pretraining contamination
+follows from these local data-flow checks.

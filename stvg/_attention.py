@@ -2,7 +2,6 @@
 from contextlib import contextmanager
 import inspect, sys, textwrap
 import torch
-from stvg._host import frozen_forward as capture008
 
 
 def storage_forward(original, namespace):
@@ -49,8 +48,3 @@ def frozen_attention_storage(model):
     finally:
         for cls, original in saved.items():
             cls.forward = original
-
-
-def frozen_forward(model, frames, row):
-    with frozen_attention_storage(model):
-        return capture008(model, frames, row)

@@ -1,6 +1,5 @@
 """Small tensor utilities; no metrics, labels, or experiment selection."""
 
-import hashlib
 import torch
 
 
@@ -28,29 +27,3 @@ def floating32(value):
         return tuple(floating32(v) for v in value)
     return value
 
-
-def sha256(path):
-    digest = hashlib.sha256()
-    with open(path, "rb") as handle:
-        for block in iter(lambda: handle.read(1024 * 1024), b""):
-            digest.update(block)
-    return digest.hexdigest()
-
-
-def state_hash(state):
-    digest = hashlib.sha256()
-    for name, value in sorted(state.items()):
-        digest.update(name.encode())
-        digest.update(value.detach().cpu().contiguous().numpy().tobytes())
-    return digest.hexdigest()
-
-
-class ParameterState:
-    def state(self):
-        return {n: p.detach().clone() for n, p in self.named}
-
-    def restore(self, state):
-        with torch.no_grad():
-            for name, param in self.named:
-                param.copy_(state[name].to(param))
-                param.grad = None

@@ -1,6 +1,5 @@
 import torch
 
-import torch.nn.functional as F
 
 def native_view_indices(z):
     if z.ndim != 3 or z.shape[0] != 1 or z.shape[-1] != 2:
@@ -25,19 +24,3 @@ def prediction(logits, boxes, records, ids):
     return dict(logits=z, boxes=boxes.detach().cpu().clone(),
                 indices=extent, physical_interval=[ids[extent[0]], ids[extent[1]] + 1],
                 raw_offset_indices=raw, raw_physical_intervals=intervals)
-
-def xyxy(boxes):
-    cx, cy, w, h = boxes.unbind(-1)
-    return torch.stack((cx - .5 * w, cy - .5 * h,
-                        cx + .5 * w, cy + .5 * h), -1)
-
-def generalized_iou(pred, target):
-    p, t = xyxy(pred), xyxy(target)
-    lt, rb = torch.maximum(p[..., :2], t[..., :2]), torch.minimum(p[..., 2:], t[..., 2:])
-    inter = (rb - lt).clamp(min=0).prod(-1)
-    pa = (p[..., 2:] - p[..., :2]).clamp(min=0).prod(-1)
-    ta = (t[..., 2:] - t[..., :2]).clamp(min=0).prod(-1)
-    union = (pa + ta - inter).clamp(min=1e-7)
-    enclosing = (torch.maximum(p[..., 2:], t[..., 2:])
-                 - torch.minimum(p[..., :2], t[..., :2])).clamp(min=0).prod(-1).clamp(min=1e-7)
-    return inter / union - (enclosing - union) / enclosing

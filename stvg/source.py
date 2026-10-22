@@ -9,7 +9,6 @@ import sys
 
 import torch
 
-from stvg._visual import frozen_forward as capture011
 
 
 @contextmanager
@@ -34,9 +33,3 @@ def transient_native_masks(model):
             assert original.cache_info().currsize == 0
         gc.collect()
         torch.cuda.empty_cache()
-
-
-@torch.no_grad()
-def frozen_forward(model, frames, row):
-    with transient_native_masks(model):
-        return capture011(model, frames, row)

@@ -1,7 +1,8 @@
-"""Single ReferDINO ERef initialization and complete-box fixed inference.
+"""Single main method: native224 Global6, complete-box propagation and original MBR/DP.
 
-Strong remains the known temporal reference. Native224 and one tube-guided
-cached temporal replay are explicit modes; no parameter adaptation occurs.
+The original native224 capture, CPU hidden export and frozen full-batch head
+preserve the active full queue's computation. No adaptation, high-resolution
+branch or alternative temporal readout is reachable from this module.
 """
 import gc,json,time
 import numpy as np
@@ -37,9 +38,8 @@ class BoxFixedPredictor:
         meta.update(initialization_gamma=gamma,unscaled_delta=meta['delta'],delta=(gamma*np.array(meta['delta'])).tolist())
         return {**cache,'E':E,'initialization':meta}
     @torch.no_grad()
-    def capture(self,frames,frame_ids,metadata,parses=None,*,temporal_mode=None,export_replay=False,teacher_override=None):
-        mode=temporal_mode or self.config.get('temporal_mode','strong')
-        if mode not in ('strong','native224','tube_replay'):raise ValueError('Unknown temporal mode')
+    def capture(self,frames,frame_ids,metadata,parses=None,*,teacher_override=None):
+        if self.config.get('temporal_mode','global6')!='global6':raise ValueError('Only the fixed Global6 main method is supported')
         self.check();begin=time.perf_counter();tick=begin
         if self.source is None:self.source=load_source(self.config)
         source_load=time.perf_counter()-tick;tick=time.perf_counter()
@@ -64,25 +64,10 @@ class BoxFixedPredictor:
         tick=time.perf_counter();U,q=mass_table(probabilities(recs,logits));assert U==list(frame_ids)
         native_interval=final_mbr(U,q)['interval'];positions=observation_positions(U,native['indices'])
         intervals={'Native':native_interval};posterior={'Native':q};replay=None
-        if mode=='tube_replay'or export_replay:
-            from .tube_replay import cache_temporal
-            replay=cache_temporal(model,base,recs,U)
-        layers=None
-        if mode=='strong':
-            layers=[model.temp_embed(h).detach().cpu()for h in base.temporal_inputs]
-            assert all(torch.equal(x[-1],z)for x,z in zip(layers,logits))
-            lq=[mass_table(probabilities(recs,[x[k]for x in layers]))[1]for k in range(6)]
+        from .temporal_hidden import cache_temporal
+        replay=cache_temporal(model,base,recs,U)
         costs['native_time_postprocess_seconds']=time.perf_counter()-tick
         del batch,base;gc.collect();torch.cuda.empty_cache()
-        if mode=='strong':
-            from .temporal_capture import frozen_temporal_forward
-            from .inputs import resolution
-            tick=time.perf_counter()
-            with resolution(448):batch,hrrecs,hr=frozen_temporal_forward(model,frames,row,audit=False)
-            hu,hq=mass_table(probabilities(hrrecs,detached(hr.zero['logits'],'cpu')));assert hu==U
-            strong=.5*hq+.5*np.mean(lq,axis=0);intervals['Strong']=final_mbr(U,strong)['interval'];posterior['Strong']=strong
-            torch.cuda.synchronize();costs['Source448_seconds']=time.perf_counter()-tick;costs['Source448_calls']=2
-            del batch,hr,layers
         tick=time.perf_counter();model.cpu();gc.collect();torch.cuda.empty_cache();costs['Source_to_CPU_seconds']=time.perf_counter()-tick;tick=time.perf_counter()
         if teacher_override is not None:
             teacher=teacher_override
@@ -95,31 +80,27 @@ class BoxFixedPredictor:
         if not teacher.get('nested_mask_all_false'):raise ValueError('Teacher padding geometry requires an explicit crop mapping')
         costs.update(ReferDINO=teacher.get('cost',{}),ReferDINO_load_seconds=teacher.get('model_load_seconds',0.),ReferDINO_query_forwards=teacher.get('query_forwards',1),ReferDINO_cache_hit=teacher.get('cache_hit',False),expert_instances=1)
         cache=dict(Source=src.numpy(),frame_ids=U,planned_positions=positions,spatial_inputs=spatial,teacher_native=teacher,intervals=intervals,posterior=posterior,
-            temporal_cache=replay,records=recs,cost=costs,GT_read=False)
+            native_hidden=replay,records=recs,cost=costs,GT_read=False)
         tick=time.perf_counter();cache=self.initialize_cached(cache);costs['ERef_seconds']=time.perf_counter()-tick
         tick=time.perf_counter();evidence=SourceEvidence.from_capture(spatial,U,positions,teacher['native_mask_logits'],teacher['input_shape'][-2:],selected_query=teacher['selected_query'])
         cache['evidence']=evidence;cache['geometry']=build_geometry(evidence,cache['E'],teacher['boxes']);costs['evidence_seconds']=time.perf_counter()-tick
         costs['capture_wall_seconds']=time.perf_counter()-begin;return cache
     @torch.no_grad()
-    def finish(self,cache,temporal_mode=None,*,permuted=False):
-        mode=temporal_mode or self.config.get('temporal_mode','strong');geometry=cache['geometry'];cost={};begin=time.perf_counter();aux=None;replay=None
-        if mode=='strong':interval=cache['intervals']['Strong'];posterior=cache['posterior']['Strong']
-        elif mode=='native224':interval=cache['intervals']['Native'];posterior=cache['posterior']['Native']
-        elif mode=='tube_replay':
-            if cache['temporal_cache']is None:raise ValueError('tube_replay requires actual native temporal inputs captured during this forward')
-            from .tube_replay import replay_temporal
-            tick=time.perf_counter();aux=evidence_dp(geometry.for_full_timeline());cost['auxiliary_DP_seconds']=time.perf_counter()-tick
-            replay=replay_temporal(self.source,cache['temporal_cache'],aux['final'],geometry.temporal_reliability(),alpha=.5,permuted=permuted)
-            cost.update(replay['cost']);interval=replay['interval'];posterior=replay['posterior'];cost['auxiliary_DP_score']=aux['score']
-        else:raise ValueError('Unknown temporal mode')
-        tick=time.perf_counter();spatial=evidence_dp(geometry.for_interval(interval));cost['final_DP_seconds']=time.perf_counter()-tick
-        cost.update(finish_wall_seconds=time.perf_counter()-begin,actual_updates=0,extra_decoder_calls=cost.get('extra_decoder_calls',0))
+    def finish(self,cache):
+        from .global6 import read_logits,posterior as global_posterior
+        begin=time.perf_counter();head=self.source.temp_embed
+        tick=time.perf_counter();head.cuda();torch.cuda.synchronize();head_to_gpu=time.perf_counter()-tick
+        offsets=cache['native_hidden']['offsets']
+        try:logits,head_cost=read_logits(head,[v['hidden']for v in offsets],[v['native_logits']for v in offsets])
+        finally:head.cpu()
+        tick=time.perf_counter();q=global_posterior(cache['records'],logits,cache['frame_ids'])
+        interval=final_mbr(cache['frame_ids'],q)['interval'];posterior_seconds=time.perf_counter()-tick
+        tick=time.perf_counter();spatial=evidence_dp(cache['geometry'].for_interval(interval));dp_seconds=time.perf_counter()-tick
+        cost=dict(finish_wall_seconds=time.perf_counter()-begin,head_to_GPU_seconds=head_to_gpu,head=head_cost,posterior_seconds=posterior_seconds,final_DP_seconds=dp_seconds,actual_updates=0,extra_decoder_calls=0)
         return dict(Source=np.asarray(cache['Source']),E_Ref=np.asarray(cache['E']),BoxFixed=spatial['final'].numpy(),boxes=spatial['final'].numpy(),interval=list(interval),
-            intervals={**cache['intervals'],'Selected':list(interval)},posterior=posterior,spatial=spatial,temporal_mode=mode,permuted=permuted,
-            auxiliary=aux,temporal_audit=replay,positions8=list(cache['planned_positions']),cost=cost,capture_cost=cache['cost'],initialization=cache['initialization'],GT_read=False)
+            intervals={**cache['intervals'],'Global6':list(interval),'Selected':list(interval)},posterior=q,spatial=spatial,temporal_mode='global6',positions8=list(cache['planned_positions']),cost=cost,capture_cost=cache['cost'],initialization=cache['initialization'],GT_read=False)
     def predict(self,frames,frame_ids,metadata,key=None,*,temporal_mode=None):
-        mode=temporal_mode or self.config.get('temporal_mode','strong')
-        cache=self.capture(frames,frame_ids,metadata,temporal_mode=mode,export_replay=mode=='tube_replay')
-        return self.finish(cache,mode)
+        if temporal_mode not in (None,'global6'):raise ValueError('Only the fixed Global6 main method is supported')
+        return self.finish(self.capture(frames,frame_ids,metadata))
 
 Predictor=BoxFixedPredictor
