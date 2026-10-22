@@ -206,3 +206,28 @@ and private qualitative review. Old full already complete; v3 paused338 never re
 Frozen TA paper implementation/protocol published at5b943d5524b0b69c12830e3575f73ceb8ca3b024
 on main/research;436files/34,844,204bytes/whole tree and archive ancestry verified.
 Queue remains running, no new paper result completion claimed.
+
+2026-10-22 — TA paper HC1902/227 fully sealed/scored; score55.41s,15216
+official/dense checks max1.33e-15; Source/Full reproduce old published outputs.
+OursS v26.8147 vsSource24.9948,Full26.7597; Full−NativeTemporal−.0550pp,CI
+crosses0. Both local propagation (+.4680pp Full−NoLocal) and path selection
+(+.2779pp Full−Independent) core CIs positive; all signed/severe retained.
+No result-based parameter changes.48runtime+434provider files unchanged.
+Vid worker4124023/start223882623 is the planned next segment; HC scorer receipt
+complete, controller retains child record until planned wait. Full package not done;
+cost/qualitative/publication await both domains.
+[HC stage record](../results/tastvg_paper_v1/hc2/STATUS.md).
+
+2026-10-22 — Read-only historical temporal adaptation audit:17 Git source/evidence
+objects and4 preserved reports inspected;1118 saved-scalar identities checked
+(max2.22e-16), no new model/head forward, fit, expert, RGB or GT scoring. Separate
+no-update decoder damage, feedback calibration, failure to absorb useful direct
+feedback, old positive temporal-head/Temporal-Lite results and development-scale
+non-replication. DSE/T3AL interface prerequisites are not a local reproduction claim.
+Current compact full caches lack head-input hidden; old HC64 replay caches preserve
+six-layer hidden. Four sample schemas are receipt-bound (Vid not yet domain-sealed).
+No old actionness teacher, external time expert or unaligned cosine loss is promoted.
+48 runtime/434 provider hashes and active plan/process identity unchanged; Vid
+progressed during the audit. HC stage is complete, full paper package still running.
+[Historical audit](temporal_adaptation_audit.md) and
+[saved scalar checks](../results/temporal_adaptation_audit_v1/SAVED_SCALAR_AUDIT.json).
