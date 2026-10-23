@@ -26,3 +26,10 @@ The full collector optionally saves propagated-mask candidates for the fixed ran
 The reusable feedback interface requires spatially supported native local representations and explicit native temporal candidates/priors, with coordinate/time adapters. Feature dimensions and class vocabularies are unrestricted. Only the TA adapter has been verified; cross-backbone effectiveness is untested.
 
 Latest user decision after complete dual-domain results: the measured current method is accepted and the initial Source+0.9 pp per-direction threshold is no longer a work blocker. Original HC point-estimate pass and Vid target_not_met remain unchanged in saved acceptance records. No retuning follows. Current research focus is attribution controls that separate direct expert observations, shared calibration, spatial processing and temporal feedback.
+
+
+## 2026-10-24: matched TTA384 complete; CG CPU interface preparation
+
+Matched temporal LN Entropy and RGBbrightness*.8 PhotoConsistency finished384episodes/3840updates/16896extraTimeDecoder calls/384newaugmentedSource/0expert; all384sealed before768officialdensechecksmax1.22e-15. AllSource arrays/metrics and reset traces exact; all384arrays/traces/photo contexts readbackSHA. Confirm128/domain Entropy-Source vHC-.217783/Vid-.448877pp (VidCI[-1.043200,-.006582]); PhotoConsistency-.034903/+.037199pp CIbothcross0. Bothobjectivesdecrease384/384, not evidenceof universalTTAfailure; restrictedfinalpasstimeLN, sourceboxes fixed, not canonicalTent/CoTTA. Allscreen/confirm signed, severet/v/uniononce, timegroups, costs public. Mainuntouched. GenuinejointKbudget startedafterTTAexit; shiftsnext,CGlast.
+
+CGpreparation verified58officialsource/configbytes againstpinnedHengLan/CGSTVGf062d84 and2officialweighthashes. SixCPUinterfacegroups: originaltestsampling10fixtures, nativeMAP3fixtures/posteriornumericreference, singlegridpoolmathbyteexact, evaldeadGTreadbypass/restoration. NoCGmodelconstructed/forward/GPU. PlannedCGnative420/singlegrid/nativeMAP plusSourceMBR control distinguishesreadout; archivedCG224/448/6layeradapterisnotreused. Realcheckpointbridge/inference/scoringstillpendingAFTERallTA.
