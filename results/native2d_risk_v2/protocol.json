@@ -1,0 +1,50 @@
+{
+  "schema": "native2d_risk_v2",
+  "configs": {
+    "K16_B25": [
+      16,
+      0.25
+    ],
+    "K16_B50": [
+      16,
+      0.5
+    ],
+    "K16_B100": [
+      16,
+      1.0
+    ],
+    "K64_B25": [
+      64,
+      0.25
+    ],
+    "K64_B50": [
+      64,
+      0.5
+    ],
+    "K64_B100": [
+      64,
+      1.0
+    ]
+  },
+  "code": {
+    "studies/native2d_risk_v2/score.py": "d01dada73a9fed9ec2bb63c4c5153468ce5e4587cae378dcef0794bf142527ad",
+    "studies/native2d_risk_v2/core.py": "35c8f99975607bb0810e1c0d7fed7c1ac89143413d5fccce9c1f8547d0d52232",
+    "studies/native2d_risk_v2/run.py": "900711adc5a647156652830aca84b2643ec70d0e1c61783c5ece085279edfa69"
+  },
+  "authorization": "Latest user explicitly requests Native2D tuning to reduce severely harmed sample fraction rather than maximize mean, promote Native2D and run NEWfull; old full pausedHC401 with immutable bindings. No experts/observations/training/newbackbone.",
+  "fixed": "prefusion projected2D/input/time/q0/1.5fulltimeBoxFixed/centerL2/cosinekernel/ONEupdate/originalMBR/DP/evidence8/seed20260920",
+  "budget": {
+    "dev_queries": 192,
+    "candidates": 6,
+    "confirm_queries": 64,
+    "max_GPU_seconds": 1800,
+    "new_expert": 0,
+    "new_observations": 0,
+    "new_training": 0
+  },
+  "selection": "Dev96parents/direction exposed, all1152candidateoutputs seal before CPUlabels. Risk query= t OR completev drops>5pp vsG6, counted ONCE. Eligible: EACHdirection mean t andv >=G6-.1pp, completev>=Native2D16-.5pp and meancompletev>Source. Minimize lexicographic(maxdirection severe fraction,mean severe fraction,macro worst10percent mean of max(0,-delta_t_G6,-delta_v_G6),negative macrocompletev); tie prefer smaller deviation from16/1. ONE sharedpair. If noneeligible use16/1 as disclosedfallback, no fake pass.",
+  "confirmation": "Source-onlySHA fixes new32parents/direction BEFOREdevscore, ZEROparentoverlapwithall192dev. Historical originalfull/othermethod exposure disclosed. Freeze selectedpair then ONEconfirm64 seal beforeCPUlabels. Accept risk-reduction claim only if union severe count<=Native2D16 EACHdirection and lower acrossboth plus EACH t/v>=Native2D16-.5pp. No reselection. Deploy selectedpair if confirmationguardpasses (even equalrisk, marked noimprovement); otherwise predeclaredfallbackNative2D16/1. User explicitly selectsNative2D asengineeringmain; scientificfailures preserved, notpermissiontopicknewconfig.",
+  "exposure": "Previous v1 failedmeanprotection with K64beta.25: HCcompletev-2.176pp despite severe5->0 and Vid3->1. That confirmation is NOW EXPOSED development, never treated as validation again. Same sixconfigs, no gridexpansion; one FINAL extra32parents/direction fixed before this stage score. Previously96/direction Native2D outcomes exposed; remaining Source/othermethod outcomes historically exposed. Newcandidate-specific fixedrecheck NOTuntouchedtest. No full-result selection.",
+  "GT_in_inference": false,
+  "fingerprint": "cc741e2f8943d73652a2022da1d86b3c3d75cf33e13e3db4b705a5bc22e47c97"
+}
