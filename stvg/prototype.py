@@ -1,7 +1,10 @@
-"""Frozen class-free RegionKernel, one round, common-mean shrinkage16."""
+"""Frozen class-free RegionKernel, one round, common-mean Native2D shrinkage (frozen configuration)."""
 import numpy as np
 from threadpoolctl import threadpool_limits
-KAPPA=16.0
+import json
+from pathlib import Path
+_CFG=json.loads((Path(__file__).resolve().parents[1]/'configs/default.json').read_text())['temporal']
+KAPPA=float(_CFG['kappa']); BETA=float(_CFG.get('beta',1.))
 def membership(q):
  return np.diag(np.cumsum(np.cumsum(q,axis=0)[:,::-1],axis=1)[:,::-1]).copy()
 
@@ -16,7 +19,7 @@ def unit(x):
     norm = np.linalg.norm(x, axis=1, keepdims=True)
     return np.divide(x, norm, out=np.zeros_like(x), where=norm > 0)
 
-def evidence(features, q0):
+def evidence(features, q0, kappa=KAPPA):
     """K=(1+cos)/2 after fitting-fold centering. One estimate, no fitted head.
 
     Positive/negative weighted kernel means are shrunk to the same fitting-fold
@@ -35,8 +38,8 @@ def evidence(features, q0):
         kernel = np.clip((1 + b @ a.T) / 2, 0, 1)
         mu = kernel.mean(1)
         wp, wn = w[fit], 1 - w[fit]
-        plus = (kernel @ wp + KAPPA * mu) / (wp.sum() + KAPPA)
-        minus = (kernel @ wn + KAPPA * mu) / (wn.sum() + KAPPA)
+        plus = (kernel @ wp + kappa * mu) / (wp.sum() + kappa)
+        minus = (kernel @ wn + kappa * mu) / (wn.sum() + kappa)
         zero = np.all(a == 0) or wp.sum() == 0 or wn.sum() == 0
         if not zero:
             result[~fit] = np.log(np.maximum(plus, 1e-12) / np.maximum(minus, 1e-12))
@@ -46,8 +49,8 @@ def evidence(features, q0):
     return result, stats
 
 
-def one_step(features,q0):
+def one_step(features,q0,*,kappa=KAPPA,beta=BETA):
  with threadpool_limits(limits=1,user_api='blas'):
-  L,stats=evidence(features,q0)
- S=inclusive_scores(L);q=update(q0,S)
- return q,dict(L=L,S=S,prototypes=stats,kappa=16,rounds=1)
+  L,stats=evidence(features,q0,kappa)
+ S=beta*inclusive_scores(L);q=update(q0,S)
+ return q,dict(L=L,S=S,prototypes=stats,kappa=kappa,beta=beta,rounds=1)

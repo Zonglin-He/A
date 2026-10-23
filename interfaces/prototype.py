@@ -5,7 +5,7 @@ folds are NOT independent evidence/validation. No learned state or optimizer.
 """
 import numpy as np
 from threadpoolctl import threadpool_limits
-KAPPA=16.0
+from stvg.prototype import KAPPA,BETA
 def unit(x):
     norm = np.linalg.norm(x, axis=1, keepdims=True)
     return np.divide(x, norm, out=np.zeros_like(x), where=norm > 0)
@@ -48,4 +48,4 @@ def feedback(features,temporal,folds=None):
     if len(features)!=len(temporal.times):raise ValueError('Explicit physical-time alignment required')
     with threadpool_limits(limits=1,user_api='blas'):
         L,stats=evidence(features,temporal.soft_membership(),folds)
-    return temporal.revise(L),dict(L=L,prototypes=stats,kappa=16,rounds=1)
+    return temporal.revise(BETA*L),dict(L=L,prototypes=stats,kappa=KAPPA,beta=BETA,rounds=1)

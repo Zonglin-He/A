@@ -1,50 +1,15 @@
-# Selected main method: BoxFixed + RegionKernel
+# Only maintained method: BoxFixed + Native2D
 
-Latest direct user decision2026-10-23: ACCEPT the exact additionalHC32/Vid32 tradeoff
-and freeze the generic class-free RegionKernel for NEW full evaluation. HCvsK16
-+t.1639/v.0676pp; Vid -t1.0688/v.5542pp, time8wins17harms, severe4vs1. Scientific
-qualification stays FALSE. Engineering selection is authorized; no further approval
-or retuning. Main checkout stvg-general, controller tools/full.py, independentCPU
-scorer tools/full_score.py, run outputs/region_kernel_full_v2.
+User explicitly authorizes risk-prioritized finite Native2D calibration, then promotion and NEW complete dual-domain evaluation. Read docs/method.md, docs/history.md, docs/archive.md and current plan/state before actions. Only native2d profile; no old method registration or restart. All signed/severe/failed qualifications and historical target exposure must remain explicit.
 
-Read docs/method.md, docs/history.md and docs/archive.md before edits. Sole profile
-region_kernel: unchanged Global6q0; same fulltimeBoxFixed context1.5; area-pooled
-original full-caption fused motion memory; opposite-offset centering/L2; K=(1+cos)/2;
-common-mean kernel shrinkage16; ONEq0 update; original physical MBR and spatialDP.
-No ASA classifier or TTS/actionness score is read by this extra feedback. The frozen
-originalSource architecture still uses its native ASA/TTS; do not claim ablation.
-No otherbackbone/MLLM validation, newexpert/observation, optimizer, training, 448/320,
-secondround, controlpromotion or parameter scan. Same singleReferDINO eight anchors.
+Spatial complete-box propagation/DP/observed.5guard.1link.25 and one ReferDINO eight observations stay fixed. No new expert/observation, training, optimizer, actionness feedback, other backbone, 448/320 or post-full tuning. Original frozen Source keeps its architecture. Generic interface does not establish cross-backbone/MLLM effectiveness.
 
-Full HC1902/227->Vid10303/732. Source/E/Global6/eightpositions must reproduce prior
-sealedofficialfull perquery. Use exact-bound completefeatures320 or oldgeometry;
-missing expert evidence fails without newexpertforward. Full/newFull-time spatial
-ablations are recomputed for this method, never imported from K16 asnewoutputs.
-Source/SharedInit/Global6 reuse is disclosed; NativeTemporal=OursS.
+Local stvg-general frozen fusionHC401, stvg-k16 frozen41/HC320, stvg-mainline frozen48/paperHC1902Vid1373 and stvg-opd frozen434/completed full are read-only archives. Never pull/reset/rename/delete/modify their bound files or resume their queues. New native2d_full_v1 owns independent plan/fingerprint; no mixed outputs. Fused pooled content cannot be reused as Native2D. Source/SharedInit/Global6/eight positions must match official archived predictions per query.
 
-stvg-k16 preserves frozen41code and pausedHC320/Vid0. stvg-mainline preserves48code
-and pausedpaperHC1902/Vid1373. stvg-opd preserves434code and completed originalfull.
-Never pull/reset/rename/delete/change their bindings or resume any oldqueue.
-Newfull owns its new fingerprint. Runtimebound files may not change during execution.
-Engineering repair requires originalsource/log/prediction/failure preservation,
-ownedPID/startticks actual exit, bitwise compatibility/newplan; no hashwaiver.
+256 exact Native2D feature caches may be reused after binding/regression; missing representation can rerun only original Source224. Existing content-bound expert evidence is reused; missing teacher hardfails, no new teacher call. New Full and its spatial ablations recomputed at its own times. NativeTemporal=OursS alias. Domain complete seal before independent CPU fixed official labels; HCscore can overlap VidGPU.
 
-Complete-domain seal precedes independentCPU fixedofficiallabels. HCscorer may overlap
-VidGPU. Publish all signs, failed qualifications, severe tails, parentclusterCIs,
-observed/unobserved support, module/stage/extent/distance and real per-worker costs.
-No full-result parameter selection. Cost panels retain original approved16parents/
-direction,3repeats afterwarmup/no crossqueryreuse; no newexpert model or anchors.
-Private qualitative originals/features/query/GTcoordinates/weights/masks stay private.
-Archivecheck->snapshot->check. Publish to Zonglin-He/A main+research freshCAS andverify
-ALL remote tree/files/bytes/hash/ancestors. Original negatives and pre-general tree
-remain archived. Completion is actualseal/score/cost/qualitative/publication receipts,
-not merely plan creation. Same heartbeat monitors actualPID/startticks/lock/resources
-and stays quiet when unchanged; no newagent/chat/automation.
+Monitor real /proc PID/startticks/tree/gpu.lock/progress/log/actual query timing/resources and per-worker caches. Healthy/unchanged quiet. Failure preserve code/log/predictions/failedstate, verify all owned processes exit then same-plan resume, no hash waiver or duplicate launch. Completion requires both scored, fair costs, private qualitative review, all signed/severe/parentclusterCI/observed/unobserved/stage/extent/distance, archivecheck snapshot check, publication freshCAS main+research and ALL remote tree/files/bytes/hash/ancestors verification. Save receipt then complete_published and pause same heartbeat. No new agents/chats/automations.
 
-Latest userauthorized ONLY boundedNative2Dkappa4/16/64study is COMPLETE; devretained16 andoncefixedconfirmdidnotestablishbetterparameters. STOPsearch, no reselection/featurepromotion. Fullstilloriginalfusedmotionfp09acb7fd; onlysameplanresumeafterHC293preservation. Allsigns at results/local_visual_tune_v2/ANALYSIS.md.
+LATEST finalfull acceptance from user: EACHdirection queryequal meantIoU must be >= Source+.9pp. acceptance.json is an independent post-calibration requirement, not a frozenplan/code edit or guaranteed outcome. FinalfixedconfirmationHC+4.5712/Vid+1.4185 passes locally; devHC+.8366 isbelow. Ifcompletefullfails, report targetUNMET and do not label methodvalidated or retune onfull.
 
-
-Latest2026-10-23 user explicitly selects Native2D as sole maintainedmain, requests finite risk-prioritized tuning and a NEW full, and removal of old executablemethods from maintained local/GitHub main/research. Original fused full preserved pausedHC401/Vid0, all401 receipt/prediction/capture hashes verified,0unbound, oldcontroller1406442/start229168928 andworker1406817/start229169334 exited; no oldqueue resume. New maintained checkout stvg-native2d; thisstvg-general stays immutable runtime/evidencearchive.
-Native2D riskv1: sixfixedsharedconfigs kappa16/64 x beta.25/.5/1, exposeddev64parents/direction; SourceSHA fixednew32/direction. Devselected64/.25 riskHC12->1/Vid7->1; confirmationrisk5->0/3->1 butHCv-2.176pp andt-2.729 vsNative16 failmeanprotection. ScientificqualificationFALSE, predeclaredfallback16/1 retained in originaldecision. Newv2 uses SAMEsixconfiggrid, treats v1confirmationexplicitlyasdevelopment,96parents/direction; locks FINALnew32/direction withzerooverlap. No expandedparametergrid, no further stage afterv2. Devselected64/1: HCsevere17/96->8/96, Vid10/96->6/96, fullv-.3982/-.3599pp vsNative16. V2confirmationpending; notuntouchedtest. Allsigned/severe andfirstfailurewillbepublished, no newexpert/observe/training. Sourcebridgeinnewcheckout4queries8calls cold/cachehit passed allfeature/Source/nativeqexact,48CPUchecks. Old41/48/434 andfusedboundsourceunchanged.
-
-Native2D finalv2 fixedconfirmation64 completed. Devwinner64/1 reduces severeG6 unionHC3/32->1/32,Vid6/32->3/32 butHCtime-1.9834/fullv-.8690pp fails originalmean guard. OriginalDECISION/fallback16 intact. SeparateMAIN_SELECTION retains predeclareddevwinner64/1 foruser-requestedrisk/mean engineeringtradeoff; no statisticalpass or newparam afterconfirmation. Allsearchstops. New stvg-native2d isONLYmaintainedentry; oldmethods andthiscompletebroadtree archivedpre-native2d. Newfullfp2b6f14508e0d568d2d10b9d640cf4c979e6f68572b62ec1b8522f1fbed7a29e2 actuallyrunning after48CPUchecks/4query8Sourcebridge and256cachedbitwise regressions. Frozenfusion401 preserved; no oldqueue resumes. UserlatestSource+.9pp meantIoU requiredEACHdirection forfinalfullacceptance, separateACCEPTANCE; fixedconfirmHC+4.5712/Vid+1.4185 butdevHC+.8366below. Fullpending,noguarantee/nofulltuning.
+Current run is native2d_full_v2 (notv1), fp8f56292b25008519f4255de0b9465740036c06af274effadc172b417d4bc58e6, identicalκ64/beta1 andspatial. Exactappearanceprefix onlywith boundprior+geometry; missinggeometry fullSource. V1frozen_source_snapshot/69migratedbytes retained, neverresumev1throughnewcode. 256mathregression compatiblyreused andnewprefixGPU4queryproof; old69same-methodcostmustappearONCE as its own finalcostsegment, notnewv2compute/notomitted. Decode/load/cachedcost separate; no deployment-speedclaimfromprefixtime.

@@ -1,33 +1,13 @@
-# BoxFixed with class-free target-region prototype feedback
+# BoxFixed + Native2D
 
-The frozen spatial method uses one ReferDINO and eight original observations,
-shared geometric initialization, complete-box propagation and original path DP.
-Observed=.5, guard=.1, link=.25; no spatial parameter changes.
+A frozen native Source proposes an event interval distribution from the original two-offset224, six-layer Global6 old-hull mean. Shared geometric initialization, complete expert-box propagation and path selection use the SAME ReferDINO/eight observation positions and observed.5/guard.1/link.25.
 
-The temporal prior is the original Global6 two native224 offsets/six layers with
-old hull mean and original physical-time MBR. Construct a full-time BoxFixed
-auxiliary trajectory independently of the predicted event interval. Expand each
-frame box width/height by1.5, and fractionally area-average the original fused motion
-visual memory grid before TimeDecoder. The actual TA adapter outputs256dimensions.
-The full caption is already fused; text tokens are excluded from spatial pooling.
-No RGB crop/re-encoding, extra classifier, query fitting or network training.
+The temporal feedback reads original input_proj(appearance encoder) spatial grid BEFORE textfusion. A hook records actual original ground_encoder videos tensors/masks without replacing any argument/output; its handle is removed in finally. A full-time auxiliary BoxFixed path independent of predicted temporal cropping determines a fixed1.5 context per frame. Fractional-area pooling produces local content vectors with physical time mapping. No RGB crop/re-encoding, separate motion head, word vocabulary/classifier, query optimizer or additional model is required by this feedback. The original frozen Source still uses its native architecture.
 
-For heldout offset, fit the other offset mean, center and unit-normalize frame
-vectors. Kernel K=(1+cos)/2. Originalq0 soft membership weights event/background
-kernel means; shrink both toward unconditional fitting-fold kernel mean with
-kappa16. Use their log ratio as a compatibility score, inclusive interval sum,
-ONE q0-prior update and original MBR. Offsets are dependent; this is not independent
-validation or calibrated event probability. Zero contrast gives exactq0.
+For each offset, the other offset fits the mean; center and L2-normalize vectors, K=(1+cos)/2. Original q0 soft membership seeds event/background kernel prototypes. Both are shrunk toward the fitting-fold unconditional mean with frozen kappa. Apply ONE update qnew(I) proportional q0(I) exp(beta sum inclusive L_t), then original physical MBR and unchanged path DP. Exact zero contrast retains q0. Cross-offset fits share native evidence and are NOT independent validation. The score is compatibility, not calibrated event probability.
 
-This extra feedback does not require a predefined word/action classifier or class
-vocabulary. The originalSource model still runs its native ASA/TTS architecture.
-Only TA-STVG is implemented/tested. Structural portability to other STVG/MLLM feature
-interfaces does not establish their empirical effectiveness. Correct targetlocation
-has NOT shown a reliable advantage over fullgrid/reflected controls; no spatial
-causality or reliable event-recognition claim is established.
+The final kappa/beta are in configs/default.json and the calibration DECISION. Risk tuning minimizes maximum-domain fraction with >5pp time OR full-v decline vsGlobal6, counts a query onlyonce, with mean protection. Allfailedguard, severe and signed outcomes remain. No per-query GT selection, quality rejection or further full-result tuning. See results/native2d_calibration for exact six-config budget, exposure and fixed confirmation.
 
-The exact additional-parent recheck was not qualified: Vid relative toK16 loses
-1.0688pp time and.5542pp completev,8timewins17harms and4severe vs1. The user explicitly
-accepts these exact differences and selects the frozen method for full evaluation.
-Both failed development/recheck qualifications remain intact; this selection does
-not relabel previously exposed data or constitute statistical equivalence.
+Generic features need spatial supports/times, not a prescribed dimension, motion branch or class labels. The temporal adapter separately supplies actual native prior/candidates. Only TA-STVG is implemented/tested; no effectiveness claim for CG/TubeDETR/MLLM and no claim that dropping textfusion is universally harmless. Correct-location superiority over matchedcontrols is unestablished in the prior smallpanel.
+
+Final production: kappa64, beta1, ONEround, context1.5, originalphysicalMBR. The development winner is retained because user prioritizes reduced severe-loss incidence. Fixedconfirmation HCmean guard fails: t-1.9834/fullv-.8690pp relativeNative16, while severeG6 union3->1; Vidsevere6->3/time+.1803/v-.0026. This is an engineeringtradeoff, NOTa retrospective validation pass. The original failedDECISION and independentMAIN_SELECTION both remain public.

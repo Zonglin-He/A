@@ -68,10 +68,10 @@ def resource_guard():
 
 class ResidentSession:
     """An ordered set of independent queries sharing only frozen resources."""
-    def __init__(self, fingerprint, cache_dir=None, visual_cache=None, backbone="tastvg",temporal_mode="region_kernel"):
+    def __init__(self, fingerprint, cache_dir=None, visual_cache=None, backbone="tastvg",temporal_mode="native2d"):
         self.temporal_mode=temporal_mode
         self.fingerprint=fingerprint;self.backbone=backbone
-        if backbone!='tastvg':raise NotImplementedError('Only TA-STVG BoxFixed+RegionKernel is supported')
+        if backbone!='tastvg':raise NotImplementedError('Only TA-STVG BoxFixed+Native2D is supported')
         self.teacher=ResidentTeacher(cache_dir=cache_dir,fingerprint=fingerprint)
         self.predictors={};self.visual_cache=visual_cache;self.decoded=None;self.decode_hits=0;self.decode_misses=0
     def predict(self,record):
@@ -122,7 +122,7 @@ def request_hash(record):
     return hashlib.sha256(canonical(record)).hexdigest()
 
 
-def run(manifest,output,cache_dir=None,resume_hash=None,visual_cache=None,backbone="tastvg",temporal_mode="region_kernel"):
+def run(manifest,output,cache_dir=None,resume_hash=None,visual_cache=None,backbone="tastvg",temporal_mode="native2d"):
     """One manifest; no labels argument, imports, scoring or target selection."""
     rows=[json.loads(s)for s in Path(manifest).read_text().splitlines()if s.strip()]
     if len({r['id']for r in rows})!=len(rows):raise ValueError('Repeated evaluation IDs')
@@ -166,7 +166,7 @@ def main():
     p=argparse.ArgumentParser(description='Resident STVG inference; no labels or scoring')
     p.add_argument('--manifest',required=True);p.add_argument('--output',required=True)
     p.add_argument('--backbone',choices=['tastvg'],default='tastvg')
-    p.add_argument('--temporal',choices=['region_kernel'],default='region_kernel')
+    p.add_argument('--temporal',choices=['native2d'],default='native2d')
     p.add_argument('--teacher-cache');p.add_argument('--resume-hash')
     p.add_argument('--visual-cache-mib',type=int,default=4096)
     args=p.parse_args();setup();lock=lease()

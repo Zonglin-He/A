@@ -1,4 +1,4 @@
-"""Single main method: BoxFixed + Global6 prior + one-round class-free RegionKernel prototypes.
+"""Single main method: BoxFixed + Global6 prior + one-round native local visual RegionKernel prototypes.
 
 The original native224 capture, CPU hidden export and frozen full-batch head
 preserve the active full queue's computation. No network-weight update, high-resolution branch or alternative profile is reachable.
@@ -38,7 +38,7 @@ class BoxFixedPredictor:
         return {**cache,'E':E,'initialization':meta}
     @torch.no_grad()
     def capture(self,frames,frame_ids,metadata,parses=None,*,teacher_override=None):
-        if self.config.get('temporal_mode','region_kernel')!='region_kernel':raise ValueError('Only the frozen region-kernel main method is supported')
+        if self.config.get('temporal_mode','native2d')!='native2d':raise ValueError('Only the frozen region-kernel main method is supported')
         self.check();begin=time.perf_counter();tick=begin
         if self.source is None:self.source=load_source(self.config)
         source_load=time.perf_counter()-tick;tick=time.perf_counter()
@@ -53,7 +53,9 @@ class BoxFixedPredictor:
         def count_time(m,a,kw):calls['time']+=1
         def count_spatial(m,a,kw):calls['spatial']+=1
         hooks=[model.ground_decoder.time_decoder.register_forward_pre_hook(count_time,with_kwargs=True),model.ground_decoder.decoder.register_forward_pre_hook(count_spatial,with_kwargs=True)]
-        try:batch,recs,base=frozen_native_forward(model,frames,row)
+        try:
+            from .representation import observe_native_grid
+            with observe_native_grid(model) as native_grid:batch,recs,base=frozen_native_forward(model,frames,row)
         finally:
             for hook in hooks:hook.remove()
         costs.update(native_time_decoder_calls=calls['time'],native_position_decoder_calls=calls['spatial'])
@@ -79,7 +81,7 @@ class BoxFixedPredictor:
         if not teacher.get('nested_mask_all_false'):raise ValueError('Teacher padding geometry requires an explicit crop mapping')
         costs.update(ReferDINO=teacher.get('cost',{}),ReferDINO_load_seconds=teacher.get('model_load_seconds',0.),ReferDINO_query_forwards=teacher.get('query_forwards',1),ReferDINO_cache_hit=teacher.get('cache_hit',False),expert_instances=1)
         cache=dict(Source=src.numpy(),frame_ids=U,planned_positions=positions,spatial_inputs=spatial,teacher_native=teacher,intervals=intervals,posterior=posterior,
-            native_hidden=replay,records=recs,cost=costs,GT_read=False)
+            native_hidden=replay,native_local_grid=native_grid,records=recs,cost=costs,GT_read=False)
         tick=time.perf_counter();cache=self.initialize_cached(cache);costs['ERef_seconds']=time.perf_counter()-tick
         tick=time.perf_counter();evidence=SourceEvidence.from_capture(spatial,U,positions,teacher['native_mask_logits'],teacher['input_shape'][-2:],selected_query=teacher['selected_query'])
         cache['evidence']=evidence;cache['geometry']=build_geometry(evidence,cache['E'],teacher['boxes']);costs['evidence_seconds']=time.perf_counter()-tick
@@ -103,9 +105,9 @@ class BoxFixedPredictor:
         tick=time.perf_counter();spatial=evidence_dp(cache['geometry'].for_interval(interval));dp_seconds=time.perf_counter()-tick
         cost=dict(region_pooling_seconds=pooling_seconds,prototype_seconds=prototype_seconds,additional_classifier_forwards=0,finish_wall_seconds=time.perf_counter()-begin,head_to_GPU_seconds=head_to_gpu,head=head_cost,posterior_seconds=posterior_seconds,final_DP_seconds=dp_seconds,actual_updates=0,extra_decoder_calls=0)
         return dict(Source=np.asarray(cache['Source']),E_Ref=np.asarray(cache['E']),BoxFixed=spatial['final'].numpy(),boxes=spatial['final'].numpy(),interval=list(interval),
-            intervals={**cache['intervals'],'Global6':list(final_mbr(cache['frame_ids'],q0)['interval']),'Selected':list(interval)},posterior=q,content_features=features,prototype=prototype,spatial=spatial,temporal_mode='region_kernel',positions8=list(cache['planned_positions']),cost=cost,capture_cost=cache['cost'],initialization=cache['initialization'],GT_read=False)
+            intervals={**cache['intervals'],'Global6':list(final_mbr(cache['frame_ids'],q0)['interval']),'Selected':list(interval)},posterior=q,content_features=features,prototype=prototype,spatial=spatial,temporal_mode='native2d',positions8=list(cache['planned_positions']),cost=cost,capture_cost=cache['cost'],initialization=cache['initialization'],GT_read=False)
     def predict(self,frames,frame_ids,metadata,key=None,*,temporal_mode=None):
-        if temporal_mode not in (None,'region_kernel'):raise ValueError('Only the frozen region-kernel main method is supported')
+        if temporal_mode not in (None,'native2d'):raise ValueError('Only the frozen region-kernel main method is supported')
         return self.finish(self.capture(frames,frame_ids,metadata))
 
 Predictor=BoxFixedPredictor

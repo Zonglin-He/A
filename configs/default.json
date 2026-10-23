@@ -1,6 +1,6 @@
 {
-  "method": "BoxFixed-RegionKernel",
-  "seed": 41,
+  "method": "BoxFixed-Native2D",
+  "seed": 20260920,
   "expert_count": 1,
   "spatial": {
     "algorithm": "complete_native_box_fixed_score_exact_DP",
@@ -11,12 +11,13 @@
     "score": ".5 mean_obs(u)+.5 mean_unobs(c*u)+.25 mean_event_edges(cprev*c*L)-.1 mean_all_nodes(G)"
   },
   "temporal": {
-    "default": "region_kernel",
-    "algorithm": "Global6 prior; full-time BoxFixed target context1.5; original full-caption fused motion memory area pooling; opposite-offset centered cosine kernel; common-mean shrinkage16; ONE update; original physical MBR",
+    "default": "native2d",
+    "algorithm": "Global6 prior; fulltime BoxFixed context1.5; native projected appearance before textfusion area pooling; cross-offset cosinekernel commonmean shrink; one calibrated evidence update; original MBR",
     "rounds": 1,
-    "kappa": 16,
+    "kappa": 64,
     "context_scale": 1.5,
-    "network_parameter_updates": 0
+    "network_parameter_updates": 0,
+    "beta": 1.0
   },
   "datasets": {
     "hc2": {
@@ -44,7 +45,7 @@
       },
       "E_calibration_provenance": "source-domain train calibration, frozen before target outcomes",
       "initialization_gamma": 0.5,
-      "temporal_mode": "region_kernel"
+      "temporal_mode": "native2d"
     },
     "vidstg": {
       "dataset": "vidstg",
@@ -71,7 +72,7 @@
       },
       "E_calibration_provenance": "source-domain train calibration, frozen before target outcomes",
       "initialization_gamma": 1.0,
-      "temporal_mode": "region_kernel"
+      "temporal_mode": "native2d"
     }
   }
 }
