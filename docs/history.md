@@ -855,3 +855,75 @@ labels per domain; HCscoring may overlap VidGPU. Allsigned, severev/t, threshold
 timegroups/boundaries, observed/unobserved, parentclusterCI, extent/distance and real
 per-worker cachecosts saved. Runtimecode/config frozen by newplan; no mixedfingerprint.
 Full results are pending; previous study numbers are never labelled newfull results.
+
+2026-10-23 — User authorizes implementation and validation of a class-free temporal
+feedback replacement, with new full conditional on success, then explicitly permits
+stopping K16 full. Original controller441089/start228101113 and HCworker441090/
+start228101554 plus owned descendants were stopped and verified exited. HC320
+prediction/capture/receipt hashes are sealed in private maintenance/k16_pause_general_
+20261023/pause_receipt.json; Vid0. No unbound partial files, originalplan unchanged,
+shared GPU lock released. State is paused_by_user; old heartbeat paused to prevent
+its previous automatic-resume path. No original method or frozen48/434 source change.
+
+Independent general_region_v1 fixes ONE class-free candidate before new metrics:
+actual archived full-caption multimodal memory visual suffix, fractional mean on
+unchanged complete-box fulltime target context1.5; opposite-offset centering/unitnorm,
+nonnegative cosine kernel, q0 soft-membership positive/negative kernel means with
+common-background16 shrink, one q0-prior update and original MBR/DP. No ASA word
+classifier, learned projection, query update, covariance fit, expert/observation,
+model/RGB/GPU forward. Each direction128 existing parents are EXPOSED development.
+Full-grid/reflected/time/position/exact-strength K16/direct/sharpen/no-op controls
+are predeclared, not alternate candidates to promote. All256 predictions seal before
+independentCPU official labels. Original Source/G6/K16 output aliases must be bitwise.
+Six CPU checks passed: scalar reference, feature basis/scale/translation invariance,
+constant exactnative, synthetic event separation, target pool/reflection/fallback
+and opposite-parity fitting weights. No cross-backbone/MLLM success is implied.
+
+general_region_v1 fp8c5300ad26d494a2e9641bfca5bc5a0a5327bcf65aff4ef8009ead2d45d465c8
+completed256 predictions then separateCPUscore:6144official/densechecks max1.55e-15,
+Source/G6/K16q/interval/boxes256exact,0newmodel/GPU/RGB/text/fusion/wordhead/expert/
+observation/training. CPU55.98s prediction+21.47s scoring are research costs.
+HCt+2.6009/v+1.3590pp vsG6,75/36/17timewins/harms/ties,Source short+3.7043/
+long+3.5655; Vidt+.4971/v+.3352,50/44/34,Source short+.7145/long+3.2414.
+Original strict qualificationFALSE: severe timeK16→new10→22HC,9→16Vid;
+severev5→11/3→4. TargetvsFullGrid t+.0528/-.1459CIcrosszero; target/fullgrid
+feedbackcorrmedians.9667/.9321, so no demonstrated spatiallocation-specific time
+benefit. Allsigned/severe/negative controls and postseal cases/ranks are retained.
+OriginalemptyROI fallback flags match ALL256framesets, HC11/Vid783fallbackframes,
+so this is not a newly introduced fallback or reason to skip a query.
+
+User latest steering accepts small declines and prefers the general-method narrative.
+Freeze EXACTcandidate for additional32newparents/direction, excluding expanded128
+and olderHC64/HC32/Vid32 (actual official source-only pool55HC/578Vid), without retuning. New
+prospective engineering criterion permits<=.25pp mean t/v loss vsK16 and <=1extra
+severequery/metric per32; Source/G6meanst/v positive, Source short/long>=-.25pp,
+timewins>=harms. All tails remain explicit; this is not statisticalequivalence,
+independent untouched test, or a retroactive pass for original development.
+Originalrecheckv1 failed before ANYSourceforward/prediction: CPUhelper import hides
+CUDA. Oldcode/plan/log/failure retained and owned546753/start228278565 verified
+exited/lockfree. V2 uses NEWfingerprint, restores caller CUDA visibility BEFOREtorch,
+asserts exactsame64inputSHAselection, samealgorithm/precision/seed/controls/tradeoff.
+The earlier parse-only else732 typo occurred before a plan and is also preserved.
+No oldhash waiver, inference-result migration or full launch occurred.
+
+Recheckv2 correctly restores CUDA and verifies originalSource/E/G6/native/eightpositions
+on its first query, then fails before ANYsavedprediction at the K16comparison:
+numpyaux was passed to the frozen tensor-only helper. Immutablev2source/plan/log/
+failure and owned553721/start228286197 exit/lockfree proof retained. V3 has a separate
+plan/fingerprint, exact64input equality, value-preserving numpy→CPUtensor only for
+the K16comparison, and saves rawSourcecapture before diagnostic readout. No change
+to RegionKernel core/precision/seed/controls/selection/tradeoff, no completedquery
+rerun and no old hash waiver. OriginalSource48/provider434/K16runtime remain frozen.
+
+Fixed additional-parent general_region_recheck_v3 fpcb26b7d2e1085a4d0cef87cca6bd56c9fd412b39741d2a9c7d4d2a9374e33f62
+completed64sealed then separateCPUscore. Source/E/G6/nativeinterval/8positions64bitwise,
+Sourcequeries64/geometryreuse38/rebuild26/K16comparisonASA128/0newexpert/observation/
+training. Worker308.41s+score6.05s researchcosts exclude separatelypreserved aborted
+v2firstSource.1536metricchecksmax1.44e-15. HCt+1.9650/v+.9668ppvsG6,
+vsK16+.1639/+.0676;Source t-.0633,short+.5426/long-.2031. Vidt-.0725/v+.2576
+vsG6,vsK16-1.0688/-.5542;Source t+3.4325,short+.1699/long+6.6950.
+Vid8timewins17harms7ties; severe tK16→new1→4. Revisedsmall-decline screenFALSE;
+originaldevelopment failure unchanged. Correcttarget vsreflectedtimeCInegative in
+BOTHfixedpanels, so no spatiallocation-specific temporalclaim. No controlpromotion,
+tuning orfullstart. Allsigned/severe/CI/cases preserved; exacttradeoffsenttouser.
+K16HC320/Vid0 and olderqueues staypaused pendinglatestexplicitselection.

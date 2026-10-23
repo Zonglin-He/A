@@ -1,5 +1,16 @@
 # Frozen main method: BoxFixed + TargetSemantic K16
 
+Latest user steering (2026-10-23): authorize an isolated class-free target-region
+feature feedback experiment, restart a NEW full only after successful fixed dual-domain
+validation; then explicitly allow stopping current full. K16 is paused_by_user at
+HC320/Vid0, all320 prediction/capture/receipt hashes saved in
+outputs/maintenance/k16_pause_general_20261023/pause_receipt.json, owned processes
+exited and shared lock released. Never automatically resume K16 or any old queue.
+research/general_region_v1 is authorized isolated research, not a deployment mode.
+All256 cache predictions must seal before new independentCPU labels. No new expert,
+observation, model training, other backbone or MLLM experiment; no control promotion
+or unbounded sweep. Existing runtime-bound code/config files stay immutable.
+
 Latest explicit user authorization: freeze the one-round kappa16 candidate as the
 main method, run both official full directions, no further tuning, spatial unchanged,
 retain and publish every positive/negative result, organize local/GitHub sources.

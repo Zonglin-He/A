@@ -13,8 +13,11 @@ observations, no network-weight training, no additional high-resolution branch.
 
 This is the sole main profile; there is no temporal-parameter selection CLI.
 The user explicitly selected it despite a small negative HC short-event recheck.
-All previous failures remain reported. Full evaluation is newly launched under an
-independent fingerprint, not renamed old results or an unseen-test claim.
+All previous failures remain reported. Its independent full evaluation is now
+**paused by the user at HC320/1902, Vid0/10303** with all completed outputs preserved.
+An isolated class-free region-feature feedback study is authorized; it may replace
+the temporal method only after fixed dual-domain validation succeeds. No full is
+automatically resumed, and no old result is renamed or called an unseen test.
 
 See [method](docs/method.md), [protocol](results/k16_full_v1/protocol.json),
 [compatibility](results/k16_full_v1/REGRESSION.json), [history](docs/history.md),
@@ -48,6 +51,10 @@ claim of fresh deployment speedup.
 [Original Global6 full](results/boxfixed_full_v1/REPORT.md),
 [K16 development/confirmation](results/target_semantic128_shrink_v1/ANALYSIS.md),
 [last failed temporal repair](results/target_semantic_final_v1/ANALYSIS.md).
+[Class-free feature feedback development](results/general_region_v1/ANALYSIS.md)
+is isolated research: both means improve, original severe-tail/location gates fail,
+and the user selected an unchanged candidate for an additional fixed recheck.
+It is not installed in the main inference entrypoint or validated on other models.
 These reports describe their own protocols and exposures, not the new full outcome.
 The entire prior code/evidence tree, including all experiments and negative controls,
 is preserved in [archive/research-pre-k16-20261023](https://github.com/Zonglin-He/A/tree/archive/research-pre-k16-20261023)

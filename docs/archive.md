@@ -1,5 +1,17 @@
 # Research archive and runtime separation
 
+Latest2026-10-23: K16 runtime in sibling stvg-k16 is paused by explicit user request
+atHC320/Vid0; all receipts/predictions/captures and original source bindings remain.
+An isolated class-free prototype study is newly authorized; its original256-query
+development screening failed the severe-tail and Vid matched-control requirements,
+despite positive mean time/v gains. All outcomes are retained in
+[general-region evidence](../results/general_region_v1/ANALYSIS.md).
+After seeing these results the user accepts small declines and selects the exact
+candidate for one fixed additional32-parent-per-direction recheck. This is a new
+engineering tradeoff with historical failures preserved, not a retroactive gate pass.
+No kernel/feature/weight tuning or control promotion is authorized. Original48/434
+and K16 bound code stay immutable; no old queue automatically resumes.
+
 The complete pre-cleanup public tree is preserved at commit
 `c310af5888dca78d6ea7b0a280cb67d209a90337` on
 [archive/research-pre-mainline-20261022](https://github.com/Zonglin-He/A/tree/archive/research-pre-mainline-20261022).
