@@ -1,0 +1,33 @@
+{
+  "status": "passed",
+  "queries": 320,
+  "counts": {
+    "hc2": 160,
+    "vidstg": 160
+  },
+  "features_posterior_interval_finalboxes_bitwise": true,
+  "Source_Global6_frameids_positions_bitwise": true,
+  "unchanged_spatial_and_Source": [
+    "spatial.py",
+    "initialization.py",
+    "evidence.py",
+    "native.py",
+    "temporal.py",
+    "temporal_hidden.py",
+    "global6.py",
+    "positions.py",
+    "source_loader.py"
+  ],
+  "new_GPU_model_expert_GT_calls": 0,
+  "GT_read": false,
+  "seconds": 91.58968284772709,
+  "plan_sha256": "1e1923b94cd85d8522d11f39e79c370205ce1674fbae32556a9c2f7ba46b0f2a",
+  "code_sha256": "7445c9a4678e92bc8a827c962599fa1605273976819020e9b3d22a7e1a1136fe",
+  "regression_adapter": {
+    "path": "tools/promotion_adapter.py",
+    "sha256": "b8809e92aa7dc7650c3f6a7493036b3b84a054c4afb52e45b89e39f43a9cf7d4",
+    "reason": "Raw recheck Vid captures lack native_interval. Reconstruct metadata by EXACT existing production native-logit fallback, no time/space score change; failed original regression preserved.",
+    "inference_plan_unchanged": true,
+    "original_source_hash_preserved": true
+  }
+}

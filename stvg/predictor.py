@@ -1,4 +1,4 @@
-"""Single main method: BoxFixed + Global6 prior + one-round kappa16 semantic prototypes.
+"""Single main method: BoxFixed + Global6 prior + one-round class-free RegionKernel prototypes.
 
 The original native224 capture, CPU hidden export and frozen full-batch head
 preserve the active full queue's computation. No network-weight update, high-resolution branch or alternative profile is reachable.
@@ -38,7 +38,7 @@ class BoxFixedPredictor:
         return {**cache,'E':E,'initialization':meta}
     @torch.no_grad()
     def capture(self,frames,frame_ids,metadata,parses=None,*,teacher_override=None):
-        if self.config.get('temporal_mode','target_k16')!='target_k16':raise ValueError('Only the frozen target-k16 main method is supported')
+        if self.config.get('temporal_mode','region_kernel')!='region_kernel':raise ValueError('Only the frozen region-kernel main method is supported')
         self.check();begin=time.perf_counter();tick=begin
         if self.source is None:self.source=load_source(self.config)
         source_load=time.perf_counter()-tick;tick=time.perf_counter()
@@ -95,19 +95,17 @@ class BoxFixedPredictor:
         tick=time.perf_counter();q=global_posterior(cache['records'],logits,cache['frame_ids'])
         q0=q
         aux=evidence_dp(cache['geometry'].for_interval([cache['frame_ids'][0],cache['frame_ids'][-1]+1]))['final']
-        from .semantic import target_semantics
+        from .representation import extract
         from .prototype import one_step
-        tick=time.perf_counter();semantic_head=self.source.t_spatial_clas.cuda()
-        try:p,_,support,_=target_semantics(self.source,cache,aux)
-        finally:semantic_head.cpu()
-        semantic_seconds=time.perf_counter()-tick;tick=time.perf_counter();q,prototype=one_step(p,q0);prototype_seconds=time.perf_counter()-tick
+        tick=time.perf_counter();features,support=extract(cache,aux.numpy())
+        pooling_seconds=time.perf_counter()-tick;tick=time.perf_counter();q,prototype=one_step(features,q0);prototype_seconds=time.perf_counter()-tick
         interval=final_mbr(cache['frame_ids'],q)['interval'];posterior_seconds=time.perf_counter()-tick
         tick=time.perf_counter();spatial=evidence_dp(cache['geometry'].for_interval(interval));dp_seconds=time.perf_counter()-tick
-        cost=dict(semantic_head_seconds=semantic_seconds,prototype_seconds=prototype_seconds,semantic_head_forwards=2,finish_wall_seconds=time.perf_counter()-begin,head_to_GPU_seconds=head_to_gpu,head=head_cost,posterior_seconds=posterior_seconds,final_DP_seconds=dp_seconds,actual_updates=0,extra_decoder_calls=0)
+        cost=dict(region_pooling_seconds=pooling_seconds,prototype_seconds=prototype_seconds,additional_classifier_forwards=0,finish_wall_seconds=time.perf_counter()-begin,head_to_GPU_seconds=head_to_gpu,head=head_cost,posterior_seconds=posterior_seconds,final_DP_seconds=dp_seconds,actual_updates=0,extra_decoder_calls=0)
         return dict(Source=np.asarray(cache['Source']),E_Ref=np.asarray(cache['E']),BoxFixed=spatial['final'].numpy(),boxes=spatial['final'].numpy(),interval=list(interval),
-            intervals={**cache['intervals'],'Global6':list(final_mbr(cache['frame_ids'],q0)['interval']),'Selected':list(interval)},posterior=q,semantic_p=p,prototype=prototype,spatial=spatial,temporal_mode='target_k16',positions8=list(cache['planned_positions']),cost=cost,capture_cost=cache['cost'],initialization=cache['initialization'],GT_read=False)
+            intervals={**cache['intervals'],'Global6':list(final_mbr(cache['frame_ids'],q0)['interval']),'Selected':list(interval)},posterior=q,content_features=features,prototype=prototype,spatial=spatial,temporal_mode='region_kernel',positions8=list(cache['planned_positions']),cost=cost,capture_cost=cache['cost'],initialization=cache['initialization'],GT_read=False)
     def predict(self,frames,frame_ids,metadata,key=None,*,temporal_mode=None):
-        if temporal_mode not in (None,'target_k16'):raise ValueError('Only the frozen target-k16 main method is supported')
+        if temporal_mode not in (None,'region_kernel'):raise ValueError('Only the frozen region-kernel main method is supported')
         return self.finish(self.capture(frames,frame_ids,metadata))
 
 Predictor=BoxFixedPredictor

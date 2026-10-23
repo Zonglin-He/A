@@ -14,8 +14,8 @@ def files():
 
 def inventory():return {str(p.relative_to(ROOT)):hashlib.sha256(p.read_bytes()).hexdigest()for p in files()}
 def check():
- cfg=json.loads((ROOT/'configs/default.json').read_text());assert cfg['temporal']['default']=='target_k16'
- assert all(d['temporal_mode']=='target_k16'for d in cfg['datasets'].values())
+ cfg=json.loads((ROOT/'configs/default.json').read_text());assert cfg['temporal']['default']=='region_kernel'
+ assert all(d['temporal_mode']=='region_kernel'for d in cfg['datasets'].values())
  assert not (ROOT/'scripts').exists()
  assert {p.name for p in (ROOT/'configs').glob('*.json')}=={'default.json'}
  for p in (ROOT/'stvg').glob('*.py'):

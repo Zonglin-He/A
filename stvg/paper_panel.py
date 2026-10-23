@@ -62,7 +62,7 @@ def derive(cap):
     assert len(pos)==8 and len(set(pos))==8 and np.array_equal(ids,np.asarray(g.frame_ids))
     q0=posterior(cap['records'],cap['logits'],ids)
     from stvg.prototype import one_step
-    q,_=one_step(cap['semantic_p'],q0)
+    q,_=one_step(cap['content_features'],q0)
     global_interval=final_mbr(ids,q0)['interval']
     global_spatial=evidence_dp(g.for_interval(global_interval))
     full_interval=final_mbr(ids,q)['interval'];native_interval=list(map(int,cap['native_interval']))

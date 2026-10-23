@@ -1,9 +1,11 @@
-"""Frozen K16 dual-domain full evaluation; old queues are read-only evidence."""
+"""Frozen RegionKernel dual-domain full evaluation; old queues are read-only evidence."""
 import argparse,fcntl,gc,hashlib,json,os,subprocess,sys,time,traceback
+os.environ.update(OMP_NUM_THREADS='1',OPENBLAS_NUM_THREADS='1',MKL_NUM_THREADS='1')
 from pathlib import Path
 ROOT=Path(__file__).resolve().parents[1];sys.path.insert(0,str(ROOT))
 OLD=ROOT.parent/'stvg-mainline';PROVIDER=ROOT.parent/'stvg-opd'
-RUN=ROOT/'outputs/k16_full_v1';PUBLIC=ROOT/'results/k16_full_v1'
+K16=ROOT.parent/'stvg-k16'
+RUN=ROOT/'outputs/region_kernel_full_v2';PUBLIC=ROOT/'results/region_kernel_full_v2'
 
 def sha(path):
     h=hashlib.sha256()
@@ -25,7 +27,7 @@ def binding(row,runtime):
 
 def check(assets=False):
     p=read(RUN/'plan.json');assert p['fingerprint']==hashlib.sha256(json.dumps({k:v for k,v in p.items() if k!='fingerprint'},sort_keys=True).encode()).hexdigest()
-    for root,k in [(ROOT,'code'),(OLD,'old_paper_code'),(PROVIDER,'provider_sources')]:
+    for root,k in [(ROOT,'code'),(K16,'k16_code'),(OLD,'old_paper_code'),(PROVIDER,'provider_sources')]:
         for f,h in p[k].items():assert sha(root/f)==h,(k,f)
     for f,h in p['input_bindings'].items():assert sha(f)==h,f
     if assets:
@@ -37,12 +39,21 @@ def prepare():
     paper=read(OLD/'outputs/tastvg_paper_v1/plan.json');old=read(PROVIDER/'outputs/boxfixed_full_v1/plan.json')
     assert read(OLD/'outputs/tastvg_paper_v1/state.json')['status']=='paused_by_user'
     assert read(PROVIDER/'outputs/boxfixed_full_v1/state.json')['status']=='complete_published'
-    before=read(OLD/'outputs/target_semantic128_collect_v3/plan.json');sealed=read(OLD/'outputs/target_semantic128_collect_v3/sealed.json');reuse={ds:{} for ds in paper['jobs']};bound={}
-    for file in [OLD/'outputs/tastvg_paper_v1/plan.json',OLD/'outputs/target_semantic128_collect_v3/plan.json',OLD/'outputs/target_semantic128_collect_v3/sealed.json',OLD/'outputs/target_semantic128_shrink_v1/plan.json',OLD/'outputs/target_semantic128_shrink_v1/sealed.json',PROVIDER/'outputs/boxfixed_full_v1/capture_index.json']:
+    assert read(K16/'outputs/k16_full_v1/state.json')['status']=='paused_by_user'
+    kp=read(K16/'outputs/k16_full_v1/plan.json');reuse={ds:{} for ds in paper['jobs']};bound={};sem={}
+    for file in [OLD/'outputs/tastvg_paper_v1/plan.json',K16/'outputs/k16_full_v1/plan.json',K16/'outputs/maintenance/k16_pause_general_20261023/pause_receipt.json',PROVIDER/'outputs/boxfixed_full_v1/capture_index.json']:
         bound[str(file)]=sha(file)
-    sem={}
-    for item in before['items']:
-        e=sealed['files'][item['alias']];sem[(item['dataset'],item['row']['id'])]=dict(semantic_path=str(OLD/'outputs/target_semantic128_collect_v3'/e['path']),semantic_sha256=e['sha256'],path=str(OLD/'outputs/target_semantic128_collect_v3'/e['capture_path']),sha256=e['capture_sha256'],input_binding=binding(item['row'],paper['provider_runtime_fingerprint']))
+    source=OLD/'outputs/target_semantic128_collect_v3';ss=read(source/'sealed.json')
+    for stage in ['general_region_v1','general_region_recheck_v3']:
+        folder=K16/'outputs'/stage;study=read(folder/'plan.json');sealed=read(folder/'sealed.json')
+        for file in [folder/'plan.json',folder/'sealed.json']:bound[str(file)]=sha(file)
+        for item in study['items']:
+            e=sealed['files'][item['alias']]
+            if stage=='general_region_v1':
+                raw=ss['files'][item['alias']];path=source/raw['capture_path'];capture_sha=raw['capture_sha256']
+            else:path=folder/e['capture_path'];capture_sha=e['capture_sha256']
+            sem[item['dataset'],item['row']['id']]=dict(path=str(path),sha256=capture_sha,feature_path=str(folder/e['trace_path']),feature_sha256=e['trace_sha256'],reference_prediction=str(folder/e['path']),reference_prediction_sha256=e['sha256'],input_binding=binding(item['row'],paper['provider_runtime_fingerprint']))
+    assert len(sem)==320
     ix=read(PROVIDER/'outputs/boxfixed_full_v1/capture_index.json')['files']
     for ds,j in paper['jobs'].items():
         bound[str(PROVIDER/j['manifest'])]=j['manifest_sha256'];sealpath=PROVIDER/'outputs/boxfixed_full_v1'/ds/'sealed.json';bound[str(sealpath)]=sha(sealpath)
@@ -50,7 +61,7 @@ def prepare():
         for r in records:
             key=r['id'];b=binding(r,paper['provider_runtime_fingerprint'])
             if (ds,key) in sem:
-                e=sem[ds,key];assert e['input_binding']==b;reuse[ds][key]=dict(kind='complete_semantic',**e);continue
+                e=sem[ds,key];assert e['input_binding']==b;reuse[ds][key]=dict(kind='complete_features',**e);continue
             oldbase=OLD/'outputs/tastvg_paper_v1'/ds;rp=oldbase/'receipts'/(key+'.json')
             if rp.exists():
                 rec=read(rp);assert rec['input_binding']==b;reuse[ds][key]=dict(kind='geometry',path=str(oldbase/'captures'/(key+'.pt')),sha256=rec['capture_sha256'],input_binding=b)
@@ -58,15 +69,15 @@ def prepare():
                 e=ix[b];reuse[ds][key]=dict(kind='geometry',path=str(PROVIDER/e['path']),sha256=e['sha256'],input_binding=b)
     atomic(RUN/'reuse_index.json',reuse);bound[str(RUN/'reuse_index.json')]=sha(RUN/'reuse_index.json')
     code={str(f.relative_to(ROOT)):sha(f) for f in [*sorted((ROOT/'stvg').glob('*.py')),*sorted((ROOT/'tools').glob('full*.py')),ROOT/'configs/default.json']}
-    p=dict(schema='k16_full_v1',method='BoxFixed-TargetSemantic-K16',authorization='Latest user explicitly freezes kappa16 for full, no further tuning, unchanged spatial branch, preserve/publish all signs, promote as main method. This accepts prior failed short-event gate as an engineering choice; validation is NOT reclassified passed.',validation_passed=False,prior_Source_short_gate_failed_preserved=True,code=code,old_paper_code=paper['code'],provider_sources=old['sources'],assets=old['assets'],jobs=paper['jobs'],provider_runtime_fingerprint=paper['provider_runtime_fingerprint'],input_bindings=bound,
-      profile=dict(temporal='Global6 original two native224 offsets/sixlayer old hull mean -> samefulltimeBoxFixed target1.5 -> originalASAwordhead -> one oppositeoffset Bernoulli prototype update with commonmean kappa16 -> originalphysical MBR',rounds=1,kappa=16,context=1.5,observed=.5,guard=.1,link=.25,seed=20260920),
+    p=dict(schema='region_kernel_full_v2',method='BoxFixed-RegionKernel',authorization='User explicitly ACCEPTS fixed newHC32/Vid32 tradeoff: HCvsK16 +.1639t/+.0676vpp, Vid -1.0688t/-.5542vpp, Vid8wins17harms4severe vsK161severe. Freeze EXACT RegionKernel and launch NEWfull, spatial unchanged, no more tuning. Both failed qualifications remain FALSE; engineering selection is NOT scientific validation.',validation_passed=False,prior_Source_short_gate_failed_preserved=True,code=code,k16_code=kp['code'],old_paper_code=paper['code'],provider_sources=old['sources'],assets=old['assets'],jobs=paper['jobs'],provider_runtime_fingerprint=paper['provider_runtime_fingerprint'],input_bindings=bound,
+      profile=dict(temporal='Global6 original two native224 offsets/sixlayer old hull mean -> samefulltimeBoxFixed target1.5 -> original fullcaption fused motion memory fractional mean -> oppositeoffset center+unitnorm -> nonnegative cosine kernel prototypes/commonmean16 -> ONEq0prior update -> originalphysical MBR',rounds=1,kappa=16,context=1.5,observed=.5,guard=.1,link=.25,seed=20260920),
       expert='same original ReferDINO/eightpositions, old contentbound masks/boxes only; cache miss hardfails and cannot call expert',new_expert_calls=0,new_training=0,no_more_tuning=True,GT_in_inference=False,
       main_arms=['Source','Interpolation','OursS','Global6','Full'],ablation_arms=['Full','NoLocal','Independent','OursS'],mechanism_arms=['Source','SharedInit','OursS'],
-      aliases='Source/SharedInit/Global6 must exactly match originalfull. NativeTemporal=OursS. Full is NEWK16, never alias oldGlobal6. Space ablations fix NEWFull time. No w/oSharedInit.',
-      reuse='Exact input/weights/seed/precision semantic caches256 first, oldpapergeometry3275 or completeindex geometry next. Otherwise originalSource capture with cachedteacher, originalGlobal6/Source/E/positions verified before accepting newK16. No old cost counted as new. RGB512MiB/actualtensorVisual4GiB, counters perPID/startticks.',
+      aliases='Source/SharedInit/Global6 must exactly match originalfull. NativeTemporal=OursS. Full is NEWRegionKernel, never alias oldGlobal6. Space ablations fix NEWFull time. No w/oSharedInit.',
+      reuse='Exact input/model/evidence-bound completefeature caches320 first, compatible oldpaper or completeindex geometry next. Otherwise originalSource capture with cachedteacher, originalGlobal6/Source/E/positions verified before accepting newRegionKernel. No old cost counted as new. RGB512MiB/actualtensorVisual4GiB, counters perPID/startticks.',
       exposure='Official full and development panels exposed. Target-label development and failed rechecks disclosed. User-directed frozen final evaluation, not unseen-test or statistical equivalence claim.',
       output='All12205officialqueries, no skips. Seal each complete domain before independentCPUfixedlabels. Queryequal means, parentcluster10000seed20261022; thresholds/time/errors/observed+unobservedspace/all signed/severe/extent/distance. No full-result selection.',
-      post_full='After both scored: independent fair end-to-end timing16parents/domain3repeats withoutcrossqueryreuse, source/8expert/spatial/semantic/prototype/DP components; private continuous-frame review. No parameter changes. Publish all signs, no rawmedia/caption/GTcoords/weights/features.',bootstrap='parentcluster10000seed20261022',tta_audit_sha256=sha(OLD/'outputs/tastvg_paper_v1/tta_audit.json'))
+      post_full='After both scored: independent fair end-to-end timing16parents/domain3repeats withoutcrossqueryreuse, source/8expert/spatial/regionpool/prototype/DP components; private continuous-frame review. No parameter changes. Publish all signs, no rawmedia/caption/GTcoords/weights/features.',bootstrap='parentcluster10000seed20261022',tta_audit_sha256=sha(OLD/'outputs/tastvg_paper_v1/tta_audit.json'))
     p['fingerprint']=hashlib.sha256(json.dumps(p,sort_keys=True).encode()).hexdigest();atomic(RUN/'plan.json',p)
     for f in code:
         q=RUN/'source_snapshot'/f;q.parent.mkdir(parents=True,exist_ok=True);q.write_bytes((ROOT/f).read_bytes())
@@ -88,7 +99,7 @@ def worker(ds):
     from stvg.global6 import read_logits,posterior
     from stvg.temporal import probabilities,mass_table,final_mbr
     from stvg.spatial import SpatialGeometry,evidence_dp
-    from stvg.semantic import target_semantics
+    from stvg.representation import extract
     from stvg.paper_panel import derive
     from stvg.query import QuerySubjectParser
     from collections import OrderedDict
@@ -115,7 +126,7 @@ def worker(ds):
     p=check();setup();gpu=lease();dest=RUN/ds;atomic(dest/'worker.json',dict(**identity(),fingerprint=p['fingerprint']))
     rows=[json.loads(s) for s in (PROVIDER/p['jobs'][ds]['manifest']).read_text().splitlines()];index=read(RUN/'reuse_index.json')[ds]
     oldseal=read(PROVIDER/'outputs/boxfixed_full_v1'/ds/'sealed.json');teacher=CacheOnly(fingerprint=p['provider_runtime_fingerprint']);model=Predictor(ds,check=resource_guard);model.teacher_service=teacher
-    rgb=RGB();visual=VisualCache(4*2**30);files={};recent=[];start=time.perf_counter();counts=dict(semantic_reuse=0,geometry_reuse=0,new_geometry=0,Source_queries=0,semantic_head_forwards=0,new_expert=0)
+    rgb=RGB();visual=VisualCache(4*2**30);files={};recent=[];start=time.perf_counter();counts=dict(feature_reuse=0,geometry_reuse=0,new_geometry=0,Source_queries=0,additional_classifier_forwards=0,new_expert=0)
     try:
         for i,r in enumerate(rows):
             resource_guard();key=r['id'];b=binding(r,p['provider_runtime_fingerprint']);rp=dest/'receipts'/(key+'.json');npz=dest/'predictions'/(key+'.npz');cp=dest/'captures'/(key+'.pt')
@@ -128,8 +139,8 @@ def worker(ds):
             if entry:
                 assert entry['input_binding']==b and sha(entry['path'])==entry['sha256'];cap=torch.load(entry['path'],weights_only=False,map_location='cpu')
                 g=SpatialGeometry.__new__(SpatialGeometry);g.__dict__.update(cap['geometry']);ids=cap['frame_ids'];positions=cap.get('positions8',cap.get('planned_positions'))
-                if entry['kind']=='complete_semantic':
-                    assert sha(entry['semantic_path'])==entry['semantic_sha256'];oldsem=torch.load(entry['semantic_path'],weights_only=False,map_location='cpu');sem=oldsem['semantic_p']['TargetContext'];counts['semantic_reuse']+=1
+                if entry['kind']=='complete_features':
+                    assert sha(entry['feature_path'])==entry['feature_sha256'];oldtrace=torch.load(entry['feature_path'],weights_only=False,map_location='cpu');sem=oldtrace['features']['RegionKernel'];counts['feature_reuse']+=1;del oldtrace
                 else:counts['geometry_reuse']+=1
                 if sem is None:
                     tc=cap.get('temporal_cache',cap.get('native_hidden'))
@@ -158,19 +169,19 @@ def worker(ds):
                 U,nq=mass_table(probabilities(cap['records'],[x[-1] for x in cap['logits']]));assert U==ids;cap['native_interval']=final_mbr(ids,nq)['interval']
             cap['positions8']=positions
             if sem is None:
-                aux=evidence_dp(g.for_interval([ids[0],ids[-1]+1]))['final'];model.source.t_spatial_clas.cuda();st=time.perf_counter()
-                try:sem,_,_,_=target_semantics(model.source,cap,aux)
-                finally:model.source.t_spatial_clas.cpu()
-                cost['semantic_head_seconds']=time.perf_counter()-st;counts['semantic_head_forwards']+=2
-            cap['semantic_p']=sem;st=time.perf_counter();arr,trace=derive(cap);cost['panel_seconds']=time.perf_counter()-st
+                aux=evidence_dp(g.for_interval([ids[0],ids[-1]+1]))['final'].numpy();st=time.perf_counter()
+                sem,pool_stats=extract(cap,aux)
+                cost['region_pooling_seconds']=time.perf_counter()-st
+                cost['region_pooling_fallback_frames']=sum(x['fallback']for x in pool_stats)
+            cap['content_features']=sem;st=time.perf_counter();arr,trace=derive(cap);cost['panel_seconds']=time.perf_counter()-st
             oldentry=oldseal['files'][key];oldpath=PROVIDER/'outputs/boxfixed_full_v1'/ds/oldentry['path'];assert sha(oldpath)==oldentry['sha256']
             with np.load(oldpath,allow_pickle=False) as z:
                 for a,c in [('Source','Source'),('SharedInit','E_Ref'),('Global6','Final')]:assert np.array_equal(arr[a],z[c]),(key,a)
                 for a,c in [('Source_interval','Source_interval'),('Global6_interval','Final_interval'),('positions8','positions8')]:assert np.array_equal(arr[a],z[c]),(key,a)
-            # Preserve compact geometry+semantic evidence, not the large decoder-memory cache.
-            compact={k:cap[k] for k in ['Source','E','frame_ids','positions8','records','logits','geometry','native_interval','semantic_p','GT_read']}
+            # Preserve compact geometry+pooled content features, not the large decoder-memory cache.
+            compact={k:cap[k] for k in ['Source','E','frame_ids','positions8','records','logits','geometry','native_interval','content_features','GT_read']}
             npz.parent.mkdir(parents=True,exist_ok=True);cp.parent.mkdir(parents=True,exist_ok=True);torch.save(compact,cp);np.savez_compressed(npz,**arr)
-            after=visual.stats();rec=dict(fingerprint=p['fingerprint'],input_binding=b,prediction_sha256=sha(npz),capture_sha256=sha(cp),worker=identity(),old_Source_E_Global6_bitwise=True,old_prediction_sha256=oldentry['sha256'],reuse_kind=entry['kind'] if entry else 'new_geometry_cached_teacher',complete_capture_reused=bool(entry and entry['kind']=='complete_semantic'),Source_recomputed=counts['Source_queries']-source_before,expert_forwards=0,capture_cost=cost,query_wall_seconds=time.perf_counter()-tick,visual_delta={k:after[k]-vc[k] for k in ['hits','misses']},RGB_delta=dict(hits=rgb.hits-rc[0],misses=rgb.misses-rc[1]),GT_read=False,trace=trace)
+            after=visual.stats();rec=dict(fingerprint=p['fingerprint'],input_binding=b,prediction_sha256=sha(npz),capture_sha256=sha(cp),worker=identity(),old_Source_E_Global6_bitwise=True,old_prediction_sha256=oldentry['sha256'],reuse_kind=entry['kind'] if entry else 'new_geometry_cached_teacher',complete_capture_reused=bool(entry and entry['kind']=='complete_features'),Source_recomputed=counts['Source_queries']-source_before,expert_forwards=0,capture_cost=cost,query_wall_seconds=time.perf_counter()-tick,visual_delta={k:after[k]-vc[k] for k in ['hits','misses']},RGB_delta=dict(hits=rgb.hits-rc[0],misses=rgb.misses-rc[1]),GT_read=False,trace=trace)
             atomic(rp,rec);files[key]=dict(path=str(npz.relative_to(dest)),sha256=sha(npz),receipt_path=str(rp.relative_to(dest)),receipt_sha256=sha(rp),capture_path=str(cp.relative_to(dest)),capture_sha256=sha(cp))
             recent.append(rec['query_wall_seconds']);recent=recent[-100:];atomic(dest/'progress.json',dict(completed=i+1,total=len(rows),recent_seconds=float(np.mean(recent)),ETA_seconds=float(np.mean(recent))*(len(rows)-i-1),counts=counts,visual=after,**identity(),GT_read=False))
             print(json.dumps(dict(dataset=ds,completed=i+1,total=len(rows),seconds=rec['query_wall_seconds'],reuse=rec['reuse_kind'])),flush=True)
@@ -179,7 +190,7 @@ def worker(ds):
     finally:teacher.close();gpu.close()
 
 def controller(resume=False):
-    p=check(True);assert read(RUN/'regression.json')['status']=='passed';lock=(RUN/'controller.lock').open('a');fcntl.flock(lock,fcntl.LOCK_EX|fcntl.LOCK_NB)
+    p=check(True);proof=read(RUN/'regression.json');assert proof['status']=='passed' and proof['plan_sha256']==sha(RUN/'plan.json') and proof['queries']==320;lock=(RUN/'controller.lock').open('a');fcntl.flock(lock,fcntl.LOCK_EX|fcntl.LOCK_NB)
     old=read(RUN/'state.json');assert old['fingerprint']==p['fingerprint'];assert old['status']=='prepared' or (resume and old['status']!='complete_published' and not alive(old.get('controller',{'pid':-1,'startticks':-1})) and not any(alive(x) for x in old.get('children',[])))
     state=dict(status='running',fingerprint=p['fingerprint'],controller=identity(),children=[],jobs={});atomic(RUN/'state.json',state);pending=[]
     def launch(script,args,role,env=None):

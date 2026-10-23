@@ -1,0 +1,1 @@
+Prepared-only promotion regression failed on first HC query posterior array_equal under default multithread BLAS. No GPU/Source/expert/final full prediction or labels. Originalpreparedplan/source snapshot retained. Fix numerical thread contract before newplan; never waive originalhash.

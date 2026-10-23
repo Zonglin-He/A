@@ -1,49 +1,42 @@
-# Frozen main method: BoxFixed + TargetSemantic K16
+# Selected main method: BoxFixed + RegionKernel
 
-Latest user steering (2026-10-23): authorize an isolated class-free target-region
-feature feedback experiment, restart a NEW full only after successful fixed dual-domain
-validation; then explicitly allow stopping current full. K16 is paused_by_user at
-HC320/Vid0, all320 prediction/capture/receipt hashes saved in
-outputs/maintenance/k16_pause_general_20261023/pause_receipt.json, owned processes
-exited and shared lock released. Never automatically resume K16 or any old queue.
-research/general_region_v1 is authorized isolated research, not a deployment mode.
-All256 cache predictions must seal before new independentCPU labels. No new expert,
-observation, model training, other backbone or MLLM experiment; no control promotion
-or unbounded sweep. Existing runtime-bound code/config files stay immutable.
+Latest direct user decision2026-10-23: ACCEPT the exact additionalHC32/Vid32 tradeoff
+and freeze the generic class-free RegionKernel for NEW full evaluation. HCvsK16
++t.1639/v.0676pp; Vid -t1.0688/v.5542pp, time8wins17harms, severe4vs1. Scientific
+qualification stays FALSE. Engineering selection is authorized; no further approval
+or retuning. Main checkout stvg-general, controller tools/full.py, independentCPU
+scorer tools/full_score.py, run outputs/region_kernel_full_v2.
 
-Latest explicit user authorization: freeze the one-round kappa16 candidate as the
-main method, run both official full directions, no further tuning, spatial unchanged,
-retain and publish every positive/negative result, organize local/GitHub sources.
-This is an explicit engineering choice despite failed prior HC short-event gate;
-never rewrite validation_passed as true or claim the test data is unexposed.
+Read docs/method.md, docs/history.md and docs/archive.md before edits. Sole profile
+region_kernel: unchanged Global6q0; same fulltimeBoxFixed context1.5; area-pooled
+original full-caption fused motion memory; opposite-offset centering/L2; K=(1+cos)/2;
+common-mean kernel shrinkage16; ONEq0 update; original physical MBR and spatialDP.
+No ASA classifier or TTS/actionness score is read by this extra feedback. The frozen
+originalSource architecture still uses its native ASA/TTS; do not claim ablation.
+No otherbackbone/MLLM validation, newexpert/observation, optimizer, training, 448/320,
+secondround, controlpromotion or parameter scan. Same singleReferDINO eight anchors.
 
-Read docs/method.md, docs/history.md and docs/archive.md before edits. The sole public
-profile is configs/default.json target_k16: original Global6 prior, same full-time
-BoxFixed target context1.5, original frozen ASA motion word head, opposite-parity
-Bernoulli prototypes, ONE update with common-mean shrinkage kappa16, original physical
-MBR and unchanged spatial DP/weights/precision/input/eight observations. No beta
-stacking, learnedquery, actionness feedback, second iteration, new teacher, training,
-448/320, otherbackbone, parameter scan or per-query GT choice.
+Full HC1902/227->Vid10303/732. Source/E/Global6/eightpositions must reproduce prior
+sealedofficialfull perquery. Use exact-bound completefeatures320 or oldgeometry;
+missing expert evidence fails without newexpertforward. Full/newFull-time spatial
+ablations are recomputed for this method, never imported from K16 asnewoutputs.
+Source/SharedInit/Global6 reuse is disclosed; NativeTemporal=OursS.
 
-Runtime queue outputs/k16_full_v1 has a new fingerprint; never mix oldpaper or oldfull
-receipts. Controller tools/full.py; independent CPU tools/full_score.py runs only after
-a whole domain seal. Frozen stvg/*.py/config/full*.py must not change while executing.
-Fixes need oldsource/log/prediction preservation, owned-process exit verification,
-bitwise proof and explicit compatible migration or a new plan, never hash waivers.
+stvg-k16 preserves frozen41code and pausedHC320/Vid0. stvg-mainline preserves48code
+and pausedpaperHC1902/Vid1373. stvg-opd preserves434code and completed originalfull.
+Never pull/reset/rename/delete/change their bindings or resume any oldqueue.
+Newfull owns its new fingerprint. Runtimebound files may not change during execution.
+Engineering repair requires originalsource/log/prediction/failure preservation,
+ownedPID/startticks actual exit, bitwise compatibility/newplan; no hashwaiver.
 
-stvg-mainline and stvg-opd sibling directories preserve old frozen48/434 code and
-paused/completed queues. Never pull/reset/rename/delete or resume them. Preserve all
-history including failed controls. The complete pre-promotion tree is archived at
-archive/research-pre-k16-20261023 (b9345a8a753baa969dd8249e22b7b675488dbd10).
-
-Reuse only exact input/model/evidence-bound caches. In this full run no additional
-expert forward is allowed; missing prior evidence must fail. Count cache segments by
-actual PID/startticks, never subtract cumulative counters across workers. CPU scorer
-and next-domain GPU inference may overlap. Source/Global6/SharedInit are verified
-against sealed old official predictions; Full is newK16 and is never oldFinal alias.
-
-Archive checks: python tools/archive.py check, snapshot, check. Publish only explicit
-public source/evidence to Zonglin-He/A main+research with freshCAS and whole-tree
-bytes/hash/ancestor checks. No videos/query/GT coordinates/weights/raw masks/features,
-private plan items or credentials. Completed official results include all signed changes,
-severe time/v losses, parentcluster CIs, observed/unobserved metrics and real costs.
+Complete-domain seal precedes independentCPU fixedofficiallabels. HCscorer may overlap
+VidGPU. Publish all signs, failed qualifications, severe tails, parentclusterCIs,
+observed/unobserved support, module/stage/extent/distance and real per-worker costs.
+No full-result parameter selection. Cost panels retain original approved16parents/
+direction,3repeats afterwarmup/no crossqueryreuse; no newexpert model or anchors.
+Private qualitative originals/features/query/GTcoordinates/weights/masks stay private.
+Archivecheck->snapshot->check. Publish to Zonglin-He/A main+research freshCAS andverify
+ALL remote tree/files/bytes/hash/ancestors. Original negatives and pre-general tree
+remain archived. Completion is actualseal/score/cost/qualitative/publication receipts,
+not merely plan creation. Same heartbeat monitors actualPID/startticks/lock/resources
+and stays quiet when unchanged; no newagent/chat/automation.

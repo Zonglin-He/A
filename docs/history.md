@@ -927,3 +927,30 @@ originaldevelopment failure unchanged. Correcttarget vsreflectedtimeCInegative i
 BOTHfixedpanels, so no spatiallocation-specific temporalclaim. No controlpromotion,
 tuning orfullstart. Allsigned/severe/CI/cases preserved; exacttradeoffsenttouser.
 K16HC320/Vid0 and olderqueues staypaused pendinglatestexplicitselection.
+
+
+2026-10-23 explicit user selection after exact additional32/32 recheck: ACCEPT
+HCvsK16 +.1639t/+.0676vpp, Vid -1.0688t/-.5542vpp, Vid8wins17harms4severe vs1,
+freeze EXACT generic RegionKernel and launch independent full, no further tuning.
+Both original qualification failures remain FALSE and allsigned/severe/controls
+remain public. Maintained root stvg-general; previous stvg-k16 frozen41/HC320/Vid0,
+stvg-mainline48/paperHC1902/Vid1373 and stvg-opd434/completedfull remain intact.
+The entire pre-general public tree fa2805cecef8fa2a929aea1f5755d3102b33d9b0 is
+preserved at archive/research-pre-general-20261023. Production ports exactarea pooling
+and kernel math with CPU320-bitwise feature/q/interval/finalbox proof, unchanged
+spatial/nativeSource files. New outputs/region_kernel_full_v2 uses separateplan/
+fingerprint; allofficial12205 covered, exactcompatiblecache reused,0newexpert or
+training, whole-domain seal then independentCPUlabels. Newfull outputs pending;
+no oldK16 or Global6 Final is falsely labelled newFull. Correct-region advantage
+over matchedcontrols and otherbackbone/MLLM empirical generality remain unproven.
+
+Promotion prepared-v1 regression fails before any formalprediction: first-query posterior isnotbitwise under defaultmultithread BLAS. Originalplan/source preserved privately and publicFAILURE. Newv2 fixes originalexperiment single-threadBLAS contract (scopedreadout andworkerenv), samealgorithm/parameters/input;320bitwise rerun before anyactualfull. NoGPU/Source/expert/fullprediction/GT in failedpreflight.
+
+Original promotion CPU regression passed288 matchingfeatures/posteriors/finalboxes, then raw Vid recheck capture lacked native_interval metadata. Frozen full worker already reconstructs this field from original native logits. Independent CPU promotion_adapter applies EXACT same existing fallback to regression rawcapture, no inference/Source/core/plan/hash change. Original failure/code/plan preserved;0 formalfullpredictions/GPU/Source/expert/labels.
+
+Production promotion complete:34CPUchecks and all320 feature/q/interval/finalbox
+bitwise regressions passed (160parents/domain;91.59sCPU,0model/expert/labels).
+Independent metadata-only regressionadapter disclosed. Controller actuallylaunched
+for NEW region_kernel_full_v2 fp09acb7fdad7e09fadab6280ac53b85ea91bb41c71ec5f7949976347f95cec6eb.
+Completefeatures320 reuse; HC1742/Vid1427 additional compatiblegeometry. Nooldqueue
+resumed, no fullresult selection. Actualworker/lock/firstprogress proof private.

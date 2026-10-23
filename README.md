@@ -1,63 +1,41 @@
-# BoxFixed + TargetSemantic K16
+# BoxFixed + class-free RegionKernel temporal feedback
 
-The selected TA-STVG method combines sparse-expert complete-box propagation with a
-frozen one-round target-region semantic prototype readout. One ReferDINO, eight
-observations, no network-weight training, no additional high-resolution branch.
+One maintained TA-STVG method: eight observations from one ReferDINO, shared geometric
+initialization, complete-box propagation/path selection, Global6 prior and one-round
+regional representation prototype feedback. Spatial parameters stay unchanged.
 
-1. Original frozen Source224, two offsets, original native process.
-2. Same eight expert observations, initialization and complete-box propagation.
-3. Six-layer Global6 interval prior; auxiliary full-time target trajectory.
-4. Original Source word-semantic head on target context1.5; opposite-offset positive/
-   negative prototypes with fixed common-mean shrinkage **kappa16**, exactly **one** update.
-5. Original physical MBR and unchanged spatial score/DP.
+The extra temporal feedback pools original full-caption fused motion memory within
+the full-time BoxFixed target context1.5; opposite-offset cosine-kernel prototypes
+with common-mean shrinkage16 revise the original posterior once. It requires no
+word-classifier output, new expert, new training or RGB re-encoding. The original
+Source architecture itself retains its native modules.
 
-This is the sole main profile; there is no temporal-parameter selection CLI.
-The user explicitly selected it despite a small negative HC short-event recheck.
-All previous failures remain reported. Its independent full evaluation is now
-**paused by the user at HC320/1902, Vid0/10303** with all completed outputs preserved.
-An isolated class-free region-feature feedback study is authorized; it may replace
-the temporal method only after fixed dual-domain validation succeeds. No full is
-automatically resumed, and no old result is renamed or called an unseen test.
+Use `python -m stvg predict --request REQUEST.json --output PREDICTION.npz`, or
+`python -m stvg evaluate --manifest MANIFEST.jsonl --output OUTPUT`, followed by
+independent offline `python -m stvg score`. The only profile is region_kernel.
+Private checkpoints/data/runtime are not distributed. See [method](docs/method.md),
+[protocol](results/region_kernel_full_v2/protocol.json),
+[320-query compatibility](results/region_kernel_full_v2/REGRESSION.json),
+[history](docs/history.md) and [archive](docs/archive.md).
 
-See [method](docs/method.md), [protocol](results/k16_full_v1/protocol.json),
-[compatibility](results/k16_full_v1/REGRESSION.json), [history](docs/history.md),
-[evaluation](docs/evaluation.md) and [private assets](docs/assets.md).
+The frozen new official full covers HC1902/227parents and Vid10303/732parents,
+query-equal. Its full results are pending. Existing Source/E/Global6 are checked
+bitwise perquery; newFull and Full-time ablations use the selected new time readout.
+Complete domain seals precede independentCPU labels. All signs/severe losses,
+parentcluster intervals, spatial mechanisms and costs will be retained.
 
-## Run
+[Expanded development](results/general_region_v1/ANALYSIS.md) and
+[fixed additional-parent recheck](results/general_region_recheck_v3/ANALYSIS.md)
+retain all positive/negative outcomes and failed qualifications. User selection
+explicitly accepts HCvsK16 +.1639t/+.0676vpp and Vid -1.0688t/-.5542vpp,8timewins/
+17harms/4severe vsK161. This is an engineering choice, not a passed validation.
+No validated targetlocation-specific time advantage or otherbackbone/MLLM result
+is claimed. No further tuning is part of the full evaluation.
 
-Use the dependencies in environment.yml, requirements.txt and requirements-teacher.txt;
-place frozen assets at documented private paths. No data or weights are bundled.
-
-```bash
-python tools/setup.py --prepare --tokenizer /path/to/existing/bert-tokenizer
-python tools/setup.py --build
-python tools/check.py
-python -m stvg predict --request /path/to/request.json --output outputs/example.npz
-python -m stvg evaluate --manifest /path/to/label-free-manifest.jsonl --output outputs/evaluation
-python -m stvg score --manifest /path/to/label-free-manifest.jsonl --labels /path/to/offline-labels.jsonl --predictions outputs/evaluation --output outputs/metrics.json
-```
-
-Official frozen full controller: `python -B tools/full.py run`. It requires a prepared
-content-bound plan and compatibility proof; never resumes an older fingerprint.
-HC1902/227 parents then Vid10303/732 parents. Source/SharedInit/Global6 must match old
-sealed official outputs; K16 Full/new-time spatial ablations are newly generated.
-Each complete domain seals before independent CPU official-label scoring. All signed
-outcomes and severe declines, parent-cluster intervals, time/boundary/space metrics
-and real segmented cache costs are retained. Timing with cached evidence is not a
-claim of fresh deployment speedup.
-
-## Evidence and archive
-
-[Original Global6 full](results/boxfixed_full_v1/REPORT.md),
-[K16 development/confirmation](results/target_semantic128_shrink_v1/ANALYSIS.md),
-[last failed temporal repair](results/target_semantic_final_v1/ANALYSIS.md).
-[Class-free feature feedback development](results/general_region_v1/ANALYSIS.md)
-is isolated research: both means improve, original severe-tail/location gates fail,
-and the user selected an unchanged candidate for an additional fixed recheck.
-It is not installed in the main inference entrypoint or validated on other models.
-These reports describe their own protocols and exposures, not the new full outcome.
-The entire prior code/evidence tree, including all experiments and negative controls,
-is preserved in [archive/research-pre-k16-20261023](https://github.com/Zonglin-He/A/tree/archive/research-pre-k16-20261023)
-and Git ancestry. Main/research retain the single selected deployment entry and historical
-results; old research entry points are archived. No raw videos, queries, GT coordinates,
-weights, masks or features are published.
+Old K16HC320/Vid0, paperHC1902/Vid1373 and original completedfull remain frozen in
+separate local archives. The complete pre-general public tree is preserved at
+[archive/research-pre-general-20261023](https://github.com/Zonglin-He/A/tree/archive/research-pre-general-20261023),
+commitfa2805cecef8fa2a929aea1f5755d3102b33d9b0. Previous pre-K16 and pre-mainline
+archive ancestors remain intact. No private video/query/GTcoordinates/weights/raw
+mask/features are public. Check source/evidence with `python tools/archive.py check`;
+intentional updates use snapshot then check. CPU checks: `python tools/check.py`.
