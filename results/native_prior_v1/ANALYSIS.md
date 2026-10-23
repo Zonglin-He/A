@@ -1,3 +1,5 @@
+> Historical ablation executed before the production switch. Exact executable source and its bound dependencies remain at [pre-switch commit e35aca3e](https://github.com/Zonglin-He/A/tree/e35aca3e2abdcfe743c4042f903f30df8efc1002/studies/native_prior_v1). At execution time Full meant Global6+Native2D; the user subsequently selected NativeFeedback as the new production. All numerical results below are unchanged.
+
 # Native temporal prior + Native2D: fixed cached module ablation
 
 **Conclusion:** Native2D feedback produces positive Source-relative temporal gains without Global6 on this exposed cached panel. Replacing Global6 is not a uniformly equivalent simplification: pooled means are slightly lower than production Full, and HC final32 has a larger paired loss. Production is unchanged.

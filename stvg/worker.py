@@ -113,7 +113,6 @@ class ResidentSession:
 
 def prediction_arrays(out,ids):
     arrays=dict(Source=out['Source'],E_Ref=out['E_Ref'],BoxFixed=out['BoxFixed'],frame_ids=np.asarray(ids),positions8=np.asarray(out['positions8']),Native_interval=np.asarray(out['intervals']['Native']),Selected_interval=np.asarray(out['interval']))
-    arrays['Global6_interval']=np.asarray(out['interval'])
     return arrays
 
 

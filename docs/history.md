@@ -1,3 +1,15 @@
+# Current execution: native prior + Native2D
+
+2026-10-23 latest user explicitly replaces Global6 production with native temporal prior + Native2D, with no retuning and unchanged spatial/eight observations. Old stvg-native2d native2d_full_v2 safely paused HC1442/Vid0: every receipt/prediction/capture SHA checked,0unbound, owned controller1645733/start229404078 and worker1646113/start229404485 exited, shared GPU lock free. Original source snapshots, logs, predictions and manifest preserved in old outputs/maintenance/switch_to_native_prior_20261023.
+
+New maintained checkout stvg-native2d-nativeprior; independent outputs/native2d_nativeprior_full_v1. New Full uses exact native last-layer prior for BOTH seeds and revision; kappa64/beta1/ONEround/context1.5/originaloffsethull/MBR unchanged. Old1442captures reuse only Native2D pools/Source/E/geometry/logits; all new temporal outputs and Full-space ablations are recomputed, never oldFull byte aliases. Source and spatial core are unchanged. Fifty CPU checks passed. The cached native-prior ablation and the HCfixed32 loss are preserved; scientific failures are not rewritten.
+
+Fingerprint: `85f7ff69d6b917b824d3b01e4d12be850d11a2c00f96917438cf9b619f2c3e56`. Full acceptance: Source+.9pp meantIoU EACHdirection, pending complete official scoring. Any failed domain is recorded target_not_met, no full-result tuning.
+
+The dated records below are historical and refer to the prior Global6 version unless explicitly marked native-prior.
+
+---
+
 # Native2D main-method record
 
 2026-10-23 user explicitly chooses Native2D, requests risk-prioritized finite tuning, removal of old methods from maintained local/main/research trees, GitHub publication and a new complete dual-domain run. Earlier fusion and word-head methods, all failures and positive results remain on archive/research-pre-native2d-20261023 and in frozen local evidence directories.
@@ -11,3 +23,5 @@ Newfull actually launched after256CPUbitwise promotion checks(128/domain;69.94s,
 Userasks speed/efficiency: exact original2Dprefix can reuse boundoriginalprior/geometry without redoingSwin/text/fusion/decoder. Fourquery cold/cachehit rawgrid/mask/dtype/pool allbitwise, example Source2.9–3.0s prefix.5–.8s excludingdecode/model-load; notdeploymentclaim. Nativev1paused69allSHA/no-unbound, migrated69prediction/capturebytes andprofileexact to independentnative2d_full_v2. Original256mathregression explicitlycompatible-reused without rerun; rawprefix newGPUproof. Newv2actuallyrunning, fp8f56292b25008519f4255de0b9465740036c06af274effadc172b417d4bc58e6 planSHA1338b7565983e2b45e3201ccb52f9cf03fdb30a40798841ffc92979696c3345c. Include oldsame-method69realcostonce separately, notfalsenewspeed. Nooldmethodresume/no parameterchange/Source+.9ppfullgateunchanged.
 
 2026-10-23 user-authorized cached prior ablation completed: studies/native_prior_v1, fp7d9ca4cbb10b21ba37058c1b9079c7ef21375729d295892fc788b1054b0cb944, all256 sealed before separateCPUlabels. Only native last-layer prior replaces Global6 for seeds+posterior; kappa64/beta1/ONEround/context1.5/space8 unchanged. All256 productionFullq/interval/boxes,Source,Global6 match sealed references bitwise. Descriptive128/domain NativeFeedback-Source HCt+1.2744/v+3.3935pp,Vidt+1.8090/v+4.1882; versusFull HCt-.4958/v-.2723,Vidt-.4294/v-.0871. HCfinal32t-2.9464/v-1.7407vsFull,CIsexclude0; Vidfinal32+.3146/+.1767CIszero. SevereSourceunion NativeFeedback19/21vsFull27/28; severeG6union NativeFeedback23/10vsFull9/9 (alloutof128), baselineexplicit. 1280officialchecksmax1.33e-15,79.32sCPUreplay+13.74sCPUscore,0newmodel/video/expert/GPU. Allsigned/severe/CI/groups/code saved results/native_prior_v1; no selection or productionchange. Existing dev96+final32 areexposed,notnewholdout.
+
+New native-prior full ACTUALLY launched controller1947090/start229647075, worker1947440/start229647482, shared GPU lock owned. PlanSHA5f660cd3390448e8afb75a457dbd8ca170a2729e957cb4bd5ace039113989ad9;50CPUchecks, actual4query/8Sourcecold-cachehit end-to-end proof, all256cached nativeprior/posterior/time/boxes bitwise passed31.37sCPU,0GT/expert. Bridge31.76s research cost notdeploymentlatency. Allold1442pooledcaptures compatible; newFull outputs recomputed. Currentcached-prefix progress is not uncached deployment time. No previousworker resumed or fullresult selection.

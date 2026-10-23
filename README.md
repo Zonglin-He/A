@@ -1,15 +1,17 @@
 # BoxFixed + Native2D
 
-The single maintained method uses eight observations from one ReferDINO, shared geometric initialization, complete-box propagation and path selection. Its temporal feedback aggregates native local appearance BEFORE textfusion, constructs one-round class-free region-kernel prototypes from the frozen native temporal prior, and applies calibrated evidence with the original physical-time MBR.
+The only maintained method uses the frozen model's **native final-layer temporal posterior**, trajectory-guided native appearance features, one-round class-free prototype feedback, and unchanged complete-box propagation/path selection. **Global6 is removed from production.** Original Source two-offset physical hull and MBR remain unchanged.
 
-Only TA-STVG is implemented and tested. Native local representation is an adapter contract; other backbones/MLLM effectiveness is untested. The original Source architecture remains intact. There is no word-class feedback head, external visual encoder, query optimizer, extra expert or training.
+Frozen parameters: kappa64, beta1, ONEround, region context1.5, spatial observed.5/guard.1/link.25, the SAME ReferDINO/eight observations. No word-class feedback head, actionness feedback, extra visual encoder, optimizer, training, additional teacher or observation. The original Source architecture remains intact.
 
-- [Method and exact frozen parameters](docs/method.md)
-- [Calibration, all signs and severe harms](results/native2d_calibration/ANALYSIS.md)
-- [New complete-evaluation protocol](results/native2d_full_v2/protocol.json)
-- [Archive and evidence policy](docs/archive.md)
-- [History and current execution](docs/history.md)
+Only TA-STVG is implemented/tested. Local representation and native temporal prior are adapter contracts; cross-backbone/MLLM effectiveness is not established.
 
-Run `.conda/tubedetr/bin/python -B -m stvg --help` for the only inference entry. `tools/full.py` manages the separately frozen full protocol. `tools/full_score.py` reads fixed official labels only after the entire domain seals. New Full outputs are never aliases of archived fused/word-head methods. NativeTemporal=OursS is explicit.
+- [Current method and frozen parameters](docs/method.md)
+- [Native-prior cached ablation: all positives and negatives](results/native_prior_v1/ANALYSIS.md)
+- [Earlier parameter calibration and failed guards](results/native2d_calibration/ANALYSIS.md)
+- [New dual-domain full protocol](results/native2d_nativeprior_full_v1/protocol.json)
+- [History](docs/history.md) and [archive policy](docs/archive.md)
 
-Old executable methods, tuning launchers and their broad result trees have been removed from this maintained tree and retained with all signs on `archive/research-pre-native2d-20261023`. Local old checkouts are immutable evidence; only `stvg-native2d` is maintained. Private media/captions/GT coordinates/features/weights stay outside Git.
+Inference: `.conda/tubedetr/bin/python -B -m stvg --help`. The separate `tools/full.py` owns the new frozen official dual-domain full. Whole-domain seal precedes independent CPU official-label scoring. NativeTemporal=OursS; Global6 in evaluation is an imported sealed historical baseline ONLY, never an input to Full.
+
+Prior Global6 production code/results remain on archive/research-pre-native-prior-20261023 and in the read-only local stvg-native2d checkout (pausedHC1442/Vid0). Current main contains one production profile. Private media/captions/GT coordinates/features/masks/weights and runtime credentials remain outside Git.

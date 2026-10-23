@@ -1,13 +1,23 @@
-# BoxFixed + Native2D
+# Native temporal prior + Native2D + BoxFixed
 
-A frozen native Source proposes an event interval distribution from the original two-offset224, six-layer Global6 old-hull mean. Shared geometric initialization, complete expert-box propagation and path selection use the SAME ReferDINO/eight observation positions and observed.5/guard.1/link.25.
+## Production algorithm
 
-The temporal feedback reads original input_proj(appearance encoder) spatial grid BEFORE textfusion. A hook records actual original ground_encoder videos tensors/masks without replacing any argument/output; its handle is removed in finally. A full-time auxiliary BoxFixed path independent of predicted temporal cropping determines a fixed1.5 context per frame. Fractional-area pooling produces local content vectors with physical time mapping. No RGB crop/re-encoding, separate motion head, word vocabulary/classifier, query optimizer or additional model is required by this feedback. The original frozen Source still uses its native architecture.
+The frozen original Source runs its unchanged native224 two-offset inference. Its actual final-layer FP32 start/end logits define a legal interval distribution for each offset; the original physical-time hull combines the two. This native posterior q0 is used BOTH to seed event/background prototypes and as the prior in the final update. There is no six-layer posterior aggregation, additional six-layer head evaluation or Global6 input.
 
-For each offset, the other offset fits the mean; center and L2-normalize vectors, K=(1+cos)/2. Original q0 soft membership seeds event/background kernel prototypes. Both are shrunk toward the fitting-fold unconditional mean with frozen kappa. Apply ONE update qnew(I) proportional q0(I) exp(beta sum inclusive L_t), then original physical MBR and unchanged path DP. Exact zero contrast retains q0. Cross-offset fits share native evidence and are NOT independent validation. The score is compatibility, not calibrated event probability.
+The original projected appearance spatial grid BEFORE textfusion is observed without replacing any Source argument/output. An auxiliary complete BoxFixed trajectory covering the full video defines a fixed1.5 context per frame. Fractional area pooling yields native local content features. The same single ReferDINO/eight observations, shared initialization, complete expert-box propagation and exact path DP are unchanged.
 
-The final kappa/beta are in configs/default.json and the calibration DECISION. Risk tuning minimizes maximum-domain fraction with >5pp time OR full-v decline vsGlobal6, counts a query onlyonce, with mean protection. Allfailedguard, severe and signed outcomes remain. No per-query GT selection, quality rejection or further full-result tuning. See results/native2d_calibration for exact six-config budget, exposure and fixed confirmation.
+For each offset, center/L2-normalize using the other offset, K=(1+cos)/2. Native q0 soft membership seeds two kernel prototypes, shrunk toward the fitting-fold unconditional mean with kappa64. Apply ONE update qnew(I) proportional q0(I) exp(beta SUM inclusive L_t), beta1, then original physical MBR and unchanged spatial selection at the resulting interval. Cross-offset fitting is not independent validation. Compatibility scores are not calibrated event probabilities.
 
-Generic features need spatial supports/times, not a prescribed dimension, motion branch or class labels. The temporal adapter separately supplies actual native prior/candidates. Only TA-STVG is implemented/tested; no effectiveness claim for CG/TubeDETR/MLLM and no claim that dropping textfusion is universally harmless. Correct-location superiority over matchedcontrols is unestablished in the prior smallpanel.
+No extra RGB encoding for feedback, separate motion/word-class head, network update, quality rejection, teacher or observation is introduced. Original Source still contains its original architecture; removing our Global6 does not remove native decoder layers or original internal signals.
 
-Final production: kappa64, beta1, ONEround, context1.5, originalphysicalMBR. The development winner is retained because user prioritizes reduced severe-loss incidence. Fixedconfirmation HCmean guard fails: t-1.9834/fullv-.8690pp relativeNative16, while severeG6 union3->1; Vidsevere6->3/time+.1803/v-.0026. This is an engineeringtradeoff, NOTa retrospective validation pass. The original failedDECISION and independentMAIN_SELECTION both remain public.
+## Selection and evidence
+
+Latest user explicitly selects this native-prior variant AFTER its fixed cached ablation. Kappa64/beta1/ONEround/context1.5 are inherited unchanged, not reselected. Existing128parents/direction (dev96+fixed32) are exposed. NativeFeedback-Source pooled t/fullv: HC+1.2744/+3.3935pp, Vid+1.8090/+4.1882pp. Relative previous Global6+Native2D, pooled HC-.4958/-.2723 and Vid-.4294/-.0871; HCfixed32-2.9464t/-1.7407v with pairedCIs below0. All positives/negatives remain in results/native_prior_v1. This is a user-authorized engineering choice, not an equivalence or fresh-validation claim. Earlier kappa mean-protection failures also remain unchanged.
+
+Final acceptance remains EACHdirection queryequal m_tIoU >= Source+.9pp. Complete official full is required; no guarantee, no full-result parameter reselection.
+
+## Scope and interfaces
+
+The shared feedback requires spatially supported native local representations and actual native temporal evidence, not a motion branch, word vocabulary, six decoder layers or fixed feature dimension. Only TA-STVG has been tested. Other backbones/MLLMs require their own validated adapters.
+
+Global6 is retained only as a sealed original evaluation baseline. Source/SharedInit/Global6 and eight observation positions must reproduce archived official values. Full and its two spatial ablations are NEW native-prior outputs; no previousFull alias is allowed.

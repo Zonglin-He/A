@@ -6,8 +6,9 @@ ROOT=Path(__file__).resolve().parents[1];sys.path.insert(0,str(ROOT))
 OLD=ROOT.parent/'stvg-mainline';PROVIDER=ROOT.parent/'stvg-opd'
 K16=ROOT.parent/'stvg-k16'
 FUSED=ROOT.parent/'stvg-general'
-PREVIOUS=ROOT/'outputs/native2d_full_v1'
-RUN=ROOT/'outputs/native2d_full_v2';PUBLIC=ROOT/'results/native2d_full_v2'
+OLDN2D=ROOT.parent/'stvg-native2d'
+PREVIOUS=OLDN2D/'outputs/native2d_full_v2'
+RUN=ROOT/'outputs/native2d_nativeprior_full_v1';PUBLIC=ROOT/'results/native2d_nativeprior_full_v1'
 
 def sha(path):
     h=hashlib.sha256()
@@ -29,7 +30,7 @@ def binding(row,runtime):
 
 def check(assets=False):
     p=read(RUN/'plan.json');assert p['fingerprint']==hashlib.sha256(json.dumps({k:v for k,v in p.items() if k!='fingerprint'},sort_keys=True).encode()).hexdigest()
-    for root,k in [(ROOT,'code'),(PREVIOUS/'source_snapshot','native_v1_code'),(FUSED,'fused_code'),(K16,'k16_code'),(OLD,'old_paper_code'),(PROVIDER,'provider_sources')]:
+    for root,k in [(ROOT,'code'),(OLDN2D,'previous_code'),(FUSED,'fused_code'),(K16,'k16_code'),(OLD,'old_paper_code'),(PROVIDER,'provider_sources')]:
         for f,h in p[k].items():assert sha(root/f)==h,(k,f)
     for f,h in p['input_bindings'].items():assert sha(f)==h,f
     if assets:
@@ -38,34 +39,41 @@ def check(assets=False):
 
 def prepare():
     assert not(RUN/'plan.json').exists(),'Never replace frozen plan'
-    original=read(FUSED/'outputs/region_kernel_full_v2/plan.json');paper=read(OLD/'outputs/tastvg_paper_v1/plan.json');kp=read(K16/'outputs/k16_full_v1/plan.json');old=read(PROVIDER/'outputs/boxfixed_full_v1/plan.json')
-    study=read(FUSED/'outputs/native2d_risk_v2/plan.json');decision=read(FUSED/'results/native2d_risk_v2/MAIN_SELECTION.json');assert decision['status']=='engineering_selected'
-    selected=decision['deployed'];cfg=read(ROOT/'configs/default.json');assert cfg['temporal']['kappa']==selected['kappa']and cfg['temporal']['beta']==selected['beta']
-    assert read(FUSED/'outputs/region_kernel_full_v2/state.json')['status']=='paused_by_user_native2d_selected'
-    pause=read(FUSED/'outputs/maintenance/fused_pause_native2d_promotion_20261023/pause_receipt.json');assert pause['gpu_lock_free']
-    reuse=read(FUSED/'outputs/region_kernel_full_v2/reuse_index.json');bound=dict(original['input_bindings']);proof=[]
-    for ds,j in paper['jobs'].items():
-        dest=FUSED/'outputs/region_kernel_full_v2'/ds
-        for rp in(dest/'receipts').glob('*.json'):
-            rec=read(rp);cp=dest/'captures'/(rp.stem+'.pt');assert sha(cp)==rec['capture_sha256'];reuse[ds][rp.stem]=dict(kind='geometry',path=str(cp),sha256=sha(cp),input_binding=rec['input_binding'])
-    ds1=FUSED/'outputs/local_visual_v2';ds2=FUSED/'outputs/local_visual_tune_v2';rs=FUSED/'outputs/native2d_risk_v2';s1=read(ds1/'sealed.json');s2=read(ds2/'confirm/sealed.json');s3=read(rs/'confirm/sealed.json');sd=read(rs/'dev/sealed.json');winner=read(rs/'frozen_config.json')['winner'];is_selected=selected=={k:read(rs/'frozen_config.json')[k]for k in ['kappa','beta']}
-    for i in study['dev_items']:
-        key=i['alias'];e=sd['files'][key];path=i['capture_path'];fp=i['trace_path'];fh=i['trace_sha256'];b=binding(i['row'],paper['provider_runtime_fingerprint']);entry=dict(kind='native2d_features',path=path,sha256=i['capture_sha256'],feature_path=fp,feature_sha256=fh,input_binding=b,reference_prediction=str(rs/e['path']),reference_sha256=e['sha256'],reference_arm=winner if is_selected else'K16_B100',reference_trace=str(rs/e['trace_path']),reference_trace_sha256=e['trace_sha256'],reference_q=winner if is_selected else'K16_B100');reuse[i['dataset']][i['row']['id']]=entry;proof.append(dict(dataset=i['dataset'],row=i['row'],**entry))
-    for i in study['confirm_items']:
-        key=i['alias'];e=s3['files'][key];c=i['capture_entry'];path=OLD/'outputs/target_semantic128_collect_v3'/c['capture_path'];b=binding(i['row'],paper['provider_runtime_fingerprint']);entry=dict(kind='native2d_features',path=str(path),sha256=c['capture_sha256'],feature_path=str(rs/e['trace_path']),feature_sha256=e['trace_sha256'],input_binding=b,reference_prediction=str(rs/e['path']),reference_sha256=e['sha256'],reference_arm='Selected'if is_selected else'K16',reference_trace=str(rs/e['trace_path']),reference_trace_sha256=e['trace_sha256'],reference_q='Selected'if is_selected else'K16');reuse[i['dataset']][i['row']['id']]=entry;proof.append(dict(dataset=i['dataset'],row=i['row'],**entry))
-    assert len(proof)==256
-    # Old pooled fused features are incompatible. Reuse ONLY original geometry there.
-    for ds,entries in reuse.items():
-        for key,e in entries.items():
-            if e['kind']=='complete_features':entries[key]={k:v for k,v in e.items()if k in ['path','sha256','input_binding']};entries[key]['kind']='geometry'
-    atomic(RUN/'reuse_index.json',reuse);atomic(RUN/'promotion_inputs.json',proof)
-    for f in [RUN/'reuse_index.json',RUN/'promotion_inputs.json',rs/'plan.json',rs/'frozen_config.json',rs/'confirm/sealed.json',rs/'confirm/score_receipt.json',FUSED/'results/native2d_risk_v2/MAIN_SELECTION.json',FUSED/'outputs/region_kernel_full_v2/plan.json',FUSED/'outputs/maintenance/fused_pause_native2d_promotion_20261023/pause_receipt.json']:bound[str(f)]=sha(f)
-    for f in [PREVIOUS/'plan.json',ROOT/'outputs/maintenance/native2d_visual_shortcut_20261023/pause_receipt.json',ROOT/'outputs/maintenance/native2d_visual_shortcut_20261023/prefix_probe.json']:bound[str(f)]=sha(f)
+    previous=read(PREVIOUS/'plan.json');pause=read(OLDN2D/'outputs/maintenance/switch_to_native_prior_20261023/pause_receipt.json')
+    assert pause['counts']=={'hc2':1442,'vidstg':0} and not pause['unbound'] and pause['gpu_lock_free']
+    assert read(PREVIOUS/'state.json')['status']=='paused_by_user_replace_Global6_with_native_prior'
+    original=read(FUSED/'outputs/region_kernel_full_v2/plan.json');paper=read(OLD/'outputs/tastvg_paper_v1/plan.json');kp=read(K16/'outputs/k16_full_v1/plan.json');provider=read(PROVIDER/'outputs/boxfixed_full_v1/plan.json')
+    ablation=OLDN2D/'outputs/native_prior_v1';ap=read(ablation/'plan.json');sealed=read(ablation/'sealed.json');assert sealed['queries']==256 and read(ablation/'state.json')['status']=='complete_scored'
+    cfg=read(ROOT/'configs/default.json');assert cfg['temporal']['kappa']==64 and cfg['temporal']['beta']==1 and cfg['temporal']['prior']=='native_last_layer'
+    reuse=read(PREVIOUS/'reuse_index.json');promotion=[]
+    for i in ap['items']:
+        key=i['dataset']+'_'+i['alias'];e=sealed['files'][key];b=binding(i['row'],paper['provider_runtime_fingerprint'])
+        entry=dict(dataset=i['dataset'],row=i['row'],kind='native2d_features',path=i['path'],sha256=i['sha256'],feature_path=i['feature_path'],feature_sha256=i['feature_sha256'],input_binding=b,reference_prediction=str(ablation/e['path']),reference_sha256=e['sha256'],reference_arm='NativeFeedback',reference_trace=str(ablation/e['trace']),reference_trace_sha256=e['trace_sha256'],reference_q='NativeFeedback')
+        reuse[i['dataset']][i['row']['id']]=entry;promotion.append(entry)
+    # Full outputs from the Global6 version are NEVER imported as new Full.
+    # Reuse only the exact pooled Native2D and complete geometry content.
+    reused_prior_cost=0.;reused_captures=0
+    manifest=read(OLDN2D/'outputs/maintenance/switch_to_native_prior_20261023/receipt_manifest.json')
+    for ds,entries in manifest.items():
+        for key,proof in entries.items():
+            rp=PREVIOUS/ds/'receipts'/(key+'.json');rc=read(rp);cp=PREVIOUS/ds/'captures'/(key+'.pt');npz=PREVIOUS/ds/'predictions'/(key+'.npz')
+            assert sha(rp)==proof['receipt_sha256'] and sha(cp)==proof['capture_sha256'] and sha(npz)==proof['prediction_sha256']
+            reuse[ds][key]=dict(kind='native2d_capture',path=str(cp),sha256=sha(cp),input_binding=rc['input_binding'],acquisition_receipt=str(rp),acquisition_receipt_sha256=sha(rp));reused_captures+=1;reused_prior_cost+=rc['query_wall_seconds']
+    assert len(promotion)==256 and reused_captures==1442
+    atomic(RUN/'reuse_index.json',reuse);atomic(RUN/'promotion_inputs.json',promotion)
+    bindings=dict(previous['input_bindings'])
+    for f in [RUN/'reuse_index.json',RUN/'promotion_inputs.json',PREVIOUS/'plan.json',OLDN2D/'outputs/maintenance/switch_to_native_prior_20261023/pause_receipt.json',OLDN2D/'outputs/maintenance/switch_to_native_prior_20261023/receipt_manifest.json',ablation/'plan.json',ablation/'sealed.json',ablation/'score_receipt.json']:
+        bindings[str(f)]=sha(f)
     code={str(f.relative_to(ROOT)):sha(f)for f in [*sorted((ROOT/'stvg').glob('*.py')),*sorted((ROOT/'tools').glob('full*.py')),ROOT/'configs/default.json']}
-    p=dict(schema='native2d_full_v2',method='BoxFixed-Native2D',authorization='User explicitly prioritizes lower severely harmed sample fraction, authorizes finite Native2D calibration, Native2D sole main method, clean local/GitHub main trees and NEW dual-domainfull. Engineering selection is distinct from scientific qualification.',profile=cfg['temporal'],validation=decision,code=code,native_v1_code=read(PREVIOUS/'plan.json')['code'],fused_code=original['code'],k16_code=kp['code'],old_paper_code=paper['code'],provider_sources=old['sources'],assets=old['assets'],jobs=paper['jobs'],provider_runtime_fingerprint=paper['provider_runtime_fingerprint'],input_bindings=bound,spatial=dict(observed=.5,guard=.1,link=.25,unchanged=True),new_expert_calls=0,new_training=0,GT_in_inference=False,main_arms=['Source','Interpolation','OursS','Global6','Full'],ablation_arms=['Full','NoLocal','Independent','OursS'],mechanism_arms=['Source','SharedInit','OursS'],aliases='NativeTemporal=OursS; Source/SharedInit/Global6 reproduce sealed originalofficialfull. NewFull is Native2D, never fused/wordhead output alias.',reuse='256 same-input Native2D pooled features reused; compatible first69 v1 predictions/captures migrated bytewise with new explicit receipts, previouscost excluded; old fused pools incompatible. Original geometry/Source/E/eightpositions cached. Missing Native2D features with bound geometry+all6logits read exact original2D encoder+projection prefix ONLY; raw grids/pools bitwise tested. Otherwise originalSource224 ONCE builds missinggeometry; visual512MiBRGB/4GiBtensorLRU. Cache misses cannot call expert. Newtime/full-spatial-ablations recomputed, never import oldFull.',output='AllHC1902/227->Vid10303/732; queryequal. Complete domainseal BEFORE independentCPUofficiallabels, HCscore can overlap VidGPU. Allsigned/severe vsSource/G6, parentclusterCI, observed/unobserved support, boundaries/length/groups/extent/distance, workersegmentcosts retained. No full-result tuning.',post_full='Faircost16parents/direction,3repeats afterwarmup/no crossqueryreuse, originalexpert8; private continuousframe review viaimages, publish clean Native2Dcode and allsigns, archivecheck snapshot check, freshCAS main/research and ALLremote bytes/hash/tree verification.',exposure='Native2D dev64parents/direction and fixed32parent/direction calibration recheck. All originalfull/othermethod outcomes historicallyexposed; not untouchedtest/equivalence, negative qualification retained.',tta_audit_sha256=original['tta_audit_sha256'],no_more_tuning=True,regression_queries=256)
-    p['fingerprint']=hashlib.sha256(json.dumps(p,sort_keys=True).encode()).hexdigest();atomic(RUN/'plan.json',p)
-    for f in code:q=RUN/'source_snapshot'/f;q.parent.mkdir(parents=True,exist_ok=True);q.write_bytes((ROOT/f).read_bytes())
-    atomic(RUN/'tta_audit.json',read(FUSED/'outputs/region_kernel_full_v2/tta_audit.json'));atomic(PUBLIC/'protocol.json',{k:v for k,v in p.items()if k not in ['fused_code','assets','jobs','old_paper_code','provider_sources','input_bindings']});atomic(RUN/'state.json',dict(status='prepared',fingerprint=p['fingerprint'],oldqueues_not_resumed=True));check(True);print(p['fingerprint'])
+    p=dict(schema='native2d_nativeprior_full_v1',method='BoxFixed-Native2D-NativePrior',authorization='Latest user explicitly replaces Global6 production with native prior + Native2D and requests independent complete dual-domain full plus local/GitHub cleanup. Existing HC32 disadvantage preserved, no tuning.',profile=cfg['temporal'],code=code,previous_code=previous['code'],fused_code=original['code'],k16_code=kp['code'],old_paper_code=paper['code'],provider_sources=provider['sources'],assets=provider['assets'],jobs=paper['jobs'],provider_runtime_fingerprint=paper['provider_runtime_fingerprint'],input_bindings=bindings,spatial=dict(observed=.5,guard=.1,link=.25,unchanged=True),new_expert_calls=0,new_training=0,GT_in_inference=False,main_arms=['Source','Interpolation','OursS','Global6','Full'],ablation_arms=['Full','NoLocal','Independent','OursS'],mechanism_arms=['Source','SharedInit','OursS'],aliases='NativeTemporal=OursS. Global6 is only imported sealed original baseline; never evaluated or fed to production Full. Full = native last-layer physical hull prior, SAME prior for prototype seeds and posterior revision, kappa64/beta1/ONEround.',reuse='1442 bound prior-version captures supply only pooled Native2D/Source/E/geometry/lastlogits. All new temporal and Full-space ablation outputs recomputed. Other256 input-compatible Native2D features reusable. Missing features with bound native prior+geometry only original appearanceprefix; missinggeometry one original Source224, never new expert. No Global6 output aliases as newFull.',output='HC1902/227 then Vid10303/732, queryequal. Complete domain seal before independent CPU official labels. HCscorer may overlap VidGPU. Allsigned/severe/CI/observed-unobserved/stage/extent/distance kept.',post_full='Faircost16parents/direction3repeat resident/warmup no crossqueryreuse, sameSource/eight-expert geometry/pool/proto/DP, nestednotadd. Private continuousframe review, archivecheck snapshot check, publish bothrefs and ALL bytes/hash/tree/ancestor verification.',exposure='All256 cached prior-ablation queries historically exposed: dev96+fixed32 per direction, no new confirmation. Nativeprior-Source t+1.2744HC/+1.8090Vid, versus previousFull -.4958/-.4294 pooled; HCfixed32 -2.9464t/-1.7407v with pairedCI below0. User selects simplification after these results, NOT retrospective scientific qualification.',tta_audit_sha256=previous['tta_audit_sha256'],no_more_tuning=True,regression_queries=256)
+    p['fingerprint']=__import__('hashlib').sha256(json.dumps(p,sort_keys=True).encode()).hexdigest();atomic(RUN/'plan.json',p)
+    for f in code:
+        q=RUN/'source_snapshot'/f;q.parent.mkdir(parents=True,exist_ok=True);q.write_bytes((ROOT/f).read_bytes())
+    atomic(RUN/'tta_audit.json',read(PREVIOUS/'tta_audit.json'))
+    atomic(RUN/'cost_origin.json',dict(prior_version_capture_count=1442,prior_version_receipt_wall_sum=reused_prior_cost,note='Prior Global6 version is a DIFFERENT method; its prediction/research cost is not current inference time. Its feature acquisition is recorded as reused cost provenance. Migrated69 older-v1 costs remain separately in original COST_ORIGIN; count once in acquisition ledger, never double-count as current newcompute.',old_same_method69_origin_sha256=sha(OLDN2D/'results/native2d_acceleration/COST_ORIGIN.json')))
+    atomic(RUN/'acceptance.json',dict(status='pending_full_evaluation',metric='query_equal_mean_tIoU',minimum_delta_Source_pp=.9,each_direction_required=True,no_tuning=True,not_guaranteed=True))
+    atomic(PUBLIC/'protocol.json',{k:v for k,v in p.items()if k not in ['previous_code','fused_code','assets','jobs','old_paper_code','provider_sources','input_bindings']})
+    atomic(RUN/'state.json',dict(status='prepared',fingerprint=p['fingerprint'],old_queues_not_resumed=True));check(True);print(p['fingerprint'])
 
 def worker(ds):
     import torch,numpy as np
@@ -77,7 +85,7 @@ def worker(ds):
     from stvg.decode import decode
     from stvg.native import frozen_native_forward
     from stvg.temporal_hidden import cache_temporal
-    from stvg.global6 import read_logits,posterior
+    from stvg.prior import from_capture
     from stvg.temporal import probabilities,mass_table,final_mbr
     from stvg.spatial import SpatialGeometry,evidence_dp
     from stvg.representation import extract,observe_native_grid
@@ -120,11 +128,13 @@ def worker(ds):
             if entry:
                 assert entry['input_binding']==b and sha(entry['path'])==entry['sha256'];cap=torch.load(entry['path'],weights_only=False,map_location='cpu')
                 g=SpatialGeometry.__new__(SpatialGeometry);g.__dict__.update(cap['geometry']);ids=cap['frame_ids'];positions=cap.get('positions8',cap.get('planned_positions'))
-                if entry['kind']=='native2d_features':
+                if entry['kind']=='native2d_capture':
+                    sem=cap['content_features'];counts['feature_reuse']+=1
+                elif entry['kind']=='native2d_features':
                     assert sha(entry['feature_path'])==entry['feature_sha256'];oldtrace=torch.load(entry['feature_path'],weights_only=False,map_location='cpu');sem=oldtrace['features']['Native2D']if isinstance(oldtrace['features'],dict)else oldtrace['features'];counts['feature_reuse']+=1;del oldtrace
                 else:counts['geometry_reuse']+=1
                 if sem is None:
-                    cached_native_prior=('records'in cap and'logits'in cap and len(cap['logits'])==2 and all(v.ndim==4 and v.shape[0]==6 for v in cap['logits']))
+                    cached_native_prior=('records'in cap and ('native_logits'in cap or 'logits'in cap))
                     if cached_native_prior:
                         from stvg.visual_prefix import native_appearance_grid
                         if model.source is None:model.source=load_source(model.config)
@@ -140,10 +150,9 @@ def worker(ds):
                         st=time.perf_counter()
                         with observe_native_grid(model.source)as grid,visual.context(model.source,frames,ids):batch,recs,base=frozen_native_forward(model.source,frames,rr)
                         assert np.array_equal(base.zero['boxes'].cpu().numpy(),cap['Source'])
-                        tc=cache_temporal(model.source,base,recs,ids);del batch,base
-                        head=model.source.temp_embed;logs,_=read_logits(head,[v['hidden']for v in tc['offsets']],[v['native_logits']for v in tc['offsets']]);model.source.cpu()
-                        if 'logits'in cap:assert all(torch.equal(a,c)for a,c in zip(logs,cap['logits']))
-                        cap.update(records=recs,logits=logs,native_local_grid=grid)
+                        logs=[v.detach().cpu().clone() for v in base.zero['logits']];del batch,base;model.source.cpu()
+                        if 'logits'in cap:assert all(torch.equal(a,c[-1])for a,c in zip(logs,cap['logits']))
+                        cap.update(records=recs,native_logits=logs,native_local_grid=grid)
                         counts['Source_queries']+=1;cost['Source_seconds']=time.perf_counter()-st
 
             else:
@@ -151,11 +160,16 @@ def worker(ds):
                 frames,ids=rgb.get(r['metadata']);st=time.perf_counter()
                 with visual.context(model.source,frames,ids):native=model.capture(frames,ids,r['metadata'])
                 assert native['cost']['ReferDINO_query_forwards']==0;counts['Source_queries']+=1;counts['new_geometry']+=1;cost=dict(native['cost'])
-                head=model.source.temp_embed.cuda();tc=native['native_hidden'];logs,_=read_logits(head,[v['hidden'] for v in tc['offsets']],[v['native_logits'] for v in tc['offsets']]);head.cpu()
-                cap=dict(Source=native['Source'],E=native['E'],frame_ids=ids,positions8=native['planned_positions'],records=native['records'],logits=logs,geometry=native['geometry'].state_dict(),native_interval=native['intervals']['Native'],native_local_grid=native['native_local_grid'],GT_read=False)
+                cap=dict(Source=native['Source'],E=native['E'],frame_ids=ids,positions8=native['planned_positions'],records=native['records'],native_logits=native['native_logits'],geometry=native['geometry'].state_dict(),native_interval=native['intervals']['Native'],native_local_grid=native['native_local_grid'],GT_read=False)
                 g=native['geometry'];positions=native['planned_positions'];del native
-            if 'native_interval' not in cap:
-                U,nq=mass_table(probabilities(cap['records'],[x[-1] for x in cap['logits']]));assert U==ids;cap['native_interval']=final_mbr(ids,nq)['interval']
+            if 'native_logits'not in cap:cap['native_logits']=[x[-1]for x in cap['logits']]
+            cap['native_prior']=from_capture(cap)
+            native_interval=final_mbr(ids,cap['native_prior'])['interval']
+            if 'native_interval'in cap:assert native_interval==list(cap['native_interval'])
+            cap['native_interval']=native_interval
+            oldentry=oldseal['files'][key];oldpath=PROVIDER/'outputs/boxfixed_full_v1'/ds/oldentry['path'];assert sha(oldpath)==oldentry['sha256']
+            with np.load(oldpath,allow_pickle=False)as z:
+                cap['reference_Global6']=z['Final'].copy();cap['reference_Global6_interval']=z['Final_interval'].copy()
             cap['positions8']=positions
             if sem is None:
                 aux=evidence_dp(g.for_interval([ids[0],ids[-1]+1]))['final'].numpy();st=time.perf_counter()
@@ -168,9 +182,9 @@ def worker(ds):
                 for a,c in [('Source','Source'),('SharedInit','E_Ref'),('Global6','Final')]:assert np.array_equal(arr[a],z[c]),(key,a)
                 for a,c in [('Source_interval','Source_interval'),('Global6_interval','Final_interval'),('positions8','positions8')]:assert np.array_equal(arr[a],z[c]),(key,a)
             # Preserve compact geometry+pooled content features, not the large decoder-memory cache.
-            compact={k:cap[k] for k in ['Source','E','frame_ids','positions8','records','logits','geometry','native_interval','content_features','GT_read']}
+            compact={k:cap[k] for k in ['Source','E','frame_ids','positions8','records','native_logits','native_prior','geometry','native_interval','content_features','reference_Global6','reference_Global6_interval','GT_read']}
             npz.parent.mkdir(parents=True,exist_ok=True);cp.parent.mkdir(parents=True,exist_ok=True);torch.save(compact,cp);np.savez_compressed(npz,**arr)
-            after=visual.stats();rec=dict(fingerprint=p['fingerprint'],input_binding=b,prediction_sha256=sha(npz),capture_sha256=sha(cp),worker=identity(),old_Source_E_Global6_bitwise=True,old_prediction_sha256=oldentry['sha256'],reuse_kind=entry['kind'] if entry else 'new_geometry_cached_teacher',complete_capture_reused=bool(entry and entry['kind']=='native2d_features'),Source_recomputed=counts['Source_queries']-source_before,expert_forwards=0,capture_cost=cost,query_wall_seconds=time.perf_counter()-tick,visual_delta={k:after[k]-vc[k] for k in ['hits','misses']},RGB_delta=dict(hits=rgb.hits-rc[0],misses=rgb.misses-rc[1]),GT_read=False,trace=trace)
+            after=visual.stats();rec=dict(fingerprint=p['fingerprint'],input_binding=b,prediction_sha256=sha(npz),capture_sha256=sha(cp),worker=identity(),old_Source_E_Global6_bitwise=True,old_prediction_sha256=oldentry['sha256'],reuse_kind=entry['kind'] if entry else 'new_geometry_cached_teacher',complete_capture_reused=bool(entry and entry['kind']in ('native2d_features','native2d_capture')),Source_recomputed=counts['Source_queries']-source_before,expert_forwards=0,capture_cost=cost,query_wall_seconds=time.perf_counter()-tick,visual_delta={k:after[k]-vc[k] for k in ['hits','misses']},RGB_delta=dict(hits=rgb.hits-rc[0],misses=rgb.misses-rc[1]),GT_read=False,trace=trace)
             atomic(rp,rec);files[key]=dict(path=str(npz.relative_to(dest)),sha256=sha(npz),receipt_path=str(rp.relative_to(dest)),receipt_sha256=sha(rp),capture_path=str(cp.relative_to(dest)),capture_sha256=sha(cp))
             recent.append(rec['query_wall_seconds']);recent=recent[-100:];atomic(dest/'progress.json',dict(completed=i+1,total=len(rows),recent_seconds=float(np.mean(recent)),ETA_seconds=float(np.mean(recent))*(len(rows)-i-1),counts=counts,visual=after,**identity(),GT_read=False))
             print(json.dumps(dict(dataset=ds,completed=i+1,total=len(rows),seconds=rec['query_wall_seconds'],reuse=rec['reuse_kind'])),flush=True)

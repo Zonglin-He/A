@@ -1,3 +1,5 @@
+> Historical parameter calibration used Global6 as prior. The latest user-selected main method inherits kappa64/beta1 unchanged but replaces its prior with native last-layer evidence. Its actual evidence is in [the native-prior ablation](../native_prior_v1/ANALYSIS.md); old calibration numbers do not represent the new variant. All original failures and decisions below remain unchanged.
+
 # Native2D final calibration and main selection
 
 Production: **kappa64, beta1, one round, context1.5, original physical MBR and unchanged spatialDP/evidence8.** Native projected appearance BEFORE textfusion. Only native2d profile is registered.

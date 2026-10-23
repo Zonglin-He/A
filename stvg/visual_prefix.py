@@ -2,7 +2,7 @@
 
 Delegates to the original vis_encoder and input_proj, on original224 offset batches
 under the same CUDA FP16 autocast. No text/motion/fusion/time/word head is evaluated.
-Native Source/Global6 and complete geometry must be hash-bound cached inputs.
+Native Source final-layer prior and complete geometry must be hash-bound cached inputs.
 """
 import gc,torch
 from .inputs import make_batch,offset_batch

@@ -1,5 +1,5 @@
 {
-  "method": "BoxFixed-Native2D",
+  "method": "BoxFixed-Native2D-NativePrior",
   "seed": 20260920,
   "expert_count": 1,
   "spatial": {
@@ -12,12 +12,13 @@
   },
   "temporal": {
     "default": "native2d",
-    "algorithm": "Global6 prior; fulltime BoxFixed context1.5; native projected appearance before textfusion area pooling; cross-offset cosinekernel commonmean shrink; one calibrated evidence update; original MBR",
+    "algorithm": "Native final-layer two-offset physical-hull prior; fulltime BoxFixed context1.5; projected appearance before textfusion pooling; cross-offset centered cosinekernel shrink; ONE update; original MBR",
     "rounds": 1,
     "kappa": 64,
     "context_scale": 1.5,
     "network_parameter_updates": 0,
-    "beta": 1.0
+    "beta": 1.0,
+    "prior": "native_last_layer"
   },
   "datasets": {
     "hc2": {

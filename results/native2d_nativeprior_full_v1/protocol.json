@@ -1,51 +1,16 @@
 {
-  "schema": "native2d_full_v1",
-  "method": "BoxFixed-Native2D",
-  "authorization": "User explicitly prioritizes lower severely harmed sample fraction, authorizes finite Native2D calibration, Native2D sole main method, clean local/GitHub main trees and NEW dual-domainfull. Engineering selection is distinct from scientific qualification.",
+  "schema": "native2d_nativeprior_full_v1",
+  "method": "BoxFixed-Native2D-NativePrior",
+  "authorization": "Latest user explicitly replaces Global6 production with native prior + Native2D and requests independent complete dual-domain full plus local/GitHub cleanup. Existing HC32 disadvantage preserved, no tuning.",
   "profile": {
     "default": "native2d",
-    "algorithm": "Global6 prior; fulltime BoxFixed context1.5; native projected appearance before textfusion area pooling; cross-offset cosinekernel commonmean shrink; one calibrated evidence update; original MBR",
+    "algorithm": "Native final-layer two-offset physical-hull prior; fulltime BoxFixed context1.5; projected appearance before textfusion pooling; cross-offset centered cosinekernel shrink; ONE update; original MBR",
     "rounds": 1,
     "kappa": 64,
     "context_scale": 1.5,
     "network_parameter_updates": 0,
-    "beta": 1.0
-  },
-  "validation": {
-    "status": "engineering_selected",
-    "deployed": {
-      "kappa": 64,
-      "beta": 1.0
-    },
-    "original_scientific_decision_file": "DECISION.json",
-    "original_mean_protection_passed": false,
-    "original_scientific_fallback": {
-      "kappa": 16,
-      "beta": 1.0
-    },
-    "original_failed_guard_preserved": true,
-    "predeclared_dev_winner_retained_no_confirmation_reselection": true,
-    "user_authorization": "User explicitly prioritizes reducing severely harmed sample proportion over chasing means, selects Native2D as main, requests repo cleanup/GitHub/newfull. Accepting this engineering risk/mean tradeoff does NOT retroactively pass the failed .5pp guard.",
-    "tradeoff": {
-      "hc2": {
-        "severe_G6_union_native16": 3,
-        "severe_G6_union_selected": 1,
-        "queries": 32,
-        "delta_native16_t_pp": -1.9834014658487564,
-        "delta_native16_v_pp": -0.8689828744138741
-      },
-      "vidstg": {
-        "severe_G6_union_native16": 6,
-        "severe_G6_union_selected": 3,
-        "queries": 32,
-        "delta_native16_t_pp": 0.18029511120928432,
-        "delta_native16_v_pp": -0.002553894772984365
-      }
-    },
-    "confirm_report_sha256": "efca3142d54e7e006452b8d5cb729301d6bb332b770d37572019de0e18efc7f1",
-    "no_more_tuning": true,
-    "not_statistical_equivalence": true,
-    "no_claim_new_event_information": true
+    "beta": 1.0,
+    "prior": "native_last_layer"
   },
   "code": {
     "stvg/__init__.py": "c904c38c274d6791c9c3cfed40753e917cd1b647b6f38497151394ba73d9b6ca",
@@ -59,16 +24,16 @@
     "stvg/decode.py": "3c5d0237a97c650970a76266874bcd83b1f77f302a70dda842fa38f9c22be2a8",
     "stvg/evaluation.py": "7d06ebb331a58a6ccc172bbc8ff578bb971b363737316ad02764d2e5031470a1",
     "stvg/evidence.py": "fbbb934035e6407544ece64770d2e97ebd6e3c387a20724d7be2e7f542ebf81d",
-    "stvg/global6.py": "f11bd71d2ae1c3c100f4b850d660ba687a5d668d094eae448d41df8ecc7cb01a",
     "stvg/initialization.py": "21168f4a6740e5b4f306863bd1b852587cc71ed8d15dd0dc3b8b643da70e7842",
     "stvg/inputs.py": "f9023daa8737cabc71045ef5dd4199e0d9b7823bcc6eb8430b1097f6159759f7",
     "stvg/metrics.py": "c8db46913786a9f300984d7d7ca7ab219be30e8c91a1d27781d23155597d5665",
     "stvg/metrics_base.py": "4257912cd58f441f36bcafb1ce93eeeae83de18312166ac9017a28687e31f6d0",
     "stvg/metrics_hc.py": "a4ed56bf48e0bcb8d3193a421048a1a6dd7373027f90e43bfcc6afd6e64b0927",
     "stvg/native.py": "e34d3b08a76ec1baac08e4f158f42ce8e0bf1795a4034ee80801422d0b04ccbc",
-    "stvg/paper_panel.py": "940328d26ea2b994cb40fd442bba6b8f1bc3d57bbf9b4c0504fab3175b1668dd",
+    "stvg/paper_panel.py": "505a061289956cba2544c3323a5d9b6fde33d62e61ea2a78da7d41de6d7bc459",
     "stvg/positions.py": "d22e4fbceea353f060276ff09d4d298f87e99116ff1624328048b7ee86541d15",
-    "stvg/predictor.py": "d46dc078aafa6fa5ca698e5faa23a01a26bc6e5fffbd906a33c52617ebcb72d6",
+    "stvg/predictor.py": "433d3a9300126dfceaf76c184520fee247e86280e6b954109b5d22e33cda3ffd",
+    "stvg/prior.py": "341ef6c18534a17d52979827d6ca12d29dd34236648abca506632ff25bdc45a2",
     "stvg/prototype.py": "8399270efe359e5ef10dd3362b348dec771175ad18075ceaefb9b479a4c4886c",
     "stvg/query.py": "cb0cac6ea1b71cb80c61b42201e4740a24f3a8aeeafb25e13baa98e739520637",
     "stvg/readout.py": "dd22b7f4627375514df61b9a18cbfafcac2352de74b4a4dd5fcefc934da2f3e0",
@@ -84,11 +49,12 @@
     "stvg/temporal_hidden.py": "b2ca065a86e447b1c6f40615abb67a96cff5612e4b8b97124cd00a8cc50701c5",
     "stvg/tensors.py": "11533fb059d6e2f6cd7913ace762ae5c553955bbbe670fadf87d660f573581a3",
     "stvg/visual_cache.py": "659cf4402001d09a5a7c6092c8d577fff48fa7b19ce71a62d050251b52f15fff",
-    "stvg/worker.py": "7c373cc428fa3e32ccdd80436710ddd63bdafec1bed1857ba6b7b000df321af8",
-    "tools/full.py": "32b61e6282f52934ba8d2809b2cc147df41e3b8320624ea06ed6d82f0c6ecdb8",
-    "tools/full_regression.py": "0f78f70e471d09117e821e62626ae6fcc7b0d9b7d531883e9d95ec8bd0838e28",
-    "tools/full_score.py": "dde9c7e57b7c6d753c72acee31f0b16b308d1466f296a4576a80aed90ce76321",
-    "configs/default.json": "5146530582cf25e1cdb9f5081443f95750be5c7aaf1cb48c37adcdb28a4bfa50"
+    "stvg/visual_prefix.py": "fb937f5f15d2b3b6c6399bfc223c2d470981382931e0daaf72fc0d38938e36b5",
+    "stvg/worker.py": "21ecab248a8ad4fc6b9004b5c7f2b8c242e8b18f3a286a6b4cbf370b58926274",
+    "tools/full.py": "6141ea8a093513139b71a9c2abd8393682eff5760f924ef4db399f6925c3ed31",
+    "tools/full_regression.py": "b0f83d41de8289d0bf84e686510e2468f2ca9093fdde026d968d9f3b807333e6",
+    "tools/full_score.py": "fb952080b1caa49555552dece34f3bb4d0971570f1876b49418e39218cab0586",
+    "configs/default.json": "526cd074e97a977a8d40e0f5b485793c5a525c68c3465c670f45a77ab6a1728d"
   },
   "k16_code": {
     "stvg/__init__.py": "c904c38c274d6791c9c3cfed40753e917cd1b647b6f38497151394ba73d9b6ca",
@@ -161,13 +127,13 @@
     "SharedInit",
     "OursS"
   ],
-  "aliases": "NativeTemporal=OursS; Source/SharedInit/Global6 reproduce sealed originalofficialfull. NewFull is Native2D, never fused/wordhead output alias.",
-  "reuse": "256 same-input Native2D pooled features reused; old fused pools incompatible. Original geometry/Source/E/eightpositions cached. Missing Native2D features read originalSource224 ONCE, before textfusion; visual512MiBRGB/4GiBtensorLRU. Cache misses cannot call expert. Newtime/full-spatial-ablations recomputed, never import oldFull.",
-  "output": "AllHC1902/227->Vid10303/732; queryequal. Complete domainseal BEFORE independentCPUofficiallabels, HCscore can overlap VidGPU. Allsigned/severe vsSource/G6, parentclusterCI, observed/unobserved support, boundaries/length/groups/extent/distance, workersegmentcosts retained. No full-result tuning.",
-  "post_full": "Faircost16parents/direction,3repeats afterwarmup/no crossqueryreuse, originalexpert8; private continuousframe review viaimages, publish clean Native2Dcode and allsigns, archivecheck snapshot check, freshCAS main/research and ALLremote bytes/hash/tree verification.",
-  "exposure": "Native2D dev64parents/direction and fixed32parent/direction calibration recheck. All originalfull/othermethod outcomes historicallyexposed; not untouchedtest/equivalence, negative qualification retained.",
+  "aliases": "NativeTemporal=OursS. Global6 is only imported sealed original baseline; never evaluated or fed to production Full. Full = native last-layer physical hull prior, SAME prior for prototype seeds and posterior revision, kappa64/beta1/ONEround.",
+  "reuse": "1442 bound prior-version captures supply only pooled Native2D/Source/E/geometry/lastlogits. All new temporal and Full-space ablation outputs recomputed. Other256 input-compatible Native2D features reusable. Missing features with bound native prior+geometry only original appearanceprefix; missinggeometry one original Source224, never new expert. No Global6 output aliases as newFull.",
+  "output": "HC1902/227 then Vid10303/732, queryequal. Complete domain seal before independent CPU official labels. HCscorer may overlap VidGPU. Allsigned/severe/CI/observed-unobserved/stage/extent/distance kept.",
+  "post_full": "Faircost16parents/direction3repeat resident/warmup no crossqueryreuse, sameSource/eight-expert geometry/pool/proto/DP, nestednotadd. Private continuousframe review, archivecheck snapshot check, publish bothrefs and ALL bytes/hash/tree/ancestor verification.",
+  "exposure": "All256 cached prior-ablation queries historically exposed: dev96+fixed32 per direction, no new confirmation. Nativeprior-Source t+1.2744HC/+1.8090Vid, versus previousFull -.4958/-.4294 pooled; HCfixed32 -2.9464t/-1.7407v with pairedCI below0. User selects simplification after these results, NOT retrospective scientific qualification.",
   "tta_audit_sha256": "b5a3b53ec9f9f38fbc3490923d13560f9a64c0f5062903f0a34f5c0c8dc0ac66",
   "no_more_tuning": true,
   "regression_queries": 256,
-  "fingerprint": "2b6f14508e0d568d2d10b9d640cf4c979e6f68572b62ec1b8522f1fbed7a29e2"
+  "fingerprint": "85f7ff69d6b917b824d3b01e4d12be850d11a2c00f96917438cf9b619f2c3e56"
 }
