@@ -24,3 +24,9 @@ The implementation adapts only 9,728 existing temporal-decoder LayerNorm affine 
 ## Verification
 
 All256 predictions sealed before any new labels were read. Exact Source boxes/logits/prior/interval, frozen replay, parameter restoration and reset logits were checked per query. Source official metrics reproduce the prior full. Independent official-vs-dense evaluator checks and every raw prediction/trace/native-cache SHA are verified. No new expert, new observations or extra backbone was used. Main SimplePath production sources, parameters and full outcomes remain unchanged. V1 pre-optimization stride failure is retained, not counted as a scientific result.
+
+## Display-only vertical zoom
+
+For readability, the [HC zoom figure](hc2/fig1_zoom5.svg) and [Vid zoom figure](vidstg/fig1_zoom5.svg) use a symmetric -5 to +5pp display window. Boundary triangles explicitly represent off-scale observations at their true horizontal positions; triangle vertical positions are display boundaries, not measured values. HC has4below−5 and1above+5; Vid has5below−5 and1above+5. All original points and numerical results remain in paired.csv and the full-range figures above. [Display manifest](zoom_display.json) records unchanged data hashes and counts. No additional experiment is performed.
+
+The zoom layout centers both zero axes and adds axis arrowheads, following the user's reference. Horizontal limits are symmetric (HC±.4nats, Vid±.5nats) and include every measured loss reduction; vertical limits remain±5pp with the explicit overflow-triangle convention. Axis scaling changes readability, not the measured fractions or numerical effect sizes.
