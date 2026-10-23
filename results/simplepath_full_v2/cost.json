@@ -1,0 +1,221 @@
+{
+  "status": "completed_matched_timing",
+  "samples_per_domain": 16,
+  "parents_per_domain": 16,
+  "repeats": 3,
+  "warmup_excluded": true,
+  "interquery_capture_RGB_visual_cache": false,
+  "weights_resident": "One persistent Source model and one persistent ReferDINO process per direction. Original CPU/GPU offload retained; transfers included, not simultaneously GPU-resident weights.",
+  "startup_and_loads": {
+    "hc2": {
+      "Source_checkpoint_seconds": 7.049266265239567,
+      "warmup": {
+        "Source": {
+          "arm": "Source",
+          "query_wall_seconds": 5.58447081502527,
+          "RGB_seconds": 0.3169682780280709,
+          "cost": {
+            "Source_seconds": 3.400292791891843,
+            "Source_to_GPU_seconds": 0.24916494125500321,
+            "Source_to_CPU_seconds": 0.46608973713591695,
+            "parse_seconds": 0.045012925285845995,
+            "expert_forwards": 0,
+            "expert_seconds": 0.0,
+            "geometry_seconds": 0.0,
+            "region_pooling_seconds": 0.0,
+            "prototype_seconds": 0.0,
+            "final_DP_seconds": 0.0
+          },
+          "prediction_bitwise_verified": true,
+          "verification_IO_outside_timer": true,
+          "GT_read": false
+        },
+        "Full": {
+          "arm": "Full",
+          "query_wall_seconds": 10.544772856868804,
+          "RGB_seconds": 0.37137020798400044,
+          "cost": {
+            "Source_seconds": 2.8253459720872343,
+            "Source_to_GPU_seconds": 0.25997517816722393,
+            "Source_to_CPU_seconds": 0.3826175951398909,
+            "parse_seconds": 0.03940420085564256,
+            "expert_forwards": 1,
+            "expert_seconds": 6.224194345995784,
+            "expert_model_load_seconds": 4.387774394825101,
+            "shared_initialization_seconds": 0.009727688040584326,
+            "geometry_seconds": 0.10992655344307423,
+            "native_temporal_seconds": 0.00476860674098134,
+            "region_pooling_seconds": 0.002805519849061966,
+            "prototype_seconds": 0.014391153119504452,
+            "additional_classifier_forwards": 0,
+            "finish_wall_seconds": 0.024460207670927048,
+            "additional_time_head_forwards": 0,
+            "Global6_aggregation": false,
+            "posterior_seconds": 0.017171648796647787,
+            "final_DP_seconds": 0.0015315478667616844,
+            "actual_updates": 0,
+            "extra_decoder_calls": 0
+          },
+          "prediction_bitwise_verified": true,
+          "verification_IO_outside_timer": true,
+          "GT_read": false
+        }
+      }
+    },
+    "vidstg": {
+      "Source_checkpoint_seconds": 3.9674108009785414,
+      "warmup": {
+        "Source": {
+          "arm": "Source",
+          "query_wall_seconds": 4.348357078619301,
+          "RGB_seconds": 0.07413747161626816,
+          "cost": {
+            "Source_seconds": 2.677806901279837,
+            "Source_to_GPU_seconds": 0.24076917581260204,
+            "Source_to_CPU_seconds": 0.35609204275533557,
+            "parse_seconds": 0.025638854131102562,
+            "expert_forwards": 0,
+            "expert_seconds": 0.0,
+            "geometry_seconds": 0.0,
+            "region_pooling_seconds": 0.0,
+            "prototype_seconds": 0.0,
+            "final_DP_seconds": 0.0
+          },
+          "prediction_bitwise_verified": true,
+          "verification_IO_outside_timer": true,
+          "GT_read": false
+        },
+        "Full": {
+          "arm": "Full",
+          "query_wall_seconds": 9.733394831418991,
+          "RGB_seconds": 0.10481842514127493,
+          "cost": {
+            "Source_seconds": 2.5950985262170434,
+            "Source_to_GPU_seconds": 0.24227759195491672,
+            "Source_to_CPU_seconds": 0.33996290620416403,
+            "parse_seconds": 0.027719014789909124,
+            "expert_forwards": 1,
+            "expert_seconds": 6.0745174419134855,
+            "expert_model_load_seconds": 4.266730227973312,
+            "shared_initialization_seconds": 0.009446993935853243,
+            "geometry_seconds": 0.05771615309640765,
+            "native_temporal_seconds": 0.002535200212150812,
+            "region_pooling_seconds": 0.001770199742168188,
+            "prototype_seconds": 0.0010827220976352692,
+            "additional_classifier_forwards": 0,
+            "finish_wall_seconds": 0.006563298404216766,
+            "additional_time_head_forwards": 0,
+            "Global6_aggregation": false,
+            "posterior_seconds": 0.002469175960868597,
+            "final_DP_seconds": 0.0009238501079380512,
+            "actual_updates": 0,
+            "extra_decoder_calls": 0
+          },
+          "prediction_bitwise_verified": true,
+          "verification_IO_outside_timer": true,
+          "GT_read": false
+        }
+      }
+    }
+  },
+  "means": {
+    "hc2": {
+      "Source": {
+        "queries": 48,
+        "mean_total_seconds": 4.713510152718906,
+        "median_total_seconds": 4.331357558025047,
+        "mean_RGB_seconds": 0.9187349102673276,
+        "components": {
+          "Source_to_GPU_seconds": 0.26324109481841634,
+          "Source_to_CPU_seconds": 0.3629435422772076,
+          "final_DP_seconds": 0.0,
+          "region_pooling_seconds": 0.0,
+          "expert_forwards": 0.0,
+          "expert_seconds": 0.0,
+          "geometry_seconds": 0.0,
+          "prototype_seconds": 0.0,
+          "parse_seconds": 0.03425606952320474,
+          "Source_seconds": 2.9945258408940085
+        }
+      },
+      "Full": {
+        "queries": 48,
+        "mean_total_seconds": 5.803257042386879,
+        "median_total_seconds": 5.524257920216769,
+        "mean_RGB_seconds": 0.8978313106053974,
+        "components": {
+          "finish_wall_seconds": 0.011298436293145642,
+          "Source_to_GPU_seconds": 0.25909598721773364,
+          "final_DP_seconds": 0.0013658571115229279,
+          "region_pooling_seconds": 0.003010836672425891,
+          "geometry_seconds": 0.09942663067098086,
+          "prototype_seconds": 0.0013542798697017133,
+          "parse_seconds": 0.03423086055166399,
+          "shared_initialization_seconds": 0.010355184242750207,
+          "Global6_aggregation": 0.0,
+          "extra_decoder_calls": 0.0,
+          "actual_updates": 0.0,
+          "posterior_seconds": 0.004160198809889455,
+          "native_temporal_seconds": 0.004946878393335889,
+          "additional_classifier_forwards": 0.0,
+          "additional_time_head_forwards": 0.0,
+          "Source_seconds": 2.9168738338824673,
+          "Source_to_CPU_seconds": 0.3611392018501647,
+          "expert_forwards": 1.0,
+          "expert_seconds": 0.9202107878324265,
+          "expert_model_load_seconds": 0.0
+        }
+      }
+    },
+    "vidstg": {
+      "Source": {
+        "queries": 48,
+        "mean_total_seconds": 3.994949922518572,
+        "median_total_seconds": 3.9055741869378835,
+        "mean_RGB_seconds": 0.18660747593579194,
+        "components": {
+          "Source_to_GPU_seconds": 0.26791859572404064,
+          "Source_to_CPU_seconds": 0.36659194018769387,
+          "final_DP_seconds": 0.0,
+          "region_pooling_seconds": 0.0,
+          "expert_forwards": 0.0,
+          "expert_seconds": 0.0,
+          "geometry_seconds": 0.0,
+          "prototype_seconds": 0.0,
+          "parse_seconds": 0.02768128374009393,
+          "Source_seconds": 3.005366326057507
+        }
+      },
+      "Full": {
+        "queries": 48,
+        "mean_total_seconds": 5.213005527572629,
+        "median_total_seconds": 5.0911011134739965,
+        "mean_RGB_seconds": 0.18176034093873264,
+        "components": {
+          "finish_wall_seconds": 0.035507053068916626,
+          "Source_to_GPU_seconds": 0.2625814877683297,
+          "final_DP_seconds": 0.001800727458127464,
+          "region_pooling_seconds": 0.0038019731485595307,
+          "geometry_seconds": 0.12592338259370686,
+          "prototype_seconds": 0.0015420627411610137,
+          "parse_seconds": 0.026488071782902505,
+          "shared_initialization_seconds": 0.010605510091409087,
+          "Global6_aggregation": 0.0,
+          "extra_decoder_calls": 0.0,
+          "actual_updates": 0.0,
+          "posterior_seconds": 0.008134396659443155,
+          "native_temporal_seconds": 0.04736647774310162,
+          "additional_classifier_forwards": 0.0,
+          "additional_time_head_forwards": 0.0,
+          "Source_seconds": 2.9686801332766968,
+          "Source_to_CPU_seconds": 0.3695264223885412,
+          "expert_forwards": 1.0,
+          "expert_seconds": 0.8966672678555673,
+          "expert_model_load_seconds": 0.0
+        }
+      }
+    }
+  },
+  "scope": "Total wall includes RGB, parse, original Source, eight-observation expert, initialization, geometry, auxiliary path, Native2D pooling, prototype update, MBR and final DP. Nested component times must not be added. Mask-range/ablation collectors and verification I/O excluded.",
+  "plan_sha256": "2662242fedaf8ce835bf6317c036cdd33f9eb00807d4a35bb8f865e2afc008f6"
+}

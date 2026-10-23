@@ -1,0 +1,456 @@
+{
+  "status": "completed",
+  "dataset": "vidstg",
+  "queries": 10303,
+  "parents": 732,
+  "means": {
+    "Source": {
+      "v": 0.11777655141841521,
+      "t": 0.33804566160428273,
+      "observed_actual_sIoU": 0.3353659380174769,
+      "unobserved_actual_sIoU": 0.3302537792777132
+    },
+    "SharedInit": {
+      "v": 0.13415324443339552,
+      "t": 0.33804566160428273,
+      "observed_actual_sIoU": 0.37150804474381405,
+      "unobserved_actual_sIoU": 0.3500081272701235
+    },
+    "Interpolation": {
+      "v": 0.14228927210496273,
+      "t": 0.33804566160428273,
+      "observed_actual_sIoU": 0.45940580432869815,
+      "unobserved_actual_sIoU": 0.3551298936543868
+    },
+    "OursS": {
+      "v": 0.14030471673049646,
+      "t": 0.33804566160428273,
+      "observed_actual_sIoU": 0.4192975067989555,
+      "unobserved_actual_sIoU": 0.3578146335373547
+    },
+    "Full": {
+      "v": 0.143833140568339,
+      "t": 0.3460437806550943,
+      "observed_actual_sIoU": 0.41856661426165054,
+      "unobserved_actual_sIoU": 0.3576846687507758
+    },
+    "Direct8": {
+      "v": 0.12364253561665459,
+      "t": 0.33804566160428273,
+      "observed_actual_sIoU": 0.45940580432869815,
+      "unobserved_actual_sIoU": 0.3302537792777132
+    },
+    "SharedDirect8": {
+      "v": 0.13737896777425576,
+      "t": 0.33804566160428273,
+      "observed_actual_sIoU": 0.45940580432869815,
+      "unobserved_actual_sIoU": 0.3500081272701235
+    }
+  },
+  "paired": {
+    "Direct8-Source": {
+      "v": {
+        "mean": 0.5865984198239388,
+        "CI95": [
+          0.506740160550275,
+          0.672564332022961
+        ],
+        "queries": 10303,
+        "parents": 732,
+        "improved": 5036,
+        "harmed": 2001,
+        "unchanged": 3266,
+        "declined_over5pp": 200
+      },
+      "t": {
+        "mean": 0.0,
+        "CI95": [
+          0.0,
+          0.0
+        ],
+        "queries": 10303,
+        "parents": 732,
+        "improved": 0,
+        "harmed": 0,
+        "unchanged": 10303,
+        "declined_over5pp": 0
+      },
+      "observed_actual_sIoU": {
+        "mean": 12.403986631122134,
+        "CI95": [
+          11.442497245173145,
+          13.378308025408023
+        ],
+        "queries": 8507,
+        "parents": 715,
+        "improved": 5357,
+        "harmed": 2500,
+        "unchanged": 650,
+        "declined_over5pp": 1836
+      },
+      "unobserved_actual_sIoU": {
+        "mean": 0.0,
+        "CI95": [
+          0.0,
+          0.0
+        ],
+        "queries": 10300,
+        "parents": 732,
+        "improved": 0,
+        "harmed": 0,
+        "unchanged": 10300,
+        "declined_over5pp": 0
+      },
+      "boundary_MAE_seconds": {
+        "mean": 0.0,
+        "CI95": [
+          0.0,
+          0.0
+        ],
+        "queries": 10303,
+        "parents": 732,
+        "improved": 0,
+        "harmed": 0,
+        "unchanged": 10303,
+        "declined_over5pp": null
+      }
+    },
+    "SharedDirect8-Direct8": {
+      "v": {
+        "mean": 1.3736432157601144,
+        "CI95": [
+          1.1112422760940073,
+          1.6460331360787828
+        ],
+        "queries": 10303,
+        "parents": 732,
+        "improved": 4749,
+        "harmed": 3020,
+        "unchanged": 2534,
+        "declined_over5pp": 1100
+      },
+      "t": {
+        "mean": 0.0,
+        "CI95": [
+          0.0,
+          0.0
+        ],
+        "queries": 10303,
+        "parents": 732,
+        "improved": 0,
+        "harmed": 0,
+        "unchanged": 10303,
+        "declined_over5pp": 0
+      },
+      "observed_actual_sIoU": {
+        "mean": 0.0,
+        "CI95": [
+          0.0,
+          0.0
+        ],
+        "queries": 8507,
+        "parents": 715,
+        "improved": 0,
+        "harmed": 0,
+        "unchanged": 8507,
+        "declined_over5pp": 0
+      },
+      "unobserved_actual_sIoU": {
+        "mean": 1.975434799241025,
+        "CI95": [
+          1.2894949537991398,
+          2.672464142111946
+        ],
+        "queries": 10300,
+        "parents": 732,
+        "improved": 5696,
+        "harmed": 3907,
+        "unchanged": 697,
+        "declined_over5pp": 2463
+      },
+      "boundary_MAE_seconds": {
+        "mean": 0.0,
+        "CI95": [
+          0.0,
+          0.0
+        ],
+        "queries": 10303,
+        "parents": 732,
+        "improved": 0,
+        "harmed": 0,
+        "unchanged": 10303,
+        "declined_over5pp": null
+      }
+    },
+    "OursS-SharedDirect8": {
+      "v": {
+        "mean": 0.2925748956240734,
+        "CI95": [
+          0.1848813840189358,
+          0.4014682103913591
+        ],
+        "queries": 10303,
+        "parents": 732,
+        "improved": 2974,
+        "harmed": 3686,
+        "unchanged": 3643,
+        "declined_over5pp": 295
+      },
+      "t": {
+        "mean": 0.0,
+        "CI95": [
+          0.0,
+          0.0
+        ],
+        "queries": 10303,
+        "parents": 732,
+        "improved": 0,
+        "harmed": 0,
+        "unchanged": 10303,
+        "declined_over5pp": 0
+      },
+      "observed_actual_sIoU": {
+        "mean": -4.01082975297427,
+        "CI95": [
+          -4.4232382712779055,
+          -3.6215937634628244
+        ],
+        "queries": 8507,
+        "parents": 715,
+        "improved": 1566,
+        "harmed": 4037,
+        "unchanged": 2904,
+        "declined_over5pp": 1892
+      },
+      "unobserved_actual_sIoU": {
+        "mean": 0.7806506267231228,
+        "CI95": [
+          0.55525971755655,
+          1.0177747721544321
+        ],
+        "queries": 10300,
+        "parents": 732,
+        "improved": 2702,
+        "harmed": 2916,
+        "unchanged": 4682,
+        "declined_over5pp": 743
+      },
+      "boundary_MAE_seconds": {
+        "mean": 0.0,
+        "CI95": [
+          0.0,
+          0.0
+        ],
+        "queries": 10303,
+        "parents": 732,
+        "improved": 0,
+        "harmed": 0,
+        "unchanged": 10303,
+        "declined_over5pp": null
+      }
+    },
+    "Interpolation-SharedDirect8": {
+      "v": {
+        "mean": 0.4910304330706979,
+        "CI95": [
+          0.3083593010185537,
+          0.6735021651373394
+        ],
+        "queries": 10303,
+        "parents": 732,
+        "improved": 3920,
+        "harmed": 3423,
+        "unchanged": 2960,
+        "declined_over5pp": 761
+      },
+      "t": {
+        "mean": 0.0,
+        "CI95": [
+          0.0,
+          0.0
+        ],
+        "queries": 10303,
+        "parents": 732,
+        "improved": 0,
+        "harmed": 0,
+        "unchanged": 10303,
+        "declined_over5pp": 0
+      },
+      "observed_actual_sIoU": {
+        "mean": -1.9716262547325378e-17,
+        "CI95": [
+          -4.9583102058495634e-17,
+          8.631669788836042e-18
+        ],
+        "queries": 8507,
+        "parents": 715,
+        "improved": 0,
+        "harmed": 0,
+        "unchanged": 8507,
+        "declined_over5pp": 0
+      },
+      "unobserved_actual_sIoU": {
+        "mean": 0.5121766384263251,
+        "CI95": [
+          -0.08072532662548335,
+          1.1087150317812464
+        ],
+        "queries": 10300,
+        "parents": 732,
+        "improved": 4800,
+        "harmed": 4252,
+        "unchanged": 1248,
+        "declined_over5pp": 2414
+      },
+      "boundary_MAE_seconds": {
+        "mean": 0.0,
+        "CI95": [
+          0.0,
+          0.0
+        ],
+        "queries": 10303,
+        "parents": 732,
+        "improved": 0,
+        "harmed": 0,
+        "unchanged": 10303,
+        "declined_over5pp": null
+      }
+    },
+    "OursS-Interpolation": {
+      "v": {
+        "mean": -0.1984555374466245,
+        "CI95": [
+          -0.3391733379464223,
+          -0.056447740988106156
+        ],
+        "queries": 10303,
+        "parents": 732,
+        "improved": 3341,
+        "harmed": 4041,
+        "unchanged": 2921,
+        "declined_over5pp": 705
+      },
+      "t": {
+        "mean": 0.0,
+        "CI95": [
+          0.0,
+          0.0
+        ],
+        "queries": 10303,
+        "parents": 732,
+        "improved": 0,
+        "harmed": 0,
+        "unchanged": 10303,
+        "declined_over5pp": 0
+      },
+      "observed_actual_sIoU": {
+        "mean": -4.01082975297427,
+        "CI95": [
+          -4.4232382712779055,
+          -3.6215937634628244
+        ],
+        "queries": 8507,
+        "parents": 715,
+        "improved": 1566,
+        "harmed": 4037,
+        "unchanged": 2904,
+        "declined_over5pp": 1892
+      },
+      "unobserved_actual_sIoU": {
+        "mean": 0.2684739882967977,
+        "CI95": [
+          -0.26093634371587276,
+          0.791448721123544
+        ],
+        "queries": 10300,
+        "parents": 732,
+        "improved": 4308,
+        "harmed": 4797,
+        "unchanged": 1195,
+        "declined_over5pp": 2384
+      },
+      "boundary_MAE_seconds": {
+        "mean": 0.0,
+        "CI95": [
+          0.0,
+          0.0
+        ],
+        "queries": 10303,
+        "parents": 732,
+        "improved": 0,
+        "harmed": 0,
+        "unchanged": 10303,
+        "declined_over5pp": null
+      }
+    },
+    "Full-OursS": {
+      "v": {
+        "mean": 0.3528423837842524,
+        "CI95": [
+          0.24505598130669273,
+          0.4666261150990796
+        ],
+        "queries": 10303,
+        "parents": 732,
+        "improved": 3187,
+        "harmed": 2454,
+        "unchanged": 4662,
+        "declined_over5pp": 227
+      },
+      "t": {
+        "mean": 0.7998119050811534,
+        "CI95": [
+          0.5811005429039172,
+          1.0320784019259015
+        ],
+        "queries": 10303,
+        "parents": 732,
+        "improved": 3651,
+        "harmed": 2786,
+        "unchanged": 3866,
+        "declined_over5pp": 663
+      },
+      "observed_actual_sIoU": {
+        "mean": -0.0730892537304953,
+        "CI95": [
+          -0.1523675524384817,
+          0.005634343545471497
+        ],
+        "queries": 8507,
+        "parents": 715,
+        "improved": 229,
+        "harmed": 272,
+        "unchanged": 8006,
+        "declined_over5pp": 68
+      },
+      "unobserved_actual_sIoU": {
+        "mean": -0.012996478657889625,
+        "CI95": [
+          -0.061974744282211836,
+          0.035915267252103915
+        ],
+        "queries": 10300,
+        "parents": 732,
+        "improved": 1124,
+        "harmed": 1084,
+        "unchanged": 8092,
+        "declined_over5pp": 85
+      },
+      "boundary_MAE_seconds": {
+        "mean": -0.0706453397224216,
+        "CI95": [
+          -0.12493133753717092,
+          -0.017039004051349168
+        ],
+        "queries": 10303,
+        "parents": 732,
+        "improved": 4215,
+        "harmed": 3781,
+        "unchanged": 2307,
+        "declined_over5pp": null
+      }
+    }
+  },
+  "scope": "Post-full attribution on exposed official sets, fixed native interval and all eight boxes. Direct8=Source+raw8; SharedDirect8=SharedInit+raw8. Both overwrite all eight observed positions, including outside predicted interval; official v clips to native interval. OursS may select initialization instead of raw anchor at observed positions and gates propagation by native interval, so OursS-SharedDirect8 is a spatial-system contrast, not pure propagation causality.",
+  "fingerprint": "e34624e5d0d27806a22fb39b2936f8eb12989bf106205ecbad65c255880ef602"
+}

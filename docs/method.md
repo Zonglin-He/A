@@ -24,3 +24,5 @@ Each complete official direction must still be evaluated against the fixed query
 The full collector optionally saves propagated-mask candidates for the fixed range analysis using the already computed anchor/frame affinities. These masks never screen, weight or connect the production path. This optional diagnostic work is not presented as necessary deployment cost.
 
 The reusable feedback interface requires spatially supported native local representations and explicit native temporal candidates/priors, with coordinate/time adapters. Feature dimensions and class vocabularies are unrestricted. Only the TA adapter has been verified; cross-backbone effectiveness is untested.
+
+Latest user decision after complete dual-domain results: the measured current method is accepted and the initial Source+0.9 pp per-direction threshold is no longer a work blocker. Original HC point-estimate pass and Vid target_not_met remain unchanged in saved acceptance records. No retuning follows. Current research focus is attribution controls that separate direct expert observations, shared calibration, spatial processing and temporal feedback.

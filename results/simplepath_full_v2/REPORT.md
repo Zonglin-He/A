@@ -12,9 +12,9 @@ Source and imported Global6 reproduce the prior official evaluation. Full and al
 
 Third-party generic TTA was not verified. The historical project OPD row is separately labeled; no new OPD run was performed and incomplete Vid8405 is not used.
 
-## Four module ablations
+## Conditional final-readout ablations
 
-All rows retain shared initialization. Two spatial ablations keep Full time/anchors; Native temporal readout is exactly OursS and runs unchanged spatial inference on the native interval.
+All rows retain shared initialization. NoLocal/Independent are final-readout controls with Full auxiliary ROI/time retained, not whole coupled-system module deletions. Native temporal readout is OursS. See the completed direct-anchor attribution audit for the missing same-evidence simple controls.
 
 | Target | Configuration | Full m_vIoU% | Δ versus Full pp | Unobserved sIoU% | tIoU% |
 |---|---|---:|---:|---:|---:|
@@ -62,6 +62,23 @@ Same anchor and direction; no GT-selected direction. All-slot IoU zero-fills mis
 
 All core paired increments and parent-cluster95% intervals, distance bins with node/query counts, natural cache costs segmented by worker, signed changes and every severe decline are in [HC2](hc2/report.json) and [VidSTG](vidstg/report.json).
 
+## Matched runtime
+
+16 parents per direction,3 repeats, warmup excluded. No inter-query RGB/visual/result reuse; resident checkpoint/processes, deployment CPU/GPU offload and transfers included. Not all modules simultaneously GPU resident. Nested stages are not summed.
+
+| Target | Method | Mean total s/query | Median total s/query |
+|---|---|---:|---:|
+| hc2 | Source | 4.7135 | 4.3314 |
+| hc2 | Full | 5.8033 | 5.5243 |
+| vidstg | Source | 3.9949 | 3.9056 |
+| vidstg | Full | 5.2130 | 5.0911 |
+
+[Full cost components, loads and scope](cost.json).
+
 ## Qualitative status
 
-Continuous sampled-frame sheets are private local assets, pending root visual review for the four requested categories. Raw dataset frames, captions, GT coordinates and features are not exported to this repository. See [status](qualitative_status.json).
+Six private sheets were actually visually reviewed; identity correction and one teacher/propagation failure were selected. Scale/pose categories remain incomplete, and the user closed further work. No complete four-category package is claimed. Raw dataset frames, captions, GT coordinates and features are not exported. See [status](qualitative_status.json).
+
+## Completed attribution audit and user acceptance
+
+[Direct8 / shared-correction / spatial / temporal attribution](../anchor_attribution_v1/ANALYSIS.md) separates the direct observation baseline from shared correction and the remaining spatial processing. These fixed-order stages are not independent causal percentages. The measured method is accepted by the user; the initial numerical +0.9 threshold failure remains saved and is no longer a continuation blocker. No retuning. A subsequent coupled study was cancelled before scoring and has no scientific result.
