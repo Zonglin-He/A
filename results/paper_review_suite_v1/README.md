@@ -35,3 +35,5 @@ Latest execution (supersedes earlier running snapshots): controlled-shift confir
 Current CG execution supersedes v8 snapshot: v9 fixes only documented input segment-boundary conversion before native sampling;65byte-exact compatible completed predictions retained, no GT scoring yet. See recovery document and cgstvg_v9_boundary_conversion.json.
 
 Live v9 bridge verification: both Vid first-two real checkpoint/native/observer/pooling/coupled replay checks now passed; four required bridges complete across both domains. Screening has passed the corrected boundary case and continues unscored.
+
+CG screening is complete, all640metrics verified; [all five arms and positive/negative outcomes](cgstvg_v9/SCREEN_ANALYSIS.md). Both-domain real bridges passed. Unchanged fixed confirmation is running; no accuracy selection. HC negative spatial outcomes retained alongside Vid positive screening gains.
