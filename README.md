@@ -6,7 +6,8 @@ The spatial score contains available-anchor appearance similarity and adjacent c
 
 Fixed parameters: kappa64, beta1, one round, region context1.5, spatial .5 observed/.5 unobserved/.25 link. The same single ReferDINO supplies the same eight observations. No extra encoder, teacher, observations, word-class feedback, actionness feedback, training or optimizer is introduced.
 
-- [Fig. 1: empirical surrogate-alignment charts and data](results/surrogate_alignment_v1/README.md)
+- [Fig. 1: real paired entropy-minimization TTA experiment](results/entropy_tta_v2/ANALYSIS.md)
+- [Earlier sample-level surrogate correlation diagnostic](results/surrogate_alignment_v1/README.md)
 - [Current algorithm and contracts](docs/method.md)
 - [New independent dual-domain full protocol](results/simplepath_full_v2/protocol.json)
 - [Modular adoption evidence, including negative results](results/algorithm_pruning_v2/ANALYSIS.md)

@@ -1,0 +1,41 @@
+{
+  "dataset": "hc2",
+  "queries": 128,
+  "parents": 128,
+  "source_mean_vIoU_percent": 26.165011135253252,
+  "after_mean_vIoU_percent": 25.7608352583122,
+  "mean_delta_vIoU_pp": -0.4041758769410585,
+  "mean_delta_tIoU_pp": -0.9000342901069651,
+  "surrogate_improves": 128,
+  "grounding_degrades_given_surrogate_improves": 45,
+  "conditional_rate": 0.3515625,
+  "conditional_rate_CI95": [
+    0.265625,
+    0.4375
+  ],
+  "loss_improves_gt1e6_negative_threshold": {
+    "denominator": 128,
+    "numerator": 45
+  },
+  "win": 30,
+  "harm": 45,
+  "tie": 53,
+  "severe_v_drop_gt5pp": 4,
+  "spearman_delta_loss_vs_delta_v": 0.03331811619591223,
+  "selection": "128 parent videos/domain selected by SHA256(seed:dataset:parent), one query/parent by same fixed hash; no GT/quality-dependent selection; already exposed official datasets, not unseen confirmation.",
+  "objective": "Mean Shannon entropy of four native endpoint distributions (start/end x two offsets), natural logarithm, softmax along time. No labels or teacher.",
+  "update_scope": "Only existing nn.LayerNorm weight/bias in original ground_decoder.time_decoder; all other parameters frozen, dropout/every module remains eval; full reset of affine parameters and optimizer per query.",
+  "optimizer": {
+    "name": "Adam",
+    "lr": 0.001,
+    "betas": [
+      0.9,
+      0.999
+    ],
+    "eps": 1e-08,
+    "weight_decay": 0,
+    "steps": 5,
+    "batch": "one query with all its native sampled frames/two offsets"
+  },
+  "no_outcome_selection": true
+}

@@ -1,0 +1,52 @@
+{
+  "schema": "entropy_tta_v1",
+  "authorization": "Latest user explicitly requests running real paired surrogate-optimization experiment; independent of frozen SimplePath and cancelled studies.",
+  "objective": "Mean Shannon entropy of four native endpoint distributions (start/end x two offsets), natural logarithm, softmax along time. No labels or teacher.",
+  "optimizer": {
+    "name": "Adam",
+    "lr": 0.001,
+    "betas": [
+      0.9,
+      0.999
+    ],
+    "eps": 1e-08,
+    "weight_decay": 0,
+    "steps": 5,
+    "batch": "one query with all its native sampled frames/two offsets"
+  },
+  "update_scope": "Only existing nn.LayerNorm weight/bias in original ground_decoder.time_decoder; all other parameters frozen, dropout/every module remains eval; full reset of affine parameters and optimizer per query.",
+  "scope_note": "Transformer-specific entropy-minimization baseline; NOT a reproduction of original BN-Tent, not a claim about all TTA implementations.",
+  "initialization": "Exact original Source224 frozen inference; final second-pass native TimeDecoder inputs captured once, then reused while updating only downstream decoder LayerNorm. Spatial Source boxes fixed.",
+  "temporal_readout": "Original final-layer FP32 two-offset legal-pair posterior, physical hull, original MBR; same readout before/after; no Global6 or Native2D or expert.",
+  "selection": "128 parent videos/domain selected by SHA256(seed:dataset:parent), one query/parent by same fixed hash; no GT/quality-dependent selection; already exposed official datasets, not unseen confirmation.",
+  "cases_per_domain": 128,
+  "total": 256,
+  "selection_seed": 20261024,
+  "inference_seed": 20260920,
+  "outcome": "Paired loss_before-loss_after and official complete vIoU_after-vIoU_before, all cases/last step. Primary P(delta_v<0|delta_loss>0), including ties in denominator. Numerical loss threshold1e-6 sensitivity. No favorable-outcome requirement or tuning.",
+  "controls": "Actual frozen Source/logits/prior/interval/boxes bitwise sealed full; before/after gradient-context no-update checks; exact affine-state reset every query and post-reset native readout; only selected params can receive gradients.",
+  "budget": {
+    "maximum_wall_seconds": 7200,
+    "new_expert": 0,
+    "additional_backbone": 0,
+    "new_observations": 0,
+    "no_hyperparameter_sweep": true
+  },
+  "phase_boundary": "ALL256 predictions and loss paths seal before independent CPU labels; preserve every signed outcome, no online GT.",
+  "sources": [
+    "https://github.com/DequanWang/tent/blob/master/tent.py",
+    "https://github.com/DequanWang/tent/blob/master/conf.py",
+    "https://github.com/HengLan/TA-STVG/blob/904ad0c344eb12fe34513f97a33f93118f6d3be4/models/grounding_model/query_decoder.py"
+  ],
+  "adaptation_difference": "Tent official defaults Adam1e-3/one step and BN-affine; this predeclared experiment uses time-decoder LN-affine, FIVE steps, episodic reset, eval dropout.",
+  "code_sha256": "aac6a66e650f1833d5accd8903a59ab83397cfa8f39035248504d755e2db2184",
+  "selection_sha256": "4339185792ec02db9ecca3bb94600f1cb2b29148fb2ca682c4f8ebf043d95619",
+  "production_plan_sha256": "4a34668741e08bbd68fb2268a87a1fc193d4ca6efa02b4e14972dbfd746c7ab4",
+  "seals": {
+    "hc2": "bc209ac67273f0f2835c929cf5d977452dff04c901e7ed56223414a04fcb44a2",
+    "vidstg": "faf739e72a065bbac2079715aea4f4e89b0e2014da854013ea0c9728cb295c81"
+  },
+  "GT_in_inference": false,
+  "production_unchanged": true,
+  "fingerprint": "c310e0860dc9e86680f697bae7bfccc724a3d153f2b19f5d7ac6c003525abb63"
+}
