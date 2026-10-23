@@ -1,3 +1,5 @@
+2026-10-24 05:23 新版TubeDETR双域固定128完整：两域各128预测seal/独立CPU评分完成，总gate先于首full；Root核256预测/receipt hash、request/plan、有限数组并复算均值。Full相对Source v+1.7738/+10.8018pp，但dense-4.7652/-6.1621pp；相对NativeMBR的time-1.8509/-1.4705pp、v-1.9014/-2.2558pp，不能将读出增量归新模块。全部正负匿名标量保留，无调参/筛选，已转Vid10303 full，后HC1902。见results/simplepath_tubedetr/development_report.md；不是全量成绩。
+
 2026-10-24 新版TubeDETR固定方法接续：原LLaVA两域最终结果已发布a2e0df0b并逐远端字节核验。隔离接入main a238705a SimplePath+单组Native2D，原生末层真实时间后验和完整fast pre-text网格，两域原首query冷/缓存共4次前向逐位通过，0新专家/GT；权重不变。120项CPU检查通过，独立冻结run_plan80fe566c与固定参数锁，先两域原128再Vid10303/HC1902，完整seal先于CPU标签读取。控制器05:10启动，禁止依据新成绩调参；新方法成绩尚未产生，不与旧LLaVA或上游TA混合。见[新TubeDETR执行协议](simplepath_tubedetr.md)。
 
 2026-10-24 LLaVA-ST两域完整终态：Vid10303/732、HC1902/227均完整seal/独立CPU评分，控制器正常退出。Source→Ours全量v为Vid12.4330→15.3637(+2.9307pp)、HC9.7047→11.7943(+2.0896pp)；dense+2.4541/+3.6690pp，未观察+2.2002/+3.5041pp，原生时间均不变。Vid1397条/HC134条v下降>5pp，两域无效0，保留全部逐条正负匿名标量。Root已首核两域全部12205预测/receipt及输入/profile绑定，最终沿用已完成Vid首核并比小hash，不重扫16GB权重；总seal引用核验通过。开发曝光/单合并权重来源边界保留，非新SimplePath或严格未见域结果。见[完整终态](../results/llava_st_development/terminal_report.md)。新版TubeDETR后续按用户授权接续，不恢复旧调参。
