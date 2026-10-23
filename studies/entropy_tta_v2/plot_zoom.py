@@ -16,7 +16,7 @@ for ds in ['hc2','vidstg']:
  ax.spines['left'].set_position('zero');ax.spines['bottom'].set_position('zero')
  for side in ['left','bottom']:ax.spines[side].set_color('#96999C');ax.spines[side].set_linewidth(1.1)
  ax.tick_params(axis='both',labelsize=8,colors='#777B7E',length=3,pad=4)
- ax.set_xticklabels([f'{v:.1f}' if abs(v)>1e-10 else '0' for v in ax.get_xticks()])
+ ax.set_xticklabels([f'{v:g}' if abs(v)>1e-10 else '0' for v in ax.get_xticks()])
  ax.set_yticklabels([str(int(v)) if v!=0 else '' for v in ax.get_yticks()])
  ax.axhspan(-5,0,xmin=max(0,(0-ax.get_xlim()[0])/(ax.get_xlim()[1]-ax.get_xlim()[0])),xmax=1,facecolor='#F6E7E3',zorder=0)
  ax.plot(1,0,'>',transform=ax.get_yaxis_transform(),color='#96999C',clip_on=False,markersize=7)
