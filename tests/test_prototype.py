@@ -14,7 +14,7 @@ class TestContentFeedback(unittest.TestCase):
     def test_scalar_reference(self):
         L,_=evidence(self.z,self.q);w=membership(self.q)
         for t in range(18):
-            fit=np.arange(18)%2!=t%2;v=self.z[fit];center=v.mean(0)
+            fit=np.ones(18,dtype=bool);v=self.z[fit];center=v.mean(0)
             u=(v-center)/np.linalg.norm(v-center,axis=1)[:,None]
             a=self.z[t]-center;a/=np.linalg.norm(a)
             k=np.array([(1+np.dot(a,b))/2 for b in u]);m=k.mean()
@@ -41,9 +41,10 @@ class TestContentFeedback(unittest.TestCase):
         self.assertTrue(np.array_equal(pool(x,a),pool(y,a)))
         valid[:]=False;valid[1,1]=True;c,fallback=weights([.9,.9,.01,.01],5,7,valid)
         self.assertTrue(fallback);self.assertEqual(c.sum(),1)
-    def test_parity_train_isolation(self):
+    def test_single_video_pair(self):
         L,stats=evidence(self.z,self.q)
-        self.assertEqual(stats[0]['positive_weight'],membership(self.q)[1::2].sum())
-        self.assertEqual(stats[1]['positive_weight'],membership(self.q)[::2].sum())
+        self.assertEqual(stats['prototype_pairs'],1)
+        self.assertEqual(stats['positive_weight'],membership(self.q).sum())
+        self.assertEqual(stats['fitting'],'all_video')
 
 if __name__=='__main__':unittest.main()

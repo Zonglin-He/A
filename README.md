@@ -1,24 +1,22 @@
-# BoxFixed + Native2D
+# SimplePath + Native2D
 
-The only maintained method uses the frozen model's **native final-layer temporal posterior**, trajectory-guided native appearance features, one-round class-free prototype feedback, and unchanged complete-box propagation/path selection. **Global6 is removed from production.** Original Source two-offset physical hull and MBR remain unchanged.
+The maintained method combines **bidirectional complete-box propagation and exact path selection** with **one video-wide Native2D prototype pair**. It uses the frozen model's native final-layer temporal posterior and pre-text appearance grid. Global6, cycle-reliability scoring, extent RBF, initialization guard and mask-transport links are absent from the production algorithm.
 
-Frozen parameters: kappa64, beta1, ONEround, region context1.5, spatial observed.5/guard.1/link.25, the SAME ReferDINO/eight observations. No word-class feedback head, actionness feedback, extra visual encoder, optimizer, training, additional teacher or observation. The original Source architecture remains intact.
+The spatial score contains available-anchor appearance similarity and adjacent complete-box IoU. The temporal module pools the original local appearance grid along a full-video SimplePath trajectory, estimates one event/background pair from all frames using native soft membership, applies common-mean shrinkage, and revises the native interval posterior once. There is **no offset-wise prototype fitting**. The original Source still runs its unchanged two offsets; its physical hull and final MBR remain.
 
-Only TA-STVG is implemented/tested. Local representation and native temporal prior are adapter contracts; cross-backbone/MLLM effectiveness is not established.
+Fixed parameters: kappa64, beta1, one round, region context1.5, spatial .5 observed/.5 unobserved/.25 link. The same single ReferDINO supplies the same eight observations. No extra encoder, teacher, observations, word-class feedback, actionness feedback, training or optimizer is introduced.
 
-- [Current method and frozen parameters](docs/method.md)
-- [Actual algorithm pruning in both branches](results/algorithm_pruning_v2/ANALYSIS.md): two-sided complete-box propagation and DP retained; appearance/box-IoU spatial scoring and one-pair temporal prototype tested with all precision/severe-tail/cost tradeoffs. No new full or production replacement.
-- [Separate equivalent-code checks](results/code_simplification_v2/ANALYSIS.md): singleton initialization, exact grid mapping and rejected/slower matching shortcuts.
-- [Actual algorithm simplification and CPU cost study](results/algorithm_simplification_v1/ANALYSIS.md): equivalent vector prototypes/quadratic hull audited on2030caches; independent lighter spatial candidate with all accuracy/tail tradeoffs. [Readable reference](studies/algorithm_simplification/reference.py). Running production remains frozen.
-- [Native-prior cached ablation: all positives and negatives](results/native_prior_v1/ANALYSIS.md)
-- [Earlier parameter calibration and failed guards](results/native2d_calibration/ANALYSIS.md)
-- [Fixed native-prior kappa16/kappa64 comparison on cached HC1902](results/native_prior_kappa_hc1902_v1/ANALYSIS.md) and [both exposed128/domain panels](results/native_prior_kappa_compare_v1/ANALYSIS.md); descriptive only, production remains kappa64.
-- [Cached cycle-reliability screening/weighting spatial ablation](results/cycle_reliability_ablation_v1/ANALYSIS.md): exact bidirectional geometry and Full time preserved; both positive and negative outcomes, no production change.
-- [New dual-domain full protocol](results/native2d_nativeprior_full_v1/protocol.json)
+- [Current algorithm and contracts](docs/method.md)
+- [New independent dual-domain full protocol](results/simplepath_full_v2/protocol.json)
+- [Modular adoption evidence, including negative results](results/algorithm_pruning_v2/ANALYSIS.md)
+- [Actual-grid coupled bridge](results/simplepath_full_v2/BRIDGE.json) and [cached adoption checks](results/simplepath_full_v2/REGRESSION.json)
+- [Historical native-prior HC1902 full](results/native2d_nativeprior_full_v1/hc2/ANALYSIS.md): time +.7471pp, below the fixed +.9pp target; preserved unchanged.
 - [History](docs/history.md) and [archive policy](docs/archive.md)
 
-Inference: `.conda/tubedetr/bin/python -B -m stvg --help`. The separate `tools/full.py` owns the new frozen official dual-domain full. Whole-domain seal precedes independent CPU official-label scoring. NativeTemporal=OursS; Global6 in evaluation is an imported sealed historical baseline ONLY, never an input to Full.
+Only TA-STVG has been evaluated. Dimension-free local-representation and temporal-evidence interfaces do not establish effectiveness on other backbones or MLLMs.
 
-Prior Global6 production code/results remain on archive/research-pre-native-prior-20261023 and in the read-only local stvg-native2d checkout (pausedHC1442/Vid0). Current main contains one production profile. Private media/captions/GT coordinates/features/masks/weights and runtime credentials remain outside Git.
+Inference: `.conda/tubedetr/bin/python -B -m stvg --help`. The independent `tools/full.py` queue owns `outputs/simplepath_full_v2`. Complete domain seal precedes CPU official-label scoring. Source/SharedInit/eight positions must reproduce the original official outputs; Global6 is only an imported historical baseline. Full/NoLocal/Independent are recomputed under this new method. NativeTemporal=OursS.
 
-The completed HC1902 report is available at [HC full results](results/native2d_nativeprior_full_v1/hc2/ANALYSIS.md). Source-relative time gain is+.7471pp, below the fixed+.9pp target; Vid remains running. The frozen run's CPU scorer had a local-name collision; [the independent CPU adapter](tools/score_adapter_nativeprior.py) repairs only that binding, with complete AST/prediction proof in the HC report. The inference plan and predictions are unchanged.
+The old full is safely paused at HC1902/Vid2388. Its code, logs and all4290 receipts/predictions/captures remain immutable in the old local checkout and archived Git history. Old pooled Native2D vectors cannot be reused after the auxiliary path changes; current collection recomputes the original appearance prefix when necessary and pools on the new path. This acquisition cost is recorded separately from historical reuse and from deployment timing.
+
+Public code includes the current method, protocol, complete signed positive/negative results and engineering evidence. Prior executable research variants are retained in the archive branch. Videos, captions, GT coordinates, raw grids/masks, checkpoints and credentials remain private.

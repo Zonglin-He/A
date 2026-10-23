@@ -1,24 +1,24 @@
 {
-  "method": "BoxFixed-Native2D-NativePrior",
+  "method": "SimplePath-Native2D-NativePrior",
   "seed": 20260920,
   "expert_count": 1,
   "spatial": {
-    "algorithm": "complete_native_box_fixed_score_exact_DP",
-    "confidence_threshold": 0.1,
+    "algorithm": "both-anchor complete-box propagation, appearance unary + adjacent complete-box IoU, exact DP",
     "affinity_temperature": 0.1,
     "affinity_topk": 20,
     "max_candidates": 3,
-    "score": ".5 mean_obs(u)+.5 mean_unobs(c*u)+.25 mean_event_edges(cprev*c*L)-.1 mean_all_nodes(G)"
+    "score": ".5 mean_obs(u)+.5 mean_unobs(supported*u)+.25 mean_event_edges(supportedprev*supported*boxIoU)"
   },
   "temporal": {
     "default": "native2d",
-    "algorithm": "Native final-layer two-offset physical-hull prior; fulltime BoxFixed context1.5; projected appearance before textfusion pooling; cross-offset centered cosinekernel shrink; ONE update; original MBR",
+    "algorithm": "Native final-layer two-offset physical-hull prior; fulltime SimplePath context1.5; projected appearance before textfusion pooling; one all-video centered prototype pair with common-mean shrinkage; ONE update; original MBR",
     "rounds": 1,
     "kappa": 64,
     "context_scale": 1.5,
     "network_parameter_updates": 0,
     "beta": 1.0,
-    "prior": "native_last_layer"
+    "prior": "native_last_layer",
+    "prototype_fitting": "all_video"
   },
   "datasets": {
     "hc2": {

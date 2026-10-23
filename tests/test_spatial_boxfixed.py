@@ -37,11 +37,10 @@ def test_geometry_independent_of_explicit_interval_support():
     with pytest.raises(ValueError):decode(g)
 
 
-def test_empty_mask_native_boxes_retained_and_temporal_reliability_separate():
+def test_empty_mask_native_boxes_retained_with_geometric_fallback():
     ev,E,native=fixture(empty=True);g=build_geometry(ev,E,native)
-    assert g.confidence[ev.positions].eq(1).all()
-    assert g.temporal_reliability().eq(0).all()
-    assert not g.reliable[~g.observed].any()
+    assert g.supported[ev.positions].all()
+    assert not g.supported[~g.observed].any()
     assert torch.equal(g.boxes[ev.positions,1],native)
     view=g.for_interval([int(g.frame_ids[0]),int(g.frame_ids[-1])+1]);out=evidence_dp(view)
     assert out['actions'][~g.observed].eq(0).all()
@@ -109,10 +108,8 @@ def test_four_thread_host_restored_and_all_CPU_arithmetic_matches_one(monkeypatc
         reference=build_geometry(reference_evidence,E,native).for_interval([1,9])
         expected=evidence_dp(reference)
         calls=[]
-        old_ev,old_sp=evidence_module.affinity,spatial_module.affinity
-        def spy_ev(*a,**kw):calls.append(torch.get_num_threads());return old_ev(*a,**kw)
+        old_sp=spatial_module.affinity
         def spy_sp(*a,**kw):calls.append(torch.get_num_threads());return old_sp(*a,**kw)
-        monkeypatch.setattr(evidence_module,'affinity',spy_ev)
         monkeypatch.setattr(spatial_module,'affinity',spy_sp)
         torch.set_num_threads(4)
         actual_evidence=SourceEvidence(raw,valid,torch.arange(T),positions,seeds)
@@ -121,9 +118,7 @@ def test_four_thread_host_restored_and_all_CPU_arithmetic_matches_one(monkeypatc
         assert torch.get_num_threads()==4
         result=evidence_dp(actual)
         assert torch.get_num_threads()==4 and calls and set(calls)=={1}
-        for name in ('adjacent_forward_indices','adjacent_forward_weights'):
-            assert torch.equal(getattr(actual_evidence,name),getattr(reference_evidence,name))
-        for name in ('boxes','features','confidence','projection','guard','link','score_unary','score_pair'):
+        for name in ('boxes','features','supported','u','link','score_unary','score_pair'):
             assert torch.equal(getattr(actual,name),getattr(reference,name)),name
         assert torch.equal(result['actions'],expected['actions'])
         assert torch.equal(result['final'],expected['final'])and result['score']==expected['score']

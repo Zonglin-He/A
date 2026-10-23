@@ -1,56 +1,78 @@
-"""Frozen class-free RegionKernel, one round, common-mean Native2D shrinkage (frozen configuration)."""
-import numpy as np
-from threadpoolctl import threadpool_limits
+"""One video-wide event/background prototype pair; no offset-wise fitting."""
 import json
 from pathlib import Path
-_CFG=json.loads((Path(__file__).resolve().parents[1]/'configs/default.json').read_text())['temporal']
-KAPPA=float(_CFG['kappa']); BETA=float(_CFG.get('beta',1.))
+import numpy as np
+from threadpoolctl import threadpool_limits
+
+_CONFIG = json.loads((Path(__file__).resolve().parents[1] / 'configs/default.json').read_text())['temporal']
+KAPPA = float(_CONFIG['kappa'])
+BETA = float(_CONFIG['beta'])
+
+
 def membership(q):
- return np.diag(np.cumsum(np.cumsum(q,axis=0)[:,::-1],axis=1)[:,::-1]).copy()
+    """Soft event membership induced by the legal interval posterior."""
+    return np.diag(np.cumsum(np.cumsum(q, axis=0)[:, ::-1], axis=1)[:, ::-1]).copy()
 
-def inclusive_scores(L):
- c=np.r_[0.,np.cumsum(L)];return c[1:][None,:]-c[:-1][:,None]
-
-def update(prior,S):
- if np.all(S[prior>0]==0):return prior.copy()
- take=prior>0;x=np.log(prior[take])+S[take];x-=x.max();out=np.zeros_like(prior);out[take]=np.exp(x);out/=out.sum();return out
 
 def unit(x):
     norm = np.linalg.norm(x, axis=1, keepdims=True)
     return np.divide(x, norm, out=np.zeros_like(x), where=norm > 0)
 
-def evidence(features, q0, kappa=KAPPA):
-    """K=(1+cos)/2 after fitting-fold centering. One estimate, no fitted head.
 
-    Positive/negative weighted kernel means are shrunk to the same fitting-fold
-    unconditional kernel mean. Their ratio is a compatibility score, NOT a
-    calibrated event probability. Cross-offset fits are dependent, not validation.
+def inclusive_scores(evidence):
+    cumulative = np.r_[0., np.cumsum(evidence)]
+    return cumulative[1:][None, :] - cumulative[:-1][:, None]
+
+
+def update(prior, score):
+    legal = prior > 0
+    if np.all(score[legal] == 0):
+        return prior.copy()
+    log_mass = np.log(prior[legal]) + score[legal]
+    log_mass -= log_mass.max()
+    posterior = np.zeros_like(prior)
+    posterior[legal] = np.exp(log_mass)
+    posterior /= posterior.sum()
+    return posterior
+
+
+def evidence_from_membership(features, weights, kappa=KAPPA):
+    """Fit ONE pair on all frames using native soft membership.
+
+    Common-mean shrinkage is unchanged. Evaluation frames participate in the
+    prototypes, so this is within-video self-consistency, not cross-validation
+    or calibrated event probability. The native Source still uses two offsets.
     """
     z = np.asarray(features, dtype=np.float64)
-    assert z.ndim == 2 and len(z) == len(q0) and np.isfinite(z).all()
-    w = membership(q0)
-    result = np.zeros(len(z)); stats = []
-    for parity in (0, 1):
-        fit = np.arange(len(z)) % 2 != parity
-        v = z[fit]
-        center = np.where(np.ptp(v, axis=0) == 0, v[0], v.mean(0))
-        a, b = unit(v - center), unit(z[~fit] - center)
-        kernel = np.clip((1 + b @ a.T) / 2, 0, 1)
-        mu = kernel.mean(1)
-        wp, wn = w[fit], 1 - w[fit]
-        plus = (kernel @ wp + kappa * mu) / (wp.sum() + kappa)
-        minus = (kernel @ wn + kappa * mu) / (wn.sum() + kappa)
-        zero = np.all(a == 0) or wp.sum() == 0 or wn.sum() == 0
-        if not zero:
-            result[~fit] = np.log(np.maximum(plus, 1e-12) / np.maximum(minus, 1e-12))
-        stats.append(dict(heldout_parity=parity,positive_weight=float(wp.sum()),
-            negative_weight=float(wn.sum()),zero_contrast=bool(zero),
-            kernel_mean=float(kernel.mean()),score_std=float(result[~fit].std())))
-    return result, stats
+    assert z.ndim == 2 and len(z) == len(weights) and np.isfinite(z).all()
+    w = np.asarray(weights, dtype=np.float64)
+    assert w.shape == (len(z),) and np.isfinite(w).all()
+    center = np.where(np.ptp(z, axis=0) == 0, z[0], z.mean(0))
+    x = unit(z - center)
+    common = x.mean(0)
+    event = (x.T @ w + kappa * common) / (w.sum() + kappa)
+    background = (x.T @ (1-w) + kappa * common) / ((1-w).sum() + kappa)
+    score = np.zeros(len(x))
+    zero = not np.any(x) or w.sum() == 0 or (1-w).sum() == 0
+    if not zero:
+        score = np.log(np.maximum((1+x @ event)/2, 1e-12)
+                       / np.maximum((1+x @ background)/2, 1e-12))
+    stats = dict(fitting='all_video', prototype_pairs=1, event=event,
+                 background=background, positive_weight=float(w.sum()),
+                 negative_weight=float((1-w).sum()), zero_contrast=bool(zero),
+                 self_inclusion=True)
+    return score, stats
 
 
-def one_step(features,q0,*,kappa=KAPPA,beta=BETA):
- with threadpool_limits(limits=1,user_api='blas'):
-  L,stats=evidence(features,q0,kappa)
- S=beta*inclusive_scores(L);q=update(q0,S)
- return q,dict(L=L,S=S,prototypes=stats,kappa=kappa,beta=beta,rounds=1)
+def evidence(features, q0, kappa=KAPPA):
+    return evidence_from_membership(features, membership(q0), kappa)
+
+
+def one_step(features, q0, *, kappa=KAPPA, beta=BETA):
+    with threadpool_limits(limits=1, user_api='blas'):
+        local, prototypes = evidence(features, q0, kappa)
+        score = beta * inclusive_scores(local)
+        posterior = update(q0, score)
+    return posterior, dict(L=local, S=score, prototypes=prototypes,
+                          kappa=kappa, beta=beta, rounds=1,
+                          network_parameter_updates=0)

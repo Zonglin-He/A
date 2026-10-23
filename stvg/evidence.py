@@ -6,7 +6,7 @@ No historical experiment, temporal interval, model or annotation is accessed.
 from __future__ import annotations
 import torch
 import torch.nn.functional as F
-from stvg._spatial_math import affinity, cpu, scoped_single_thread
+from stvg._spatial_math import cpu, scoped_single_thread
 AFFINITY_TOPK=20
 EPS=1e-15
 
@@ -122,23 +122,6 @@ def extract_visual_grids(spatial_inputs, frame_ids=None):
                 pixel_correspondence_training_claim=False)
     return output, valid, frame_ids, (height, width), meta
 
-def _sparsify(matrix):
-    """Keep every original nonzero weight, with zero-filled padding slots."""
-    _require(matrix.ndim == 3 and matrix.shape[1] == matrix.shape[2], 'Expected edge-wise square affinities')
-    edges, nodes, _ = matrix.shape
-    count = min(AFFINITY_TOPK, nodes)
-    rows = matrix.reshape(edges * nodes, nodes)
-    locations = torch.nonzero(rows, as_tuple=False)
-    counts = torch.count_nonzero(rows, dim=1)
-    _require(bool((counts <= count).all()), 'Original affinity has more than top-k nonzeros')
-    indices = torch.zeros(edges * nodes, count, dtype=torch.long)
-    weights = torch.zeros(edges * nodes, count, dtype=matrix.dtype)
-    if len(locations):
-        offsets = counts.cumsum(0) - counts
-        slots = torch.arange(len(locations)) - torch.repeat_interleave(offsets, counts)
-        indices[locations[:, 0], slots] = locations[:, 1]
-        weights[locations[:, 0], slots] = rows[locations[:, 0], locations[:, 1]]
-    return indices.reshape(edges, nodes, count), weights.reshape(edges, nodes, count)
 
 
 class SourceEvidence:
@@ -157,9 +140,6 @@ class SourceEvidence:
         _require(bool(((self.seeds>=0)&(self.seeds<=1)).all()),'Masks must be soft probabilities')
         self.seeds*=self.valid[self.positions].reshape_as(self.seeds)
         self.observed=torch.zeros(T,dtype=torch.bool);self.observed[self.positions]=True
-        normalized=F.normalize(self.features,dim=-1,eps=1e-12)
-        forward=torch.stack([affinity(normalized,self.valid,t,t-1)for t in range(1,T)])
-        self.adjacent_forward_indices,self.adjacent_forward_weights=_sparsify(forward)
         self.metadata=dict(schema='boxfixed_source_evidence_v1',GT_read=False,selected_native_query=selected_query,
             grid_height=self.height,grid_width=self.width,temporal_interval_used=False,
             affinity_topk=20,affinity_temperature=.1,source_features='post-fusion visual token prefix; no text/motion token slots')
@@ -185,13 +165,7 @@ class SourceEvidence:
         obj=cls.from_native_masks(features,valid,frames,positions8,mask_logits,teacher_image_size,shape,selected_query=selected_query)
         obj.metadata.update(meta);return obj
 
-    def transport_adjacent(self,values,reverse=False):
-        _require(not reverse,'BoxFixed only uses forward adjacent transport')
-        _require(tuple(values.shape[-2:])==(len(self.frame_ids)-1,self.height*self.width),'Adjacent values shape mismatch')
-        edges=torch.arange(len(self.frame_ids)-1)[:,None,None]
-        return (values[...,edges,self.adjacent_forward_indices]*self.adjacent_forward_weights.to(values)).sum(-1)
-
     def state_dict(self):
-        names=('features','valid','frame_ids','seeds','observed','adjacent_forward_indices','adjacent_forward_weights')
+        names=('features','valid','frame_ids','seeds','observed')
         return dict(schema='boxfixed_source_evidence_v1',metadata=dict(self.metadata),positions8=list(self.positions),
             **{name:getattr(self,name).clone()for name in names},GT_read=False)

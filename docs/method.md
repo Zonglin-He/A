@@ -1,23 +1,26 @@
-# Native temporal prior + Native2D + BoxFixed
+# SimplePath + video-wide Native2D feedback
 
-## Production algorithm
+## Fixed computation
 
-The frozen original Source runs its unchanged native224 two-offset inference. Its actual final-layer FP32 start/end logits define a legal interval distribution for each offset; the original physical-time hull combines the two. This native posterior q0 is used BOTH to seed event/background prototypes and as the prior in the final update. There is no six-layer posterior aggregation, additional six-layer head evaluation or Global6 input.
+1. Run the original frozen TA-STVG Source224 inference unchanged. Its final-layer FP32 start/end logits from both native offsets form the original physical-hull prior q0. Global6 is not a production input.
+2. Use the same eight ReferDINO observations and source-calibrated shared geometric initialization. For each sampled frame, retain the nearest past and future observations. The original two-way affinity product and valid axis-affine fit transform each complete expert box. Keep the geometric mass/variance/scale/intersection checks and initialization fallback.
+3. Score each candidate by its mean available-anchor appearance cosine. Connect adjacent complete candidate boxes with their IoU. Exact DP maximizes .5 observed mean + .5 supported-unobserved mean + .25 supported adjacent-link mean. Denominators are the original event observed/unobserved/edge counts. Removed: round-trip reliability thresholds and weights, extent RBF, deviation-from-initialization guard, adjacent feature/mask transport. Both geometric directions remain.
+4. Run the same SimplePath over the full sampled timeline to obtain an auxiliary trajectory. Pool the original input_proj appearance grid **before text fusion** inside each complete box expanded by the fixed1.5 context. No new representation model is evaluated.
+5. Center/L2-normalize the pooled features over the whole video. Native q0 supplies soft event membership. Estimate **one event/background prototype pair from all frames**, both shrunk toward the video's common mean with kappa64. No splitting by offset or cross-fitting remains. The ratio of shifted cosine compatibilities gives per-frame feedback. This is within-video self-consistency with self-inclusion, not calibrated event probability or independent validation.
+6. Sum frame feedback over each legal inclusive interval and apply ONE update proportional to q0 times exp(score), beta1. Use the original physical MBR, then SimplePath at the resulting interval.
 
-The original projected appearance spatial grid BEFORE textfusion is observed without replacing any Source argument/output. An auxiliary complete BoxFixed trajectory covering the full video defines a fixed1.5 context per frame. Fractional area pooling yields native local content features. The same single ReferDINO/eight observations, shared initialization, complete expert-box propagation and exact path DP are unchanged.
+The original Source's two-offset sampling is unchanged; removing offset-wise prototype fitting does not remove Source offsets. Network parameters, teacher evidence, sampling, precision, seed and fallback rules remain fixed. No parameter search is part of this adoption.
 
-For each offset, center/L2-normalize using the other offset, K=(1+cos)/2. Native q0 soft membership seeds two kernel prototypes, shrunk toward the fitting-fold unconditional mean with kappa64. Apply ONE update qnew(I) proportional q0(I) exp(beta SUM inclusive L_t), beta1, then original physical MBR and unchanged spatial selection at the resulting interval. Cross-offset fitting is not independent validation. Compatibility scores are not calibrated event probabilities.
+## Evidence and limits
 
-No extra RGB encoding for feedback, separate motion/word-class head, network update, quality rejection, teacher or observation is introduced. Original Source still contains its original architecture; removing our Global6 does not remove native decoder layers or original internal signals.
+The user explicitly adopts both simplifications after the exposed modular experiments. On the67-query HC availability panel with old time fixed, SimplePath changed full vIoU +.015794pp/unobserved sIoU +.208066pp (CIs include zero), observed sIoU -1.155595pp. The one-pair temporal arm on exposed128/domain changed HC tIoU/vIoU +.641039/+.302139pp and Vid -.052664/-.043750pp relative to the old method. Severe Source-relative t-or-v union increased19→23 in HC and21→25 in Vid; Vid short-event Source-relative tIoU was -.006256pp. These outcomes remain intact. They are modular tests, not evidence for combined full performance.
 
-## Selection and evidence
+The new auxiliary path differs on all67 audited inputs. Old pooled temporal features are therefore invalidated. Unchanged geometric candidates and exact Source/E/native logits/eight positions may be reused with input/hash bindings; actual pre-text grids are repooled on the new path. A real cold/cache bridge verifies Source/q0, raw prefix cells, old-pool recovery and coupled new output. No new expert is called for collection.
 
-Latest user explicitly selects this native-prior variant AFTER its fixed cached ablation. Kappa64/beta1/ONEround/context1.5 are inherited unchanged, not reselected. Existing128parents/direction (dev96+fixed32) are exposed. NativeFeedback-Source pooled t/fullv: HC+1.2744/+3.3935pp, Vid+1.8090/+4.1882pp. Relative previous Global6+Native2D, pooled HC-.4958/-.2723 and Vid-.4294/-.0871; HCfixed32-2.9464t/-1.7407v with pairedCIs below0. All positives/negatives remain in results/native_prior_v1. This is a user-authorized engineering choice, not an equivalence or fresh-validation claim. Earlier kappa mean-protection failures also remain unchanged.
+Each complete official direction must still be evaluated against the fixed query-equal Source+.9pp m_tIoU requirement. The prior HC1902 full failed (+.747072pp); it remains failed. The new method is selected by the user, not retrospectively declared qualified. Full results cannot select parameters.
 
-Final acceptance remains EACHdirection queryequal m_tIoU >= Source+.9pp. Complete official full is required; no guarantee, no full-result parameter reselection.
+## Research-only diagnostics and interfaces
 
-## Scope and interfaces
+The full collector optionally saves propagated-mask candidates for the fixed range analysis using the already computed anchor/frame affinities. These masks never screen, weight or connect the production path. This optional diagnostic work is not presented as necessary deployment cost.
 
-The shared feedback requires spatially supported native local representations and actual native temporal evidence, not a motion branch, word vocabulary, six decoder layers or fixed feature dimension. Only TA-STVG has been tested. Other backbones/MLLMs require their own validated adapters.
-
-Global6 is retained only as a sealed original evaluation baseline. Source/SharedInit/Global6 and eight observation positions must reproduce archived official values. Full and its two spatial ablations are NEW native-prior outputs; no previousFull alias is allowed.
+The reusable feedback interface requires spatially supported native local representations and explicit native temporal candidates/priors, with coordinate/time adapters. Feature dimensions and class vocabularies are unrestricted. Only the TA adapter has been verified; cross-backbone effectiveness is untested.

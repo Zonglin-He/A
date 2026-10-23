@@ -37,7 +37,7 @@ class BoxFixedPredictor:
         meta.update(initialization_gamma=gamma,unscaled_delta=meta['delta'],delta=(gamma*np.array(meta['delta'])).tolist())
         return {**cache,'E':E,'initialization':meta}
     @torch.no_grad()
-    def capture(self,frames,frame_ids,metadata,parses=None,*,teacher_override=None):
+    def capture(self,frames,frame_ids,metadata,parses=None,*,teacher_override=None,collect_mask_diagnostics=False):
         if self.config.get('temporal_mode','native2d')!='native2d':raise ValueError('Only the frozen region-kernel main method is supported')
         self.check();begin=time.perf_counter();tick=begin
         if self.source is None:self.source=load_source(self.config)
@@ -65,8 +65,6 @@ class BoxFixedPredictor:
         tick=time.perf_counter();U,q=mass_table(probabilities(recs,logits));assert U==list(frame_ids)
         native_interval=final_mbr(U,q)['interval'];positions=observation_positions(U,native['indices'])
         intervals={'Native':native_interval};posterior={'Native':q};replay=None
-        from .temporal_hidden import cache_temporal
-        replay=cache_temporal(model,base,recs,U)
         costs['native_time_postprocess_seconds']=time.perf_counter()-tick
         del batch,base;gc.collect();torch.cuda.empty_cache()
         tick=time.perf_counter();model.cpu();gc.collect();torch.cuda.empty_cache();costs['Source_to_CPU_seconds']=time.perf_counter()-tick;tick=time.perf_counter()
@@ -81,10 +79,10 @@ class BoxFixedPredictor:
         if not teacher.get('nested_mask_all_false'):raise ValueError('Teacher padding geometry requires an explicit crop mapping')
         costs.update(ReferDINO=teacher.get('cost',{}),ReferDINO_load_seconds=teacher.get('model_load_seconds',0.),ReferDINO_query_forwards=teacher.get('query_forwards',1),ReferDINO_cache_hit=teacher.get('cache_hit',False),expert_instances=1)
         cache=dict(Source=src.numpy(),frame_ids=U,planned_positions=positions,spatial_inputs=spatial,teacher_native=teacher,intervals=intervals,posterior=posterior,
-            native_hidden=replay,native_logits=logits,native_local_grid=native_grid,records=recs,cost=costs,GT_read=False)
+            native_logits=logits,native_local_grid=native_grid,records=recs,cost=costs,GT_read=False)
         tick=time.perf_counter();cache=self.initialize_cached(cache);costs['ERef_seconds']=time.perf_counter()-tick
         tick=time.perf_counter();evidence=SourceEvidence.from_capture(spatial,U,positions,teacher['native_mask_logits'],teacher['input_shape'][-2:],selected_query=teacher['selected_query'])
-        cache['evidence']=evidence;cache['geometry']=build_geometry(evidence,cache['E'],teacher['boxes']);costs['evidence_seconds']=time.perf_counter()-tick
+        cache['evidence']=evidence;cache['geometry']=build_geometry(evidence,cache['E'],teacher['boxes'],collect_mask_diagnostics=collect_mask_diagnostics);costs['evidence_seconds']=time.perf_counter()-tick
         costs['capture_wall_seconds']=time.perf_counter()-begin;return cache
     @torch.no_grad()
     def finish(self,cache):
