@@ -1,0 +1,25 @@
+{
+  "schema": "paper_review_shifts_v1",
+  "code_sha256": "cf671c50361a56693555163ef2eff90aed8be4d7c5bd3cb97d8a6703184ee0ad",
+  "selection_sha256": "b7e64d396b7058276c3cb78f43f593caec5489eb82f45faebc7b87e7dd8de597",
+  "runtime_fingerprint": "fc4210a80c895a374d90af44d11986428a50d754245e653690f25be5869f328f",
+  "transforms": {
+    "Blur": "OpenCVGaussianBlur kernel5x5 sigma1.5 BORDER_REFLECT_101 original RGB perframe",
+    "JPEG": "PIL JPEG quality30 subsampling2 RGB perframe, decode to same size",
+    "Dim": "RGB float32 *.5, clip0..255 then uint8 truncation"
+  },
+  "same_pair_input": true,
+  "Source_and_Full_recomputed": true,
+  "original_method_parameters_unchanged": true,
+  "no_GT_in_inference": true,
+  "screen_parents_per_domain": 64,
+  "confirm_parents_per_domain": 128,
+  "selection": "Same predeclared parentdisjoint192/domain; no severity sweep or setting selection. Three fixed corruptions; all results retained.",
+  "maximum_new_Source_queries": 1152,
+  "maximum_new_expert_queries": 1152,
+  "new_expert_models": 0,
+  "main_cache": "Never reuse original RGB teacher or Source output for shifted RGB. Actual RGBsha context binding and own isolated teacher cache. Clean original output reused only as labeled clean reference.",
+  "prerequisite": "After actual budget confirm stage, before CGSTVG; no interruption/duplicate GPU owner",
+  "budget": "21600sec per phase; fail-preserve on exceeded cost, no parameter change",
+  "fingerprint": "3d020dbbe081b949409e80602f03899de48f2d25321ecd9c3cb8f760070bd11d"
+}
