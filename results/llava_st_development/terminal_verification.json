@@ -1,0 +1,243 @@
+{
+  "status": "complete_verified_awaiting_final_publication_receipt",
+  "scope": "both original128 selections and both complete selected full populations",
+  "queries": 12205,
+  "plan_sha256": "f2b1316d399e70ea6c9c709425bb0d10c4f5289580f504d0035dbc334f4743c3",
+  "root_verification": {
+    "status": "pass",
+    "verified_at": "2026-10-24T04:55:00.031028+08:00",
+    "plan_sha256": "f2b1316d399e70ea6c9c709425bb0d10c4f5289580f504d0035dbc334f4743c3",
+    "domains": {
+      "vidstg": {
+        "status": "pass",
+        "queries": 10303,
+        "mode": "reuse first complete Root payload audit with unchanged small seal/metric hashes",
+        "prior_audit_sha256": "43f66ed7850c13593760cf9df18f85021cea82440f3579e311e81224bb50f4ec"
+      },
+      "hc2": {
+        "status": "pass",
+        "queries": 1902,
+        "mode": "first complete independent Root prediction/receipt SHA, request/profile bindings and finite arrays",
+        "invalid_outputs": 0,
+        "prediction_seal_sha256": "670636e0e1ec0b011a9bc805d45f29cdbb662d238076b445cac1f26ebcc58af8"
+      }
+    },
+    "total_queries": 12205,
+    "GT_rescoring": false,
+    "all_final_seal_links_verified": true,
+    "controller_normally_exited": true,
+    "gpu_lock_free": true,
+    "final_results_published": false
+  },
+  "selected_profiles": {
+    "vidstg": {
+      "profile_id": "67c1237741b6d10d",
+      "parameters": {
+        "gamma": 1.0,
+        "admission": 0.05,
+        "guard": 0.025,
+        "link": 0.5
+      }
+    },
+    "hc2": {
+      "profile_id": "3addfb6c2863f954",
+      "parameters": {
+        "gamma": 0.5,
+        "admission": 0.05,
+        "guard": 0.1,
+        "link": 0.5
+      }
+    }
+  },
+  "signed_scalar_exports": {
+    "vidstg": {
+      "path": "results/llava_st_development/vidstg/all_signed_full_results.json.gz",
+      "sha256": "d367291b041f6e0713de99ea628170e842573389b38daf12b86be596be1f5b55",
+      "format": "gzip UTF8 JSON; all Source/Ours scalar metrics and signed deltas; query and parent IDs hashed; no captions/media/GT coordinates/raw features"
+    },
+    "hc2": {
+      "path": "results/llava_st_development/hc2/all_signed_full_results.json.gz",
+      "sha256": "d5ac329a0c3331458129e3f3c3799d156abd8b44a3ef7ad8f036a07cc63efd5d",
+      "format": "gzip UTF8 JSON; all Source/Ours scalar metrics and signed deltas; query and parent IDs hashed; no captions/media/GT coordinates/raw features"
+    }
+  },
+  "domain_metrics": {
+    "vidstg": {
+      "status": "complete",
+      "dataset": "vidstg",
+      "queries": 10303,
+      "parameters": null,
+      "means": {
+        "Source": {
+          "v": 12.43302008053614,
+          "s": 27.42877829988915,
+          "t": 42.67798448703735
+        },
+        "Ours": {
+          "v": 15.363699975228279,
+          "s": 29.882846474568574,
+          "t": 42.67798448703735
+        }
+      },
+      "unobserved_sIoU": {
+        "Source": 27.411011105567802,
+        "Ours": 29.611171014754262
+      },
+      "observed_sIoU": {
+        "Source": 28.468248608575102,
+        "Ours": 42.69550636265343
+      },
+      "invalid_native_outputs_retained": 0,
+      "metric_denominators": {
+        "Source": {
+          "main": 10303,
+          "unobserved": 10303,
+          "observed": 8593
+        },
+        "Ours": {
+          "main": 10303,
+          "unobserved": 10303,
+          "observed": 8593
+        }
+      },
+      "loss_over5pp_queries": 1397,
+      "prediction_seal_sha256": "9c577357d0635761f2afcd5390bc4ab702e47952255a579dd8e125f757bd8cfb",
+      "fixed_native_time": true,
+      "no_independent_unexposed_test_claim": true,
+      "paired": {
+        "s": {
+          "queries": 10303,
+          "parents": 732,
+          "mean_pp": 2.4540681746794206,
+          "CI95_pp": [
+            1.648729967450178,
+            3.266021210293868
+          ],
+          "equal_parent_mean_pp": 3.5228153302103595,
+          "wins": 5615,
+          "losses": 4050,
+          "ties": 638,
+          "below_minus5": 2863
+        },
+        "v": {
+          "queries": 10303,
+          "parents": 732,
+          "mean_pp": 2.930679894692136,
+          "CI95_pp": [
+            2.431024719008428,
+            3.4441656076208513
+          ],
+          "equal_parent_mean_pp": 3.73378844733522,
+          "wins": 4647,
+          "losses": 2677,
+          "ties": 2979,
+          "below_minus5": 1397
+        },
+        "unobserved": {
+          "queries": 10303,
+          "parents": 732,
+          "mean_pp": 2.200159909186456,
+          "CI95_pp": [
+            1.3986681657305757,
+            3.0075422969254415
+          ],
+          "equal_parent_mean_pp": 3.239069974389263,
+          "wins": 5525,
+          "losses": 4109,
+          "ties": 669,
+          "below_minus5": 2902
+        }
+      }
+    },
+    "hc2": {
+      "status": "complete",
+      "dataset": "hc2",
+      "queries": 1902,
+      "parameters": null,
+      "means": {
+        "Source": {
+          "v": 9.70473746155963,
+          "s": 38.41536476934518,
+          "t": 21.73059264258822
+        },
+        "Ours": {
+          "v": 11.794342928805106,
+          "s": 42.08435389190757,
+          "t": 21.73059264258822
+        }
+      },
+      "unobserved_sIoU": {
+        "Source": 38.339155587045006,
+        "Ours": 41.84324549548988
+      },
+      "observed_sIoU": {
+        "Source": 41.69093146198025,
+        "Ours": 52.090488998276776
+      },
+      "invalid_native_outputs_retained": 0,
+      "metric_denominators": {
+        "Source": {
+          "main": 1902,
+          "unobserved": 1902,
+          "observed": 1857
+        },
+        "Ours": {
+          "main": 1902,
+          "unobserved": 1902,
+          "observed": 1857
+        }
+      },
+      "loss_over5pp_queries": 134,
+      "prediction_seal_sha256": "670636e0e1ec0b011a9bc805d45f29cdbb662d238076b445cac1f26ebcc58af8",
+      "fixed_native_time": true,
+      "no_independent_unexposed_test_claim": true,
+      "paired": {
+        "s": {
+          "queries": 1902,
+          "parents": 227,
+          "mean_pp": 3.6689891225623805,
+          "CI95_pp": [
+            2.9806218064478616,
+            4.348817394343746
+          ],
+          "equal_parent_mean_pp": 3.6893021225147935,
+          "wins": 1332,
+          "losses": 553,
+          "ties": 17,
+          "below_minus5": 304
+        },
+        "v": {
+          "queries": 1902,
+          "parents": 227,
+          "mean_pp": 2.0896054672454754,
+          "CI95_pp": [
+            1.7368331757256519,
+            2.4369073134123194
+          ],
+          "equal_parent_mean_pp": 2.2702043608606988,
+          "wins": 1071,
+          "losses": 418,
+          "ties": 413,
+          "below_minus5": 134
+        },
+        "unobserved": {
+          "queries": 1902,
+          "parents": 227,
+          "mean_pp": 3.504089908444874,
+          "CI95_pp": [
+            2.8197608573763575,
+            4.180088076995984
+          ],
+          "equal_parent_mean_pp": 3.517676950434842,
+          "wins": 1326,
+          "losses": 559,
+          "ties": 17,
+          "below_minus5": 308
+        }
+      }
+    }
+  },
+  "immutable_total_final_seal_sha256": "7f2999fd471d8ee3bd26719d750dd80408340b5ec7dfd048b3fbd9154187369b",
+  "publication_pending_in_old_seals_is_historical": true,
+  "new_method_evaluated": false
+}
