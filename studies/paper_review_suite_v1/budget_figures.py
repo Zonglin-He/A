@@ -74,7 +74,9 @@ def main(stage,prefix):
     def finish(fig,name):
         fig.tight_layout(rect=[0,.12,1,.94])
         for suffix in ['pdf','png','svg']:
-            f=(target if suffix=='svg'else private_exports)/(stage+'_'+name+'.'+suffix);fig.savefig(f,dpi=220,bbox_inches='tight');plots.append(dict(path=str(f.relative_to(R)),sha256=sha(f),public=suffix=='svg'))
+            f=(target if suffix=='svg'else private_exports)/(stage+'_'+name+'.'+suffix);fig.savefig(f,dpi=220,bbox_inches='tight')
+            if suffix=='svg':f.write_text('\n'.join(line.rstrip()for line in f.read_text().splitlines())+'\n')
+            plots.append(dict(path=str(f.relative_to(R)),sha256=sha(f),public=suffix=='svg'))
         plt.close(fig)
     fig,axes=plt.subplots(1,2,figsize=(9,4.3))
     for ax,(ds,x)in zip(axes,data.items()):
@@ -85,10 +87,14 @@ def main(stage,prefix):
             ax.scatter([z['expert_GPU_forward_seconds']for z in rr],[z['mean_v_percent']for z in rr],c=colors[schedule],marker=markers[schedule],s=42,label=schedule)
             for z in rr:
                 ci=z['v_CI95_percent'];ax.vlines(z['expert_GPU_forward_seconds'],ci[0],ci[1],color=colors[schedule],alpha=.5,lw=1)
-                ax.annotate('Dense'if z['K']is None else str(z['K']),(z['expert_GPU_forward_seconds'],z['mean_v_percent']),xytext=(4,5),textcoords='offset points',fontsize=8)
+                # Label one schedule to keep near-identical cost/quality
+                # points legible; every schedule/K remains in the tables.
+                if schedule in ['Hybrid','Dense']:
+                    offset=(5,{2:-16,4:8,8:-13,16:8,32:-13}[z['K']])if schedule=='Hybrid'else(5,7)
+                    ax.annotate('Dense'if z['K']is None else str(z['K']),(z['expert_GPU_forward_seconds'],z['mean_v_percent']),xytext=offset,textcoords='offset points',fontsize=8)
         ax.set(title=f'{ds.upper()} · {stage} · n={x["requested_queries"]}',xlabel='Additional expert GPU forward (s/query)',ylabel='Mean vIoU (%)');ax.grid(axis='y',color='#e5e5e5',lw=.6);ax.set_xlim(left=-.03)
     axes[1].legend(frameon=False,fontsize=8,loc='best');fig.suptitle('Native joint observation budgets: cost and grounding quality',fontsize=12)
-    fig.text(.06,.025,'95% parent-bootstrap CIs; per-domain y ranges. Only complete-cohort configurations plotted; all failures remain in tables.\nCost includes the same expert’s original measured forward, even on cache hits; Source/load/CPU costs are separate.',fontsize=8)
+    fig.text(.06,.025,'95% parent-bootstrap CIs; per-domain y ranges. Numeric labels: Hybrid K. Complete cohorts only; all failures remain in tables.\nCost includes the same expert’s original measured forward, even on cache hits; Source/load/CPU costs are separate.',fontsize=8)
     finish(fig,'expert_cost_viou')
     fig,axes=plt.subplots(1,2,figsize=(9,4.1))
     for ax,(ds,x)in zip(axes,data.items()):
