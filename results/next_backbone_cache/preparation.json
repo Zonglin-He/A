@@ -1,0 +1,144 @@
+{
+  "status": "cache_prepared_current_fulls_continue",
+  "created_at": "2026-10-23T10:09:50.654125+00:00",
+  "cache_registration": {
+    "status": "registered_for_lazy_verified_reuse",
+    "groups": [
+      {
+        "backbone": "llava_st",
+        "kind": "native_prediction",
+        "entries": 7326,
+        "logical_bytes": 60373606
+      },
+      {
+        "backbone": "llava_st",
+        "kind": "spatial_capture",
+        "entries": 256,
+        "logical_bytes": 30359477760
+      },
+      {
+        "backbone": "llava_st",
+        "kind": "teacher",
+        "entries": 7337,
+        "logical_bytes": 2912018095
+      },
+      {
+        "backbone": "tubedetr",
+        "kind": "native_prediction",
+        "entries": 12205,
+        "logical_bytes": 190501524
+      },
+      {
+        "backbone": "tubedetr",
+        "kind": "spatial_capture",
+        "entries": 256,
+        "logical_bytes": 3298480192
+      },
+      {
+        "backbone": "tubedetr",
+        "kind": "teacher",
+        "entries": 11934,
+        "logical_bytes": 4763009970
+      }
+    ],
+    "skipped_incomplete_receipts": 0,
+    "payload_bytes_copied": 0,
+    "GPU_calls": 0,
+    "labels_read": false,
+    "old_assets_modified": false,
+    "not_a_full_payload_hash_audit": true
+  },
+  "existing_sample_checks": {
+    "status": "pass",
+    "checks": [
+      {
+        "backbone": "tubedetr",
+        "dataset": "vidstg",
+        "capture_payload_SHA_verified": true,
+        "small_native_cache_roundtrip_bitexact": true,
+        "full_native_match": true,
+        "cache_status": "stored"
+      },
+      {
+        "backbone": "tubedetr",
+        "dataset": "hc2",
+        "capture_payload_SHA_verified": true,
+        "small_native_cache_roundtrip_bitexact": true,
+        "full_native_match": true,
+        "cache_status": "stored"
+      },
+      {
+        "backbone": "tubedetr",
+        "teacher_payload_SHA_verified": true,
+        "eight_boxes_and_masks_valid": true,
+        "new_teacher_calls": 0
+      },
+      {
+        "backbone": "llava_st",
+        "dataset": "vidstg",
+        "capture_payload_SHA_verified": true,
+        "small_native_cache_roundtrip_bitexact": true,
+        "full_native_match": true,
+        "cache_status": "stored"
+      },
+      {
+        "backbone": "llava_st",
+        "dataset": "hc2",
+        "capture_payload_SHA_verified": true,
+        "small_native_cache_roundtrip_bitexact": true,
+        "full_native_match": null,
+        "cache_status": "stored"
+      },
+      {
+        "backbone": "llava_st",
+        "teacher_payload_SHA_verified": true,
+        "eight_boxes_and_masks_valid": true,
+        "new_teacher_calls": 0
+      }
+    ],
+    "GPU_calls": 0,
+    "labels_read": false,
+    "scope": "four existing capture samples and two teacher samples; no all-payload hash claim"
+  },
+  "cleanup": {
+    "scope": "pip downloaded-package HTTP and wheel caches only; installed environments, models, data and experiment caches untouched",
+    "pip_allocated_bytes": 8603807744,
+    "conda": {
+      "success": true,
+      "tarballs_bytes": 407399781,
+      "index_cache_paths": [
+        "/home/wwww/miniconda3/pkgs/cache"
+      ],
+      "free_increase": 1447645184
+    },
+    "free_bytes_after": 102646497280,
+    "observed_free_increase_bytes": 10068672512
+  },
+  "numeric_store": {
+    "format": "lossless np.savez_compressed; no dtype reduction or pickle",
+    "maximum_new_bytes": 68719476736,
+    "minimum_filesystem_free_bytes": 26843545600,
+    "append_only": true,
+    "automatic_eviction": false,
+    "context_keys": [
+      "backbone",
+      "checkpoint_sha256",
+      "implementation_sha256",
+      "input_sha256",
+      "sampling_sha256",
+      "representation",
+      "scope",
+      "caption_sha256 and seed for query-conditioned objects",
+      "query_independence_proof_sha256 for cross-query video-level reuse"
+    ]
+  },
+  "active_worker_code_modified": false,
+  "existing_caches_preserved": true,
+  "no_new_GPU_calls": true,
+  "new_method_training_or_evaluation_started": false,
+  "engineering_checks": {
+    "status": "pass",
+    "count": 117,
+    "seconds": 4.1
+  }
+}

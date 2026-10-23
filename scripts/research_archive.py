@@ -49,6 +49,7 @@ REQUIRED += [str(p.relative_to(ROOT)) for p in (ROOT/'results/tubedetr_propagati
 REQUIRED += [str(p.relative_to(ROOT)) for p in (ROOT/'results/tubedetr_boxfixed_development').rglob('*') if p.is_file() and p.suffix in {'.json', '.md'}]
 REQUIRED += ['docs/llava_st_development.md']
 REQUIRED += ['docs/llava_st_next_method_preparation.md','results/llava_st_next_method_preparation/manifest.json']
+REQUIRED += ['docs/next_backbone_cache.md','results/next_backbone_cache/preparation.json','results/next_backbone_cache/next_run_request.json']
 REQUIRED += [str(p.relative_to(ROOT)) for p in (ROOT/'results/llava_st_development').rglob('*') if p.is_file() and p.suffix in {'.json', '.md'}]
 def check():
  errors=[];warnings=[]

@@ -1,3 +1,5 @@
+2026-10-23用户追加缓存加速、下一轮TubeDETR也运行及磁盘清理：独立追加两主干证据索引、无损数值缓存和精确RGB/文本/指纹的cache-only专家读取，不改当前LLaVA冻结worker。登记512完整空间捕获及已有全量输出/专家引用，复用时才hash大型payload；四捕获和两专家样本CPU回读通过，不冒充总体校验。仅清理pip下载缓存和Conda压缩安装包/索引，实测空闲增加约9.38GiB。保留所有实验/数据/权重/环境及专家软链接目标。当前两域全量优先，之后分别接通新版TubeDETR和LLaVA资格与固定方法评估，无旧网格恢复。见[缓存与后续执行](next_backbone_cache.md)。
+
 2026-10-23用户要求先跑完当前LLaVA两域全量，main新方法先拉取准备：固定a238705a的SimplePath及全视频单组Native2D原型快照，381文件/25,552,653字节逐Git blob核对；209个Python AST和23项合成CPU接口/原型/空间检查通过。当前146项绑定源码及输入清单未变。LLaVA单个生成时间区间不等于候选时间后验，原生logits适配和新辅助路径汇聚仍待独立验证；没有新GPU、专家调用、队列切换或新运行计划。见[新版准备与接入条件](llava_st_next_method_preparation.md)。
 
 2026-10-22 LLaVA-ST原两域128均锁定并接续全量：HC21配置完整封存评分，选gamma.5/准入.05/保护.1/连接.5；128预测及receipt全部hash核验，m_vIoU9.5635→12.7459（+3.1824pp），dense+5.3173、未观察+5.1331pp，时间23.3712不变。描述性区间v[1.4362,5.0600]/dense[2.5642,8.1796]/未观察[2.4058,7.9825]pp，未经选参/曝光校正；7条v下降>5pp。Vid20/HC21共41配置完整保留，总selected_profiles在任一full前生成；Vid10303已真实启动，后HC1902，无全量成绩或全量反向调参。见results/llava_st_development/development_report.md。

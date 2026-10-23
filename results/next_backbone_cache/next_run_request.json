@@ -1,0 +1,36 @@
+{
+  "status": "authorized_next_round_deferred_until_current_LLaVA_both_fulls_complete",
+  "upstream_commit": "a238705af9203c4cda407d7d1199ce18b2e6b72f",
+  "method": "SimplePath + video-wide single Native2D prototype pair",
+  "requested_backbones": [
+    "tubedetr",
+    "llava_st"
+  ],
+  "execution_order": [
+    "finish current LLaVA Vid10303",
+    "finish current LLaVA HC1902",
+    "seal, independently score, verify and publish current two-domain results",
+    "new TubeDETR adapter qualification and fixed-method evaluation",
+    "new LLaVA adapter qualification and fixed-method evaluation"
+  ],
+  "datasets": [
+    "vidstg",
+    "hc2"
+  ],
+  "original_development_queries_per_domain": 128,
+  "original_full_queries": {
+    "vidstg": 10303,
+    "hc2": 1902
+  },
+  "retuning_grid_authorized": false,
+  "separate_protocol_must_be_frozen_before_new_GPU": true,
+  "hard_gate": "actual native Source/cold-cache equivalence and new representation/temporal adapter qualification; stop on a failed gate, do not fabricate a prior",
+  "pending": [
+    "TubeDETR native last-layer posterior and actual pre-text grid capture",
+    "LLaVA explicit legal native temporal candidate/prior adapter",
+    "new auxiliary SimplePath repooling",
+    "wire lossless cache store and exact-context teacher reader into new separate workers"
+  ],
+  "current_queues_and_old_seals_immutable": true,
+  "not_an_executable_run_plan": true
+}
