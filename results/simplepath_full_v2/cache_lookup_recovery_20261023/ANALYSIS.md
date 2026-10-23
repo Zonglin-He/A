@@ -1,0 +1,13 @@
+# Existing teacher-cache lookup recovery
+
+The fixed SimplePath + all-video Native2D run stopped after 3085 VidSTG queries because the frozen cache-only teacher searches the original full and paper runtime directories, while the exact original evidence for the next query was stored in an older tuning cache. The existing query/context keys and payload hashes matched. This was an evidence lookup availability failure, not a changed method or a new expert request.
+
+The failed state, logs, all 48 bound source files, and completed output hashes were preserved. Before recovery, the old controller, worker and scorer had exited and the shared GPU lock was available. The user explicitly authorized a narrow exception to old-root immutability: append only these 65 verified original cache pairs (130 files, 26,494,271 bytes) into the existing lookup directory. Exclusive file creation prevented overwrites; every appended file matched its original SHA. Cache payloads remain private.
+
+The original command `tools/full.py run --resume` restarted the unchanged plan. All HC1902 and previous Vid3085 receipt/prediction/capture hashes remained identical after recovery. The HC seal and score receipt were unchanged, and HC inference/scoring was skipped. All bound sources, frozen dependencies, resources and input bindings passed their original checks. The formerly failing query completed with an original teacher cache hit, zero expert forwards, and exact original Source/E/imported-baseline outputs. At the recovery checkpoint Vid reached 3150/10303; this is partial progress, not completion or a new metric result.
+
+Production parameters remain kappa64/beta1/one round/context1.5, native last-layer two-offset prior, one all-video prototype pair and SimplePath. No source, plan, parameter, evidence position, precision, label or score rule was changed. New worker cost counters start at zero; previous worker acquisition and partial failed-query costs remain separate and must not be dropped or counted twice.
+
+The earlier cache inventory remains valid: no additional reusable geometric captures or raw appearance grids were discovered. This repair makes already-existing teacher evidence visible to the frozen resolver; it does not eliminate the remaining original Source reconstruction work. No cached acquisition speed is claimed as uncached deployment speed. Vid scoring and the complete two-direction Source+0.9 pp m_tIoU acceptance remain pending.
+
+The limited authorization does not permit arbitrary future writes to archived roots, overwrites, source edits, hash waivers or new expert calls. All scientific positives, negatives and severe declines in the completed HC report remain unchanged.
