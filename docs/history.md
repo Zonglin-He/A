@@ -954,3 +954,51 @@ Independent metadata-only regressionadapter disclosed. Controller actuallylaunch
 for NEW region_kernel_full_v2 fp09acb7fdad7e09fadab6280ac53b85ea91bb41c71ec5f7949976347f95cec6eb.
 Completefeatures320 reuse; HC1742/Vid1427 additional compatiblegeometry. Nooldqueue
 resumed, no fullresult selection. Actualworker/lock/firstprogress proof private.
+
+Latest user narrows broader-interface proposal to actualTA-only accuracy test.
+Independent fixed local_visual_v2 uses EXACT previousHC32/Vid32 inputs, one primary:
+pre-fusion original2Dappearance grid. SamefulltimeBoxFixed1.5/q0/kernel/16/ONEstep/
+MBR/DP/eightobservations. SameSourceforward records pre3D/post2D/currentpost3D controls,
+no extraexpert/training/otherbackbone/MLLM. No claim interface abstraction guarantees
+accuracy. General interfaces/adapters have9CPU contract/dimension/no-point-support
+checks; they do not change executingboundSource/runtime. Current RegionKernelfull
+safelypausedHC130/Vid0, allreceipt/pred/captureSHA retained, no unboundfiles, owned
+controller1156475/start228927300 andworker1156854/start228927729 actuallyexited,
+sharedlockfree. Originalfullplan unchanged; restore sameplan afterdiagnostic.
+Studyv1 CPU/CUDA reference-equality error after firstSource before ANYsavedpred/GT
+is retained with plan/source/log; v2 only moves reference logits toCPU, distinct
+fingerprint/sameinputs/math/precision. This single abortedSource is extra research
+overhead, not a negative algorithm result or completedprediction rerun.
+
+Completed fixed local_visual_v2 fp6f906b4fce434d194287b99074160fafa4807a543d8585160ecf91963449afb2:
+ALL64 seal thenCPUofficiallabels,1024metricchecksmax1.22e-15; Source memory/logits/q/
+CurrentRegion finaloutputs64bitwise. Native2D(primaryprefusionappearance) vsCurrent:
+HCt+2.8605/v+1.2237pp,pairedCIspositive; Vidt-.0979/v-.4717,CIszero. HCtime18/5/9,
+Vid10/10/12; VidsevereGlobal6t4->5/v0->3, twoCurrentrelative vloss10.87/9.77pp
+andtloss18.26/15.79 retained. Source-relativetshort/long positive descriptiveinboth
+(nHC6/26,Vid16/16). CorrectvsreflectedadvantageCIcross0; no causalregionalclaim.
+Prefusion3D/postfusion2D controls retained, no posthoc promotion. Source64/298.61s
+plusCPU7.36s, originalfailedv1ONEabortedSource overhead separate. No expert/observe/
+training/extraencoder. Genericcontract44CPUchecks(total), no otherbackbone/MLLMrun.
+This is boundedfeasibility, no statisticalequivalence/unseenvalidation orautomatic
+primaryreplacement. Restore SAMEcurrentfullplan/130savedoutputs, no parameterchange.
+
+After localvisual study completion, original full actually resumed with SAMEfp09acb7fd. HC130/Vid0 hashes preserved; actual newcontroller1290039/start229057917, HCworker1290420/start229058331 ownsGPUlock and progress159/1902 at receipt. No pure2D/control promotion orfrozen_sourcechange. Allstudy positives/negatives andfailure receipts retained.
+
+Latest user requests boundedNative2Dparameter adjustment, avoidoverfit. Locked
+local_visual_tune_v2 fp19d91de2a38ddf7d688a2dd72d9b7aca53413178a387e73852dc42c0f6c4d5b6:
+ONLYkappa4/16/64, onevalue sharedbothdirections; exposedprevious32/32 dev, SourceSHA
+fixes another32/32 FROMexpanded128 BEFOREdevscore, parentoverlap0. Those othermethod/
+originalfull outcomes historicallyexposed; candidate-specificprospective, NOTunseen.
+All192devcandidateoutputs seal thenCPUlabels. K16posterior/interval/boxes64exact;
+scalar4/64 andconstantNoOp checks passed. K4devmacrocompletev+.3265pp butVidguard
+fails; K64macro-.3379 andHCguardfails; selected16 byfrozenrule. No expandedgrid/
+perdomainchoice orparameterimprovementclaim. ExactlyONEconfirmation of selected16
+with16alias andCurrent/Source/G6; no furtherselection afterconfirm. Preparedv1scorer
+lexicalelse16 error caughtbefore0pred/model/GT, immutablecode/planretained; independent
+v2 whitespacefix/sameinputranking. FulltemporarilypausedagainHC293/Vid0 with all
+SHA/sources/logs,0unbound, oldcontroller1290039/start229057917/worker1290420/
+start229058331 exited/sharedlockfree; sameplan restoration afterfixedconfirmation.
+
+
+Completed latest bounded Native2D shrinkage study: ONLY4/16/64, one sharedvalue, exposeddev32/direction plus preselected parent-disjoint32/direction confirmation; historicalothermethod/full exposure disclosed. K4macrocompletev+.3265pp failsVid severeprotection; K64macro-.3379 failsHC; predeclaredretained16, notparameterimprovement. Fixedconfirmation64 seal thenCPU320checksmax8.88e-16; dev384checks, total704. Native2D16-vsCurrent HCt-.4413/v-.4465pp(8win12harm12tie,5severe time/4v), Vidt+.6896/v+.4256(9win8harm15tie,1severe time/0v); CIszero. HCSource short/long-.6549/-.7290t; Vidshort-1.1831/long+4.3877. No confirmation-driven reselection/expandedsearch or claim overfitfixed. Source/logits/q0/CurrentRegion64 bitwise;0newexpert/observation/training. Allsigned/severe, controls,protocolandfailedpreflight retained at results/local_visual_tune_v2. SamefrozenRegionKernel full restored after preserving HC293/Vid0, unchangedfp09acb7fd; no pure2D/controlpromotion.

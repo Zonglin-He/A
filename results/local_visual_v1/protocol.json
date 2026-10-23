@@ -1,0 +1,42 @@
+{
+  "schema": "local_visual_v1",
+  "primary": "Native2D",
+  "count": 64,
+  "arms": [
+    "Native2D",
+    "CurrentRegion",
+    "Native3D",
+    "Fused2D",
+    "Reflected2D",
+    "WrongTime2D",
+    "NativeG6",
+    "Source"
+  ],
+  "code": {
+    "studies/local_visual_v1/score.py": "761253fcde1e21c4a27e0c670e1e29b1cefd129b77c18fad13a5f594e7759513",
+    "studies/local_visual_v1/run.py": "8b0d4c12f21b6f3a32c21b4e469269d387c9d3c7c3664d32f479dbd60601ec7b",
+    "interfaces/local.py": "695c347213a04b59bd2e10d7d80aaf47a4279d2953f8914fcb9d00867949d167",
+    "interfaces/__init__.py": "853aa6f1b3762d765eb311b6645dd675eddf48a61f3ca36058f2736dee05e220",
+    "interfaces/prototype.py": "446e72236c03f9a921ac869e89a3886453222726238bccd04036821437f9154c",
+    "interfaces/temporal.py": "1d662b4974d2707ed0a6c5477eafec5cefde0ff07b8fb2f106ec0176832a19d8",
+    "adapters/tastvg.py": "22bb3c00a23fdefee8fa742209dd51045a8dc4091f5bce27c5215e71374ef6e0",
+    "adapters/__init__.py": "24563c57e1cde978b48bd2e9d41d65c222d5a26fe79624780c2c6b8c861af254"
+  },
+  "authorization": "Latest user asks actualTA-only validation whether broader original localvisual representation loses substantial accuracy; no otherbackbone/MLLM, no training/newexpert/tuning. Temporary full pause preservedHC130/Vid0, restore sameplan afterdiagnostic, no automatic candidatepromotion.",
+  "claim": "Only change extra-feedback feature: original2Dappearance input_proj(vis_encoder) grid BEFORE crossmodal fusion. No separate motion branch/textfusion/classifier required by feedback. Original nativeSource q0 remains unchanged including its ownASA/TTS/motion. This doesnot remove these from the backbone.",
+  "fixed": "Same exact acceptedHC32/Vid32 additionalparent inputs, alreadyEXPOSED. Original224/twooffset grid/precision/seed20260920/fullcaption/Source/E/geometry/eightobservations fixed. Same1.5fulltimeBoxFixed region, fractionalpool, otherparitycenter/L2/cosinekernel/common16/ONEq0update/originalMBR+DP. No scan.",
+  "controls": "2x2 representations from SAME ONE Source call/query: prefusion2D(primary), prefusion3D(control), postfusion2D(control), postfusion3D(currentRegion). Reflected2Dsamearea and halfperiod wrongtime feedback controls; Source/G6 aliases. No controlpromotion.",
+  "outputs": "Complete predictionsealALL64 before separateCPUfixedofficiallabels. Report t/fullv/fixedspacev, thresholds/boundary/length/shortlong/wins/harms/severe/parentCI andall signed. Describe magnitude anduncertainty; no invented statisticalequivalence/pass orfull-result modelselection.",
+  "budget": {
+    "max_GPU_seconds": 1800,
+    "new_Source_queries": 64,
+    "new_expert": 0,
+    "new_observations": 0,
+    "new_training": 0,
+    "new_extra_feedback_model_forwards": 0,
+    "seed": 20260920
+  },
+  "GT_in_inference": false,
+  "exposure": "Previously exposed fixedHC32/Vid32. Bounded paired feasibility, not unseen confirmation or crossbackbone proof.",
+  "fingerprint": "8db6c8e26c3d6933d2277656cf02413d6ec2d2f1ab45dfdc42b27479d863d33c"
+}

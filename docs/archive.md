@@ -245,3 +245,26 @@ over matchedcontrols and otherbackbone/MLLM empirical generality remain unproven
 Promotion prepared-v1 regression fails before any formalprediction: first-query posterior isnotbitwise under defaultmultithread BLAS. Originalplan/source preserved privately and publicFAILURE. Newv2 fixes originalexperiment single-threadBLAS contract (scopedreadout andworkerenv), samealgorithm/parameters/input;320bitwise rerun before anyactualfull. NoGPU/Source/expert/fullprediction/GT in failedpreflight.
 
 Original promotion CPU regression passed288 matchingfeatures/posteriors/finalboxes, then raw Vid recheck capture lacked native_interval metadata. Frozen full worker already reconstructs this field from original native logits. Independent CPU promotion_adapter applies EXACT same existing fallback to regression rawcapture, no inference/Source/core/plan/hash change. Original failure/code/plan preserved;0 formalfullpredictions/GPU/Source/expert/labels.
+
+User-authorized TA-only pre-fusion localvisual feasibility study is isolated from
+frozen RegionKernel full. Preserve v1 reference-device failure and independentv2,
+allpairedsigns/negatives; no automatic primaryreplacement or crossbackboneclaim.
+Currentfull temporarypauseHC130/Vid0 is saved with allSHA and unchangedplan.
+
+Completed fixed local_visual_v2 fp6f906b4fce434d194287b99074160fafa4807a543d8585160ecf91963449afb2:
+ALL64 seal thenCPUofficiallabels,1024metricchecksmax1.22e-15; Source memory/logits/q/
+CurrentRegion finaloutputs64bitwise. Native2D(primaryprefusionappearance) vsCurrent:
+HCt+2.8605/v+1.2237pp,pairedCIspositive; Vidt-.0979/v-.4717,CIszero. HCtime18/5/9,
+Vid10/10/12; VidsevereGlobal6t4->5/v0->3, twoCurrentrelative vloss10.87/9.77pp
+andtloss18.26/15.79 retained. Source-relativetshort/long positive descriptiveinboth
+(nHC6/26,Vid16/16). CorrectvsreflectedadvantageCIcross0; no causalregionalclaim.
+Prefusion3D/postfusion2D controls retained, no posthoc promotion. Source64/298.61s
+plusCPU7.36s, originalfailedv1ONEabortedSource overhead separate. No expert/observe/
+training/extraencoder. Genericcontract44CPUchecks(total), no otherbackbone/MLLMrun.
+This is boundedfeasibility, no statisticalequivalence/unseenvalidation orautomatic
+primaryreplacement. Restore SAMEcurrentfullplan/130savedoutputs, no parameterchange.
+
+After localvisual study completion, original full actually resumed with SAMEfp09acb7fd. HC130/Vid0 hashes preserved; actual newcontroller1290039/start229057917, HCworker1290420/start229058331 ownsGPUlock and progress159/1902 at receipt. No pure2D/control promotion orfrozen_sourcechange. Allstudy positives/negatives andfailure receipts retained.
+
+
+Completed latest bounded Native2D shrinkage study: ONLY4/16/64, one sharedvalue, exposeddev32/direction plus preselected parent-disjoint32/direction confirmation; historicalothermethod/full exposure disclosed. K4macrocompletev+.3265pp failsVid severeprotection; K64macro-.3379 failsHC; predeclaredretained16, notparameterimprovement. Fixedconfirmation64 seal thenCPU320checksmax8.88e-16; dev384checks, total704. Native2D16-vsCurrent HCt-.4413/v-.4465pp(8win12harm12tie,5severe time/4v), Vidt+.6896/v+.4256(9win8harm15tie,1severe time/0v); CIszero. HCSource short/long-.6549/-.7290t; Vidshort-1.1831/long+4.3877. No confirmation-driven reselection/expandedsearch or claim overfitfixed. Source/logits/q0/CurrentRegion64 bitwise;0newexpert/observation/training. Allsigned/severe, controls,protocolandfailedpreflight retained at results/local_visual_tune_v2. SamefrozenRegionKernel full restored after preserving HC293/Vid0, unchangedfp09acb7fd; no pure2D/controlpromotion.

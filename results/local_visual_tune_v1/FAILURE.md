@@ -1,0 +1,1 @@
+Prepared-only tune-v1 has a scorer lexical syntax error (else16), caught by compile before ANY devprediction, Source/GPU/label call. Originalcode/plan/snapshot retained; distinctv2 fixes only missing whitespace, exactsamekappa4/16/64/selection/confirmationinputs/seed. No algorithmnegative oroldhashwaiver.

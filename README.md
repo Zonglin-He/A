@@ -39,3 +39,12 @@ commitfa2805cecef8fa2a929aea1f5755d3102b33d9b0. Previous pre-K16 and pre-mainlin
 archive ancestors remain intact. No private video/query/GTcoordinates/weights/raw
 mask/features are public. Check source/evidence with `python tools/archive.py check`;
 intentional updates use snapshot then check. CPU checks: `python tools/check.py`.
+
+The [native local representation contract](docs/local_representation_interface.md)
+separates local feature coordinates/time from native temporal candidates/readout.
+[Actual fixedTA pre-fusion2D comparison](results/local_visual_v2/ANALYSIS.md):
+HCvsselectedcurrent +2.8605t/+1.2237completevpp; Vid-.0979t/-.4717v, with severe
+tails retained. This is exposed32/32 feasibility, no crossbackbone/MLLM effectiveness
+or automatic change of the alreadyfrozen full method. Currentfull resumes sameplan.
+
+Latest bounded [Native2D shrinkage selection and fixed confirmation](results/local_visual_tune_v2/ANALYSIS.md) retains κ16, finds no jointly better setting, and stops selection. HC development advantage does not reproduce; every sign/severe outcome is retained. Selected full runtime remains original fused-motion RegionKernel.
