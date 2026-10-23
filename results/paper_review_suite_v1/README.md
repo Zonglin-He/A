@@ -31,3 +31,7 @@ Current numerical budget fingerprint remains c5c24f739ebd160f8b252ddf5b9539edc6e
 
 
 Latest execution (supersedes earlier running snapshots): controlled-shift confirmation is fully sealed/scored/reported; see [CONFIRM_ANALYSIS](shifts/CONFIRM_ANALYSIS.md). All TA experiments are complete. CG native420/FP32 v8 is screening, after preserved v3-v7 engineering failures and byte-exact compatible migration; see [recovery evidence](CGSTVG_MEMORY_RECOVERY.md). No CG quality conclusion exists before a complete stage seal/score. Main production and Fig1 are unchanged.
+
+Current CG execution supersedes v8 snapshot: v9 fixes only documented input segment-boundary conversion before native sampling;65byte-exact compatible completed predictions retained, no GT scoring yet. See recovery document and cgstvg_v9_boundary_conversion.json.
+
+Live v9 bridge verification: both Vid first-two real checkpoint/native/observer/pooling/coupled replay checks now passed; four required bridges complete across both domains. Screening has passed the corrected boundary case and continues unscored.
