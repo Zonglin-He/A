@@ -10,4 +10,6 @@ Exact-input Native2D pools and Source/E/eight observations/complete geometry are
 
 Original cached-ablation executable source is reproducible from the archive branch under studies/native_prior_v1/run.py; the current tree keeps its exact protocol and every result. Current bridge/regression tools validate the new native-prior production. No old profile or parameter scan is available.
 
+The user-authorized fixed two-value comparison is reproducible through studies/native_prior_kappa_compare/run.py (exposed128/domain caches) and hc1902.py (already-complete officialHC1902 caches). These CPU-only studies have independent plans/seals/score receipts and change no production setting. Preserve the complete mean-versus-tail tradeoff, including K16 short-event and Vid negatives. They are descriptive comparisons, not an additional production profile or an automatic method selection.
+
 Run tools/archive.py check, snapshot, check after intentional changes. Publish current code/configuration/protocol/ALLsigned/severe/CI with freshCAS main+research, verify every remote file byte/SHA/tree and all archive ancestors. Private assets (including docs/assets.json symlink) are excluded. Whole-domain seal precedes independent CPU fixed official labels.

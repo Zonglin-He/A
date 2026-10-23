@@ -9,6 +9,7 @@ Only TA-STVG is implemented/tested. Local representation and native temporal pri
 - [Current method and frozen parameters](docs/method.md)
 - [Native-prior cached ablation: all positives and negatives](results/native_prior_v1/ANALYSIS.md)
 - [Earlier parameter calibration and failed guards](results/native2d_calibration/ANALYSIS.md)
+- [Fixed native-prior kappa16/kappa64 comparison on cached HC1902](results/native_prior_kappa_hc1902_v1/ANALYSIS.md) and [both exposed128/domain panels](results/native_prior_kappa_compare_v1/ANALYSIS.md); descriptive only, production remains kappa64.
 - [New dual-domain full protocol](results/native2d_nativeprior_full_v1/protocol.json)
 - [History](docs/history.md) and [archive policy](docs/archive.md)
 

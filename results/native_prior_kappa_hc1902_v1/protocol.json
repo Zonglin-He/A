@@ -1,0 +1,119 @@
+{
+  "schema": "native_prior_kappa_hc1902_v1",
+  "authorization": "Same user-authorized fair fixed K16/K64 cached comparison; official HC1902 is fully cached and sealed, avoiding reliance on the small panels alone. Active Vid full untouched.",
+  "arms": [
+    "Source",
+    "NativeSpatial",
+    "Global6",
+    "K16",
+    "K64"
+  ],
+  "pairs": [
+    [
+      "K16",
+      "Source"
+    ],
+    [
+      "K16",
+      "NativeSpatial"
+    ],
+    [
+      "K16",
+      "Global6"
+    ],
+    [
+      "K64",
+      "Source"
+    ],
+    [
+      "K64",
+      "NativeSpatial"
+    ],
+    [
+      "K64",
+      "Global6"
+    ],
+    [
+      "K16",
+      "K64"
+    ]
+  ],
+  "no_winner_selection": true,
+  "kappas": [
+    16,
+    64
+  ],
+  "beta": 1,
+  "rounds": 1,
+  "context": 1.5,
+  "prior": "exact native final-layer two-offset physical hull for BOTH seeds and final prior",
+  "spatial_unchanged": {
+    "observed": 0.5,
+    "guard": 0.1,
+    "link": 0.25,
+    "evidence8": true,
+    "original_MBR": true
+  },
+  "exposure": "POST-HOC DESCRIPTIVE official HC1902 comparison requested after K64 official results were read. Not heldout confirmation; cannot validate/reselect a method against these labels. No configuration or queue switch.",
+  "severe": "tIoU OR complete vIoU decline >5pp; union counts a query once; Source/NativeSpatial/Global6/K64 baselines explicit.",
+  "duration": "GT duration <=5s versus >5s, evaluation only after complete1902 seal",
+  "budget": {
+    "queries": 1902,
+    "new_model": 0,
+    "new_video": 0,
+    "new_expert": 0,
+    "new_training": 0,
+    "GPU": 0
+  },
+  "protocol": "Independent CPU prepare/predict/score. Existing exact Native2D pools/nativeprior/fullgeometry/Source/eightpositions only. Recompute two kappas with same spatial DP; K64 posterior interval/finalboxes exact oldFull. Score after all1902 seal. Preserve all signed outcomes.",
+  "code": {
+    "stvg/__init__.py": "c904c38c274d6791c9c3cfed40753e917cd1b647b6f38497151394ba73d9b6ca",
+    "stvg/__main__.py": "d37dda44438961178fb2caea65b206a73fa2a2139222f6f41f2339c2fd4bd477",
+    "stvg/_attention.py": "5eea2e096e96ee5a011b827341677d107a1a763b4586f465b2f099b7618abf38",
+    "stvg/_host.py": "9901dfcbe40ee7a4377c7d61de61c5dfa6e9666fd09c0dd5af3323c280a9957e",
+    "stvg/_spatial_math.py": "5bc273271a08dabffa086aff663795400e084b70a60e1dcd98d80099a2039e2e",
+    "stvg/_visual.py": "33e2b8040979aca964620d8734cea62b0295111943767a337e3664b278802966",
+    "stvg/capture.py": "bd198dfb18073d9806ffd082beb633b3df544308878fcac7ce9f2b4a4557b520",
+    "stvg/consensus.py": "c8539c78a8ec278866e5bc077e55911ffaae85e9efc44cc7262a4dc58488c34c",
+    "stvg/decode.py": "3c5d0237a97c650970a76266874bcd83b1f77f302a70dda842fa38f9c22be2a8",
+    "stvg/evaluation.py": "7d06ebb331a58a6ccc172bbc8ff578bb971b363737316ad02764d2e5031470a1",
+    "stvg/evidence.py": "fbbb934035e6407544ece64770d2e97ebd6e3c387a20724d7be2e7f542ebf81d",
+    "stvg/initialization.py": "21168f4a6740e5b4f306863bd1b852587cc71ed8d15dd0dc3b8b643da70e7842",
+    "stvg/inputs.py": "f9023daa8737cabc71045ef5dd4199e0d9b7823bcc6eb8430b1097f6159759f7",
+    "stvg/metrics.py": "c8db46913786a9f300984d7d7ca7ab219be30e8c91a1d27781d23155597d5665",
+    "stvg/metrics_base.py": "4257912cd58f441f36bcafb1ce93eeeae83de18312166ac9017a28687e31f6d0",
+    "stvg/metrics_hc.py": "a4ed56bf48e0bcb8d3193a421048a1a6dd7373027f90e43bfcc6afd6e64b0927",
+    "stvg/native.py": "e34d3b08a76ec1baac08e4f158f42ce8e0bf1795a4034ee80801422d0b04ccbc",
+    "stvg/paper_panel.py": "505a061289956cba2544c3323a5d9b6fde33d62e61ea2a78da7d41de6d7bc459",
+    "stvg/positions.py": "d22e4fbceea353f060276ff09d4d298f87e99116ff1624328048b7ee86541d15",
+    "stvg/predictor.py": "433d3a9300126dfceaf76c184520fee247e86280e6b954109b5d22e33cda3ffd",
+    "stvg/prior.py": "341ef6c18534a17d52979827d6ca12d29dd34236648abca506632ff25bdc45a2",
+    "stvg/prototype.py": "8399270efe359e5ef10dd3362b348dec771175ad18075ceaefb9b479a4c4886c",
+    "stvg/query.py": "cb0cac6ea1b71cb80c61b42201e4740a24f3a8aeeafb25e13baa98e739520637",
+    "stvg/readout.py": "dd22b7f4627375514df61b9a18cbfafcac2352de74b4a4dd5fcefc934da2f3e0",
+    "stvg/representation.py": "1e10152274996a046dc45a1bbfd90727dda4083f3c1afcea21f2765f97f0e666",
+    "stvg/runtime.py": "4b1fcfbfeefec90643c0c92621f4a1d28339aa5c1bf68ad8d7f69ab413176381",
+    "stvg/source.py": "0f06660b3cccea6f8af720c5c7668e9c1a98fb6ed217922ddfaf402fa7a05ede",
+    "stvg/source_loader.py": "f480f9c30cec9ea468ef60f4707c4928c04acdca038aeea556cf9674dafe41de",
+    "stvg/spatial.py": "eb2ae5158dbc216be6084d3f4d66a7facc2faf56c598fe6a32da80820cf1e86b",
+    "stvg/teacher.py": "8ddfa01c26becbff3dad094cf6d96d3075ea2088a97ec20487ebe6749d4f2fa5",
+    "stvg/teacher_bridge.py": "123070ae2f38c0c1f30afeb79a90de3278d370c9794eaabe81a48db1f70188e8",
+    "stvg/teacher_worker.py": "884448d03776ae733bcdb8cc684ff1637e50d407d180c60ecf4ae5a3daa86493",
+    "stvg/temporal.py": "50499490a53bce6f46f0f3f080f5314236ccccf7c7ec919ee817d9df0a7ac710",
+    "stvg/temporal_hidden.py": "b2ca065a86e447b1c6f40615abb67a96cff5612e4b8b97124cd00a8cc50701c5",
+    "stvg/tensors.py": "11533fb059d6e2f6cd7913ace762ae5c553955bbbe670fadf87d660f573581a3",
+    "stvg/visual_cache.py": "659cf4402001d09a5a7c6092c8d577fff48fa7b19ce71a62d050251b52f15fff",
+    "stvg/visual_prefix.py": "fb937f5f15d2b3b6c6399bfc223c2d470981382931e0daaf72fc0d38938e36b5",
+    "stvg/worker.py": "21ecab248a8ad4fc6b9004b5c7f2b8c242e8b18f3a286a6b4cbf370b58926274",
+    "tools/full.py": "6141ea8a093513139b71a9c2abd8393682eff5760f924ef4db399f6925c3ed31",
+    "tools/full_regression.py": "b0f83d41de8289d0bf84e686510e2468f2ca9093fdde026d968d9f3b807333e6",
+    "tools/full_score.py": "fb952080b1caa49555552dece34f3bb4d0971570f1876b49418e39218cab0586",
+    "configs/default.json": "526cd074e97a977a8d40e0f5b485793c5a525c68c3465c670f45a77ab6a1728d",
+    "studies/native_prior_kappa_compare/run.py": "ae1308b308b61445b83d62a9b0ca662f3fc5cd91cce9a0e2354e91f480aef932",
+    "studies/native_prior_kappa_compare/hc1902.py": "1cd4ba19738faf4901e9dfe2c10d702bc7471941ce567c7d0b138b9dd2c709b9"
+  },
+  "production_fingerprint": "85f7ff69d6b917b824d3b01e4d12be850d11a2c00f96917438cf9b619f2c3e56",
+  "GT_in_prediction": false,
+  "seed": 20260920,
+  "fingerprint": "b602b66d254c759f9d353dddbe4562bb475c941065f7b7cf7df5348c838f0a44"
+}
