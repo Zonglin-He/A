@@ -84,3 +84,53 @@ single-grid pooling exact equality, and the label-read guard/restoration.
 The full receipt is `cgstvg_cpu_interface_audit.json`. Real-checkpoint
 construction/no-op, inference, scoring and cross-backbone effectiveness remain
 **pending**.
+
+
+## Native runtime implementation now frozen, model execution still pending
+
+The independent CG plan is now frozen at
+`f767b3424b3a2a11f2f5358a36bbc614b62a2fc3af3dce29be8828052faece5d`
+([protocol](cgstvg_protocol.json)). Native loading/capture, generic feedback,
+separate CPU official-CG scoring and the two-stage controller are implemented
+in `cgstvg_runtime.py`, `cgstvg_score.py` and `cgstvg_study.py`. The CG loader
+refuses even model import/construction until TA consistency, budget and shift
+confirmation receipts/seals are complete and their owned workers have exited.
+No waiting CG model worker has been launched.
+
+Four additional CPU contract groups passed: the hard last-stage gate before
+CG import, both official dataset resize+test-normalization operations byte-exact
+on synthetic RGB, both domains' zero-correction/no-information feedback
+identity, and six pinned official-CG evaluator versus independent dense checks
+with maximum error zero. No real video, annotation, checkpoint model or expert
+was used in these tests. Actual learned-model observer/no-GT/cold-cache bridges
+remain pending (first two screening queries/domain, four extra native passes).
+
+Two initial unfrozen CPU preflight issues are preserved: unnecessary
+valid-box coordinate conversion introduced rounding under a zero update; the
+new clipping helper preserves unaffected rows exactly. The original CG Vid
+evaluator also requires an unused `pred_conf` argument, now supplied as an
+empty dictionary only for that signature. Both repairs preceded plan freezing
+and all CG model execution; no metric formula or selected data changed.
+
+The plan budgets at most388 native Source forwards and384 same-expert8 joint
+queries, with fixed wall limits. Stage elapsed wall includes model construction,
+loading and instrumentation. Four native no-op queries include an extra Source
+pass and CPU coupled replay; their audit-inclusive query timings must not be
+represented as an independently measured deployment benchmark. Original TA
+production, method parameters, old roots and Fig1 are unchanged.
+
+
+### Dependency-binding revision after budget resource failure
+
+Before any CG model execution, the budget queue hit its fixed exact-search
+resource limit on one K32 configuration. Its independent recovery uses a new
+namespace and receipts. Accordingly, the final prepared CG entrypoint is now
+`cgstvg_study_v2.py`, plan
+`160febd9f0962e09c30c7dc8cd348dda1e0b45b12e5a47ce55a85dc6759e2621`
+([v2 protocol](cgstvg_v2_protocol.json)). The v1 prepared source/plan remains
+unchanged and unused. V2 changes dependency receipt/owner checks and output
+namespace only; native sampling, precision, model/weight loading, feedback,
+scoring, budgets and cases stay the same. The four CPU contract groups passed
+again, without constructing a CG model or using any real RGB/annotation.
+The new gate checks the recovered budget's own seal/score binding and the
+actual new queue identities; it never fabricates an old-plan completion file.

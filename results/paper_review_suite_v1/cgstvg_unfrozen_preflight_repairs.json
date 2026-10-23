@@ -1,0 +1,31 @@
+{
+  "stage": "CPU_only_before_independent_plan_freeze",
+  "repairs": [
+    {
+      "status": "CPU_synthetic_identity_assertion_failed_before_plan_freeze",
+      "CG_model_constructed": false,
+      "CG_forward": 0,
+      "expert_forward": 0,
+      "GT_files_read": 0,
+      "reason": "Converting already-valid normalized cxcywh to xyxy and back introduced float64 roundoff in SharedCorrection zero update. Preserve unaffected rows exactly; actual negative-corner clamp math unchanged.",
+      "code": {
+        "cgstvg_runtime_cpu_tests.py": "7db8ef5ab425ebfe4a3b27705104e1d2fa8f66bf8c2ae7207581ec76462b7082",
+        "cgstvg_runtime.py": "400c6a27bd9f2fd1d6f4d169d0235c35a9bb60c17ad5f0b584fa058342df3e9a"
+      }
+    },
+    {
+      "status": "CPU_metric_interface_assertion_before_plan_freeze",
+      "CG_model_constructed": false,
+      "CG_forward": 0,
+      "expert_forward": 0,
+      "GT_files_read": 0,
+      "reason": "Official CG Vid evaluator has required but unused pred_conf argument; HC evaluator has2 arguments. Supply empty prediction-confidence dict only for native Vid metric signature; no metric changes.",
+      "sha256": "df3d68b111a39eedb75a4e966395d51e5d1bcca84987e707b3c7a3bf8549b0eb"
+    }
+  ],
+  "CG_model_constructed": false,
+  "CG_forward": 0,
+  "expert_forward": 0,
+  "GT_files_read": 0,
+  "final_CPU_tests": "cgstvg_runtime_cpu_tests.json"
+}
