@@ -1,3 +1,5 @@
+2026-10-24 新版TubeDETR固定方法接续：原LLaVA两域最终结果已发布a2e0df0b并逐远端字节核验。隔离接入main a238705a SimplePath+单组Native2D，原生末层真实时间后验和完整fast pre-text网格，两域原首query冷/缓存共4次前向逐位通过，0新专家/GT；权重不变。120项CPU检查通过，独立冻结run_plan80fe566c与固定参数锁，先两域原128再Vid10303/HC1902，完整seal先于CPU标签读取。控制器05:10启动，禁止依据新成绩调参；新方法成绩尚未产生，不与旧LLaVA或上游TA混合。见[新TubeDETR执行协议](simplepath_tubedetr.md)。
+
 2026-10-24 LLaVA-ST两域完整终态：Vid10303/732、HC1902/227均完整seal/独立CPU评分，控制器正常退出。Source→Ours全量v为Vid12.4330→15.3637(+2.9307pp)、HC9.7047→11.7943(+2.0896pp)；dense+2.4541/+3.6690pp，未观察+2.2002/+3.5041pp，原生时间均不变。Vid1397条/HC134条v下降>5pp，两域无效0，保留全部逐条正负匿名标量。Root已首核两域全部12205预测/receipt及输入/profile绑定，最终沿用已完成Vid首核并比小hash，不重扫16GB权重；总seal引用核验通过。开发曝光/单合并权重来源边界保留，非新SimplePath或严格未见域结果。见[完整终态](../results/llava_st_development/terminal_report.md)。新版TubeDETR后续按用户授权接续，不恢复旧调参。
 
 2026-10-23用户追加缓存加速、下一轮TubeDETR也运行及磁盘清理：独立追加两主干证据索引、无损数值缓存和精确RGB/文本/指纹的cache-only专家读取，不改当前LLaVA冻结worker。登记512完整空间捕获及已有全量输出/专家引用，复用时才hash大型payload；四捕获和两专家样本CPU回读通过，不冒充总体校验。仅清理pip下载缓存和Conda压缩安装包/索引，实测空闲增加约9.38GiB。保留所有实验/数据/权重/环境及专家软链接目标。当前两域全量优先，之后分别接通新版TubeDETR和LLaVA资格与固定方法评估，无旧网格恢复。见[缓存与后续执行](next_backbone_cache.md)。
