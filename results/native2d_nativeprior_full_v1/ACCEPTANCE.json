@@ -1,8 +1,22 @@
 {
-  "status": "pending_full_evaluation",
+  "status": "partial_scored_target_not_met",
   "metric": "query_equal_mean_tIoU",
   "minimum_delta_Source_pp": 0.9,
   "each_direction_required": true,
   "no_tuning": true,
-  "not_guaranteed": true
+  "not_guaranteed": true,
+  "domains": {
+    "hc2": {
+      "status": "target_not_met",
+      "metric": "query_equal_m_tIoU",
+      "delta_Source_pp": 0.7470720410726217,
+      "required_minimum_pp": 0.9,
+      "domain": "hc2",
+      "no_parameter_reselection": true
+    },
+    "vidstg": {
+      "status": "pending_full_evaluation"
+    }
+  },
+  "all_domains_complete": false
 }

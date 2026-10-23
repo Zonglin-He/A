@@ -15,3 +15,5 @@ Only TA-STVG is implemented/tested. Local representation and native temporal pri
 Inference: `.conda/tubedetr/bin/python -B -m stvg --help`. The separate `tools/full.py` owns the new frozen official dual-domain full. Whole-domain seal precedes independent CPU official-label scoring. NativeTemporal=OursS; Global6 in evaluation is an imported sealed historical baseline ONLY, never an input to Full.
 
 Prior Global6 production code/results remain on archive/research-pre-native-prior-20261023 and in the read-only local stvg-native2d checkout (pausedHC1442/Vid0). Current main contains one production profile. Private media/captions/GT coordinates/features/masks/weights and runtime credentials remain outside Git.
+
+The completed HC1902 report is available at [HC full results](results/native2d_nativeprior_full_v1/hc2/ANALYSIS.md). Source-relative time gain is+.7471pp, below the fixed+.9pp target; Vid remains running. The frozen run's CPU scorer had a local-name collision; [the independent CPU adapter](tools/score_adapter_nativeprior.py) repairs only that binding, with complete AST/prediction proof in the HC report. The inference plan and predictions are unchanged.
