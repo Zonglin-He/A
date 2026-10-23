@@ -1,0 +1,113 @@
+{
+  "schema": "algorithm_simplification_v1",
+  "authorization": "User requests actual study of simpler formulas/less costly spatial propagation and other components; retain ongoing full unchanged.",
+  "primary": "NearestBoxLink-Current",
+  "arms": [
+    "Source",
+    "Current",
+    "NoCycle",
+    "BoxLink",
+    "NearestBoxLink"
+  ],
+  "pairs": [
+    [
+      "NoCycle",
+      "Current"
+    ],
+    [
+      "BoxLink",
+      "Current"
+    ],
+    [
+      "BoxLink",
+      "NoCycle"
+    ],
+    [
+      "NearestBoxLink",
+      "Current"
+    ],
+    [
+      "NearestBoxLink",
+      "BoxLink"
+    ],
+    [
+      "NearestBoxLink",
+      "Source"
+    ],
+    [
+      "Current",
+      "Source"
+    ]
+  ],
+  "exact": "Positive O(T^2) minstart/maxend hull mass by unique endpoint-owner cases, no cancellation/pruning; vector-mean RegionKernel instead of explicit pairwise kernel. Also direct source-grid extraction using explicit original encoder H,W rather than position factor search; exact tensor checks.",
+  "structural": "One fixed nearest physical observation per unobserved node; tie earlier observation. Original bidirectional affinities and exact affine fit+validity; no cycle or fallback-to-farther-anchor selection. Uniform valid support, original extent/appearance/guard/unary coefficients and exact DP. Plain adjacent complete-box IoU link (.25 original coefficient), no adjacent feature/mask transport. Invalid fit -> E. No learned state, threshold/weight/anchor-count scan.",
+  "controls": "Current original; NoCycle exact sealed parent alias; BoxLink keeps BOTH past/future anchors with only no-cycle and boxIoU link; NearestBoxLink is the ONLY predeclared structural candidate. Do not promote a control posthoc.",
+  "fixed_time": "Same original kappa64 Full interval and Native2D region features/prior for every spatial arm. This estimates spatial replacement, not end-to-end rerun of changed ROI-to-time feedback.",
+  "scope": "Same67 availability-selected exposed official-HC-compatible cached inputs. Exact math audited on officialHC1902 plus existingVid128 (2030 unique queries); no model/RGB/teacher/GT in exact phase. Spatial labels only after all67 predictions seal.",
+  "timing": "One common source-grid extraction/seed input per query, one warmup before measured three alternating-repeat direct constructors. Current includes adjacent-affinity construction+geometry; BoxLink/Nearest implementations never build and discard original geometry. Known-shape grid extraction paired exact and timed separately. Cached CPU component costs only, no uncached deployment/GPU speed claim.",
+  "budget": {
+    "spatial_queries": 67,
+    "exact_math_queries": 2030,
+    "new_model": 0,
+    "new_RGB": 0,
+    "new_expert": 0,
+    "new_training": 0,
+    "GPU": 0
+  },
+  "no_production_change": true,
+  "no_selection": true,
+  "code": {
+    "stvg/__init__.py": "c904c38c274d6791c9c3cfed40753e917cd1b647b6f38497151394ba73d9b6ca",
+    "stvg/__main__.py": "d37dda44438961178fb2caea65b206a73fa2a2139222f6f41f2339c2fd4bd477",
+    "stvg/_attention.py": "5eea2e096e96ee5a011b827341677d107a1a763b4586f465b2f099b7618abf38",
+    "stvg/_host.py": "9901dfcbe40ee7a4377c7d61de61c5dfa6e9666fd09c0dd5af3323c280a9957e",
+    "stvg/_spatial_math.py": "5bc273271a08dabffa086aff663795400e084b70a60e1dcd98d80099a2039e2e",
+    "stvg/_visual.py": "33e2b8040979aca964620d8734cea62b0295111943767a337e3664b278802966",
+    "stvg/capture.py": "bd198dfb18073d9806ffd082beb633b3df544308878fcac7ce9f2b4a4557b520",
+    "stvg/consensus.py": "c8539c78a8ec278866e5bc077e55911ffaae85e9efc44cc7262a4dc58488c34c",
+    "stvg/decode.py": "3c5d0237a97c650970a76266874bcd83b1f77f302a70dda842fa38f9c22be2a8",
+    "stvg/evaluation.py": "7d06ebb331a58a6ccc172bbc8ff578bb971b363737316ad02764d2e5031470a1",
+    "stvg/evidence.py": "fbbb934035e6407544ece64770d2e97ebd6e3c387a20724d7be2e7f542ebf81d",
+    "stvg/initialization.py": "21168f4a6740e5b4f306863bd1b852587cc71ed8d15dd0dc3b8b643da70e7842",
+    "stvg/inputs.py": "f9023daa8737cabc71045ef5dd4199e0d9b7823bcc6eb8430b1097f6159759f7",
+    "stvg/metrics.py": "c8db46913786a9f300984d7d7ca7ab219be30e8c91a1d27781d23155597d5665",
+    "stvg/metrics_base.py": "4257912cd58f441f36bcafb1ce93eeeae83de18312166ac9017a28687e31f6d0",
+    "stvg/metrics_hc.py": "a4ed56bf48e0bcb8d3193a421048a1a6dd7373027f90e43bfcc6afd6e64b0927",
+    "stvg/native.py": "e34d3b08a76ec1baac08e4f158f42ce8e0bf1795a4034ee80801422d0b04ccbc",
+    "stvg/paper_panel.py": "505a061289956cba2544c3323a5d9b6fde33d62e61ea2a78da7d41de6d7bc459",
+    "stvg/positions.py": "d22e4fbceea353f060276ff09d4d298f87e99116ff1624328048b7ee86541d15",
+    "stvg/predictor.py": "433d3a9300126dfceaf76c184520fee247e86280e6b954109b5d22e33cda3ffd",
+    "stvg/prior.py": "341ef6c18534a17d52979827d6ca12d29dd34236648abca506632ff25bdc45a2",
+    "stvg/prototype.py": "8399270efe359e5ef10dd3362b348dec771175ad18075ceaefb9b479a4c4886c",
+    "stvg/query.py": "cb0cac6ea1b71cb80c61b42201e4740a24f3a8aeeafb25e13baa98e739520637",
+    "stvg/readout.py": "dd22b7f4627375514df61b9a18cbfafcac2352de74b4a4dd5fcefc934da2f3e0",
+    "stvg/representation.py": "1e10152274996a046dc45a1bbfd90727dda4083f3c1afcea21f2765f97f0e666",
+    "stvg/runtime.py": "4b1fcfbfeefec90643c0c92621f4a1d28339aa5c1bf68ad8d7f69ab413176381",
+    "stvg/source.py": "0f06660b3cccea6f8af720c5c7668e9c1a98fb6ed217922ddfaf402fa7a05ede",
+    "stvg/source_loader.py": "f480f9c30cec9ea468ef60f4707c4928c04acdca038aeea556cf9674dafe41de",
+    "stvg/spatial.py": "eb2ae5158dbc216be6084d3f4d66a7facc2faf56c598fe6a32da80820cf1e86b",
+    "stvg/teacher.py": "8ddfa01c26becbff3dad094cf6d96d3075ea2088a97ec20487ebe6749d4f2fa5",
+    "stvg/teacher_bridge.py": "123070ae2f38c0c1f30afeb79a90de3278d370c9794eaabe81a48db1f70188e8",
+    "stvg/teacher_worker.py": "884448d03776ae733bcdb8cc684ff1637e50d407d180c60ecf4ae5a3daa86493",
+    "stvg/temporal.py": "50499490a53bce6f46f0f3f080f5314236ccccf7c7ec919ee817d9df0a7ac710",
+    "stvg/temporal_hidden.py": "b2ca065a86e447b1c6f40615abb67a96cff5612e4b8b97124cd00a8cc50701c5",
+    "stvg/tensors.py": "11533fb059d6e2f6cd7913ace762ae5c553955bbbe670fadf87d660f573581a3",
+    "stvg/visual_cache.py": "659cf4402001d09a5a7c6092c8d577fff48fa7b19ce71a62d050251b52f15fff",
+    "stvg/visual_prefix.py": "fb937f5f15d2b3b6c6399bfc223c2d470981382931e0daaf72fc0d38938e36b5",
+    "stvg/worker.py": "21ecab248a8ad4fc6b9004b5c7f2b8c242e8b18f3a286a6b4cbf370b58926274",
+    "tools/full.py": "6141ea8a093513139b71a9c2abd8393682eff5760f924ef4db399f6925c3ed31",
+    "tools/full_regression.py": "b0f83d41de8289d0bf84e686510e2468f2ca9093fdde026d968d9f3b807333e6",
+    "tools/full_score.py": "fb952080b1caa49555552dece34f3bb4d0971570f1876b49418e39218cab0586",
+    "configs/default.json": "526cd074e97a977a8d40e0f5b485793c5a525c68c3465c670f45a77ab6a1728d",
+    "studies/algorithm_simplification/fastmath.py": "fdec0940507885cd27e1d4636b2f5580f0b89cfa7142bdcea9d70f43f31340d1",
+    "studies/algorithm_simplification/profile_current.py": "ec945bdf71bb6d60b409f8618326fb60b99041afc698b973cd5893b19aeb4111",
+    "studies/algorithm_simplification/run.py": "e184ec08d7994d9b75e29539897d8a238abb0f6f71551d37cd7896c37aedd4b1",
+    "studies/algorithm_simplification/lightspatial.py": "b544830e38937fd52c1e35f7600df5e5161f0e273f7274ebce9eb8e5f3afc850",
+    "studies/cycle_reliability_ablation/run.py": "79b925434f8d8274bdb9932dc0eebc367a94d2753faa58f086d807f7d367c962",
+    "studies/cycle_reliability_ablation/preflight.py": "f963c68b2599de600629515531527f80f7ca02d65089946a3e19a7edd7e071a6",
+    "studies/cycle_reliability_ablation/postseal_audit.py": "47eb296cf2ac3f193e3756964ca34e16628beaafcdbdc03b0278ae2618bd7297"
+  },
+  "seed": 20260920,
+  "production_fingerprint": "85f7ff69d6b917b824d3b01e4d12be850d11a2c00f96917438cf9b619f2c3e56",
+  "fingerprint": "3d4f32eb7828d10b0b2b548b8523d4bb3391e3d3b3172c7caddb6a77e922d6cf"
+}

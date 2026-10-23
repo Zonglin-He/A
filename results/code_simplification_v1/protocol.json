@@ -1,0 +1,21 @@
+{
+  "schema": "core_preserving_code_simplification_v1",
+  "authorization": "Latest user: verify code simplification, core components unchanged; no article writing.",
+  "parent_plan_sha256": "974c85d491241456e5b11956ec354a7b0fc5733d2b3f15cb62f68303042639e9",
+  "code": {
+    "studies/code_simplification/matches.py": "b7a53e39ec8f85a4f8a2f1a6c5bb0e03de1e87fa8c9c977daf65ec25f71bb069",
+    "studies/code_simplification/audit.py": "8e05cf7e01e99461d16e691c85a4aae5aeda5f72e8a1cfc32b1ee27c5ba03eff"
+  },
+  "queries": 67,
+  "changes": "Reuse unordered frame-pair cosine matrix and previously requested directional affinities within one query; retain exact original top20/softmax, bidirectional fitting, both anchors, cycle/validity/weights, mask transport links, DP and all coefficients. Direct known-shape grid adapter and equivalent temporal formulas already audited separately.",
+  "required": "Every requested affinity bitwise; every geometry tensor bitwise; aux/final paths, scores/actions/boxes bitwise; native posterior <=1e-12 and updated posterior <=1e-11; final interval exact. Abort on any mismatch, no relaxed tolerance or automatic fallback.",
+  "timing": "Original and memoized SourceEvidence+SpatialGeometry, warmup excluded, three alternating repeats per query; no comparator calls during measured timing. Cache is query-local; disclose memory.",
+  "budget": {
+    "new_model": 0,
+    "GPU": 0,
+    "GT": 0,
+    "structural_arms": 0,
+    "queries": 67
+  },
+  "production_unchanged": true
+}

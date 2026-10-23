@@ -7,6 +7,9 @@ Frozen parameters: kappa64, beta1, ONEround, region context1.5, spatial observed
 Only TA-STVG is implemented/tested. Local representation and native temporal prior are adapter contracts; cross-backbone/MLLM effectiveness is not established.
 
 - [Current method and frozen parameters](docs/method.md)
+- [Actual algorithm pruning in both branches](results/algorithm_pruning_v2/ANALYSIS.md): two-sided complete-box propagation and DP retained; appearance/box-IoU spatial scoring and one-pair temporal prototype tested with all precision/severe-tail/cost tradeoffs. No new full or production replacement.
+- [Separate equivalent-code checks](results/code_simplification_v2/ANALYSIS.md): singleton initialization, exact grid mapping and rejected/slower matching shortcuts.
+- [Actual algorithm simplification and CPU cost study](results/algorithm_simplification_v1/ANALYSIS.md): equivalent vector prototypes/quadratic hull audited on2030caches; independent lighter spatial candidate with all accuracy/tail tradeoffs. [Readable reference](studies/algorithm_simplification/reference.py). Running production remains frozen.
 - [Native-prior cached ablation: all positives and negatives](results/native_prior_v1/ANALYSIS.md)
 - [Earlier parameter calibration and failed guards](results/native2d_calibration/ANALYSIS.md)
 - [Fixed native-prior kappa16/kappa64 comparison on cached HC1902](results/native_prior_kappa_hc1902_v1/ANALYSIS.md) and [both exposed128/domain panels](results/native_prior_kappa_compare_v1/ANALYSIS.md); descriptive only, production remains kappa64.
