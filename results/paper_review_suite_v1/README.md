@@ -24,3 +24,10 @@ Current numerical budget fingerprint remains c5c24f739ebd160f8b252ddf5b9539edc6e
 ## Controlled shifts screening complete
 
 [AllfixedBlur/JPEG/Dim screen results](shifts/SCREEN_ANALYSIS.md) are complete:128queries,384same-transformedRGB Source/Full pairs,384actualSourcequeries+384sameReferDINOjoint8calls,0clean-cache reuse,768officialdensechecksmax1.67e-15. Allsigned/severeunion/shortlong/parentCIs/componentcost are public. Confirmation is running with unchangedviews/severity/settings. CG-STVG remainsLAST, modelnotstarted.
+
+## Controlled shifts complete; CG native memory recovery
+
+[Fixedshift confirmation](shifts/CONFIRM_ANALYSIS.md) finished256queries/768same-input pairs,1536officialchecksmax1.55e-15, allsigned/severe/shortlong/cost reporting. AllTA stages are now done. CG was actually startedLAST: original420FP32 attemptOOM before0completedSource/0expert/0prediction. [Allocation-only recovery](CGSTVG_MEMORY_RECOVERY.md) preserves nativeequations/settings and oldfailure, tests16CPU/GPU fixtures+512window bitwise, and runs independentv4. ActualfirstHCcheckpoint bridges pass; Vidbridge/CGaccuracy stillpending.
+
+
+Latest execution (supersedes earlier running snapshots): controlled-shift confirmation is fully sealed/scored/reported; see [CONFIRM_ANALYSIS](shifts/CONFIRM_ANALYSIS.md). All TA experiments are complete. CG native420/FP32 v8 is screening, after preserved v3-v7 engineering failures and byte-exact compatible migration; see [recovery evidence](CGSTVG_MEMORY_RECOVERY.md). No CG quality conclusion exists before a complete stage seal/score. Main production and Fig1 are unchanged.

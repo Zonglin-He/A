@@ -1,0 +1,94 @@
+{
+  "schema": "paper_review_CGSTVG_v5_expandable_allocator",
+  "suite_plan_sha256": "aeae8c3e57c82c0d802df33476b7c1ac64a89b3434733ad450072fe4ce6ef75d",
+  "selection_sha256": "b7e64d396b7058276c3cb78f43f593caec5489eb82f45faebc7b87e7dd8de597",
+  "seed": 20261024,
+  "code_sha256": {
+    "cgstvg_study_v5.py": "53cc5eef70eb660a1b5bf3300971e60aeeabdd6be77acb97018afdb0060ffac6",
+    "cgstvg_runtime_v5.py": "1e893fe7f18498b34a750e58842e66cec1b4ed7631f7aa1be1ea085b1f76f457",
+    "cgstvg_score.py": "7e0a06c2593779bcfaa9b43faa426bbeb02736144c72108e105ddc9ee5aed2bd",
+    "cgstvg_interfaces.py": "5a377333c793e81733fd4c8d6f99e97f3f773a37fbc55e474e82b967a88de4ce",
+    "cgstvg_memory.py": "510c26eded6b2284c318cf08e6f58c4bb2a013c8549a9ab4276e7d010f8abba0"
+  },
+  "math_sha256": {
+    "stvg/spatial.py": "54c3cec0ec643e47464957730f482302609855164196b361ee4bee1efd025c10",
+    "stvg/_spatial_math.py": "5bc273271a08dabffa086aff663795400e084b70a60e1dcd98d80099a2039e2e",
+    "stvg/evidence.py": "ea866f3e209a60ae83f97b53d8b3eb9326d94fe0b94f61c106d29bcdb2634a4a",
+    "stvg/initialization.py": "21168f4a6740e5b4f306863bd1b852587cc71ed8d15dd0dc3b8b643da70e7842",
+    "stvg/consensus.py": "c8539c78a8ec278866e5bc077e55911ffaae85e9efc44cc7262a4dc58488c34c",
+    "stvg/positions.py": "d22e4fbceea353f060276ff09d4d298f87e99116ff1624328048b7ee86541d15",
+    "stvg/prototype.py": "b263154ae8c6ff4e4f8162e4ddea4498302b86f2ec65e8cfac0aa92d351d425b",
+    "stvg/representation.py": "1e10152274996a046dc45a1bbfd90727dda4083f3c1afcea21f2765f97f0e666",
+    "stvg/temporal.py": "50499490a53bce6f46f0f3f080f5314236ccccf7c7ec919ee817d9df0a7ac710",
+    "stvg/predictor.py": "166f6de17304deff0336d3acc731a8cc90a365e90e5cf93b4c6dc525f6754c38",
+    "stvg/teacher_bridge.py": "123070ae2f38c0c1f30afeb79a90de3278d370c9794eaabe81a48db1f70188e8",
+    "stvg/teacher_worker.py": "884448d03776ae733bcdb8cc684ff1637e50d407d180c60ecf4ae5a3daa86493",
+    "configs/default.json": "a129564085d12fdb7d0c663b486407f783d8cb66eb08e36d00f52c794dd8e9ec"
+  },
+  "cpu_tests_sha256": "913229b108c8089c02b325d5ecef10d128d76c97739ed4b5f4886566058ec6ad",
+  "official_interface_audit_sha256": "f72f044545434bbdee12912a89f32e43fc54d9ece9a7b1a8b47bc95afc701945",
+  "vendor_revision": "f062d84b72aee8be4425a4a5ab20aa5b077ca142",
+  "allocator": "PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True; same native arithmetic; firsttwo previous successful HC cases must reproduce every head/grid/posterior/box bitwise.",
+  "historical_attempts": {
+    "v3_failed_Source_attempts": 1,
+    "v4_completed_Source_forwards": 4,
+    "v4_failed_Source_attempts": 1,
+    "v4_expert_calls": 2,
+    "v4_successful_predictions": 2,
+    "reused_teacher_contexts": 2,
+    "all_cost_retained_separately": true
+  },
+  "memory_parity_sha256": "6ff5d68ec9d720b012ca6dd432457c41a45401fb5f65178e68395083d51bf1e5",
+  "allocation": "Eval-only same FP32 bias/mask addition and softmax with output-storage reuse, scoped/restored.16CPU/GPU fixtures and512window memory fixture bitwise. The unmodified executable OOM before any output; native reference uses official equations with this audited allocation. No chunking/resolution/precision/sampling/context change.",
+  "previous_failed_execution": {
+    "fingerprint": "4d9f93321edb06201806dfd037b59375a03c5e8d7e303028684805f6725c7dde",
+    "native_Source_attempts": 1,
+    "completed_Source_forwards": 0,
+    "expert_calls": 0,
+    "outputs": 0,
+    "preserved": true
+  },
+  "source_weights": {
+    "hc2": "official VidSTG EMA checkpoint",
+    "vidstg": "official HCSTVG2 EMA checkpoint"
+  },
+  "native": "Original CG-STVG FP32, official420-pixel height, native single test grid. No TA offset/replay/head or six-layer/hires fusion. Original internal CG context/actionness untouched.",
+  "arms": {
+    "SourceNative": "Original native joint MAP and native official boxes.",
+    "Source": "Same last-layer legal endpoint posterior, MBR, SAME native boxes; separates readout benefit.",
+    "SharedCorrection": "Original eight observation rule on native MAP; transferred fixed shared correction and same MBR.",
+    "Space": "Shared correction plus unchanged SimplePath native MBR interval.",
+    "Full": "Same SimplePath auxiliary ROI, one all-video Native2D pair kappa64 beta1 context1.5, one update and MBR, finalSimplePath."
+  },
+  "box_readout": "CG official negative xyxy clamp on BOTH datasets; no upper clamp. Every arm uses this same native output convention.",
+  "calibration": "Transfer unchanged TA source-training scales/truncation/gamma, not CG recalibration. No CG target GT tuning. Gamma original source-only selection provenance unresolved; kappa had TA target development selection.",
+  "freeze": {
+    "kappa": 64,
+    "beta": 1,
+    "context": 1.5,
+    "rounds": 1,
+    "observed": 0.5,
+    "unobserved": 0.5,
+    "link": 0.25,
+    "expert_K": 8,
+    "training": 0,
+    "optimizer": 0,
+    "new_expert_models": 0
+  },
+  "timing": "Report actual native FP32 Source, same ReferDINO8, feature capture/CPUgeometry/prototype/DP and loading separately; no comparison of cache hits with uncached deployment.",
+  "teacher_runtime_fingerprint": "fc4210a80c895a374d90af44d11986428a50d754245e653690f25be5869f328f",
+  "screening": "64fixed parents/domain; real-checkpoint no-op first2/domain (extra4 native forwards). Native decoder/feature/weights/source checks must pass. Failures preserve outputs/trace/source and do not silently change resolution/precision/sampling. No scoring partial cohorts.",
+  "confirmation": "128fixed parent-disjoint/domain after complete screening and all4 real no-op/pooling bridges. NO accuracy selection or parameter search. Fullsets previously exposed, not unseen.",
+  "budget": {
+    "max_original_Source_forwards": 388,
+    "max_new_same_expert8_joint_queries": 384,
+    "screen_wall_seconds": 14400,
+    "confirm_wall_seconds": 28800,
+    "maximum_private_bytes": 107374182400
+  },
+  "real_CG_model_start_gate": "ALL TA consistency, budget and controlled-shift confirmation score receipts exist; TA owned processes exited; acquire sharedGPUlock. Preparing this plan never constructs a CG model.",
+  "all_stage_predictions_sealed_before_independent_CPU_official_GT": true,
+  "CG_GT_inference": false,
+  "Fig1": "excluded",
+  "fingerprint": "ee691a0900846f91a85ebd64f2344c25d7b506a6cd2feb6023660ba60e863729"
+}

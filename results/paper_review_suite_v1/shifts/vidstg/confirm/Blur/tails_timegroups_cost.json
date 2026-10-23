@@ -1,0 +1,396 @@
+{
+  "dataset": "vidstg",
+  "stage": "confirm",
+  "shift": "Blur",
+  "queries": 128,
+  "severe": {
+    "Full-Source": {
+      "t": 8,
+      "v": 20,
+      "union_once": 26,
+      "queries": 128
+    },
+    "Source-CleanSource": {
+      "t": 9,
+      "v": 11,
+      "union_once": 15,
+      "queries": 128
+    },
+    "Full-CleanFull": {
+      "t": 7,
+      "v": 15,
+      "union_once": 18,
+      "queries": 128
+    }
+  },
+  "time_groups": {
+    "Full-Source": {
+      "short_le5s": {
+        "queries": 78,
+        "paired": {
+          "t": {
+            "mean": -0.26247082204818994,
+            "CI95": [
+              -0.9705024787622836,
+              0.45448679008743453
+            ],
+            "queries": 78,
+            "parents": 78,
+            "improved": 20,
+            "harmed": 18,
+            "unchanged": 40,
+            "declined_over5pp": 6
+          },
+          "v": {
+            "mean": 2.0121130229933257,
+            "CI95": [
+              0.004293337000115489,
+              4.313178742374643
+            ],
+            "queries": 78,
+            "parents": 78,
+            "improved": 32,
+            "harmed": 23,
+            "unchanged": 23,
+            "declined_over5pp": 6
+          }
+        }
+      },
+      "long_gt5s": {
+        "queries": 50,
+        "paired": {
+          "t": {
+            "mean": 2.415420766274596,
+            "CI95": [
+              -0.5902113859600012,
+              5.796213483231422
+            ],
+            "queries": 50,
+            "parents": 50,
+            "improved": 22,
+            "harmed": 17,
+            "unchanged": 11,
+            "declined_over5pp": 2
+          },
+          "v": {
+            "mean": -0.40328687496759513,
+            "CI95": [
+              -5.296336084762433,
+              4.454828988742674
+            ],
+            "queries": 50,
+            "parents": 50,
+            "improved": 22,
+            "harmed": 25,
+            "unchanged": 3,
+            "declined_over5pp": 14
+          }
+        }
+      }
+    },
+    "Source-CleanSource": {
+      "short_le5s": {
+        "queries": 78,
+        "paired": {
+          "t": {
+            "mean": 0.12267967740136658,
+            "CI95": [
+              -1.3691701291536578,
+              1.5565727099969098
+            ],
+            "queries": 78,
+            "parents": 78,
+            "improved": 17,
+            "harmed": 21,
+            "unchanged": 40,
+            "declined_over5pp": 4
+          },
+          "v": {
+            "mean": -0.853140826489801,
+            "CI95": [
+              -1.9497914056384007,
+              0.09144139998612831
+            ],
+            "queries": 78,
+            "parents": 78,
+            "improved": 21,
+            "harmed": 37,
+            "unchanged": 20,
+            "declined_over5pp": 7
+          }
+        }
+      },
+      "long_gt5s": {
+        "queries": 50,
+        "paired": {
+          "t": {
+            "mean": 0.389375697126276,
+            "CI95": [
+              -1.135255583596357,
+              1.8933310900893667
+            ],
+            "queries": 50,
+            "parents": 50,
+            "improved": 20,
+            "harmed": 19,
+            "unchanged": 11,
+            "declined_over5pp": 5
+          },
+          "v": {
+            "mean": 0.015540142667799697,
+            "CI95": [
+              -1.1814974177250925,
+              1.3355149417001573
+            ],
+            "queries": 50,
+            "parents": 50,
+            "improved": 18,
+            "harmed": 28,
+            "unchanged": 4,
+            "declined_over5pp": 4
+          }
+        }
+      }
+    },
+    "Full-CleanFull": {
+      "short_le5s": {
+        "queries": 78,
+        "paired": {
+          "t": {
+            "mean": 0.252441859811432,
+            "CI95": [
+              -1.362709579819196,
+              1.7142006325718244
+            ],
+            "queries": 78,
+            "parents": 78,
+            "improved": 20,
+            "harmed": 23,
+            "unchanged": 35,
+            "declined_over5pp": 3
+          },
+          "v": {
+            "mean": 0.5466875511827534,
+            "CI95": [
+              -0.799162533862717,
+              2.1514560690409366
+            ],
+            "queries": 78,
+            "parents": 78,
+            "improved": 25,
+            "harmed": 26,
+            "unchanged": 27,
+            "declined_over5pp": 5
+          }
+        }
+      },
+      "long_gt5s": {
+        "queries": 50,
+        "paired": {
+          "t": {
+            "mean": 1.211798185181128,
+            "CI95": [
+              -0.8257997426681444,
+              3.182257541142732
+            ],
+            "queries": 50,
+            "parents": 50,
+            "improved": 19,
+            "harmed": 17,
+            "unchanged": 14,
+            "declined_over5pp": 4
+          },
+          "v": {
+            "mean": -2.257003354391786,
+            "CI95": [
+              -4.579728311331893,
+              -0.12747623021238128
+            ],
+            "queries": 50,
+            "parents": 50,
+            "improved": 18,
+            "harmed": 29,
+            "unchanged": 3,
+            "declined_over5pp": 10
+          }
+        }
+      }
+    }
+  },
+  "measured_component_costs": {
+    "capture_cost.ERef_seconds": {
+      "mean": 0.009353814115456771,
+      "sum": 1.1972882067784667,
+      "recorded_queries": 128
+    },
+    "capture_cost.ReferDINO.expert_seconds": {
+      "mean": 0.17872216778778238,
+      "sum": 22.876437476836145,
+      "recorded_queries": 128
+    },
+    "capture_cost.ReferDINO.forward_seconds": {
+      "mean": 0.1639914591323759,
+      "sum": 20.990906768944114,
+      "recorded_queries": 128
+    },
+    "capture_cost.ReferDINO.postprocess_seconds": {
+      "mean": 0.0002335651261091698,
+      "sum": 0.029896336141973734,
+      "recorded_queries": 128
+    },
+    "capture_cost.ReferDINO.preprocess_seconds": {
+      "mean": 0.014497143529297318,
+      "sum": 1.8556343717500567,
+      "recorded_queries": 128
+    },
+    "capture_cost.ReferDINO_load_seconds": {
+      "mean": 0.02782649915025104,
+      "sum": 3.561791891232133,
+      "recorded_queries": 128
+    },
+    "capture_cost.ReferDINO_query_forwards": {
+      "mean": 1.0,
+      "sum": 128.0,
+      "recorded_queries": 128
+    },
+    "capture_cost.Source224_offsets": {
+      "mean": 2.0,
+      "sum": 256.0,
+      "recorded_queries": 128
+    },
+    "capture_cost.Source224_seconds": {
+      "mean": 2.007630394131411,
+      "sum": 256.9766904488206,
+      "recorded_queries": 128
+    },
+    "capture_cost.Source448_calls": {
+      "mean": 0.0,
+      "sum": 0.0,
+      "recorded_queries": 128
+    },
+    "capture_cost.Source448_seconds": {
+      "mean": 0.0,
+      "sum": 0.0,
+      "recorded_queries": 128
+    },
+    "capture_cost.Source_load_seconds": {
+      "mean": 2.369270077906549e-07,
+      "sum": 3.0326656997203827e-05,
+      "recorded_queries": 128
+    },
+    "capture_cost.Source_to_CPU_seconds": {
+      "mean": 0.22882145193580072,
+      "sum": 29.289145847782493,
+      "recorded_queries": 128
+    },
+    "capture_cost.Source_to_GPU_seconds": {
+      "mean": 0.127462854332407,
+      "sum": 16.315245354548097,
+      "recorded_queries": 128
+    },
+    "capture_cost.capture_wall_seconds": {
+      "mean": 3.269983359907201,
+      "sum": 418.5578700681217,
+      "recorded_queries": 128
+    },
+    "capture_cost.evidence_seconds": {
+      "mean": 0.1362767857790459,
+      "sum": 17.443428579717875,
+      "recorded_queries": 128
+    },
+    "capture_cost.expert_current_wall_seconds": {
+      "mean": 0.6022330332125421,
+      "sum": 77.08582825120538,
+      "recorded_queries": 128
+    },
+    "capture_cost.expert_instances": {
+      "mean": 1.0,
+      "sum": 128.0,
+      "recorded_queries": 128
+    },
+    "capture_cost.native_position_decoder_calls": {
+      "mean": 8.0,
+      "sum": 1024.0,
+      "recorded_queries": 128
+    },
+    "capture_cost.native_time_decoder_calls": {
+      "mean": 8.0,
+      "sum": 1024.0,
+      "recorded_queries": 128
+    },
+    "capture_cost.native_time_postprocess_seconds": {
+      "mean": 0.05574529266959871,
+      "sum": 7.135397461708635,
+      "recorded_queries": 128
+    },
+    "capture_cost.parse_seconds": {
+      "mean": 5.981564754620194e-08,
+      "sum": 7.656402885913849e-06,
+      "recorded_queries": 128
+    },
+    "expert_forwards": {
+      "mean": 1.0,
+      "sum": 128.0,
+      "recorded_queries": 128
+    },
+    "finish_cost.actual_updates": {
+      "mean": 0.0,
+      "sum": 0.0,
+      "recorded_queries": 128
+    },
+    "finish_cost.additional_classifier_forwards": {
+      "mean": 0.0,
+      "sum": 0.0,
+      "recorded_queries": 128
+    },
+    "finish_cost.additional_time_head_forwards": {
+      "mean": 0.0,
+      "sum": 0.0,
+      "recorded_queries": 128
+    },
+    "finish_cost.extra_decoder_calls": {
+      "mean": 0.0,
+      "sum": 0.0,
+      "recorded_queries": 128
+    },
+    "finish_cost.final_DP_seconds": {
+      "mean": 0.0017334249714622274,
+      "sum": 0.2218783963471651,
+      "recorded_queries": 128
+    },
+    "finish_cost.finish_wall_seconds": {
+      "mean": 0.03909919764191727,
+      "sum": 5.004697298165411,
+      "recorded_queries": 128
+    },
+    "finish_cost.posterior_seconds": {
+      "mean": 0.010567451103270287,
+      "sum": 1.3526337412185967,
+      "recorded_queries": 128
+    },
+    "finish_cost.prototype_seconds": {
+      "mean": 0.0012711163435596973,
+      "sum": 0.16270289197564125,
+      "recorded_queries": 128
+    },
+    "finish_cost.region_pooling_seconds": {
+      "mean": 0.004336905807576841,
+      "sum": 0.5551239433698356,
+      "recorded_queries": 128
+    },
+    "pipeline_seconds": {
+      "mean": 3.3861004551399674,
+      "sum": 433.4208582579158,
+      "recorded_queries": 128
+    },
+    "transform_seconds": {
+      "mean": 0.07611582056051702,
+      "sum": 9.742825031746179,
+      "recorded_queries": 128
+    }
+  },
+  "cost_scope": "Components may be nested; do not sum overlapping Source/capture/finish/expert totals. Cache flags/forward counts retain actual acquisition semantics.",
+  "new_predictions": 0,
+  "new_GT_scoring": 0,
+  "whole_stage_seal_and_score_verified": true
+}

@@ -1,0 +1,148 @@
+{
+  "status": "passed_exact_CPU_GPU_attention_parity",
+  "fixtures": [
+    {
+      "device": "cpu",
+      "dim": 96,
+      "heads": 3,
+      "windows": 126,
+      "masked": false,
+      "bitwise": true
+    },
+    {
+      "device": "cpu",
+      "dim": 96,
+      "heads": 3,
+      "windows": 126,
+      "masked": true,
+      "bitwise": true
+    },
+    {
+      "device": "cpu",
+      "dim": 192,
+      "heads": 6,
+      "windows": 126,
+      "masked": false,
+      "bitwise": true
+    },
+    {
+      "device": "cpu",
+      "dim": 192,
+      "heads": 6,
+      "windows": 126,
+      "masked": true,
+      "bitwise": true
+    },
+    {
+      "device": "cpu",
+      "dim": 384,
+      "heads": 12,
+      "windows": 126,
+      "masked": false,
+      "bitwise": true
+    },
+    {
+      "device": "cpu",
+      "dim": 384,
+      "heads": 12,
+      "windows": 126,
+      "masked": true,
+      "bitwise": true
+    },
+    {
+      "device": "cpu",
+      "dim": 768,
+      "heads": 24,
+      "windows": 126,
+      "masked": false,
+      "bitwise": true
+    },
+    {
+      "device": "cpu",
+      "dim": 768,
+      "heads": 24,
+      "windows": 126,
+      "masked": true,
+      "bitwise": true
+    },
+    {
+      "device": "cuda",
+      "dim": 96,
+      "heads": 3,
+      "windows": 126,
+      "masked": false,
+      "bitwise": true
+    },
+    {
+      "device": "cuda",
+      "dim": 96,
+      "heads": 3,
+      "windows": 126,
+      "masked": true,
+      "bitwise": true
+    },
+    {
+      "device": "cuda",
+      "dim": 192,
+      "heads": 6,
+      "windows": 126,
+      "masked": false,
+      "bitwise": true
+    },
+    {
+      "device": "cuda",
+      "dim": 192,
+      "heads": 6,
+      "windows": 126,
+      "masked": true,
+      "bitwise": true
+    },
+    {
+      "device": "cuda",
+      "dim": 384,
+      "heads": 12,
+      "windows": 126,
+      "masked": false,
+      "bitwise": true
+    },
+    {
+      "device": "cuda",
+      "dim": 384,
+      "heads": 12,
+      "windows": 126,
+      "masked": true,
+      "bitwise": true
+    },
+    {
+      "device": "cuda",
+      "dim": 768,
+      "heads": 24,
+      "windows": 126,
+      "masked": false,
+      "bitwise": true
+    },
+    {
+      "device": "cuda",
+      "dim": 768,
+      "heads": 24,
+      "windows": 126,
+      "masked": true,
+      "bitwise": true
+    }
+  ],
+  "large_fixture_windows": 512,
+  "large_fixture_bitwise": true,
+  "peak_allocated_bytes": {
+    "original": 2286396928,
+    "reuse": 748447232
+  },
+  "original_AST_preserved_scoped_restore": true,
+  "independent_window_batch_size": 64,
+  "mask_rows_preserve_global_modulo_order": true,
+  "no_resolution_precision_sampling_or_context_change": true,
+  "CG_checkpoint_forwards": 0,
+  "expert_calls": 0,
+  "GT_or_real_RGB_access": 0,
+  "seconds": 13.024666632991284,
+  "plan_sha256": "50345c16210ba6289ab4c954059c45f6b96ce13fd046e4fb533cd0556385cbf2"
+}
