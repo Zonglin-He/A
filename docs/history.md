@@ -813,3 +813,22 @@ values locked before newGT. [Research protocol](../results/target_semantic128_sh
 
 
 Expanded128 four-family phase completed: fp6d212c43bed31821575dd13f6f291ad3422c102b177921e2b5aa2cabae94e4cd, acquisition256seal andall18arm predictionsseal beforeGT,64dev/64confirm per direction. Dev selectedShrinkK16/WeakB075 asdiagnostic because nofeasibleconfig; frozenbeforeonceconfirm. HCconfirmt+.0914/v−.0268ppvsG6/Source short−.1923; Vidt+1.1331/v+.6891, allprimaryCIs cross0. Time severe20→11 andv severe8→3, butshrinkweakadvantage notestablished. Matchedrawcandidate HC47.15→46.47%, scalarprototypecontrastdirection mathematicallyunchanged to1.39e−16. Provider-vs-mainline128target/globalp/u bitwise, exclude that interface discrepancy. Allsigned and [completeanalysis](../results/target_semantic128_shrink_v1/ANALYSIS.md) retained. No newfull/old07fallback. Usertradeoffquestion pending: preservepriorSource short/longgate+continuefix or explicitlyacceptk16full; do not silently bypass. All9ownedstageidentitiesexited, GPUlease free.
+
+
+Final user decision: continue repair only if it meets frozen criteria, then explicit
+"last repair round". [Final coordinate-stability prototype study](../results/target_semantic_final_v1/ANALYSIS.md)
+fp8861159d2e3062dd5a89c69b211487c8846ff6917a3f098435edc2a57833a62d
+completed: one fixed4block delete-group sensitivity/one-round candidate, no parameter
+scan, all256 exposed development predictions seal before independentCPU labels.
+SevenCPUtests; exact oldbaseline reuse;6656officialchecksmax9.99e-16;31.83sCPU
+prediction/22.70sCPUscore, no model/GPU/RGB/expert/observation/optimizer. Mean t/v
+vsG6 HC+.1589/+.0807pp, Vid+.0322/+.1932; CIs cross0. Source HCshort-.1083,
+long+1.6394; Vidshort+.8515/long+2.1154. Failsmatchedcontrols inbothdomains;
+Vid same-L2 uniform stronger by.4183t/.2410vpp, pairedCIspositiveforcontrol.
+Direction doeschange(cosmedian.9797/.9747), exactstrengthcontrolerror8.89e-16;
+stability isnot event correctness. Allsigned/severe/cases/ranks retained. No new
+confirmation collected. This is the LAST repair: STOP further temporal candidates/
+scans; paper remains pausedHC1902scored/Vid1373saved, no newfull/no07fallback.
+Predictor433668/start228006429 and independentCPUscorer433838/start228010176
+verifiedexited; original48/434/spatial/evidence8 unchanged. Await only explicit new
+human instruction, not an automatic research continuation.

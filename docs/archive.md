@@ -171,3 +171,22 @@ No newmetrics or fulladmission yet. Originalpaper continues paused, no07fallback
 
 
 [Completed128target-semantic study](../results/target_semantic128_shrink_v1/ANALYSIS.md) retains failedqualification, allsigned/severe, oncefrozenconfirmation, Sourceonlydirection/classcomposition andindependentpostGT ranking audits. Common-mean scalarshrink reducesharms mainlybystrength ratherthanverifiedbetterranking; no newfull/defaultchange. OldSourcefailures preserved, no07fallback afterusercancellation.
+
+
+Final user decision: continue repair only if it meets frozen criteria, then explicit
+"last repair round". [Final coordinate-stability prototype study](../results/target_semantic_final_v1/ANALYSIS.md)
+fp8861159d2e3062dd5a89c69b211487c8846ff6917a3f098435edc2a57833a62d
+completed: one fixed4block delete-group sensitivity/one-round candidate, no parameter
+scan, all256 exposed development predictions seal before independentCPU labels.
+SevenCPUtests; exact oldbaseline reuse;6656officialchecksmax9.99e-16;31.83sCPU
+prediction/22.70sCPUscore, no model/GPU/RGB/expert/observation/optimizer. Mean t/v
+vsG6 HC+.1589/+.0807pp, Vid+.0322/+.1932; CIs cross0. Source HCshort-.1083,
+long+1.6394; Vidshort+.8515/long+2.1154. Failsmatchedcontrols inbothdomains;
+Vid same-L2 uniform stronger by.4183t/.2410vpp, pairedCIspositiveforcontrol.
+Direction doeschange(cosmedian.9797/.9747), exactstrengthcontrolerror8.89e-16;
+stability isnot event correctness. Allsigned/severe/cases/ranks retained. No new
+confirmation collected. This is the LAST repair: STOP further temporal candidates/
+scans; paper remains pausedHC1902scored/Vid1373saved, no newfull/no07fallback.
+Predictor433668/start228006429 and independentCPUscorer433838/start228010176
+verifiedexited; original48/434/spatial/evidence8 unchanged. Await only explicit new
+human instruction, not an automatic research continuation.
