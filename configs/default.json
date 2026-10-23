@@ -1,5 +1,5 @@
 {
-  "method": "BoxFixed",
+  "method": "BoxFixed-TargetSemantic-K16",
   "seed": 41,
   "expert_count": 1,
   "spatial": {
@@ -11,8 +11,12 @@
     "score": ".5 mean_obs(u)+.5 mean_unobs(c*u)+.25 mean_event_edges(cprev*c*L)-.1 mean_all_nodes(G)"
   },
   "temporal": {
-    "default": "global6",
-    "algorithm": "two native224 offsets; independent old hull at each of six layers; arithmetic posterior mean; original physical MBR"
+    "default": "target_k16",
+    "algorithm": "Global6 prior; full-time BoxFixed trajectory context1.5; native Source motion word-head; opposite-parity prototypes; one common-mean shrinkage kappa16 update; original physical MBR",
+    "rounds": 1,
+    "kappa": 16,
+    "context_scale": 1.5,
+    "network_parameter_updates": 0
   },
   "datasets": {
     "hc2": {
@@ -40,7 +44,7 @@
       },
       "E_calibration_provenance": "source-domain train calibration, frozen before target outcomes",
       "initialization_gamma": 0.5,
-      "temporal_mode": "global6"
+      "temporal_mode": "target_k16"
     },
     "vidstg": {
       "dataset": "vidstg",
@@ -67,7 +71,7 @@
       },
       "E_calibration_provenance": "source-domain train calibration, frozen before target outcomes",
       "initialization_gamma": 1.0,
-      "temporal_mode": "global6"
+      "temporal_mode": "target_k16"
     }
   }
 }

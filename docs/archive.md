@@ -190,3 +190,26 @@ scans; paper remains pausedHC1902scored/Vid1373saved, no newfull/no07fallback.
 Predictor433668/start228006429 and independentCPUscorer433838/start228010176
 verifiedexited; original48/434/spatial/evidence8 unchanged. Await only explicit new
 human instruction, not an automatic research continuation.
+
+
+2026-10-23 latest explicit user decision: freeze one-round TargetSemantic kappa16 as
+main method, no further tuning, spatial unchanged, run both full directions and
+preserve/publish every positive and negative. This explicitly accepts earlier failed
+short-event validation as an engineering choice, not a passed test. New maintained
+checkout is stvg-k16; stvg-mainline48 and stvg-opd434 remain intact and their old
+paused/completed queues are not resumed. Entire pre-promotion1047file tree is kept at
+archive/research-pre-k16-20261023 commitb9345a8a753baa969dd8249e22b7b675488dbd10.
+Historical reports remain on main; old research/temporal entry points move to that
+archive, never deleted from history. Sole deployment profile target_k16.
+
+New outputs/k16_full_v1 fp659a7eb594b7359b1a4f0bd181c6517b3246948c2468cfdfceaf5624fc16e4e9
+coversHC1902/227→Vid10303/732, queryequal. One q0-seeded oppositeoffset prototype
+step/kappa16/context1.5/originalMBR, .5observed/.1guard/.25link unchanged. Existing
+256semantic caches and compatible oldgeometry reused; cache misses cannot invoke
+ReferDINO. Original Source/E/Global6/eightpositions are verified perquery before K16
+acceptance. Full/new-time spatial ablations use newly generated K16intervals; Source/
+Global6/NativeTemporal aliases are disclosed. Complete seal precedes independentCPU
+labels per domain; HCscoring may overlap VidGPU. Allsigned, severev/t, thresholds,
+timegroups/boundaries, observed/unobserved, parentclusterCI, extent/distance and real
+per-worker cachecosts saved. Runtimecode/config frozen by newplan; no mixedfingerprint.
+Full results are pending; previous study numbers are never labelled newfull results.

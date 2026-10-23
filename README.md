@@ -1,92 +1,56 @@
-# BoxFixed + Global6
+# BoxFixed + TargetSemantic K16
 
-A frozen TA-STVG inference method for cross-domain spatio-temporal video grounding.
-The main pipeline uses one ReferDINO with eight observations, complete native-box
-propagation, six-layer native224 temporal posteriors and the original physical MBR
-and exact BoxFixed dynamic program. There is no network training, OPD update,
-448 branch or conditional decoder replay in this release.
+The selected TA-STVG method combines sparse-expert complete-box propagation with a
+frozen one-round target-region semantic prototype readout. One ReferDINO, eight
+observations, no network-weight training, no additional high-resolution branch.
 
-## Pipeline
+1. Original frozen Source224, two offsets, original native process.
+2. Same eight expert observations, initialization and complete-box propagation.
+3. Six-layer Global6 interval prior; auxiliary full-time target trajectory.
+4. Original Source word-semantic head on target context1.5; opposite-offset positive/
+   negative prototypes with fixed common-mean shrinkage **kappa16**, exactly **one** update.
+5. Original physical MBR and unchanged spatial score/DP.
 
-1. Run the frozen source model at height 224 with the original two offsets.
-2. Select the original eight observations and obtain native ReferDINO boxes and masks.
-3. Keep complete teacher box extents. Use soft masks and source-feature correspondence
-   to estimate forward/backward box transforms; always retain the initialized source candidate.
-4. Read all six native temporal layers through the original frozen time head. Build
-   the original two-offset interval hull separately per layer, then average posteriors.
-5. Decode the time interval with the original physical MBR and select a spatial path
-   with the fixed BoxFixed score and exact DP.
+This is the sole main profile; there is no temporal-parameter selection CLI.
+The user explicitly selected it despite a small negative HC short-event recheck.
+All previous failures remain reported. Full evaluation is newly launched under an
+independent fingerprint, not renamed old results or an unseen-test claim.
 
-See [method](docs/method.md), [evaluation](docs/evaluation.md),
-[private assets](docs/assets.md) and [verification](results/verification.json).
+See [method](docs/method.md), [protocol](results/k16_full_v1/protocol.json),
+[compatibility](results/k16_full_v1/REGRESSION.json), [history](docs/history.md),
+[evaluation](docs/evaluation.md) and [private assets](docs/assets.md).
 
-## Installation
+## Run
 
-Use a compatible PyTorch/CUDA environment and the dependencies in
-[environment.yml](environment.yml), [requirements.txt](requirements.txt) and
-[requirements-teacher.txt](requirements-teacher.txt). Place the frozen assets at
-[the documented paths](docs/assets.md). They are not bundled or downloaded automatically.
+Use the dependencies in environment.yml, requirements.txt and requirements-teacher.txt;
+place frozen assets at documented private paths. No data or weights are bundled.
 
 ```bash
 python tools/setup.py --prepare --tokenizer /path/to/existing/bert-tokenizer
 python tools/setup.py --build
-python tools/setup.py --check
 python tools/check.py
-```
-
-## Inference and scoring
-
-The sole public method is the same for both directions. `hc2` uses the VidSTG-trained
-source checkpoint; `vidstg` uses the HC2-trained checkpoint.
-
-```bash
 python -m stvg predict --request /path/to/request.json --output outputs/example.npz
 python -m stvg evaluate --manifest /path/to/label-free-manifest.jsonl --output outputs/evaluation
 python -m stvg score --manifest /path/to/label-free-manifest.jsonl --labels /path/to/offline-labels.jsonl --predictions outputs/evaluation --output outputs/metrics.json
 ```
 
-[examples/request.json](examples/request.json) documents the request schema. A manifest
-contains `id`, `dataset`, `key`, `metadata`; metadata is limited to raw input support,
-video properties and caption. No boxes, event labels or GT-derived online choices are accepted.
-Evaluation seals predictions before independent CPU scoring. Resume requires the exact
-manifest, runtime fingerprint and saved prediction bindings; code cleanup does not
-waive those checks. The public resident evaluator reuses the preceding decoded RGB grid and a 4 GiB
-actual-tensor visual cache by default. The existing full controller has its separately
-verified 512 MiB RGB LRU. These affect reuse, not model inputs or precision.
+Official frozen full controller: `python -B tools/full.py run`. It requires a prepared
+content-bound plan and compatibility proof; never resumes an older fingerprint.
+HC1902/227 parents then Vid10303/732 parents. Source/SharedInit/Global6 must match old
+sealed official outputs; K16 Full/new-time spatial ablations are newly generated.
+Each complete domain seals before independent CPU official-label scoring. All signed
+outcomes and severe declines, parent-cluster intervals, time/boundary/space metrics
+and real segmented cache costs are retained. Timing with cached evidence is not a
+claim of fresh deployment speedup.
 
-## Results and history
+## Evidence and archive
 
-The complete official evaluation is sealed and scored: HC2 has 1,902 queries from
-227 parents and VidSTG10,303 queries from732. [Full results and signed changes](results/boxfixed_full_v1/REPORT.md)
-show vIoU24.9948→26.7597 on HC2 and11.7777→14.2685 on VidSTG. The development
-panels have prior exposure; these complete splits are not pristine independent confirmations.
-
-This is a source cleanup, not a new experimental result. The completed full job retains
-its original immutable source checkout and fingerprint; it was not restarted with this
-refactor. Cached compatibility covers 192 saved captures and is described in the
-verification receipt; no new GPU run was performed for this cleanup.
-
-All previous methods, Strong/448 references, unsuccessful trials and signed results
-remain in the [research archive](https://github.com/Zonglin-He/A/tree/archive/research-pre-mainline-20261022) and Git history. They are deliberately
-absent from the current inference tree. See [archive policy](docs/archive.md) and
-[history](docs/history.md). Upstream source and revisions are retained under
-[external/](external) and [third_party.json](docs/third_party.json).
-
-User-authorized HC2 temporal calibration is recorded separately in the
-[bounded tuning report](results/temporal_hc_v2/REPORT.md). Its selected profile failed
-the fixed validation; it is not part of the maintained inference method.
-
-[Broader HC temporal readout study](results/temporal_hc_v3/REPORT.md) reports all16
-additional configurations and a preserved failed Source validation gate. Its frozen
-start-temperature full comparison was explicitly paused by the user at338 queries
-because Source superiority was not established. It has not replaced the main method.
-
-[Source-primary calibration](results/temporal_hc_v4/REPORT.md) and
-[strict short/long temporal study](results/temporal_hc_v5/REPORT.md) preserve the next
-negative results. The selected MBR3 control did not keep long-event tIoU above Source
-on the fixed development recheck. No full restart or inference-default change follows.
-
-The follow-up [case-based temporal studies](results/temporal_hc_v7/REPORT.md) test
-final-layer continuation and a deep-supported MBR constraint. Neither meets both
-Source duration-group requirements on the fixed development recheck; all signed
-results and repaired/harmed examples are preserved. The default is not upgraded.
+[Original Global6 full](results/boxfixed_full_v1/REPORT.md),
+[K16 development/confirmation](results/target_semantic128_shrink_v1/ANALYSIS.md),
+[last failed temporal repair](results/target_semantic_final_v1/ANALYSIS.md).
+These reports describe their own protocols and exposures, not the new full outcome.
+The entire prior code/evidence tree, including all experiments and negative controls,
+is preserved in [archive/research-pre-k16-20261023](https://github.com/Zonglin-He/A/tree/archive/research-pre-k16-20261023)
+and Git ancestry. Main/research retain the single selected deployment entry and historical
+results; old research entry points are archived. No raw videos, queries, GT coordinates,
+weights, masks or features are published.

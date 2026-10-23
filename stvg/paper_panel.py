@@ -9,7 +9,7 @@ from stvg.spatial import SpatialGeometry, evidence_dp
 from stvg.temporal import final_mbr
 from stvg.global6 import posterior
 
-ARMS = ('Source', 'SharedInit', 'Interpolation', 'OursS', 'Full', 'NoLocal', 'Independent')
+ARMS = ('Source', 'SharedInit', 'Interpolation', 'OursS', 'Global6', 'Full', 'NoLocal', 'Independent')
 
 def interpolation(E, ids, positions, native_boxes):
     result = np.asarray(E, dtype=np.float64).copy()
@@ -60,7 +60,11 @@ def derive(cap):
     g=SpatialGeometry.__new__(SpatialGeometry);g.__dict__.update(cap['geometry'])
     ids=list(map(int,cap['frame_ids']));pos=list(map(int,cap['positions8']));T=len(ids)
     assert len(pos)==8 and len(set(pos))==8 and np.array_equal(ids,np.asarray(g.frame_ids))
-    q=posterior(cap['records'],cap['logits'],ids)
+    q0=posterior(cap['records'],cap['logits'],ids)
+    from stvg.prototype import one_step
+    q,_=one_step(cap['semantic_p'],q0)
+    global_interval=final_mbr(ids,q0)['interval']
+    global_spatial=evidence_dp(g.for_interval(global_interval))
     full_interval=final_mbr(ids,q)['interval'];native_interval=list(map(int,cap['native_interval']))
     bank=g.for_interval(full_interval);full=evidence_dp(bank);native=evidence_dp(g.for_interval(native_interval))
     valid=bank.valid.clone();valid[~bank.active,1:]=False
@@ -74,11 +78,11 @@ def derive(cap):
             no_local[t]=boxes[j]
     assert np.array_equal(no_local[~np.asarray(g.observed)],np.asarray(cap['E'])[~np.asarray(g.observed)])
     arrays=dict(Source=np.asarray(cap['Source']),SharedInit=np.asarray(cap['E']),
-        Interpolation=interpolation(cap['E'],ids,pos,boxes),OursS=native['final'].numpy(),Full=full['final'].numpy(),
+        Interpolation=interpolation(cap['E'],ids,pos,boxes),OursS=native['final'].numpy(),Global6=global_spatial['final'].numpy(),Full=full['final'].numpy(),
         NoLocal=no_local,Independent=independent.numpy(),frame_ids=np.asarray(ids),positions8=np.asarray(pos),
         Full_actions=full['actions'].numpy(),Independent_actions=independent_actions.numpy())
     for name in ARMS:
-        arrays[name+'_interval']=np.asarray(full_interval if name in ('Full','NoLocal','Independent')else native_interval)
+        arrays[name+'_interval']=np.asarray(global_interval if name=='Global6' else full_interval if name in ('Full','NoLocal','Independent')else native_interval)
     mask_boxes=np.zeros((T,2,4),dtype=np.float64);mask_available=np.zeros((T,2),bool)
     for t in range(T):
         for side in range(2):

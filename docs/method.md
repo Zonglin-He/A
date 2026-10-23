@@ -1,39 +1,37 @@
-# Fixed main method
+# Frozen selected method
 
-The two directions share the same algorithm. The source checkpoint is trained on the
-other dataset. Target inference reads only video, caption and the official input support.
+Both directions use the same fixed algorithm. Frozen TA-STVG Source at height224
+runs its original two offsets, precision, text/subject parsing and native two-pass
+process. One original ReferDINO supplies the same eight observations. Native complete
+boxes, initialization calibration/gamma, correspondence, bidirectional affine complete
+box propagation and all spatial legality/fallback rules are unchanged.
 
-The frozen source runs its original height-224 native two-pass process at two offsets.
-Original observation selection supplies eight positions to the same ReferDINO. Its
-complete native boxes provide extent; selected soft masks weight source-feature
-correspondence. Weighted bidirectional axis-affine fits transport complete boxes to
-unobserved frames. Forward and backward hypotheses remain separate, with the initialized
-source box always available. Masks are not thresholded into component bounding boxes.
-The confidence is return-cycle support, not a probability of correct identity or event.
+The temporal prior q0 is Global6: each layer uses the original two-offset interval
+hull on physical frame IDs, and six normalized posteriors are arithmetically averaged
+at temperature1. Obtain the auxiliary full-time BoxFixed path using the existing
+geometry/score. Expand each target box by1.5 and retain overlapping visual-grid cells.
+Use these cells to renormalize the original Source ASA motion word-head attention.
+Full caption, original fused memory, grid and trained head stay fixed. No new visual
+encoder or expert is introduced. These are word-class responses, not calibrated
+frame-event probabilities or foreground/actionness feedback.
 
-ERef calibration and gamma remain source-domain calibrated and frozen. Final candidates
-are ERef, preceding-anchor propagation and following-anchor propagation. Exact duplicate
-hypotheses are pruned in the original order. Fixed reliability admission is 0.1.
+Use q0 soft interval membership w_t. Fit positive and negative Bernoulli means on
+the opposite offset. With mu0 the fitting fold's unconditional semantic mean:
 
-For each of six native temporal layers, apply the original frozen time head and original
-two-offset hull on the physical frame grid. Average the six normalized interval posterior
-tables. Temperature is 1. The final interval uses the original physical MBR. There is
-no additional 448 encoding or time-decoder execution.
+    mu_plus  = (sum(w*p) + 16*mu0) / (sum(w)+16)
+    mu_minus = (sum((1-w)*p) + 16*mu0) / (sum(1-w)+16)
 
-On that interval, the fixed spatial objective is:
+Classwise expected Bernoulli log-likelihood ratios are summed, then summed over
+inclusive interval nodes. Form q(I) proportional to q0(I)*exp(S(I)) ONCE. Use the
+original physical expected-IoU MBR and unchanged BoxFixed DP on that interval.
+No second prototype estimation, gain/beta adjustment, query update or network training.
 
-- 0.5 times mean observed-frame support;
-- 0.5 times mean unobserved-frame confidence-weighted support;
-- 0.25 times mean event-edge confidence-weighted connection;
-- minus 0.1 times mean geometric protection cost on all physical nodes.
+Spatial objective remains .5 mean observed support + .5 mean unobserved confidence
+support + .25 mean confidence-weighted event-edge connection - .1 mean geometric
+protection. Denominators, exact three-state DP/ties and complete native extents remain.
+Sparse expert masks support correspondences; they are not thresholded into final boxes.
 
-Denominators are the original plain node/edge counts, not sums of confidences.
-The original exact three-state dynamic program chooses the path; ineligible nodes keep
-ERef. No optimizer or temporary trainable state is used. Spatial evidence does not alter
-the temporal posterior in this selected method.
-
-The cleanup moves the previously script-based Global6 readout into stvg/global6.py.
-Native forward, head operations, hidden export, complete-box geometry, score, tie order,
-ERef, sampling, precision and input decoding are preserved. Numerical and static scope
-is recorded in [verification](../results/verification.json). This is not permission to
-reuse old receipts with a new runtime fingerprint.
+This profile is selected explicitly by the user after exposed target-development tuning.
+Prior HC short-event validation failed and is retained. Selection is not a claim of
+statistical validation, full-result improvement or new event supervision. The independent
+full plan must evaluate all1902HC/10303Vid queries before labels are read per domain.
