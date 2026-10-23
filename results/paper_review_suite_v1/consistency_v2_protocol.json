@@ -1,0 +1,31 @@
+{
+  "code_sha256": "d7bd7b8d5e3b831a4bd08c3b4797af4f224e3df590dcc62bdfca22b2b86a3eb9",
+  "input_restore_sha256": "55e38db69bca514c3c2c8f7d7a7e448b3847a782e967d08d3cdcf05d55ceadbd",
+  "selection_sha256": "b7e64d396b7058276c3cb78f43f593caec5489eb82f45faebc7b87e7dd8de597",
+  "description": "Fixed paired5-step Adam.001 temporal-decoder LN-affine adapter, two actual RGB views: clean and photometric brightness*.8. Clean Source boxes/first-pass gates/final-pass contexts fixed. Consistency=mean four start/end twooffset JensenShannon divergences; both branches differentiate. Entropy same parameter scope, five steps, same clean inputs. All optimizer/affines reset between arms AND queries; no target labels or expert. Matched64screen/128confirm per domain; no tuning. NOT canonical Tent or CoTTA reproduction. Existing Fig1 diagnostic/plots not touched.",
+  "queries": 384,
+  "seed": 20260920,
+  "new_expert": 0,
+  "optimizer": {
+    "name": "Adam",
+    "lr": 0.001,
+    "steps": 5,
+    "betas": [
+      0.9,
+      0.999
+    ],
+    "eps": 1e-08
+  },
+  "scope": "All native TimeDecoder LayerNorm affine only, evaldropout, allotherweightsfrozen",
+  "new_Source_queries": 384,
+  "prerequisite": "supports384sealed; sharedgpu.lock available, no interruption",
+  "official_sources": [
+    "https://github.com/DequanWang/tent/blob/master/tent.py",
+    "https://github.com/qinenergy/cotta/blob/main/cifar/cotta.py"
+  ],
+  "GT_in_inference": false,
+  "all_predictions_seal_before_CPU_labels": true,
+  "preflight_revision": "V1 never started Source/TTA (0updates/0pred/0labels), cancelled while waiting;25of384captions directional, bare horizontalflip semantically invalid. V2 changes ONLY augmentation to fixed brightness*.8 before any outputs. All cases, Adam.001/5steps/LN scope/selection preserved; original Fig1 remains untouched.",
+  "augmentation": "RGB float32*.8 clip0..255 then uint8 truncation, original dimensions/time/text/coordinate mapping",
+  "fingerprint": "76ee8dc1d70cfa76b3e9b75a04d418a0ca5c1989e5c977b9806acce73819e66c"
+}
