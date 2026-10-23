@@ -1,0 +1,43 @@
+{
+  "schema": "paper_review_supports_v1",
+  "code_sha256": "5c32148060480ccb3bfae008d0ec046d5aa45f29dc8091779bcba7af7a719720",
+  "selection_sha256": "b7e64d396b7058276c3cb78f43f593caec5489eb82f45faebc7b87e7dd8de597",
+  "suite_plan_sha256": "aeae8c3e57c82c0d802df33476b7c1ac64a89b3434733ad450072fe4ce6ef75d",
+  "source_plan_sha256": "4a34668741e08bbd68fb2268a87a1fc193d4ca6efa02b4e14972dbfd746c7ab4",
+  "seed": 20260920,
+  "arms": [
+    "SourceROI",
+    "FullFrame",
+    "GreedyGreedy",
+    "DPGreedy",
+    "GreedyDP",
+    "DPDP"
+  ],
+  "kappa": 64,
+  "beta": 1,
+  "rounds": 1,
+  "context": 1.5,
+  "new_expert": 0,
+  "trainable_parameters": 0,
+  "optimizer_steps": 0,
+  "capture": "One original Source224 full native query; pretext projected appearance grid + existing postfusion spatial appearance grid + actual seven TimeDecoder kwargs saved once. Old eight evidence/geometry reused; no teacher invocation. Do not use old pooled vectors for changed auxiliary support.",
+  "no_op": "Every query Source boxes/native final FP32 logits/offset physical frames exact; repooled fulltimeDP features exact current Full; nativeP0 reused only after logit/frame equality; first2query/domain additionally recompute native hull posterior bitwise. DPDP posterior interval and finalboxes exact original.",
+  "arms_definition": {
+    "SourceROI": "Pool pretext features on native Source boxes, no shared correction. TimeMBR, final SimplePathDP.",
+    "FullFrame": "Pool all valid pretext visual cells (not enlarged object ROI); timeMBR, final SimplePathDP.",
+    "GreedyGreedy": "Appearance greedy fulltime auxiliary, REPOOL, fixed native prior+prototype, MBR, final appearancegreedy.",
+    "DPGreedy": "Original fulltime DP pool/time; final appearancegreedy.",
+    "GreedyDP": "Greedy fulltime aux REPOOL/time; final exactDP.",
+    "DPDP": "Original main, exact bitwise no-op."
+  },
+  "outcome": "Equalquery official t/v/s+observed/unobserved, Source-fixed spatial temporal causal table separately. Screen64parents/domain, fixedconfirm128disjointparents/domain. No tuning/selection. These lists are from previously scored complete datasets, not unseen-data claims.",
+  "budget": {
+    "source_queries": 384,
+    "extra_expert": 0,
+    "source_wall_limit_seconds": 14400,
+    "max_shared_cache_bytes": 107374182400
+  },
+  "GT_in_inference": false,
+  "all_predictions_seal_before_independent_CPU_score": true,
+  "fingerprint": "111dfd1e13bdd6611fd092155beb6a3a11b3a7fef4f2571b9ff7c926951ded46"
+}

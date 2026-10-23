@@ -1,0 +1,27 @@
+{
+  "code_sha256": "d1396e571c3705a927b3a7d7702b835246c039caa53d8531c3757cdb4a3f6054",
+  "queue_sha256": "b3b91cfb2d1261a783550c483eb3734f42801bf64988ce2f2f1adc89691ea8d5",
+  "selection_sha256": "b7e64d396b7058276c3cb78f43f593caec5489eb82f45faebc7b87e7dd8de597",
+  "definitions": {
+    "Main": "Exact current full no-op",
+    "BoxSeeds": "Nativecompletebox fractional gridoccupancy replaces native softmaskseed. Completebox transport remains.",
+    "OneWayAffinity": "Use source-to-target affinity at only, instead of at*ta.T, both temporal anchors retained. This is actual one-way matching, not past-only scheduling.",
+    "PastAnchorOnly": "Disable future temporal anchor only on unobservedframes; bidirectional affinity still used for retainedpastanchor.",
+    "MaskExtent": "Use archived largest propagated-mask-component boxes only on unobservedframes, sameanchor/direction/missingfallback. Recompute boxappearance/links, auxiliarypool/time/finalDP. Both missing and performance matter.",
+    "Corrupt25": "Reflect cx and horizontalgrid seed for2of8anchors selected by fixedinputhash. No GT. Refit sharedcorrection, geometry, aux,time,finalDP.",
+    "Corrupt50": "Same fixed nested4of8anchors.",
+    "Gamma": "Sharedcalibration writeback0/.5/1, sourcecalibrated truncation fixed. Newinitialization means geometry and completefeedback recomputed; no targetresultselection.",
+    "Context": "Actual1/1.5/2ROI expansion; exact main1.5.",
+    "Link": "Actual0/.25/.5 boxIoUweight for BOTH auxiliary andfinalDP; repool eachnewaux.",
+    "Obs": "Observed unaryshare.25/.5/.75 and complementaryunobservedshare. Original .25linkfixed."
+  },
+  "source_queries": 0,
+  "new_expert": 0,
+  "new_models": 0,
+  "queries": 384,
+  "inference_G\u0422": false,
+  "stage": "64screen+128fixedconfirm parent-disjoint/domain, no selection",
+  "deprecated_parameters": "Attachment eta/theta from old drafts not independently fabricated: only actual current method knobs here; source-model gating theta remains original frozen Source.",
+  "cost": "Cachedmatrixgeometry+pool+DP CPU recompute, not new GPU bottleneck",
+  "fingerprint": "ffad6492825d5ab72f96aa4fc6889a0342d18fd80692df939c83768aff67d80d"
+}

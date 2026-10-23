@@ -1,0 +1,53 @@
+{
+  "schema": "paper_review_cached_v1",
+  "seed": 20261024,
+  "code_sha256": "a6466b519919ee4025708319688e2d0736a71c0243a76b478c0cc29a2224ad06",
+  "parent_seals": {
+    "hc2": "bc209ac67273f0f2835c929cf5d977452dff04c901e7ed56223414a04fcb44a2",
+    "vidstg": "faf739e72a065bbac2079715aea4f4e89b0e2014da854013ea0c9728cb295c81"
+  },
+  "parent_fingerprint": "45970296add4622c9d9a7d3b17d696752ebc2181a5d71a9692b573f619e1e3df",
+  "arms": [
+    "P0Native",
+    "P0MBR",
+    "P0MAP",
+    "Soft",
+    "P1MAP",
+    "Hard",
+    "EventOnly",
+    "EventCentered",
+    "NoShrink",
+    "UniformPrior",
+    "Kappa16",
+    "Kappa256",
+    "BetaHalf",
+    "BetaDouble"
+  ],
+  "queries": {
+    "hc2": 1902,
+    "vidstg": 10303
+  },
+  "new_models": 0,
+  "new_experts": 0,
+  "GT_in_prediction": false,
+  "spatial_control": "All temporal arms evaluated on identical frozen Source boxes AND identical frozen Full boxes. Neither comparison re-decodes space. E3 main causal table uses Source boxes. These isolate temporal decisions; they are not reconfigured end-to-end pipelines.",
+  "definitions": {
+    "P0Native": "FP32 per-offset native MAP endpoints then physical hull; original Source boxes. Distinct from Source published MBR.",
+    "P0MBR": "Sealed exact physical-hull native prior + original MBR; exact existing Source interval.",
+    "P0MAP": "Joint physical-hull prior MAP; NOT per-offset native hull.",
+    "Soft": "Original ONE round kappa64 beta1 all-video soft pair + MBR; exact Full temporal output.",
+    "P1MAP": "Same Soft posterior, joint physical MAP.",
+    "Hard": "ONE pair from hard membership of P0MBR interval; kappa64; native final prior.",
+    "EventOnly": "Log positive compatibility alone; no background denominator. Raw length bias retained.",
+    "EventCentered": "EventOnly minus video mean, predeclared length-bias control; never promote by outcome.",
+    "NoShrink": "Same Soft with kappa0.",
+    "UniformPrior": "Same second-stage Soft evidence, uniform on original positive support as final prior; native seed remains.",
+    "Kappa16": "Sensitivity ONLY kappa16",
+    "Kappa256": "Sensitivity ONLY kappa256",
+    "BetaHalf": "Sensitivity ONLY beta.5",
+    "BetaDouble": "Sensitivity ONLY beta2"
+  },
+  "statistics": "Equal query. Paired parent-cluster 10000 bootstrap seed20261024. All signed, time groups <=5sec, severe decline>5pp t/v/union once, offline frame AUROC/evidence distribution and native coverage. No setting selection or production promotion; both full sets previously examined.",
+  "stages": "All12205 prediction records seal before independent CPU scorer. Domain jobs parallel CPU only. New support features and first-DP controls in independent collector stage.",
+  "fingerprint": "a3b81afa7e2ea36a2f6a140aa359566f5c85b901c3ad9d25b7a05ba4eab480f9"
+}

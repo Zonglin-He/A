@@ -1,0 +1,29 @@
+{
+  "code_sha256": "a7f91ea7695fe776730ea7c8d0d0f173f2b5ad15292e7c5283430c9617e3bef6",
+  "input_restore_sha256": "55e38db69bca514c3c2c8f7d7a7e448b3847a782e967d08d3cdcf05d55ceadbd",
+  "selection_sha256": "b7e64d396b7058276c3cb78f43f593caec5489eb82f45faebc7b87e7dd8de597",
+  "description": "Fixed paired5-step Adam.001 temporal-decoder LN-affine adapter, two actual RGB views: clean and horizontal flip. Clean Source boxes/first-pass gates/final-pass contexts fixed. Consistency=mean four start/end twooffset JensenShannon divergences; both branches differentiate. Entropy same parameter scope, five steps, same clean inputs. All optimizer/affines reset between arms AND queries; no target labels or expert. Matched64screen/128confirm per domain; no tuning. NOT canonical Tent or CoTTA reproduction. Existing Fig1 diagnostic/plots not touched.",
+  "queries": 384,
+  "seed": 20260920,
+  "new_expert": 0,
+  "optimizer": {
+    "name": "Adam",
+    "lr": 0.001,
+    "steps": 5,
+    "betas": [
+      0.9,
+      0.999
+    ],
+    "eps": 1e-08
+  },
+  "scope": "All native TimeDecoder LayerNorm affine only, evaldropout, allotherweightsfrozen",
+  "new_Source_queries": 384,
+  "prerequisite": "supports384sealed; sharedgpu.lock available, no interruption",
+  "official_sources": [
+    "https://github.com/DequanWang/tent/blob/master/tent.py",
+    "https://github.com/qinenergy/cotta/blob/main/cifar/cotta.py"
+  ],
+  "GT_in_inference": false,
+  "all_predictions_seal_before_CPU_labels": true,
+  "fingerprint": "db7f30cf487b534a0c3a20349eec8ef122cc0e4fa163017a71a269320c8bc3c7"
+}

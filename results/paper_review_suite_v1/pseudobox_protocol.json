@@ -1,0 +1,20 @@
+{
+  "description": "Expert pseudo-box task-aware TTA, four query-specific center/logscale residuals shared across frames; 20Adam.01steps, zero residual initialization and optimizer reset/query. L=5 mean absolute normalizedcxcywh anchor error +2meanGIoUloss. Same cached8 expert observations; nativeP0MBR fixed; no additional model/GT/network weights. This is a specified simple baseline, not VLOD-TTA reproduction.",
+  "selection_sha256": "b7e64d396b7058276c3cb78f43f593caec5489eb82f45faebc7b87e7dd8de597",
+  "optimizer": {
+    "name": "Adam",
+    "steps": 20,
+    "lr": 0.01,
+    "betas": [
+      0.9,
+      0.999
+    ],
+    "eps": 1e-08
+  },
+  "new_expert": 0,
+  "network_weights_updated": 0,
+  "queries": 384,
+  "GT_before_seal": false,
+  "code_sha256": "4c7d1f1eb76e88cda72e2bbc8a184c18451d7be53a25e86fd88788f8016d37ba",
+  "fingerprint": "7145a73ab7bc12846a94d8f26fe4f1afbd46de7c777ab6e30f395002311300e2"
+}
