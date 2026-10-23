@@ -1,0 +1,23 @@
+{
+  "schema": "surrogate_alignment_v1",
+  "purpose": "Sample-level cache-only diagnostic, not a TTA optimization experiment",
+  "datasets": [
+    "hc2",
+    "vidstg"
+  ],
+  "scope": "All sealed official queries, domain-specific figures; no cross-domain pooling or subset selection",
+  "downstream": "Original frozen Source vIoU from previously completed official metrics; no new GT/annotation access",
+  "temporal_confidence": "1 - H(q0)/log(T*(T-1)/2); original native two-offset physical-hull interval prior, natural logs, all legal intervals",
+  "spatial_trajectory_consistency": "Arithmetic mean of adjacent Source box IoUs over the entire sampled trajectory; normalized cxcywh boxes clipped to image [0,1] before IoU; degenerate union gives zero",
+  "spatial_boundary": "Trajectory smoothness proxy, NOT augmentation-view consistency; real object/camera motion and sampling affect it",
+  "binning": "Five percentile bins independently for each score using average ranks; equal scores never split, unequal bin sizes possible",
+  "correlation": "Query-level Spearman score versus Source vIoU, with average-rank ties; not correlation of five plotted means",
+  "uncertainty": "Pointwise 95% percentile parent-video cluster bootstrap; fixed full-data bin assignment, equal-query mean, 5000 resamples",
+  "seed": 20261023,
+  "bootstrap_repeats": 5000,
+  "primary_title": "Task Alignment of TTA Surrogate Signals in STVG",
+  "selection": "Definitions fixed before extracting scores; datasets and downstream results already exposed; no proxy/scale/bin-count sweep",
+  "no_new_model_or_expert_or_GPU_or_predictions_or_GT_score": true,
+  "source_sha256": "6e9965d53a74399b0195f04cff795e7d6ca3e3048d371819da0f2ecfcca599b9",
+  "production_plan_sha256": "4a34668741e08bbd68fb2268a87a1fc193d4ca6efa02b4e14972dbfd746c7ab4"
+}
