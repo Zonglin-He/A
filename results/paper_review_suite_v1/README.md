@@ -20,3 +20,7 @@ Current numerical budget fingerprint remains c5c24f739ebd160f8b252ddf5b9539edc6e
 ## Completed fixed budget confirmation
 
 [All10 confirmation configurations, paired CIs, severe tails, costs and figures](budget_v2/CONFIRM_ANALYSIS.md) are complete:256queries/2560predictions,0failures, officialdensechecksmax1.55e-15. ProductionK8 is unchanged; K16 positive outcomes are retained, not promoted. FixedRGBshifts have actually started, CG remains CPU-only preparation and LAST. Independent shifts_reporting.py is ready to derive signed/severe/shortlong/cost from already scored stages; it refuses unfinished stages and performs no newGT scoring.
+
+## Controlled shifts screening complete
+
+[AllfixedBlur/JPEG/Dim screen results](shifts/SCREEN_ANALYSIS.md) are complete:128queries,384same-transformedRGB Source/Full pairs,384actualSourcequeries+384sameReferDINOjoint8calls,0clean-cache reuse,768officialdensechecksmax1.67e-15. Allsigned/severeunion/shortlong/parentCIs/componentcost are public. Confirmation is running with unchangedviews/severity/settings. CG-STVG remainsLAST, modelnotstarted.
