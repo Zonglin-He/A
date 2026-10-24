@@ -1,4 +1,4 @@
-# HC-only conservative spatial calibration — active
+# HC-only conservative spatial calibration — complete
 
 Direct user request: continue improving HC CG parameters after the completed two-domain follow-up. This study is restricted to HC; Vid, production TA, original results and all model/teacher/observation definitions remain unchanged.
 
@@ -13,3 +13,32 @@ Five folds are frozen by metadata-only SHA(seed20261027:parent), sizes46/46/45/4
 V1 stopped before committing any prediction/reading any new labels because a wrapper unpacked the frozen feedback dictionary as a triple. Source/expert/modelwork0; failedCPUtime was not separately saved and remains unknown. V1source/plan/logs/allownedexit remain private under outputs/paper_hc_refine_v1/failure_v1. Independentv2 only changes namespace/bindings and reads the dictionary correctly; reverse-edits recover frozenv1 bytes exactly. Grid/math/folds/selection/budgets unchanged, see interface_recovery.json. Currententry studies/paper_hc_refine_v2/run.py, plan7d10229e7460ea2f51f6c70e5ecfbde563924c9d1357dbe616dad55d014baaa9. Never resumev1 or relax its hashes.
 
 Prior two-domain follow-up is complete and fully published at342b9a3a7ce20ac747a655e47a17602adc6da3f7; its mixed confirmation conclusions are unchanged. Fig1 remains excluded and third benchmark is deferred. Public artifacts include code/protocol/anonymized scalar/signed tables only; captions, media, GT coordinates, features, masks, weights and credentials remain private. Same existing heartbeat continues this new HC request, quiet unless a stage completes/fails/requires action. No new agents/chats/automations.
+
+## Completed result
+
+All22,700configuration-query predictions on227parents sealed before a separate CPU label pass. Official/common/native comparison23,154checks, maxerror1.4432899320127035e-15. Twelve mathematical bridges and99available saved Current arrays matched bitwise. Postseal verification rehashed681prediction/capture/teacher payloads and recomputed every fold training ranking, proving parent-disjoint training/heldout selection. All four owned processes exited.
+
+Allfive training folds selected **gamma0/u0/lambda0/beta.5**, with kappa64/context1.5 unchanged. The global fitted winner happens to be the same profile; its fitted report remains separate and is not additional evidence.
+
+| Arm | tIoU (%) | vIoU (%) | Fixed GT-supported unobserved IoU (%) | Severe t/v/union vs Source |
+|---|---:|---:|---:|---:|
+| SourceMBR | 43.767158 | 26.353373 | 61.108159 | 0/0/0 |
+| Original transferred full | 47.063336 | 25.914831 | 54.837460 | 56/80/102 |
+| Previous HC configuration | 45.846362 | 26.457003 | 58.441469 | 27/53/67 |
+| Selected, out-of-fold | 46.541172 | 27.738352 | 61.108159 | 38/24/40 |
+
+Selected−Source v+1.384979pp conditional95%parentCI[.471152,2.409356], t+2.774014pp[1.367239,4.308661]. Selected−Current v+1.281349pp[-.546289,3.008972], t+.694810pp[-.163184,1.685526]. UnobservedIoU improves2.666690pp over Current[.152611,5.166989], and is exactly Source for all227cases because the selected spatial control keeps those boxes. ObservedIoU−Current-.274314pp[-.529634,-.063454] remains. Severe union improves67→40, but temporal severe harm increases27→38; this is a mean-quality versus tail-risk tradeoff, not uniform protection. Short71 v−Source+.358625pp CIcross0; long156+1.852102pp[.580584,3.255350]. Fold2's heldout v−Source is negative; foldwise outcomes remain public.
+
+## What changed, and what did not become established
+
+The selected setting disables unobserved spatial propagation and adjacent-box smoothness in the path score, retains independent observed-frame candidate decisions and Source boxes elsewhere, then uses the resulting auxiliary trajectory for temporal prototype pooling and beta.5 feedback. Gamma0 already disables global shared correction. This is an HC-specific conservative control, **not validation of full spatial feedback**, and it has not replaced the fixed production method or Vid parameters.
+
+Matched descriptive controls make the remaining issue concrete. Keeping beta.25 and jointly setting u/lambda to0 raises v26.457003→27.332137 and reduces spatial severe53→16/union67→32; unobservedIoU recovers58.441469→61.108159. Raising beta from.25 to.5 on that conservative spatial control adds.406215ppv but increases severeunion32→40. Raising beta alone on the previous spatial path givesv26.734478/union80, so merely strengthening temporal evidence does not cure spatial damage. Setting only lambda0 while u.5 remains givesv24.306023/union91; setting only u0 atlambda.25 gives27.160098/union55. These are comparisons within the same exposed development set, not independent mechanism confirmation or a reason to widen the grid. Raw candidate construction and exactDP are unchanged; the empirical issue is trust in the current objective's spatial evidence, not failure of DP to optimize that objective.
+
+Allparent histories were exposed and helped motivate this grid. OOF separates parameter selection within this run only. Conditional parent CIs do not refit selection and have no familywise correction. No new blind confirmation, causal proof of feature failure, full-HCquery evaluation or guaranteed improvement is claimed. Beta.5 is the tested boundary; no postresult expansion was performed.
+
+## Evidence and cost
+
+See `selection.json` for all101ranked choices(including Source) per fold, `all_profiles_signed.tsv` for every profile/control outcome, `out_of_fold/report.json`, `all_signed.tsv`, `choices_and_severe.tsv` for paired means/CI/severe/shortlong, and separate `fitted_all_exposed/`. `descriptive_matched_controls.json` retains six declared-grid contrasts. `reporting.py` and `matched_controls.py` only read sealed predictions/already scored metrics; they perform no new model, expert or GT scoring.
+
+The two worker segments are1322427/start236994117(114queries/11,400profiles/180.409662conditionalCPU seconds) and1322428/start236994117(113/11,300/174.517374s). Worker walls263.096396/254.782671s overlap and must not be added as elapsed wall time. ConditionalCPU total354.927036s excludes original acquisition and some loading/geometry, and is not full deployment latency. NewSource/expert/model/optimizer/GPU work is0. V1failed precommit CPUtime remains unknown, not0. Media, annotations, cached feature/mask/evidence payloads and credentials stay private. All positive/negative scalar evidence and code are public. No additional search follows these results.
