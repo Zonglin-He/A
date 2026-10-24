@@ -121,3 +121,5 @@ GitHub同步完成：实现提交 [87294995](https://github.com/Zonglin-He/A/com
 2026-10-24用户新增授权TubeDETR广泛数值调参，目标为空间sIoU相对原生Source转正。新增独立空间搜索，原两域各128、每域2048配置；直接以dense sIoU选参，固定Source和时间，原固定方法结果不改。覆盖初始化/affinity/评分/连接/保护/准入/输出混合及独立宽高校准控制；所有候选先seal后独立CPU标签评分，不逐query GT选框。两域已有query全部2048输出的Source及原Full逐位回归通过，4个新增算法检查通过；不当新GPU成绩。当前LLaVA继续，完整空间GPU验证排在其后。详见[tubedetr_spatial_search](tubedetr_spatial_search.md)。
 
 2026-10-24 10:49空间搜索两域完整：各2048配置、共524288个profile-query预测均完整seal后评分。Vid dense48.616419→49.189528（+.573109pp），HC57.596687→58.243473（+.646786pp）；两个最优均无宽高缩放/输出混合回退，来自实际SimplePath参数改变；Source/原Full/时间逐位回归及全部新预测receipt/哈希/有限数组与所有标量均值Root首核通过。搜索后的开发正值不称独立确认，5/6条s降>5pp保留。129CPU检查通过。独立full_plan已在新全量前冻结，controller3207124等待LLaVA两域全部GPU阶段完成，随后真实原生特征资格及Vid10303/HC1902验证；尚无本轮完整全量结果。
+
+2026-10-24 10:57新版LLaVA双域原128均完整seal/独立CPU评分，总gate四引用hash全部通过并先于首full。Root首核全部256新预测/receipt/request/plan/有限数组、Source/时间/八观察对对应旧full、posterior精确重构SHA及五行均值独立复算通过，完整正负匿名标量与开发报告保存results/simplepath_llava。Vid/HC Full v19.884277/20.964430，dense33.101206/40.992706；固定方法不据开发结果调参，原生无效0。已顺序进入Vid10303全量，后HC1902；尚无本轮完整全量成绩。Tube空间调参full controller继续等待LLaVA GPU终态，两个任务全部Root核验发布前不删除唯一监控。
