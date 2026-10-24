@@ -1,3 +1,5 @@
+2026-10-24 10:07 新版LLaVA正式接续：TubeDETR完整终态已发布1dadc34b并核远端738文件94606026字节。LLaVA两域原首query冷/cache共4原生生成及396条件分支真实资格通过，Source与旧full逐位同、条件实际路径误差0、冷/cache全输出逐位同、权重不变/0新专家GT；先前token零填充映射错误在生成前保护失败已完整归档并更正。124CPU检查通过。冻结新plan f2475d24，真正逐起点条件结束分布，不外积/伪造单span prior；实际3584维STP局部汇聚。10:07启动新固定128→双域full控制器，五行与负例保留，不调参；64GiB旧cache保留无新追加、25GiBfloor，紧凑无损后验重构留SHA。详见docs/simplepath_llava.md；资格/启动不是新成绩。
+
 2026-10-24 TubeDETR SimplePath/Native2D两域完整终态：Vid10303/732、HC1902/227均完整封存独立评分，Root全部12205预测/receipt/绑定/有限数组首核通过，最终沿用已核Vid小hash不重复扫描。Full−Source v+1.799801/+9.762438pp，dense-4.721019/-3.638058pp；全部五行控制和正负匿名逐条标量保留，参数冻结不重调。64GiB容量工程修订全程追溯且无旧结果覆盖；原进程正常退出，最终发布回执待远端核验。见results/simplepath_tubedetr/terminal_report.md；之后推进授权新版LLaVA真实条件时间prior资格。
 
 2026-10-24 08:26 TubeDETR缓存容量工程恢复：Vid8591后必需prefix追加触发64GiB保护，原进程退出；原失败/进度/log/run源码与8591提交清单完整归档。Root新增独立retention-only缓存入口及预冻结容量修订f71f8f90，保持原plan80fe566c/数学/参数/权重/全部已存输出，停止新cache追加而非停止必需预测，cache缺失冷计算；已有命中继续核哈希冲突，0新专家。122CPU检查通过，原冷/缓存真实资格仍适用。新进程08:26接续原清单，预测完整seal后才CPU评分，旧failure保留为历史，新错误独立文件；没有新full成绩。详见docs/simplepath_tubedetr.md。
