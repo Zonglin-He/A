@@ -49,6 +49,7 @@ REQUIRED += [str(p.relative_to(ROOT)) for p in (ROOT/'results/tubedetr_propagati
 REQUIRED += [str(p.relative_to(ROOT)) for p in (ROOT/'results/tubedetr_boxfixed_development').rglob('*') if p.is_file() and p.suffix in {'.json', '.md'}]
 REQUIRED += ['docs/llava_st_development.md']
 REQUIRED += ['docs/simplepath_tubedetr.md']
+REQUIRED += ['results/simplepath_tubedetr/vidstg/all_signed_full_results.json.gz','results/simplepath_tubedetr/hc2/all_signed_full_results.json.gz']
 REQUIRED += [str(p.relative_to(ROOT)) for p in (ROOT/'results/simplepath_tubedetr').rglob('*') if p.is_file() and p.suffix in {'.json', '.md'}]
 REQUIRED += ['results/llava_st_development/vidstg/all_signed_full_results.json.gz','results/llava_st_development/hc2/all_signed_full_results.json.gz']
 REQUIRED += ['docs/llava_st_next_method_preparation.md','results/llava_st_next_method_preparation/manifest.json']
