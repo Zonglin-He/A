@@ -1,0 +1,478 @@
+{
+  "status": "verified_whole_domain",
+  "queries": 1902,
+  "SHA_checks": 5706,
+  "all_compact_array_replays_exact": true,
+  "all_means_recomputed": true,
+  "legacy_reused_queries": 227,
+  "worker_segments": {
+    "1427705:237101753": {
+      "queries": 1902,
+      "reused_legacy": 227,
+      "feedback_seconds": 1057.9093749206513,
+      "pipeline_seconds": 9726.43451165082,
+      "new_Source_forwards": 1677,
+      "new_Source_seconds": 3658.7994819986634,
+      "new_expert": 1675,
+      "expert_original_cost": {
+        "expert_seconds": 359.12877250509337,
+        "preprocess_seconds": 40.75799171673134,
+        "forward_seconds": 317.53540577786043,
+        "postprocess_seconds": 0.8353750105015934
+      },
+      "teacher_load_seconds": 5.528525684028864
+    }
+  },
+  "source_model_load_seconds_once_per_actual_worker": {
+    "1427705:237101753": 8.89239107305184
+  },
+  "compact_plus_prediction_bytes": 3806995585,
+  "source_seal_sha256": "10ce1c91f1ccc4b2f841ac927dd1c54783ff145631574ebd7f1467b0e106a590",
+  "score_receipt_sha256": "779c70a17844614862f027fd8facf13e90901e9f0c09eebb0a92b79f7f94c267",
+  "severe_vs_Source": {
+    "SourceNative": {
+      "t": 1226,
+      "v": 997,
+      "union": 1229
+    },
+    "Source": {
+      "t": 0,
+      "v": 0,
+      "union": 0
+    },
+    "SharedCorrection": {
+      "t": 0,
+      "v": 0,
+      "union": 0
+    },
+    "Space": {
+      "t": 0,
+      "v": 46,
+      "union": 46
+    },
+    "Full": {
+      "t": 348,
+      "v": 242,
+      "union": 377
+    }
+  },
+  "timegroups": {
+    "short_le5s": {
+      "queries": 544,
+      "paired": {
+        "Full-Source": {
+          "v": {
+            "mean": 0.31470331116164574,
+            "CI95": [
+              -0.2509999668962812,
+              0.9056000092370092
+            ],
+            "queries": 544,
+            "parents": 176,
+            "improved": 277,
+            "harmed": 215,
+            "unchanged": 52,
+            "declined_over5pp": 72
+          },
+          "t": {
+            "mean": 0.8191492686508038,
+            "CI95": [
+              0.06370286681265364,
+              1.6041743125499917
+            ],
+            "queries": 544,
+            "parents": 176,
+            "improved": 267,
+            "harmed": 216,
+            "unchanged": 61,
+            "declined_over5pp": 102
+          },
+          "observed_actual_sIoU": {
+            "mean": -0.6359102835509156,
+            "CI95": [
+              -2.721666124018453,
+              1.4395658039863213
+            ],
+            "queries": 504,
+            "parents": 172,
+            "improved": 141,
+            "harmed": 151,
+            "unchanged": 212,
+            "declined_over5pp": 84
+          },
+          "unobserved_actual_sIoU": {
+            "mean": 0.0,
+            "CI95": [
+              0.0,
+              0.0
+            ],
+            "queries": 544,
+            "parents": 176,
+            "improved": 0,
+            "harmed": 0,
+            "unchanged": 544,
+            "declined_over5pp": 0
+          },
+          "boundary_MAE_seconds": {
+            "mean": -0.01814664769770611,
+            "CI95": [
+              -0.09185317064329254,
+              0.05760464339027821
+            ],
+            "queries": 544,
+            "parents": 176,
+            "improved": 276,
+            "harmed": 227,
+            "unchanged": 41,
+            "declined_over5pp": null
+          }
+        },
+        "Full-Space": {
+          "v": {
+            "mean": 0.49010746065148336,
+            "CI95": [
+              -0.0626885883675228,
+              1.0639908501196986
+            ],
+            "queries": 544,
+            "parents": 176,
+            "improved": 264,
+            "harmed": 213,
+            "unchanged": 67,
+            "declined_over5pp": 61
+          },
+          "t": {
+            "mean": 0.8191492686508038,
+            "CI95": [
+              0.06370286681265364,
+              1.6041743125499917
+            ],
+            "queries": 544,
+            "parents": 176,
+            "improved": 267,
+            "harmed": 216,
+            "unchanged": 61,
+            "declined_over5pp": 102
+          },
+          "observed_actual_sIoU": {
+            "mean": -0.002015966666905155,
+            "CI95": [
+              -0.6907599973271434,
+              0.682786066177708
+            ],
+            "queries": 504,
+            "parents": 172,
+            "improved": 10,
+            "harmed": 9,
+            "unchanged": 485,
+            "declined_over5pp": 5
+          },
+          "unobserved_actual_sIoU": {
+            "mean": 0.0,
+            "CI95": [
+              0.0,
+              0.0
+            ],
+            "queries": 544,
+            "parents": 176,
+            "improved": 0,
+            "harmed": 0,
+            "unchanged": 544,
+            "declined_over5pp": 0
+          },
+          "boundary_MAE_seconds": {
+            "mean": -0.01814664769770611,
+            "CI95": [
+              -0.09185317064329254,
+              0.05760464339027821
+            ],
+            "queries": 544,
+            "parents": 176,
+            "improved": 276,
+            "harmed": 227,
+            "unchanged": 41,
+            "declined_over5pp": null
+          }
+        },
+        "Source-SourceNative": {
+          "v": {
+            "mean": 7.020218081497366,
+            "CI95": [
+              5.8717806432085995,
+              8.181107327020971
+            ],
+            "queries": 544,
+            "parents": 176,
+            "improved": 359,
+            "harmed": 108,
+            "unchanged": 77,
+            "declined_over5pp": 50
+          },
+          "t": {
+            "mean": 11.696005300441076,
+            "CI95": [
+              10.015764881880102,
+              13.394430457527893
+            ],
+            "queries": 544,
+            "parents": 176,
+            "improved": 361,
+            "harmed": 113,
+            "unchanged": 70,
+            "declined_over5pp": 65
+          },
+          "observed_actual_sIoU": {
+            "mean": 0.0,
+            "CI95": [
+              0.0,
+              0.0
+            ],
+            "queries": 504,
+            "parents": 172,
+            "improved": 0,
+            "harmed": 0,
+            "unchanged": 504,
+            "declined_over5pp": 0
+          },
+          "unobserved_actual_sIoU": {
+            "mean": 0.0,
+            "CI95": [
+              0.0,
+              0.0
+            ],
+            "queries": 544,
+            "parents": 176,
+            "improved": 0,
+            "harmed": 0,
+            "unchanged": 544,
+            "declined_over5pp": 0
+          },
+          "boundary_MAE_seconds": {
+            "mean": -0.2780001765789599,
+            "CI95": [
+              -0.4665203377125446,
+              -0.09028622330672136
+            ],
+            "queries": 544,
+            "parents": 176,
+            "improved": 283,
+            "harmed": 230,
+            "unchanged": 31,
+            "declined_over5pp": null
+          }
+        }
+      }
+    },
+    "long_gt5s": {
+      "queries": 1358,
+      "paired": {
+        "Full-Source": {
+          "v": {
+            "mean": 1.522981610216938,
+            "CI95": [
+              1.0558188668758242,
+              1.984043212607024
+            ],
+            "queries": 1358,
+            "parents": 217,
+            "improved": 729,
+            "harmed": 508,
+            "unchanged": 121,
+            "declined_over5pp": 170
+          },
+          "t": {
+            "mean": 2.8458207760591137,
+            "CI95": [
+              2.175309700509816,
+              3.4901163226526304
+            ],
+            "queries": 1358,
+            "parents": 217,
+            "improved": 744,
+            "harmed": 473,
+            "unchanged": 141,
+            "declined_over5pp": 246
+          },
+          "observed_actual_sIoU": {
+            "mean": -1.3611284126431111,
+            "CI95": [
+              -2.414809054982407,
+              -0.26690292419928785
+            ],
+            "queries": 1353,
+            "parents": 217,
+            "improved": 402,
+            "harmed": 492,
+            "unchanged": 459,
+            "declined_over5pp": 264
+          },
+          "unobserved_actual_sIoU": {
+            "mean": 0.0,
+            "CI95": [
+              0.0,
+              0.0
+            ],
+            "queries": 1358,
+            "parents": 217,
+            "improved": 0,
+            "harmed": 0,
+            "unchanged": 1358,
+            "declined_over5pp": 0
+          },
+          "boundary_MAE_seconds": {
+            "mean": -0.12269337717536499,
+            "CI95": [
+              -0.16971959517882554,
+              -0.0732635018413191
+            ],
+            "queries": 1358,
+            "parents": 217,
+            "improved": 754,
+            "harmed": 511,
+            "unchanged": 93,
+            "declined_over5pp": null
+          }
+        },
+        "Full-Space": {
+          "v": {
+            "mean": 1.7612711378759633,
+            "CI95": [
+              1.3105840841237708,
+              2.205639932796821
+            ],
+            "queries": 1358,
+            "parents": 217,
+            "improved": 724,
+            "harmed": 471,
+            "unchanged": 163,
+            "declined_over5pp": 150
+          },
+          "t": {
+            "mean": 2.8458207760591137,
+            "CI95": [
+              2.175309700509816,
+              3.4901163226526304
+            ],
+            "queries": 1358,
+            "parents": 217,
+            "improved": 744,
+            "harmed": 473,
+            "unchanged": 141,
+            "declined_over5pp": 246
+          },
+          "observed_actual_sIoU": {
+            "mean": 0.2944382035910662,
+            "CI95": [
+              0.021987675424058207,
+              0.5853544601868251
+            ],
+            "queries": 1353,
+            "parents": 217,
+            "improved": 56,
+            "harmed": 48,
+            "unchanged": 1249,
+            "declined_over5pp": 17
+          },
+          "unobserved_actual_sIoU": {
+            "mean": 0.0,
+            "CI95": [
+              0.0,
+              0.0
+            ],
+            "queries": 1358,
+            "parents": 217,
+            "improved": 0,
+            "harmed": 0,
+            "unchanged": 1358,
+            "declined_over5pp": 0
+          },
+          "boundary_MAE_seconds": {
+            "mean": -0.12269337717536499,
+            "CI95": [
+              -0.16971959517882554,
+              -0.0732635018413191
+            ],
+            "queries": 1358,
+            "parents": 217,
+            "improved": 754,
+            "harmed": 511,
+            "unchanged": 93,
+            "declined_over5pp": null
+          }
+        },
+        "Source-SourceNative": {
+          "v": {
+            "mean": 13.266202803859318,
+            "CI95": [
+              12.206753768081864,
+              14.326290961876916
+            ],
+            "queries": 1358,
+            "parents": 217,
+            "improved": 1058,
+            "harmed": 146,
+            "unchanged": 154,
+            "declined_over5pp": 53
+          },
+          "t": {
+            "mean": 22.503645118778532,
+            "CI95": [
+              21.019335388618344,
+              23.985322552458758
+            ],
+            "queries": 1358,
+            "parents": 217,
+            "improved": 1089,
+            "harmed": 128,
+            "unchanged": 141,
+            "declined_over5pp": 62
+          },
+          "observed_actual_sIoU": {
+            "mean": 0.0,
+            "CI95": [
+              0.0,
+              0.0
+            ],
+            "queries": 1353,
+            "parents": 217,
+            "improved": 0,
+            "harmed": 0,
+            "unchanged": 1353,
+            "declined_over5pp": 0
+          },
+          "unobserved_actual_sIoU": {
+            "mean": 0.0,
+            "CI95": [
+              0.0,
+              0.0
+            ],
+            "queries": 1358,
+            "parents": 217,
+            "improved": 0,
+            "harmed": 0,
+            "unchanged": 1358,
+            "declined_over5pp": 0
+          },
+          "boundary_MAE_seconds": {
+            "mean": -1.182881721154023,
+            "CI95": [
+              -1.2752023792364584,
+              -1.0925578990518419
+            ],
+            "queries": 1358,
+            "parents": 217,
+            "improved": 1044,
+            "harmed": 252,
+            "unchanged": 62,
+            "declined_over5pp": null
+          }
+        }
+      }
+    }
+  },
+  "cost_scope": "Actual worker/PID segments. Historical acquisition receipts are provenance, not new work or zero deployment cost. Source capture/hooks/CPU-transfer and native extras are nested in pipeline; expert subcomponents nested. Loads separate once per actual worker. Cache-prefix CPU time is not an ETA for unseen Source work. Raw grids intentionally discarded only for completed NEW study scratch; sufficient state exactly replays fixed outputs, not arbitrary future repooling.",
+  "new_model": 0,
+  "new_Source": 0,
+  "new_expert": 0,
+  "new_GT_scoring": 0
+}
