@@ -44,3 +44,7 @@ Actual4case repeated cache preflight covers both tasks and both domains: current
 Every signed positive/negative/unchanged outcome, severe t/v union once/rescue, event duration group, pointwise parent-cluster CI, scalar recalls, input/prediction/receipt hashes and worker-PID/start conditionalcost are preserved. All datasets historically exposed. No parameter tuning, unseen-test claim, corruption-robustness claim or universal backbone-module benefit is inferred.
 
 After each score AND full replay audit, root runs `studies/map_components_v1/export.py --task components|budget --dataset hc2|vidstg` to export Table3/final-DP scalars or actual budget curves; this postprocessor reads already-scored metrics only,0newGTscoring/model. Inspect generated privatePNG before publishing the budgetSVG. Publish complete positive and negative results as each domain finishes. Current protocol/startup is not completed experimental evidence.
+
+## Completed HC component domain
+
+TA-HC1902 is fully sealed, scored and replay-audited; [all effects and limitations](components/hc2/ANALYSIS.md), [five-row Table3](components/hc2/table3.tsv), and [matched final-DP contrast](components/hc2/final_DP_control.json) are available. Vid components remain active and budget reconstruction follows both completed component reports. This domain completion does not mean the whole study is finished.
