@@ -35,3 +35,8 @@ The original four-row strict-deletion study remains deferred. Even if some MAP d
 ## First completed domain
 
 [TA-HC1902 complete MAP+DP result](TA/hc2/ANALYSIS.md): t48.586628/v26.731488%; versus FullMBR−.990214t/−.486611v pp. Official11412checks and9510SHA/all-array replay complete. Other domains remain in progress; see [resource protection update](RESOURCE_PRIORITY_UPDATE.md) for the current narrower CPU14–15/nice19 setting rather than the initial launch setting.
+
+
+## Second completed domain
+
+[CG-HC1902 complete MAP+DP result](CG/hc2/ANALYSIS.md): t38.252644/v23.482611%; versus FullMBR−6.646500t/−3.848476v pp, versus native-MAP Source+15.032164/+8.808679. All11412official checks,9510SHA and exactreplay complete. Compared with originalSource severeunion133 versus FullMBR153; compared directly with FullMBR, MAP severeunion713. Both positive and negative findings are retained. Both Vid phases remain in progress.
