@@ -40,3 +40,8 @@ The original four-row strict-deletion study remains deferred. Even if some MAP d
 ## Second completed domain
 
 [CG-HC1902 complete MAP+DP result](CG/hc2/ANALYSIS.md): t38.252644/v23.482611%; versus FullMBR−6.646500t/−3.848476v pp, versus native-MAP Source+15.032164/+8.808679. All11412official checks,9510SHA and exactreplay complete. Compared with originalSource severeunion133 versus FullMBR153; compared directly with FullMBR, MAP severeunion713. Both positive and negative findings are retained. Both Vid phases remain in progress.
+
+
+## Third completed domain
+
+[TA-VidSTG10303 complete MAP+DP](TA/vidstg/ANALYSIS.md): t34.664067/v14.433693%; versus originalSource+2.935613/+3.295210pp, versus matched SourceJointMAP+1.213262/+2.792066, versus FullMBR+.059689/+.050379 with both CIs crossing zero. Official61,818checks,51,515SHA/all-array replay complete. Short-event temporal loss versus originalSource and all severe tails remain disclosed. CG-Vid is still in progress; no prefix accuracy.
