@@ -1,0 +1,76 @@
+{
+  "schema": "map_full_now_v3",
+  "authorization": "Latest direct user explicitly authorizes CPU-parallel MAP-DP replay NOW without waiting for CG-Vid, while prioritizing and not interrupting current CG-Vid.",
+  "scientific_parent_fingerprint": "92b45adb5b3d262eddfa008f977e376e7a92e7a0125cb0326a9741297ff0ad16",
+  "scientific_parent_plan_sha256": "448ef9f51a2ea2992f6dfddfc8e2ad8c64ec0834b00e7acf8a745c49b945ae43",
+  "science": "Unchanged frozen.calculate/map_core q1/MAP/DP math and frozen score/report code objects, with this independent output namespace and per-domain readiness gate. Same six arms, cohorts, profiles and bootstrap seed. No Source/expert/RGB/GPU/optimizer work.",
+  "jobs": [
+    [
+      "TA",
+      "hc2"
+    ],
+    [
+      "TA",
+      "vidstg"
+    ],
+    [
+      "CG",
+      "hc2"
+    ],
+    [
+      "CG",
+      "vidstg"
+    ]
+  ],
+  "arms": [
+    "Source",
+    "SourcePlusMBR",
+    "SourceJointMAP",
+    "FullMBR",
+    "FullMAPFixedBoxes",
+    "FullMAP"
+  ],
+  "domains": {
+    "hc2": 1902,
+    "vidstg": 10303
+  },
+  "max_compute_jobs": 4,
+  "compute_threads_each": 1,
+  "scheduling": {
+    "nice": 15,
+    "ionice": "idle class3",
+    "CPU_affinity": [
+      12,
+      13,
+      14,
+      15
+    ],
+    "minimum_available_RAM_bytes": 8589934592,
+    "resume_RAM_bytes": 10737418240,
+    "slowdown_guard_ratio": 1.35,
+    "slowdown_new_queries": 25,
+    "minimum_pause_seconds": 60
+  },
+  "readiness": "TA both parent fulls and CG-HC are complete. CG-Vid consumes only atomically committed immutable receipt+compact+prediction SHA triples, never active Source scratch or partial outputs. No CG-Vid GT until all10303 new MAP predictions seal AND originalCG-Vid full seals and scores; then verify all streamed parent SHAs against final original seal.",
+  "validation": "8committed-cache CPU bridges before jobs, FullMBR bitwise parent; all new output arrays cold-read exact. Each complete domain seal before its own labels. Frozen score/reporter source bytes unchanged, rebound only output paths/validate/readiness. All signed positive/negative/severeunion/shortlong/CI/workerCPUcost preserved.",
+  "resources": "No changes/signals/affinity/nice/priority to original CG controller/predictor/teacher or unrelated services. Only own MAP process groups may be temporarily SIGSTOP/CONT on lowRAM or precautionary Vid pipeline slowdown; this is a resource guard, not evidence of causal slowdown. Low priority still cannot guarantee zero measurable shared-host interference.",
+  "strict": "Only after four complete MAP reports and original bothCGfull audit/namedsource/ownedexit gate, launch unchanged strict deletion queue. Never start its GPU reconstruction during CG-Vid.",
+  "budget": {
+    "new_Source": 0,
+    "new_expert": 0,
+    "new_GPU": 0,
+    "optimizer_steps": 0,
+    "max_stage_seconds": 259200,
+    "min_disk_free_bytes": 64424509440
+  },
+  "code_sha256": {
+    "studies/map_full_v1/now_v3.py": "d94a6fe1d756704f3f7c03dbcc628ff085c636ad536185fac1bb08e469de9480"
+  },
+  "parent_seals": {
+    "hc2": "bc209ac67273f0f2835c929cf5d977452dff04c901e7ed56223414a04fcb44a2",
+    "vidstg": "faf739e72a065bbac2079715aea4f4e89b0e2014da854013ea0c9728cb295c81"
+  },
+  "CG_plan_sha256": "9d6d72d2ab43dff9a93d08e8afac13612132c1d4416045eae63af2cee23229b0",
+  "exposure": "Both full datasets historically exposed. This changes final readout and actual final spatialDP only, not parameter selection or originalSource readout semantics.",
+  "fingerprint": "f2bf204b20167d86c1a701533693ba63cf5d7b59ff6252e6c9fe5319cfc5e7b6"
+}
