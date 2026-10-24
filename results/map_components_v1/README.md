@@ -59,3 +59,7 @@ HC budget now runs concurrently with Vid components. Vid budget starts when eith
 ## Budget numeric restoration supersedes the failed execution
 
 The first HC budget execution stopped at query68 with the strict old-MBR check; no budget accuracy is claimed. [Failure and independent restoration](../map_budget_restore_v3/README.md) preserve all67 committed outputs and restore the original budget's four-thread numerical context without altering this frozen study. Vid component reporting continues in this namespace; budget continuation/export/publication use map_budget_restore_v3. Old failure and dispatcher records remain intact.
+
+## Completed current-MAP paper evidence
+
+Both full component domains are now sealed, officially scored, fully array-replay audited and scalar-exported: [HC1902](components/hc2/ANALYSIS.md) and [Vid10303](components/vidstg/ANALYSIS.md). Targeted final-DP comparisons are included in each full-domain analysis. The restored own-K budget curves are also complete on the ORIGINAL fixed128query/parent cohort per domain: [HC budgets](../map_budget_restore_v3/budget/hc2/ANALYSIS.md), [Vid budgets](../map_budget_restore_v3/budget/vidstg/ANALYSIS.md). This does not mean CG-Vid is complete, nor does it supply missing TubeDETR/corruption/deployment timing evidence.
