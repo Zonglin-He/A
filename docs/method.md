@@ -55,3 +55,8 @@ The available-data paper-review suite is complete, with Fig1 excluded and CG-STV
 ## Source readout correction (2026-10-24)
 
 OfficialTA-STVG uses per-offset legal endpoint MAP plus physical hull, not MBR. Our local baseline labeledSource added posterior-hull/MBR postprocessing. Frozen weights do not make that an untouchedsource method. Publicnames must beSource(originalnativeMAPhull),Source+MBR,Full. ReportMBR−Source,Full−Source+MBR andFull−Source separately; totalgain includes decoder improvement. EarlieroriginalMBR/OriginalSourcealreadyMBR wording meant only localhistory and is corrected. See ../results/source_semantics_v1/README.md for all12205already-scored exactmeans and hashbound evidence. Historicalpredictions/scores/plans/acceptance remainunchanged. ActiveCGSourceNative→displaySource,Source→displaySource+MBR; a separatepostseal reportingadapter addsnativeSourcepairedCI/tails withoutchanginginferenceorrescoringGT.
+
+
+## New strict deletion evaluation
+
+The four-row [deletion study](../results/strict_deletion_v1/README.md) removes complete branches and recomputes affected downstream states. Removing temporal inference removes both visual posterior revision and our MBR readout. Removing spatial trajectory inference leaves the existing E output, without a new replacement estimator. This evaluation waits until both current CG full evaluations and postseal reports have finished; production parameters remain fixed.
