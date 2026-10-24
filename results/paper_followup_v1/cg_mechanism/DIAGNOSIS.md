@@ -38,3 +38,10 @@ Stage B holds the chosen A profile fixed and changes one factor:
 - Kappa controls prototype shrinkage. Vidkappa256 drops to14.354809, whilekappa16 gives16.106159. More shrinkage is not automatically safer and cannot correct biasedE.
 
 Frozen selected profiles: HCgamma0/link.25/context1.5/kappa64/beta.25; Vidgamma.5/link.25/context1/kappa64/beta1. DevelopmentvIoU23.696096HC/16.379100Vid versus original23.036291/15.926685. All20 trials and losses are published. Selection is explicitly target-development selection, not independent benefit. No posthoc parameter combinations or additional grid are introduced. New-CG-parent confirmation compares selectedFull and oldTransferredFull on the SAME newcohort; this is the next decision point.
+
+
+## Confirmation update (35HC+128Vid CG-new parents, not used for selection)
+
+The frozen gamma0HC profile removes SharedCorrection changes, but Source67.832981% fixed-support unobservedIoU falls toSpace63.982395 andFull63.029979. Residual failure is at spatial candidate/path selection; disabling global correction alone is insufficient. SelectedFull recovers3.058149pp over oldFull59.971831 CI[.816119,6.456549], but remains belowSource. HCv selected26.420382 vsold24.530040 vsSource28.737788; selected−old+1.890341 CIcross0, selected−Source−2.317406 CIcross0.
+
+Vid selectedFull11.530333 vsold11.879313 vsSource9.192995; selected−Source+2.337337 CI[.412902,4.357343], selected−old−.348980 CIcross0. UnobservedIoU40.602997 vsSource40.143025 andold39.551544; spatial change small, while selected−old temporalIoU−.882525pp CI[−1.842741,−.085210]. This combines gamma/context changes and cannot identify context alone as the cause. No confirmation-driven parameter revision follows. These findings support reduced HC spatial damage and a positive Vid Source contrast in this cohort, not consistent superiority to the original transferred profile.
