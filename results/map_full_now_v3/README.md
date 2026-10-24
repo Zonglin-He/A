@@ -30,3 +30,8 @@ Eight actual committed-cache CPU bridges passed before the jobs started: saved F
 All whole-domain outputs will be independently scored and audited, with every signed positive/negative, temporal/spatial severe union counted once, rescues, short/long parent-cluster pointwise CIs, Source/readout distinctions and per-worker conditional CPU wall cost. Paused or shared-host timings are not uncached deployment latency. All full sets remain historically exposed; no hyperparameters or samples are selected from these results.
 
 The original four-row strict-deletion study remains deferred. Even if some MAP domains finish early, its GPU reconstruction cannot start until **all four MAP domains** have complete score/replay reports **and** both original CG fulls have their audit/named-source reports and actual owned-process exit. Root reports each valid complete result when available and preserves every failure without fallback or retry.
+
+
+## First completed domain
+
+[TA-HC1902 complete MAP+DP result](TA/hc2/ANALYSIS.md): t48.586628/v26.731488%; versus FullMBR−.990214t/−.486611v pp. Official11412checks and9510SHA/all-array replay complete. Other domains remain in progress; see [resource protection update](RESOURCE_PRIORITY_UPDATE.md) for the current narrower CPU14–15/nice19 setting rather than the initial launch setting.
