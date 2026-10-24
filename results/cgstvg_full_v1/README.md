@@ -28,3 +28,7 @@ Private output cap160GiB, minimum disk free80GiB, per-worker limit72hours. Each 
 Public code/protocol and all scalar signed results; videos/captions/GTcoordinates/raw features/masks/checkpoints/credentials private. Existing half-hour heartbeat watches actual process identity/lock/progress/log/resource state, quiet during healthy unchanged running. Complete per-domain results are published promptly; final closure requires every-domain score/report plus all-remote tree/file/mode/byteSHA/ancestor verification.
 
 Entry: `studies/cgstvg_full_v1/run.py run`; never launch a duplicate. Fingerprint: `bee008c175fc359dc89947e1896882a0d9757bf83d1701403e42c93d3c63663d`. Private state/progress/launch/seals under `outputs/cgstvg_full_v1`.
+
+## Explicit source display names (2026-10-24 correction)
+
+Frozen data keySourceNative is displayedas **Source(originalnativeMAP)**; data keySource as **Source+MBR**. The originalmatched-readoutcontrast remainsvalid but cannotreplace nativeSource. Aftereachdomainseal+officialscore, root must also run `studies/source_semantics_v1/cg_full_reporting.py --dataset hc2` orvidstg; it only readsalready-scored metrics and providesnativeSource/Source+MBR/Full means,allpairedCI,signed andsevereagainstnativeSource. Notifyboth Full−Sourceoriginal andFull−Source+MBR. No inference/profile/hashchanges. See [semantic correction](../source_semantics_v1/README.md).

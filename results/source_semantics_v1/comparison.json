@@ -1,0 +1,107 @@
+{
+  "schema": "source_readout_semantics_correction_v1",
+  "status": "verified_existing_scored_means_only",
+  "inputs_sha256": {
+    "results/paper_review_suite_v1/cached/hc2/report.json": "e9cd811bcba9c6b3f8fa4a081a3c86e6683dfeea88bfe196a7b6efab5f78705a",
+    "results/paper_review_suite_v1/cached/vidstg/report.json": "081a3032f05f3e45a10d09f1d379b57af158d39e83c654b53fb811e3f9d9bca7"
+  },
+  "code_sha256": {
+    "external/TA-STVG/models/post_processor.py": "dcf7dbe07b275777b32592f3736d623ef1dc3d95bfbd69421d519257f8707586",
+    "external/TA-STVG/engine/evaluate.py": "aa6403839f2c10e85ae503a4b7de45c3642d34c0d032f6e534c999c1f38d12a2",
+    "stvg/readout.py": "dd22b7f4627375514df61b9a18cbfafcac2352de74b4a4dd5fcefc934da2f3e0",
+    "stvg/predictor.py": "166f6de17304deff0336d3acc731a8cc90a365e90e5cf93b4c6dc525f6754c38",
+    "stvg/temporal.py": "50499490a53bce6f46f0f3f080f5314236ccccf7c7ec919ee817d9df0a7ac710"
+  },
+  "results": {
+    "hc2": {
+      "queries": 1902,
+      "parents": 227,
+      "means_percent": {
+        "SourceOriginalReadout": {
+          "t": 40.141475347240444,
+          "v": 20.70467847062164,
+          "s": 50.68577755030251
+        },
+        "SourcePlusMBR": {
+          "t": 48.64734502336978,
+          "v": 24.99475237820813,
+          "s": 50.68577755030251
+        },
+        "Full": {
+          "t": 49.576841891153,
+          "v": 27.218099277401947,
+          "s": 53.36897920216697
+        }
+      },
+      "delta_pp": {
+        "SourcePlusMBR-SourceOriginalReadout": {
+          "t": 8.505869676129336,
+          "v": 4.290073907586489
+        },
+        "Full-SourcePlusMBR": {
+          "t": 0.9294968677832216,
+          "v": 2.2233468991938174
+        },
+        "Full-SourceOriginalReadout": {
+          "t": 9.435366543912558,
+          "v": 6.5134208067803065
+        }
+      }
+    },
+    "vidstg": {
+      "queries": 10303,
+      "parents": 732,
+      "means_percent": {
+        "SourceOriginalReadout": {
+          "t": 31.728454405122243,
+          "v": 11.13848367308651,
+          "s": 32.729054973984425
+        },
+        "SourcePlusMBR": {
+          "t": 33.80456616042827,
+          "v": 11.777655141841521,
+          "s": 32.729054973984425
+        },
+        "Full": {
+          "t": 34.60437806550943,
+          "v": 14.383314056833902,
+          "s": 36.07100452425489
+        }
+      },
+      "delta_pp": {
+        "SourcePlusMBR-SourceOriginalReadout": {
+          "t": 2.07611175530603,
+          "v": 0.639171468755011
+        },
+        "Full-SourcePlusMBR": {
+          "t": 0.7998119050811567,
+          "v": 2.6056589149923806
+        },
+        "Full-SourceOriginalReadout": {
+          "t": 2.875923660387187,
+          "v": 3.2448303837473915
+        }
+      }
+    }
+  },
+  "semantics": {
+    "SourceOriginalReadout": "Per-offset nativeMAP start/end and native physical hull; local fixed-input/precision protocol, not a claim of matching published in-domain paper accuracy.",
+    "SourcePlusMBR": "Same frozen source boxes/logits plus OUR physical-hull posterior construction and OUR MBR decision; changed inference rule, not untouched official source.",
+    "Full": "Our complete spatial and temporal feedback with MBR; Full-SourcePlusMBR isolates incremental feedback under matched readout; Full-SourceOriginalReadout is overall system gain and includes readout gains."
+  },
+  "CG_frozen_file_aliases": {
+    "SourceNative": "CG-STVG Source (official native MAP readout)",
+    "Source": "CG-STVG Source + MBR",
+    "Full": "CG-STVG + selected feedback + MBR"
+  },
+  "TA_frozen_file_aliases": {
+    "Source": "TA-STVG Source + MBR",
+    "SourceBox_P0Native": "TA-STVG Source (official temporal readout, local fixed-input protocol)",
+    "SourceBox_P0MBR": "TA-STVG Source + MBR"
+  },
+  "new_models": 0,
+  "new_Source": 0,
+  "new_expert": 0,
+  "new_GT_scoring": 0,
+  "old_predictions_scores_protocols_immutable": true
+}
