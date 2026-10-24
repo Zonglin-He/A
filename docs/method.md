@@ -60,3 +60,8 @@ OfficialTA-STVG uses per-offset legal endpoint MAP plus physical hull, not MBR. 
 ## New strict deletion evaluation
 
 The four-row [deletion study](../results/strict_deletion_v1/README.md) removes complete branches and recomputes affected downstream states. Removing temporal inference removes both visual posterior revision and our MBR readout. Removing spatial trajectory inference leaves the existing E output, without a new replacement estimator. This evaluation waits until both current CG full evaluations and postseal reports have finished; production parameters remain fixed.
+
+
+## Independent current-MAP paper evidence
+
+The current paper study in [map_components_v1](../results/map_components_v1/README.md) does not alter frozen production. Its intermediate EightReplacement/E/spatial rows share q0jointMAP; Complete uses unchanged auxiliary trajectory and q1jointMAP with finalDP recomputed. OriginalSource remainsnativeperoffsetMAPhull and SourceJointMAP is an explicit control. Finalindependentselection keeps auxiliary/features/q1/time fixed. VariableKusesgenuineownjointteacher/context/geometry/repool, notK8subsets. OldMBRdeletionprotocol is preserved unexecuted, never reported ascurrentMAPablation.
