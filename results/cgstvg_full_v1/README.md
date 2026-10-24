@@ -1,4 +1,4 @@
-# Frozen-profile CG-STVG full evaluation — HC complete, Vid running
+# Frozen-profile CG-STVG full evaluation — both domains complete and audited
 
 The user explicitly requested the complete HC1,902-query and Vid10,303-query evaluation against Source. The user separately confirmed that Vid uses its prior domain-specific parameters; it does not inherit the HC conservative profile. This is a new independent full-evaluation namespace, not a resume or replacement of any prior partial/full method or parameter search.
 
@@ -37,3 +37,8 @@ Frozen data keySourceNative is displayedas **Source(originalnativeMAP)**; data k
 ## Completed HC full evaluation
 
 [HC1,902 complete result and audit](hc2/ANALYSIS.md): original Source t23.220480/v14.673932%, Source+MBR42.632982/26.153691%, Full44.899144/27.331087%. Matched-MBR gain +2.266163t/+1.177396v pp; original-Source total gain includes the much larger MBR readout effect. All signed/tails/CI/cost and exposed development-parent limitations are retained. Vid remains running; the deferred TA strict-deletion study has not started.
+
+
+## Completed Vid full evaluation (2026-10-25)
+
+[Vid10,303/732 full result and root audit](vidstg/ANALYSIS.md): originalSource t17.318935/v7.532313%, Source+MBR23.481297/9.965719%, Full27.166958/11.494698%. Matched-MBR gain+3.685662t/+1.528979v pp; full-native gain+9.848023/+3.962385 includes MBR-only+6.162362/+2.433405. Official51,515checks and30,909SHA/allarraycoldreplay/allmeans verified. Full vs matchedMBR severe1268t/1329v/2024union; vsnative857t/968v/1375union. Unobservedfixedsupport sIoU-2.710290pp CInegative; allpositive/negative/shortlong/CI/cost retained. Both originalCGfulls are complete; separateCGMAPfinalaudit/publication still pending. Old strictdeletion is superseded/unexecuted and must not restart.
