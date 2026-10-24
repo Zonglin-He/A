@@ -1,0 +1,51 @@
+{
+  "schema": "MAP_components_CPU_parallel_schedule_v2",
+  "authorization": "Direct user asks CPU parallelism; use the free slot for budget without interrupting original CG-Vid.",
+  "scientific_fingerprint": "9ee0dbe3f702f4fb90ef2d5e3a782fcb0de11b4ba4c55087793e18af2d34c92a",
+  "scientific_plan_sha256": "d910a58ef0c4308eee62b8df85b48f5a0f04d79e4dcc81ef347e6f316017ff9d",
+  "scheduler_sha256": "0f053fecbaaa6d93570da9f38da8225c40b600c21612eb3b9646812882f1b0ac",
+  "existing_component_domain": {
+    "pid": 341638,
+    "startticks": 240742173
+  },
+  "previous_controller": {
+    "pid": 340642,
+    "startticks": 240740836
+  },
+  "jobs": [
+    [
+      "components",
+      "vidstg"
+    ],
+    [
+      "budget",
+      "hc2"
+    ],
+    [
+      "budget",
+      "vidstg"
+    ]
+  ],
+  "limits": {
+    "new_Source": 0,
+    "new_prefix": 0,
+    "new_teacher": 0,
+    "new_GPU": 0,
+    "optimizer": 0,
+    "max_compute_processes": 2,
+    "threads_each": 1,
+    "CPU": [
+      14,
+      15
+    ],
+    "nice": 19,
+    "io": "idle class3",
+    "minimum_RAM_bytes": 8589934592,
+    "resume_RAM_bytes": 10737418240,
+    "max_seconds_each": 259200,
+    "minimum_disk_free_bytes": 64424509440
+  },
+  "scope": "Scheduling only. Original run.py/plan/derive/scoring/reporting unchanged. Existing Vid component domain continues; budget jobs may start before it ends. Each task/domain still seals before its own labels. No source/expert/GPU/strict launch.",
+  "resource_guard": "CPU14-15/nice19/idleIO/one thread, max2 primary computation domains. Guard original Vid baseline, pause only owned CPU domain groups and existing CG-MAP consumer. Never signal original CG/teacher/services.",
+  "fingerprint": "52c689e6ed583bc6842202498745046fc90fa1f2eb49ab4b2c463f97981f5f53"
+}

@@ -48,3 +48,10 @@ After each score AND full replay audit, root runs `studies/map_components_v1/exp
 ## Completed HC component domain
 
 TA-HC1902 is fully sealed, scored and replay-audited; [all effects and limitations](components/hc2/ANALYSIS.md), [five-row Table3](components/hc2/table3.tsv), and [matched final-DP contrast](components/hc2/final_DP_control.json) are available. Vid components remain active and budget reconstruction follows both completed component reports. This domain completion does not mean the whole study is finished.
+
+
+## CPU scheduling v2: budget uses the free slot
+
+The user requested CPU parallelism while original CG-Vid continues. `studies/map_components_v1/parallel_v2.py` is an independent execution scheduler (execution fingerprint `52c689e6ed583bc6842202498745046fc90fa1f2eb49ab4b2c463f97981f5f53`). The scientific plan `9ee0dbe3f702f4fb90ef2d5e3a782fcb0de11b4ba4c55087793e18af2d34c92a` and original run.py/derive/score/report remain unchanged. The previous queue owner340642/start240740836 was stopped only after preserving its code/plan/state/authorization and verifying no budget work had started. Existing independent Vid components341638/start240742173 and CG-MAP3080605/start239068041 continue. No original CG/teacher/service was signaled.
+
+HC budget now runs concurrently with Vid components. Vid budget starts when either slot becomes available. Maximum two primary computation domains, each one thread on CPU14-15/nice19/idleIO/CUDA hidden; the existing CG-MAP consumer still follows the GPU producer. Each task/domain must seal before its own official labels and fully replay before export. The original RAM/Vid-rate protection baseline is retained, not reset to hide slowdown. The new scheduler owns the guard for these CPU groups only. No measured speedup or zero-interference claim. No duplicate task, old queue restart, source/expert/GPU acquisition or strict-deletion launch. Scheduling/startup does not establish any new budget result.
