@@ -117,3 +117,7 @@ git show 7a0a8131733d124c9262db0678260c46f095ead4:results/stvg_error_state/2026-
 GitHub同步完成：实现提交 [87294995](https://github.com/Zonglin-He/A/commit/87294995eea16161e3edb88289ee80463c87cb13)，tree `b42ffc2848e8e76e1db2c48189686a1bf7177686`。main与原research分支以fresh expected-SHA、非强制快进更新。远端重新fetch后，248个文件／2,023,178字节全部与本地导出SHA256一致，旧7a0a813提交仍是祖先；详见 docs/publication.json。本条及回执在随后的档案提交中保存，不代表新实验或新方法晋升。
 
 本地Git迁入独立目录后，补核Git忽略规则对资产软链接同样生效（目录专用尾斜杠改为兼容文件/链接的根路径规则）。公开导出始终使用明确allowlist，私有链接未进入任何本轮提交。最终远端核验回执另存本地 outputs/maintenance/publication.json。
+
+2026-10-24用户新增授权TubeDETR广泛数值调参，目标为空间sIoU相对原生Source转正。新增独立空间搜索，原两域各128、每域2048配置；直接以dense sIoU选参，固定Source和时间，原固定方法结果不改。覆盖初始化/affinity/评分/连接/保护/准入/输出混合及独立宽高校准控制；所有候选先seal后独立CPU标签评分，不逐query GT选框。两域已有query全部2048输出的Source及原Full逐位回归通过，4个新增算法检查通过；不当新GPU成绩。当前LLaVA继续，完整空间GPU验证排在其后。详见[tubedetr_spatial_search](tubedetr_spatial_search.md)。
+
+2026-10-24 10:49空间搜索两域完整：各2048配置、共524288个profile-query预测均完整seal后评分。Vid dense48.616419→49.189528（+.573109pp），HC57.596687→58.243473（+.646786pp）；两个最优均无宽高缩放/输出混合回退，来自实际SimplePath参数改变；Source/原Full/时间逐位回归及全部新预测receipt/哈希/有限数组与所有标量均值Root首核通过。搜索后的开发正值不称独立确认，5/6条s降>5pp保留。129CPU检查通过。独立full_plan已在新全量前冻结，controller3207124等待LLaVA两域全部GPU阶段完成，随后真实原生特征资格及Vid10303/HC1902验证；尚无本轮完整全量结果。

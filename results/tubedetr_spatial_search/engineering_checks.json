@@ -1,0 +1,36 @@
+{
+  "status": "pass",
+  "CPU_tests_passed": 129,
+  "two_existing_query_replay": {
+    "status": "pass",
+    "scope": "two existing sealed queries; CPU only; no labels or neural calls",
+    "checks": [
+      {
+        "dataset": "vidstg",
+        "profiles": 2048,
+        "Source_bitexact": true,
+        "original_Full_bitexact": true,
+        "all_finite": true,
+        "seconds": 1.3144055185839534
+      },
+      {
+        "dataset": "hc2",
+        "profiles": 2048,
+        "Source_bitexact": true,
+        "original_Full_bitexact": true,
+        "all_finite": true,
+        "seconds": 1.252551549114287
+      }
+    ]
+  },
+  "not_new_GPU_efficacy": true,
+  "full_CPU_initialization_replay": {
+    "checked_original_queries_per_domain": 128,
+    "raw_consensus_from_old_receipt_delta_max_abs_error": {
+      "vidstg": 0.0,
+      "hc2": 0.0
+    },
+    "no_new_neural_calls": true,
+    "no_labels_read": true
+  }
+}
