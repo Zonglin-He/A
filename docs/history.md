@@ -1,3 +1,5 @@
+2026-10-24 08:26 TubeDETR缓存容量工程恢复：Vid8591后必需prefix追加触发64GiB保护，原进程退出；原失败/进度/log/run源码与8591提交清单完整归档。Root新增独立retention-only缓存入口及预冻结容量修订f71f8f90，保持原plan80fe566c/数学/参数/权重/全部已存输出，停止新cache追加而非停止必需预测，cache缺失冷计算；已有命中继续核哈希冲突，0新专家。122CPU检查通过，原冷/缓存真实资格仍适用。新进程08:26接续原清单，预测完整seal后才CPU评分，旧failure保留为历史，新错误独立文件；没有新full成绩。详见docs/simplepath_tubedetr.md。
+
 2026-10-24 05:23 新版TubeDETR双域固定128完整：两域各128预测seal/独立CPU评分完成，总gate先于首full；Root核256预测/receipt hash、request/plan、有限数组并复算均值。Full相对Source v+1.7738/+10.8018pp，但dense-4.7652/-6.1621pp；相对NativeMBR的time-1.8509/-1.4705pp、v-1.9014/-2.2558pp，不能将读出增量归新模块。全部正负匿名标量保留，无调参/筛选，已转Vid10303 full，后HC1902。见results/simplepath_tubedetr/development_report.md；不是全量成绩。
 
 2026-10-24 新版TubeDETR固定方法接续：原LLaVA两域最终结果已发布a2e0df0b并逐远端字节核验。隔离接入main a238705a SimplePath+单组Native2D，原生末层真实时间后验和完整fast pre-text网格，两域原首query冷/缓存共4次前向逐位通过，0新专家/GT；权重不变。120项CPU检查通过，独立冻结run_plan80fe566c与固定参数锁，先两域原128再Vid10303/HC1902，完整seal先于CPU标签读取。控制器05:10启动，禁止依据新成绩调参；新方法成绩尚未产生，不与旧LLaVA或上游TA混合。见[新TubeDETR执行协议](simplepath_tubedetr.md)。

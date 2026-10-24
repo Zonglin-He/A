@@ -34,3 +34,5 @@
 ## 后续执行
 
 [下一轮请求记录](../results/next_backbone_cache/next_run_request.json)明确两主干及先后依赖，属于用户授权范围和待办记录，不冒充已冻结可执行计划。当前LLaVA Vid10303与HC1902全部封存、独立评分、核验发布后，再按新方法分别完成TubeDETR与LLaVA适配资格和固定方法评估。不得中途切换、不扩大旧网格；原128面板已曝光，相关结果不能称独立确认。TubeDETR原生末层时间先验和pre-text网格、LLaVA合法候选时间证据均须实际接通并验证，接口不通过时保留失败原因，不能伪造后验。
+
+2026-10-24容量执行修订：TubeDETR新cache达64GiB保护后Root显式恢复，现有近64GiB缓存全部保留且停止追加；不影响逐query必须保存的最终native/五行预测证据。缺失前缀冷计算，精确命中仍无损校验，0新专家，64GiB上限/25GiB下限不放宽。适用修订和入口见docs/simplepath_tubedetr.md及results/simplepath_tubedetr/capacity_recovery_plan.json；原缓存工具本身、旧证据及固定数学保持。后续LLaVA缓存容量也须按剩余空间准备，不能删除本次缓存或静默扩容。

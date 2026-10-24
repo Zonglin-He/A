@@ -23,3 +23,13 @@ TubeDETR Source仍是原冻结224、stride2、原MAP时间读出及原始框。�
 入口 `python -B -m tools.simplepath_tube.run prepare`首次冻结计划，`python -B -u -m tools.simplepath_tube.run run`执行控制器。日志为`logs/complete_simplepath_tubedetr.log`及`logs/simplepath_tubedetr_<ds>_<dev128/full>_<gpu/score>.log`，runtime登记`simplepath_tubedetr_controller`/`simplepath_tubedetr_worker`，实际身份查/proc。状态、逐条进度、失败在`outputs/simplepath_tubedetr/{status,worker_progress,failure}.json`；两域预测`<ds>/<dev128/full>/sealed.json`，公开评分`results/simplepath_tubedetr/<ds>/{development_metrics,full_metrics,final_seal}.json`及总final_seal。异常保留，不自动重试或恢复。
 
 缓存优先保存全部原生小输出及视频级CNN前缀；开发128的新post-fusion特征要求保存，全量特征在新缓存用量48GiB之前机会保存，为前缀留余量。总体新缓存64GiB、磁盘25GiB下限，无损无替换无自动删除。每条专家仅精确上下文cache命中读取。全量中与本轮128完全相同的request复用本轮预测，其余执行新的真实原生视频/文本编码器、decoder和固定新方法；旧BoxFixed full只供Source逐位回归，不当新版结果。部署冷时延与此次cache加速计时分开。
+
+## 2026-10-24 08:26 显式容量工程恢复
+
+08:09在Vid8591/10303之后，下一条的必需prefix缓存追加触发ArrayStore的64GiB保护，worker/controller停止；没有完整full seal/评分。已有缓存约63.97GiB，文件系统空闲约26.77GiB。失败日志、failure/status/progress、原run.py及8591条提交清单保存于outputs/simplepath_tubedetr_capacity_recovery/cache64_v1，原failure.json原样保留为历史，不是恢复进程当前故障。
+
+Root在既有完成实验及处理异常授权内，新增独立capacity_recovery.py入口；原run.py/adapter/core/ArrayStore及原plan80fe566c、参数锁、两域128、全部既有预测不改。容量修订计划capacity_recovery_plan.json SHA f71f8f9084fedc6d3808f9b6117a66ea49a96c99bdf2a64e87e6844723eccdc5在继续GPU前冻结。只将可复用缓存持久化改为retention-only：已存在身份仍核哈希、数组值和冲突；新缓存候选保持内存原数组但明确标记未追加，不删/替换/降精度/扩容。缓存miss用同一已资格通过的cold前缀，模型/数学/Source回归/专家cache-only/0新专家/GT隔离均不变。全部原生logits/q0与五行预测仍必须写最终NPZ及receipt，不能以“缓存没写”省略预测证据。剩余output空间预估约1.4GiB，既有25GiB空闲保护继续有效；额外再发生容量/其他错误仍停止，不无限重试。
+
+122CPU检查通过，新增覆盖容量跳过不变内存数组/不追加文件、已有命中逐位不变、身份冲突和非有限值仍失败。此修订不改变数值推理，原两域cold/cache真实GPU资格继续适用，不声称进行了新的GPU资格或取得新成绩。
+
+显式恢复入口`python -B -u -m tools.simplepath_tube.capacity_recovery run`，只接续Vid full/score、HC full/score，不重复128。已提交8591条会在原引擎中逐payload/receipt哈希核验后跳过，不覆盖；下一条仍是原清单下一条，无更换。新controller/worker命令均使用capacity_recovery模块，runtime键不变，以/proc身份为准；新主日志logs/complete_simplepath_tubedetr_capacity_v1.log，阶段logs/simplepath_tubedetr_<ds>_full_<gpu/score>_capacity_v1.log。新错误专用outputs/simplepath_tubedetr/capacity_recovery_failure.json；status中execution_amendment_sha256标识当前修订。新full seals/最终总seal包含容量修订引用。历史failure.json不删除，结合更新status/进度和实际PID判断，不能重复报已解决的旧CapacityError。
