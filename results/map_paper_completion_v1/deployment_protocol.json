@@ -1,0 +1,33 @@
+{
+  "schema": "current_MAP_completion_deployment",
+  "science": {
+    "cohort": "Prior fixed16parents/queries/domain;3pairedrepeats, alternating order; no outcome-based sampling.",
+    "arms": [
+      "Source",
+      "FullMAP"
+    ],
+    "warmup": "One call/arm/domain excluded; source/expertcheckpoint/startup recorded separately; cache_dirNone for residentexpert.",
+    "input": "Original native224FP32 twooffsets and SAME8 positions/teacher. No interquery visual/RGB/capture/teacher cache. Source weights retained with original CPU/GPU offload/transfers.",
+    "time": "Wall from RGBdecode/parse to final output plus cleanup, GPU synchronization; scalarverificationIO outside timer. Subcomponents nested as declared, never added to total.",
+    "verification": "Every result bitwise its saved nativeSource/currentFullMAP.0GT. Any failure preservespartial/attempt/output and doesnotretry."
+  },
+  "suite_plan_sha256": "82f46158ffdb139ee23899b994a3656e3e8737fc59cdb1d1dcdc19c3f2d28bf0",
+  "parent_plan_sha256": "4a34668741e08bbd68fb2268a87a1fc193d4ca6efa02b4e14972dbfd746c7ab4",
+  "parent_seals": {
+    "hc2": "bc209ac67273f0f2835c929cf5d977452dff04c901e7ed56223414a04fcb44a2",
+    "vidstg": "faf739e72a065bbac2079715aea4f4e89b0e2014da854013ea0c9728cb295c81"
+  },
+  "MAP_seals": {
+    "hc2": "2ea08033744506c52ae41ec274e5ad0637ad4259933357442036602965d4d690",
+    "vidstg": "18e58cf721754ecafdcdc2fbda0bcdb7c605d59f07eb6188ecbe46856a66165a"
+  },
+  "code_sha256": {
+    "studies/map_paper_completion_v1/deployment.py": "2dcd4ee922364f045a381c1c10b72c8686c6be30daadba7ecc5b59b43532045f",
+    "studies/map_paper_completion_v1/live_map.py": "cf025cef78d25e87477d862c31846afa5eeb268630ddc66276ddb7b5c9a68486",
+    "studies/map_paper_completion_v1/common.py": "f1b2328be7f469f72f4f18f0f59c4df98b47c26e2d92139fac92113b7261ee6e",
+    "stvg/predictor.py": "166f6de17304deff0336d3acc731a8cc90a365e90e5cf93b4c6dc525f6754c38",
+    "studies/map_full_v1/map_core.py": "63c93f7f0ca1be1e7e833961b1a0652c4bbaad6f6bf9329da82af17e073662fd"
+  },
+  "GT_in_prediction": false,
+  "fingerprint": "cb4fef3b3ba0a14336fb96aa07ddfbe2ac5506102ec4a82aa341b691d3fc347f"
+}

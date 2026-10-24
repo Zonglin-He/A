@@ -1,0 +1,36 @@
+{
+  "schema": "current_MAP_completion_corruptions",
+  "science": {
+    "cohort": "Existing confirm128queries/128parents/domain, identical frozen selection; bothdomains all768 queryviews beforeGT.",
+    "transforms": [
+      "Blur",
+      "JPEG",
+      "Dim"
+    ],
+    "definitions": "Original shifts.transform: Blur5x5sigma1.5, JPEGquality30subsampling2, Dim0.5 uint8.",
+    "main": "NativeSource/currentFullMAP actualsameRGB/native224FP32/same8teacher; q1jointMAP then realnewintervalDP.",
+    "reuse": "Old Source/FullMBR finalarrays NOT reused as new Full; old teacher payloads reused only exactRGB/contextSHA. New nativeSource must bitwise old sameviewSource, and same upstream q1/geometry reproduce oldMBR full only as hidden compatibility check, no MBR comparison report.",
+    "checkpoint": "Every new paidSource raw state persisted withSHA before teacher. Old teacher cache read-only; newteacher misses writtenonlynewnamespace. Fullcompact coldreplay and committedpred/receipt before onlyowncompletedrawscratchdisposal.",
+    "evaluation": "Pertransform source-native/currentMAP vs clean-source-native/currentMAP on identicalconfirmqueries; independentofficialscore afterall768 seal, allsigned/tails/timegroupsCI/cost. No corruption-specific tuning, no unsupported naturalrobustness claim."
+  },
+  "suite_plan_sha256": "82f46158ffdb139ee23899b994a3656e3e8737fc59cdb1d1dcdc19c3f2d28bf0",
+  "parent_plan_sha256": "4a34668741e08bbd68fb2268a87a1fc193d4ca6efa02b4e14972dbfd746c7ab4",
+  "parent_seals": {
+    "hc2": "bc209ac67273f0f2835c929cf5d977452dff04c901e7ed56223414a04fcb44a2",
+    "vidstg": "faf739e72a065bbac2079715aea4f4e89b0e2014da854013ea0c9728cb295c81"
+  },
+  "MAP_seals": {
+    "hc2": "2ea08033744506c52ae41ec274e5ad0637ad4259933357442036602965d4d690",
+    "vidstg": "18e58cf721754ecafdcdc2fbda0bcdb7c605d59f07eb6188ecbe46856a66165a"
+  },
+  "code_sha256": {
+    "studies/map_paper_completion_v1/corruptions.py": "bdeff081ace3de01028b49ac1237a334f8f2e746d1c4bb00cb9f973e8528e82c",
+    "studies/map_paper_completion_v1/common.py": "f1b2328be7f469f72f4f18f0f59c4df98b47c26e2d92139fac92113b7261ee6e",
+    "studies/map_paper_completion_v1/live_map.py": "cf025cef78d25e87477d862c31846afa5eeb268630ddc66276ddb7b5c9a68486",
+    "studies/paper_review_suite_v1/shifts.py": "cf671c50361a56693555163ef2eff90aed8be4d7c5bd3cb97d8a6703184ee0ad",
+    "stvg/predictor.py": "166f6de17304deff0336d3acc731a8cc90a365e90e5cf93b4c6dc525f6754c38",
+    "stvg/teacher_bridge.py": "123070ae2f38c0c1f30afeb79a90de3278d370c9794eaabe81a48db1f70188e8"
+  },
+  "GT_in_prediction": false,
+  "fingerprint": "43e2f8f439edd22ead2fcf2183269c20a411f48f13c8a3f729a45888a2d591f2"
+}

@@ -1,0 +1,69 @@
+{
+  "schema": "MAP_paper_completion_v1",
+  "authorization": "Latest direct user: perform all experiments named in their review EXCEPT TubeDETR. Do not repeat already complete compatible main/components/finalDP/budget/cross-model results. This authorizes bounded current-MAP CPU rederivation, original Source/prefix reconstruction, same-teacher controlled corruptions, named optimizer baselines, deployment timing and private qualitative render.",
+  "base_commit": "907ff7c3c3d66ca742f010cc3de03acb77714ce7",
+  "main": "Current TA primary FullMAP; original native Source and SourceJointMAP explicit. Current parameter/eight/beta1/k64/context1.5 remain; no MBR comparison study or final-result retuning.",
+  "tasks": {
+    "temporal": "Both full target sets12205: HardMembership/EventOnly/EventCentered/NoShrink/UniformPrior/NoPosteriorUpdate, same full auxiliary features, each own posterior\u2192jointMAP\u2192actual final spatialDP; nativeSource and currentFull exact controls.",
+    "spatial": "Both full target sets12205, one shared raw Source grid acquisition at most per missing query. NoSharedCorrection(E=Source, rebuild all downstream); PastOnly anchors versus Both; OneWayAffinity versus bidirectional; first auxiliary Independent versus DP; auxiliary SourceROI/E ROI versus current path; NoSpatialTrajectory(E direct, repool and temporal update); NoTemporalInference(nativeSource MAP hull, retain spatial DP); q0jointMAP matched no-update control; E-fixed S0T0/S1T0/S0T1/S1T1 factorial and explicit interaction contrast. All affected geometry/features/posterior/finalDP recomputed.",
+    "deployment": "Same fixed16queries/16parents/domain as prior fair-cost panel,3repeats, warmup per arm excluded, alternating SourceNative/FullMAP order. Same hardware/native224FP32/twooffsets/same8teacher. Disable inter-query RGB/visual/source/evidence caches; model weights resident with original offloading; include decode/parse/transfers/expert/geometry/auxDP/repool/prototype/MAP/finalDP. Separate startup and nested durations, every output bitwise current saved result.",
+    "qualitative": "Three illustrative cases from existing sealed scalar outcomes, explicitly post-hoc: two complementary improvements and one harm. Show8observations, unobserved Source/currentFull trajectories and native/finaltime; render actual decoded frames privately, inspect images. No claim of representative frequency from selected cases; captions/coordinates/media remain private.",
+    "corruptions": "Both prior fixed confirm128queries/128parents (256total), own Blur5x5sigma1.5/JPEGquality30/Dim0.5 views; actual nativeSource+currentFullMAP recomputed from same transformedRGB and each own8teachercontext. Old compatibleteachercache may be read with exactRGB/contextSHA.768 Source queries maximum and768 expertjoint maximum; no corruption-specific tuning. Compare clean and corrupt originalSource/currentFull, no cached finalbox shortcut.",
+    "published_TTA": "TA primary model, same fixed confirm128parents/domain; reuse previously selected development-only Tent/SAR configs, official pinned code unchanged. Real native temporal-decoder LayerNorm affine SGD/Tent or SAM/SAR updates on exact cached decoder inputs, episodic query reset, original nativeMAP readout from adapted logits, no Source/expert. OriginalSource/FullMAP controls, actual updates/entropy/reliability/reset/cost, no silent fallback or skipped failed query. Explicit STVG adapter scope and distinct teacher/compute budgets; no general TTA ranking claim."
+  },
+  "cohort": {
+    "temporal": {
+      "hc2": 1902,
+      "vidstg": 10303
+    },
+    "spatial": {
+      "hc2": 1902,
+      "vidstg": 10303
+    },
+    "corruption": "Existing confirm128/domain, historical exposure and no new tuning",
+    "TTA": "Same existing confirm128/domain",
+    "timing": "Prior fixed16/domain \u00d73repeats",
+    "qualitative": 3
+  },
+  "budget": {
+    "max_new_Source_or_prefix": 11821,
+    "max_corruption_Source": 768,
+    "max_corruption_teacher": 768,
+    "max_timing_measured_Source": 192,
+    "max_timing_expert": 96,
+    "warmup_Source": 4,
+    "warmup_expert": 2,
+    "TTA_configs": 2,
+    "TTA_queries": 256,
+    "max_GPU_seconds_per_domain": 259200,
+    "max_private_bytes": 171798691840,
+    "min_disk_free_bytes": 85899345920,
+    "CPU_jobs": 2,
+    "CPU_threads_each": 1,
+    "no_new_model_or_TubeDETR": true,
+    "no_new_agents_chats_automations": true
+  },
+  "storage": "Paidraw attempt then raw payload+SHA beforeCPUfeedback; committed own prediction+exactcompact/replay and receipt before deleting ONLY this NEW query raw scratch. Keep incompletepaidSource/teacher and allattempts; oldroots neverdelete ormodify. No blindretry/skip/hashwaiver/fallback.",
+  "evaluation": "Per task/domain complete prediction seal before independent CPUofficiallabels. All signed positive/negative/severe t/v union once/rescues/shortlong parentclusterpointwiseCI. Same manifestruntime/labelsSHA. Eachstage separate codefreeze/preflight/fullcontrolbitwise, allarraycoldrederive and meansaudit. No source/model/teacher inCPUstages.",
+  "scheduling": "Rootexecutes; may run2CPUdomains while1ownedGPUstage. Respect gpu.lock; no duplicate/no unrelatedservicesignals. Resume ONLY compatible acquired checkpoints with allpriorownedexit; engineering fixes independentversion, failure preserved. Existing ta-stvg-luna may resume for this reopened user request; quietunlessmeaningful completion/failure/action.",
+  "publication": "Publish code/protocol/allpositive+negative/scalarCI/cost/failures through existing GitHubfreshCAS two refs/ALLremote filemodebytesSHA/tree/ancestor proofs; private media/caption/GTcoords/rawgrid/masks/weights/credentials. No manuscript edits implied by this experiment-only request.",
+  "input_sha256": {
+    "/home/wwww/visual grounding/stvg-native2d-simplepath/outputs/simplepath_full_v2/plan.json": "4a34668741e08bbd68fb2268a87a1fc193d4ca6efa02b4e14972dbfd746c7ab4",
+    "/home/wwww/visual grounding/stvg-native2d-simplepath/outputs/paper_review_suite_v1/selection.json": "b7e64d396b7058276c3cb78f43f593caec5489eb82f45faebc7b87e7dd8de597",
+    "/home/wwww/visual grounding/stvg-native2d-simplepath/outputs/map_paper_completion_v1/selection.json": "b7e64d396b7058276c3cb78f43f593caec5489eb82f45faebc7b87e7dd8de597",
+    "/home/wwww/visual grounding/stvg-native2d-simplepath/outputs/map_paper_completion_v1/timing_selection.json": "dbb4b13e59b6a9c75e5ef363f6e6dd7f6120be021ea2e2da2d14e3ff55c2b1ef",
+    "/home/wwww/visual grounding/stvg-native2d-simplepath/outputs/map_paper_completion_v1/raw_reuse_index.json": "2193e852a3f7c9e87622efa345532b21be636d4730b108d58ce164ca9d7df129",
+    "/home/wwww/visual grounding/stvg-native2d-simplepath/outputs/paper_followup_v1/tta_selected.json": "20a54c07a2e14aaa669bd69f02eb338a84b3bfb14b2c22ef8d556195b962fa49",
+    "/home/wwww/visual grounding/stvg-native2d-simplepath/outputs/simplepath_full_v2/hc2/sealed.json": "bc209ac67273f0f2835c929cf5d977452dff04c901e7ed56223414a04fcb44a2",
+    "/home/wwww/visual grounding/stvg-native2d-simplepath/outputs/simplepath_full_v2/vidstg/sealed.json": "faf739e72a065bbac2079715aea4f4e89b0e2014da854013ea0c9728cb295c81",
+    "/home/wwww/visual grounding/stvg-native2d-simplepath/outputs/map_full_now_v3/TA_hc2_sealed.json": "2ea08033744506c52ae41ec274e5ad0637ad4259933357442036602965d4d690",
+    "/home/wwww/visual grounding/stvg-native2d-simplepath/outputs/map_full_now_v3/TA_vidstg_sealed.json": "18e58cf721754ecafdcdc2fbda0bcdb7c605d59f07eb6188ecbe46856a66165a"
+  },
+  "completed_reuse": {
+    "TA_CG_main": "results/map_full_now_v3/completion_manifest.json",
+    "components_finalDP": "results/map_components_v1",
+    "budgets": "results/map_budget_restore_v3",
+    "no_rerun": true
+  },
+  "fingerprint": "f99d0ea9f7981cbd421ce764549c85be62d26c2b5a84c409aaee70428fc6456e"
+}

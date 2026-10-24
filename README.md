@@ -31,3 +31,6 @@ Public code includes the current method, protocol, complete signed positive/nega
 ## Final current-MAP supplemental evaluation
 
 [All four TA/CG full-domain MAP+DP comparisons](results/map_full_now_v3/README.md), [original CG full results](results/cgstvg_full_v1/README.md), [TA progressive components/final-DP controls](results/map_components_v1/README.md) and [own-K fixed-cohort budgets with preserved numeric recovery](results/map_budget_restore_v3/README.md) are complete and audited. The complete source/readout comparisons, positive/negative results, severe tails, parent-cluster CIs, exposure limits and measured cost scopes are preserved; the latest closure records supersede historical queue-status prose. No full-result parameter selection or new automatic experiment is performed.
+
+
+Latest newly authorized experiments (all review items except TubeDETR) are independently running/prepared in [MAP paper completion](results/map_paper_completion_v1/README.md). Existing compatible completed results are reused; launch protocols do not assert new measurements complete.

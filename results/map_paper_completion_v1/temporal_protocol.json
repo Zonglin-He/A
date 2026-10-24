@@ -1,0 +1,47 @@
+{
+  "schema": "current_MAP_completion_temporal",
+  "science": {
+    "arms": [
+      "Source",
+      "SourceJointMAP",
+      "FullMAP",
+      "NoPosteriorUpdate",
+      "HardMembership",
+      "EventOnly",
+      "EventCentered",
+      "NoShrink",
+      "UniformPrior"
+    ],
+    "cohort": {
+      "hc2": 1902,
+      "vidstg": 10303
+    },
+    "posterior": "All changed posterior arms use legal jointMAP then actual interval-conditioned original spatialDP; Source controls retain Source boxes.",
+    "HardMembership": "Hard weights of q0 jointMAP interval; one all-video event/background pair, common-mean shrinkage64.",
+    "EventOnly": "Log positive compatibility without background denominator; no centering.",
+    "EventCentered": "Predeclared EventOnly video-mean correction, no result selection.",
+    "NoShrink": "Identical soft pair with kappa0.",
+    "UniformPrior": "Original q0 seed membership and evidence, uniform positive-support final prior.",
+    "fixed": "Same8, q0, original fulltime auxiliary pooled features, beta1/context1.5/one round; no optimizer/newSource/expert/GPU.",
+    "exposure": "All fullsets historically exposed; no parameter/configuration selection; all signed/tails/CI/cost."
+  },
+  "suite_plan_sha256": "82f46158ffdb139ee23899b994a3656e3e8737fc59cdb1d1dcdc19c3f2d28bf0",
+  "parent_plan_sha256": "4a34668741e08bbd68fb2268a87a1fc193d4ca6efa02b4e14972dbfd746c7ab4",
+  "parent_seals": {
+    "hc2": "bc209ac67273f0f2835c929cf5d977452dff04c901e7ed56223414a04fcb44a2",
+    "vidstg": "faf739e72a065bbac2079715aea4f4e89b0e2014da854013ea0c9728cb295c81"
+  },
+  "MAP_seals": {
+    "hc2": "2ea08033744506c52ae41ec274e5ad0637ad4259933357442036602965d4d690",
+    "vidstg": "18e58cf721754ecafdcdc2fbda0bcdb7c605d59f07eb6188ecbe46856a66165a"
+  },
+  "code_sha256": {
+    "studies/map_paper_completion_v1/temporal.py": "6187888da26e88a6cb965d67bd5c52df3ccd408935536e7787f6d070f0bba569",
+    "studies/map_paper_completion_v1/common.py": "f1b2328be7f469f72f4f18f0f59c4df98b47c26e2d92139fac92113b7261ee6e",
+    "studies/map_full_v1/map_core.py": "63c93f7f0ca1be1e7e833961b1a0652c4bbaad6f6bf9329da82af17e073662fd",
+    "stvg/prototype.py": "b263154ae8c6ff4e4f8162e4ddea4498302b86f2ec65e8cfac0aa92d351d425b",
+    "stvg/spatial.py": "54c3cec0ec643e47464957730f482302609855164196b361ee4bee1efd025c10"
+  },
+  "GT_in_prediction": false,
+  "fingerprint": "c7f718b4740b4344f5236f898e8d8b60c3d47552ee4ab03a9c2824c021f27db1"
+}
