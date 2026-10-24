@@ -1,4 +1,4 @@
-# MAP + recomputed spatial DP — CPU parallel execution now
+# Complete full MAP + recomputed DP results: TA and CG, both domains
 
 The latest direct user request explicitly changes the previous wait: **start CPU-parallel MAP replay now, alongside the original CG-Vid full, without interrupting it**. This independent namespace replaces the zero-work waiting scheduler. Original MAP-v1 scientific source/plan, parallel-v2 source/plan, every prior output and current CG inference remain immutable.
 
@@ -45,3 +45,10 @@ The original four-row strict-deletion study remains deferred. Even if some MAP d
 ## Third completed domain
 
 [TA-VidSTG10303 complete MAP+DP](TA/vidstg/ANALYSIS.md): t34.664067/v14.433693%; versus originalSource+2.935613/+3.295210pp, versus matched SourceJointMAP+1.213262/+2.792066, versus FullMBR+.059689/+.050379 with both CIs crossing zero. Official61,818checks,51,515SHA/all-array replay complete. Short-event temporal loss versus originalSource and all severe tails remain disclosed. CG-Vid is still in progress; no prefix accuracy.
+
+
+## Final completed domain and study closure (2026-10-25)
+
+[CG-VidSTG10,303 complete MAP+DP result](CG/vidstg/ANALYSIS.md): originalSource=SourceJointMAP17.318935t/7.532313v, Source+MBR23.481297/9.965719, FullMBR27.166958/11.494698, fixed-boxMAP25.172061/10.792985, FullMAP25.172061/10.792929%. MAP−MBR−1.994898t CI[-2.277387,-1.717930]/−.701769v CI[-.821914,-.582801]; MAP−originalSource+7.853126/+3.260615. DP re-solve−fixedboxes v−.000056618CI[-.008745564,.008405186] crosses0. Severeunion vsMBR1677/vsnative1267; short andlong MAP−MBR vCIsnegative; fixed-support unobserved sIoU−2.723290pp CInegative. All61,818officialchecks and51,515SHA/allarraycoldreplay/allmeans pass.
+
+[All four complete-domain receipt bindings](completion_manifest.json) close this MAP study. MAP versus MBR lowers mean vIoU on TA-HC, CG-HC andCG-Vid; TA-Vid's small+.050379pp difference has a CI crossing zero. No decoder or profile is reselected from these full results. TA/CG originalSource readout distinctions, every positive/negative, all tails, duration strata and actual costs remain public. Current-MAP TA progressive components/finalDP and both fixed128-parent budget studies are separately complete and published. The old strict-deletion queue was superseded unexecuted by the latest paper scope; earlier waiting/automatic-continuation descriptions above are historical and must not trigger a restart. All authorized measurement is now complete; final publication verification closes the same heartbeat.

@@ -65,3 +65,8 @@ The four-row [deletion study](../results/strict_deletion_v1/README.md) removes c
 ## Independent current-MAP paper evidence
 
 The current paper study in [map_components_v1](../results/map_components_v1/README.md) does not alter frozen production. Its intermediate EightReplacement/E/spatial rows share q0jointMAP; Complete uses unchanged auxiliary trajectory and q1jointMAP with finalDP recomputed. OriginalSource remainsnativeperoffsetMAPhull and SourceJointMAP is an explicit control. Finalindependentselection keeps auxiliary/features/q1/time fixed. VariableKusesgenuineownjointteacher/context/geometry/repool, notK8subsets. OldMBRdeletionprotocol is preserved unexecuted, never reported ascurrentMAPablation.
+
+
+## Final MAP comparison closure
+
+The complete [TA/CG MAP study](../results/map_full_now_v3/README.md) retains the original and jointMAP Source controls, FullMBR, fixed-boxMAP and actual new-interval DP. MAP is below MBR in both CG domains and TA-HC; TA-Vid's small mean difference is not established by its CI. These full results do not reselect production parameters or readouts. Fixed-support spatial losses, severe tails and all historical exposures remain disclosed. The superseded MBR strict-deletion study remains unexecuted; no pending automatic experiment follows this closure.
