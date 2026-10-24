@@ -82,3 +82,8 @@ All384CGquerycontexts match384uniqueSHAverifiedsameReferDINO8cachepairs,381newca
 ## 2026-10-24: user reopens CG-specific calibration and published TTA baselines
 
 Independent paper_followup_v1 freezes finite CG64-parent development selection (twocalibrations×fivegamma, then10OFAT) and confirmation excluding all192 priorCGparents/domain:35HC+128Vid. AllhistoricalTAexposure disclosed; originalCGnegative transfer andTAproduction unchanged. Tent-LN andSAR importedverbatim from officialSAR20f6e24, not relabeledPseudoBox/customAdam; explicit final-temporal-decoder STVG adapter, SGD/SAM/reliability/recovery,18developmenttrials, fixed128parent confirmation/domain. CPUofficialclass/reset audit passed; realTTAupdates running, CGcacheddevelopment CPUrunning; no newconfirmed benefit claimed. CGconfirmation native420FP32/crosssource/eight SAMEexpert waitsTTAcompletion andchosenparameterSHA. NoFig1. See ../results/paper_followup_v1/README.md and private plan/state/launch/seal/score receipts.
+
+
+## 2026-10-24: finite CG calibration stage A completed
+
+All128 developer queries ×10 profiles sealed before6,400 independent official/common/dense metric checks, maxerror1.6653345369377348e-15. The transferred default reproduces every old predicted array bitwise. HC default Fullv23.036291% → selectedgamma0 Full23.464375%, SourceMBR22.759664%; Vid default15.926685% → selectedgamma.5 Full15.986841%, Source12.768687%. Both selected profiles retain transferred residual scales; CGDevRobust profiles and all losses remain published. This is target-development selection, not evidence of independent improvement. Stage B runs the predefined10OFAT profiles. TTA development and new-parent CG confirmation remain unfinished.
