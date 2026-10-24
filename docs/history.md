@@ -231,3 +231,21 @@ Independent paper_followup_v1 freezes finite CG64-parent development selection (
 ## 2026-10-24: finite CG calibration stage A completed
 
 All128 developer queries ×10 profiles sealed before6,400 independent official/common/dense metric checks, maxerror1.6653345369377348e-15. The transferred default reproduces every old predicted array bitwise. HC default Fullv23.036291% → selectedgamma0 Full23.464375%, SourceMBR22.759664%; Vid default15.926685% → selectedgamma.5 Full15.986841%, Source12.768687%. Both selected profiles retain transferred residual scales; CGDevRobust profiles and all losses remain published. This is target-development selection, not evidence of independent improvement. Stage B runs the predefined10OFAT profiles. TTA development and new-parent CG confirmation remain unfinished.
+
+
+## 2026-10-24: published TTA development finished; confirmation fixed
+
+All128 development queries ×18 configurations sealed before2,304 official/dense checks (maxerror1.2212453270876722e-15). Postseal reporting reverified4,608 prediction/trace SHA checks, all episode resets exact,0 numerical failures. Actual6,912 optimizer iterations/32,512 decoder calls/519.637654s whole-stage wall; no new Source/expert. All18 positive/negative configurations, reliability-empty counts, unchanged states and conditional runtime are retained. Original Source acquisition/load/early context costs are excluded from this cached-context optimizer timing, so it is not a deployment speed claim.
+
+Both domains select Tent SGD1e-4/five steps and SAR SGD1e-4/five steps/margin.8logN by the frozen rule. Selected developer vIoU Source→Tent=SAR: HC24.415350→24.457479% (+.042128pp), Vid11.739054→11.742167% (+.003112pp). Only1/64 per domain has improved vIoU; most native MBR intervals remain unchanged despite actual normalization updates. Selected Tent changes64/64 norm states/domain; SAR53/64HC and61/64Vid; exact unchanged cases retained. These are development-selection statistics, not independent benefit or evidence about every TTA setting. Fixed128parent/domain confirmation is now running without further parameter changes.
+
+User explicitly deferred the third benchmark: finish the two domains and CG-STVG first. No third-dataset acquisition or experiment is pending in this active scope. CG stageB/confirmation remain unfinished; no new CG confirmation conclusion is available.
+
+
+## 2026-10-24: finite CG selection and published TTA confirmation complete
+
+CG-B128×10 sealed before6,400 checksmax1.5543122344752192e-15, base reproduces selectedA byteexact. Fixed choices: HCgamma0/link.25/context1.5/kappa64/beta.25 (DEVv23.696096 vsold23.036291); Vidgamma.5/link.25/context1/kappa64/beta1 (16.379100vs15.926685). New-CG-parent confirmation now running, no confirmationlabels read or new tuning. Offline128DEV candidate replay/GT diagnosis identifies initial shared-correction damage and weak appearance-score alignment; see results/paper_followup_v1/cg_mechanism/DIAGNOSIS.md, not a new method result.
+
+Tent/SAR fixedconfirmation256queries×2=512predictions sealed before512official/dense checksmax1.2212453270876722e-15. Postseal reporting actually reverified1,024pred/trace SHA and all reset/cost/reliability traces,0numerical failures. Tent andSAR selectedfinalintervals coincide: HCV28.044780→28.054833%(+.010053pp CI[0,.030160]),Vidt/v unchanged fromSource(t34.598917/v14.102136%). AllTent normstates changed; SAR unchanged episodes remain reported. Very small discreteMBR changes in this explicitly restricted finaldecoder STVG adapter, not universalTTAfailure. Fullv30.689863HC/15.205425Vid is separate samecohort comparison; Full severeSourceunion25/28vsTent/SAR0/0 retained. Actualconfirm2,560iterations/10,240decoder calls/212.969515s wholeworker wall, Source/earlycontext caching and runtime exclusions explicit.
+
+User defers thirdbenchmark; finish availabletwo-domain/CG scope. Original production/full/eight/oldnegative results untouched. CGnewconfirmation remains incomplete.
