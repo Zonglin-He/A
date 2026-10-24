@@ -36,3 +36,5 @@ Each complete backbone/domain prediction set seals before independent CPU offici
 All official full sets are historically exposed. CG-HC all227 parents and CG-Vid64 development queries informed their fixed profiles. This is a fixed decoder comparison, not fresh confirmation or justification for another search. Both positive and negative MAP results will be retained. MAP simplifies the stated final decision rule; it does not establish immunity to reviewer criticism or erase the distinction from the original native Source.
 
 See [frozen protocol](protocol.json) and [unfinished dependency refusal](deferred_gate_test.json). Queue preparation and synthetic checks are not empirical full MAP results.
+
+Latest user requests CPU parallelism. The four backbone/domain jobs now run concurrently after the same gate and preflight, with one compute thread per subprocess and an8GiB available-RAM launch floor. The original scientific source/plan is unchanged; the prior sequential waiting controller was preserved and stopped at zero work. See [parallel scheduling](PARALLEL_SCHEDULING.md). Original strict deletions still follow all four MAP score/report completions.

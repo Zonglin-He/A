@@ -1,0 +1,40 @@
+{
+  "schema": "map_full_parallel_controller_v2",
+  "authorization": "Latest user asks CPU parallelism for the already authorized complete MAP-DP evaluation. Preserve wait-until-current-Vid-full-completes gate.",
+  "jobs": [
+    [
+      "TA",
+      "hc2"
+    ],
+    [
+      "TA",
+      "vidstg"
+    ],
+    [
+      "CG",
+      "hc2"
+    ],
+    [
+      "CG",
+      "vidstg"
+    ]
+  ],
+  "max_concurrent_domain_jobs": 4,
+  "compute_threads_each": 1,
+  "minimum_available_memory_before_launch_bytes": 8589934592,
+  "science": "Invoke unchanged frozen run.py predict/score/report in separate subprocesses for each domain. No algorithm, posterior, DP, metrics, parameters, seed, cohort or scientific fingerprint changes. Prediction guard never leaks into separate scoring subprocess.",
+  "order": "After original both-CG-full seal/score/audit/named-source/ownedexit gate and original8querypreflight, four domains run concurrently. Each entire domain seals before its own official labels. All four must score/report successfully before original strict deletion queue starts.",
+  "failure": "Keep every domain log/partial prediction/failed state; no retry, no skipped query or fallback. Independent domains finish so their evidence is preserved; any failed domain prevents strict launch.",
+  "max_new_Source": 0,
+  "max_new_expert": 0,
+  "max_new_GPU": 0,
+  "scientific_plan_sha256": "448ef9f51a2ea2992f6dfddfc8e2ad8c64ec0834b00e7acf8a745c49b945ae43",
+  "scientific_fingerprint": "92b45adb5b3d262eddfa008f977e376e7a92e7a0125cb0326a9741297ff0ad16",
+  "controller_code_sha256": "c793df35d4866dae9cdbcbbc4a0ff31faa742d18b343f02e7d292eae8ab7928f",
+  "hardware": {
+    "logical_CPUs": 20,
+    "launch_affinity_CPUs": 20
+  },
+  "timing": "Parallel scheduling is an engineering change; do not claim a measured speedup or completion time before actual runs. CPU cache times are not uncached deployment latency.",
+  "fingerprint": "21bed2672e8e77644e8e443535696925674066304f07653121263042b2bdcb17"
+}
