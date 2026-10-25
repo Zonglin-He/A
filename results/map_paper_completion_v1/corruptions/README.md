@@ -1,0 +1,7 @@
+# Current-MAP controlled-view study — complete
+
+All768actual Source/view recomputations are complete on the existing fixed128query/128parent panels per domain. Blur(5×5σ1.5), JPEG(quality30/subsampling2), Dim(0.5) each drive their own actual current-MAP pooling/posterior/new-interval spatialDP. Exact same-RGB/context expert caches were reused768times; zero new expert calls does not mean zero original acquisition cost. Every new Source checkpoint preceded teacher lookup, and only committed exact-replay scratch was disposed.
+
+Whole768seal preceded separateofficialCPUlabels:1,536densechecks max1.4432899320127035e-15,2,304prediction/compact/receiptSHAchecks plus teacherSHA, everycompactarray exact and everymean recomputed. Root read-only export includes all signed outcomes, severe t/v/union-once/rescues, duration groups, observed/unobserved effects, actual perworker Source costs and inherited teacher forward costs.
+
+See [HC](hc2/ANALYSIS.md), [Vid](vidstg/ANALYSIS.md), [costs](cost_segments.json), [all summary values](summary.json) and [audit](reporting_receipt.json). HC v gains vs same-view Source have positive intervals in all three views; Vid v gains all cross zero. Vid JPEG causes a significant pointwise clean-to-corrupt FullMAP v loss near0.998pp, so blanket corruption robustness is unsupported. No retuning or pooled384-independent-parent interpretation. These panel values are not complete-target results. No media/captions/GTcoords/rawfeatures/masks/weights are published.
