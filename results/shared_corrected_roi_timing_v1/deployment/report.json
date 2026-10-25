@@ -1,0 +1,216 @@
+{
+  "status": "completed_real_current_MAP_deployment_timing",
+  "queries_per_domain": 16,
+  "parents_per_domain": 16,
+  "repeats": 3,
+  "measured_calls": 192,
+  "measured_expert_calls": 96,
+  "warmup_excluded": true,
+  "models_resident_original_offload": true,
+  "interquery_RGB_visual_capture_teacher_cache": false,
+  "means": {
+    "hc2": {
+      "Source": {
+        "calls": 48,
+        "mean_total_seconds": 3.2164426625628644,
+        "median_total_seconds": 2.830506528960541,
+        "p90_total_seconds": 4.403507104376332,
+        "mean_RGB_seconds": 0.7693824513116851,
+        "mean_parse_seconds": 0.02511963033854651,
+        "components": {
+          "expert_seconds": 0.0,
+          "Source_to_CPU_seconds": 0.2325186082647027,
+          "Source_to_GPU_seconds": 0.14257678461338705,
+          "expert_forwards": 0.0,
+          "Source_seconds": 1.9445600856949266
+        }
+      },
+      "FullMAP": {
+        "calls": 48,
+        "mean_total_seconds": 4.033143537351862,
+        "median_total_seconds": 3.6571889573242515,
+        "p90_total_seconds": 5.296579972933978,
+        "mean_RGB_seconds": 0.7533236618231361,
+        "mean_parse_seconds": 0.02449873526347801,
+        "components": {
+          "region_pooling_seconds": 0.002868460627117505,
+          "expert_seconds": 0.6215498284824813,
+          "Source_to_CPU_seconds": 0.23257161528454162,
+          "expert_forward_seconds": 0.1846837707174321,
+          "expert_load_seconds": 0.0,
+          "MAP_readout_seconds": 1.7011518745372694e-05,
+          "Source_to_GPU_seconds": 0.14102699908350283,
+          "final_DP_seconds": 0.001244825340108946,
+          "shared_initialization_seconds": 0.009387705038534477,
+          "geometry_seconds": 0.08948894107985932,
+          "expert_forwards": 1.0,
+          "Source_seconds": 1.945548920649647,
+          "prototype_seconds": 0.0011523306699624907,
+          "finish_wall_seconds": 0.005286850782188897,
+          "auxiliary_DP_seconds": 0.0
+        }
+      }
+    },
+    "vidstg": {
+      "Source": {
+        "calls": 48,
+        "mean_total_seconds": 2.7784381331390855,
+        "median_total_seconds": 2.7243077519815415,
+        "p90_total_seconds": 3.1940774694085126,
+        "mean_RGB_seconds": 0.19958606386596026,
+        "mean_parse_seconds": 0.018494338175514713,
+        "components": {
+          "expert_seconds": 0.0,
+          "Source_to_CPU_seconds": 0.23827170006309947,
+          "Source_to_GPU_seconds": 0.14211658787098713,
+          "expert_forwards": 0.0,
+          "Source_seconds": 2.0717930548610943
+        }
+      },
+      "FullMAP": {
+        "calls": 48,
+        "mean_total_seconds": 3.7043093384127133,
+        "median_total_seconds": 3.5686876196414232,
+        "p90_total_seconds": 4.380037751980127,
+        "mean_RGB_seconds": 0.217390299095617,
+        "mean_parse_seconds": 0.019585032704829548,
+        "components": {
+          "region_pooling_seconds": 0.003543579786006982,
+          "expert_seconds": 0.6108481736834316,
+          "Source_to_CPU_seconds": 0.2390104181249626,
+          "expert_forward_seconds": 0.18500958992323527,
+          "expert_load_seconds": 0.0,
+          "MAP_readout_seconds": 2.0242422275866073e-05,
+          "Source_to_GPU_seconds": 0.14069436889258213,
+          "final_DP_seconds": 0.001534134343576928,
+          "shared_initialization_seconds": 0.009336368811394399,
+          "geometry_seconds": 0.11096201787586324,
+          "expert_forwards": 1.0,
+          "Source_seconds": 2.074026106565725,
+          "prototype_seconds": 0.0012319957216580708,
+          "finish_wall_seconds": 0.006334193206081788,
+          "auxiliary_DP_seconds": 0.0
+        }
+      }
+    }
+  },
+  "startup_and_warmup": {
+    "hc2": {
+      "source_checkpoint_load_seconds": 7.591324626933783,
+      "warmup": {
+        "Source": {
+          "arm": "Source",
+          "query_wall_seconds": 4.20887563098222,
+          "RGB_seconds": 0.2170910299755633,
+          "parse_seconds": 1.0439746268093586,
+          "cost": {
+            "Source_seconds": 2.3790382617153227,
+            "Source_to_GPU_seconds": 0.14400602411478758,
+            "Source_to_CPU_seconds": 0.3250283319503069,
+            "expert_forwards": 0,
+            "expert_seconds": 0.0
+          },
+          "prediction_bitwise_verified": true,
+          "current_MAP_prediction_sha256": "4b6a33b8014d294289f9d820094215e66b14226567a6c3a8d95165fc0300426d",
+          "verification_IO_outside_timer": true,
+          "GT_read": false,
+          "worker": {
+            "pid": 3380842,
+            "startticks": 252941855
+          }
+        },
+        "FullMAP": {
+          "arm": "FullMAP",
+          "query_wall_seconds": 8.987542700022459,
+          "RGB_seconds": 0.32257119892165065,
+          "parse_seconds": 0.03186309291049838,
+          "cost": {
+            "Source_seconds": 2.0451155938208103,
+            "Source_to_GPU_seconds": 0.1480670659802854,
+            "Source_to_CPU_seconds": 0.3220821707509458,
+            "expert_forwards": 1,
+            "expert_seconds": 5.777288462035358,
+            "expert_forward_seconds": 0.37207079818472266,
+            "expert_load_seconds": 4.304326585959643,
+            "shared_initialization_seconds": 0.009420956019312143,
+            "geometry_seconds": 0.09890752891078591,
+            "auxiliary_DP_seconds": 0.0,
+            "region_pooling_seconds": 0.0028931768611073494,
+            "prototype_seconds": 0.016581702046096325,
+            "MAP_readout_seconds": 1.8407125025987625e-05,
+            "final_DP_seconds": 0.0015194602310657501,
+            "finish_wall_seconds": 0.021019945852458477
+          },
+          "prediction_bitwise_verified": true,
+          "current_MAP_prediction_sha256": "4b6a33b8014d294289f9d820094215e66b14226567a6c3a8d95165fc0300426d",
+          "verification_IO_outside_timer": true,
+          "GT_read": false,
+          "worker": {
+            "pid": 3380842,
+            "startticks": 252941855
+          }
+        }
+      }
+    },
+    "vidstg": {
+      "source_checkpoint_load_seconds": 4.864984569139779,
+      "warmup": {
+        "Source": {
+          "arm": "Source",
+          "query_wall_seconds": 3.3493868191726506,
+          "RGB_seconds": 0.0648160302080214,
+          "parse_seconds": 0.9236544771119952,
+          "cost": {
+            "Source_seconds": 1.86228367080912,
+            "Source_to_GPU_seconds": 0.13890850031748414,
+            "Source_to_CPU_seconds": 0.24933845736086369,
+            "expert_forwards": 0,
+            "expert_seconds": 0.0
+          },
+          "prediction_bitwise_verified": true,
+          "current_MAP_prediction_sha256": "0c9e0dba624669f57a420cbb61d289653eaac03beb2ba7e0653d99cc158e001b",
+          "verification_IO_outside_timer": true,
+          "GT_read": false,
+          "worker": {
+            "pid": 3380842,
+            "startticks": 252941855
+          }
+        },
+        "FullMAP": {
+          "arm": "FullMAP",
+          "query_wall_seconds": 8.979985248297453,
+          "RGB_seconds": 0.05424754228442907,
+          "parse_seconds": 0.02056164387613535,
+          "cost": {
+            "Source_seconds": 1.8676681988872588,
+            "Source_to_GPU_seconds": 0.14161065267398953,
+            "Source_to_CPU_seconds": 0.24126215977594256,
+            "expert_forwards": 1,
+            "expert_seconds": 6.369037929922342,
+            "expert_forward_seconds": 0.43452560203149915,
+            "expert_load_seconds": 4.766309943050146,
+            "shared_initialization_seconds": 0.009481232147663832,
+            "geometry_seconds": 0.05440064100548625,
+            "auxiliary_DP_seconds": 0.0,
+            "region_pooling_seconds": 0.0018006707541644573,
+            "prototype_seconds": 0.0010908786207437515,
+            "MAP_readout_seconds": 1.450302079319954e-05,
+            "final_DP_seconds": 0.0009139771573245525,
+            "finish_wall_seconds": 0.0038228840567171574
+          },
+          "prediction_bitwise_verified": true,
+          "current_MAP_prediction_sha256": "0c9e0dba624669f57a420cbb61d289653eaac03beb2ba7e0653d99cc158e001b",
+          "verification_IO_outside_timer": true,
+          "GT_read": false,
+          "worker": {
+            "pid": 3380842,
+            "startticks": 252941855
+          }
+        }
+      }
+    }
+  },
+  "scope": "Actual wall includes original CPU/GPU transfers/decode/parse/native224 Source/same8teacher/geometry/direct shared-corrected-box ROI pool/one-step/MAP/finalDP/cleanup; first auxiliary DP absent; no MBR performance comparison, no throughput claim; nested subcomponents not additive; shared-host conditional measurement.",
+  "fingerprint": "fa02f59ca28da8c6ae6c5773fcd1f57b51b579106dff6065a87dca53ddf773ee",
+  "GT_read": false
+}

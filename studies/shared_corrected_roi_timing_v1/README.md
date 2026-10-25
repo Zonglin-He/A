@@ -9,3 +9,6 @@ Same fixed16parents/queries per domain,3paired alternating-order repeats:192actu
 Explicit per-call RAM8GiB, disk80GiB, ownprivate160GiB and72h stage guards precede model calls outside their timer. V1waiting owner3366547 was preserved and intentionally stopped before any child/model/Source/expert to bind these runtime checks in an independent execution version; original science and v1code/plan remain unchanged. Pure static generated-function compilation and guard position checks passed; prior four actual raw-grid selected-method finish bridges remain referenced, not relabeled as new timed model calls.
 
 After actual192calls seal, root must export every call, average3repeats within each query, compute16paired-parent bootstrap10000 CIs, record hardware/cache/startup and nested costs, and publish all outcomes. Failure preserves attempts/partial measurements/source/plan; no skip/fallback/hash waiver/blind timed-call repeat. Full corruption and extra generic TTA remain unreleased.
+
+
+Actual192calls now complete, bitwise verified, root exported and interpreted. [Complete measured results](../../results/shared_corrected_roi_timing_v1/deployment/ANALYSIS.md). Initial waiting description above is preserved as startup history; no rerun or renamed old timing.
