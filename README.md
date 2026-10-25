@@ -38,3 +38,5 @@ Public code includes the current method, protocol, complete signed positive/nega
 
 
 Latest newly authorized experiments (all review items except TubeDETR) are independently running/prepared in [MAP paper completion](results/map_paper_completion_v1/README.md). Existing compatible completed results are reused; launch protocols do not assert new measurements complete.
+
+Current user-selected no-shrinkage follow-up: [complete CG-Vid](results/no_shrink_main_v1/CG/vidstg/ANALYSIS.md), [HC own-K budget](results/no_shrink_main_v1/budget/hc2/ANALYSIS.md), and [both corruption domains](results/no_shrink_main_v1/README.md) now have audited root analyses. The [full-target Tent/SAR extension](results/tta_full_v1/README.md) is actually queued behind the ongoing HC Source collector; startup is not full-TTA measurement completion.
