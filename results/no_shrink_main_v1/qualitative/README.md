@@ -1,0 +1,3 @@
+# Current no-shrinkage qualitative figure
+
+Three actual-frame cases use the same historical kappa64 case selection, now rendered with current kappa0 predictions and event intervals. Each case shows2 observed and4 unobserved frames, eight observation markers, native/final intervals, Source/Full boxes and a private query caption. Scalar changes are recomputed for kappa0. Historical extremes are illustrative, not representative samples; the harm case remains. Root actually viewed and checked the PNG. RGB/captions/prediction coordinates are private; this public folder contains only scalars, hashes and inspection receipts.

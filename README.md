@@ -1,3 +1,7 @@
+## Current selected method: no shrinkage (2026-10-25)
+
+Use [CURRENT_METHOD.json](CURRENT_METHOD.json) and `python -m stvg.current predict --request REQUEST.json --output OUTPUT.npz`. The selected profile uses **kappa0, final jointMAP and actual interval-conditioned exact spatial DP**. [Current main values, tails and dependent recalculation status](results/no_shrink_main_v1/README.md). Legacy configs/default.json and commands below remain immutable evidence interfaces.
+
 # SimplePath + Native2D
 
 **Source naming correction:** official TA-STVG uses native per-offset MAP plus physical hull, not MBR. Historical local `Source` result keys mean **Source + our MBR decoder**. Read the [explicit three-row comparison and correction](results/source_semantics_v1/README.md); native Source, Source+MBR and Full must be reported separately.

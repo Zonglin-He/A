@@ -1,0 +1,30 @@
+# Current main method: no shrinkage, joint MAP and exact spatial DP
+
+The user explicitly selected **kappa=0** as the main method on 2026-10-25, after both full-target NoShrink results were exposed. This selection replaces the previous kappa64 method registration. It is not a preregistered or independently confirmed selection. Every historical kappa64 configuration, plan, result, negative finding and failure remains immutable.
+
+The authoritative current profile is [no_shrink_map_v1.json](../../profiles/no_shrink_map_v1.json), registered in [CURRENT_METHOD.json](../../CURRENT_METHOD.json). Use `python -m stvg.current predict --request REQUEST.json --output OUTPUT.npz` for current single-query inference. `configs/default.json` and the old `python -m stvg` entry are legacy interfaces retained for frozen evidence and the already-paid raw-grid collector.
+
+| Full target | Native Source tIoU / vIoU % | Current kappa0 FullMAP tIoU / vIoU % | Native-relative delta t / v pp | R.3 / R.5 % |
+|---|---:|---:|---:|---:|
+| HC-STVG-v2,1902 queries/227 parents |40.141475 /20.704678|49.514796 /27.214726|+9.373320 /+6.510048|41.062040 /16.614090|
+| VidSTG,10303 queries/732 parents |31.728454 /11.138484|34.927982 /14.548371|+3.199528 /+3.409887|19.450645 /8.492672|
+
+These main values are read-only exports from the already fully sealed, officially scored and all-array replay-audited NoShrink arms. This adoption adds no Source, expert or GT scoring for the main table. Current FullMAP uses its own kappa0 posterior, joint-MAP interval and actual new-interval spatial DP. It is not a fixed-box interval substitution.
+
+Native Source remains the official per-offset MAP followed by a physical hull. SourceJointMAP is reported separately. No new MBR comparison experiment is introduced.
+
+Mean accuracy increases relative to historical kappa64, but tails worsen: severe native-Source t/v/union (>5pp loss, union once) are **364/305/467** for HC and **1487/1221/2238** for Vid. Historical kappa64 unions were396 and1934. HC R.5 falls16.929548→16.614090% even though mean vIoU rises. All signed outcomes, rescues, short/long pointwise parent-cluster confidence intervals and observed/unobserved effects remain in [HC report](TA/hc2/ANALYSIS.md) and [Vid report](TA/vidstg/ANALYSIS.md).
+
+## Dependent recalculations
+
+The independent `studies/no_shrink_main_v1` plan recalculates affected components/final-DP control, CG cross-model rows (only kappa changed, other selected domain profiles unchanged), all own-K Hybrid/Uniform2/4/8/16 fixed128-parent panels, 768 corruption views and the ongoing full structural/deletion/factorial controls. CPU-only reconstruction uses committed exact caches; no repeated Source or expert acquisition for these computations. Component rows before temporal update remain unchanged. Each new posterior drives a genuinely new MAP interval and exact spatial DP.
+
+The existing HC raw-grid collector1518134/start245498341 continues untouched. The obsolete dispatcher1163495/start245133005 was stopped only to prevent obsolete downstream scheduling; its code/state/authorization/actualexit proof are preserved privately. New controller1667978/start245631555 adopts that collector, starts at most2 CPU domains on CPU14-15/nice19/idle IO, and later launches the unchanged frozen Vid collector exactly once. All committed collector arrays and3SHA/input bindings are verified before current kappa0 consumption. Old source/teacher acquisition costs remain nonzero provenance.
+
+A finite actual kappa0 deployment measurement uses the original fixed16 parents/domain×3 repeats,192 measured Source calls/96 expert calls plus4Source2expert warmups, after the active HC collector exits. Own CPU groups pause only during timing. The old measured kappa64 latency cannot be relabeled current kappa0 latency. The three-case qualitative figure has been rerendered with current kappa0 arrays and actually viewed by root; media stay private. Budget curves remain pending current per-K results and root image review. Current code/preflight/startup is not completion of those dependent studies.
+
+The real-cache preflight passed repeat-exact checks for both component, CG, budget and corruption domains and committed HC structural state (9 cases). The Vid structural consumer will check its first actual committed state and every subsequent FullMAP against the already audited full NoShrink arm. It has not yet produced Vid structural results.
+
+Whole task/domain prediction seals precede independent official scoring. Audit rederives every array, validates parent/prediction/receipt/compact hashes and recomputes every mean. Complete signed positives and negatives, severe unions/rescues, duration groups, parent CIs, inherited costs and actual PID/start segments must be exported. Cached CPU wall is not deployment latency. Media/captions/GT coordinates/features/masks/checkpoints/credentials remain private. TubeDETR is excluded; no parameter sweep or new agents/chats/automations.
+
+Additional live-finish validation: four real shared raw grids (two/domain) reproduced the original auxiliary pooled features and audited NoShrink arrays exactly, including repeated current `stvg.current.finish` calls under the actual four-thread numerical runtime. No new Source/expert/GPU/GT was used. The fixed128-parent Tent/SAR comparison now uses current kappa0 Ours scalars; all updated means and parent audit/score/metrics hashes were checked, without repeating optimizer updates.
