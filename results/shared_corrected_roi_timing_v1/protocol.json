@@ -1,0 +1,38 @@
+{
+  "schema": "shared_corrected_ROI_actual_uncached_timing_v1",
+  "authorization": "Synchronize actual matched timing after user-specified first-auxiliary-DP removal, final DP retained.",
+  "science": {
+    "queries_per_domain": 16,
+    "parents_per_domain": 16,
+    "repeats": 3,
+    "measured_Source_calls": 192,
+    "measured_expert_calls": 96,
+    "warmup_Source_calls": 4,
+    "warmup_expert_calls": 2,
+    "profile": "shared_corrected_roi_v1",
+    "kappa": 0,
+    "beta": 1,
+    "first_aux_DP": false,
+    "final_DP": true,
+    "native224_FP32": true,
+    "same_expert8": true
+  },
+  "timing": "Full decode/parse/CPU-GPU transfers/Source/teacher request/geometry/direct E-ROI pool/prototype/jointMAP/final DP/cleanup in wall. Model startup and warmup separate; weights resident original offload; no cross-query RGB/features/teacher/prediction caches. All192outputs bitwise independently audited selected clean result. Nested subcomponents not additive; fixed16panel shared-host conditions, not full-domain throughput.",
+  "gate": "Both selected clean whole-domain official score/allarray audits and initial owner successful actual exit. Pause only independently verified own CPU-sync process group, prevent new children by stopping controller too; finally resume on success or failure. No unrelated services signaled. One global GPU lease.",
+  "limits": {
+    "minimum_RAM": 8589934592,
+    "minimum_disk": 85899345920,
+    "private_bytes": 171798691840,
+    "stage_seconds": 259200
+  },
+  "failure": "Preserve all attempts/partial measurements/logs/source/plan, no skip/fallback/hash waiver/blind timed call retry.",
+  "corruption_release_allowed": false,
+  "code_sha256": {
+    "studies/shared_corrected_roi_timing_v1/timing.py": "40f9bb9acdcaa5c77ea1b2ff0214c1f48cd9cdc6fdac46f0620aafb0b3069033",
+    "studies/shared_corrected_roi_timing_v1/controller.py": "6924179d5de4b21942970ec1e980da9337ad2e6c2d0cd9496b80c4b977d5641c",
+    "stvg/current_shared_roi.py": "83e440aafdba60a69086e141bc837388f8dd5e2d2c2f8e1b2475b48ce35a80c6",
+    "studies/map_paper_completion_v1/deployment.py": "2dcd4ee922364f045a381c1c10b72c8686c6be30daadba7ecc5b59b43532045f",
+    "studies/map_paper_completion_v1/timing_export_v1.py": "4ba87ecc137f1b774c050da35e1d4fca22085edca373390b25095a561424cbff"
+  },
+  "fingerprint": "fa02f59ca28da8c6ae6c5773fcd1f57b51b579106dff6065a87dca53ddf773ee"
+}
