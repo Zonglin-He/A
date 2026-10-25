@@ -51,3 +51,8 @@ After that entire unit has a successful official score, exact-array audit and si
 ## Completion
 
 Each unit ends at scored/audited pending root analysis/figure/publication. Root must read/export every new valid unit, notify material results including negative tails, render and inspect complete severity figures, update ledger/archivecheck→snapshot→check, publish all anonymous positive/negative results and preserved failures, then verify both GitHub refs plus every remote mode/blob-byte/SHA/tree/ancestor. Keep existing heartbeatACTIVE through all earlier work AND all18newconditions/two complete domains. Do not mark fullTTA or this study complete from queued/partial results. No new agents/chats/automation/manuscript edits. Media/captions/GTcoordinates/rawgrids/masks/weights/credentials stay private.
+
+
+## Parent engineering recovery
+
+The prior zero-model/zero-Source/zero-view waiter exited when the full-TTA parent failed before predictions. Original science7ee8ded... and both earlier execution sources/plans remain immutable. New dispatcher_runtime_v4.py / execution_v4 binds the independently verified TTA interface recovery and its actual owner; it still waits for successful parent exit and all twelve required full-domain audit receipts. No corruption operator, coverage, query, score, cost or own-temporary-disposal rule changes. Current fullcorruption remains0measuredviews; protocol/recovery publication is not benchmark completion.
