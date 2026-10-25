@@ -1,0 +1,179 @@
+{
+  "saved_logits_diagnostics": {
+    "Tent": {
+      "changed_logits_queries": 10303,
+      "nonzero_parameter_delta_queries": 10303,
+      "changed_native_interval_queries": 7,
+      "changed_joint_interval_queries": 7
+    },
+    "SAR": {
+      "changed_logits_queries": 9530,
+      "nonzero_parameter_delta_queries": 9530,
+      "changed_native_interval_queries": 5,
+      "changed_joint_interval_queries": 6
+    }
+  },
+  "official_reliable_filter_counts": {
+    "Tent": {
+      "nonzero_parameter_delta_queries": 10303,
+      "changed_native_queries": 7,
+      "changed_jointMAP_queries": 7,
+      "empty_first_SAR_iterations": 0,
+      "empty_second_after_first_SAR_iterations": 0
+    },
+    "SAR": {
+      "nonzero_parameter_delta_queries": 9530,
+      "changed_native_queries": 5,
+      "changed_jointMAP_queries": 6,
+      "empty_first_SAR_iterations": 3255,
+      "empty_second_after_first_SAR_iterations": 3865
+    }
+  },
+  "matched_joint_readout_control": {
+    "Tent": {
+      "all_query_scored_metrics_equal_SourceJointMAP": false,
+      "changed_joint_intervals": 7,
+      "queries_with_any_scored_metric_difference": 7,
+      "paired_effects": {
+        "v": {
+          "mean": 0.0003492676987714764,
+          "CI95": [
+            -0.0004684208406748089,
+            0.0014449322169063034
+          ],
+          "queries": 10303,
+          "parents": 732,
+          "improved": 2,
+          "harmed": 2,
+          "unchanged": 10299,
+          "declined_over5pp": 0
+        },
+        "t": {
+          "mean": -0.0002041953838946545,
+          "CI95": [
+            -0.002035129531874918,
+            0.0016808612038190895
+          ],
+          "queries": 10303,
+          "parents": 732,
+          "improved": 2,
+          "harmed": 4,
+          "unchanged": 10297,
+          "declined_over5pp": 1
+        },
+        "observed_actual_sIoU": {
+          "mean": 0.0,
+          "CI95": [
+            0.0,
+            0.0
+          ],
+          "queries": 8507,
+          "parents": 715,
+          "improved": 0,
+          "harmed": 0,
+          "unchanged": 8507,
+          "declined_over5pp": 0
+        },
+        "unobserved_actual_sIoU": {
+          "mean": 0.0,
+          "CI95": [
+            0.0,
+            0.0
+          ],
+          "queries": 10300,
+          "parents": 732,
+          "improved": 0,
+          "harmed": 0,
+          "unchanged": 10300,
+          "declined_over5pp": 0
+        },
+        "boundary_MAE_seconds": {
+          "mean": 8.905982076417855e-06,
+          "CI95": [
+            -0.00022606887301667217,
+            0.00018402534445308938
+          ],
+          "queries": 10303,
+          "parents": 732,
+          "improved": 2,
+          "harmed": 5,
+          "unchanged": 10296,
+          "declined_over5pp": null
+        }
+      }
+    },
+    "SAR": {
+      "all_query_scored_metrics_equal_SourceJointMAP": false,
+      "changed_joint_intervals": 6,
+      "queries_with_any_scored_metric_difference": 6,
+      "paired_effects": {
+        "v": {
+          "mean": 0.0003492676987714764,
+          "CI95": [
+            -0.0004684208406748089,
+            0.0014449322169063034
+          ],
+          "queries": 10303,
+          "parents": 732,
+          "improved": 2,
+          "harmed": 2,
+          "unchanged": 10299,
+          "declined_over5pp": 0
+        },
+        "t": {
+          "mean": -8.680631957486599e-06,
+          "CI95": [
+            -0.0017911088832582337,
+            0.001833394124962078
+          ],
+          "queries": 10303,
+          "parents": 732,
+          "improved": 2,
+          "harmed": 3,
+          "unchanged": 10298,
+          "declined_over5pp": 1
+        },
+        "observed_actual_sIoU": {
+          "mean": 0.0,
+          "CI95": [
+            0.0,
+            0.0
+          ],
+          "queries": 8507,
+          "parents": 715,
+          "improved": 0,
+          "harmed": 0,
+          "unchanged": 8507,
+          "declined_over5pp": 0
+        },
+        "unobserved_actual_sIoU": {
+          "mean": 0.0,
+          "CI95": [
+            0.0,
+            0.0
+          ],
+          "queries": 10300,
+          "parents": 732,
+          "improved": 0,
+          "harmed": 0,
+          "unchanged": 10300,
+          "declined_over5pp": 0
+        },
+        "boundary_MAE_seconds": {
+          "mean": -1.9431233621275392e-05,
+          "CI95": [
+            -0.0002480436291823769,
+            0.0001415724782856561
+          ],
+          "queries": 10303,
+          "parents": 732,
+          "improved": 2,
+          "harmed": 4,
+          "unchanged": 10297,
+          "declined_over5pp": null
+        }
+      }
+    }
+  },
+  "explanation": "Parameter/logit changes do not imply a discrete interval or metric gain. Native and jointMAP readouts are different. The jointMAP change from nativeSource cannot be attributed to optimizer updates."
+}

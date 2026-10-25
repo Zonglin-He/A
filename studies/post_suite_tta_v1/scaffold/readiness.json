@@ -1,0 +1,44 @@
+{
+  "schema": "TTA_scaffold_readiness_v1",
+  "source_downloads_complete": true,
+  "scaffold_ready": true,
+  "model_runtime_ready": false,
+  "experiment_launch_available": false,
+  "methods": {
+    "E3M": {
+      "status": "paper_and_supplement_present_official_implementation_missing",
+      "blockers": [
+        "Pinned official repository contains only README; no code to execute."
+      ]
+    },
+    "T3AL": {
+      "status": "official_source_present_static_interface_audit",
+      "blockers": [
+        "Original constructor and forward read benchmark annotations; no-GT task adapter must isolate evaluation plumbing.",
+        "Original action-class/THUMOS/ActivityNet interface must be explicitly mapped to free-form HC/VidSTG queries.",
+        "Code saves reset snapshots inside the adaptation step loop; episodic reset behavior needs exact verification.",
+        "Caption refinement references a likely misspelled logit-scale attribute; preserve source and verify semantics in a separate adapter.",
+        "Official recipe pins torch2.2+CUDA11.8 and mixed cu11/cu12 wheels; RTX5090-compatible runtime not validated.",
+        "CoCa checkpoint, native clip features and generated caption assets have not been downloaded or acquired.",
+        "Official paper/config step-count differences require a frozen provenance decision, not result-driven choice."
+      ]
+    },
+    "URPA": {
+      "status": "official_supplement_source_present_static_interface_audit",
+      "blockers": [
+        "Original example specifies8GPUs and a source-trained checkpoint; single-GPU faithful execution not established.",
+        "Target adaptation reward uses pseudo boundaries, but true boundaries are accessed for debug logging; require an independently versioned no-GT adapter.",
+        "Original telemetry credential assignments and paths must not be executed or published.",
+        "Source-trained Qwen2.5VL policy checkpoint and compatible GPU runtime are absent; a base checkpoint alone is not the original method.",
+        "Official examples use separate target adaptation batches; cannot silently describe this as per-query episodic adaptation."
+      ]
+    }
+  },
+  "dependency_installation": "No upstream dependencies installed; originals inventoried and environment slots/blueprints provided.",
+  "new_models": 0,
+  "new_Source": 0,
+  "new_expert": 0,
+  "new_optimizer_steps": 0,
+  "new_project_GT_reads": 0,
+  "predecessor_gate": "Still closed through current full suite and verified publication; this direct request authorizes source downloads/static scaffolding only."
+}

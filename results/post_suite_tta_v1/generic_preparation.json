@@ -1,0 +1,84 @@
+{
+  "status": "generic_sources_pinned_CPU_imports_and_static_scaffold_passed_not_model_bridge",
+  "methods": [
+    {
+      "name": "Tent",
+      "repository": "https://github.com/DequanWang/tent",
+      "commit": "e9e926a668d85244c66a6d5c006efbd2b82e83e8",
+      "source_files": 11
+    },
+    {
+      "name": "SAR",
+      "repository": "https://github.com/mr-eggplant/SAR",
+      "commit": "20f6e24b17525f34503510afccedc0629b67b7c4",
+      "source_files": 18
+    },
+    {
+      "name": "EATA",
+      "repository": "https://github.com/mr-eggplant/EATA",
+      "commit": "f739b3668cc7617e9b9f1979c1a358497a3472c3",
+      "source_files": 13
+    },
+    {
+      "name": "MEMO",
+      "repository": "https://github.com/zhangmarvin/memo",
+      "commit": "228b2908d271c954ef8bf19cf143ede3b2fa8e3e",
+      "source_files": 20
+    },
+    {
+      "name": "CoTTA",
+      "repository": "https://github.com/qinenergy/cotta",
+      "commit": "c212a204b32be4005092e4323105a24a29ad2952",
+      "source_files": 125
+    }
+  ],
+  "CPU_import_check": {
+    "evidence": "actual CPU-only algorithm_loader.py import check completed in exec session11176, exit0; no adaptation function called",
+    "methods": {
+      "Tent": {
+        "import_passed": true,
+        "entry": "Tent",
+        "model_or_optimizer_constructed": false,
+        "algorithm_called": false
+      },
+      "SAR": {
+        "import_passed": true,
+        "entry": "SAR",
+        "model_or_optimizer_constructed": false,
+        "algorithm_called": false
+      },
+      "EATA": {
+        "import_passed": true,
+        "entry": "EATA",
+        "model_or_optimizer_constructed": false,
+        "algorithm_called": false
+      },
+      "MEMO": {
+        "import_passed": true,
+        "entry": "marginal_entropy",
+        "model_or_optimizer_constructed": false,
+        "algorithm_called": false
+      },
+      "CoTTA": {
+        "import_passed": true,
+        "entry": "CoTTA",
+        "model_or_optimizer_constructed": false,
+        "algorithm_called": false
+      }
+    },
+    "torch_version": "2.7.0+cu128",
+    "CUDA_initialized": false
+  },
+  "source_files_checked": 187,
+  "new_models": 0,
+  "new_Source": 0,
+  "optimizer_steps": 0,
+  "new_GT_scoring": 0,
+  "experiment_release_allowed": false,
+  "limitations": [
+    "Imports do not verify gradients or final STVG predictions.",
+    "MEMO currently imports its unchanged official objective only; actual augmentation/model adapter is pending.",
+    "EATA Fisher/reference and CoTTA teacher/stream conditions must be satisfied before labeling full methods."
+  ],
+  "receipt_sha256": "a13e7d62db00f47e5e95940a45f20b0ed9f3c4a99dfd1c5f1481d446855b2eb2"
+}

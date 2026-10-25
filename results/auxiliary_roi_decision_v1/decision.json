@@ -1,0 +1,456 @@
+{
+  "status": "condition_satisfied_adopt_shared_corrected_box_ROI_in_independent_version",
+  "time": 1792958658.8887599,
+  "authorization_plan_sha256": "bb5998ea9863a006a9a7187e4e1fe967cfe1e84c9000a448ac0c7d9dadcd0cba",
+  "decision": "Remove first auxiliary DP; appearance pooled directly in shared-corrected boxes. Retain final new-interval exact trajectory DP, kappa0/beta1/same eight observations/native Source.",
+  "reason": "Neither full dataset provides clear positive mean m_vIoU evidence for first auxiliary DP under both preregistered comparisons. User specified this replacement; not selection of best ROI from full results.",
+  "not_equivalence_proof": true,
+  "previous_full_exposure": true,
+  "evidence": {
+    "hc2": {
+      "queries": 1902,
+      "parents": 227,
+      "paired": {
+        "FullMAP-AuxIndependent": {
+          "v": {
+            "mean": -0.08313160508987838,
+            "CI95": [
+              -0.2041909961202163,
+              0.03057680737935376
+            ],
+            "queries": 1902,
+            "parents": 227,
+            "improved": 206,
+            "harmed": 209,
+            "unchanged": 1487,
+            "declined_over5pp": 47
+          },
+          "t": {
+            "mean": -0.12189719704624136,
+            "CI95": [
+              -0.321227430065872,
+              0.07424043384797972
+            ],
+            "queries": 1902,
+            "parents": 227,
+            "improved": 212,
+            "harmed": 221,
+            "unchanged": 1469,
+            "declined_over5pp": 93
+          },
+          "observed_actual_sIoU": {
+            "mean": 0.05026702565648787,
+            "CI95": [
+              -0.052739873323513514,
+              0.16186701608259366
+            ],
+            "queries": 1880,
+            "parents": 226,
+            "improved": 17,
+            "harmed": 16,
+            "unchanged": 1847,
+            "declined_over5pp": 5
+          },
+          "unobserved_actual_sIoU": {
+            "mean": 0.02077716741020191,
+            "CI95": [
+              -0.046462423567317945,
+              0.07964097514594097
+            ],
+            "queries": 1902,
+            "parents": 227,
+            "improved": 73,
+            "harmed": 66,
+            "unchanged": 1763,
+            "declined_over5pp": 5
+          },
+          "boundary_MAE_seconds": {
+            "mean": 0.007650973565391118,
+            "CI95": [
+              -0.007475494427396767,
+              0.022446964783892746
+            ],
+            "queries": 1902,
+            "parents": 227,
+            "improved": 223,
+            "harmed": 234,
+            "unchanged": 1445,
+            "declined_over5pp": null
+          }
+        },
+        "FullMAP-AuxE_ROI": {
+          "v": {
+            "mean": -0.13431727245982267,
+            "CI95": [
+              -0.3006826783867626,
+              0.0282796243282869
+            ],
+            "queries": 1902,
+            "parents": 227,
+            "improved": 359,
+            "harmed": 348,
+            "unchanged": 1195,
+            "declined_over5pp": 91
+          },
+          "t": {
+            "mean": -0.24975230236377488,
+            "CI95": [
+              -0.53522257674324,
+              0.04152255221426439
+            ],
+            "queries": 1902,
+            "parents": 227,
+            "improved": 367,
+            "harmed": 376,
+            "unchanged": 1159,
+            "declined_over5pp": 202
+          },
+          "observed_actual_sIoU": {
+            "mean": 0.13751969365456115,
+            "CI95": [
+              -0.060793375664790074,
+              0.34782041772084105
+            ],
+            "queries": 1880,
+            "parents": 226,
+            "improved": 46,
+            "harmed": 44,
+            "unchanged": 1790,
+            "declined_over5pp": 23
+          },
+          "unobserved_actual_sIoU": {
+            "mean": 0.044306419770223135,
+            "CI95": [
+              -0.10444291667023631,
+              0.18056785392628183
+            ],
+            "queries": 1902,
+            "parents": 227,
+            "improved": 153,
+            "harmed": 171,
+            "unchanged": 1578,
+            "declined_over5pp": 25
+          },
+          "boundary_MAE_seconds": {
+            "mean": 0.0007570198796365514,
+            "CI95": [
+              -0.023330622979180274,
+              0.024555927008970496
+            ],
+            "queries": 1902,
+            "parents": 227,
+            "improved": 385,
+            "harmed": 387,
+            "unchanged": 1130,
+            "declined_over5pp": null
+          }
+        }
+      },
+      "all_native_severe": {
+        "Source": {
+          "t": 0,
+          "v": 0,
+          "union": 0
+        },
+        "SourceJointMAP": {
+          "t": 220,
+          "v": 118,
+          "union": 221
+        },
+        "FullMAP": {
+          "t": 364,
+          "v": 305,
+          "union": 467
+        },
+        "NoSharedCorrection": {
+          "t": 367,
+          "v": 320,
+          "union": 473
+        },
+        "PastOnly": {
+          "t": 362,
+          "v": 304,
+          "union": 470
+        },
+        "OneWayAffinity": {
+          "t": 362,
+          "v": 317,
+          "union": 466
+        },
+        "AuxIndependent": {
+          "t": 361,
+          "v": 303,
+          "union": 465
+        },
+        "AuxSourceROI": {
+          "t": 345,
+          "v": 303,
+          "union": 459
+        },
+        "AuxE_ROI": {
+          "t": 346,
+          "v": 305,
+          "union": 458
+        },
+        "NoSpatialTrajectory": {
+          "t": 346,
+          "v": 260,
+          "union": 421
+        },
+        "NoTemporalInference": {
+          "t": 0,
+          "v": 193,
+          "union": 193
+        },
+        "S0T0": {
+          "t": 220,
+          "v": 171,
+          "union": 304
+        },
+        "S1T0": {
+          "t": 220,
+          "v": 241,
+          "union": 364
+        },
+        "S0T1": {
+          "t": 346,
+          "v": 260,
+          "union": 421
+        },
+        "S1T1": {
+          "t": 364,
+          "v": 305,
+          "union": 467
+        }
+      },
+      "audit_sha256": "67c1e3d6181961cbaa8f847a81a0762830a54446b0c375e1d780bff739e0bad5",
+      "score_sha256": "774e731ae696a3a5a23a0bc284b44963cb05a49df48a1a67248e364f9fe7a036",
+      "root_export_sha256": "580d3e382c519ce20a957ce2b5e3fa17f0fe55665ac7d712956b98db348b2bc9",
+      "report_sha256": "118481a21b0754e18fab2027fa3d9b0601773a08693dca7facb0827244ea2473"
+    },
+    "vidstg": {
+      "queries": 10303,
+      "parents": 732,
+      "paired": {
+        "FullMAP-AuxIndependent": {
+          "v": {
+            "mean": 0.01966591696232109,
+            "CI95": [
+              -0.01624178864547356,
+              0.05618160497477572
+            ],
+            "queries": 10303,
+            "parents": 732,
+            "improved": 987,
+            "harmed": 1000,
+            "unchanged": 8316,
+            "declined_over5pp": 85
+          },
+          "t": {
+            "mean": 0.03201025742150723,
+            "CI95": [
+              -0.035059323954376304,
+              0.10051102989233002
+            ],
+            "queries": 10303,
+            "parents": 732,
+            "improved": 1128,
+            "harmed": 1132,
+            "unchanged": 8043,
+            "declined_over5pp": 286
+          },
+          "observed_actual_sIoU": {
+            "mean": 0.02099993857126526,
+            "CI95": [
+              -0.007562775192468781,
+              0.05412902171140896
+            ],
+            "queries": 8507,
+            "parents": 715,
+            "improved": 89,
+            "harmed": 77,
+            "unchanged": 8341,
+            "declined_over5pp": 20
+          },
+          "unobserved_actual_sIoU": {
+            "mean": -0.015923700500401237,
+            "CI95": [
+              -0.04063625871620086,
+              0.006989051949839786
+            ],
+            "queries": 10300,
+            "parents": 732,
+            "improved": 328,
+            "harmed": 376,
+            "unchanged": 9596,
+            "declined_over5pp": 28
+          },
+          "boundary_MAE_seconds": {
+            "mean": -0.009199880028566126,
+            "CI95": [
+              -0.034181908629361366,
+              0.012976484799144351
+            ],
+            "queries": 10303,
+            "parents": 732,
+            "improved": 1427,
+            "harmed": 1414,
+            "unchanged": 7462,
+            "declined_over5pp": null
+          }
+        },
+        "FullMAP-AuxE_ROI": {
+          "v": {
+            "mean": -0.00978061839732989,
+            "CI95": [
+              -0.06089870799876593,
+              0.04210181389735288
+            ],
+            "queries": 10303,
+            "parents": 732,
+            "improved": 1729,
+            "harmed": 1672,
+            "unchanged": 6902,
+            "declined_over5pp": 198
+          },
+          "t": {
+            "mean": 0.009790075239573114,
+            "CI95": [
+              -0.1072167382060874,
+              0.12866080533996432
+            ],
+            "queries": 10303,
+            "parents": 732,
+            "improved": 2000,
+            "harmed": 2003,
+            "unchanged": 6300,
+            "declined_over5pp": 759
+          },
+          "observed_actual_sIoU": {
+            "mean": -0.018511469945106333,
+            "CI95": [
+              -0.10792250254562386,
+              0.06851858557821215
+            ],
+            "queries": 8507,
+            "parents": 715,
+            "improved": 252,
+            "harmed": 211,
+            "unchanged": 8044,
+            "declined_over5pp": 77
+          },
+          "unobserved_actual_sIoU": {
+            "mean": 0.008215232421005613,
+            "CI95": [
+              -0.04846197830254051,
+              0.06169512448923946
+            ],
+            "queries": 10300,
+            "parents": 732,
+            "improved": 704,
+            "harmed": 597,
+            "unchanged": 8999,
+            "declined_over5pp": 90
+          },
+          "boundary_MAE_seconds": {
+            "mean": -0.0055841862836800765,
+            "CI95": [
+              -0.03773468860354964,
+              0.02361299079830227
+            ],
+            "queries": 10303,
+            "parents": 732,
+            "improved": 2518,
+            "harmed": 2405,
+            "unchanged": 5380,
+            "declined_over5pp": null
+          }
+        }
+      },
+      "all_native_severe": {
+        "Source": {
+          "t": 0,
+          "v": 0,
+          "union": 0
+        },
+        "SourceJointMAP": {
+          "t": 1015,
+          "v": 272,
+          "union": 1015
+        },
+        "FullMAP": {
+          "t": 1487,
+          "v": 1221,
+          "union": 2238
+        },
+        "NoSharedCorrection": {
+          "t": 1457,
+          "v": 1033,
+          "union": 1974
+        },
+        "PastOnly": {
+          "t": 1496,
+          "v": 1240,
+          "union": 2248
+        },
+        "OneWayAffinity": {
+          "t": 1517,
+          "v": 1233,
+          "union": 2274
+        },
+        "AuxIndependent": {
+          "t": 1476,
+          "v": 1211,
+          "union": 2217
+        },
+        "AuxSourceROI": {
+          "t": 1531,
+          "v": 1222,
+          "union": 2276
+        },
+        "AuxE_ROI": {
+          "t": 1562,
+          "v": 1222,
+          "union": 2294
+        },
+        "NoSpatialTrajectory": {
+          "t": 1562,
+          "v": 1306,
+          "union": 2357
+        },
+        "NoTemporalInference": {
+          "t": 0,
+          "v": 1068,
+          "union": 1068
+        },
+        "S0T0": {
+          "t": 1015,
+          "v": 1194,
+          "union": 1917
+        },
+        "S1T0": {
+          "t": 1015,
+          "v": 1109,
+          "union": 1837
+        },
+        "S0T1": {
+          "t": 1562,
+          "v": 1306,
+          "union": 2357
+        },
+        "S1T1": {
+          "t": 1487,
+          "v": 1221,
+          "union": 2238
+        }
+      },
+      "audit_sha256": "eec52e17b3b355f440fd44c1f845b4704a3a63895840cb85a012168bfd76bfff",
+      "score_sha256": "47c169207938dfb053bcf21332731536c2c1b98c10e7312892d7a39c5b4e664b",
+      "root_export_sha256": "775efbfcb4355e843c2dcb2e4dc104ea037019d79c698c604c9594791c3301c9",
+      "report_sha256": "ba35f379d13f5a3f72f091e74e6b8dd503932862fe2c97f908292c23e9bc2370"
+    }
+  },
+  "current_bound_files_not_modified": true,
+  "dependent_synchronization_complete": false,
+  "corruption_release_allowed": false
+}
