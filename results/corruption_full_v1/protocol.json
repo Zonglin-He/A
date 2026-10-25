@@ -1,0 +1,168 @@
+{
+  "schema": "current_kappa0_full_physical_corruptions_v1",
+  "authorization": "Direct user requests complete targets and DECOTA-like realistic corruption families/severity. Default five archived deployment bursts at2.5/5/10percent plus all three previous fixed corruption controls.",
+  "datasets": {
+    "hc2": 1902,
+    "vidstg": 10303
+  },
+  "conditions": [
+    {
+      "id": "legacy_Blur",
+      "kind": "legacy",
+      "name": "Blur"
+    },
+    {
+      "id": "legacy_JPEG",
+      "kind": "legacy",
+      "name": "JPEG"
+    },
+    {
+      "id": "legacy_Dim",
+      "kind": "legacy",
+      "name": "Dim"
+    },
+    {
+      "id": "frame_drop_p2p5",
+      "kind": "burst",
+      "family": "frame_drop",
+      "coverage_percent": 2.5
+    },
+    {
+      "id": "frame_drop_p5",
+      "kind": "burst",
+      "family": "frame_drop",
+      "coverage_percent": 5.0
+    },
+    {
+      "id": "frame_drop_p10",
+      "kind": "burst",
+      "family": "frame_drop",
+      "coverage_percent": 10.0
+    },
+    {
+      "id": "frame_freeze_p2p5",
+      "kind": "burst",
+      "family": "frame_freeze",
+      "coverage_percent": 2.5
+    },
+    {
+      "id": "frame_freeze_p5",
+      "kind": "burst",
+      "family": "frame_freeze",
+      "coverage_percent": 5.0
+    },
+    {
+      "id": "frame_freeze_p10",
+      "kind": "burst",
+      "family": "frame_freeze",
+      "coverage_percent": 10.0
+    },
+    {
+      "id": "motion_blur_p2p5",
+      "kind": "burst",
+      "family": "motion_blur",
+      "coverage_percent": 2.5
+    },
+    {
+      "id": "motion_blur_p5",
+      "kind": "burst",
+      "family": "motion_blur",
+      "coverage_percent": 5.0
+    },
+    {
+      "id": "motion_blur_p10",
+      "kind": "burst",
+      "family": "motion_blur",
+      "coverage_percent": 10.0
+    },
+    {
+      "id": "occlusion_p2p5",
+      "kind": "burst",
+      "family": "occlusion",
+      "coverage_percent": 2.5
+    },
+    {
+      "id": "occlusion_p5",
+      "kind": "burst",
+      "family": "occlusion",
+      "coverage_percent": 5.0
+    },
+    {
+      "id": "occlusion_p10",
+      "kind": "burst",
+      "family": "occlusion",
+      "coverage_percent": 10.0
+    },
+    {
+      "id": "exposure_p2p5",
+      "kind": "burst",
+      "family": "exposure",
+      "coverage_percent": 2.5
+    },
+    {
+      "id": "exposure_p5",
+      "kind": "burst",
+      "family": "exposure",
+      "coverage_percent": 5.0
+    },
+    {
+      "id": "exposure_p10",
+      "kind": "burst",
+      "family": "exposure",
+      "coverage_percent": 10.0
+    }
+  ],
+  "views": 219690,
+  "arms": [
+    "Source",
+    "FullMAP"
+  ],
+  "main": "TA current kappa0/beta1/eight observations/q1jointMAP/newinterval exactDP; all other settings unchanged.",
+  "severity": "Burst severity is physical affected-frame coverage, not equal magnitude across families. Original kernel/occluder/exposure magnitude fixed; ceil coverage and no-sampled-hit retained. No GT/query-dependent placement or forced event/observation hit.",
+  "roster": "Existing maintained HC1902/227parents and Vid10303/732parents; complete current target manifests, not old DECOTA HC3482 or one-query/video panels. Historical full exposure disclosed.",
+  "readout": "Native Source per-offset legalMAP+physicalhull; no new MBR comparison. Only same-corrupted-input Source versus currentFull plus matched clean scalar references.",
+  "reuse": "Exact prior768views/128query panels after RGB/inputbinding/parent/tripleSHA and current kappa0 replay. Exact same-input no-hit clean NoShrink reuse after pixel identity proof; new Source and expert only for genuinely new input evidence. Old acquisition cost nonzero.",
+  "upper_bound_new_Source": 218922,
+  "upper_bound_new_expert": 218922,
+  "raw_checkpoint": "Paid Source.pt+SHA before teacher. New raw removed only after committed prediction/receipt/compact, all-array cold replay/readback. Attempt without validSource checkpoint forbids blind rerun.",
+  "storage": "At most one condition/domain resident. After entireunit seal+officialscore+all-array/teacherSHA audit+signed report, remove ONLY this new unit geometry/pooledfeature compacts and ownedteacher payloads, recording every originalSHA/disposal. Retain full predictions, costs, metrics, input/teacher/Source hashes and exact-replay receipt. This does NOT preserve arbitrary future geometry/repool/optimizer replay. Old roots/cache never removed. Failed/uncommitted raw preserved.",
+  "schedule": "Wait existing tta_full_v1 controller1924421/start245882503 fully exits successfully and all its TTA/current recalculation audits exist; do not signal or alter it or currentSource. One GPUworker, sequential full condition/domain predict\u2192independentCPUscore\u2192audit/root scalar export\u2192own temporary disposal.",
+  "evaluation": "Full1902or10303 unit seal before that unitGT. All signed positive/negative/severe>5pp uniononce/rescues, short<=5s/long parentpointwiseCI, clean-corrupt and sampled-hit strata, requested/actualcoverage, perPIDstart costs. No condition/severity/method selection from labels.",
+  "limits": {
+    "GPUworkers": 1,
+    "CPUjobs": 1,
+    "CPUaffinity": [
+      14,
+      15
+    ],
+    "CPUnice": 19,
+    "CPUthreads": 1,
+    "Source_numeric_threads": 4,
+    "minimum_RAM": 8589934592,
+    "minimum_disk": 85899345920,
+    "maximum_private": 171798691840,
+    "unit_seconds": 259200
+  },
+  "failure": "Preserve code/plan/log/allpaidraw/attempts/teacherSHA/predictions. No autoretry/skip/fallback/hashwaiver. Independent versioned compatible engineering fix if necessary.",
+  "code_sha256": {
+    "studies/corruption_full_v1/common.py": "0aa292a9d322e01ca70acf7b63cc1a5625548265d850ed9c717bd0ac0ab4a699",
+    "studies/corruption_full_v1/operators.py": "b9d32fefb9409f6eb4a03e2f3469e828d74f53605ccb441d4b9bdde3f9ef0fd3",
+    "studies/corruption_full_v1/dispatcher.py": "944be68e5bf68a4352f2b0dc2725bccfc409c733afeaec7dbb924deb7da12b3c",
+    "studies/corruption_full_v1/run.py": "f9e86c1190ae3c1a67dcfcdba64ab30a49afe43d36b6748b45f2f182ba57c0a8",
+    "studies/corruption_full_v1/reference/local_original.py": "6c26102eec89a84870d0c57387dc2eea2be68022ece7e739dba0438826bd7e02",
+    "studies/corruption_full_v1/reference/provenance.json": "59e5d42cd9d8e279fae2916cf13b2e92737edd044e7e351e5711d9a354e56106",
+    "studies/corruption_full_v1/reference/DECOTA_PROTOCOL.md": "e2f693691a3b6d37d7b2cad116e6bc9b794ef858dfb727e2dbf54d567f8911d4",
+    "studies/corruption_full_v1/reference/deployment_original.py": "eafba7c3f71c69ff8cecdae0955aedb5eb909fae643294354f1e0dbb5cdad20a",
+    "stvg/current.py": "d000f6edd15a2ef23a513efc7ef6ad8ecb8fd0889983bec6d384756e7e29ed87",
+    "stvg/predictor.py": "166f6de17304deff0336d3acc731a8cc90a365e90e5cf93b4c6dc525f6754c38",
+    "stvg/teacher_bridge.py": "123070ae2f38c0c1f30afeb79a90de3278d370c9794eaabe81a48db1f70188e8",
+    "stvg/decode.py": "3c5d0237a97c650970a76266874bcd83b1f77f302a70dda842fa38f9c22be2a8",
+    "stvg/runtime.py": "4b1fcfbfeefec90643c0c92621f4a1d28339aa5c1bf68ad8d7f69ab413176381",
+    "studies/map_paper_completion_v1/corruptions.py": "bdeff081ace3de01028b49ac1237a334f8f2e746d1c4bb00cb9f973e8528e82c",
+    "studies/no_shrink_main_v1/core.py": "e1338cd02ae86cb939dbe2fe9ce9cf55a0e991f17df8ce27295f98702c85f3ec",
+    "studies/no_shrink_main_v1/ns_common.py": "addbfbe2b2be14f4866a549d3789349c33a92578dcb418ceb5a4d8abf91ce341",
+    "tools/full_score.py": "419f03f9b68c1e63962f1a742bde485d92daf8662dace2167579d1a6dd423c08",
+    "studies/paper_followup_v1/common.py": "0ad80b94eb56a8cb4350d12d55d84e230fff4cc761d50b0252b9c6e719b50b29"
+  },
+  "fingerprint": "7ee8ded3135432ba8cec04effedcb8bf6c12d53f4dc7572b64844e3859a18da0"
+}
