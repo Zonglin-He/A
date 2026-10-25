@@ -12,3 +12,6 @@ Whole task/domain seal precedes independent official CPU scoring, then separate 
 
 
 [HC own-K budget](budget/hc2/ANALYSIS.md) completed whole scoring/audit/rootpairedanalysis/actualPNGinspection. Vidbudget at this snapshot whole-scored, independent arrayaudit/rootanalysis pending. Fullstructural domains remain pending.
+
+
+[Vid own-K budget](budget/vidstg/ANALYSIS.md) now complete independent whole scoring/all-array audit, root paired-tail/short-long/cost analysis and actual PNG inspection. Both budget domains are complete; full structural controls are still pending. The prior pending snapshot remains in history.
