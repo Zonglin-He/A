@@ -1,0 +1,36 @@
+"""Freeze old-panel synchronization; CPU tests do not impersonate real prefix calls."""
+from panel_common import *
+import argparse
+def prepare():
+ assert not(D/'plan.json').exists();selected.validate();code=[*sorted(S.glob('*.py')),R/'stvg/visual_prefix.py',R/'stvg/representation.py',R/'stvg/inputs.py',R/'stvg/runtime.py',R/'studies/paper_review_suite_v1/shifts.py',R/'tools/full_score.py'];inputs=[selected.D/'plan.json',selected.D/'preflight_receipt.json',selected.D/'remaining_cache_audit.json',CGNEW/'plan.json',PREV/'corruptions/sealed.json',PREV/'corruptions/reporting_receipt.json',OLD/'selection.json',OLD/'shifts_plan.json',R/'configs/default.json',*[parent.D/f'corruption_{ds}_{suffix}.json'for ds in COUNTS for suffix in ['sealed','reporting_receipt']],*[selected.D/f'components_{ds}_{suffix}.json'for ds in COUNTS for suffix in ['sealed','reporting_receipt']]]
+ p=dict(schema='shared_corrected_ROI_old768_corruption_panel_sync_v1',authorization='User-specified first auxiliary DP removal requires exact matched old corruption feature synchronization; necessary original Source-or-prefix reconstruction authorized in independent plan, no blind full Source repetition.',cohort='Same frozen128queries/parents/domain ×Blur/JPEG/Dim,384views/domain768total; not full targetcorruption219690.',science='Same224 two-offset native appearance prefix from original source vis_encoder/input_proj at native FP16 autocast, original Source boxes/native interval/q0/geometry/eight teacher fixed by original complete hashes. New actual direct E-ROI features -> kappa0/beta1 oneprototype/jointMAP/newinterval finalDP. Selected path has no firstauxDP. Historical whole original auxiliary pool+MAP arrays checked exactly only as compatibility cost. No new full Source/text/motion/fusion/head forward or expert.',transforms='Original Blur5sigma1.5/JPEG30subsampling2/Dim.5 source function unchanged; exact original wholeviewRGB SHA and exact eight-frame teacher evidence_key/context+payload/receiptSHA mandatory. No clean-teacher substitution. No pixel/hit/GT/accuracy selection.',budget=dict(max_new_appearance_prefix_calls=768,max_new_full_Source=0,max_new_expert=0),teacher_runtime_fingerprint=read(OLD/'shifts_plan.json')['runtime_fingerprint'],paid_prefix='Every prefix.pt+SHA committed before teacher-context validation/newpool. Strict old-auxROI pooled features and old64MAP arrays required on actual new grids; any mismatch hard fails with raw/attempt preserved, no fallback to full Source or alternate precision. Commit newpred/compact/receipt+cold allarrays/readback then only own NEW prefix raw disposal withSHA. Old roots immutable. Sufficient compact supports selected replay, not arbitrary future repooling.',preflight='CPU validates old corrupt array contracts and real CLEAN retained raw-grid selected-method math/repeat/cold checks only. Does not establish corrupt-prefix GPU exactness. First actual paid corrupted prefix must satisfy per-query exact old pool/arrays/RGB/teacher context before any commit.',gate='Wait selected-method CG transfer actual successful exit and both independent full CG scores/audits, which already wait selected clean+structural+budget+actual matched timing. One GPU prefix worker, HC CPU may overlap Vid prefix; at most2CPU jobs.',evaluation='All384views/domain seal before independent official CPU labels, separate allarray/SHA/oldparent/teacher/means audit. Matched audited selected clean samequery/parent/duration, every signed positive/negative, severe t/v union/rescue, shortlong parent95CI/cost. Three views share128parents, not384independent. All data exposed; no tuning/unseen claim.',limits=dict(minimum_RAM_bytes=8*2**30,minimum_disk_bytes=80*2**30,private_bytes=160*2**30,stage_seconds=259200,CPU_jobs=2,CPU=[14,15],nice=19,io='idle3',CPU_threads=1,prefix_numeric_threads=4),failure='Preserve source/plan/log/partial/paidraw/attempt, no skip/fallback/hash waiver/blind prefix retry.',corruption_release_allowed=False,code_sha256={str(f.relative_to(R)):sha(f)for f in code},input_sha256={str(f.relative_to(R)):sha(f)for f in inputs});p['fingerprint']=digest(p);atomic(D/'plan.json',p);atomic(P/'protocol.json',{k:v for k,v in p.items()if k!='input_sha256'})
+ for f in code:
+  dest=D/'source_snapshot'/f.relative_to(R);dest.parent.mkdir(parents=True,exist_ok=True);dest.write_bytes(f.read_bytes())
+ print(p['fingerprint'])
+def preflight():
+ import torch,numpy as np
+ from panel_core import replay
+ from stvg.runtime import guard
+ from stvg.spatial import SpatialGeometry,evidence_dp
+ from stvg.representation import extract
+ from stvg.prototype import one_step
+ from stvg.current import map_interval
+ validate();sys.addaudithook(guard);torch.set_num_threads(4);proof=[]
+ for ds in COUNTS:
+  first=rows(ds)[0]
+  for view in VIEWS[:2]:
+   c,e=checked_parent(ds,first['id'],view);q,_=one_step(c['content_features'],c['native_prior'],kappa=64,beta=1);iv=map_interval(c['frame_ids'],q);g=SpatialGeometry.from_cached_geometry(c['geometry'])
+   with np.load(PREV/e['path'])as z:assert np.array_equal(z['FullMAP'],evidence_dp(g.for_interval(iv))['final'].numpy())and np.array_equal(z['FullMAP_interval'],iv)
+   proof.append(dict(dataset=ds,kind='old_actual_corrupt_contract_only',view=view,parent_compact_sha256=e['compact_sha256'],old_MAP_arrays_exact=True,no_new_corrupt_Efeatures_claim=True))
+  lookup={r['id']:r for r in records(ds)}
+  for key,e in list(fixed(PREV/'raw_reuse_index.json')[ds].items())[:2]:
+   assert sha(e['path'])==e['sha256'];raw=torch.load(e['path'],map_location='cpu',weights_only=False,mmap=True);c,origin=suite().load_parent(ds,lookup[key]);g=SpatialGeometry.from_cached_geometry(c['geometry']);f,_=extract(raw,g.E.numpy());ne=fixed(selected.D/f'components_{ds}_sealed.json')['files'][key];assert sha(selected.D/ne['path'])==ne['sha256']
+   with np.load(selected.D/ne['path'])as z:
+    compact=dict(Source=np.asarray(c['Source']),Source_interval=z['Source_interval'].tolist(),frame_ids=c['frame_ids'],positions8=c['positions8'],geometry=c['geometry'],q0=c['native_prior'],E_ROI_features=f,historical_boxes=z['HistoricalAuxDP'].copy(),historical_interval=z['HistoricalAuxDP_interval'].copy());a=replay(compact);b=replay(compact);assert all(np.array_equal(a[k],b[k])for k in a)and np.array_equal(a['FullMAP'],z['FullMAP'])and np.array_equal(a['FullMAP_interval'],z['FullMAP_interval'])
+   torch.set_num_threads(1)
+   try:b=replay(compact)
+   finally:torch.set_num_threads(4)
+   assert all(np.array_equal(a[k],b[k])for k in a);proof.append(dict(dataset=ds,kind='actual_clean_raw_grid_selected_math_only',raw_sha256=e['sha256'],Epool_posterior_MAP_finalDP_repeat_and_Torch4_Torch1_cold_exact=True,no_corrupt_prefix_GPU_claim=True))
+ assert not torch.cuda.is_initialized();rec=dict(status='passed_CPU_contract_and_cached_math_only',cases=proof,new_model=0,new_Source=0,new_prefix=0,new_expert=0,new_GT=0,actual_corrupted_prefix_still_requires_runtime_exact_bridge=True,code_sha256=sha(Path(__file__)),plan_sha256=sha(D/'plan.json'));atomic(D/'preflight_receipt.json',rec);atomic(P/'preflight_receipt.json',rec);print('CPU old-corrupt contracts and true clean raw-grid math passed; zero actual new prefix calls')
+if __name__=='__main__':
+ p=argparse.ArgumentParser();p.add_argument('command',choices=['prepare','preflight']);globals()[p.parse_args().command]()
