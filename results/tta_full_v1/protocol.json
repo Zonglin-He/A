@@ -1,0 +1,74 @@
+{
+  "schema": "official_Tent_SAR_full_targets_v1",
+  "authorization": "User explicitly requests full-target TTA baselines. Existing128query panels preserved. HC1902+Vid10303; exactlyTent/SAR same existing selected settings, no sweep.",
+  "cohort": {
+    "hc2": 1902,
+    "vidstg": 10303
+  },
+  "config_results": 24410,
+  "algorithms": {
+    "Tent": "Pinned SAR-repository Tent implementation, SGD lr1e-4/momentum.9,5steps",
+    "SAR": "Pinned SAR/SAMrho.05 lr1e-4/momentum.9,5steps/marginfraction.8/resetconstant.2"
+  },
+  "scope": "Temporal-decoder LayerNorm-affine STVG adapters only; cached early context/Source boxes remain fixed. Full target coverage is not full-network/canonicalBN/continual adaptation.0expert versus currentkappa0Ours8expert/0optimizer; disclose differing budgets.",
+  "readout": "Primary original native per-offset legalMAP+physicalhull. Secondary jointMAP isolatesreadout. CurrentOurs is independentlyauditedkappa0FullMAP, noMBR comparison.",
+  "reset": "Full decoder parameters/grads, optimizer/SARstate reset per query/method, native logits bitwise before adaptation and afterreset; actual selected affine weights/logits/entropy traces saved.",
+  "existing_contexts": {
+    "hc2": 294,
+    "vidstg": 315
+  },
+  "existing_completed_queries": {
+    "hc2": 128,
+    "vidstg": 128
+  },
+  "maximum_additional_Source": {
+    "hc2": 1608,
+    "vidstg": 9988
+  },
+  "maximum_additional_Source_total": 11596,
+  "reuse": "Exact existing256query512config NPZ/logits bytes+SHA+trial/reset/readout checks; inherited optimizer/source costs retained, not deployedforfree. Other existing contexts used after native input/layout/logit+parent inputbinding verification.",
+  "acquisition": "No interruption of activeHCgridcollector. After its successful exit, run fullTTAHC then existingcurrenttiming; Vidgrid+TTA run as one versionedhookedworker. The original unmodified Sourceforward produces both actual grids and actual7temporalkwargs; context andSHA saved before updates; exact model reset/Torch4 numerical context restored before original geometry/repool. Missing contexts only use one additional originalSource224query; no teacher. No posthoc synthesis from spatial features or outputboxes.",
+  "compact": "Only this new active acquired temporal input may be removed after committedNPZ+adaptedlogits+weights+receipt, readbackallreadouts and reset proof. Preserve originalSHA/disposalreceipt and unresolvedpaidattempts. Does not preserve arbitrary futureoptimizer/contextreplay. All old caches immutable.",
+  "evaluation": "Whole dataset1902or10303seal before independentCPUofficiallabels; allpositive/negative/severeuniononce/rescue/shortlong/parentclusterCI/logitchange/reliablefilter/cost. All fullsets historically exposed; no selection/retuning from results.",
+  "limits": {
+    "CPU_jobs": 2,
+    "CPU_affinity": [
+      14,
+      15
+    ],
+    "nice": 19,
+    "io": "idle3",
+    "minimum_RAM_bytes": 8589934592,
+    "minimum_disk_free_bytes": 85899345920,
+    "maximum_private_bytes": 171798691840,
+    "maximum_domain_seconds": 259200,
+    "GPU_workers": 1,
+    "new_expert": 0
+  },
+  "failure": "Any native/reset/hash/nonfinite mismatch hardstops and preserves code/plan/logs/partialpred/paidSourcecontext/attempt. No autoretry/skip/Sourcefallback/hashwaiver.",
+  "code_sha256": {
+    "studies/tta_full_v1/spatial_tta.py": "840735f60a215496c195ae77be62c612254acdbacfbe9bbb78c7991474d8ed41",
+    "studies/tta_full_v1/controller.py": "cb9dac663b018379162c390fbce65a0c30b40c85f8536003377729509d499831",
+    "studies/tta_full_v1/full_common.py": "6c18d8b082c3ffc8d13a286418c54889890685d5222a82bf5f414b3d46907df7",
+    "studies/tta_full_v1/run.py": "53301055d95811ba403c897fc49d74f740d8517d75a5f9d87e562e95f06bfb97",
+    "studies/tta_full_v1/engine.py": "9362b3de736862a9b1fb725e78a512719f45c16c04fca5afb62980231ea540cb",
+    "studies/no_shrink_main_v1/ns_common.py": "addbfbe2b2be14f4866a549d3789349c33a92578dcb418ceb5a4d8abf91ce341",
+    "studies/no_shrink_main_v1/run.py": "d0187e2903aa376888577cab8b0d2767e2687b23b200f493ec88ee0898e976c4",
+    "studies/no_shrink_main_v1/timing.py": "4205aab9d0a2d4a3cda2c6c8a0f6456d858fe815fb7f0777f785f868a29003e6",
+    "studies/map_paper_completion_v1/tta.py": "5b9969e1cf15b35975efb9d0bc0ef8c9794183ce96c0a5f0c32103bd08ca9bc2",
+    "studies/map_paper_completion_v1/spatial.py": "1430517baed897220faa94ddc1977f0585555d3de1072d1684b7265053cc06ae",
+    "studies/map_paper_completion_v1/spatial_runtime_v2.py": "0192a2be7c3c125be1dec4de93b98a66bd175a951ed901a1f5bdbbf67cbf0f30",
+    "studies/map_paper_completion_v1/spatial_core.py": "ab3ec52d49d675fe9c71711f525ddf77e640fd84564ad21bf74607dd609dd06c",
+    "studies/map_paper_completion_v1/common.py": "f1b2328be7f469f72f4f18f0f59c4df98b47c26e2d92139fac92113b7261ee6e",
+    "studies/entropy_tta_v2/run.py": "55e38db69bca514c3c2c8f7d7a7e448b3847a782e967d08d3cdcf05d55ceadbd",
+    "stvg/temporal_hidden.py": "b2ca065a86e447b1c6f40615abb67a96cff5612e4b8b97124cd00a8cc50701c5",
+    "stvg/native.py": "e34d3b08a76ec1baac08e4f158f42ce8e0bf1795a4034ee80801422d0b04ccbc",
+    "stvg/current.py": "d000f6edd15a2ef23a513efc7ef6ad8ecb8fd0889983bec6d384756e7e29ed87",
+    "stvg/readout.py": "dd22b7f4627375514df61b9a18cbfafcac2352de74b4a4dd5fcefc934da2f3e0",
+    "tools/full_score.py": "419f03f9b68c1e63962f1a742bde485d92daf8662dace2167579d1a6dd423c08",
+    "outputs/paper_followup_v1/reference_vendor/mr-eggplant_SAR/tent.py": "dd8c87abb8a32c67e96d8a6c6486b4195fef6e4b64f8d0c83b8b5d8153765ac7",
+    "outputs/paper_followup_v1/reference_vendor/mr-eggplant_SAR/sar.py": "0553a395ac2bc087049720f1f162789079fe5ee25aa6a1cf82b2ea6286d66eff",
+    "outputs/paper_followup_v1/reference_vendor/mr-eggplant_SAR/sam.py": "b0569de29015016996feae257d30be6cc36f80d42d0f51d4a201eb39d2491712"
+  },
+  "fingerprint": "4b147ab88d63b14bd394d8d4f94a48a4f1e30bcdb84d3da54b7abc6d09f3d2ab"
+}
