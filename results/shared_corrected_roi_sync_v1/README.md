@@ -18,3 +18,6 @@ Whole task/domain seal precedes independent official CPU scoring, then separate 
 
 
 [HC full structural controls](spatial/hc2/ANALYSIS.md) now complete whole scoring/all-array audit and root allpaired-tail/duration/interaction/cost interpretation. Both own-K budgets are already complete. Vid structural controls and downstream transfers remain pending; redundant removed-first-DP controls are not independent contributions.
+
+
+[Vid full structural controls](spatial/vidstg/ANALYSIS.md) now complete independent officialscore/all-array audit/rootpaired-tail/duration/interaction/cost interpretation. Both budgets and both full structural domains are complete. Successor CG acquisition is active; old768panel/full219690corruption/additionalgenericTTA remain pending.

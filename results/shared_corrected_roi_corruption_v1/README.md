@@ -9,3 +9,6 @@ Exact original full-viewRGB SHA and exact corrupted-eight-frame teacher context/
 CPU preflight passed four original corrupt-array contracts and four real CLEAN raw-grid selected-method math/repeat/Torch4-vs-Torch1 cold checks. It created no model/Source/prefix/teacher/GT, and does not establish actual corrupted-prefix GPU compatibility. The first paid corrupt prefix and every later view must pass the strict runtime bridge before commit.
 
 Whole384views/domain seal before independent official CPU scoring, then separate fullarray/oldparent/teacher/SHA/allmeans audit. Reports join audited selected clean values by samequery/parent/duration; everyview all positive/negative/signed/severe union/rescues/shortlong parentCI/cost retained. All three views share128parents, not384independent parents. Original source/expert acquisitions stay nonzero. Root analyzes and publishes all six domain/view results; this startup is not new corruption performance evidence. Full219690corruption and later generic TTA remain unreleased.
+
+
+Independent root_export_v1.py is prepared for full384-view/domain audited scalar analysis; no actual new prefix or corruption accuracy result is claimed by this report-only preparation.
