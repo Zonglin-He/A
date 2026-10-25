@@ -61,3 +61,6 @@ User additionally requests full-target corruption with DECOTA-like types/severit
 
 
 HC full1902/227 structural controls are now sealed, independently scored, all-array audited and root-exported: [15-row structural report](spatial/hc2/ANALYSIS.md). Shared correction/bothanchors/bidirectionalaffinity and complete spatial removal controls have positive vIoU differences; first-auxiliaryDP and auxiliaryROI controls do not establish benefit, and the factorial vIoU interaction is negative. All severe cases/shortlong/actualSourcecosts retained. Vid structure/current-kappa0 timing/fullTentSAR still pending under independent interface-recovery owner; no oldqueue resumes.
+
+
+Currentκ0 actualuncacheddeploymenttiming complete:192Source96expert+4Source2expertwarmup,alloutputsbitwise,16parents/domain3repeats averaged beforepairedCI; root actually timing.py export and root_export_v1.py timing. HC3.245173→4.127469s extra+.882296CI[.842935,.931519];Vid2.853141→3.842596s extra+.989455CI[.859297,1.164939]. [Allcalls/startup/nestedstages](deployment/ANALYSIS.md). Same5090/14600KF/native224FP32/eight/noquerycache/CPUgroupspaused-resumed/sharedhost16panel notthroughput. Oldκ64timing remainsseparate. FullHC Tent/SARcomplete, Vidstructure/TTA andfullcorruption pending.

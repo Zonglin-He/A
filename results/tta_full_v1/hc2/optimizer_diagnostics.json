@@ -1,0 +1,43 @@
+{
+  "saved_logits_diagnostics": {
+    "Tent": {
+      "changed_logits_queries": 1902,
+      "nonzero_parameter_delta_queries": 1902,
+      "changed_native_interval_queries": 3,
+      "changed_joint_interval_queries": 0
+    },
+    "SAR": {
+      "changed_logits_queries": 1676,
+      "nonzero_parameter_delta_queries": 1676,
+      "changed_native_interval_queries": 2,
+      "changed_joint_interval_queries": 0
+    }
+  },
+  "official_reliable_filter_counts": {
+    "Tent": {
+      "nonzero_parameter_delta_queries": 1902,
+      "changed_native_queries": 3,
+      "changed_jointMAP_queries": 0,
+      "empty_first_SAR_iterations": 0,
+      "empty_second_after_first_SAR_iterations": 0
+    },
+    "SAR": {
+      "nonzero_parameter_delta_queries": 1676,
+      "changed_native_queries": 2,
+      "changed_jointMAP_queries": 0,
+      "empty_first_SAR_iterations": 1000,
+      "empty_second_after_first_SAR_iterations": 1130
+    }
+  },
+  "matched_joint_readout_control": {
+    "Tent": {
+      "all_query_scored_metrics_equal_SourceJointMAP": true,
+      "changed_joint_intervals": 0
+    },
+    "SAR": {
+      "all_query_scored_metrics_equal_SourceJointMAP": true,
+      "changed_joint_intervals": 0
+    }
+  },
+  "explanation": "Parameter/logit changes do not imply a discrete interval or metric gain. Native and jointMAP readouts are different. The jointMAP change from nativeSource cannot be attributed to optimizer updates."
+}
