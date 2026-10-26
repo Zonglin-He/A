@@ -1,0 +1,15 @@
+{
+  "schema": "FP32_official_BF16_memory_storage_compatibility_positive_control_v1",
+  "scope": "Official predictor source unchanged quantizes mask memory toBF16 for storage. FP32 V linear gets explicit lossless BF16\u2192FP32 only ifdtype differs. FP32 input object unchanged; no autocast/parameter/storagequantization/propagationdirection changes. One already-successful firstcase replay must match ALL65original fullfloat SHA and original prediction before bounded failed-query recovery; preserve actual extra model/forward/cost even on mismatch, no automatic retry.",
+  "limits": {
+    "additional_control_tracking_queries": 1,
+    "new_Source": 0,
+    "new_original_expert": 0,
+    "new_GT": 0
+  },
+  "code_sha256": {
+    "studies/edgetam_comparison_v1/memory_dtype_compat_v1.py": "5ee5fefa3eb6e9f00c1a21d93f5a7dc7116714a2e9ff0aaaacfe1fa6ada4b319",
+    "studies/edgetam_comparison_v1/dtype_positive_control_v1.py": "63593fbc4b80f8ad816a7f048bd39241c58fb6cd16e4f7061601d5843860226e"
+  },
+  "fingerprint": "fde1e3d5757ea4c266eae82fbe0e402d73753fbd50bb0e1a73dfc556e2cb6e00"
+}

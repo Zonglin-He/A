@@ -1,0 +1,3 @@
+# Additional complete-spatial CG-HC control cancelled by user
+
+The user explicitly cancelled this additional control before any GPU model, new Source/expert, full prediction or official GT scoring. The already completed conservative CG-HC and active CG-Vid are unaffected. The science plan, all227 actual retained raw SHA inventory, two-case integrated CPU repeat/current/predeclared-profile/Torch1-vs4 checks and unused checkpoint-observer preparation remain preserved. They are preparation evidence, not full HC results. No GPU execution plan/owner was launched. Do not execute this namespace without a new explicit user request.

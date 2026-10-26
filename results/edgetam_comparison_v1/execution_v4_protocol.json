@@ -1,0 +1,24 @@
+{
+  "schema": "EdgeTAM_FP32_official_BF16_memory_storage_linear_boundary_compatibility_v4",
+  "scope": "Original official predictor stores memory asBF16 unchanged; explicit lossless stored BF16\u2192FP32 cast only at memory cross-attention V linear withFP32weights, no autocast/weight/vendor/threshold/direction change. FP32inputs passed unchanged; CPU reference linear exact and actual successful firstcase all65original fullfloatSHA/prediction exact after hook. Original9paidcommits independent allcold audited and reused noforward, failed10oldattempt kept, one bounded new attempt only with fullraw/model/castcounter rootbridge before continuation. OriginalCG/gamma/corruption userpaused, source/oldexpert0/fixed256. Retain allmodelloads/errorcosts; total258completedtracking including2engineeringvalidation requests plus1failedpartial request, 259attempts, conditionalcached costnotdeployment.",
+  "limits": {
+    "unique_cohort_queries": 256,
+    "reused_successful_queries": 9,
+    "max_remaining_actual_tracking_queries": 247,
+    "additional_completed_engineering_requests": 2,
+    "additional_failed_partial_requests": 1,
+    "max_total_actual_requests": 259,
+    "new_Source": 0,
+    "new_original_expert": 0,
+    "new_optimizer": 0
+  },
+  "code_sha256": {
+    "studies/edgetam_comparison_v1/pilot_execution_v4.py": "3a1ce918ab4080ac45e29f15933543a43e01f64d2b06122b6b2f7d43fdd13ab5",
+    "studies/edgetam_comparison_v1/pilot_gate_v4.py": "309ab3352558f397cb4c4e90ace5b3d290b3ecf600b1657d0302f47970753538",
+    "studies/edgetam_comparison_v1/pilot_worker_runtime_v4.py": "21956fd54346c1a7c63fd591f813ed499537efa7acb4ffc12791506cb4c7fda7",
+    "studies/edgetam_comparison_v1/pilot_report_runtime_v4.py": "14dfd1bda968cd07d37044508245c84acb066d9b9fa996cd0ad99f920fad8ce8",
+    "studies/edgetam_comparison_v1/pilot_controller_runtime_v4.py": "1683f936c4655ec75c45b17d79a08762fa6fa8c4457799d43714f0d0ed99a00d",
+    "studies/edgetam_comparison_v1/memory_dtype_compat_v1.py": "5ee5fefa3eb6e9f00c1a21d93f5a7dc7116714a2e9ff0aaaacfe1fa6ada4b319"
+  },
+  "fingerprint": "09b7eb184720136b4d880aadbf44b24226b37a9034f4f9efcb6b72de8cdae7b1"
+}

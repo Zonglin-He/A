@@ -1,0 +1,14 @@
+{
+  "schema": "one_precise_missing_float_checkpoint_restore_v1",
+  "reason": "First committed EdgeTAM query full raw was disposed before two-query root barrier. Exact old raw mask SHA metadata and packed/predictions retained; second raw intact. One additional tracking request of ONLY exact same first input/checkpoint/rules may restore bytes; every output must equal original full SHA or hardfail/no retry. Both original successful tracking costs and all three model-load stages retained. Not a new score/query or Source acquisition.",
+  "limits": {
+    "max_additional_tracking_queries": 1,
+    "new_Source": 0,
+    "new_original_expert": 0,
+    "new_GT": 0
+  },
+  "code_sha256": {
+    "studies/edgetam_comparison_v1/restore_first_raw_v1.py": "66ba70bbaf18d40954b5c94cae5f03ba5b83fa63cde893d6373da1627397cf43"
+  },
+  "fingerprint": "8c0f6d3338cb3761f8fa6fe0ad0e36adaebbce763b974629411c0dbac11c8c38"
+}
