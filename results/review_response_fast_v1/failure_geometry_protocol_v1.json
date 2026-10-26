@@ -1,0 +1,24 @@
+{
+  "schema": "output_geometry_full_census_v1",
+  "scope": {
+    "hc2": 1902,
+    "vidstg": 10303
+  },
+  "arms": [
+    "Source",
+    "FullMAP",
+    "FinalIndependent"
+  ],
+  "definitions": "Finite normalized cxcywh only. Empty=width<=0 or height<=0. Partial out-of-image=any rectangle coordinate outside[0,1], strict with no epsilon. Fully outside=positive-area box but zero image intersection. Separate all-native and own-predicted-event support. All are geometric proxies, not identity switch/occlusion/correspondence truth. No GT file, label scoring, fallback, clipping or inference.",
+  "frozen_current_outputs": true,
+  "code_sha256": {
+    "studies/review_response_fast_v1/failure_geometry_v1.py": "b2a579efde3d61daa7b1c7be260a0bdefff7f1f0985fe94dd231aeb98fd77124"
+  },
+  "input_sha256": {
+    "outputs/shared_corrected_roi_v1/components_hc2_sealed.json": "3b68ac713e390a83274b8777e54de95f5f930dc852538999d3e3551afd42fa57",
+    "outputs/shared_corrected_roi_v1/components_vidstg_sealed.json": "a8976fd15d06b958ddcd5a288dcf4a2876adca6fd41d8b2b228356d6309df429",
+    "outputs/shared_corrected_roi_v1/components_hc2_reporting_receipt.json": "8e198ed6327f68e8dcfe963692163941a0203caeb1ad51f456a461e956fbf320",
+    "outputs/shared_corrected_roi_v1/components_vidstg_reporting_receipt.json": "0cf74e596a5d48485fb3bf1040a8df180cdc4f0a781b6f3f8815e3b4e0f9308a"
+  },
+  "fingerprint": "8f131500efc3073cf89b07eac8f4680af72e3b6f0d311a30d481a9f4f3a5494f"
+}

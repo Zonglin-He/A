@@ -1,0 +1,58 @@
+{
+  "schema": "review_response_fast_retained192_v1",
+  "cohort": {
+    "hc2": 192,
+    "vidstg": 192
+  },
+  "selection": "All original retained raw entries in frozen index. Previously exposed development/confirmation sources; no accuracy selection and no unseen claim.",
+  "gamma_values": [
+    0,
+    0.25,
+    0.5,
+    0.75,
+    1
+  ],
+  "gamma_prediction_reuse": "Old two192 seals and complete five-chain compact replay, then independent standalone subset official score and audit. Old full Gamma not resumed.",
+  "ROI_arms": [
+    "Source",
+    "CorrectedROI",
+    "SourceROI",
+    "GlobalAppearance",
+    "ShiftedROI",
+    "RandomROI"
+  ],
+  "ROI_controls": "All use exact fixed current MAIN spatial candidates/coefficients, q0 and eight observations. Each ROI computes its own prototype/posterior/jointMAP interval and finalDP. CorrectedROI equals current arrays. SourceROI only changes temporal appearance region. Global uses all valid native grid cells. Shifted x=center +/-0.25 by SHA byte parity, no output clipping. Random fixed query center U[.1,.9]^2 from SHA bytes, per-frame original E width/height. Same context1.5, centering/unit/prototype; out-of-grid original global fallback retained and counted. Negative controls need not be pure semantic isolation.",
+  "new_Source": 0,
+  "new_expert": 0,
+  "new_optimizer": 0,
+  "whole192_seal_before_independent_official": true,
+  "separate_all_array_actual_ROI_repool_SHA_means_audit": true,
+  "statistics": "Parent-paired10000 bootstrap pointwise95%, all signed/severe t/v union once over5pp/rescues/short<=5s long; no tuning.",
+  "resource": "One CPU consumer14-15 nice19 idleIO Torch/BLAS1, max2 shared heavyCPU, RAM8GiB/disk80GiB/private160GiB/72h.",
+  "code_sha256": {
+    "studies/review_response_fast_v1/common.py": "64085a396772f51219188b80538ae8c826a9760fe8fb7a7ed4f7db9b75a453a0",
+    "studies/review_response_fast_v1/run_v1.py": "846d312fb02a21b4a6357a451e291c19ab08ca852fb0d43879a23b513a3d73fb",
+    "studies/review_response_fast_v1/prepare_v1.py": "bd172d212980fe450da07be54df75213fc8cfd20d3d17c08ec9795d869d9f4e4",
+    "studies/review_response_fast_v1/controller_v1.py": "b614ca51886cf6dd900185233b1956561fce536f2834027ed861249354abf51a",
+    "studies/review_response_fast_v1/core_v1.py": "1e835399a8abac577717fc090f05c83a93d5a18499d111b931df651d551419fd",
+    "studies/review_strengthening_v1/gamma_cached_core_v1.py": "51a93ccc7ba64a5789123f41daf3c70153a398ed67b0a5b806d9b83c77f885f7",
+    "studies/review_strengthening_v1/review_common.py": "7f2973597cd482960bc1d880086fa4a8f6b419a301048286868013408f3fe81e",
+    "stvg/representation.py": "1e10152274996a046dc45a1bbfd90727dda4083f3c1afcea21f2765f97f0e666",
+    "stvg/prototype.py": "b263154ae8c6ff4e4f8162e4ddea4498302b86f2ec65e8cfac0aa92d351d425b",
+    "stvg/spatial.py": "54c3cec0ec643e47464957730f482302609855164196b361ee4bee1efd025c10",
+    "stvg/current_shared_roi.py": "83e440aafdba60a69086e141bc837388f8dd5e2d2c2f8e1b2475b48ce35a80c6"
+  },
+  "input_sha256": {
+    "outputs/review_response_fast_v1/intent_v1.json": "04805750db61d2fabdd3f2c50821fae3642c8986292fcf796f40161f9bae4f51",
+    "outputs/review_response_fast_v1/cohort_v1.json": "7efdceda22a76c5844a9b1935803af4052c408b6641f40ad7de0b4d161a5d25b",
+    "outputs/review_strengthening_v1/gamma_retained_v1/plan.json": "5f238734a938bc3ea6f5ca726a5c839f844f613064ef78819f3b5800586ad5b9",
+    "outputs/map_paper_completion_v1/raw_reuse_index.json": "2193e852a3f7c9e87622efa345532b21be636d4730b108d58ce164ca9d7df129",
+    "outputs/review_strengthening_v1/gamma_retained_v1/hc2/sealed_retained_subset.json": "0dcef21c1d6c2ca69f5eb77c78d1ee0a0ec776b35ba871afff9ae8e51aa3838c",
+    "outputs/shared_corrected_roi_v1/components_hc2_sealed.json": "3b68ac713e390a83274b8777e54de95f5f930dc852538999d3e3551afd42fa57",
+    "outputs/shared_corrected_roi_v1/components_hc2_reporting_receipt.json": "8e198ed6327f68e8dcfe963692163941a0203caeb1ad51f456a461e956fbf320",
+    "outputs/review_strengthening_v1/gamma_retained_v1/vidstg/sealed_retained_subset.json": "eb5b98848e22318b73372c3f7b335060d3f898e71d9430196c7ba090c2ddb776",
+    "outputs/shared_corrected_roi_v1/components_vidstg_sealed.json": "a8976fd15d06b958ddcd5a288dcf4a2876adca6fd41d8b2b228356d6309df429",
+    "outputs/shared_corrected_roi_v1/components_vidstg_reporting_receipt.json": "0cf74e596a5d48485fb3bf1040a8df180cdc4f0a781b6f3f8815e3b4e0f9308a"
+  },
+  "fingerprint": "bb8593e050b8e7d9246e9e9e1352f5be9e6caf9600170a7bc0714dc391bce182"
+}

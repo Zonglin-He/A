@@ -1,0 +1,62 @@
+{
+  "schema": "Source_rectangular_mask_single_expert_EdgeTAM_v1",
+  "cohort": {
+    "hc2": 128,
+    "vidstg": 128,
+    "selection": "Exact original confirm128uniqueparents per domain. All256 newly mask-prompt tracking, old box-prompt outputs only independent paired reference."
+  },
+  "prompt": "Original Source normalized cxcywh at its eight original indices. Binary native HxW rectangle includes pixel centers satisfying lo<=center<hi; image support clips naturally. Empty/off-image prompt remains empty. Official add_new_mask bilinear antialias1024 resize and >=0.5 threshold unchanged. All8 masks submitted before official start0 forward only, freshstate eachquery.",
+  "allowed_inputs": [
+    "Source",
+    "native_logits",
+    "records",
+    "frame_ids",
+    "positions8",
+    "actual decoded native RGB"
+  ],
+  "forbidden": [
+    "ReferDINO boxes/masks",
+    "current E/features/prototype/posterior/event",
+    "GT"
+  ],
+  "output": "Official logit>0 halfopen bounding box, emptyzero, noSourcefallback/noOursDP; observed original Source boxes written back exactly as in box-prompt comparator; native peroffsetMAPhull Source event.",
+  "main_pair": "Rectangular-mask-prompt EdgeTAM vs existing independently scored BoxPromptEdgeTAM with same Source/eight/RGB/event/model/direction/precision. Not comparison of original mask annotation vs boxes; no second expert.",
+  "precision": "Original pinned official982tensors FP32/noautocast/noTF32; officialBF16memory storage plus already validated lossless V-linear boundary conversion; strict actual CUDA postprocessing.",
+  "new_tracking": 256,
+  "new_Source": 0,
+  "new_ReferDINO": 0,
+  "new_optimizer": 0,
+  "first_two_new_each_domain": "Full float checkpoint before any validation; root separate CPU process checks every native mask/RGB/Source rectangle/pred/packedbox/interval before acknowledgement. Retain first until two-case ack; after committed cold exact only own new float scratch may be disposed, SHA/disposal retained.",
+  "whole128_seal_before_independent_official": true,
+  "independent_mask_input_SHA_means_audit": true,
+  "root_all_signed_tails_shortlong_parent10000CI_actual_PIDstart_cost_required": true,
+  "no_full12205_release": true,
+  "resource": "singleGPU/max2heavyCPU14-15 nice19 idleIO1thread; RAM8GiB/disk80GiB/private160GiB/72h",
+  "code_sha256": {
+    "studies/source_rectmask_edgetam_v1/worker_v1.py": "7f0897aa97afa3cca86b339730849003d29653aa253284b9ef4ba36d1bba3c08",
+    "studies/source_rectmask_edgetam_v1/mask_common.py": "8c7914406e7b029d5881e6bb09ace95ba17ce680d8990ee2b8e6c36e1f2d4a6d",
+    "studies/source_rectmask_edgetam_v1/prepare_v1.py": "c1fe06ac3c1ea059e6782d12c8e69c0fc8586e703d4ad46c1bb48fda809177e6",
+    "studies/source_rectmask_edgetam_v1/preflight_v1.py": "e03d9b3eb50110ca5f7dab8926d3d621bc39daa280ad30c773f1053f7eab0530",
+    "studies/source_rectmask_edgetam_v1/report_v1.py": "6e71963ca1123a4312bc5d3968f2ff555543237b7f872ba683009fda86520795",
+    "studies/source_rectmask_edgetam_v1/controller_v1.py": "7f2406907763334f61f1d0977736c47c29e70b77d10290b0884cdde2bf242340",
+    "studies/source_rectmask_edgetam_v1/root_export_v1.py": "8973f25334140a38dbfaf31d6fa8d334bd292cafa4ae0dbcaafa0a0c3bb540b7",
+    "studies/source_rectmask_edgetam_v1/adapter_v1.py": "7589c2a75a2b5a31ee0e5c8eaf28cae3a58f2682d0451f4c04a8e3e6f38377de",
+    "studies/edgetam_comparison_v1/model_adapter_v1.py": "62263f54878e2172fae8c28a8a12a2cdc91c44fa1db8e6b8ce13dcd02f23a51b",
+    "studies/edgetam_comparison_v1/memory_dtype_compat_v1.py": "5ee5fefa3eb6e9f00c1a21d93f5a7dc7116714a2e9ff0aaaacfe1fa6ada4b319",
+    "studies/edgetam_comparison_v1/adapter.py": "8d1a9c060db54cf6993dfa29d0af5efa66b5799cc35ec58dad9ef8aa5a4319dc",
+    "studies/review_strengthening_v1/sam2_input_adapter_v1.py": "be259c38a187ee0778cf400953ef780316af9ea41b5e87a2d820159767ee9118",
+    "studies/fresh_external_comparison_v1/edge_common_v1.py": "5f628704f0606e959fda80826fc1074081f9a1db6a1a8e13997541cb2ced0d3e"
+  },
+  "input_sha256": {
+    "outputs/source_rectmask_edgetam_v1/authorization_v1.json": "fb5fd0facd4259f0476319407a6a8b03ac785e8c5953b110faf5631c77377311",
+    "outputs/paper_review_suite_v1/selection.json": "b7e64d396b7058276c3cb78f43f593caec5489eb82f45faebc7b87e7dd8de597",
+    "outputs/edgetam_comparison_v1/source_checkpoint_lock.json": "0e0c5fc739557709f78e82625f0b50452fde231abb9eaf50d2ffae9e06bf4bc9",
+    "outputs/edgetam_comparison_v1/extension_reuse_receipt.json": "243493c99510bac56e59ae14dc7ceb0ae45dabebeb5f7a8495f8cc6490d70614",
+    "outputs/source_prompt_edgetam_v1/complete_published_small_v1.json": "63352ba0f13e04b284b5a2f6f450d55b17e048de56c833c3f65d3b5fd9262c9f",
+    "outputs/source_prompt_edgetam_v1/pilot_v1/hc2/sealed.json": "d3bc85ea5a7e7402d984c1378912f8ff2d1b5007ce5650760de0de1c83679697",
+    "outputs/source_prompt_edgetam_v1/pilot_v1/hc2/reporting_receipt.json": "0f1209cac72b0fd14fc4dff1fb3eeb95326e29bd0183d4ea39ba9c8c834d1362",
+    "outputs/source_prompt_edgetam_v1/pilot_v1/vidstg/sealed.json": "4c1000cbcb5282fac84ebdc0e0b00c751d06d9cd534321d788ef0799c4b270ab",
+    "outputs/source_prompt_edgetam_v1/pilot_v1/vidstg/reporting_receipt.json": "dcc379e6a7172da6ed24685bc251954c28fd100624a9f81c2dbf71a6d57c2547"
+  },
+  "fingerprint": "5d752b4e9d2509a44c870e47159a8788736c0a7cfb6d57c2fa721bf2835e6f6d"
+}

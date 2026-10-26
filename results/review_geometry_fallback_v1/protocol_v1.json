@@ -1,0 +1,41 @@
+{
+  "schema": "review_posthoc_geometry_controls_v1",
+  "cohort": {
+    "hc2": 1902,
+    "vidstg": 10303
+  },
+  "arms": [
+    "Source",
+    "FullMAP",
+    "ClipToImage",
+    "SourceFallbackFullOutside"
+  ],
+  "definition": "Current Full interval unchanged. ClipToImage independently clips x0/y0/x1/y1 to[0,1] and converts to cxcywh, zero-area retained. SourceFallbackFullOutside replaces a frame with original Source box iff predicted box image intersection has zero area or nonpositive size. Other frames unchanged. Both are deterministic geometry-only gates, no GT/score threshold, no time repair.",
+  "selection": "Descriptive posthoc reviewer response after full scores and out-of-image rates already exposed; not preregistered unseen validation. All full-domain predictions seal before independent official metrics for two new arms. Existing Source/Full scalars inherited only with exact source-prediction and original full audit SHA.",
+  "statistics": "All signed/severe t/vuniononce>5pp/rescue/shortlong parentpaired10000 pointwiseCI. All outcomes retained, no current method/parameter change.",
+  "new_model": 0,
+  "new_Source": 0,
+  "new_expert": 0,
+  "new_optimizer": 0,
+  "maxCPUjobs": 2,
+  "resources": "CPU14-15 nice19 idleIO Torch/BLAS1 singleconsumer, RAM8GiB/disk80GiB/private160GiB/72h",
+  "code_sha256": {
+    "studies/review_geometry_fallback_v1/common.py": "9db3d103489880da763b8d5ccf50310854a7a5934bbad51145c0193cc0dbd012",
+    "studies/review_geometry_fallback_v1/run_v1.py": "9e1bfac88ade29732272ba536d521136f15f367f12c472c58a9833e715aff1a7",
+    "studies/review_geometry_fallback_v1/prepare_v1.py": "77129f445088472568ac7ca4d6c8b07f8a54a4c024372736acced74115984840",
+    "studies/review_geometry_fallback_v1/controller_v1.py": "7f2030462b041015bffbabaf1498956e05a45c3d8f94db982f3358234f440922",
+    "tools/full_score.py": "419f03f9b68c1e63962f1a742bde485d92daf8662dace2167579d1a6dd423c08",
+    "studies/shared_corrected_roi_v1/shared_common.py": "4baab238e0eddbadba2ed21495f839a51425a9a412c776519c003da28d0e27f2"
+  },
+  "input_sha256": {
+    "outputs/shared_corrected_roi_v1/components_hc2_sealed.json": "3b68ac713e390a83274b8777e54de95f5f930dc852538999d3e3551afd42fa57",
+    "outputs/shared_corrected_roi_v1/components_hc2_reporting_receipt.json": "8e198ed6327f68e8dcfe963692163941a0203caeb1ad51f456a461e956fbf320",
+    "outputs/shared_corrected_roi_v1/components/hc2/metrics.json": "a96e38cb1022bca32c8882df25081485ce4c77ed3ecde587848353553a0d0f9e",
+    "results/review_response_fast_v1/failure_geometry/hc2/reporting_receipt_v1.json": "4510bf136902458023c210aa792d659bf50120571bb3b93ee7f466aacf7dc1c5",
+    "outputs/shared_corrected_roi_v1/components_vidstg_sealed.json": "a8976fd15d06b958ddcd5a288dcf4a2876adca6fd41d8b2b228356d6309df429",
+    "outputs/shared_corrected_roi_v1/components_vidstg_reporting_receipt.json": "0cf74e596a5d48485fb3bf1040a8df180cdc4f0a781b6f3f8815e3b4e0f9308a",
+    "outputs/shared_corrected_roi_v1/components/vidstg/metrics.json": "083585d6660df30a286992bddf11af9387463db12aacda173d283fedbcbededd",
+    "results/review_response_fast_v1/failure_geometry/vidstg/reporting_receipt_v1.json": "81746951349f40ef4517c8e2090a78cec904220c50baff588ee12f5051200b3e"
+  },
+  "fingerprint": "d140a0faaf36cd434855c8bb550c575001bcd2a6e32951e524417c8c7fdbfc91"
+}
