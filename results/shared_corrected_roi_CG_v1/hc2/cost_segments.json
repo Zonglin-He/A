@@ -1,0 +1,50 @@
+{
+  "actual_counts": {
+    "queries": 1902,
+    "reused_raw": 227,
+    "new_Source": 1675,
+    "new_Source_forwards": 1675,
+    "new_expert": 0
+  },
+  "actual_worker": {
+    "pid": 3429690,
+    "startticks": 253613860
+  },
+  "whole_worker_elapsed_seconds": 7790.221312953159,
+  "model_load_once_for_actual_worker": {
+    "target": "hc2",
+    "source": "vidstg",
+    "checkpoint": "vidstg.pth",
+    "sha256": "cbf3ee4036dab88de3314dc3a520ab0eb2b4d292a2796d12d0f3493c39eed9ef",
+    "model_key": "model_ema",
+    "all_model_state_loaded": true,
+    "ignored_deterministic_extras": [
+      "text_encoder.body.embeddings.position_ids"
+    ],
+    "precision": "original_FP32_no_autocast",
+    "resolution": 420,
+    "single_native_grid": true,
+    "source_config_yaml": "vidstg.yaml",
+    "original_source_thresholds_preserved": true,
+    "actual_load_seconds": 8.596691225189716,
+    "worker": {
+      "pid": 3429690,
+      "startticks": 253613860
+    }
+  },
+  "actual_PID_start_segments": {
+    "3429690:253613860": {
+      "queries": 1902,
+      "legacy_raw_reused": 227,
+      "new_Source": 1675,
+      "new_expert": 0,
+      "Source_seconds": 3347.6331557920203,
+      "pipeline_seconds": 7501.290022974368,
+      "compatibility_seconds": 992.0044054468162,
+      "selected_finish_seconds": 43.25216154521331
+    }
+  },
+  "original_Source_teacher_acquisition_nonzero": true,
+  "selected_first_auxiliary_DP": false,
+  "scope": "Source/pipeline/compatibility/selected-finish/load clocks are nested as recorded and must not be summed. Reused raw captures retain acquisition costs. These conditional research walls are not uncached deployment latency. Failed model/paid attempts remain separate evidence; no blind retries. Sufficient states cannot support arbitrary future repooling after only owned new raw disposal."
+}

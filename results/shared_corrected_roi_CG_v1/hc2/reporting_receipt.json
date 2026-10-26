@@ -1,0 +1,53 @@
+{
+  "status": "verified_whole_domain",
+  "queries": 1902,
+  "SHA_checks": 5706,
+  "all_compact_arrays_cold_rederived_exact": true,
+  "all_available_Source_native_logits_q0_original_exact": true,
+  "actual_E_ROI_pool_checked_before_raw_disposal": true,
+  "all_means_recomputed": true,
+  "score_sha256": "176441858571f88733edb792fac629897529ff686fca6448798f81cedde2ae00",
+  "worker_segments": {
+    "3429690:253613860": {
+      "queries": 1902,
+      "legacy_raw_reused": 227,
+      "new_Source": 1675,
+      "new_expert": 0,
+      "Source_seconds": 3347.6331557920203,
+      "pipeline_seconds": 7501.290022974368,
+      "compatibility_seconds": 992.0044054468162,
+      "selected_finish_seconds": 43.25216154521331
+    }
+  },
+  "model_load": {
+    "target": "hc2",
+    "source": "vidstg",
+    "checkpoint": "vidstg.pth",
+    "sha256": "cbf3ee4036dab88de3314dc3a520ab0eb2b4d292a2796d12d0f3493c39eed9ef",
+    "model_key": "model_ema",
+    "all_model_state_loaded": true,
+    "ignored_deterministic_extras": [
+      "text_encoder.body.embeddings.position_ids"
+    ],
+    "precision": "original_FP32_no_autocast",
+    "resolution": 420,
+    "single_native_grid": true,
+    "source_config_yaml": "vidstg.yaml",
+    "original_source_thresholds_preserved": true,
+    "actual_load_seconds": 8.596691225189716,
+    "worker": {
+      "pid": 3429690,
+      "startticks": 253613860
+    }
+  },
+  "actual_counts": {
+    "queries": 1902,
+    "reused_raw": 227,
+    "new_Source": 1675,
+    "new_Source_forwards": 1675,
+    "new_expert": 0
+  },
+  "inherited_expert_and_Source_acquisition_cost_nonzero": true,
+  "new_GT_scoring": 0,
+  "scope": "Actual acquisition and selected finish/compatibility/pipeline/load are nested or separate as recorded; not deployment latency. Owned new raw grids discarded only after committed exact cold replay; sufficient states do not permit arbitrary later repooling."
+}

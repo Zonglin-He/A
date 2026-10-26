@@ -10,3 +10,6 @@ Whole domain seal then separate official CPU labels and independent cold-array/S
 
 
 First actual paid HC runtime acquisition is now active after all predecessor audits and ownedexit. [Root verification of two actual newSourcecommits](actual_new_Source_bridge_root_receipt.json) checks checkpoint/context/coldarrays/disposal; this is not whole-domain performance evidence. Frozenworker performed rawpool/native-logit exact checks before only ownedraw disposal; root cold replay uses retained sufficient state. Read-only root_export_v1.py is prepared for later whole scored/audited domains.
+
+
+HC1902 is now complete official scored/allarrayaudited/rootexported; [full results](hc2/ANALYSIS.md),allpositives/negatives/native-vs-joint/historicalcomparisons/duration/cost. This HC profile still disables unobserved propagation. Vid10303 is running under the original owner; whole CG,old768/fullcorruption are not complete.
