@@ -1,0 +1,3 @@
+# Failure visualization implementation
+
+Frozen render.py binds input manifests, labels, full prediction/audit/metric seals and deterministic negative selection. Independently frozen display_v2.py and display_v3.py preserve selection and all numerical statements while correcting layout and adding an off-canvas notice. Final actual output and root inspection use outputs/failure_visualization_v1/display_v3. Completed renders should not be rerun as new experiments. All media, captions, real query/parent identities and coordinates remain private; public scalar evidence is results/failure_visualization_v1. See that README for exact comparison scopes and post-hoc selection limitations.
