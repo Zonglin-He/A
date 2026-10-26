@@ -1,0 +1,71 @@
+{
+  "scope": "Shared global runtime metadata, count once across BOTH domains; per-domain copies are references, not additive loads.",
+  "model_loads_once_by_PID_start": [
+    {
+      "worker": {
+        "pid": 1347854,
+        "startticks": 257412592
+      },
+      "seconds": 7.500272929202765,
+      "load_audit": {
+        "all_learned_parameters_covered": true,
+        "all_shared_state_tensors_array_exact": true,
+        "missing_deterministic_buffers": [],
+        "unexpected_verified_deterministic_buffers": [
+          "text_encoder.embeddings.position_ids"
+        ],
+        "redundant_Imagenet_and_Roberta_weight_preloads_suppressed": true,
+        "official_vendor_source_unmodified": true,
+        "model_parameters": 176262207,
+        "elapsed_CPU_construction_and_load_seconds": 2.922352352179587,
+        "actual_forward": 0
+      },
+      "device_name": "NVIDIA GeForce RTX 5090",
+      "torch_version": "2.7.0+cu128",
+      "compute_dtype": "float32",
+      "TF32": false,
+      "model_instances": 1
+    },
+    {
+      "worker": {
+        "pid": 1350179,
+        "startticks": 257446603
+      },
+      "seconds": 5.409768912009895,
+      "load_audit": {
+        "all_learned_parameters_covered": true,
+        "all_shared_state_tensors_array_exact": true,
+        "missing_deterministic_buffers": [],
+        "unexpected_verified_deterministic_buffers": [
+          "text_encoder.embeddings.position_ids"
+        ],
+        "redundant_Imagenet_and_Roberta_weight_preloads_suppressed": true,
+        "official_vendor_source_unmodified": true,
+        "model_parameters": 176262207,
+        "elapsed_CPU_construction_and_load_seconds": 2.8285762388259172,
+        "actual_forward": 0
+      },
+      "device_name": "NVIDIA GeForce RTX 5090",
+      "torch_version": "2.7.0+cu128",
+      "compute_dtype": "float32",
+      "TF32": false,
+      "model_instances": 1
+    }
+  ],
+  "failed_first_successful_forward": {
+    "dataset": "hc2",
+    "committed_predictions": 0,
+    "raw_output_lost_before_checkpoint": true,
+    "original_raw_output_SHA_exists": false,
+    "whole_worker_elapsed_wall_seconds": 10.992211201228201,
+    "forward_specific_clock_missing": true
+  },
+  "logical_complete_new_expert_predictions": 256,
+  "actual_successful_new_expert_forwards_including_lost_first": 257,
+  "no_original_lost_raw_exact_recovery_claim": true,
+  "new_Source": 0,
+  "new_current_expert_in_alternative_workers": 0,
+  "new_optimizer": 0,
+  "root_first2_each_domain_checks_not_model_forwards": true,
+  "nested_times_not_additive": true
+}
