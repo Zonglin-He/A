@@ -1,0 +1,36 @@
+{
+  "schema": "SAM2_CPU_input_contract_v1",
+  "scope": "Four actual cached teacher contexts and native RGB grids, lossless official preprocessing and mask/box/API contracts only. No model creation/forward/optimizer/GT score/GPU or new owner.",
+  "source_commit": "2b90b9f5ceec907a1c18123530e92e794ad901a4",
+  "checkpoint_sha256": "2647878d5dfa5098f2f8649825738a9345572bae2d4350a2468587ece47dd318",
+  "code_sha256": {
+    "studies/review_strengthening_v1/sam2_input_preflight_v1.py": "f2b0abe9f1257c493c812ea0719482c32336f86e91fdbe79046ce40443c4e0a2",
+    "studies/review_strengthening_v1/sam2_input_adapter_v1.py": "be259c38a187ee0778cf400953ef780316af9ea41b5e87a2d820159767ee9118",
+    "studies/review_strengthening_v1/review_common.py": "7f2973597cd482960bc1d880086fa4a8f6b419a301048286868013408f3fe81e",
+    "stvg/decode.py": "3c5d0237a97c650970a76266874bcd83b1f77f302a70dda842fa38f9c22be2a8",
+    "stvg/teacher_bridge.py": "123070ae2f38c0c1f30afeb79a90de3278d370c9794eaabe81a48db1f70188e8",
+    "stvg/teacher.py": "8ddfa01c26becbff3dad094cf6d96d3075ea2088a97ec20487ebe6749d4f2fa5"
+  },
+  "input_sha256": {
+    "outputs/review_strengthening_v1/intent.json": "d149e3ecfcf371ee2be603f4532f020e17427c3786cae7b97b7fcd48b70097bd",
+    "outputs/review_strengthening_v1/selection.json": "705df2dc3f3b6b7f2c9c95ed98970522b4ff7399fffb4d10043a7c8e8fcdd07a",
+    "outputs/review_strengthening_v1/sam2_source_lock.json": "b5708c1ab182d432e518a8b2b2b024892e92d6b4bf21308a0fd5b77b9438ac04",
+    "outputs/review_strengthening_v1/vendor/sam2.1_hiera_large.download.json": "10210b01b461666dfe937da43bc98f2dbe6cfa302600e2a2dc6c74a3507c2d1b",
+    "outputs/review_strengthening_v1/sam2_runtime_import_receipt.json": "c08211d452c74a86532268a73548c1514c54fd24a8ee8cee181ac65d6fa38fb9"
+  },
+  "vendor_sha256": {
+    "outputs/review_strengthening_v1/vendor/sam2/sam2/sam2_video_predictor.py": "912555920a77f72ded07839efa33fcceecc79f3523abbec783f0be46ee2c55c2",
+    "outputs/review_strengthening_v1/vendor/sam2/sam2/build_sam.py": "856d64d71e44407401297b551884fb4cd1aba8082de0ff5fc60fac3dd42f094d",
+    "outputs/review_strengthening_v1/vendor/sam2/sam2/modeling/sam2_base.py": "69a46b44e8625f509791352bd09beaafe589cd7d872721384e63d37f9fdc6e41",
+    "outputs/review_strengthening_v1/vendor/sam2/sam2/utils/misc.py": "01600c01c161cd079d7106fb1d4da845cf91aa31ab2bcecaf8cb151b6d6d20a2",
+    "outputs/review_strengthening_v1/vendor/sam2/sam2/configs/sam2.1/sam2.1_hiera_l.yaml": "1dbd6cb6dfebeaf588c7006ee222c6efbfa9049a7ad472a3cdfb2f5d919e8107"
+  },
+  "rules": {
+    "RGB": "Pinned original ffmpeg/native physical sampled frame grid. Lossless ndarray adapter replaces only JPEG file decoding; exact official PIL square resize/float32-buffer/normalization is verified against official helper on PNG files.",
+    "prompt": "Same eight actual selected ReferDINO native logits, nested padding must be entirely false, native-logit bilinear resize directly to original H,W (align_corners=False), threshold >0. Aspect-preserving teacher resize verified. No new expert.",
+    "boxes": "Normalized cxcywh, half-open pixel bounds [min,max+1), empty mask zero-area [0,0,0,0], no source fallback.",
+    "propagation": "Fresh state, all eight initial conditioning masks inserted in physical temporal order before official forward from earliest and reverse prefix; duplicate earliest conditioning output must match exactly. No custom fusion or our DP.",
+    "real_execution": "NOT released by this CPU preparation plan. Requires separate frozen model execution, exclusive GPU ownership after CG/old768, official CUDA postprocessing support without silent extension fallback, actual first-query bridge and fixed pilot128parents/domain then full cohorts."
+  },
+  "fingerprint": "19cb87bfe6118e6e64a9d255253f822b8e4bf4d888d83b0b147e2474b715f747"
+}

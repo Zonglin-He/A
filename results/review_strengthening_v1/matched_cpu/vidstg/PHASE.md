@@ -1,3 +1,3 @@
-# Incomplete Vid matched-time CPU stage
+# VidSTG matched-time spatial comparison
 
-All10303 predictions are sealed; independent official CPU score stage is score. No completed array audit or root analysis is claimed. No prefix accuracy is reported. Runtime is privately paused only for this public snapshot and must resume afterward. Do not treat protocol, partial reporting output or prediction seal as stage completion.
+Complete all10303predictions/732parents, 51515officialchecks, independent20606prediction/receiptSHA checks plus bound parent/current arrays, all cold-derived arrays and means verified. Root full paired analysis/shortlong/tails/cost exported. Same current temporal interval; SourceMatchedTime is not native main-table Source. Ours−interpolation v−.106955368pp CI[−.250579117,.036605481] crosseszero; no superiority or equivalence claim. SAM2 comparison still pending.

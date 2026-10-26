@@ -18,3 +18,13 @@ All full sets were already exposed. Gamma curves do not erase historical target-
 
 
 Current result: full HC1902 matched-time CPU controls completed independent official score/allarray-SHA-means audit and root paired-tail/duration/cost export. Vid10303 prediction complete but score/audit/root completion pending. SAM2 source and898083611-byte checkpoint downloaded; no model execution. Four retained-grid gamma preflights passed, fullgamma stillpending. Engineering report-key and execution-import failures preserved with independent adapters, no scientific file edits or lost predictions. [HC full analysis](../../results/review_strengthening_v1/matched_cpu/hc2/ANALYSIS.md).
+
+
+2026-10-26 update: both complete matched-time spatial domains now independently officially scored, all-array/SHA/mean audited and root exported. Vid10303/732 has Ours−replacement v+1.751371637pp CI[1.472720880,2.044449172], but Ours−interpolation v−.106955368 CI[−.250579117,.036605481]. Short/long interpolation differences also cross zero; no two-domain interpolation superiority claim. All negative tails and costs remain. SAM2 is not part of this completed CPU comparison.
+
+SAM2 now has a separate CPU-only input-adapter protocol and four actual RGB/eight-teacher-context preflights: original selected logits, unpadded coordinate resize, lossless original RGB with bitwise official PIL preprocessing, empty-mask zero-area contract. No SAM2 model/propagation/GPU has run. `sam2_input_adapter_v1.py` is an independently versioned data interface; vendor files and earlier frozen science remain unchanged. Actual model execution still needs its own frozen plan/exclusive GPU/official CUDA postprocessing check and first actual bridge.
+
+Current offline quality/distance is independently frozen in `offline_current_protocol_v1.json`: full selected predictions only, original quality definition checked against old records, actual GT-supported anchors only, fixed physical-distance bins with common annotated unobserved-frame support, parent CIs and explicit coverage. Separate derive/audit/root stages; preparation or a derived file is not a completed analysis. Original CG and old768 scheduling unchanged.
+
+
+HC current offline expert-quality/physical-distance analysis is now independently audited and root exported; see `results/review_strengthening_v1/offline_current/hc2/ANALYSIS.md`. Low-quality group negative and unsupported/no-GT cases are retained. Vid offline derive is running, audit/root pending.

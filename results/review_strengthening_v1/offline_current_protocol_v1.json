@@ -1,0 +1,51 @@
+{
+  "schema": "current_selected_offline_quality_distance_v1",
+  "scope": "Both complete selected domains, 12205 queries. No new predictions/model/Source/expert/optimizer. Separate offline derive and independent full rederive audit before root analysis/publication.",
+  "code_sha256": {
+    "studies/review_strengthening_v1/offline_current_v1.py": "c9e848da2a62b7adca425802125692ec0f7de312b0e7ac58e6940fe074b04e47",
+    "studies/review_strengthening_v1/review_common.py": "7f2973597cd482960bc1d880086fa4a8f6b419a301048286868013408f3fe81e",
+    "stvg/metrics.py": "c8db46913786a9f300984d7d7ca7ab219be30e8c91a1d27781d23155597d5665",
+    "stvg/metrics_base.py": "4257912cd58f441f36bcafb1ce93eeeae83de18312166ac9017a28687e31f6d0",
+    "tools/full_score.py": "419f03f9b68c1e63962f1a742bde485d92daf8662dace2167579d1a6dd423c08"
+  },
+  "quality": "Exactly original mean actual-GT-supported expert anchor box IoU; four fixed quarter bins plus unscorable group. Also report annotated anchor coverage and anchor histogram. Check every quality value against old offline definition, not old method scores. Unannotated/out-of-event frames are never fake zero quality.",
+  "distance": "Only actually GT-annotated native sampled UNOBSERVED frames, same support for every arm, nearest physical expert observation distance divided by fps; fixed [0,.5),[.5,1),[1,2),[2,4),[4,inf). No additional annotation or dense interpolated GT. Query-equal within-bin mean with parent-cluster CI; frame-weighted descriptive means and exact coverage separately.",
+  "methods": "Current Ours/FinalIndependent/Source/E and original fixed center-logsize interpolation; coordinate-only fixed-support sIoU ignores each temporal interval. Quality groups use already-audited main-table t/v scalar values; interpolation main scores are not relabeled current-time. No GT-based online gate.",
+  "inference_GT": false,
+  "offline_GT": true,
+  "full_target_exposure": true,
+  "default_unchanged": true,
+  "limits": {
+    "max_GPU_workers": 1,
+    "max_CPU_jobs": 2,
+    "CPU_cores": [
+      14,
+      15
+    ],
+    "nice": 19,
+    "ionice": 3,
+    "min_RAM_bytes": 8589934592,
+    "min_disk_bytes": 85899345920,
+    "max_private_bytes": 171798691840,
+    "max_domain_seconds": 259200
+  },
+  "private_plan_fingerprint": "10b2feac3f482852d58d219b17af7173cc23aa850a5d2620a44eb7b2a601c74b",
+  "input_sha256_values": [
+    "d149e3ecfcf371ee2be603f4532f020e17427c3786cae7b97b7fcd48b70097bd",
+    "bc209ac67273f0f2835c929cf5d977452dff04c901e7ed56223414a04fcb44a2",
+    "3b68ac713e390a83274b8777e54de95f5f930dc852538999d3e3551afd42fa57",
+    "8e198ed6327f68e8dcfe963692163941a0203caeb1ad51f456a461e956fbf320",
+    "a96e38cb1022bca32c8882df25081485ce4c77ed3ecde587848353553a0d0f9e",
+    "bbf8305c4db306b1ee02e78092ab2735dd29de9b005184ac0be046a0f85d1c98",
+    "af9162edbae2f455a40ac1a4f2a7a1441cd93f09d5950d8efa919b4f12a528db",
+    "d84e3fb2b0a46995cbdc73ad2b0f15cc3250e4c3482c63c823d7e75ed779caa7",
+    "faf739e72a065bbac2079715aea4f4e89b0e2014da854013ea0c9728cb295c81",
+    "a8976fd15d06b958ddcd5a288dcf4a2876adca6fd41d8b2b228356d6309df429",
+    "0cf74e596a5d48485fb3bf1040a8df180cdc4f0a781b6f3f8815e3b4e0f9308a",
+    "083585d6660df30a286992bddf11af9387463db12aacda173d283fedbcbededd",
+    "252b177b662246f5eda26beee1f6ce94761c73bc0185c64132196ceb5a489f32",
+    "3ed55772f708929392ddb58f8b6657f4b1efc1cb7d11298f0bfabcc04538e62e",
+    "ad345e4ba3b0d5cc1051ed5c2fb14c8000a4f8329fbbe920a0b55a31762a074f"
+  ],
+  "input_locations_private": true
+}
