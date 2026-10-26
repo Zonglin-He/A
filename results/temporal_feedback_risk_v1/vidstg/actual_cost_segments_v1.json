@@ -1,0 +1,125 @@
+{
+  "actual_workers": {
+    "predict": {
+      "worker": {
+        "pid": 1332028,
+        "startticks": 257243705
+      },
+      "elapsed_wall_seconds": 5421.173837041017,
+      "process_CPU_time_independently_measured": false
+    },
+    "score": {
+      "actual_parallel_shards": [
+        {
+          "worker": {
+            "pid": 1845568,
+            "startticks": 258099723
+          },
+          "queries": 5151,
+          "elapsed_wall_seconds": 368.1943953242153,
+          "actual_exit_code": 0,
+          "exit_evidence_sha256": "85337b7129f4e38673dfc8acb6bf3920a25caad2655b6e55d63e357d0806c6ef"
+        },
+        {
+          "worker": {
+            "pid": 1845569,
+            "startticks": 258099723
+          },
+          "queries": 5152,
+          "elapsed_wall_seconds": 395.95305190468207,
+          "actual_exit_code": 0,
+          "exit_evidence_sha256": "a79c2ca63b869ba96d05f2e788fce8dbe78caff54c98a46d7c4119ff306b72b8"
+        }
+      ],
+      "merge_worker": {
+        "pid": 1879891,
+        "startticks": 258139591
+      },
+      "whole_phase_elapsed_wall_seconds": 455.4886514181271,
+      "parallel_workers_not_additive": true,
+      "merge_exit_code": 0,
+      "process_CPU_time_independently_measured": false,
+      "original_full_report_suffix_unchanged": true
+    },
+    "audit": {
+      "actual_parallel_shards": [
+        {
+          "worker": {
+            "pid": 1884813,
+            "startticks": 258145347
+          },
+          "queries": 5151,
+          "elapsed_wall_seconds": 413.728187546134,
+          "actual_exit_code": 0,
+          "exit_evidence_sha256": "3c428e5243c0204d43e459c60941a1f70059b39087ec6e0a385bb6780caa0c8a"
+        },
+        {
+          "worker": {
+            "pid": 1884814,
+            "startticks": 258145347
+          },
+          "queries": 5152,
+          "elapsed_wall_seconds": 411.8160194759257,
+          "actual_exit_code": 0,
+          "exit_evidence_sha256": "3c428e5243c0204d43e459c60941a1f70059b39087ec6e0a385bb6780caa0c8a"
+        }
+      ],
+      "merge_worker": {
+        "pid": 1920176,
+        "startticks": 258187020
+      },
+      "whole_phase_elapsed_wall_seconds": 420.3086673351936,
+      "parallel_workers_not_additive": true,
+      "merge_exit_code": 0,
+      "process_CPU_time_independently_measured": false,
+      "original_full_report_suffix_unchanged": true
+    },
+    "prior_uncheckpointed_serial_score": {
+      "original_processes": [
+        {
+          "pid": 1318498,
+          "startticks": 257114336,
+          "state": "S",
+          "PGID": 1318498,
+          "CPU_seconds": 0.38,
+          "stat": "1318498 (python) S 4421 1318498 1318498 0 -1 4194304 35484 2542630 535 8967 18 20 375877 57929 20 0 1 0 257114336 40263680 3245 18446744073709551615 106279033618432 106279035959349 140731504969776 0 0 0 0 16781312 2 1 0 0 17 13 0 0 0 0 0 106279036929616 106279038370304 106279156908032 140731504976008 140731504976195 140731504976195 140731504979880 0\n",
+          "cmdline": "/home/wwww/visual grounding/stvg-native2d-simplepath/.conda/tubedetr/bin/python -B /home/wwww/visual grounding/stvg-native2d-simplepath/studies/temporal_feedback_risk_v1/controller_v1.py "
+        },
+        {
+          "pid": 1567878,
+          "startticks": 257786257,
+          "state": "R",
+          "PGID": 1318498,
+          "CPU_seconds": 2529.71,
+          "stat": "1567878 (python) R 1318498 1318498 1318498 0 -1 4194304 1487502 0 51 0 203421 49550 0 0 39 19 1 0 257786257 5799063552 399749 18446744073709551615 97925830094848 97925832435765 140730460778496 0 0 0 0 16781312 2 0 0 0 17 14 0 0 0 0 0 97925833406032 97925834846720 97926589554688 140730460786808 140730460787011 140730460787011 140730460790696 0\n",
+          "cmdline": "/home/wwww/visual grounding/stvg-native2d-simplepath/.conda/tubedetr/bin/python -B /home/wwww/visual grounding/stvg-native2d-simplepath/studies/temporal_feedback_risk_v1/run_v1.py score --dataset vidstg "
+        }
+      ],
+      "completed_query_lower_bound": 6300,
+      "official_metric_checks_lower_bound": 50400,
+      "no_perquery_scalar_checkpoint_available": true,
+      "not_claimed_reused": true,
+      "actual_intentional_exit_after_new_full_audit": true,
+      "OS_wait_code_unavailable_not_fabricated": true
+    },
+    "engineering_profile_and_equivalence": {
+      "Vid_official_checks": 32,
+      "HC_official_checks": 32,
+      "new_inference_calls": 0,
+      "no_full_HC_rerun": true
+    }
+  },
+  "conditional_query_segments": {
+    "1332028:257243705": {
+      "queries": 10303,
+      "cached_conditional_elapsed_seconds": 1223.259200737346
+    }
+  },
+  "new_STVG_model": 0,
+  "new_Source": 0,
+  "new_expert": 0,
+  "new_optimizer": 0,
+  "semantic_annotation_NLP_POS_model_constructors": 1,
+  "inherited_Source_expert_cost_nonzero": true,
+  "scope": "Cached replay includes SHA/resource checks and intentional CPU pauses; not uncached deployment, nested times not added. POS text annotation is separate from STVG model/expert inference."
+}
