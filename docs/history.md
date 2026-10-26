@@ -60,6 +60,8 @@
 
 # 项目历史与当前状态
 
+2026-10-26 17:42 TubeDETR空间所选配置VidSTG 10303/732完整seal/独立CPU评分，Root首次全核全部新payload/receipt/request/参数/修订、61818有限数组及Source/物理时间逐位一致，全部匿名标量/均值/父聚类区间独立复算通过。全量dense sIoU41.437894→41.213025（−.224869pp，95%父聚类区间[−.505827,+.049920]），空间转正目标未在此总体实现，826条s降>5pp全部保留；v13.116927→15.929212，固定时间收益不归因空间调参。原参数不据全量重选。HC1902已真实资格通过并继续推理，非两域最终终态；LLaVA仍3949暂停排后。见[Vid全量报告](../results/tubedetr_spatial_search/vidstg/full_report.md)。
+
 2026-10-26用户在显式暂停后授权继续，优先TubeDETR并重启巡检。独立priority_resume执行修订覆盖旧LLaVA先行等待，LLaVA仍保持3949/10303暂停。原冻结full.py和全量计划/所选参数/Source原生MAP/时间不改；仅替换唯一队列顺序断言，其他GPU算法AST相同，新证据均绑定修订。每域先真实已有query逐位资格，再Vid10303/HC1902完整推理与独立CPU评分；0新专家、25GiB保护、不按全量选参。原暂停与旧终态证据保留，见[tubedetr_spatial_search](tubedetr_spatial_search.md)。
 
 2026-10-21原生mask资格已完整：两个预设信号均未通过几何参照门槛，保留负结果，不启动其适应。逐帧文本分数事件支持AUC0.6512（81条可计算）不能解决完全错过事件的26条。按用户“为什么”的机制要求，新增同原输入哈希16条执行后候选探针：Direct方向充分线搜索与4个OPD随机方向各17真实decoder forward，选择只用同一布局奖励，GT仅封存后作诊断；披露OPD更多backward，非新方法成绩、不自动全量。见[执行后候选协议](tubedetr_executed_candidates.md)。
