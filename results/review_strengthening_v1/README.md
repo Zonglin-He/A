@@ -28,3 +28,6 @@ Current offline quality/distance is independently frozen in `offline_current_pro
 
 
 HC current offline expert-quality/physical-distance analysis is now independently audited and root exported; see `results/review_strengthening_v1/offline_current/hc2/ANALYSIS.md`. Low-quality group negative and unsupported/no-GT cases are retained. Vid offline derive is running, audit/root pending.
+
+
+Latest2026-10-26: both offline current quality/distance domains now fully independently audited/rootexported, signed-tail supplements and both actual PNG views complete/SVG scalar curves released. Three actual private Source/interpolation/independent/Ours+GT mechanism PNG/PDFs rendered and rootviewed, illustrative posthoc selection disclosed; publichash/scalar/protocol only. HC retained192gamma precompute sealed/noGTmetrics; Vid retained192precompute running, not fullgamma. Two CGHC full-spatial cached CPU cases passed, not fullHC/newGPU. SAM2 official extension CPUcompiled/imported with two engineering failures preserved and exactobject relink; actual GPUmodel/propagation still0. Current details: results/review_strengthening_v1/ROOT_FINDINGS_20261026.md.

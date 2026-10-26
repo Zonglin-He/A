@@ -1,0 +1,59 @@
+{
+  "schema": "current_gamma_retained_raw_precompute_v1",
+  "queries": {
+    "hc2": 192,
+    "vidstg": 192
+  },
+  "full_domain_queries": {
+    "hc2": 1902,
+    "vidstg": 10303
+  },
+  "values": [
+    0,
+    0.25,
+    0.5,
+    0.75,
+    1
+  ],
+  "scope": "Exactly existing retained192rawgrids/domain only, all five full gamma chains. This is partial prediction preparation for eventual full sensitivity, not full-domain metrics or a new sensitivity score. No GT scoring or metric-based choice here.",
+  "math": "Same all-eight shared initialization/calibration; rebuild E, bidirectional geometry, actual native pretext ROI pool, kappa0/beta1 posterior and jointMAP, final DP at each own interval. Default gamma arrays must match current selected full bitwise. Compact retains gamma-specific pooled features/geometry/posterior for independent cold replay; raw grids are still old read-only files.",
+  "future": "Remaining missing raw requires a separate full acquisition/execution freeze and original TA224 Source-or-prefix at most once per query shared across all five arms; zero new expert. Do not substitute pooled vectors for raw grids. Full1902/10303 seal before official labels, allpositive/negative sensitivity/parentCI/rootcurves; no retuning or source-only selection claim.",
+  "limits": {
+    "max_GPU_workers": 1,
+    "max_CPU_jobs": 2,
+    "CPU_cores": [
+      14,
+      15
+    ],
+    "nice": 19,
+    "ionice": 3,
+    "min_RAM_bytes": 8589934592,
+    "min_disk_bytes": 85899345920,
+    "max_private_bytes": 171798691840,
+    "max_domain_seconds": 259200
+  },
+  "code_sha256": {
+    "studies/review_strengthening_v1/gamma_cached_v1.py": "feb0fdba3a443c378395c349987b9707224493f7ea9e32a7b8ceac6c40f1a5bd",
+    "studies/review_strengthening_v1/gamma_cached_core_v1.py": "51a93ccc7ba64a5789123f41daf3c70153a398ed67b0a5b806d9b83c77f885f7",
+    "studies/review_strengthening_v1/review_common.py": "7f2973597cd482960bc1d880086fa4a8f6b419a301048286868013408f3fe81e",
+    "studies/map_paper_completion_v1/spatial_core.py": "ab3ec52d49d675fe9c71711f525ddf77e640fd84564ad21bf74607dd609dd06c",
+    "stvg/initialization.py": "21168f4a6740e5b4f306863bd1b852587cc71ed8d15dd0dc3b8b643da70e7842",
+    "stvg/spatial.py": "54c3cec0ec643e47464957730f482302609855164196b361ee4bee1efd025c10",
+    "stvg/representation.py": "1e10152274996a046dc45a1bbfd90727dda4083f3c1afcea21f2765f97f0e666",
+    "stvg/prototype.py": "b263154ae8c6ff4e4f8162e4ddea4498302b86f2ec65e8cfac0aa92d351d425b",
+    "stvg/current_shared_roi.py": "83e440aafdba60a69086e141bc837388f8dd5e2d2c2f8e1b2475b48ce35a80c6"
+  },
+  "input_sha256": {
+    "outputs/review_strengthening_v1/intent.json": "d149e3ecfcf371ee2be603f4532f020e17427c3786cae7b97b7fcd48b70097bd",
+    "outputs/map_paper_completion_v1/raw_reuse_index.json": "2193e852a3f7c9e87622efa345532b21be636d4730b108d58ce164ca9d7df129",
+    "outputs/review_strengthening_v1/gamma_preflight_plan.json": "28cb9852e09beff1e7aba92f1734485858409ab042cdc1b6ae47bed1adf9099c",
+    "outputs/review_strengthening_v1/gamma_preflight_receipt.json": "60e32c725e3ea125fb2546088911b44ffef8dcef38e34649d3cd3ed31c6d8d8f",
+    "outputs/simplepath_full_v2/hc2/sealed.json": "bc209ac67273f0f2835c929cf5d977452dff04c901e7ed56223414a04fcb44a2",
+    "outputs/shared_corrected_roi_v1/components_hc2_sealed.json": "3b68ac713e390a83274b8777e54de95f5f930dc852538999d3e3551afd42fa57",
+    "outputs/shared_corrected_roi_v1/components_hc2_reporting_receipt.json": "8e198ed6327f68e8dcfe963692163941a0203caeb1ad51f456a461e956fbf320",
+    "outputs/simplepath_full_v2/vidstg/sealed.json": "faf739e72a065bbac2079715aea4f4e89b0e2014da854013ea0c9728cb295c81",
+    "outputs/shared_corrected_roi_v1/components_vidstg_sealed.json": "a8976fd15d06b958ddcd5a288dcf4a2876adca6fd41d8b2b228356d6309df429",
+    "outputs/shared_corrected_roi_v1/components_vidstg_reporting_receipt.json": "0cf74e596a5d48485fb3bf1040a8df180cdc4f0a781b6f3f8815e3b4e0f9308a"
+  },
+  "fingerprint": "b545b2ee3ba0dfa7db81766d932aafef61edd1ce279edbc9bc6b0d17485fce03"
+}

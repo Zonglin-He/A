@@ -1,0 +1,37 @@
+{
+  "schema": "current_mechanism_actual_RGB_GT_v1",
+  "current_method": "Shared-corrected-box ROI features, kappa0; first auxiliary DP removed, final interval trajectory DP retained.",
+  "selection": "Three post-hoc illustrative extremes, not representative prevalence: HC largest positive Full-Source unobserved fixed-support sIoU among positive v changes; Vid largest positive Full-Source t change among positive v changes; Vid largest positive Full-FinalIndependent v change. Deterministic ID tie breaks. Require >=3 actually annotated unobserved native sampled frames. DP case must have distinct saved independent/final boxes.",
+  "frames": "Five actual native sampled RGB frames per case: first/last expert observation plus three evenly-spaced GT-supported unobserved nodes; DP case instead uses the three largest saved independent-vs-final box-coordinate differences among GT-supported unobserved nodes. All 8 observation locations shown on timeline. No extra expert observation or interpolated GT.",
+  "rows": "Source with native original-MAP interval; fixed-eight original center/logsize interpolation with common current interval; fixed-candidate independent control and current Ours with identical current interval. Actual GT boxes overlaid only where annotation exists, never fabricated. Timeline separately shows native Source/current/GT boundaries. Source boxes outside its own interval are explicitly marked inactive.",
+  "isolation": "Read-only saved arrays and actual per-case cold selected-core replay; no new model/Source/expert/optimizer or official GT scoring. Offline GT is used only for disclosed illustrative selection, frame annotation support and rendering. Competitor interpolation receives no our DP. SAM2 is pending and is not fabricated or shown as completed.",
+  "privacy": "All query IDs, RGB, captions, frame IDs, predicted/GT coordinates and figure media remain private; public only protocol, scalar deltas, data/code/PNG/PDF hashes and root visual inspection receipt.",
+  "code_sha256": {
+    "studies/review_strengthening_v1/mechanism_figure_v1.py": "df839e35e8570ac18893eca4cbd0271f1e2a4ee39eded8824b3562dff35b708e",
+    "studies/review_strengthening_v1/review_common.py": "7f2973597cd482960bc1d880086fa4a8f6b419a301048286868013408f3fe81e",
+    "stvg/decode.py": "3c5d0237a97c650970a76266874bcd83b1f77f302a70dda842fa38f9c22be2a8",
+    "studies/shared_corrected_roi_v1/core.py": "6dd47d57698adb59c2cee44cab987fed2eefa4eaeaec0424260d5370a47d85f8",
+    "stvg/metrics_base.py": "4257912cd58f441f36bcafb1ce93eeeae83de18312166ac9017a28687e31f6d0"
+  },
+  "private_plan_fingerprint": "05de92eff4d957cb7feb3572cf5147c7722a0df4a0d2d41372a9079db6ef8368",
+  "input_sha256_values": [
+    "d149e3ecfcf371ee2be603f4532f020e17427c3786cae7b97b7fcd48b70097bd",
+    "e964f42157acbf430e073a6852a616ab6bc2882dd9f0b6cfcad63eb1feb17b7c",
+    "4cac5022f8fd35f4606f65dbba3ff4a1f333c42a4903c2ca5a25eb6514c246ed",
+    "bc209ac67273f0f2835c929cf5d977452dff04c901e7ed56223414a04fcb44a2",
+    "3b68ac713e390a83274b8777e54de95f5f930dc852538999d3e3551afd42fa57",
+    "8e198ed6327f68e8dcfe963692163941a0203caeb1ad51f456a461e956fbf320",
+    "a96e38cb1022bca32c8882df25081485ce4c77ed3ecde587848353553a0d0f9e",
+    "8a39b7f900065154e2dc4a4a9d1fb7dc5deb489ee3f49af90c54caca01179da3",
+    "d84e3fb2b0a46995cbdc73ad2b0f15cc3250e4c3482c63c823d7e75ed779caa7",
+    "af9162edbae2f455a40ac1a4f2a7a1441cd93f09d5950d8efa919b4f12a528db",
+    "faf739e72a065bbac2079715aea4f4e89b0e2014da854013ea0c9728cb295c81",
+    "a8976fd15d06b958ddcd5a288dcf4a2876adca6fd41d8b2b228356d6309df429",
+    "0cf74e596a5d48485fb3bf1040a8df180cdc4f0a781b6f3f8815e3b4e0f9308a",
+    "083585d6660df30a286992bddf11af9387463db12aacda173d283fedbcbededd",
+    "0cb998e2eb795d903c3a8a70e0274d69f2a307fb9022a52305e5d41829b0c3c1",
+    "ad345e4ba3b0d5cc1051ed5c2fb14c8000a4f8329fbbe920a0b55a31762a074f",
+    "3ed55772f708929392ddb58f8b6657f4b1efc1cb7d11298f0bfabcc04538e62e"
+  ],
+  "input_locations_private": true
+}

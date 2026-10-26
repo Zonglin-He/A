@@ -1,0 +1,49 @@
+{
+  "status": "official_SM120_extension_linked_CPU_import_passed_no_kernel",
+  "source_commit": "2b90b9f5ceec907a1c18123530e92e794ad901a4",
+  "source_kernel_sha256": "926c277e24f40609622bb4ce49912838d1c799e63edcccc1c75e65e701acd497",
+  "all_original_569_vendor_files_unchanged": true,
+  "architecture": "sm120",
+  "compiler": "CUDA12.8 nvcc",
+  "MAX_JOBS": 1,
+  "CPU_affinity": [
+    14,
+    15
+  ],
+  "nice": 19,
+  "ionice": 3,
+  "CUDA_VISIBLE_DEVICES": "",
+  "SAM2_BUILD_ALLOW_ERRORS": 0,
+  "compiled_object_sha256": "d9aa284d44c1c1bc5d213bca04b0f7cbe9bf62694b9c1c1944e3996c8539e88d",
+  "module_sha256": "66bec037cef0641e2437173f39817742b602c17ff576c6155d5ebaaffeee0417",
+  "module_bytes": 1332056,
+  "torch": "2.7.0+cu128",
+  "CUDA_initialized": false,
+  "model_created": 0,
+  "GPU_kernel_calls": 0,
+  "Source": 0,
+  "expert": 0,
+  "optimizer": 0,
+  "GT_score": 0,
+  "link_seconds": 0.4424183201044798,
+  "standalone_initial_build_stage_elapsed_clocks_saved": false,
+  "failures": [
+    {
+      "version": "v1",
+      "stage": "CPU compile input location",
+      "cause": "Official setup relative CUDA source path called from wrong cwd",
+      "receipt_sha256": "75d3712f080ca3a3e892830a5b25c94446a5b6c7744cf99206629e27488232c1",
+      "new_model": 0,
+      "GPU_calls": 0
+    },
+    {
+      "version": "v2",
+      "stage": "CPU link",
+      "cause": "Inherited environment path contains whitespace; distutils split linker options. Original CUDA object compiled successfully and preserved.",
+      "receipt_sha256": "02092ebd360720309b8609e92580d0d1cba88ea841f4865c2a5164de930facc0",
+      "new_model": 0,
+      "GPU_calls": 0
+    }
+  ],
+  "recovery": "v3 uses exact original successful object and explicit subprocess linker argument list, isolated new output path. No numerical source edit or silent postprocessing fallback. Actual GPU kernel/model smoke test still pending exclusive execution gate."
+}
