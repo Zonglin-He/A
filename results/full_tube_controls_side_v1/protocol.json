@@ -1,0 +1,104 @@
+{
+  "schema": "native_Source_time_full_tube_controls_v1",
+  "authorization": "2026-10-26 direct user requests complete cached computation, independent scoring and GitHub publication of whole-temporal-refinement deletion plus same-expert simple full-tube fusion.",
+  "cohorts": {
+    "hc2": 1902,
+    "vidstg": 10303
+  },
+  "arms": [
+    "Source",
+    "EightReplacementNative",
+    "SharedCorrectionNative",
+    "ExpertInterpolationNative",
+    "NoTemporalRefinement",
+    "FullMAP"
+  ],
+  "pairs": [
+    [
+      "FullMAP",
+      "Source"
+    ],
+    [
+      "FullMAP",
+      "EightReplacementNative"
+    ],
+    [
+      "FullMAP",
+      "SharedCorrectionNative"
+    ],
+    [
+      "FullMAP",
+      "ExpertInterpolationNative"
+    ],
+    [
+      "FullMAP",
+      "NoTemporalRefinement"
+    ],
+    [
+      "EightReplacementNative",
+      "Source"
+    ],
+    [
+      "SharedCorrectionNative",
+      "Source"
+    ],
+    [
+      "ExpertInterpolationNative",
+      "Source"
+    ],
+    [
+      "SharedCorrectionNative",
+      "EightReplacementNative"
+    ],
+    [
+      "ExpertInterpolationNative",
+      "EightReplacementNative"
+    ]
+  ],
+  "NoTemporalRefinement": "Identical MAIN geometry/candidate tensors/content scores/link coefficients and same eight observations; bypass all temporal refinement and joint readout. Use original native per-offset Source MAP/hull event, then rerun interval-conditioned final spatial DP. Interval-dependent eligibility and observed/unobserved/edge normalization use the original code and fixed parameters.",
+  "EightReplacementNative": "Copy raw Source trajectory, replace exactly eight Source-selected observed positions with the same native expert boxes, all other boxes exactly Source; original native Source interval, no posterior/DP.",
+  "SharedCorrectionNative": "Same eight expert boxes/masks and original shared-corrected E trajectory, original native Source interval, no posterior or trajectory DP.",
+  "ExpertInterpolationNative": "Original center/logsize same-eight interpolation, E outside observation coverage, original native Source interval; additional no-update context matched to completed SourceExpertInterpolation.",
+  "FullMAP": "Current frozen direct-shared-ROI kappa0 beta1 own posterior/legal joint-MAP interval/final spatial DP. First auxiliary DP remains deleted.",
+  "GT": "Complete each domain prediction seal before separate official CPU scoring process; only Source and current Full inherit previously officially scored exact arrays. All FOUR controls independently scored and checked against available exact audited reference scalar rows. Separate all-array cold replay and mean audit.",
+  "report": "tIoU/vIoU/sIoU/R.3/R.5, signed positive-negative outcomes, severe t/v union once >5pp/rescues, short<=5s/long, parent clustered10000bootstrap pointwise95CI. All target sets previously exposed; no tuning.",
+  "limits": {
+    "new_Source": 0,
+    "new_expert": 0,
+    "new_optimizer": 0,
+    "new_GPU": 0,
+    "CPU_jobs_for_this_study": 1,
+    "CPU_total_max": 2,
+    "CPU_affinity": [
+      14,
+      15
+    ],
+    "nice": 19,
+    "IO": "idle3",
+    "threads": 1,
+    "CUDAhidden": true,
+    "min_RAM_GiB": 8,
+    "min_disk_GiB": 80,
+    "private_GiB": 160,
+    "domain_hours": 72
+  },
+  "cost": "Cached derivation/scoring/audit wall only, not deployment latency. Inherited Source/expert acquisition costs remain nonzero; Vid Source producer was shared with original TTA, never double-count.",
+  "code_sha256": {
+    "studies/full_tube_controls_side_v1/common.py": "cacbadd2158cb2812ae25f6318b1be71d789e93874b7c13ce2b29e606aab23cb",
+    "studies/full_tube_controls_side_v1/core.py": "ef4137c68ccea2d9391cc82aff199aa2229c2f3fcc902f2c05428711884ffda8",
+    "studies/full_tube_controls_side_v1/run.py": "ca4a39ec19be485ec91d94b7f623813a7c43348449e9bfdc2638d55c6db7213c",
+    "stvg/spatial.py": "54c3cec0ec643e47464957730f482302609855164196b361ee4bee1efd025c10",
+    "stvg/prototype.py": "b263154ae8c6ff4e4f8162e4ddea4498302b86f2ec65e8cfac0aa92d351d425b",
+    "stvg/paper_panel.py": "505a061289956cba2544c3323a5d9b6fde33d62e61ea2a78da7d41de6d7bc459",
+    "stvg/readout.py": "dd22b7f4627375514df61b9a18cbfafcac2352de74b4a4dd5fcefc934da2f3e0",
+    "stvg/prior.py": "341ef6c18534a17d52979827d6ca12d29dd34236648abca506632ff25bdc45a2",
+    "stvg/metrics.py": "c8db46913786a9f300984d7d7ca7ab219be30e8c91a1d27781d23155597d5665",
+    "stvg/evaluation.py": "7d06ebb331a58a6ccc172bbc8ff578bb971b363737316ad02764d2e5031470a1",
+    "tools/full_score.py": "419f03f9b68c1e63962f1a742bde485d92daf8662dace2167579d1a6dd423c08",
+    "studies/map_paper_completion_v1/common.py": "f1b2328be7f469f72f4f18f0f59c4df98b47c26e2d92139fac92113b7261ee6e",
+    "studies/paper_followup_v1/common.py": "0ad80b94eb56a8cb4350d12d55d84e230fff4cc761d50b0252b9c6e719b50b29",
+    "studies/shared_corrected_roi_v1/shared_common.py": "4baab238e0eddbadba2ed21495f839a51425a9a412c776519c003da28d0e27f2",
+    "studies/no_shrink_main_v1/ns_common.py": "addbfbe2b2be14f4866a549d3789349c33a92578dcb418ceb5a4d8abf91ce341"
+  },
+  "fingerprint": "dfb5c76f8ebfbd3d07578a3981171c633fa1fabfa7d0434e7635d094fe13cb37"
+}
