@@ -1,0 +1,106 @@
+{
+  "schema": "temporal_feedback_self_reinforcement_risk_full_v1",
+  "authorization": "Latest human asks action-centric/appearance-centric time correction stratification and length normalization/temperature/smoothing baselines. Active EdgeTAM then ReferFormer GPU priority unchanged; this is one CUDA-hidden low-priority CPU consumer.",
+  "datasets": {
+    "hc2": 1902,
+    "vidstg": 10303
+  },
+  "arms": [
+    "Source",
+    "SourceJointMAP",
+    "NoVisualUpdate",
+    "FullMAP",
+    "LengthMeanEvidence",
+    "TemperatureEvidence2",
+    "SmoothPrior3",
+    "TemperaturePrior2"
+  ],
+  "pairs": [
+    [
+      "FullMAP",
+      "Source"
+    ],
+    [
+      "FullMAP",
+      "SourceJointMAP"
+    ],
+    [
+      "FullMAP",
+      "NoVisualUpdate"
+    ],
+    [
+      "LengthMeanEvidence",
+      "NoVisualUpdate"
+    ],
+    [
+      "TemperatureEvidence2",
+      "NoVisualUpdate"
+    ],
+    [
+      "SmoothPrior3",
+      "NoVisualUpdate"
+    ],
+    [
+      "TemperaturePrior2",
+      "NoVisualUpdate"
+    ],
+    [
+      "FullMAP",
+      "LengthMeanEvidence"
+    ],
+    [
+      "FullMAP",
+      "TemperatureEvidence2"
+    ],
+    [
+      "FullMAP",
+      "SmoothPrior3"
+    ],
+    [
+      "FullMAP",
+      "TemperaturePrior2"
+    ]
+  ],
+  "science": {
+    "main": "unchanged shared-corrected ROI kappa0 beta1 one posterior update and final DP",
+    "feature": "actual pre-text-fusion E ROI features retained in audited whole-domain compacts",
+    "NoVisualUpdate": "q0 jointMAP with same current final geometry/DP isolates visual update from decoder shift",
+    "LengthMeanEvidence": "P proportional q0 exp(sum local evidence divided by inclusive sampled-node count); no fitted multiplier",
+    "TemperatureEvidence2": "P proportional q0 exp(sum local evidence / 2), tau fixed2 without score selection",
+    "SmoothPrior3": "K q0 K-transpose, K=[1,2,1]/4 on sampled endpoint grid, zero padding, original positive legal support mask, renormalize; no visual evidence",
+    "TemperaturePrior2": "q0 power .5 renormalized; MAP/trajectory MUST equal NoVisualUpdate; calibration-only invariant control, no claimed new boundary information",
+    "all_arms": "same eight observations, q0/nativegrid/Efeatures/main candidates/DP coefficients; each own legal interval and finalDP, no firstauxDP",
+    "classification": "Text-only operational four strata, frozen before metrics; all mixed/uncertain retained, pure HC appearance unsupported; no full-target semantic gold claim",
+    "primary": "parentcluster10000bootstrap paired tIoU Full-NoVisualUpdate per text group and difference-of-group-deltas; v/R03/R05/boundaries/shortlong/severe/rescue and source/native vs joint decoding separate",
+    "risk": "offline initial joint t quality bins plus prior MAP mass increase diagnostics; association not proof of causal self reinforcement; all signed tails and 69.59-to0 original failure preserved",
+    "no_selection": "Fixed tau2/kernel3/mean score, no hyperparameter sweep or main method registry/manuscript changes"
+  },
+  "resources": {
+    "CPU_jobs": 1,
+    "CPU_affinity": "14-15",
+    "nice": 19,
+    "ionice": "idle3",
+    "torch_threads": 1,
+    "CUDA_visible": "",
+    "new_Source": 0,
+    "new_expert": 0,
+    "new_optimizer": 0,
+    "GT": "independent official CPU only after whole domain prediction seal"
+  },
+  "code_sha256": {
+    "studies/temporal_feedback_risk_v1/text_groups_v1.py": "aba2a90f92d64ada5a3e1038c8afc67cfb2a92225c1b57763e7aa6bdf9226186",
+    "studies/temporal_feedback_risk_v1/common.py": "d28159f2540c7db18692a981c535eafc53cb1c324ef37776d71e69e848e8e63f",
+    "studies/temporal_feedback_risk_v1/text_groups_v3.py": "609de6269bcb546fd98f5598413ca119f72baa8f3b040484cae05cde9ce8a1ea",
+    "studies/temporal_feedback_risk_v1/run_v1.py": "3b42c549c5e6bf188f204e35e28cb78c68931ac8d7dba1fa9a03252b52d4a091",
+    "studies/temporal_feedback_risk_v1/text_groups_v2.py": "970316768219c77f95612f0787b035225b9eb57c750339c0cd96e60065c2e270",
+    "studies/temporal_feedback_risk_v1/controller_v1.py": "34febc31a3f0525994688943ea0c695f548272c78f1957769b3989531bb5f68b",
+    "studies/temporal_feedback_risk_v1/core_v1.py": "0ba2d6ec37fbd603941255c800df7191a694edacd966ee2c88215906925cd6b4",
+    "studies/temporal_feedback_risk_v1/text_groups_v4.py": "9dc72632ae4f8cd060bce0c9cfbfeedf9c999130c4cec4a8eab6f5c4d1807bc0",
+    "stvg/prototype.py": "b263154ae8c6ff4e4f8162e4ddea4498302b86f2ec65e8cfac0aa92d351d425b",
+    "stvg/current_shared_roi.py": "83e440aafdba60a69086e141bc837388f8dd5e2d2c2f8e1b2475b48ce35a80c6",
+    "stvg/spatial.py": "54c3cec0ec643e47464957730f482302609855164196b361ee4bee1efd025c10",
+    "stvg/representation.py": "1e10152274996a046dc45a1bbfd90727dda4083f3c1afcea21f2765f97f0e666",
+    "tools/full_score.py": "419f03f9b68c1e63962f1a742bde485d92daf8662dace2167579d1a6dd423c08"
+  },
+  "fingerprint": "29c252894bcec7b0404de1559bfa70363060149e145a6702c19a15f26a6b7ada"
+}

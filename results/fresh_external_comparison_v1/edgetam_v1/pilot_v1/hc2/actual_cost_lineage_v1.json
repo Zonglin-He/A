@@ -1,0 +1,199 @@
+{
+  "logical_queries": 128,
+  "inherited_queries": 16,
+  "actual_query_segments_sums_seconds": {
+    "decode_seconds": 239.8129884088412,
+    "request_seconds": 695.40865859529,
+    "raw_IO_seconds": 31.691006291657686,
+    "conditional_query_seconds": 946.3394062980078
+  },
+  "conditional_query_mean_seconds": 7.393276611703186,
+  "request_mean_seconds": 5.432880145275703,
+  "peak_query_GPU_bytes": 539308032,
+  "whole_current_worker": {
+    "status": "all256_EdgeTAM_queries_sealed_with16_verified_inherited_pending_score_audit_root",
+    "counts": {
+      "attempted_queries": 240,
+      "committed_queries": 256,
+      "new_Source": 0,
+      "new_original_expert": 0,
+      "new_optimizer": 0,
+      "inherited_valid_tracking_queries": 16
+    },
+    "worker": {
+      "pid": 1267584,
+      "startticks": 257057579
+    },
+    "seconds": 2319.273643427994
+  },
+  "model_loads_engineering_and_failure": {
+    "original_model_load": {
+      "receipt_sha256": "697b440846ca7492c83d10ffe3993e88f5d6b39b6e53585cad95da4f185af2ca",
+      "actual_scalar_receipt": {
+        "worker": {
+          "pid": 902419,
+          "startticks": 256549879
+        },
+        "seconds": 2.6275725751183927,
+        "device": null,
+        "precision": null,
+        "actual_CUDA_kernel_contract_passed": true,
+        "kernel_contract_seconds": 0.15656444896012545,
+        "kernel_contract_not_video_forward": true
+      }
+    },
+    "original_v3_model_load": {
+      "receipt_sha256": "e6f8baa9660b0b10331fb7351c347b866053782b371f3d164d0118da7152a86c",
+      "actual_scalar_receipt": {
+        "worker": {
+          "pid": 953163,
+          "startticks": 256605163
+        },
+        "seconds": 2.6285430332645774,
+        "device": null,
+        "precision": null,
+        "actual_CUDA_kernel_contract_passed": true,
+        "kernel_contract_seconds": 0.007218565326184034,
+        "kernel_contract_not_video_forward": true
+      }
+    },
+    "original_v4_model_load": {
+      "receipt_sha256": "c04635c4b44a6b2c44b02871b39f1dfefad574a6f523ee16b2720f80bfe64c07",
+      "actual_scalar_receipt": {
+        "worker": {
+          "pid": 959264,
+          "startticks": 256654863
+        },
+        "seconds": 2.3622746733017266,
+        "device": null,
+        "precision": null,
+        "actual_CUDA_kernel_contract_passed": true,
+        "kernel_contract_seconds": 0.005500947590917349,
+        "kernel_contract_not_video_forward": true
+      }
+    },
+    "first_raw_exact_restore_extra_request": {
+      "receipt_sha256": "3e8701910eb9e849cc46fc7555802d67fecac8f6705c01cba526a7ac1bb62c68",
+      "actual_scalar_receipt": {
+        "status": null,
+        "worker": {
+          "pid": 935642,
+          "startticks": 256585984
+        },
+        "queries": 1,
+        "original_query_count_not_increased": true,
+        "additional_engineering_tracking_queries": 1,
+        "model_load_seconds": 2.553160235285759,
+        "decode_and_provenance_seconds": 1.66394626442343,
+        "tracking_request_including_raw_IO_seconds": 6.122418030165136,
+        "raw_checkpoint_IO_seconds": 0.30849556159228086,
+        "elapsed_wall_seconds": 10.344646155834198,
+        "resident_GPU_bytes": 55939072,
+        "peak_GPU_bytes": 531378176,
+        "actual_strict_postprocess_calls": 65,
+        "all_original_raw_mask_bytes_SHA_exact": true,
+        "original_prediction_sha256": null,
+        "new_Source": 0,
+        "new_original_expert": 0,
+        "new_GT_scoring": 0,
+        "never_call_this_unpaid_or_original_one_query_cost": true
+      }
+    },
+    "dtype_compatibility_extra_positive_control": {
+      "receipt_sha256": "e79cbc3c278e4981fbb9e1d0add05c69e290dc572f070ebf6fc59bf4cb4af6e7",
+      "actual_scalar_receipt": {
+        "status": null,
+        "worker": {
+          "pid": 958646,
+          "startticks": 256641941
+        },
+        "queries": 1,
+        "original_query_count_not_increased": true,
+        "additional_engineering_tracking_queries": 1,
+        "model_load_seconds": 2.490477027837187,
+        "decode_and_provenance_seconds": 1.381579922977835,
+        "tracking_request_including_raw_IO_seconds": 5.123280605766922,
+        "raw_checkpoint_IO_seconds": 0.20279355999082327,
+        "elapsed_wall_seconds": 9.002950031775981,
+        "resident_GPU_bytes": 55939072,
+        "peak_GPU_bytes": 531378176,
+        "actual_strict_postprocess_calls": 65,
+        "all_original_raw_mask_bytes_SHA_exact": true,
+        "dtype_boundary_counts": {
+          "lossless_BF16_storage_to_FP32_V_projection": 0
+        },
+        "CPU_dtype_contract": {
+          "FP32_input_object_unchanged": true,
+          "BF16_stored_values_losslessly_represented_in_FP32": true,
+          "explicit_reference_linear_exact": true,
+          "no_autocast_or_weight_change": true
+        },
+        "original_prediction_sha256": null,
+        "new_Source": 0,
+        "new_original_expert": 0,
+        "new_GT_scoring": 0,
+        "never_call_this_unpaid_or_original_one_query_cost": true
+      }
+    },
+    "failed_BF16_FP32_worker": {
+      "receipt_sha256": "9c6b0270be267ae92605ad26827400e1bd42662875d3b812b73da2dfa5609eab",
+      "actual_scalar_receipt": {
+        "counts": {
+          "attempted_queries": 10,
+          "committed_queries": 9,
+          "new_Source": 0,
+          "new_original_expert": 0,
+          "new_optimizer": 0
+        },
+        "worker": {
+          "pid": 953163,
+          "startticks": 256605163
+        },
+        "elapsed_wall_seconds": 79.75984731223434
+      }
+    },
+    "zero_tracking_input_miss_worker": {
+      "receipt_sha256": "55a8d5288c43fc0b734549d59a58bb232f579cd63344951880f7834b0b1d6105",
+      "actual_scalar_receipt": {
+        "counts": {
+          "attempted_queries": 16,
+          "committed_queries": 16,
+          "new_Source": 0,
+          "new_original_expert": 0,
+          "new_optimizer": 0
+        },
+        "worker": {
+          "pid": 959264,
+          "startticks": 256654863
+        },
+        "elapsed_wall_seconds": 92.88414602074772
+      }
+    },
+    "current_new240_model_load": {
+      "receipt_sha256": "ac7f0279a3fb2f3ecee47faf5b68f56cb5c41803df2cafe012e22cfba22942ba",
+      "actual_scalar_receipt": {
+        "worker": {
+          "pid": 1267584,
+          "startticks": 257057579
+        },
+        "seconds": 2.8285702783614397,
+        "device": null,
+        "precision": null,
+        "actual_CUDA_kernel_contract_passed": true,
+        "kernel_contract_seconds": 0.005753114819526672,
+        "kernel_contract_not_video_forward": true
+      }
+    }
+  },
+  "current_baseline_preparation": {
+    "whole256": 256,
+    "strict_cached_current_expert": 250,
+    "actual_new_current_expert": 6,
+    "new_Source": 0,
+    "receipt_sha256": "d7728867b4ca07c74f226ebea74da95e78b87398fd8028dba4018b9f118e3ca6"
+  },
+  "inherited_Source_and_current_expert_cost_nonzero": true,
+  "nested_times_must_not_be_added": true,
+  "complete_uncached_pipeline_latency_measured": false,
+  "scope": "Logical256 cohort plus TWO successful engineering replays/controls and ONE failed partial attempt:259 attempts,258 completed tracking requests globally. Whole workers/model loads overlap nested query stages; inherited16 cost included once. Failed partial per-request clock missing, not zero. Current256 preparation and6 new current-expert calls are separate shared inputs, not free."
+}

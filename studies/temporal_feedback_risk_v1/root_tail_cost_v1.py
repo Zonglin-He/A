@@ -1,0 +1,29 @@
+"""Root all-controls tail/cost/fixed prior failure export; no new scoring."""
+from common import *
+import argparse
+def run(ds):
+ import numpy as np
+ validate();d=D/ds;p=P/ds;aud=read(d/'reporting_receipt.json');assert aud['status']=='verified_whole_domain_all_arrays_parent_receipts_means_and_text_counts'and sha(d/'metrics.json')==aud['metrics_sha256'];rows=read(d/'metrics.json')['private_rows'];summary=read(p/'root_summary.json');report=read(p/'report.json');out={}
+ for arm in ['FullMAP','LengthMeanEvidence','TemperatureEvidence2','SmoothPrior3']:
+  dt=np.asarray([100*(r['values'][arm]['t']-r['values']['NoVisualUpdate']['t'])for r in rows]);dv=np.asarray([100*(r['values'][arm]['v']-r['values']['NoVisualUpdate']['v'])for r in rows]);out[arm]=dict(severe_t=int((dt< -5).sum()),severe_v=int((dv< -5).sum()),severe_union_once=int(((dt< -5)|(dv< -5)).sum()),rescue_union_once=int(((dt>5)|(dv>5)).sum()),t_harm=int((dt<0).sum()),v_harm=int((dv<0).sum()))
+ atomic(p/'all_controls_severe_vs_same_joint_no_visual_update.json',out);cases=read(R/'outputs/failure_visualization_v1/selection.json');known=[]
+ for case in cases:
+  if case['kind']!='temporal'or case['dataset']!=ds:continue
+  row=next(r for r in rows if r['id']==case['id']);known.append(dict(selection='Previously frozen illustrated temporal negative extreme, not selected from these new controls',control_tIoU_percent={a:100*v['t']for a,v in row['values'].items()},diagnostics=row['diagnostics'],not_prototype_self_reinforcement_causal_proof=True))
+ atomic(p/'prior_fixed_failure_control_response.json',known)
+ costs={}
+ for stage in ['predict','score','audit']:
+  who=read(d/(stage+'_worker.json'))if(d/(stage+'_worker.json')).exists()else read(D/(ds+'_'+stage+'_child.json'));rec=read(d/'sealed.json')if stage=='predict'else read(d/('score_receipt.json'if stage=='score'else'reporting_receipt.json'));assert read(D/(ds+'_'+stage+'_exit.json'))['code']==0;costs[stage]=dict(worker=who,elapsed_wall_seconds=rec['elapsed_wall_seconds'],process_CPU_time_independently_measured=False)
+ atomic(p/'actual_cost_segments_v1.json',dict(actual_workers=costs,conditional_query_segments=summary['cached_worker_cost'],new_STVG_model=0,new_Source=0,new_expert=0,new_optimizer=0,semantic_annotation_NLP_POS_model_constructors=1,inherited_Source_expert_cost_nonzero=True,scope='Cached replay includes SHA/resource checks and intentional CPU pauses; not uncached deployment, nested times not added. POS text annotation is separate from STVG model/expert inference.'))
+ text=f'# Full {ds}: temporal feedback risk findings\n\nAll {len(rows)} queries, whole prediction seal, independent official CPU scoring, independent all-array cold/SHA/means audit, actual root numerical and conservative text sensitivity exports completed. This is an exposed full-target analysis, not an unseen test or hyperparameter selection.\n\n|Temporal control|tIoU %|vIoU %|R.3 %|R.5 %|Severe t / v / union once vs same joint no-update|Rescue union|\n|---|---:|---:|---:|---:|---|---:|\n'
+ for arm,m in report['means'].items():
+  tail=out.get(arm);t='—'if tail is None else f"{tail['severe_t']} / {tail['severe_v']} / {tail['severe_union_once']}";res='—'if tail is None else str(tail['rescue_union_once']);text+=f"|{arm}|{100*m['t']:.6f}|{100*m['v']:.6f}|{100*m['vIoU_ge_03']:.6f}|{100*m['vIoU_ge_05']:.6f}|{t}|{res}|\n"
+ text+='\nCurrent versus each simple control, parent-cluster10000 pointwise95%CI:\n\n'
+ for arm in ['NoVisualUpdate','LengthMeanEvidence','TemperatureEvidence2','SmoothPrior3']:
+  z=summary['paired']['FullMAP-'+arm];text+=f"- Full minus {arm}: t {z['t']['mean']:+.6f}pp CI{z['t']['CI95']}; v {z['v']['mean']:+.6f}pp CI{z['v']['CI95']}.\n"
+ text+='\nAll signed positive/negative outcomes and short/long/initial-quality strata remain available. Mean gain can coexist with substantial initially correct damage. Reducing evidence strength can trade average reward against severe tails; no current parameter is changed or selected from this analysis. Length mean strongly changes evidence scale as well as length dependence, so it does not alone isolate a pure duration prior. Fixed prior temperature preserves MAP exactly; that is an implementation invariant, not evidence of improved boundaries.\n\n'
+ if known:text+='Previously fixed negative case responses:\n\n'+json.dumps(known,indent=2)+'\n\n'
+ text+='Text audit invalidated interpreting the first keyword groups as semantic gold. Independent POS grouping is also imperfect. All old labels and failures remain; conservative query-only consensus/static-vocabulary sensitivity abstains on unknowns, distinguishes static layout from pure appearance, and reports its limited coverage. Its retained38/62 single-AI-review examples agree38/38, but that is neither independent human gold nor a claim about all12205semantic labels. HC has no supported conservative static counterpart; its action-versus-appearance difference is unsupported. All category effects are observational and can reflect duration/initial difficulty.\n\nActual root PNG inspection is required separately before publishing the scalar SVG. Inherited Source/expert acquisition is nonzero; cached elapsed and annotation wall are not process CPU or deployment latency. CG/gamma/corruption remain user-paused, additional CG-HC cancelled; original main parameters/paper/frozen code unchanged.\n';(p/'ROOT_FINDINGS_v1.md').write_text(text)
+ atomic(d/'root_tail_cost_receipt_v1.json',dict(status='root_all_signed_tail_cost_fixed_failure_analysis_complete',code_sha256=sha(Path(__file__)),findings_sha256=sha(p/'ROOT_FINDINGS_v1.md'),tail_sha256=sha(p/'all_controls_severe_vs_same_joint_no_visual_update.json'),cost_sha256=sha(p/'actual_cost_segments_v1.json'),no_new_GT_scoring=True))
+if __name__=='__main__':
+ p=argparse.ArgumentParser();p.add_argument('--dataset',choices=COUNTS,required=True);run(p.parse_args().dataset)

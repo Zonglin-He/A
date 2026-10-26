@@ -1,0 +1,35 @@
+{
+  "schema": "same256_actual_RGB_current_expert_evidence_and_matched_current_baseline_v1",
+  "direct_user_authorization": "\u53ef\u4ee5\u91cd\u65b0\u8dd1\uff0c\u6ca1\u5fc5\u8981\u4e00\u5b9a\u8981\u7528\u7f13\u5b58",
+  "cohorts": {
+    "hc2": 128,
+    "vidstg": 128
+  },
+  "scope": "Keep original256 hash-selected parents, do not filter or shrink on cache misses. Same Source selected8/native decoded RGB/fullframegrid. Strict original actualRGB/context/cacheSHA reuse when valid; otherwise one true same frozenReferDINO joint8 forward into onlyNEWcache. Nativepayload+SHA lands before geometry/ROI. Genuinely recompute shared E/native masks/bidirectional geometry/actualE ROI/prototype k0 beta1 ownjointMAP/finalDP and same-expert simple nativeSource-time interpolation. Only exactcachehit baseline must match prior auditedcurrent arrays; actualfreshteacher may change baseline, keep all differences and never relabel oldFull. No GT scoring in preparation. Source raw grids all256exactretain,0newSource actually required at this stage; no change to Source/model/teacher/8positions/profile or any oldfrozenhash. AdditionalSource may be independently frozen only if reallyneeded, not blindrepeat.",
+  "limits": {
+    "max_new_current_expert_queries": 256,
+    "new_Source": 0,
+    "new_optimizer": 0,
+    "new_GT_scoring": 0,
+    "max_CPU_jobs": 2,
+    "threads": 1,
+    "CPU": [
+      14,
+      15
+    ],
+    "nice": 19,
+    "ionice": 3,
+    "private_bytes": 171798691840,
+    "min_RAM_bytes": 8589934592,
+    "min_disk_bytes": 85899345920,
+    "seconds": 259200
+  },
+  "safety": "First2 actual new currentexpert payload/context/rawgrid/actual newgeometry/Epool/ownMAP/finalDP twice/cold readback rootbridge. Save every paid output/attempt/modelcost; hardfailurepreserve no automaticretry/skip/fallback. Same payload subsequentlyshared bySimple/Ours and EdgeTAM8boxprompt. Alternative expertperquery its own geometry/Epool/post/owninterval. All same actual RGB and Sourcegrid; no targetscore for config selection.",
+  "cost": "Count allnew/currentcachehits/realexpertmodelprocess/start/load/request/ROI/conditionalwall. Original cached Source/expert cost nonzero. CachedSource currentprep not uncached wholedeployment. All earlier16Edge actual outputs and failure/cost retained; exactreferences onlyreuse ifsame newmatchedbaseline arrays/interval/8boxes/RGB/proof, otherwise pay one separatelydeclarednewtracking output and preserve both.",
+  "code_sha256": {
+    "studies/fresh_external_comparison_v1/current_evidence_v1.py": "3913d5f6c94b3b8718c68939d655ea32f64e49a1458e35f8eb070a93de757c8a",
+    "stvg/teacher_bridge.py": "123070ae2f38c0c1f30afeb79a90de3278d370c9794eaabe81a48db1f70188e8",
+    "stvg/teacher_worker.py": "884448d03776ae733bcdb8cc684ff1637e50d407d180c60ecf4ae5a3daa86493"
+  },
+  "fingerprint": "3b798f570897dfa99dd776459002734b08467dad53265504143bf596b76ab9f0"
+}
