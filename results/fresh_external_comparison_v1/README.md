@@ -1,5 +1,9 @@
 # Cache-optional external comparisons on the original fixed 256 queries
 
+## Interpretation superseded by direct user correction
+
+The completed ReferDINO-box-prompt plus EdgeTAM row is an **extra-pretrained-propagator extension**, not a fair single-expert replacement or isolated spatial-mechanism comparison. Its extra model and borrowed current time confound that attribution; its numerical scores stay unchanged and all negative/positive/cost records remain. The new [Source-prompt-only EdgeTAM](../source_prompt_edgetam_v1/README.md) branch uses original Source boxes, Source-selected eight positions and Source native time, without ReferDINO evidence or current posterior. ReferFormer is already an independent expert substitution: its alternative inference uses only Source features/prior plus ReferFormer outputs; ReferDINO is a separate baseline. One external expert per branch still does not imply equal compute or model knowledge.
+
 The latest direct user instruction permits genuine new inference; exact cache hits are an efficiency choice rather than a cohort admission rule. Retain the original 128 unique parents in each domain. Do not use the unused first-64 eligible proposal, reduce the sample, or filter by accuracy/cache availability.
 
 All 256 original Source grids are available with exact recorded file SHA. Current-expert preparation genuinely completed 250 exact context reuse cases and six new same-eight-frame current-expert calls. The six new outputs produced new masks, geometry, actual E ROI appearance pooling, prototypes, posterior, own joint-MAP event and final trajectory. The first two new calls passed an independent full-chain repeated/cold check. Independent whole-256 input, parent, RGB, expert-context, raw-grid, complete numerical chain and cold-prediction verification has passed in a separate process. The preparation itself contains no GT accuracy scoring.

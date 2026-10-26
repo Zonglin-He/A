@@ -1,0 +1,68 @@
+{
+  "schema": "Source_prompt_only_single_external_expert_EdgeTAM_v1",
+  "cohort": {
+    "hc2": 128,
+    "vidstg": 128,
+    "selection": "original confirm128 unique parents per domain, no selection based on current scores"
+  },
+  "pipelines": {
+    "current": "Source -> ReferDINO -> current E/appearance/time/finalDP, own event",
+    "EdgeTAM": "Source original eight boxes -> EdgeTAM only; Source native peroffset MAP hull event",
+    "alternative": "Source -> ReferFormer -> same E/appearance/time/finalDP, own event"
+  },
+  "Source_prompt_fields": [
+    "Source",
+    "native_logits",
+    "records",
+    "frame_ids",
+    "positions8"
+  ],
+  "forbidden_EdgeTAM_inputs": [
+    "ReferDINO boxes",
+    "ReferDINO masks",
+    "shared corrected E",
+    "current appearance prototypes",
+    "current posterior",
+    "current final event"
+  ],
+  "single_external_model_per_branch_not_equal_compute": true,
+  "all_8_Source_boxes_before_forward": true,
+  "tracking_direction": "official start0 forward only",
+  "native_RGB_full_grid": true,
+  "observed_boxes": "exact original Source boxes",
+  "mask_rule": "logit>0, halfopen box, empty zero, no fallback",
+  "precision": "same pinned EdgeTAM FP32, no TF32 or autocast, original BF16 memory storage plus verified lossless V-linear input cast",
+  "new_tracking_queries": 256,
+  "old_stacked_tracking_reuse": 0,
+  "new_Source": 0,
+  "new_ReferDINO": 0,
+  "new_optimizer": 0,
+  "first_two_each_domain_actual_full_float_root_bridge": true,
+  "full12205_automatically_authorized": false,
+  "whole128_seal_before_independent_official_score": true,
+  "independent_mask_Input_SHA_means_audit": true,
+  "resource": {
+    "CPU": "14-15 nice19 idleIO singlethread, max2compute CPU workers",
+    "RAM_available_GiB": 8,
+    "disk_free_GiB": 80,
+    "private_GiB": 160,
+    "hours_per_worker": 72
+  },
+  "queue": "after actual active ReferFormer v4 both128 independent input/official/allarraymeans audits and actual owned controller/GPU exit; no extra simultaneous GPU",
+  "code_sha256": {
+    "studies/source_prompt_edgetam_v1/worker_v1.py": "eaef5a98484fcd72f84108dcecac39c13f00bd58423c5e9df5f736f6d0c1ad64",
+    "studies/source_prompt_edgetam_v1/common.py": "7df9eca202802199bd3c0055f167ec81cb0c5bcc901997d6538a31f8a963c9c9",
+    "studies/source_prompt_edgetam_v1/preflight_v1.py": "49d5682eef9def3fb5c8c4cc29c9e6f606d0c7e4e156a322ebfee67029c6c543",
+    "studies/source_prompt_edgetam_v1/report_v1.py": "0f3daa671b9c92336ac70370aa4004bb0b08e6083594d25e4e71992ae9133f2d",
+    "studies/source_prompt_edgetam_v1/controller_v1.py": "fa75db6ff61551c2320ba5479556973a90bb86f19e459cc041ea18920a80d7dd"
+  },
+  "input_sha256": {
+    "outputs/paper_review_suite_v1/selection.json": "b7e64d396b7058276c3cb78f43f593caec5489eb82f45faebc7b87e7dd8de597",
+    "outputs/edgetam_comparison_v1/source_checkpoint_lock.json": "0e0c5fc739557709f78e82625f0b50452fde231abb9eaf50d2ffae9e06bf4bc9",
+    "outputs/edgetam_comparison_v1/extension_reuse_receipt.json": "243493c99510bac56e59ae14dc7ceb0ae45dabebeb5f7a8495f8cc6490d70614",
+    "outputs/source_prompt_edgetam_v1/worker_reverse_proof_v1.json": "2ac2acba523496954ba3a6eb56d7590b68015d68ed96bb94d8aa8e0330678bfc",
+    "outputs/fresh_external_comparison_v1/single_expert_design_correction_v1.json": "7cb8fb057a2fe81f2ab78a035bdf2e9d69850588830be796e99b7a17a93b4176",
+    "outputs/fresh_external_comparison_v1/current_audit_completion_v1.json": "073e2b3099cf10a382dc76596bb30fb34a3e59745778cf382bdc539704f21381"
+  },
+  "fingerprint": "2c6a0ebfbc4a4f6a164f1daaed6c5265ae4eb486375f58635a9e984d48385909"
+}
