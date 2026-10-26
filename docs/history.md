@@ -60,6 +60,8 @@
 
 # 项目历史与当前状态
 
+2026-10-26用户在显式暂停后授权继续，优先TubeDETR并重启巡检。独立priority_resume执行修订覆盖旧LLaVA先行等待，LLaVA仍保持3949/10303暂停。原冻结full.py和全量计划/所选参数/Source原生MAP/时间不改；仅替换唯一队列顺序断言，其他GPU算法AST相同，新证据均绑定修订。每域先真实已有query逐位资格，再Vid10303/HC1902完整推理与独立CPU评分；0新专家、25GiB保护、不按全量选参。原暂停与旧终态证据保留，见[tubedetr_spatial_search](tubedetr_spatial_search.md)。
+
 2026-10-21原生mask资格已完整：两个预设信号均未通过几何参照门槛，保留负结果，不启动其适应。逐帧文本分数事件支持AUC0.6512（81条可计算）不能解决完全错过事件的26条。按用户“为什么”的机制要求，新增同原输入哈希16条执行后候选探针：Direct方向充分线搜索与4个OPD随机方向各17真实decoder forward，选择只用同一布局奖励，GT仅封存后作诊断；披露OPD更多backward，非新方法成绩、不自动全量。见[执行后候选协议](tubedetr_executed_candidates.md)。
 
 2026-10-21原生指代mask资格阶段：按完整ROI/机制证据继续有限研究，冻结同Vid128原八帧、单ReferDINO原生选中/替代query软mask面积平衡与竞争分数，两者向Direct提供相同连续积分梯度。只比较原policy32的奖励排序/后悔值，逐帧文本分数仅离线诊断事件支持；无学生适应、无新全量，不把mask Dice当作已解决事件/身份的新方法。详见[mask资格协议](tubedetr_mask_reward_qualification.md)。

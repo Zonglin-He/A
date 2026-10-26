@@ -11,3 +11,5 @@ Source严格保留原生框和MAP时间；不是把额外MBR改名Source。空�
 入口`.conda/tubedetr/bin/python -B -m tools.tubedetr_spatial_search.run prepare`首次冻结计划；`run`依次CPU predict/score两域，所有GPU不可见，默认一条CPU数学线程，不影响当前LLaVA或修改其160项绑定源码。状态/进度/失败在outputs/tubedetr_spatial_search，独立runtime/tubedetr_spatial_search.json；日志logs/tubedetr_spatial_search_<ds>_<predict/score>.log。
 
 两域锁定后再验证所选完整10303/1902总体。若所选配置只需既有Full/Source混合或数值校准，可CPU重新生成完整预测seal后独立评分；若需要重新计算完整空间geometry，则新GPU捕获必须等待当前LLaVA全部GPU工作完成并获得共享gpu.lock，不并行新主干，不恢复已删除特征缓存。全量结果不反过来选参数；完整核验发布前不称任务完成。若开发仍未转正，保留失败并由Root分析追加独立冻结的搜索阶段，不修改已评分计划。
+
+2026-10-26用户明确恢复并改为TubeDETR优先，覆盖上述旧执行顺序。LLaVA仍暂停在3949/10303，不伪造其完成状态。新增独立入口`tools.tubedetr_spatial_search.priority_resume`，先冻结[顺序修订](../results/tubedetr_spatial_search/priority_resume_plan.json)，仅将原GPU函数中唯一的LLaVA完成断言替换为显式授权及无活跃LLaVA检查，逐AST证明其他运算完全一致。原full.py、full_plan、所有选择参数和依赖哈希不改。保留每域一条原query真实Source/特征/所选输出逐位资格、共享GPU锁、25GiB保护、精确专家cache-only及完整seal后独立CPU评分。新资格/预测回执/封存/评分均绑定执行修订；顺序Vid10303再HC1902，不自动恢复LLaVA。日志后缀`_priority_v1.log`，故障`outputs/tubedetr_spatial_search/priority_resume_failure.json`。
