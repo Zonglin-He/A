@@ -384,3 +384,10 @@ Alternative-expert preparation now also completed official1116919589byte checkpo
 ## 2026-10-26: user-authorized failure figure publication
 
 The user explicitly requested publishing the local failure-case images. Exactly four inspected final display_v3 PNG/PDF pairs are copied without alteration into [the failure figure directory](../results/failure_visualization_v1/figures/README.md). The authorization records each byte count and SHA-256, covering visible RGB, captions and GT overlays only in these figures. Raw videos, annotation files, features, masks, weights and credentials are excluded. No experiment, prediction, parameter, worker or frozen protocol changes. Publication is prepared in an isolated export; the active checkout, its index and running experiments are untouched.
+
+
+### 2026-10-26 — Expert numerical bridge, pilot preparation and zero-work gamma gate recovery
+
+Independent expert_generalization_v1 math6259a852da001e6d9e827cab65b26fb26439f5f2ea37109a6f9e07643b15c8c8: four actual original-expert native Source grids rebuilt through fresh mask evidence/geometry/Epool/ownposterior/finalDP, repeat and current/legacy interpolation exact. Zero new model/Source/expert/optimizer/GT. Fixed256 retained raw byte/SHA inventory verified; no GPU pilot results yet. Frozen pilot worker preserves full paid output before validation, actual kernels and nested clocks, first2/domain root bridges and independent whole-pilot no-GT audit; actual full experiment/uncached timing and generalization conclusions pending. Waiting-only controller cannot construct model without complete actual noncorruption predecessor audits/publication/root release.
+
+Gamma execution v4 independently fixes actual CG state.json path before any gamma work; original science97166dbb/worker_runtime_v2 and all hashes unchanged.33 original source/plan/state/log files and zero-work old131174 exit are private SHA-preserved; new486668 waiting and no CG signal. Original histories retained, all corruption paused by user.
