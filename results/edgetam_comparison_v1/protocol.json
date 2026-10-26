@@ -1,0 +1,45 @@
+{
+  "schema": "EdgeTAM_replaces_SAM2_preparation_v1",
+  "authorization": "2026-10-26 direct user: use EdgeTAM to replace SAM2; retain original interpolation plus a mature published propagation method, same eight expert boxes, observed frames keep input boxes, common current time branch, pilot correctness/cost before deciding full execution.",
+  "source_commit": "7711e012a30a2402c4eaab637bdb00a521302c91",
+  "method": {
+    "name": "EdgeTAM",
+    "config": "configs/edgetam.yaml",
+    "checkpoint": "official repository checkpoints/edgetam.pt",
+    "prompt": "Exactly original eight normalized expert boxes converted to official pixel xyxy; no expert masks, no new expert. No new clipping, confidence selection or prompt replacement.",
+    "frames": "Original native sampled RGB/time grid",
+    "propagation": "All8 box prompts for one object before tracking; official propagate_in_video(start_frame_idx=0,reverse=False). Coverage must be exactly every native frame once; no reverse pass or custom fusion. This is an offline all-conditioning comparison, not causal online tracking.",
+    "output": "Masks>0 to normalized half-open bounding boxes; empty unobserved output remains zero-area, no Source fallback. Eight observed outputs overwritten with exact original input boxes.",
+    "time": "Reuse current audited q1 MAP interval; only spatial trajectory varies. tIoU must be identical by construction; main SourceNative and matched-time Source are distinct.",
+    "interpolation": "Reuse already audited original center/logsize interpolation and its outside-anchor convention; no silent switch to a new xyxy-linear rule.",
+    "metrics": "vIoU/R03/R05 plus matched tIoU/sIoU and unobserved fixed-support analysis; parentpairedCI, allsignedpositive-negative/severe t/v uniononce/rescue/shortlong.",
+    "cost": "Actual video decode/preprocess, prompt encoding, propagation, mask-to-box/writeback, transfers, model-load/startup and peak VRAM, PID/start. Same8 is not same compute. Never apply paper FPS or SAM2 speed ratio to this machine."
+  },
+  "pilot": {
+    "cohorts": {
+      "hc2": 128,
+      "vidstg": 128
+    },
+    "criteria": "Correct input/weight/coverage/reset/mask-box contracts, finite outputs, actual time and VRAM/resource feasibility; no target accuracy-based checkpoint/rule selection.",
+    "full_release": "Full1902/10303 only after root reviews fixed-pilot correctness and measured cost, records an explicit feasibility decision, and freezes a new independent execution plan. This preparation launches no model/GPU owner."
+  },
+  "dependencies": "Do not interrupt current CG or gamma queue; corruption remains paused. SAM2 unexecuted preparation is retained read-only but is no longer an active predecessor requirement. New generic-TTA plan must refer to EdgeTAM, not demand SAM2 results.",
+  "checkpoint": "Official EdgeTAM full state loads strictly. Official timm constructor requests redundant pretrained RepViT initialization; a scoped no-download initialization adapter is permitted only with zero missing/unexpected final checkpoint keys and every loaded state tensor equal to the pinned official checkpoint. No vendor file editing.",
+  "extension": "Identical official connected-components CUDA source and exact torch2.7/cu128 binary artifact may be reused; CPU import is not an actual CUDA-kernel or propagation test. Missing/failed postprocessing is a hard failure, no silent fallback.",
+  "code_sha256": {
+    "studies/edgetam_comparison_v1/prepare.py": "c6fcf757016fede646e077fb28ccc7140e1ef224454382a8535ed1d01fcd3783",
+    "studies/edgetam_comparison_v1/adapter.py": "8d1a9c060db54cf6993dfa29d0af5efa66b5799cc35ec58dad9ef8aa5a4319dc",
+    "studies/review_strengthening_v1/sam2_input_adapter_v1.py": "be259c38a187ee0778cf400953ef780316af9ea41b5e87a2d820159767ee9118"
+  },
+  "input_sha256": {
+    "outputs/review_strengthening_v1/intent.json": "d149e3ecfcf371ee2be603f4532f020e17427c3786cae7b97b7fcd48b70097bd",
+    "outputs/review_strengthening_v1/selection.json": "705df2dc3f3b6b7f2c9c95ed98970522b4ff7399fffb4d10043a7c8e8fcdd07a",
+    "outputs/edgetam_comparison_v1/source_checkpoint_lock.json": "0e0c5fc739557709f78e82625f0b50452fde231abb9eaf50d2ffae9e06bf4bc9",
+    "outputs/edgetam_comparison_v1/extension_reuse_receipt.json": "243493c99510bac56e59ae14dc7ceb0ae45dabebeb5f7a8495f8cc6490d70614",
+    "outputs/shared_corrected_roi_v1/components_hc2_sealed.json": "3b68ac713e390a83274b8777e54de95f5f930dc852538999d3e3551afd42fa57",
+    "outputs/shared_corrected_roi_v1/components_hc2_reporting_receipt.json": "8e198ed6327f68e8dcfe963692163941a0203caeb1ad51f456a461e956fbf320",
+    "outputs/shared_corrected_roi_v1/components_vidstg_sealed.json": "a8976fd15d06b958ddcd5a288dcf4a2876adca6fd41d8b2b228356d6309df429",
+    "outputs/shared_corrected_roi_v1/components_vidstg_reporting_receipt.json": "0cf74e596a5d48485fb3bf1040a8df180cdc4f0a781b6f3f8815e3b4e0f9308a"
+  },
+  "fingerprint": "8c20cf35824e662dba06aad3af64850b391074beaba370816a200131777f6cb8"
+}
