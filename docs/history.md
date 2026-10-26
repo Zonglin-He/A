@@ -60,6 +60,8 @@
 
 # 项目历史与当前状态
 
+2026-10-26 17:59所选TubeDETR空间全量两域12205完整seal/独立CPU评分及Root全部新预测receipt/绑定/有限正尺寸/Source与固定时间首核、所有正负标量/均值/父聚类区间复算通过。Vid dense−.224869pp（CI[−.505827,+.049920]），HC+.543690pp（CI[+.172163,+.904879]）；两域均转正目标未实现，不据full重选参。826/104条空间降>5pp保留；v+2.812284/+11.723881pp包含既定时间读出变化，不全归空间。总seal引用全部核验。所选配置这次完整运行结束，下一授权任务为LLaVA原3949提交后续跑，不重跑已完成开发128、不改模型/数学。见[全量报告](../results/tubedetr_spatial_search/full_report.md)。
+
 2026-10-26 17:42 TubeDETR空间所选配置VidSTG 10303/732完整seal/独立CPU评分，Root首次全核全部新payload/receipt/request/参数/修订、61818有限数组及Source/物理时间逐位一致，全部匿名标量/均值/父聚类区间独立复算通过。全量dense sIoU41.437894→41.213025（−.224869pp，95%父聚类区间[−.505827,+.049920]），空间转正目标未在此总体实现，826条s降>5pp全部保留；v13.116927→15.929212，固定时间收益不归因空间调参。原参数不据全量重选。HC1902已真实资格通过并继续推理，非两域最终终态；LLaVA仍3949暂停排后。见[Vid全量报告](../results/tubedetr_spatial_search/vidstg/full_report.md)。
 
 2026-10-26用户在显式暂停后授权继续，优先TubeDETR并重启巡检。独立priority_resume执行修订覆盖旧LLaVA先行等待，LLaVA仍保持3949/10303暂停。原冻结full.py和全量计划/所选参数/Source原生MAP/时间不改；仅替换唯一队列顺序断言，其他GPU算法AST相同，新证据均绑定修订。每域先真实已有query逐位资格，再Vid10303/HC1902完整推理与独立CPU评分；0新专家、25GiB保护、不按全量选参。原暂停与旧终态证据保留，见[tubedetr_spatial_search](tubedetr_spatial_search.md)。
