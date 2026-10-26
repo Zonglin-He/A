@@ -1,0 +1,7 @@
+# Exact contrasts and numerical change-count display
+
+All coordinate arrays and SHA checks retain exact equality; no array tolerance, metric, bootstrap mean/CI or severe 5pp criterion was changed. `all_signed*.tsv` and root tails retain exact floating contrasts. The inherited `tools/full_score.py:cluster` displays improvement/harm/tie counts using its existing 1e-10 percentage-point threshold; these display counts differ from strict `delta<0` counts when roundoff is present. `coordinate_roundtrip_diagnostics_v2.json` reports both strict negative counts and their magnitudes, including sub-1e-10pp changes, without discarding rows or changing reported scores.
+
+ClipToImage converts normalized cxcywh to xyxy, clips all rectangle corners, then converts back. Already in-image coordinates can consequently differ by at most 1.1102230246251565e-16 in these data. SourceFallbackFullOutside keeps every ungated coordinate bitwise unchanged. The original unmodified Full predictions and published v1 report are preserved; ROOT_FINDINGS_v2 clarifies the roundtrip rather than relabeling original arrays.
+
+Clipping also has real negative effects: beyond the 1e-10pp display threshold, HC has 78 vIoU harms and Vid 377; largest individual losses are 0.669604 and 1.154409pp. They are retained alongside positive mean changes. No claim that clipping universally improves scores, that every out-of-image prediction is an identity switch, or that a safety control should replace the selected main method is made.
