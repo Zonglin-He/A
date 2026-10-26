@@ -1,0 +1,726 @@
+{
+  "queries": 100,
+  "parents": 100,
+  "means": {
+    "Source": {
+      "v": 0.11631878374868573,
+      "t": 0.27762140508215316,
+      "s": 0.35896668709111296,
+      "fixed_actual_sIoU": 0.36469047933992726,
+      "observed_actual_sIoU": 0.37100009473518875,
+      "unobserved_actual_sIoU": 0.36523696408836115,
+      "boundary_MAE": 262.31,
+      "start_error_seconds": 8.82285202840682,
+      "end_error_seconds": 9.570619367110876,
+      "interval_length_seconds": 7.664832463619162,
+      "length_error_seconds": 9.019812195201775,
+      "vIoU_at_03": 0.13,
+      "vIoU_at_05": 0.05,
+      "vIoU_ge_03": 0.13,
+      "vIoU_ge_05": 0.05,
+      "tIoU_ge_05": 0.25,
+      "tIoU_eq_0": 0.29,
+      "boundary_MAE_seconds": 9.196735697758847
+    },
+    "FullMAP": {
+      "v": 0.14075816152914275,
+      "t": 0.32207579379623136,
+      "s": 0.3874742623508044,
+      "fixed_actual_sIoU": 0.3941698551002758,
+      "observed_actual_sIoU": 0.473557860869665,
+      "unobserved_actual_sIoU": 0.3880742113313427,
+      "boundary_MAE": 243.35,
+      "start_error_seconds": 8.763348212279519,
+      "end_error_seconds": 8.331765932786764,
+      "interval_length_seconds": 12.039023908765273,
+      "length_error_seconds": 9.76339665869012,
+      "vIoU_at_03": 0.17,
+      "vIoU_at_05": 0.09,
+      "vIoU_ge_03": 0.17,
+      "vIoU_ge_05": 0.09,
+      "tIoU_ge_05": 0.31,
+      "tIoU_eq_0": 0.23,
+      "boundary_MAE_seconds": 8.547557072533142
+    },
+    "CleanSource": {
+      "v": 0.12144582248113062,
+      "t": 0.28777043703335037,
+      "s": 0.3606247380591618,
+      "fixed_actual_sIoU": 0.36627685813670224,
+      "observed_actual_sIoU": 0.3859679813903168,
+      "unobserved_actual_sIoU": 0.36510240787146975,
+      "boundary_MAE": 256.74,
+      "start_error_seconds": 8.318468995123535,
+      "end_error_seconds": 9.702851522601048,
+      "interval_length_seconds": 8.480906156396623,
+      "length_error_seconds": 8.894724769360613,
+      "vIoU_at_03": 0.16,
+      "vIoU_at_05": 0.04,
+      "vIoU_ge_03": 0.16,
+      "vIoU_ge_05": 0.04,
+      "tIoU_ge_05": 0.27,
+      "tIoU_eq_0": 0.28,
+      "boundary_MAE_seconds": 9.010660258862293
+    },
+    "CleanFullMAP": {
+      "v": 0.14334944448405423,
+      "t": 0.32966083474510394,
+      "s": 0.3824256977682724,
+      "fixed_actual_sIoU": 0.3866565379780472,
+      "observed_actual_sIoU": 0.45823162838050974,
+      "unobserved_actual_sIoU": 0.3814707765561055,
+      "boundary_MAE": 239.01,
+      "start_error_seconds": 8.47578204777629,
+      "end_error_seconds": 8.363956036140117,
+      "interval_length_seconds": 12.873735292907504,
+      "length_error_seconds": 9.382893167220134,
+      "vIoU_at_03": 0.19,
+      "vIoU_at_05": 0.09,
+      "vIoU_ge_03": 0.19,
+      "vIoU_ge_05": 0.09,
+      "tIoU_ge_05": 0.32,
+      "tIoU_eq_0": 0.22,
+      "boundary_MAE_seconds": 8.419869041958203
+    }
+  },
+  "severe_vs_Source": {
+    "Source": {
+      "t": 0,
+      "v": 0,
+      "union": 0
+    },
+    "FullMAP": {
+      "t": 13,
+      "v": 13,
+      "union": 20
+    },
+    "CleanSource": {
+      "t": 10,
+      "v": 3,
+      "union": 10
+    },
+    "CleanFullMAP": {
+      "t": 17,
+      "v": 15,
+      "union": 26
+    }
+  },
+  "paired": {
+    "FullMAP-Source": {
+      "v": {
+        "mean": 2.443937778045702,
+        "CI95": [
+          -0.0517149613473006,
+          5.06101986997971
+        ],
+        "queries": 100,
+        "parents": 100,
+        "improved": 47,
+        "harmed": 24,
+        "unchanged": 29,
+        "declined_over5pp": 13
+      },
+      "t": {
+        "mean": 4.445438871407821,
+        "CI95": [
+          1.7166640361595853,
+          7.555365875579137
+        ],
+        "queries": 100,
+        "parents": 100,
+        "improved": 51,
+        "harmed": 24,
+        "unchanged": 25,
+        "declined_over5pp": 13
+      },
+      "observed_actual_sIoU": {
+        "mean": 10.255776613447631,
+        "CI95": [
+          4.045394341846422,
+          16.467989392465714
+        ],
+        "queries": 77,
+        "parents": 77,
+        "improved": 52,
+        "harmed": 22,
+        "unchanged": 3,
+        "declined_over5pp": 14
+      },
+      "unobserved_actual_sIoU": {
+        "mean": 2.283724724298149,
+        "CI95": [
+          -2.352378520638127,
+          6.85912272353027
+        ],
+        "queries": 100,
+        "parents": 100,
+        "improved": 55,
+        "harmed": 40,
+        "unchanged": 5,
+        "declined_over5pp": 25
+      },
+      "boundary_MAE_seconds": {
+        "mean": -0.649178625225706,
+        "CI95": [
+          -1.4297057846733645,
+          0.05376543051522209
+        ],
+        "queries": 100,
+        "parents": 100,
+        "improved": 57,
+        "harmed": 37,
+        "unchanged": 6,
+        "declined_over5pp": null
+      }
+    },
+    "FullMAP-CleanFullMAP": {
+      "v": {
+        "mean": -0.2591282954911478,
+        "CI95": [
+          -1.3542064535285576,
+          0.7241533098588652
+        ],
+        "queries": 100,
+        "parents": 100,
+        "improved": 38,
+        "harmed": 34,
+        "unchanged": 28,
+        "declined_over5pp": 6
+      },
+      "t": {
+        "mean": -0.7585040948872632,
+        "CI95": [
+          -2.4486638139446093,
+          0.8281350057955073
+        ],
+        "queries": 100,
+        "parents": 100,
+        "improved": 21,
+        "harmed": 26,
+        "unchanged": 53,
+        "declined_over5pp": 15
+      },
+      "observed_actual_sIoU": {
+        "mean": 1.6919264943210433,
+        "CI95": [
+          0.055212317329530046,
+          3.511057294799715
+        ],
+        "queries": 75,
+        "parents": 75,
+        "improved": 29,
+        "harmed": 36,
+        "unchanged": 10,
+        "declined_over5pp": 5
+      },
+      "unobserved_actual_sIoU": {
+        "mean": 0.660343477523716,
+        "CI95": [
+          -0.6347774546173405,
+          2.186196738920657
+        ],
+        "queries": 100,
+        "parents": 100,
+        "improved": 44,
+        "harmed": 41,
+        "unchanged": 15,
+        "declined_over5pp": 8
+      },
+      "boundary_MAE_seconds": {
+        "mean": 0.127688030574938,
+        "CI95": [
+          -0.33061469221482914,
+          0.5826444715364505
+        ],
+        "queries": 100,
+        "parents": 100,
+        "improved": 27,
+        "harmed": 34,
+        "unchanged": 39,
+        "declined_over5pp": null
+      }
+    },
+    "Source-CleanSource": {
+      "v": {
+        "mean": -0.5127038732444894,
+        "CI95": [
+          -1.503883005582741,
+          0.3900742540500798
+        ],
+        "queries": 100,
+        "parents": 100,
+        "improved": 24,
+        "harmed": 44,
+        "unchanged": 32,
+        "declined_over5pp": 4
+      },
+      "t": {
+        "mean": -1.0149031951197218,
+        "CI95": [
+          -2.9554688196954015,
+          0.7478369336031827
+        ],
+        "queries": 100,
+        "parents": 100,
+        "improved": 20,
+        "harmed": 22,
+        "unchanged": 58,
+        "declined_over5pp": 11
+      },
+      "observed_actual_sIoU": {
+        "mean": -0.86463852431027,
+        "CI95": [
+          -2.1416361059381335,
+          0.09662910503825418
+        ],
+        "queries": 75,
+        "parents": 75,
+        "improved": 26,
+        "harmed": 41,
+        "unchanged": 8,
+        "declined_over5pp": 5
+      },
+      "unobserved_actual_sIoU": {
+        "mean": 0.01345562168914302,
+        "CI95": [
+          -0.42975631830368455,
+          0.49340479008239757
+        ],
+        "queries": 100,
+        "parents": 100,
+        "improved": 45,
+        "harmed": 49,
+        "unchanged": 6,
+        "declined_over5pp": 3
+      },
+      "boundary_MAE_seconds": {
+        "mean": 0.18607543889655578,
+        "CI95": [
+          -0.109401684425708,
+          0.5198645295816479
+        ],
+        "queries": 100,
+        "parents": 100,
+        "improved": 28,
+        "harmed": 28,
+        "unchanged": 44,
+        "declined_over5pp": null
+      }
+    }
+  },
+  "CI": "pointwise parent bootstrap; no familywise correction",
+  "timegroups": {
+    "short_le5s": {
+      "queries": 61,
+      "paired": {
+        "FullMAP-Source": {
+          "v": {
+            "mean": 0.8053047748823615,
+            "CI95": [
+              -0.9122220745447527,
+              2.595609101068608
+            ],
+            "queries": 61,
+            "parents": 61,
+            "improved": 21,
+            "harmed": 14,
+            "unchanged": 26,
+            "declined_over5pp": 6
+          },
+          "t": {
+            "mean": -0.5105032977224437,
+            "CI95": [
+              -2.8804715230307343,
+              1.8189456634972423
+            ],
+            "queries": 61,
+            "parents": 61,
+            "improved": 18,
+            "harmed": 22,
+            "unchanged": 21,
+            "declined_over5pp": 12
+          },
+          "observed_actual_sIoU": {
+            "mean": 14.44425423462134,
+            "CI95": [
+              8.04964509385611,
+              21.701697029950946
+            ],
+            "queries": 39,
+            "parents": 39,
+            "improved": 28,
+            "harmed": 9,
+            "unchanged": 2,
+            "declined_over5pp": 4
+          },
+          "unobserved_actual_sIoU": {
+            "mean": 2.7068366805990896,
+            "CI95": [
+              -2.141993484075626,
+              7.551617237746601
+            ],
+            "queries": 61,
+            "parents": 61,
+            "improved": 31,
+            "harmed": 26,
+            "unchanged": 4,
+            "declined_over5pp": 15
+          },
+          "boundary_MAE_seconds": {
+            "mean": 0.4148623574151404,
+            "CI95": [
+              -0.3230155962366052,
+              1.1135162927733058
+            ],
+            "queries": 61,
+            "parents": 61,
+            "improved": 24,
+            "harmed": 35,
+            "unchanged": 2,
+            "declined_over5pp": null
+          }
+        },
+        "FullMAP-CleanFullMAP": {
+          "v": {
+            "mean": 0.05526416816699882,
+            "CI95": [
+              -0.6695636225707733,
+              0.7378339904379484
+            ],
+            "queries": 61,
+            "parents": 61,
+            "improved": 20,
+            "harmed": 15,
+            "unchanged": 26,
+            "declined_over5pp": 2
+          },
+          "t": {
+            "mean": -0.13400134795920488,
+            "CI95": [
+              -1.1631917491260024,
+              0.9683811861623411
+            ],
+            "queries": 61,
+            "parents": 61,
+            "improved": 9,
+            "harmed": 14,
+            "unchanged": 38,
+            "declined_over5pp": 6
+          },
+          "observed_actual_sIoU": {
+            "mean": 0.44917246488839746,
+            "CI95": [
+              -1.7616426304032726,
+              2.813401275667187
+            ],
+            "queries": 37,
+            "parents": 37,
+            "improved": 12,
+            "harmed": 17,
+            "unchanged": 8,
+            "declined_over5pp": 4
+          },
+          "unobserved_actual_sIoU": {
+            "mean": 1.0192188322653974,
+            "CI95": [
+              -0.6796845051695135,
+              3.027607088987148
+            ],
+            "queries": 61,
+            "parents": 61,
+            "improved": 26,
+            "harmed": 21,
+            "unchanged": 14,
+            "declined_over5pp": 6
+          },
+          "boundary_MAE_seconds": {
+            "mean": 0.022727722985628928,
+            "CI95": [
+              -0.33473334016393436,
+              0.37896426524764243
+            ],
+            "queries": 61,
+            "parents": 61,
+            "improved": 13,
+            "harmed": 22,
+            "unchanged": 26,
+            "declined_over5pp": null
+          }
+        },
+        "Source-CleanSource": {
+          "v": {
+            "mean": -0.23555443254147582,
+            "CI95": [
+              -0.9931905138273448,
+              0.2717380829299416
+            ],
+            "queries": 61,
+            "parents": 61,
+            "improved": 14,
+            "harmed": 19,
+            "unchanged": 28,
+            "declined_over5pp": 1
+          },
+          "t": {
+            "mean": -0.1069624554499948,
+            "CI95": [
+              -1.4090357073625601,
+              0.9390446880839509
+            ],
+            "queries": 61,
+            "parents": 61,
+            "improved": 10,
+            "harmed": 9,
+            "unchanged": 42,
+            "declined_over5pp": 2
+          },
+          "observed_actual_sIoU": {
+            "mean": -1.2771522484344737,
+            "CI95": [
+              -3.76204821712906,
+              0.32631204648992795
+            ],
+            "queries": 37,
+            "parents": 37,
+            "improved": 10,
+            "harmed": 22,
+            "unchanged": 5,
+            "declined_over5pp": 3
+          },
+          "unobserved_actual_sIoU": {
+            "mean": 0.1493910893683228,
+            "CI95": [
+              -0.5506422705239432,
+              0.9061530389738723
+            ],
+            "queries": 61,
+            "parents": 61,
+            "improved": 28,
+            "harmed": 29,
+            "unchanged": 4,
+            "declined_over5pp": 3
+          },
+          "boundary_MAE_seconds": {
+            "mean": 0.08881785508075149,
+            "CI95": [
+              -0.1670205994262708,
+              0.40587655207692763
+            ],
+            "queries": 61,
+            "parents": 61,
+            "improved": 16,
+            "harmed": 15,
+            "unchanged": 30,
+            "declined_over5pp": null
+          }
+        }
+      }
+    },
+    "long_gt5s": {
+      "queries": 39,
+      "paired": {
+        "FullMAP-Source": {
+          "v": {
+            "mean": 5.006927859916568,
+            "CI95": [
+              -0.9513320796805846,
+              11.075674319922426
+            ],
+            "queries": 39,
+            "parents": 39,
+            "improved": 26,
+            "harmed": 10,
+            "unchanged": 3,
+            "declined_over5pp": 7
+          },
+          "t": {
+            "mean": 12.19704072568849,
+            "CI95": [
+              6.845682157552709,
+              18.743646420939047
+            ],
+            "queries": 39,
+            "parents": 39,
+            "improved": 33,
+            "harmed": 2,
+            "unchanged": 4,
+            "declined_over5pp": 1
+          },
+          "observed_actual_sIoU": {
+            "mean": 5.95707589697988,
+            "CI95": [
+              -4.425125812281149,
+              16.281390892882126
+            ],
+            "queries": 38,
+            "parents": 38,
+            "improved": 24,
+            "harmed": 13,
+            "unchanged": 1,
+            "declined_over5pp": 10
+          },
+          "unobserved_actual_sIoU": {
+            "mean": 1.6219342285453973,
+            "CI95": [
+              -7.5938929008535645,
+              10.375792942354439
+            ],
+            "queries": 39,
+            "parents": 39,
+            "improved": 24,
+            "harmed": 14,
+            "unchanged": 1,
+            "declined_over5pp": 10
+          },
+          "boundary_MAE_seconds": {
+            "mean": -2.313447854484465,
+            "CI95": [
+              -3.8088830034268506,
+              -1.0764321658572484
+            ],
+            "queries": 39,
+            "parents": 39,
+            "improved": 33,
+            "harmed": 2,
+            "unchanged": 4,
+            "declined_over5pp": null
+          }
+        },
+        "FullMAP-CleanFullMAP": {
+          "v": {
+            "mean": -0.7508703540333773,
+            "CI95": [
+              -3.3037699002769347,
+              1.5378541249147002
+            ],
+            "queries": 39,
+            "parents": 39,
+            "improved": 18,
+            "harmed": 19,
+            "unchanged": 2,
+            "declined_over5pp": 4
+          },
+          "t": {
+            "mean": -1.7352904426465336,
+            "CI95": [
+              -5.716109778889239,
+              2.021414978711324
+            ],
+            "queries": 39,
+            "parents": 39,
+            "improved": 12,
+            "harmed": 12,
+            "unchanged": 15,
+            "declined_over5pp": 9
+          },
+          "observed_actual_sIoU": {
+            "mean": 2.9019764703475666,
+            "CI95": [
+              0.5292411631815486,
+              5.670458758839679
+            ],
+            "queries": 38,
+            "parents": 38,
+            "improved": 17,
+            "harmed": 19,
+            "unchanged": 2,
+            "declined_over5pp": 1
+          },
+          "unobserved_actual_sIoU": {
+            "mean": 0.09902561497903503,
+            "CI95": [
+              -1.791457377317575,
+              2.328536389805657
+            ],
+            "queries": 39,
+            "parents": 39,
+            "improved": 18,
+            "harmed": 20,
+            "unchanged": 1,
+            "declined_over5pp": 2
+          },
+          "boundary_MAE_seconds": {
+            "mean": 0.29185671680437036,
+            "CI95": [
+              -0.7311803414434207,
+              1.3346799967584284
+            ],
+            "queries": 39,
+            "parents": 39,
+            "improved": 14,
+            "harmed": 12,
+            "unchanged": 13,
+            "declined_over5pp": null
+          }
+        },
+        "Source-CleanSource": {
+          "v": {
+            "mean": -0.946194024087665,
+            "CI95": [
+              -3.2833818199844536,
+              1.099916295490317
+            ],
+            "queries": 39,
+            "parents": 39,
+            "improved": 10,
+            "harmed": 25,
+            "unchanged": 4,
+            "declined_over5pp": 3
+          },
+          "t": {
+            "mean": -2.435015634090321,
+            "CI95": [
+              -7.068484975458633,
+              1.633257303579579
+            ],
+            "queries": 39,
+            "parents": 39,
+            "improved": 10,
+            "harmed": 13,
+            "unchanged": 16,
+            "declined_over5pp": 9
+          },
+          "observed_actual_sIoU": {
+            "mean": -0.4629804245051239,
+            "CI95": [
+              -1.4460091380808056,
+              0.42600002523288377
+            ],
+            "queries": 38,
+            "parents": 38,
+            "improved": 16,
+            "harmed": 19,
+            "unchanged": 3,
+            "declined_over5pp": 2
+          },
+          "unobserved_actual_sIoU": {
+            "mean": -0.1991613918603433,
+            "CI95": [
+              -0.48559879038397263,
+              0.01408583415719587
+            ],
+            "queries": 39,
+            "parents": 39,
+            "improved": 17,
+            "harmed": 20,
+            "unchanged": 2,
+            "declined_over5pp": 0
+          },
+          "boundary_MAE_seconds": {
+            "mean": 0.33819627512127526,
+            "CI95": [
+              -0.2904586584661582,
+              1.0526555795218295
+            ],
+            "queries": 39,
+            "parents": 39,
+            "improved": 12,
+            "harmed": 13,
+            "unchanged": 14,
+            "declined_over5pp": null
+          }
+        }
+      }
+    }
+  }
+}
