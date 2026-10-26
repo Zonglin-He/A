@@ -1,0 +1,56 @@
+{
+  "schema": "ReferFormer_official_checkpoint_CPU_load_bridge_v1",
+  "scope": "CPU model construction and strict learned/full-shared-state tensor coverage only, zero forward/optimizer/GT/CUDA. No actual expert output/model GPU bridge.",
+  "source_lock_sha256": "2a504c158fe3eed9631293ec4eeab2c5e897f05e8ef828ff7ac6e971d47ebba0",
+  "checkpoint": {
+    "status": "download_complete_verified_length_SHA",
+    "official_repository": "https://github.com/wjn922/ReferFormer",
+    "official_README_model": "Ref-Youtube-VOS ResNet50 model, not pretrained_weights or A2D finetune",
+    "url": "https://drive.usercontent.google.com/download?id=1TBykzTRiOEbpM2YEYnDICyqjwkvlD2cR&export=download&confirm=t",
+    "bytes": 1116919589,
+    "sha256": "50c177cda8258745cb14d7fb7afa0441c184b1d626a2d30656b31887fd0e8ff4",
+    "elapsed_wall_seconds": 352.0849775909446,
+    "new_model": 0,
+    "new_GPU": 0,
+    "new_expert": 0,
+    "weight_file_private": true
+  },
+  "text_assets": {
+    "repository": "FacebookAI/roberta-base",
+    "revision": "e2da8e2f811d1448a5b465c236feacd80ffbac7b",
+    "files": {
+      "config.json": {
+        "sha256": "ef0185e2aae6e06c5f105a285006952c340e20c7dbf43c86ec82601b13fc45e9",
+        "bytes": 481,
+        "url": "https://huggingface.co/FacebookAI/roberta-base/resolve/e2da8e2f811d1448a5b465c236feacd80ffbac7b/config.json"
+      },
+      "merges.txt": {
+        "sha256": "1ce1664773c50f3e0cc8842619a93edc4624525b728b188a9e0be33b7726adc5",
+        "bytes": 456318,
+        "url": "https://huggingface.co/FacebookAI/roberta-base/resolve/e2da8e2f811d1448a5b465c236feacd80ffbac7b/merges.txt"
+      },
+      "tokenizer.json": {
+        "sha256": "847bbeab6174d66a88898f729d52fa8d355fafe1bea101cf960dd404581df70e",
+        "bytes": 1355863,
+        "url": "https://huggingface.co/FacebookAI/roberta-base/resolve/e2da8e2f811d1448a5b465c236feacd80ffbac7b/tokenizer.json"
+      },
+      "tokenizer_config.json": {
+        "sha256": "994f46754c5bf4014f1aa92d34b1374319c3a6b3f702105cd5b742beaecd18ce",
+        "bytes": 25,
+        "url": "https://huggingface.co/FacebookAI/roberta-base/resolve/e2da8e2f811d1448a5b465c236feacd80ffbac7b/tokenizer_config.json"
+      },
+      "vocab.json": {
+        "sha256": "9e7f63c2d15d666b52e21d250d2e513b87c9b713cfa6987a82ed89e5e6e50655",
+        "bytes": 898823,
+        "url": "https://huggingface.co/FacebookAI/roberta-base/resolve/e2da8e2f811d1448a5b465c236feacd80ffbac7b/vocab.json"
+      }
+    }
+  },
+  "constructors": "Official build_model defaultresnet50/5queries/4levels/with_box_refine/binary/masks/freeze_text_encoder. Skip redundant ImageNet and text-weight initialization, instantiate exact pinned Roberta config/tokenizer, then every final shared tensor equal official complete model state. Only verified deterministic index buffers may be absent/unexpected; any learned mismatch hardfails.",
+  "code_sha256": {
+    "studies/expert_generalization_v1/cpu_model_bridge.py": "56710bd399f60d2de167844d71aa58215c02d681837a7684c55791071c2811a6",
+    "studies/expert_generalization_v1/referformer_adapter.py": "16c9d85917ed9f27451c852d44dde9587cc0268c14b724655bdf53fb8c12781c",
+    "studies/expert_generalization_v1/interface.py": "32dfb0a12c50ad1261d1c155a0228cc466cb91d68f488b4891b9e98d1426f723"
+  },
+  "fingerprint": "c055b65a6ec7f071770f54d4697ac46375f4ee55f5ecb1717fe8b80a06e6bb6d"
+}

@@ -1,0 +1,51 @@
+{
+  "schema": "expert_generalization_intent_v1",
+  "authorization": "User explicitly authorizes two independent questions: identical eight experts for Tent/SAR complete tubes, and alternative expert for unchanged current structured inference. Corruption remains paused; no paper edits.",
+  "cohorts": {
+    "hc2": 1902,
+    "vidstg": 10303
+  },
+  "current_expert": "Existing ReferDINO ryt_mevis_swinb checkpoint/current native same-track eight boxes and masks; all original caches immutable.",
+  "alternative": "Official ReferFormer ResNet50 Ref-Youtube-VOS checkpoint, chosen before target scoring. No detector+segmenter substitution and no reuse of ReferDINO masks/boxes for the alternative.",
+  "source_commit": "06fc218f5d8f04730f81471a15ed89ea7e4d30d8",
+  "source_lock_sha256": "2a504c158fe3eed9631293ec4eeab2c5e897f05e8ef828ff7ac6e971d47ebba0",
+  "interface": {
+    "input": "Exact same TA Source grounder/full manifests, same frozen Source-selected positions8 and actual native sampled RGB; eight frames jointly, once per query and expert, exact same normalized caption string.",
+    "preprocess": "Official inference_ytvos.py T.Resize(360) aspect-preserving short side, ToTensor/ImageNet mean-std; float32 inference, no padded canvas accepted without explicit crop map. Actual shapes recorded per query.",
+    "identity": "Official max over class of mean-over-eight sigmoid logits selects ONE query index for all8. Never per-frame argmax/GT matching/re-identification/identity repair.",
+    "boxes": "Official selected pred_boxes normalized cxcywh, not fabricated masks-only bounding boxes. Identical coordinate validation as current expert, no clipping/fallback; require finite positive complete boxes.",
+    "masks": "Same selected query native mask logits before thresholding to unchanged current SourceEvidence.from_capture soft-seed interpolation/crop rule. Binary display masks use bilinear align_cornersFalse to original H/W then sigmoid>.5. Preserve empty masks; no Source or current-expert mask fallback.",
+    "checkpoint": "All learned parameters and deterministic inference state covered by official checkpoint; no strict=False silent missing learned weights. Suppress redundant ImageNet/Roberta weight downloads only in independent adapter with every final tensor verified equal to full official state and pinned tokenizer/config assets."
+  },
+  "comparison": {
+    "current_expert": [
+      "SourceNativeInterval+ExpertInterpolation",
+      "Ours_current_expert_own_posterior_MAP_DP"
+    ],
+    "alternative": [
+      "SourceNativeInterval+AlternativeExpertInterpolation",
+      "Ours_alternative_expert_own_posterior_MAP_DP"
+    ],
+    "simple": "Original same center/logsize interpolation using that expert native boxes, same Source IDs/indices and that expert corrected E outside coverage; original unadapted native Source MAP/hull event for both experts. Not the already-selected Ours event from Table8.",
+    "Ours": "Same current shared-corrected ROI/kappa0/beta1/one-round/context1.5/domainprofile/gamma/spatial candidates/final-DP parameters. Each expert changes its own initialization, masks/geometry, actual E ROI pooling, prototype/posterior/jointMAP interval and finalDP. Do not rename old vectors or reuse old expert geometry/features.",
+    "estimand": "Within each expert Ours-minus-simple full-tube gain; between-expert main differences with same eight observation budget, explicitly not equal compute. Add gain-difference interaction parent CI, not only two absolute Ours rows."
+  },
+  "sampling": "No extra expert observations. Fixed original128parents/domain interface and cost pilot before full; feasibility only, no target precision/checkpoint/threshold/hyperparameter selection. Commit one exact expert payload per query reused by its simple and structured arms. Same pilot outputs may join full after strict input/SHA validation.",
+  "acquisition": "Inventory exact retained actual Source/raw/pretext/spatial grids first. Necessary original TA224 Source-or-prefix at most once per missing query, independent freeze and CPU/GPU/precision compatibility bridge. Paid Source or prefix checkpoint+SHA BEFORE expert call/pooling; paid alternative expert payload+SHA BEFORE both arms. Zero repeated original expert calls. New alternate expert upper12205; maximum necessary raw recovery11821 absent later exact retained inputs. No model/forward by this intent.",
+  "cost": "Record every actual PID/start/model load/failed attempts, expert preprocess/forward/postprocess and full decode/Source/transfer/expert/evidence/Epool/posterior/finalDP/cleanup. Load/startup separate, resident/offload explicit, no query cache for matched latency; nested times never summed. Same eight observations does not imply same compute.",
+  "evaluation": "Each full domain seal, independent CPU official t/v/s/R.3/R.5 then independent all prediction/receipt/expert/context/Source/raw SHA and array-cold-rederive audit/allmeans. All signed negatives/severe t/v union once/rescues/short<=5s/long/parentpaired10000bootstrap95CI. Report quality changes and failures, not expert-insensitive claims before evidence. No online GT or target tuning; historically exposed fullsets.",
+  "execution": "No GPU owner/model constructed by preparation. Do not interrupt CG or existing gamma sole waiting owner. First finish non-GPU combination baseline and necessary source/runtime/input/checkpoint audits; freeze separate numeric GPU execution then exclusive queue gate after existing active GPU dependencies. No corruption task may resume.",
+  "privacy": "Code/protocol/scalars/hashes public; checkpoints/rawfeatures/masks/media/captions/GTcoordinates/IDs private. Existing three authorized mechanism figures are the only earlier media exception.",
+  "code_sha256": {
+    "studies/expert_generalization_v1/input_contract.py": "79dd3b770fca11fb3c87e07b4b33ac8fadda8371848e1eafa09b6d55eb12338d",
+    "studies/expert_generalization_v1/prepare.py": "439e18f263a075ea78e6ab41310ce430178aa0855ee366cbb0c43bf23dacb31e",
+    "studies/expert_generalization_v1/download_checkpoint.py": "a2462d2643958c89090a4df226c12a6c6c222e9f41959e0b46cfeb27b3312f12"
+  },
+  "new_model": 0,
+  "new_Source": 0,
+  "new_expert": 0,
+  "new_optimizer": 0,
+  "new_GT_scoring": 0,
+  "time": 1792993801.3557768,
+  "fingerprint": "1ba7a701d3f4b87e9cce22d30055d2e6efe4cd6324f6a997cd228f02ea79a6cf"
+}

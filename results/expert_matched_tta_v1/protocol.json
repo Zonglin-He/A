@@ -1,0 +1,80 @@
+{
+  "schema": "expert_matched_native_Tent_SAR_full_tubes_v1",
+  "question": "Does structured inference retain an advantage when the frozen Tent/SAR STVG adapters receive the identical eight expert observations through a fully specified interpolation fusion?",
+  "cohort": {
+    "hc2": 1902,
+    "vidstg": 10303
+  },
+  "arms": [
+    "Source",
+    "SourceExpertInterpolation",
+    "TentExpertInterpolation",
+    "SARExpertInterpolation",
+    "Ours"
+  ],
+  "pairs": [
+    [
+      "Ours",
+      "Source"
+    ],
+    [
+      "Ours",
+      "SourceExpertInterpolation"
+    ],
+    [
+      "Ours",
+      "TentExpertInterpolation"
+    ],
+    [
+      "Ours",
+      "SARExpertInterpolation"
+    ],
+    [
+      "TentExpertInterpolation",
+      "SourceExpertInterpolation"
+    ],
+    [
+      "SARExpertInterpolation",
+      "SourceExpertInterpolation"
+    ],
+    [
+      "SourceExpertInterpolation",
+      "Source"
+    ]
+  ],
+  "primary": "Ours versus TentExpertInterpolation and SARExpertInterpolation; independent native adapted MAP/hull intervals, never Ours interval",
+  "secondary": "No-update native Source temporal readout with identical interpolation isolates adaptation from expert fusion; raw native Source retained for context.",
+  "expert": "One original Source-selected positions8, same existing ReferDINO boxes/native mask payload SHA and original caption/RGB context; no new expert call. Same interpolation tensor for all three interpolation rows.",
+  "interpolation": "Original stvg.paper_panel.interpolation center/logsize interpolation of same8 native expert boxes with original E outside anchor coverage; coordinates and outside rule byte-exact to the previously audited original interpolation. No competitor DP or Ours posterior.",
+  "temporal": "Pinned official Tent/SAR lr1e-4/five steps/SARmargin.8/temporal-decoder LayerNorm-affine/episodic reset, exactly saved after-update logits/native per-offset legal MAP physical hull. No additional optimizer update or expert-supervised loss. Do not use Ours time posterior/MAP interval. Ours has independent own current selected event.",
+  "updates": "Before each prediction commit verify SHA-bound trace five real steps, parameter delta finite and original trials/reset/official provenance. First actual two cases per domain additionally reload saved adapted logits and independently replay native readout exact. Whole-domain reset/readout/parameter-change diagnostics inherited and counted again from every receipt; SAR reliable-filter empty updates retained.",
+  "evaluation": "Each whole domain seal before independent official CPU scoring of the three new combinations; raw Source/Ours reuse exact independently scored/audited metrics after array identity proofs. Independent cold all-array/SHA/means audit. t/v/s/R.3/R.5, all signed severe t/v union once/rescues/shortlong/parent10000bootstrap95CI. Fullsets previously exposed, no tuning or unseen confirmation.",
+  "cost": "New cached CPU composition and scoring wall are not deployment. Existing Source/expert/optimizer costs remain nonzero and inherited once. Exact standalone end-to-end new combination timing requires a separate matched actual GPU plan after existing GPU queue; missing end-to-end combination latency must remain not measured, never sum nested costs or transplant Ours latency.",
+  "limits": {
+    "CPU_jobs": 2,
+    "owned_compute_jobs": 1,
+    "affinity": [
+      14,
+      15
+    ],
+    "nice": 19,
+    "io": "idle3",
+    "threads": 1,
+    "CUDAhidden": true,
+    "min_RAM_bytes": 8589934592,
+    "min_disk_bytes": 85899345920,
+    "max_private_bytes": 171798691840,
+    "max_domain_seconds": 259200,
+    "new_Source": 0,
+    "new_expert": 0,
+    "new_optimizer": 0
+  },
+  "failure": "Hard fail and preserve original plan/source/log/all outputs; no skip/fallback/hash waiver or repeat acquisition.",
+  "code_sha256": {
+    "studies/expert_matched_tta_v1/root_export.py": "5853f21748880c4c125195ba795973f67553957b089ee81d2f305cbba3369fdc",
+    "studies/expert_matched_tta_v1/common.py": "1e18768af092349e57bd7c857c790c50291dc9a174c46034c38013d1128233ee",
+    "studies/expert_matched_tta_v1/controller.py": "baa5a4d49b9cf0f22ac4682cd19825ce956e77c398b8031917118bcda29b469a",
+    "studies/expert_matched_tta_v1/run.py": "467e8b0f39afb3ef7823258559e3e877274bfa9b6f96bb930b36da85d52c6be2"
+  },
+  "fingerprint": "425054b5ff7812ea890c6b0ddbf93d7c692332d3de1f05d72efd58ed05ad7af4"
+}
