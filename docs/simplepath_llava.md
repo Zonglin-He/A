@@ -33,3 +33,5 @@ GPU/score均使用/home/wwww/stvg/envs/llava-st/bin/python -B -u -m tools.simple
 每query最终NPZ必须保存Source/空间/时间/Full、帧/八观察、原生起点与各起点条件结束log概率、分隔log概率、native_prior、反馈和aux路径。多MB的原始局部网格和pool向量不重复存盘。后验由已存native_prior与frame_feedback经原固定update/inclusive_scores精确重构，保存其原数组SHA到receipt；写入前逐位验证重构相同，不损失后验数值。两域真实资格样本的紧凑证据约70KB/query，12205投影约0.81GiB；25GiB空闲保护仍有效。必须保存的最终预测失败则停止，不通过舍弃结果绕过磁盘限制。
 
 共享checkpoint训练含VidSTG衍生指令，原128及之前全量研究已曝光；不称严格未见域/独立未曝光测试。终态后Root核验全部尚未首核预测、五行全部正负标量和最终seal引用，发布并核远端，再报告用户并删除唯一监控；不能因资格或单域完成提前停止后续任务。
+
+2026-10-26用户授权继续并先完成TubeDETR空间所选全量，两域已完整核验发布3a48720101351e0a70de9dc773936cdf473b1e55。随后用独立`tools.simplepath_llava.resume prepare/run`恢复原全量，跳过已封存且Root核验的两个128及其评分，不重写原gate。准备阶段逐payload/receipt核已提交3949条的请求/计划/SHA、全部有限正尺寸、Source/时间/帧/八观察及后验精确重构SHA，不读GT；[续跑预检](../results/simplepath_llava/resume_preflight.json)与[执行记录](../results/simplepath_llava/resume_plan.json)在GPU前冻结。新控制器仍调用原`tools.simplepath_llava.run gpu/score --full`，原数学、参数、checkpoint、Source生成和输出格式完全不改；已有提交由原引擎校验后跳过，任何不完整提交保留并硬失败。原停跑记录保留，日志后缀`_resume_v1.log`，新故障`outputs/simplepath_llava/resume_failure.json`，实际/proc和runtime身份为准。原最终seal保持原格式，额外resume_completion绑定续跑记录；全部新完整结果仍需Root核验发布。
