@@ -28,3 +28,6 @@ Case 1 includes the native-to-joint temporal readout change and does not isolate
 ## 4. Temporal appearance ROI failure
 
 ![Temporal appearance ROI failure](failure_04_pooling_ROI.png)
+
+
+2026-10-27 display revision: the figure header now contains only Query. Case/dataset titles, header deltas and explanatory notices were removed at the user's request. All below-header image pixels and all original image/geometry operators are exactly preserved. See results/figure_query_only_v1 for the independent edit and inspection receipts; earlier publication_authorization.json documents historical original figure bytes.

@@ -11,3 +11,6 @@ These are post-hoc positive-extreme illustrations, not representative samples. G
 | 3 | Same-candidate independent selection versus final trajectory DP | [PNG](case_3.png) · [PDF](case_3.pdf) |
 
 Case 2 is a temporal illustration: its spatial trajectory remains imperfect and its unobserved fixed-support sIoU change is negative. Do not treat it as proof of correct spatial localization. The scalar/hash/selection and root visual-inspection receipts are in the parent folder.
+
+
+2026-10-27 display revision: the figure header now contains only Query. Case/dataset titles, header deltas and explanatory notices were removed at the user's request. All below-header image pixels and all original image/geometry operators are exactly preserved. See results/figure_query_only_v1 for the independent edit and inspection receipts; earlier publication_authorization.json documents historical original figure bytes.
