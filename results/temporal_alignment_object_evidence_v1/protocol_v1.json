@@ -1,0 +1,35 @@
+{
+  "schema": "cached_temporal_vector_permutation_v1",
+  "arms": [
+    "CurrentAligned",
+    "FixedTemporalPermutation"
+  ],
+  "queries_per_domain": 128,
+  "seed": 20261027,
+  "intervention": "Reassign complete cached E-ROI vectors to fixed temporal positions by SHA256 order. Only temporal input vectors change; spatial geometry/candidates/unary/link features remain fixed. Refit prototypes, evidence, posterior, legal jointMAP and final own-interval DP.",
+  "permutation_rule": "UTF8 20261027|dataset|original_query_id|source_index SHA256 ascending; source_index breaks ties; identity N>1 leftrotate1; N<2 explicit nonintervened, never dropped",
+  "params": {
+    "kappa": 0,
+    "beta": 1,
+    "rounds": 1,
+    "no_first_aux_DP": true
+  },
+  "primary": "CurrentAligned minus FixedTemporalPermutation t/v pp;128parent paired10000 bootstrap seed20260920 pointwise95%",
+  "limitations": "Previously exposed development panel. Supports temporal correspondence conditional on this intervention; not action semantics or self-reinforcement causality. Temporal weighted prototypes may change by design.",
+  "predecessor_path": "outputs/matched_pipeline_timing_v1/complete_published_v1.json",
+  "code_sha256": {
+    "studies/temporal_alignment_object_evidence_v1/run.py": "594a3740b28b0025cbef4d5f53ccc9afb9e93acba20e05b880c8803aa0ad8c6c",
+    "studies/temporal_feedback_risk_v1/common.py": "d28159f2540c7db18692a981c535eafc53cb1c324ef37776d71e69e848e8e63f",
+    "studies/shared_corrected_roi_v1/shared_common.py": "4baab238e0eddbadba2ed21495f839a51425a9a412c776519c003da28d0e27f2",
+    "stvg/prototype.py": "b263154ae8c6ff4e4f8162e4ddea4498302b86f2ec65e8cfac0aa92d351d425b",
+    "stvg/spatial.py": "54c3cec0ec643e47464957730f482302609855164196b361ee4bee1efd025c10",
+    "stvg/current_shared_roi.py": "83e440aafdba60a69086e141bc837388f8dd5e2d2c2f8e1b2475b48ce35a80c6",
+    "tools/full_score.py": "419f03f9b68c1e63962f1a742bde485d92daf8662dace2167579d1a6dd423c08"
+  },
+  "new_Source": 0,
+  "new_expert": 0,
+  "new_model": 0,
+  "new_optimizer": 0,
+  "new_acquisition_authorized": false,
+  "fingerprint": "2b31aea5eb80f09c963150ce45caef51faefd68e416bc0036e22bd60c5e21113"
+}

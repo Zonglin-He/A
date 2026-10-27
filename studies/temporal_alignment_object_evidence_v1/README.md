@@ -1,6 +1,6 @@
 # Temporal alignment of object evidence
 
-Direct user authorization, 2026-10-27: run this small cached experiment after the current matched pipeline timing. This is a queued intent, not an executed experiment or a frozen executable scientific plan.
+Direct user authorization, 2026-10-27: run this small cached experiment after the current matched pipeline timing. The original queued intent is retained in private intent_v1.json. Execution is now complete: both domains have128 predictions sealed,256 official checks, independent cold-array/input/parent/SHA/means audits and root signed analyses. See results/temporal_alignment_object_evidence_v1/{hc2,vidstg}/ANALYSIS.md. The independently frozen executable protocol is plan_v1.json (fingerprint2b31aea5eb80f09c963150ce45caef51faefd68e416bc0036e22bd60c5e21113). Matched timing predecessor83d451a680533aa816595de66407cfb9fe395260 was fully published and verified before cached execution began.
 
 The predecessor is `matched_pipeline_timing_v1`: all 1536 real calls, independent report, root analysis, and verified publication must finish first. Do not interfere with its measurements. Continue the existing heartbeat for this explicitly authorized follow-up; no new automation, chat, or agent. All other user-paused or cancelled studies remain paused or cancelled.
 

@@ -1,0 +1,66 @@
+{
+  "new_Source": 0,
+  "new_expert": 0,
+  "new_model": 0,
+  "new_optimizer": 0,
+  "new_acquisition": 0,
+  "inherited_Source_expert_acquisition_nonzero": true,
+  "prediction_worker": {
+    "pid": 3663953,
+    "startticks": 265187423
+  },
+  "prediction_cached_elapsed_wall_seconds": 20.88328970875591,
+  "conditional_query_elapsed_sum": 20.237101055681705,
+  "score": {
+    "status": "scored_whole128_after_prediction_seal",
+    "queries": 128,
+    "parents": 128,
+    "official_checks": 256,
+    "max_error": 1.2212453270876722e-15,
+    "worker": {
+      "pid": 3665882,
+      "startticks": 265189707
+    },
+    "elapsed_wall_seconds": 2.8862265637144446,
+    "seal_sha256": "5f68db1140da271fb313732595f012d6cb5821a38fa1487a779b5198f4cc6ca4",
+    "metrics_sha256": "8ed002bb6220530fc5f85152961db1815f4d1c6c00dd8d175ff4e674b0ab91ff"
+  },
+  "audit_worker": {
+    "pid": 3666694,
+    "startticks": 265190715
+  },
+  "audit_elapsed_wall_seconds": 20.613354227039963,
+  "actual_stage_exits": {
+    "predict": {
+      "worker": {
+        "pid": 3663953,
+        "start_ticks": 265187423
+      },
+      "exit_code": 0,
+      "actual_subprocess_wait": true,
+      "elapsed_wall_seconds": 22.843574600294232,
+      "log": "outputs/temporal_alignment_object_evidence_v1/vidstg/predict_execution_v1.log"
+    },
+    "score": {
+      "worker": {
+        "pid": 3665882,
+        "start_ticks": 265189707
+      },
+      "exit_code": 0,
+      "actual_subprocess_wait": true,
+      "elapsed_wall_seconds": 10.078829466830939,
+      "log": "outputs/temporal_alignment_object_evidence_v1/vidstg/score_execution_v1.log"
+    },
+    "audit": {
+      "worker": {
+        "pid": 3666694,
+        "start_ticks": 265190715
+      },
+      "exit_code": 0,
+      "actual_subprocess_wait": true,
+      "elapsed_wall_seconds": 22.537487814202905,
+      "log": "outputs/temporal_alignment_object_evidence_v1/vidstg/audit_execution_v1.log"
+    }
+  },
+  "scope": "Cached replay/input checks and official CPU evaluation; not process CPU time or deployment latency. Stage clocks include nested work and must not be added to inherited acquisition as a speed benchmark."
+}
