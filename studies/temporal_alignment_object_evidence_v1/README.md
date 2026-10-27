@@ -1,0 +1,21 @@
+# Temporal alignment of object evidence
+
+Direct user authorization, 2026-10-27: run this small cached experiment after the current matched pipeline timing. This is a queued intent, not an executed experiment or a frozen executable scientific plan.
+
+The predecessor is `matched_pipeline_timing_v1`: all 1536 real calls, independent report, root analysis, and verified publication must finish first. Do not interfere with its measurements. Continue the existing heartbeat for this explicitly authorized follow-up; no new automation, chat, or agent. All other user-paused or cancelled studies remain paused or cancelled.
+
+## Intended comparison
+
+Use the same fixed confirm128 queries / distinct parents per domain (256 queries total), without outcome-based selection. Compare the current complete method against a single predeclared temporal permutation of its cached local E-ROI feature sequence. Freeze the exact manifest, input hashes, code, permutation manifest and numerical context before deriving any new predictions or reading new scores.
+
+Keep Source prior, Source boxes, eight observations, physical frame positions, current spatial geometry/candidates/unary/link settings, kappa0, beta1, and all remaining inference parameters fixed. Only reassign complete local feature vectors to temporal positions. Preserve the exact vector multiset, dimensions and cross-channel structure; do not permute prior, frames, boxes, geometry, or candidate features used by spatial DP. Recompute prototypes, evidence, posterior, legal joint-MAP interval and final interval-dependent DP in each arm. Recomputed temporal membership-weighted prototypes may change; this is part of the intended intervention.
+
+Permutation rule reserved now: seed `20261027`; for each dataset/query independently, order source feature indices by SHA256 of UTF-8 `20261027|dataset|original_query_id|source_index` (ascending digest, index tie-break), and assign that reordered sequence to the original temporal positions. If the result is the identity for N>1, rotate the source indices left by one. N<2 remains an explicit non-intervened row, never removed. Save every index permutation and its hash privately before scoring. No seed search, best/worst permutation selection, or target-based retuning.
+
+After timing publication, first inspect cached sufficient state without assuming disposed raw grids can be reconstructed. Require exact current E-ROI features, q0, physical IDs, geometry and bound parent/prediction/receipt hashes. Verify identity arm bitwise against audited current outputs, actual permutation multiset identity, unchanged spatial inputs, and repeated cold derivation. No new Source/expert/model/optimizer/RGB acquisition is authorized by this intent; report a genuine missing-state blocker before considering acquisition.
+
+Each full 128-query domain seals before independent official CPU scoring and separate cold-array/input/SHA/means audit. Root reports paired tIoU/vIoU changes, 10000 parent-paired bootstrap confidence intervals, all signed query outcomes, severe t/v union-once >5pp damage and rescues, short<=5s/long strata, realized permutation displacement and fixed-point counts, and cached cost with inherited acquisition cost nonzero. Existing valid current-arm metrics may be reused after exact output binding; never relabel new derivation as new model inference.
+
+Interpret a positive aligned-minus-permuted result as support for useful temporal correspondence of object evidence, conditional on this fixed method, cohort and permutation. It does not prove action semantics, identify an iterative self-reinforcement mechanism, or establish that every ordering/statistic is controlled. A null or negative result must be retained. Both cohorts have prior development exposure.
+
+Finish root analysis and archive check/snapshot/check, publish code/protocol/all positive and negative scalar results with two-ref fresh CAS and independent every-remote-byte/mode/hash/tree/ancestry verification. Keep media, captions, GT coordinates, raw features and weights private. Pause the existing heartbeat only after both the preceding timing and this follow-up are actually complete and published. No manuscript/Fig1/production/legacy frozen file changes.

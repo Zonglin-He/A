@@ -1,0 +1,68 @@
+{
+  "GPU_exit": {
+    "child": {
+      "pid": 3117285,
+      "startticks": 263487626
+    },
+    "code": 0
+  },
+  "teacher_exit": {
+    "worker": {
+      "pid": 3117293,
+      "startticks": 263487949
+    },
+    "code": 0
+  },
+  "failed_report_exit": {
+    "child": {
+      "pid": 3475435,
+      "startticks": 264988839
+    },
+    "code": 1
+  },
+  "repaired_report_exit": {
+    "child": {
+      "pid": 3560777,
+      "startticks": 265077028
+    },
+    "code": 0,
+    "elapsed_wall_seconds": 1.629825237672776,
+    "actual_subprocess_wait": true
+  },
+  "failure_lineage": {
+    "status": "preserved_premeasurement_failures_and_one_backend_diagnostic",
+    "formal_completed_before_runtime4": 0,
+    "failed_warmup_Source_calls": 2,
+    "failed_warmup_ReferDINO_queries": 2,
+    "diagnostic_original_backend_Source_calls": 0,
+    "diagnostic_original_backend_ReferDINO_queries": 1,
+    "failed_EdgeTAM_queries": 0,
+    "first_RAM_auth_failure_seconds": 25.960808977019042,
+    "numeric_backend_failed_warmup_seconds": 26.170566120184958,
+    "original_backend_diagnostic_seconds": 5.040580328088254,
+    "runtime2_launch_failure_new_model_calls": 0,
+    "missing_clocks_not_zero": true,
+    "first_failure_full_Source_intermediates_not_retained": true,
+    "later_failure_full_inmemory_Source_and_expert_state_retained": true,
+    "all_existing_code_plan_unchanged": true,
+    "preserved_original_science_sha256": "69ef5718b1fd4c1fbd10e756efa5e3fecdd006970aed4a9cbe80806f20d92dae",
+    "active_science_sha256": "43eea17b9c1c7076c640f9eb7617049ff5e99eb51c65a039ec9c0f7cb4823ceb",
+    "explanation": "RAM FD authentication fixed by plain byte serialization; namespace plan copies fixed before0child; v3 changed expert cudnn backend rejected. Source native grids exact, expert native output restored exactly under original backend in a separate one-call diagnostic, no Source rerun there. Active science2 preserves original component backends; no metric/hash relaxation or outcome tuning."
+  },
+  "counts": {
+    "formal_Source": 1536,
+    "formal_ReferDINO": 768,
+    "formal_EdgeTAM": 768,
+    "excluded_warmup_Source": 4,
+    "excluded_warmup_ReferDINO": 2,
+    "excluded_warmup_EdgeTAM": 2,
+    "failed_Source": 2,
+    "failed_ReferDINO": 2,
+    "diagnostic_ReferDINO": 1,
+    "total_actual_Source": 1542,
+    "total_actual_ReferDINO": 773,
+    "total_actual_EdgeTAM": 770
+  },
+  "failed_report_elapsed_seconds": null,
+  "failed_report_clock_missing_not_zero": true
+}
