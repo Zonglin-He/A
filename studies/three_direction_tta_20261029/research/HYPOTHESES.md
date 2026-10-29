@@ -52,6 +52,6 @@ TTA 必须同时满足：更新只使用当前允许的无标签输入；最终�
 
 ### 2026-10-29 执行中补充
 
-- GREAT 的输入侧审计发现，一部分原始点云已有明显点序结构。因此，固定索引融合可能利用了数据的排序规律。全局乱序应作为受控输入扰动；排列不等变本身不足以认定它是自然测试分布下的失败原因。应先测 source、排列集成和一致性更新的实际差异。详见 `affordance/input_order_audit.json`。
+- GREAT 的输入侧审计发现，一部分原始点云已有明显点序结构。因此，固定索引融合可能利用了数据的排序规律。全局乱序应作为受控输入扰动；排列不等变本身不足以认定它是自然测试分布下的失败原因。应先测 source、排列集成和一致性更新的实际差异。详细输入审计保存在本地，公开摘要见 [GREAT 工程记录](../affordance/results/engineering_validation.json)。
 - [MM-TTA (CVPR 2022)](https://openaccess.thecvf.com/content/CVPR2022/html/Shin_MM-TTA_Multi-Modal_Test-Time_Adaptation_for_3D_Semantic_Segmentation_CVPR_2022_paper.html) 已研究模态内及模态间可靠性和一致性选择；[CoMAC (ICCV 2023)](https://openaccess.thecvf.com/content/ICCV2023/html/Cao_Multi-Modal_Continual_Test-Time_Adaptation_for_3D_Semantic_Segmentation_ICCV_2023_paper.html) 已研究多模态持续 TTA。将它们应用到新的任务并不能单独构成机制贡献，需要证明实例/语言/功能结构带来既有方法未覆盖的可检验问题。
 - 3EED 算子的真实 CUDA 工程检查通过；GREAT 和 AVIS 的纯 CPU 适应契约检查通过。它们只证明环境/代码的部分执行性质，不是任务质量测量。
