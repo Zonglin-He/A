@@ -1,0 +1,1308 @@
+{
+  "scope": "post-seal evaluator compatibility sensitivity on all arms; not method scores or complete FSLA repair",
+  "native_scores_unchanged": true,
+  "prediction_files_unchanged": true,
+  "HOTA_change": "only area-zero predicted per-frame detections omitted; indices/classes/confidence/similarity columns stay aligned; native HOTA matching/aggregation and all26-class macro remain",
+  "FSLA_change": "only two empty-RLE literal tests replaced by area tests; original single-source GTrow\u2192predcol mapping and all other logic intentionally retained",
+  "remaining_FSLA_caveat": "native single-source mapping may be wrong for some ID permutations; area-only values cannot be called fully corrected official FSLA",
+  "scorer_sha256": "410b6a7b66e69b0516e217d08f43e34d2b90fabcb842d8d2982ba09bcece61dc",
+  "FSLA_variant_sha256": "aefac502942265558a2b36d0d179210381e56c38b090a912499b90ccaf427264",
+  "rows": [
+    {
+      "arm": "source_0",
+      "native_HOTA": 19.2,
+      "native_FSLA": 41.87,
+      "HOTA_area_zero_pred_dets": {
+        "HOTA": 19.840285542431698,
+        "DetA": 19.516012008907698,
+        "AssA": 20.227186961523532,
+        "DetRe": 23.946879776738143,
+        "DetPr": 21.150087619537626,
+        "AssRe": 24.64873499353354,
+        "AssPr": 21.71615850111844,
+        "LocA": 94.07869968752131
+      },
+      "FSLA_area_tests_only": {
+        "FA": 42.91334396597555,
+        "FAn": 0.0,
+        "FAs": 45.45759302715388,
+        "FAm": 46.70616939700244
+      },
+      "empty_predicted_detections_removed_for_HOTA": 173,
+      "per_video": {
+        "17c70c36e4ec0ce1": {
+          "HOTA_area_zero_pred_dets": {
+            "HOTA": 5.431618925727619,
+            "DetA": 5.431618925727619,
+            "AssA": 5.431618925727619,
+            "DetRe": 5.684885290148449,
+            "DetPr": 5.684885290148449,
+            "AssRe": 5.684885290148449,
+            "AssPr": 5.684885290148449,
+            "LocA": 98.31869982740254
+          },
+          "FSLA_area_tests_only": {
+            "FA": 68.33333333333333,
+            "FAn": null,
+            "FAs": null,
+            "FAm": 68.33333333333333
+          },
+          "empty_predicted_detections_removed_for_HOTA": 0,
+          "GT_frame_support": {
+            "silent": 0,
+            "single": 0,
+            "multi": 60
+          }
+        },
+        "6af1cc6d5fd079aa": {
+          "HOTA_area_zero_pred_dets": {
+            "HOTA": 1.0564400976793291,
+            "DetA": 1.0564400976793291,
+            "AssA": 1.0564400976793291,
+            "DetRe": 2.1715126978284873,
+            "DetPr": 1.3029076186970925,
+            "AssRe": 2.1715126978284873,
+            "AssPr": 1.3029076186970925,
+            "LocA": 99.47593473241092
+          },
+          "FSLA_area_tests_only": {
+            "FA": 27.39938080495356,
+            "FAn": 0.0,
+            "FAs": 54.79876160990712,
+            "FAm": null
+          },
+          "empty_predicted_detections_removed_for_HOTA": 13,
+          "GT_frame_support": {
+            "silent": 34,
+            "single": 34,
+            "multi": 0
+          }
+        },
+        "aa70b1844e3fedb1": {
+          "HOTA_area_zero_pred_dets": {
+            "HOTA": 5.240592400935118,
+            "DetA": 5.240592400935118,
+            "AssA": 5.240592400935118,
+            "DetRe": 6.787280701754386,
+            "DetPr": 5.293522267206478,
+            "AssRe": 6.787280701754386,
+            "AssPr": 5.293522267206478,
+            "LocA": 99.05819145403271
+          },
+          "FSLA_area_tests_only": {
+            "FA": 36.31578947368421,
+            "FAn": null,
+            "FAs": null,
+            "FAm": 36.31578947368421
+          },
+          "empty_predicted_detections_removed_for_HOTA": 0,
+          "GT_frame_support": {
+            "silent": 0,
+            "single": 0,
+            "multi": 60
+          }
+        },
+        "80297fac75aa3602": {
+          "HOTA_area_zero_pred_dets": {
+            "HOTA": 8.779536461922364,
+            "DetA": 8.760144813623329,
+            "AssA": 8.80001961233031,
+            "DetRe": 9.560093952852363,
+            "DetPr": 9.452949962658701,
+            "AssRe": 9.596534681582996,
+            "AssPr": 9.473405366647148,
+            "LocA": 98.6319302172334
+          },
+          "FSLA_area_tests_only": {
+            "FA": 42.19298245614034,
+            "FAn": null,
+            "FAs": null,
+            "FAm": 42.19298245614034
+          },
+          "empty_predicted_detections_removed_for_HOTA": 17,
+          "GT_frame_support": {
+            "silent": 0,
+            "single": 0,
+            "multi": 60
+          }
+        },
+        "fba15ac968ed087b": {
+          "HOTA_area_zero_pred_dets": {
+            "HOTA": 0.9598486284670431,
+            "DetA": 0.8773491913566883,
+            "AssA": 1.0531693204618002,
+            "DetRe": 1.79997811576759,
+            "DetPr": 1.1787467306796606,
+            "AssRe": 1.8353759255578073,
+            "AssPr": 1.628415190052317,
+            "LocA": 99.68369460311082
+          },
+          "FSLA_area_tests_only": {
+            "FA": 20.095693779904302,
+            "FAn": 0.0,
+            "FAs": 22.838345864661655,
+            "FAm": 5.263157894736842
+          },
+          "empty_predicted_detections_removed_for_HOTA": 85,
+          "GT_frame_support": {
+            "silent": 1,
+            "single": 56,
+            "multi": 9
+          }
+        },
+        "748fd5adf030945a": {
+          "HOTA_area_zero_pred_dets": {
+            "HOTA": 3.752534701154168,
+            "DetA": 3.752534701154168,
+            "AssA": 3.752534701154168,
+            "DetRe": 3.9541160593792175,
+            "DetPr": 4.083313487338255,
+            "AssRe": 3.9541160593792175,
+            "AssPr": 4.083313487338255,
+            "LocA": 98.2224548119486
+          },
+          "FSLA_area_tests_only": {
+            "FA": 19.035087719298243,
+            "FAn": null,
+            "FAs": null,
+            "FAm": 19.035087719298243
+          },
+          "empty_predicted_detections_removed_for_HOTA": 9,
+          "GT_frame_support": {
+            "silent": 0,
+            "single": 0,
+            "multi": 60
+          }
+        },
+        "58a9dcf23cc41f7a": {
+          "HOTA_area_zero_pred_dets": {
+            "HOTA": 5.795980201854282,
+            "DetA": 5.795980201854282,
+            "AssA": 5.795980201854282,
+            "DetRe": 6.415094339622643,
+            "DetPr": 6.049257759784075,
+            "AssRe": 6.415094339622643,
+            "AssPr": 6.049257759784075,
+            "LocA": 98.81995802263933
+          },
+          "FSLA_area_tests_only": {
+            "FA": 68.42105263157895,
+            "FAn": null,
+            "FAs": 0.0,
+            "FAm": 77.45779543197617
+          },
+          "empty_predicted_detections_removed_for_HOTA": 0,
+          "GT_frame_support": {
+            "silent": 0,
+            "single": 7,
+            "multi": 53
+          }
+        },
+        "18442e192016b615": {
+          "HOTA_area_zero_pred_dets": {
+            "HOTA": 2.067444787538853,
+            "DetA": 2.066226590027532,
+            "AssA": 2.068664457563727,
+            "DetRe": 2.9790823211875845,
+            "DetPr": 2.4485608119350006,
+            "AssRe": 3.1690724434762423,
+            "AssPr": 2.527041684161658,
+            "LocA": 99.86237517352959
+          },
+          "FSLA_area_tests_only": {
+            "FA": 65.48748921484038,
+            "FAn": 0.0,
+            "FAs": 66.57894736842105,
+            "FAm": null
+          },
+          "empty_predicted_detections_removed_for_HOTA": 49,
+          "GT_frame_support": {
+            "silent": 1,
+            "single": 60,
+            "multi": 0
+          }
+        }
+      }
+    },
+    {
+      "arm": "views_0",
+      "native_HOTA": 19.2,
+      "native_FSLA": 41.88,
+      "HOTA_area_zero_pred_dets": {
+        "HOTA": 19.828283371919007,
+        "DetA": 19.50410968678708,
+        "AssA": 20.215071360643346,
+        "DetRe": 23.952264255806828,
+        "DetPr": 21.129735771422165,
+        "AssRe": 24.65429630871209,
+        "AssPr": 21.69539354222114,
+        "LocA": 94.07750560266332
+      },
+      "FSLA_area_tests_only": {
+        "FA": 42.92397660818713,
+        "FAn": 0.0,
+        "FAs": 45.49111632584646,
+        "FAm": 46.70616939700244
+      },
+      "empty_predicted_detections_removed_for_HOTA": 172,
+      "per_video": {
+        "17c70c36e4ec0ce1": {
+          "HOTA_area_zero_pred_dets": {
+            "HOTA": 5.431618925727619,
+            "DetA": 5.431618925727619,
+            "AssA": 5.431618925727619,
+            "DetRe": 5.684885290148449,
+            "DetPr": 5.684885290148449,
+            "AssRe": 5.684885290148449,
+            "AssPr": 5.684885290148449,
+            "LocA": 98.31869982740254
+          },
+          "FSLA_area_tests_only": {
+            "FA": 68.33333333333333,
+            "FAn": null,
+            "FAs": null,
+            "FAm": 68.33333333333333
+          },
+          "empty_predicted_detections_removed_for_HOTA": 0,
+          "GT_frame_support": {
+            "silent": 0,
+            "single": 0,
+            "multi": 60
+          }
+        },
+        "6af1cc6d5fd079aa": {
+          "HOTA_area_zero_pred_dets": {
+            "HOTA": 1.0452611990003244,
+            "DetA": 1.0452611990003244,
+            "AssA": 1.0452611990003244,
+            "DetRe": 2.17764691448902,
+            "DetPr": 1.2832562174667437,
+            "AssRe": 2.17764691448902,
+            "AssPr": 1.2832562174667437,
+            "LocA": 99.47436972967859
+          },
+          "FSLA_area_tests_only": {
+            "FA": 27.47678018575852,
+            "FAn": 0.0,
+            "FAs": 54.95356037151704,
+            "FAm": null
+          },
+          "empty_predicted_detections_removed_for_HOTA": 12,
+          "GT_frame_support": {
+            "silent": 34,
+            "single": 34,
+            "multi": 0
+          }
+        },
+        "aa70b1844e3fedb1": {
+          "HOTA_area_zero_pred_dets": {
+            "HOTA": 5.240592400935118,
+            "DetA": 5.240592400935118,
+            "AssA": 5.240592400935118,
+            "DetRe": 6.787280701754386,
+            "DetPr": 5.293522267206478,
+            "AssRe": 6.787280701754386,
+            "AssPr": 5.293522267206478,
+            "LocA": 99.05819228228333
+          },
+          "FSLA_area_tests_only": {
+            "FA": 36.31578947368421,
+            "FAn": null,
+            "FAs": null,
+            "FAm": 36.31578947368421
+          },
+          "empty_predicted_detections_removed_for_HOTA": 0,
+          "GT_frame_support": {
+            "silent": 0,
+            "single": 0,
+            "multi": 60
+          }
+        },
+        "80297fac75aa3602": {
+          "HOTA_area_zero_pred_dets": {
+            "HOTA": 8.779536461922364,
+            "DetA": 8.760144813623329,
+            "AssA": 8.80001961233031,
+            "DetRe": 9.560093952852363,
+            "DetPr": 9.452949962658701,
+            "AssRe": 9.596534681582996,
+            "AssPr": 9.473405366647148,
+            "LocA": 98.6319302172334
+          },
+          "FSLA_area_tests_only": {
+            "FA": 42.19298245614034,
+            "FAn": null,
+            "FAs": null,
+            "FAm": 42.19298245614034
+          },
+          "empty_predicted_detections_removed_for_HOTA": 17,
+          "GT_frame_support": {
+            "silent": 0,
+            "single": 0,
+            "multi": 60
+          }
+        },
+        "fba15ac968ed087b": {
+          "HOTA_area_zero_pred_dets": {
+            "HOTA": 0.9598486284670431,
+            "DetA": 0.8773491913566883,
+            "AssA": 1.0531693204618002,
+            "DetRe": 1.79997811576759,
+            "DetPr": 1.1787467306796606,
+            "AssRe": 1.8353759255578073,
+            "AssPr": 1.628415190052317,
+            "LocA": 99.68369460311082
+          },
+          "FSLA_area_tests_only": {
+            "FA": 20.095693779904302,
+            "FAn": 0.0,
+            "FAs": 22.838345864661655,
+            "FAm": 5.263157894736842
+          },
+          "empty_predicted_detections_removed_for_HOTA": 85,
+          "GT_frame_support": {
+            "silent": 1,
+            "single": 56,
+            "multi": 9
+          }
+        },
+        "748fd5adf030945a": {
+          "HOTA_area_zero_pred_dets": {
+            "HOTA": 3.752534701154168,
+            "DetA": 3.752534701154168,
+            "AssA": 3.752534701154168,
+            "DetRe": 3.9541160593792175,
+            "DetPr": 4.083313487338255,
+            "AssRe": 3.9541160593792175,
+            "AssPr": 4.083313487338255,
+            "LocA": 98.2224548119486
+          },
+          "FSLA_area_tests_only": {
+            "FA": 19.035087719298243,
+            "FAn": null,
+            "FAs": null,
+            "FAm": 19.035087719298243
+          },
+          "empty_predicted_detections_removed_for_HOTA": 9,
+          "GT_frame_support": {
+            "silent": 0,
+            "single": 0,
+            "multi": 60
+          }
+        },
+        "58a9dcf23cc41f7a": {
+          "HOTA_area_zero_pred_dets": {
+            "HOTA": 5.795980201854282,
+            "DetA": 5.795980201854282,
+            "AssA": 5.795980201854282,
+            "DetRe": 6.415094339622643,
+            "DetPr": 6.049257759784075,
+            "AssRe": 6.415094339622643,
+            "AssPr": 6.049257759784075,
+            "LocA": 98.81995802263933
+          },
+          "FSLA_area_tests_only": {
+            "FA": 68.42105263157895,
+            "FAn": null,
+            "FAs": 0.0,
+            "FAm": 77.45779543197617
+          },
+          "empty_predicted_detections_removed_for_HOTA": 0,
+          "GT_frame_support": {
+            "silent": 0,
+            "single": 7,
+            "multi": 53
+          }
+        },
+        "18442e192016b615": {
+          "HOTA_area_zero_pred_dets": {
+            "HOTA": 2.063970891525983,
+            "DetA": 2.062628210326506,
+            "AssA": 2.0653152132152233,
+            "DetRe": 2.9757085020242915,
+            "DetPr": 2.445787809882979,
+            "AssRe": 3.167414632786547,
+            "AssPr": 2.52303702628467,
+            "LocA": 99.86389160308944
+          },
+          "FSLA_area_tests_only": {
+            "FA": 65.48748921484038,
+            "FAn": 0.0,
+            "FAs": 66.57894736842105,
+            "FAm": null
+          },
+          "empty_predicted_detections_removed_for_HOTA": 49,
+          "GT_frame_support": {
+            "silent": 1,
+            "single": 60,
+            "multi": 0
+          }
+        }
+      }
+    },
+    {
+      "arm": "entropy_3",
+      "native_HOTA": 19.2,
+      "native_FSLA": 41.89,
+      "HOTA_area_zero_pred_dets": {
+        "HOTA": 19.832614187864195,
+        "DetA": 19.50844050273227,
+        "AssA": 20.219402176588535,
+        "DetRe": 23.958398472467362,
+        "DetPr": 21.133350577668548,
+        "AssRe": 24.660430525372625,
+        "AssPr": 21.699008348467526,
+        "LocA": 94.07250282270056
+      },
+      "FSLA_area_tests_only": {
+        "FA": 42.93460925039872,
+        "FAn": 0.0,
+        "FAs": 45.524639624539056,
+        "FAm": 46.70616939700244
+      },
+      "empty_predicted_detections_removed_for_HOTA": 172,
+      "per_video": {
+        "17c70c36e4ec0ce1": {
+          "HOTA_area_zero_pred_dets": {
+            "HOTA": 5.431618925727619,
+            "DetA": 5.431618925727619,
+            "AssA": 5.431618925727619,
+            "DetRe": 5.684885290148449,
+            "DetPr": 5.684885290148449,
+            "AssRe": 5.684885290148449,
+            "AssPr": 5.684885290148449,
+            "LocA": 98.31871546346945
+          },
+          "FSLA_area_tests_only": {
+            "FA": 68.33333333333333,
+            "FAn": null,
+            "FAs": null,
+            "FAm": 68.33333333333333
+          },
+          "empty_predicted_detections_removed_for_HOTA": 0,
+          "GT_frame_support": {
+            "silent": 0,
+            "single": 0,
+            "multi": 60
+          }
+        },
+        "6af1cc6d5fd079aa": {
+          "HOTA_area_zero_pred_dets": {
+            "HOTA": 1.049592014945513,
+            "DetA": 1.049592014945513,
+            "AssA": 1.049592014945513,
+            "DetRe": 2.1837811311495523,
+            "DetPr": 1.286871023713129,
+            "AssRe": 2.1837811311495523,
+            "AssPr": 1.286871023713129,
+            "LocA": 99.46928595937706
+          },
+          "FSLA_area_tests_only": {
+            "FA": 27.55417956656347,
+            "FAn": 0.0,
+            "FAs": 55.10835913312694,
+            "FAm": null
+          },
+          "empty_predicted_detections_removed_for_HOTA": 12,
+          "GT_frame_support": {
+            "silent": 34,
+            "single": 34,
+            "multi": 0
+          }
+        },
+        "aa70b1844e3fedb1": {
+          "HOTA_area_zero_pred_dets": {
+            "HOTA": 5.240592400935118,
+            "DetA": 5.240592400935118,
+            "AssA": 5.240592400935118,
+            "DetRe": 6.787280701754386,
+            "DetPr": 5.293522267206478,
+            "AssRe": 6.787280701754386,
+            "AssPr": 5.293522267206478,
+            "LocA": 99.05820325983568
+          },
+          "FSLA_area_tests_only": {
+            "FA": 36.31578947368421,
+            "FAn": null,
+            "FAs": null,
+            "FAm": 36.31578947368421
+          },
+          "empty_predicted_detections_removed_for_HOTA": 0,
+          "GT_frame_support": {
+            "silent": 0,
+            "single": 0,
+            "multi": 60
+          }
+        },
+        "80297fac75aa3602": {
+          "HOTA_area_zero_pred_dets": {
+            "HOTA": 8.779536461922364,
+            "DetA": 8.760144813623329,
+            "AssA": 8.80001961233031,
+            "DetRe": 9.560093952852363,
+            "DetPr": 9.452949962658701,
+            "AssRe": 9.596534681582996,
+            "AssPr": 9.473405366647148,
+            "LocA": 98.63202511573623
+          },
+          "FSLA_area_tests_only": {
+            "FA": 42.19298245614034,
+            "FAn": null,
+            "FAs": null,
+            "FAm": 42.19298245614034
+          },
+          "empty_predicted_detections_removed_for_HOTA": 17,
+          "GT_frame_support": {
+            "silent": 0,
+            "single": 0,
+            "multi": 60
+          }
+        },
+        "fba15ac968ed087b": {
+          "HOTA_area_zero_pred_dets": {
+            "HOTA": 0.9598486284670431,
+            "DetA": 0.8773491913566883,
+            "AssA": 1.0531693204618002,
+            "DetRe": 1.79997811576759,
+            "DetPr": 1.1787467306796606,
+            "AssRe": 1.8353759255578073,
+            "AssPr": 1.628415190052317,
+            "LocA": 99.68353981442117
+          },
+          "FSLA_area_tests_only": {
+            "FA": 20.095693779904302,
+            "FAn": 0.0,
+            "FAs": 22.838345864661655,
+            "FAm": 5.263157894736842
+          },
+          "empty_predicted_detections_removed_for_HOTA": 85,
+          "GT_frame_support": {
+            "silent": 1,
+            "single": 56,
+            "multi": 9
+          }
+        },
+        "748fd5adf030945a": {
+          "HOTA_area_zero_pred_dets": {
+            "HOTA": 3.752534701154168,
+            "DetA": 3.752534701154168,
+            "AssA": 3.752534701154168,
+            "DetRe": 3.9541160593792175,
+            "DetPr": 4.083313487338255,
+            "AssRe": 3.9541160593792175,
+            "AssPr": 4.083313487338255,
+            "LocA": 98.22248323262247
+          },
+          "FSLA_area_tests_only": {
+            "FA": 19.035087719298243,
+            "FAn": null,
+            "FAs": null,
+            "FAm": 19.035087719298243
+          },
+          "empty_predicted_detections_removed_for_HOTA": 9,
+          "GT_frame_support": {
+            "silent": 0,
+            "single": 0,
+            "multi": 60
+          }
+        },
+        "58a9dcf23cc41f7a": {
+          "HOTA_area_zero_pred_dets": {
+            "HOTA": 5.795980201854282,
+            "DetA": 5.795980201854282,
+            "AssA": 5.795980201854282,
+            "DetRe": 6.415094339622643,
+            "DetPr": 6.049257759784075,
+            "AssRe": 6.415094339622643,
+            "AssPr": 6.049257759784075,
+            "LocA": 98.8199452608787
+          },
+          "FSLA_area_tests_only": {
+            "FA": 68.42105263157895,
+            "FAn": null,
+            "FAs": 0.0,
+            "FAm": 77.45779543197617
+          },
+          "empty_predicted_detections_removed_for_HOTA": 0,
+          "GT_frame_support": {
+            "silent": 0,
+            "single": 7,
+            "multi": 53
+          }
+        },
+        "18442e192016b615": {
+          "HOTA_area_zero_pred_dets": {
+            "HOTA": 2.063970891525983,
+            "DetA": 2.062628210326506,
+            "AssA": 2.0653152132152233,
+            "DetRe": 2.9757085020242915,
+            "DetPr": 2.445787809882979,
+            "AssRe": 3.167414632786547,
+            "AssPr": 2.52303702628467,
+            "LocA": 99.86395578983273
+          },
+          "FSLA_area_tests_only": {
+            "FA": 65.48748921484038,
+            "FAn": 0.0,
+            "FAs": 66.57894736842105,
+            "FAm": null
+          },
+          "empty_predicted_detections_removed_for_HOTA": 49,
+          "GT_frame_support": {
+            "silent": 1,
+            "single": 60,
+            "multi": 0
+          }
+        }
+      }
+    },
+    {
+      "arm": "consistency_3",
+      "native_HOTA": 19.2,
+      "native_FSLA": 41.88,
+      "HOTA_area_zero_pred_dets": {
+        "HOTA": 19.828283371919007,
+        "DetA": 19.50410968678708,
+        "AssA": 20.215071360643346,
+        "DetRe": 23.952264255806828,
+        "DetPr": 21.129735771422165,
+        "AssRe": 24.65429630871209,
+        "AssPr": 21.69539354222114,
+        "LocA": 94.0772104913297
+      },
+      "FSLA_area_tests_only": {
+        "FA": 42.92397660818713,
+        "FAn": 0.0,
+        "FAs": 45.49111632584646,
+        "FAm": 46.70616939700244
+      },
+      "empty_predicted_detections_removed_for_HOTA": 172,
+      "per_video": {
+        "17c70c36e4ec0ce1": {
+          "HOTA_area_zero_pred_dets": {
+            "HOTA": 5.431618925727619,
+            "DetA": 5.431618925727619,
+            "AssA": 5.431618925727619,
+            "DetRe": 5.684885290148449,
+            "DetPr": 5.684885290148449,
+            "AssRe": 5.684885290148449,
+            "AssPr": 5.684885290148449,
+            "LocA": 98.31869982740254
+          },
+          "FSLA_area_tests_only": {
+            "FA": 68.33333333333333,
+            "FAn": null,
+            "FAs": null,
+            "FAm": 68.33333333333333
+          },
+          "empty_predicted_detections_removed_for_HOTA": 0,
+          "GT_frame_support": {
+            "silent": 0,
+            "single": 0,
+            "multi": 60
+          }
+        },
+        "6af1cc6d5fd079aa": {
+          "HOTA_area_zero_pred_dets": {
+            "HOTA": 1.0452611990003244,
+            "DetA": 1.0452611990003244,
+            "AssA": 1.0452611990003244,
+            "DetRe": 2.17764691448902,
+            "DetPr": 1.2832562174667437,
+            "AssRe": 2.17764691448902,
+            "AssPr": 1.2832562174667437,
+            "LocA": 99.47405133464648
+          },
+          "FSLA_area_tests_only": {
+            "FA": 27.47678018575852,
+            "FAn": 0.0,
+            "FAs": 54.95356037151704,
+            "FAm": null
+          },
+          "empty_predicted_detections_removed_for_HOTA": 12,
+          "GT_frame_support": {
+            "silent": 34,
+            "single": 34,
+            "multi": 0
+          }
+        },
+        "aa70b1844e3fedb1": {
+          "HOTA_area_zero_pred_dets": {
+            "HOTA": 5.240592400935118,
+            "DetA": 5.240592400935118,
+            "AssA": 5.240592400935118,
+            "DetRe": 6.787280701754386,
+            "DetPr": 5.293522267206478,
+            "AssRe": 6.787280701754386,
+            "AssPr": 5.293522267206478,
+            "LocA": 99.05819247553808
+          },
+          "FSLA_area_tests_only": {
+            "FA": 36.31578947368421,
+            "FAn": null,
+            "FAs": null,
+            "FAm": 36.31578947368421
+          },
+          "empty_predicted_detections_removed_for_HOTA": 0,
+          "GT_frame_support": {
+            "silent": 0,
+            "single": 0,
+            "multi": 60
+          }
+        },
+        "80297fac75aa3602": {
+          "HOTA_area_zero_pred_dets": {
+            "HOTA": 8.779536461922364,
+            "DetA": 8.760144813623329,
+            "AssA": 8.80001961233031,
+            "DetRe": 9.560093952852363,
+            "DetPr": 9.452949962658701,
+            "AssRe": 9.596534681582996,
+            "AssPr": 9.473405366647148,
+            "LocA": 98.63194118629502
+          },
+          "FSLA_area_tests_only": {
+            "FA": 42.19298245614034,
+            "FAn": null,
+            "FAs": null,
+            "FAm": 42.19298245614034
+          },
+          "empty_predicted_detections_removed_for_HOTA": 17,
+          "GT_frame_support": {
+            "silent": 0,
+            "single": 0,
+            "multi": 60
+          }
+        },
+        "fba15ac968ed087b": {
+          "HOTA_area_zero_pred_dets": {
+            "HOTA": 0.9598486284670431,
+            "DetA": 0.8773491913566883,
+            "AssA": 1.0531693204618002,
+            "DetRe": 1.79997811576759,
+            "DetPr": 1.1787467306796606,
+            "AssRe": 1.8353759255578073,
+            "AssPr": 1.628415190052317,
+            "LocA": 99.68370265760097
+          },
+          "FSLA_area_tests_only": {
+            "FA": 20.095693779904302,
+            "FAn": 0.0,
+            "FAs": 22.838345864661655,
+            "FAm": 5.263157894736842
+          },
+          "empty_predicted_detections_removed_for_HOTA": 85,
+          "GT_frame_support": {
+            "silent": 1,
+            "single": 56,
+            "multi": 9
+          }
+        },
+        "748fd5adf030945a": {
+          "HOTA_area_zero_pred_dets": {
+            "HOTA": 3.752534701154168,
+            "DetA": 3.752534701154168,
+            "AssA": 3.752534701154168,
+            "DetRe": 3.9541160593792175,
+            "DetPr": 4.083313487338255,
+            "AssRe": 3.9541160593792175,
+            "AssPr": 4.083313487338255,
+            "LocA": 98.22247133563853
+          },
+          "FSLA_area_tests_only": {
+            "FA": 19.035087719298243,
+            "FAn": null,
+            "FAs": null,
+            "FAm": 19.035087719298243
+          },
+          "empty_predicted_detections_removed_for_HOTA": 9,
+          "GT_frame_support": {
+            "silent": 0,
+            "single": 0,
+            "multi": 60
+          }
+        },
+        "58a9dcf23cc41f7a": {
+          "HOTA_area_zero_pred_dets": {
+            "HOTA": 5.795980201854282,
+            "DetA": 5.795980201854282,
+            "AssA": 5.795980201854282,
+            "DetRe": 6.415094339622643,
+            "DetPr": 6.049257759784075,
+            "AssRe": 6.415094339622643,
+            "AssPr": 6.049257759784075,
+            "LocA": 98.81995802263933
+          },
+          "FSLA_area_tests_only": {
+            "FA": 68.42105263157895,
+            "FAn": null,
+            "FAs": 0.0,
+            "FAm": 77.45779543197617
+          },
+          "empty_predicted_detections_removed_for_HOTA": 0,
+          "GT_frame_support": {
+            "silent": 0,
+            "single": 7,
+            "multi": 53
+          }
+        },
+        "18442e192016b615": {
+          "HOTA_area_zero_pred_dets": {
+            "HOTA": 2.063970891525983,
+            "DetA": 2.062628210326506,
+            "AssA": 2.0653152132152233,
+            "DetRe": 2.9757085020242915,
+            "DetPr": 2.445787809882979,
+            "AssRe": 3.167414632786547,
+            "AssPr": 2.52303702628467,
+            "LocA": 99.8638901095652
+          },
+          "FSLA_area_tests_only": {
+            "FA": 65.48748921484038,
+            "FAn": 0.0,
+            "FAs": 66.57894736842105,
+            "FAm": null
+          },
+          "empty_predicted_detections_removed_for_HOTA": 49,
+          "GT_frame_support": {
+            "silent": 1,
+            "single": 60,
+            "multi": 0
+          }
+        }
+      }
+    },
+    {
+      "arm": "zero_features_0",
+      "native_HOTA": 19.21,
+      "native_FSLA": 41.91,
+      "HOTA_area_zero_pred_dets": {
+        "HOTA": 19.855039715924097,
+        "DetA": 19.530873013054975,
+        "AssA": 20.241865874827432,
+        "DetRe": 23.96128071839827,
+        "DetPr": 21.159135589111912,
+        "AssRe": 24.662507072669978,
+        "AssPr": 21.725348145176913,
+        "LocA": 94.068554458841
+      },
+      "FSLA_area_tests_only": {
+        "FA": 42.955874534821895,
+        "FAn": 0.0,
+        "FAs": 45.524639624539056,
+        "FAm": 46.74102474729871
+      },
+      "empty_predicted_detections_removed_for_HOTA": 173,
+      "per_video": {
+        "17c70c36e4ec0ce1": {
+          "HOTA_area_zero_pred_dets": {
+            "HOTA": 5.436950685599375,
+            "DetA": 5.436950685599375,
+            "AssA": 5.436950685599375,
+            "DetRe": 5.688259109311742,
+            "DetPr": 5.688259109311742,
+            "AssRe": 5.688259109311742,
+            "AssPr": 5.688259109311742,
+            "LocA": 98.31744900567857
+          },
+          "FSLA_area_tests_only": {
+            "FA": 68.42105263157895,
+            "FAn": null,
+            "FAs": null,
+            "FAm": 68.42105263157895
+          },
+          "empty_predicted_detections_removed_for_HOTA": 0,
+          "GT_frame_support": {
+            "silent": 0,
+            "single": 0,
+            "multi": 60
+          }
+        },
+        "6af1cc6d5fd079aa": {
+          "HOTA_area_zero_pred_dets": {
+            "HOTA": 1.0651403492945606,
+            "DetA": 1.0651403492945606,
+            "AssA": 1.0651403492945606,
+            "DetRe": 2.1837811311495523,
+            "DetPr": 1.3102686786897313,
+            "AssRe": 2.1837811311495523,
+            "AssPr": 1.3102686786897313,
+            "LocA": 99.46844287007245
+          },
+          "FSLA_area_tests_only": {
+            "FA": 27.55417956656347,
+            "FAn": 0.0,
+            "FAs": 55.10835913312694,
+            "FAm": null
+          },
+          "empty_predicted_detections_removed_for_HOTA": 13,
+          "GT_frame_support": {
+            "silent": 34,
+            "single": 34,
+            "multi": 0
+          }
+        },
+        "aa70b1844e3fedb1": {
+          "HOTA_area_zero_pred_dets": {
+            "HOTA": 5.244743374615178,
+            "DetA": 5.244743374615178,
+            "AssA": 5.244743374615178,
+            "DetRe": 6.790654520917679,
+            "DetPr": 5.29689608636977,
+            "AssRe": 6.790654520917679,
+            "AssPr": 5.29689608636977,
+            "LocA": 99.05763706099684
+          },
+          "FSLA_area_tests_only": {
+            "FA": 36.31578947368421,
+            "FAn": null,
+            "FAs": null,
+            "FAm": 36.31578947368421
+          },
+          "empty_predicted_detections_removed_for_HOTA": 0,
+          "GT_frame_support": {
+            "silent": 0,
+            "single": 0,
+            "multi": 60
+          }
+        },
+        "80297fac75aa3602": {
+          "HOTA_area_zero_pred_dets": {
+            "HOTA": 8.779536461922364,
+            "DetA": 8.760144813623329,
+            "AssA": 8.80001961233031,
+            "DetRe": 9.560093952852363,
+            "DetPr": 9.452949962658701,
+            "AssRe": 9.596534681582996,
+            "AssPr": 9.473405366647148,
+            "LocA": 98.63137499165462
+          },
+          "FSLA_area_tests_only": {
+            "FA": 42.19298245614034,
+            "FAn": null,
+            "FAs": null,
+            "FAm": 42.19298245614034
+          },
+          "empty_predicted_detections_removed_for_HOTA": 17,
+          "GT_frame_support": {
+            "silent": 0,
+            "single": 0,
+            "multi": 60
+          }
+        },
+        "fba15ac968ed087b": {
+          "HOTA_area_zero_pred_dets": {
+            "HOTA": 0.962186419037881,
+            "DetA": 0.878960031440015,
+            "AssA": 1.0563734110208505,
+            "DetRe": 1.8027136448189085,
+            "DetPr": 1.1805381390849488,
+            "AssRe": 1.8354753405258015,
+            "AssPr": 1.634298971403446,
+            "LocA": 99.68128796335772
+          },
+          "FSLA_area_tests_only": {
+            "FA": 20.095693779904302,
+            "FAn": 0.0,
+            "FAs": 22.838345864661655,
+            "FAm": 5.263157894736842
+          },
+          "empty_predicted_detections_removed_for_HOTA": 85,
+          "GT_frame_support": {
+            "silent": 1,
+            "single": 56,
+            "multi": 9
+          }
+        },
+        "748fd5adf030945a": {
+          "HOTA_area_zero_pred_dets": {
+            "HOTA": 3.750615335005645,
+            "DetA": 3.750615335005645,
+            "AssA": 3.750615335005645,
+            "DetRe": 3.9507422402159245,
+            "DetPr": 4.079939668174962,
+            "AssRe": 3.9507422402159245,
+            "AssPr": 4.079939668174962,
+            "LocA": 98.22210895532201
+          },
+          "FSLA_area_tests_only": {
+            "FA": 19.035087719298243,
+            "FAn": null,
+            "FAs": null,
+            "FAm": 19.035087719298243
+          },
+          "empty_predicted_detections_removed_for_HOTA": 9,
+          "GT_frame_support": {
+            "silent": 0,
+            "single": 0,
+            "multi": 60
+          }
+        },
+        "58a9dcf23cc41f7a": {
+          "HOTA_area_zero_pred_dets": {
+            "HOTA": 5.801836447099324,
+            "DetA": 5.801836447099324,
+            "AssA": 5.801836447099324,
+            "DetRe": 6.41891375754335,
+            "DetPr": 6.052631578947368,
+            "AssRe": 6.41891375754335,
+            "AssPr": 6.052631578947368,
+            "LocA": 98.82000232367626
+          },
+          "FSLA_area_tests_only": {
+            "FA": 68.50877192982456,
+            "FAn": null,
+            "FAs": 0.0,
+            "FAm": 77.55710029791459
+          },
+          "empty_predicted_detections_removed_for_HOTA": 0,
+          "GT_frame_support": {
+            "silent": 0,
+            "single": 7,
+            "multi": 53
+          }
+        },
+        "18442e192016b615": {
+          "HOTA_area_zero_pred_dets": {
+            "HOTA": 2.063970891525983,
+            "DetA": 2.062628210326506,
+            "AssA": 2.0653152132152233,
+            "DetRe": 2.9757085020242915,
+            "DetPr": 2.445787809882979,
+            "AssRe": 3.167414632786547,
+            "AssPr": 2.52303702628467,
+            "LocA": 99.8637783989063
+          },
+          "FSLA_area_tests_only": {
+            "FA": 65.48748921484038,
+            "FAn": 0.0,
+            "FAs": 66.57894736842105,
+            "FAm": null
+          },
+          "empty_predicted_detections_removed_for_HOTA": 49,
+          "GT_frame_support": {
+            "silent": 1,
+            "single": 60,
+            "multi": 0
+          }
+        }
+      }
+    },
+    {
+      "arm": "cyclic_audio_0",
+      "native_HOTA": 19.21,
+      "native_FSLA": 41.89,
+      "HOTA_area_zero_pred_dets": {
+        "HOTA": 19.83645312558455,
+        "DetA": 19.51218529105781,
+        "AssA": 20.22334206341033,
+        "DetRe": 23.95842660370205,
+        "DetPr": 21.13535393914651,
+        "AssRe": 24.660503247235187,
+        "AssPr": 21.7009974313333,
+        "LocA": 94.07314669716165
+      },
+      "FSLA_area_tests_only": {
+        "FA": 42.93460925039872,
+        "FAn": 0.0,
+        "FAs": 45.49111632584646,
+        "FAm": 46.723597072150575
+      },
+      "empty_predicted_detections_removed_for_HOTA": 172,
+      "per_video": {
+        "17c70c36e4ec0ce1": {
+          "HOTA_area_zero_pred_dets": {
+            "HOTA": 5.431618925727619,
+            "DetA": 5.431618925727619,
+            "AssA": 5.431618925727619,
+            "DetRe": 5.684885290148449,
+            "DetPr": 5.684885290148449,
+            "AssRe": 5.684885290148449,
+            "AssPr": 5.684885290148449,
+            "LocA": 98.3178460186393
+          },
+          "FSLA_area_tests_only": {
+            "FA": 68.33333333333333,
+            "FAn": null,
+            "FAs": null,
+            "FAm": 68.33333333333333
+          },
+          "empty_predicted_detections_removed_for_HOTA": 0,
+          "GT_frame_support": {
+            "silent": 0,
+            "single": 0,
+            "multi": 60
+          }
+        },
+        "6af1cc6d5fd079aa": {
+          "HOTA_area_zero_pred_dets": {
+            "HOTA": 1.0452611990003244,
+            "DetA": 1.0452611990003244,
+            "AssA": 1.0452611990003244,
+            "DetRe": 2.17764691448902,
+            "DetPr": 1.2832562174667437,
+            "AssRe": 2.17764691448902,
+            "AssPr": 1.2832562174667437,
+            "LocA": 99.47253411202398
+          },
+          "FSLA_area_tests_only": {
+            "FA": 27.47678018575852,
+            "FAn": 0.0,
+            "FAs": 54.95356037151704,
+            "FAm": null
+          },
+          "empty_predicted_detections_removed_for_HOTA": 12,
+          "GT_frame_support": {
+            "silent": 34,
+            "single": 34,
+            "multi": 0
+          }
+        },
+        "aa70b1844e3fedb1": {
+          "HOTA_area_zero_pred_dets": {
+            "HOTA": 5.244743374615178,
+            "DetA": 5.244743374615178,
+            "AssA": 5.244743374615178,
+            "DetRe": 6.790654520917679,
+            "DetPr": 5.29689608636977,
+            "AssRe": 6.790654520917679,
+            "AssPr": 5.29689608636977,
+            "LocA": 99.058250227503
+          },
+          "FSLA_area_tests_only": {
+            "FA": 36.31578947368421,
+            "FAn": null,
+            "FAs": null,
+            "FAm": 36.31578947368421
+          },
+          "empty_predicted_detections_removed_for_HOTA": 0,
+          "GT_frame_support": {
+            "silent": 0,
+            "single": 0,
+            "multi": 60
+          }
+        },
+        "80297fac75aa3602": {
+          "HOTA_area_zero_pred_dets": {
+            "HOTA": 8.779536461922364,
+            "DetA": 8.760144813623329,
+            "AssA": 8.80001961233031,
+            "DetRe": 9.560093952852363,
+            "DetPr": 9.452949962658701,
+            "AssRe": 9.596534681582996,
+            "AssPr": 9.473405366647148,
+            "LocA": 98.63168759319383
+          },
+          "FSLA_area_tests_only": {
+            "FA": 42.19298245614034,
+            "FAn": null,
+            "FAs": null,
+            "FAm": 42.19298245614034
+          },
+          "empty_predicted_detections_removed_for_HOTA": 17,
+          "GT_frame_support": {
+            "silent": 0,
+            "single": 0,
+            "multi": 60
+          }
+        },
+        "fba15ac968ed087b": {
+          "HOTA_area_zero_pred_dets": {
+            "HOTA": 0.9616118259438043,
+            "DetA": 0.8789984703307272,
+            "AssA": 1.05505380035817,
+            "DetRe": 1.8027136448189085,
+            "DetPr": 1.1805381390849488,
+            "AssRe": 1.8398934481984683,
+            "AssPr": 1.6295892858620404,
+            "LocA": 99.68152231612022
+          },
+          "FSLA_area_tests_only": {
+            "FA": 20.095693779904302,
+            "FAn": 0.0,
+            "FAs": 22.838345864661655,
+            "FAm": 5.263157894736842
+          },
+          "empty_predicted_detections_removed_for_HOTA": 85,
+          "GT_frame_support": {
+            "silent": 1,
+            "single": 56,
+            "multi": 9
+          }
+        },
+        "748fd5adf030945a": {
+          "HOTA_area_zero_pred_dets": {
+            "HOTA": 3.752534701154168,
+            "DetA": 3.752534701154168,
+            "AssA": 3.752534701154168,
+            "DetRe": 3.9541160593792175,
+            "DetPr": 4.083313487338255,
+            "AssRe": 3.9541160593792175,
+            "AssPr": 4.083313487338255,
+            "LocA": 98.22173547163506
+          },
+          "FSLA_area_tests_only": {
+            "FA": 19.035087719298243,
+            "FAn": null,
+            "FAs": null,
+            "FAm": 19.035087719298243
+          },
+          "empty_predicted_detections_removed_for_HOTA": 9,
+          "GT_frame_support": {
+            "silent": 0,
+            "single": 0,
+            "multi": 60
+          }
+        },
+        "58a9dcf23cc41f7a": {
+          "HOTA_area_zero_pred_dets": {
+            "HOTA": 5.801836447099324,
+            "DetA": 5.801836447099324,
+            "AssA": 5.801836447099324,
+            "DetRe": 6.41891375754335,
+            "DetPr": 6.052631578947368,
+            "AssRe": 6.41891375754335,
+            "AssPr": 6.052631578947368,
+            "LocA": 98.82014197586774
+          },
+          "FSLA_area_tests_only": {
+            "FA": 68.50877192982456,
+            "FAn": null,
+            "FAs": 0.0,
+            "FAm": 77.55710029791459
+          },
+          "empty_predicted_detections_removed_for_HOTA": 0,
+          "GT_frame_support": {
+            "silent": 0,
+            "single": 7,
+            "multi": 53
+          }
+        },
+        "18442e192016b615": {
+          "HOTA_area_zero_pred_dets": {
+            "HOTA": 2.067444787538853,
+            "DetA": 2.066226590027532,
+            "AssA": 2.068664457563727,
+            "DetRe": 2.9790823211875845,
+            "DetPr": 2.4485608119350006,
+            "AssRe": 3.1690724434762423,
+            "AssPr": 2.527041684161658,
+            "LocA": 99.86228189012435
+          },
+          "FSLA_area_tests_only": {
+            "FA": 65.48748921484038,
+            "FAn": 0.0,
+            "FAs": 66.57894736842105,
+            "FAm": null
+          },
+          "empty_predicted_detections_removed_for_HOTA": 49,
+          "GT_frame_support": {
+            "silent": 1,
+            "single": 60,
+            "multi": 0
+          }
+        }
+      }
+    }
+  ]
+}

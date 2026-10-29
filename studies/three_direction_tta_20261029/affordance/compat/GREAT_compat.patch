@@ -1,0 +1,52 @@
+--- a/model/GREAT.py
++++ b/model/GREAT.py
+@@ -4,7 +4,8 @@
+ from torchvision import models
+ from model.pointnet2_utils import PointNetSetAbstractionMsg,PointNetFeaturePropagation
+ from einops import rearrange
+-from transformers import AutoModel, AutoTokenizer
++from transformers import AutoModel, AutoTokenizer, AutoConfig
++import os
+ import pdb
+ 
+ device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
+@@ -194,8 +195,8 @@
+         super().__init__()
+         self.emb_dim = emb_dim
+ 
+-        self.text_encoder = AutoModel.from_pretrained('/PATH/roberta-base')
+-        self.tokenizer = AutoTokenizer.from_pretrained('/PATH/roberta-base')
++        self.text_encoder = AutoModel.from_config(AutoConfig.from_pretrained(os.environ['GREAT_TEXT_MODEL'], local_files_only=True))
++        self.tokenizer = AutoTokenizer.from_pretrained(os.environ['GREAT_TEXT_MODEL'], local_files_only=True)
+         self.freeze_text_encoder = freeze_text_encoder
+         if freeze_text_encoder:
+             for p in self.text_encoder.parameters():
+@@ -217,7 +218,7 @@
+ 
+         for phrases in split_queries:
+             tokenized_phrases = self.tokenizer.batch_encode_plus(phrases, padding='longest', return_tensors='pt')  
+-            tokenized_phrases = tokenized_phrases.to(device)
++            tokenized_phrases = tokenized_phrases.to(next(self.text_encoder.parameters()).device)
+             outputs = self.text_encoder(**tokenized_phrases)
+             pooled_output = outputs.pooler_output
+             resized_phrases = self.text_resizer(pooled_output)
+@@ -233,8 +234,8 @@
+         super().__init__()
+         self.emb_dim = emb_dim
+ 
+-        self.text_encoder = AutoModel.from_pretrained('/PATH/roberta-base')
+-        self.tokenizer = AutoTokenizer.from_pretrained('/PATH/roberta-base')
++        self.text_encoder = AutoModel.from_config(AutoConfig.from_pretrained(os.environ['GREAT_TEXT_MODEL'], local_files_only=True))
++        self.tokenizer = AutoTokenizer.from_pretrained(os.environ['GREAT_TEXT_MODEL'], local_files_only=True)
+         self.freeze_text_encoder = freeze_text_encoder
+         if freeze_text_encoder:
+             for p in self.text_encoder.parameters():
+@@ -246,7 +247,7 @@
+         
+         with torch.inference_mode(mode=self.freeze_text_encoder):
+             tokenized_queries = self.tokenizer.batch_encode_plus(text_queries, padding='longest', max_length=512, truncation=True, return_tensors='pt')  
+-        tokenized_queries = tokenized_queries.to(device)
++        tokenized_queries = tokenized_queries.to(next(self.text_encoder.parameters()).device)
+         outputs = self.text_encoder(**tokenized_queries)
+         pooled_output = outputs.pooler_output
+         pooled_output = pooled_output.unsqueeze(1)

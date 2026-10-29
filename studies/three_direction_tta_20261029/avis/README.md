@@ -1,0 +1,23 @@
+# AVISM TTA exploratory study
+
+This export contains public wrapper code, fixed protocols, compatibility patch and scalar results only. It contains no media, annotations, masks, raw predictions, feature arrays, model weights, credentials or private caches. Nothing is uploaded by this script.
+
+Official source: https://github.com/ruohaoguo/avis at commit 851ca2dd6e7a169bd1bb4ad6a2e8fa97a31ef558. The original complete checkpoint SHA256 is 83543b712a3fcf6d5392e536ae512ef606adce404122105ec2b9dccf0327de5e. CUDA/PyTorch compatibility patch changes deprecated AT_DISPATCH tensor type use to scalar_type.
+
+Two predeclared studies use the same eight download-order convenience videos: short first16-frame episodes and complete60-68-frame context controls. TTA is episodic, changing6144 audio-fusion LayerNorm affine parameters. Compare against matched no-update dual views; zero-feature and cyclic cross-video audio ablations are frozen-model diagnostics. Consistency does not prove correctness. No deployment adoption is made.
+
+Pending files explicitly mean accuracy is not available. Scored files retain native AVIS metrics, support counts, costs and anonymous per-video positive/negative tails. Model timing excludes input preprocessing and initialization; it is not a repeated deployment latency benchmark.
+
+Use code/download_ranges_boundary_compat.py for the10GB archive: the service mishandles a Range end of4294967295. The validated workaround requests one extra byte across that boundary and trims it, with neighbor-overlap checking. To recreate local plans, clone the official AVISM checkout to `upstream/` and Detectron2 to `detectron2/`, build the documented CUDA extensions, and keep the original R50_IN checkpoint and extracted official dataset outside this public export. Copy the same upstream tree to `upstream_fullcompat/` and apply `patches/long_video_index_device.patch` only to that copy. Apply the MSDA compatibility patch to both source trees. Run `code/check_public_model_compatibility.py --checkpoint <official-full-checkpoint>` with Python3.11/PyTorch2.7cu128, then run `code/prepare_public_study.py --archive <official-archive> --dataset-root <extracted-datasets> --checkpoint <checkpoint>`. This regenerates local path/hash-specific locks without opening annotation JSON. Exported protocol JSON files are evidence receipts and intentionally omit local paths; they are not direct executable local plans.
+
+## Interpretation and non-adoption
+
+TTA is not adopted. Short and full-context updates show essentially zero benefit versus matched no-update views; full-context entropy3 adds only one net frame-by-IoU-threshold correct decision out of9405 under the separately defined frame-exact diagnostic. That diagnostic is not native FSLA.
+
+Native FSLA contains both a resolution-dependent empty-mask literal and a possible single-source assignment-index issue. Area-only sensitivity changes only two empty-mask checks and is not a full FSLA repair. HOTA sensitivity removes area-zero predicted detections before unchanged native matching/26-class macro aggregation. The selected videos cover9/26 classes, so absolute subset HOTA must not be compared directly with full-test paper HOTA. Native scores remain preserved.
+
+Joint reversal consistency is near numerical zero on videos whose lengths divide the six-frame window; padding boundaries are a competing explanation for remaining view differences. Updates touch only late audio-fusion LayerNorm parameters; earlier audio-conditioned frame queries are cached and frozen. This bounded configuration does not reject other AVIS-TTA mechanisms.
+
+The author cached VGGish features match the released PCM24-as-int32 divided-by32768 frontend, without PCA. Physically normalized floating PCM changes embeddings substantially, but the frozen downstream model was trained with the original feature condition; normalization correction is an untested intervention. Images are approximately1FPS, limiting fine-grained lip/action synchrony feedback. Zero-feature ablation is not a recording of silence, and fixed cyclic audio replacement is a modality-dependence diagnostic, not deployment performance.
+
+Official test metadata was independently recovered from two suffix DEFLATE starts, with all00/allFF dictionary-independent target payloads, empty alignment-prefix fixtures, valid tar header and exact original trailer boundary. Only hashes/proof are exported. The full archive CRC and original-stream equality are not yet verified; the ongoing download has a one-time integrity job. The recovered payload SHA256 is bec4204121fe404b26ddf8383117b2c9c0aecbd0d7d56b2f0b691b2aaa9a1a90.

@@ -1,0 +1,175 @@
+{
+  "study": "avis_prefix_dev_v3",
+  "claim": "Whether episodic audio-fusion normalization updates improve a fixed shortened AVISeg development panel beyond matched no-update views",
+  "cohort_selection": "first 8 test JPEG video directories encountered in the official downloaded tar archive stream whose names appear in the fixed public test filename list; preserve archive order; no replacement based on input/prediction/GT outcomes",
+  "sampling_limitation": "archive-order download-convenience development cohort; not representative or full benchmark",
+  "source": "official AVISM R50 ImageNet; no retraining",
+  "manifest_sha256": "9ab0ecd5d2255221390f4cc5bd293ba90da148d620f126b987ebe6725e6f0566",
+  "checkpoint_sha256": "83543b712a3fcf6d5392e536ae512ef606adce404122105ec2b9dccf0327de5e",
+  "checkpoint_derived": false,
+  "source_full_file_complete": true,
+  "source_hashes": {
+    "scripts/prepare_prefix_inputs.py": "adb474870395d5033bbbfa3aa122907fe110ef9aa09969b21661885c7b361f3f",
+    "scripts/derive_model_checkpoint.py": "6b2e32ff75d8d51a99bd8342c20d27fc30330535e8a56373682d7e80f6974a6e",
+    "scripts/build_extension.py": "e0b8ca05040702c6b224f387e44291858d05e862174803925bb4f8f0566bc2f8",
+    "scripts/wait_prepare_prefix.py": "84555715100fca932ba46f5d30c84b16614d97c9e25d009b7229755141182380",
+    "scripts/download_ranges.py": "ef9abc56c6e227c53de94011c4a3460e049c1fef67a70195ac540698a354f639",
+    "scripts/check_tta_contract.py": "4bb04447fbf7ff093c5663c5836d8530e6b07c7c801c9fe436d42692f34c5467",
+    "scripts/measure_download_progress.py": "65e80ffef46606287d2d919d643485d2e09b93b6503c82a5d98aad7af19cafb5",
+    "scripts/tta_adapter.py": "5641ce04c08593e1038b29d0706824e33ca88e967eb3022b4387cb6413f95f98",
+    "scripts/extract_test.py": "0f3b91a2525e80cb0a270e83c05c02062719227c261b8f7663aa7d295314407d",
+    "scripts/refresh_status.py": "c17194e856ec1a89ef11832d8cef5f88a59720d1d7253467057da545b056feb5",
+    "scripts/remote_zip_list.py": "759ea02ca42705af9834180070124080729e04e62156ef113baf14a3efa266b4",
+    "scripts/prepare_prefix_inputs_v2.py": "657ef81ff68a47417a885a9ba92950697cc12ffedf5b4e32c1cb5233ac082d52",
+    "scripts/prepare_inputs.py": "f7994f5e4b824fbf09a3f6631e8348562e0d37c8de7704d4f7c6a31046b84eb9",
+    "scripts/wait_install_tf.py": "abbc41282016acc9c2b1211fc393968780aac478555f777a710d4ae9393ea76b",
+    "scripts/checkpoint_model_metadata.py": "2a8f626a08adbe946f09e6282eb44d17fba114fb05e99f596cc7ec66d0b03af3",
+    "scripts/select_prefix_cohort.py": "2441f3b188c66237fb077c9270b8ec4825a035725ce10e7a94ad3a31b5e1e6fd",
+    "scripts/check_cuda_engineering.py": "3a7136c3d7d8beb5f28d13b94e210fb4b97741ba47807eee362f66e1235023a8",
+    "scripts/wait_derive.py": "43af0d336b982fbb0a1305d300e8068277b2b9789f8895db3edc22b9dcc37a5b",
+    "scripts/extract_audio_prefix_v2.py": "ac286e7f19d1f4169172bdcdba003ff3e88c24ec69a2ebb3ec5e7ff44db48e15",
+    "scripts/score_panel.py": "2d2a818f0c99ea1fe7f64e8120a077a38f0f3b4e8d9676a9d572368a0a06bd97",
+    "scripts/extract_audio.py": "66d64ad18f3669cabf05da9cf7e037d367dd3870a3972b7abf9f3f2f45c53fad",
+    "scripts/download.py": "11177c0d27264c714deca04476bb89644427998a6c34b06a5504d4e6422e08de",
+    "scripts/lock_prefix_rule.py": "9f6c9380342b43d55246ad82aa2a5df4c1a2e5ad84aea94557ec3e23bfe244bc",
+    "scripts/lock_plan.py": "793d0224c458f87634603de04d8db187505e0d7db647fe75145e03a3549ff14a",
+    "scripts/prepare_prefix_inputs_v3.py": "124023847af620005b5d3c29690162017fc4741602875a75ee99c02b14da2725",
+    "scripts/extract_prefix.py": "983b8ef14077e9f9e0c2d1a241f6bd345cf725e1a7997581f4f8e0849b1d87ca",
+    "scripts/run_panel.py": "d468019c1da094f1c75c040656fae924a4fb74517c160067cb2b3d809aa90365",
+    "upstream/avism/avism_model.py": "df76556d7bb3e588217a97c14fed3f683bb2ac9edffc9415d4c07e58e68be9c1",
+    "upstream/avism/modeling/transformer_decoder/avism.py": "e1243502e98ed99634512475103febbc8d036469108450cfba507dafbf76d5be",
+    "upstream/configs/avism/R50/avism_R50_IN.yaml": "49c0af8be8ab0b32aecf72c4a6ba677591b7ad1753f669d189d547374f895e44",
+    "upstream/configs/avism/Base-AVIS.yaml": "90e03c2df7d95f45689827d14ce0b02e46675abf504f66904722ae87fbd295ca"
+  },
+  "critical_package_versions": {
+    "torch": "2.7.0+cu128",
+    "torchvision": "0.22.0+cu128",
+    "numpy": "1.26.4",
+    "scipy": "1.15.3",
+    "opencv-python": null,
+    "pycocotools": "2.0.11",
+    "einops": "0.8.2",
+    "timm": "1.0.15",
+    "yacs": "0.1.8",
+    "fvcore": "0.1.5.post20221221",
+    "iopath": "0.1.10",
+    "omegaconf": "2.3.1",
+    "beartype": "0.23.1",
+    "tensorflow-cpu": null,
+    "tf_slim": null
+  },
+  "python_version": "3.11.16 (main, Aug 27 2026, 14:44:21) [GCC 14.3.0]",
+  "environment_policy": "no dependency installation or package change during the locked experiment",
+  "upstream_commit": "851ca2dd6e7a169bd1bb4ad6a2e8fa97a31ef558",
+  "arms": [
+    {
+      "method": "source",
+      "steps": 0
+    },
+    {
+      "method": "views",
+      "steps": 0
+    },
+    {
+      "method": "entropy",
+      "steps": 1
+    },
+    {
+      "method": "entropy",
+      "steps": 3
+    },
+    {
+      "method": "consistency",
+      "steps": 1
+    },
+    {
+      "method": "consistency",
+      "steps": 3
+    },
+    {
+      "method": "zero_features",
+      "steps": 0
+    },
+    {
+      "method": "cyclic_audio",
+      "steps": 0
+    }
+  ],
+  "frozen_audio_controls": {
+    "zero_features": "all-zero VGGish features through entire frozen frame and clip pipeline; not silence",
+    "cyclic_audio": "next video in locked cohort order modulo 8; donor positions floor(arange(target_T)*donor_T/target_T); no GT/category matching",
+    "interpretation": "diagnose prediction sensitivity and native performance; no invariance-to-shift => visual-bias causal inference"
+  },
+  "optimizer": {
+    "name": "Adam",
+    "lr": 0.0001,
+    "weight_decay": 0,
+    "grad_clip_norm": 1.0
+  },
+  "parameters": [
+    "enc_av_cross_attn.0.norm.weight",
+    "enc_av_cross_attn.0.norm.bias",
+    "enc_av_cross_attn.1.norm.weight",
+    "enc_av_cross_attn.1.norm.bias",
+    "enc_av_cross_attn.2.norm.weight",
+    "enc_av_cross_attn.2.norm.bias",
+    "enc_av_cross_attn.3.norm.weight",
+    "enc_av_cross_attn.3.norm.bias",
+    "enc_av_cross_attn.4.norm.weight",
+    "enc_av_cross_attn.4.norm.bias",
+    "enc_av_cross_attn.5.norm.weight",
+    "enc_av_cross_attn.5.norm.bias",
+    "enc_av_ffn.0.norm.weight",
+    "enc_av_ffn.0.norm.bias",
+    "enc_av_ffn.1.norm.weight",
+    "enc_av_ffn.1.norm.bias",
+    "enc_av_ffn.2.norm.weight",
+    "enc_av_ffn.2.norm.bias",
+    "enc_av_ffn.3.norm.weight",
+    "enc_av_ffn.3.norm.bias",
+    "enc_av_ffn.4.norm.weight",
+    "enc_av_ffn.4.norm.bias",
+    "enc_av_ffn.5.norm.weight",
+    "enc_av_ffn.5.norm.bias"
+  ],
+  "parameter_count": 6144,
+  "seed": 20261029,
+  "episode_reset": "pretrained selected parameters before and after every video; fresh optimizer each video; model remains eval",
+  "views": [
+    "original cached frame queries + audio",
+    "joint reverse temporal order of cached frame queries and audio"
+  ],
+  "matching": "detached Hungarian using class-distribution L1/2 + 1-mask-vector-cosine, fixed baseline query reference for training; no GT",
+  "readout": "source retains official single-view output; all other arms average matched class probabilities and matched clip mask vectors from two views, decoding through unchanged original-order frozen mask features",
+  "consistency_gate": {
+    "fg_probability_min": 0.3,
+    "matched_class_equal": true,
+    "matched_mask_cosine_min": 0.9
+  },
+  "consistency_loss": "mean two-view class KL + matched mask-vector cosine distance (weight 1.0) to frozen matched baseline ensemble over gated queries + .01 parameter mean-square anchor",
+  "entropy_loss": "mean categorical entropy of original-view clip-query distributions including no-object",
+  "same_input_repeat_tolerance": 1e-05,
+  "video_count": 8,
+  "frame_count": 128,
+  "crop": "first up to 16 frames per selected video; this is not full long-video reproduction",
+  "metrics": [
+    "native official TrackMAP",
+    "native official HOTA",
+    "native official FSLA with native empty-mask convention and retained stratum counts",
+    "per-video runtime",
+    "peak allocated GPU memory",
+    "predicted track counts",
+    "parameter delta and unlabeled gate diagnostics"
+  ],
+  "score_protocol": "seal every arm before opening GT in separate CPU scorer; nonfinite conditional stratum values are null with support counts, no replacement by zero",
+  "resource_ceiling": {
+    "gpu": "one RTX5090; serial lease coordinated by parent",
+    "frames_per_video_max": 16,
+    "video_count_max": 8,
+    "max_update_steps": 3,
+    "image_chunk": 4,
+    "selection_or_lr_sweep": false
+  },
+  "scope_boundary": "development feasibility only; no deployment adoption or generic novelty/causal reliability claim",
+  "local_paths_removed": true
+}

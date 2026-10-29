@@ -1,0 +1,33 @@
+{
+  "original_private_plan_sha256": "2b97cf49d61e410099d4809c51db6b03c63f43c29439765d2dd8ca239b94a486",
+  "public_view": {
+    "id": "surface_yaw_selection_exposed45_v1",
+    "stage": "developmentselection_before_surfacepredictions",
+    "hypothesis": "PCAstronganisotropy canbe a visible shortface, not objectlongaxis; fixedsourcecenter/extent defines boxsurface evidence to choose0/PCA/perpendicular",
+    "hypothesis_source": "postseal27point negativecase from exposed36, old9+36scoresalreadyknown; no heldoutclaim",
+    "n": 45,
+    "cohorts": [
+      "existingdevelopment9",
+      "existingreplication36"
+    ],
+    "source_center_extent_crop": "unchanged; unique exactsource16384pointcloud andoriginalaxisbox crop, tolerance1e-7",
+    "gates": "original<8unique crop points orpredL/W<1.5 ordegenerateXYcov<=1e-12: yaw0 unchanged",
+    "candidates": "[yaw0, originalPCAyaw, originalPCAyaw+pi/2 wrappedmodpi]; preserve originalPCAallresults",
+    "loss": "mean(abs(norm(max(abs(Ryaw^T*(point-center))-extent/2,0),2)+min(max(abs(Ryaw^T*(point-center))-extent/2),0)))/min(L,W), over originalsourcecrop only; full3D boxsigneddistance absolute; noGT/image",
+    "tie": "loss within1e-12 ofminimum, firstcandidate wins, so yaw0preferred",
+    "networkupdates": false,
+    "label_use": "sourcebox andcrop only forprediction; OBBGT7D onlyafter45predictionseal; noGTrollback",
+    "continuation_rule": "Only if severe01384case surfaceIoU>.5 AND meanIoU45surface>PCA AND Acc50count45surface>PCA, then one fresh36samplecohort withsamefixedrules andsource/PCA/surfacearms; else stopthisrevision",
+    "budget": "CPU45 only; no model/LR/loss/threshold scan; atmostone conditionalnew36batch",
+    "source_sha256": {
+      "refine.py": "7403f307b86ebe6572a5b4bf48fbd697b513f4e3e2aa3f4f143c41625d75b6d9",
+      "run.py": "600f3f43caf71645c488bb73538dea67b0c2eb0fc1ce0babfa9b3388860a2134",
+      "score.py": "4d560125ef61abd6b336a0c38fb4c8e32c34bc95245e6131e5c9a27768d1e519"
+    },
+    "parent_seals": {
+      "runs/geometry_pca_v1/sealed.json": "4fae22f739f58a984f5d2455b41eedc553d87964af21ac4da2667ab591e9056a",
+      "replication36/pca/sealed.json": "21e669b6985aa2eac58b3bdd459f59e4da983517f3fd8729a97a9b643670024a"
+    }
+  },
+  "redactions": "Workspaceprefix replaced; rawrelative datasetpaths hashed; no caption/GTcoordinate/media supplied."
+}

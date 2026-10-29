@@ -1,0 +1,44 @@
+{
+  "baseline_commit": "8ab28ec4dd7bbfe4d3a70aa9fe9b7ef1295d0cef",
+  "checkpoint_id": "1yOV4KdRVWXRjXlXbYZ4_H9peoZIIKc0Y",
+  "dataset": "PIADv2 Unseen_aff, matching pretrained split only",
+  "cohort": "12 distinct point parents hash-ranked by image|point path; no GT-based filtering",
+  "protocol": "episodic 0,1,3 updates to decoder.cmff.cross_atten1.layernorm affine only; Adam lr1e-4; two point permutations, source+view teacher mean, smooth variance weight, parameter anchor .01; final source-input readout; entropy-minimization same interface at1,3 steps, separate arm",
+  "controls": [
+    "source frozen",
+    "same-input repeat",
+    "inverse-restored permutation ensemble with zero updates",
+    "strict episodic parameter/RNG reset"
+  ],
+  "primary_metrics": [
+    "AUC",
+    "aIOU(20 thresholds)",
+    "SIM",
+    "MAE"
+  ],
+  "scope": "feasibility and paired diagnostic only, no benchmark replication or causal decoder attribution",
+  "fps_confound": "Same index RNG start after permutation changes physical FPS start. Attribute sensitivity only to complete pipeline unless geometric FPS correspondence control succeeds.",
+  "label_boundary": "Separate inference xyz files and scoring targets, no labels in updater, prediction seal before CPU scoring",
+  "resource_limit": {
+    "n": 12,
+    "steps": [
+      0,
+      1,
+      3
+    ],
+    "sequential_gpu": true,
+    "disk_gb": 40
+  },
+  "plan_version": 4,
+  "metric_denominators": "GT-defined validity masks fixed identically across arms; report per metric valid/undefined counts and all-zero/all-one target reasons; fail on any nonfinite prediction",
+  "normalization": "XYZ subtract per-cloud centroid, divide maximum Euclidean norm; image RGB resize224x224 PIL default resampler then ImageNet mean/std, matching upstream",
+  "tokenizer_identity": "pdelobelle/robbert-v2-dutch-base, vocabulary40000 matches checkpoint and git history; current upstream claims roberta-base vocabulary50265, identity contradiction unresolved",
+  "local_frozen_protocol_sha256": {
+    "PLAN_LOCK_v4.json": "3a5ce10571a2a7466528afd4abf2e7a0f38bfd6861d3ef4345df852d738166e9",
+    "PLAN_CANONICAL_V2.json": "abf2488463085a731e7b76d5e562e0269492ab99752817789360c22824c5b9ea"
+  },
+  "inference_manifest_sha256": "62825614beb2a53ffd66fd8591b472ce613a5a3b2c62079ffeb249c4258d7517",
+  "canonical_v2_change": "Only consistency student update input changes from permuted+inverse-restored input to canonical/original input. Teacher/source/ensemble/views/LN/lr/step counts/seeds fixed. One student forward per step in both versions.",
+  "development_exposure": "All canonical-v2 results use v1 development cohort after v1 task scores were exposed; no independent heldout claim.",
+  "cohort_unit_clarification": "Twelve distinct point file paths and twelve distinct exact point sets, including permutation-invariant exact hashing. Independent physical object-instance provenance is not proven; pointwise bootstrap remains descriptive."
+}

@@ -1,0 +1,603 @@
+{
+  "scope": "unlabeled consistency-signal audit; not accuracy",
+  "observation": "inspect nearly zero reversal consistency for lengths divisible by the six-frame window; padding boundary effects are a competing explanation for view differences",
+  "source_code": "Avism.forward repeats fq_pos over T with no absolute temporal encoding; local/half-shifted windows precede global video-query aggregation",
+  "rows": [
+    {
+      "study": "avis_prefix_dev_v3",
+      "arm": "views_0",
+      "frames": 16,
+      "frames_mod_window6": 4,
+      "matching_cost": 0.00036933168303221464,
+      "class_losses": null,
+      "mask_losses": null,
+      "gradient_norms": null,
+      "parameter_delta_l2": null,
+      "gated_queries": 5,
+      "sample_hash": "80297fac75aa3602"
+    },
+    {
+      "study": "avis_prefix_dev_v3",
+      "arm": "views_0",
+      "frames": 16,
+      "frames_mod_window6": 4,
+      "matching_cost": 0.0013447108212858438,
+      "class_losses": null,
+      "mask_losses": null,
+      "gradient_norms": null,
+      "parameter_delta_l2": null,
+      "gated_queries": 0,
+      "sample_hash": "6af1cc6d5fd079aa"
+    },
+    {
+      "study": "avis_prefix_dev_v3",
+      "arm": "views_0",
+      "frames": 16,
+      "frames_mod_window6": 4,
+      "matching_cost": 2.2528185581904836e-05,
+      "class_losses": null,
+      "mask_losses": null,
+      "gradient_norms": null,
+      "parameter_delta_l2": null,
+      "gated_queries": 2,
+      "sample_hash": "17c70c36e4ec0ce1"
+    },
+    {
+      "study": "avis_prefix_dev_v3",
+      "arm": "views_0",
+      "frames": 16,
+      "frames_mod_window6": 4,
+      "matching_cost": 2.868396677513374e-06,
+      "class_losses": null,
+      "mask_losses": null,
+      "gradient_norms": null,
+      "parameter_delta_l2": null,
+      "gated_queries": 2,
+      "sample_hash": "58a9dcf23cc41f7a"
+    },
+    {
+      "study": "avis_prefix_dev_v3",
+      "arm": "views_0",
+      "frames": 16,
+      "frames_mod_window6": 4,
+      "matching_cost": 0.00015449679631274194,
+      "class_losses": null,
+      "mask_losses": null,
+      "gradient_norms": null,
+      "parameter_delta_l2": null,
+      "gated_queries": 2,
+      "sample_hash": "18442e192016b615"
+    },
+    {
+      "study": "avis_prefix_dev_v3",
+      "arm": "views_0",
+      "frames": 16,
+      "frames_mod_window6": 4,
+      "matching_cost": 0.001800494734197855,
+      "class_losses": null,
+      "mask_losses": null,
+      "gradient_norms": null,
+      "parameter_delta_l2": null,
+      "gated_queries": 2,
+      "sample_hash": "fba15ac968ed087b"
+    },
+    {
+      "study": "avis_prefix_dev_v3",
+      "arm": "views_0",
+      "frames": 16,
+      "frames_mod_window6": 4,
+      "matching_cost": 0.0010252323700115085,
+      "class_losses": null,
+      "mask_losses": null,
+      "gradient_norms": null,
+      "parameter_delta_l2": null,
+      "gated_queries": 2,
+      "sample_hash": "aa70b1844e3fedb1"
+    },
+    {
+      "study": "avis_prefix_dev_v3",
+      "arm": "views_0",
+      "frames": 16,
+      "frames_mod_window6": 4,
+      "matching_cost": 0.00015690985310357064,
+      "class_losses": null,
+      "mask_losses": null,
+      "gradient_norms": null,
+      "parameter_delta_l2": null,
+      "gated_queries": 2,
+      "sample_hash": "748fd5adf030945a"
+    },
+    {
+      "study": "avis_prefix_dev_v3",
+      "arm": "consistency_3",
+      "frames": 16,
+      "frames_mod_window6": 4,
+      "matching_cost": 0.00036933168303221464,
+      "class_losses": [
+        7.035779708530754e-05,
+        7.0382040576078e-05,
+        7.056604226818308e-05
+      ],
+      "mask_losses": [
+        3.5762788286319847e-08,
+        3.5762788286319847e-08,
+        4.17232506322307e-08
+      ],
+      "gradient_norms": [
+        4.5410135498968884e-05,
+        0.0002395385381532833,
+        0.0006388057372532785
+      ],
+      "parameter_delta_l2": 0.004957089200615883,
+      "gated_queries": 5,
+      "sample_hash": "80297fac75aa3602"
+    },
+    {
+      "study": "avis_prefix_dev_v3",
+      "arm": "consistency_3",
+      "frames": 16,
+      "frames_mod_window6": 4,
+      "matching_cost": 0.0013447108212858438,
+      "class_losses": null,
+      "mask_losses": null,
+      "gradient_norms": null,
+      "parameter_delta_l2": 0.0,
+      "gated_queries": 0,
+      "sample_hash": "6af1cc6d5fd079aa"
+    },
+    {
+      "study": "avis_prefix_dev_v3",
+      "arm": "consistency_3",
+      "frames": 16,
+      "frames_mod_window6": 4,
+      "matching_cost": 2.2528185581904836e-05,
+      "class_losses": [
+        6.776335794711486e-07,
+        6.384634616551921e-07,
+        7.355574780376628e-07
+      ],
+      "mask_losses": [
+        1.341104507446289e-07,
+        1.1920928955078125e-07,
+        8.940696716308594e-08
+      ],
+      "gradient_norms": [
+        7.35116771011235e-07,
+        2.771089566522278e-05,
+        7.822955376468599e-05
+      ],
+      "parameter_delta_l2": 0.0016398431034758687,
+      "gated_queries": 2,
+      "sample_hash": "17c70c36e4ec0ce1"
+    },
+    {
+      "study": "avis_prefix_dev_v3",
+      "arm": "consistency_3",
+      "frames": 16,
+      "frames_mod_window6": 4,
+      "matching_cost": 2.868396677513374e-06,
+      "class_losses": [
+        1.423986759618856e-07,
+        9.065252015716396e-08,
+        9.563558478475898e-08
+      ],
+      "mask_losses": [
+        -2.9802322387695312e-08,
+        1.4901161193847656e-08,
+        -1.4901161193847656e-08
+      ],
+      "gradient_norms": [
+        6.389385731608854e-08,
+        2.4543940071453108e-06,
+        4.882621851720614e-06
+      ],
+      "parameter_delta_l2": 0.0006778594106435776,
+      "gated_queries": 2,
+      "sample_hash": "58a9dcf23cc41f7a"
+    },
+    {
+      "study": "avis_prefix_dev_v3",
+      "arm": "consistency_3",
+      "frames": 16,
+      "frames_mod_window6": 4,
+      "matching_cost": 0.00015449679631274194,
+      "class_losses": [
+        8.669221642776392e-06,
+        8.706790140422527e-06,
+        8.699347745277919e-06
+      ],
+      "mask_losses": [
+        3.5762786865234375e-07,
+        3.427267074584961e-07,
+        3.5762786865234375e-07
+      ],
+      "gradient_norms": [
+        7.627234026585938e-06,
+        4.395001087686978e-05,
+        3.7472593248821795e-05
+      ],
+      "parameter_delta_l2": 0.0035908150020986795,
+      "gated_queries": 2,
+      "sample_hash": "18442e192016b615"
+    },
+    {
+      "study": "avis_prefix_dev_v3",
+      "arm": "consistency_3",
+      "frames": 16,
+      "frames_mod_window6": 4,
+      "matching_cost": 0.001800494734197855,
+      "class_losses": [
+        9.596720337867737e-05,
+        9.576824959367514e-05,
+        9.56513686105609e-05
+      ],
+      "mask_losses": [
+        1.9282102584838867e-05,
+        1.926720142364502e-05,
+        1.9162893295288086e-05
+      ],
+      "gradient_norms": [
+        0.00016472597781103104,
+        0.0001446679380023852,
+        0.00014875597844365984
+      ],
+      "parameter_delta_l2": 0.009677750058472157,
+      "gated_queries": 2,
+      "sample_hash": "fba15ac968ed087b"
+    },
+    {
+      "study": "avis_prefix_dev_v3",
+      "arm": "consistency_3",
+      "frames": 16,
+      "frames_mod_window6": 4,
+      "matching_cost": 0.0010252323700115085,
+      "class_losses": [
+        0.007049179635941982,
+        0.0070429653860628605,
+        0.0070372517220675945
+      ],
+      "mask_losses": [
+        1.9311904907226562e-05,
+        1.9356608390808105e-05,
+        1.932680606842041e-05
+      ],
+      "gradient_norms": [
+        0.00403212895616889,
+        0.0036806692369282246,
+        0.003372303443029523
+      ],
+      "parameter_delta_l2": 0.020744139328598976,
+      "gated_queries": 2,
+      "sample_hash": "aa70b1844e3fedb1"
+    },
+    {
+      "study": "avis_prefix_dev_v3",
+      "arm": "consistency_3",
+      "frames": 16,
+      "frames_mod_window6": 4,
+      "matching_cost": 0.00015690985310357064,
+      "class_losses": [
+        1.2734925803670194e-05,
+        1.2785295439243782e-05,
+        1.2700688785116654e-05
+      ],
+      "mask_losses": [
+        6.3478946685791016e-06,
+        6.377696990966797e-06,
+        6.362795829772949e-06
+      ],
+      "gradient_norms": [
+        1.9706298189703375e-05,
+        1.5352397895185277e-05,
+        1.237401465914445e-05
+      ],
+      "parameter_delta_l2": 0.007491691038012505,
+      "gated_queries": 2,
+      "sample_hash": "748fd5adf030945a"
+    },
+    {
+      "study": "avis_full_context_v2",
+      "arm": "views_0",
+      "frames": 60,
+      "frames_mod_window6": 0,
+      "matching_cost": 4.647747076091946e-08,
+      "class_losses": null,
+      "mask_losses": null,
+      "gradient_norms": null,
+      "parameter_delta_l2": null,
+      "gated_queries": 4,
+      "sample_hash": "80297fac75aa3602"
+    },
+    {
+      "study": "avis_full_context_v2",
+      "arm": "views_0",
+      "frames": 68,
+      "frames_mod_window6": 2,
+      "matching_cost": 0.0006423114682547748,
+      "class_losses": null,
+      "mask_losses": null,
+      "gradient_norms": null,
+      "parameter_delta_l2": null,
+      "gated_queries": 1,
+      "sample_hash": "6af1cc6d5fd079aa"
+    },
+    {
+      "study": "avis_full_context_v2",
+      "arm": "views_0",
+      "frames": 60,
+      "frames_mod_window6": 0,
+      "matching_cost": 4.995384106365464e-09,
+      "class_losses": null,
+      "mask_losses": null,
+      "gradient_norms": null,
+      "parameter_delta_l2": null,
+      "gated_queries": 2,
+      "sample_hash": "17c70c36e4ec0ce1"
+    },
+    {
+      "study": "avis_full_context_v2",
+      "arm": "views_0",
+      "frames": 60,
+      "frames_mod_window6": 0,
+      "matching_cost": -1.6877940822723758e-08,
+      "class_losses": null,
+      "mask_losses": null,
+      "gradient_norms": null,
+      "parameter_delta_l2": null,
+      "gated_queries": 2,
+      "sample_hash": "58a9dcf23cc41f7a"
+    },
+    {
+      "study": "avis_full_context_v2",
+      "arm": "views_0",
+      "frames": 61,
+      "frames_mod_window6": 1,
+      "matching_cost": 0.0002058047248283401,
+      "class_losses": null,
+      "mask_losses": null,
+      "gradient_norms": null,
+      "parameter_delta_l2": null,
+      "gated_queries": 2,
+      "sample_hash": "18442e192016b615"
+    },
+    {
+      "study": "avis_full_context_v2",
+      "arm": "views_0",
+      "frames": 66,
+      "frames_mod_window6": 0,
+      "matching_cost": 2.8831433240839033e-08,
+      "class_losses": null,
+      "mask_losses": null,
+      "gradient_norms": null,
+      "parameter_delta_l2": null,
+      "gated_queries": 3,
+      "sample_hash": "fba15ac968ed087b"
+    },
+    {
+      "study": "avis_full_context_v2",
+      "arm": "views_0",
+      "frames": 60,
+      "frames_mod_window6": 0,
+      "matching_cost": -4.575780199189694e-09,
+      "class_losses": null,
+      "mask_losses": null,
+      "gradient_norms": null,
+      "parameter_delta_l2": null,
+      "gated_queries": 2,
+      "sample_hash": "aa70b1844e3fedb1"
+    },
+    {
+      "study": "avis_full_context_v2",
+      "arm": "views_0",
+      "frames": 60,
+      "frames_mod_window6": 0,
+      "matching_cost": -4.243743845222525e-08,
+      "class_losses": null,
+      "mask_losses": null,
+      "gradient_norms": null,
+      "parameter_delta_l2": null,
+      "gated_queries": 2,
+      "sample_hash": "748fd5adf030945a"
+    },
+    {
+      "study": "avis_full_context_v2",
+      "arm": "consistency_3",
+      "frames": 60,
+      "frames_mod_window6": 0,
+      "matching_cost": 4.647747076091946e-08,
+      "class_losses": [
+        1.8480410091115118e-08,
+        2.7928159340717684e-08,
+        9.212897111865459e-09
+      ],
+      "mask_losses": [
+        -7.450580596923828e-09,
+        -1.4901161193847656e-08,
+        -7.450580596923828e-09
+      ],
+      "gradient_norms": [
+        2.507331764434184e-08,
+        6.7996843426954e-06,
+        3.9128011849243194e-05
+      ],
+      "parameter_delta_l2": 0.0007851371774449944,
+      "gated_queries": 4,
+      "sample_hash": "80297fac75aa3602"
+    },
+    {
+      "study": "avis_full_context_v2",
+      "arm": "consistency_3",
+      "frames": 68,
+      "frames_mod_window6": 2,
+      "matching_cost": 0.0006423114682547748,
+      "class_losses": [
+        0.00032694742549210787,
+        0.00032653872040100396,
+        0.00032605690648779273
+      ],
+      "mask_losses": [
+        4.857778549194336e-06,
+        4.857778549194336e-06,
+        4.887580871582031e-06
+      ],
+      "gradient_norms": [
+        0.0005924274446442723,
+        0.0006192029104568064,
+        0.0004993368638679385
+      ],
+      "parameter_delta_l2": 0.009814828634262085,
+      "gated_queries": 1,
+      "sample_hash": "6af1cc6d5fd079aa"
+    },
+    {
+      "study": "avis_full_context_v2",
+      "arm": "consistency_3",
+      "frames": 60,
+      "frames_mod_window6": 0,
+      "matching_cost": 4.995384106365464e-09,
+      "class_losses": [
+        -1.1298766366962809e-08,
+        8.350662028533407e-08,
+        6.96488768880954e-08
+      ],
+      "mask_losses": [
+        -5.960464477539063e-08,
+        -5.960464477539063e-08,
+        -5.960464477539063e-08
+      ],
+      "gradient_norms": [
+        8.705997345259675e-08,
+        1.4621667105529923e-05,
+        0.00011102221469627693
+      ],
+      "parameter_delta_l2": 0.0009666989208199084,
+      "gated_queries": 2,
+      "sample_hash": "17c70c36e4ec0ce1"
+    },
+    {
+      "study": "avis_full_context_v2",
+      "arm": "consistency_3",
+      "frames": 60,
+      "frames_mod_window6": 0,
+      "matching_cost": -1.6877940822723758e-08,
+      "class_losses": [
+        1.1547285794222262e-08,
+        1.1538088529050583e-07,
+        5.8975047068088315e-08
+      ],
+      "mask_losses": [
+        1.4901161193847656e-08,
+        -2.9802322387695312e-08,
+        -2.9802322387695312e-08
+      ],
+      "gradient_norms": [
+        3.9950261765397954e-08,
+        1.769461505318759e-06,
+        7.054918569338042e-06
+      ],
+      "parameter_delta_l2": 0.0004914119490422308,
+      "gated_queries": 2,
+      "sample_hash": "58a9dcf23cc41f7a"
+    },
+    {
+      "study": "avis_full_context_v2",
+      "arm": "consistency_3",
+      "frames": 61,
+      "frames_mod_window6": 1,
+      "matching_cost": 0.0002058047248283401,
+      "class_losses": [
+        4.233252548146993e-05,
+        4.230563354212791e-05,
+        4.229784826748073e-05
+      ],
+      "mask_losses": [
+        7.748603820800781e-07,
+        7.450580596923828e-07,
+        7.450580596923828e-07
+      ],
+      "gradient_norms": [
+        1.742625499900896e-05,
+        0.00016911985585466027,
+        8.428736327914521e-05
+      ],
+      "parameter_delta_l2": 0.004580235108733177,
+      "gated_queries": 2,
+      "sample_hash": "18442e192016b615"
+    },
+    {
+      "study": "avis_full_context_v2",
+      "arm": "consistency_3",
+      "frames": 66,
+      "frames_mod_window6": 0,
+      "matching_cost": 2.8831433240839033e-08,
+      "class_losses": [
+        -2.584935598903826e-09,
+        2.6009274733951315e-08,
+        1.1042600078781106e-07
+      ],
+      "mask_losses": [
+        -1.9868215517249155e-08,
+        -9.934107758624577e-09,
+        -1.9868215517249155e-08
+      ],
+      "gradient_norms": [
+        1.131019544686751e-08,
+        1.3210879842517897e-05,
+        0.00019355391850695014
+      ],
+      "parameter_delta_l2": 0.0010480034397915006,
+      "gated_queries": 3,
+      "sample_hash": "fba15ac968ed087b"
+    },
+    {
+      "study": "avis_full_context_v2",
+      "arm": "consistency_3",
+      "frames": 60,
+      "frames_mod_window6": 0,
+      "matching_cost": -4.575780199189694e-09,
+      "class_losses": [
+        1.005923877528403e-08,
+        -1.2739747035084292e-09,
+        -4.034609446534887e-08
+      ],
+      "mask_losses": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "gradient_norms": [
+        3.4199480580809904e-08,
+        4.627348516805796e-06,
+        2.33909140661126e-05
+      ],
+      "parameter_delta_l2": 0.0008791267173364758,
+      "gated_queries": 2,
+      "sample_hash": "aa70b1844e3fedb1"
+    },
+    {
+      "study": "avis_full_context_v2",
+      "arm": "consistency_3",
+      "frames": 60,
+      "frames_mod_window6": 0,
+      "matching_cost": -4.243743845222525e-08,
+      "class_losses": [
+        -3.5201352943659003e-09,
+        -3.861689634732102e-08,
+        -7.147416880570745e-08
+      ],
+      "mask_losses": [
+        -2.9802322387695312e-08,
+        -5.960464477539063e-08,
+        -2.9802322387695312e-08
+      ],
+      "gradient_norms": [
+        6.348741976580641e-08,
+        1.8649755020305747e-06,
+        7.367647413047962e-06
+      ],
+      "parameter_delta_l2": 0.0008706357912160456,
+      "gated_queries": 2,
+      "sample_hash": "748fd5adf030945a"
+    }
+  ]
+}

@@ -1,0 +1,35 @@
+{
+  "original_private_plan_sha256": "1d33c84c8e76173d60cf19c417567609c9c4c8fcd4da356ba507dd7e54592b26",
+  "public_view": {
+    "id": "3eed_geometry_pca_v1",
+    "status": "locked_before_geometric_predictions",
+    "hypothesis": "Visible local pointgeometry may recover heading unrepresented by6D head; can still fail on neighborinstance or partialsurface",
+    "hypothesis_source": "Post-seal GT oracle diagnosis on exposed9sample development panel, not a blind study",
+    "cohort": "same9fixed source cases, no case selection",
+    "inputs": "same16384 sampled sourcepointcloud, unique xyz locations; frozen source top1 box and pure-text readout index from source trace; no GT/metadata class/caption consumed in refinement",
+    "points": "exact original seed20261029+i and official coordinate preprocessing, no new point acquisition",
+    "crop": "inside fixed source axis-aligned predicted box, includingz, coordinate tolerance1e-7",
+    "fixed_rules": [
+      "if crop has fewer than8unique points, keep yaw0",
+      "if predicted L/W<1.5, keep yaw0",
+      "else take principal eigenvector of unweighted2D covariance of croppedxy, yaw=atan2 modpi",
+      "degenerate covariance <=1e-12 keepsyaw0"
+    ],
+    "center_and_size": "unchanged bitexact",
+    "updates": "no networkweight updates, no θgradient optimization, no LR/threshold search",
+    "arms": [
+      "source7D withyaw0",
+      "pointPCA-yaw7D"
+    ],
+    "output_change": "explicit extension6D axisbox to7D orientedbox, so this is test-time geometry refinement/latentpose estimation and not validated networkTTA",
+    "metrics": "same official first7 GT fields; full oriented3D intersection; pairedmIoU andAcc>.25/.5, all cases and negative tails",
+    "oracle_exclusion": "GT yaw/center never used for orientation, crop, gating, rollback or percase choice",
+    "manifest_sha256": "d1d6f81e5d7c10dad87ad3db86688252c5109e9875b38cde8d2faba160406a9b",
+    "source_seal_sha256": "2565190613bfabdc5aa990bb4994297415075d8abdb84606a9859399645c2947",
+    "source_sha256": {
+      "geometry_refine.py": "3b3b0ab212b795a986fb9338ac555109f236e70bf7ac407de8a8fbe63ed7961d",
+      "geometry_score.py": "9f9d98d26dbc38851125b10084651fe1b7e031358b6f9c631ad5501bc4618c0e"
+    }
+  },
+  "redactions": "Local workspace prefix replaced. Relative selected dataset paths hashed; exact hashed frame IDs and deterministic selection algorithms in result records permit reconstruction from official dataset."
+}

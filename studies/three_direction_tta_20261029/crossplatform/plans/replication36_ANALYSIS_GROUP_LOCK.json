@@ -1,0 +1,62 @@
+{
+  "original_private_plan_sha256": "339931d6cf7c32e2d492a4b7abdfeb437a3b1bdd17f013dcb168959c8b4d22a3",
+  "public_view": {
+    "id": "3eed36_preGT_analysis_group_lock_v1",
+    "timing": "After source andPCA prediction seals, before first36GT score",
+    "definition": "seen_scene if (platform,scene) appears in original9manifest; else new_scene; no outcome based groups",
+    "groups": {
+      "seen_scene": [
+        "00397deecded6102",
+        "0099e2b88f618299",
+        "00bcde39a4eea19e",
+        "00c81070cde29c28",
+        "00e1e5b6e364de3f",
+        "00f5265fbfe4bb4c",
+        "010260920d06a30d",
+        "010d55cee0fc39bd",
+        "0113683db358bfc6",
+        "011cd62076ad4ebf",
+        "01252edf5aa0b6b7",
+        "01384dc3febeb0f9",
+        "001f2f2470733ead",
+        "0031eec04d2e1885",
+        "0048aafdac7b7fdf",
+        "00944142c94882b8",
+        "00a410c67d5bdef4",
+        "00aafaaaa73cd942",
+        "00aff8f64baedb1a",
+        "0103e5ed56e29e7f",
+        "011130640f94edfb",
+        "01263f9c24776f37",
+        "0161b468d42bb5aa",
+        "0179fb532bf01d5d"
+      ],
+      "new_scene": [
+        "0060cb1da71f7b80",
+        "0061093e6a2218d0",
+        "0065170176edc065",
+        "009de28ae48b5ce9",
+        "009e7aedc37fe720",
+        "00a716785865df4b",
+        "00afa6e6b8f13103",
+        "00ce65bfc4cc55e8",
+        "00cf37335311e681",
+        "00d097f923900c12",
+        "00e0b2eb05d5a899",
+        "00ed5b0d0df628ef"
+      ]
+    },
+    "bootstrap_draws": 10000,
+    "bootstrap_seed": 20261029,
+    "estimands": [
+      "frame weighted mean delta",
+      "equal-scene macro mean paired delta and cluster bootstrap",
+      "platform balanced equal-scene macro paired delta with platform-stratified scene resampling"
+    ],
+    "confounding": "new_scene=Waymo only, seen_scene=Drone/Quad; cannot attribute difference to exposure independently of platform",
+    "source_seal_sha256": "b2040aeedfc7f79c522b14eb3df1f7024982967480c6a51f28da4889a74ca3f0",
+    "pca_seal_sha256": "21e669b6985aa2eac58b3bdd459f59e4da983517f3fd8729a97a9b643670024a",
+    "group_script_sha256": "6e1de27d04a6d723fa35293e81ef24a17af0a87f2cffeba44b6142ff966c5615"
+  },
+  "redactions": "Local workspace prefix replaced. Relative selected dataset paths hashed; exact hashed frame IDs and deterministic selection algorithms in result records permit reconstruction from official dataset."
+}

@@ -1,0 +1,23 @@
+{
+  "original_private_plan_sha256": "2904e362014308fe6af562865462374e850e32467d46b4c07e306a9f32441fff",
+  "public_view": {
+    "status": "proposed_not_run",
+    "question": "Can target-only point support recover a box yaw that the released6D head cannot express, while avoiding confident neighbor-instance fits?",
+    "evidence": "Two sealed Drone cases have GT yaw near90deg, predictedlocalextent ratios near1, but6D outputs are axis-aligned. GT-only factor diagnosis separates yaw-dominated case1 from center/neighbor case2. These diagnostics are not online signals.",
+    "scope": "Test-time geometry optimization of per-proposal latentyaw, no network-weight update; not to be presented as a new TTA algorithm on its own.",
+    "cohort": "Existing9sample development panel, predictions frozen. No outcome-based sample selection; not a held-out result.",
+    "candidate": "Keep source center and extents fixed. For source top10 proposals, derive a local point support set solely from predictedbox geometry. Estimate yaw with localPCA and optionally optimize rectangle-surface residual under fixed point resampling; no GT fields allowed.",
+    "controls": [
+      "source yaw0",
+      "same-information directPCA yaw without optimization",
+      "same point support and fixedsteps yawoptimization"
+    ],
+    "necessary_discriminator": "If optimization does not beat directPCA, count it as geometry calibration rather than a TTA optimization contribution. If yaw helps only firstcase and worsens neighborcase, reliability remains unsolved.",
+    "prior_constraints": "Do not move center to increase raw point count; that could select a neighboring instance. Point support or stability alone cannot certify semantic identity.",
+    "readout": "Original text-onlynoun score ranking unchanged in first test; report oriented7D output as an explicit model-interface extension. Score with official7D GT and independent OBB intersection.",
+    "report": "Paired cases, center fixed, yaw change, support count/residual/stability, all negative tails; no label-derived gating or LR/temperature search.",
+    "budget": "CPU9samples, one locked configuration, at most3optimizationsteps; no GPU reservation requested.",
+    "adoption": "No current adoption. Verify self-supervised geometric support can recover orientation and distinguish neighborcase before adding trainable adapters or scaling cohort."
+  },
+  "redactions": "Local workspace prefix replaced. Relative selected dataset paths hashed; exact hashed frame IDs and deterministic selection algorithms in result records permit reconstruction from official dataset."
+}

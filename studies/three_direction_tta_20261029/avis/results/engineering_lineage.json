@@ -1,0 +1,49 @@
+{
+  "upstream": "ruohaoguo/avis@851ca2dd6e7a169bd1bb4ad6a2e8fa97a31ef558",
+  "fixes": [
+    {
+      "problem": "official OneDrive pages/API/wget gave HTML401/403",
+      "repair": "public short-link download=1 path, anonymous guest-session reuse and validated Range reassembly; no account/permission bypass"
+    },
+    {
+      "problem": "legacy PyTorch1.9/CUDA11 incompatible with RTX5090",
+      "repair": "PyTorch2.7cu128, CUDA12.8, sm120 Detectron2/MSDA compilation; scalar_type compatibility patch; forward/backward compared to PyTorch reference"
+    },
+    {
+      "problem": "base interpreter build flags contained spaces",
+      "repair": "process-local sysconfig prefix alias only; shared base environment unchanged"
+    },
+    {
+      "problem": "OneDrive treats HTTP Range end4294967295 as an unspecified bound",
+      "repair": "boundary-compatible downloader requests end+1 and trims the verified overlapping byte; strict Content-Range/length checks retained; original downloader failure preserved"
+    },
+    {
+      "problem": "794MB checkpoint trainer payload delayed readiness",
+      "repair": "restricted weights-only metadata parsing and CRC-checked model storages; derived264997627-byte model was later bitwise equal across802 tensors to full official checkpoint"
+    },
+    {
+      "problem": "preprocessing dependency installation could change inference conditions",
+      "repair": "separate inference environment snapshot and locked package versions"
+    },
+    {
+      "problem": "numeric JPEG names were lexically sorted during v2 preparation",
+      "repair": "v2 never executed; v3 locked integer suffix sequence with audio positional rows"
+    },
+    {
+      "problem": "official >36-frame CPU mask storage was indexed by CUDA indices",
+      "repair": "full_v1 failed preserved; full_v2 uses an independent source copy moving indices to mask device, without frame truncation"
+    },
+    {
+      "problem": "late official test JSON in10GB gzip archive",
+      "repair": "two independent suffix block witnesses with all00/allFF dictionary-independent target, exact trailer boundary and tar-header checks; full-stream integrity pending"
+    },
+    {
+      "problem": "released evaluator empty-RLE and assignment semantics",
+      "repair": "native results retained; isolated area-only sensitivity and separately named frame-complete matching diagnostic, no claim of fully repaired nativeFSLA"
+    }
+  ],
+  "recovery_GT_body_exported": false,
+  "media_or_weights_exported": false,
+  "TTA_adoption": "not adopted",
+  "full_archive_crc_verified": false
+}

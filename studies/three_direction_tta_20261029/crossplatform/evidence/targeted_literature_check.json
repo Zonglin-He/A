@@ -1,0 +1,30 @@
+{
+  "checked_date": "2026-10-29",
+  "scope": "Targeted primary-source search; abstracts and method-introduction portions opened. This is not an exhaustive novelty audit or a full-paper reproduction.",
+  "direct_3d_grounding_tta": "No directly matching3DvisualgroundingTTA paper was identified in this narrow search; absence is not established and no first-in-task claim is made.",
+  "papers": [
+    {
+      "title": "Reg-TTA3D: Better Regression Makes Better Test-time Adaptive3D Object Detection",
+      "venue": "ECCV2024",
+      "primary_url": "https://www.ecva.net/papers/eccv_2024/papers_ECCV/papers/05971.pdf",
+      "verified_content": "Focuses on regression adaptation, uses noise-consistency pseudo-label generation and confidence-guided regression refinement; discusses why classification-style BN adaptation is insufficient for localization.",
+      "implication": "A negativeLN entropy result cannot reject geometricTTA. Regression-specific objectives/update interfaces are an existing direction; merely adapting boxregression or using noise consistency is not new."
+    },
+    {
+      "title": "DPO: Dual-Perturbation Optimization for Test-time Adaptation in3D Object Detection",
+      "venue": "ACM MM2024",
+      "primary_url": "https://github.com/Jo-wang/DPO",
+      "paper_url": "https://arxiv.org/abs/2406.13891",
+      "verified_content": "Uses model/inputBEV perturbations, a reliableHungarian matcher to filter perturbation-sensitive pseudo-labels, and earlyHungarian cutoff.",
+      "implication": "Reliability plus geometricperturbation matching has priorart. A grounding contribution must address language-conditioned instance assignment and physically valid coordinate/pose feedback, not claim the generic matching mechanism is novel."
+    },
+    {
+      "title": "MOS: Model Synergy for Test-Time Adaptation on LiDAR-Based3D Object Detection",
+      "venue": "ICLR2025",
+      "primary_url": "https://arxiv.org/abs/2406.14878",
+      "verified_content": "Online3Ddetector adaptation uses a bank of historicalcheckpoints andsynergyweights based on predictedboxsimilarity andfeature independence; includes combined crossdataset/corruption conditions.",
+      "implication": "Onlinecheckpoint memory is existing3DdetectorTTA territory. Our currentepisodicpointPCA experiment does not test this setting or support an onlineadaptation claim."
+    }
+  ],
+  "current_research_entry": "Separate yawidentifiability from semanticinstancecorrectness under partialpointvisibility. FixedpointPCA demonstrates an available geometric signal but retains a severe negative tail and changes6D output to7D; it is an engineering/mechanism reference, not a novelTTA claim."
+}

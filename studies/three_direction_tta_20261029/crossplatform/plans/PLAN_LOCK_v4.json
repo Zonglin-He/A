@@ -1,0 +1,112 @@
+{
+  "original_private_plan_sha256": "9ba72faeda1ca1091004c4036a61239c99a74e34f694abcfdcecf027ea19a1b9",
+  "public_view": {
+    "id": "3eed_target_only_pilot_v4",
+    "claim": "Unlabeled density-view consistency can safely update cross-modal LayerNorm affine parameters; pilot feasibility only",
+    "baseline": "official 3EED final_6384 mixed-platform checkpoint",
+    "checkpoint_training_platforms": [
+      "quad",
+      "drone",
+      "waymo"
+    ],
+    "not_claimed": "source-only cross-platform transfer; population generalization; full official benchmark replication",
+    "upstream_commit": "843a901f5367a6be5cc484b97c6ecad462961dfa",
+    "cohort": "SHA256 order one frame per validation scene, at most4/platform, first caption per frame; available Waymo4 Drone2 Quad3=9",
+    "manifest_sha256": "d1d6f81e5d7c10dad87ad3db86688252c5109e9875b38cde8d2faba160406a9b",
+    "arms": [
+      "baseline",
+      "sparse_no_update",
+      "ensemble_no_update",
+      "entropy_1",
+      "entropy_3",
+      "consistency_1",
+      "consistency_3",
+      "gated_1",
+      "gated_3"
+    ],
+    "steps": [
+      0,
+      1,
+      3
+    ],
+    "lr": 0.0001,
+    "optimizer": "Adam, new optimizer per sample and arm",
+    "seed": 20261029,
+    "parameters": "affine weights and bias of LayerNorm modules under cross_encoder only; exact names saved before adaptation",
+    "frozen": "visual/audio(not applicable)/text backbones; all other parameters; all BatchNorm running stats; eval-mode Dropout",
+    "view": "remove10% unique xyz locations from baseline16384 input, then repeat retained unique coordinates to16384; no coordinate transform",
+    "teacher": "frozen original+sparse predictions, boxes matched by Hungarian center+size distance normalized by median box size",
+    "target": "softmax((original noun score+matched sparse noun score)/2/0.1)",
+    "losses": {
+      "entropy": "query entropy",
+      "consistency": "KL(student_query,target)",
+      "gated": "same KL, accept only original vs sparse top box axis IoU>=0.25"
+    },
+    "reset": "before and finally after each arm restore LN weights, gradients, torchCPU/CUDA RNG; model eval; verify source repeat <=1e-5",
+    "preprocessing": {
+      "points": 16384,
+      "waymo": "official front-view yaw rotation based lidar view id; no translation",
+      "drone": "z+=1.8",
+      "quad": "original xyz",
+      "color": "not used; official loader returns xyz even use_color true"
+    },
+    "readout": "first object-word match from fixed text-only lexicon, all-text fallback. Does not use target class annotations. Different from official target-span readout",
+    "scoring": {
+      "primary": "full Rz(yaw)@Ry(pitch)@Rx(roll) GT vs axis-aligned predicted box exact convex volume IoU; first query; mean/Acc>.25/Acc>.5",
+      "comparisons": "native official yaw-only loader IoU and independently exact yaw-only IoU; target-class-assisted noun readout diagnostic separately",
+      "labels": "GT accessed only by independent CPU scorer after predictions and plan sealed",
+      "tails": "retain each paired sample, rescue/harm, no tuning on scored pilot",
+      "cost": "per sample elapsed seconds and peak allocated GPU bytes; excludes downloads/compilation"
+    },
+    "resource_limit": "single GPU serial granted by parent;9fixed samples;3steps;40GB initial disk",
+    "source_sha256": {
+      "tta.py": "031d67c9e2c10f6ae451128d633159af533425b126e938a95e5f21a0fe5da3c1",
+      "run.py": "1f1e3c9e083588c38666b360a25691beff0f54206e48c2a818c229805406101f",
+      "score.py": "373c17329604b3b52901efb06c945e9fe376b85543f78b679d149169f5c79ea5",
+      "prepare.py": "a459be8d685c3dae54928bf5ecdc9d4969f0b7944d31907c26e3e3513d4c40d1"
+    },
+    "supersedes_sha256": "441356c7e3715af6108e0a1fd0283a72e816ca84760ddf1b9615f5b028607691",
+    "amendment": "Before task prediction: initialize RoBERTa architecture from official local config; then strict-load complete official3EED checkpoint including all frozen text_encoder tensors. Explicitly error if text embedding absent or any missing/unexpected key. Avoid redundant pretrained encoder download, no random fallback. Default upstream constructor unchanged unless explicit config-only argument.",
+    "exact_parameter_names": [
+      "cross_encoder.layers.0.self_attention_lang.norm1.weight",
+      "cross_encoder.layers.0.self_attention_lang.norm1.bias",
+      "cross_encoder.layers.0.self_attention_visual.norm1.weight",
+      "cross_encoder.layers.0.self_attention_visual.norm1.bias",
+      "cross_encoder.layers.0.cross_layer.norm_lv.weight",
+      "cross_encoder.layers.0.cross_layer.norm_lv.bias",
+      "cross_encoder.layers.0.cross_layer.norm_lv2.weight",
+      "cross_encoder.layers.0.cross_layer.norm_lv2.bias",
+      "cross_encoder.layers.0.cross_layer.norm_vl.weight",
+      "cross_encoder.layers.0.cross_layer.norm_vl.bias",
+      "cross_encoder.layers.0.cross_layer.norm_vl2.weight",
+      "cross_encoder.layers.0.cross_layer.norm_vl2.bias",
+      "cross_encoder.layers.1.self_attention_lang.norm1.weight",
+      "cross_encoder.layers.1.self_attention_lang.norm1.bias",
+      "cross_encoder.layers.1.self_attention_visual.norm1.weight",
+      "cross_encoder.layers.1.self_attention_visual.norm1.bias",
+      "cross_encoder.layers.1.cross_layer.norm_lv.weight",
+      "cross_encoder.layers.1.cross_layer.norm_lv.bias",
+      "cross_encoder.layers.1.cross_layer.norm_lv2.weight",
+      "cross_encoder.layers.1.cross_layer.norm_lv2.bias",
+      "cross_encoder.layers.1.cross_layer.norm_vl.weight",
+      "cross_encoder.layers.1.cross_layer.norm_vl.bias",
+      "cross_encoder.layers.1.cross_layer.norm_vl2.weight",
+      "cross_encoder.layers.1.cross_layer.norm_vl2.bias",
+      "cross_encoder.layers.2.self_attention_lang.norm1.weight",
+      "cross_encoder.layers.2.self_attention_lang.norm1.bias",
+      "cross_encoder.layers.2.self_attention_visual.norm1.weight",
+      "cross_encoder.layers.2.self_attention_visual.norm1.bias",
+      "cross_encoder.layers.2.cross_layer.norm_lv.weight",
+      "cross_encoder.layers.2.cross_layer.norm_lv.bias",
+      "cross_encoder.layers.2.cross_layer.norm_lv2.weight",
+      "cross_encoder.layers.2.cross_layer.norm_lv2.bias",
+      "cross_encoder.layers.2.cross_layer.norm_vl.weight",
+      "cross_encoder.layers.2.cross_layer.norm_vl.bias",
+      "cross_encoder.layers.2.cross_layer.norm_vl2.weight",
+      "cross_encoder.layers.2.cross_layer.norm_vl2.bias"
+    ],
+    "parameter_count": 10368,
+    "upstream_patch_sha256": "a1073a7abe3722e199c46e083da625c4730b0eb289981f649b5934249a773900"
+  },
+  "redactions": "Local workspace prefix replaced. Relative selected dataset paths hashed; exact hashed frame IDs and deterministic selection algorithms in result records permit reconstruction from official dataset."
+}

@@ -1,0 +1,13 @@
+diff --git a/avism/avism_model.py b/avism/avism_model.py
+index ba70a08..fdf6774 100755
+--- a/avism/avism_model.py
++++ b/avism/avism_model.py
+@@ -448,7 +448,7 @@ class AVISM(nn.Module):
+         indices = torch.nonzero(scores_per_video > confidence).squeeze(-1)
+         scores_per_video = scores_per_video[indices]
+         labels_per_video = labels_per_video[indices]
+-        masks_per_video = masks_per_video[indices]
++        masks_per_video = masks_per_video[indices.to(masks_per_video.device)]
+ 
+         processed_results = {
+             "image_size": (out_height, out_width),

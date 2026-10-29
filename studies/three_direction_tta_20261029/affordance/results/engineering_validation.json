@@ -1,0 +1,79 @@
+{
+  "engineering_checks.json": {
+    "kind": "engineering_only",
+    "all_state_restore": true,
+    "nonzero_updates": true,
+    "same_input_repeat": true,
+    "diagnostics": {
+      "loss": [
+        {
+          "step": 1,
+          "loss": 0.0009171945857815444,
+          "gradient_norm": 0.0017329718684777617
+        },
+        {
+          "step": 2,
+          "loss": 0.0021657482720911503,
+          "gradient_norm": 0.0064095016568899155
+        },
+        {
+          "step": 3,
+          "loss": 0.0009052412351593375,
+          "gradient_norm": 0.0010803819168359041
+        }
+      ],
+      "parameter_delta_l2": 0.009914103895425797,
+      "view_disagreement": 0.030130818486213684,
+      "objective": "consistency",
+      "mean_prediction": 0.536508321762085,
+      "predicted_fraction_above_05": 0.5625,
+      "same_input_repeat_max_abs": 0.0,
+      "updated_names": [
+        "decoder.cmff.cross_atten1.layernorm.weight",
+        "decoder.cmff.cross_atten1.layernorm.bias"
+      ],
+      "updated_count": 6
+    }
+  },
+  "scorer_engineering_check.json": {
+    "kind": "engineering_only",
+    "passed": true,
+    "valid_counts": {
+      "auc": 1,
+      "aiou": 2,
+      "sim": 3,
+      "mae": 3
+    },
+    "fixed_same_masks_all_arms": true,
+    "cross_arm_source_ensemble_identity": true
+  },
+  "checkpoint_shape_check.json": {
+    "match": true,
+    "expected_key_count": 827,
+    "checkpoint_key_count": 827,
+    "differences": {}
+  },
+  "checkpoint_derived_validation.json": {
+    "kind": "engineering_only",
+    "checkpoint_sha256": "2226bc80bc7c369fd2e55852a6ccd5e9baf4310403f971d044f7c8bff9bd17bf",
+    "size": 1027198826,
+    "weights_only_safe_load": true,
+    "strict_load": true,
+    "all_model_tensors_finite": true,
+    "state_keys": 827,
+    "parameter_count": 256695386,
+    "text_embedding_shape": [
+      40000,
+      768
+    ],
+    "text_tower_embedding_equal": true,
+    "poolers_equal": false,
+    "seconds": 2.7479142849333584
+  },
+  "geometry_uniqueness_audit.json": {
+    "n": 12,
+    "exact_ordered_unique": 12,
+    "exact_permutation_invariant_unique": 12,
+    "physical_instance_independence_not_proven": true
+  }
+}

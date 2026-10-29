@@ -1,0 +1,20 @@
+{
+  "recorded_local": "2026-10-29T22:57:30.561280+08:00",
+  "status": "superseded_measurement_interpretation",
+  "reason": "The assumed 9D yaw/pitch/roll schema was not supported by the actual tail values. Official loader uses bbox[:7]. Independent agreement of volume computations did not establish annotation semantics.",
+  "preserved_invalid_history": {
+    "3eed_independent_audit_v1.json": "dc0d39f0f7eb3749499d8a41b22c05aac833bb99e8fcec86f2779712d3cf953f",
+    "3eed_independent_audit_v2_scale.json": "f0664b6808187f998d303978ef3a969221d2da3cbb26e3bc76b09b71d16dbe98"
+  },
+  "valid_measurements": [
+    "3eed_independent_native_audit_v1.json",
+    "3eed_independent_native_audit_v2_scale.json",
+    "3eed_native_paired.json"
+  ],
+  "retracted_claims": [
+    "full9D mIoU37.9583% as task score",
+    "three failures with all-proposal ceiling below.25",
+    "native two-Drone all-proposal ceilings below.25 inferred from invalid9D"
+  ],
+  "corrected_finding": "Official7D baseline mIoU48.0663%, Acc25 7/9, Acc50 5/9; both Drone failures have some proposals above.25 but none above.5. No tested TTA arm changes threshold accuracy."
+}

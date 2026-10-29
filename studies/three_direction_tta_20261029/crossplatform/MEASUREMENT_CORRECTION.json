@@ -1,0 +1,10 @@
+{
+  "invalid_reports": [
+    "results/pilot_v1/INVALID_full9d_history.json",
+    "results/pilot_v2_scale/INVALID_full9d_history.json"
+  ],
+  "cause": "Codecomments called9D GT tail pitch/roll without schema validation. Rawtail matchedlikely confidence/class. Officialloader defines geometricfields as first7. Originalfull9D scores and derivedproposal-ceiling claims invalidated.",
+  "correction": "Predictions unchanged; reuse first7 yaw-onlyGT geometry and independent OBB intersection. Preserve oldinvalid reports/plan hashes, correctednative reports and negative tails.",
+  "warning": "Algorithmicagreement of two IoU implementations under the samewrong schema did not establish measurement validity.",
+  "tail_semantics": "Likely score/class based on5 rawmetadata objects and originalloader; exact unpublished generation schema not claimed verified."
+}

@@ -1,0 +1,24 @@
+{
+  "n_9d_objects_in_downloaded_metadata": 5,
+  "class_to_tail9": {
+    "pedestrian": {
+      "2.0": 2
+    },
+    "car": {
+      "1.0": 3
+    }
+  },
+  "tail8_range": [
+    0.18928804993629456,
+    0.7591099739074707
+  ],
+  "tail9_all_integer": true,
+  "evidence": "official Joint3DDataset._get_3eed_target_boxes explicitly uses bbox[:7]; no published generation schema located",
+  "conclusion": "9D tail is not established rotation angles; probable score,class; only first7 geometric fields used by official protocol",
+  "invalidated": "full RzRyRx scoring from tail8/9",
+  "sources": [
+    "upstream/src/joint_det_dataset.py",
+    "upstream/utils/eval_det.py",
+    "https://arxiv.org/html/2511.01755v2"
+  ]
+}
