@@ -1,0 +1,118 @@
+{
+  "actual_CPU_stages": {
+    "hc2": {
+      "derive": {
+        "worker": {
+          "pid": 73301,
+          "start_ticks": 290986809
+        },
+        "code": 0,
+        "actual_subprocess_wait": true,
+        "elapsed_wall_seconds": 1.2555696228519082,
+        "command": [
+          "taskset",
+          "-c",
+          "14-15",
+          "nice",
+          "-n",
+          "19",
+          "ionice",
+          "-c",
+          "3",
+          "/home/wwww/visual grounding/stvg-native2d-simplepath/.conda/tubedetr/bin/python",
+          "-B",
+          "/home/wwww/visual grounding/stvg-native2d-simplepath/studies/p4_cached_risk_v1/run.py",
+          "derive",
+          "--dataset",
+          "hc2"
+        ]
+      },
+      "audit": {
+        "worker": {
+          "pid": 73363,
+          "start_ticks": 290986935
+        },
+        "code": 0,
+        "actual_subprocess_wait": true,
+        "elapsed_wall_seconds": 1.2189586232416332,
+        "command": [
+          "taskset",
+          "-c",
+          "14-15",
+          "nice",
+          "-n",
+          "19",
+          "ionice",
+          "-c",
+          "3",
+          "/home/wwww/visual grounding/stvg-native2d-simplepath/.conda/tubedetr/bin/python",
+          "-B",
+          "/home/wwww/visual grounding/stvg-native2d-simplepath/studies/p4_cached_risk_v1/audit_v1.py",
+          "--dataset",
+          "hc2"
+        ]
+      }
+    },
+    "vidstg": {
+      "derive": {
+        "worker": {
+          "pid": 73424,
+          "start_ticks": 290987057
+        },
+        "code": 0,
+        "actual_subprocess_wait": true,
+        "elapsed_wall_seconds": 6.359194411896169,
+        "command": [
+          "taskset",
+          "-c",
+          "14-15",
+          "nice",
+          "-n",
+          "19",
+          "ionice",
+          "-c",
+          "3",
+          "/home/wwww/visual grounding/stvg-native2d-simplepath/.conda/tubedetr/bin/python",
+          "-B",
+          "/home/wwww/visual grounding/stvg-native2d-simplepath/studies/p4_cached_risk_v1/run.py",
+          "derive",
+          "--dataset",
+          "vidstg"
+        ]
+      },
+      "audit": {
+        "worker": {
+          "pid": 73742,
+          "start_ticks": 290987693
+        },
+        "code": 0,
+        "actual_subprocess_wait": true,
+        "elapsed_wall_seconds": 6.038639093283564,
+        "command": [
+          "taskset",
+          "-c",
+          "14-15",
+          "nice",
+          "-n",
+          "19",
+          "ionice",
+          "-c",
+          "3",
+          "/home/wwww/visual grounding/stvg-native2d-simplepath/.conda/tubedetr/bin/python",
+          "-B",
+          "/home/wwww/visual grounding/stvg-native2d-simplepath/studies/p4_cached_risk_v1/audit_v1.py",
+          "--dataset",
+          "vidstg"
+        ]
+      }
+    }
+  },
+  "new_GPU": 0,
+  "new_model": 0,
+  "new_Source": 0,
+  "new_expert": 0,
+  "new_prediction": 0,
+  "new_GT_scoring": 0,
+  "inherited_acquisition_nonzero": true,
+  "nested_elapsed_not_deployment": true
+}

@@ -1,0 +1,128 @@
+{
+  "status": "all_P4_CPU_stages_and_root_export_actual_exit0_pending_publication",
+  "owner": {
+    "pid": 73295,
+    "start_ticks": 290986807
+  },
+  "wrapper_actual_tool_wait_exit_code": 0,
+  "wrapper_tool_session": 54081,
+  "root_export_actual_exec_exit_code": 0,
+  "root_export_receipt_sha256": "06796cb736034889b8c3ed213432db009a91bfb4f9bbee681b64182b2a515903",
+  "stages": {
+    "hc2": {
+      "derive": {
+        "sha256": "e59b354e6d18ec0fbe15ceb066b3443ba0af39f8f4a8f9d8e9418ea0b7cd97c7",
+        "worker": {
+          "pid": 73301,
+          "start_ticks": 290986809
+        },
+        "code": 0,
+        "actual_subprocess_wait": true,
+        "elapsed_wall_seconds": 1.2555696228519082,
+        "command": [
+          "taskset",
+          "-c",
+          "14-15",
+          "nice",
+          "-n",
+          "19",
+          "ionice",
+          "-c",
+          "3",
+          "/home/wwww/visual grounding/stvg-native2d-simplepath/.conda/tubedetr/bin/python",
+          "-B",
+          "/home/wwww/visual grounding/stvg-native2d-simplepath/studies/p4_cached_risk_v1/run.py",
+          "derive",
+          "--dataset",
+          "hc2"
+        ]
+      },
+      "audit": {
+        "sha256": "4c9e5f22f0dd4c8a7a4f66701586cfcccdb0be73084cf5d8a9b3df320b66e49f",
+        "worker": {
+          "pid": 73363,
+          "start_ticks": 290986935
+        },
+        "code": 0,
+        "actual_subprocess_wait": true,
+        "elapsed_wall_seconds": 1.2189586232416332,
+        "command": [
+          "taskset",
+          "-c",
+          "14-15",
+          "nice",
+          "-n",
+          "19",
+          "ionice",
+          "-c",
+          "3",
+          "/home/wwww/visual grounding/stvg-native2d-simplepath/.conda/tubedetr/bin/python",
+          "-B",
+          "/home/wwww/visual grounding/stvg-native2d-simplepath/studies/p4_cached_risk_v1/audit_v1.py",
+          "--dataset",
+          "hc2"
+        ]
+      }
+    },
+    "vidstg": {
+      "derive": {
+        "sha256": "060a0974b1566f5ff8f22a17caac302d55ecb09043e843ec27f9139f06e29af0",
+        "worker": {
+          "pid": 73424,
+          "start_ticks": 290987057
+        },
+        "code": 0,
+        "actual_subprocess_wait": true,
+        "elapsed_wall_seconds": 6.359194411896169,
+        "command": [
+          "taskset",
+          "-c",
+          "14-15",
+          "nice",
+          "-n",
+          "19",
+          "ionice",
+          "-c",
+          "3",
+          "/home/wwww/visual grounding/stvg-native2d-simplepath/.conda/tubedetr/bin/python",
+          "-B",
+          "/home/wwww/visual grounding/stvg-native2d-simplepath/studies/p4_cached_risk_v1/run.py",
+          "derive",
+          "--dataset",
+          "vidstg"
+        ]
+      },
+      "audit": {
+        "sha256": "6a11891bd9e2c83c0bc6c7b60b26c07b483e21cd225992aa6796b11eb8287036",
+        "worker": {
+          "pid": 73742,
+          "start_ticks": 290987693
+        },
+        "code": 0,
+        "actual_subprocess_wait": true,
+        "elapsed_wall_seconds": 6.038639093283564,
+        "command": [
+          "taskset",
+          "-c",
+          "14-15",
+          "nice",
+          "-n",
+          "19",
+          "ionice",
+          "-c",
+          "3",
+          "/home/wwww/visual grounding/stvg-native2d-simplepath/.conda/tubedetr/bin/python",
+          "-B",
+          "/home/wwww/visual grounding/stvg-native2d-simplepath/studies/p4_cached_risk_v1/audit_v1.py",
+          "--dataset",
+          "vidstg"
+        ]
+      }
+    }
+  },
+  "GPU_calls": 0,
+  "new_GT_scoring": 0,
+  "P2_full_deferred": true,
+  "paper_changed": false,
+  "time": 1793344647.254414
+}

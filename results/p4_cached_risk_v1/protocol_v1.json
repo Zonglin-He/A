@@ -1,0 +1,68 @@
+{
+  "schema": "P4_predeclared_cached_scalar_risk_v1",
+  "authorization": "2026-10-30 user: reuse existing results; CPU P4 only, P2 full deferred, no GPU, no manuscript edits.",
+  "counts": {
+    "hc2": 1902,
+    "vidstg": 10303
+  },
+  "comparison": "Current selected FullMAP minus untouched native Source, vIoU difference in percentage points.",
+  "equal_tolerance_pp": 1e-10,
+  "negative": "d < -1e-10 pp; abs(d)<=1e-10 equal; d>1e-10 positive",
+  "severe": "d <= -10 pp inclusive, exact descriptive threshold; no threshold search",
+  "q05": "numpy.quantile(d,.05,method=linear), descriptive query-level 5th percentile",
+  "bootstrap": {
+    "replicates": 10000,
+    "seed": 20261022,
+    "unit": "parent-cluster",
+    "aggregation": "Each replicate resamples parent sources; query-summed deltas divided by query count of resampled clusters, never simple mean of parent means",
+    "interval": "pointwise percentile95%, not familywise",
+    "statistics": [
+      "mean delta",
+      "negative proportion",
+      "severe proportion"
+    ]
+  },
+  "groups": [
+    "each complete domain",
+    "Vid official declarative/interrogative metadata",
+    "existing expert IoU quarter bins plus unscorable; missing anchor IoU never zero"
+  ],
+  "no_new_GT_scoring": true,
+  "no_new_model": true,
+  "no_new_predictions": true,
+  "no_GPU": true,
+  "resources": "one sequential CPU process14-15 nice19 idleIO BLAS1, no service/process signals",
+  "P1_P2_reused": {
+    "hc2": {
+      "P1": {
+        "results/review_strengthening_v1/matched_cpu/hc2/report.json": "a97ed0f802202bacfd3839812a0da4d6182183d9b13c0428fde038a45a44fc73",
+        "results/review_strengthening_v1/matched_cpu/hc2/ANALYSIS.md": "1815633a5c2db3231aa944e81139abaa723ccd20ba9385b93db8b213227857a2",
+        "results/review_strengthening_v1/matched_cpu/hc2/root_export_receipt.json": "60753209ea1e0fd13e0ef4279801f512bc6358d3aada53a9782fb5dd972b6cca"
+      },
+      "P2_retained192": {
+        "results/review_response_fast_v1/roi/hc2/report.json": "16a11b64dce23be37f80321197e972052f55bf124a453a375cf5782b2c5f2a1b",
+        "results/review_response_fast_v1/roi/hc2/ROOT_FINDINGS_v1.md": "247328ce77317f7faf493f6b45b65aff23ec78a952e3e5d37def7c78a3e67e4c",
+        "results/review_response_fast_v1/roi/hc2/reporting_receipt.json": "520c6f8e00136c89a934373e801508f21e3a4d1f35a1ad274347b6012c438346"
+      }
+    },
+    "vidstg": {
+      "P1": {
+        "results/review_strengthening_v1/matched_cpu/vidstg/report.json": "58d7113d79c65b69ae6073fd67265817701e8b4bbc0533026cc501d2d06152e2",
+        "results/review_strengthening_v1/matched_cpu/vidstg/ANALYSIS.md": "3a84ea02920033c4b89d8c8a38a48a9f3eb7289d5edd0b17dfac8830501fc6cb",
+        "results/review_strengthening_v1/matched_cpu/vidstg/root_export_receipt.json": "3c74d481863f4a539db1210ae321a038215f8c4a3dec759cd786ed08e5637417"
+      },
+      "P2_retained192": {
+        "results/review_response_fast_v1/roi/vidstg/report.json": "cae13e92a8bd657917de7450c655c28039c6bedb974238a941a174df298a577b",
+        "results/review_response_fast_v1/roi/vidstg/ROOT_FINDINGS_v1.md": "04cabb224b5fd77355467697d8b8c60dd39af0324c5c2963d0e3d34fbbdeb04c",
+        "results/review_response_fast_v1/roi/vidstg/reporting_receipt.json": "cfbcd7a1fc25af9c02e2b6180ce59c02b787e8142443d08d5787e160a61ddd5e"
+      }
+    }
+  },
+  "P2_full_status": "deferred_by_user",
+  "P3_P5_writing_status": "excluded_by_user",
+  "code_sha256": {
+    "studies/p4_cached_risk_v1/run.py": "86ae554d169d65c3f23d29f4e5eae9ee44009038efc047d95cbabed96cb08ef6",
+    "studies/p4_cached_risk_v1/audit_v1.py": "e44513b69e875ed9fdea00391d6adb52690a1ff6caf9f7b3b2bd2243bcecfc27"
+  },
+  "fingerprint": "102ed151c2856920bf318f4281280bcf6480704d88ceca5b833fb2dc09e09879"
+}
