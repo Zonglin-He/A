@@ -1,0 +1,39 @@
+{
+  "state": "fixed_input_cohort_plan_before_R9_model_outputs_or_identity_GT_diagnosis",
+  "purpose": "R9_fixedq0_geometry_unlabelled_input_selection_and_later_sealed_GT_capability_diagnosis",
+  "selection_salt": "R9_fixedq0_geometry_v1",
+  "rank": "ascending SHA256(UTF8(R9_fixedq0_geometry_v1| + id)), then ascending id tie-break",
+  "per_scene": 32,
+  "scene_count": 5,
+  "expected_n": 160,
+  "scene_order": "ascending(platform,original_scene) from strict input manifest; public counts use ordinal scene_alias only",
+  "exclude": "all R8smoke40 and R7smoke20 IDs and exact pointpaths, union60",
+  "frame_identity": "exact pointpath; selected imagepaths independently unique",
+  "no_score_color_class_GT_or_geometry_filtering": true,
+  "short_scene_rule": "If fewer32 distinct frames, preserve all availability counts and stop for root decision; no replacement, imaginary examples or score-guided substitution",
+  "source_input_sha256": {
+    "R8_full5912": "d6296d2577300796055fd255cbde2e768b9c493254e5ee610296a095d90afbbd",
+    "R8_smoke40": "951af09f44b526d79550e7b2792e014b989ea858dcc19a5fc1c900b9aa3995f2",
+    "R7_smoke20": "4c210baca0c145b329ec98fb3b2c5277f6fd076d4a3ccca7b17c5929044e0b40"
+  },
+  "preselection_counts_sha256": "4c61bf59384cf9d5f8053cdb86b98271854ef2553a16e78b897546230a2561d2",
+  "strict_schema": [
+    "caption",
+    "id",
+    "imagepath",
+    "metapath",
+    "platform",
+    "pointpath",
+    "scene",
+    "seed",
+    "suffix"
+  ],
+  "preserve_all_source_row_values_including_seed_suffix": true,
+  "full_population": "Original5912 VAL inputs retained as population; this diagnosticcohort is balanced32-per-scene, not populationmicro representative",
+  "historical_target_research_exposure": "All targetVAL previously R5/R7/R8 researched/scored; excluded smoke IDs are not a fresh research holdout",
+  "source_provenance": "Genuine Waymo-only epoch100 source. No reuse or relabeling of prior R8 predictions as R9 outputs. New fixedq0 experiment outputs must follow parentlocked source/precision plan.",
+  "identity_subset": "Defined only by separately authorized scorer after R9 predictions/GT-dependent diagnostics are sealed; never read old scores or identity labels for cohort selection",
+  "private_public_boundary": "Manifest9keys include private IDs/paths/fullcaptions and stay local. Public export must use aggregates/ordinalaliases without original IDs or mapping.",
+  "preparation_access": "Three input-only JSONs and selected file existence stat only; no targetannotationJSON payload/index/GT, oldscore/modelcache, pixel/pointarray/header read",
+  "preparation_program_sha256": "e86f1ecac3c74652753e904ec52dc16a270a326ab24155c9107bd68274348702"
+}

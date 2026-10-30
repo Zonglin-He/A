@@ -1,0 +1,25 @@
+{
+  "state": "limited_readonly_pseudo_exactfit_bridge_review_pass_before_execution",
+  "source_sha256": "548781d6fa64e76c1107a86123682455d5642b909d74cbfcc3d5d1b1796daf10",
+  "head_exactfit_sha256": "7e517fdf3266045b19d1ac0882b375768b6c29410f7946a466c5e2071c52fc73",
+  "scorer_sha256": "36a26edb5df6ae2f165cf7070c84b2bf3f3332d4eddf939baca0a021aa175217",
+  "fixture_sha256": "b33512013893ae84ffe76371e01455d664f40442a04d5a722812a13dbafb05bf",
+  "checks": {
+    "normal_cache_source_prediction_sha_maps_bound": true,
+    "fixedq0_no_source_forward_slot_reassignment": true,
+    "targets_exact_normal_directG_raw6": true,
+    "no_GT_scored_media_PC_RGB_CLIP_G_forward_input": true,
+    "center_only_true_L2_backward_inverse_selfkernel": true,
+    "source_shape_prior_preserved": true,
+    "invalid_source_fallback_explicit_applicabilityFalse": true,
+    "actual_parameter_and_selected_delta_and_relative_residual_saved": true,
+    "all_source_model_restore_and_samecache_replay_checked": true
+  },
+  "limits": [
+    "Post-normal-score exploratory registration, not confirmation or untouched test.",
+    "Optimizing existing pseudo target can reproduce directG, not new signal or unique TTA effect.",
+    "Small target can pass5e-5 even unchanged; assess actual gradients/parameter/selected change and relative residual, zero-target denominator separately.",
+    "Matched source/directG/normalSGD/kernel references all retain same q0; no crossprocess slot identity assumption."
+  ],
+  "no_GPU_or_real_newGTscore_by_reviewer": true
+}

@@ -1,0 +1,82 @@
+{
+  "state": "independent_R9_normal11_scored_reduction_and_coordinate_audit_pass",
+  "auditor_sha256": "1f46e1d5465432a9be5b1ad9aa3ff2652a5c3a2834ca853fec404ed2e8b2a1e4",
+  "results_sha256": "6edd91d6eb845a131381e18aa040e404c87973a5a732a41489c299a4bd9218cf",
+  "scored_seal_sha256": "59e378afe5ca6a19479e8049e1469152df00535f2e6450a854614fc25d02f881",
+  "normal_prediction_seal_sha256": "34e06ba91430bbddd33940cdb8f8429c2ca5b7cf15a78bd909a3e773566216e2",
+  "n": 160,
+  "summary_and_cancellation_cells": 1340,
+  "coordinate_fields_recomputed": 12320,
+  "max_coordinate_error_difference_m": 0.0,
+  "all_summary_CI_seed901_draws2000_recomputed": true,
+  "identity_counts_and_kernel_comparisons": [
+    {
+      "platform": "drone",
+      "n": 64,
+      "scene_clusters": 2,
+      "annotated_spatially_confirmed": 13,
+      "no_other_annotation": 0,
+      "source_Acc25_successes": 13,
+      "confirmed_set_equals_source_Acc25_successes": true,
+      "kernel_readout_comparison": {
+        "rgb_fulltext": {
+          "1": {
+            "mean_IoU_param_minus_kernel": -1.7501065032940466e-09,
+            "max_abs_IoU_param_minus_kernel": 8.359041869798745e-08
+          },
+          "3": {
+            "mean_IoU_param_minus_kernel": 8.446511001476004e-10,
+            "max_abs_IoU_param_minus_kernel": 3.367223383454743e-08
+          }
+        },
+        "pc_only": {
+          "1": {
+            "mean_IoU_param_minus_kernel": 0.0,
+            "max_abs_IoU_param_minus_kernel": 0.0
+          },
+          "3": {
+            "mean_IoU_param_minus_kernel": 0.0,
+            "max_abs_IoU_param_minus_kernel": 0.0
+          }
+        }
+      }
+    },
+    {
+      "platform": "quad",
+      "n": 96,
+      "scene_clusters": 3,
+      "annotated_spatially_confirmed": 47,
+      "no_other_annotation": 0,
+      "source_Acc25_successes": 47,
+      "confirmed_set_equals_source_Acc25_successes": true,
+      "kernel_readout_comparison": {
+        "rgb_fulltext": {
+          "1": {
+            "mean_IoU_param_minus_kernel": -7.4076650161125634e-09,
+            "max_abs_IoU_param_minus_kernel": 8.486096089166395e-07
+          },
+          "3": {
+            "mean_IoU_param_minus_kernel": -7.213034047363435e-10,
+            "max_abs_IoU_param_minus_kernel": 1.270692347121738e-06
+          }
+        },
+        "pc_only": {
+          "1": {
+            "mean_IoU_param_minus_kernel": 1.3958050109249184e-10,
+            "max_abs_IoU_param_minus_kernel": 6.700753785171543e-09
+          },
+          "3": {
+            "mean_IoU_param_minus_kernel": 3.4881815029012366e-11,
+            "max_abs_IoU_param_minus_kernel": 1.3397618403576672e-08
+          }
+        }
+      }
+    }
+  ],
+  "limits": [
+    "No new IoU calculations, model, GPU, original metadata or GT annotation-file access. Coordinate errors recomputed from sealed selected predictions and sealed derived GT7D sidecar.",
+    "Identity rule arithmetic audited; raw annotation geometric dedup not rerun, its unit fixtures and original scorer retain provenance.",
+    "Confirmed subset explicitly selects targetIoU>.25 and margin>.1; unknown/unconfirmed is not proof of wrong identity.",
+    "2Drone/3Quad scenes and prior research-exposed targetVAL; not fresh holdout or many independent domains."
+  ]
+}

@@ -1,0 +1,20 @@
+{
+  "state": "export_preparation_attempt001_rejected_before_public_tree_creation",
+  "builder_source_sha256": "9ae8a64f2dea082332a4c4ca4f4247326f28a8ec204a81677434bdcff4e78f85",
+  "builder_snapshot": "tools/build_round9_export_pre_coordinate_projection.py",
+  "exception_type": "AssertionError",
+  "privacy_guard": "Raw coordinate payload key is forbidden; correct rejection retained",
+  "offending_source_artifact": "crossplatform/round9/CPU_EXACTFIT_FIXTURE.json",
+  "offending_nested_fields": [
+    "results.C.coordinate_residual6",
+    "results.S.coordinate_residual6",
+    "results.CS.coordinate_residual6"
+  ],
+  "cause": "Generic CPU/history/plan projection removed private paths/maps but left a forbidden coordinate vector; unchanged final guard correctly rejected it.",
+  "original_traceback_location": "Parent root tool output from first builder attempt; no standalone log path supplied to this agent.",
+  "failed_attempt_reproduced_by_agent": false,
+  "public_export_absent_independently_verified": true,
+  "scientific_G_runner_plans_predictions_scores_or_audits_changed": false,
+  "repair_scope": "Exporter field projection only; no guard weakening. Remove forbidden coordinate/PRIVATE fields recursively, preserve explicit experimental 0/1 mask vectors and all scalar checks.",
+  "old_and_new_export_hashes_recorded_by_provenance": true
+}

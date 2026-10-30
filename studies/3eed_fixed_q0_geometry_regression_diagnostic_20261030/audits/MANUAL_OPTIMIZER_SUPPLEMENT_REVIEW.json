@@ -1,0 +1,47 @@
+{
+  "state": "independent_manual_subset_and_optimizer_fidelity_supplement_pass",
+  "auditor_sha256": "2fa39d7dd0e99de317ba4edee806ac2bea71f22d95e3f1c5bf336b0453a1d1a4",
+  "manual_review_sha256": "56f22fb593934cb98afe46d123681d9a62143ee3f34e4d306617afcc03473821",
+  "manual_aggregate_sha256": "018a449f6f5f8281295a98cd57bcfdbfa55eec46d66a23778ef2291214989042",
+  "optimization_diagnostic_sha256": "e7d60aa382a70f91d3fe3d876096b9ce662b73acc0546d6c8db0e6acd2cc278c",
+  "human_labels_not_reassessed_or_changed": true,
+  "human_review_nonblind_GT_overlay_status_explicit": true,
+  "manual_label_counts": {
+    "same_visible_target_plausible": 12,
+    "source_off_target_or_outside_visible_region": 4,
+    "different_visible_object": 3,
+    "occluded_ambiguous": 1
+  },
+  "manual_same_target_n": 12,
+  "manual_same_target_platform_counts": {
+    "drone": 6,
+    "quad": 6
+  },
+  "manual_same_target_but_not_spatial_condition_n": 2,
+  "manual_aggregate_numeric_cells": 162,
+  "max_manual_aggregate_error": 0.0,
+  "optimization_numeric_cells": 76,
+  "max_nonbridge_optimization_stat_error": 0.0,
+  "max_bridge_relative_stat_rounding_difference": 1.3742220902890345e-11,
+  "box_coordinate_step_bound_check": {
+    "b_j_means_selected_box_coordinate_not_network_bias_parameter": true,
+    "formula_real_arithmetic": "abs(delta_box_j)<=alpha*beta*(Khead/Kmax)*w_j/sum(w)",
+    "derivation": "SmoothL1 normalized gradient=clip(error/beta,-1,1)*w/sum(w); fixed-feature final-linear SGD induces delta_box=-lr*Khead*g; lr=alpha*beta/Kmax.",
+    "steps_checked": 2052,
+    "max_analytic_bound_excess_m": 2.483526891083887e-10,
+    "max_observed_FP32_bound_excess_m": 3.274281819661516e-06,
+    "max_observed_step_vs_analytic_error_m": 4.418939352037951e-06,
+    "floating_point_note": "Observed FP32 step can exceed exact real-arithmetic bound by rounding; actual observed error retained, not silently claimed strict zero.",
+    "equal_C3_or_S3_weights_headratio1_upper_mm": 8.333333333333334,
+    "equal_CS6_weights_headratio1_upper_mm": 4.166666666666667,
+    "quadratic_regime_contraction": "1-alpha*(Khead/Kmax)*w_j/sum(w)",
+    "unsupervised_size_kernel_can_reduce_center_step": true
+  },
+  "scope": [
+    "Root humanlabels accepted as supplied after sealed predictions, no independent image adjudication; nonblind and stratified20 not random population.",
+    "Manual12 same-visible-target plausibility subset, not semantic3D identity groundtruth or a new heldout set.",
+    "Independent reductions use sealed score rows; optimization audit uses normal/bridge/GT trace arrays, no new IoU, metadata, GPU or model.",
+    "L2+perheadstep exactfit changes two optimization components together; cannot attribute solely to learning rate.",
+    "Manualsubset does not replace all160 primary or spatial13/47 conditional diagnostics."
+  ]
+}

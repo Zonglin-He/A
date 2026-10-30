@@ -1,0 +1,33 @@
+{
+  "state": "pre_GT_fixed_overlay_sampling_geometry_contract_pending_actual_cache_sidecar_schema",
+  "purpose": "Private postseal annotated-spatial identity-boundary review, no training or G retuning",
+  "input_manifest": "research/round9/experiment/diagnostic160_gpu_inputs.json",
+  "input_manifest_sha256": "7da939a81f35e71de90e780c9e25787f8d245c577b66d727f200a3538279e0bd",
+  "selection_salt": "R9_identity_overlay_v1",
+  "selection": "Per each of the5 declared cohort scenes, partition only by scorer-provided identity_diagnostic.annotated_spatially_confirmed; sort each partition by SHA256(salt|id) then id, select up to2 per partition. No IoU magnitude, delta, modelscore, color, caption or G-acceptance selection.",
+  "per_scene_confirmed_max": 2,
+  "per_scene_unconfirmed_max": 2,
+  "total_max": 20,
+  "insufficient_stratum": "Keep actual0/1/2 counts; do not replace from another scene/status or choose a success/failure",
+  "status_meaning": {
+    "confirmed": "scorer-defined annotated-spatially-confirmed only, never semantic instance identity proof",
+    "unconfirmed": "Condition not established, not a wrong-identity label; preserve no_other_annotation and inventory-exhaustiveness flags"
+  },
+  "status_definition_owner": "Independent postseal scorer, unchanged thresholds/inventory rules; visualizer never recalculates or changes classification",
+  "source_prediction_contract": "Same R9 normal cache q_source fixedq0 and mode rgb_fulltext__direct_G; no R8 outputcache/query reuse, no alternate query chosen by GT",
+  "GT_source_contract": "Postrelease scorer emits separately sealed PRIVATE sidecar with model-coordinate GT7D and transform helper SHA; no GT fields in9key modelmanifest or normal G inputs",
+  "GT_helper": "research/round5/audit/independent_core_v2.py::transform_gt",
+  "GT_helper_sha256": "b4937fdd89f719fe1d9560f770c01597ff6807c74a75013720b470c43393379a",
+  "GT_helper_semantics": "Drone rawZ+=1.8 then first7 float32; Quad first7 float32; preserve yaw(radians), do not invent pitch/roll meaning for extra2. Renderer receives model-coordinate GT7D and never reapplies zshift.",
+  "camera_helper": "crossplatform/round7/camera_projection.py",
+  "camera_helper_sha256": "b343c04d3a3b72ffed6dc041449f5dc38892964755108a3cab5a8c86572066ce",
+  "projection": "GT local +/-size/2 rotated by audited yaw_matrix then add transformed center; source/direct nativeyaw0; project_model_points once: Drone E@undo_model_z, QuadE. Explicit assume_zero_declared missingD, same original imageW/H.",
+  "figure": "Full literal caption without text truncation, explicit source(q0)/directG/GT color legend, original RGB and observed-point support, diagnostic status and incomplete-annotation boundary. No GT-corrected model predictions.",
+  "display_size_policy": "Use saved evaluation-clamped source/direct dimensions if raw nonpositive; disclose clamp count, never rewrite original caches. Positive GT sizes required.",
+  "release_gate": "Before any actual cache/score/GT-sidecar/media read: root-bound normalpredictionseal+GT_SCORE_RELEASE+scoredseal+privateGTsidecarseal+manifest+helper+renderer hashes must be verified. Schema-binding final adapter not implemented or executed in this preparation.",
+  "GT_is_postseal_plotting_only_never_normalG_feedback": true,
+  "no_figures_for_threshold_prompt_G_parameter_or_arm_tuning": true,
+  "private_outputs": "Figures, full captions, model/GT coordinates, raw IDs and originalscene names remain local; only aggregate review/scalar/hash receipt can be public. No identity-map export.",
+  "current_preparation": "Plan and pure-array/synthetic rendering only; no actual GT, score, cache or target media read",
+  "exposure": "Historically researched R5/R7/R8 targetVAL; selected GT-conditioned strata are descriptive, not fresh holdout/causal identity labels"
+}

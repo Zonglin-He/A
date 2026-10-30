@@ -1,0 +1,43 @@
+{
+  "state": "actual_R9_overlay_IO_adapter_code_prepared_not_executed",
+  "renderer_sha256": "416cedfacdbc6e1013b472ce2effe1cd12d74e5156fc76cf6260740adbb01024",
+  "original_pure_array_stub_sha256": "875cf162b28e1d9f65e32b3d2307387c9c8088bc4ce5efafd412c51466f91cde",
+  "overlay_plan_sha256": "467e9fa95cc6fcd435c29ca47c334de4ee8f8ada0575df7167afdb0910add9a0",
+  "schema_sources_read_code_only": [
+    "crossplatform/round9/run_diagnostic.py::serialize_npz/save_source_cache",
+    "research/round9/evaluation/score_normal.py::PRIVATE_GT7D_SIDECAR/SEALED/SCORER_LOCK"
+  ],
+  "required_render_release_fields": [
+    "identity_overlay_render_authorized",
+    "no_G_or_method_retuning",
+    "selection_salt",
+    "per_scene_confirmed_max",
+    "per_scene_unconfirmed_max",
+    "total_max",
+    "overlay_plan_sha256",
+    "renderer_sha256",
+    "manifest_sha256",
+    "normal_prediction_seal_sha256",
+    "scored_seal_sha256",
+    "GT_score_release_sha256",
+    "GT7D_sidecar_sha256",
+    "transform_helper_sha256",
+    "camera_helper_sha256"
+  ],
+  "gate_structure": "normal SEALED + scoring SEALED with GT7D member hash + original GT CPU score release + separately hashed root render release + prelocked overlay plan. No fabricated thirdseal or circular sidecar hash.",
+  "CLI": "python research/round9/experiment/review_identity_samples.py --manifest <diagnostic160_gpu_inputs.json> --normal-predictions <sealed-normal-dir> --scored <sealed-normal-score-dir> --score-release <original-NORMAL_CPU_SCORE_RELEASE.json> --render-release <root-overlay-render-release.json> --render-release-sha256 <root-supplied-SHA> --output <new-private-figure-dir>",
+  "only_synthetic_check_called": {
+    "state": "pure_array_yaw_caption_sampling_synthetic_pass_no_real_data",
+    "yaw90_preserves_GT_rotation_not_axisaligned": true,
+    "full_caption_no_character_drop": true,
+    "two_per_status_per_scene_hash_and_insufficient_counts_pass": true,
+    "actual_reader_requires_hash_bound_root_release_and_sealed_normal_scored_sidecar": true,
+    "no_target_GT_scores_cache_media_model_or_GPU_read": true,
+    "program_sha256": "416cedfacdbc6e1013b472ce2effe1cd12d74e5156fc76cf6260740adbb01024"
+  },
+  "no_actual_normal_seal_cache_scored_sidecar_GT_metadata_images_or_points_opened": true,
+  "no_actual_render_call": true,
+  "no_fake_GT_or_score_files_created": true,
+  "no_GPU_model_normalG_or_GTtargetindex_import": true,
+  "status": "Waiting root actual scoredseal/sidecar and explicit render execution release; filenames alone never authorize read."
+}

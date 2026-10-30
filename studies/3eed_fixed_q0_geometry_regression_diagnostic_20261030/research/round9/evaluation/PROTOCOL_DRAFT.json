@@ -1,0 +1,56 @@
+{
+  "state": "CPU_preparation_no_target_GT_read_no_GPU",
+  "study": "R9_fixed_original_query_signal_and_head_capacity",
+  "cohort_proposal": {
+    "n": 160,
+    "samples_per_scene": 32,
+    "Drone": 64,
+    "Quad": 96,
+    "selection": "Hash-fixed per scene, prefer distinct physical point paths before multiple expressions; deterministic collision/fallback counts retained.",
+    "exposure": "Exploratory target VAL already research-exposed in R5/R7/R8; new source training excluded target platforms, not fresh target holdout."
+  },
+  "normal_branch": {
+    "identity": "Fresh strictFP32 q0=original pure-text argmax; all11 arms fixed same actual source q0 in that process.",
+    "arms": [
+      "source",
+      "rgb_fulltext__direct_G",
+      "rgb_fulltext__param1",
+      "rgb_fulltext__param3",
+      "rgb_fulltext__outputspace1",
+      "rgb_fulltext__outputspace3",
+      "pc_only__direct_G",
+      "pc_only__param1",
+      "pc_only__param3",
+      "pc_only__outputspace1",
+      "pc_only__outputspace3"
+    ],
+    "G": "R8 signal and thresholds retained; only forced q0-containing group rather than reselection. Actual difference must be code-reviewed, not labeled identical R8 if gating changes.",
+    "size": "All pseudo size weights zero; size prior from q0 unchanged.",
+    "controls": "same final float32 pseudo for direct, true parameter SGD and exact output-space replay; 1/3 steps each source reset; no GT fields/classes/positive maps/identity in inputs.",
+    "primary": "All160 samples per platform, native yaw0 selected IoU/strict Acc25/Acc50, center and size error after seal. No identity filtering for primary.",
+    "denominators": "all / w_any / actual_float32_pseudo_nonzero / nonzero_parameter_update / common_eligible; all skips and failures explicit."
+  },
+  "identity_diagnostic_postseal": {
+    "inventory": "Same metadata/frame target entries plus each entry others bbox; ground_info are expressions, not assumed unique or exhaustive objects. Transform every box to source frame before geometric dedup.",
+    "dedup": "Equivalent annotated boxes by center within1e-5m and independently computed boxIoU>1-1e-7; complete-link grouping, original references retained privately; class labels not used for grouping or target selection and semantic conflicts are not resolved by this geometric method.",
+    "confirmation": "q0 targetIoU>.25 and targetIoU-max(unique non-target IoU)>.1, target must be unique matched group. Empty other inventory and duplicate/class conflicts explicitly reported.",
+    "name": "annotated-spatially-confirmed, never exact semantic identity or exhaustive inventory proof",
+    "limits": "GT selection used only offline conditioning after normal seal; conditional results not primary method gains. fixed hash overlay subset validates physical plausibility without changing decisions."
+  },
+  "GT_positive_control_branch": {
+    "separation": "Separate directory/run/release; normal complete seal precedes target injection. Replay same sealed normal forward cache/q0/features, verify head source weights and native FP32 replay; no fresh-process query-slot transfer. Isolated GTindex strict{id,target6_modelcoords}, no yaw/class/identity. Oracle/NOT_TTA flag mandatory; never fed to normal G.",
+    "targets": [
+      "C: GT center with source size",
+      "S: source center with GT dimensions",
+      "CS: GT center and dimensions"
+    ],
+    "arms": "direct target, same normalized SmoothL1 SGD1/3, one normalized-linear-L2 exact-fit step; each resets source, fixed q0.",
+    "exact_fit": "Loss 0.5*sum_j((prediction_j-target_j)^2 / (||h_block||^2+1)) on active rows; SGD lr1/no momentum/no decay/no clipping, center and size use own feature norms. Exact target in real arithmetic; float32 declared tolerance not bitexact claim.",
+    "capacity_primary": "Selected centerL2 / sizeL2 / coordinateLinf vs direct target, signed changes vs source, true gradients and center/size parameter changes, source restore; all-query spillover diagnostic only.",
+    "yaw_boundary": "Native yaw0 retained, so GT dimension replacement is not maximal-IoU oracle when GT yaw differs; no claim GTyaw or any substitution strictly maximizes IoU.",
+    "failure_interpretation": "GT fit succeeds but normal fails supports deficient signal/assignment rather than unreachable last-head coordinates; normal w_size0 cannot test size correction; same-SGD insufficient progress differs from exact-fit capacity."
+  },
+  "statistics": "Platform separately; 2Drone/3Quad scene means and paired descriptive scene resampling(seed901,2000draws), strict >.25/.5, signed tails atol1e-8 separate exact counts.",
+  "gates": "Parent-specific CPU_SCORE_RELEASE required; check complete normal/source/program/checkpoint/manifest seals before loading any GT. GT positive branch additionally requires GT_INJECTION_RELEASE and explicit parent normal-seal binding. No GPU by evaluator.",
+  "not_yet_locked": "Runner exact schema/code/plan and user authorized run hashes remain pending; this draft must be bound before execution."
+}

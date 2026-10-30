@@ -1,0 +1,126 @@
+{
+  "r6_factory_sha256": "b762aae9cf362e8509b055c387da19a83a6550e04269861a4ca827941d53f096",
+  "upstream_code_sha256": {
+    "models/bdetr.py": "74336de17da7c949cfc29b9cfbec95d0db2d88a1071e0ac53760cd0b8763e5b3",
+    "models/modules.py": "22c7c91ef5c3428f43e077b2e7ae3596a3f30325b71995b45222f5e3c88dbade",
+    "models/losses.py": "2afdf236ed5a0d32c4bda1d5cca67a76b372b41b447e2a4f4c1d60222f8c4e69",
+    "models/point_backbone_module_v2.py": "1e61e0fb2bef33d3f3a1e2fa3ec484ab447450358f4c2a1c380f701dc20eb943",
+    "src/joint_det_dataset.py": "18ee68123adb2d361493401fdb5190699dac2b539fa816c95014880319dd6825",
+    "utils/lr_scheduler.py": "1a9cd02fe4bad102c094b084aee544c21819db30b5a288cb6ee4db98998b3a33",
+    "train_dist_mod.py": "de36d7b95647ae41debb49611c5ea9656707dd71b94d223a51537e7125403ebf",
+    "main_utils.py": "a9b8c9dbfebe553f38b896417a07c7d2b6e57cca7366b940f26500f64d6dec50"
+  },
+  "roberta_sha256": {
+    "model.safetensors": "5bde1d28afb363d0103324efeb5afc8b2b397fe5e04beabb9b1ef355255ade81",
+    "config.json": "ef0185e2aae6e06c5f105a285006952c340e20c7dbf43c86ec82601b13fc45e9",
+    "tokenizer.json": "847bbeab6174d66a88898f729d52fa8d355fafe1bea101cf960dd404581df70e",
+    "tokenizer_config.json": "994f46754c5bf4014f1aa92d34b1374319c3a6b3f702105cd5b742beaecd18ce",
+    "merges.txt": "1ce1664773c50f3e0cc8842619a93edc4624525b728b188a9e0be33b7726adc5",
+    "vocab.json": "9e7f63c2d15d666b52e21d250d2e513b87c9b713cfa6987a82ed89e5e6e50655"
+  },
+  "source_checkpoint_sha256": "0d8766abaf06c9f3e2500fcb187337982d391f9e4d46ca854f3b3bb70fd33bbd",
+  "source_training_plan_sha256": "66fabf36898f1bc92124b680435e598e7bca0809e48aeb2da35e272331afe7ce",
+  "source_model_state_fingerprint": "0eb178a6de52b529d939fa4ae3bfa7b0459d95b7425c3d8a21f473356f2874a9",
+  "seed": 0,
+  "sentinel": " . not mentioned",
+  "GPU_execution_authorized": true,
+  "authorization_sha256": "d1e5cb2a0d228e0fdf38573129284f9a1983e5282da572fde0cb512b0bddeeea",
+  "batch_size": 1,
+  "alpha": 0.25,
+  "beta_metres": 0.1,
+  "steps": [
+    1,
+    3
+  ],
+  "strict_FP32_flags": {
+    "cudnn_allow_tf32": false,
+    "matmul_allow_tf32": false,
+    "cudnn_benchmark": false,
+    "cudnn_deterministic": true
+  },
+  "r_global_policy": "shrink_shared_pseudo_target_no_extra_LR_multiplier",
+  "CLIP_device": "cuda",
+  "CLIP_batch_size": 32,
+  "sequential_single_GPU_only": true,
+  "CLIP_conversion_receipt_sha256": "43a45db98a3ea7ded803da23b04e95e36f273537a382c0223d8dd66ea5f4fc36",
+  "semantic_resource_receipt_sha256": "b65e6d8ac05474b581aaf573e57f957a71323002ecbeb27640bd1bb82a3950da",
+  "G_config_sha256": "992b6a565cd22a2eedf494f0a26815de95bafe4da38af2214aa748e587c584a7",
+  "missing_distortion_policy": "assume_zero_declared",
+  "noun_fallback": "all_content_tokens",
+  "same_information_controls": [
+    "source_q0",
+    "fixedq0_directG",
+    "fixedq0_param1",
+    "fixedq0_param3",
+    "fixedq0_kernel1",
+    "fixedq0_kernel3"
+  ],
+  "all_feedback_modes": [
+    "rgb_fulltext",
+    "pc_only"
+  ],
+  "no_teacher_EMA_or_grounder_backbone_update": true,
+  "prior_target_research_exposure": "R5/R7/R8targetVAL researchseen; fixed160scene-balanced diagnostic notfreshpopulationconfirmation",
+  "GT_use": "Normal branch noGT; sealed caches permit separately released labelledGT positivecontrols and offlineidentity/erroranalysis",
+  "full_run_requires_prior_real_smoke_gate": false,
+  "program_sha256": {
+    "crossplatform/round9/run_diagnostic.py": "a32166dce704e776be346dbc0020cdc498abd79f84976f4e047c5a8344d38742",
+    "crossplatform/round9/fixed_q0_geometry.py": "2c0689e98befdb00777e0c0a4debcf5be56a70bca6c3ca13233a45e4d29513d3",
+    "crossplatform/round9/head_exact_fit.py": "7e517fdf3266045b19d1ac0882b375768b6c29410f7946a466c5e2071c52fc73",
+    "crossplatform/round8/association_geometry.py": "18c6c6ce0519ad0e054fd9fae8c008075f11a38d886287ce530d11ba2ec41dd6",
+    "crossplatform/round8/semantic_encoder.py": "44a9e2446086e40c8d8d6a8e1107cd828e1fa69e322779f69df364b0db8d398f",
+    "crossplatform/round7/regression_adapter.py": "2d23f99c57c63d2bc794b3ab768f9868631c84118e40568e9a9a3b6219af03a2",
+    "crossplatform/round7/camera_projection.py": "b343c04d3a3b72ffed6dc041449f5dc38892964755108a3cab5a8c86572066ce",
+    "crossplatform/round7/experiment/runner_helpers.py": "c73431a4871ede56674636d66b636e6d77389b9f41eb0cf9160209876d5c1e59"
+  },
+  "phase": "gt_fit",
+  "expected_samples": 160,
+  "selection_policy": "fixed_original_q0_group_no_reselect",
+  "save_real_source_cache_before_G": true,
+  "normal_arms": 11,
+  "independent_review": "affordance finite source review ready beforeexecution; last head scope and allsameinformation controls unchanged",
+  "GT_groups": {
+    "C": [
+      1,
+      1,
+      1,
+      0,
+      0,
+      0
+    ],
+    "S": [
+      0,
+      0,
+      0,
+      1,
+      1,
+      1
+    ],
+    "CS": [
+      1,
+      1,
+      1,
+      1,
+      1,
+      1
+    ]
+  },
+  "exactfit_coordinate_atol_metres": 5e-05,
+  "GT_arms": 13,
+  "GT_target_schema": [
+    "id",
+    "target6_modelcoords"
+  ],
+  "same_normal_cached_source_q0": true,
+  "oracle_not_TTA_or_IoU_upperbound": true,
+  "no_GT_yaw_in_GPU_target": true,
+  "postseal_materialization_only": [
+    "normal_prediction_seal_sha256",
+    "normal_predictions_dir",
+    "target_index_path",
+    "target_index_sha256",
+    "GT_index_read_release_path",
+    "GT_index_read_release_sha256"
+  ],
+  "normal_manifest_sha256": "7da939a81f35e71de90e780c9e25787f8d245c577b66d727f200a3538279e0bd"
+}

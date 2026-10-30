@@ -1,0 +1,167 @@
+{
+  "state": "post_normal_score_optimizer_fidelity_diagnostic_same_sealed_targets_no_GT_calculation",
+  "normal_prediction_seal_sha256": "34e06ba91430bbddd33940cdb8f8429c2ca5b7cf15a78bd909a3e773566216e2",
+  "bridge_prediction_seal_sha256": "19e9337200fb0447a15f4503fbb18cc481f2d09675b1a4597a46c4bf1531ca85",
+  "normal_alpha": 0.25,
+  "normal_beta_m": 0.1,
+  "bound": "For an active coordinate j, |one step db_j| <= alpha*beta*(Khead/Kmax)*w_j/sumw. Equal C3 weights <=8.333mm perstep; equalCS6 <=4.167mm; actual Kcenter/Kmax may reduce further. In quadratic SmoothL1 regime contraction depends onalpha*Kratio*w_j/sumw.",
+  "comparison_scope": "Exactfit changes loss and perheadstep rule, not an isolated LR ablation. One-query biasfit notgeneralization or unique parameter contribution.",
+  "summary": [
+    {
+      "platform": "drone",
+      "mode": "rgb_fulltext",
+      "all_n": 64,
+      "nonzero_target_n": 11,
+      "center_self_kernel_over_shared_max_kernel": {
+        "min": 0.13649351873345836,
+        "median": 0.3059544564560006,
+        "max": 1.0
+      },
+      "projection_fraction": {
+        "n": 11,
+        "min": 0.03799346276526868,
+        "median": 0.05406506270550891,
+        "max": 0.10743155001389251,
+        "mean": 0.057482262046678056
+      },
+      "normal3_relative_residual": {
+        "n": 11,
+        "min": 0.8925685362631943,
+        "median": 0.9459354593218502,
+        "max": 0.9620065586853125,
+        "mean": 0.9425646925702235
+      },
+      "bridge_relative_residual": {
+        "n": 11,
+        "min": 0.0,
+        "median": 6.030591976013966e-06,
+        "max": 3.838656630250625e-05,
+        "mean": 1.2132841884625702e-05
+      },
+      "target_delta_L2_m": {
+        "n": 11,
+        "min": 0.0029603501541292728,
+        "median": 0.012421979206624323,
+        "max": 0.23814494042843462,
+        "mean": 0.033966934342531056
+      }
+    },
+    {
+      "platform": "drone",
+      "mode": "pc_only",
+      "all_n": 64,
+      "nonzero_target_n": 1,
+      "center_self_kernel_over_shared_max_kernel": {
+        "min": 0.13649351873345836,
+        "median": 0.3059544564560006,
+        "max": 1.0
+      },
+      "projection_fraction": {
+        "n": 1,
+        "min": 0.03804929267612504,
+        "median": 0.03804929267612504,
+        "max": 0.03804929267612504,
+        "mean": 0.03804929267612504
+      },
+      "normal3_relative_residual": {
+        "n": 1,
+        "min": 0.9619507441471483,
+        "median": 0.9619507441471483,
+        "max": 0.9619507441471483,
+        "mean": 0.9619507441471483
+      },
+      "bridge_relative_residual": {
+        "n": 1,
+        "min": 0.0,
+        "median": 0.0,
+        "max": 0.0,
+        "mean": 0.0
+      },
+      "target_delta_L2_m": {
+        "n": 1,
+        "min": 0.01990243683330315,
+        "median": 0.01990243683330315,
+        "max": 0.01990243683330315,
+        "mean": 0.01990243683330315
+      }
+    },
+    {
+      "platform": "quad",
+      "mode": "rgb_fulltext",
+      "all_n": 96,
+      "nonzero_target_n": 19,
+      "center_self_kernel_over_shared_max_kernel": {
+        "min": 0.10830787577511802,
+        "median": 0.26188659530846603,
+        "max": 0.6392733312125151
+      },
+      "projection_fraction": {
+        "n": 19,
+        "min": 0.026803989274918272,
+        "median": 0.05844683355680338,
+        "max": 0.08535885042974427,
+        "mean": 0.05722134705841227
+      },
+      "normal3_relative_residual": {
+        "n": 19,
+        "min": 0.9146412703653367,
+        "median": 0.9415532531683347,
+        "max": 0.9731960121150373,
+        "mean": 0.9427809783057107
+      },
+      "bridge_relative_residual": {
+        "n": 19,
+        "min": 0.0,
+        "median": 2.3656686607864685e-05,
+        "max": 0.00026402814546599984,
+        "mean": 4.43633601351298e-05
+      },
+      "target_delta_L2_m": {
+        "n": 19,
+        "min": 0.0006208155520669719,
+        "median": 0.0024185050721078094,
+        "max": 0.02847666931972076,
+        "mean": 0.0053346975952203645
+      }
+    },
+    {
+      "platform": "quad",
+      "mode": "pc_only",
+      "all_n": 96,
+      "nonzero_target_n": 2,
+      "center_self_kernel_over_shared_max_kernel": {
+        "min": 0.10830787577511802,
+        "median": 0.26188659530846603,
+        "max": 0.6392733312125151
+      },
+      "projection_fraction": {
+        "n": 2,
+        "min": 0.04737178192039492,
+        "median": 0.08877358029602579,
+        "max": 0.13017537867165666,
+        "mean": 0.08877358029602579
+      },
+      "normal3_relative_residual": {
+        "n": 2,
+        "min": 0.869863999248844,
+        "median": 0.9112473413771582,
+        "max": 0.9526306835054723,
+        "mean": 0.9112473413771582
+      },
+      "bridge_relative_residual": {
+        "n": 2,
+        "min": 5.6272386927958e-07,
+        "median": 0.00016180542363031236,
+        "max": 0.00032304812339134514,
+        "mean": 0.00016180542363031236
+      },
+      "target_delta_L2_m": {
+        "n": 2,
+        "min": 0.005904944898222191,
+        "median": 0.042673096189528234,
+        "max": 0.07944124748083428,
+        "mean": 0.042673096189528234
+      }
+    }
+  ]
+}
