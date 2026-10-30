@@ -1,0 +1,65 @@
+{
+  "encoding": "UTF-8",
+  "CSV_dialect": "csv.DictWriter default excel; header and CRLF line endings",
+  "null_encoding": "empty CSV field for None; all scalar float/bool representations unchanged",
+  "compression": "gzip.compress(bytes,compresslevel=9,mtime=0); no original filename; decompression equality asserted",
+  "compression_runtime": {
+    "python": "3.13.12",
+    "zlib": "1.3.1"
+  },
+  "case_table": {
+    "path": "FULL_CASE_SCALARS.csv.gz",
+    "row_count": 94592,
+    "columns": [
+      "case_id",
+      "platform",
+      "scene_hash",
+      "source_query",
+      "source_iou",
+      "common_eligible_all_modes",
+      "arm",
+      "mode",
+      "identity_skip",
+      "parameter_steps_executed",
+      "nonzero_parameter_update",
+      "nonzero_gradient_steps",
+      "status",
+      "iou",
+      "delta_iou",
+      "negative_case",
+      "changed_nonzero",
+      "raw_nonpositive_dimensions",
+      "clamped_dimensions"
+    ],
+    "uncompressed_bytes": 14586296,
+    "uncompressed_sha256": "82291416de0586c94d5e2d3cfe11d0218323c8f6d5ce162b7002029c77388090",
+    "compressed_sha256": "82d5bb2bc7a1a3ddf7c70d9851b6bef93c51c8b7cd6aee7da3dd61cae5c0b796",
+    "ordering": "sealed scored sample order, then saved arm order"
+  },
+  "pseudo_table": {
+    "path": "FULL_PSEUDO_DIAGNOSTIC_SCALARS.csv.gz",
+    "row_count": 17736,
+    "columns": [
+      "case_id",
+      "platform",
+      "scene_hash",
+      "mode",
+      "accepted_axis_count",
+      "nonzero_displacement_axes",
+      "source_center_error_m",
+      "pseudo_center_error_m",
+      "direction_cosine_to_GT_center",
+      "direction_cosine_undefined_reason",
+      "accepted_axes_move_toward_GT",
+      "accepted_axes_move_away_from_GT",
+      "pseudo_iou",
+      "postseal_descriptive_only_never_gate_or_select_alpha"
+    ],
+    "uncompressed_bytes": 2698064,
+    "uncompressed_sha256": "c8dbd376b54d8f0f8d0bf5cc77ea2bef0a40a05ab242f745a3768194c90c0173",
+    "compressed_sha256": "3a5175423347d664fbcb09f58611d84b3821b0b62f4c9a8b7969254887e07c14",
+    "ordering": "sealed scored sample order, then saved mode order"
+  },
+  "case_ID": "opaque original output hashID retained for evidence join; no raw scene/frame or text",
+  "scene_hash": "first16hex SHA256(round7-public-scene-v1|platform/scene); physical scene string not exported"
+}

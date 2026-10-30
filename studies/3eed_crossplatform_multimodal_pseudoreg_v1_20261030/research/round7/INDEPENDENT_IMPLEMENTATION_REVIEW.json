@@ -1,0 +1,106 @@
+{
+  "state": "pass_readonly_prepared_synthetic_implementation_review_after_resolved_FOV_fix",
+  "scope": "Independent source and saved synthetic-fixture review; no model, GPU, real task data, targetGT or task scoring executed in this implementation review. Earlier camera-header inventory is a separate explicitly authorized artifact.",
+  "source_sha256": {
+    "camera_projection.py": "b343c04d3a3b72ffed6dc041449f5dc38892964755108a3cab5a8c86572066ce",
+    "multimodal_pseudo.py": "adefd56363ea34dfd379eac1a23883883d64c2062e3338603385a8f5bc1d1746",
+    "regression_adapter.py": "2d23f99c57c63d2bc794b3ab768f9868631c84118e40568e9a9a3b6219af03a2",
+    "v1_pipeline.py": "9a3295081f454a3bdbd031bc052dbd8d193fff89bae61da99c11103b220ae9be"
+  },
+  "fixture_sha256": {
+    "CPU_CAMERA_FIXTURE.json": "7043eeec2b88b4e3eb0f56f9d9d99cfac69ce47aaf0aeccb01a2949c4c61d288",
+    "CPU_G_FIXTURE.json": "145363ab0e6e8917d66b86b905d5b8b4f56046cc4cda39dd01b26d641f11f9c8",
+    "CPU_INTERFACE_FIXTURE.json": "0cce8e0766c74cd8a141f31ef4d281b574b1e5b02e57ae81b49a7870a4af9f74",
+    "CPU_PIPELINE_FIXTURE.json": "9e3a8be366c7c57d2d37efe32288a8f834b9c7f3f06622a8907505ca608c3371",
+    "CPU_FOV_REPAIR_FIXTURE.json": "511f0ceaee5c3247b3982193ec1a013c60b46ffeadbd458b40ae3fecc9e56f70"
+  },
+  "fixture_references_match_actual_files": {
+    "CPU_CAMERA_FIXTURE.json": {},
+    "CPU_G_FIXTURE.json": {
+      "check_multimodal_pseudo_cpu.py": true,
+      "multimodal_pseudo.py": true,
+      "G_CONTRACT.md": true
+    },
+    "CPU_INTERFACE_FIXTURE.json": {
+      "check_regression_adapter_cpu.py": true,
+      "regression_adapter.py": true
+    },
+    "CPU_PIPELINE_FIXTURE.json": {
+      "v1_pipeline.py": true,
+      "camera_projection.py": true,
+      "multimodal_pseudo.py": true,
+      "regression_adapter.py": true,
+      "check_v1_pipeline_cpu.py": true
+    },
+    "CPU_FOV_REPAIR_FIXTURE.json": {}
+  },
+  "checks": {
+    "single_3EED_pointcloud_and_text_source_forward_RGB_not_second_learned_model": true,
+    "no_teacher_EMA_or_persistent_student_state": true,
+    "GTfree_keyword_API_and_camera_allowlist_no_annotation_fallback": true,
+    "pure_text_first_noun_BBF_fixed_source_Top1_query_no_G_reranking": true,
+    "native_yaw0_6D_source_frame_metres": true,
+    "only_final_two_Conv_weights_and_biases_selected_four_tensors_1734_parameters": true,
+    "first_G_version_all_size_reliability_zero_and_source_shape_prior_retained": true,
+    "target_and_reliability_explicit_detach_before_optimizer": true,
+    "BN_eval_dropout_off_full_feature_cache_and_source_Conv_bitexact_bridge": true,
+    "episodic_selected_params_buffers_modes_requiresgrad_gradrefs_RNG_restored": true,
+    "same_source_cache_three_G_modes": true,
+    "required_source_directG_parameterSGD_exact_outputspaceSGD_four_arms": true,
+    "sameinformation_featureGram_outputspace_control_declared_math_not_unique_TTA": true,
+    "projection_conventions_match_audited_Waymo_undo_rotation_AinvE_Drone_undo_z_QuadE": true,
+    "D_missing_default_reject_explicit_zero_assumption_needed": true,
+    "whole_input_P_zbuffer_before_source_crop_not_target_crop_visibility": true,
+    "opposite_source_face_support_not_local_centroid_replacement": true,
+    "config_thresholds_explicit_no_GT_adaptive_gate": true,
+    "nonpositive_selected_source_sizes_failclosed_no_silent_clamp": true
+  },
+  "resolved_findings": [
+    {
+      "id": "R7-INDEP-FOV-01",
+      "severity": "real_geometry_boundary_bug_resolved_before_any_real_TTA",
+      "original_source_sha256": "84243d6509de88b91f09f6b270214a0ad1f3c29e0340f875f53423f23ecf3c15",
+      "original_evidence": "Projection returns finite uv for front points outside continuous FOV; pipeline passes uv/depth without in_image. Old G first rounded uv then checked integer bounds, so u=-0.4 entered pixel0.",
+      "fix": "Check original float 0<=u<W,0<=v<H before sampling; floor on half-open pixel cells. Thus negative rays are excluded and W-.1 stays final pixel.",
+      "final_source_sha256": "adefd56363ea34dfd379eac1a23883883d64c2062e3338603385a8f5bc1d1746",
+      "retained_counterexample": "Old accepted1, fixed accepted0; seven negative/zero/right/bottom/NaN boundary fixtures checked in saved CPU receipt.",
+      "independent_resolution_check": "Read actual float-FOV-before-floor code and fixture construction/receipt; history remains SHA-bound. No task data was run."
+    }
+  ],
+  "scientific_and_execution_boundaries": [
+    {
+      "id": "G_cap_vs_update_cap",
+      "conclusion": "G target cap min(.1*size,.2m) bounds pseudolabel only. SGD box displacement depends on lr,step count,beta and source featureGram; code does not cap actual adapted boxes. No hidden clipping is inserted. Real execution needs explicit registered lr/beta/steps and effective-step monitoring or GTfree failure criterion before claims of bounded adaptation."
+    },
+    {
+      "id": "control_equivalence",
+      "conclusion": "Plain final-linear SGD on one fixed cached sample equals the supplied Gram-kernel box-space step in real arithmetic. Saved float fixture error4.768e-7 within2e-6 tolerances. Winning source alone would not identify a unique parameter-adaptation contribution; compare directG and exact_output_space_SGD."
+    },
+    {
+      "id": "finite_language",
+      "conclusion": "Only opening [article]COLOR NOUN and finite lexicon supported. It selects target-phrase color before first spatial relation, so redcar besidebluecar usesred, car besideredtruck skips. Conjoined, nuanced or unsupported language is not general language grounding; no actual parser-trigger rate has been measured."
+    },
+    {
+      "id": "visibility",
+      "conclusion": "Zbuffer is relative to observed P, not full scene/occlusion truth. Same-color clutter/missing proposals or similar overlapping instances can still defeat source-conditioned association. Opposite source-box face bands are not verified true object faces."
+    },
+    {
+      "id": "singleview_acceptance",
+      "conclusion": "Opaque single-view objects often lack both opposite faces and tangential support; many or all real samples may skip. Do not relax gates to obtain nonzero updates."
+    },
+    {
+      "id": "fixtures_not_real_evidence",
+      "conclusion": "G positive synthetic fixture uses artificially unique projected pixels; camera algebra fixture separately checks all5Waymo views and Drone/Quad. End-to-end pipeline synthetic fixture currently exercises insufficient-support/missing-D/invalid-size skip paths. Separate adapter fixture proves nonzero update, reset and equivalent output step; none establishes real-source bitexact replay, accepted real geometry or task improvement."
+    },
+    {
+      "id": "D_convention",
+      "conclusion": "All20367 local metadata lackD. Defaultreject is honest but implies all local samples skip unless a future run explicitly registers assumedzero. Neither FOV consistency nor header availability proves distortion/temporal correspondence."
+    }
+  ],
+  "current_implementation_lock_lineage": "G_IMPLEMENTATION_LOCK.json retains pre-FOV-repair file SHA and is historical, not a release lock for current source. New actual execution must bind current repaired code and current fixture/document hashes; do not overwrite or pretend old SHA matches.",
+  "real_target_TTA_executed": false,
+  "LR_beta_steps_registered_for_real_experiment": false,
+  "code_changed_by_auditor": false,
+  "interface_audit_sha256": "48a19acbf1ae5ffecaa7b6d1b6543ddee65e3242234a0e73bb453fa6547eee20",
+  "conclusion": "Synthetic-prepared first edition passes core user-scope and resolved FOV review. No remaining code blocker identified for preparing a separately registered real engineering smoke; no authorization or evidence of real TTA gain is implied."
+}

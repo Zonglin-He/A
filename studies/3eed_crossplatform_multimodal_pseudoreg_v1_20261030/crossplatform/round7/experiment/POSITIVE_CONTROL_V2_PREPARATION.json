@@ -1,0 +1,23 @@
+{
+  "state": "v2_prepared_AST_only_no_GPU_or_model_execution",
+  "script_sha256": "83aa2ebf58fb04bccc3ab5c225a1f2c6abb9cd428f64ddadb2900626b3c04172",
+  "v1_failure_receipt_sha256": "a922c6b6f5d62cab6d12fcd8b245ada55dcf30776f745641668f2959ea92d474",
+  "old_script_sha256_still": "ee93e384ddc48876fe973c6d7e1aa66ec5e5b835ce2aae04842d492510d95951",
+  "cross_process_numeric_drift": "record absolute/relative/q/nativeTop10/P+indices SHA before backward, no numeric tolerance gate",
+  "strict_gates_unchanged": [
+    "same source checkpoint/model state",
+    "point/index/file hashes",
+    "fixed source query",
+    "current-source Conv replay bitexact",
+    "same-process source repeat bitexact",
+    "fullstate restoration",
+    "output-space absolute5e-5m"
+  ],
+  "new_plan_fields": [
+    "purpose=R7_real_head_engineering_positive_control_v2_crossprocess_drift_recorded",
+    "cross_process_source_pool_policy=record_no_numeric_gate_same_q_data",
+    "in_process_source_repeat_policy=bitexact",
+    "old_failed_attempt_receipt_sha256"
+  ],
+  "no_frozen_v1_G_runner_plan_or_failedoutput_modified": true
+}

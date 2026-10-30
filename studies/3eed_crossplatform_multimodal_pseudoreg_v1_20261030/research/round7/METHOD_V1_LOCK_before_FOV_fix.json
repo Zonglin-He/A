@@ -1,0 +1,43 @@
+{
+  "version": "v1_single_model_multimodal_pseudo_regression",
+  "state": "implementation_and_synthetic_contracts_passed_real_target_validation_pending",
+  "user_authorization": "按照这个作为我的第一版",
+  "architecture": {
+    "grounding_models": 1,
+    "teacher": false,
+    "EMA": false,
+    "pseudo_module": "nonlearning_RGB_text_points_camera",
+    "update_scope": "last_center_size_linear4tensors_1734params",
+    "current_G": "fixed_source_identity_center_only_supported_axes_size_weights_zero",
+    "current_max_active_parameters": 867,
+    "adaptation_protocol": "episodic"
+  },
+  "source_checkpoint_sha256": "0d8766abaf06c9f3e2500fcb187337982d391f9e4d46ca854f3b3bb70fd33bbd",
+  "code_sha256": {
+    "regression_adapter.py": "2d23f99c57c63d2bc794b3ab768f9868631c84118e40568e9a9a3b6219af03a2",
+    "camera_projection.py": "b343c04d3a3b72ffed6dc041449f5dc38892964755108a3cab5a8c86572066ce",
+    "multimodal_pseudo.py": "84243d6509de88b91f09f6b270214a0ad1f3c29e0340f875f53423f23ecf3c15",
+    "v1_pipeline.py": "9a3295081f454a3bdbd031bc052dbd8d193fff89bae61da99c11103b220ae9be",
+    "check_regression_adapter_cpu.py": "07b6d024acba9545c14df30f7a09e19f99d88c131d2e27076303f015f2701f4a",
+    "check_camera_projection_cpu.py": "c6851153b2ef9c0a11795e86d16417b352ac4928fd32813396761a935ffcb306",
+    "check_multimodal_pseudo_cpu.py": "5cedacb27ffecc47d6ead17f8dccde33104959bbe2fea2d87ae3f9877c651b9c",
+    "check_v1_pipeline_cpu.py": "bd0225ca33b17f2d4cdf9ac6a22d30ce9bfa3b91905ab5af571700d0f96e58e5"
+  },
+  "method_sha256": "639c624071662d2b250e4607f65c97f2f66cd3119d577d3b388f31b49c4e152d",
+  "source_GT_annotated_class_or_positive_map_allowed_in_online_G": false,
+  "target_GT_scoring_run": false,
+  "new_real_GPU_model_forward_or_TTA_run": false,
+  "registered_real_data_learning_rate_steps_beta": null,
+  "G_config_lock_sha256": "986f7767a8732e114fb5ef3433ce4896bf05af7151421731a34e2f129e70db03",
+  "required_controls": [
+    "source",
+    "directG",
+    "parameterSGD",
+    "exact_outputspaceSGD",
+    "PConlyG",
+    "shuffledcolorG"
+  ],
+  "adopted_as_first_implementation": true,
+  "adopted_as_effective_TTA_method": false,
+  "created_local": "2026-10-30T15:45:00.016396+08:00"
+}

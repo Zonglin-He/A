@@ -1,0 +1,42 @@
+{
+  "state": "prepared_synthetic_only_not_real_data_release",
+  "thresholds_frozen_before_real_sample_use": true,
+  "config": {
+    "crop_margin_m": 0.25,
+    "component_radius_m": 0.35,
+    "min_component_points": 12,
+    "component_dominance_ratio": 1.5,
+    "duplicate_box_iou": 0.8,
+    "alternative_support_ratio": 0.8,
+    "min_face_points": 6,
+    "face_band_size_fraction": 0.15,
+    "face_band_cap_m": 0.3,
+    "tangent_span_fraction": 0.4,
+    "axial_span_fraction": 0.8,
+    "face_MAD_max_m": 0.03,
+    "opposing_residual_difference_max_m": 0.04,
+    "delta_size_fraction_max": 0.1,
+    "delta_absolute_max_m": 0.2,
+    "chromatic_saturation_min": 0.45,
+    "chromatic_value_min": 0.25,
+    "white_saturation_max": 0.2,
+    "white_value_min": 0.8,
+    "black_value_max": 0.2
+  },
+  "canonical_config_sha256": "035eed0c769cce38856380faba87e15f4c6d90ea4084a067331a9f763e159ffe",
+  "files_sha256": {
+    "multimodal_pseudo.py": "adefd56363ea34dfd379eac1a23883883d64c2062e3338603385a8f5bc1d1746",
+    "check_multimodal_pseudo_cpu.py": "5cedacb27ffecc47d6ead17f8dccde33104959bbe2fea2d87ae3f9877c651b9c",
+    "G_CONTRACT.md": "0abbc6b2fb538464c3dd55041f0a368949ca87d720691a8e51d6882d6af439bf",
+    "CPU_G_FIXTURE.json": "145363ab0e6e8917d66b86b905d5b8b4f56046cc4cda39dd01b26d641f11f9c8",
+    "check_FOV_repair_cpu.py": "5f24026737478e1583d3f0cd689abb40e074992cd4bb0f8e9a8cde36ac5a4ab3",
+    "CPU_FOV_REPAIR_FIXTURE.json": "511f0ceaee5c3247b3982193ec1a013c60b46ffeadbd458b40ae3fecc9e56f70"
+  },
+  "adapter_unchanged_sha256": "2d23f99c57c63d2bc794b3ab768f9868631c84118e40568e9a9a3b6219af03a2",
+  "no_GPU_or_real_GT_model_data_access": true,
+  "version": "v1.1_FOV_repair",
+  "repair_scope": "Continuous float FOV before floor binning; thresholds unchanged, no real-data tuning",
+  "prior_lock_sha256": "986f7767a8732e114fb5ef3433ce4896bf05af7151421731a34e2f129e70db03",
+  "history": "history/before_FOV_fix",
+  "pixel_sampling": "continuous_half_open_FOV_then_floor_pixel_cell"
+}

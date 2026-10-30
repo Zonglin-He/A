@@ -1,0 +1,11 @@
+{
+  "state": "corrected_before_any_real_target_GT_release",
+  "previous_scorer_sha256": "69b5b117298d8ce2657ee997ab877f89ff83a7efdbf30f652be8c6ec2b0d542b",
+  "current_scorer_sha256": "b395e77beb238d1771f3bf5fce5983bce6dba4de06e9f484edb0dc6b9c0289d3",
+  "problem": "Runner statuses include zero_weight_source and literal fallback reasons, so startswith(skip) undercounted skips despite unchanged task IoU.",
+  "correction": "identity_skip iff mode reliability6 all0 and selected rawbox equals source; retain complete status histogram; failed prefix counted explicitly. n_accepted,nonzero_pseudo_delta,real parameter steps,nonzero gradient steps,nonzero parameter update reported separately.",
+  "synthetic_evidence": "Accepted PC target exactly equals source: n_accepted1,nonzero_pseudo0,paramsteps3,nonzero_paramupdate0. w0 identity is counted regardless arbitrary skip status.",
+  "no_real_target_GT_or_scores_accessed": true,
+  "old_artifacts_preserved": true,
+  "program_lock_sha256": "a1173c021fd7fa50df2c5037e19c7d6fbe91bdc6568417bfd2bbf1d3d4bb1bce"
+}

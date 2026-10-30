@@ -1,0 +1,571 @@
+{
+  "state": "strict_FP32_only_engineering_pass_original_mode_failed_preserved",
+  "purpose": "R7_real_head_positive_control_v3_precision_diagnostic",
+  "source_checkpoint_sha256": "0d8766abaf06c9f3e2500fcb187337982d391f9e4d46ca854f3b3bb70fd33bbd",
+  "source_model_state_fingerprint": "0eb178a6de52b529d939fa4ae3bfa7b0459d95b7425c3d8a21f473356f2874a9",
+  "strict_state_entries": 1034,
+  "plan_sha256": "9b1deab02de0d48de0a5349a449f2e9e45ba5def43ef64d58d4a58e15aa9e7b8",
+  "old_failure_receipt_sha256": {
+    "POSITIVE_CONTROL_V1_FAILURE.json": "a922c6b6f5d62cab6d12fcd8b245ada55dcf30776f745641668f2959ea92d474",
+    "POSITIVE_CONTROL_V2_FAILURE.json": "55c3f6d2b205cf65bfdf18c9243ea72e00de175a47c6338ebdbc71f13645649d"
+  },
+  "sourcepoint_sample_sha256": "c48cf1d58258eef48193677ac4e371dc3878fa2ddc2a8c442e78637e97021e5d",
+  "sourcepoint_indices_sha256": "cf50ea6769a8eb471c90f0164e44aee685d3efa1da955be01c6a5770ad115bd6",
+  "rawpoint_count": 6749,
+  "artificial_target_delta6_metres": [
+    0.05,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0
+  ],
+  "artificial_reliability6": [
+    1.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0
+  ],
+  "alpha": 0.25,
+  "beta_metres": 0.1,
+  "predeclared_equivalence_atol_metres": 5e-05,
+  "original_mode_passed": false,
+  "strict_FP32_mode_passed": true,
+  "mode_results": {
+    "original_plan": {
+      "precision_mode": "original_plan",
+      "flags": {
+        "cudnn_allow_tf32": true,
+        "matmul_allow_tf32": false,
+        "cudnn_benchmark": true,
+        "cudnn_deterministic": true,
+        "cudnn_enabled": true,
+        "float32_matmul_precision": "highest",
+        "deterministic_algorithms_enabled": false
+      },
+      "stage": "mode_completed_with_explicit_pass_or_fail",
+      "results": {
+        "1": {
+          "steps": 1,
+          "raw_step_observations": [
+            {
+              "step": 1,
+              "loss": 0.012499619275331497,
+              "weighted_SmoothL1_box_gradient6": [
+                -0.49999237060546875,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0
+              ],
+              "parameter_gradient_norm": 1.881919264793396,
+              "nonzero_gradient_parameter_tensors": 2,
+              "clip_enabled": false,
+              "clip_factor": 1.0,
+              "parameter_delta_max_by_name": {
+                "prediction_heads.5.center_residual_head.net.8.weight": 0.00017364509403705597,
+                "prediction_heads.5.center_residual_head.net.8.bias": 0.00016453862190246582,
+                "prediction_heads.5.size_pred_head.net.8.weight": 0.0,
+                "prediction_heads.5.size_pred_head.net.8.bias": 0.0
+              },
+              "output_space_replay_max_abs_error": 0.0001373291015625,
+              "observed_selected_delta6_metres": [
+                0.0023708343505859375,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0
+              ],
+              "nonselected_parameter_version_changes_across_entire_call": 0,
+              "nonselected_parameter_max_abs_change_if_versions_unchanged": 0.0,
+              "nonselected_version_evidence": "Monotonic parameter version counters unchanged across entire call imply no in-place parameter update in any constituent step."
+            }
+          ],
+          "observed_selected_delta6_metres": [
+            0.0023708343505859375,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "final_allquery_equivalence_max_abs_error_metres": 0.0001373291015625,
+          "all_step_max_equivalence_error_metres": 0.0001373291015625,
+          "nonselected_parameter_version_changed_count": 0,
+          "nonselected_gradients_after_restore_count": 0,
+          "post_episode_full_model_fingerprint_restored": true,
+          "feature_norms": {
+            "center_squared_feature_norm": 13.166913032531738,
+            "size_squared_feature_norm": 74.96925354003906,
+            "center_self_kernel_with_bias": 14.166913032531738,
+            "size_self_kernel_with_bias": 75.96925354003906
+          },
+          "spillover": {
+            "other_query_count_changed": 255,
+            "other_query_max_abs_center_change": 0.0037670135498046875,
+            "other_query_max_abs_size_change": 0.0
+          },
+          "expected_real_arithmetic_x_delta_metres": 0.002331027417734394,
+          "judgement": "fail_preserved",
+          "checks": {
+            "all_equivalence_errors_le_registered5e_minus5": false,
+            "true_nonzero_gradient_and_center_parameter_change": true,
+            "size_parameters_unchanged": true,
+            "only_selected_x_output_changed": true,
+            "closed_form_x_delta_within_registered_atol": true,
+            "nonselected_unchanged": true,
+            "full_model_restored": true
+          }
+        },
+        "3": {
+          "steps": 3,
+          "raw_step_observations": [
+            {
+              "step": 1,
+              "loss": 0.012499619275331497,
+              "weighted_SmoothL1_box_gradient6": [
+                -0.49999237060546875,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0
+              ],
+              "parameter_gradient_norm": 1.881919264793396,
+              "nonzero_gradient_parameter_tensors": 2,
+              "clip_enabled": false,
+              "clip_factor": 1.0,
+              "parameter_delta_max_by_name": {
+                "prediction_heads.5.center_residual_head.net.8.weight": 0.00017364509403705597,
+                "prediction_heads.5.center_residual_head.net.8.bias": 0.00016453862190246582,
+                "prediction_heads.5.size_pred_head.net.8.weight": 0.0,
+                "prediction_heads.5.size_pred_head.net.8.bias": 0.0
+              },
+              "output_space_replay_max_abs_error": 0.0001373291015625,
+              "observed_selected_delta6_metres": [
+                0.0023708343505859375,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0
+              ],
+              "nonselected_parameter_version_changes_across_entire_call": 0,
+              "nonselected_parameter_max_abs_change_if_versions_unchanged": 0.0,
+              "nonselected_version_evidence": "Monotonic parameter version counters unchanged across entire call imply no in-place parameter update in any constituent step."
+            },
+            {
+              "step": 2,
+              "loss": 0.011342323385179043,
+              "weighted_SmoothL1_box_gradient6": [
+                -0.4762840270996094,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0
+              ],
+              "parameter_gradient_norm": 1.792683482170105,
+              "nonzero_gradient_parameter_tensors": 2,
+              "clip_enabled": false,
+              "clip_factor": 1.0,
+              "parameter_delta_max_by_name": {
+                "prediction_heads.5.center_residual_head.net.8.weight": 0.0003390572965145111,
+                "prediction_heads.5.center_residual_head.net.8.bias": 0.00032127276062965393,
+                "prediction_heads.5.size_pred_head.net.8.weight": 0.0,
+                "prediction_heads.5.size_pred_head.net.8.bias": 0.0
+              },
+              "output_space_replay_max_abs_error": 7.82012939453125e-05,
+              "observed_selected_delta6_metres": [
+                0.0045680999755859375,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0
+              ],
+              "nonselected_parameter_version_changes_across_entire_call": 0,
+              "nonselected_parameter_max_abs_change_if_versions_unchanged": 0.0,
+              "nonselected_version_evidence": "Monotonic parameter version counters unchanged across entire call imply no in-place parameter update in any constituent step."
+            },
+            {
+              "step": 3,
+              "loss": 0.010319940745830536,
+              "weighted_SmoothL1_box_gradient6": [
+                -0.4543113708496094,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0
+              ],
+              "parameter_gradient_norm": 1.7099806070327759,
+              "nonzero_gradient_parameter_tensors": 2,
+              "clip_enabled": false,
+              "clip_factor": 1.0,
+              "parameter_delta_max_by_name": {
+                "prediction_heads.5.center_residual_head.net.8.weight": 0.000496838241815567,
+                "prediction_heads.5.center_residual_head.net.8.bias": 0.00047077611088752747,
+                "prediction_heads.5.size_pred_head.net.8.weight": 0.0,
+                "prediction_heads.5.size_pred_head.net.8.bias": 0.0
+              },
+              "output_space_replay_max_abs_error": 0.0001430511474609375,
+              "observed_selected_delta6_metres": [
+                0.0067138671875,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0
+              ],
+              "nonselected_parameter_version_changes_across_entire_call": 0,
+              "nonselected_parameter_max_abs_change_if_versions_unchanged": 0.0,
+              "nonselected_version_evidence": "Monotonic parameter version counters unchanged across entire call imply no in-place parameter update in any constituent step."
+            }
+          ],
+          "observed_selected_delta6_metres": [
+            0.0067138671875,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "final_allquery_equivalence_max_abs_error_metres": 0.0001430511474609375,
+          "all_step_max_equivalence_error_metres": 0.0001430511474609375,
+          "nonselected_parameter_version_changed_count": 0,
+          "nonselected_gradients_after_restore_count": 0,
+          "post_episode_full_model_fingerprint_restored": true,
+          "feature_norms": {
+            "center_squared_feature_norm": 13.166913032531738,
+            "size_squared_feature_norm": 74.96925354003906,
+            "center_self_kernel_with_bias": 14.166913032531738,
+            "size_self_kernel_with_bias": 75.96925354003906
+          },
+          "spillover": {
+            "other_query_count_changed": 255,
+            "other_query_max_abs_center_change": 0.010534286499023438,
+            "other_query_max_abs_size_change": 0.0
+          },
+          "expected_real_arithmetic_x_delta_metres": 0.006672127354919033,
+          "judgement": "fail_preserved",
+          "checks": {
+            "all_equivalence_errors_le_registered5e_minus5": false,
+            "true_nonzero_gradient_and_center_parameter_change": true,
+            "size_parameters_unchanged": true,
+            "only_selected_x_output_changed": true,
+            "closed_form_x_delta_within_registered_atol": true,
+            "nonselected_unchanged": true,
+            "full_model_restored": true
+          }
+        }
+      },
+      "mode_pass": false,
+      "current_mode_Conv_bridge_bitexact": true,
+      "current_mode_source_repeat_bitexact": true,
+      "source_model_fingerprint_before": "0eb178a6de52b529d939fa4ae3bfa7b0459d95b7425c3d8a21f473356f2874a9",
+      "current_mode_query": 4,
+      "smoke_query": 4,
+      "query_equal_smoke": true,
+      "source_pool_crossprocess": {
+        "bitexact": false,
+        "max_absolute_difference": 19.401878356933594,
+        "mean_absolute_difference": 0.25072937381143373,
+        "p99_absolute_difference": 6.782168674469029,
+        "max_relative_difference_reference_floor1e_minus12": 1062.028001050696,
+        "different_value_count": 1535
+      },
+      "source_scores_crossprocess": {
+        "bitexact": false,
+        "max_absolute_difference": 9.727214944632578e-08,
+        "mean_absolute_difference": 2.3049664503449474e-09,
+        "p99_absolute_difference": 8.201576617850037e-08,
+        "max_relative_difference_reference_floor1e_minus12": 3.5651592662159155,
+        "different_value_count": 256
+      },
+      "nativeTop10_equal_smoke": false,
+      "nativeTop10_changed_positions": 1,
+      "same_source_weights_and_P_indices_strict": true,
+      "actual_lr": 0.00032908050079528457,
+      "center_kernel": 14.166913032531738,
+      "size_kernel": 75.96925354003906,
+      "effective_x_shrink_factor": 0.04662054835468788,
+      "artificial_target_from_current_mode_source": true,
+      "peak_allocated_bytes": 1046106624
+    },
+    "strict_FP32": {
+      "precision_mode": "strict_FP32",
+      "flags": {
+        "cudnn_allow_tf32": false,
+        "matmul_allow_tf32": false,
+        "cudnn_benchmark": false,
+        "cudnn_deterministic": true,
+        "cudnn_enabled": true,
+        "float32_matmul_precision": "highest",
+        "deterministic_algorithms_enabled": false
+      },
+      "stage": "mode_completed_with_explicit_pass_or_fail",
+      "results": {
+        "1": {
+          "steps": 1,
+          "raw_step_observations": [
+            {
+              "step": 1,
+              "loss": 0.012499619275331497,
+              "weighted_SmoothL1_box_gradient6": [
+                -0.49999237060546875,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0
+              ],
+              "parameter_gradient_norm": 1.8819078207015991,
+              "nonzero_gradient_parameter_tensors": 2,
+              "clip_enabled": false,
+              "clip_factor": 1.0,
+              "parameter_delta_max_by_name": {
+                "prediction_heads.5.center_residual_head.net.8.weight": 0.00017372332513332367,
+                "prediction_heads.5.center_residual_head.net.8.bias": 0.00016453862190246582,
+                "prediction_heads.5.size_pred_head.net.8.weight": 0.0,
+                "prediction_heads.5.size_pred_head.net.8.bias": 0.0
+              },
+              "output_space_replay_max_abs_error": 3.814697265625e-06,
+              "observed_selected_delta6_metres": [
+                0.002330780029296875,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0
+              ],
+              "nonselected_parameter_version_changes_across_entire_call": 0,
+              "nonselected_parameter_max_abs_change_if_versions_unchanged": 0.0,
+              "nonselected_version_evidence": "Monotonic parameter version counters unchanged across entire call imply no in-place parameter update in any constituent step."
+            }
+          ],
+          "observed_selected_delta6_metres": [
+            0.002330780029296875,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "final_allquery_equivalence_max_abs_error_metres": 3.814697265625e-06,
+          "all_step_max_equivalence_error_metres": 3.814697265625e-06,
+          "nonselected_parameter_version_changed_count": 0,
+          "nonselected_gradients_after_restore_count": 0,
+          "post_episode_full_model_fingerprint_restored": true,
+          "feature_norms": {
+            "center_squared_feature_norm": 13.166740417480469,
+            "size_squared_feature_norm": 74.96961975097656,
+            "center_self_kernel_with_bias": 14.166740417480469,
+            "size_self_kernel_with_bias": 75.96961975097656
+          },
+          "spillover": {
+            "other_query_count_changed": 255,
+            "other_query_max_abs_center_change": 0.003627777099609375,
+            "other_query_max_abs_size_change": 0.0
+          },
+          "expected_real_arithmetic_x_delta_metres": 0.002330987779048738,
+          "judgement": "pass",
+          "checks": {
+            "all_equivalence_errors_le_registered5e_minus5": true,
+            "true_nonzero_gradient_and_center_parameter_change": true,
+            "size_parameters_unchanged": true,
+            "only_selected_x_output_changed": true,
+            "closed_form_x_delta_within_registered_atol": true,
+            "nonselected_unchanged": true,
+            "full_model_restored": true
+          }
+        },
+        "3": {
+          "steps": 3,
+          "raw_step_observations": [
+            {
+              "step": 1,
+              "loss": 0.012499619275331497,
+              "weighted_SmoothL1_box_gradient6": [
+                -0.49999237060546875,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0
+              ],
+              "parameter_gradient_norm": 1.8819078207015991,
+              "nonzero_gradient_parameter_tensors": 2,
+              "clip_enabled": false,
+              "clip_factor": 1.0,
+              "parameter_delta_max_by_name": {
+                "prediction_heads.5.center_residual_head.net.8.weight": 0.00017372332513332367,
+                "prediction_heads.5.center_residual_head.net.8.bias": 0.00016453862190246582,
+                "prediction_heads.5.size_pred_head.net.8.weight": 0.0,
+                "prediction_heads.5.size_pred_head.net.8.bias": 0.0
+              },
+              "output_space_replay_max_abs_error": 3.814697265625e-06,
+              "observed_selected_delta6_metres": [
+                0.002330780029296875,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0
+              ],
+              "nonselected_parameter_version_changes_across_entire_call": 0,
+              "nonselected_parameter_max_abs_change_if_versions_unchanged": 0.0,
+              "nonselected_version_evidence": "Monotonic parameter version counters unchanged across entire call imply no in-place parameter update in any constituent step."
+            },
+            {
+              "step": 2,
+              "loss": 0.011361408978700638,
+              "weighted_SmoothL1_box_gradient6": [
+                -0.4766845703125,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0
+              ],
+              "parameter_gradient_norm": 1.7941802740097046,
+              "nonzero_gradient_parameter_tensors": 2,
+              "clip_enabled": false,
+              "clip_factor": 1.0,
+              "parameter_delta_max_by_name": {
+                "prediction_heads.5.center_residual_head.net.8.weight": 0.00033934786915779114,
+                "prediction_heads.5.center_residual_head.net.8.bias": 0.00032140687108039856,
+                "prediction_heads.5.size_pred_head.net.8.weight": 0.0,
+                "prediction_heads.5.size_pred_head.net.8.bias": 0.0
+              },
+              "output_space_replay_max_abs_error": 3.814697265625e-06,
+              "observed_selected_delta6_metres": [
+                0.0045528411865234375,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0
+              ],
+              "nonselected_parameter_version_changes_across_entire_call": 0,
+              "nonselected_parameter_max_abs_change_if_versions_unchanged": 0.0,
+              "nonselected_version_evidence": "Monotonic parameter version counters unchanged across entire call imply no in-place parameter update in any constituent step."
+            },
+            {
+              "step": 3,
+              "loss": 0.010326874442398548,
+              "weighted_SmoothL1_box_gradient6": [
+                -0.4544639587402344,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0
+              ],
+              "parameter_gradient_norm": 1.7105447053909302,
+              "nonzero_gradient_parameter_tensors": 2,
+              "clip_enabled": false,
+              "clip_factor": 1.0,
+              "parameter_delta_max_by_name": {
+                "prediction_heads.5.center_residual_head.net.8.weight": 0.0004972517490386963,
+                "prediction_heads.5.center_residual_head.net.8.bias": 0.00047096237540245056,
+                "prediction_heads.5.size_pred_head.net.8.weight": 0.0,
+                "prediction_heads.5.size_pred_head.net.8.bias": 0.0
+              },
+              "output_space_replay_max_abs_error": 7.62939453125e-06,
+              "observed_selected_delta6_metres": [
+                0.006671905517578125,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0
+              ],
+              "nonselected_parameter_version_changes_across_entire_call": 0,
+              "nonselected_parameter_max_abs_change_if_versions_unchanged": 0.0,
+              "nonselected_version_evidence": "Monotonic parameter version counters unchanged across entire call imply no in-place parameter update in any constituent step."
+            }
+          ],
+          "observed_selected_delta6_metres": [
+            0.006671905517578125,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "final_allquery_equivalence_max_abs_error_metres": 7.62939453125e-06,
+          "all_step_max_equivalence_error_metres": 7.62939453125e-06,
+          "nonselected_parameter_version_changed_count": 0,
+          "nonselected_gradients_after_restore_count": 0,
+          "post_episode_full_model_fingerprint_restored": true,
+          "feature_norms": {
+            "center_squared_feature_norm": 13.166740417480469,
+            "size_squared_feature_norm": 74.96961975097656,
+            "center_self_kernel_with_bias": 14.166740417480469,
+            "size_self_kernel_with_bias": 75.96961975097656
+          },
+          "spillover": {
+            "other_query_count_changed": 255,
+            "other_query_max_abs_center_change": 0.010385513305664062,
+            "other_query_max_abs_size_change": 0.0
+          },
+          "expected_real_arithmetic_x_delta_metres": 0.0066720192681746174,
+          "judgement": "pass",
+          "checks": {
+            "all_equivalence_errors_le_registered5e_minus5": true,
+            "true_nonzero_gradient_and_center_parameter_change": true,
+            "size_parameters_unchanged": true,
+            "only_selected_x_output_changed": true,
+            "closed_form_x_delta_within_registered_atol": true,
+            "nonselected_unchanged": true,
+            "full_model_restored": true
+          }
+        }
+      },
+      "mode_pass": true,
+      "current_mode_Conv_bridge_bitexact": true,
+      "current_mode_source_repeat_bitexact": true,
+      "source_model_fingerprint_before": "0eb178a6de52b529d939fa4ae3bfa7b0459d95b7425c3d8a21f473356f2874a9",
+      "current_mode_query": 4,
+      "smoke_query": 4,
+      "query_equal_smoke": true,
+      "source_pool_crossprocess": {
+        "bitexact": false,
+        "max_absolute_difference": 18.755434036254883,
+        "mean_absolute_difference": 0.33813741388439666,
+        "p99_absolute_difference": 12.226990032196047,
+        "max_relative_difference_reference_floor1e_minus12": 16.484835573664043,
+        "different_value_count": 1534
+      },
+      "source_scores_crossprocess": {
+        "bitexact": false,
+        "max_absolute_difference": 9.721941296447767e-08,
+        "mean_absolute_difference": 1.6591047563574435e-09,
+        "p99_absolute_difference": 1.9403988016364338e-08,
+        "max_relative_difference_reference_floor1e_minus12": 2.0176203892317024,
+        "different_value_count": 256
+      },
+      "nativeTop10_equal_smoke": false,
+      "nativeTop10_changed_positions": 1,
+      "same_source_weights_and_P_indices_strict": true,
+      "actual_lr": 0.0003290789144653924,
+      "center_kernel": 14.166740417480469,
+      "size_kernel": 75.96961975097656,
+      "effective_x_shrink_factor": 0.04661975558097473,
+      "artificial_target_from_current_mode_source": true,
+      "peak_allocated_bytes": 679831552
+    }
+  },
+  "one_model_load_and_same_source_snapshot_each_mode": true,
+  "mode_source_queries_may_differ_reported_not_GT_selected": true,
+  "no_RGB_G_feedback_target_GT_or_taskscore": true,
+  "main_full_task_caches_metrics_and_precision_not_changed_or_retested": true,
+  "original_mode_failure_not_overridden_by_strict_mode": true,
+  "elapsed_seconds": 13.65655062487349,
+  "interpretation": "Strict-FP32 success, if observed, supports the head update/equivalence interface only under strict FP32. It does not validate original-main precision, explain cross-process pool drift by itself, or show informative G/TTA gains."
+}

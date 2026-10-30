@@ -1,0 +1,43 @@
+{
+  "scope": "GTfree target fullVAL manifest and enriched engineering smoke; CPU points/RGB/camera projection only",
+  "full_population": "Every R5 drone_all.json and quad_all.json input, no supported-color/GT/metric filtering; preserve platform-file original order.",
+  "expected_full_counts": {
+    "drone": 2984,
+    "quad": 2928
+  },
+  "selection_salt": "3eed-round7-input-smoke-v1-20261030",
+  "smoke_per_scene": 4,
+  "smoke_supported_goal_per_scene": 3,
+  "smoke_rule": "For each of the five scenes, choose up to3 supported target_color rows on distinct frames, saltedSHA-minimum, preferring as-yet-unrepresented supported colors. Then choose1 unsupported row on a new frame, preferring no color lexeme from the declared finite audit lexicon. If a supported slot is impossible, fill from unsupported new frames by saltedSHA and explicitly record the deficit/reason. Never use GT, oldscores or viewedpixels; finalsmoke stays4unique frames per scene.",
+  "target_color_parser": "Frozen crossplatform/round7/multimodal_pseudo.py::target_color, unchanged",
+  "audit_color_lexicon_only_for_negative_stratum": [
+    "red",
+    "green",
+    "blue",
+    "yellow",
+    "white",
+    "black",
+    "gray",
+    "grey",
+    "silver",
+    "brown",
+    "orange",
+    "pink",
+    "purple",
+    "beige",
+    "gold",
+    "golden",
+    "tan",
+    "navy",
+    "cyan"
+  ],
+  "negative_stratum_caveat": "No finitelexicon colorword is an audittextcondition, not a claim that image/object has no physical color. It never modifies G's sixcolor support parser.",
+  "overlay_rule": "Exactly1 per scene from the fixedsmoke: minimumsaltedSHA supported row if any, otherwise minimumsaltedSHA row. No visual/GT replacement. OriginalRGB plus depth-colored nearest-per-pixel projected rawpoints, no boxes/model.",
+  "projection_input": "All finite rawXYZ plus modelcoordinates; image actualW/H; documentedDrone z+=1.8undo andQuadE; sourceR5sampling_seed is preserved forfuture modelmanifest; camera allowlist K/E/D only.",
+  "missing_distortion_policy": "assume_zero_declared",
+  "zero_distortion_caveat": "Explicit assumption only, not a claim of physical undistortion/synchronization or guaranteed pixelalignment.",
+  "no_new_GT_box_class_positive_map_or_metrics": true,
+  "no_model_GPU_or_scoring_calls": true,
+  "historical_exposure": "All targetVAL was already R5researchexposed; not fresh confirmation. New source model was genuinely trained supervisedWaymoonly.",
+  "model_source": "Waymo-only epoch100; no model is loaded in this input/projection audit"
+}

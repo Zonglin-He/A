@@ -1,0 +1,43 @@
+{
+  "state": "prepared_model_interface_and_synthetic_CPU_contract_only",
+  "run_state": "prepared",
+  "measurement_state": "synthetic_interface_valid_no_task_measurement",
+  "claim_state": "untested_on_real_G_and_target_samples",
+  "official_commit": "843a901f5367a6be5cc484b97c6ecad462961dfa",
+  "official_files_sha256": {
+    "models/modules.py": "22c7c91ef5c3428f43e077b2e7ae3596a3f30325b71995b45222f5e3c88dbade",
+    "models/bdetr.py": "74336de17da7c949cfc29b9cfbec95d0db2d88a1071e0ac53760cd0b8763e5b3"
+  },
+  "source_checkpoint_sha256": "0d8766abaf06c9f3e2500fcb187337982d391f9e4d46ca854f3b3bb70fd33bbd",
+  "parameter_names": [
+    "prediction_heads.5.center_residual_head.net.8.weight",
+    "prediction_heads.5.center_residual_head.net.8.bias",
+    "prediction_heads.5.size_pred_head.net.8.weight",
+    "prediction_heads.5.size_pred_head.net.8.bias"
+  ],
+  "updated_parameter_count": 1734,
+  "decoder_feature_channels": 288,
+  "candidate_count_actual_model": 256,
+  "head_prefix": "last_",
+  "center_base": "query_points_xyz",
+  "center_size_only_no_yaw": true,
+  "four_arms": [
+    "source",
+    "direct_G",
+    "parameter_SGD",
+    "exact_output_space_SGD"
+  ],
+  "unlabeled_readout": "fixed first lexicon noun, actual-token softmax denominator, no noun fails closed; no true-class map",
+  "loss": "sum(w*SmoothL1_beta(pred6-target6))/sum(w), w detached; allzero sourcefallback",
+  "optimizer": "plain SGD explicit lr/steps/beta from future locked plan; no momentum/decay/clip",
+  "no_teacher_EMA_or_2D_grounding_model": true,
+  "no_real_model_constructed_GPU_or_target_GT_read_or_score": true,
+  "new_code_and_fixture_sha256": {
+    "regression_adapter.py": "2d23f99c57c63d2bc794b3ab768f9868631c84118e40568e9a9a3b6219af03a2",
+    "check_regression_adapter_cpu.py": "07b6d024acba9545c14df30f7a09e19f99d88c131d2e27076303f015f2701f4a",
+    "MODEL_INTERFACE.md": "c805e2be71bc69af7a48dd12196c4b181deb70583820fa863e3e877fc72bf5d3",
+    "CPU_INTERFACE_FIXTURE.json": "0cce8e0766c74cd8a141f31ef4d281b574b1e5b02e57ae81b49a7870a4af9f74"
+  },
+  "negative_size_policy": "preserve source/raw adapted negatives; evaluation clamp belongs to common external evaluator",
+  "unique_parameter_gain_claim": "Current fixed-query frozen-feature last-linear SGD is exactly a feature-kernel output-space step in real arithmetic; no unique adaptation gain follows from fitting G."
+}
