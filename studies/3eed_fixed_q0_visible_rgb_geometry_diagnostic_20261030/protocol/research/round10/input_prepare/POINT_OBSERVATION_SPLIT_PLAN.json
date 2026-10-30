@@ -1,0 +1,11 @@
+{
+  "state": "observation_split_scaffold_before_any_new_point_observation",
+  "seed_rule": "low31bits little-endian first4bytes SHA256(UTF8(R10_visible_point_split_v1|private_case_id))",
+  "point_rule": "SHA256(seed8bytes_unsigned_littleendian || canonical_littleendian_float32_modelXYZ_bytes), firstbyte parity0=fit,parity1=eval",
+  "canonicalization": "FiniteNx3 modelcoords float32, signedzero canonical+0; exactduplicateXYZ always samepartition, order invariant; no splitting duplicate samples acrossroles",
+  "ratio": "hashparity expectedhalf/half, actualcounts stored; no forced balancing or fallback if short",
+  "no_label_or_coordinate_quality_selection": true,
+  "current_scope": "Rootfirststagewhole-observationDirectG may save this split only; it is not automatically used or claimed as independent validation. G/runner must declare actually consumed points.",
+  "future_if_heldout_claimed": "GrabCut seeds/visibility/targetfit use fitpoints only; evaldepth/geometry cannot enter segmentation/acceptance. Build visibility separately forfit/eval; sourceq0/backbone/sharedRGB may still use sharedinformation, so not independentdomain/view evidence.",
+  "statistical_units": "Within-frame pointpartitions share sourceprediction/RGB/camera/scenenormalization; not extra independent scenes orsamples."
+}

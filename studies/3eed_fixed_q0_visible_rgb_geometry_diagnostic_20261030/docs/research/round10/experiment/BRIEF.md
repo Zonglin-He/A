@@ -1,0 +1,3 @@
+# R10 · Fixed-q0 independent geometric evidence
+
+R9 showed same-input exact fit recovers direct pseudo target; it is not an extra-information mechanism. Test whether calibrated RGB support/projection and observed point surfaces constrain correct center/size changes beyond original candidate centers. Preserve source shape prior against partial visibility. Compare full/no-RGB coordinate terms on identical supports and coverage, with point-mask ablation separated. Freeze all choices before target GT scoring. Only a positive direct-pseudo result can release an unused-observation adaptation branch.

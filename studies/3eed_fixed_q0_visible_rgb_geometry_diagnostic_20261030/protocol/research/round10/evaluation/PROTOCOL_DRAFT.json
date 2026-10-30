@@ -1,0 +1,34 @@
+{
+  "state": "CPU_draft_pending_actual_G_and_parent_lock_no_GT_read",
+  "objective": "Test fixed-q0 independent observation-derived G increment before any new TTA complexity.",
+  "scope": "Single frozen Waymo-only grounder, fixed originalq0/nativeyaw0, no new training/teacher/EMA. Drone2/Quad3 scenes; targetVAL prior research-exposed, exploratory. Old rounds immutable. R10 excludes all R9 IDs/pointpaths, so no R9GTsidecar reuse; postseal R5annotationindex required.",
+  "minimal_arm_roles": {
+    "source": "Matched originalq0 raw6 baseline, no geometry correction.",
+    "full_rgb": "Observation-derived geometry with RGB coordinate constraint.",
+    "no_rgb_coordinate": "Same inputpoints/q0/point-support mask/observations/accepted axes/globalgate as full; remove only RGB coordinate constraint. This control still inherits RGB pointmask/gate and is NOT purePC deployment.",
+    "rgb_pointmask_ablated": "Remove RGB pointmask and rebuild point geometry. This changes observations/coverage; report it separately and compare on GT-free common masks as well as all. It is not the same intervention as removing coordinate constraint."
+  },
+  "matching": {
+    "coordinate_pair": "Exact same point file/sampling indices/source cache/q0 and point support IDs; final accepted-axis arrays bitexact, global gate identical. Only constraint operation differs. If raw eligibility differs, predeclared shared acceptance envelope is applied to BOTH; raw eligibility and lost coverage retained.",
+    "pointmask_pair": "Exact same initial rawP/q0/camera/text/source; changed observed support explicitly recorded. No claim sameinformation when point subsets differ. If it inherits full acceptance, name RGB-gated pointmask ablation, not purePC deployable baseline.",
+    "source_prior": "A single nearplane center constraint depends on source half-size; mark mixed point_plane_plus_source_size_prior, never pure observed center. Unchanged source dimension is not observed size.",
+    "no_GT": "No true bbox/class/positive-map/identity in G or GPU manifest. GT read only after complete prediction+source/code/manifest seal and parent CPU release."
+  },
+  "primary_metrics": {
+    "all": "Perplatform selected nativeyaw0 meanIoU,strict Acc25/50,centerL2m,sizeL2m and both coordinate-block abs errors; n/scene count,failed/skipped explicit.",
+    "changed": "Own actualfloat32changed subset descriptive only; paired primary common set is UNION of delivered full/noRGBcoordinate changed flags, applied to source and both arms. Also report intersection and GT-free common eligible, each with exact n. Never compare means over each arm own changed populations as causal gain.",
+    "pointmask_commoncoverage": "Pairwise GT-free intersection of eligible axes/cases and unionchanged, identical mask applied to both source and arms. All-case metrics retain coverage effects; commoncase does not ensure point observations same.",
+    "signed": "For each contrast, gains/harms/ties atIoU1e-8; center/size error sign at1e-6m; mean,positive/negative sums,max harm and all signedtails retained privately. Separate exactzeros from tolerance ties.",
+    "size_yaw": "GT local yaw dimension parameter error is not exact nativeyaw0 global enclosing size. Do not claim GTdimensions maximize IoU.",
+    "provenance": "Percoordinate independent observation basis, observed-side support, bound source and sourceprior use required. Support/reliability does not itself prove correctness."
+  },
+  "conditional_progression_proposal_not_yet_parent_locked": {
+    "engineering": "Valid newpoint-derived estimates/nonzero correction, matched coordinate intervention and inverseprojection/visibility passed, noGT path, all arms sealed then audited.",
+    "pseudo_evidence": "Root proposed gate: positive paired taskIoU AND positive actual fitted coordinate-block error improvement vs source and matched noRGBcoordinate, fullall and same-maskunionchanged reported. Positive gain sums exceed absolute harm sums rather than just large correction magnitude. Numerical error budget prelocked; do not treat optimization loss or tiny roundoff as pseudo-quality. 2/3scene descriptive only, no significance claim.",
+    "scope": "If only one platform/one scene supports the gain, restrict follow-up claim to that measured condition; do not silently pool or select new thresholds. If RGB coordinate constraint adds nothing, report geometry-only contribution, not RGB mechanism success.",
+    "next_only_if_pseudo_improves": "Propose separately locked cross-observation study: derive stopgradient target from observationA, adapt on inputB with disjoint rawpoint IDs/view, evaluate heldout inputC/observation. No sameinput fit to its own target as method benefit. Fresh source/direct-target/no-update and exactoutput-space controls matched.",
+    "disjoint_limit": "A/B point split of same scan is disjoint observations but not independent sensor view/time. Split physical/rawpointIDs before replacement sampling, audit duplicate coordinates/rays; if no separate view/registration exists do not promise it. Temporal/view correspondence cannot be assumed without pose/object association evidence.",
+    "no_automatic_execution": "Current authorization is G test only. No optimizer sweep/online stream/new heavybranch scheduled from this draft."
+  },
+  "pending": "Actual G arm names/config/schema/updatedblocks and parent numerical/progression gate must be bound before target scoring."
+}

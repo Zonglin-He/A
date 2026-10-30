@@ -1,0 +1,56 @@
+{
+  "state": "author_side_no_GT_interpretation_of_sealed_mechanism_only",
+  "mechanism_seal_sha256": "937eb08e42a37c0f5f55f01cc55f5b91bc8aab323b418d87ac4db4d296c7618c",
+  "reducer_sha256": "bf049624294199661956b2671409663e18f4f34294809aaa7c43061fc1d4df45",
+  "n": 160,
+  "segmentation_valid": 157,
+  "eligible_center_corrections": 12,
+  "eligible_center_fraction": 0.075,
+  "segmentation_available_but_no_accepted_axis": 145,
+  "segmentation_rejected": 3,
+  "accepted_axes6": {
+    "numeric_vector_omitted_for_coordinate_privacy": true,
+    "length": 6
+  },
+  "size_eligible_or_changed": 0,
+  "qualified_opposing_plane_axis_count": 3,
+  "qualified_opposing_plane_cases": 3,
+  "strict_opposite_plane_size_criteria_never_met": true,
+  "full_noRGB_coordinates_different": 7,
+  "full_noRGB_difference_fraction": 0.04375,
+  "max_RGB_coordinate_increment_m": 0.016935348510742188,
+  "nonzero_full_noRGB_maxabs_coordinate_difference_mean_m": 0.003379072461809431,
+  "full_center_change_mean_among_12_changed_m": 0.3014066418011983,
+  "RGB_term_increased_despite_total_objective_decrease_cases": 10,
+  "RGB_term_initial_mean_on_12_solver_cases": 1.114134444599658,
+  "RGB_term_final_mean_on_12_solver_cases": 1.344923375212355,
+  "solver_counts": {
+    "full_rgb": {
+      "solver_executed": 12,
+      "solver_success": 12,
+      "finite_nonconverged": 0,
+      "numerical_invalid": 0
+    },
+    "no_rgb_coordinate": {
+      "solver_executed": 12,
+      "solver_success": 11,
+      "finite_nonconverged": 1,
+      "numerical_invalid": 0
+    },
+    "rgb_gated_pointmask_ablation": {
+      "solver_executed": 12,
+      "solver_success": 12,
+      "finite_nonconverged": 0,
+      "numerical_invalid": 0
+    }
+  },
+  "interpretation": [
+    "Available RGB segmentation is not the bottleneck count: 157 masks passed the declared engineering checks, not correctness checks. The fixed camera-facing/normal/coverage rules yielded eligible center evidence only in 12 cases. This is coverage of this implementation, not proof that all remaining scenes contain no usable geometric evidence.",
+    "Every actual correction is single-axis center-only and conditional on source size. No z center or size coordinates were eligible. This run cannot establish a benefit from observed size adaptation.",
+    "Three axis-level opposing-plane pairs passed the looser individual-plane tests, but none passed the stronger paired size tests. No threshold is changed in response.",
+    "RGB one-sided containment makes a distinct float32 coordinate change in 7 of 160 cases; all main paired supports, acceptance and preconstraint boxes remain identical. The additional coordinate effect is small compared with total plane-driven center motion.",
+    "A lower combined geometry/prior/RGB objective does not imply lower RGB term: the tradeoff can worsen containment while improving surface residual. RGB and point-plane cues can conflict or be differently scaled; the diagnostic does not establish which cue is task-correct.",
+    "Zero size coverage and 7 RGB-coordinate differences sharply limit what a subsequent task result could support. Task precision and the conditional adaptation gate remain for independent post-seal evaluation. No further G revision is justified by these unlabeled counts alone."
+  ],
+  "no_GT_scores_media_or_source_observation_arrays_read": true
+}

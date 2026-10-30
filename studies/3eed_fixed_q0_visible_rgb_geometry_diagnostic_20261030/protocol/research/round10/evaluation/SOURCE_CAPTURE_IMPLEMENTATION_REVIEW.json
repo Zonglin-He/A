@@ -1,0 +1,30 @@
+{
+  "state": "independent_source_capture_static_review_pass_with_absolute_CLI_condition",
+  "source_sha256": "0be3becbdcc87877e93c5daf51174047f0b59197278abfb6497d3cd6febdb272",
+  "reviewed_dependencies": {
+    "crossplatform/round9/run_diagnostic.py": "a32166dce704e776be346dbc0020cdc498abd79f84976f4e047c5a8344d38742",
+    "crossplatform/round7/regression_adapter.py": "2d23f99c57c63d2bc794b3ab768f9868631c84118e40568e9a9a3b6219af03a2",
+    "crossplatform/round7/experiment/runner_helpers.py": "c73431a4871ede56674636d66b636e6d77389b9f41eb0cf9160209876d5c1e59"
+  },
+  "checks": {
+    "GTfree_exact9_manifest_keys": true,
+    "metadata_only_filehash_no_groundinfo_read": true,
+    "actual_modelXYZ_and_rawindices_saved": true,
+    "sameforward_q0_and_sourcefeatures_saved": true,
+    "strictFP32_and_sourcecheckpoint_provenance": true,
+    "firstcase_repeat_and_fullmodel_frozen_assertions": true,
+    "plan_manifest_checkpoint_capture_code_hashes": true,
+    "no_G_pseudotarget_score_or_GTinterface": true
+  },
+  "execution_conditions": [
+    "All CLI paths absolute: imported R9load_model calls os.chdir(runtime), while capture paths are not normalized.",
+    "Actualseed torch/NumPy is hardcoded0. Pythonrandom not explicitly seeded; no identified Pythonrandom use in source forward/sample path, and captureepisode restores RNG. Do not claim planseed is consumed.",
+    "Source capture may precede G plan freeze only as input/model evidence. No G-quality scores/targetlabels used to choose G plan."
+  ],
+  "limits": [
+    "Static code review only, not actual source run evidence.",
+    "Source_cache and sampledP are private data, not public export.",
+    "Source_seal links program map through registered_plan SHA rather than directly repeatedprogramfield."
+  ],
+  "no_GPU_GTarget_annotation_or_rawdata_access_by_reviewer": true
+}

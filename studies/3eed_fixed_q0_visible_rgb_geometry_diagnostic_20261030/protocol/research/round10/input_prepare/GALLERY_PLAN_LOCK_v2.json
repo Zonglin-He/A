@@ -1,0 +1,22 @@
+{
+  "state": "R10_input_only_gallery10_frozen_before_task_GT_score",
+  "input_manifest_sha256": "b72c64157f83e93e11db10953a5721c07a981a0726b387de4248b6e954d27425",
+  "selection_program_sha256": "bb3617d2e59166dbf6f2fbc0e65cdf9f1f41d6924ea56a84b39b1cefecfee2be",
+  "selection_salt": "R10_rgb_support_gallery_v1",
+  "rule": "Each platform-scene choose first2 ascending SHA256(salt|id), tie id; no score/color/GT screening.",
+  "n": 10,
+  "per_scene": 2,
+  "primary_panels": [
+    "original_RGB",
+    "q0_seeded_RGB_mask",
+    "source_q0_projection",
+    "full_rgb_projection",
+    "no_rgb_coordinate_projection",
+    "rgb_gated_pointmask_ablation_projection"
+  ],
+  "GT_overlay_default": false,
+  "GT_overlay_requires_separate_postseal_CPU_score_and_render_release": true,
+  "caption_and_actualmedia_private_only": true,
+  "use_for_method_change": false,
+  "scope": "Qualitative diagnostics; not random independent scene evidence or performance-selected examples."
+}
