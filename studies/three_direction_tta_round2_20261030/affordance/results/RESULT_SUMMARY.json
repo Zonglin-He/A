@@ -1,0 +1,373 @@
+{
+  "dev": {
+    "metrics": {
+      "source": {
+        "objective": "hm_support",
+        "step": 0,
+        "arm": "source",
+        "n": 16,
+        "valid_counts": {
+          "auc": 16,
+          "aiou": 16,
+          "sim": 16,
+          "mae": 16
+        },
+        "undefined_counts": {
+          "auc": 0,
+          "aiou": 0,
+          "sim": 0,
+          "mae": 0
+        },
+        "auc": 0.6799352836730027,
+        "aiou": 0.13340569404576622,
+        "sim": 0.27142159843511127,
+        "mae": 0.13453409215281578
+      },
+      "mean": {
+        "objective": "hm_support",
+        "step": 0,
+        "arm": "ensemble",
+        "n": 16,
+        "valid_counts": {
+          "auc": 16,
+          "aiou": 16,
+          "sim": 16,
+          "mae": 16
+        },
+        "undefined_counts": {
+          "auc": 0,
+          "aiou": 0,
+          "sim": 0,
+          "mae": 0
+        },
+        "auc": 0.6848284552096533,
+        "aiou": 0.1358864839638762,
+        "sim": 0.27836710968385525,
+        "mae": 0.13256889880182016
+      },
+      "median": {
+        "objective": "hm_support",
+        "step": 0,
+        "arm": "median",
+        "n": 16,
+        "valid_counts": {
+          "auc": 16,
+          "aiou": 16,
+          "sim": 16,
+          "mae": 16
+        },
+        "undefined_counts": {
+          "auc": 0,
+          "aiou": 0,
+          "sim": 0,
+          "mae": 0
+        },
+        "auc": 0.6854613400379546,
+        "aiou": 0.13522682028336175,
+        "sim": 0.27555524588114805,
+        "mae": 0.13222635649635445
+      },
+      "q75": {
+        "objective": "hm_support",
+        "step": 0,
+        "arm": "q75",
+        "n": 16,
+        "valid_counts": {
+          "auc": 16,
+          "aiou": 16,
+          "sim": 16,
+          "mae": 16
+        },
+        "undefined_counts": {
+          "auc": 0,
+          "aiou": 0,
+          "sim": 0,
+          "mae": 0
+        },
+        "auc": 0.685448501874956,
+        "aiou": 0.13915339724818981,
+        "sim": 0.2824324769173159,
+        "mae": 0.13617241746433398
+      },
+      "full": {
+        "objective": "hm_support",
+        "step": 3,
+        "arm": "adapted",
+        "n": 16,
+        "valid_counts": {
+          "auc": 16,
+          "aiou": 16,
+          "sim": 16,
+          "mae": 16
+        },
+        "undefined_counts": {
+          "auc": 0,
+          "aiou": 0,
+          "sim": 0,
+          "mae": 0
+        },
+        "auc": 0.6859730097318709,
+        "aiou": 0.1403001202131651,
+        "sim": 0.2760194009984597,
+        "mae": 0.1352775380131101
+      },
+      "hm_only": {
+        "objective": "hm_only",
+        "step": 3,
+        "arm": "adapted",
+        "n": 16,
+        "valid_counts": {
+          "auc": 16,
+          "aiou": 16,
+          "sim": 16,
+          "mae": 16
+        },
+        "undefined_counts": {
+          "auc": 0,
+          "aiou": 0,
+          "sim": 0,
+          "mae": 0
+        },
+        "auc": 0.6843127098782575,
+        "aiou": 0.14262856069343224,
+        "sim": 0.272626737875286,
+        "mae": 0.14135634263238245
+      }
+    },
+    "costs": {
+      "source_primary_calls": 80,
+      "primary_forward_sum_seconds": 9.481699283700436,
+      "mean_forward_seconds": 0.11852124104625546,
+      "max_forward_peak_cuda_allocated_bytes": 1144890368,
+      "legacy_bridge_calls": 16,
+      "repeat_native_calls": 16,
+      "scope": "Synchronized model forward only. Excludes loading, images/text preparation, offline MLLM CoT and cached decoder diagnostics; not end-to-end deployment latency.",
+      "hm_only": {
+        "mean_cached_three_step_seconds": 0.022632488806266338,
+        "sum_cached_three_step_seconds": 0.3621198209002614,
+        "max_cached_peak_cuda_allocated_bytes": 69772800,
+        "all_nonzero_gradient": true,
+        "all_parameter_delta_nonzero": true,
+        "max_abs_logit_delta": 0.5,
+        "all_native_gpu_views_bitexact": true
+      },
+      "hm_support": {
+        "mean_cached_three_step_seconds": 0.019702994875842705,
+        "sum_cached_three_step_seconds": 0.3152479180134833,
+        "max_cached_peak_cuda_allocated_bytes": 69772800,
+        "all_nonzero_gradient": true,
+        "all_parameter_delta_nonzero": true,
+        "max_abs_logit_delta": 0.5,
+        "all_native_gpu_views_bitexact": true
+      }
+    },
+    "sealed_prediction_files": 64,
+    "scored_sha256": "9c3f3a01cbe25f908c6ee266deaebb1a19d96eec0873853b09b83fca0fe78a50",
+    "seal_sha256": "a9f3fc1758e3923ff3733d62a89984bba52ae3ee2307eafc5a8d3ceadd871e22",
+    "all_metric_valid_n": {
+      "auc": 16,
+      "aiou": 16,
+      "sim": 16,
+      "mae": 16
+    },
+    "preprocessing_and_operator_bridges": {
+      "native64_minus_legacy32_aggregate_delta": {
+        "auc": -3.856299087723336e-06,
+        "aiou": -1.0923329346601562e-06,
+        "sim": 6.344303447036737e-07,
+        "mae": -6.16122533658725e-07
+      },
+      "max_native64_legacy32_point_probability_diff": 0.0025636255741119385,
+      "all_same_seed_fresh_source_repeats_bitexact": true,
+      "index_only_mean_abs_diff_mean": 0.02988651999476133,
+      "paired_projection_restore_max_abs_diff": 0.0,
+      "interpretation": "Preprocessing bridge is source correction, not TTA. Fixed encoder diagnostic isolates decoder projection/index sensitivity, not deployment permutation invariance."
+    }
+  },
+  "confirm": {
+    "metrics": {
+      "source": {
+        "objective": "hm_support",
+        "step": 0,
+        "arm": "source",
+        "n": 32,
+        "valid_counts": {
+          "auc": 32,
+          "aiou": 32,
+          "sim": 32,
+          "mae": 32
+        },
+        "undefined_counts": {
+          "auc": 0,
+          "aiou": 0,
+          "sim": 0,
+          "mae": 0
+        },
+        "auc": 0.7527850611255267,
+        "aiou": 0.17673685155381308,
+        "sim": 0.3733840555597352,
+        "mae": 0.11745003017972283
+      },
+      "mean": {
+        "objective": "hm_support",
+        "step": 0,
+        "arm": "ensemble",
+        "n": 32,
+        "valid_counts": {
+          "auc": 32,
+          "aiou": 32,
+          "sim": 32,
+          "mae": 32
+        },
+        "undefined_counts": {
+          "auc": 0,
+          "aiou": 0,
+          "sim": 0,
+          "mae": 0
+        },
+        "auc": 0.7532401303535989,
+        "aiou": 0.18091698761625208,
+        "sim": 0.3814664418387164,
+        "mae": 0.11513361176825938
+      },
+      "median": {
+        "objective": "hm_support",
+        "step": 0,
+        "arm": "median",
+        "n": 32,
+        "valid_counts": {
+          "auc": 32,
+          "aiou": 32,
+          "sim": 32,
+          "mae": 32
+        },
+        "undefined_counts": {
+          "auc": 0,
+          "aiou": 0,
+          "sim": 0,
+          "mae": 0
+        },
+        "auc": 0.7523047228520497,
+        "aiou": 0.18223404170824056,
+        "sim": 0.38036753638353493,
+        "mae": 0.11503367041439144
+      },
+      "q75": {
+        "objective": "hm_support",
+        "step": 0,
+        "arm": "q75",
+        "n": 32,
+        "valid_counts": {
+          "auc": 32,
+          "aiou": 32,
+          "sim": 32,
+          "mae": 32
+        },
+        "undefined_counts": {
+          "auc": 0,
+          "aiou": 0,
+          "sim": 0,
+          "mae": 0
+        },
+        "auc": 0.753651137161113,
+        "aiou": 0.1846873763785464,
+        "sim": 0.38369429067032096,
+        "mae": 0.11784506416780975
+      },
+      "full": {
+        "objective": "hm_support",
+        "step": 3,
+        "arm": "adapted",
+        "n": 32,
+        "valid_counts": {
+          "auc": 32,
+          "aiou": 32,
+          "sim": 32,
+          "mae": 32
+        },
+        "undefined_counts": {
+          "auc": 0,
+          "aiou": 0,
+          "sim": 0,
+          "mae": 0
+        },
+        "auc": 0.7484739330098005,
+        "aiou": 0.1908387443045296,
+        "sim": 0.3791002419342226,
+        "mae": 0.119544261820907
+      },
+      "hm_only": {
+        "objective": "hm_only",
+        "step": 3,
+        "arm": "adapted",
+        "n": 32,
+        "valid_counts": {
+          "auc": 32,
+          "aiou": 32,
+          "sim": 32,
+          "mae": 32
+        },
+        "undefined_counts": {
+          "auc": 0,
+          "aiou": 0,
+          "sim": 0,
+          "mae": 0
+        },
+        "auc": 0.7516879274791858,
+        "aiou": 0.1948575471414173,
+        "sim": 0.37769731209712754,
+        "mae": 0.12302420739285996
+      }
+    },
+    "costs": {
+      "source_primary_calls": 160,
+      "primary_forward_sum_seconds": 18.423337878659368,
+      "mean_forward_seconds": 0.11514586174162104,
+      "max_forward_peak_cuda_allocated_bytes": 1143607808,
+      "legacy_bridge_calls": 0,
+      "repeat_native_calls": 0,
+      "scope": "Synchronized model forward only. Excludes loading, images/text preparation, offline MLLM CoT and cached decoder diagnostics; not end-to-end deployment latency.",
+      "hm_only": {
+        "mean_cached_three_step_seconds": 0.02057561106630601,
+        "sum_cached_three_step_seconds": 0.6584195541217923,
+        "max_cached_peak_cuda_allocated_bytes": 69772800,
+        "all_nonzero_gradient": true,
+        "all_parameter_delta_nonzero": true,
+        "max_abs_logit_delta": 0.5,
+        "all_native_gpu_views_bitexact": true
+      },
+      "hm_support": {
+        "mean_cached_three_step_seconds": 0.01909301096748095,
+        "sum_cached_three_step_seconds": 0.6109763509593904,
+        "max_cached_peak_cuda_allocated_bytes": 69772800,
+        "all_nonzero_gradient": true,
+        "all_parameter_delta_nonzero": true,
+        "max_abs_logit_delta": 0.5,
+        "all_native_gpu_views_bitexact": true
+      }
+    },
+    "sealed_prediction_files": 128,
+    "scored_sha256": "8cfa2f8708428c488bc048066ff9abb33fddd7487af41d3122ff19d13a6e5573",
+    "seal_sha256": "9a1f166627d9d1d378b1b5599382eff9d00c03a49552f44b4c7dec20383a7a2e",
+    "all_metric_valid_n": {
+      "auc": 32,
+      "aiou": 32,
+      "sim": 32,
+      "mae": 32
+    }
+  },
+  "claim": {
+    "local_support_mechanism_adopted": false,
+    "reason": "Full improves threshold-averaged IoU vs prelocked q75 but worsens AUC/SIM/MAE and loses aIoU to HM-only; these results do not establish improved semantic localization.",
+    "confirm_labels_exposed": true,
+    "posthoc_diagnostics_new_validation": false,
+    "future_experiments_run": false,
+    "independent_parent_metric_audit": "passed_independent_rank_and_other3_metrics_maxerror2.22e-16"
+  },
+  "preservation": {
+    "original_execution_lock_sha256": "b1156736573c38965b5e1971f6aaac48197787f287d5f6562d8e696bb2e003a7",
+    "original_mechanism_lock_sha256": "b50c26ef646d1fade2d9a3261d7f8b5401b4eb9b585f9cb1d066479c4b2849f3",
+    "original_cohort_lock_sha256": "0a59c0e7a542a06c7a20556e5abf0c10618bf8df6cf6076d056a80d3270ca930",
+    "old_public_export_manifest_sha256": "c4945fe694808d5588a4ccbe7326e99c5ceb503bc737ca07b3a1d5273604bf4e"
+  }
+}

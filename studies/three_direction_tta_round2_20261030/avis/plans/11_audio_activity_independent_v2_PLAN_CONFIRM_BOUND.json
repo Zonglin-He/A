@@ -1,0 +1,63 @@
+{
+  "original_private_plan_sha256": "efd001b5b4235f1475881769de5c092b79afd7ebcc71166ee8d74908943cbfc9",
+  "sanitization": "media paths pseudonymized or wholeinputmapping omitted; originallock nevermodified",
+  "protocol": {
+    "state": "confirmation_final_locked",
+    "utc": "2026-10-30T00:32:34.968182+00:00",
+    "manifest": "<AVIS_ROOT>/round2/cohorts/confirmation.json",
+    "manifest_sha256": "b63f9f1f5f14e5f69cf4ddd1e7630cd5c80c07648c7596af9b2a2a25a805e3c2",
+    "source_hashes": {
+      "<AVIS_ROOT>/round2/audio_activity_independent_v2/scripts/independent_adapter.py": "f9a14fc64671d1312dd160ed57420604042646ad9459e0434c76f73610a88da4",
+      "<AVIS_ROOT>/round2/audio_activity_independent_v2/scripts/run_activity.py": "5dfbdb14c5ced12939a0ac363d7b67d4ec61907ad4d08da04a6d7ee40ce1567f",
+      "<AVIS_ROOT>/round2/audio_activity_independent_v2/SUPPORTING_CONDITION_LOCK.json": "19eab23d79253afc54eaa0a6ac66c171089610234362cb56ca78094c5f825b53",
+      "<AVIS_ROOT>/round2/audio_activity_v1/scripts/activity_adapter.py": "83236161bafcabb17a66768ac98b31676a5369b09a20b9da2a885790b2247b84",
+      "<AVIS_ROOT>/round2/audio_activity_v1/PROMPTS_LOCK.json": "0112570873263a383e365764b10f01f0578a40a4af5adc582e3239dd3b02e3f9"
+    },
+    "source_predictions": "<AVIS_ROOT>/round2/confirm_early_v2/source/predictions.json",
+    "source_prediction_sha256": "501a47d41247f1a3bd430be2bbc96470a50b2e91046af93ab52cf01a34e7bdcd",
+    "old_latent_predictions": "<AVIS_ROOT>/round2/confirm_early_v2/latent_identity/predictions.json",
+    "old_latent_prediction_sha256": "f1a2f115576894b337f21c63cff58b323fdd31e9d9c12638d0ff760e51aeb0b1",
+    "features": "<AVIS_ROOT>/round2/audio_activity_v1/features_confirm",
+    "feature_plan_sha256": "be7617bbf975dd9e2f839572134cf750f94d02bfe4906ec250055c10d7498b79",
+    "arms": [
+      "source",
+      "early_latent_v2",
+      "direct_audio",
+      "direct_audio_smooth",
+      "activity_tta",
+      "activity_no_temporal",
+      "direct_analytic_prior"
+    ],
+    "activity": {
+      "steps": 20,
+      "lr": 0.5,
+      "base_logit": 3,
+      "temporal_weight": 0.1,
+      "anchor_weight": 0.01,
+      "coordinate_clip": [
+        -8,
+        8
+      ],
+      "gradient_clip": 1.0,
+      "evidence_margin": 0.04,
+      "evidence_temperature": 0.02,
+      "gate_threshold": 0.5,
+      "direct_median_window": 5
+    },
+    "dev_exposure": "dev8twostagesexposed andallnegativepreserved; confirm12GToutcomesuninspected",
+    "confirmation_policy": "freeze final protocol beforeconfirmationallarms, no methodchangeafterconfirmationmetrics",
+    "mechanism_claim": "explicitdecoderactivitylatent, notpretrainedweightTTA andnotsameclassspeakerdisambiguation",
+    "analytic_control_sha256": "8732f0f021bf2e9660ea4eefbb192c67847d34358ada468cc273d970e22a3a1e",
+    "prediction_binding_policy": "futurebindingonlyfillssource/earlypredictionhashesaftertheirimmutableplansseal; nomethod/hyperparameter/arm/inputchangemayoccur",
+    "evidence_definition": "independentbackgroundonly; sigmoid((cos_c-maxbg)/.02)",
+    "supporting_condition_repair_only": true,
+    "prediction_binding_receipt": {
+      "utc": "2026-10-30T00:47:16.989196+00:00",
+      "method_lock_sha256": "01cb5dcad82c9d14b651963ebb247ae50e53a580a19918736aa780d724781f8c",
+      "master_lock_sha256": "d83c9891b0998f3188f5292cc48f64821c0bb40ce23a9f4b7b9b8479ecb71aa5",
+      "feature_seal_sha256": "c4ca274212ecffb3f2ffa2eb4d17966039e3a5765ee08c9fc5f617650a9c684b",
+      "only_future_prediction_hashes_bound": true,
+      "confirmation_GT_access": false
+    }
+  }
+}

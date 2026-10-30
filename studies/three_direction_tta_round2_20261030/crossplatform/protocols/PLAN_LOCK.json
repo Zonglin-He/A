@@ -1,0 +1,117 @@
+{
+  "source_sha256": "8aeeecd10a5e80d21d303be5ee678c3914b5f079e9e226a13483cf03015b8fba",
+  "measurement_status": "valid_under_stated_scope",
+  "public_view": {
+    "id": "3eed_round2_structured_surface_adapter_v1",
+    "phase": "locked_before_dev_model_inference_and_scores",
+    "cohort_path_lock_sha256": "cd61a4bcf0e3f98ee841d786d91d8ffea836c59638d089d5105d81acf6872149",
+    "input_manifest_sha256": {
+      "dev": "6ec7df38afe5277772c24b5656eb1bcb8aa96ad476d46ba44e8b1ec3705b3d58",
+      "confirm": "1b3ea958a80dbf68e5df96638329e7da6dac22d45d398ae3ab23c0309b2d9d01"
+    },
+    "checkpoint_sha256": "bfdedb97971fb31640c5a78790716dc9547953caa646489138f048375e645ec8",
+    "upstream_commit": "843a901f5367a6be5cc484b97c6ecad462961dfa",
+    "seed": 20261030,
+    "source_hashes": {
+      "tta.py": "3a265e38341f5a8c79c8a7131f5e42264bbc432634633418d5f7edb6a52c600a",
+      "geometry_refine.py": "3b3b0ab212b795a986fb9338ac555109f236e70bf7ac407de8a8fbe63ed7961d",
+      "replication36/common.py": "c779a23d4949bd7e06a912c8d8144132ca94bc98fd965a45dccb03bd5aebdcd2",
+      "public_export/code/reference_surface.py": "7403f307b86ebe6572a5b4bf48fbd697b513f4e3e2aa3f4f143c41625d75b6d9",
+      "upstream/models/bdetr.py": "5b16cb4148f1a58e332b7f949ab80e84ee3a18675de02cc8a4d23f16cfc4be75",
+      "upstream/models/modules.py": "22c7c91ef5c3428f43e077b2e7ae3596a3f30325b71995b45222f5e3c88dbade",
+      "upstream/models/point_backbone_module_v2.py": "1e61e0fb2bef33d3f3a1e2fa3ec484ab447450358f4c2a1c380f701dc20eb943",
+      "upstream/models/encoder_decoder_layers.py": "f20008513081213d46e844b3c053156308d13d82f8a61be26f7ab9b67984c33c",
+      "upstream/ops/teed_pointnet/pointnet2_batch/pointnet2_modules.py": "05b05e3b44c29b08057489d8265ea5e99ef478ca065f6d10c5ced9d398c657ca",
+      "upstream/utils/transform_waymo.py": "574760753be97ba86b9e8b1e6e88a69ffa25520460790acb06099ee2aaa17683"
+    },
+    "round2_code_hashes": {
+      "source_features.py": "ec4f7d56e83ddfd50baf9aea8256bad6cb4418a9f8f87080dc248c8dce5adef9",
+      "adapt_cached.py": "8748cc06033fe1aa6eb69c8082d166af63e520912d8688fbb2034f6aa64296a7",
+      "surface_teacher.py": "28cb2f4af8bd47d2dc20748dbb406c5ae7db18e7f005a9c55216c2c4d0d3374f",
+      "residual_adapter.py": "69ef683c91376fbbbef21ddde233bc2933e9b0f42eba376cce8925a1bd39928e",
+      "prepare_inputs.py": "4f7a4a66553e7f0e612283dc2c790749578a58c091652a5e8acf41d26afa9dce",
+      "select_cohort.py": "d4b7bdd85ba960612a53efd73cfd3dc20e23ac828d4c465fb1e43c504b7ccf8e"
+    },
+    "arms": [
+      "source",
+      "pca",
+      "surface",
+      "direct_latent",
+      "adapter0",
+      "adapter1",
+      "adapter3",
+      "source_target_control3"
+    ],
+    "geometry": {
+      "candidates": 8,
+      "crop_min_points": 16,
+      "normal_knn": 8,
+      "outlier_probability": 0.2,
+      "normal_coefficient": 0.2,
+      "likelihood_temperature": 0.02,
+      "center_prior": 0.5,
+      "center_bound_fraction": 0.15,
+      "max_iterations": 20,
+      "posterior_min": 0.65,
+      "normal_planarity_min": 0.1,
+      "vertical_normal_xy_min": 0.8,
+      "face_support_min": 3,
+      "tangent_coverage_min": 0.25,
+      "mode_merge_radians": 0.17453292519943295,
+      "mode_merge_center_fraction": 0.05,
+      "accepted_fit_check_angle_radians": 0.2617993877991494
+    },
+    "optimization": {
+      "steps": [
+        0,
+        1,
+        3
+      ],
+      "learning_rate": 0.01,
+      "center_bound_fraction": 0.15,
+      "gradient_clip": 1.0,
+      "rank_weight": 1.0,
+      "pose_weight": 1.0,
+      "trust_region_weight": 0.1
+    },
+    "adapter": {
+      "trainable_parameters": 1445,
+      "zero_source_bridge": "5x288affine+bias allzero, outputcenter3/yaw1/logscore1; sourceextentsunchanged",
+      "frozen_features": "lastpredictionhead input finaldecoder features288, sourceweightsallfrozen",
+      "query_candidates": 8,
+      "rank": "Huber on normalizedlogprobability tosource-logits+teacherbonus target; sourcecontrol exactsame logits",
+      "yaw": "retainbestmode moduloPI; wrappedangle residual, never average angles or crossmodecenters"
+    },
+    "teacher_gate": "16cropunique forseparate8neighbor fit/check normals; twohorizontalfacefamilies inbothhalves andmodeposterior/angleagreement; no oldL/Wgate fornewteacher",
+    "protocol": {
+      "dev_n": 18,
+      "confirm_n": 36,
+      "old81_exactframes_excluded": true,
+      "dev_confirm_scenes_disjoint": true,
+      "historical_DroneQuad_scenes": "allpreviouslyexposed; cannotclaimgloballynovelscenes",
+      "primary_metric": "official7D fullOBBIoU mean,Acc strict>.25 and>.50",
+      "invalid_sizes": "noabs/noclipping; record invalid predictions asfailed geometry withIoU0 andretainall denominator",
+      "postseal_only": "separateCPUscorer opensnumericbbox afterallcohortarmseals; confirmation noGTbeforeallseals",
+      "language_readout": "fixedfirstnoun puretext sameaspriorstudy; GTclass-assistedspan onlypostsealdiagnostic",
+      "text_relation_constraint": "disabled; no unverifiedLiDAR/imageleft assumptions",
+      "point_information": "same16384XYZ sourceandallarms; nofullrawpoint extra information",
+      "preparer_boundary": "JSONcontainerswithannotations openedbyinputextractor; no numericbbox/class used. AdaptationonlystandaloneGTfreecache",
+      "controls": "source-repeat<=1e-6 andbitexactrecorded; adapter0/sourcecontrol3 bitexactsource; failureshalt notsilentlyskip",
+      "reporting": "platform,pairedtails,sceneclusterbootstrap,heldoutgeometryacceptance+harm association, identitychanges,gradient/parameter/cost",
+      "dev_revision_budget": "atmostone documented mechanism/implementationcorrection withnewimmutableplan, noLR/lossgrid; confirmationreleasedonlyafterfinalfreeze"
+    },
+    "engineering": {
+      "synthetic_only": true,
+      "two_vs_oneface_andzerobridge": "d2c0badac7d10666a15c3d8853758f7e64a37c29bb2ba0073f3a7496758e690a",
+      "source_KL_roundoff_fixed_beforedata": true
+    },
+    "claim_limits": [
+      "Addedqueryresidualnetworkadapterisactualnewparameterupdate, notbackboneadaptation",
+      "Directlatentyaw/center optimizationis outputspacegeometry strongcontrol",
+      "NoextraTTAvalue ifdirectlatentreadequalsorwins",
+      "Geometrycanreweightsameclassinstancesbutnotguaranteelinguisticidentity",
+      "normalhalvesaredisjointpointswithseparategraphsbutnotindependentsensors"
+    ],
+    "GPU": "parentexclusivecoordination, dev18sourceonly initialrequest about1-2minutesincludingload; CPUadapt/scoreafterseal"
+  }
+}

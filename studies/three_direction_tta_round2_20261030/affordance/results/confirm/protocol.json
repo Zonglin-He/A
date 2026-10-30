@@ -1,0 +1,38 @@
+{
+  "state": "sealed",
+  "engineering_subset_first_locked_parent": false,
+  "cohort": "confirm",
+  "count": 32,
+  "steps": [
+    0,
+    3
+  ],
+  "objectives": [
+    "hm_only",
+    "hm_support"
+  ],
+  "readout": "median-logit of adapted K views; zero-step adapted equals median baseline, not source-only",
+  "constants": {
+    "K": 5,
+    "steps": 3,
+    "lr": 0.01,
+    "residual_logit_cap": 0.5,
+    "knn": 16,
+    "feature_std_floor": 1e-06,
+    "focal_alpha": 0.25,
+    "focal_gamma": 2.0,
+    "hm_epsilon": 1e-06,
+    "support_lambda": 1.0,
+    "weight_decay_lambda": 0.001,
+    "support_quantile": 0.25,
+    "teacher_quantile": 0.5,
+    "quantile_interpolation": "linear",
+    "leave_one_view_out": true,
+    "readout": "sigmoid(median_linear_quantile_of_adapted_view_logits)"
+  },
+  "cache_seal_sha256": "92dbbdbed16ed770fe352457d2195336c728bb75dfa185335d4e47f1a03462ca",
+  "execution_lock_sha256": "b1156736573c38965b5e1971f6aaac48197787f287d5f6562d8e696bb2e003a7",
+  "GT_data_read": false,
+  "adaptation_device": "cuda",
+  "timing_scope": "cache replay for adapter optimization; source forwards are separately measured, not a deploy end-to-end timing claim"
+}

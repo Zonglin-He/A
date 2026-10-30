@@ -1,0 +1,50 @@
+diff --git a/models/bdetr.py b/models/bdetr.py
+index 359b3d1..1a511c9 100644
+--- a/models/bdetr.py
++++ b/models/bdetr.py
+@@ -13,7 +13,7 @@ import numpy as np
+ import torch
+ import torch.nn.functional as F
+ import torch.nn as nn
+-from transformers import RobertaModel, RobertaTokenizerFast
++from transformers import RobertaModel, RobertaTokenizerFast, RobertaConfig
+ from .point_backbone_module_v2 import Point_Backbone_V2, get_cfg
+ from .backbone_module import Pointnet2Backbone
+ from .modules import PointsObjClsModule, GeneralSamplingModule, ClsAgnosticPredictHead, PositionEmbeddingLearned
+@@ -53,6 +53,7 @@ class BeaUTyDETR(nn.Module):
+         butd=True,
+         pointnet_ckpt=None,
+         self_attend=True,
++        roberta_config_only=False,
+     ):
+         """Initialize layers."""
+         super().__init__()
+@@ -74,7 +75,7 @@ class BeaUTyDETR(nn.Module):
+         # Text Encoder
+         t_type = "./data/roberta_base/"
+         self.tokenizer = RobertaTokenizerFast.from_pretrained(t_type)
+-        self.text_encoder = RobertaModel.from_pretrained(t_type)
++        self.text_encoder = RobertaModel(RobertaConfig.from_pretrained(t_type)) if roberta_config_only else RobertaModel.from_pretrained(t_type)
+         for param in self.text_encoder.parameters():
+             param.requires_grad = False
+ 
+diff --git a/src/joint_det_dataset.py b/src/joint_det_dataset.py
+index d772206..5d11184 100644
+--- a/src/joint_det_dataset.py
++++ b/src/joint_det_dataset.py
+@@ -1,5 +1,5 @@
+ # ==================== Imports ====================
+-from cgi import print_arguments
++
+ from collections import defaultdict
+ import json
+ import multiprocessing as mp
+@@ -11,7 +11,7 @@ import numpy as np
+ import torch
+ from torch.utils.data import Dataset
+ from transformers import RobertaTokenizerFast
+-import open3d as o3d
++# Unused optional visualization import removed for lightweight inference.
+ from tqdm import tqdm
+ 
+ # from utils.align_3eed import convert_boxes_from_n_to_vir, convert_points_to_virtual

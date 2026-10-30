@@ -1,0 +1,13 @@
+# 3EED round2: structured feedback and bounded parameter adaptation
+
+**Decision: not adopted.** On36fixed newconfirmationframes, the preselected3-step constrainedadapter reached43.6937%mIoU versus44.0171%source,49.2250%PCA and48.8526%surface-refinement. It reduced unmaskedAdam damage(38.3234%) but did not establish task gain. Acc@.50 was18/36for source/primary,23/36PCA,22/36surface. The one-step diagnostic does not replace the preselectedprimary.
+
+Read the [full report](REPORT.md), [tricks audit](TRICKS_AUDIT.md), [fixed v2 protocol](protocols/V2_PROTOCOL.md), [confirmation results](results/v2_confirm_scored_double.json) and [final decision](evidence/DECISION_FINAL.json). Allv1/v2development/confirmation arms, pairedpositive/negative tails, pseudonymousscene groups, actualcosts, locks and engineering failures are retained. This is18development+36confirmation examples, not1242independentsamples.
+
+The source uses officialunionweights plus modifiedtext-only firstnounreadout: target-onlyprocessing, notsource-onlytransfer. The1445parameteradapter is an actual update on frozenqueryfeatures; PCA/surface/directlatent are outputgeometrycontrols. No backboneadaptation or novelcontribution is claimed. The roof extension passed analytic controls but addedzeroqualifiedcandidates onbothcohorts. Strictfallback/function-spacebacktracking repairedoptimizerbehavior but did not beat source/directgeometry. Queryswitches do not prove instanceidentitychanges.
+
+The [measurement index](lineage/MEASUREMENT_VALIDITY.json) invalidates the oldfloat32rotationscorer and14incorrectdevIoUs. Only corrected double task scores are current. Original localrecords remain immutable; publiccopies are sanitizedviews with originalSHA256. TheJSONserializer failure and144array bitexactrepair are retained. No predictions changed during measurementrepair.
+
+Bothversions completed/sealed all36confirmation predictions and216commonbaselinearraybytechecks before numericGTscoring. Theprimary was frozenbeforeconfirmation. Development/confirmation scenes are disjoint, with historicalDrone/Quad exposure caveats. Parentindependent polygon/convex audits confirmed allconfirmation scores within5.384e-8.
+
+Exactscientificscripts under `code/` retain their relativeworkspace layout. [Reproduction notes](REPRODUCTION.md) explain required officialassets and privateinput/plan reconstruction. This is not a turnkeydownloader or fullbenchmarkreproduction. No captions, coordinates, GTpayloads, weights, rawpredictions, features, media, localpaths or credentials are redistributed. Twofixed localcasefigures were inspected and excluded. `manifest.json` is the explicit allowlist; this leaf does not push.

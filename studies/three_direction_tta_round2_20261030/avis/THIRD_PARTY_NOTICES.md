@@ -1,0 +1,1 @@
+AVISM official implementation https://github.com/ruohaoguo/avis at851ca2dd6e7a169bd1bb4ad6a2e8fa97a31ef558, MIT (copyright GeWu-Lab2022); native/readout/evaluator derived portions retain this notice. CLAP: https://github.com/LAION-AI/CLAP and official supported https://huggingface.co/laion/clap-htsat-unfused, modelcardApache2.0. No pretrainedweights ordata redistributed.

@@ -1,0 +1,29 @@
+# Single bounded v2 reconstruction: teacher coverage × constrained optimization
+
+Draft before anyv2execution. v1data,code,plan,scores and catastrophic tails remain immutable. Same18exposeddevelopmentframes and same36unexposedconfirmationframes; no newGPU for development. Two independent explanations are tested: vertical-face-only geometry lacks top-down coverage; RMSfeature fan-in and unconstrained sharedAdam corrupt outputs.
+
+## A axis: old teacher versus one roof-supported extension
+
+Oldteacher is exactly the frozenv1 implementation. Newteacher retains it and adds one alternative roof branch from the same16384XYZpoints. The presence of an approximatelyz-normal plane is measured, not assumed from the platform label. No calibrated sensor ray, RGB appearance or temporal correspondence is invented.
+
+Roof candidate crop is1.25×sourcebox extent(center/axes fixed), evaluated only for positive finite sourceextents. This reduces artificial source-crop silhouette while using no newpoints. Split unique points deterministically and estimate8-neighbor normals separately in eachhalf. Roofpoints require abs(nz)≥.85, planarity≥.1 and z≥sourcecenterz+.2×sourceheight. Eachhalf must contain≥12roofpoints; robust90–10%heightspread≤.15sourceheight. Unsupportedplane/insufficientcoverage returns no roofsignal, not a fabricatedyaw.
+
+Represent observed2Droofboundary by convexhull edges with their midpoints. Fit the same yaw initializations{0,PCA,PCA+90°}, fixedsourceextents and boundedcenter; use robust normalized distance from observedhull-edge midpoints to the predictedrectangle boundary plus the existingcenterprior. Missingboxedges do not get an occupancy reward. Afterfitting, qualification requires observedpoints near allfourcandidate rectangle sides(distance≤.1ofcorrespondingsourceextent),≥3points perside, and eachside's tangent span≥.5ofitscandidate side length. Bothhalves must qualify, observedhullarea≥.2sourceL×sourceW, and eachXYspan≥.5candidate extent. Reject anyqualifiedboundarytouching the expandedcrop limit within.02sourceextent: a crop-creatededge is not evidence of the actual roofsilhouette. These checks are necessaryheuristics, not proof that everyobservedhull edge is an objectboundary.
+
+Roofmode energies use the same temperature.02,outliermix.2,centerprior.5,20iterations asv1. A roofnormal contains no yawinformation byitself; yawrequiresactual2Dboundarycoverage. Keep moduloπmodes; merge by existing10°/.05extent rule, never angle-average. Require posterior≥.65 and fit/checkmodeagreement≤15°. Directlatent must use the sameacceptedroof/vertical hypotheses and softcandidateprior as the network arm. If bothbranchfamilies pass, compare their normalizedcheck energies; logboth, branchselection anduncertainty. NoGTchoosesbranch.
+
+Positive/negativeengineeringcontrols beforev2taskrun: completeflatrectangular roof atknown30° passes measuredz-normal+four-sidecoverage; thinflatstrip failsareacoverage; onefrontface failsroofnormal; a45°tiltedplane failsz-normal qualification; artificialcropboundary failsguard. They are analyticconditions, not task-quality results. If the releasedcoordinates/realdevpoints provide noqualifiedroofs, recordunsupported and proceed with optimizer-repair-only evidence; do not relaxthresholds untilsomeframe passes.
+
+## B axis: originalAdam versus output-space constrainedAdam
+
+Same1445parameter affineadapter, sameRMSfeatures, zero-sourcebridge, nominalAdam lr.01, existingobjective,1/3steps. Newsolver firstcomputes the originalAdamproposal, then rescales it using the exactaffine residual changes acrossqueries ratherthan treating288fan-in coordinates asindependentphysicalsteps. BoundcenterEuclideandisplacement≤.05mperstep/.15mtotal, yawchange≤5°perstep/15°total(moduloπ), logscorecorrection≤.1perstep/.3total. Sourceextentsremainbitexact. These physicalconstraints are frozen beforev2scores; noLRgrid.
+
+Backtracking(≤10halvings) accepts only a step satisfyingbounds and nonincreasingthe samecurrentunlabeledobjective(tolerance1e-10); otherwise keepcurrentparameters and record rejection. NoGT, IoU or class entersstepacceptance. Logproposed/acceptedfunctionspacestep, lossbefore/after, effectiveparameterscaling, gradient/parameterdelta and rejectedqueries. This is an optimizerrepair, not newsemanticfeedback.
+
+For strictsourcefallback, multiplyall5adapterresidual outputs by the geometryacceptance mask. Thus unacceptedqueries keep bothboxandlogscore exactlysource. ApplythisSAMEhardmask to BOTHcells ofB, so optimizationcomparison is not confounded bymask. Preserve the originalunmaskedv1Adam as an already-measuredmaskablation. Optionally the newteacher'sunmaskedAdam can be included only as the predeterminedsamebudgetmaskablation, not a searchedcandidate. Mainfourcells always comparemaskedAdam to maskedconstrainedAdam.
+
+## Finite comparison matrix and decisions
+
+Reference source/PCA/surface retained. Teacher-specificdirectlatent forAold/Anew retained. Fourprimaryparametercells are(Aold,Anew)×(maskedAdam,maskedconstrainedAdam),3fixedsteps with1step diagnostic. Adapter0 andsource-targetcontrol3 remain exactsource checks. Originalv1unmaskedAdam is retainedseparately, never overwritten. This separatescoveragefromsolver and exposes whethermask alone explainsapparentrepair.
+
+Thev2teacherqualification/optimizerconstants are lockedonce afterengineeringcontrols, beforeanyv2devprediction/seal/score. Atmostthisone reconstruction, nofurthersignal/LRscan. Confirmationmethodselection must be declared fromdevelopmentbeforeconfirmationGPU/GTaccess; retainallv2devcells andnegativefindings. Ifnogeometrysupportsidentity, stateidentityunresolved. Ifdirectlatent wins, do not claimaddedneuralTTAvalue. Ifonlyoptimizerdamage isremoved, do not callsource-equivalence a taskgain. Sceneoverlap andfewplatformclusters retainpreviouscaveats.

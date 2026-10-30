@@ -1,0 +1,53 @@
+{
+  "original_private_plan_sha256": "b6dd5b912102bb60bab9aa41a5f2dc97eddf21aa93897db1d8b934eb18cf6c54",
+  "sanitization": "media paths pseudonymized or wholeinputmapping omitted; originallock nevermodified",
+  "protocol": {
+    "state": "dev_locked_before_CLAP_activity_results",
+    "utc": "2026-10-30T00:27:57.140560+00:00",
+    "manifest": "<AVIS_ROOT>/round2/cohorts/dev.json",
+    "manifest_sha256": "db949a76a231598e54c610f5abbc5f4e0a2c229770640d3dec0cb0445a5867c8",
+    "source_hashes": {
+      "<AVIS_ROOT>/round2/audio_activity_v1/scripts/activity_adapter.py": "83236161bafcabb17a66768ac98b31676a5369b09a20b9da2a885790b2247b84",
+      "<AVIS_ROOT>/round2/audio_activity_v1/scripts/run_activity.py": "bbb47c9b324fd293ed9b70f0242a10115ad1d15481b05bab733247093931b4d6",
+      "<AVIS_ROOT>/round2/audio_activity_v1/PROTOCOL.md": "73f6845a55697e874b7f087e03a88c122dd057c7fd08da2fa2ee0c05dfdf9745",
+      "<AVIS_ROOT>/round2/audio_activity_v1/PROMPTS_LOCK.json": "0112570873263a383e365764b10f01f0578a40a4af5adc582e3239dd3b02e3f9",
+      "<AVIS_ROOT>/round2/audio_activity_v1/scripts/run_activity_v2.py": "45d0b3de9b9cb20637b1fcd6085940395ee89d0b4ba77f518638b98672dd85c4",
+      "<AVIS_ROOT>/round2/audio_activity_v1/ANALYTIC_CONTROL_LOCK.json": "8732f0f021bf2e9660ea4eefbb192c67847d34358ada468cc273d970e22a3a1e"
+    },
+    "source_predictions": "<AVIS_ROOT>/round2/dev_v2/source/predictions.json",
+    "source_prediction_sha256": "e97fdab92eec166eb254ff53505cf44254b64beb31725fb4ea3edaab92619b14",
+    "old_latent_predictions": "<AVIS_ROOT>/round2/dev_v2/latent_identity/predictions.json",
+    "old_latent_prediction_sha256": "4d1bf92281c3d4d038fb877d0bc5fb3e4f256905efafdba57bdd21fc5e47f64e",
+    "features": "<AVIS_ROOT>/round2/audio_activity_v1/features_dev",
+    "feature_plan_sha256": "e1d25ce473359201aea059b0238586818a63a72ac6410d7baee89d0c5ede86ab",
+    "arms": [
+      "source",
+      "early_latent_v2",
+      "direct_audio",
+      "direct_audio_smooth",
+      "activity_tta",
+      "activity_no_temporal",
+      "direct_analytic_prior"
+    ],
+    "activity": {
+      "steps": 20,
+      "lr": 0.5,
+      "base_logit": 3,
+      "temporal_weight": 0.1,
+      "anchor_weight": 0.01,
+      "coordinate_clip": [
+        -8,
+        8
+      ],
+      "gradient_clip": 1.0,
+      "evidence_margin": 0.04,
+      "evidence_temperature": 0.02,
+      "gate_threshold": 0.5,
+      "direct_median_window": 5
+    },
+    "dev_exposure": "same8 dev already scored earlylatent/source/direct fusion; all12confirmation labels remainuninspected",
+    "confirmation_policy": "freeze final protocol beforeconfirmationallarms, no methodchangeafterconfirmationmetrics",
+    "mechanism_claim": "explicitdecoderactivitylatent, notpretrainedweightTTA andnotsameclassspeakerdisambiguation",
+    "analytic_control_sha256": "8732f0f021bf2e9660ea4eefbb192c67847d34358ada468cc273d970e22a3a1e"
+  }
+}

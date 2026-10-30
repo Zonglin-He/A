@@ -1,0 +1,14 @@
+{
+  "state": "locked_before_activitycosineinspection_or_taskscores",
+  "utc": "2026-10-30T00:29:58.385474+00:00",
+  "arm": "direct_analytic_prior",
+  "threshold": 0.32679491924311227,
+  "formula": "0.5-sqrt(0.03)",
+  "derivation": "At gate boundary r=-3, sigmoid(3+r)=.5; weightedBCE derivative |2q-1|(.5-q) plus anchor derivative2*.01*(-3)=0. Forq<.5:2(.5-q)^2=.06, q=.5-sqrt(.03). NoTV pointwise optimum; not empirical calibration.",
+  "same_candidate_mask_emptytrack_confidence_policy": true,
+  "original_six_arms_unchanged": true,
+  "original_plan_sha256": "4109919991f4f5594d3b4131ca55c9af289eb16b1b64aaef89abf8c74969a104",
+  "runner_sha256": "45d0b3de9b9cb20637b1fcd6085940395ee89d0b4ba77f518638b98672dd85c4",
+  "no_CLAP_cosine_values_read_before_lock": true,
+  "method_claim_limit": "gainfromsourceprior thresholdor20stepapproximationisnotoptimizationinformationgain"
+}

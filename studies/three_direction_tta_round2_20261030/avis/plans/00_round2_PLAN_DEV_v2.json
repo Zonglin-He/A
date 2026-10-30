@@ -1,0 +1,81 @@
+{
+  "original_private_plan_sha256": "ef807bc3665542ed53503c648d8109d87a5ccab4a9127da024253a461007229f",
+  "sanitization": "media paths pseudonymized or wholeinputmapping omitted; originallock nevermodified",
+  "protocol": {
+    "utc": "2026-10-30T00:12:17.720502+00:00",
+    "seed": 20261030,
+    "source_hashes": {
+      "<AVIS_ROOT>/round2/scripts/engineering_real.py": "78b12a3ea07d7d468ebce119326d9fce191c32cec6b09df0e6b4a9f86fb57ab3",
+      "<AVIS_ROOT>/round2/scripts/lock_cohorts.py": "eadffc2e2113348e59220943e527075398fa6c51bdc6e1148fabf8c157ec5cc0",
+      "<AVIS_ROOT>/round2/scripts/latent_adapter.py": "6d662b5e43460d06c0dbd0df47346a72500eae7af7642d57c4f04d5e624a9360",
+      "<AVIS_ROOT>/round2/scripts/run_study.py": "823889c196eb81841f59f77fd201f7bc8e357bb35524fbdabe56d884ad05d9f4",
+      "<AVIS_ROOT>/round2/scripts/lock_plan.py": "4fb73b1563478feeaae2b110f78e23f41979de6caf2e4304dc9fcbd374a0f664",
+      "<AVIS_ROOT>/scripts/tta_adapter.py": "5641ce04c08593e1038b29d0706824e33ca88e967eb3022b4387cb6413f95f98",
+      "<AVIS_ROOT>/upstream_fullcompat/avism/avism_model.py": "61ef8be96708fb4c7925279567d41411ab9a955e6b71721d69ebf02c8eff9d19",
+      "<AVIS_ROOT>/upstream_fullcompat/avism/modeling/transformer_decoder/avism.py": "e1243502e98ed99634512475103febbc8d036469108450cfba507dafbf76d5be",
+      "<AVIS_ROOT>/upstream_fullcompat/avism/modeling/transformer_decoder/avism_transformer_decoder.py": "21c40dd5b43af06b57b6506f3d2af51aabee0323de4988ec63f9b8ebae5ba17d",
+      "<AVIS_ROOT>/upstream_fullcompat/configs/avism/Base-AVIS.yaml": "90e03c2df7d95f45689827d14ce0b02e46675abf504f66904722ae87fbd295ca",
+      "<AVIS_ROOT>/upstream_fullcompat/configs/avism/R50/avism_R50_IN.yaml": "49c0af8be8ab0b32aecf72c4a6ba677591b7ad1753f669d189d547374f895e44"
+    },
+    "checkpoint_sha256": "83543b712a3fcf6d5392e536ae512ef606adce404122105ec2b9dccf0327de5e",
+    "old_studies": "immutable",
+    "hyperparameters_from_GT": false,
+    "latent": {
+      "shape": [
+        100,
+        256
+      ],
+      "steps": 3,
+      "lr": 0.03,
+      "optimizer": "Adam default beta/eps, per-video new optimizer",
+      "gradient_clip": 1.0,
+      "coordinate_clip": [
+        -0.25,
+        0.25
+      ],
+      "regularization": 0.01,
+      "class_weight": 2.0,
+      "mask_bce_weight": 5.0,
+      "dice_weight": 5.0,
+      "identity_weight": 0.5,
+      "anchor_count": 8,
+      "anchors": "uniform linspace original frame index; allframes readout",
+      "gate": {
+        "foreground_max_prob": 0.3,
+        "no_object_argmax_excluded": true,
+        "min_teacher_positive_lowres_pixels": 4,
+        "min_soft_dice": 0.5,
+        "same_foreground_argmax": true
+      },
+      "identity_negatives": "distinct teacher queryIDs, max IoU across8anchors<.1; ambiguous excluded",
+      "identity_location": "original tracker transformed pred_fq_embed versus frozen pred_cq_embed, rawdot BCE; no normalize"
+    },
+    "confirmation_annotations": "unread for outcomes until all final confirm arms sealed",
+    "main_metrics": [
+      "per-frame complete-set correctness over19IoU thresholds, area0 absent",
+      "native HOTA plus explicitly area0-filtered sensitivity"
+    ],
+    "native_FSLA": "compatibility only; known implementation issues; not adoption basis",
+    "audio_controls": "source and fixed adapted latent under fixed next-video cyclicaudio and3secondroll; sensitivity only, not counterfactual GT scores",
+    "cost_scope": "all model calls, adaptation, source teacher plus CPU traces; input I/O and RLE excluded from GPU timing but controller total walltime separately",
+    "state": "dev_locked_before_new_GT_results",
+    "manifest": "<AVIS_ROOT>/round2/cohorts/dev.json",
+    "manifest_sha256": "db949a76a231598e54c610f5abbc5f4e0a2c229770640d3dec0cb0445a5867c8",
+    "input_contract": {
+      "files": 488,
+      "full_mapping_sha256": "a17916109c41306c100a410f7d5fffca82f7e16d5a537e616c5fe853f024ea18",
+      "mapping_omitted": "dataset filenames and media not distributed"
+    },
+    "arms": [
+      "source",
+      "direct_fusion",
+      "old_views",
+      "old_LN",
+      "latent_identity",
+      "latent_no_identity"
+    ],
+    "same_information_control": "direct0.5probabilitymaskfusion acrossall frames, frozenheads, nativequalityscore recomputed",
+    "dev_policy": "single dev evaluation after6sealedarms; preserve all positives/negatives; no optional samples; at most one diagnosed revision with independent plan",
+    "adoption": "confirmation improves intended exact-set+tracking beyondsource anddirect; no conclusion fromlossdrop alone"
+  }
+}
