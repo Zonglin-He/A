@@ -1,0 +1,57 @@
+{
+  "state": "CPU_READY_after_prerun_degenerate_consensus_NA_fix",
+  "files_sha256": {
+    "crossplatform/round12/temporal_association.py": "382a0fa6a66ed6b3e5f455c0e87a863e9e094df6bba6862705364eb79798eac8",
+    "crossplatform/round12/check_temporal_cpu.py": "a15702eaa1745da2bf7fd2256fbca888716c359eea1af1c484bc1a24da8a3a53",
+    "crossplatform/round12/CPU_FIXTURE.json": "30d3ca52de3939d0b1ec0c67fe083d8952abc229d08eba5ee68e2b7c10fa7f22",
+    "crossplatform/round12/TEMPORAL_INTERFACE.md": "51c578263b25ed3cab1d25eebf09774ce486ffc650507b5a5ce74713a7c803d9",
+    "research/round12/proposal/MASK_INTERFACE.md": "5514f9a5f992ef867c3a2c90e0861a715a9f99b4c0334ea5e50d72428fefc93f",
+    "research/round12/proposal/OBSERVATION_AND_METHOD_PROPOSAL.md": "da8f4212b4e1ced5ed77238b83f2f7f9b3b56a0ff73feaf9ec1ec8f08ff159c9",
+    "research/round12/proposal/CODE_AND_SCHEMA_AUDIT.json": "91997b4465d69dd132788a1bc32f945b1f1134b516313ac48a75b3d5b2ac0710"
+  },
+  "temporal_config": {
+    "sift_features": 2000,
+    "sift_ratio": 0.75,
+    "maximum_depth_binding_distance_px": 3.0,
+    "minimum_depth_m": 0.1,
+    "split_spatial_voxel_m": 0.5,
+    "split_holdout_modulus": 4,
+    "split_holdout_remainder": 0,
+    "ransac_trials": 512,
+    "ransac_inlier_m": 0.25,
+    "minimum_fit_pairs": 6,
+    "minimum_holdout_pairs": 3,
+    "minimum_fit_inlier_fraction": 0.5,
+    "minimum_holdout_inlier_fraction": 0.6,
+    "maximum_holdout_median_m": 0.15,
+    "maximum_holdout_p90_m": 0.5,
+    "minimum_triangle_cross_norm_m2": 1e-06,
+    "minimum_second_singular_value": 1e-10,
+    "mask_flow_features": 64,
+    "flow_quality_level": 0.01,
+    "flow_min_distance_px": 3.0,
+    "flow_window_px": 21,
+    "flow_pyramid_levels": 3,
+    "flow_iterations": 30,
+    "flow_epsilon": 0.01,
+    "flow_cycle_max_px": 1.5,
+    "minimum_cycle_tracks": 6,
+    "mask_match_minimum_score": 0.5,
+    "mask_match_minimum_margin": 0.15,
+    "split_salt": "R12_RGBD_spatial_fit_holdout_v1"
+  },
+  "temporal_config_sha256": "a5e1ae84218fead9e81c4517be946e1ca455a58d027f012dda2c48c82f94727d",
+  "dependency_sha256": {
+    "crossplatform/round7/camera_projection.py": "b343c04d3a3b72ffed6dc041449f5dc38892964755108a3cab5a8c86572066ce"
+  },
+  "primary_T_direction": "raw_B_to_raw_A",
+  "provided_pose_used_for_fit_selection_initialization": false,
+  "clock_status": "unknown_released_counter_not_used",
+  "real_data_GPU_model_GT_scores_used": false,
+  "old_files_modified": false,
+  "preflight_history": {
+    "old_lock": "crossplatform/round12/history/preflight_v1_before_degenerate_consensus/IMPLEMENTATION_LOCK.json",
+    "old_lock_sha256": "84148ed5c711315f9479917dd569349cb55d7fc2baa6aa62c235ad55d8e74cc7",
+    "reason": "winning minimal RANSAC hypothesis can have degenerate final inlier consensus; final ValueError now explicit NA; no transform or pose fallback; no constants changed"
+  }
+}

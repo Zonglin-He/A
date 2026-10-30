@@ -1,0 +1,29 @@
+{
+  "state": "pre_task_label_R12_direct_feedback_progression_rule",
+  "scope": "Finite exploratory engineering gate, not population significance or adoption",
+  "cohort": {
+    "drone": 50,
+    "quad": 96
+  },
+  "scene_clusters": {
+    "drone": 2,
+    "quad": 3
+  },
+  "both_micro_and_equal_scene_required": true,
+  "required_for_either_candidate": [
+    "nonzero actually changed independently observed geometry in both platforms",
+    "task IoU gain over source positive in both platforms under both summary weights",
+    "relevant center or size error reduction over source positive in both platforms under both summary weights",
+    "aggregate task gains exceed harms in both platforms",
+    "full direct feedback is better than its fixed half-shift control under both platform summary weights"
+  ],
+  "preferred_candidate": "multiview_instance_direct",
+  "additional_multiview_claim_requirement": "positive task increment over single_instance_direct and unfiltered matched-gate aggregation; nonzero valid pointcorroboration, no wrongview acceptance shortcut",
+  "separate_single_frame_candidate": "single_instance_direct",
+  "single_frame_branch_scope": "If only the preregistered single-frame candidate passes, it may support an explicitly separate single-frame independent-mask TTA pilot, never a temporal contribution. Prefer multiview only if its full gate also passes; no per-platform best-arm mix.",
+  "conditional_TTA": "Before any head updates root must lock actual new prediction input, fixed pre-update query readout, same-information direct pseudo output and exact frozen-feature kernel transfer controls. No teacher/EMA. Labels used to choose progression make this exploratory, not independent confirmation.",
+  "failure_action": "Do not run regression updates on feedback lacking these prerequisites. Preserve positives/negatives/NA/zero and all inputs/failed input-stage estimator versions, no post-label threshold or coverage search.",
+  "registration_protocol": "Input-only comparison of bounded classic SIFT-RGBD, ICP plus RGB validation, and one-depth PnP. Validation rules differ; counts are not a fair algorithm leaderboard. Final primary backend selected and locked before targetGT.",
+  "provided_pose_not_primary": true,
+  "all_predictions_must_be_sealed_before_taskGT": true
+}

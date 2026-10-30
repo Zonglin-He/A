@@ -1,0 +1,26 @@
+{
+  "state": "PASS_FINITE_R12_SENSOR_PNP_AND_ICP_IMPLEMENTATION_REVIEW",
+  "primary_PnP_sha256": "813aa794027766815522b2629143290a00f516b8a1288eb5950fdfaee7c8babc",
+  "secondary_ICP_sha256": "41ac4a366e9ea85a0978c00f6c17f1bc5971747678cb8ef794af1955cfca36f3",
+  "PnP_independent_fixture_sha256": "af23e43eeb0eb8ad07ca345456aed1a3b8c22bf96b7fb9cd3c6b4b53141a5a10",
+  "ICP_independent_fixture_sha256": "9df2810cbaddb05eb11e10225bf593e5c8d4ee32af15ec0d74d1068b51542cba",
+  "checks": [
+    "PnPfits3DA transformed into cameraA, returnsrawBtoA as inv(MA)@inv(CcameraAtoB)@MB; independentlyverifiedwithdifferentEandDroneoffset.",
+    "MutualSIFT bindings useuniqueAdepth, spatialAheldout excludedfromRANSAC/refine, no Bcloud or providedpose in fittedT.",
+    "Refinement usesfitRANSACinliers only; cheirality>=.9 onheldout cameraBdepth beforepixelgate.",
+    "EmptyBholdout now explicitNA beforequantile; independent sparseBtest returnssamefittedT/notaccepted/noNaN.",
+    "WrongBcloud and corruptedAheldout pixelmeasurement each rejectwithoutchangingfittedT.",
+    "ICP usesBfit spatialpartition, identityinitfixedtrimmed30iterations, Bheldout and independentRGB afterfit; Afullbackground isfixedreference notAholdout.",
+    "ICPnearzerotranslation usesrotationpixeltransfer instead ofdegeneratezeroessentialmatrix."
+  ],
+  "limitations": [
+    "ActualsourcecameraK/Ecalibration isassumedinput; no pose field isused, but thisdoesnotproveunknownmetadata provenance.",
+    "ICPepipolar useszero-distortion pixelassumption; current501cameraD allmissing-or0 checkedfromauditedinputsidecar. NonzeroDfuture requiresundistortion/explicitNA.",
+    "PnP mainvalidationrules differfrom earlierSIFTtwo-depth/ICP. Acceptance2of5inputdevelopment isnot superiority or taskconfirmation.",
+    "A/Bpixel/depthobservations sharefrontend processing; heldout statements applyto posefit/refine, notfullyindependentacquisition.",
+    "PerfectRGBmatchesstub usedonlyto isolatePnPmath in independentfixture, notSIFTquality proof."
+  ],
+  "prior_bug_lineage": "RootpreservesoldPnPbeforeemptyBholdoutguard and priorprobelowcheiralityhash; no retroactivepassinglabels.",
+  "issues": [],
+  "no_actual_GT_3Dlabels_images_pointarrays_model_GPU_or_taskscoring_by_review": true
+}

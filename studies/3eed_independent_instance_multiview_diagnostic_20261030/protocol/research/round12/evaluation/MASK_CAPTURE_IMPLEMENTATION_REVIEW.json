@@ -1,0 +1,41 @@
+{
+  "state": "PASS_FINITE_R12_MASK_CAPTURE_IMPLEMENTATION_REVIEW_BEFORE_GPU",
+  "program_sha256": "aa80323f1d8b8b5b23111c007e7a5acc054e4bdcb9e35d84599de1ac07ca6f11",
+  "authorization_sha256": "747a095a2fa2b0b07441db662a537de5f87f2eaa90edb29cd2fc216ae4ce72ac",
+  "expected_asset_sha256": "73cbd0190fcbe3ba339921fbce2c3a0b6bb9126c9a133c85e43a2a8e060a109e",
+  "method_scope": "Frozen whole-image COCO instance observations; independent generation interface is not referring-target association or verified foreground identity.",
+  "checks": {
+    "nonempty_unique_safe_frame_aliases_prevent_overwrite_or_path_escape": true,
+    "plan_and_program_SHA_assert_before_model_CUDA": true,
+    "two_thresholds_prelocked_0_5": true,
+    "local_checkpoint_SHA_weights_only_strict_load_no_backbone_download": true,
+    "requires_gradFalse_eval_and_inference_mode": true,
+    "RGB_uint8_to_CHW_float0to1_then_native_detector_transform": true,
+    "native_resize_min800_max1333_and_max100_detections_asserted": true,
+    "returned_boxes_masks_original_image_pixels_proven_by_local_API": true,
+    "stored_masks_original_H_W_plus_finite_boxes_scores_legal_class_indices": true,
+    "plan_framehash_weights_program_image_and_maskhashes_trace_seal": true,
+    "strictFP32_flags_set_and_recorded": true
+  },
+  "local_API_inspection": {
+    "torchvision_version": "0.22.0+cu128",
+    "GeneralizedRCNN_forward_file_sha256": "e3e0e9f15c7e4a30c3499ed3b19d75ae692f107df7e9a2ee48e944457890edfb",
+    "GeneralizedRCNNTransform_file_sha256": "31ad020ef2c23259373314b76ac5dc0f1ad2a2c44b69c68ba62f93df82d79b50",
+    "MaskRCNN_constructor_file_sha256": "4bcb830fb99a35e7f2f9f116ea6a73f1d154ebc69c2b51f137492dd6aa64903a",
+    "evidence": "GeneralizedRCNN saves original_image_sizes and calls transform.postprocess after detection. Eval postprocess resize_boxes back and paste_masks_in_image to original H/W. No second manual resize should be applied."
+  },
+  "resolved_preflight_guards": [
+    "program bound in plan before CUDA",
+    "unique safe aliases and nonempty frame list",
+    "literal thresholds plus finite class/pixel outputs and strict flags"
+  ],
+  "limitations": [
+    "COCO trained helper has finite class/domain coverage; class_ids are model predictions, not dataset GT classes.",
+    "This review validates code/API, not actual mask quality, target identity or downstream geometric utility.",
+    "Capture window excludes initial model construction/load; report whole phase and per-loop costs accurately.",
+    "Actual frame/mask count, state freeze and sealed output bindings require post-execution audit."
+  ],
+  "no_model_instantiation_forward_GPU_GT_annotations_or_media_access_by_reviewer": true,
+  "official_library_CPU_import_and_sourceinspection_only": true,
+  "issues": []
+}

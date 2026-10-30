@@ -1,0 +1,2 @@
+3eed_independent_instance_multiview_diagnostic_20261030
+See final report/decision and reproduction notes.146content-disjoint anchors,501frontendframes,8fixedq0direct arms. Clock synchronization/pose direction/target identity are not established by release counters, independent masks or low residuals. Probe methods have unequal validation criteria. Legacy8tharm is unfiltered samegate multiview, not anchor-only.1168relatedarmrows are not1168independent samples. Media, original IDs/scenes/captions, transforms, coordinates, features and weights are private.

@@ -1,0 +1,16 @@
+{
+  "state": "R12_all5912_input_metadata_coverage_corrected_global_time_scope",
+  "program_sha256": "d2d8a3b34227fc73c8a547a733c512b2cd37567a34819ae397c2145baf97138d",
+  "stream_reader_sha256": "7dc12e5214590899a0dbc44b69722d3e4a179327be888b1092b611e00b8bf2b4",
+  "private_input_table_sha256": "605850926c3b7b67a944c56c1190f72a556a7dc62aafc831cb0a569169884d25",
+  "n": 5912,
+  "scene_n": 5,
+  "all_target_pose4x4_finite": true,
+  "all_timestamps_integer_and_affine_to_folderindex": false,
+  "all_E_K_constant_within_scene": true,
+  "no_constant_pose_only_rollpitch_conclusion": true,
+  "no_GT_values_oldscore_model_GPU_pixels_pointarrays_or_external_rawGT_assets_read": true,
+  "conclusion": "All5912 targetframes provide finite proper4x4 changing pose and per-scene constant E/K. Timestamps are integer tags with repeated values/reordered directory chunks, not certified seconds or monotonic foldertime. Within each scene, timestamp is one-to-one with exactRGB+point content groups, and duplicates share identical pose. Counter-order is therefore a supported candidate grouping/order, not proof of camera/lidar synchronization, real elapsedtime or poseworldframe/sensor convention.",
+  "previous_coverage_sha256": "287dfd54aa241326d7903b4d187cd8f5738808912c73e763cc4b7a0c3a2d3c17",
+  "correction": "Original sixframe local pair suggested constantoffset; fulltable disproves globalconstantoffset. Previous summary bool was alreadyFalse but its prose overclaimed; retain original bytes and use this v2conclusion."
+}

@@ -1,0 +1,82 @@
+{
+  "state": "PASS_R12_POSTSEAL_SUPPORT_PROXY_IMPLEMENTATION_AND_SCALAR_REDUCTION_REVIEW",
+  "analysis_program_sha256": "8a5a20e2d4211deecf15d51a9993eb2c4f925a3d793f79561abb8aa82c0203ca",
+  "plan_sha256": "c9d0ad5935386a75dce304d362f962715429faa96852363e849cffcaefce13ec",
+  "support_seal_sha256": "809aa97c8f89f3ec9ba0c66d0c0ab02487ba20afe7c65bcd9c076c572bcace20",
+  "support_results_sha256": "61356455c6e6f96967d6d59f1dcfea714031ce30a2ffc5be6e53149de0f2fbd7",
+  "paired_support_summary_sha256": "f58bc4124f00b62d37c4bb6ce7cc885eb31b223f7f9f2af9bb81af33d821cf4f",
+  "prediction_seal_sha256": "d3cdf0fff9cef27afbf4030e7ac836e5dd3bfcc5a83a9ee38136252eb26cbbb5",
+  "scored_seal_sha256": "59d5db4bb8e1cf834717b6d6e9d4f42ec0aa0072caa3b0bc15c116e0d60962b5",
+  "auditor_sha256": "efc8ac01e00a96c32e4e0f5794d051bc0ee09877d31b03a3c5acd79b45c9528d",
+  "finite_checks": 787,
+  "max_numeric_difference": 2.7755575615628914e-17,
+  "all_actual_analysis_inputs_rehashed_against_seals": true,
+  "analytic_inverse_yaw_and_expanded_local_box_test_pass": true,
+  "implementation_review": [
+    "row-vector delta@R_yaw is inverse rotation into targetlocal coordinates, not delta@R.T.",
+    "Drone points use nativefloat32 +1.8; R5GT adds +1.8 in rawmetadata dtype then truncatesfirst7D/float32. Same modelframe, not assumed identical arithmetic. NoGTyaw update to predictions.",
+    "GrabCut/single support IDs indexsorted unique modelXYZ exactlylike_G; MVmatched IDs indexoriginal rawrows thenmodelshift.",
+    "FixedexpandedOBB adds0.1toeach localhalfextent (fullsize+.2), notEuclidean0.1distance or semanticmaskGT.",
+    "Originalscript checksplan/predictionseal/scoredseal/indexhash beforetargetGT read, but didnotrecheckeveryconsumedtrace/manifest againstseal; thisreviewclosesactualinputbindings now without reexecution.",
+    "Originalanalysis containsnooptimizer/newIoU/predictionwrites; onlypostseal output directory."
+  ],
+  "matched_case_fraction_deltas": {
+    "drone": {
+      "n_common_nonempty": 20,
+      "mean_case_fraction_delta": 0.05117799505348479,
+      "improve": 8,
+      "worsen": 5,
+      "tie": 7,
+      "original_points": 3866,
+      "new_points": 2321,
+      "original_inside": 1426,
+      "new_inside": 1012,
+      "interpretation": "matched cases but different pointsets by intervention; OBB enclosure proxy is not semanticGT/causal mechanism proof"
+    },
+    "quad": {
+      "n_common_nonempty": 74,
+      "mean_case_fraction_delta": 0.016324406970144357,
+      "improve": 21,
+      "worsen": 16,
+      "tie": 37,
+      "original_points": 28268,
+      "new_points": 19633,
+      "original_inside": 21044,
+      "new_inside": 16494,
+      "interpretation": "matched cases but different pointsets by intervention; OBB enclosure proxy is not semanticGT/causal mechanism proof"
+    }
+  },
+  "selected_alias_only_case_evidence": {
+    "case_116": {
+      "platform": "quad",
+      "anchor_corroborating_raw_point_n": 57,
+      "inside_official_OBB_n": 0,
+      "inside_fixed_expanded_OBB_n": 0,
+      "source_IoU": 0.0,
+      "MV_IoU": 0.0,
+      "IoU_delta": 0.0,
+      "center_error_increase_m": -0.10742864726362411,
+      "point_scope": "Anchorcorroboration rawIDunion only, not allneighbor/context/face-gradient/RGB/prior information."
+    },
+    "case_117": {
+      "platform": "quad",
+      "anchor_corroborating_raw_point_n": 37,
+      "inside_official_OBB_n": 37,
+      "inside_fixed_expanded_OBB_n": 37,
+      "source_IoU": 0.5256711475189377,
+      "MV_IoU": 0.44941808916695014,
+      "IoU_delta": -0.07625305835198759,
+      "center_error_increase_m": 0.06699379300477498,
+      "point_scope": "Anchorcorroboration rawIDunion only, not allneighbor/context/face-gradient/RGB/prior information."
+    }
+  },
+  "claim_limits": [
+    "OBB enclosure is spatialproxy, not true pixel/point instance membership. Inside can include otherobjects/background; outside can reflectcalibration/looseGT/partialvisibility/sourceerror.",
+    "Ownsupportpopulations differ; onlypaired commonnonempty cases supporta pairedproxycontrast, stilldifferentpointsets andno causalpurityclaim.",
+    "SupportIDs includevisibleROI/mask orcorroboratinganchors, notnecessarilyallpointsenteringactualface terms; neighborpoints, normalcontext, RGBcontainment andsourceprior remain.",
+    "Case117 weakens a background-only explanation butdoesnotidentifywhichloss or prior causedharm. No currentmethodselection/threshold changes fromthese label-assisted diagnostics.",
+    "Currentcommentary mustsayposthoc/postseal descriptive, notindependentconfirmation ornewTTAresult."
+  ],
+  "no_new_GT_metadata_pointfiles_images_IoU_model_GPU_or_prediction_changes": true,
+  "issues": []
+}

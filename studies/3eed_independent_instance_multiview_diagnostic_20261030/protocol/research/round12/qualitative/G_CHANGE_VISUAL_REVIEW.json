@@ -1,0 +1,37 @@
+{
+  "state": "actual_all8_R12_changed_union_private_visual_review_complete",
+  "n_actual_pages_viewed": 8,
+  "pages_viewed": [
+    "changed_case_01",
+    "changed_case_02",
+    "changed_case_03",
+    "changed_case_04",
+    "changed_case_05",
+    "changed_case_06",
+    "changed_case_07",
+    "changed_case_08"
+  ],
+  "gallery_seal_sha256": "9a65a23f31b28ac9bb46d43ef193bdf7909bbc49747f5c6c5c05b303a5b1fcaa",
+  "plan_sha256": "07952596bb64f8194c6590a57cf8cc6ddd446673a65673aae4c3e050264a7227",
+  "selection": "all7single+2MVchanged union overlap1; postscore/outputconditioned exploratory; no task benefit selection",
+  "verified_reference_pages": 2,
+  "candidate_only_reference_pages": 6,
+  "no_GT_taskscore_model_GPU_registration_estimator_or_optimizer_used": true,
+  "notes_by_alias": {
+    "changed_case_01": "Two adjacent vehicles are visible; the selected mask follows the nearer central vehicle while the second vehicle is close on its left. Green returns lie on portions of the selected body; surrounding road/curb returns dominate the image. Single changes one center axis and MV remains source. Similar projected wireframes and visible support do not establish which car the language refers to.",
+    "changed_case_02": "A distant standing person has only a small image region and sparse depth support amid road, drain, lamp and vegetation. The helper has a sealed verified hypothesis and matched person mask; transferred wireframes remain near that visible person. This supports visualization of the implemented geometry correspondence, not semantic identity or task benefit. Single and MV each alter one center axis.",
+    "changed_case_03": "Two people are visible near the left structure; the independent selected mask and projected boxes concentrate around the person nearer the center-left. A verified helper mask and inverse sealed transform are available. Sparse returns, adjacent same-category people and overlapping small wireframes limit what can be inferred visually. MV changes one center axis while single stays source.",
+    "changed_case_04": "A far person and a broad road/wall/vegetation background are visible. The selected mask covers the narrow person silhouette; most projected returns remain outside it. Source/single/MV projected boxes overlap strongly and cover only a small image area; no verified reference transform exists. Visible mask agreement cannot recover occluded extent or prove identity.",
+    "changed_case_05": "A large foreground person occludes much of the image; the selected mask and q0 box are instead at the far right boundary around another partly clipped person. The candidate reference has substantial camera/occluder change and no verified transform. Image truncation, occlusion and nearby people make association fragile; no GT or caption truth is used to adjudicate the target.",
+    "changed_case_06": "A nearby person standing on a skateboard has a partly top-truncated visible body, with another seated person in the background. The independent mask follows visible clothing/legs; the projected box does not establish the hidden upper extent or board ownership. Candidate reference only. Strong masks and dense green returns can coexist with unknown complete 3D size.",
+    "changed_case_07": "The selected mask covers the nearer SUV among several adjacent parked vehicles. Point returns are concentrated on visible surfaces; lower/wider projected wireframes extend into surrounding parking pixels. There is no verified reference transform. The shifted single box and unchanged MV cannot be judged correct from overlap with a 2D silhouette alone.",
+    "changed_case_08": "A close standing person is top-truncated, with a skateboard and seated person nearby. The selected person mask is visually coherent on the visible body, but q0 wireframes extend around it and source/MV overlap; single changes one center axis. The reference is candidate-only, and no crossframe transfer is shown. Partial silhouettes do not identify hidden center/size or the referring instance."
+  },
+  "limits": [
+    "No task correctness or literal caption identity is inferred. Masks and category scores are predictions.",
+    "All three wireframes may coincide and later colors overdraw earlier colors; exact axis-change flags, not visual line count, establish numerical movement.",
+    "Six reference candidates lack verified T; their boxes are deliberately not transferred. Two use only the original sealed T, never a new fit.",
+    "Provided pose is not used and drawing does not prove clock units, synchronization or continuous motion.",
+    "Output-conditioned8case visualizations do not estimate unconditional146case quality."
+  ]
+}

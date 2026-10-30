@@ -1,0 +1,31 @@
+{
+  "state": "pre_execution_proposal_supplement_pending_actual_registration_plan",
+  "supersedes_nomenclature": "Continuous-video/ego-clock assumptions in the temporal proposal are not established. Evaluate verified distinct observations as offline episodic multiview, not chronological or causal online adaptation.",
+  "availability_evidence": "Root reports avis audit of all5912 target metadata found repeated/reset/nonmonotonic timestamps; frame folders are not a valid temporal clock. This reviewer has not independently reopened those metadata containers; bind the eventual input-audit receipt before final execution/report.",
+  "primary_registration": {
+    "input": "Actual RGB/depth/LiDAR correspondences plus audited same-observation camera calibration, independent of targetGT and q0-seeded masks.",
+    "estimate": "Explicit RGBD/SIFT geometric estimate from real observations, fixed settings and predeclared acceptance, no providedpose initialization or hypothesis/neighbor selection.",
+    "provided_pose": "Unknown-provenance dataset4x4 is diagnostic only; never initialize, select, tune, reject, or choose the primary estimate using it. A separately labelled pose-oracle auxiliary would need its own authorization and cannot pass the primary prerequisite.",
+    "validation": "Report inlier/support coverage, independent held-out feature/point consistency where feasible, forward/reverse or cycle agreement, ambiguity/degeneracy and actual units/coordinate transforms. Low residual on fit correspondences alone is not independent validation.",
+    "motion": "Static-world transform validity and moving-instance correspondence are separate. A global rigid transform does not compensate dynamic pedestrians/vehicles. Unknown/multiple motion or inconsistent object correspondence rejects that support instead of silently fusing it.",
+    "claim": "Success supports geometric overlap between observations only; it does not establish a timestamp order, complete ego trajectory, same-object identity or target correctness."
+  },
+  "mask_correspondence": {
+    "generation": "Whole-image independent instance masks from frozenCOCO helper, no q0/caption/GT API. COCO taxonomic/domain limitations remain visible.",
+    "association": "Fullcaption/independent instance evidence and conservative one-to-one correspondence, with ambiguous competing instances retained/rejected. Mask similarity/objectness/class overlap cannot be translated to verified target identity.",
+    "geometry": "Project matched observations using estimated transform and occlusion/depth visibility. Preserve direction/source prior assumptions and percoordinate origin. No extent-as-amodal-size shortcut.",
+    "q0": "Preferred fixedquery protocol. If the new method changes query/target association, add association-only no-geometry control before freezing arms and keep q0/q1 separate."
+  },
+  "minimal_branch_comparisons": [
+    "frozen source",
+    "same G with independent single-observation instance evidence",
+    "same G with accepted estimated-geometry multiview instance correspondence",
+    "fixed wrong-observation or shuffled correspondence, same source and helper budget",
+    "prelocked simple attenuation/sourceprior comparator once actual G is specified"
+  ],
+  "denominators": "All preselected anchors retained with sourcefallback; registration-available, accepted-static, moving-reject, ambiguous, missing and numerical-failure counts explicit. Same presealed common eligibility/change masks for matched comparisons. Support observations are not new test anchors/scenes.",
+  "progression": "First direct-supervision task and relevant-coordinate benefit over source and genericattenuation in bothplatforms. Multiview-specific gain additionally requires positive multiview-minus-singleframe incremental evidence and correspondence controls. Only2/3sceneclusters, descriptive resource gate not population significance. No new neuralupdate stage without unused-observation transfer and same-information direct/kernel controls.",
+  "if_no_registration_support": "Mark multiview branch missing/unidentifiable. Lock only bounded single-observation independent-mask diagnostic, without claiming temporal support.",
+  "no_new_GT_annotation_model_GPU_media_or_scoring_access": true,
+  "old_rounds_unchanged": true
+}

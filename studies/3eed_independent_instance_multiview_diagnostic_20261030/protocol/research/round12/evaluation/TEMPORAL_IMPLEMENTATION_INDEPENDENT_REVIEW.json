@@ -1,0 +1,42 @@
+{
+  "state": "PASS_FINITE_R12_TEMPORAL_MULTIVIEW_IMPLEMENTATION_REVIEW",
+  "module_sha256": "382a0fa6a66ed6b3e5f455c0e87a863e9e094df6bba6862705364eb79798eac8",
+  "implementation_lock_sha256": "97a6845632a935180ad740885b55d5c9519982ea1a294e3c7802bba45d9ed909",
+  "author_CPU_fixture_sha256": "30d3ca52de3939d0b1ec0c67fe083d8952abc229d08eba5ee68e2b7c10fa7f22",
+  "independent_CPU_fixture_sha256": "67a6aea99abfca83c56800534ab7866755459ca32a7c3fae9ad1c9fc8a76e303",
+  "config_sha256": "a5e1ae84218fead9e81c4517be946e1ca455a58d027f012dda2c48c82f94727d",
+  "review_scope": "Array-only CPU registration/mask correspondence and synthetic evidence; not actual pair quality, helper mask quality or task effectiveness.",
+  "resolved_bug": {
+    "old_module_sha256": "aee87c9eb37cd3b848c16096cc4f2666effd8395b969520a2eaf70775cd03cb0",
+    "old_lock_sha256": "84148ed5c711315f9479917dd569349cb55d7fc2baa6aa62c235ad55d8e74cc7",
+    "reproduction": "Synthetic31collinearXpoints plus3 noncollinear outliers, finalinlier fit degenerate; old uncaughtValueError; fit27/holdout7, seed0.",
+    "repair": "Final refit ValueError narrowly returns acceptedFalse/TNone/degenerate_fit_consensus; no alternate hypothesis/pose/threshold fallback. Oldhistory retained.",
+    "independently_reverified": true
+  },
+  "checked": [
+    "Fit/heldout rawB0.5m cells disjoint; RANSAC hypothesis ranking/refit never reads heldout residuals. Corrupting onlyheldout A rejects but preserves fitted T bitexact.",
+    "Providedposes only enter post-estimator diagnostics; wrong poses leave T and accepted flag bitexact.",
+    "Visible-depth canonical XYZ dedup, continuous FOV then floor zbuffer and nearest<=3px physical-return binding; greedy unique rawA/B pairing prevents multiplicity inflation in actual RGBD caller.",
+    "SIFT ratio+mutual descriptor matching independent of q0/caption/GT; exclusion masks are fullimage helper input.",
+    "LK forward/back cycles, class-compatible endpoint containment, bilateral alternative margins before Hungarian one-to-one; sameclass duplicate-mask synthetic rejection bound.",
+    "RawB\u2192rawA T direction explicit; Drone model transform S_A@T@invS_B independently checked with nonZrotation.",
+    "Static object support checks globalT without fitting objectmotion; moving/wrong support yieldsNA.",
+    "No timestamp velocity/causalonline inference; sameframe camera extrinsics distinct from estimated cross-viewT."
+  ],
+  "caller_requirements": [
+    "accepted sensorT alone is not background-qualified when masks absent. FormalG additionally requires foreground_exclusion_A_B_available and background_only_qualification; unmasked calls preflight-only.",
+    "LK match is not3D/motion proof: matchedinstance depth binding and static_support must pass before fusion.",
+    "Providedpose never used to initialize/select neighbor/choose main hypothesis or override failedsensor estimate.",
+    "Never use T from acceptedFalse output even if diagnostic candidateT exists.",
+    "Physical support/image exactduplicates and single-channel sharing need explicit inputaudit; different filenames/counters do not certify independent views."
+  ],
+  "limitations": [
+    "Global SIFT/depth matching and dedup precede the fit/heldout split; it is heldout from transform fitting, not a fully independent frontend/data-acquisition pipeline.",
+    "Shared RGB/helper/sourcepriors and wrong sameclass correspondences can survive cycle/residual tests; no verified referring identity.",
+    "Static-compatible threshold test can accept very small unsupported movement; it does not certify physical stationarity or estimate speed.",
+    "Same-image-size LK is an explicit interface restriction; caller must label unsupported sizes/invalidcamera failure instead of silently skipping."
+  ],
+  "issues": [],
+  "no_real_data_GT_annotations_images_points_model_GPU_or_taskscore_access": true,
+  "decision": "CPU implementation suitable for root prelocked actual-pair engineering preflight; actual data and task benefit remain untested by this review."
+}

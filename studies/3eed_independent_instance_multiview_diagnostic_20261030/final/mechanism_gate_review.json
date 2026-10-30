@@ -1,0 +1,100 @@
+{
+  "state": "PASS_R12_INDEPENDENT_MECHANISM_AND_PRELOCKED_PROGRESSION_REVIEW",
+  "prediction_seal_sha256": "d3cdf0fff9cef27afbf4030e7ac836e5dd3bfcc5a83a9ee38136252eb26cbbb5",
+  "scored_seal_sha256": "59d5db4bb8e1cf834717b6d6e9d4f42ec0aa0072caa3b0bc15c116e0d60962b5",
+  "score_audit_sha256": "23f1c722587e724953036742206024ae4bf96011d5b8a8741dfaccbcd9425fa6",
+  "mechanism_seal_sha256": "2446844f152490ec79323726cbeab7d624dd962e79070a40573fb391c6b0ae50",
+  "mechanism_summary_sha256": "1fb1d94339a891a9d08256a8c95f7725c9983f5a96ce7c524f6f8e00123ecc97",
+  "preplan_sha256": "a10b0c5e5affa6a33af4d0dcb24fa391bec4da9c2087a85f7ab7518acd4e5821",
+  "auditor_sha256": "460ab27f1b542fa4705f1c1b66611cad4f03b208bca1cf9446d53c890e438947",
+  "finite_mechanism_numeric_or_exact_checks": 619,
+  "mechanism_max_difference": 0.0,
+  "neural_TTA_progression_pass": false,
+  "neural_updates_executed": false,
+  "key_numbers": {
+    "drone|single_instance_direct": {
+      "actual_changed": 2,
+      "mIoU_percent": 18.707327580169583,
+      "equal_scene_mIoU_percent": 20.949386911010432,
+      "source_gain_micro_pp": 0.0005472454907413875,
+      "source_gain_equal_scene_pp": 0.000427535539641709,
+      "full_minus_half_micro_pp": 0.0005472454907413875,
+      "source_gain_help_harm_zero": {
+        "numeric_vector_omitted_for_coordinate_privacy": true,
+        "length": 3
+      }
+    },
+    "quad|single_instance_direct": {
+      "actual_changed": 5,
+      "mIoU_percent": 31.354117185666674,
+      "equal_scene_mIoU_percent": 31.354117185666674,
+      "source_gain_micro_pp": -0.47935474049949245,
+      "source_gain_equal_scene_pp": -0.47935474049949245,
+      "full_minus_half_micro_pp": -0.31515531331688573,
+      "source_gain_help_harm_zero": {
+        "numeric_vector_omitted_for_coordinate_privacy": true,
+        "length": 3
+      }
+    },
+    "drone|multiview_instance_direct": {
+      "actual_changed": 0,
+      "mIoU_percent": 18.70678033467884,
+      "equal_scene_mIoU_percent": 20.94895937547079,
+      "source_gain_micro_pp": 0.0,
+      "source_gain_equal_scene_pp": 0.0,
+      "full_minus_half_micro_pp": 0.0,
+      "source_gain_help_harm_zero": {
+        "numeric_vector_omitted_for_coordinate_privacy": true,
+        "length": 3
+      }
+    },
+    "quad|multiview_instance_direct": {
+      "actual_changed": 2,
+      "mIoU_percent": 31.754041657049513,
+      "equal_scene_mIoU_percent": 31.75404165704951,
+      "source_gain_micro_pp": -0.07943026911665374,
+      "source_gain_equal_scene_pp": -0.07943026911665374,
+      "full_minus_half_micro_pp": -0.04918730565421243,
+      "source_gain_help_harm_zero": {
+        "numeric_vector_omitted_for_coordinate_privacy": true,
+        "length": 3
+      }
+    }
+  },
+  "postseal_descriptive_MV_gain_decomposition_by_actual_change": {
+    "drone": {
+      "False": {
+        "n": 50,
+        "MV_minus_single_IoU_sum": -0.00027362274537069377,
+        "sourcefallback_when_false_not_newgeometry": true
+      },
+      "True": {
+        "n": 0,
+        "MV_minus_single_IoU_sum": 0.0,
+        "sourcefallback_when_false_not_newgeometry": false
+      }
+    },
+    "quad": {
+      "False": {
+        "n": 94,
+        "MV_minus_single_IoU_sum": 0.32545813548070524,
+        "sourcefallback_when_false_not_newgeometry": true
+      },
+      "True": {
+        "n": 2,
+        "MV_minus_single_IoU_sum": 0.05846935704681988,
+        "sourcefallback_when_false_not_newgeometry": false
+      }
+    }
+  },
+  "decision": "Neither predeclared candidate passes. No regression/TTA updates on currentfeedback; no score-based changes ofprimarybackend/thresholds/half/cohort.",
+  "limits": [
+    "RANSAC/ICP/PnP inputdevelopment criteria differ; 2/5PnP acceptance isnot superiority or taskconfirmation.",
+    "Helpermaskgeneration independentofq0, but targetassociation remains firstnoun/sourceROI condition; noidentityverified claim.",
+    "Track/ray/static/perpoint validity doesnotguarantee taskbenefit. MainMV lacksactualchanges inDrone andharmsQuadIoU.",
+    "MVrecovering over harmfulsingle/unfiltered isnotpositivefeedback versus source; main also loses tohalf inQuad.",
+    "Size0changes meanssizefeedback capacitynot tested. Only2/3scenes; unequalDrone32/18 bothmicro/equalweights retained.",
+    "Exactcontent disjoint anchors do not certifyuniquephysicaltimes/objects; oldpath-independence erratum preserved."
+  ],
+  "no_new_GT_metadata_IoU_model_GPU_or_method_changes": true
+}

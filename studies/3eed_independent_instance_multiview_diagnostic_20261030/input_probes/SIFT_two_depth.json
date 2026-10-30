@@ -1,0 +1,1140 @@
+{
+  "state": "completed_actual5sensor_pair_and_wrongview_input_only_probe",
+  "n_pairs": 5,
+  "seconds": 5.58017012802884,
+  "source_result_sha256": "f541e90e8cf012ee1b41f3faf8f4212197ae7dc25b1e91c1a03a448279ebe6ce",
+  "source_seal_sha256": "88757946dc38ba853f4a5027ad9b0a365b4dccd34601f5ec37e153d5e6af0ab2",
+  "program_sha256": "8d0a4710708104d482222ae1cd46f83e73e5cbccfebbef51b485e44cd2da596b",
+  "plan_sha256": "deabb74a88ff95a8cc420ca5e8cdcb642fc9d671e1d68d5356e5b909c8ac657d",
+  "mask_seal_sha256": "faa8b9260f2dc1fa40cbaa9ca13adae48f444121ab88b2a73b1e4c019cfa8852",
+  "accepted_real": 0,
+  "accepted_wrong": 0,
+  "rows_aliased": [
+    {
+      "pair_alias": "probe_pair_01",
+      "platform": "drone",
+      "registration": {
+        "candidate_neighbor": {
+          "status": "sensor_SE3_failed_holdout_quality",
+          "accepted": false,
+          "n_pairs": 30,
+          "n_fit": 26,
+          "n_holdout": 4,
+          "fit_pair_sha256": "115f27ced2a5856ebdf62874395c14cedab5ec6b87c2a0fdf72a95f0b18ff2ee",
+          "holdout_pair_sha256": "5bf8dfcab5a5ccb6c6cd2c716e995d4bcf14017df39f0c0889975e9e2f7e63c0",
+          "holdout_disjoint_spatial_cells": true,
+          "time_unit_unknown_no_velocity_estimate": true,
+          "clock_status": "unknown_or_unverified_counter_not_used",
+          "observation_scope": "candidate overlapping raw views; not certified continuous video",
+          "kinematic_speed_estimated": false,
+          "primary_uses_sensor_correspondences_only": true,
+          "provided_pose_used_for_fit_or_selection": false,
+          "config": {
+            "sift_features": 2000,
+            "sift_ratio": 0.75,
+            "maximum_depth_binding_distance_px": 3.0,
+            "minimum_depth_m": 0.1,
+            "split_spatial_voxel_m": 0.5,
+            "split_holdout_modulus": 4,
+            "split_holdout_remainder": 0,
+            "ransac_trials": 512,
+            "ransac_inlier_m": 0.25,
+            "minimum_fit_pairs": 6,
+            "minimum_holdout_pairs": 3,
+            "minimum_fit_inlier_fraction": 0.5,
+            "minimum_holdout_inlier_fraction": 0.6,
+            "maximum_holdout_median_m": 0.15,
+            "maximum_holdout_p90_m": 0.5,
+            "minimum_triangle_cross_norm_m2": 1e-06,
+            "minimum_second_singular_value": 1e-10,
+            "mask_flow_features": 64,
+            "flow_quality_level": 0.01,
+            "flow_min_distance_px": 3.0,
+            "flow_window_px": 21,
+            "flow_pyramid_levels": 3,
+            "flow_iterations": 30,
+            "flow_epsilon": 0.01,
+            "flow_cycle_max_px": 1.5,
+            "minimum_cycle_tracks": 6,
+            "mask_match_minimum_score": 0.5,
+            "mask_match_minimum_margin": 0.15,
+            "split_salt": "R12_RGBD_spatial_fit_holdout_v1"
+          },
+          "fit_residuals": {
+            "n": 26,
+            "median_m": 0.12525732937720202,
+            "p90_m": 1.416780489308295,
+            "mean_m": 1.1163289792763857,
+            "inlier_fraction": 0.6538461538461539
+          },
+          "holdout_residuals": {
+            "n": 4,
+            "median_m": 0.9062587219266776,
+            "p90_m": 1.4417333966231696,
+            "mean_m": 0.835827786401547,
+            "inlier_fraction": 0.25
+          },
+          "ransac_fit_inliers": 17,
+          "estimated_translation_norm_m": 0.17790177529803375,
+          "estimated_rotation_angle_rad": 0.021416898580368174,
+          "observation_diagnostics": {
+            "SIFT_keypoints_A_B": {
+              "numeric_vector_omitted_for_coordinate_privacy": true,
+              "length": 2
+            },
+            "mutual_ratio_matches": 650,
+            "RGBD_matches_before_unique_return_binding": 34,
+            "RGBD_unique_physical_pairs": 30,
+            "maximum_binding_distance_px": 3.0,
+            "foreground_exclusion_A_B_available": [
+              true,
+              true
+            ],
+            "foreground_exclusion_is_fullimage_external_masks_not_q0": true,
+            "background_only_qualification": false,
+            "foreground_exclusion_does_not_certify_all_fit_points_background": true,
+            "without_masks_is_preflight_only_not_certified_background_registration": false,
+            "camera_A": {
+              "raw_unique_XYZ": 8496,
+              "visible_zbuffer_unique": 6864,
+              "camera_diagnostics": {
+                "platform": "drone",
+                "missing_distortion_assumed_zero": true,
+                "image_size_wh": {
+                  "numeric_vector_omitted_for_coordinate_privacy": true,
+                  "length": 2
+                },
+                "positive_depth_count": 8496,
+                "in_image_count": 7436,
+                "no_pose_or_unused_translation_vector_added": true,
+                "camera_convention": "Waymo A@inv(E)@undo_front; Drone E@undo_z; Quad E"
+              }
+            },
+            "camera_B": {
+              "raw_unique_XYZ": 8458,
+              "visible_zbuffer_unique": 6877,
+              "camera_diagnostics": {
+                "platform": "drone",
+                "missing_distortion_assumed_zero": true,
+                "image_size_wh": {
+                  "numeric_vector_omitted_for_coordinate_privacy": true,
+                  "length": 2
+                },
+                "positive_depth_count": 8458,
+                "in_image_count": 7436,
+                "no_pose_or_unused_translation_vector_added": true,
+                "camera_convention": "Waymo A@inv(E)@undo_front; Drone E@undo_z; Quad E"
+              }
+            },
+            "RGB_A_B_sha256": [
+              "aedb000ff1c52358ec4765c97655191acb85796911333da4c6d8b082be449e00",
+              "84624ce96b9fbf467874df4f592249fb378be20ce5aa4085b61ae4c38a74fcb3"
+            ]
+          }
+        },
+        "wrong_scene": {
+          "status": "insufficient_correspondences",
+          "accepted": false,
+          "n_pairs": 0,
+          "n_fit": 0,
+          "n_holdout": 0,
+          "fit_pair_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "holdout_pair_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "holdout_disjoint_spatial_cells": true,
+          "time_unit_unknown_no_velocity_estimate": true,
+          "clock_status": "unknown_or_unverified_counter_not_used",
+          "observation_scope": "candidate overlapping raw views; not certified continuous video",
+          "kinematic_speed_estimated": false,
+          "primary_uses_sensor_correspondences_only": true,
+          "provided_pose_used_for_fit_or_selection": false,
+          "config": {
+            "sift_features": 2000,
+            "sift_ratio": 0.75,
+            "maximum_depth_binding_distance_px": 3.0,
+            "minimum_depth_m": 0.1,
+            "split_spatial_voxel_m": 0.5,
+            "split_holdout_modulus": 4,
+            "split_holdout_remainder": 0,
+            "ransac_trials": 512,
+            "ransac_inlier_m": 0.25,
+            "minimum_fit_pairs": 6,
+            "minimum_holdout_pairs": 3,
+            "minimum_fit_inlier_fraction": 0.5,
+            "minimum_holdout_inlier_fraction": 0.6,
+            "maximum_holdout_median_m": 0.15,
+            "maximum_holdout_p90_m": 0.5,
+            "minimum_triangle_cross_norm_m2": 1e-06,
+            "minimum_second_singular_value": 1e-10,
+            "mask_flow_features": 64,
+            "flow_quality_level": 0.01,
+            "flow_min_distance_px": 3.0,
+            "flow_window_px": 21,
+            "flow_pyramid_levels": 3,
+            "flow_iterations": 30,
+            "flow_epsilon": 0.01,
+            "flow_cycle_max_px": 1.5,
+            "minimum_cycle_tracks": 6,
+            "mask_match_minimum_score": 0.5,
+            "mask_match_minimum_margin": 0.15,
+            "split_salt": "R12_RGBD_spatial_fit_holdout_v1"
+          },
+          "observation_diagnostics": {
+            "SIFT_keypoints_A_B": {
+              "numeric_vector_omitted_for_coordinate_privacy": true,
+              "length": 2
+            },
+            "mutual_ratio_matches": 3,
+            "RGBD_matches_before_unique_return_binding": 0,
+            "RGBD_unique_physical_pairs": 0,
+            "maximum_binding_distance_px": 3.0,
+            "foreground_exclusion_A_B_available": [
+              true,
+              true
+            ],
+            "foreground_exclusion_is_fullimage_external_masks_not_q0": true,
+            "background_only_qualification": false,
+            "foreground_exclusion_does_not_certify_all_fit_points_background": true,
+            "without_masks_is_preflight_only_not_certified_background_registration": false,
+            "camera_A": {
+              "raw_unique_XYZ": 8496,
+              "visible_zbuffer_unique": 6864,
+              "camera_diagnostics": {
+                "platform": "drone",
+                "missing_distortion_assumed_zero": true,
+                "image_size_wh": {
+                  "numeric_vector_omitted_for_coordinate_privacy": true,
+                  "length": 2
+                },
+                "positive_depth_count": 8496,
+                "in_image_count": 7436,
+                "no_pose_or_unused_translation_vector_added": true,
+                "camera_convention": "Waymo A@inv(E)@undo_front; Drone E@undo_z; Quad E"
+              }
+            },
+            "camera_B": {
+              "raw_unique_XYZ": 4154,
+              "visible_zbuffer_unique": 3515,
+              "camera_diagnostics": {
+                "platform": "drone",
+                "missing_distortion_assumed_zero": true,
+                "image_size_wh": {
+                  "numeric_vector_omitted_for_coordinate_privacy": true,
+                  "length": 2
+                },
+                "positive_depth_count": 4154,
+                "in_image_count": 3697,
+                "no_pose_or_unused_translation_vector_added": true,
+                "camera_convention": "Waymo A@inv(E)@undo_front; Drone E@undo_z; Quad E"
+              }
+            },
+            "RGB_A_B_sha256": [
+              "aedb000ff1c52358ec4765c97655191acb85796911333da4c6d8b082be449e00",
+              "8e585e7aa15549dd7091665190b8916592b0cead6f8a30c61dbf60d9b23f0e05"
+            ]
+          }
+        }
+      }
+    },
+    {
+      "pair_alias": "probe_pair_02",
+      "platform": "drone",
+      "registration": {
+        "candidate_neighbor": {
+          "status": "sensor_SE3_failed_holdout_quality",
+          "accepted": false,
+          "n_pairs": 23,
+          "n_fit": 17,
+          "n_holdout": 6,
+          "fit_pair_sha256": "c56dc5c6dbe7e8ab3bd950fce1748d0b2e0d5b6d21831c8c82f9f08a0bf7486e",
+          "holdout_pair_sha256": "e1294f6d31d5cbdd5729c3be9ba6257c798868125f783e1514a43fd76f59f304",
+          "holdout_disjoint_spatial_cells": true,
+          "time_unit_unknown_no_velocity_estimate": true,
+          "clock_status": "unknown_or_unverified_counter_not_used",
+          "observation_scope": "candidate overlapping raw views; not certified continuous video",
+          "kinematic_speed_estimated": false,
+          "primary_uses_sensor_correspondences_only": true,
+          "provided_pose_used_for_fit_or_selection": false,
+          "config": {
+            "sift_features": 2000,
+            "sift_ratio": 0.75,
+            "maximum_depth_binding_distance_px": 3.0,
+            "minimum_depth_m": 0.1,
+            "split_spatial_voxel_m": 0.5,
+            "split_holdout_modulus": 4,
+            "split_holdout_remainder": 0,
+            "ransac_trials": 512,
+            "ransac_inlier_m": 0.25,
+            "minimum_fit_pairs": 6,
+            "minimum_holdout_pairs": 3,
+            "minimum_fit_inlier_fraction": 0.5,
+            "minimum_holdout_inlier_fraction": 0.6,
+            "maximum_holdout_median_m": 0.15,
+            "maximum_holdout_p90_m": 0.5,
+            "minimum_triangle_cross_norm_m2": 1e-06,
+            "minimum_second_singular_value": 1e-10,
+            "mask_flow_features": 64,
+            "flow_quality_level": 0.01,
+            "flow_min_distance_px": 3.0,
+            "flow_window_px": 21,
+            "flow_pyramid_levels": 3,
+            "flow_iterations": 30,
+            "flow_epsilon": 0.01,
+            "flow_cycle_max_px": 1.5,
+            "minimum_cycle_tracks": 6,
+            "mask_match_minimum_score": 0.5,
+            "mask_match_minimum_margin": 0.15,
+            "split_salt": "R12_RGBD_spatial_fit_holdout_v1"
+          },
+          "fit_residuals": {
+            "n": 17,
+            "median_m": 0.11007631423983036,
+            "p90_m": 0.30809492379615605,
+            "mean_m": 0.1471069517114752,
+            "inlier_fraction": 0.8235294117647058
+          },
+          "holdout_residuals": {
+            "n": 6,
+            "median_m": 0.1998364576459686,
+            "p90_m": 4.508617455868849,
+            "mean_m": 1.5850428309479303,
+            "inlier_fraction": 0.6666666666666666
+          },
+          "ransac_fit_inliers": 15,
+          "estimated_translation_norm_m": 0.1379098086580357,
+          "estimated_rotation_angle_rad": 0.009073408870611902,
+          "observation_diagnostics": {
+            "SIFT_keypoints_A_B": {
+              "numeric_vector_omitted_for_coordinate_privacy": true,
+              "length": 2
+            },
+            "mutual_ratio_matches": 993,
+            "RGBD_matches_before_unique_return_binding": 27,
+            "RGBD_unique_physical_pairs": 23,
+            "maximum_binding_distance_px": 3.0,
+            "foreground_exclusion_A_B_available": [
+              true,
+              true
+            ],
+            "foreground_exclusion_is_fullimage_external_masks_not_q0": true,
+            "background_only_qualification": false,
+            "foreground_exclusion_does_not_certify_all_fit_points_background": true,
+            "without_masks_is_preflight_only_not_certified_background_registration": false,
+            "camera_A": {
+              "raw_unique_XYZ": 8135,
+              "visible_zbuffer_unique": 7152,
+              "camera_diagnostics": {
+                "platform": "drone",
+                "missing_distortion_assumed_zero": true,
+                "image_size_wh": {
+                  "numeric_vector_omitted_for_coordinate_privacy": true,
+                  "length": 2
+                },
+                "positive_depth_count": 8135,
+                "in_image_count": 7370,
+                "no_pose_or_unused_translation_vector_added": true,
+                "camera_convention": "Waymo A@inv(E)@undo_front; Drone E@undo_z; Quad E"
+              }
+            },
+            "camera_B": {
+              "raw_unique_XYZ": 8122,
+              "visible_zbuffer_unique": 7138,
+              "camera_diagnostics": {
+                "platform": "drone",
+                "missing_distortion_assumed_zero": true,
+                "image_size_wh": {
+                  "numeric_vector_omitted_for_coordinate_privacy": true,
+                  "length": 2
+                },
+                "positive_depth_count": 8122,
+                "in_image_count": 7353,
+                "no_pose_or_unused_translation_vector_added": true,
+                "camera_convention": "Waymo A@inv(E)@undo_front; Drone E@undo_z; Quad E"
+              }
+            },
+            "RGB_A_B_sha256": [
+              "f060a0b6f3c38a6797b52017d9d8b7b49c0440332b93512e005857e44775f323",
+              "3fff102b5b48f479da849a4b13945bc6d514b2297e69e412506fb52a6313eb04"
+            ]
+          }
+        },
+        "wrong_scene": {
+          "status": "insufficient_correspondences",
+          "accepted": false,
+          "n_pairs": 0,
+          "n_fit": 0,
+          "n_holdout": 0,
+          "fit_pair_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "holdout_pair_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "holdout_disjoint_spatial_cells": true,
+          "time_unit_unknown_no_velocity_estimate": true,
+          "clock_status": "unknown_or_unverified_counter_not_used",
+          "observation_scope": "candidate overlapping raw views; not certified continuous video",
+          "kinematic_speed_estimated": false,
+          "primary_uses_sensor_correspondences_only": true,
+          "provided_pose_used_for_fit_or_selection": false,
+          "config": {
+            "sift_features": 2000,
+            "sift_ratio": 0.75,
+            "maximum_depth_binding_distance_px": 3.0,
+            "minimum_depth_m": 0.1,
+            "split_spatial_voxel_m": 0.5,
+            "split_holdout_modulus": 4,
+            "split_holdout_remainder": 0,
+            "ransac_trials": 512,
+            "ransac_inlier_m": 0.25,
+            "minimum_fit_pairs": 6,
+            "minimum_holdout_pairs": 3,
+            "minimum_fit_inlier_fraction": 0.5,
+            "minimum_holdout_inlier_fraction": 0.6,
+            "maximum_holdout_median_m": 0.15,
+            "maximum_holdout_p90_m": 0.5,
+            "minimum_triangle_cross_norm_m2": 1e-06,
+            "minimum_second_singular_value": 1e-10,
+            "mask_flow_features": 64,
+            "flow_quality_level": 0.01,
+            "flow_min_distance_px": 3.0,
+            "flow_window_px": 21,
+            "flow_pyramid_levels": 3,
+            "flow_iterations": 30,
+            "flow_epsilon": 0.01,
+            "flow_cycle_max_px": 1.5,
+            "minimum_cycle_tracks": 6,
+            "mask_match_minimum_score": 0.5,
+            "mask_match_minimum_margin": 0.15,
+            "split_salt": "R12_RGBD_spatial_fit_holdout_v1"
+          },
+          "observation_diagnostics": {
+            "SIFT_keypoints_A_B": {
+              "numeric_vector_omitted_for_coordinate_privacy": true,
+              "length": 2
+            },
+            "mutual_ratio_matches": 6,
+            "RGBD_matches_before_unique_return_binding": 0,
+            "RGBD_unique_physical_pairs": 0,
+            "maximum_binding_distance_px": 3.0,
+            "foreground_exclusion_A_B_available": [
+              true,
+              true
+            ],
+            "foreground_exclusion_is_fullimage_external_masks_not_q0": true,
+            "background_only_qualification": false,
+            "foreground_exclusion_does_not_certify_all_fit_points_background": true,
+            "without_masks_is_preflight_only_not_certified_background_registration": false,
+            "camera_A": {
+              "raw_unique_XYZ": 8135,
+              "visible_zbuffer_unique": 7152,
+              "camera_diagnostics": {
+                "platform": "drone",
+                "missing_distortion_assumed_zero": true,
+                "image_size_wh": {
+                  "numeric_vector_omitted_for_coordinate_privacy": true,
+                  "length": 2
+                },
+                "positive_depth_count": 8135,
+                "in_image_count": 7370,
+                "no_pose_or_unused_translation_vector_added": true,
+                "camera_convention": "Waymo A@inv(E)@undo_front; Drone E@undo_z; Quad E"
+              }
+            },
+            "camera_B": {
+              "raw_unique_XYZ": 8279,
+              "visible_zbuffer_unique": 6227,
+              "camera_diagnostics": {
+                "platform": "drone",
+                "missing_distortion_assumed_zero": true,
+                "image_size_wh": {
+                  "numeric_vector_omitted_for_coordinate_privacy": true,
+                  "length": 2
+                },
+                "positive_depth_count": 8279,
+                "in_image_count": 7365,
+                "no_pose_or_unused_translation_vector_added": true,
+                "camera_convention": "Waymo A@inv(E)@undo_front; Drone E@undo_z; Quad E"
+              }
+            },
+            "RGB_A_B_sha256": [
+              "f060a0b6f3c38a6797b52017d9d8b7b49c0440332b93512e005857e44775f323",
+              "dc4d8f4131ea0ebe34239560f8796877cf84e862a944921650831d165226689d"
+            ]
+          }
+        }
+      }
+    },
+    {
+      "pair_alias": "probe_pair_03",
+      "platform": "quad",
+      "registration": {
+        "candidate_neighbor": {
+          "status": "sensor_SE3_failed_holdout_quality",
+          "accepted": false,
+          "n_pairs": 29,
+          "n_fit": 21,
+          "n_holdout": 8,
+          "fit_pair_sha256": "82bb41fc133e3f6dcd282b456d97bdce30e02c9d048d1ac9ababbaabeccecc91",
+          "holdout_pair_sha256": "5fd9f00c1cff4b83b77d7181482358dbeab5422bdb5c81fa16dadcf50ad11690",
+          "holdout_disjoint_spatial_cells": true,
+          "time_unit_unknown_no_velocity_estimate": true,
+          "clock_status": "unknown_or_unverified_counter_not_used",
+          "observation_scope": "candidate overlapping raw views; not certified continuous video",
+          "kinematic_speed_estimated": false,
+          "primary_uses_sensor_correspondences_only": true,
+          "provided_pose_used_for_fit_or_selection": false,
+          "config": {
+            "sift_features": 2000,
+            "sift_ratio": 0.75,
+            "maximum_depth_binding_distance_px": 3.0,
+            "minimum_depth_m": 0.1,
+            "split_spatial_voxel_m": 0.5,
+            "split_holdout_modulus": 4,
+            "split_holdout_remainder": 0,
+            "ransac_trials": 512,
+            "ransac_inlier_m": 0.25,
+            "minimum_fit_pairs": 6,
+            "minimum_holdout_pairs": 3,
+            "minimum_fit_inlier_fraction": 0.5,
+            "minimum_holdout_inlier_fraction": 0.6,
+            "maximum_holdout_median_m": 0.15,
+            "maximum_holdout_p90_m": 0.5,
+            "minimum_triangle_cross_norm_m2": 1e-06,
+            "minimum_second_singular_value": 1e-10,
+            "mask_flow_features": 64,
+            "flow_quality_level": 0.01,
+            "flow_min_distance_px": 3.0,
+            "flow_window_px": 21,
+            "flow_pyramid_levels": 3,
+            "flow_iterations": 30,
+            "flow_epsilon": 0.01,
+            "flow_cycle_max_px": 1.5,
+            "minimum_cycle_tracks": 6,
+            "mask_match_minimum_score": 0.5,
+            "mask_match_minimum_margin": 0.15,
+            "split_salt": "R12_RGBD_spatial_fit_holdout_v1"
+          },
+          "fit_residuals": {
+            "n": 21,
+            "median_m": 1.0125450702351588,
+            "p90_m": 2.502287345813427,
+            "mean_m": 2.1041409013381633,
+            "inlier_fraction": 0.2857142857142857
+          },
+          "holdout_residuals": {
+            "n": 8,
+            "median_m": 1.2676394262370647,
+            "p90_m": 3.774926675825947,
+            "mean_m": 1.8028070232701499,
+            "inlier_fraction": 0.0
+          },
+          "ransac_fit_inliers": 6,
+          "estimated_translation_norm_m": 1.387006816099164,
+          "estimated_rotation_angle_rad": 0.20779208970500335,
+          "observation_diagnostics": {
+            "SIFT_keypoints_A_B": {
+              "numeric_vector_omitted_for_coordinate_privacy": true,
+              "length": 2
+            },
+            "mutual_ratio_matches": 583,
+            "RGBD_matches_before_unique_return_binding": 36,
+            "RGBD_unique_physical_pairs": 29,
+            "maximum_binding_distance_px": 3.0,
+            "foreground_exclusion_A_B_available": [
+              true,
+              true
+            ],
+            "foreground_exclusion_is_fullimage_external_masks_not_q0": true,
+            "background_only_qualification": false,
+            "foreground_exclusion_does_not_certify_all_fit_points_background": true,
+            "without_masks_is_preflight_only_not_certified_background_registration": false,
+            "camera_A": {
+              "raw_unique_XYZ": 11264,
+              "visible_zbuffer_unique": 8894,
+              "camera_diagnostics": {
+                "platform": "quad",
+                "missing_distortion_assumed_zero": true,
+                "image_size_wh": {
+                  "numeric_vector_omitted_for_coordinate_privacy": true,
+                  "length": 2
+                },
+                "positive_depth_count": 11264,
+                "in_image_count": 9605,
+                "no_pose_or_unused_translation_vector_added": true,
+                "camera_convention": "Waymo A@inv(E)@undo_front; Drone E@undo_z; Quad E"
+              }
+            },
+            "camera_B": {
+              "raw_unique_XYZ": 11292,
+              "visible_zbuffer_unique": 8710,
+              "camera_diagnostics": {
+                "platform": "quad",
+                "missing_distortion_assumed_zero": true,
+                "image_size_wh": {
+                  "numeric_vector_omitted_for_coordinate_privacy": true,
+                  "length": 2
+                },
+                "positive_depth_count": 11292,
+                "in_image_count": 9581,
+                "no_pose_or_unused_translation_vector_added": true,
+                "camera_convention": "Waymo A@inv(E)@undo_front; Drone E@undo_z; Quad E"
+              }
+            },
+            "RGB_A_B_sha256": [
+              "624640ad6f5b4791a397856aca474705f4d16b6237e61d9d3cadce65b49c50d5",
+              "555adfe22ddc0133306183f59ac6c878a23b96b1e2477c5bee132e7ad7f899fe"
+            ]
+          }
+        },
+        "wrong_scene": {
+          "status": "insufficient_correspondences",
+          "accepted": false,
+          "n_pairs": 0,
+          "n_fit": 0,
+          "n_holdout": 0,
+          "fit_pair_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "holdout_pair_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "holdout_disjoint_spatial_cells": true,
+          "time_unit_unknown_no_velocity_estimate": true,
+          "clock_status": "unknown_or_unverified_counter_not_used",
+          "observation_scope": "candidate overlapping raw views; not certified continuous video",
+          "kinematic_speed_estimated": false,
+          "primary_uses_sensor_correspondences_only": true,
+          "provided_pose_used_for_fit_or_selection": false,
+          "config": {
+            "sift_features": 2000,
+            "sift_ratio": 0.75,
+            "maximum_depth_binding_distance_px": 3.0,
+            "minimum_depth_m": 0.1,
+            "split_spatial_voxel_m": 0.5,
+            "split_holdout_modulus": 4,
+            "split_holdout_remainder": 0,
+            "ransac_trials": 512,
+            "ransac_inlier_m": 0.25,
+            "minimum_fit_pairs": 6,
+            "minimum_holdout_pairs": 3,
+            "minimum_fit_inlier_fraction": 0.5,
+            "minimum_holdout_inlier_fraction": 0.6,
+            "maximum_holdout_median_m": 0.15,
+            "maximum_holdout_p90_m": 0.5,
+            "minimum_triangle_cross_norm_m2": 1e-06,
+            "minimum_second_singular_value": 1e-10,
+            "mask_flow_features": 64,
+            "flow_quality_level": 0.01,
+            "flow_min_distance_px": 3.0,
+            "flow_window_px": 21,
+            "flow_pyramid_levels": 3,
+            "flow_iterations": 30,
+            "flow_epsilon": 0.01,
+            "flow_cycle_max_px": 1.5,
+            "minimum_cycle_tracks": 6,
+            "mask_match_minimum_score": 0.5,
+            "mask_match_minimum_margin": 0.15,
+            "split_salt": "R12_RGBD_spatial_fit_holdout_v1"
+          },
+          "observation_diagnostics": {
+            "SIFT_keypoints_A_B": {
+              "numeric_vector_omitted_for_coordinate_privacy": true,
+              "length": 2
+            },
+            "mutual_ratio_matches": 4,
+            "RGBD_matches_before_unique_return_binding": 0,
+            "RGBD_unique_physical_pairs": 0,
+            "maximum_binding_distance_px": 3.0,
+            "foreground_exclusion_A_B_available": [
+              true,
+              true
+            ],
+            "foreground_exclusion_is_fullimage_external_masks_not_q0": true,
+            "background_only_qualification": false,
+            "foreground_exclusion_does_not_certify_all_fit_points_background": true,
+            "without_masks_is_preflight_only_not_certified_background_registration": false,
+            "camera_A": {
+              "raw_unique_XYZ": 11264,
+              "visible_zbuffer_unique": 8894,
+              "camera_diagnostics": {
+                "platform": "quad",
+                "missing_distortion_assumed_zero": true,
+                "image_size_wh": {
+                  "numeric_vector_omitted_for_coordinate_privacy": true,
+                  "length": 2
+                },
+                "positive_depth_count": 11264,
+                "in_image_count": 9605,
+                "no_pose_or_unused_translation_vector_added": true,
+                "camera_convention": "Waymo A@inv(E)@undo_front; Drone E@undo_z; Quad E"
+              }
+            },
+            "camera_B": {
+              "raw_unique_XYZ": 14045,
+              "visible_zbuffer_unique": 9464,
+              "camera_diagnostics": {
+                "platform": "quad",
+                "missing_distortion_assumed_zero": true,
+                "image_size_wh": {
+                  "numeric_vector_omitted_for_coordinate_privacy": true,
+                  "length": 2
+                },
+                "positive_depth_count": 14045,
+                "in_image_count": 12240,
+                "no_pose_or_unused_translation_vector_added": true,
+                "camera_convention": "Waymo A@inv(E)@undo_front; Drone E@undo_z; Quad E"
+              }
+            },
+            "RGB_A_B_sha256": [
+              "624640ad6f5b4791a397856aca474705f4d16b6237e61d9d3cadce65b49c50d5",
+              "c8c5bc45babc1d3d0d9e42dfdf2ab259925fef5b765be99340f27d5affb91caa"
+            ]
+          }
+        }
+      }
+    },
+    {
+      "pair_alias": "probe_pair_04",
+      "platform": "quad",
+      "registration": {
+        "candidate_neighbor": {
+          "status": "sensor_SE3_failed_holdout_quality",
+          "accepted": false,
+          "n_pairs": 31,
+          "n_fit": 23,
+          "n_holdout": 8,
+          "fit_pair_sha256": "8f317cab8099c108543367130cc13f9f7469ca35b00b1a66e64df9ab62c65548",
+          "holdout_pair_sha256": "47354ab235916dce336f5af817f55d731ae29b066689c1ad2ef9e7481b843dd9",
+          "holdout_disjoint_spatial_cells": true,
+          "time_unit_unknown_no_velocity_estimate": true,
+          "clock_status": "unknown_or_unverified_counter_not_used",
+          "observation_scope": "candidate overlapping raw views; not certified continuous video",
+          "kinematic_speed_estimated": false,
+          "primary_uses_sensor_correspondences_only": true,
+          "provided_pose_used_for_fit_or_selection": false,
+          "config": {
+            "sift_features": 2000,
+            "sift_ratio": 0.75,
+            "maximum_depth_binding_distance_px": 3.0,
+            "minimum_depth_m": 0.1,
+            "split_spatial_voxel_m": 0.5,
+            "split_holdout_modulus": 4,
+            "split_holdout_remainder": 0,
+            "ransac_trials": 512,
+            "ransac_inlier_m": 0.25,
+            "minimum_fit_pairs": 6,
+            "minimum_holdout_pairs": 3,
+            "minimum_fit_inlier_fraction": 0.5,
+            "minimum_holdout_inlier_fraction": 0.6,
+            "maximum_holdout_median_m": 0.15,
+            "maximum_holdout_p90_m": 0.5,
+            "minimum_triangle_cross_norm_m2": 1e-06,
+            "minimum_second_singular_value": 1e-10,
+            "mask_flow_features": 64,
+            "flow_quality_level": 0.01,
+            "flow_min_distance_px": 3.0,
+            "flow_window_px": 21,
+            "flow_pyramid_levels": 3,
+            "flow_iterations": 30,
+            "flow_epsilon": 0.01,
+            "flow_cycle_max_px": 1.5,
+            "minimum_cycle_tracks": 6,
+            "mask_match_minimum_score": 0.5,
+            "mask_match_minimum_margin": 0.15,
+            "split_salt": "R12_RGBD_spatial_fit_holdout_v1"
+          },
+          "fit_residuals": {
+            "n": 23,
+            "median_m": 0.032573799242490334,
+            "p90_m": 0.14800725197189857,
+            "mean_m": 2.0570792691047752,
+            "inlier_fraction": 0.9130434782608695
+          },
+          "holdout_residuals": {
+            "n": 8,
+            "median_m": 0.037017537511623996,
+            "p90_m": 12.040916436861133,
+            "mean_m": 4.992827434680498,
+            "inlier_fraction": 0.75
+          },
+          "ransac_fit_inliers": 21,
+          "estimated_translation_norm_m": 0.02042314761873843,
+          "estimated_rotation_angle_rad": 0.0013091833072417303,
+          "observation_diagnostics": {
+            "SIFT_keypoints_A_B": {
+              "numeric_vector_omitted_for_coordinate_privacy": true,
+              "length": 2
+            },
+            "mutual_ratio_matches": 287,
+            "RGBD_matches_before_unique_return_binding": 34,
+            "RGBD_unique_physical_pairs": 31,
+            "maximum_binding_distance_px": 3.0,
+            "foreground_exclusion_A_B_available": [
+              true,
+              true
+            ],
+            "foreground_exclusion_is_fullimage_external_masks_not_q0": true,
+            "background_only_qualification": false,
+            "foreground_exclusion_does_not_certify_all_fit_points_background": true,
+            "without_masks_is_preflight_only_not_certified_background_registration": false,
+            "camera_A": {
+              "raw_unique_XYZ": 13555,
+              "visible_zbuffer_unique": 7981,
+              "camera_diagnostics": {
+                "platform": "quad",
+                "missing_distortion_assumed_zero": true,
+                "image_size_wh": {
+                  "numeric_vector_omitted_for_coordinate_privacy": true,
+                  "length": 2
+                },
+                "positive_depth_count": 13555,
+                "in_image_count": 11845,
+                "no_pose_or_unused_translation_vector_added": true,
+                "camera_convention": "Waymo A@inv(E)@undo_front; Drone E@undo_z; Quad E"
+              }
+            },
+            "camera_B": {
+              "raw_unique_XYZ": 12458,
+              "visible_zbuffer_unique": 6010,
+              "camera_diagnostics": {
+                "platform": "quad",
+                "missing_distortion_assumed_zero": true,
+                "image_size_wh": {
+                  "numeric_vector_omitted_for_coordinate_privacy": true,
+                  "length": 2
+                },
+                "positive_depth_count": 12458,
+                "in_image_count": 10818,
+                "no_pose_or_unused_translation_vector_added": true,
+                "camera_convention": "Waymo A@inv(E)@undo_front; Drone E@undo_z; Quad E"
+              }
+            },
+            "RGB_A_B_sha256": [
+              "811deca72bb7d612d73748939f9d7f7510e516472c00c18d0a16f83e37d7fe9a",
+              "6c19c017443529a813f2e682884133978d8b49abbc9ab6a82e3ca7be94c4d3a3"
+            ]
+          }
+        },
+        "wrong_scene": {
+          "status": "insufficient_correspondences",
+          "accepted": false,
+          "n_pairs": 0,
+          "n_fit": 0,
+          "n_holdout": 0,
+          "fit_pair_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "holdout_pair_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "holdout_disjoint_spatial_cells": true,
+          "time_unit_unknown_no_velocity_estimate": true,
+          "clock_status": "unknown_or_unverified_counter_not_used",
+          "observation_scope": "candidate overlapping raw views; not certified continuous video",
+          "kinematic_speed_estimated": false,
+          "primary_uses_sensor_correspondences_only": true,
+          "provided_pose_used_for_fit_or_selection": false,
+          "config": {
+            "sift_features": 2000,
+            "sift_ratio": 0.75,
+            "maximum_depth_binding_distance_px": 3.0,
+            "minimum_depth_m": 0.1,
+            "split_spatial_voxel_m": 0.5,
+            "split_holdout_modulus": 4,
+            "split_holdout_remainder": 0,
+            "ransac_trials": 512,
+            "ransac_inlier_m": 0.25,
+            "minimum_fit_pairs": 6,
+            "minimum_holdout_pairs": 3,
+            "minimum_fit_inlier_fraction": 0.5,
+            "minimum_holdout_inlier_fraction": 0.6,
+            "maximum_holdout_median_m": 0.15,
+            "maximum_holdout_p90_m": 0.5,
+            "minimum_triangle_cross_norm_m2": 1e-06,
+            "minimum_second_singular_value": 1e-10,
+            "mask_flow_features": 64,
+            "flow_quality_level": 0.01,
+            "flow_min_distance_px": 3.0,
+            "flow_window_px": 21,
+            "flow_pyramid_levels": 3,
+            "flow_iterations": 30,
+            "flow_epsilon": 0.01,
+            "flow_cycle_max_px": 1.5,
+            "minimum_cycle_tracks": 6,
+            "mask_match_minimum_score": 0.5,
+            "mask_match_minimum_margin": 0.15,
+            "split_salt": "R12_RGBD_spatial_fit_holdout_v1"
+          },
+          "observation_diagnostics": {
+            "SIFT_keypoints_A_B": {
+              "numeric_vector_omitted_for_coordinate_privacy": true,
+              "length": 2
+            },
+            "mutual_ratio_matches": 4,
+            "RGBD_matches_before_unique_return_binding": 0,
+            "RGBD_unique_physical_pairs": 0,
+            "maximum_binding_distance_px": 3.0,
+            "foreground_exclusion_A_B_available": [
+              true,
+              true
+            ],
+            "foreground_exclusion_is_fullimage_external_masks_not_q0": true,
+            "background_only_qualification": false,
+            "foreground_exclusion_does_not_certify_all_fit_points_background": true,
+            "without_masks_is_preflight_only_not_certified_background_registration": false,
+            "camera_A": {
+              "raw_unique_XYZ": 13555,
+              "visible_zbuffer_unique": 7981,
+              "camera_diagnostics": {
+                "platform": "quad",
+                "missing_distortion_assumed_zero": true,
+                "image_size_wh": {
+                  "numeric_vector_omitted_for_coordinate_privacy": true,
+                  "length": 2
+                },
+                "positive_depth_count": 13555,
+                "in_image_count": 11845,
+                "no_pose_or_unused_translation_vector_added": true,
+                "camera_convention": "Waymo A@inv(E)@undo_front; Drone E@undo_z; Quad E"
+              }
+            },
+            "camera_B": {
+              "raw_unique_XYZ": 12497,
+              "visible_zbuffer_unique": 10507,
+              "camera_diagnostics": {
+                "platform": "quad",
+                "missing_distortion_assumed_zero": true,
+                "image_size_wh": {
+                  "numeric_vector_omitted_for_coordinate_privacy": true,
+                  "length": 2
+                },
+                "positive_depth_count": 12497,
+                "in_image_count": 10556,
+                "no_pose_or_unused_translation_vector_added": true,
+                "camera_convention": "Waymo A@inv(E)@undo_front; Drone E@undo_z; Quad E"
+              }
+            },
+            "RGB_A_B_sha256": [
+              "811deca72bb7d612d73748939f9d7f7510e516472c00c18d0a16f83e37d7fe9a",
+              "79ef64476ee5259daf37ac946ee8bfe6b8c2187c09d1185a94ae1e91da048b11"
+            ]
+          }
+        }
+      }
+    },
+    {
+      "pair_alias": "probe_pair_05",
+      "platform": "quad",
+      "registration": {
+        "candidate_neighbor": {
+          "status": "sensor_SE3_failed_holdout_quality",
+          "accepted": false,
+          "n_pairs": 44,
+          "n_fit": 35,
+          "n_holdout": 9,
+          "fit_pair_sha256": "20bbbb828fa6ebaf429e0701d49802d7ba16c0675075d2b39ac6798384f79aa8",
+          "holdout_pair_sha256": "c86936ca4e001a70564c86380c06eee4b3114c5343c23243c11756dc2cb8020a",
+          "holdout_disjoint_spatial_cells": true,
+          "time_unit_unknown_no_velocity_estimate": true,
+          "clock_status": "unknown_or_unverified_counter_not_used",
+          "observation_scope": "candidate overlapping raw views; not certified continuous video",
+          "kinematic_speed_estimated": false,
+          "primary_uses_sensor_correspondences_only": true,
+          "provided_pose_used_for_fit_or_selection": false,
+          "config": {
+            "sift_features": 2000,
+            "sift_ratio": 0.75,
+            "maximum_depth_binding_distance_px": 3.0,
+            "minimum_depth_m": 0.1,
+            "split_spatial_voxel_m": 0.5,
+            "split_holdout_modulus": 4,
+            "split_holdout_remainder": 0,
+            "ransac_trials": 512,
+            "ransac_inlier_m": 0.25,
+            "minimum_fit_pairs": 6,
+            "minimum_holdout_pairs": 3,
+            "minimum_fit_inlier_fraction": 0.5,
+            "minimum_holdout_inlier_fraction": 0.6,
+            "maximum_holdout_median_m": 0.15,
+            "maximum_holdout_p90_m": 0.5,
+            "minimum_triangle_cross_norm_m2": 1e-06,
+            "minimum_second_singular_value": 1e-10,
+            "mask_flow_features": 64,
+            "flow_quality_level": 0.01,
+            "flow_min_distance_px": 3.0,
+            "flow_window_px": 21,
+            "flow_pyramid_levels": 3,
+            "flow_iterations": 30,
+            "flow_epsilon": 0.01,
+            "flow_cycle_max_px": 1.5,
+            "minimum_cycle_tracks": 6,
+            "mask_match_minimum_score": 0.5,
+            "mask_match_minimum_margin": 0.15,
+            "split_salt": "R12_RGBD_spatial_fit_holdout_v1"
+          },
+          "fit_residuals": {
+            "n": 35,
+            "median_m": 0.0701104854511871,
+            "p90_m": 1.0974931511586083,
+            "mean_m": 0.9593700313692056,
+            "inlier_fraction": 0.8285714285714286
+          },
+          "holdout_residuals": {
+            "n": 9,
+            "median_m": 0.1695115452336064,
+            "p90_m": 0.3057382099949487,
+            "mean_m": 0.20964534434967388,
+            "inlier_fraction": 0.8888888888888888
+          },
+          "ransac_fit_inliers": 29,
+          "estimated_translation_norm_m": 0.34700666775306904,
+          "estimated_rotation_angle_rad": 0.02827557018406968,
+          "observation_diagnostics": {
+            "SIFT_keypoints_A_B": {
+              "numeric_vector_omitted_for_coordinate_privacy": true,
+              "length": 2
+            },
+            "mutual_ratio_matches": 801,
+            "RGBD_matches_before_unique_return_binding": 54,
+            "RGBD_unique_physical_pairs": 44,
+            "maximum_binding_distance_px": 3.0,
+            "foreground_exclusion_A_B_available": [
+              true,
+              true
+            ],
+            "foreground_exclusion_is_fullimage_external_masks_not_q0": true,
+            "background_only_qualification": false,
+            "foreground_exclusion_does_not_certify_all_fit_points_background": true,
+            "without_masks_is_preflight_only_not_certified_background_registration": false,
+            "camera_A": {
+              "raw_unique_XYZ": 13682,
+              "visible_zbuffer_unique": 11529,
+              "camera_diagnostics": {
+                "platform": "quad",
+                "missing_distortion_assumed_zero": true,
+                "image_size_wh": {
+                  "numeric_vector_omitted_for_coordinate_privacy": true,
+                  "length": 2
+                },
+                "positive_depth_count": 13682,
+                "in_image_count": 11630,
+                "no_pose_or_unused_translation_vector_added": true,
+                "camera_convention": "Waymo A@inv(E)@undo_front; Drone E@undo_z; Quad E"
+              }
+            },
+            "camera_B": {
+              "raw_unique_XYZ": 13563,
+              "visible_zbuffer_unique": 11409,
+              "camera_diagnostics": {
+                "platform": "quad",
+                "missing_distortion_assumed_zero": true,
+                "image_size_wh": {
+                  "numeric_vector_omitted_for_coordinate_privacy": true,
+                  "length": 2
+                },
+                "positive_depth_count": 13563,
+                "in_image_count": 11510,
+                "no_pose_or_unused_translation_vector_added": true,
+                "camera_convention": "Waymo A@inv(E)@undo_front; Drone E@undo_z; Quad E"
+              }
+            },
+            "RGB_A_B_sha256": [
+              "5f62c5579e29b6e40b2891df1713ba2a93f642661382be50f3afb26d45175e09",
+              "fcf29ff5a46244311eadec31ff3f31fa424fdc425f3afd6c6ce904689a6a5c00"
+            ]
+          }
+        },
+        "wrong_scene": {
+          "status": "insufficient_correspondences",
+          "accepted": false,
+          "n_pairs": 0,
+          "n_fit": 0,
+          "n_holdout": 0,
+          "fit_pair_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "holdout_pair_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "holdout_disjoint_spatial_cells": true,
+          "time_unit_unknown_no_velocity_estimate": true,
+          "clock_status": "unknown_or_unverified_counter_not_used",
+          "observation_scope": "candidate overlapping raw views; not certified continuous video",
+          "kinematic_speed_estimated": false,
+          "primary_uses_sensor_correspondences_only": true,
+          "provided_pose_used_for_fit_or_selection": false,
+          "config": {
+            "sift_features": 2000,
+            "sift_ratio": 0.75,
+            "maximum_depth_binding_distance_px": 3.0,
+            "minimum_depth_m": 0.1,
+            "split_spatial_voxel_m": 0.5,
+            "split_holdout_modulus": 4,
+            "split_holdout_remainder": 0,
+            "ransac_trials": 512,
+            "ransac_inlier_m": 0.25,
+            "minimum_fit_pairs": 6,
+            "minimum_holdout_pairs": 3,
+            "minimum_fit_inlier_fraction": 0.5,
+            "minimum_holdout_inlier_fraction": 0.6,
+            "maximum_holdout_median_m": 0.15,
+            "maximum_holdout_p90_m": 0.5,
+            "minimum_triangle_cross_norm_m2": 1e-06,
+            "minimum_second_singular_value": 1e-10,
+            "mask_flow_features": 64,
+            "flow_quality_level": 0.01,
+            "flow_min_distance_px": 3.0,
+            "flow_window_px": 21,
+            "flow_pyramid_levels": 3,
+            "flow_iterations": 30,
+            "flow_epsilon": 0.01,
+            "flow_cycle_max_px": 1.5,
+            "minimum_cycle_tracks": 6,
+            "mask_match_minimum_score": 0.5,
+            "mask_match_minimum_margin": 0.15,
+            "split_salt": "R12_RGBD_spatial_fit_holdout_v1"
+          },
+          "observation_diagnostics": {
+            "SIFT_keypoints_A_B": {
+              "numeric_vector_omitted_for_coordinate_privacy": true,
+              "length": 2
+            },
+            "mutual_ratio_matches": 7,
+            "RGBD_matches_before_unique_return_binding": 0,
+            "RGBD_unique_physical_pairs": 0,
+            "maximum_binding_distance_px": 3.0,
+            "foreground_exclusion_A_B_available": [
+              true,
+              true
+            ],
+            "foreground_exclusion_is_fullimage_external_masks_not_q0": true,
+            "background_only_qualification": false,
+            "foreground_exclusion_does_not_certify_all_fit_points_background": true,
+            "without_masks_is_preflight_only_not_certified_background_registration": false,
+            "camera_A": {
+              "raw_unique_XYZ": 13682,
+              "visible_zbuffer_unique": 11529,
+              "camera_diagnostics": {
+                "platform": "quad",
+                "missing_distortion_assumed_zero": true,
+                "image_size_wh": {
+                  "numeric_vector_omitted_for_coordinate_privacy": true,
+                  "length": 2
+                },
+                "positive_depth_count": 13682,
+                "in_image_count": 11630,
+                "no_pose_or_unused_translation_vector_added": true,
+                "camera_convention": "Waymo A@inv(E)@undo_front; Drone E@undo_z; Quad E"
+              }
+            },
+            "camera_B": {
+              "raw_unique_XYZ": 14207,
+              "visible_zbuffer_unique": 9380,
+              "camera_diagnostics": {
+                "platform": "quad",
+                "missing_distortion_assumed_zero": true,
+                "image_size_wh": {
+                  "numeric_vector_omitted_for_coordinate_privacy": true,
+                  "length": 2
+                },
+                "positive_depth_count": 14207,
+                "in_image_count": 12310,
+                "no_pose_or_unused_translation_vector_added": true,
+                "camera_convention": "Waymo A@inv(E)@undo_front; Drone E@undo_z; Quad E"
+              }
+            },
+            "RGB_A_B_sha256": [
+              "5f62c5579e29b6e40b2891df1713ba2a93f642661382be50f3afb26d45175e09",
+              "f95319032f7c390d1bdb77da3a134f914fbd1c7d32e1656e9946ea50344e8713"
+            ]
+          }
+        }
+      }
+    }
+  ],
+  "comparison_scope": "Input-development5pairs; methods have different validation/holdout criteria, not equal-protocol superiority or task performance. No sourceq0 or targetGT. No transform or pose is exported."
+}

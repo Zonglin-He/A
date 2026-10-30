@@ -1,0 +1,62 @@
+{
+  "state": "R12_inputcontent_duplicate_and_prior_exclusion_audit_complete",
+  "program_sha256": "7b4820de100466570405de00ff9e0c7e61818a62a80ee5b34d052192d27166a4",
+  "private_index_sha256": "e8ee40c01caf5ca70f83e5f5aaa966d368351375bf99a184cd30b4d753c2d667",
+  "population_manifest_sha256": "d6296d2577300796055fd255cbde2e768b9c493254e5ee610296a095d90afbbd",
+  "path_cases": 5912,
+  "unique_content_groups": 1753,
+  "extra_path_cases_with_duplicate_RGB_point": 4159,
+  "content_group_timestamp_conflicts": 0,
+  "content_group_pose_conflicts": 0,
+  "same_timestamp_with_different_content_pair_count": null,
+  "prior700_pathcases": 700,
+  "prior700_unique_contentgroups": 588,
+  "prior_round_scope": {
+    "R9_160": {
+      "path_cases": 160,
+      "unique_RGB_point_groups": 150,
+      "extra_cases_sharing_physical_input": 10,
+      "within_group_different_caption_observed": true
+    },
+    "R10_160": {
+      "path_cases": 160,
+      "unique_RGB_point_groups": 158,
+      "extra_cases_sharing_physical_input": 2,
+      "within_group_different_caption_observed": true
+    },
+    "R11_320": {
+      "path_cases": 320,
+      "unique_RGB_point_groups": 292,
+      "extra_cases_sharing_physical_input": 28,
+      "within_group_different_caption_observed": true
+    },
+    "R8_40": {
+      "path_cases": 40,
+      "unique_RGB_point_groups": 40,
+      "extra_cases_sharing_physical_input": 0,
+      "within_group_different_caption_observed": false
+    },
+    "R7_20": {
+      "path_cases": 20,
+      "unique_RGB_point_groups": 20,
+      "extra_cases_sharing_physical_input": 0,
+      "within_group_different_caption_observed": false
+    }
+  },
+  "prior_round_content_overlap": {
+    "R9_160__R10_160": 11,
+    "R9_160__R11_320": 20,
+    "R9_160__R8_40": 1,
+    "R9_160__R7_20": 0,
+    "R10_160__R11_320": 28,
+    "R10_160__R8_40": 6,
+    "R10_160__R7_20": 2,
+    "R11_320__R8_40": 9,
+    "R11_320__R7_20": 2,
+    "R8_40__R7_20": 0
+  },
+  "hash_bytes_total": 1609488480,
+  "elapsed_seconds": 1.418238335289061,
+  "content_rule": "Exact identical JPEG AND pointfile bytes; conservative exact-duplicate notion, not guaranteed unique physical observations if same scene reencoded or differently sampled.",
+  "scope": "Inputfile bytes only; no pixels/P arrays, GTobject/captionpayload beyond existing inputmanifests, score/model/GPU. Old task-query metrics/predictions unchanged. Shared physical input can still represent different language queries, so this finding does not mechanically invalidate old query-case metrics."
+}
