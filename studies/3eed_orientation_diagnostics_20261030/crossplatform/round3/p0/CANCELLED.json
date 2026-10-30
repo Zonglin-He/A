@@ -1,0 +1,44 @@
+{
+  "state": "cancelled_by_latest_user_instruction",
+  "recorded_utc": "2026-10-30T01:32:30.757042+00:00",
+  "reason": "User asked how long training takes and to avoid it if too long; parent instructed stop the short timing and perform no more GPU retries.",
+  "formal_training_epochs": 0,
+  "source_only_checkpoint_created": false,
+  "effective_throughput_measured": false,
+  "timing_first_attempt": {
+    "state": "failed_before_first_optimizer_step",
+    "cause": "Official SetCriterion calls distributed.get_world_size without an initialized process group.",
+    "log": "timing.log",
+    "sha256": "77f48cdd39edfc6bbf7e055486ebb2487b0b120913dcfc69cc108b1f5cd36dc4"
+  },
+  "timing_retry": {
+    "state": "terminated_without_completed_step_record",
+    "repair": "Actual NCCL rank 0/world_size 1 file rendezvous; loss normalization was not changed.",
+    "log": "timing_retry_distributed.log",
+    "sha256": "3fb01750c6b4ccbb1f2c19b84bfdee3ba07e5a5c6eff80cb5e49ce3657c8db31",
+    "terminated_pids": [
+      2741385,
+      2741824,
+      2741828,
+      2741833,
+      2741837,
+      2741384,
+      2741383
+    ]
+  },
+  "post_stop_compute_process_check": "No task runner remains. nvidia-smi lists only the existing ToDesk process, which was not touched.",
+  "automatic_training_or_controller_created": false,
+  "resume_allowed": false,
+  "historical_reference_only": {
+    "seconds": 8463.498113207545,
+    "hours": 2.3509716981132067,
+    "source": "Official mixed-platform training log, scaled by 15300 Waymo optimizer steps.",
+    "limitations": [
+      "Not a 5090 measurement.",
+      "Original hardware/distributed details are unproven.",
+      "Excludes validation, startup, and checkpoint I/O.",
+      "Batch 24 memory and complete backward execution have not been validated."
+    ]
+  },
+  "no_target_numerical_GT_scoring": true
+}

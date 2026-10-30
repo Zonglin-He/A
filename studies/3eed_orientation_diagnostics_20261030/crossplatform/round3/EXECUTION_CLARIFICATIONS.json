@@ -1,0 +1,27 @@
+{
+  "kind": "preexecutionclarification_no_oldlock_rewrite",
+  "parent_plan_sha256": "999d422a1c624b521d59e3793f0b817170e560916eb3b141bf7024ed1394e59e",
+  "P0checkpoint": "FreshWaymo100epoch final checkpoint fixed inadvance, nottargetval-best. Sourceval diagnostics allowed, no checkpointselection using target.",
+  "P3capacity_groups": {
+    "orientationonly": [
+      "source_yaw0",
+      "PCA_standard_axisaware",
+      "minimum_area_exact",
+      "Lshape_area",
+      "Lshape_closeness",
+      "Lshape_variance",
+      "surface_energy_orientationonly_optimization"
+    ],
+    "historical_not_same_capacity": [
+      "legacy_PCA_reference_if_aspectgate_differs",
+      "legacy_joint_adapter3_reference_changescenter_orquery"
+    ]
+  },
+  "P2statistics": "All declared scalarfeatures presented. Raw higher-feature AUROC for positiveIoUchange vs negativeIoUchange withties separately, never flip direction afterlabels to maximizeAUC. Noeffects labels reported separately not silentlydeleted. Spearman versus continuousdeltaiou. Within-sceneAUROCundefined ifoneclass, retainNAanddenominator. P2stability computedforPCA yaws primary; othermethods crosssectionaldescriptive not claimmethodspecificstability.",
+  "estimands": {
+    "primary": "Platform-equallyweighted mean ofscene mean paired deltas. Within eachplatform resample whole scenes, then equalweight thethreeplatformmeans.",
+    "secondary": "Official frameweighted macro and equalplatform frameweighted reported withexplicitdenominator, notIIDframesinference.",
+    "bootstrap": "10000 draws seed20261030; intervaldescriptive, targetDrone2andQuad3scenes cannotclaimgeneralunseenplatformpopulation. Reportleaveonesceneout andallscene signedtails."
+  },
+  "scope": "Onlyhistorical54 cacheddiagnostic fornow; sourceonly actualdeployment performancecannotbe inferred fromtheseunionmodelresults"
+}

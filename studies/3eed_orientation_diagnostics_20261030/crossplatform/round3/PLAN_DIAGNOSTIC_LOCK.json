@@ -1,0 +1,70 @@
+{
+  "id": "3eed_round3_p0p1p2p3_v1",
+  "locked_local": "2026-10-30T09:22:15.035969+08:00",
+  "priority": [
+    "P0_sourceonly_official_protocol",
+    "P1_orientation_injection_and_search",
+    "P2_geometry_reliability",
+    "P3_classical_geometry_comparison"
+  ],
+  "scope": "Only3EED. No new selector or parametersearch. Preserve prior runs and officialcheckpoint.",
+  "P0": {
+    "require": "Genuine Waymo-train-only checkpoint. Never initialize from uniontrained checkpoint. Officialtrain100epochs recipe and sourcevalidationonly selection. If published unavailable, audit and launch freshtraining with frozen sourceonlydata, after engineering throughput check and initializationlock.",
+    "evaluation": "Official last-layer contrastive GTclass-assisted span protocol reported separately from unconditional text-only firstnoun; fixed final sourcecheckpoint, targetlabels never select checkpoint. Targetprotocol loader sampling coordinate handling and missingreleasedscenes disclosed. Fullbenchmark completeness cannot be claimed from54cachedframes."
+  },
+  "cached_diagnostic": {
+    "parents": "All oldround2 dev18+confirm36 exact GTfreeinput/source caches. No newcohortclaim. These54 outcomes previously observed; all P1/P2/P3 results explicitly descriptive and not newheldout proof.",
+    "source": "union-trained official checkpoint plus fixed firstnoun selectedquery retained as historical stratum, never evidence ofsourceonlyshift",
+    "reuse": "Inputmanifests,source seals,previouspredictionseals hashverified before reads; sourceand oldpredictions nevermodified."
+  },
+  "P1": {
+    "fixed": "Same selectedquery,center,size; yawonly changes. GTnumericaccess only inoffline scoring after all GTfree predictions and descriptors sealed.",
+    "GT_yaw_injection": "Replace yaw withtarget yaw, no axis swap or identityselection. Diagnostic not necessarily IoUmax under wrongcenter/size.",
+    "finite_search": "0.25degree grid over180degrees plusGTyaw,sourceyaw,and allpredictedmethodyaws; local bounded refinement oftop3 gridlocalmaxima within0.25degree. Bestobserved is a feasible lowerbound onmaximum, notcertifiedupperbound. Never used forTTA,gating ormethodselection.",
+    "retain": "Mean/signedtails/thresholdrescueharm and perplatform scenecluster summaries; cases GTyaw harms mustremain."
+  },
+  "P2": {
+    "input_features": [
+      "unique_crop_count",
+      "log_point_density",
+      "PCA_eigengap",
+      "XY_hull_area_fraction",
+      "z_span_fraction",
+      "source_crop_boundary_fraction",
+      "nearest_neighbor_components_fraction",
+      "horizontal_normal_support",
+      "vertical_normal_planarity",
+      "yaw_bootstrap_stability",
+      "crop_expansion_stability",
+      "background_injection_stability",
+      "partial_visibility_stability",
+      "crop_shift_stability"
+    ],
+    "boundary": "Allfeatures computed fromsameunlabeled sampledpointcloud andsourcebox only. NoGTfeatures into solver. No classifier orselectortrained onthese54.",
+    "perturbations": {
+      "point_bootstrap": "16fixedseed75percent withoutreplacement subsamples",
+      "partial_visibility": "Retain eachsideofsourcecenter/median along8fixedXYnormals plus upperzhalf; reportobservedpointremoval notnew independentscan",
+      "background": "Annularsamecloudpoints between sourceAABB and1.5xAABB; inject fixed25percent/50percentoforiginalcropcount where available; nearest deterministic distance/hash order, reportactualcounts",
+      "crop_error": "Shifts of +-.1sourceextent alongX,Y,Z; expansion1.25x. These controlledinputperturbations do notknow actualGTcrop error."
+    },
+    "offline_outcomes": "PCA/minarea/Lshapecloseness/geometryopt IoUdelta vs source, positive vsnegative; AUROC/spearman sceneheldout descriptive only, no perframetrain/test claim. GTboxpointoccupancy is diagnosticproxy, not trueinstancepuritylabel.",
+    "uncertainty": "Scene-level effects and platformstratified paired bootstrap where >=2scenes. Drone2/Quad3 targetvalscenes insufficient broadpopulationclaims; reportallscenes and leaveonesceneout sensitivities. No IID54 CI."
+  },
+  "P3": {
+    "common_inputs": "Fixed source selectedquery,center,size, sourceAABB pointcrop shared by allmethods. Samecrop supportmin for eachmethod disclosed.",
+    "methods": [
+      "source_yaw0",
+      "legacy_PCA_reference",
+      "PCA_standard_axisaware",
+      "minimum_area_exact",
+      "Lshape_area",
+      "Lshape_closeness",
+      "Lshape_variance",
+      "surface_energy_orientationonly_optimization",
+      "legacy_joint_adapter3_reference"
+    ],
+    "primary": "No TTAcandidateprimaryselected; finite predeclaredcomparison, reportall. Standardgeometrypostprocessing not neuralTTA.",
+    "classical_full_refit": "Optional separate capacitygroup, changescenter/sizeandcannot becompared asorientationonly. NoGTtuning."
+  },
+  "resource": "One GPU owner coordinator. CPU cacheddiagnostics while P0checkpointaudit/training. All newmodels/training output isolated round3. No additionalAVIS/GREATexperiments."
+}

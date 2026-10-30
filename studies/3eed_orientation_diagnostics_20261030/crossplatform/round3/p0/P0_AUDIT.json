@@ -1,0 +1,111 @@
+{
+  "recorded_utc": "2026-10-30T01:32:30.757042+00:00",
+  "status": "P0_source_only_baseline_unavailable_and_training_cancelled",
+  "scope": "P0 official acquisition and source-only protocol audit. No target model inference or target numerical GT scoring in P0.",
+  "official_code": {
+    "repo": "https://github.com/worldbench/3EED",
+    "current_commit": "843a901f5367a6be5cc484b97c6ecad462961dfa",
+    "releases": 0,
+    "tags": 0,
+    "branches": [
+      "main"
+    ],
+    "tree_entries": 152
+  },
+  "official_data": {
+    "repo": "https://huggingface.co/datasets/RRRong/3EED",
+    "commit": "129fe3cc45722423c917943a4480ba454eb352bd",
+    "files": [
+      ".gitattributes",
+      "3eed_dataset.zip",
+      "README.md",
+      "baseline_ckpt_pred.zip",
+      "croissant_file.json"
+    ],
+    "alternate_checkpoint_found": false
+  },
+  "baseline_archive": {
+    "sha256": "c9ab8ab90517a44379976a3a9a136a1d84bade4abf6dc2c7123b8b33d2dd79ef",
+    "bytes": 535349344,
+    "member_count": 36719,
+    "checkpoint_members": [
+      "final_6384/ckpt_6384.pth"
+    ],
+    "training_platforms": [
+      "quad",
+      "drone",
+      "waymo"
+    ],
+    "per_platform_evaluation_folders_are_separate_training_checkpoints": false,
+    "safe_paths_and_no_symlinks": true
+  },
+  "official_availability_evidence": [
+    {
+      "url": "https://github.com/worldbench/3EED/issues/6#issuecomment-4273059426",
+      "author": "iris0329",
+      "date": "2026-04-18",
+      "paraphrase": "Collaborator states that other baselines were not released and other checkpoints were lost after the server reset."
+    },
+    {
+      "url": "https://project-3eed.github.io",
+      "paraphrase": "Project page links to the same GitHub and HF repositories; no alternate Waymo-only checkpoint was found."
+    }
+  ],
+  "source_data": {
+    "train_expressions": 3682,
+    "val_expressions": 3782,
+    "train_scenes_available": 94,
+    "val_scenes_available": 93,
+    "train_val_scene_overlap": 0,
+    "batch24_drop_last_steps": 153,
+    "100epoch_steps": 15300,
+    "source_val_batch48_steps": 79,
+    "cpu_item_checks": 8
+  },
+  "training_recipe": {
+    "initialization": "Pretrained local RoBERTa-base; visual backbone and grounding components initialized from code defaults, with no released mixed checkpoint and no pp_checkpoint.",
+    "batch_size": 24,
+    "precision": "FP32",
+    "optimizer": "AdamW",
+    "lr_nonbackbone": 0.0001,
+    "lr_backbone": 0.001,
+    "weight_decay": 0.0005,
+    "clip_norm": 0.1,
+    "decoder_layers": 6,
+    "text_encoder_parameters": "frozen, but dropout remains active in train mode",
+    "point_input": "16384 XYZ points; use_color flag does not cause the effective single-object loader to return RGB/reflectance",
+    "sampling": "Random subsampling, replacement when fewer than 16384 points",
+    "augmentation": "Single-object item path does not invoke the defined geometric augmentation helper",
+    "lr_scheduler": "MultiStepLR advanced each optimizer step. Script nominal epochs 25/26 become effective 26/27 because default warmup_epoch=-1 is subtracted.",
+    "source_validation_policy": "Waymo only, every 10 epochs if eventually reauthorized; primary fixed epoch100, no target selection.",
+    "criterion": "HungarianMatcher(1,0,2,soft_token=True), box/label/contrastive losses, eos .1, temperature .07; seed focal and all 7 heads supervised.",
+    "requires_real_distributed_group": true
+  },
+  "evaluation_contract": {
+    "prediction": "center XYZ + raw full size XYZ; no trained heading/yaw output",
+    "GT": "Official loader first 7 fields only; raw extra fields are not additional Euler angles.",
+    "official_readout": "GT target class -> synonym span -> positive_map; normalized query/text contrastive score at temperature .07, top1. Must disclose GT-class/span assistance.",
+    "round2_readout": "Modified text-only first noun readout, not identical to original official evaluation.",
+    "size_handling": "Original official eval clamps predicted size at 1e-6; preserve and count raw invalid sizes rather than abs correction.",
+    "metric": "Seal predictions before isolated float64 7D OBB scorer; use scalar-converted yaw before trigonometry; preserve independent audit.",
+    "target_adaptation": "Must not receive target numeric bbox. GT-class/span-assisted official readout is a separate explicit information condition, not fully unlabeled deployment."
+  },
+  "scientific_status": {
+    "source_only_baseline_done": false,
+    "source_only_checkpoint_created": false,
+    "formal_training_epochs": 0,
+    "target_source_only_result_available": false,
+    "mixed_model_can_be_called_source_only": false
+  },
+  "cancellation_receipt": "CANCELLED.json",
+  "evidence_files": [
+    "GITHUB_CURRENT_TREE.json",
+    "HF_CURRENT_METADATA.json",
+    "HF_REFS.json",
+    "BASELINE_ZIP_DIRECTORY.json",
+    "ARCHIVE_CONFIGS.json",
+    "SOURCE_LOADER_AUDIT.json",
+    "TRAINING_FEASIBILITY_REFERENCE.json",
+    "COMPAT_SETUP.json"
+  ]
+}

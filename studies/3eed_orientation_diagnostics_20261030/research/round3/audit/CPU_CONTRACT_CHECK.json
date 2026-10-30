@@ -1,0 +1,98 @@
+{
+  "kind": "synthetic_CPU_contract_not_task_evidence",
+  "fixtures": [
+    {
+      "name": "correct_center_size_yaw_recovery",
+      "source_iou": 0.3333333333333333,
+      "GTyaw_injected_iou": 1.0
+    },
+    {
+      "name": "GTyaw_can_harm_wrong_extents",
+      "source_iou": 1.0,
+      "GTyaw_injected_iou": 0.14285714285714288,
+      "interpretation": "GTyaw is not a guaranteed-improvement or max-IoU oracle under fixed wrong dimensions."
+    },
+    {
+      "name": "GTyaw_not_max_with_wrong_center",
+      "GTyaw_injected_iou": 0.0,
+      "other_feasible_yaw_iou": 0.14285714285714285
+    },
+    {
+      "name": "finite_grid_lower_not_upper",
+      "grid_best": 0.5944458484863353,
+      "known_continuous_feasible_iou": 1.0,
+      "certified_volume_height_upper": 1.0
+    },
+    {
+      "name": "vertical_nonoverlap_certifies_no_yaw_headroom",
+      "certified_upper": 0.0
+    },
+    {
+      "name": "contained_volume_upper_tight",
+      "certified_upper": 0.125
+    }
+  ],
+  "fixed_query_center_extents_guards_reject_mutations": {
+    "query_switch": true,
+    "center_change": true
+  },
+  "Lshape_primary_vs_reference_differ": {
+    "paper_literal": {
+      "closeness": 116.5,
+      "variance": -0.2025,
+      "E1_n": 1,
+      "E2_n": 2,
+      "distance1": [
+        0.0,
+        0.2,
+        1.0,
+        2.0,
+        4.0
+      ],
+      "distance2": [
+        0.0,
+        1.0,
+        0.1,
+        2.0,
+        1.0
+      ]
+    },
+    "common_implementation": {
+      "closeness": 315.0,
+      "variance": -0.012222222222222225,
+      "E1_n": 2,
+      "E2_n": 3,
+      "distance1": [
+        0.0,
+        0.2,
+        1.0,
+        2.0,
+        0.0
+      ],
+      "distance2": [
+        0.0,
+        1.0,
+        0.1,
+        0.0,
+        1.0
+      ]
+    },
+    "common_grid_count": 89,
+    "common_last_degrees": 88.0,
+    "paper_grid_convention": "delta1degree, inclusive0..89,90angles",
+    "conventions": "paper norm ties first upper-vector, population variance ddof0, empty sets zero, d0.01 declared from reference default; none proves author-MATLAB bitexactness"
+  },
+  "platform_scene_bootstrap_contract": {
+    "fixed_platform_weights": {
+      "waymo": 0.3333333333333333,
+      "drone": 0.3333333333333333,
+      "quad": 0.3333333333333333
+    },
+    "single_scene_bootstrap_degenerate_not_population_certificate": true,
+    "estimand": "equal platform then equal scene, not frame weighted"
+  },
+  "target_dataset_files_read": 0,
+  "model_calls": 0,
+  "task_GT_scores": 0,
+  "source_sha256": "ed5664e7914dca8591dd6dba2ad80cfea8c4f3b05b1093ae1f2e28e9b8c07e32"
+}
