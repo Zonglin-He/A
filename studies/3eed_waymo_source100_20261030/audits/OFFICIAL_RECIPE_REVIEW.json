@@ -1,0 +1,71 @@
+{
+  "state": "official_CPU_code_audit_complete_newimplementation_pending_CODE_READY",
+  "source_commit": "843a901f5367a6be5cc484b97c6ecad462961dfa",
+  "source_sha256": {
+    "scripts/train_waymo.sh": "ea877927bcf60e04979a31bb61ee55f1bec0a8fcf372708c7e2c9b922c87b9e4",
+    "main_utils.py": "a9b8c9dbfebe553f38b896417a07c7d2b6e57cca7366b940f26500f64d6dec50",
+    "train_dist_mod.py": "de36d7b95647ae41debb49611c5ea9656707dd71b94d223a51537e7125403ebf",
+    "models/bdetr.py": "74336de17da7c949cfc29b9cfbec95d0db2d88a1071e0ac53760cd0b8763e5b3",
+    "models/losses.py": "2afdf236ed5a0d32c4bda1d5cca67a76b372b41b447e2a4f4c1d60222f8c4e69",
+    "utils/lr_scheduler.py": "1a9cd02fe4bad102c094b084aee544c21819db30b5a288cb6ee4db98998b3a33",
+    "src/joint_det_dataset.py": "18ee68123adb2d361493401fdb5190699dac2b539fa816c95014880319dd6825",
+    "models/point_backbone_module_v2.py": "1e61e0fb2bef33d3f3a1e2fa3ec484ab447450358f4c2a1c380f701dc20eb943"
+  },
+  "official_recipe": {
+    "dataset": "Waymo_only_train_and_val",
+    "batch": 24,
+    "epochs": 100,
+    "source_reference_ntrain": 3682,
+    "reference_steps_per_epoch": 153,
+    "reference_total_updates": 15300,
+    "optimizer": "AdamW",
+    "lr_groups": [
+      0.0001,
+      0.001,
+      1e-05
+    ],
+    "text_group_empty": true,
+    "weight_decay": 0.0005,
+    "clip_norm": 0.1,
+    "loss": "8*objectness+(sum7heads[CE+5*bbox+GIoU+contrastive])/7",
+    "matcher_constructor_order": [
+      "cost_class",
+      "cost_bbox",
+      "cost_giou",
+      "soft_token"
+    ],
+    "matcher_values": [
+      1,
+      0,
+      2,
+      true
+    ],
+    "bbox_size_relative_weight": 0.2,
+    "temperature": 0.07,
+    "eos_coef": 0.1,
+    "point_focal_gamma_alpha": [
+      2,
+      0.25
+    ],
+    "point_topk": 4,
+    "BN_train_momentum": 0.1,
+    "text_weights_frozen_but_dropout_train": true,
+    "actual_process_group_required": true,
+    "official_rng_seed_option_not_globally_applied": true,
+    "new_global_seed0_must_be_declared_reproducibility_choice": true,
+    "scheduler_events_end_epochs": [
+      26,
+      27
+    ],
+    "first_updates_at_newlr_epochs": [
+      27,
+      28
+    ]
+  },
+  "new_run_authorization_boundary": "Round6 newlyauthorized; oldP0 cancellation/zeroepoch evidence staysunchanged. No mixedcheckpoint initialization. No targetDroneQuad labels accessed.",
+  "old_P0_cancelled_sha256": "67a22e302847f954bbc7ea6f4d438a094628f61696c55c569444c7a590ee60e4",
+  "audit_document_sha256": "7d6450b30a61d7d77d1dd1491e7ee57ae10d06d3f30c4f6cd0dfeccc8b4de398",
+  "scheduler_contract_sha256": "57590edacc0e9b904cd41b4e1b80ecf15aaf1e0cec4d25077518f60e5b80cf5c",
+  "model_GPU_dataset_target_calls": 0,
+  "correction_lineage": "Initialverbalmessage reversedclass/bboxmatchingweights; immediatelycorrected afterreadingconstructor. Correctvaluescostclass1,costbbox0,costgiou2."
+}

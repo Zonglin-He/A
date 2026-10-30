@@ -1,0 +1,58 @@
+{
+  "state": "passed_locked_timing12_code_and_actual_receipt_review",
+  "plan_sha256": "202193dff238db458331a5aef84e7e417af55d5ba8805f4cabe65461ac436180",
+  "timing_result_sha256": "0fc7fea67f2d2fea0dbca717108e27d3bbcd72d4aaf857f5984a567fa0b9c3e0",
+  "factory_sha256": "b762aae9cf362e8509b055c387da19a83a6550e04269861a4ca827941d53f096",
+  "timing_code_sha256": "a01d9203cfa9f1dd716df7fdb700b16103ad43af44cceca1deae9a1eb1646c48",
+  "initial_model_sha256": "677095d0fd2142b2a19db3acc5a61273a64b19a5498dc93b8376ca2d11f32866",
+  "initial_visual_sha256": "8a394e22cad6204592aa731816da2c3778a01d437b15f662de1f8e0fab45f54a",
+  "generic_RoBERTa_asset_sha256": "5bde1d28afb363d0103324efeb5afc8b2b397fe5e04beabb9b1ef355255ade81",
+  "source_train_contract_matches_frozenplan": true,
+  "n_source_train": 3682,
+  "batch24_FP32_actual_completed_steps": 12,
+  "warmup_timed_steps": [
+    4,
+    8
+  ],
+  "actual_nonzero_gradient_tensors_every_step": 586,
+  "official_loss_matcher_normalization_optimizer_scheduler_clip_retained": true,
+  "real_NCCL_rankone_and_DDP_broadcastbuffersFalse": true,
+  "frozen_text_parameters_unchanged_training_dropout_active": true,
+  "visual_BN_training_momentumpoint1": true,
+  "model_state_changed_and_real_AdamWexecuted": true,
+  "update_evidence_boundary": "Finalmodelstatefingerprint+nonzerogradients+lockedoptimizerstepcode. Timing intentionally doesnotserializefinaltensors or isolateparameter-onlydeltas; formalcheckpointauditor will compare sourceparameters separately fromBNbuffers.",
+  "unused_pooler_compatibility": {
+    "genericcheckpoint_lacks_pooler": true,
+    "newlyinitialized_frozen_keys": [
+      "pooler.dense.weight",
+      "pooler.dense.bias"
+    ],
+    "original_model_uses": "encoded_text.last_hidden_state, neverpooler_output",
+    "no_tasktrained_initializer": true
+  },
+  "timing": {
+    "wall_step_mean_8_after4warmup_seconds": 0.4035112833371386,
+    "forward_loss_backward_update_instrumented_mean_seconds": 0.40154674818040803,
+    "peak_allocated_bytes": 29026556928,
+    "peak_allocated_GiB": 27.033087730407715,
+    "cold_constructor_to_DDP_ready_seconds": 162.1847701589577,
+    "worker_iterator_startup_seconds": 10.266665844712406,
+    "training_step_extrapolation_seconds_only": 6173.7226350582205,
+    "training_step_extrapolation_hours_only": 1.714922954182839,
+    "instrumentation": "Perparametercount_nonzero.item performsadditionalGPU/CPU synchronization inside timing; loss/gradientchecks andscheduler included. Do notcall this a kernel-onlytime or anexact100epochETA.",
+    "excludes": "Coldstartup,periodicsourcevalidation,checkpointI/O, interruptions andpotentiallaterpeakcases. Update ETA fromfirstformalepoch."
+  },
+  "deviations_declared": [
+    "Explicitglobal seed0 ratherthanunusedofficialrng_seed flag",
+    "Spawnworkers afterCUDA/NCCL toavoidforkinitializationincompatibility",
+    "Instrumentation/logging only; no AMP,microbatchaccumulation,lossdenominatorchange orTaskcheckpoint"
+  ],
+  "formal_next_conditions": [
+    "Freshinit mustmatch677095... nottimingupdated93b33...",
+    "Fixedepoch100primary and15300sourceupdates underactual3682/drop_last24",
+    "OnlyWaymo train/val forconstruction/monitoring; noDroneQuadtargetlabels",
+    "Newformalcode/plan hash andcheckpoint/RNG/recovery lineage reviewed separately"
+  ],
+  "old_P0_cancellation_unchanged": true,
+  "no_GPU_model_or_targetlabel_access_by_this_auditor": true
+}

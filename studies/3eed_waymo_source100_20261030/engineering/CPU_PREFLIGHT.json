@@ -1,0 +1,39 @@
+{
+  "state": "CPU_preflight_pass",
+  "source": "Waymo train only",
+  "source_contract": {
+    "n": 3682,
+    "order_sha256": "e10930a43bd66b8afc908b2683d0c90de6cbdfe260b0a4e0d6e86b1027852d2f",
+    "independent_join_sha256": "6bff66bd690eb1e88d458d3bb7e33f6daec6900e698fbfa5362f635ec88a0730"
+  },
+  "CPU_initial_model_sha256": "677095d0fd2142b2a19db3acc5a61273a64b19a5498dc93b8376ca2d11f32866",
+  "CPU_visual_initial_sha256": "8a394e22cad6204592aa731816da2c3778a01d437b15f662de1f8e0fab45f54a",
+  "CPU_text_encoder_initial_sha256": "cdd349a6c626155b9750f2e4aca4e54ab73f5a7d12f2e3c3317f2d9a1aaac617",
+  "total_parameters": 144527419,
+  "trainable_parameters": 19881787,
+  "optimizer_groups": [
+    {
+      "n_params": 17268907,
+      "lr": 0.0001
+    },
+    {
+      "n_params": 2612880,
+      "lr": 0.001
+    },
+    {
+      "n_params": 0,
+      "lr": 1e-05
+    }
+  ],
+  "scheduler_actual_milestones_optimizer_steps": [
+    3978,
+    4131
+  ],
+  "training_text_dropout_active": true,
+  "BN_train_and_momentum_point1": true,
+  "no_cuda_initialized": true,
+  "initialization": "Original random visual/grounding modules; generic local RoBERTa.from_pretrained only. No source/joint task checkpoint opened.",
+  "global_seed0": "Explicit reproducibility choice; original entry rng_seed flag not actually applied globally.",
+  "loader_spawn": "Required process compatibility after CUDA/NCCL initialization; same worker seeding,4workers,batch24,drop_lastTrue; no persistent workers.",
+  "elapsed_CPU_seconds": 1.9756714343093336
+}

@@ -1,0 +1,13 @@
+{
+  "created_local": "2026-10-30T13:05:57.936283+08:00",
+  "scope": "One genuine Waymo-only source model following official100epoch recipe, real12step FP32 backward timing first, train/sourceVAL only. No mixed checkpoint initialization and no TTA.",
+  "prior_cancellation_sha256": "67a22e302847f954bbc7ea6f4d438a094628f61696c55c569444c7a590ee60e4",
+  "prior_cancellation_preserved": true,
+  "new_authorization_applies_to": "new round6 registration only; no edits/deletes of historical P0 locks",
+  "allowed_initialization": "Official default random nontext model, independent general-pretrained RoBERTa-base; frozen text weights, training dropout per official implementation",
+  "forbidden": "No released three-platform union checkpoint load/finetune, no target-platform labels for construction or model selection, no unrelated paused work",
+  "primary_checkpoint": "epoch100 predeclared; sourceVAL-best checkpoint may be secondary and never selected by Drone/Quad",
+  "GPU_policy": "single serialized GPU owner under existing research/round2/gpu.lock; preserve unrelated ToDesk",
+  "execution": "realNCCL rank0/worldsize1 required; finite100epochs with trace/checkpoints/meaningful validation, no automatic sweeps",
+  "model_goal": "strict source-trained weights usable for later Waymo→Drone/Quad comparison"
+}

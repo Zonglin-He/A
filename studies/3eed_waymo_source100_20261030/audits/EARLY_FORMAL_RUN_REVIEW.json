@@ -1,0 +1,57 @@
+{
+  "state": "pass_actual_early_run_source_only_provenance",
+  "formal_plan_sha256": "66fabf36898f1bc92124b680435e598e7bca0809e48aeb2da35e272331afe7ce",
+  "initialization_sha256": "b70f9769ec3ff05f004d845effa4dcab1bc8338e4f6b3343a06fc3a8a1c3a15b",
+  "source_code_matches_registered_plan": {
+    "factory.py": true,
+    "checkpointing.py": true,
+    "source_validation.py": true,
+    "train_source.py": true
+  },
+  "cold_initial_model_sha256": "677095d0fd2142b2a19db3acc5a61273a64b19a5498dc93b8376ca2d11f32866",
+  "text_fingerprint_matches_original_frozen_generic_text": "cdd349a6c626155b9750f2e4aca4e54ab73f5a7d12f2e3c3317f2d9a1aaac617",
+  "full_state_changed": "709b35957613516e02280d005b0e6a9b8ee14c5a0a7a250df29083c74baf2d0a",
+  "visual_state_changed": "328de8bf587cea47d341db9294469cf5fb97e9f887b014e2cc23b4d453aa57c5",
+  "actual_parameter_only_change_proof": {
+    "definition": "Official text_projector LayerNorm affine weight default ones/bias default zeros; actual trained tensors differ. These are parameters, not BN buffers.",
+    "max_abs_delta_from_known_default": {
+      "text_projector.1.weight": 0.010589957237243652,
+      "text_projector.1.bias": 0.008760325610637665
+    }
+  },
+  "optimizer": {
+    "groups": 3,
+    "frozen_text_group_empty": true,
+    "lr": [
+      0.0001,
+      0.001,
+      1e-05
+    ],
+    "weight_decay": [
+      0.0005,
+      0.0005,
+      0.0005
+    ],
+    "all_state_step_counts": [
+      459
+    ],
+    "state_tensors": 586,
+    "states_with_nonzero_first_moment": 586,
+    "moments_finite": true
+  },
+  "scheduler_last_epoch_equals_optimizer_updates": 459,
+  "sourceonly_and_sameplan_checkpoint_provenance": true,
+  "full_rng_payload_present": "Python,NumPy,TorchCPU,oneCUDAdevice,sharedDataLoaderGenerator; CUDA tensors inspected on CPU, no CUDA init",
+  "epoch1": {
+    "steps": 153,
+    "mean_loss": 123.59328966826395,
+    "train_seconds": 60.24651933601126,
+    "constant_registered_lrs": true,
+    "nonzero_finite_grad_norms": true,
+    "observed_peak_allocated_bytes": 29603515392
+  },
+  "source_train_val_contracts_bound": true,
+  "formal_plan_stale_timing_scope_corrected": true,
+  "no_new_task_model_GPU_or_targetlabel_access_by_auditor": true,
+  "boundary": "This proves actual early updates and provenance. It does not assert final100epoch completion or target generalization."
+}

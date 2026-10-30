@@ -1,0 +1,5 @@
+# Genuine Waymo-only source training, 3EED round6
+
+See [report](REPORT.md), [reproduction](REPRODUCTION.md), and all100epoch/all10sourceVAL scalar histories under results/. Primary is fixedepoch100, not the highest targetscore. Generic RoBERTa pretraining is allowed; released mixed-task weights were not used for initialization. SourceVAL GT-assisted official readouts and text-only readouts are separate. This bundle establishes the audited source training/validation run and makes no targetgeneralization or TTA claim.
+
+Scientific model/training code is byte-exact. Audit helper path-only portability edits and JSON projections retain original and exported hashes in EXPORT_PROVENANCE.json. Historical locks retain their original provenance and must not be relabeled as a fresh replication. Private source indices, raw captions/GT/media/points, physical scene/frame identifiers, model/optimizer/RNG tensors and raw predictions are excluded. Regenerate private inputs locally from legally accessible official source data.

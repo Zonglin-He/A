@@ -1,0 +1,16 @@
+{
+  "state": "formal_code_core_pass_after_recovery_fix",
+  "initial_review_sha256": "5fd1c2aeff7faba521b28135a367c17c1d3bc466ee20d0b8af8f58bab9796e99",
+  "train_source_sha256": "78a9148eec696ee0a85e9afbce5dec98488b5269cad4b677cb8f0961c239fb1b",
+  "unchanged_ready_code_sha256": {
+    "factory.py": "b762aae9cf362e8509b055c387da19a83a6550e04269861a4ca827941d53f096",
+    "checkpointing.py": "4cd803707cd79f3b9b665cafeda596cc5577e07840a2ff9f25570828209d904f",
+    "source_validation.py": "d428c5c566ee85748e843131879572195dcc106de0749ca203a35110281c5b22"
+  },
+  "recovery_fix": "When actual restored epoch100 model has no current-attempt in-memory milestone, recover only an output-local immutable epoch100 checkpoint+VAL seal with matching SHA, source-only plan and restored state fingerprint; finalize without further updates or validation. Final fullresume copied from actual restored checkpoint.",
+  "fixture_sha256": "3075880043ff00d01abc88dd88eea8fd925926ffbb8947f17d0b26b64f672cd6",
+  "mismatched_restored_model_rejected_in_metadata_only_synthetic_fixture": true,
+  "core_training_recipe_and_readout_no_new_changes": true,
+  "no_new_task_model_GPU_targetlabel_access": true,
+  "remaining_plan_documentation": "As of this review TRAIN_PLAN_TEMPLATE scope remains timing12 text; actual formal plan must replace this stale scope before formal release. No scientific code blocker remains."
+}

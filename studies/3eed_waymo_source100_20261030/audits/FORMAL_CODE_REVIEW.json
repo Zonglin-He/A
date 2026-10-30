@@ -1,0 +1,56 @@
+{
+  "state": "core_recipe_pass_with_one_recovery_edge_correction_requested",
+  "scope": "Read-only formal source/code review and CPU RNG serialization fixture; no new task model/GPU/data/GT access. This review does not assert completed training.",
+  "code_sha256": {
+    "factory.py": "b762aae9cf362e8509b055c387da19a83a6550e04269861a4ca827941d53f096",
+    "train_source.py": "7e07ed784231ddf093d26349003c457f65ab1cc03da47c434358e731ade927e0",
+    "checkpointing.py": "4cd803707cd79f3b9b665cafeda596cc5577e07840a2ff9f25570828209d904f",
+    "source_validation.py": "d428c5c566ee85748e843131879572195dcc106de0749ca203a35110281c5b22"
+  },
+  "template_sha256": "e810e6d9a79e0e9ab5ef156475a2ce773ea50ba11c8c5abbfc7b2d109146e7a0",
+  "checks": {
+    "cold_init_matches_registered_677095_not_timing_final": true,
+    "generic_RoBERTa_only_no_joint_task_checkpoint_import_or_load": true,
+    "resume_is_explicit_same_output_path_same_plan_strict_model_load": true,
+    "three_original_AdamW_groups_frozen_text_empty_group": true,
+    "official_criterion_topk4_clip_point1_scheduler_15300_updates": true,
+    "training_BN_momentum_point1_and_frozen_text_dropout_train": true,
+    "real_world1_DDP_broadcastbuffers_false": true,
+    "train_val_source_Waymo_only_with_independent_order_contracts": true,
+    "no_target_data_paths_or_validation_score_selection": true,
+    "fixed100epoch_primary": true,
+    "source_VAL_eval_no_grad_no_optimizer_scheduler_updates": true,
+    "VAL_param_versions_buffers_full_fingerprint_guards": true,
+    "VAL_restores_training_dropout_mode": true,
+    "checkpoint_model_saved_before_VAL_predictions": true,
+    "VAL_prediction_files_hash_sealed_before_any_offline_metric": true,
+    "resume_RNG_saved_after_VAL_shared_generator_advance": true,
+    "RNG_Python_NumPy_CPU_CUDA_shared_generator_in_payload": true,
+    "weights_only_true_safe_payload_CPU_fixture_pass": true,
+    "B24_actual_dynamic_token_padding_full_T_softmax_preserved": true,
+    "original_GTclass_span_BBF_BBS_explicitly_separate_from_text_firstnoun": true,
+    "raw_and_eval_sizeclamped_boxes_separate_yaw0_readout": true
+  },
+  "primary_findings": [
+    {
+      "id": "R6-FORMAL-01",
+      "severity": "recovery_correctness",
+      "status": "reported_to_parent_and_author_before_formal_lock",
+      "problem": "If epoch100 rolling resume is successfully saved but completion receipt is interrupted, resuming at next_epoch101 leaves in-memory milestones empty; final next(...epoch100) raises StopIteration. Normal cold uninterrupted training path is unaffected.",
+      "required_resolution": "Recover/verify epoch100 milestone from immutable on-disk milestone and checkpoint/VAL seal before finalization; keep all source weights/results unchanged."
+    },
+    {
+      "id": "R6-FORMAL-02",
+      "severity": "plan_documentation",
+      "status": "reported_before_lock",
+      "problem": "TRAIN_PLAN_TEMPLATE scope still describes timing12 engineering weights-discarded scope despite mode formal100.",
+      "required_resolution": "Formal locked plan must state authorized100epoch training; old timing plan remains immutable."
+    }
+  ],
+  "resume_boundary": "Completed epochs only. Incomplete epoch discarded. CUDA RNG code reviewed but not executed by this CPU auditor. No claim of mid-epoch worker RNG restoration.",
+  "validation_interpretation": "Source supervised VAL dataset naturally reads sourceGT containers; predictions are sealed before metric computation. This is not a claim that annotations were never opened. GTclass-assisted official BBF/BBS require target span and are not unconditional pure-text deployment. Firstnoun mask is a declared extra readout from the same full-text forward, not noun-only model input.",
+  "timing_interpretation": "Instrumented12step mean excludes validation/checkpoint/startup/per-epoch spawn; update total ETA from real formal epoch.",
+  "future_audit": "After training, inspect completed checkpoint provenance, exact100epoch/15300updates, parameter-only changes separate from BN, unchanged frozen generic text, validation seals and final immutable primary hash.",
+  "old_P0_cancel_and_timing_locked_evidence_untouched": true,
+  "fixture_sha256": "cadb5649daa0803ca85d031d035740336fc215f36d7ea2191a218ca604cf1970"
+}
