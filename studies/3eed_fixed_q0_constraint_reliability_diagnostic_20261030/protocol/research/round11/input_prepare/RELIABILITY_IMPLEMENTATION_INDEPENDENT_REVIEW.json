@@ -1,0 +1,42 @@
+{
+  "state": "independent_R11_AB_constraints_and_wrapper_prerun_review_pass_with_scope_limits",
+  "program_sha256": {
+    "crossplatform/round11/reliability.py": "227fbd9fb07bdc32c27624cd42ef3dd4fc624018875704f0bbd3cfb3afd843d5",
+    "crossplatform/round11/weighted_geometry.py": "411d3d27315e463c3c2cc67b371a0e256dd240e4ab58080a668841b919c5fa5b",
+    "crossplatform/round11/run_reliability.py": "6fdac3a7ed4a0dba75e7195eb373a30af17e5f14a702cccaacbf28269a838275"
+  },
+  "implementation_lock_sha256": "780676106a4cdd4ff18a3edb9f19302c9005a429493738f0a59896aea83890bb",
+  "source320_audit_sha256": "89f56e28f83d8d4f77a7a65e627a43e0a619dceeb5f120c16c4d9d04e81868ac",
+  "independent_AB_fixture_sha256": "e982590925b58f26984ca4a173a781836ba329de8ff52fa1e09b6b05af73b849",
+  "independent_weighted_fixture_sha256": "417ab96e9eb98d99634de47262e92ca34d684a2f2ce81d6f9a2b23ba6d321b89",
+  "checks": {
+    "physical_rawID_duplicates_deduplicated_and_coincidentXYZ_grouped": true,
+    "spatial_voxel_hash_parity_no_GT_or_color_selection": true,
+    "independent_AB_seed_visibility_and_normal_graphs": true,
+    "crossrole_support_read_only_after_both_masks_fixed": true,
+    "same_RGB_q0_ROI_backbone_prior_shared_not_independence": true,
+    "association_supported_internal_consistency_not_identity_confirmation": true,
+    "non_supported_effective_face_RGB_weights_zero_raw_features_retained": true,
+    "undefined_caseNA_and_conflict_defined0_not_collapsed": true,
+    "case_min_over_actual_float32_changed_accepted_coordinates": true,
+    "R1_and_R0_bridges_checked_in_synthetic_and_wrapper_per_actual_C": true,
+    "weighted_fullsource_support_acceptance_fixed_no_reselection_or_new_heading": true,
+    "uniform_pool_defined_active_effective_weights_includes_conflict0_excludes_NA": true,
+    "uniform_application_same_correspondence_and_definedness_flags": true,
+    "case_ranking_exact_platform_C_half_NA_last_hash_ties": true,
+    "atomic_application_coordinate_substitution_not_face_causal_effect": true,
+    "all_11arms_and_atomic6_written_before_GT_score_release": true,
+    "no_model_GPU_teacher_EMA_or_neuralparameter_updates_in_reliability_wrapper": true
+  },
+  "limitations": [
+    "Association status is source-conditioned crossmodal consistency. Shared q0/RGB/source-size/ROI/appearance can make both partitions stably wrong. No literal caption-target identity verification is implemented.",
+    "A/B partitions are disjoint observed points and independently rebuilt seed/normal graphs, but not independent scenes, sensor views or sourcebackbone inputs. Final G still fits all observed points; no heldout taskvalidation claim.",
+    "Uniform scalar weights are per-platform transductive means of the current unlabelled cohort, not purely per-case episodic adaptation. Active face terms can remain defined even if a particular accepted coordinate rounds unchanged.",
+    "Exact-coverage reliable_50 is a ranking control: if fewer than K defined scores exist, NA-last then hash can select undefined cases and apply original G. This is not the failclosed effective weighted_constraints method. Persisted control_defined and gate_selection make padding identifiable.",
+    "Component compatibility uses source-size hypotheses. Adjacent/background connections and sparse fragmentation can escape conflict detection; no semantic identity guarantee.",
+    "Actual source320 binding audit passed, but no actual reliability outputs, new targetGT scores or scientific gain are established by this pre-run implementation review."
+  ],
+  "blocking_issues": [],
+  "no_real_RGB_P_GT_score_annot_index_sidecar_model_weights_or_GPU_consumed_by_implementation_review": true,
+  "ownership": "Only new input_prepare engineering/review receipts written; author G/runner/evaluation and old studies unmodified."
+}

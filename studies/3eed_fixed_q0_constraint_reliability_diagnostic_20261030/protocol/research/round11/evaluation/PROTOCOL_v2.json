@@ -1,0 +1,87 @@
+{
+  "state": "R11_preGT_protocol_v2_with_actual_author_contract",
+  "hypothesis": "A fixed label-free per-constraint reliability score separates useful from harmful fixed-q0 G corrections beyond source agreement, residual and support count; not merely high heuristic confidence.",
+  "cohort": {
+    "n": 320,
+    "per_scene": 64,
+    "drone": 128,
+    "quad": 192,
+    "scenes_drone": 2,
+    "scenes_quad": 3,
+    "exclude": "All R9/R10 IDs and physical pointpaths plus prior smoke frames, input-only hash selection.",
+    "exposure": "New study cohort, targetVAL already prior full research exposure. Not globally fresh confirmation or new domains."
+  },
+  "proposal": "Original R10 G/config remains unconditional fixed proposal; originalsource/full/noRGBcoordinate/rawtargets saved without reliability editing. Any gated/attenuated output is a separate arm or evaluation policy.",
+  "units": {
+    "coordinate_application": {
+      "candidate": "R10fullG accepted coordinate and actualfloat32 full_j != source_j.",
+      "counterfactual_prediction": "BeforeGT seal, store source box with only coordinatej replaced by fullG_j for all6axes. This is coordinate-application effect, NOT causal effect of an observedface or refitting without a face.",
+      "primary_effect": "IoU(single_coordinate_applied,target)-IoU(source,target), positive helpful, negative harmful, abs<=1e-8 tie.",
+      "secondary_effect": "abs(source_j-target_j)-abs(full_j-target_j), positive coordinate-error reduction, tolerance1e-6m. Keep task/coordinate disagreement; do not pick favorable label afterGT.",
+      "zero": "Unsupported/inactive/unchanged coordinates separate, not negative-class padding."
+    },
+    "RGB_term": {
+      "candidate": "Actualfloat32 fullG box differs from noRGBcoordinate box, same originalsupport/gate.",
+      "primary_effect": "IoU(fullG,target)-IoU(noRGBcoordinate,target); notfullG-vs-source and notclaim pixelmask contribution.",
+      "secondary_effect": "Matched center/size error reduction; multiplecoordinate effect allowed, no perface causal claim.",
+      "zero": "Differentboxes with zeroIoUeffect are zero-effect ties, not harms; unchangedfull/off and unsupportedRGB report separately."
+    }
+  },
+  "ranking": {
+    "direction": "Higher reliability means safer/more useful, fixed beforeGT; no posthoc sign flip.",
+    "AUROC_AP": "Only useful/harmful effect subset and only if bothclasses exist. Report explicit nbeneficial/nharmful/nzero/undefinedscore for everyplatform/unittype; missingclass =>NA withreason. Helpful-positive AP and harmful-positive AP using -score fixed; base prevalence shown.",
+    "unit_weight": "Primary case-balanced weights1/(numbercandidateunits fromcase); rawunitcount and unweighted metrics secondary. No independent-unit inferential claim.",
+    "Spearman": "Score vs signed continuous effect on actualchanged candidateunits includingzeroeffect, withfinite score only. Constant score/effect or n<3 =>NA. No naive perpoint/coordinate pvalue; case+scene clustering limits.",
+    "undefined": "Do not silently drop undefinedscore harms. Ranking report defined coverage and perlabel unavailable counts; deployment gate keeps originalGchanged candidate pool and places NA last withprelocked hash ties.",
+    "primary_effective_vs_raw": "Effective correspondence-gated reliability is primary. Raw before-status scores retained secondary descriptive and never substituted after viewing labels."
+  },
+  "matched_coverage": {
+    "primary": "Casegate at50% of original unconditionalGchanged cases perplatform, K=ceil(Nchanged/2). Case score=min effective r_j overactualfloat32changedaxes; anyundefined=>caseNA. Conflict defined0, undefinedassociation NA; originalcandidatepool unchanged; NA-last+SHA256(salt|id) ties ensure exactK.",
+    "secondary_curve": [
+      0.25,
+      0.5,
+      0.75,
+      1.0
+    ],
+    "random": "Single prelocked SHA-hash rank as explicit hash_random_50 arm; salts/seeds locked beforeGT. No luckyseed selection. Optional additional randomseed reference distribution requires separateprelock, not assumed.",
+    "baselines": [
+      "source_agreement: smaller source-normalized correction, highscore=-magnitude",
+      "low_final_residual: lower actual observedplane/constraint residual, highscore=-residual",
+      "physical_support_count: larger uniquephysical support, no replacementmultiplicity",
+      "stability_only: segmentation/observation split stability alone, separatefromjointreliability"
+    ],
+    "undefined_policy": "NA-last then SHA tie, stillselectexactK. Optional commondefined analysis applies SAMEmask to allpolicies and is secondary, cannotreplaceallcandidate.",
+    "output": "Retained originalG correction, rejectedcases exactsource; no GTselection and no newG optimization. Separate percoordinate gating ifregistered; do not mixunitbudget withcasecoverage.",
+    "metrics": "Selectedharmful rate/mass summax(-effect,0), usefulmass, netdelta, coverage and denominators; deploymentallNcase metric withsourcefallback; exactsamecandidate/coverage random+baseline contrasts. Sceneequal means onallcase denominator; retainedscene counts also shown.",
+    "no_hidden_tuning": "Coverage0 is frozen-source reference only, never evidence ofreliabilitysuccess. Do notchoosebestcoverage/baseline/feature from320labels.",
+    "ranking_salt": "R11_samecoverage_hash_tie_v1"
+  },
+  "selection_boundary": "Single primary reliability formula, aggregation, scoreorientation, missing handling, coveragegrid and tie/random seeds registered before all source/G/reliability/gated predictions seal. No fitting reliability weights/thresholds/calibration on these320labels then claiming test performance. Allprespecified features/negative outcomes reported. Any score-informed modification is posthoc and requires newlyregistered evaluation; no independentvalidation claim fromsameoldconfirm.",
+  "geometry": "Nativeyaw0 noPCA/noGTyaw/noGTclassspan, auditedGTfirst7/DroneZshift onlypostseal. GTlocal dimensions notglobalenclosure. Everyselectedbox IoU mayuse independent3D withmemoizedsource/unit duplicateboxes; notlargeallcandidate scoring.",
+  "progression": "No parameterTTA until reliable gated directG demonstrates useful task+relevantcoordinate increment and stronger samecoverage risk than random/source-residual controls without allreject. Withonly2/3scenes this is exploratory resource gate, not statistical or methodadoptionproof. Any unused-observation update separatelylocked, sourceprior provenance and physical rawindexdisjointness explicit; currentinputfit neveruniquecontribution, retain crossfeaturekernel no-update control.",
+  "pending": "Literal root wrapper NPZ and source/G/score release gates awaiting final code. No real task GT/scored/annotation access.",
+  "literal_11_arm_names": [
+    "source",
+    "unconditional_full",
+    "no_rgb_coordinate",
+    "weighted_constraints",
+    "uniform_weighted_constraints",
+    "reliable_50",
+    "hash_random_50",
+    "source_agreement_50",
+    "low_plane_residual_50",
+    "point_count_50",
+    "stability_only_50"
+  ],
+  "reweighted_geometry_scope": {
+    "weighted": "Perface/rRGB absoluteobjectivecoefficients witholdactivefacecount denominator, priorfixed. r=1 baseline replay, allP+RGB r=0 sourceprior result.",
+    "uniform": "Separate cohortmean effective face/rRGB on actual contributing+defined constraints, includes defined conflict0, excludes undefined and inactive; emptymean explicitNA\u2192operational0. Input-only means frozen before weighted outputs.",
+    "causal_limit": "Weighted targets are separate r-conditioned G outputs; do notreplaceoriginalunconditional-unitlabels. Improvementsnotbeyonduniformmeanscale onlysupportgenericshrink.",
+    "denominator": "All320 and commonunionchanged(unconditional/weighted/uniform); newweightedchangesoutsideoriginalC counted explicitly. GatesretainoriginalunconditionalG only."
+  },
+  "correspondence_first": {
+    "supported": "sourceconditioned geometric compatibility, not targetidentity",
+    "conflicted": "effective score/constraint weights defined0",
+    "undefined": "effective weights0; score undefined not dropped from candidate pool"
+  }
+}

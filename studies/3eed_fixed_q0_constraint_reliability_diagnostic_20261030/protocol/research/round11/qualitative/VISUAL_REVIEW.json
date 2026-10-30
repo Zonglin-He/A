@@ -1,0 +1,27 @@
+{
+  "state": "R11_actual12_gallery_visual_review_complete_no_GT_taskscore",
+  "gallery_seal_sha256": "35281c20b74fb8e15036583fdaa48169b0acf8e2d601a3d81c55ddbba66ccad7",
+  "gallery_plan_sha256": "e4785eabd2d07fc4bf197240b090072047bff9a38f7d8e1b9c448663daee0df8",
+  "n_images_actually_viewed": 12,
+  "n_AB_mask_reconstructions_bitexact_sealed": 24,
+  "all_masks_and_partition_diagnostics_verified_before_plotting": true,
+  "selection_by_reliability_rank_and_NA_only_not_task_effect": true,
+  "no_GT_taskscore_annotation_index_sidecar_or_model_GPU_read": true,
+  "no_method_signal_threshold_or_sample_changes_from_gallery": true,
+  "case_alias_notes": {
+    "reliability_case_01": "A/B masks agree on a partly truncated parked vehicle near the image boundary. Agreement does not reveal its hidden full extent or verify referring identity.",
+    "reliability_case_02": "Defined relatively high r accompanies highly similar A/B masks spanning multiple nearby parked/background vehicle regions. This is visible stable contamination despite internal association_supported.",
+    "reliability_case_03": "q0/base support lies in a small distant upper-image region, away from the clearly visible foreground vehicles. A/B retained support is difficult to see at gallery scale; conflict0 is a defined result, not missing r.",
+    "reliability_case_04": "Source/base projection is in a distant building/tree-side region rather than an obvious complete SUV. The conflict0 case does not establish target identity or annotation correctness.",
+    "reliability_case_05": "Base and A/B masks show a large background patch adjoining the people near the right boundary. r is undefined; mask resemblance alone cannot supply missing face reliability.",
+    "reliability_case_06": "Similar adjacent view: person-conditioned masks extend strongly into neighboring background. Undefined r is retained asNA, not replaced by a seemingly high mask-agreement confidence.",
+    "reliability_case_07": "High defined r and nearly identical A/B masks persist while a large tree/wall/background region is merged with the person. Stable support is not pure-object segmentation or semantic identity.",
+    "reliability_case_08": "A/B masks are similar but join a very large upper background/wall region around a truncated near-camera person. High r does not guarantee mask purity or complete-object extent.",
+    "reliability_case_09": "q0 projection and base support appear in upper foliage. No clearly visible full target object is established by the mask; defined conflict0 remains distinct fromNA.",
+    "reliability_case_10": "q0 projection and support again lie in tree foliage above the parked vehicles. A/B agreement or conflict describes source-conditioned support, not referring-instance correctness.",
+    "reliability_case_11": "A/B masks visibly agree on a small upper foliage patch. Internal association_supported can coexist with undefined case r because active-coordinate reliability is missing; the flags must remain separate.",
+    "reliability_case_12": "Base/A/B masks sit on a wall/near-left background region while people are visible elsewhere. Undefined association and case r do not create a target identity label."
+  },
+  "scope": "Postseal reliability-stratified qualitative inspection, not population frequencies, blinded identity labels or task performance. All images, captions, masks and coordinates remain private; notes are visual observations withoutGT.",
+  "important_boundary": "association_supported is internal source-conditioned compatibility, and can coexist with case_rNA; neither status nor high stability proves semantic identity."
+}

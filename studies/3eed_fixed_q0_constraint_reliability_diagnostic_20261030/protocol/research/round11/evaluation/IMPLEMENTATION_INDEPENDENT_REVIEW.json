@@ -1,0 +1,37 @@
+{
+  "state": "PASS_FINITE_CPU_IMPLEMENTATION_REVIEW_NOT_TASK_QUALITY",
+  "implementation_lock_sha256": "780676106a4cdd4ff18a3edb9f19302c9005a429493738f0a59896aea83890bb",
+  "files_sha256": {
+    "reliability.py": "227fbd9fb07bdc32c27624cd42ef3dd4fc624018875704f0bbd3cfb3afd843d5",
+    "weighted_geometry.py": "411d3d27315e463c3c2cc67b371a0e256dd240e4ab58080a668841b919c5fa5b",
+    "check_reliability_cpu.py": "7edbfb9491c8f04a8a8d09f47af32d17a534fd87a156e6bb582e7901690e3205",
+    "CPU_FIXTURE.json": "fd88621070e3f40fc7e1e07f1042e2f6851f9d6151a300dd5855c4e987976d88",
+    "RELIABILITY_CONTRACT.md": "123b3261b37cfc3af6d16e08c1aa7365c7b637e4fc520d0bc00692154e7bd2b2"
+  },
+  "readonly_hash_verification_all_pass": true,
+  "independent_synthetic_changed_axis_gate_conflict_definedzero_undefinedNA_pass": true,
+  "corrections_resolved": {
+    "R11_CASE_CHANGED_AXES": "uses accepted & target.float32!=source.float32; synthetic changed-only min passed",
+    "R11_ZERO_RGB_IMPLICIT_GATE": "RGB computation and invalid veto both require RGB_weight>0; authored synthetic RGB0 matches original noRGB box",
+    "R11_ZERO_IS_DEFINED": "None adds missing reason; defined0 preserves separate flag"
+  },
+  "correspondence_first": {
+    "supported": "source-conditioned geometric compatibility only, not text or target identity",
+    "conflicted": "effectiveface/RGB0; coordinate and RGB score defined0",
+    "undefined": "effectiveface/RGB0; coordinate and RGB score undefined; raw diagnostics retained"
+  },
+  "reviewed_invariants": [
+    "array-only no GT/model/file readers",
+    "physical raw-index/XYZ dedup and deterministic voxel partition",
+    "separate own-partition visibility/normals/GrabCut seeds, shared RGB and source documented",
+    "stable jointly-wrong plane counterexample retained",
+    "fixed original face-loss denominator; prior unscaled; RGB absolute scalar",
+    "all1 baseline replay/all0 exactsource/halfweight attenuation authored synthetic receipts bound",
+    "exactK originalchanged perplatform, NA-last fixedhash tie"
+  ],
+  "prior_review_sha256": "386c69627be308fbd510c0acfd3aa290f867ff53d96cb0d9a2a69c5235dfc8c8",
+  "historical_preflight_lock_sha256": "2ab2df0d8a37e20ce18586774fcab41b5d200ef33996919be779ad518ddaa683",
+  "no_actual_task_inputs_media_GT_model_GPU_or_score_read": true,
+  "scope": "Permits root prelocked bounded real reliability test after matching wrapper review, not reliability usefulness/adoption. Assays use effective scores primary; raw features secondary. Uniform means must preserve contributing/defined denominator and include defined conflict0.",
+  "remaining": "Actual wrapper/seal/selection/uniform means and final scorer field contract still require finite review."
+}

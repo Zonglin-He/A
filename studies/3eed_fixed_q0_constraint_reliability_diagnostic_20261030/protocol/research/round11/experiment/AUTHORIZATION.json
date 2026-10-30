@@ -1,0 +1,25 @@
+{
+  "user_request": "Test per-observation correspondence, observability and reliability before cross-modal fusion; reliability must separate useful from harmful constraints, not CLIPscore/pointcounts/same-source residual alone",
+  "source": "unchanged Waymo-only epoch100",
+  "scope": {
+    "cases": 320,
+    "scenes": 5,
+    "per_scene": 64,
+    "GPU_minutes_max": 30,
+    "CPU_minutes_max": 30,
+    "hyperparameter_sweeps": 0
+  },
+  "constraints": [
+    "fixedoriginalq0",
+    "single3Dgrounder",
+    "no teacher/EMA",
+    "no source retrain",
+    "all predictions and reliability sealed before target labels",
+    "old rounds frozen",
+    "samecoverage random and simplefeature controls",
+    "undefined/zero and allreject notsuccess",
+    "conditional neuralTTA onlyafter reliability and pseudo-quality prerequisites; unused prediction required"
+  ],
+  "GT_use": "postseal CPU evaluation/diagnostics only; no reliability fitting or threshold selection from targetlabels",
+  "publication": "finite safe code/protocol/anonymous scalar export and verified archive receipt"
+}

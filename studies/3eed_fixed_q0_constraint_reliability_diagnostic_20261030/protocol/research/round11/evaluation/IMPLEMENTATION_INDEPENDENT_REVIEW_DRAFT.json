@@ -1,0 +1,55 @@
+{
+  "state": "LOCK_PREPARATION_REQUIRES_TWO_FINITE_SEMANTIC_CORRECTIONS_NO_REAL_RUN",
+  "scope": "Readonly author code, bound dependency source and synthetic receipts; no new task data/media/GT/model/GPU or scoring reads.",
+  "implementation_lock_sha256": "2ab2df0d8a37e20ce18586774fcab41b5d200ef33996919be779ad518ddaa683",
+  "files_sha256": {
+    "reliability.py": "87a7143829df52734368e0de689bd127dee631c4ca03d3700ea7754414059c9b",
+    "weighted_geometry.py": "d2c6ee7ccb1a50e78726bfc0025af0b1b14bbc8e0c1020c9993c38f18321c511",
+    "check_reliability_cpu.py": "d1a5e009143074d478c3fb85ba0cb4dec3102b4600eb12f73ee5f82de76254e9",
+    "CPU_FIXTURE.json": "baa03eb749a533aac6a4ce6c1ab2776bd228e18d8f6de1c1308d0d6ccd3cf029",
+    "RELIABILITY_CONTRACT.md": "381cc21de765966b690317428caa38f85919f166d65a3d96dea6a208c7919c50"
+  },
+  "file_hash_checks": {
+    "reliability.py": true,
+    "weighted_geometry.py": true,
+    "check_reliability_cpu.py": true,
+    "CPU_FIXTURE.json": true,
+    "RELIABILITY_CONTRACT.md": true
+  },
+  "passes": [
+    "array-only reliability and solver APIs contain no GT/model/file reader",
+    "physical raw-index and coincident-float32 XYZ dedup before spatial partition; independent own-subset normal and RGB seed computations",
+    "stable jointly-wrong planes explicitly retained as counterexample, not claimed correctness",
+    "weighted objective averages original eligible face count, does not renormalize sum(weights), prior unchanged, RGB absolute scalar",
+    "allone/r0/halfweight synthetic checks preserve baseline and distinguish shrink",
+    "perplatform originalGchanged exactceilN/2 selection uses NA-last fixed hash ties and preserves undefined denominator",
+    "ROI/source/size-prior correspondence is not independent identity evidence"
+  ],
+  "findings": [
+    {
+      "severity": "protocol_mismatch_before_realrun",
+      "status": "sent_to_author_and_root_pending_repair",
+      "location": "reliability.py active=np.flatnonzero(accepted)",
+      "detail": "Case score must take minimum over actual float32 changed coordinates only; accepted but unchanged coordinates are not coordinate-application units and can wrongly lower or undefine case score."
+    },
+    {
+      "severity": "API_semantics_before_realrun",
+      "status": "sent_to_author_pending_repair",
+      "location": "weighted_geometry.py invalid guard use_RGB and finalRGB>=1e6",
+      "detail": "A disabled RGB_weight=0 term must not retain the RGB-specific projection-invalid rejection. Require positive RGB_weight for this guard. This is a code-path issue, not an observed real-input failure."
+    },
+    {
+      "severity": "diagnostic_wording",
+      "status": "sent_to_author_pending_repair",
+      "detail": "A finite defined reliability of zero is distinct from undefined None; reason strings should preserve that distinction."
+    }
+  ],
+  "scientific_limits": [
+    "Half-cloud evidence shares source prior and RGB; cross-partition stability can remain high for wrong background surfaces.",
+    "Percoordinate application effect is not causal face omission effect.",
+    "Heuristic scores are not probabilities.",
+    "No reliability usefulness or task improvement inferred from CPU fixtures.",
+    "Uniform cohort means and actual 11-arm wrapper still require matching code/schema review before scoring."
+  ],
+  "decision": "Do not interpret old hash as final scientific execution approval; retain old code hash lineage, obtain corrected CPU_READY hashes and finite targeted review."
+}

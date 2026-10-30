@@ -1,0 +1,106 @@
+{
+  "state": "PASS_INDEPENDENT_MECHANISM_AND_PRELOCKED_GATE_REVIEW",
+  "prediction_seal_sha256": "6cd4a9c66dc1b9b65237d787bff462c1697601531d1d21c87bb9a648783aca12",
+  "scored_seal_sha256": "6bb317415a770287ca811a8039e2c094f6c17e318f6226828a90f877401cebe7",
+  "score_audit_sha256": "009cd013e47026f50a974357bb48e945bab5d34a071a46db08235ca33293ed46",
+  "mechanism_seal_sha256": "52aa264e800fd015a071cb188f66e82298069fffc2f2614bd25daa3107063a4c",
+  "mechanism_summary_sha256": "28da4f9970097f9237f9ee24fdbf4d7fbc79a2bb7e5d258cf3b834dfbcdba857",
+  "progression_preplan_sha256": "77ef183504e38e9df8d37d9c6938644df7701c53be00097899367f7882afcc28",
+  "auditor_sha256": "b5adb0076b50d6993faa2d27682cdad02b08ccf4b631212057e3ecef07cef587",
+  "mechanism_numeric_or_exact_checks": 131,
+  "mechanism_max_difference": 0.0,
+  "gate_by_platform": {
+    "drone": {
+      "effective_defined_two_task_classes": true,
+      "reliable50_positive_task_and_coordinate": true,
+      "reliable50_strictly_lower_harmful_mass_than_each_control": false,
+      "percontrol_harmful_mass_pass": {
+        "hash_random_50": true,
+        "source_agreement_50": false,
+        "low_plane_residual_50": false,
+        "point_count_50": true,
+        "stability_only_50": true
+      },
+      "weighted_positive_task_coordinate_and_task_over_uniform": true
+    },
+    "quad": {
+      "effective_defined_two_task_classes": false,
+      "reliable50_positive_task_and_coordinate": false,
+      "reliable50_strictly_lower_harmful_mass_than_each_control": false,
+      "percontrol_harmful_mass_pass": {
+        "hash_random_50": false,
+        "source_agreement_50": false,
+        "low_plane_residual_50": false,
+        "point_count_50": false,
+        "stability_only_50": false
+      },
+      "weighted_positive_task_coordinate_and_task_over_uniform": false
+    }
+  },
+  "all_prerequisites_pass": false,
+  "decision": "Current reliability formulation fails prelocked resource gate; no neuralTTA stage. Do not change primary scores or coverage after labels.",
+  "key_numbers": {
+    "drone": {
+      "n": 128,
+      "source_mIoU_percent": 17.023221867050605,
+      "weighted_minus_source_pp": 0.01925747188758621,
+      "weighted_minus_uniform_pp": 0.004890335723297485,
+      "reliable50_minus_source_pp": 0.006240882590777524,
+      "effective_coordinate_task_classes": {
+        "beneficial": 1,
+        "harmful": 1,
+        "zero_effect": 4
+      },
+      "undefined_coordinate_task_classes": {
+        "zero_effect": 2,
+        "harmful": 3
+      },
+      "primary_AUC": 1.0,
+      "reliable50_help_harm_zero": {
+        "beneficial_n": 1,
+        "harmful_n": 1,
+        "zeroeffect_n": 4
+      },
+      "RGB_effect_classes": {
+        "zero_effect": 5,
+        "beneficial": 3
+      }
+    },
+    "quad": {
+      "n": 192,
+      "source_mIoU_percent": 28.875071101733585,
+      "weighted_minus_source_pp": -0.12662590338494167,
+      "weighted_minus_uniform_pp": -0.025527013378030816,
+      "reliable50_minus_source_pp": -0.4156714881791158,
+      "effective_coordinate_task_classes": {
+        "zero_effect": 5,
+        "harmful": 5
+      },
+      "undefined_coordinate_task_classes": {
+        "zero_effect": 3,
+        "beneficial": 1,
+        "harmful": 2
+      },
+      "primary_AUC": null,
+      "reliable50_help_harm_zero": {
+        "beneficial_n": 0,
+        "harmful_n": 5,
+        "zeroeffect_n": 3
+      },
+      "RGB_effect_classes": {
+        "zero_effect": 5,
+        "beneficial": 4
+      }
+    }
+  },
+  "interpretation": [
+    "Drone taskAUC1 is based on onlyone defined helpful andone defined harmful unit, with4defined zeroeffects and5undefined units; not robust discrimination proof.",
+    "Quad solehelpful primary taskeffect is scoreundefined; defined subset lacks helpfulclass, AUROC/AP NA rather than0 or1.",
+    "Both RGB matchedterm assays have no harmful taskeffect, so primary two-class discrimination is unidentifiable.",
+    "Component conflict factor did not activate on currentC;4association conflicts originate from zero crosspartition maskIoU. Zero substantialcomponents and wrongsourceprior remain important undefined boundaries.",
+    "Weighted recovers relative to harmful unconditionalG but not source+uniform on bothplatforms; shrinkage is not established reliability benefit.",
+    "Centererror improvements can coexist with worse taskIoU; report both without switching primary label.",
+    "Only2Drone/3Quad scenes; fixedcohort randomreference not pvalue and no broad reliability impossibility claim."
+  ],
+  "no_new_GT_metadata_IoU_model_or_GPU_reads": true
+}
