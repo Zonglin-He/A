@@ -1,0 +1,72 @@
+{
+  "GPU_execution_authorized": true,
+  "batch_size": 1,
+  "conditions": [
+    "full",
+    "noun"
+  ],
+  "seed": 20261030,
+  "expected_samples": 9706,
+  "manifest_sha256": "b8fa741c9a160ac26056d287d1e9448ae3b526ae7d34f824d43b47e943ad2a4f",
+  "checkpoint_sha256": "bfdedb97971fb31640c5a78790716dc9547953caa646489138f048375e645ec8",
+  "code_sha256": {
+    "common.py": "e0e50243e076e8491a61e5b6e1c826f22fbf3644d17c818a2e86645f11a66084",
+    "run_frozen.py": "55fd844b96e99791f59f3af1b99ec9508ed189164dd6259e79e819d4b58c1c39"
+  },
+  "upstream_code_sha256": {
+    "tta.py": "3a265e38341f5a8c79c8a7131f5e42264bbc432634633418d5f7edb6a52c600a",
+    "geometry_refine.py": "3b3b0ab212b795a986fb9338ac555109f236e70bf7ac407de8a8fbe63ed7961d",
+    "replication36/common.py": "c779a23d4949bd7e06a912c8d8144132ca94bc98fd965a45dccb03bd5aebdcd2",
+    "public_export/code/reference_surface.py": "7403f307b86ebe6572a5b4bf48fbd697b513f4e3e2aa3f4f143c41625d75b6d9",
+    "upstream/models/bdetr.py": "5b16cb4148f1a58e332b7f949ab80e84ee3a18675de02cc8a4d23f16cfc4be75",
+    "upstream/models/modules.py": "22c7c91ef5c3428f43e077b2e7ae3596a3f30325b71995b45222f5e3c88dbade",
+    "upstream/models/point_backbone_module_v2.py": "1e61e0fb2bef33d3f3a1e2fa3ec484ab447450358f4c2a1c380f701dc20eb943",
+    "upstream/models/encoder_decoder_layers.py": "f20008513081213d46e844b3c053156308d13d82f8a61be26f7ab9b67984c33c",
+    "upstream/ops/teed_pointnet/pointnet2_batch/pointnet2_modules.py": "05b05e3b44c29b08057489d8265ea5e99ef478ca065f6d10c5ced9d398c657ca",
+    "upstream/utils/transform_waymo.py": "574760753be97ba86b9e8b1e6e88a69ffa25520460790acb06099ee2aaa17683",
+    "round3/p3/geometry_baselines.py": "25a28da5066f9cbce5d1e3b80779ec26e2148ff0a27cc89ef1101db1a61fbbfe",
+    "upstream/src/joint_det_dataset.py": "9e6c5c10bfca5713ea84014cd3a3f9a67b3767b2a408ef311f5d3327760d6edd",
+    "upstream/src/grounding_evaluator.py": "a463c1cdb22d358f6b53bb2636a5dead24a3a8c55ee462dd501876d93c9d3f00",
+    "upstream/utils/eval_det.py": "6f27f6eb5cf9e76af0775d94ccabc2ac066a35522dfbe0650a1df8332bafacad",
+    "upstream/main_utils.py": "a9b8c9dbfebe553f38b896417a07c7d2b6e57cca7366b940f26500f64d6dec50"
+  },
+  "note": "Authorized immutable smoke protocol, official class-assisted formulas plus all-raw text-only readout; B1 native ranking and independent per-expression RNG are disclosed conditions, no PCA.",
+  "stage": "all_available_official_VAL",
+  "root_brief_sha256": "3d4249a86f7f73893d23a2e78576239f24199418a84e523236bdfeb90cc265c2",
+  "qualitative_design_sha256": "c131062f5f0375b01fb48e50aacd39906368442e1d8184a65b58d47bf7395f92",
+  "authorization": "User explicitly requests this full frozen baseline. Smoke engineering validation before finite fullVAL. No training/TTA.",
+  "created_local": "2026-10-30T12:08:35.001018+08:00",
+  "upstream_commit": "843a901f5367a6be5cc484b97c6ecad462961dfa",
+  "upstream_diff_sha256": "a1073a7abe3722e199c46e083da625c4730b0eb289981f649b5934249a773900",
+  "tokenizer_files_sha256": {
+    "upstream/data/roberta_base/config.json": "ef0185e2aae6e06c5f105a285006952c340e20c7dbf43c86ec82601b13fc45e9",
+    "upstream/data/roberta_base/merges.txt": "1ce1664773c50f3e0cc8842619a93edc4624525b728b188a9e0be33b7726adc5",
+    "upstream/data/roberta_base/tokenizer.json": "847bbeab6174d66a88898f729d52fa8d355fafe1bea101cf960dd404581df70e",
+    "upstream/data/roberta_base/tokenizer_config.json": "994f46754c5bf4014f1aa92d34b1374319c3a6b3f702105cd5b742beaecd18ce",
+    "upstream/data/roberta_base/vocab.json": "9e7f63c2d15d666b52e21d250d2e513b87c9b713cfa6987a82ed89e5e6e50655"
+  },
+  "official_primary": "last_ BBF/BBS native_top10, pred_size clamp1e-6, yaw0, post-seal GTclass synonym assisted, eligible expressions only",
+  "diagnostic_readout": "text-derived firstnoun, no GT fallback, allraw and matchedeligible; full versus noun actual forwards matchedpoints",
+  "metrics": "strict >.25/.5 Top1/5/10 and all256oracle, finalhead mIoU and separately legacy7headBBF mean",
+  "no_training": true,
+  "no_adaptation": true,
+  "n_forward_predictions": 19412,
+  "smoke_plan_sha256": "5a46194aef9e735bde8e459db74e937b909f48ba237ad9e26870de5e33204251",
+  "smoke_seal_sha256": "8543e04f29fcae228b3b2d4936380c3cee5de44250a47b76837e9e592ea8f0e6",
+  "smoke_score_release_sha256": "ff55079bbae82cbacaf5753807fd10a654645a0c5080374aa8c916337707ef79",
+  "finite_scope": "All9706rawexpressions,19412GT-freefrozenconditioncaches,1extra repeatforward. SameB1/checkpoint/preprocessing/readoutconfiguration; no source/TTA training.",
+  "measured_smoke_cost": {
+    "parent_median_two_conditions_s": 0.08271892718039453,
+    "model_only_median_s": 0.030601745005697012,
+    "peak_allocated_bytes": 678722560,
+    "forecast_parent_median_extrapolation_s": 802.8699072129093,
+    "not_a_guaranteed_wallclock": true
+  },
+  "resource_upper_bound": "One finite9706expression run; no automatic reruns/sweeps/training. Resolve actual execution errors with retained lineage only.",
+  "smoke_numeric_gate": "Independent auditor v2:1728 retrieved IoUs max6.66e-16,3456 strict booleans exact; literal official float32 top10 max2.63e-5,0 threshold crossings; pending final audit receipt only.",
+  "CPU_readout_audit_sha256": "a0ec166756196779b930c98d710af17f71de394246c65792a8a9f443121d9afa",
+  "scoring_code_sha256": {
+    "scoring/score.py": "bde97e1a291779290d212909f2186df3256f977fc4cc21fcbf5c8ea48e13be92",
+    "scoring/batch_yaw_iou.py": "6d1a73e3ada18a41ce04a374c60e76f254aab605f92c9037f740fd48fe4217c9"
+  }
+}

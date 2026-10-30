@@ -1,0 +1,116 @@
+{
+  "prepared_utc": "2026-10-30T03:59:32.110650+00:00",
+  "selection_salt": "3eed-round5-frozen-official-val-v1-20261030",
+  "smoke_rule": "First16 SHA256(salt|platform/scene/frame/object_index) perplatform before content/model/GT scores; no silent replacement.",
+  "all_val_rule": "All raw objects from every on-disk officialVAL scene; missing listedscene dirs and unusableinputs explicit.",
+  "model_input_fields": "XYZ and fullcaption/firstlexiconnoun only; source manifest does not contain trueclass, numericbbox or metadata path.",
+  "annotation_container_opened": true,
+  "only_annotation_field_extracted": "caption; object count/index retained",
+  "numeric_GT_or_class_values_indexed": false,
+  "platforms": {
+    "waymo": {
+      "official_split_listed_scenes": 97,
+      "missing_listed_scene_dirs": [
+        "scene_a60bdde865b0ecb1",
+        "scene_5813431514581997",
+        "scene_4a4eecf03897aad3",
+        "scene_5ddcded7fbadcc8e"
+      ],
+      "available_frames": 2708,
+      "raw_ground_info_objects": 3794,
+      "ready_model_inputs": 3794,
+      "invalid_or_missing_inputs": [],
+      "noun_fallback_identity_count": 1,
+      "smoke16_ids": [
+        "00165db3cbded6d6",
+        "0019729782c92f5e",
+        "0027a480f08bd6d7",
+        "002963d58af216f6",
+        "002ae0476b8fe33d",
+        "003e5cc8c2e80fab",
+        "005edcb90c454002",
+        "0065cdf3dfb70906",
+        "006f26d61c616bb9",
+        "0074fddea03c9c2d",
+        "008200e768499042",
+        "00874d31c003751e",
+        "009aa45aee2da3b5",
+        "009f995cd062f1d0",
+        "00b2b8d54a196c34",
+        "00b82515374bc530"
+      ],
+      "split_sha256": "b6d3d2dc0d20e0c1a93f55db7f2fa0132240cfeb2efdd60bf42a8c6b51f9f1bc"
+    },
+    "drone": {
+      "official_split_listed_scenes": 2,
+      "missing_listed_scene_dirs": [],
+      "available_frames": 2984,
+      "raw_ground_info_objects": 2984,
+      "ready_model_inputs": 2984,
+      "invalid_or_missing_inputs": [],
+      "noun_fallback_identity_count": 0,
+      "smoke16_ids": [
+        "004de479b5aa595c",
+        "004fe50881a28361",
+        "00562cb9f10c4a1c",
+        "006bd45d5438cb1b",
+        "00776aaf83a5ad4a",
+        "0086287629cb6a02",
+        "009715bc690d0678",
+        "00e4dd9452118e25",
+        "00ea3bd38d340619",
+        "00ef9f98807feaf9",
+        "00fb018a4c837e95",
+        "00fd1fbf6ac695d6",
+        "010d6d861e5faeb2",
+        "0111f2243695541b",
+        "0116560a9e3fb346",
+        "011bd16665737c61"
+      ],
+      "split_sha256": "f5f6170e97acbfe607d47916dae260b6341b5abd2d81b2454a18fa31a419722a"
+    },
+    "quad": {
+      "official_split_listed_scenes": 3,
+      "missing_listed_scene_dirs": [],
+      "available_frames": 2928,
+      "raw_ground_info_objects": 2928,
+      "ready_model_inputs": 2928,
+      "invalid_or_missing_inputs": [],
+      "noun_fallback_identity_count": 0,
+      "smoke16_ids": [
+        "000c73da0bb5cc76",
+        "002358fb3f76e03d",
+        "0025ffc2be290ad5",
+        "002be9612e8d5035",
+        "002c6abce9cba505",
+        "003b0473b29b31eb",
+        "0047a27a3dfbe0ce",
+        "004d1973441077f0",
+        "00521fe78c51e763",
+        "005e1599fc125d28",
+        "00643ae936495517",
+        "006d35dfac22622d",
+        "0098e84798588550",
+        "00f400bfb61d3c71",
+        "00fd1923111d849c",
+        "00fd26ae39d3632a"
+      ],
+      "split_sha256": "04c5b9d5cbc699b0b97a4ace36995b882144211a0698e467f86a53ecb119b8fa"
+    }
+  },
+  "n_all": 9706,
+  "n_smoke": 48,
+  "input_manifest_sha256": {
+    "waymo_all.json": "73ee11514b43ed8da5c0794367c0e1357cf15870134c1f4e15b2f3c774d72a8b",
+    "drone_all.json": "b44d830b6bb7d0c56fba6aef711bf7dccfcda6db98f4c0011adab5322b9afc2d",
+    "smoke48.json": "7f27b52f9e6b86f2a637b9e7121825c62d8d7504b99f6778359c9761b3d11423",
+    "all.json": "b8fa741c9a160ac26056d287d1e9448ae3b526ae7d34f824d43b47e943ad2a4f",
+    "quad_all.json": "68d07e934db5b051f4a4f2fd08cb747468da1157ac925cb25cb02ecf61ec6deb"
+  },
+  "scoring_index_sha256": "e8eeb12b3f68232e6729cdf33d2bf49beada7fc662c83f98115be20b7ed6d562",
+  "code_sha256": {
+    "common.py": "e0e50243e076e8491a61e5b6e1c826f22fbf3644d17c818a2e86645f11a66084",
+    "prepare.py": "a45c8a175afdadafb75da4be69d2149b99592c890ce204b68eda3188bcc6a091"
+  },
+  "status": "prepared_no_GPU_or_scoring"
+}

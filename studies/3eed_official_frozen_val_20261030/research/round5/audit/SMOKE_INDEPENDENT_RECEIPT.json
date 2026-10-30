@@ -1,0 +1,51 @@
+{
+  "state": "passed_smoke_engineering_unblocks_frozen_fullVAL_no_method_tuning",
+  "source_seal_sha256": "8543e04f29fcae228b3b2d4936380c3cee5de44250a47b76837e9e592ea8f0e6",
+  "postseal_GT_release_sha256": "ff55079bbae82cbacaf5753807fd10a654645a0c5080374aa8c916337707ef79",
+  "root_scored_sha256": "89605c81f7ece6247ace3e02ebfcb6123524735a2190526240c15d4efddcc7a7",
+  "independent_v2_sha256": "b94c5eb33b76cb251ab91d40a8c828335326d1fe4d89a959d0e06434a1b3a57b",
+  "literal_bridge_v2_sha256": "d8e5b3eacbb04b2fbe1a610377026032157c6fed5664e705eff02038f8ea43cb",
+  "top1_5_10_numeric_cells": 1728,
+  "max_abs_selected_metric_difference_root2D_vs_independent3D": 6.661338147750939e-16,
+  "strict25_50_boolean_cells_exact": 3456,
+  "all256_candidate_IoU_cells": 24576,
+  "max_abs_candidate_difference": 6.661338147750939e-16,
+  "all256_oracle_scalar_cells": 576,
+  "max_abs_oracle_difference": 6.661338147750939e-16,
+  "oracle25_50_booleans_exact": 1152,
+  "legacy7head_top1_cells": 336,
+  "max_abs_legacy_difference": 6.661338147750939e-16,
+  "platform_population_headmode_summaries_checked": 60,
+  "literal_official_float32_vs_audited3D_float64": {
+    "numeric_comparison_scope": "All7heads,2conditions,4scorestreams whereGTclassspanexists, nativeTop10",
+    "rows": 2688,
+    "max_abs_finite_difference": 2.6288655349038237e-05,
+    "strict_threshold_disagreement_rows": 0,
+    "nonfinite_literal_rows": 0,
+    "deduplicated_swallowed_exceptions": 0,
+    "warnings": 0,
+    "do_not_claim_exactnumericalparity": true
+  },
+  "retained_v1_engineering": {
+    "status": "notaccepted_as_float64geometryaudit",
+    "cause": "independentwrapperpassedfloat32extenttolibrarywhosevolumes use np.prod originalinputdtype",
+    "selected_root_maxdiff": 8.566708498136677e-08,
+    "fix": "newindependent_core_v2 castsallgeometryinputfloat64; v1codeandoutputs preserved",
+    "predictions_models_methods_changed": false
+  },
+  "scope": [
+    "Frozenunioncheckpoint, noadaptation/fulltraining",
+    "smoke48engineeringnotnewheldoutmethodconfirmation",
+    "OfficialGTclasscolumnchosenonlypostseal;all6classcandidatesprecomputed",
+    "Last/proposal separate;legacy7headmIoUexplicit",
+    "FullVALfutureGTstillrequiresitsowncompletepredictionseal/release",
+    "No rawPRIVATEdataforpublicexport"
+  ],
+  "source_code_sha256": {
+    "independent_core_v2.py": "b4937fdd89f719fe1d9560f770c01597ff6807c74a75013720b470c43393379a",
+    "independent_score_v2.py": "45ef2e230eeb136900d65332e4609c7c35880060b38233d3bd1799f39b7e6f52",
+    "literal_iou_bridge_v2.py": "0cebccab5238a9fee2d5b1c07f7bfe88c324ac1631cc8ef4f8393b1c4592d5bc",
+    "compare_smoke.py": "7e1626f8aaa6b7459ef9c43102d0655f9cec0fa8efdf7774781a5346c3e1fb2d"
+  },
+  "no_model_GPU_calls": true
+}

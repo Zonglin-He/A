@@ -1,0 +1,63 @@
+{
+  "state": "path_only_exposure_audit",
+  "scope": "Known historical inference/scoring manifests, not a claim of globally unseen data",
+  "counts": {
+    "waymo": {
+      "frames": 2708,
+      "frame_exposure": {
+        "new_frame_in_previously_used_scene": 2287,
+        "exact_frame_previously_used": 118,
+        "not_in_known_prior_scene_registries": 303
+      },
+      "known_previously_used_scenes": 76,
+      "known_unexposed_scenes": 17
+    },
+    "drone": {
+      "frames": 2984,
+      "frame_exposure": {
+        "new_frame_in_previously_used_scene": 2940,
+        "exact_frame_previously_used": 44
+      },
+      "known_previously_used_scenes": 2,
+      "known_unexposed_scenes": 0
+    },
+    "quad": {
+      "frames": 2928,
+      "frame_exposure": {
+        "new_frame_in_previously_used_scene": 2883,
+        "exact_frame_previously_used": 45
+      },
+      "known_previously_used_scenes": 3,
+      "known_unexposed_scenes": 0
+    }
+  },
+  "known_prior_frame_union_all_splits": 231,
+  "known_prior_scene_union_all_splits": 88,
+  "evidence_sha256": {
+    "manifest.json": "d1d6f81e5d7c10dad87ad3db86688252c5109e9875b38cde8d2faba160406a9b",
+    "replication36/manifest.json": "5448b8c7c52df61fb1b56664781352b007bea0832852fe49c9f2f07d6f8fb5fe",
+    "replication36_surface/manifest.json": "717aefcaf9f1c91ace29e79c88a12f1a81ae0afcf02d42715d647b85e56e941c",
+    "round2/COHORT_PATH_LOCK.json": "cd61a4bcf0e3f98ee841d786d91d8ffea836c59638d089d5105d81acf6872149",
+    "round4/source/PATH_LOCK.json": "a9ce41b1fe3e0f798871c74e583f0154c29c0f72d680619f14b26e55d2faac75"
+  },
+  "frames_sha256": "9a9446c04cd19ef652c8aae1c8e04dd5b1701613adaf420d6b6b82ba512ac8d3",
+  "source_code_sha256": "49d59cdd87bd59ab1350e0adeadd468e008ec81236d0083fd21722919846e96c",
+  "missing_scene_any_members_in_original_officialZIP": {
+    "waymo": {
+      "scene_a60bdde865b0ecb1": false,
+      "scene_5813431514581997": false,
+      "scene_4a4eecf03897aad3": false,
+      "scene_5ddcded7fbadcc8e": false
+    },
+    "drone": {},
+    "quad": {}
+  },
+  "labels_or_predictions_read": false,
+  "caveats": [
+    "Round3 reused exactly round2 paths, not added as independent exposure.",
+    "Round4 Drone/Quad used TRAIN scenes; their4+8 frames each are excluded fromVAL pathmatches naturally.",
+    "P0 prior4 CPU validation checks did not retain source scene IDs; exact unknown exposure cannot be excluded.",
+    "Historical frame contains multiple expressions; previous methods generally used ground_info[0], so exactframe exposure does not imply every expression scored.",
+    "No subset here is a fresh preregistered confirmation cohort: this is complete officialVAL descriptive evaluation."
+  ]
+}
