@@ -1,0 +1,32 @@
+{
+  "id": "3eed_round4_native_GPU_BBS_head_supplement_v3_devicefix",
+  "checkpoint_sha256": "bfdedb97971fb31640c5a78790716dc9547953caa646489138f048375e645ec8",
+  "code_sha256": {
+    "replay_gpu_v3.py": "1ce883605703b96ae96b787f9112de52e56fd9193e0d80077aa774176c96a296",
+    "replay.py": "96f804ae694c12f8ab1ac70043e31e6dea4871182f3a360f881c3adadaf0f36f"
+  },
+  "source_seal_sha256": {
+    "dev": "b8a1553ad0c9c9811176928f90a859d3eeb3a2d61f84ae89e2de5342beff7842"
+  },
+  "input": "Strict frozen final head on already sealed 256x288 features; base_xyz is query_points_xyz cluster seeds according to unchanged original bdetr.forward.",
+  "readout": "All256 original BBS logits softmax denominator, same text-only noun mask padded zero to256; stable tie smallest original query index. Original official evaluator uses category-assisted span; this supplement is text-only information-matched.",
+  "arms": [
+    "Frozen_BBS_plus_same_reference_PCA",
+    "Frozen_BBS_threeview_geometry_aligned_mean_plus_same_reference_PCA"
+  ],
+  "CPU_box_bridge_max_abs_tolerance_m": 0.0001,
+  "GPU_CPU_BBS_logits_max_abs_tolerance": 0.0001,
+  "GPU_budget": "Parent newly authorized192 dev small final-head-only replays; no further full model passes. Earlier2 full originalfirstdevpasses completed withbitexactBBSpred repeat andsourceboxes.",
+  "confirm_policy": "No source confirm cache yet; later CPU confirm replay requires new input/source_seal supplement, not editing this lock.",
+  "no_training": true,
+  "GT_numeric_access": false,
+  "source_frame_outputs_or_PCA_modified": false,
+  "upstream_modules_sha256": "22c7c91ef5c3428f43e077b2e7ae3596a3f30325b71995b45222f5e3c88dbade",
+  "native_GPU_box_bridge_max_abs_tolerance_m": 0.0001,
+  "primary_readout": "native GPU head replay; CPU path retained as invalid-for-strict-bridge engineering sensitivity; not new task training.",
+  "original_CPU_failure_lineage": "dev_replay.log and ENGINEERING_REPAIR_PROVENANCE.json",
+  "direct_full_GPU_bridge_sha256": "eeecb92899dd5cad233e10072a084f80db93aaa65afca163155440e2c10648c8",
+  "engineering_repair": "GPU scoring noun mask was mistakenly CPU; first attempt failed before output creation. Move identical fixed mask to GPU. No computation semantics changed.",
+  "failed_v2_log_sha256": "c6a230a99112d7433c0f9a2323f807384bfc8dc79ac137208b43e25a29061b89",
+  "supersedes_gpu_v2_plan_sha256": "e155d2f2d2bd606f40baf697fc284d5d4b03c1be63be576a054cfd28ef8e9e5b"
+}

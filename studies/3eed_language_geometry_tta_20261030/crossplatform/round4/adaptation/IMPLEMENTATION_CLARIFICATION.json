@@ -1,0 +1,13 @@
+{
+  "stage": "before_first_real_unlabeled_DEV_update_or_TTA_score",
+  "parent_master_sha256": "a470d5daa48f8016a357d646a33c10a96a9a12ff945459e53c9c506c710be3aa",
+  "geometry_visibility": "For each fixed PCAaxis, camera must lie outside sourcebox slab abs(camera_local_axis)>halfsize. Select onlynearhalf point_local_axis*visible_sign>0, plus signedface/publishedalignmentcriteria. Unsignednormals alone never selectnear/far. Fullcloud neighborgraph queriedonlyatcrop nodes.",
+  "geometry_optimization": "Keep fixed Adam.05m initialproposal and.15m projection. Before anyreal updates, add label-free nonincreasing sameconvexobjective backtracking, max10halvings, restorebeforeifnone. Synthetic.005m narrowinterval adversarialguardrequired. No GTstepselection; oldsynthetic-onlysnapshot retained.",
+  "query_teacher": "Exactmaster .9 normalize(p_aug exp(-E))+.1p_aug. Unsupportedcandidates get E=0, not fabricatedpenalty. Their normalizedmass canchangeindirectly; notproof spatialvalidity. Noqualifiedclause/calib/constantcost returns exactp_aug with explicitzero logtarget.",
+  "zero_control": "query0 and no-spatialcontrol bridge to matched3view TTAug, explicitly not singleview source. G no-observationcontrol bridges singleview sourcePCA selectedq0. Nativeexactlogits anchoredwith normalizedquerydifference so zero branch isexact.",
+  "parser": "Left/right ofcenter validsingle-sided; center alone is centralhorizontal third; below/above center withoutleft/right isvertical-only andunsupported. Strict targetlocation prefix excludesThereis/Relationship, otherobjectrelativeclause/bodyorientation. Clearcenter reference allowed withoutviewword per master.",
+  "scalar_center_objective": "Equal metricaxisweight intervaldistance squared +.25 sourcecenteranchor. Directcenter=boundary/(1+.25), radialcap.15 is exactconvexoptimum; independentSLSQPfixtures validate, not a fittedteacherparameter.",
+  "same_information_controls": "source/PCA, threefullviewTTAug, actualnoun-onlyintervention, directspatialposterior, no-spatialgradientcontrol, directinterval, no-observationgradientcontrol; BBSoriginalclassifierand3viewreadout suppliedseparately byparent/source.",
+  "source_or_confirm_updates": false,
+  "numeric_GT_access": false
+}

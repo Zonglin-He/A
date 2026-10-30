@@ -1,0 +1,53 @@
+{
+  "id": "round4_language_region_query_and_shapeprior_center_v1",
+  "locked_local": "2026-10-30T10:32:41.705180+08:00",
+  "stage1_plan_sha256": "6cd4bef3f1bae5556169d2fc7eab596d738cad1f935ccfb9c9c93c09cb21982c",
+  "development_evidence": "WaymoVAL24PCAAcc50=19,targetcovered23;4rankrecoverable,3q0overlapannotatedsameclassnontarget>0.5. GTcenteroraclelargepartteleportswronginstances. Parentschoseonequeryfamily+oneconservativegeometryfamilyafterdevdiagnostic.",
+  "scope": "Pretrainedunionmodel frozen; cacheddecoderprojectionheadadapter+centerlatent TTA. No crossattention/backbone/source retraining. PrimaryWaymo researchfreshVAL, auxiliaryDroneQuadtrainexposed separately.",
+  "input_contract": "OnlyGTfreepoint/caption/calibration/sourcecache. All numericGT/candidateIoU/othersassociation private scorers excludedfromadaptation path.",
+  "reference_geometry": "Referencefull/view0 256 sourceboxes + identicalsealedround3standardPCA angles perquery. Queryarmschangeonlyranking, geometryarmskeepselectedq0/size/PCAyawandchangeonlycenter. No methodrecomputesPCAafterupdate.",
+  "calibration": "Waymo physicalAinvE inversefront mapping perofficialcamera->vehicle convention, rawsamecloudFOVcheckedwithoutGT/captionselection. DroneQuadoriginalE. v2adapterinputseal0833a3c830566685bba8813444c948e30d9bf30d9b8a249efce406819e10a1b3, no color/pixelfeatures.",
+  "query_family": {
+    "name": "calibrated_target_viewregion_constrained_queryadapter",
+    "teacher": "Strictparseonlyfirsttarget global positionclause fromPositioninformation/located/positioned/situated, requireview/frame/imageorclearcenter reference; relative-otherobject/bodyorientation/conflict/unsupportedglobalclausefailclosed. Horizontalleft[0,.5],right[.5,1],unqualifiedcenter[1/3,2/3]. Left/rightofcenterarevalidsingle-sided, notcontradiction. Novertical/color/3Dbehindheuristic.",
+    "evidence": "Projectreferencecandidatecentroids tocamera. E=dist(u/imagewidth,I)^2/.25^2 onlypositive-depthFOV candidates; unsupportedneutral, noGT. Usefrozenboxcorrespondence withIoUweights to3full-viewsemanticp_aug. Noindependentclaimforpointconditionedtokens.",
+    "teacher_posterior": ".9 normalize(p_aug exp(-E))+.1 p_aug; sourcefallback ifnoqualifiedregion/calib/no differentialcost. Directteacherposterior isstrongsameinformationno-updatecontrol.",
+    "adapter": "rank4on64Dqueryprojection,512parameters,orthogonalA/Bzero, normpreservingresidual anchoredtonativeexactlogits; no sourceparameterupdate,episodicreset",
+    "loss": "Huber regressionofsource-relative normalizedlogposterior changetoteacherlogratio plus.1embeddingtrust; noentropy objective; sameinfo deterministicteacher",
+    "optimization": "Adam .01,gradclip1,steps1/3; per-stepembeddingL2<=.05,total<=.1,backtrackingnonincreasingunlabeledloss; zero sourcebridge exact; no-spatialsamecodecontrol strictno-gradient/no-drift",
+    "primary": "query3",
+    "noun_intervention": "Separateactualnounonlysourceconditions usedforreadout/mechanismdiagnostic, notextraunvalidatedlossterms"
+  },
+  "geometry_family": {
+    "name": "observable_visible_face_center_interval_preserving_shape",
+    "teacher": "FullcloudkNN16normals usedonfixed1.25xsourcePCAcrop, notcroppedgraph. Usecalibratedcameraorigin fornearface signheuristic, nottrueocclusionguarantee. Eachaxis independentobservableface: normalalignment>=.9,planarity>=.3,support>=8,two tangentialspan/size>=.2,MAD<=.05m. No requirementtwo facefamilies;single visiblefacecanconstrainoneaxis.",
+    "interval": "Planeoffsetmedian minusvisiblefacesign*sourcehalfsize, plusminusmax(.03,1.4826MAD). Onlycenterlatent3parameters; unobservedaxes exactlysource. SizeandPCAyawbitexactfrozen.",
+    "loss": "Squared distancetoper-axisfeasibleinterval+.25sourcecenteranchor, expressedmetrically/equalaxisweights; zeroinsideinterval. Totalphysicalcenterdisplacementcap.15m.",
+    "direct": "Analyticconvexinterval+sourceanchor optimumwithsamecap, sameinformation, no iterativeupdate; not calledneuralTTA.",
+    "optimization": "Adam .05m,steps1/3,projectiontoradius.15m,unobservedaxesstrictmask; noobservations/nointervalviolationno-gradient/no-drift.",
+    "primary": "geometry3",
+    "interpretation": "3centerlatent outputoptimization, notnetworkfeatureadaptation; oldfullvisiblepointfitting shrinknotrepeated"
+  },
+  "fixed_comparisons": [
+    "frozen_raw_diagnosticonly",
+    "frozen_PCA_primarybaseline",
+    "TTAug_3fullviews_PCA_no_update",
+    "nounonly_3views_matchedref_PCA_no_update",
+    "spatial_teacher_direct_PCA_no_update",
+    "query0_control",
+    "query1",
+    "query3_primary",
+    "query_no_spatial3_control",
+    "geometry_direct_PCA_no_update",
+    "geometry1",
+    "geometry3_primary",
+    "geometry_no_observation3_control",
+    "frozen_BBS_PCA_originaltrainedclassifier",
+    "BBS3viewmean_PCA_no_update"
+  ],
+  "BBS_control": "Originalofficialsofttokenclassifierhead frozenexactGPUheadreplayonsealedquery288, samefirstnounmask/noGTclassspan; primaryBBFunchanged. CPU/GPUprecisionbridgefailedretained; nativeGPUfrozenhead bridgevalidated beforeseal, no candidateboxchange.",
+  "positive_control": "OptionalDEV-onlyofflineoracleinterfaceprobe AFTERunlabeleddevpredictionseal. Usesfixed3rank-recoverableannotationdistractor casesforcapacitydiagnostic, samequery512interface,3and20steps labels declared. Neverteacher/confirmscore/hyperparameterselection. MustnotpromoteoracletoTTA.",
+  "confirmation": "No confirmmodelrun untilimplementation/code/camera/BBSplansfreeze. All64cohortarmssealed andchecksums checked beforeanyconfirmnumericGTscoring. No steps/thresholds/prompts/selectionchangesafterconfirmation.",
+  "statistics": "PrimaryWaymoVAL48/24scenes, reportmeanIoU/strictAcc25/50,parenttail+sceneclusterpairedbootstrap10000seed20261030 vsTTAug andstrongsameinfoDirect; comparefrozenBBSstrongreadout. AuxiliaryTRAIN16/4scene separate no pooledheadline. Teacherquality measuredonlyofflineafterseal, notadaptationselection.",
+  "budget": "One finite candidatefamily each,1/3steps, no LR/thresholdsweep. CompleteCPUcachedupdates+confirm384 frozenforwards/no sourcefulltraining. Stopatnegative/inconclusivewithallnegativecasesretained."
+}

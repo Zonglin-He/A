@@ -1,0 +1,13 @@
+# Root qualitative review after all prediction seals
+
+The root agent actually viewed the fixed-rule private figures A-v2, B, C and the retained earlier A-v1. RGB and GT geometry were used only in this post-seal interpretation, never in the adaptation inputs. None of the private images, original captions, point arrays or box coordinates is exported.
+
+A-v2 is the class-normalized minimum-hash eligible ranking case. The target and the wrong selected pedestrian lie in the same horizontal half of the image. The target caption contains attributes and relationships beyond that half-image constraint. Frozen, direct teacher and Query3 remain on the same wrong annotated-other overlap: target IoU zero, non-target IoU .5615; an existing reference candidate exceeds .5. The figure supports failure to distinguish nearby same-class objects, not a claim that every visible person has a known stable identity. This model consumes XYZ, not RGB color. It cannot be assumed to observe attributes visible in the offline image. The retained A-v1 car case also has target and wrong candidate in the same horizontal region, with additional projected occlusion/depth ambiguity.
+
+B is the worst primary Geometry3-minus-frozen case. It is a pedestrian example. Source dimensions are already close to the annotation (mean relative discrepancy about3.3%), and source center error is only .047m. The accepted surface interval pulls the center away: error .169m, IoU .7408 to .6281, even while the unlabeled objective falls .06677 to .01788. A local visible patch need not coincide with an outer cuboid annotation face, particularly for a non-cuboid body. The figure is consistent with that assumption mismatch; without point-instance labels it does not isolate surface assignment, contamination or all shape/yaw contributions. We do not infer failure merely from the displayed crop.
+
+C is the best primary Geometry3-minus-frozen case. IoU .7256 to .7539 is a real positive tail, with center error .229m to .149m. The same-information analytic direct solution reaches .7914 and is stronger in this case. The good case remains in the record and is not used to change the fixed teacher or three-step primary.
+
+Selection correction: the first plotting script compared class names case-sensitively and missed capitalized annotation classes. The old A-v1 image, index and script are retained. Case normalization changed only the offline fixed-rule A selection to A-v2; B/C image hashes, all experimental code, source caches, predictions and task scores stayed unchanged. This is not a new prediction or a method revision.
+
+All these observations are descriptive. They did not trigger a threshold change, a new loss, a dataset replacement or an extra method sweep.

@@ -1,0 +1,54 @@
+{
+  "id": "3eed_round4_stage1_candidate_decomposition_v1",
+  "locked_local": "2026-10-30T10:08:35.905146+08:00",
+  "authorization": "3EED only; no pretrainedsource/backbone training. Userrequests diagnostic before designingnewloss; prior100epoch cancellationnotrevoked.",
+  "source_checkpoint": "Existingofficialunionmodel final_6384, sourceSHA inheritedstrictverifiedoldassetreceipt; no sourceonlymigrationclaim.",
+  "cohort_design": {
+    "primary": "Waymo VAL research-fresh scene groups, dev12scenesx2=24, confirm24scenesx2=48. Scenequalification usesonlyinputpath presence/count, noannotationcontent. Alloldresearchprediction/scoring scenesexcluded. P0CPUloaderunknownsceneexposure disclosed.",
+    "auxiliary": "Drone VAL2/QuadVAL3 all previouslyexposed; research-fresh TRAIN scenes only as explicitlypretraining-exposed auxiliary mechanismcheck:dev1Dronex4+2Quadx2=8,confirm2Dronex4+2Quadx4=16. NevermixintomodelheldoutVALclaim. Ifnotfeasible stopanddocumentbeforepathlock.",
+    "selection": "deterministicSHApathordering; noGTbasedreplacement; pathlockauthoritative"
+  },
+  "source_inputs": {
+    "views": 3,
+    "points_per_view": 16384,
+    "view_rule": "Differentfixedrawsamplingseeds fromsameobservedrawcloud, not independentobservations; replacementwhenrawpool<16384. Noaddednoise/rotation/normalization. Sameofficialcoordinate transforms.",
+    "text": "Originalfirstcaption withpriorpunctuation/notmentionedformat; source mainreadouttextonlyfirstnoun notGTspan. Nounonly intervention usespubliclexiconfirstnoun, e.g.car . not mentioned; no targetclasslabels.",
+    "source_calls": "3fullcaption and3nounonly perparent, frozenweights; cacheboxes256x6, normquery/tokenprojections,288Dheadinputs, nounmask/contextmask, viewpointcacheSHA. Repeated firstdevsourcecheck andfrozenparam/buffer/RNGreceipts.",
+    "confirmation_gate": "Confirmmodel calls helduntilafterdevdecomp+final finiteadaptationmethod/codefreeze."
+  },
+  "PCA_control": {
+    "function": "Usefrozenround3p3.standardaxisaware PCA, sharedmin8points, eigenvectorlongaxis tolargersourceXYextent, samecrop1e-7nativebeforefloat64, degenerateexactsource.",
+    "all_candidates": "ComputePCAforALL256 sourcecandidateboxeswithoutGT beforedecomposition; no candidateoracleinfo intoPCA orranking.",
+    "referencepool": "PrimaryqueryTTA comparesfixedview0sourceboxes/PCAyaws; multiview/counterfactualonlyevidence, nooutputboxpooling. GeometryTTAretainsthesameperqueryPCAyaw andsizeprior; centerupdatepossiblyallowedafterdiagnosis."
+  },
+  "decomposition": {
+    "rankks": [
+      1,
+      5,
+      10,
+      32,
+      256
+    ],
+    "thresholds": [
+      0.25,
+      0.5
+    ],
+    "sort": "semantic score descending withqueryindexstabletie",
+    "metrics": [
+      "percandidateIoU_rawyaw0",
+      "percandidateIoU_fixedPCA",
+      "topkrecall_rawandPCA",
+      "top1meanIoU",
+      "rankrecoverable_top1fails_anycandidatepasses",
+      "candidatecoverage_failure_all256fail",
+      "selectedq_singleGTcenterreplace",
+      "selectedq_singleGTsizereplace",
+      "selectedq_singleGTyawreplace"
+    ],
+    "interpretation": "Thresholdrankrecoverable notconfirmedwrongrealinstance; noGTallobjecttable meansidentityunknown. Conditionaloracleinterventionsnotcausalattribution/notdeployable andnotstrictmaximum. Nonexclusivecenter/size/yaw effects reportseparately.",
+    "label_gate": "Source/PCA/nounintervention caches ALLdev sealedbeforedevnumericGTscoring. No confirmGTscoringuntilfinalallarmsseals. NoGT toteacher/optimization/stepacceptance.",
+    "firstdecision": "ReaddevcandidateheadroombeforechoosingTTAfeedback. Atmostonequeryfamilyandonegeometryfamily, fixed1/3steps, sameinformationdirect/no-updatecontrols. Ifnoplausiblefeedback, recordinconclusive/noadoption; do notinvent routefailure."
+  },
+  "statistics": "PrimaryWaymoVAL scenecluster evaluation, dev-confirmdisjoint. Drone/QuadTRAINaux separateplatform/splits, no overallheadlinepooled withWaymo. Pairedscene-bootstrap10000seed20261030, fewauxclusters descriptive andNAwhereundefined. Signedtails andcostsretained.",
+  "resource": "OneGPUownercoordinator; frozenmodelsourcecalls onlythen CPUcachedsmallparameterupdates ifvalid. No full source training, no multi-hourjob, noAVIS/GREATexperiments."
+}

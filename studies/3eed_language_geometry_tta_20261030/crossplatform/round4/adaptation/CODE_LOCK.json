@@ -1,0 +1,68 @@
+{
+  "state": "locked_before_actual_DEV_adaptation_outputs_and_scores",
+  "utc": "2026-10-30T02:49:02.463046+00:00",
+  "mechanism_sha256": "a470d5daa48f8016a357d646a33c10a96a9a12ff945459e53c9c506c710be3aa",
+  "source_plan_sha256": "2b48509de9113a8a4e1efb4b266461bd6ba0895ebe7d3e2007571320353c4aa8",
+  "source_hashes": {
+    "crossplatform/round4/adaptation/interfaces.py": "3c49cc2e42215b45e5007c650d5e178cfaad2c4a955b4ec54b35051ddf441d7b",
+    "crossplatform/round4/adaptation/caption_regions.py": "f90fffda4b3679a5573383ce348edf7a258af7b0a82b09e8c02f0c654aa5630a",
+    "crossplatform/round4/adaptation/spatial_teacher.py": "09efcd075a09fe878eda4d16a3fb5c7fb661f9d83fa2ae3427fc80895d8aea6a",
+    "crossplatform/round4/adaptation/query_update.py": "d5aef02d0e33c71508022b4a35330794ed4f56eb756f282f9d30d628ca9a66da",
+    "crossplatform/round4/adaptation/geometry_update.py": "f12b9b3f129f0e8d846077c693be19021ca172650f2b6d5c7f9bd017e1288aea",
+    "crossplatform/round4/adaptation/run_cached.py": "c313ac0a54d6b60cd1080f85c34cc6e5c0a4d46da6e13c3c2903d3c17966520c",
+    "crossplatform/round4/adaptation/IMPLEMENTATION_CLARIFICATION.json": "7f3ddbd1ac9390d1cb6166e39e49ec76702ebabeac52f018c086c6aa0c15a29e",
+    "crossplatform/round4/adaptation/check_interfaces.py": "0fc8a1e72b99825a8381ef952d3a2028977919b6f7afbe933438f971e9f24619",
+    "crossplatform/round4/adaptation/check_regions.py": "f3c9bdaf5d1c776849f4ffb0596b154da64cfd4bb6280ecd4852cfc5ed373440",
+    "crossplatform/round4/adaptation/check_mechanisms.py": "92fe85c72357693753a4263d6bb17368f310be6a440212c990748ea673bc06ce",
+    "crossplatform/round4/source/SOURCE_PLAN.json": "2b48509de9113a8a4e1efb4b266461bd6ba0895ebe7d3e2007571320353c4aa8",
+    "crossplatform/round4/source/dev_source/sealed.json": "b8a1553ad0c9c9811176928f90a859d3eeb3a2d61f84ae89e2de5342beff7842",
+    "crossplatform/round4/source/calibration/CORRECTION/ADAPTER_INPUT_SEAL_v2.json": "0833a3c830566685bba8813444c948e30d9bf30d9b8a249efce406819e10a1b3",
+    "crossplatform/round4/source/calibration/CORRECTION/camera_helper.py": "0f51752c9a647d24fd3eed62419c684484913830ffe5ddf76d5df149f218d18d",
+    "crossplatform/upstream/utils/box_util.py": "2f83e38bdd6dbeaefcfd3549696fa9ad49637543c70fe661f65b3d717040689d"
+  },
+  "camera_input_seal_sha256": "0833a3c830566685bba8813444c948e30d9bf30d9b8a249efce406819e10a1b3",
+  "fixtures": {
+    "INTERFACE_FIXTURES.json": "70e18d7d577181f355663eec68a527f278c6fa72a88701fde092f3a33166e883",
+    "REGION_FIXTURES.json": "771fab9d72a53207edab23d0331f28f2ef242463212f7e1719b5ea017ecbf19f",
+    "MECHANISM_FIXTURES.json": "33ca07cd4a3c1e6f5edcccedafdad354df3da19b47657ce9de9ff5d01ec4a015"
+  },
+  "primary": [
+    "query3_primary",
+    "geometry3_primary"
+  ],
+  "initialization": {
+    "query_dim": 64,
+    "rank": 4,
+    "parameter_count": 512,
+    "seed": 20261030,
+    "A": "localRNGorthonormal",
+    "B": "zero",
+    "geometry_center_latent_parameters": 3
+  },
+  "query_numerics": {
+    "probability_floor": 1e-12,
+    "Huber_reduction": "teacherprobweighted sum",
+    "embedding_trust_coefficient": 0.1,
+    "max_backtrack_halvings": 10,
+    "nonincrease_tolerance": 1e-10,
+    "constraint_tolerance": 1e-07,
+    "native_anchor": "L0+(normalize(qtheta)-normalize(q0))@tokens.T/.07;cachedspanS0+softmaxdifference"
+  },
+  "geometry_numerics": {
+    "local_PCA_axes_metric_loss": "sum intervaldist² +.25 sumcenterdelta²",
+    "backtrack_maxhalvings": 10,
+    "nonincrease_tolerance": 1e-12,
+    "Adam_initial_lr_m": 0.05,
+    "total_L2_cap_m": 0.15,
+    "sourceoutput_float32_center_rounding_tolerance_m": 1e-05,
+    "camera_outside_axis_slab": true,
+    "visible_point_half": "local_axis*camera_sign>0",
+    "span": "fullptp tangent span, notlearnedquantiles",
+    "median": "unweighted",
+    "normalgraph": "allunique v0sampledpoints;query onlyfixed1.25cropnodes"
+  },
+  "unsupported_spatial_policy": "E=0 neutral, master normalization mayindirectly changeunsupportedcandidateposterior; no-info family returns exactp_aug",
+  "decomposition_use": "parent-providedDEVaggregatebeforechoosingfamilies; no privateGT/outcomes file openedbythisagent",
+  "confirm_execution": "requiresparentrelease matchingthiscode/masterSHA, noConfirmGTread",
+  "no_source_model_fulltraining_GPU": true
+}

@@ -1,0 +1,36 @@
+{
+  "status": "passed_GTfree_physical_coordinate_prerequisite",
+  "camera_input_seal_sha256": "0833a3c830566685bba8813444c948e30d9bf30d9b8a249efce406819e10a1b3",
+  "camera_arrays_checked": {
+    "waymo": 72,
+    "drone": 12,
+    "quad": 12
+  },
+  "mapping": "source=F*vehicle; OpenCV=A*inverse(E_camera_to_vehicle)*inverse(F)*source. No global pose for vehicle-frame raw points.",
+  "A_axis_basis_fixture_passed": true,
+  "max_R_orthogonality_error": 3.3306690738754696e-16,
+  "max_explicit_SE3_inverse_vs_cached_transform_error": 8.881784197001252e-16,
+  "max_camera_origin_roundtrip_error_m": 6.661338147750939e-16,
+  "DroneQuad_original_mapping_continuity_error": 0.0,
+  "official_primary_sources": [
+    {
+      "url": "https://raw.githubusercontent.com/waymo-research/waymo-open-dataset/master/src/waymo_open_dataset/dataset.proto",
+      "evidence": "CameraCalibration.extrinsic documented camera-to-vehicle, pose vehicle-to-global. Independently fetched."
+    },
+    {
+      "url": "https://waymo.com/intl/fil/open/data/e2e/",
+      "evidence": "Official camera frame centered at lens, x out of lens and z upward, right handed. Independently fetched."
+    }
+  ],
+  "limits": [
+    "Algebra/SE3/FOV prerequisite is not observed pixel reprojection accuracy or semantic target identification",
+    "Metadata absent lens-distortion coefficients are treated as zero per existing explicit convention; no rolling-shutter reconstruction",
+    "DroneQuad direct-E continuity is checked, no new independent camera convention established for those platforms",
+    "No teacher task correctness, caption parser accuracy, or TTA effectiveness asserted"
+  ],
+  "target_or_caption_files_read": 0,
+  "image_pixels_or_model_inputs_read": 0,
+  "new_model_GPU_calls": 0,
+  "new_GT_scores": 0,
+  "source_hash": "53f0e4169a6bc7075599cbdedf0077e341accd7752449fe222c8e417a83e1d4b"
+}

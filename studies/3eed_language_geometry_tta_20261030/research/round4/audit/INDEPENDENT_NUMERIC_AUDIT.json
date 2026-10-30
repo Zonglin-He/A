@@ -1,0 +1,127 @@
+{
+  "state": "passed_numeric_audit_with_declared_parser_coverage_limitation",
+  "independent_3Dconvex_vs_parent_2Dpolygon": [
+    {
+      "cohort": "dev",
+      "taskscore_comparisons": [
+        {
+          "parent": "crossplatform/round4/dev_adaptation_scored/RESULTS_PRIVATE.json",
+          "parent_sha256": "b1c6a507f5b9f339f88a6bc02ca4154cecc341f871d69daed2a6c30a1e4868b0",
+          "n_iou_cells": 416,
+          "max_abs_iou_difference": 3.552713678800501e-15,
+          "all_aggregate_denominators_clusters_threshold_counts_invalid_counts_exact": true,
+          "max_summary_mean_difference": 1.2212453270876722e-15
+        },
+        {
+          "parent": "crossplatform/round4/dev_readout_scored/RESULTS_PRIVATE.json",
+          "parent_sha256": "6e1c5cbcec7449f5dbe8b9b1398885d204e6154372f96785f50f9806ff8249a8",
+          "n_iou_cells": 192,
+          "max_abs_iou_difference": 3.552713678800501e-15,
+          "all_aggregate_denominators_clusters_threshold_counts_invalid_counts_exact": true,
+          "max_summary_mean_difference": 1.1102230246251565e-15
+        },
+        {
+          "parent": "crossplatform/round4/dev_candidate_diagnostic/RESULTS_PRIVATE.json",
+          "parent_sha256": "a8b3c6ae32f8d0d0e0e9c3907950cf7fe8528b2e971fc681ffbda6f159cc4999",
+          "n_numeric_cells": 224,
+          "max_abs_difference": 1.0880185641326534e-14,
+          "exact_boolean_rank_topk_cells": 896
+        }
+      ]
+    },
+    {
+      "cohort": "confirm",
+      "taskscore_comparisons": [
+        {
+          "parent": "crossplatform/round4/confirm_adaptation_scored/RESULTS_PRIVATE.json",
+          "parent_sha256": "f8ca5faf514f88c88f7a15aba8298bb76d06472aec293b54b4800f3ff5ac9891",
+          "n_iou_cells": 832,
+          "max_abs_iou_difference": 8.43769498715119e-15,
+          "all_aggregate_denominators_clusters_threshold_counts_invalid_counts_exact": true,
+          "max_summary_mean_difference": 1.3322676295501878e-15
+        },
+        {
+          "parent": "crossplatform/round4/confirm_readout_scored/RESULTS_PRIVATE.json",
+          "parent_sha256": "8c81a6db1281cf88a6cd897feb81a5fd5fe4f0d3cc8fc47fbe240393b741a96b",
+          "n_iou_cells": 384,
+          "max_abs_iou_difference": 4.9960036108132044e-15,
+          "all_aggregate_denominators_clusters_threshold_counts_invalid_counts_exact": true,
+          "max_summary_mean_difference": 6.661338147750939e-16
+        },
+        {
+          "parent": "crossplatform/round4/confirm_candidate_diagnostic/RESULTS_PRIVATE.json",
+          "parent_sha256": "6db77414c3d44c46a24587c2ae7b6525c07d7158cb8625d5d50c5bbb18ed6f94",
+          "n_numeric_cells": 448,
+          "max_abs_difference": 9.103828801926284e-15,
+          "exact_boolean_rank_topk_cells": 1792
+        }
+      ]
+    }
+  ],
+  "parser_actual_inputs": [
+    {
+      "cohort": "dev",
+      "n": 32,
+      "final_parser_reproduces_all_sealed_trace_regions_exact": true,
+      "defined_edgecase_lexical_trigger_n": 0,
+      "trigger_ids": [],
+      "not_a_general_semanticcorrectness_certificate": true
+    },
+    {
+      "cohort": "confirm",
+      "n": 64,
+      "final_parser_reproduces_all_sealed_trace_regions_exact": true,
+      "defined_edgecase_lexical_trigger_n": 0,
+      "trigger_ids": [],
+      "not_a_general_semanticcorrectness_certificate": true
+    }
+  ],
+  "parser_scope_counterexamples": [
+    {
+      "synthetic_text": "A car located to the left of a van in the image.",
+      "actual_region": "global_left_half",
+      "desired_failclosed": false
+    },
+    {
+      "synthetic_text": "A car located to the left of a bicycle in the image.",
+      "actual_region": "global_left_half",
+      "desired_failclosed": false
+    },
+    {
+      "synthetic_text": "A car located not on the left side of the image.",
+      "actual_region": "global_left_half",
+      "desired_failclosed": false
+    }
+  ],
+  "master_gate": {
+    "sha256": "080f4a00d1d4a77323a1012e2a8ee0f0cc4d858f67aa8dfcc06ef8dd422c786a",
+    "981_hashes_verified_before_this_auditor_target_GT": true,
+    "audit_scorer_lock_after_master_by_mtime": true,
+    "cannot_prove_absence_of_any_unlogged_external_process_GT_read": true
+  },
+  "measurement_adoption_decision": {
+    "query3": "Notadopted; exactlysame chosenboxes asTTAug anddirect inbothcohorts. Any sourcegain is readoutaggregation, notparameteradaptation.",
+    "geometry3": "Notadopted; lowersWaymoDEVandCONFIRMIoU, alsoinferiortosameinformationdirect onconfirm. Keep locked3step primary; do notpromote1step.",
+    "scope": "WaymoVALprimary andTRAINunionexposedDroneQuadauxiliary separate; nofulltraining/sourceonlyclaim"
+  },
+  "all_output_evidence": {
+    "STAGE2_DEV_SCORER_LOCK.json": "a31b023d40a4c7a214aae2a4ed89402010fd61f976a7100cda148b70ed3de279",
+    "STAGE2_CONFIRM_SCORER_LOCK.json": "a9ba09d318079e5e90be0797adf09590ea12651ef913788623b235c7a19bfed5",
+    "STAGE2_IMPLEMENTATION_REVIEW.json": "ec5e99ce4f2173b1ec3869f89e1b13f704ca2f795ba6d6c5424aff09ea319505",
+    "CONFIRM_STAGE2_IMPLEMENTATION_REVIEW.json": "21055e40c760c5fd08d676b5f06b0257a103cec7e7e8d6a36990e2bc8a81b758",
+    "DEV_STAGE2_INDEPENDENT_RESULTS_PRIVATE.json": "096cf5d6c2a89330d021c39f96acba344be02141579ab6dc7b289daff3420e61",
+    "CONFIRM_STAGE2_INDEPENDENT_RESULTS_PRIVATE.json": "2d5d94debe0bfc14b7091819dbefc361cbfdadd82c7e1dd55f814da2e860668c",
+    "DEV_TEACHER_QUALITY_PRIVATE.json": "4dc37a4aec864102baf7f01a6672cd66c8c13d137b2fb1162af6c4689e390047",
+    "CONFIRM_TEACHER_QUALITY_PRIVATE.json": "bcc42e9377eb857481e9d8cf707bc3ee3ccb70e63b39f934f9e407c5d69c5fb9",
+    "DEV_TEACHER_QUALITY_SUPPLEMENT_PRIVATE.json": "1bda64ad727b819dab3a35e45b72d4ef7793d0583c2cc46bbbe8a8e4aad59a96",
+    "CONFIRM_TEACHER_QUALITY_SUPPLEMENT_PRIVATE.json": "414b707762619daa0e8b6c432d3de3177d73f2c2987410651ccb344fe03ff703",
+    "CONFIRM_ANNOTATION_ASSOCIATION_PRIVATE.json": "e3ef6941c9462f7e0be8feb949d5265a0412edd2b180d640400bd984fb1715c4"
+  },
+  "failed_engineering_lineage": [
+    "DEV teacher supplement first4x4intrinsic matmul rejected before anyresult file; retainedpre_intrinsic4x4_failure script; finalexplicit3x3projection",
+    "CONFIRM firstaudit used nonexistentBBSdirname and failed beforetargetmetadata; retainedpre_BBS_path_failure script+log; corrected actualconfirmedsealedpath only"
+  ],
+  "model_GPU_training_calls": 0,
+  "parent_or_old_files_modified": false,
+  "no_push": true
+}

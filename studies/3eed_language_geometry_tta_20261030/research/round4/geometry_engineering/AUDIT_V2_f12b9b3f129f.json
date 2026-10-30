@@ -1,0 +1,1280 @@
+{
+  "scope": "synthetic engineering only; no GT/model/GPU/input caches",
+  "audited_code_sha256": "f12b9b3f129f0e8d846077c693be19021ca172650f2b6d5c7f9bd017e1288aea",
+  "teacher_cases": [
+    {
+      "case": "roof_camera_above",
+      "expected_observed": [
+        false,
+        false,
+        true
+      ],
+      "actual_observed": [
+        false,
+        false,
+        true
+      ],
+      "pass": true,
+      "lower": [
+        0.0,
+        0.0,
+        0.06999999999999998
+      ],
+      "upper": [
+        0.0,
+        0.0,
+        0.12999999999999998
+      ],
+      "diagnostics": {
+        "crop_count": 861,
+        "normals_from_fullcloud_graph": true,
+        "axes": [
+          {
+            "axis": 0,
+            "camera_near_face_sign": 0.0,
+            "camera_outside_axis_slab": false,
+            "support": 0,
+            "accepted": false
+          },
+          {
+            "axis": 1,
+            "camera_near_face_sign": 0.0,
+            "camera_outside_axis_slab": false,
+            "support": 0,
+            "accepted": false
+          },
+          {
+            "axis": 2,
+            "camera_near_face_sign": 1.0,
+            "camera_outside_axis_slab": true,
+            "support": 781,
+            "accepted": true,
+            "plane_offset": 0.6,
+            "MAD_m": 0.0,
+            "tangent_coverage": [
+              0.8,
+              0.8
+            ],
+            "center_interval_offset_m": [
+              0.06999999999999998,
+              0.12999999999999998
+            ]
+          }
+        ],
+        "reason": "measured_singleaxis_visibleface_constraints",
+        "observable_axes": 1,
+        "violated_observable_axes": 1,
+        "visibility_is_camera_nearface_heuristic_not_true_instance_or_occlusion": true
+      }
+    },
+    {
+      "case": "frontwall_camera_front",
+      "expected_observed": [
+        true,
+        false,
+        false
+      ],
+      "actual_observed": [
+        true,
+        false,
+        false
+      ],
+      "pass": true,
+      "lower": [
+        0.17000000000000018,
+        0.0,
+        0.0
+      ],
+      "upper": [
+        0.23000000000000018,
+        0.0,
+        0.0
+      ],
+      "diagnostics": {
+        "crop_count": 561,
+        "normals_from_fullcloud_graph": true,
+        "axes": [
+          {
+            "axis": 0,
+            "camera_near_face_sign": 1.0,
+            "camera_outside_axis_slab": true,
+            "support": 499,
+            "accepted": true,
+            "plane_offset": 2.2,
+            "MAD_m": 0.0,
+            "tangent_coverage": [
+              0.8,
+              0.8
+            ],
+            "center_interval_offset_m": [
+              0.17000000000000018,
+              0.23000000000000018
+            ]
+          },
+          {
+            "axis": 1,
+            "camera_near_face_sign": 0.0,
+            "camera_outside_axis_slab": false,
+            "support": 0,
+            "accepted": false
+          },
+          {
+            "axis": 2,
+            "camera_near_face_sign": 0.0,
+            "camera_outside_axis_slab": false,
+            "support": 0,
+            "accepted": false
+          }
+        ],
+        "reason": "measured_singleaxis_visibleface_constraints",
+        "observable_axes": 1,
+        "violated_observable_axes": 1,
+        "visibility_is_camera_nearface_heuristic_not_true_instance_or_occlusion": true
+      }
+    },
+    {
+      "case": "ground_camera_above",
+      "expected_observed": [
+        false,
+        false,
+        false
+      ],
+      "actual_observed": [
+        false,
+        false,
+        false
+      ],
+      "pass": true,
+      "lower": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "upper": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "diagnostics": {
+        "crop_count": 861,
+        "normals_from_fullcloud_graph": true,
+        "axes": [
+          {
+            "axis": 0,
+            "camera_near_face_sign": 0.0,
+            "camera_outside_axis_slab": false,
+            "support": 0,
+            "accepted": false
+          },
+          {
+            "axis": 1,
+            "camera_near_face_sign": 0.0,
+            "camera_outside_axis_slab": false,
+            "support": 0,
+            "accepted": false
+          },
+          {
+            "axis": 2,
+            "camera_near_face_sign": 1.0,
+            "camera_outside_axis_slab": true,
+            "support": 0,
+            "accepted": false
+          }
+        ],
+        "reason": "measured_singleaxis_visibleface_constraints",
+        "observable_axes": 0,
+        "violated_observable_axes": 0,
+        "visibility_is_camera_nearface_heuristic_not_true_instance_or_occlusion": true
+      }
+    },
+    {
+      "case": "backwall_camera_front",
+      "expected_observed": [
+        false,
+        false,
+        false
+      ],
+      "actual_observed": [
+        false,
+        false,
+        false
+      ],
+      "pass": true,
+      "lower": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "upper": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "diagnostics": {
+        "crop_count": 561,
+        "normals_from_fullcloud_graph": true,
+        "axes": [
+          {
+            "axis": 0,
+            "camera_near_face_sign": 1.0,
+            "camera_outside_axis_slab": true,
+            "support": 0,
+            "accepted": false
+          },
+          {
+            "axis": 1,
+            "camera_near_face_sign": 0.0,
+            "camera_outside_axis_slab": false,
+            "support": 0,
+            "accepted": false
+          },
+          {
+            "axis": 2,
+            "camera_near_face_sign": 0.0,
+            "camera_outside_axis_slab": false,
+            "support": 0,
+            "accepted": false
+          }
+        ],
+        "reason": "measured_singleaxis_visibleface_constraints",
+        "observable_axes": 0,
+        "violated_observable_axes": 0,
+        "visibility_is_camera_nearface_heuristic_not_true_instance_or_occlusion": true
+      }
+    },
+    {
+      "case": "camera_inside_vertical_slab",
+      "expected_observed": [
+        false,
+        false,
+        false
+      ],
+      "actual_observed": [
+        false,
+        false,
+        false
+      ],
+      "pass": true,
+      "lower": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "upper": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "diagnostics": {
+        "crop_count": 861,
+        "normals_from_fullcloud_graph": true,
+        "axes": [
+          {
+            "axis": 0,
+            "camera_near_face_sign": 0.0,
+            "camera_outside_axis_slab": false,
+            "support": 0,
+            "accepted": false
+          },
+          {
+            "axis": 1,
+            "camera_near_face_sign": 0.0,
+            "camera_outside_axis_slab": false,
+            "support": 0,
+            "accepted": false
+          },
+          {
+            "axis": 2,
+            "camera_near_face_sign": 0.0,
+            "camera_outside_axis_slab": false,
+            "support": 0,
+            "accepted": false
+          }
+        ],
+        "reason": "measured_singleaxis_visibleface_constraints",
+        "observable_axes": 0,
+        "violated_observable_axes": 0,
+        "visibility_is_camera_nearface_heuristic_not_true_instance_or_occlusion": true
+      }
+    },
+    {
+      "case": "camera_inside_horizontal_slab",
+      "expected_observed": [
+        false,
+        false,
+        false
+      ],
+      "actual_observed": [
+        false,
+        false,
+        false
+      ],
+      "pass": true,
+      "lower": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "upper": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "diagnostics": {
+        "crop_count": 561,
+        "normals_from_fullcloud_graph": true,
+        "axes": [
+          {
+            "axis": 0,
+            "camera_near_face_sign": 0.0,
+            "camera_outside_axis_slab": false,
+            "support": 0,
+            "accepted": false
+          },
+          {
+            "axis": 1,
+            "camera_near_face_sign": 0.0,
+            "camera_outside_axis_slab": false,
+            "support": 0,
+            "accepted": false
+          },
+          {
+            "axis": 2,
+            "camera_near_face_sign": 0.0,
+            "camera_outside_axis_slab": false,
+            "support": 0,
+            "accepted": false
+          }
+        ],
+        "reason": "measured_singleaxis_visibleface_constraints",
+        "observable_axes": 0,
+        "violated_observable_axes": 0,
+        "visibility_is_camera_nearface_heuristic_not_true_instance_or_occlusion": true
+      }
+    },
+    {
+      "case": "camera_exact_source_center",
+      "expected_observed": [
+        false,
+        false,
+        false
+      ],
+      "actual_observed": [
+        false,
+        false,
+        false
+      ],
+      "pass": true,
+      "lower": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "upper": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "diagnostics": {
+        "crop_count": 861,
+        "normals_from_fullcloud_graph": true,
+        "axes": [
+          {
+            "axis": 0,
+            "camera_near_face_sign": 0.0,
+            "camera_outside_axis_slab": false,
+            "support": 0,
+            "accepted": false
+          },
+          {
+            "axis": 1,
+            "camera_near_face_sign": 0.0,
+            "camera_outside_axis_slab": false,
+            "support": 0,
+            "accepted": false
+          },
+          {
+            "axis": 2,
+            "camera_near_face_sign": 0.0,
+            "camera_outside_axis_slab": false,
+            "support": 0,
+            "accepted": false
+          }
+        ],
+        "reason": "measured_singleaxis_visibleface_constraints",
+        "observable_axes": 0,
+        "violated_observable_axes": 0,
+        "visibility_is_camera_nearface_heuristic_not_true_instance_or_occlusion": true
+      }
+    },
+    {
+      "case": "camera_exact_vertical_slab_boundary",
+      "expected_observed": [
+        false,
+        false,
+        false
+      ],
+      "actual_observed": [
+        false,
+        false,
+        false
+      ],
+      "pass": true,
+      "lower": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "upper": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "diagnostics": {
+        "crop_count": 861,
+        "normals_from_fullcloud_graph": true,
+        "axes": [
+          {
+            "axis": 0,
+            "camera_near_face_sign": 0.0,
+            "camera_outside_axis_slab": false,
+            "support": 0,
+            "accepted": false
+          },
+          {
+            "axis": 1,
+            "camera_near_face_sign": 0.0,
+            "camera_outside_axis_slab": false,
+            "support": 0,
+            "accepted": false
+          },
+          {
+            "axis": 2,
+            "camera_near_face_sign": 0.0,
+            "camera_outside_axis_slab": false,
+            "support": 0,
+            "accepted": false
+          }
+        ],
+        "reason": "measured_singleaxis_visibleface_constraints",
+        "observable_axes": 0,
+        "violated_observable_axes": 0,
+        "visibility_is_camera_nearface_heuristic_not_true_instance_or_occlusion": true
+      }
+    },
+    {
+      "case": "fewer_than8_points",
+      "expected_observed": [
+        false,
+        false,
+        false
+      ],
+      "actual_observed": [
+        false,
+        false,
+        false
+      ],
+      "pass": true,
+      "lower": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "upper": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "diagnostics": {
+        "crop_count": 7,
+        "normals_from_fullcloud_graph": true,
+        "axes": [],
+        "reason": "invalid_size_or_insufficient_observation"
+      }
+    },
+    {
+      "case": "parallel_faces_MAD_majority_limitation",
+      "expected_observed": null,
+      "actual_observed": [
+        false,
+        false,
+        true
+      ],
+      "pass": null,
+      "lower": [
+        0.0,
+        0.0,
+        0.06999999999999998
+      ],
+      "upper": [
+        0.0,
+        0.0,
+        0.12999999999999998
+      ],
+      "diagnostics": {
+        "crop_count": 1722,
+        "normals_from_fullcloud_graph": true,
+        "axes": [
+          {
+            "axis": 0,
+            "camera_near_face_sign": 0.0,
+            "camera_outside_axis_slab": false,
+            "support": 0,
+            "accepted": false
+          },
+          {
+            "axis": 1,
+            "camera_near_face_sign": 0.0,
+            "camera_outside_axis_slab": false,
+            "support": 0,
+            "accepted": false
+          },
+          {
+            "axis": 2,
+            "camera_near_face_sign": 1.0,
+            "camera_outside_axis_slab": true,
+            "support": 1559,
+            "accepted": true,
+            "plane_offset": 0.6,
+            "MAD_m": 0.0,
+            "tangent_coverage": [
+              0.8,
+              0.8
+            ],
+            "center_interval_offset_m": [
+              0.06999999999999998,
+              0.12999999999999998
+            ]
+          }
+        ],
+        "reason": "measured_singleaxis_visibleface_constraints",
+        "observable_axes": 1,
+        "violated_observable_axes": 1,
+        "visibility_is_camera_nearface_heuristic_not_true_instance_or_occlusion": true
+      }
+    },
+    {
+      "case": "balanced_parallel_faces_highMAD_gate",
+      "expected_observed": [
+        false,
+        false,
+        false
+      ],
+      "actual_observed": [
+        false,
+        false,
+        false
+      ],
+      "pass": true,
+      "lower": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "upper": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "diagnostics": {
+        "crop_count": 1722,
+        "normals_from_fullcloud_graph": true,
+        "axes": [
+          {
+            "axis": 0,
+            "camera_near_face_sign": 0.0,
+            "camera_outside_axis_slab": false,
+            "support": 0,
+            "accepted": false
+          },
+          {
+            "axis": 1,
+            "camera_near_face_sign": 0.0,
+            "camera_outside_axis_slab": false,
+            "support": 0,
+            "accepted": false
+          },
+          {
+            "axis": 2,
+            "camera_near_face_sign": 1.0,
+            "camera_outside_axis_slab": true,
+            "support": 1568,
+            "accepted": false,
+            "plane_offset": 0.35,
+            "MAD_m": 0.25,
+            "tangent_coverage": [
+              0.8007143576324047,
+              0.8019578256064357
+            ]
+          }
+        ],
+        "reason": "measured_singleaxis_visibleface_constraints",
+        "observable_axes": 0,
+        "violated_observable_axes": 0,
+        "visibility_is_camera_nearface_heuristic_not_true_instance_or_occlusion": true
+      }
+    }
+  ],
+  "full_cloud_knn_instrumentation": {
+    "tree_points": 892,
+    "query_points": 861,
+    "k": 16,
+    "full_cloud_graph_pass": true
+  },
+  "convex_numeric_cases": [
+    {
+      "fixture": 0,
+      "solver_success": true,
+      "numeric_solution_feasibility_restored_by_radial_projection_if_needed": true,
+      "max_delta_error_m": 2.7501018129427734e-10,
+      "objective_gap_analytic_minus_numeric": 1.1102230246251565e-16,
+      "analytic_L2": 0.15,
+      "unobserved_exact_zero": true,
+      "pass": true
+    },
+    {
+      "fixture": 1,
+      "solver_success": false,
+      "numeric_solution_feasibility_restored_by_radial_projection_if_needed": true,
+      "max_delta_error_m": 3.1921229548537156e-11,
+      "objective_gap_analytic_minus_numeric": 1.1102230246251565e-16,
+      "analytic_L2": 0.14999999999999997,
+      "unobserved_exact_zero": true,
+      "pass": true
+    },
+    {
+      "fixture": 2,
+      "solver_success": true,
+      "numeric_solution_feasibility_restored_by_radial_projection_if_needed": true,
+      "max_delta_error_m": 0.0,
+      "objective_gap_analytic_minus_numeric": 0.0,
+      "analytic_L2": 0.0,
+      "unobserved_exact_zero": true,
+      "pass": true
+    },
+    {
+      "fixture": 3,
+      "solver_success": true,
+      "numeric_solution_feasibility_restored_by_radial_projection_if_needed": true,
+      "max_delta_error_m": 1.840130825492281e-11,
+      "objective_gap_analytic_minus_numeric": 5.551115123125783e-17,
+      "analytic_L2": 0.15,
+      "unobserved_exact_zero": true,
+      "pass": true
+    },
+    {
+      "fixture": 4,
+      "solver_success": true,
+      "numeric_solution_feasibility_restored_by_radial_projection_if_needed": true,
+      "max_delta_error_m": 1.2314732567020314e-12,
+      "objective_gap_analytic_minus_numeric": -5.551115123125783e-17,
+      "analytic_L2": 0.15000000000000002,
+      "unobserved_exact_zero": true,
+      "pass": true
+    },
+    {
+      "fixture": 5,
+      "solver_success": false,
+      "numeric_solution_feasibility_restored_by_radial_projection_if_needed": true,
+      "max_delta_error_m": 1.540191585380768e-11,
+      "objective_gap_analytic_minus_numeric": 1.1102230246251565e-16,
+      "analytic_L2": 0.14999999999999997,
+      "unobserved_exact_zero": true,
+      "pass": true
+    },
+    {
+      "fixture": 6,
+      "solver_success": false,
+      "numeric_solution_feasibility_restored_by_radial_projection_if_needed": true,
+      "max_delta_error_m": 0.0,
+      "objective_gap_analytic_minus_numeric": 0.0,
+      "analytic_L2": 0.15,
+      "unobserved_exact_zero": true,
+      "pass": true
+    },
+    {
+      "fixture": 7,
+      "solver_success": true,
+      "numeric_solution_feasibility_restored_by_radial_projection_if_needed": true,
+      "max_delta_error_m": 1.6268930647100888e-13,
+      "objective_gap_analytic_minus_numeric": 1.3877787807814457e-17,
+      "analytic_L2": 0.15,
+      "unobserved_exact_zero": true,
+      "pass": true
+    },
+    {
+      "fixture": 8,
+      "solver_success": false,
+      "numeric_solution_feasibility_restored_by_radial_projection_if_needed": true,
+      "max_delta_error_m": 0.0,
+      "objective_gap_analytic_minus_numeric": 0.0,
+      "analytic_L2": 0.15,
+      "unobserved_exact_zero": true,
+      "pass": true
+    },
+    {
+      "fixture": 9,
+      "solver_success": true,
+      "numeric_solution_feasibility_restored_by_radial_projection_if_needed": true,
+      "max_delta_error_m": 2.391142839286431e-13,
+      "objective_gap_analytic_minus_numeric": -2.7755575615628914e-17,
+      "analytic_L2": 0.15000000000000002,
+      "unobserved_exact_zero": true,
+      "pass": true
+    },
+    {
+      "fixture": 10,
+      "solver_success": false,
+      "numeric_solution_feasibility_restored_by_radial_projection_if_needed": true,
+      "max_delta_error_m": 0.0,
+      "objective_gap_analytic_minus_numeric": 0.0,
+      "analytic_L2": 0.15,
+      "unobserved_exact_zero": true,
+      "pass": true
+    },
+    {
+      "fixture": 11,
+      "solver_success": true,
+      "numeric_solution_feasibility_restored_by_radial_projection_if_needed": true,
+      "max_delta_error_m": 2.405575738606558e-13,
+      "objective_gap_analytic_minus_numeric": 0.0,
+      "analytic_L2": 0.15,
+      "unobserved_exact_zero": true,
+      "pass": true
+    },
+    {
+      "fixture": 12,
+      "solver_success": false,
+      "numeric_solution_feasibility_restored_by_radial_projection_if_needed": true,
+      "max_delta_error_m": 0.0,
+      "objective_gap_analytic_minus_numeric": 0.0,
+      "analytic_L2": 0.15,
+      "unobserved_exact_zero": true,
+      "pass": true
+    },
+    {
+      "fixture": 13,
+      "solver_success": true,
+      "numeric_solution_feasibility_restored_by_radial_projection_if_needed": true,
+      "max_delta_error_m": 0.0,
+      "objective_gap_analytic_minus_numeric": 0.0,
+      "analytic_L2": 0.0,
+      "unobserved_exact_zero": true,
+      "pass": true
+    },
+    {
+      "fixture": 14,
+      "solver_success": true,
+      "numeric_solution_feasibility_restored_by_radial_projection_if_needed": true,
+      "max_delta_error_m": 2.2707530300536405e-13,
+      "objective_gap_analytic_minus_numeric": 5.551115123125783e-17,
+      "analytic_L2": 0.15000000000000002,
+      "unobserved_exact_zero": true,
+      "pass": true
+    },
+    {
+      "fixture": 15,
+      "solver_success": true,
+      "numeric_solution_feasibility_restored_by_radial_projection_if_needed": true,
+      "max_delta_error_m": 0.0,
+      "objective_gap_analytic_minus_numeric": 0.0,
+      "analytic_L2": 0.09057067035566443,
+      "unobserved_exact_zero": true,
+      "pass": true
+    },
+    {
+      "fixture": 16,
+      "solver_success": true,
+      "numeric_solution_feasibility_restored_by_radial_projection_if_needed": true,
+      "max_delta_error_m": 0.0,
+      "objective_gap_analytic_minus_numeric": 0.0,
+      "analytic_L2": 0.15,
+      "unobserved_exact_zero": true,
+      "pass": true
+    },
+    {
+      "fixture": 17,
+      "solver_success": true,
+      "numeric_solution_feasibility_restored_by_radial_projection_if_needed": true,
+      "max_delta_error_m": 1.50039702884186e-13,
+      "objective_gap_analytic_minus_numeric": 0.0,
+      "analytic_L2": 0.15000000000000002,
+      "unobserved_exact_zero": true,
+      "pass": true
+    },
+    {
+      "fixture": 18,
+      "solver_success": false,
+      "numeric_solution_feasibility_restored_by_radial_projection_if_needed": true,
+      "max_delta_error_m": 0.0,
+      "objective_gap_analytic_minus_numeric": 0.0,
+      "analytic_L2": 0.15,
+      "unobserved_exact_zero": true,
+      "pass": true
+    },
+    {
+      "fixture": 19,
+      "solver_success": true,
+      "numeric_solution_feasibility_restored_by_radial_projection_if_needed": true,
+      "max_delta_error_m": 2.4565627310124682e-12,
+      "objective_gap_analytic_minus_numeric": 0.0,
+      "analytic_L2": 0.15,
+      "unobserved_exact_zero": true,
+      "pass": true
+    },
+    {
+      "fixture": 20,
+      "solver_success": true,
+      "numeric_solution_feasibility_restored_by_radial_projection_if_needed": true,
+      "max_delta_error_m": 4.163336342344337e-17,
+      "objective_gap_analytic_minus_numeric": 0.0,
+      "analytic_L2": 0.15,
+      "unobserved_exact_zero": true,
+      "pass": true
+    },
+    {
+      "fixture": 21,
+      "solver_success": false,
+      "numeric_solution_feasibility_restored_by_radial_projection_if_needed": true,
+      "max_delta_error_m": 0.0,
+      "objective_gap_analytic_minus_numeric": 0.0,
+      "analytic_L2": 0.15,
+      "unobserved_exact_zero": true,
+      "pass": true
+    },
+    {
+      "fixture": 22,
+      "solver_success": true,
+      "numeric_solution_feasibility_restored_by_radial_projection_if_needed": true,
+      "max_delta_error_m": 3.9179062771843576e-11,
+      "objective_gap_analytic_minus_numeric": 0.0,
+      "analytic_L2": 0.15,
+      "unobserved_exact_zero": true,
+      "pass": true
+    },
+    {
+      "fixture": 23,
+      "solver_success": true,
+      "numeric_solution_feasibility_restored_by_radial_projection_if_needed": true,
+      "max_delta_error_m": 3.469446951953614e-18,
+      "objective_gap_analytic_minus_numeric": -2.710505431213761e-20,
+      "analytic_L2": 0.021797692392999234,
+      "unobserved_exact_zero": true,
+      "pass": true
+    },
+    {
+      "fixture": 24,
+      "solver_success": true,
+      "numeric_solution_feasibility_restored_by_radial_projection_if_needed": true,
+      "max_delta_error_m": 0.0,
+      "objective_gap_analytic_minus_numeric": 0.0,
+      "analytic_L2": 0.15,
+      "unobserved_exact_zero": true,
+      "pass": true
+    },
+    {
+      "fixture": 25,
+      "solver_success": false,
+      "numeric_solution_feasibility_restored_by_radial_projection_if_needed": true,
+      "max_delta_error_m": 7.632783294297951e-17,
+      "objective_gap_analytic_minus_numeric": 5.551115123125783e-17,
+      "analytic_L2": 0.14999999999999997,
+      "unobserved_exact_zero": true,
+      "pass": true
+    },
+    {
+      "fixture": 26,
+      "solver_success": false,
+      "numeric_solution_feasibility_restored_by_radial_projection_if_needed": true,
+      "max_delta_error_m": 2.245426067304379e-14,
+      "objective_gap_analytic_minus_numeric": -1.3877787807814457e-17,
+      "analytic_L2": 0.15,
+      "unobserved_exact_zero": true,
+      "pass": true
+    },
+    {
+      "fixture": 27,
+      "solver_success": true,
+      "numeric_solution_feasibility_restored_by_radial_projection_if_needed": true,
+      "max_delta_error_m": 8.027883913186429e-13,
+      "objective_gap_analytic_minus_numeric": 1.1102230246251565e-16,
+      "analytic_L2": 0.14999999999999997,
+      "unobserved_exact_zero": true,
+      "pass": true
+    },
+    {
+      "fixture": 28,
+      "solver_success": true,
+      "numeric_solution_feasibility_restored_by_radial_projection_if_needed": true,
+      "max_delta_error_m": 0.0,
+      "objective_gap_analytic_minus_numeric": 0.0,
+      "analytic_L2": 0.15,
+      "unobserved_exact_zero": true,
+      "pass": true
+    },
+    {
+      "fixture": 29,
+      "solver_success": true,
+      "numeric_solution_feasibility_restored_by_radial_projection_if_needed": true,
+      "max_delta_error_m": 0.0,
+      "objective_gap_analytic_minus_numeric": 0.0,
+      "analytic_L2": 0.15,
+      "unobserved_exact_zero": true,
+      "pass": true
+    },
+    {
+      "fixture": 30,
+      "solver_success": true,
+      "numeric_solution_feasibility_restored_by_radial_projection_if_needed": true,
+      "max_delta_error_m": 5.689893001203927e-16,
+      "objective_gap_analytic_minus_numeric": 0.0,
+      "analytic_L2": 0.15,
+      "unobserved_exact_zero": true,
+      "pass": true
+    },
+    {
+      "fixture": 31,
+      "solver_success": true,
+      "numeric_solution_feasibility_restored_by_radial_projection_if_needed": true,
+      "max_delta_error_m": 1.16680970441152e-12,
+      "objective_gap_analytic_minus_numeric": -2.7755575615628914e-17,
+      "analytic_L2": 0.15000000000000002,
+      "unobserved_exact_zero": true,
+      "pass": true
+    },
+    {
+      "fixture": 32,
+      "solver_success": true,
+      "numeric_solution_feasibility_restored_by_radial_projection_if_needed": true,
+      "max_delta_error_m": 5.630496069386481e-13,
+      "objective_gap_analytic_minus_numeric": -2.7755575615628914e-17,
+      "analytic_L2": 0.15,
+      "unobserved_exact_zero": true,
+      "pass": true
+    },
+    {
+      "fixture": 33,
+      "solver_success": false,
+      "numeric_solution_feasibility_restored_by_radial_projection_if_needed": true,
+      "max_delta_error_m": 2.986652591907557e-12,
+      "objective_gap_analytic_minus_numeric": -1.6653345369377348e-16,
+      "analytic_L2": 0.15000000000000002,
+      "unobserved_exact_zero": true,
+      "pass": true
+    },
+    {
+      "fixture": 34,
+      "solver_success": true,
+      "numeric_solution_feasibility_restored_by_radial_projection_if_needed": true,
+      "max_delta_error_m": 4.163336342344337e-17,
+      "objective_gap_analytic_minus_numeric": 1.734723475976807e-18,
+      "analytic_L2": 0.15,
+      "unobserved_exact_zero": true,
+      "pass": true
+    },
+    {
+      "fixture": 35,
+      "solver_success": true,
+      "numeric_solution_feasibility_restored_by_radial_projection_if_needed": true,
+      "max_delta_error_m": 5.144634718234897e-13,
+      "objective_gap_analytic_minus_numeric": 0.0,
+      "analytic_L2": 0.15,
+      "unobserved_exact_zero": true,
+      "pass": true
+    },
+    {
+      "fixture": 36,
+      "solver_success": true,
+      "numeric_solution_feasibility_restored_by_radial_projection_if_needed": true,
+      "max_delta_error_m": 0.0,
+      "objective_gap_analytic_minus_numeric": 0.0,
+      "analytic_L2": 0.15,
+      "unobserved_exact_zero": true,
+      "pass": true
+    },
+    {
+      "fixture": 37,
+      "solver_success": false,
+      "numeric_solution_feasibility_restored_by_radial_projection_if_needed": true,
+      "max_delta_error_m": 6.919465000976288e-14,
+      "objective_gap_analytic_minus_numeric": 1.3877787807814457e-17,
+      "analytic_L2": 0.14999999999999997,
+      "unobserved_exact_zero": true,
+      "pass": true
+    },
+    {
+      "fixture": 38,
+      "solver_success": true,
+      "numeric_solution_feasibility_restored_by_radial_projection_if_needed": true,
+      "max_delta_error_m": 0.0,
+      "objective_gap_analytic_minus_numeric": 0.0,
+      "analytic_L2": 0.15,
+      "unobserved_exact_zero": true,
+      "pass": true
+    },
+    {
+      "fixture": 39,
+      "solver_success": true,
+      "numeric_solution_feasibility_restored_by_radial_projection_if_needed": true,
+      "max_delta_error_m": 0.0,
+      "objective_gap_analytic_minus_numeric": 0.0,
+      "analytic_L2": 0.15,
+      "unobserved_exact_zero": true,
+      "pass": true
+    },
+    {
+      "fixture": 40,
+      "solver_success": true,
+      "numeric_solution_feasibility_restored_by_radial_projection_if_needed": true,
+      "max_delta_error_m": 2.7755575615628914e-17,
+      "objective_gap_analytic_minus_numeric": -1.734723475976807e-18,
+      "analytic_L2": 0.15000000000000002,
+      "unobserved_exact_zero": true,
+      "pass": true
+    },
+    {
+      "fixture": 41,
+      "solver_success": true,
+      "numeric_solution_feasibility_restored_by_radial_projection_if_needed": true,
+      "max_delta_error_m": 0.0,
+      "objective_gap_analytic_minus_numeric": 0.0,
+      "analytic_L2": 0.08608141762934338,
+      "unobserved_exact_zero": true,
+      "pass": true
+    },
+    {
+      "fixture": 42,
+      "solver_success": false,
+      "numeric_solution_feasibility_restored_by_radial_projection_if_needed": true,
+      "max_delta_error_m": 1.4315978957846198e-12,
+      "objective_gap_analytic_minus_numeric": 1.1102230246251565e-16,
+      "analytic_L2": 0.15,
+      "unobserved_exact_zero": true,
+      "pass": true
+    },
+    {
+      "fixture": 43,
+      "solver_success": true,
+      "numeric_solution_feasibility_restored_by_radial_projection_if_needed": true,
+      "max_delta_error_m": 0.0,
+      "objective_gap_analytic_minus_numeric": 0.0,
+      "analytic_L2": 0.0,
+      "unobserved_exact_zero": true,
+      "pass": true
+    },
+    {
+      "fixture": 44,
+      "solver_success": true,
+      "numeric_solution_feasibility_restored_by_radial_projection_if_needed": true,
+      "max_delta_error_m": 8.673617379884035e-19,
+      "objective_gap_analytic_minus_numeric": 0.0,
+      "analytic_L2": 0.006464727474282667,
+      "unobserved_exact_zero": true,
+      "pass": true
+    },
+    {
+      "fixture": 45,
+      "solver_success": false,
+      "numeric_solution_feasibility_restored_by_radial_projection_if_needed": true,
+      "max_delta_error_m": 6.089573290068984e-14,
+      "objective_gap_analytic_minus_numeric": 0.0,
+      "analytic_L2": 0.15,
+      "unobserved_exact_zero": true,
+      "pass": true
+    },
+    {
+      "fixture": 46,
+      "solver_success": false,
+      "numeric_solution_feasibility_restored_by_radial_projection_if_needed": true,
+      "max_delta_error_m": 1.914143843428917e-11,
+      "objective_gap_analytic_minus_numeric": 2.220446049250313e-16,
+      "analytic_L2": 0.15,
+      "unobserved_exact_zero": true,
+      "pass": true
+    },
+    {
+      "fixture": 47,
+      "solver_success": true,
+      "numeric_solution_feasibility_restored_by_radial_projection_if_needed": true,
+      "max_delta_error_m": 3.231095946354401e-14,
+      "objective_gap_analytic_minus_numeric": -5.551115123125783e-17,
+      "analytic_L2": 0.15000000000000002,
+      "unobserved_exact_zero": true,
+      "pass": true
+    },
+    {
+      "fixture": 48,
+      "solver_success": true,
+      "numeric_solution_feasibility_restored_by_radial_projection_if_needed": true,
+      "max_delta_error_m": 1.1322331960883503e-12,
+      "objective_gap_analytic_minus_numeric": -5.551115123125783e-17,
+      "analytic_L2": 0.15000000000000002,
+      "unobserved_exact_zero": true,
+      "pass": true
+    },
+    {
+      "fixture": 49,
+      "solver_success": false,
+      "numeric_solution_feasibility_restored_by_radial_projection_if_needed": true,
+      "max_delta_error_m": 5.64479019082853e-15,
+      "objective_gap_analytic_minus_numeric": -2.7755575615628914e-17,
+      "analytic_L2": 0.15000000000000002,
+      "unobserved_exact_zero": true,
+      "pass": true
+    },
+    {
+      "fixture": 50,
+      "solver_success": false,
+      "numeric_solution_feasibility_restored_by_radial_projection_if_needed": true,
+      "max_delta_error_m": 2.3999274789687775e-12,
+      "objective_gap_analytic_minus_numeric": 5.551115123125783e-17,
+      "analytic_L2": 0.15,
+      "unobserved_exact_zero": true,
+      "pass": true
+    },
+    {
+      "fixture": 51,
+      "solver_success": false,
+      "numeric_solution_feasibility_restored_by_radial_projection_if_needed": true,
+      "max_delta_error_m": 0.0,
+      "objective_gap_analytic_minus_numeric": 0.0,
+      "analytic_L2": 0.15,
+      "unobserved_exact_zero": true,
+      "pass": true
+    },
+    {
+      "fixture": 52,
+      "solver_success": true,
+      "numeric_solution_feasibility_restored_by_radial_projection_if_needed": true,
+      "max_delta_error_m": 0.0,
+      "objective_gap_analytic_minus_numeric": 0.0,
+      "analytic_L2": 0.13676729595885434,
+      "unobserved_exact_zero": true,
+      "pass": true
+    },
+    {
+      "fixture": 53,
+      "solver_success": true,
+      "numeric_solution_feasibility_restored_by_radial_projection_if_needed": true,
+      "max_delta_error_m": 1.3877787807814457e-17,
+      "objective_gap_analytic_minus_numeric": 0.0,
+      "analytic_L2": 0.09132158719222742,
+      "unobserved_exact_zero": true,
+      "pass": true
+    },
+    {
+      "fixture": 54,
+      "solver_success": true,
+      "numeric_solution_feasibility_restored_by_radial_projection_if_needed": true,
+      "max_delta_error_m": 4.85722573273506e-17,
+      "objective_gap_analytic_minus_numeric": 0.0,
+      "analytic_L2": 0.15000000000000002,
+      "unobserved_exact_zero": true,
+      "pass": true
+    },
+    {
+      "fixture": 55,
+      "solver_success": false,
+      "numeric_solution_feasibility_restored_by_radial_projection_if_needed": true,
+      "max_delta_error_m": 8.332547152267722e-11,
+      "objective_gap_analytic_minus_numeric": -1.1102230246251565e-16,
+      "analytic_L2": 0.14999999999999997,
+      "unobserved_exact_zero": true,
+      "pass": true
+    },
+    {
+      "fixture": 56,
+      "solver_success": false,
+      "numeric_solution_feasibility_restored_by_radial_projection_if_needed": true,
+      "max_delta_error_m": 2.3258964199079912e-11,
+      "objective_gap_analytic_minus_numeric": 2.220446049250313e-16,
+      "analytic_L2": 0.15,
+      "unobserved_exact_zero": true,
+      "pass": true
+    },
+    {
+      "fixture": 57,
+      "solver_success": true,
+      "numeric_solution_feasibility_restored_by_radial_projection_if_needed": true,
+      "max_delta_error_m": 1.4849232954361469e-15,
+      "objective_gap_analytic_minus_numeric": -3.469446951953614e-18,
+      "analytic_L2": 0.15,
+      "unobserved_exact_zero": true,
+      "pass": true
+    },
+    {
+      "fixture": 58,
+      "solver_success": true,
+      "numeric_solution_feasibility_restored_by_radial_projection_if_needed": true,
+      "max_delta_error_m": 0.0,
+      "objective_gap_analytic_minus_numeric": 0.0,
+      "analytic_L2": 0.0,
+      "unobserved_exact_zero": true,
+      "pass": true
+    },
+    {
+      "fixture": 59,
+      "solver_success": true,
+      "numeric_solution_feasibility_restored_by_radial_projection_if_needed": true,
+      "max_delta_error_m": 1.1325142212914585e-13,
+      "objective_gap_analytic_minus_numeric": -5.551115123125783e-17,
+      "analytic_L2": 0.15,
+      "unobserved_exact_zero": true,
+      "pass": true
+    },
+    {
+      "fixture": 60,
+      "solver_success": true,
+      "numeric_solution_feasibility_restored_by_radial_projection_if_needed": true,
+      "max_delta_error_m": 0.0,
+      "objective_gap_analytic_minus_numeric": 0.0,
+      "analytic_L2": 0.15,
+      "unobserved_exact_zero": true,
+      "pass": true
+    },
+    {
+      "fixture": 61,
+      "solver_success": true,
+      "numeric_solution_feasibility_restored_by_radial_projection_if_needed": true,
+      "max_delta_error_m": 1.5854054180586274e-12,
+      "objective_gap_analytic_minus_numeric": 0.0,
+      "analytic_L2": 0.15,
+      "unobserved_exact_zero": true,
+      "pass": true
+    },
+    {
+      "fixture": 62,
+      "solver_success": true,
+      "numeric_solution_feasibility_restored_by_radial_projection_if_needed": true,
+      "max_delta_error_m": 8.289237352077095e-13,
+      "objective_gap_analytic_minus_numeric": 0.0,
+      "analytic_L2": 0.15,
+      "unobserved_exact_zero": true,
+      "pass": true
+    },
+    {
+      "fixture": 63,
+      "solver_success": true,
+      "numeric_solution_feasibility_restored_by_radial_projection_if_needed": true,
+      "max_delta_error_m": 7.779624167092436e-12,
+      "objective_gap_analytic_minus_numeric": 1.1102230246251565e-16,
+      "analytic_L2": 0.15,
+      "unobserved_exact_zero": true,
+      "pass": true
+    }
+  ],
+  "direct_analytic_numeric_all_pass": true,
+  "direct_max_delta_error_m": 2.7501018129427734e-10,
+  "direct_max_abs_objective_gap": 2.220446049250313e-16,
+  "invariants": {
+    "zero_step_source_exact": true,
+    "shape_and_yaw_exact_all_steps": true,
+    "source_control_exact_all_steps": true,
+    "unobserved_local_axis_zero_all_steps": true,
+    "projected_physical_L2_cap": true
+  },
+  "all_invariants_pass": true,
+  "all_teacher_cases_pass": true,
+  "audit_script_sha256": "5037608198471842c26316977f8eea8b0ef3b41a588e49a4d77a74d8b039df1a",
+  "code_unchanged_during_audit": true
+}

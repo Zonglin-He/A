@@ -1,0 +1,50 @@
+{
+  "id": "3eed_round4_source192_dev_v1",
+  "path_lock_sha256": "a9ce41b1fe3e0f798871c74e583f0154c29c0f72d680619f14b26e55d2faac75",
+  "master_stage1_sha256": "6cd4bef3f1bae5556169d2fc7eab596d738cad1f935ccfb9c9c93c09cb21982c",
+  "input_manifest_sha256": {
+    "dev": "f20e38e56cdd3fd33c5454830d2288eeb56cdb9126f5e472419c05f95dc44926",
+    "confirm": "fb855409a7797dbfce5bd6f9fa85364020f32bdaf69defbc6719dd1c3fbd84ac"
+  },
+  "checkpoint_sha256": "bfdedb97971fb31640c5a78790716dc9547953caa646489138f048375e645ec8",
+  "checkpoint_scope": "official mixed union trained, not source-only",
+  "seed": 20261030,
+  "B": 1,
+  "n_views": 3,
+  "conditions": [
+    "full",
+    "noun"
+  ],
+  "model": "same released 256 queries,6decoder,headingFalse; entire parameter+buffer frozen eval",
+  "readout": "All actual token logits incl specials/sentinel in softmax denominator at T=.07, then existing text-only first-noun mask sum. No category label. Full caption/context masks saved but not interpreted as grounding correctness.",
+  "noun_intervention": "actual model re-run with first lexicon noun + . not mentioned sentinel; missing noun explicitly identity intervention, never GT fallback.",
+  "tokens": "proj_tokens are normalized post-cross-encoder point-conditioned language memory, not independent text teacher.",
+  "reference_pool": "full/view0 boxes 256x6 with unmodified center/size, yaw0, plus fixed round3 p3 standard-axisaware PCA yaw computed from its own full/view0 sampled points for each candidate. Other5 conditions evidence only; no index identity assumption.",
+  "correspondence": "detached Hungarian center+size cost, normalize by max(median(abs reference dimensions),.5), maps reference row to evidence column; geometry correspondence not identity proof.",
+  "PCA": "read-only round3/p3 geometry_baselines crop_source_aabb then orientation_only_from_crop(PCA_standard_axisaware). No legacy L/W1.5 gate, no geometry refit. Degenerate/invalid-size fallback retains source yaw0.",
+  "GPU_lock": "research/round2/gpu.lock",
+  "dev_forwards": 192,
+  "confirm_forwards": 384,
+  "confirm_release": "REQUIRES final mechanism lock SHA in parent-written CONFIRM_GPU_RELEASE.json; not authorized yet",
+  "local_code_sha256": {
+    "source_features.py": "6c5a8f470e3e319f8ff6351d36b1a335f23a5bc2e1af04c62357e8aa497ce2d5",
+    "prepare_inputs.py": "5c96cb66e40ae45704b4075bb8ba6f2f4f910bc253a3f7344226d4c2e95a61ca",
+    "select_cohort.py": "ae3ff9bd2ba38a593b7bff4eb1f51ae4c9ea1b731bd2e02763a21dcdcbafec30"
+  },
+  "upstream_code_sha256": {
+    "tta.py": "3a265e38341f5a8c79c8a7131f5e42264bbc432634633418d5f7edb6a52c600a",
+    "geometry_refine.py": "3b3b0ab212b795a986fb9338ac555109f236e70bf7ac407de8a8fbe63ed7961d",
+    "replication36/common.py": "c779a23d4949bd7e06a912c8d8144132ca94bc98fd965a45dccb03bd5aebdcd2",
+    "public_export/code/reference_surface.py": "7403f307b86ebe6572a5b4bf48fbd697b513f4e3e2aa3f4f143c41625d75b6d9",
+    "upstream/models/bdetr.py": "5b16cb4148f1a58e332b7f949ab80e84ee3a18675de02cc8a4d23f16cfc4be75",
+    "upstream/models/modules.py": "22c7c91ef5c3428f43e077b2e7ae3596a3f30325b71995b45222f5e3c88dbade",
+    "upstream/models/point_backbone_module_v2.py": "1e61e0fb2bef33d3f3a1e2fa3ec484ab447450358f4c2a1c380f701dc20eb943",
+    "upstream/models/encoder_decoder_layers.py": "f20008513081213d46e844b3c053156308d13d82f8a61be26f7ab9b67984c33c",
+    "upstream/ops/teed_pointnet/pointnet2_batch/pointnet2_modules.py": "05b05e3b44c29b08057489d8265ea5e99ef478ca065f6d10c5ced9d398c657ca",
+    "upstream/utils/transform_waymo.py": "574760753be97ba86b9e8b1e6e88a69ffa25520460790acb06099ee2aaa17683",
+    "round3/p3/geometry_baselines.py": "25a28da5066f9cbce5d1e3b80779ec26e2148ff0a27cc89ef1101db1a61fbbfe"
+  },
+  "cpu_bridge_sha256": "dd9a74c595c98c7fdad5d4078cb3ae66c73f7757a4189399c2d08b63c081bb44",
+  "no_optimizer": true,
+  "numeric_GT_access": false
+}

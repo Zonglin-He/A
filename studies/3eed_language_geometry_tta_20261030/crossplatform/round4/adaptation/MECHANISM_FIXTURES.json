@@ -1,0 +1,144 @@
+{
+  "tiny_interval_backtracking_validated": true,
+  "state": "passed",
+  "scope": "synthetic noactualmodel/data/GT/GPU",
+  "query512_real_grad_parameter_and_outputs_change": true,
+  "query0_exact_TTAug_bridge": true,
+  "query_episodic_reset_exact": true,
+  "no_spatial_gradient_parameter_output_zero": true,
+  "embedding_step_total_caps": [
+    0.05,
+    0.1
+  ],
+  "visible_singleface_axis_support": true,
+  "camera_inside_slab_rejected": true,
+  "geometry_size_and_PCAyaw_exact": true,
+  "geometry3_real_center_update": true,
+  "geometry_no_observation_zero_gradient_and_drift": true,
+  "direct_interval_vs_independent_convex_oracle_cases": 15,
+  "max_objective_difference": 1.0959497198648194e-12,
+  "query_diagnostics": {
+    "trace": [
+      {
+        "step": 1,
+        "loss_before": 0.8114299774169922,
+        "loss_after": 0.6719319820404053,
+        "fit_before": 0.8114299774169922,
+        "trust_before": 0.0,
+        "gradient_norm": 1.1718195676803589,
+        "nonzero_gradient_tensors": 1,
+        "parameter_delta_l2": 0.159999817609787,
+        "max_embedding_step_L2": 0.044982314109802246,
+        "max_embedding_total_L2": 0.044982314109802246,
+        "proposal_scale": 1.0,
+        "backtrack_halvings": 0,
+        "accepted_step": true
+      },
+      {
+        "step": 2,
+        "loss_before": 0.6719319820404053,
+        "loss_after": 0.5950371623039246,
+        "fit_before": 0.671875536441803,
+        "trust_before": 0.0005642389296554029,
+        "gradient_norm": 1.0108325481414795,
+        "nonzero_gradient_tensors": 2,
+        "parameter_delta_l2": 0.244190976023674,
+        "max_embedding_step_L2": 0.030233586207032204,
+        "max_embedding_total_L2": 0.07515453547239304,
+        "proposal_scale": 0.5,
+        "backtrack_halvings": 1,
+        "accepted_step": true
+      },
+      {
+        "step": 3,
+        "loss_before": 0.5950371623039246,
+        "loss_after": 0.5566270351409912,
+        "fit_before": 0.594899594783783,
+        "trust_before": 0.0013755065156146884,
+        "gradient_norm": 0.9740877747535706,
+        "nonzero_gradient_tensors": 2,
+        "parameter_delta_l2": 0.29054850339889526,
+        "max_embedding_step_L2": 0.017584178596735,
+        "max_embedding_total_L2": 0.09269307553768158,
+        "proposal_scale": 0.25,
+        "backtrack_halvings": 2,
+        "accepted_step": true
+      }
+    ],
+    "parameter_count": 512,
+    "zero_bridge_to_TTAug_exact": true,
+    "reset_to_TTAug_exact": true,
+    "control": false,
+    "informative_teacher": true,
+    "no_actual_source_model_loaded_or_updated": true
+  },
+  "geometry_diagnostics": {
+    "trace": [
+      {
+        "step": 1,
+        "constraint_loss_before": 0.004900000000000013,
+        "anchor_loss_before": 0.0,
+        "total_loss_before": 0.004900000000000013,
+        "total_loss_after": 0.0010250000535714445,
+        "gradient_norm": 0.14000000000000018,
+        "latent_delta_L2_m": 0.04999999642857168,
+        "center_offset_local_m": [
+          0.04999999642857168,
+          0.0,
+          0.0
+        ],
+        "proposal_scale": 1.0,
+        "backtrack_halvings": 0,
+        "nonincreasing_step_accepted": true
+      },
+      {
+        "step": 2,
+        "constraint_loss_before": 0.00040000014285714904,
+        "anchor_loss_before": 0.0006249999107142953,
+        "total_loss_before": 0.0010250000535714445,
+        "total_loss_after": 0.0009937733720904239,
+        "gradient_norm": 0.015000008928570972,
+        "latent_delta_L2_m": 0.05931944237370339,
+        "center_offset_local_m": [
+          0.05931944237370339,
+          0.0,
+          0.0
+        ],
+        "proposal_scale": 0.25,
+        "backtrack_halvings": 2,
+        "nonincreasing_step_accepted": true
+      },
+      {
+        "step": 3,
+        "constraint_loss_before": 0.00011407431120864465,
+        "anchor_loss_before": 0.0008796990608817793,
+        "total_loss_before": 0.0009937733720904239,
+        "total_loss_after": 0.0009937733720904239,
+        "gradient_norm": 0.00829860593425829,
+        "latent_delta_L2_m": 0.05931944237370339,
+        "center_offset_local_m": [
+          0.05931944237370339,
+          0.0,
+          0.0
+        ],
+        "proposal_scale": 0.0,
+        "backtrack_halvings": 10,
+        "nonincreasing_step_accepted": false
+      }
+    ],
+    "parameter_count": 3,
+    "latent_not_neuralfeatureTTA": true,
+    "sizes_PCAyaw_exact_frozen": true,
+    "unobserved_axes_exact_zero": true,
+    "episodic_reset_source_exact": true,
+    "control": false,
+    "backtracking": "label-free lossnonincrease, max10halvings, originalAdam.05proposal retained"
+  },
+  "code_hashes": {
+    "interfaces.py": "3c49cc2e42215b45e5007c650d5e178cfaad2c4a955b4ec54b35051ddf441d7b",
+    "caption_regions.py": "f90fffda4b3679a5573383ce348edf7a258af7b0a82b09e8c02f0c654aa5630a",
+    "spatial_teacher.py": "09efcd075a09fe878eda4d16a3fb5c7fb661f9d83fa2ae3427fc80895d8aea6a",
+    "query_update.py": "d5aef02d0e33c71508022b4a35330794ed4f56eb756f282f9d30d628ca9a66da",
+    "geometry_update.py": "f12b9b3f129f0e8d846077c693be19021ca172650f2b6d5c7f9bd017e1288aea"
+  }
+}
