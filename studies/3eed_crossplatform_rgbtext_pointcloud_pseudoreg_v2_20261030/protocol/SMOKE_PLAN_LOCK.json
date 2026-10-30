@@ -1,0 +1,82 @@
+{
+  "r6_factory_sha256": "b762aae9cf362e8509b055c387da19a83a6550e04269861a4ca827941d53f096",
+  "upstream_code_sha256": {
+    "models/bdetr.py": "74336de17da7c949cfc29b9cfbec95d0db2d88a1071e0ac53760cd0b8763e5b3",
+    "models/modules.py": "22c7c91ef5c3428f43e077b2e7ae3596a3f30325b71995b45222f5e3c88dbade",
+    "models/losses.py": "2afdf236ed5a0d32c4bda1d5cca67a76b372b41b447e2a4f4c1d60222f8c4e69",
+    "models/point_backbone_module_v2.py": "1e61e0fb2bef33d3f3a1e2fa3ec484ab447450358f4c2a1c380f701dc20eb943",
+    "src/joint_det_dataset.py": "18ee68123adb2d361493401fdb5190699dac2b539fa816c95014880319dd6825",
+    "utils/lr_scheduler.py": "1a9cd02fe4bad102c094b084aee544c21819db30b5a288cb6ee4db98998b3a33",
+    "train_dist_mod.py": "de36d7b95647ae41debb49611c5ea9656707dd71b94d223a51537e7125403ebf",
+    "main_utils.py": "a9b8c9dbfebe553f38b896417a07c7d2b6e57cca7366b940f26500f64d6dec50"
+  },
+  "roberta_sha256": {
+    "model.safetensors": "5bde1d28afb363d0103324efeb5afc8b2b397fe5e04beabb9b1ef355255ade81",
+    "config.json": "ef0185e2aae6e06c5f105a285006952c340e20c7dbf43c86ec82601b13fc45e9",
+    "tokenizer.json": "847bbeab6174d66a88898f729d52fa8d355fafe1bea101cf960dd404581df70e",
+    "tokenizer_config.json": "994f46754c5bf4014f1aa92d34b1374319c3a6b3f702105cd5b742beaecd18ce",
+    "merges.txt": "1ce1664773c50f3e0cc8842619a93edc4624525b728b188a9e0be33b7726adc5",
+    "vocab.json": "9e7f63c2d15d666b52e21d250d2e513b87c9b713cfa6987a82ed89e5e6e50655"
+  },
+  "source_checkpoint_sha256": "0d8766abaf06c9f3e2500fcb187337982d391f9e4d46ca854f3b3bb70fd33bbd",
+  "source_training_plan_sha256": "66fabf36898f1bc92124b680435e598e7bca0809e48aeb2da35e272331afe7ce",
+  "source_model_state_fingerprint": "0eb178a6de52b529d939fa4ae3bfa7b0459d95b7425c3d8a21f473356f2874a9",
+  "seed": 0,
+  "sentinel": " . not mentioned",
+  "GPU_execution_authorized": true,
+  "authorization_sha256": "cb93cbeb8002b40b021ea0741760d35a54eefde0bc3e45801525497f44e53740",
+  "batch_size": 1,
+  "alpha": 0.25,
+  "beta_metres": 0.1,
+  "steps": [
+    1,
+    3
+  ],
+  "strict_FP32_flags": {
+    "cudnn_allow_tf32": false,
+    "matmul_allow_tf32": false,
+    "cudnn_benchmark": false,
+    "cudnn_deterministic": true
+  },
+  "r_global_policy": "shrink_shared_pseudo_target_no_extra_LR_multiplier",
+  "CLIP_device": "cuda",
+  "CLIP_batch_size": 32,
+  "sequential_single_GPU_only": true,
+  "CLIP_conversion_receipt_sha256": "43a45db98a3ea7ded803da23b04e95e36f273537a382c0223d8dd66ea5f4fc36",
+  "semantic_resource_receipt_sha256": "b65e6d8ac05474b581aaf573e57f957a71323002ecbeb27640bd1bb82a3950da",
+  "G_config_sha256": "992b6a565cd22a2eedf494f0a26815de95bafe4da38af2214aa748e587c584a7",
+  "missing_distortion_policy": "assume_zero_declared",
+  "noun_fallback": "all_content_tokens",
+  "G_code_independent_review_sha256": "5a35c2cd7b0a33d33c8564a1e7632afd02643c3d463416b92ac8c5797f96f8d5",
+  "same_information_controls": [
+    "source_q0",
+    "association_only_q1",
+    "direct_G_q1",
+    "param1_q1",
+    "param3_q1",
+    "kernel1_q1",
+    "kernel3_q1"
+  ],
+  "all_feedback_modes": [
+    "rgb_fulltext",
+    "pc_only",
+    "semantic_shuffle"
+  ],
+  "no_teacher_EMA_or_grounder_backbone_update": true,
+  "prior_target_research_exposure": "R5/R7 full targetVAL research-seen; sourcegrounder trainedWaymoonly; CLIPgenericpublicpretrain",
+  "GT_use": "Offline only after prediction seals; never G/ranking/gradients/configselection",
+  "full_run_requires_prior_real_smoke_gate": true,
+  "nonzero_smoke_gate": "Bothplatforms finalfloat32pseudo-delta and real nonzero parameter changes; observed RGB/PCcrop association plausible and modelrestoreverified. Not equivalent to GTqualityproof.",
+  "no_force_jitter_or_minimal_positive_signal": true,
+  "program_sha256": {
+    "crossplatform/round8/run_association.py": "4401f2b97880ae12cb884cac58c2513fcc3b22b70c74dda885076701d17e9403",
+    "crossplatform/round8/association_geometry.py": "18c6c6ce0519ad0e054fd9fae8c008075f11a38d886287ce530d11ba2ec41dd6",
+    "crossplatform/round8/semantic_encoder.py": "44a9e2446086e40c8d8d6a8e1107cd828e1fa69e322779f69df364b0db8d398f",
+    "crossplatform/round7/regression_adapter.py": "2d23f99c57c63d2bc794b3ab768f9868631c84118e40568e9a9a3b6219af03a2",
+    "crossplatform/round7/camera_projection.py": "b343c04d3a3b72ffed6dc041449f5dc38892964755108a3cab5a8c86572066ce",
+    "crossplatform/round7/experiment/runner_helpers.py": "c73431a4871ede56674636d66b636e6d77389b9f41eb0cf9160209876d5c1e59"
+  },
+  "phase": "smoke",
+  "manifest_sha256": "951af09f44b526d79550e7b2792e014b989ea858dcc19a5fc1c900b9aa3995f2",
+  "expected_samples": 40
+}

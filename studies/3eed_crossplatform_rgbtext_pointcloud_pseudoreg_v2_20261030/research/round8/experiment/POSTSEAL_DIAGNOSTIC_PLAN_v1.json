@@ -1,0 +1,41 @@
+{
+  "state": "registered_before_any_R8_target_GT_score",
+  "created_utc": "2026-10-30T09:29:52.401106+00:00",
+  "full_plan_sha256": "41264311f4de086a5ea9e02c168b17ecd40ebe4aecddd82d59ca47e770a92b0b",
+  "no_changes_to_G_or_predictions": true,
+  "purpose": "Attribute measured gains/harms and retain every negative, not choose a new target-tuned configuration",
+  "contrasts": [
+    "RGBassociation-sourceq0",
+    "RGBdirectG-RGBassociation",
+    "RGBparam1/3-RGBassociation",
+    "RGBparam1/3-RGBdirectG",
+    "RGBparam1/3-matchedkernel1/3",
+    "RGB-PC/semanticshuffle at commoneligible and fullpopulation"
+  ],
+  "subgroups": [
+    "Drone/Quad each scene separately and equal-scene macro",
+    "q changed/unchanged",
+    "actual_float32_nonzero_pseudo true/false",
+    "r_global fixed bins 0,(0,.05],(.05,.2],(.2,.5],(.5,1]"
+  ],
+  "numeric_diagnostics": [
+    "count IoU gain/loss/tie at atol1e-8 and full signed delta quantiles",
+    "strict Acc25/50 gained/lost/retained counts",
+    "source256 /prepared48/semanticROIpool/selectedgroup GT-assisted coverage for offline diagnosis only",
+    "distinguish proposal-pool misses from association and within-group anchor misses; these are IoU coverage categories, not proof of physical identity errors"
+  ],
+  "retained_tails": {
+    "per_platform_per_contrast": 10,
+    "positive_and_negative": true,
+    "stable_tie_rule": "delta then originalid; originalid remains private",
+    "contrasts": [
+      "RGBassociation-sourceq0",
+      "RGBdirectG-RGBassociation",
+      "RGBparam3-RGBassociation",
+      "RGBparam3-RGBdirectG"
+    ]
+  },
+  "GT_is_offline_only": true,
+  "eligibility_and_hyperparameters_not_refit_using_targetlabels": true,
+  "interpretation": "Only2Drone/3Quad sceneclusters. Commoneligible is selected observational subgroup. No claim of fresh confirmatory holdout or unique parameter benefit if matched outputspace explains result."
+}

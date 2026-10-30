@@ -1,0 +1,44 @@
+{
+  "state": "real_smoke_prerequisite_pass_not_task_quality_proof",
+  "created_utc": "2026-10-30T09:23:26.363832+00:00",
+  "smoke_seal_sha256": "5b234c42204ff5240293b9594bce1538ca0b8dea80b5396bcb6dd5378e50e122",
+  "independent_unlabelled_audit_sha256": "a308de292ca1945699835c166ac4d0fe25fe6f20e2fc394b5ede826daca65662",
+  "actual_visual_review": {
+    "fixed_hash_cases_viewed": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10
+    ],
+    "no_GT_or_annotation_access": true,
+    "review_source": "private_case_01.png through private_case_10.png from prelocked per-scene2 selection",
+    "observations": [
+      "Projected PC/boxes and RGB ROIs have physical image support in all five scenes.",
+      "Examples include q1 on cars or persons when q0 is background, but visual association is a hypothesis, not GT identity.",
+      "Same visible car/person can remain in several complete-link groups; dedup reduces exact query multiplicity but does not guarantee physical instance uniqueness.",
+      "Several ROI crops contain adjacent cars, foreground/background, or only a person fragment; full-text CLIP is not proven reliable on relational descriptions.",
+      "Keep every skip and negative; do not tune config using these pictures."
+    ]
+  },
+  "real_nonzero_updates_rgb": {
+    "drone": {
+      "n": 16,
+      "actual_parameter_change": 13,
+      "selected_output_change": 13
+    },
+    "quad": {
+      "n": 24,
+      "actual_parameter_change": 17,
+      "selected_output_change": 17
+    }
+  },
+  "parameter_outputspace_max_abs_error_m": 7.62939453125e-06,
+  "source_and_CLIP_restore_pass": true,
+  "decision": "Proceed unchanged prelocked full5912 to measure pseudo quality and adaptation utility after seal; no deployment adoption."
+}

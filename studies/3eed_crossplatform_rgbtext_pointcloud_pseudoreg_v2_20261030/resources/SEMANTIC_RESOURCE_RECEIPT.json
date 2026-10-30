@@ -1,0 +1,152 @@
+{
+  "state": "official_pinned_CLIP_downloaded_safe_converted_and_CPU_synthetic_checked_GPU_not_run",
+  "created_UTC": "2026-10-30T09:03:15.608095+00:00",
+  "model_id": "openai/clip-vit-base-patch32",
+  "revision": "3d74acf9a28c67741b2f4f2ea7635f0aaf6f0268",
+  "primary_sources": [
+    "https://huggingface.co/openai/clip-vit-base-patch32",
+    "https://huggingface.co/openai/clip-vit-base-patch32/tree/3d74acf9a28c67741b2f4f2ea7635f0aaf6f0268",
+    "https://github.com/openai/CLIP/tree/d05afc436d78f1c48dc0dbf8e5980a9d471f35f6"
+  ],
+  "local_inventory": {
+    "searched_workspace_assets_and_HF_cache": true,
+    "prior_CLIP_or_SigLIP_weights_found": false,
+    "unrelated_PE_Core_HF_cache_not_used": true,
+    "audio_CLAP_assets_not_repurposed_as_image_CLIP": true
+  },
+  "acquisition": {
+    "state": "official_pinned_checkpoint_downloaded_SHA_verified",
+    "repo_id": "openai/clip-vit-base-patch32",
+    "revision": "3d74acf9a28c67741b2f4f2ea7635f0aaf6f0268",
+    "filename": "pytorch_model.bin",
+    "bytes": 605247071,
+    "sha256": "a63082132ba4f97a80bea76823f544493bffa8082296d62d71581a4feff1576f",
+    "official_LFS_sha256": "a63082132ba4f97a80bea76823f544493bffa8082296d62d71581a4feff1576f",
+    "complete_range_blocks": 145,
+    "range_blocks": 145,
+    "seconds": 195.81978412577882,
+    "no_model_or_GPU_execution": true
+  },
+  "safe_loading": {
+    "state": "safe_weights_only_official_to_local_safetensors_strict_model_verified",
+    "repo_id": "openai/clip-vit-base-patch32",
+    "revision": "3d74acf9a28c67741b2f4f2ea7635f0aaf6f0268",
+    "source_format": "official pytorch_model.bin; repo has no safetensors at fixed revision",
+    "original_pytorch_sha256": "a63082132ba4f97a80bea76823f544493bffa8082296d62d71581a4feff1576f",
+    "original_bytes": 605247071,
+    "derived_safetensors_sha256": "7a7177862f66645c5e923e31e07318fd609769378a197a21903fbbcc07e446b1",
+    "derived_bytes": 605156980,
+    "tensor_key_count": 398,
+    "tensor_key_order_sha256": "762874c16516ec4e54c74ddcc4226d5acf0ee4c880ed58f9d945206eaf353a04",
+    "parameter_count": 151277313,
+    "all_loaded_tensor_values_bitexact_after_safetensors_roundtrip": true,
+    "strict_model_load_all_learned_keys_and_shapes": true,
+    "legacy_deterministic_nonpersistent_buffers": [
+      {
+        "name": "text_model.embeddings.position_ids",
+        "shape": [
+          1,
+          77
+        ],
+        "dtype": "torch.int64",
+        "reason": "legacy deterministic arange position_ids; current Transformers registers this buffer nonpersistently; exact values verified, no learned weight omitted"
+      },
+      {
+        "name": "vision_model.embeddings.position_ids",
+        "shape": [
+          1,
+          50
+        ],
+        "dtype": "torch.int64",
+        "reason": "legacy deterministic arange position_ids; current Transformers registers this buffer nonpersistently; exact values verified, no learned weight omitted"
+      }
+    ],
+    "runtime_files_sha256": {
+      "model.safetensors": "7a7177862f66645c5e923e31e07318fd609769378a197a21903fbbcc07e446b1",
+      "config.json": "b575ef3c36f2a057fa19e221650105052d61cc9c1a972ec15019c6261ec98770",
+      "preprocessor_config.json": "910e70b3956ac9879ebc90b22fb3bc8a75b6a0677814500101a4c072bd7857bd",
+      "merges.txt": "f526393189112391ce6f9795d4695f704121ce452c3aad1f5335cc41337eba85",
+      "special_tokens_map.json": "f8c0d6c39aee3f8431078ef6646567b0aba7f2246e9c54b8b99d55c22b707cbf",
+      "tokenizer.json": "b556ac8c99757ffb677208af34bc8c6721572114111a6e0aaf5fa69ff0b8d842",
+      "tokenizer_config.json": "34b7336e4bee12e0a9730eaf5189f582ef3c3eea5027f65730e5717256755aad",
+      "vocab.json": "5047b556ce86ccaf6aa22b3ffccfc52d391ea4accdab9c2f2407da5b742d4363"
+    },
+    "torch_version": "2.7.0+cu128",
+    "no_CUDA_initialization": true,
+    "no_unrestricted_pickle_no_remote_code": true,
+    "seconds": 2.7783575309440494
+  },
+  "CPU_fixture_sha256": "1e0deb30e09a3991385a7443313b8d040ea542397ac6682644498919c1135069",
+  "CPU_fixture_state": "synthetic_CPU_safe_load_preprocess_text_image_inference_pass_no_target_data_or_GT_or_GPU",
+  "runtime": {
+    "python": "3.11.16",
+    "torch": "2.7.0+cu128",
+    "transformers": "4.52.4",
+    "safetensors": "0.8.0",
+    "Pillow": "12.3.0",
+    "huggingface_hub": "0.36.2",
+    "explicit_device": "cpu",
+    "shared_environment_readonly_no_install_or_mutation": true
+  },
+  "program_sha256": {
+    "semantic_encoder.py": "44a9e2446086e40c8d8d6a8e1107cd828e1fa69e322779f69df364b0db8d398f",
+    "fetch_semantic_assets.py": "2facd991db5f624e74a655c9afe63e2960f3d0480b2c049fec94bf1e58d9850c",
+    "prepare_safe_semantic_weights.py": "f52eb0fca56afe57d1751503b91ff10199d3ca04850162a6912df3e38d26bd7d",
+    "check_semantic_encoder_cpu.py": "c4000167fdc9fe369e47e02c9a00b9167f9dac82e3847566cce27d9d0fe8079b",
+    "SEMANTIC_INTERFACE.md": "3896121a9cf654ca13070c3d5c2aa3f57cd661fcf5f4cfabb59dca5b8723f08a"
+  },
+  "current_download_program_cache_guard_reverified_complete_official_SHA": true,
+  "preprocessing": {
+    "RGB": true,
+    "shortest_edge": 224,
+    "resampling": "PIL bicubic",
+    "center_crop": [
+      224,
+      224
+    ],
+    "rescale": 0.00392156862745098,
+    "image_mean": [
+      0.48145466,
+      0.4578275,
+      0.40821073
+    ],
+    "image_std": [
+      0.26862954,
+      0.26130258,
+      0.27577711
+    ],
+    "context_tokens": 77,
+    "full_literal_caption_no_prompt_or_noun_substitution": true,
+    "feature_dim": 512,
+    "features_L2_normalized": true,
+    "output": "raw cosine, no softmax/logit_scale",
+    "tight_context_separate_caller_fusion_only": true,
+    "CPU_synthetic_preprocess_difference_vs_original_transform": 0.0
+  },
+  "API": {
+    "constructor": "FrozenSemanticEncoder(asset_dir=DEFAULT_ASSETS,device=cpu,batch_size=32)",
+    "match": "match(crops,[fullcaption],crop_roles=optional) => cosines float32numpy[Ncrop,Ntext], text_receipt,crop_receipt,resource,seconds",
+    "encode_crops": "CPUfloat32 torch tensor[N,512]",
+    "encode_texts": "(CPUfloat32 torch tensor[M,512], truncationreceipt)",
+    "max_registered_G_batch_crops": 32
+  },
+  "licensing": {
+    "original_code_repo": "https://github.com/openai/CLIP",
+    "original_code_commit": "d05afc436d78f1c48dc0dbf8e5980a9d471f35f6",
+    "upstream_code_license": "MIT",
+    "original_license_file_sha256": "987e63b32f6c89ff5160e429458a872ff048e6860b590a3912e938f9da8f14db",
+    "HF_model_card_has_no_separate_license_tag": true,
+    "no_weights_redistribution_planned": true
+  },
+  "limits": [
+    "Not a 3D grounding/box model or calibrated activity/instance probability.",
+    "CLIP similarity can be shared by same-class instances or broad context.",
+    "Canonical center cropping may remove elongated ROI endpoints.",
+    "Full-description relations beyond token77 are truncated and counted.",
+    "Image/point visibility/calibration and object correspondence remain separate G supporting conditions."
+  ],
+  "no_target_media_GT_or_scoring_used_in_resource_checks": true,
+  "no_GPU_or_CUDA_initialization": true,
+  "no_R7_R6_mutation": true,
+  "no_remote_code_or_unrestricted_pickle": true
+}

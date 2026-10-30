@@ -1,0 +1,21 @@
+{
+  "purpose": "R8_GTfree_fixed_smoke40_and_complete5912_target_input_manifest",
+  "selection_salt": "R8_G_prereq_v1",
+  "expected_full_n": 5912,
+  "expected_smoke_n": 40,
+  "per_platform_scene_smoke_n": 8,
+  "expected_physical_scene_n": 5,
+  "exclude": "All20 original R7smoke IDs; no old sourcecache/model outputs or scores read",
+  "rank": "ascending SHA256(UTF8(R8_G_prereq_v1| + id)), tie-break ascending id",
+  "frame_identity": "exact pointpath string; per-scene no repeat; imagepath uniqueness independently checked",
+  "selection": "For each sorted(platform,scene), iterate eligible rows in rank order, take first8 distinct pointpaths. No color/old score/GT/geometry filtering.",
+  "full_manifest": "Exact bytes of R7 strict full_gpu_inputs.json, all5912 retained; source input seed/suffix and ninekeys unchanged",
+  "R7_full_input_sha256": "d6296d2577300796055fd255cbde2e768b9c493254e5ee610296a095d90afbbd",
+  "R7_smoke20_input_sha256": "4c210baca0c145b329ec98fb3b2c5277f6fd076d4a3ccca7b17c5929044e0b40",
+  "descriptive_color_parser_module_sha256": "adefd56363ea34dfd379eac1a23883883d64c2062e3338603385a8f5bc1d1746",
+  "color_statistics": "Only after fixed selection; supported/no-finite-color-lexeme/unsupported fractions do not gate sampling or model updates",
+  "source_model_requirement": "Each R8case requires fresh same-source strictFP32 forward. R7model features/boxes/scores cannot stand in for R8source.",
+  "historical_exposure": "TargetVAL already R5/R7 researched; this is engineering smoke with new fixed sample IDs, not fresh research confirmation",
+  "no_GT_index_metadata_or_task_score_access": true,
+  "CPU_manifest_only_no_model_GPU_or_media_read": true
+}

@@ -1,0 +1,59 @@
+{
+  "state": "readonly_G_semantic_source_review_pass_for_preparing_registered_real_smoke_not_real_quality_evidence",
+  "G_source_sha256": "18c6c6ce0519ad0e054fd9fae8c008075f11a38d886287ce530d11ba2ec41dd6",
+  "G_lock_sha256": "80ed278c7c1e485e56ec4fed6afe819e20d7d9b7873825a13911709016fa6fe5",
+  "semantic_source_sha256": "44a9e2446086e40c8d8d6a8e1107cd828e1fa69e322779f69df364b0db8d398f",
+  "synthetic_G_fixture_sha256": "22e6deaf88ef17cb6b994267d03c3519f7df70cf95d18e68153656e154ec301f",
+  "synthetic_semantic_fixture_sha256": "1e0deb30e09a3991385a7443313b8d040ea542397ac6682644498919c1135069",
+  "G_config_sha256": "992b6a565cd22a2eedf494f0a26815de95bafe4da38af2214aa748e587c584a7",
+  "all_fixture_and_lock_source_hashes_match": true,
+  "resolved_findings": [
+    {
+      "id": "R8-FOV-regression",
+      "original_source_sha256": "57cf3e5a713dc4c80116591fde7fa952062018e7b0bf8228aea9d60304b6211d",
+      "problem": "Rounded uv before floating FOV reintroduced R7 negative-edge bug.",
+      "resolution": "Actual current visible_observations checks originalfloat [0,W)×[0,H), thenfloor; saved CPU boundary and R7 bridge fixture bound current18c6source.",
+      "fixed_source_sha256": "18c6c6ce0519ad0e054fd9fae8c008075f11a38d886287ce530d11ba2ec41dd6",
+      "no_real_R8_run_before_fix": true
+    },
+    {
+      "id": "global-trust-loss-normalization",
+      "problem": "Uniform trust in sum(wloss)/sum(w) would cancel.",
+      "resolution": "Globaltrust now shrinks final target shared by direct/param/kernel; waxis onlyrelative/eligibility, LR no repeatedtrust factor.",
+      "decision_note_sha256": "f8a949c17588d7b07b78d117c542b52bbbc69686faa6cad6dcc1146afbf7e6aa"
+    }
+  ],
+  "checks": {
+    "q0_original_puretextargmax_preserved": true,
+    "q1_actual_sourceproposal_highest_originaltextscore_in_selected_group": true,
+    "associationonly_original_q1_box_not_newaggregate": true,
+    "point_support_and_boxoverlap_complete_link_without_GT": true,
+    "near_identical_geometry_representatives_dedup_before_consensus": true,
+    "raw_consensus_uses_correlatedsourcecenters_not_partialpoint_centroid": true,
+    "targetspace_globaltrust_shrink_shared_direct_param_control": true,
+    "sizes_q1prior_and_wsize0_yaw0": true,
+    "all_semantic_control_modes_share_candidate_prepare_and_ROIorder": true,
+    "CLIP_frozen_eval_inference_mode_localstrictweights": true,
+    "CLIP_outputs_cosines_not_3Dboxes_or_correctness_probabilities": true,
+    "fullcaption_no_colorparser_no_prompt_nounreplacement_in_CLIP": true,
+    "CLIP77context_truncation_and_actualcrop_sizes_recorded": true,
+    "empty_crop_rejects_no_hidden_fullimagefallback": true,
+    "source_and_G_APIs_have_no_GTclass_positive_map_fallback": true
+  },
+  "pending_driver_requirements": [
+    "All stages strictFP32 fresh matched source; no R7 frozen reuse",
+    "q1-associated cache/query and feature norm for every associatedarm; keepq0 source separate",
+    "All19 raw/eval selected arms, q0/q1 and membership persisted; do not assertq1argmax",
+    "rawconsensus,globaltrust/factors,target64,actualtarget32,axisweights separate; association/raw/final/nonzeroparam counters distinct",
+    "Fixedhash smoke covers all5sceneclusters, GTblind engineering first, actual nonzeroG/update andrestore needed beforefull",
+    "Allfull predictions sealed before any new stage targetGT scoring; fullVAL research exposure disclosed"
+  ],
+  "limits": [
+    "Observation groups not verified physicalinstances; multiquerycenters statisticallycorrelated",
+    "CLIP auxiliary public pretraining is extra semantic information, not teacher/EMA or complete2Dgrounding",
+    "Text beyond77tokens and thinROI endpoint loss may remove referential evidence",
+    "No actual R8 model/GPU/targetGT/taskscore reviewed yet"
+  ],
+  "reviewer_no_model_GPU_real_targetdata_GT_or_scoring": true,
+  "implementation_modified_by_reviewer": false
+}

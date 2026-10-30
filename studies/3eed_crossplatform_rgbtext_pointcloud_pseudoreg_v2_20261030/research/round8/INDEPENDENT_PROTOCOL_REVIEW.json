@@ -1,0 +1,37 @@
+{
+  "state": "preimplementation_protocol_review_no_real_R8_execution",
+  "document_sha256": "f310c84e5065e75f9b48621c9144888649b9278328c04c59606bbc761532ddc2",
+  "matched_new_source_required": true,
+  "precision_flags": {
+    "cudnn_allow_tf32": false,
+    "matmul_allow_tf32": false,
+    "cudnn_benchmark": false
+  },
+  "q0": "puretextsource argmax",
+  "q1": "semantic-selected group canonical originalproposal maxoriginaltextscore",
+  "expected_selected_arms": 19,
+  "modes": [
+    "rgb_text",
+    "pc_only",
+    "shuffled_control_name_pending_author"
+  ],
+  "permode_arms": [
+    "association_only_q1",
+    "direct_pseudo_q1",
+    "parameter1_q1",
+    "parameter3_q1",
+    "outputspace1_q1",
+    "outputspace3_q1"
+  ],
+  "size_prior": "q1 source size, currentw_size0",
+  "main_confound_controls": [
+    "Query association vs sourceq0",
+    "Source correlated-member consensus vs canonicalq1",
+    "Parameter fit vs directpseudo",
+    "ParameterSGD vs sameinformation Gram output-space step"
+  ],
+  "loss_scale_warning": "Common trust scalar cancels in sum(wloss)/sum(w); any extra learning-rate trust must be explicitly registered, not assumed",
+  "sourceonly_vs_research_exposure": "Waymo-only learned source; targetVAL already exposed R5/R7, only2Drone+3Quad scenes",
+  "no_GT_GPU_or_newtaskscoring": true,
+  "implementation_review_pending": true
+}

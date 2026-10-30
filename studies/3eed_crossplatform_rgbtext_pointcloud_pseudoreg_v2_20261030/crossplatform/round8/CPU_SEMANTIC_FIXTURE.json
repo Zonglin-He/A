@@ -1,0 +1,52 @@
+{
+  "state": "synthetic_CPU_safe_load_preprocess_text_image_inference_pass_no_target_data_or_GT_or_GPU",
+  "resource": {
+    "repo_id": "openai/clip-vit-base-patch32",
+    "revision": "3d74acf9a28c67741b2f4f2ea7635f0aaf6f0268",
+    "derived_safetensors_sha256": "7a7177862f66645c5e923e31e07318fd609769378a197a21903fbbcc07e446b1",
+    "device": "cpu",
+    "dtype": "float32",
+    "inference_only": true,
+    "no_3D_box_or_instance_correctness_output": true
+  },
+  "semantic_encoder_sha256": "44a9e2446086e40c8d8d6a8e1107cd828e1fa69e322779f69df364b0db8d398f",
+  "fixture_program_sha256": "c4000167fdc9fe369e47e02c9a00b9167f9dac82e3847566cce27d9d0fe8079b",
+  "frozen_eval_no_grad": true,
+  "strict_safe_derived_weights_load": true,
+  "synthetic_preprocessing_reference": "original OpenAI CLIP transform structure using torchvision Resize bicubic / CenterCrop224 / RGB / ToTensor / Normalize official mean/std",
+  "max_preprocessor_abs_difference": 0.0,
+  "non_square_crop_size_contract_pass": true,
+  "empty_crop_rejected": true,
+  "float_RGB_rejected": true,
+  "text_context77_endtoken_and_recorded_truncation_pass": true,
+  "synthetic_texts_fast_slow_official_HF_tokenizers_equal": true,
+  "synthetic_truncation_receipt": {
+    "text_count": 3,
+    "context_length": 77,
+    "includes_start_end_special_tokens": true,
+    "literal_full_description_no_prompt_template_or_noun_replacement": true,
+    "original_token_lengths": [
+      11,
+      8,
+      183
+    ],
+    "used_token_lengths": [
+      11,
+      8,
+      77
+    ],
+    "truncated_count": 1,
+    "truncated_indices": [
+      2
+    ],
+    "dropped_token_count": 106,
+    "truncation_policy": "right truncation to77 with tokenizer-preserved end token; no silent overflow",
+    "padding": "actual batch longest sequence, attention_mask provided"
+  },
+  "normalized_text_and_image512D_pass": true,
+  "raw_cosine_no_softmax_no_implicit_view_fusion_pass": true,
+  "same_input_CPU_repeat_bitexact": true,
+  "no_CUDA_initialization": true,
+  "no_target_media_annotations_or_scoring_access": true,
+  "seconds": 1.9772094921208918
+}

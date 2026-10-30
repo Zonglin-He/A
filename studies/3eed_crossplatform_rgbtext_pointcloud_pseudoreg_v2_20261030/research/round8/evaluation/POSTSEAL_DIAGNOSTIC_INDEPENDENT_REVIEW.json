@@ -1,0 +1,61 @@
+{
+  "state": "readonly_postseal_diagnostic_plan_code_review_pass_after_preGT_measurement_fixes",
+  "plan_sha256": "0dabd7e75718ef3d325e331fc5c7e5da863dcc14b2aeca75710375ffec635092",
+  "current_diagnostic_sha256": "deaae13f57b6c8bc578a661c681e093adbc879c048043d9e95a3d8d39cca1a35",
+  "original_reviewed_diagnostic_sha256": "76fd8a65efa2595af5800df3d4e03d5aacbf3b196d8163a67f181f7b1c83789e",
+  "synthetic_fixture_sha256": "9c10155fd68ebc24f38671d2b2afd82b4b4c3f1724b790f15ffca37369ad3c8c",
+  "fixes_resolved": [
+    {
+      "id": "signedtail_sign_filter",
+      "original_problem": "Unfiltered bottom/top10 could label ties or positives as negative, and reverse sort invertedpositive-IDties.",
+      "resolution": "Use delta<−1e−8 / delta>1e−8 filters; storeavailablecounts; empty sign group remains empty; positive sorting (−delta,id).",
+      "verified_memory_cases": [
+        "alltie -> bothlists empty",
+        "allpositive ->negative empty",
+        "equalpositive deltas -> IDascending"
+      ]
+    },
+    {
+      "id": "equal_scene_macro",
+      "original_problem": "Plan required macro but originalstats emitted onlyexpressionmicro.",
+      "resolution": "Each subgroup contrast emits defined_scene_clusters and equal_scene_delta_mean, withnull forundefined.",
+      "verified_memory_case": "10 samples sceneA delta+.1,1sample sceneB delta−.5 =>micro+.5/11,macro−.2,definedclusters2."
+    },
+    {
+      "id": "denominator_and_coverage_scope",
+      "resolution": "StrictAcc fourcells include retainedfailure and partitionn. Gpath coverage explicitlynotactualpredictionfailures/physicalidentity; sourcefallback canalreadyhit despite pathmiss."
+    }
+  ],
+  "passing_checks": {
+    "alltie_has_no_fake_positive_or_negative_tail": true,
+    "allpositive_has_empty_negative_and_stable_positive_idtie": true,
+    "empty_groups_null_and_zero_defined_scenes": true,
+    "unequal_scene_weight_micro_vs_macro_opposite_sign_verified": true,
+    "strict_Acc_four_cells_partition_n_and_threshold_equal_isfailure": true,
+    "fixed_r_bins_endpoints_disjoint_and_exhaustive": true,
+    "six_coverage_categories_partition_including_empty_group": true,
+    "coverage_miss_does_not_equal_actual_fallback_prediction_miss": true,
+    "actual_public_projection_excludes_privateIDs_scenes_tails": true
+  },
+  "statistical_units": {
+    "delta_and_quantiles": "dimensionlessIoU difference; multiply100 onlywhenreportingpercentagepoints",
+    "task_thresholds": "strict>.25 and>.5; atolequality onlygain/harm/tie classification, notAcc threshold",
+    "r_bins": "fixedheuristictrust dimensionless [0,1], disjoint0,(0,.05],(.05,.2],(.2,.5],(.5,1]",
+    "scene_limit": "At most2Drone/3Quad definedclusters; subgroupmicro/macro bothn/scene counts reported; commoneligible observationalselection notrandomholdout",
+    "exposure": "TargetVAL research-exposed R5/R7, no freshconfirmatoryclaim"
+  },
+  "coverage_boundaries": [
+    "source256/prepared/ROI/selectedgroup/q1 areofflineIoUcoverage stages, notGTinstanceidentity/purity",
+    "Empty stageNone means no retainedcoverage; not a fabricated numericalIoU0",
+    "Six categories areexhaustive perthreshold; fallbackq1 canhit whileprepared/ROI pathdoesnotcover",
+    "Diagnosticcrossmodalcontrasts are association-onlyRGBvsPC/shuffle; full19arm crossmodal quality remains main scorer summary, not silently assertedhere"
+  ],
+  "public_private_boundary": "Actual ASTpublicprojection tested: rawsceneRows_PRIVATE removed, sign-tail IDs/scenes remain onlyprivatefiles, publicstats contain no privatecaseIDs or scene strings. Allquantiles/bin metrics areaggregates, not rawpercase vectors.",
+  "scorer_and_inference_not_modified": {
+    "score_crossdomain_sha256": "34791eb4db5f495bc6f36762960c1e2f32e8da9cc727b07034362c9c5ee3a382",
+    "G_sha256": "18c6c6ce0519ad0e054fd9fae8c008075f11a38d886287ce530d11ba2ec41dd6",
+    "driver_sha256": "4401f2b97880ae12cb884cac58c2513fcc3b22b70c74dda885076701d17e9403"
+  },
+  "no_model_GPU_GT_real_score_or_inprogressfull_access": true,
+  "reviewer_did_not_modify_locked_diagnostic_or_scorer": true
+}

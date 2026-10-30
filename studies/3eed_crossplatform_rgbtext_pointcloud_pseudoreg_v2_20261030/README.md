@@ -1,0 +1,9 @@
+# R8: Frozen full-caption RGB association and point-cloud pseudo regression
+
+See REPORT.md for final measured outcomes, DECISION.json for adoption status, and REPRODUCTION.md for exact provenance and commands. This bundle contains the genuine Waymo-only epoch100 source to complete Drone/Quad5912 targetVAL study, with fixed40case engineering smoke; target data were previously research-exposed. All19arms and allnegative scalar cases are retained. The matched source is a fresh strictFP32 forward, never a reused R7sourcecache.
+
+G associates source proposals using frozen CLIP crop/full-caption cosines and aggregates correlated source-model centers, then updates tiny last-layer parameters. Compare source(q0), association-only(q1), same-information directG, realSGD1/3 and exactkernel-outputspace controls, plus PC-only and semanticshuffle. Globalstrength is heuristic, not calibrated trust. CLIP emits similarity and no3Dboxes; neither CLIP nor grouping proves referring-relation understanding or physical-instance identity.
+
+Root actually viewed10fixed unlabelled images before the full run: the same visible object remained in multiple groups and some ROIs included neighboring vehicles/background or partial people. Dedup is imperfect; correlated consensus can reinforce the wrong object. These conditions remain in the evaluation and are not retuned away. ContinuousFOV/floorpixel preGPU fixes and historicalcode/fixtures are preserved.
+
+This finite export excludes weights, media, pointclouds, rawcaptions, target annotations, originalsample/scene/frame IDs, coordinatearrays, embeddings, privateindices and signedURLs. Case tables use ordinalaliases and reproducible lossless .csv.gz. Original/exportSHA and any path-only portability projection are in EXPORT_PROVENANCE.json. Preparing this builder is not an experimental result or deployment decision.

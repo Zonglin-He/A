@@ -1,0 +1,62 @@
+{
+  "encoding": "UTF8 csv.DictWriter default excel CRLF; None=empty; scalar representations unrounded",
+  "compression": "gzip.compress(level9,mtime0), decompression byteidentity asserted",
+  "runtime": {
+    "python": "3.13.12",
+    "zlib": "1.3.1"
+  },
+  "tables": {
+    "FULL_CASE_SCALARS.csv.gz": {
+      "columns": [
+        "case_alias",
+        "platform",
+        "scene_alias",
+        "source_query",
+        "source_iou",
+        "arm",
+        "negative_vs_source",
+        "mode",
+        "delta_vs_outputspace",
+        "raw_nonpositive_dimensions",
+        "query_index",
+        "status",
+        "iou",
+        "delta_vs_q0",
+        "delta_vs_association",
+        "delta_vs_directG",
+        "association_iou",
+        "directG_iou",
+        "selected_changed_vs_q1_anchor",
+        "parameter_steps_executed",
+        "nonzero_gradient_steps",
+        "nonzero_parameter_update"
+      ],
+      "rows": 112328,
+      "uncompressed_bytes": 20559930,
+      "uncompressed_sha256": "0f8396dbcf367566af2af14d320e37bd7e87671c8ea132df4e63576d03e5afaf",
+      "compressed_sha256": "4aa13336604f3548eecb483bed4ef26f04ef6a9d412c9b00826b08f50dfcadbb"
+    },
+    "FULL_G_SCALARS.csv.gz": {
+      "columns": [
+        "case_alias",
+        "platform",
+        "scene_alias",
+        "mode",
+        "q_changed",
+        "accepted_axis",
+        "raw_consensus_delta_nonzero",
+        "final_float64_pseudo_delta_nonzero",
+        "actual_float32_pseudo_delta_nonzero",
+        "r_global",
+        "selected_group"
+      ],
+      "rows": 17736,
+      "uncompressed_bytes": 1500895,
+      "uncompressed_sha256": "08fc2a9ab08434c46028c823b2e0258506d07695a0469c8c7aef06d29bac21b3",
+      "compressed_sha256": "c4cb47d6c542b25fcdb6a86b69fb77bbf879fc51f1892709a708ba47ad6d4999"
+    }
+  },
+  "case_alias_rule": "case_000001..case_005912 in sealed manifest/scorer order; original inputIDs and mapping excluded",
+  "scene_alias_rule": "scene_01..scene_05 from sorted(platform,private_scene), no original scene name or map exported",
+  "ordering": "case order then fixed arm/mode order; no positive/negative selection"
+}
