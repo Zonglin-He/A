@@ -1,0 +1,26 @@
+{
+  "stage": "G repair direct supervision only, TTA gated after scoring",
+  "source_checkpoint_sha256": "0d8766abaf06c9f3e2500fcb187337982d391f9e4d46ca854f3b3bb70fd33bbd",
+  "subject_binding": "Actual full explicit Mainappearancefields or neuralhead bound mainclause; no nounphrase-containment rejection.",
+  "visual_readout": "FixedYes/No token logsumexp; image versus grayquestion calibration; full phrase versus category increment; maskedtight and originalcontext crops. No freegeneration/format gating.",
+  "references": "Independent GroundingDINO fullimage ownphrase localization, original+eligiblehorizontalflip; NMS.5,detectorfloor.25,stableIoU.5,atmost10detections/phrase; no presumedCOCOcategorylimit.",
+  "pair_proposals": "FrozenR19 currentq0 and atmost2distinctsameclass mask/3D groups; point/geometry support unchanged.",
+  "min_Qwen_pair_margin": 0.5,
+  "min_attribute_increment_margin": 0.0,
+  "DINO_subject_support_min": 0.25,
+  "DINO_pair_score_advantage": 0.0,
+  "relation_conflict_veto": true,
+  "appearance_can_distinguish_without_relation_discriminating": true,
+  "unknown_reference_or_relation_not_automatically_negative": true,
+  "TTA_progression_gate": "Perplatform directG meanIoU positive onD112andW32,Acc25/50notlower onW,positive95%scenecluster pairedgain lowerbound onW and at least one Wrescue; research eligibility only, not label-free deployment gate. No TTA if uncertainty/failure; do not tuneG withW scores.",
+  "scene_bootstrap": {
+    "draws": 10000,
+    "seed": 2020
+  },
+  "no_GT_in_G_or_per_sample_gate": true,
+  "all_negatives_retained": true,
+  "no_teacher_EMA_or_geometry_updates": true,
+  "mechanism_change": "DINO subject-confidence absence/disagreement is UNKNOWN rather than automaticveto. IndependentMaskRCNN>=.5/pointgeometry pair correspondence and two-view calibrated Qwen margin remain required; trusted explicitrelation contradiction stillvetoes. No percase GT decisions or thresholdchanges.",
+  "W32_exposed_development": true,
+  "primary_confirmation": "NewfixedZ64 only. D112/W32 separatedevelopment."
+}
