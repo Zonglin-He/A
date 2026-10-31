@@ -1,0 +1,19 @@
+{
+  "programs": {
+    "crossplatform/round16/local_preferences.py": "152b6446f610849e2301547302dce70f7f43a730791e14697e56072758f599c2"
+  },
+  "primary_G": "G_A32_attempt004",
+  "mechanism_correction": "Previous relative readout still required a unique global target. Ranking supervision only needs a local pair. Unknown candidates are not negatives. All previous failure artifacts preserved.",
+  "pair_rule": "Both independent same-class depth-separated mask components map to source query sets. Full-caption YES/NO logodds favor m over n by >=ln2; wrong same-scene caption favors n over m by >=ln2. Strongest minimum-gap pair per observation, not a global target claim.",
+  "direct_use": "Only replace original q0 when q0 lies in the pair negative set; otherwise leave unknown/source candidates alone.",
+  "gate_supersedes_initial_geometry_style_gate_before_labels": {
+    "usable_A_min": 4,
+    "mean_strict_query_pair_win_fraction": ">0.5 excluding all-IoU-zero ties",
+    "mean_source_best_within_set_pair_IoU_delta": ">0",
+    "local_direct_all_A_mean_gain": ">=0",
+    "local_direct_gain_count": ">=harm_count"
+  },
+  "why_direct_gain_need_not_be_positive": "A useful local preference may not involve current source Top1; it can still supervise shared matching and must be evaluated on new B.",
+  "no_model_calls_or_target_labels": true,
+  "no_postlabel_G_revision": true
+}

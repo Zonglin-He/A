@@ -1,0 +1,21 @@
+{
+  "programs": {
+    "crossplatform/round16/fit_projection.py": "0f949c976e50d40d4e5e10fec64db78ed28a4923dbb600eebc2308b2f7cdc76f",
+    "crossplatform/round16/closure.py": "32c0693e70d72a88c4abf3e5cf1aaac136c8a6d8e2fb2aec59768da275a72127",
+    "research/round16/score.py": "a85df60decc3e516080f987de556b790d541764c183d2de26a9e9bcf73b85657"
+  },
+  "steps": 32,
+  "lr": 0.0001,
+  "normalization_addendum": "Per-set mean log probabilities; duplicate query multiplicity does not weight a positive/negative set. This supersedes the draft logsumexp expression before any current A/B task labels.",
+  "updated_parameters": "contrastive_align_projection_image.4.weight and .bias; 18496 scalars",
+  "KL_source_weight": 0.1,
+  "parameter_delta_penalty": 1.0,
+  "same_information_direct_control": "Linear preference kernel on frozen query/text interaction features with source log scores, ridge=1e-3 * mean feature-pair norm squared. A preference target residual=max(0,1-source pair logscore gap). No modified model weights.",
+  "all_other_model_parameters_and_buffers_frozen": true,
+  "no_teacher_EMA": true,
+  "full_model_B_closure_required_before_B_scoring": true,
+  "no_changes_after_current_A_task_labels": true,
+  "primary_G": "G_A32_attempt003",
+  "G_binary_addendum_sha256": "2e6e97ce785a213bce838b17e48790396ffe3f201af860e1cda3de7a20be09d1",
+  "relative_prelabel_lock_sha256": "14300ef15f955e439dd71045099e42b4a6db1e0f3d2318f7ec24c840feaee940"
+}

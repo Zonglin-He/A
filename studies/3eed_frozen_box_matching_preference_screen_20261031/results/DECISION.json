@@ -1,0 +1,58 @@
+{
+  "state": "COMPLETED_REAL_INPUT_SUPERVISION_SCREEN_NO_ADMISSIBLE_TTA_SUPERVISION",
+  "run_completed": true,
+  "measurement": "valid_for_the_locked_bounded_G_screen_and_source_fallbacks",
+  "source_only_crossdomain": true,
+  "source_checkpoint_sha256": "0d8766abaf06c9f3e2500fcb187337982d391f9e4d46ca854f3b3bb70fd33bbd",
+  "A_n": 32,
+  "B_n": 32,
+  "G_usable_preferences": {
+    "drone": 0,
+    "quad": 0
+  },
+  "G_preference_accuracy": {
+    "drone": null,
+    "quad": null
+  },
+  "actual_parameter_updates": 0,
+  "TTA_gain_measured": false,
+  "TTA_gain_pp": {
+    "drone": null,
+    "quad": null
+  },
+  "same_information_direct_gain_measured": false,
+  "same_information_fallback_prediction_delta_pp": {
+    "drone": 0.0,
+    "quad": 0.0
+  },
+  "all_boxes_frozen": true,
+  "all_A_B_failures_retained": true,
+  "no_teacher_EMA": true,
+  "source_backbone_or_decoder_training": false,
+  "adopt_current_G": false,
+  "matching_projection_TTA_rejected_as_a_route": false,
+  "next_priority": "Replace non-exclusive random-caption reversal with candidate-pair target/reference verification and calibrate its ordinal reliability before any broader parameter update. No new run queued.",
+  "limits": [
+    "Only1Drone/2Quad scenes; A/B observations content-disjoint but no object/time independence.",
+    "All target VAL historically scored, A prior G/scoring exposed, B source-only reserved before this round; not a pristine blind test.",
+    "Engineering changed G readout before current task labels; all variants retained, no post-current-label G tuning.",
+    "Same-scene wrong caption need not name another physical object, so required reversal may reject useful preferences.",
+    "Neural full-description verification jointly uses text; explicit geometry only checks supported image-position clauses, not a complete executed reference graph.",
+    "Tinted masks and image resolution may weaken attribute evidence; no causal attribution established."
+  ],
+  "runtime": {
+    "source_seconds": 7.284541348926723,
+    "VLM_seconds": 198.26757451100275,
+    "new_source_forwards": 64,
+    "VLM_generate_calls": 96,
+    "VLM_verbalizer_forward_calls": 614,
+    "VLM_calls_total": 710,
+    "peak_GiB": 7.664714813232422
+  },
+  "artifact_paths": {
+    "A_gate": "research/round16/experiment/A_scoring_attempt001/GATE.json",
+    "B_summary": "research/round16/experiment/B_scoring_attempt001/SUMMARY.json",
+    "CPU_replay": "research/round16/experiment/CPU_REPLAY_AUDIT.json",
+    "failure_diagnosis": "research/round16/experiment/FAILURE_STAGE_DIAGNOSIS.json"
+  }
+}

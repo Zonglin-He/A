@@ -1,0 +1,62 @@
+{
+  "authorized_execution": true,
+  "boxes_frozen": true,
+  "no_teacher_EMA": true,
+  "source_checkpoint_sha256": "0d8766abaf06c9f3e2500fcb187337982d391f9e4d46ca854f3b3bb70fd33bbd",
+  "programs": {
+    "crossplatform/round16/common.py": "5996c90d22875c7a249ad6114406463fd2bd1952f8d4a373ca122e3ab1a28356",
+    "crossplatform/round16/capture_features.py": "f73d15fe84f9a4a9e017ca54aa4bb57488d62c8f7fefd1d679823bbc33c34270",
+    "crossplatform/round16/preferences.py": "02d18ac099a742e1a5c05206e332c3c102fb3ac60887e1c12076682971868dc4",
+    "crossplatform/round16/run_G.py": "89eab86fd8031f52eefb5fdec3626043afe5e8ef1f04979f84468f8ce6543258",
+    "research/round16/prepare.py": "33da9b7f8adb8883d567f492de7b052ffd5884e6fb139789405e7895ed1d7c4e"
+  },
+  "inputs": {
+    "research/round16/input/B32_PRIVATE.json": "dcd4da03b56722e9752774a8ff415f02b48a02b33577d2bee59b671f04ed0a70",
+    "research/round16/input/SPLIT_DISCLOSURE.json": "114a53c625751c3a6611dccb414af902283aeea4f7d5e0ff382be04b4637687a",
+    "research/round16/input/A_FRAME_INDEX_PRIVATE.json": "3788d9dac2bfcf9aa84cdd2c3a7e6c92400042a57e0c873e0bb0645fc98f4c6d",
+    "research/round16/input/A_CASES_PRIVATE.json": "a379df610b02e9e6f8b36238438ab457e2f7a3ba1407b4bf0b3be8f5b035e1e6",
+    "research/round16/input/ALL64_PRIVATE.json": "4b02ce366ebe0ca693aea5bdc04a9ccb7db05d7bbf60e12825c031c05b78b05f",
+    "research/round16/input/A32_PRIVATE.json": "45d2e591917ff3891aea856fa2c211978c6d99a539df93cfed5199ec18db3606",
+    "research/round16/experiment/AUTHORIZATION.json": "3ce5aa8f6332e9857b5d06efe07914f488e2505cd32a3479865e694060b5a870",
+    "research/round15/experiment/SOURCE_CAPTURE_PLAN_LOCK.json": "1b3d9ff155096fcad9d80bb022888609b207fe8d44f748d58dfb721a77670f3e",
+    "research/round15/experiment/SEMANTIC_PLAN_V4_LOCK.json": "e98a02c27148a9d2acc09004880a4ce6f4096864069a85e338f2c10c8d07a83a"
+  },
+  "A_n": 32,
+  "B_n": 32,
+  "G_calls": 96,
+  "G_text_budget": 256,
+  "G_visual_budget": 128,
+  "G_source_score_not_used_for_identity": true,
+  "G_stage": "Full-query target/reference roles, two numbering orders, measured relation, depth-connected positive set; no complete box or unique query required",
+  "gate_per_platform": {
+    "usable_A_minimum": 4,
+    "strict_IoU_pairwise_wins_more_than_losses": true,
+    "A_direct_all_samples_mean_gain_positive": true,
+    "A_direct_gain_count_exceeds_harm_count": true,
+    "gate_is_exposed_development_only_not_label_free_history": true
+  },
+  "fit_if_gate_passes": {
+    "parameters": "contrastive_align_projection_image.4.weight and .bias only; final 288->64 nn.Linear",
+    "steps": 32,
+    "optimizer": "AdamW",
+    "lr": 0.0001,
+    "weight_decay": 0.0,
+    "loss": "mean softplus(1 - logsumexp(log source-token-probability of positives) + logsumexp(log source-token-probability of negatives)) plus 0.1 source candidate-distribution KL plus mean squared parameter delta",
+    "text_tokens_and_first_noun_readout_fixed": true,
+    "one_shared_update_per_target_platform": true,
+    "B_never_used_for_G_fit_or_hyperparameter_selection": true
+  },
+  "B_arms": [
+    "source",
+    "same_information_A_memory_direct_rerank",
+    "matching_projection_TTA"
+  ],
+  "direct_control": "Source-normalized query/text interaction feature signed preference cache, same A evidence and B frozen features; no B RGB/G or parameter update",
+  "failure_policy": "Retain every A/B and every refusal. No gate relaxation or post-label retuning; failed platform stays source with TTA effect unmeasured. No forced fitting on rejected supervision.",
+  "scene_clusters": {
+    "drone": 1,
+    "quad": 2
+  },
+  "exposure": "All5912 historically scored. A recent G/score exposed. B reserved no R15 G/fit/current scoring; content disjoint from A, no same-instance or native chronological proof.",
+  "single_GPU_serialized": true
+}

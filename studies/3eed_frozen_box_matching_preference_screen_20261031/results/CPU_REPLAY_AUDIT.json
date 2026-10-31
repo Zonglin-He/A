@@ -1,0 +1,30 @@
+{
+  "state": "R16_CPU_replay_passed",
+  "checks": {
+    "all_seals_and_members": true,
+    "A_B_disjoint_ids": true,
+    "G_cases_exactly_A_no_B": true,
+    "all64_score_rows_and_negatives_retained": true,
+    "gate_recomputed_no_relabeling": true,
+    "parameter_delta_matches_gate": true,
+    "all_selected_boxes_bitexact_source_pool": true,
+    "summary_recomputed": true,
+    "full_model_closure_or_no_update_skip": true
+  },
+  "limitations": [
+    "Same scorer geometry primitive as the previously audited official-transform implementation; this is a separate replay, not a second independent ground-truth annotation.",
+    "Content uniqueness inherits R15 decoded-content audit; scene/object/time independence is not established.",
+    "Forced verbalizer confidence uncalibrated, relative readout engineering exposed first15 A before task labels.",
+    "A labels only apply prespecified gate; target-development screening is not wholly target-label-free."
+  ],
+  "seals": {
+    "crossplatform/round16/features64_attempt001": "40c2cbaf42852220b56cc403df3948149fc75141818f67474a1404bc0e9aa4c2",
+    "crossplatform/round16/G_A32_attempt001": "cf8205329765211dbc8ac809305433101614018d4e3dd4404c9220e171fe2117",
+    "crossplatform/round16/G_A32_attempt002": "d72857ae3fe064dbf920f1afdc2b18661f8a39b7ab564cbd0481197b0ded6672",
+    "crossplatform/round16/G_A32_attempt003": "64ebc884b837f7aab15d79a675f8fb9e74959226a2c447768246adf892a4ae7a",
+    "crossplatform/round16/G_A32_attempt004": "ada89cd8990e45fa5bcb3bad3838d936de26196e5eaacc3a7f1228b5c01bbb48",
+    "crossplatform/round16/B_predictions_attempt001": "c57653343fa303189433aff8bfd476d8afdf236b448f79d241ea85c1fbfe530c",
+    "research/round16/experiment/A_scoring_attempt001": "9afba7471a6a72cc74cb8590815258c2da8e5513446ca010ac80b71640aebe77",
+    "research/round16/experiment/B_scoring_attempt001": "376ce314dc10f8cc6ba7aaa0df7cdc0b4c3b29207d1bdee7ebfcd77f6d0a0a93"
+  }
+}
