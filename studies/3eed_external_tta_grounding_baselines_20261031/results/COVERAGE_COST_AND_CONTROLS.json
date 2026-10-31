@@ -1,0 +1,110 @@
+{
+  "steps": {
+    "Tent": {
+      "observations": 96,
+      "optimizer_steps": 96,
+      "nonzero_final_parameter_episodes": 96,
+      "skipped_update": 0,
+      "selected_parameter_count": [
+        42816
+      ]
+    },
+    "SAR": {
+      "observations": 96,
+      "optimizer_steps": 40,
+      "nonzero_final_parameter_episodes": 40,
+      "skipped_update": 56,
+      "selected_parameter_count": [
+        67584
+      ]
+    },
+    "MEMO": {
+      "observations": 96,
+      "optimizer_steps": 75,
+      "nonzero_final_parameter_episodes": 75,
+      "skipped_update": 21,
+      "selected_parameter_count": [
+        144527419
+      ]
+    },
+    "Reg_inspired": {
+      "observations": 96,
+      "optimizer_steps": 96,
+      "nonzero_final_parameter_episodes": 96,
+      "skipped_update": 0,
+      "selected_parameter_count": [
+        1734
+      ]
+    },
+    "own_G_episode": {
+      "observations": 64,
+      "optimizer_steps": 640,
+      "nonzero_final_parameter_episodes": 20,
+      "skipped_update": 44,
+      "selected_parameter_count": [
+        18496
+      ]
+    }
+  },
+  "cost_probe": {
+    "Tent": {
+      "cost_probe_n": 4,
+      "mean_seconds": 0.11185449874028563,
+      "peak_GiB": 1.910651683807373,
+      "selected_parameters": 42816
+    },
+    "SAR": {
+      "cost_probe_n": 4,
+      "mean_seconds": 0.09232248284388334,
+      "peak_GiB": 1.9662480354309082,
+      "selected_parameters": 67584
+    },
+    "MEMO": {
+      "cost_probe_n": 4,
+      "mean_seconds": 0.30185568367596716,
+      "peak_GiB": 4.665060043334961,
+      "selected_parameters": 144527419
+    },
+    "Reg_inspired": {
+      "cost_probe_n": 4,
+      "mean_seconds": 0.19454077328555286,
+      "peak_GiB": 1.2049646377563477,
+      "selected_parameters": 1734
+    }
+  },
+  "mechanism_contrasts": {
+    "A64": {
+      "drone": {
+        "Tent_weights_vs_BN_only_pp": 0.0003827068716999449,
+        "SAR_weights_vs_normstats_only_pp": 0.00017341853042029953,
+        "MEMO_vs_augmentation_only_pp": -0.5923711771631375,
+        "MEMO_vs_BNprior_only_pp": 0.9493233910313048,
+        "Reg_student_vs_teacher_pp": -0.5527955182275299
+      },
+      "quad": {
+        "Tent_weights_vs_BN_only_pp": 0.036013984912429464,
+        "SAR_weights_vs_normstats_only_pp": 0.017844598981312743,
+        "MEMO_vs_augmentation_only_pp": -3.5070356940306873,
+        "MEMO_vs_BNprior_only_pp": 0.3460928882941481,
+        "Reg_student_vs_teacher_pp": -0.8355561576064723
+      }
+    },
+    "B32": {
+      "drone": {
+        "Tent_weights_vs_BN_only_pp": 0.0022837079994175724,
+        "SAR_weights_vs_normstats_only_pp": 0.0004968945907624089,
+        "MEMO_vs_augmentation_only_pp": 0.657963061184434,
+        "MEMO_vs_BNprior_only_pp": -1.446662300226592,
+        "Reg_student_vs_teacher_pp": 0.4225038559217005
+      },
+      "quad": {
+        "Tent_weights_vs_BN_only_pp": 6.35793280601149e-06,
+        "SAR_weights_vs_normstats_only_pp": -0.00029892017599486564,
+        "MEMO_vs_augmentation_only_pp": -8.747587530395993,
+        "MEMO_vs_BNprior_only_pp": -5.050156983494933,
+        "Reg_student_vs_teacher_pp": -0.6876689072854774
+      }
+    }
+  },
+  "cost_limits": "Four fixed observations, warm model. MEMO cost probe uses point permutation+jitter rather than full-cloud resampling; formal timings cover complete sample loops. Cached RGB/VLM upstream G cost not included."
+}

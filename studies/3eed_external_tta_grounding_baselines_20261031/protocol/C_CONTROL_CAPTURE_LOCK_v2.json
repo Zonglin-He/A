@@ -1,0 +1,10 @@
+{
+  "program_sha256": "0bad43c9061051189269954907b1eb72d7b90eb35da87acc03112cc56d29f56c",
+  "reason": "C supplement runner omitted the returned augmentation-only andBNprior predictions. Capture these unchanged operations; do not rerun different optimization or choose a setting.",
+  "fixed_SGD_source_and_adapted_prediction_repeat_must_be_bitexact": true,
+  "current_C_task_scores_already_exposed": true,
+  "not_an_independent_confirmation": true,
+  "no_new_hyperparameters": true,
+  "attempt001_failed_retained": true,
+  "repair": "Repeat full original SAR->SGD MEMO->AdamW MEMO call sequence to diagnose execution-order drift, preserving exact comparison."
+}

@@ -1,0 +1,62 @@
+{
+  "source_checkpoint_sha256": "0d8766abaf06c9f3e2500fcb187337982d391f9e4d46ca854f3b3bb70fd33bbd",
+  "official_commits": {
+    "tent": "e9e926a668d85244c66a6d5c006efbd2b82e83e8",
+    "SAR": "20f6e24b17525f34503510afccedc0629b67b7c4",
+    "memo": "228b2908d271c954ef8bf19cf143ede3b2fa8e3e"
+  },
+  "Tent": {
+    "source": "https://github.com/DequanWang/tent",
+    "core": "BN affine+test batch statistics+entropy",
+    "changes": [
+      "AddBN1d",
+      "Native grounding query distribution",
+      "Disable transformer dropout",
+      "Post-update clean readout rather than official first forward"
+    ]
+  },
+  "SAR": {
+    "source": "https://github.com/mr-eggplant/SAR",
+    "core": "SAM2passes+reliablefilter+EMA recovery",
+    "changes": [
+      "3D BN1d and multimodalLayerNorm/GN",
+      "Frozen pretrainedRoberta norms",
+      "Safe empty-filter handling",
+      "Episodic post readout; LN-only scope separately checked on newC32"
+    ]
+  },
+  "MEMO": {
+    "source": "https://github.com/zhangmarvin/memo",
+    "core": "Marginal entropy,allparameters,BNprior16",
+    "changes": [
+      "4point resampling/noise views rather than64imageaugmentations",
+      "Geometry-dedup/Hungarian correspondence,matched common support and probability-mass gate",
+      "Main SGD2.5e-4 ResNet recipe; newC separately uses officialRVTAdamW1e-5wd.01"
+    ],
+    "native_RVT_optimizer_source": "imagenet-exps/script_test_in.py:28-38"
+  },
+  "Reg": {
+    "paper": "https://www.ecva.net/papers/eccv_2024/papers_ECCV/papers/05971.pdf",
+    "supplement": "https://www.ecva.net/papers/eccv_2024/papers_ECCV/papers/05971-supp.pdf",
+    "core_kept": [
+      "NPGnoise consistency",
+      "CRRclasswise confidence-size guidance",
+      "CBUclassbalancedEMA",
+      "Only final regression parameters"
+    ],
+    "substitutions": [
+      "Query positional sizes replace actualRoI perturbation; no yawhead",
+      "Grounding token categories replace independent detector classes/confidence",
+      "Explicit proxy stability gate,printedEq2andtau not silently interpreted",
+      "No full detector localization loss/anchors;6DabsoluteSmoothL1 withgeometry correspondence"
+    ],
+    "name_required": "Reg-TTA3D-inspired",
+    "original_reproduction_claim": false
+  },
+  "CoTTA_MOS": {
+    "execution": false,
+    "condition": "Only after adopting a locked continual-online main protocol; episodic current-input results cannot substitute.",
+    "MOS_source": "https://github.com/zhuoxiao-chen/MOS"
+  },
+  "current_results_scope": "Real development interface pilots,not full-paper reproduced numbers or fullVAL confirmation"
+}

@@ -1,0 +1,27 @@
+{
+  "previous_R17": "https://github.com/Zonglin-He/A/tree/c3ea771a968713489446322eb0c491ff44fa8f9d/studies/3eed_real_pair_role_audit_matching_tta_20261031",
+  "source100_provenance": "https://github.com/Zonglin-He/A/tree/b5ab49aa8ae14e726a0e0f71f8f2ea676d52651c/studies/3eed_waymo_source100_20261030",
+  "official_3EED": "https://github.com/worldbench/3EED",
+  "official_repositories": {
+    "tent": "e9e926a668d85244c66a6d5c006efbd2b82e83e8",
+    "SAR": "20f6e24b17525f34503510afccedc0629b67b7c4",
+    "memo": "228b2908d271c954ef8bf19cf143ede3b2fa8e3e"
+  },
+  "source_checkpoint_sha256": "0d8766abaf06c9f3e2500fcb187337982d391f9e4d46ca854f3b3bb70fd33bbd",
+  "runtime": "Existing torch2.7cu128 Python3.11 environment, existing3EED CUDA ops. No installs or upstream changes.",
+  "private_assets_withheld": true,
+  "reproduction": "Overlay prior public study chain. Clone Tent, SAR and MEMO repositories into crossplatform/round18/official/{tent,SAR,memo} at the listed immutable commits. SAR sam.py is loaded directly from that clone, not redistributed. Provide licensed3EED inputs, local source100 checkpoint and original3EED/RoBERTa code/assets. Generate own private registrations and hashes; public templates intentionally omit A IDs and cannot validate the original private registration. Exact same private cohort reproduction requires the local registration.",
+  "copyright": "No paper PDFs, paper extracted fulltexts, official repository files or third-party weights redistributed. Our task-port source and scalar results only.",
+  "executed_scorers": [
+    "research/round18/score.py",
+    "research/round18/score_supplement.py",
+    "research/round18/score_controls.py"
+  ],
+  "primary_entry": "crossplatform/round18/runner.py; --engineering before formal",
+  "separate_entrypoints": [
+    "crossplatform/round18/reg_online.py",
+    "crossplatform/round18/cost_probe.py",
+    "crossplatform/round18/supplement.py",
+    "crossplatform/round18/supplement_controls.py"
+  ]
+}

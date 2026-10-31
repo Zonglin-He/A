@@ -1,0 +1,20 @@
+{
+  "programs": {
+    "crossplatform/round18/supplement.py": "388f92645b3c4f446027b81467ac32897cdb677ead2797fc92c2f297587fd009",
+    "crossplatform/round18/supplement_algorithms.py": "4b381efad065cbfe9b9ebc1c1866f04d090b57734c76a303e3c7722d49dda4bd"
+  },
+  "C32_sha256": "3fcbf46201b25452d9a8ca08f5ff1220f6c6a89f740455f1265674566b55587b",
+  "new_content_and_ids_exclude_A64_B32_R15_R16": true,
+  "selection": "Fixed input-only decoded-pixel/XYZ hashes, no caption/GT/performance selection",
+  "declared_after_primary_A_B_scoring": true,
+  "basis": "Official MEMO script_test_in.py RVT/ResNeXt recipe AdamW1e-5weightdecay.01 versus primary ResNetSGD2.5e-4; no added optimizer sweep. SAR LN-only holds sourceBN because primary control isolated BN-statistic shift.",
+  "arms": [
+    "source",
+    "SAR_LN_only",
+    "MEMO_SGD_25e5",
+    "MEMO_AdamW_1e5"
+  ],
+  "no_primary_table_replacement_or_C_best_selection": true,
+  "all_C_negatives_retained": true,
+  "not_blind": "All targetVAL historically scored; new to current method construction/execution, not pristine blind data"
+}

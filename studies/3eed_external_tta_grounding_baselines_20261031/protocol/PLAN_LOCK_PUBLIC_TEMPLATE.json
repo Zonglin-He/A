@@ -1,0 +1,44 @@
+{
+  "authorized_execution": true,
+  "source_checkpoint_sha256": "0d8766abaf06c9f3e2500fcb187337982d391f9e4d46ca854f3b3bb70fd33bbd",
+  "programs": {
+    "crossplatform/round18/common.py": "1cd7c73d67fcbf5b239dcadc96cf172657483f3c81580097c055baeeee6c4360",
+    "crossplatform/round18/geometry.py": "7afe63bb15ff4d12eb32a4ecf1a85e6f7031ccf2492c2a43ae12b12ee89137bb",
+    "crossplatform/round18/algorithms.py": "df815c59baec64ab8e3327a34f3590286c8cfd5141efe6afa3b068d5e40b6cb6",
+    "crossplatform/round18/reg_inspired.py": "3efd3885a517dd27098b49e61e3a0638d31e930c2647d0412ad350cf3b38ad5d",
+    "crossplatform/round18/runner.py": "bb577063f77c8adb6ee618a6c2a09952ea8f2805b268868acdb29438c665a38e"
+  },
+  "inputs": {
+    "research/round18/input/B32_PRIVATE.json": "17dce27e11a72968d4954c96226b5e1ec816dfe3224444de38cbd82cb39d9cea",
+    "research/round18/input/ALL96_PRIVATE.json": "b62913ba7ea36ee5aa36d32b14313ae9f56b655fabccf8f192277583a5bebdf3",
+    "research/round18/input/A64_PRIVATE.json": "9973f531b3d5257e086059b81dc930156378c7b2d1d8377bf8d312825d5b5186"
+  },
+  "A": 64,
+  "B": 32,
+  "official_commits": {
+    "tent": "e9e926a668d85244c66a6d5c006efbd2b82e83e8",
+    "SAR": "20f6e24b17525f34503510afccedc0629b67b7c4",
+    "memo": "228b2908d271c954ef8bf19cf143ede3b2fa8e3e"
+  },
+  "official_SAM_sha256": "b0569de29015016996feae257d30be6cc36f80d42d0f51d4a201eb39d2491712",
+  "primary_protocol": "Episodic reset model/optimizer/buffers/RNG for each expression,1update followed by new clean forward. Same point/text input and native score readout, identical checkpoint/GTmetric. Own G episodic32 is supplemental on A64 only, same fixed R17 G evidence. A/B strata reported separately.",
+  "candidate_distribution": "p_j=s_j/sum(s), i.e. softmax(log token mass). Argmax unchanged. Avoid softmax of already bounded probabilities, which artificially flattens candidates. No temperature tuning.",
+  "Tent": "BN1d/2d affine, batch statistics,SGDlr1e-3momentum.9,1step; keep dropout off. BN-stat-only control.",
+  "SAR": "BN1d/2d,LN,GN affine excluding pretrained textencoder;2SAMpassesrho.05,SGD1e-3momentum.9,entropy<.4ln256 both passes,lossEMAresetthreshold.2. Empty filter safely skips/restores perturbation; no forced gradients.",
+  "MEMO": "All model parameters including language encoder,SGD2.5e-4,1step,4resampling+jitter0.01m/clipped.03m views,BNprior16. GreedyIoU.5dedup then Hungarian geometry; intersect matched groups,>=2groups and>=.5masscoverage each view; outputclean native queryreadout. Augmentation-only andBNprior controls. No rotations/flips.",
+  "Reg_name": "Reg-TTA3D-inspired (not original reproduced): query-pos-size perturbation replaces RoIs, no yaw, token category confidence proxy, explicit IoU>=.5 andscore_delta<=.1 stability gate, class-wiseNMS.5,top20%confidence pseudo labels andtop20%class-size reference,CRRdeadzone.1,Adam1e-3regression1734parameters,CBUvarianceEMA.99-.999.",
+  "Reg_printed_equation_issue": "Published R=1-|score difference|/IoU andtau1.5 is mathematically non-filtering for positiveIoU. Literal rejection counts logged; proxy stability gate stated, no silent formula correction. No independently verified official Reg implementation obtained.",
+  "Reg_online_supplement": "B32 perplatform source reset then retain student/Adam/EMA, report teacher pre-update native readout separately from primary episodic post-update. Order is registered metadata order, not verified chronological stream.",
+  "all_failures_and_negative_tails_retained": true,
+  "no_current_target_GT_or_B_scores_for_tuning": true,
+  "not_blind": "All target validation historically scored; these are development port pilots, not full validation or independent scenes.",
+  "CoTTA_MOS": "Conditional on adopting continual online main protocol; not substituted into episodic table. Official mechanisms will require separate grounding port; not claimed executed.",
+  "source_checkpoint_immutable": true,
+  "own_method_no_teacher_EMA": true,
+  "own_matching_boxes_frozen": true,
+  "external_baselines_may_change_geometry": true,
+  "external_Reg_teacher_EMA_authorized": true,
+  "A_id_count": 64,
+  "original_runtime_plan_sha256": "c1173ac2a80a0924150bdebe0cffe2e8f74c77caffaf5b646c8445914a792d52",
+  "export_notice": "Public redacted template. Actual runtime private A IDs withheld; hash identifies original. Not an executable exact private registration."
+}
