@@ -1,0 +1,57 @@
+{
+  "state": "R13_prelocked_direct_supervision_gate_not_passed",
+  "preplan_sha256": "f2e0e315bebb96e7e23514eb3f2070d0d9c02dbc2ec40bc785be978c8386cd36",
+  "independent_gate_review_sha256": "7ddb288d74ffbbc3031daf2e9cf44f2b02f7ae4bf867d9625d270bda5fbe07d9",
+  "A_both_platforms_pass": false,
+  "B_both_platforms_pass": false,
+  "combination_or_neural_TTA_progression_pass": false,
+  "by_platform_prelocked_conditions": {
+    "drone": {
+      "A": {
+        "nonzero_box_changes": true,
+        "IoU_over_source_micro": true,
+        "IoU_over_source_scene_equal": true,
+        "IoU_over_noun_micro": true,
+        "IoU_over_noun_scene_equal": true,
+        "all_prerequisites_pass": true
+      },
+      "B": {
+        "nonzero_box_changes": true,
+        "IoU_over_source_micro": false,
+        "IoU_over_source_scene_equal": false,
+        "center_error_reduction_micro": false,
+        "center_error_reduction_scene_equal": false,
+        "size_error_reduction_micro": false,
+        "size_error_reduction_scene_equal": false,
+        "full_over_half_micro": false,
+        "full_over_half_scene_equal": false,
+        "positive_net_task_signed_sum": false,
+        "all_prerequisites_pass": false
+      }
+    },
+    "quad": {
+      "A": {
+        "nonzero_box_changes": true,
+        "IoU_over_source_micro": true,
+        "IoU_over_source_scene_equal": false,
+        "IoU_over_noun_micro": true,
+        "IoU_over_noun_scene_equal": true,
+        "all_prerequisites_pass": false
+      },
+      "B": {
+        "nonzero_box_changes": true,
+        "IoU_over_source_micro": true,
+        "IoU_over_source_scene_equal": true,
+        "center_error_reduction_micro": true,
+        "center_error_reduction_scene_equal": true,
+        "size_error_reduction_micro": false,
+        "size_error_reduction_scene_equal": false,
+        "full_over_half_micro": true,
+        "full_over_half_scene_equal": true,
+        "positive_net_task_signed_sum": true,
+        "all_prerequisites_pass": false
+      }
+    }
+  },
+  "failure_action": "No A+B composition or neuralTTA; preserve Quad positive geometry signal, all negatives/NA and historical-exposure scope."
+}

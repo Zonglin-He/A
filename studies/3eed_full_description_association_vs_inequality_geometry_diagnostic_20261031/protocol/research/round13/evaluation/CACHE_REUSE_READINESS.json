@@ -1,0 +1,52 @@
+{
+  "state": "PASS_R13_R12_CACHE_SCHEMA_REUSE_READINESS",
+  "source_seal_sha256": "8fad263396673e738deb8a82c47eb976fb440eec046dd6938589313d2d895ef4",
+  "regression_prediction_seal_sha256": "d3cdf0fff9cef27afbf4030e7ac836e5dd3bfcc5a83a9ee38136252eb26cbbb5",
+  "auditor_sha256": "2daffb2207ddca2bce4ade7fb714f38ee95adea1c3c279f5b13d0099a29468c3",
+  "audited_source_cases": 146,
+  "checks": 2051,
+  "derived_changed_union_n": 8,
+  "selection_uses_only_sealed_changed_flags_not_task_score": true,
+  "cache_schemas": {
+    "base_xyz": {
+      "shape": {
+        "numeric_vector_omitted_for_coordinate_or_candidate_privacy": true,
+        "length": 3
+      },
+      "dtype": "float32"
+    },
+    "boxes_raw6": {
+      "shape": {
+        "numeric_vector_omitted_for_coordinate_or_candidate_privacy": true,
+        "length": 3
+      },
+      "dtype": "float32"
+    },
+    "text_scores": {
+      "shape": {
+        "numeric_vector_omitted_for_coordinate_or_candidate_privacy": true,
+        "length": 2
+      },
+      "dtype": "float32"
+    }
+  },
+  "reusable": [
+    "immutable256 original raw6 boxes/scores/q0 for external candidate association",
+    "actual source center/size features for later separately authorized head checks",
+    "sampled16384 modelXYZ/rawindices only with original text/input/checkpoint hashes",
+    "R12 frontend independent masks and original pixels if asset/config/image byte matches"
+  ],
+  "not_cached": [
+    "fulltoken scores or projected token/query embeddings",
+    "native GPU top10 tie order",
+    "full raw point cloud or new observation/caption forward"
+  ],
+  "rules": [
+    "A may choose another slot only in the same saved source pool; association_only output must equal that slot raw6 bitexact.",
+    "Original model encoded full caption but cached readout sums firstnoun positions. A full-caption external helper is a new computation, not already present in cache.",
+    "Changed grounder text/sampling/numerics requires new source forward; cross-process query slot identity is not transferable.",
+    "B fixes q0 and sample/source bindings; geometry requiring whole rawP must separately bind raw file/camera/mask, not relabel cached16k as whole sensor P.",
+    "Old8 are output-conditioned exposed regression only. New108 need fresh strictFP32 source caches."
+  ],
+  "no_GT_annotation_scoredrows_IoU_image_pointfile_model_GPU_access": true
+}

@@ -1,0 +1,30 @@
+{
+  "state": "PASS_R13_association_synthetic_CPU_contracts_no_model_GT_or_realpixels",
+  "config": {
+    "dedup_aabb_iou": 0.5,
+    "mapping_2D_iou_min": 0.1,
+    "mapping_visible_point_min": 3,
+    "mapping_iou_runnerup_gap_min": 0.05,
+    "max_independent_masks": 100,
+    "candidate_order_salt": "R13_full_description_candidate_order_v1",
+    "min_pixels": 200704,
+    "max_pixels": 802816,
+    "max_new_tokens": 8,
+    "seed": 0
+  },
+  "checks": [
+    "greedy_originalquery_dedup",
+    "rawsourcebox_readout_exact",
+    "nearestcamera_depth_FOV_floor",
+    "duplicateXYZ_not_extra_support",
+    "all_independent_masks_no_rankcap",
+    "deterministic_hashIDs",
+    "strict_UNKNOWN_vs_parsefailure",
+    "quoted_captiondata_no_eval",
+    "unmapped_answer_fallback"
+  ],
+  "program_sha256": "bba10bde59ccaf164ac508f391cf997886c7e5fa1922af7997408455791b62b6",
+  "association_sha256": "29c3c08cd8e8c281d43761177ef8e8ae159f2793c26284bde77056e816e31d33",
+  "real_target_data_or_accuracy_not_tested": true,
+  "numpy_version": "1.26.4"
+}

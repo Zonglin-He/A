@@ -1,0 +1,150 @@
+{
+  "state": "R13_local_association_asset_config_and_filename_inventory_no_model_or_weight_payload_load",
+  "preferred_model": "Qwen/Qwen2.5-VL-3B-Instruct",
+  "architecture": [
+    "Qwen2_5_VLForConditionalGeneration"
+  ],
+  "model_type": "qwen2_5_vl",
+  "hidden_size": 2048,
+  "decoder_layers": 36,
+  "vision_patch_size": 14,
+  "vision_merge_size": 2,
+  "declared_dtype": "bfloat16",
+  "declared_revision_from_existing_download_script_and_prior_run": "66285546d2b821cf421d4f5eb2576359d3770cd3",
+  "provenance_files": {
+    "local_path_key_0001": "0a14fe144ccb1a4388969e83d40238f4af78c3993f9c172076b35d8683bd55b0",
+    "local_path_key_0002": "d3050c2f82f003f36e4dbb25451c335382bedf6ef7fcf206b0d5160902635ec0",
+    "local_path_key_0003": "3b68e88c02a91df8f7314e7e557a52a17e6d345ec912efc5f42e9abb8f32e564"
+  },
+  "small_asset_files": {
+    "config.json": {
+      "exists": true,
+      "bytes": 1373,
+      "sha256": "7ed3eed5be6924cc800e8a5e53fc405c1aab1aaf36bad65c33403b36c56827f5"
+    },
+    "model.safetensors.index.json": {
+      "exists": true,
+      "bytes": 65448,
+      "sha256": "c7dd78a4c6bea60b51332f1baf37b8f8124ecab2c35395a29a29825bf2619768"
+    },
+    "preprocessor_config.json": {
+      "exists": true,
+      "bytes": 350,
+      "sha256": "f2058c716eef96ccaed1cc1e2d0c08306b62586d535b28d9d08e691b2fab7ca0"
+    },
+    "tokenizer_config.json": {
+      "exists": true,
+      "bytes": 5702,
+      "sha256": "4abd3520120e266da84c0864fee064d1fb10806f02225911a47253dd38dc5f56"
+    },
+    "tokenizer.json": {
+      "exists": true,
+      "bytes": 7031645,
+      "sha256": "c0382117ea329cdf097041132f6d735924b697924d6f6fc3945713e96ce87539"
+    },
+    "vocab.json": {
+      "exists": true,
+      "bytes": 2776833,
+      "sha256": "ca10d7e9fb3ed18575dd1e277a2579c16d108e32f27439684afa0e10b1440910"
+    },
+    "merges.txt": {
+      "exists": true,
+      "bytes": 1671839,
+      "sha256": "599bab54075088774b1733fde865d5bd747cbcc7a547c5bc12610e874e26f5e3"
+    },
+    "chat_template.json": {
+      "exists": true,
+      "bytes": 1050,
+      "sha256": "ad60d90252ed0b0705ba14e2d0ad0fec0beac1ea955642b54059b36052d8bc96"
+    },
+    "generation_config.json": {
+      "exists": true,
+      "bytes": 216,
+      "sha256": "533f191cc257b7de37a4fccd0a7a1706d75e1aa660f93efaa54e5a2a9f9aace9"
+    }
+  },
+  "weight_shards_metadata_only": [
+    {
+      "filename": "model-00001-of-00002.safetensors",
+      "exists": true,
+      "bytes_stat": 3982649232,
+      "payload_or_SHA_read": false
+    },
+    {
+      "filename": "model-00002-of-00002.safetensors",
+      "exists": true,
+      "bytes_stat": 3526688744,
+      "payload_or_SHA_read": false
+    }
+  ],
+  "weight_bytes_stat_total": 7509337976,
+  "weight_index_tensor_entries": 824,
+  "weight_index_total_size": 7509245952,
+  "weight_integrity_currently_unverified_must_be_hashed_by_authorized_runner": true,
+  "processor_original_config": {
+    "min_pixels": 3136,
+    "max_pixels": 12845056,
+    "patch_size": 14,
+    "temporal_patch_size": 2,
+    "merge_size": 2,
+    "image_mean_RGB_components": {
+      "red": 0.48145466,
+      "green": 0.4578275,
+      "blue": 0.40821073
+    },
+    "image_std_RGB_components": {
+      "red": 0.26862954,
+      "green": 0.26130258,
+      "blue": 0.27577711
+    },
+    "image_processor_type": "Qwen2VLImageProcessor",
+    "processor_class": "Qwen2_5_VLProcessor"
+  },
+  "grounding_dino": {
+    "model_id": "IDEA-Research/grounding-dino-tiny",
+    "snapshot_file_names": [
+      "special_tokens_map.json",
+      "added_tokens.json",
+      "preprocessor_config.json",
+      "tokenizer_config.json",
+      "vocab.txt",
+      "config.json",
+      "tokenizer.json"
+    ],
+    "weight_files_present": false,
+    "available_for_inference": false,
+    "reason": "Only configs/tokenizer present. No weights loaded/downloaded; textdetector score does not establish complete-description relation reasoning."
+  },
+  "official_primary_sources": [
+    {
+      "url": "https://huggingface.co/Qwen/Qwen2.5-VL-3B-Instruct/blob/66285546d2b821cf421d4f5eb2576359d3770cd3/README.md",
+      "facts": "Pinned official model card: multiimage input, configurable dynamic image token budget, structured localization capability claims; not an evidence guarantee on this dataset. License qwen-research."
+    },
+    {
+      "url": "https://huggingface.co/IDEA-Research/grounding-dino-tiny",
+      "facts": "Official open-set text-conditioned detector; local weights absent."
+    },
+    {
+      "url": "https://github.com/IDEA-Research/GroundingDINO",
+      "facts": "Official outputs token similarities and default threshold selection; noun phrase selection is not independent proof of relational referring comprehension."
+    }
+  ],
+  "github_redirect_caution": "The unpinned old Qwen2.5-VL GitHub URL currently redirects to Qwen3-VL; use the pinned2.5 HF model card and local immutable config, not redirected3-VL defaults.",
+  "boundaries": {
+    "model_or_GPU_called": false,
+    "weight_payload_read": false,
+    "target_annotations_scores_or_pixels_read": false,
+    "downloads_performed": false,
+    "old_round_or_mllm_files_modified": false
+  },
+  "selected_execution_environment_metadata_only": {
+    "python": "3.13.12",
+    "torch": "2.7.0+cu128",
+    "transformers": "4.57.1",
+    "numpy": "2.3.5",
+    "Pillow": "12.0.0",
+    "safetensors": "0.8.0",
+    "accelerate": "1.15.0",
+    "qwen_vl_utils_required": false
+  }
+}

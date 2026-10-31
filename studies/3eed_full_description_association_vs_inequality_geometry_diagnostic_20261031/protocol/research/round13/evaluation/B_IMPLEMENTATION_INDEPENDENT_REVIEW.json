@@ -1,0 +1,28 @@
+{
+  "state": "PASS_R13_B_POSITIVE_OBSERVATION_IMPLEMENTATION_REVIEW",
+  "program_sha256": "cfb4beaf9b3d7ef9593af986b14981e83a081004a4b51bd137d6f2a27d0d2468",
+  "implementation_lock_sha256": "c0cdab1d8195ccb200925136b705fdc8ee556bc8f99924d494b09ed7aa9117eb",
+  "interface_sha256": "7ee119ecba083564c332eaae86674ae1daa175f7572f4bfcad57ab68dc4ae12c",
+  "independent_fixture_sha256": "9cf4f5266bbfb4f0b7be4a5d2b4c006867256d9bfaafb26c528dd57add9799ee",
+  "bound_program_fixture_files": 5,
+  "blocking_issues": [],
+  "reviewed_semantics": [
+    "Point residual is positive max(abs(p-c)-size/2-.03,0), meanHuber normalized .05m; no surface/face equality, pointmean/extent replacement, nearestface or PCA.",
+    "RGB term uses positive foreground-boundary outside projectedbox convexhull, not maskbbox/amodal equality; deterministic128 boundarysamples and source-fixed pixel sigma disclosed.",
+    "Normalized center variables delta/source_size, log-size variables; prior center std clipped .15size to [.05,.35]m, logsize std .1. Prior sum6coords and point mean(points,3axes) are explicit different reductions, not silently assumed same scale.",
+    "Center bounds min(.25size,.5m); sizes in [source,1.2source]. Expansion bound is sourceprior, not observed amodal upperbound; depth/center-size ambiguity remains.",
+    "Initial mask/depth/hull/support gate and six-coordinate optimization domain shared full/off; only RGBcoordinate objective is disabled. noRGB remains RGB-gated supportcontrol, not deployable PConly.",
+    "When no enabled positive constraint is violated, zero prior solution returns sourceexact. noRGB returns source when onlyRGB violates even though allowed6domain is same.",
+    "half is float32 source+.5*(full-source), no refit; q0 fixed. active/acceptance6 are allowed searchdomain not six observed axes or actualchange.",
+    "Physical float32XYZ canonical dedup and optional repeated-ID consistency; duplicate returns do not multiplyloss. Invalidraw source dimensions preserve source fallback, no repair.",
+    "L-BFGS-B64 maxiter eps1e-5 normalized; finite nonconvergence retained/status explicit, nonfinite or invalidfullprojection fallback. Deliveredfloat32 terms recomputed, not just float64optimizerloss.",
+    "Pure API excludes filepaths/GT/classes/other candidates; points/mask association is upstream hypothesis, not identity proof. Unknownsensororigin/solidoccupancy free-space explicitlyunused."
+  ],
+  "limits": [
+    "Passing synthetic implementation controls does not show real mask/calibration/identity or task utility.",
+    "Positive silhouette/point containment does not identify completebox; sourceprior selects among compatible solutions.",
+    "Solver output may increase taskerror even with decreasing observation objective; retain negative/zero and prior-dominance costs.",
+    "Wrapper/helper support association, actual seals and scorer cannot be certified by this module-only review; review when ready."
+  ],
+  "no_actual_target_GT_sensorarrays_task_IoU_model_GPU_or_source_edits": true
+}

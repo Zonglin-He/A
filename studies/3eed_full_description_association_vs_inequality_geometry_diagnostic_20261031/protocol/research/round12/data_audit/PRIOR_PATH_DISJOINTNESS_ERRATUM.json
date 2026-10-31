@@ -1,0 +1,63 @@
+{
+  "state": "R12_inputonly_erratum_prior_newframe_and_pathdisjoint_scope",
+  "source_physical_audit_sha256": "81151060351adb5edab3e4e52ba318f9790de56b6442c3c0f8b8d6b937e3dd76",
+  "population_pathcases": 5912,
+  "exact_RGB_point_content_groups": 1753,
+  "prior700_pathcases": 700,
+  "prior700_unique_contentgroups": 588,
+  "prior_round_unique_input_counts": {
+    "R9_160": {
+      "path_cases": 160,
+      "unique_RGB_point_groups": 150,
+      "extra_cases_sharing_physical_input": 10,
+      "within_group_different_caption_observed": true
+    },
+    "R10_160": {
+      "path_cases": 160,
+      "unique_RGB_point_groups": 158,
+      "extra_cases_sharing_physical_input": 2,
+      "within_group_different_caption_observed": true
+    },
+    "R11_320": {
+      "path_cases": 320,
+      "unique_RGB_point_groups": 292,
+      "extra_cases_sharing_physical_input": 28,
+      "within_group_different_caption_observed": true
+    },
+    "R8_40": {
+      "path_cases": 40,
+      "unique_RGB_point_groups": 40,
+      "extra_cases_sharing_physical_input": 0,
+      "within_group_different_caption_observed": false
+    },
+    "R7_20": {
+      "path_cases": 20,
+      "unique_RGB_point_groups": 20,
+      "extra_cases_sharing_physical_input": 0,
+      "within_group_different_caption_observed": false
+    }
+  },
+  "prior_round_content_overlap_counts": {
+    "R9_160__R10_160": 11,
+    "R9_160__R11_320": 20,
+    "R9_160__R8_40": 1,
+    "R9_160__R7_20": 0,
+    "R10_160__R11_320": 28,
+    "R10_160__R8_40": 6,
+    "R10_160__R7_20": 2,
+    "R11_320__R8_40": 9,
+    "R11_320__R7_20": 2,
+    "R8_40__R7_20": 0
+  },
+  "original_pathdisjoint_checks_still_valid": true,
+  "physicalframe_disjointness_not_established_by_old_path_checks": true,
+  "interpretation": [
+    "R9/R10/R11 case counts are taskquery/path cases, not all unique physical RGB+point observations. R9=150/160,R10=158/160,R11=292/320 exact-content groups.",
+    "Physical input overlap also exists across rounds despite distinctpaths/IDs; oldclaims of freshphysicalframes need this separate qualification.",
+    "Shared physicalinputs can have different languagequeries; this inputaudit does not recompute or automatically invalidate sealed perquery metrics.",
+    "Original predictions/plans/scores/published trees remain immutable. No posthoc GT casefiltering or relabeling is performed.",
+    "Exact byte deduplication is conservative: different encoding or point subsampling could still originate from the same physical observation."
+  ],
+  "R12_revision": "New146anchors have unique exactRGB+pointcontent and exclude all588 physicalgroups of prior700, under userauthorized inputvalidity repair before newcapture.",
+  "no_old_results_modified_no_GT_or_score_read": true
+}

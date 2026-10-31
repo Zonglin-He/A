@@ -1,0 +1,93 @@
+{
+  "state": "PASS_R13_POSTSCORE_SPATIAL_DIAGNOSTIC_INDEPENDENT_REVIEW",
+  "program_sha256": "5977b58d68e897b7855a53e410135b2c1980a8bbc8651c396bf66d7f8a076b48",
+  "plan_v2_sha256": "ab64503b001ed1311187f82f07205ccee0582be45de433e3c8df729ce3064d0b",
+  "diagnostic_seal_sha256": "d8dec2e0a675baf4b5b81ef8fc8fbc3a5e822d0b2a8670b288a0e62f83839630",
+  "diagnostic_release_sha256": "562acfad17c0b927cb3a788befef331285350364cc920e76b43dad7b52e1f3ec",
+  "diagnostic_summary_sha256": "13203b9df1da2e9bdd495d2d4f81cf1f46680a34e9a8b385cc09356da9ba9f0a",
+  "diagnostic_cases_sha256": "dfd20c5ab13ef7038ef5c638e29bf67dbee2d01b6886eee03d97c7097998a031",
+  "primary_results_sha256": "00cc8f64f0c19972862834f301eb17e4f4c8ccf8e7f4b82453c03e4cc720635e",
+  "auditor_sha256": "a51dbeb11a149b67a2accb859ba3243fc4751d43a07686f5e2729eb0451c8879",
+  "synthetic_adapter_fixture_sha256": "8cd4fe1ab175698d6193766e745145144719ebbf5fe9d904ab40d7b4a52b2874",
+  "checks": 7709,
+  "max_numeric_difference": 1.1102230246251565e-16,
+  "target_primary_scalar_bridge_n": 348,
+  "target_primary_max_abs_difference": 0.0,
+  "annotation_schema_cases": 116,
+  "raw_others_records_not_instance_count": 425,
+  "stratified_summary_rows_recomputed": 30,
+  "new108_spatial_categories": {
+    "drone": {
+      "fullA": {
+        "unconfirmed_spatial_relation": 13,
+        "target_spatially_dominant": 8,
+        "annotated_other_spatially_dominant": 11
+      },
+      "nounA": {
+        "unconfirmed_spatial_relation": 13,
+        "annotated_other_spatially_dominant": 13,
+        "target_spatially_dominant": 6
+      }
+    },
+    "quad": {
+      "fullA": {
+        "target_spatially_dominant": 42,
+        "unconfirmed_spatial_relation": 20,
+        "annotated_other_spatially_dominant": 14
+      },
+      "nounA": {
+        "target_spatially_dominant": 41,
+        "unconfirmed_spatial_relation": 20,
+        "annotated_other_spatially_dominant": 15
+      }
+    }
+  },
+  "case_alias_evidence": {
+    "new_00067": {
+      "mask_relation": "same_defined_mask",
+      "q0_target_IoU": 0.5480043193905589,
+      "fullA_target_IoU": 0.21202829651981506,
+      "q0_annotated_other_max": 0.0,
+      "fullA_annotated_other_max": 0.0,
+      "predicted_COCO_classes_not_GT": {
+        "A_full": 1,
+        "A_noun": 1,
+        "B_support": 1
+      },
+      "predicted_class_firstnoun_compatibility_not_GT": {
+        "A_full": true,
+        "A_noun": true,
+        "B_support": true
+      }
+    },
+    "regression_00006": {
+      "mask_relation": "different_defined_masks",
+      "q0_target_IoU": 0.5239899289996267,
+      "fullA_target_IoU": 0.016873516343177977,
+      "q0_annotated_other_max": 0.0,
+      "fullA_annotated_other_max": 0.0,
+      "predicted_COCO_classes_not_GT": {
+        "A_full": 41,
+        "A_noun": 41,
+        "B_support": 1
+      },
+      "predicted_class_firstnoun_compatibility_not_GT": {
+        "A_full": false,
+        "A_noun": false,
+        "B_support": true
+      }
+    }
+  },
+  "code_scope_review": [
+    "Separate postscore release/hash/input/helper/score/schema/program closure verified before numericGT in producer, durable DIAGNOSTIC_LOCK first. Primarymetrics and selectedqueries never changed.",
+    "Targetraw9 through immutable R5helper; otherraw7 explicitfloat64 oneDrone z+1.8 thenf32, no fakepadding. Independent128synthetic arithmetic/R5bridges pass; realGT geometry not reread/recomputed by reviewer.",
+    "Exacttransformedfloat32 7D grouping removes exactnumeric duplicates only, not near/yaw-equivalent objects or uniqueinstance identification; malformed schema NA retained.",
+    "Strict targetIoU>.25 and signedmargin>.10 labels spatial dominance only relative to givenannotations. NA/unconfirmed not wrong, no complete scene inventory or literalidentitytruth.",
+    "PredictedCOCO versus firstnounfamily from input is a separate helper prediction diagnostic, never GTclass/identity.",
+    "Same2Dmask with less targetoverlap and othermax0 is compatiblewith proposal/mapping/extent error; doesnotprove literal targetmask or ruleout unannotatedobjects.",
+    "Allcohort/strata empty NA denominators preserved; output-conditioned/postscore diagnostic, not newconfirmation or methodselection."
+  ],
+  "no_new_GT_annotations_scoringindex_payload_realGTvectors_sensor_or_images_task_IoU_model_GPU_or_methodchanges": true,
+  "no_independent_geometric_recompute_of_othermax_IoU_claimed": true,
+  "failures": []
+}

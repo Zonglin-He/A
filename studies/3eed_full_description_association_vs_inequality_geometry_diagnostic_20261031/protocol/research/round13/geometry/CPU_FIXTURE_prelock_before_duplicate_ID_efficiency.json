@@ -1,0 +1,66 @@
+{
+  "state": "passed_synthetic_necessary_checks_no_task_results",
+  "config": {
+    "min_unique_support": 8,
+    "point_containment_tolerance_m": 0.03,
+    "point_sigma_m": 0.05,
+    "huber_delta": 1.0,
+    "center_bound_fraction": 0.25,
+    "center_bound_cap_m": 0.5,
+    "max_size_expansion": 1.2,
+    "center_prior_std_fraction": 0.15,
+    "center_prior_std_min_m": 0.05,
+    "center_prior_std_max_m": 0.35,
+    "log_size_prior_std": 0.1,
+    "prior_weight": 1.0,
+    "point_weight": 1.0,
+    "rgb_weight": 1.0,
+    "min_corner_depth_m": 0.1,
+    "rgb_pixel_sigma_min": 3.0,
+    "rgb_pixel_sigma_bbox_fraction": 0.05,
+    "max_mask_boundary_samples": 128,
+    "solver_max_iterations": 64,
+    "solver_ftol": 1e-10,
+    "solver_gtol": 1e-06,
+    "normalized_finite_difference_eps": 1e-05
+  },
+  "config_sha256": "2ed3a310e0fe090c2915c3c048a778d70f928252eb094bb4c4770c590b728d90",
+  "checks": {
+    "partial_visibility_fraction_0.05_identity_no_shrink": true,
+    "partial_visibility_fraction_0.2_identity_no_shrink": true,
+    "partial_visibility_fraction_0.5_identity_no_shrink": true,
+    "partial_visibility_fraction_1.0_identity_no_shrink": true,
+    "outside_support_bounded_move_or_expand_not_point_mean": true,
+    "loss_descent_does_not_prove_complete_box_or_identity_correctness": true,
+    "RGB_only_positive_violation_same_support_bounds_noRGB_identity": true,
+    "half_exact_float32_bridge": true,
+    "physical_duplicate_and_permutation_invariance": true,
+    "invalid_source_size_preserved_explicit_fallback": true,
+    "min_eight_distinct_foreground_gate": true,
+    "missing_independent_mask_fallback": true,
+    "near_plane_explicit_source_fallback": true,
+    "ray_entry_before_return_not_a_box_solid_rejection": true,
+    "partial_surface_has_multiple_compatible_amodal_boxes": true,
+    "finite_nonconvergence_explicit_and_JSON_safe": true,
+    "inconsistent_same_physical_ID_rejected": true
+  },
+  "details": {
+    "wrong_support_counterexample": {
+      "point_loss_before": 1.9666666666666663,
+      "point_loss_after": 0.5806230149524163,
+      "synthetic_complete_box_center_error_before": 0.0,
+      "synthetic_complete_box_center_error_after": 0.202727273106575
+    }
+  },
+  "program_sha256": {
+    "geometry_observation.py": "3e888b9b96c6dabaa144e946a465f382095bcbd2f9c98abbeccb4a4690a13caf",
+    "check_geometry_cpu.py": "460ab145ea0a0aa148d8bf4f6b87bcec2b3d40e41800245306f201fe5c8989ae"
+  },
+  "not_checked": [
+    "real target identity",
+    "real calibration alignment",
+    "task utility",
+    "neural adaptation"
+  ],
+  "real_data_or_GT_or_model_or_GPU_accessed": false
+}

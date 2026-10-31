@@ -1,0 +1,2 @@
+3eed_full_description_association_vs_inequality_geometry_diagnostic_20261031
+See actual final report/decision and reproduction notes.108recent-content-disjoint target queries plus8exposed outputconditioned regression cases,9directarms,1044relatedoutputs. All5912targetVAL already model/taskGT exposed in R7/R8. CandidateID stability is not semantic truth. Partial foreground is not complete object extent. No original IDs/scenes/captions/answers/coordinates/masks/features/weights/panels are included.
