@@ -1,0 +1,46 @@
+{
+  "authorized_execution": true,
+  "boxes_frozen": true,
+  "no_teacher_EMA": true,
+  "source_checkpoint_sha256": "0d8766abaf06c9f3e2500fcb187337982d391f9e4d46ca854f3b3bb70fd33bbd",
+  "programs": {
+    "crossplatform/round17/common.py": "8247b85109e9b6781bd6cec1009cece92968312d7e04799e28327dc9d68b2989",
+    "crossplatform/round17/pair_geometry.py": "029d128b14e5f76ca7b40f0b19c779e4fe6984add22327ab36691529f05f0c27",
+    "crossplatform/round17/prepare_pairs.py": "b3921764e05f9861eeed7e2487b66fff7a207b35152d253e57844112e8a5d1f7",
+    "crossplatform/round17/pair_verifier.py": "a28ca966e38fc3e4daf83df171f742a71fc3e07f38084892fcb26b6e4e562b2e",
+    "crossplatform/round17/capture_features.py": "20713ad4e5b75afa0433d8d28eef05bfb7a62680003a99ae626fae6ad10a008d"
+  },
+  "inputs": {
+    "research/round17/input/B32_PRIVATE.json": "17dce27e11a72968d4954c96226b5e1ec816dfe3224444de38cbd82cb39d9cea",
+    "research/round17/input/A_FRAME_INDEX_PRIVATE.json": "1332ae6628112dd9edcbd74a22c1d8c3bc3fd59263dd5fa76b5ac6b315aa8487",
+    "research/round17/input/EXPOSURE.json": "02360d17240e35b9a4bbab71799a62b3f09d2ffdcde0b508aae01f877b86a24b",
+    "research/round17/input/A_CASES_PRIVATE.json": "6483aa0ea8d81c468b40b47d00c01a08c6333464780657553b218b14f6746e0c",
+    "research/round17/input/ALL96_PRIVATE.json": "b62913ba7ea36ee5aa36d32b14313ae9f56b655fabccf8f192277583a5bebdf3",
+    "research/round17/input/A64_PRIVATE.json": "9973f531b3d5257e086059b81dc930156378c7b2d1d8377bf8d312825d5b5186"
+  },
+  "A": 64,
+  "B": 32,
+  "G": "Sameclass actual pairs, preserved RGB, full text and measured depth. Pair choice A/B/N/U twice with swapped crop/label order; per-object role T/R/O/U independent calls. No random-caption scores or required reversal.",
+  "pair_selection": "All independent sameclass masks; max4 main-mapped pairs plus1 mapping-failed probe per sample, fixed input hash order independent of captions/GT/source score.",
+  "primary_acceptance": "Same physical requested subject in2orders; role=T for winner, R/O for loser; pair-local positive/negative 3D query sets with actual LiDAR support. No global winner required.",
+  "mapping": "Minimum3 depth-trimmed exclusive points in candidate; coverage>=.15; projectionIoU>=.1; other paired mask support<=.2*own. No all-point purity or dominant component fraction requirement.",
+  "audits": "Same calls, primary vs previous strict mapping vs1point/coverage-relaxed mapping; retain all pairs rejected at role/order/mapping stages. Post-seal task utility is descriptive, not physical identity GT.",
+  "generation_budget": 16,
+  "no_G_revision_after_current_A_labels": true,
+  "gate_before_matching_update": {
+    "usable_A_min_per_platform": 4,
+    "task_comparable_pair_observations_min": 3,
+    "mean_sample_strict_pair_win_fraction": ">0.6",
+    "representative_pair_mean_IoU_delta": ">0",
+    "local_direct_all_A_not_harmful": true
+  },
+  "A_subsets_separate": "R16old32 and other_R15fresh32; both historically exposed, not confirmation test",
+  "TTA": "Only final query matching projection Linear288to64,32AdamWstepslr1e-4, text/head boxes/backbone/decoder frozen",
+  "direct_no_update": "Same A preferences and frozen B features, preference kernel direct rerank. B RGB/G absent from both fitting and control.",
+  "scene_counts": {
+    "Drone": 1,
+    "Quad": 2
+  },
+  "all_negatives_retained": true,
+  "scope": "Finite real-data discrimination, no source retraining"
+}

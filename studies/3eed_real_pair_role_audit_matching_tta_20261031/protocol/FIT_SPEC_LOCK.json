@@ -1,0 +1,19 @@
+{
+  "programs": {
+    "crossplatform/round17/fit_projection.py": "6785cc3524a9c7068d39998be2dffc3326a5f1edfef44c3e8b61282152ec17e0",
+    "crossplatform/round17/closure.py": "0b94b52453fa51ca9e2692c4f56b066621a0fcfa92e02f438457e6ed76b5b571",
+    "crossplatform/round17/select_G.py": "10fb5b5c2dc5533c88e10ea42462cce16971180301ba285ba78803976ccba093",
+    "research/round17/score_policies.py": "4c93d150eacbfd08e5883e99f32ccc4c27061cd58170a705ba1b95fc28550d40"
+  },
+  "steps": 32,
+  "lr": 0.0001,
+  "parameters": "contrastive_align_projection_image.4.weight/bias only,18496",
+  "objective": "Per-set mean log source-token probability ranking softplus margin1,0.1source-distributionKL,mean squared parameter delta",
+  "direct_control": "Same A preferences; source log-score plus linear frozen query/text-interaction preference-kernel residual, ridge=1e-3mean pair feature norm squared",
+  "source_boxes_and_text_projection_frozen": true,
+  "B_no_G_fit_or_hyperparameter_selection": true,
+  "G_primary": "G_variants64_attempt001, global fixed-order development selection",
+  "all_updates_conditional_on_fixed_A_gate": true,
+  "no_postlabel_G_or_optimization_change": true,
+  "role_gate_addendum_sha256": "9b06dc757d71a24d74f05a2240787a6294a8643ca04fbff260c63ef128b9ba53"
+}

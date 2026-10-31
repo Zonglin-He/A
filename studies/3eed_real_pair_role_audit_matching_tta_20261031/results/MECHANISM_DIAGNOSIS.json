@@ -1,0 +1,140 @@
+{
+  "role_labels": {
+    "T": 282,
+    "R": 9
+  },
+  "pair_choices": {
+    "N": 223,
+    "A": 184,
+    "B": 39
+  },
+  "role_and_mapping_rejection_task_utility": {
+    "drone": {
+      "strict_role_rejected": {
+        "pair_records": 18,
+        "beneficial": 11,
+        "harmful": 5,
+        "ties": 2
+      },
+      "old_mapping_rejected_main_supported": {
+        "pair_records": 13,
+        "beneficial": 7,
+        "harmful": 4,
+        "ties": 2
+      }
+    },
+    "quad": {
+      "strict_role_rejected": {
+        "pair_records": 12,
+        "beneficial": 7,
+        "harmful": 1,
+        "ties": 4
+      },
+      "old_mapping_rejected_main_supported": {
+        "pair_records": 8,
+        "beneficial": 6,
+        "harmful": 1,
+        "ties": 1
+      }
+    }
+  },
+  "selected_preference_signed_task_utility": {
+    "drone": {
+      "accepted_observations": 11,
+      "beneficial_representative": 6,
+      "harmful_representative": 4,
+      "ties": 1
+    },
+    "quad": {
+      "accepted_observations": 9,
+      "beneficial_representative": 6,
+      "harmful_representative": 1,
+      "ties": 2
+    }
+  },
+  "actionability": {
+    "drone": {
+      "selected_one_pair_per_observation": {
+        "accepted": 11,
+        "q0_unknown": 6,
+        "q0_positive": 5
+      },
+      "all_accepted_pairs_descriptive": {
+        "accepted_pairs": 18,
+        "q0_unknown": 7,
+        "q0_positive": 11
+      }
+    },
+    "quad": {
+      "selected_one_pair_per_observation": {
+        "accepted": 9,
+        "q0_unknown": 2,
+        "q0_positive": 6,
+        "q0_negative": 1
+      },
+      "all_accepted_pairs_descriptive": {
+        "accepted_pairs": 12,
+        "q0_unknown": 4,
+        "q0_positive": 7,
+        "q0_negative": 1
+      }
+    }
+  },
+  "optimization": {
+    "drone": {
+      "A_accepted_n": 11,
+      "A_gap_mean_before": 0.8040119301189076,
+      "A_gap_mean_after": 1.118284897370772,
+      "A_gap_improves": 7,
+      "A_source_pref_satisfied": 7,
+      "A_updated_pref_satisfied": 9,
+      "A_Top1_changes": 2,
+      "B_n": 16,
+      "B_nonzero_score_change_count": 16,
+      "B_mean_max_abs_score_change": 0.0694243053849064,
+      "B_min_updated_original_Top1_margin": 6.402956387319136e-09
+    },
+    "quad": {
+      "A_accepted_n": 9,
+      "A_gap_mean_before": 3.7682041856977673,
+      "A_gap_mean_after": 5.068783362706502,
+      "A_gap_improves": 9,
+      "A_source_pref_satisfied": 9,
+      "A_updated_pref_satisfied": 9,
+      "A_Top1_changes": 0,
+      "B_n": 16,
+      "B_nonzero_score_change_count": 16,
+      "B_mean_max_abs_score_change": 0.3116067988480795,
+      "B_min_updated_original_Top1_margin": 4.6344439397216775e-09
+    }
+  },
+  "calibration_probe": {
+    "role": {
+      "raw_choice": {
+        "T": 8
+      },
+      "contentfree_choice": {
+        "T": 8
+      },
+      "calibrated_choice": {
+        "R": 5,
+        "O": 3
+      }
+    },
+    "pair": {
+      "raw_choice": {
+        "A": 7,
+        "B": 1
+      },
+      "contentfree_choice": {
+        "A": 8
+      },
+      "calibrated_choice": {
+        "A": 3,
+        "B": 4,
+        "N": 1
+      }
+    }
+  },
+  "interpretation": "Post-seal descriptive task utility. Beneficial/harmful refers to source-best-within-query-set IoU, not physical identity gold. Pairs/queries are correlated. Calibration4 is engineering only, not selected for G or TTA."
+}

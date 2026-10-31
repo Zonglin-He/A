@@ -1,0 +1,16 @@
+{
+  "programs": {
+    "crossplatform/round17/assemble_variants.py": "d6b14cee8590efcbe82047fe0690c0a8e47fa2350edf83150ec3e41a45f605b3"
+  },
+  "reason": "First48 observations show196T/4R individual roles,31 consistent actual-pair choices all rejected by strict role gate. This is input/output engineering evidence, not task-label correctness.",
+  "policies": [
+    "strict_roles",
+    "winner_role",
+    "pair_only"
+  ],
+  "policy_choice": "Per platform first passing fixed A task-utility gate in the above order. All policies and all failures scored/reported. No per-sample GT filters or target-GT training labels. This is exposed target-development selection, not a deployment gate.",
+  "pair_only_semantics": "A paired requested-subject comparison explicitly ranks one actual instance above another; loser is relatively lower, not automatically a verified non-target because role is unknown. N/U/order disagreement provide no preference.",
+  "mapping_and_fit_unchanged": true,
+  "no_new_G_call_or_postlabel_rule_change": true,
+  "source_first_noun_token_readout_still_fixed": true
+}

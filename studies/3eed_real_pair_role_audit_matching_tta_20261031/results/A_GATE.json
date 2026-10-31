@@ -1,0 +1,113 @@
+{
+  "platforms": {
+    "drone": {
+      "passed": true,
+      "selected_policy": "winner_role"
+    },
+    "quad": {
+      "passed": true,
+      "selected_policy": "winner_role"
+    }
+  },
+  "policies": {
+    "drone": {
+      "strict_roles": {
+        "passed": false,
+        "criteria": {
+          "enough_usable_A": false,
+          "enough_comparable_A": false,
+          "pair_direction_useful": false,
+          "positive_representative_pair_delta": false,
+          "local_direct_not_harmful": true
+        },
+        "usable_A": 0,
+        "comparable_A": 0,
+        "mean_sample_pair_win_fraction": null,
+        "mean_representative_delta_pp": null,
+        "direct_A_gain_pp": 0.0
+      },
+      "winner_role": {
+        "passed": true,
+        "criteria": {
+          "enough_usable_A": true,
+          "enough_comparable_A": true,
+          "pair_direction_useful": true,
+          "positive_representative_pair_delta": true,
+          "local_direct_not_harmful": true
+        },
+        "usable_A": 11,
+        "comparable_A": 10,
+        "mean_sample_pair_win_fraction": 0.6520726984685794,
+        "mean_representative_delta_pp": 3.373696954349038,
+        "direct_A_gain_pp": 0.0
+      },
+      "pair_only": {
+        "passed": true,
+        "criteria": {
+          "enough_usable_A": true,
+          "enough_comparable_A": true,
+          "pair_direction_useful": true,
+          "positive_representative_pair_delta": true,
+          "local_direct_not_harmful": true
+        },
+        "usable_A": 11,
+        "comparable_A": 10,
+        "mean_sample_pair_win_fraction": 0.6520726984685794,
+        "mean_representative_delta_pp": 3.373696954349038,
+        "direct_A_gain_pp": 0.0
+      }
+    },
+    "quad": {
+      "strict_roles": {
+        "passed": false,
+        "criteria": {
+          "enough_usable_A": false,
+          "enough_comparable_A": false,
+          "pair_direction_useful": false,
+          "positive_representative_pair_delta": false,
+          "local_direct_not_harmful": true
+        },
+        "usable_A": 0,
+        "comparable_A": 0,
+        "mean_sample_pair_win_fraction": null,
+        "mean_representative_delta_pp": null,
+        "direct_A_gain_pp": 0.0
+      },
+      "winner_role": {
+        "passed": true,
+        "criteria": {
+          "enough_usable_A": true,
+          "enough_comparable_A": true,
+          "pair_direction_useful": true,
+          "positive_representative_pair_delta": true,
+          "local_direct_not_harmful": true
+        },
+        "usable_A": 9,
+        "comparable_A": 7,
+        "mean_sample_pair_win_fraction": 0.8571428571428571,
+        "mean_representative_delta_pp": 35.16062622434107,
+        "direct_A_gain_pp": 1.7989907908646918
+      },
+      "pair_only": {
+        "passed": true,
+        "criteria": {
+          "enough_usable_A": true,
+          "enough_comparable_A": true,
+          "pair_direction_useful": true,
+          "positive_representative_pair_delta": true,
+          "local_direct_not_harmful": true
+        },
+        "usable_A": 9,
+        "comparable_A": 7,
+        "mean_sample_pair_win_fraction": 0.8571428571428571,
+        "mean_representative_delta_pp": 35.16062622434107,
+        "direct_A_gain_pp": 1.7989907908646918
+      }
+    }
+  },
+  "G_variants_seal_sha256": "de2db8a0bdfed84c6760032d2382e16421135e496096c9cdef329c683fb8ba05",
+  "fit_spec_sha256": "ee13c6284562d02bdaf13aca46111b7394b115d17750607f2055b196493f1454",
+  "B_task_labels_read": false,
+  "deployment_gate_claim": false,
+  "selection": "First passing strict_roles>winner_role>pair_only; global exposed target-development selection, no per-sample GT targets."
+}

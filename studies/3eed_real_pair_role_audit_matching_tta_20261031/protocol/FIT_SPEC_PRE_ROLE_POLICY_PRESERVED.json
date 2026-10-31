@@ -1,0 +1,17 @@
+{
+  "programs": {
+    "crossplatform/round17/fit_projection.py": "10c729fe4e85b298e3cc0528e18071d15e00e434fe55b8db9751301e5a39582b",
+    "crossplatform/round17/closure.py": "0b94b52453fa51ca9e2692c4f56b066621a0fcfa92e02f438457e6ed76b5b571",
+    "research/round17/score.py": "3104a3bf67eb982f3ae5a23f310b4480265a86a21a6f0c1951b7c42594125e6b"
+  },
+  "steps": 32,
+  "lr": 0.0001,
+  "parameters": "contrastive_align_projection_image.4.weight/bias only,18496",
+  "objective": "Per-set mean log source-token probability ranking softplus margin1,0.1source-distributionKL,mean squared parameter delta",
+  "direct_control": "Same A preferences; source log-score plus linear frozen query/text-interaction preference-kernel residual, ridge=1e-3mean pair feature norm squared",
+  "source_boxes_and_text_projection_frozen": true,
+  "B_no_G_fit_or_hyperparameter_selection": true,
+  "G_primary": "G64_attempt001",
+  "all_updates_conditional_on_fixed_A_gate": true,
+  "no_postlabel_G_or_optimization_change": true
+}
