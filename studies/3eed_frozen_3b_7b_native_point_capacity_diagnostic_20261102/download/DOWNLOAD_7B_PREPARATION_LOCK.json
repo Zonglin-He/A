@@ -1,0 +1,26 @@
+{
+  "state": "bounded_official_7B_preparation_authorized_before_probe",
+  "created_utc": "2026-11-01T20:10:17.377357+00:00",
+  "code_sha256": "e0ce7624391619b8ff544ff782f54f49793fd01345f9adde3c4e6cf067103f0f",
+  "official_revision": "cc594898137f460bfe9f0759e9844b3ce807cfb5",
+  "probe": {
+    "sites": [
+      "HF",
+      "ModelScope"
+    ],
+    "max_each_bytes": 8388608,
+    "stream_chunk_bytes": 1048576,
+    "conservative_eta_speed": "0.5 * best complete probe end_to_end bytes/sec",
+    "gate": "ETA<=5400seconds and disk>=2*repo_size+2GiB"
+  },
+  "download": {
+    "max_seconds_total_including_probes": 5400,
+    "night_deadline_also_enforced": true,
+    "file_retries": 4,
+    "public_only": true,
+    "hash_verified_before_atomic_rename": true,
+    "metadata_bound_to_git_blob_and_size": true,
+    "no_remote_py_model_import_install_GPU_or_inference": true
+  },
+  "no_credentials_signed_URLs_or_FINAL": true
+}
