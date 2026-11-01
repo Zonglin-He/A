@@ -1,0 +1,35 @@
+{
+  "state": "REGISTERED_ACTUAL_DRIVER_BEFORE_GPU",
+  "locked_local": "2026-11-02T05:18:36.094270+08:00",
+  "root_authorization_sha256": "f35fb19924fa8d1518c1bad4067a7a67682b865c08727568a92e6c70576629d3",
+  "program_sha256": {
+    "crossplatform/round43/train43.py": "ba3062d7bcaafe235814472e111a47a654e06c25c7ba80802bacd9c3e20ab0a2",
+    "crossplatform/round24/fit24.py": "9e86e7373ac7a2eefaf94603ecfb0c84a6df7092c4a1da1ebbf830ada89d6e2d",
+    "crossplatform/round24/common24.py": "32a450e2643aa1fc66649e67af315c4651f682b4031fccefacbf2cfaf5e5815c"
+  },
+  "input_sha256": {
+    "research/round24/input/D208_PRIVATE.json": "ee1a1a4b7c952673e16a0151102f32fd15deb53513664d844b4d7050e1f7f536",
+    "research/round24/input/V64_PRIVATE.json": "e1dd41e8c72a0f313aaecbc374ebd7f62855ad80a87b2e8f54d6296c25cd656a",
+    "crossplatform/round24/capture336_attempt001/SEALED.json": "88d6e92e11ff3257e306a519ffac3551829eaa0fd934baec210e34452c678e83",
+    "crossplatform/round23/bank272_attempt001/SEALED.json": "d6426c3ef695ee4a27ce65dd258b48b89c14b0c99086476b65ede42085764f7d",
+    "crossplatform/round24/screen_attempt001/SEALED.json": "94b595161dbb4b0328e1e8437146dae201da64e9d6457e292779ba330bd3da15",
+    "crossplatform/round24/memory_attempt001/SEALED.json": "c8eabf6cc0b7023363010bf97abf72ddbb5bc86c462ad072ede1570085d37165",
+    "research/round43/independent_review/STATIC_REVIEW_RESULT.json": "42c01bd8e0ab94e7250da8f79e211c823ba09a7d8b4363ac1b61096855e59d96"
+  },
+  "configs": [
+    "full_probability",
+    "full_token_logodds",
+    "null_probability",
+    "null_token_logodds"
+  ],
+  "states": 8,
+  "steps": 128,
+  "optimizer": "AdamW5e-4wd0x16",
+  "onlychangedterm": "teacherKL studentp/z;sourceKL.2/hinge.5margin.05/paramanchor/native readout unchanged",
+  "control_gate": "bothfullprob oldquery_mlp_lr1_s16 state maxerror<=1e-6 and allA/Vqexact beforeotherstates",
+  "native_mlp_probs_zero_one_bound": "idealized;do notclamporfilter",
+  "memory": "originalV64 fullGmemoryquery_a1 sealedreused,originalscorevectorunavailable explicit;zerodelta memory=source. OnlyfullGsameinfo",
+  "currentG": "secondaryfulllearnedheads+samecurrentdeltaG vsfrozendirectG,notpureTTAgain",
+  "no_GPU_expansion": "atmost20minowner, noGT/tempgrid/extraepochs/newG/FINAL_U_T;no fullgrounderclosureclaim",
+  "preexecution_refinement": "BeforeGPU: poststep16 objective, fullnative/z vectors, exactteacher/padding/mask contracts, allusedoriginalcachebytechecks added; objective andbudgetunchanged; initialunexecutedlockpreserved"
+}

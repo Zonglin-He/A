@@ -1,0 +1,30 @@
+{
+  "state": "STOP_FIXED_DENSE_TEACHER_STUDENT_LOGODDS_CONFIGURATION",
+  "completed_states": 8,
+  "completed_optimizer_steps": 128,
+  "matched_original_R24_control": "both platform heads bitexact; 272 A/V query and original task values exact",
+  "independent_CPU_audit": "PASS",
+  "V64_exposed_development": true,
+  "V64_balanced_mIoU_percent": {
+    "source": 28.063498186949786,
+    "full_probability": 28.972261974611904,
+    "full_token_logodds": 1.2515767539357423,
+    "null_probability": 27.736369641817028,
+    "null_token_logodds": 1.6046299532700954,
+    "direct_G": 31.178995349058514,
+    "full_probability_plus_current_G": 31.907428705476505,
+    "full_token_logodds_plus_current_G": 4.407486568309096,
+    "legacy_fullG_memory": 26.037295984339828
+  },
+  "coordinate_factor_full_minus_probability_pp": -27.720685220676163,
+  "coordinate_factor_null_minus_probability_pp": -26.13173968854693,
+  "interaction_pp": -1.5889455321292312,
+  "interpretation": "teacher expression restriction is real but direct student z substitution is harmful in this fixed objective and budget. Null teacher also collapses, so wrong G is not required to produce the failure. Distribution reformatting, gradient and loss interactions remain competing mechanisms; no broad impossibility claim about logit-based TTA.",
+  "original_probability_positive_result_retained": true,
+  "no_new_default_or_TTA_adoption": true,
+  "no_steps_rates_temperatures_layers_expansion": true,
+  "new_G_VLM_source_training": false,
+  "new_head_full_grounder_closure": false,
+  "FINAL_U_T_reads": false,
+  "GPU_released": true
+}

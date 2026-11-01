@@ -1,0 +1,480 @@
+[
+  {
+    "platform": "drone",
+    "configuration": "full_probability",
+    "params": 184960,
+    "steps": 16,
+    "lr": 0.0005,
+    "teacher_mode": "full_original_G",
+    "teacher_KL_student_coordinate": "native_probability",
+    "sourceKL_hinge_readout_coordinate": "native_probability",
+    "initial_probability_replay_maxerror": 8.642673492431641e-07,
+    "trace": [
+      {
+        "step": 1,
+        "total": 0.3971215486526489,
+        "teacher_KL": 0.3547351062297821,
+        "source_KL_native": -3.620516508817673e-08,
+        "hinge_native": 0.08477286249399185,
+        "parameter_anchor": 0.0,
+        "gradient_L2": 0.2242935299873352
+      },
+      {
+        "step": 4,
+        "total": 0.39006465673446655,
+        "teacher_KL": 0.3522520065307617,
+        "source_KL_native": 0.0025786757469177246,
+        "hinge_native": 0.07458837330341339,
+        "parameter_anchor": 2.746491190919187e-06,
+        "gradient_L2": 0.17305085062980652
+      },
+      {
+        "step": 8,
+        "total": 0.38164016604423523,
+        "teacher_KL": 0.3509213626384735,
+        "source_KL_native": 0.011278917081654072,
+        "hinge_native": 0.05690274387598038,
+        "parameter_anchor": 1.1634889233391732e-05,
+        "gradient_L2": 0.1454920619726181
+      },
+      {
+        "step": 16,
+        "total": 0.36518386006355286,
+        "teacher_KL": 0.3392617404460907,
+        "source_KL_native": 0.01639815978705883,
+        "hinge_native": 0.045222386717796326,
+        "parameter_anchor": 3.127871241304092e-05,
+        "gradient_L2": 0.1621779501438141
+      }
+    ],
+    "final_terms_after_step16": {
+      "teacher_KL": 0.33757272362709045,
+      "source_KL_native": 0.01650841161608696,
+      "hinge_native": 0.043237414211034775,
+      "parameter_anchor": 3.382488648639992e-05,
+      "total": 0.36252692341804504
+    },
+    "parameter_delta_L2": 1.3259081840515137,
+    "final_A_teacher_top1_agreement_percent": 66.34615384615384,
+    "matched_original_control": {
+      "state_maxerror": 0.0,
+      "state_bitexact": true,
+      "A_V_query_matches": 136,
+      "state_tolerance_prespecified": 1e-06,
+      "query_contract": "exact, no label-based tolerance"
+    }
+  },
+  {
+    "platform": "quad",
+    "configuration": "full_probability",
+    "params": 184960,
+    "steps": 16,
+    "lr": 0.0005,
+    "teacher_mode": "full_original_G",
+    "teacher_KL_student_coordinate": "native_probability",
+    "sourceKL_hinge_readout_coordinate": "native_probability",
+    "initial_probability_replay_maxerror": 1.043081283569336e-06,
+    "trace": [
+      {
+        "step": 1,
+        "total": 0.6454588770866394,
+        "teacher_KL": 0.5772185921669006,
+        "source_KL_native": -9.45650668882081e-09,
+        "hinge_native": 0.13648052513599396,
+        "parameter_anchor": 0.0,
+        "gradient_L2": 1.2351998090744019
+      },
+      {
+        "step": 4,
+        "total": 0.5961061716079712,
+        "teacher_KL": 0.5437239408493042,
+        "source_KL_native": 0.05669712275266647,
+        "hinge_native": 0.08207614719867706,
+        "parameter_anchor": 4.729755801236024e-06,
+        "gradient_L2": 0.8323698043823242
+      },
+      {
+        "step": 8,
+        "total": 0.5805700421333313,
+        "teacher_KL": 0.5287355184555054,
+        "source_KL_native": 0.016949709504842758,
+        "hinge_native": 0.09686723351478577,
+        "parameter_anchor": 1.0982340427290183e-05,
+        "gradient_L2": 0.48012813925743103
+      },
+      {
+        "step": 16,
+        "total": 0.5568916201591492,
+        "teacher_KL": 0.510856568813324,
+        "source_KL_native": 0.01771913282573223,
+        "hinge_native": 0.08492681384086609,
+        "parameter_anchor": 2.7781459721154533e-05,
+        "gradient_L2": 0.16867280006408691
+      }
+    ],
+    "final_terms_after_step16": {
+      "teacher_KL": 0.5098835229873657,
+      "source_KL_native": 0.014553593471646309,
+      "hinge_native": 0.08653368800878525,
+      "parameter_anchor": 3.026343256351538e-05,
+      "total": 0.5560913681983948
+    },
+    "parameter_delta_L2": 1.1885981559753418,
+    "final_A_teacher_top1_agreement_percent": 72.11538461538461,
+    "matched_original_control": {
+      "state_maxerror": 0.0,
+      "state_bitexact": true,
+      "A_V_query_matches": 136,
+      "state_tolerance_prespecified": 1e-06,
+      "query_contract": "exact, no label-based tolerance"
+    }
+  },
+  {
+    "platform": "drone",
+    "configuration": "full_token_logodds",
+    "params": 184960,
+    "steps": 16,
+    "lr": 0.0005,
+    "teacher_mode": "full_original_G",
+    "teacher_KL_student_coordinate": "token_logodds",
+    "sourceKL_hinge_readout_coordinate": "native_probability",
+    "initial_probability_replay_maxerror": 8.642673492431641e-07,
+    "trace": [
+      {
+        "step": 1,
+        "total": 18.521812438964844,
+        "teacher_KL": 18.47942543029785,
+        "source_KL_native": -3.620516508817673e-08,
+        "hinge_native": 0.08477286249399185,
+        "parameter_anchor": 0.0,
+        "gradient_L2": 59.2993049621582
+      },
+      {
+        "step": 4,
+        "total": 6.873264312744141,
+        "teacher_KL": 6.830929279327393,
+        "source_KL_native": 0.09836287051439285,
+        "hinge_native": 0.04530322179198265,
+        "parameter_anchor": 1.1061150871682912e-05,
+        "gradient_L2": 30.68230438232422
+      },
+      {
+        "step": 8,
+        "total": 0.9898226261138916,
+        "teacher_KL": 0.9324707984924316,
+        "source_KL_native": 0.16745829582214355,
+        "hinge_native": 0.047630418092012405,
+        "parameter_anchor": 4.4971555325901136e-05,
+        "gradient_L2": 8.308568954467773
+      },
+      {
+        "step": 16,
+        "total": 0.7054983377456665,
+        "teacher_KL": 0.6452056169509888,
+        "source_KL_native": 0.17199768126010895,
+        "hinge_native": 0.051556047052145004,
+        "parameter_anchor": 0.00011523335706442595,
+        "gradient_L2": 3.099426031112671
+      }
+    ],
+    "final_terms_after_step16": {
+      "teacher_KL": 0.6197471618652344,
+      "source_KL_native": 0.17199531197547913,
+      "hinge_native": 0.0514315664768219,
+      "parameter_anchor": 0.00012213445734232664,
+      "total": 0.6799840927124023
+    },
+    "parameter_delta_L2": 1.9015651941299438,
+    "final_A_teacher_top1_agreement_percent": 0.0
+  },
+  {
+    "platform": "quad",
+    "configuration": "full_token_logodds",
+    "params": 184960,
+    "steps": 16,
+    "lr": 0.0005,
+    "teacher_mode": "full_original_G",
+    "teacher_KL_student_coordinate": "token_logodds",
+    "sourceKL_hinge_readout_coordinate": "native_probability",
+    "initial_probability_replay_maxerror": 1.043081283569336e-06,
+    "trace": [
+      {
+        "step": 1,
+        "total": 32.54196548461914,
+        "teacher_KL": 32.473724365234375,
+        "source_KL_native": -9.45650668882081e-09,
+        "hinge_native": 0.13648052513599396,
+        "parameter_anchor": 0.0,
+        "gradient_L2": 85.51689910888672
+      },
+      {
+        "step": 4,
+        "total": 11.476031303405762,
+        "teacher_KL": 11.404349327087402,
+        "source_KL_native": 0.19618116319179535,
+        "hinge_native": 0.0648685097694397,
+        "parameter_anchor": 1.1539857950992882e-05,
+        "gradient_L2": 59.868778228759766
+      },
+      {
+        "step": 8,
+        "total": 1.2004921436309814,
+        "teacher_KL": 1.1074117422103882,
+        "source_KL_native": 0.3486534655094147,
+        "hinge_native": 0.04659734666347504,
+        "parameter_anchor": 5.116990359965712e-05,
+        "gradient_L2": 13.30542278289795
+      },
+      {
+        "step": 16,
+        "total": 1.1642338037490845,
+        "teacher_KL": 1.0645519495010376,
+        "source_KL_native": 0.35760825872421265,
+        "hinge_native": 0.05607097968459129,
+        "parameter_anchor": 0.00012468737259041518,
+        "gradient_L2": 3.799569606781006
+      }
+    ],
+    "final_terms_after_step16": {
+      "teacher_KL": 1.0411499738693237,
+      "source_KL_native": 0.3571491241455078,
+      "hinge_native": 0.05573630705475807,
+      "parameter_anchor": 0.00013167105498723686,
+      "total": 1.1405797004699707
+    },
+    "parameter_delta_L2": 1.9805917739868164,
+    "final_A_teacher_top1_agreement_percent": 0.0
+  },
+  {
+    "platform": "drone",
+    "configuration": "null_probability",
+    "params": 184960,
+    "steps": 16,
+    "lr": 0.0005,
+    "teacher_mode": "null_deltaG",
+    "teacher_KL_student_coordinate": "native_probability",
+    "sourceKL_hinge_readout_coordinate": "native_probability",
+    "initial_probability_replay_maxerror": 8.642673492431641e-07,
+    "trace": [
+      {
+        "step": 1,
+        "total": 0.014209120534360409,
+        "teacher_KL": -3.620516508817673e-08,
+        "source_KL_native": -3.620516508817673e-08,
+        "hinge_native": 0.02841832861304283,
+        "parameter_anchor": 0.0,
+        "gradient_L2": 0.01538535300642252
+      },
+      {
+        "step": 4,
+        "total": 0.017916103824973106,
+        "teacher_KL": 0.00319012557156384,
+        "source_KL_native": 0.00319012557156384,
+        "hinge_native": 0.028173213824629784,
+        "parameter_anchor": 1.347173906651733e-06,
+        "gradient_L2": 0.29984429478645325
+      },
+      {
+        "step": 8,
+        "total": 0.01502323243767023,
+        "teacher_KL": 0.0009133313433267176,
+        "source_KL_native": 0.0009133313433267176,
+        "hinge_native": 0.027848659083247185,
+        "parameter_anchor": 2.904346956711379e-06,
+        "gradient_L2": 0.12332363426685333
+      },
+      {
+        "step": 16,
+        "total": 0.014316230081021786,
+        "teacher_KL": 0.0003921742318198085,
+        "source_KL_native": 0.0003921742318198085,
+        "hinge_native": 0.02767959050834179,
+        "parameter_anchor": 5.825836979056476e-06,
+        "gradient_L2": 0.08104658126831055
+      }
+    ],
+    "final_terms_after_step16": {
+      "teacher_KL": 0.00014610355719923973,
+      "source_KL_native": 0.00014610355719923973,
+      "hinge_native": 0.027650393545627594,
+      "parameter_anchor": 5.984542440273799e-06,
+      "total": 0.014006505720317364
+    },
+    "parameter_delta_L2": 0.5654167532920837,
+    "final_A_teacher_top1_agreement_percent": 94.23076923076923
+  },
+  {
+    "platform": "quad",
+    "configuration": "null_probability",
+    "params": 184960,
+    "steps": 16,
+    "lr": 0.0005,
+    "teacher_mode": "null_deltaG",
+    "teacher_KL_student_coordinate": "native_probability",
+    "sourceKL_hinge_readout_coordinate": "native_probability",
+    "initial_probability_replay_maxerror": 1.043081283569336e-06,
+    "trace": [
+      {
+        "step": 1,
+        "total": 0.006065376102924347,
+        "teacher_KL": -9.45650668882081e-09,
+        "source_KL_native": -9.45650668882081e-09,
+        "hinge_native": 0.012130774557590485,
+        "parameter_anchor": 0.0,
+        "gradient_L2": 0.025135483592748642
+      },
+      {
+        "step": 4,
+        "total": 0.015648094937205315,
+        "teacher_KL": 0.007768902461975813,
+        "source_KL_native": 0.007768902461975813,
+        "hinge_native": 0.01264724601060152,
+        "parameter_anchor": 1.7883529608297977e-06,
+        "gradient_L2": 0.4706610143184662
+      },
+      {
+        "step": 8,
+        "total": 0.010130171664059162,
+        "teacher_KL": 0.0036549887154251337,
+        "source_KL_native": 0.0036549887154251337,
+        "hinge_native": 0.01148153841495514,
+        "parameter_anchor": 3.4158281323470874e-06,
+        "gradient_L2": 0.2329672873020172
+      },
+      {
+        "step": 16,
+        "total": 0.0059488993138074875,
+        "teacher_KL": 0.0002322694199392572,
+        "source_KL_native": 0.0002322694199392572,
+        "hinge_native": 0.011325380764901638,
+        "parameter_anchor": 7.485524292860646e-06,
+        "gradient_L2": 0.049534138292074203
+      }
+    ],
+    "final_terms_after_step16": {
+      "teacher_KL": 0.0003493607509881258,
+      "source_KL_native": 0.0003493607509881258,
+      "hinge_native": 0.011202537454664707,
+      "parameter_anchor": 8.218013135774527e-06,
+      "total": 0.006028719712048769
+    },
+    "parameter_delta_L2": 0.6500777006149292,
+    "final_A_teacher_top1_agreement_percent": 97.11538461538461
+  },
+  {
+    "platform": "drone",
+    "configuration": "null_token_logodds",
+    "params": 184960,
+    "steps": 16,
+    "lr": 0.0005,
+    "teacher_mode": "null_deltaG",
+    "teacher_KL_student_coordinate": "token_logodds",
+    "sourceKL_hinge_readout_coordinate": "native_probability",
+    "initial_probability_replay_maxerror": 8.642673492431641e-07,
+    "trace": [
+      {
+        "step": 1,
+        "total": 18.41084098815918,
+        "teacher_KL": 18.396631240844727,
+        "source_KL_native": -3.620516508817673e-08,
+        "hinge_native": 0.02841832861304283,
+        "parameter_anchor": 0.0,
+        "gradient_L2": 59.92236328125
+      },
+      {
+        "step": 4,
+        "total": 6.65462064743042,
+        "teacher_KL": 6.617859363555908,
+        "source_KL_native": 0.10014551877975464,
+        "hinge_native": 0.033442649990320206,
+        "parameter_anchor": 1.1033748705813196e-05,
+        "gradient_L2": 30.91437339782715
+      },
+      {
+        "step": 8,
+        "total": 0.6402891278266907,
+        "teacher_KL": 0.5831008553504944,
+        "source_KL_native": 0.16803567111492157,
+        "hinge_native": 0.04707168787717819,
+        "parameter_anchor": 4.5295288146007806e-05,
+        "gradient_L2": 8.054174423217773
+      },
+      {
+        "step": 16,
+        "total": 0.3960195481777191,
+        "teacher_KL": 0.33582621812820435,
+        "source_KL_native": 0.17192703485488892,
+        "hinge_native": 0.05138426646590233,
+        "parameter_anchor": 0.00011578288831515238,
+        "gradient_L2": 3.1069345474243164
+      }
+    ],
+    "final_terms_after_step16": {
+      "teacher_KL": 0.311397522687912,
+      "source_KL_native": 0.171921044588089,
+      "hinge_native": 0.05127812176942825,
+      "parameter_anchor": 0.00012266950216144323,
+      "total": 0.3715434670448303
+    },
+    "parameter_delta_L2": 1.9023630619049072,
+    "final_A_teacher_top1_agreement_percent": 0.0
+  },
+  {
+    "platform": "quad",
+    "configuration": "null_token_logodds",
+    "params": 184960,
+    "steps": 16,
+    "lr": 0.0005,
+    "teacher_mode": "null_deltaG",
+    "teacher_KL_student_coordinate": "token_logodds",
+    "sourceKL_hinge_readout_coordinate": "native_probability",
+    "initial_probability_replay_maxerror": 1.043081283569336e-06,
+    "trace": [
+      {
+        "step": 1,
+        "total": 33.182708740234375,
+        "teacher_KL": 33.17664337158203,
+        "source_KL_native": -9.45650668882081e-09,
+        "hinge_native": 0.012130774557590485,
+        "parameter_anchor": 0.0,
+        "gradient_L2": 88.38396453857422
+      },
+      {
+        "step": 4,
+        "total": 11.253697395324707,
+        "teacher_KL": 11.204533576965332,
+        "source_KL_native": 0.2097063660621643,
+        "hinge_native": 0.014422200620174408,
+        "parameter_anchor": 1.1573674782994203e-05,
+        "gradient_L2": 61.81898498535156
+      },
+      {
+        "step": 8,
+        "total": 0.684782862663269,
+        "teacher_KL": 0.5913130044937134,
+        "source_KL_native": 0.3507674038410187,
+        "hinge_native": 0.04653036594390869,
+        "parameter_anchor": 5.11951839143876e-05,
+        "gradient_L2": 13.750930786132812
+      },
+      {
+        "step": 16,
+        "total": 0.6635554432868958,
+        "teacher_KL": 0.5636784434318542,
+        "source_KL_native": 0.35820671916007996,
+        "hinge_native": 0.05622028931975365,
+        "parameter_anchor": 0.00012554175918921828,
+        "gradient_L2": 3.8353447914123535
+      }
+    ],
+    "final_terms_after_step16": {
+      "teacher_KL": 0.5472614765167236,
+      "source_KL_native": 0.3578622341156006,
+      "hinge_native": 0.05593135580420494,
+      "parameter_anchor": 0.00013257254613563418,
+      "total": 0.6469321250915527
+    },
+    "parameter_delta_L2": 1.9894376993179321,
+    "final_A_teacher_top1_agreement_percent": 0.0
+  }
+]

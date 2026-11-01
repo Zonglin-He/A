@@ -1,0 +1,35 @@
+{
+  "round": "R43",
+  "registered_local": "2026-11-02T04:59:26.853253+08:00",
+  "state": "AUTHORIZED_CPU_PREMISE_DIAGNOSTIC_ONLY_NOT_TRAINING",
+  "scope": "alloriginalR24D208=A208 oldG sourcefeatures/evidence only, no GT/media/taskscore/newmodel/GPU/optimization/FINAL",
+  "teacher_exact_original_formula": "F64=sourcep.astype(float)+2*vision+2*position+2*relation;actualR24F32=F64.astype(float32);pG=softmax(F32/.25)",
+  "teacher_preservation": "all256/208 rows;allpositive/negative/zero evidence values unchanged;noUNKNOWN or thresholdbasedrow/candidatefilter;zeroevidenceisnotautomaticallysemanticUNKNOWN",
+  "native_probability_bound": "ideal s_i in[0,1],K256,tau.25 =>candidate posterior max<=exp4/(255+exp4)=.1763516675642254;teacherFspan>1 sufficient full-distribution impossibility,peak<=cap doesnot imply representability",
+  "diagnostics": [
+    "F32 range andrange>1",
+    "teacherpeak andpeak>idealcap",
+    "teacherentropy/sourceprobposteriorentropy/sourcezposteriorentropy",
+    "alloriginalevidencesigncounts andempty/zero/constantDeltaG",
+    "KL(pG||sourceprobposterior) andKL(pG||sourcezposterior)",
+    "initialnativehinge(fullGtarget andnullGsourceq0)",
+    "conservativeBernoulliKLlowerboundatteacherpeak,notfulloptimalKL",
+    "float32CPUtorchsoftmax vsfloat64stableformulameasurement only"
+  ],
+  "null_signal_confound": "rawFteacherfixed plusstudentKLz hasnonzero sourceinitialteacherKL evenDeltaGzero/constant;do notcallpuregainfromexternalG. Do notchange/zero/selectsamples bythisdiagnosis",
+  "source_z": "cachedfrozenquery/tokens matrixdot/.07,LSE(P)-LSE(complement),samecachedtoken_mask,allactualtokens/sentinel/specials;CPUonly no MLP/source forward",
+  "numeric_contract": "recordactualF32 andCPU32posterior,CPU64analyticposterior fromsameF32;no GPUexactbitparityclaim;no temperaturesearch",
+  "rank_adapter_counterexample": "originalrank_adapter returnssourcep+unboundedlinearresidual;[0,1]bounddoesnotapply,negativehistoricaladapterresultkept",
+  "outputs": "all208fullvectors andperrowstats sealed;then label-freeplatform reductions;no taskprediction/IoUscore",
+  "future_draft_only": "sameoldteacher/source/queryMLP/AdamW5e-4wd0x16pair;onlyteacherKLstudentp→z;anchorKL/hinge remainp,paramregunchanged,finalnativepreadout;matchedR24control;full/nullDeltaGproposedcontrolnotyettrained;directG/memorysameinformation",
+  "input_sha256": {
+    "research/round41/independent_review/DENSE_DISTILLATION_INTERFACE_CARD.md": "9d141c24f9701d948fdb80e6868a036b97039afdc3c16b7a0b774c5718137d4e",
+    "research/NIGHT_20261101/reviews/DENSE_DISTILL_INTERFACE_REVIEW_ROOT.json": "c2df1031fe0ddf7cd56aeb516793d317674387300ae6d5dccc08682474c0d796",
+    "crossplatform/round24/fit24.py": "9e86e7373ac7a2eefaf94603ecfb0c84a6df7092c4a1da1ebbf830ada89d6e2d",
+    "crossplatform/round24/capture336_attempt001/SEALED.json": "88d6e92e11ff3257e306a519ffac3551829eaa0fd934baec210e34452c678e83",
+    "crossplatform/round23/bank272_attempt001/SEALED.json": "d6426c3ef695ee4a27ce65dd258b48b89c14b0c99086476b65ede42085764f7d",
+    "research/round24/input/D208_PRIVATE.json": "ee1a1a4b7c952673e16a0151102f32fd15deb53513664d844b4d7050e1f7f536",
+    "research/round24/experiment/FIT_SPEC_LOCK.json": "580edc53d0464e5a66ccd16faef68be1d719da80e584ae773588050126b2c51f"
+  },
+  "implementation_lock": "separateprogramhashlockbeforeanyarraydiagnostic"
+}

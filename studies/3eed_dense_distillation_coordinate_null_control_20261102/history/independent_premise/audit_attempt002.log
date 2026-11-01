@@ -1,0 +1,27 @@
+Traceback (most recent call last):
+  File "WORKSPACE_ROOT/research/round43/independent_premise/audit43_premise.py", line 67, in <module>
+    if __name__=='__main__':main()
+                            ^^^^^^
+  File "WORKSPACE_ROOT/research/round43/independent_premise/audit43_premise.py", line 66, in main
+    result={'state':'PASS_INDEPENDENT_LABEL_FREE_PREMISE_REPLAY','n':208,'candidates_per_row':256,'teacher_F64_F32_cast_and_all_evidence_arrays_exact':True,'all_CPUtorch32_posteriors_bit_exact':True,'sourcez_recomputed_with_actual_tokenmask_and_all_tokens':True,'ideal_native_cap':float(cap),'max_numeric_errors':dict(errors),'all_scalar_and_platform_reductions_reproduced':True,'counts':{pl:{k:reductions[pl][k] for k in ['n','F_range_gt1','teacher_peak_gt_cap','deltaG_zero_rows','deltaG_constant_rows']} for pl in reductions},'null_initialKL_mean':reductions['all']['null_KL_source_probability_to_source_z']['mean'],'zeroDeltaG_mean_teacher_to_z_KL':reductions['all']['zero_delta']['mean_KL_teacher_to_source_z'],'exact_real_span_gt1':sum(r['F32_interpreted_real_exact_span']>1 for r in records),'rounded_span_count_differs_exact':any((r['F32_interpreted_real_exact_span']>1)!=r['F32_range_gt1'] for r in records),'source_probability_min':source_low,'source_probability_max':source_high,'source_probability_components_outside_ideal01':outside,'positive_token_count_range':[min(t['positive'] for t in tokens),max(t['positive'] for t in tokens)],'all_token_count_range':[min(t['all'] for t in tokens),max(t['all'] for t in tokens)],'rank_adapter_unbounded_counterexample_reproduced':True,'sealed_input_sha256':sha(SEALED/'SEALED.json'),'no_GT_source_training_GPU_model_optimizer_or_FINAL':True,'semantic_reliability_and_task_gain_not_established':True,'no_author_outputs_modified':True,'seconds':time.perf_counter()-start};dump(OUT/'AUDIT_RESULT.json',result);dump(OUT/'INDEPENDENT_ROWS_PRIVATE.json',records);dump(OUT/'INDEPENDENT_REDUCTIONS.json',reductions);print(json.dumps(result,indent=2))
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "LOCAL_HOME/visual grounding/.conda/tubedetr/lib/python3.11/json/__init__.py", line 238, in dumps
+    **kw).encode(obj)
+          ^^^^^^^^^^^
+  File "LOCAL_HOME/visual grounding/.conda/tubedetr/lib/python3.11/json/encoder.py", line 202, in encode
+    chunks = list(chunks)
+             ^^^^^^^^^^^^
+  File "LOCAL_HOME/visual grounding/.conda/tubedetr/lib/python3.11/json/encoder.py", line 432, in _iterencode
+    yield from _iterencode_dict(o, _current_indent_level)
+  File "LOCAL_HOME/visual grounding/.conda/tubedetr/lib/python3.11/json/encoder.py", line 406, in _iterencode_dict
+    yield from chunks
+  File "LOCAL_HOME/visual grounding/.conda/tubedetr/lib/python3.11/json/encoder.py", line 406, in _iterencode_dict
+    yield from chunks
+  File "LOCAL_HOME/visual grounding/.conda/tubedetr/lib/python3.11/json/encoder.py", line 406, in _iterencode_dict
+    yield from chunks
+  File "LOCAL_HOME/visual grounding/.conda/tubedetr/lib/python3.11/json/encoder.py", line 439, in _iterencode
+    o = _default(o)
+        ^^^^^^^^^^^
+  File "LOCAL_HOME/visual grounding/.conda/tubedetr/lib/python3.11/json/encoder.py", line 180, in default
+    raise TypeError(f'Object of type {o.__class__.__name__} '
+TypeError: Object of type int64 is not JSON serializable

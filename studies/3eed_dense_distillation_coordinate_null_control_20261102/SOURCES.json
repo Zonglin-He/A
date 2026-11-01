@@ -1,0 +1,37 @@
+{
+  "checked_local": "2026-11-02T05:04:26.137248+08:00",
+  "primary_sources_only": [
+    {
+      "title": "Hinton/Vinyals/Dean2015",
+      "url": "https://arxiv.org/pdf/1503.02531",
+      "checked": "Section2 logits/sharedtemperature; Section2 gradientsandT2 relativeweight; notsameaspostprobabilitycandidateKL"
+    },
+    {
+      "title": "RLCF ICLR2024 paper",
+      "url": "https://proceedings.iclr.cc/paper_files/paper/2024/file/0faa4bc5f522076947a030273629d4fe-Paper-Conference.pdf",
+      "checked": "sampledrewardfeedback policygradient;notdenseKD baseline"
+    },
+    {
+      "title": "RLCF official tpt_cls_rl.py",
+      "url": "https://raw.githubusercontent.com/mzhaoshuai/RLCF/master/TPT/tpt_cls_rl.py",
+      "checked": "test_time_tuning topk outputs; rewardweighted crossentropy onrawmodeloutputs; optionalentropy"
+    },
+    {
+      "title": "RLCF official custom_clip.py",
+      "url": "https://raw.githubusercontent.com/mzhaoshuai/RLCF/master/TPT/clip/custom_clip.py",
+      "checked": "image/text featureL2norm; exp(model.logit_scale)*cosine ->outputlogits"
+    },
+    {
+      "title": "RLCF official clip_reward.py",
+      "url": "https://raw.githubusercontent.com/mzhaoshuai/RLCF/master/TPT/clip_reward.py",
+      "checked": "normalizedfrozenCLIPfeatures; positiveCLIPScore and rewardmeanbaseline/optionalstd; policylogitsscaleandrewardscalearedistinct"
+    }
+  ],
+  "external_code_read_as_untrusted_data_not_executed": true,
+  "method_claim": "hypothesis/proposedcontrolledinterfacecomparison;notHinton/RLCFreproduction",
+  "local_evidence": {
+    "crossplatform/round24/fit24.py": "9e86e7373ac7a2eefaf94603ecfb0c84a6df7092c4a1da1ebbf830ada89d6e2d",
+    "research/round41/independent_review/DENSE_DISTILLATION_INTERFACE_CARD.md": "9d141c24f9701d948fdb80e6868a036b97039afdc3c16b7a0b774c5718137d4e",
+    "research/round43/premise/SUMMARY.json": "8d405b6935a9c7676066007fbdf5d0f347b9a11a6350a4b00668e9462610e5d4"
+  }
+}

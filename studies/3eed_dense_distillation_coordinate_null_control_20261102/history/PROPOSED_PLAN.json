@@ -1,0 +1,35 @@
+{
+  "state": "PROPOSED_NOT_AUTHORIZED_TO_TRAIN_OR_SCORE",
+  "factorial": "2student_teacherKLcoordinates(prob,z) x2teacherinformation(fullG,nullDeltaG)",
+  "initialization": "sameoriginalR24Waymo-onlysource,platformindependent, noR30warmstart",
+  "teacher": "full usesexactoriginalF32 fromallD208G;nullF=source_nativep inbothcoordinatearms",
+  "unchanged_terms": "sourceKL onnativep at.25 weight.2; nativehinge margin.05 weight.5; originalparameteranchor; noR30keep",
+  "student_interface": "onlyqueryprojectionMLP288->288->288->64,184960params",
+  "optimization": "proposedAdamWlr5e-4wd0,16steps,nosweep",
+  "states": 8,
+  "optimizer_steps": 128,
+  "readout": "allarmsnativefloat32probability sameoldR24; noR41readoutchange",
+  "matched_control": "fullprobability shouldreplayoriginalquery_mlp_lr1_s16states andA/V64q beforecausalinterpretation",
+  "sameinfo_controls": {
+    "fullG": [
+      "source+sameGdirect",
+      "sameA oldGmemory; existingknownnumericalboundsdisclosed"
+    ],
+    "nullG": [
+      "source",
+      "zeroDeltaGmemoryexactsource"
+    ]
+  },
+  "not_fair_null_controls": "fullGdirect/memory ownsextrainformation; onlyextrasystemreferenceifcomparednull",
+  "primary_contrasts": [
+    "zfull-probfull",
+    "znull-probnull",
+    "(zfull-probfull)-(znull-probnull)",
+    "full-nullwithineachcoordinate"
+  ],
+  "data": "originalD208fit,oldV64exposedforwardforboundeddevelopment;newpredictionssealedbeforetaskscore;noFINAL",
+  "null_rationale": "109zeroGrows plusp0z vs p0prob largeKL; probabilitynullalsohingeactive so cannotreplacewithfrozen",
+  "code_sha256": "6a6811e43c012f373a18319f0b351e6ddf1d44273c076f17ceb5907e24be61d7",
+  "premise_sha256": "8d405b6935a9c7676066007fbdf5d0f347b9a11a6350a4b00668e9462610e5d4",
+  "no_GPU_model_training_or_taskscore_executed": true
+}
