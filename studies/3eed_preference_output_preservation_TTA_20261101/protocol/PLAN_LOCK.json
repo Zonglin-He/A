@@ -1,0 +1,14 @@
+{
+ "claim":"Relative logodds output preservation on A without accepted feedback reduces adaptation interference while retaining supervised corrections and new-observation benefits.",
+ "fixed":"same22R29pseudo preferences, full matchingqueryMLP184960params,logodds groupmax RankNet tau0.1,w1,AdamW5e-4x16,weightdecay0,seed0; source initialization perplatform/beta; no regression/architecture/Gchanges",
+ "keep":"U=A without anyacceptedfeedback (189obs total:96Drone93Quad). Fixed sourceq0; dtheta(i)=logodds_theta(i)-logodds_theta(q0); MSE over Ux256 against dsource. No tasklabels in fitting.",
+ "finite_beta_grid":[0,0.1,1,10],
+ "development":"oldQ64 fromR27,32/platform, all previously exposed. No new labels claimed. Not fit, not included in keep loss. R29R64 forbidden for beta/layer/stopping selection.",
+ "selection":"one common beta for bothplatforms, highest DEV64 balancedmIoU among states implementing >=5/6 correctiveB pair directions and >=4/6 finalpositivegroup choices onA; iftie smallerbeta. Include beta0. Ifpositivebetas all fail, report gatefailure; do not extend grid.",
+ "new_confirmation":"newS64,32/platform,inputhash+scene roundrobin,actualRGB/XYZdisjoint prior528,R29R64 anddeclaredhistory; samehistoricalscenes/fullVALexposure disclosed. No Sfeedback, fitting or tuning. Freeze beta and seal allselected predictions before Stasklabels.",
+ "controls":["frozen source","R29logodds beta0 unchanged","selected beta outputkeep","sameA feedback direct/no-update onA","sameA nonparametricmemory onS, no currentS_G"],
+ "evidence_diagnostic":"Hide taskandadaptationscores; label22pairs fromsameRGB/fullcaption: appearance discriminates, geometry/relation discriminates,both,neither/unknown. Descriptive availableevidence, not Qwenreasoning or proofXYZobservability. No changing original directions/filtering training. Ifpuretypes insufficient, report nonidentifiability ratherthan manufacture comparison.",
+ "thirdcandidate_diagnostic":"For each existing pair, trackP/N/other group maxima, final representative, globalescape and source drift. Never append inferred negatives; no newQwencomparisons.",
+ "budget":"4betasx2platformsx16steps; one selected64sample sourcecapture+fullmodelclosure; CPUreviews/audits; no EATA/EcoTTA/RGBtraining in this mainexperiment.",
+ "run":"planned","measurement":"unchecked","claim_state":"untested","all_negatives_retained":true
+}
