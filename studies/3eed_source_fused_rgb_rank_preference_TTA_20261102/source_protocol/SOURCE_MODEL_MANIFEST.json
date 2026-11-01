@@ -1,0 +1,39 @@
+{
+  "scope": "research source prototype, not production replacement or TTA result",
+  "source_platforms": [
+    "waymo"
+  ],
+  "default_seed": 0,
+  "model_class": "FrozenTrimodalGrounder",
+  "inference_source_file": "WORKSPACE_ROOT/crossplatform/round25/infer25.py",
+  "configs": [
+    {
+      "seed": 0,
+      "family": "residual_rank",
+      "state_path": "WORKSPACE_ROOT/crossplatform/round25/training_rank_attempt001/states_PRIVATE/rgb_seed0_e01.npz",
+      "sha256": "0ba0e54400af46b612c227b79e6f69546212d8152b92a171bb30ef4d732aec2b",
+      "source_selected_epoch": 1,
+      "source_trainable_parameters": 136930
+    },
+    {
+      "seed": 1,
+      "family": "residual_rank",
+      "state_path": "WORKSPACE_ROOT/crossplatform/round25/training_rank_attempt001/states_PRIVATE/rgb_seed1_e05.npz",
+      "sha256": "2ac7a3a783a1b80d9b259f38452378d80a013b0ec7d4bf570912108846d79c3b",
+      "source_selected_epoch": 5,
+      "source_trainable_parameters": 136930
+    }
+  ],
+  "base_checkpoint": "WORKSPACE_ROOT/crossplatform/round6/waymo_source100/checkpoints/epoch100_model_attempt001.pth",
+  "base_checkpoint_sha256": "0d8766abaf06c9f3e2500fcb187337982d391f9e4d46ca854f3b3bb70fd33bbd",
+  "RGB_asset": "WORKSPACE_ROOT/crossplatform/round25/assets/resnet34-b627a593.pth",
+  "runtime_inputs": [
+    "XYZ",
+    "RGB",
+    "full caption",
+    "camera calibration",
+    "point sampling seed/platform"
+  ],
+  "inference_GT_or_feature_cache_required": false,
+  "target_TTA_steps": 0
+}

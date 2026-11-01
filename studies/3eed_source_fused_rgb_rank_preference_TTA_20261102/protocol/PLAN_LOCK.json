@@ -1,0 +1,67 @@
+{
+  "round": "R36",
+  "registered_local": "2026-11-02T02:36:06.945983+08:00",
+  "status": "planned before any new RGB extraction/fitting/scoring",
+  "claim": "Existing source-trained RGB fusion may allow external preference adaptation to transfer better than matched source-trained noRGB, under fixed native-score rank-head update",
+  "source_models": "R25 source-only preselected residual_rank seed0 RGB e01 and noRGB e01, not reselected by target",
+  "factor_matrix": {
+    "source_input_model": [
+      "rgb",
+      "no_rgb"
+    ],
+    "adaptation": [
+      "frozen",
+      "rank_MLP_TTA"
+    ]
+  },
+  "update": "only existing rank Linear200-64/GELU/Linear64-1,12929parameters; all nonrank fusion/backbone/gate/QKV/delta/projection frozen",
+  "optimizer": "AdamW lr0.0005 weight_decay0",
+  "steps": 16,
+  "states": 4,
+  "total_optimizer_steps": 64,
+  "feedback": "all22original accepted pairs, unchanged P/N groups;10Drone/12Quad denominator",
+  "keep": "original nonfeedback U96/93,189total rows; beta1; no R35 partialmask",
+  "loss": "mean softplus(-(maxP native_s-maxN native_s)/0.1)+mean_U((s-s[frozenq0]-(s0-s0[frozenq0]))^2)",
+  "native_score": "actual R25 s=logmass+alpha*rank; stable implementation s0+alpha*(rank_theta(u)-rank_source(u)), not old nounlogodds",
+  "source_q0": "each source fusion mode and row own frozen native argmax",
+  "A_group_readout": "fixed source-fused representative within old duplicate groups; frozen raw q0 exact, group-vs-raw adaptation differences disclosed",
+  "same_information_control": "native-score margin0.1 minimum groupL2 QP on original A pairs; frozen normalized rankinput200 key containsRGB/text/geometry; all A queries, raw0 forU; DEV GPU float32 max/topk4 thenfirst k1,temperature0.1; transfer raw then subtract current frozenq0 correction; no R34 hardgate/no addednegative",
+  "A_no_update_control": "same-observation direct QP using same original pair information; unknown group correction0",
+  "all_vectors_and_indices": "sourcefused native scores, TTA native scores, QP/memory full256, actual GPU obs/query/sim/weights/ties/gaps saved",
+  "RGB_new_extraction": "DEV64 only, A208 exactly reuse legal002; no historical full extraction or FINAL",
+  "DEV_input_use": "features only for frozen/readout; no DEV loss terms or labels fit",
+  "primary_mechanism": "paired delta_TTA_RGB - delta_TTA_noRGB on DEV, balanced across platforms, each relative its own sourcefused frozen",
+  "primary_adoption_gate": "RGB_TTA DEV balanced > own frozen AND > own sameinfo rank200memory; otherwise stop fixed rank config, no interface/step/seed sweep, no FINAL",
+  "references": "originalXYZ source/R30 system references only, architecture/source training gains notTTA",
+  "legacy_B": "report six old B direction/final statuses only, not eligibility since fused source q0 may differ",
+  "closure": "prehash fixed one input per A/DEV xplatform,4observations; each source mode actual point/RGB/fusion source+adapted readout16fullforwards; frozen boxes and nonrank hash check",
+  "all_ADEV_predictions_sealed_before_task_labels": true,
+  "all_negatives_preserved": true,
+  "U": "already exposed, not read by this A/DEV experiment; later diagnosis only after additional root registration",
+  "FINAL384": "no read",
+  "paper_provenance": "WildRefer/xMUDA mechanisms inspiration only, not reproduced; no teacher/EMA/new source training",
+  "program_sha256": {
+    "crossplatform/round36/common36.py": "69202a3d572a5a2c0bd407306063e0a9898c8e3d0c6ab0690621db8669e79291",
+    "crossplatform/round36/prepare36.py": "b778ab56b9035950c30e7ac7a09448838f49e88135ea6fc31fc36381b0718259",
+    "crossplatform/round36/fit36.py": "4e7ed77204699519954ff296aa01c33cfdde56152b219040906b1733dd51a5b3",
+    "crossplatform/round36/closure36.py": "f1f4c36c5c021fab45f04f5e25e5813f40eec8abe0525e29294d3a4c755bc32a",
+    "crossplatform/round36/audit36.py": "46384367bc69373a1432ba6e33078edef50fa7ac21a95ec4b227ef2453fe9e78",
+    "crossplatform/round36/score36.py": "3daba9caf5590d2a06bbe565930bd6c52a198fabc3ad98f30fc0625636b22210",
+    "crossplatform/round36/synthetic36.py": "0d71ac1657bab1afe90d2ae10f0edb6e7f3d00a79c4b1078561965e73c1f72f4",
+    "crossplatform/round25/fusion25.py": "3739263a7ecb63ab5be937cdf94ebcf94d0e971676ba4072902390baf4fac992",
+    "crossplatform/round25/rank_fusion25.py": "b9742baef8279180a7faa3b7432b55836c3588fbda5bfd9733c4ad720c9202c7",
+    "crossplatform/round25/rgb25.py": "fe1542f0e4c68acf461617da84c8bf888f39b57c85a7311c15eaa6e5be66da4a",
+    "crossplatform/round25/infer25.py": "eceaa4ca8b4beab39ab828455e7db7d01bcc3b27690f8f3de3ec6e9d1ec330e1",
+    "crossplatform/round32/coordinate_projection32.py": "2e3da33387a71928e1b7f5e154008956601e19686eaaab6dc7ce4487bc6c4090"
+  },
+  "input_sha256": {
+    "research/round25/experiment/FINAL_SOURCE_SELECTED_LOCK.json": "45e9012dc7f8f5340489576917bba4aab4e36563532c0d7058e7745dc6219625",
+    "research/round25/experiment/SOURCE_MODEL_MANIFEST.json": "6100c9efed4e0a947b7079e99e8b28493c0d18694b6e1507b4f20b7f5c4c9afc",
+    "crossplatform/round25/rgb_features_attempt002/SEALED.json": "dc46c7c79843cd963a0db343c3c6b39968ae5e7fcc376d992a56dcf0a467e299",
+    "crossplatform/round25/source_features_attempt002/SEALED.json": "a2004de2f1607f85c291f95102905909223d6268c782d7147668dfad9fc2bded",
+    "crossplatform/round29/direct208_attempt001/FEEDBACK_PRIVATE.json": "f95e03c437a5850b74909677ce3980b33e88517b2768b5bf4d2a54b28bc06fb8",
+    "research/round36/experiment/CLOSURE_INPUTS_PRIVATE.json": "2e34d4b4f2d52c0576b5c632e7843baea0dae7da468d515226c211697c361d92",
+    "crossplatform/round25/training_rank_attempt001/states_PRIVATE/rgb_seed0_e01.npz": "0ba0e54400af46b612c227b79e6f69546212d8152b92a171bb30ef4d732aec2b",
+    "crossplatform/round25/training_rank_attempt001/states_PRIVATE/no_rgb_seed0_e01.npz": "46a5b3912a043ea9a34846753614aa6c19bf437867f6cf4cfa962d0a7d3dd481"
+  }
+}

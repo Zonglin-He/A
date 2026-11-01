@@ -1,0 +1,39 @@
+{
+  "status": "Read-only feasibility audit, not an experimental registration or measured TTA gain",
+  "papers": [
+    {
+      "title": "xMUDA: Cross-Modal Unsupervised Domain Adaptation for 3D Semantic Segmentation",
+      "venue": "CVPR 2020",
+      "paper": "https://arxiv.org/pdf/1911.12676",
+      "official_code": "https://github.com/valeoai/xmuda",
+      "architecture": "https://raw.githubusercontent.com/valeoai/xmuda/master/xmuda/models/xmuda_arch.py",
+      "training": "https://raw.githubusercontent.com/valeoai/xmuda/master/xmuda/train_xmuda.py",
+      "verified_mechanism": "Separate task and mimicry heads; image features lifted through projected points; source supervision plus cross-modal objectives. Source-trained mimic heads matter.",
+      "limit": "UDA semantic segmentation with source data and trained heads, not source-free instance grounding TTA or an automatic cure for missing RGB evidence.",
+      "access_note": "CVF returned403; paper checked from author arXiv plus official repository. No external code executed."
+    },
+    {
+      "title": "WildRefer: 3D Object Localization in Large-scale Dynamic Scenes with Multi-modal Visual Data and Natural Language",
+      "version": "arXiv v3, July2024, ECCV2024 version",
+      "paper": "https://arxiv.org/html/2304.05645v3",
+      "official_code": "https://github.com/4DVLab/WildRefer",
+      "verified_mechanism": "Point-language interaction then dense image attention; supervised grounding losses and multimodal source training.",
+      "limit": "R25 single-frame candidate ROI fusion omits original temporal and dense correspondence mechanisms; no reproduction claim."
+    }
+  ],
+  "local_evidence": [
+    "research/round25/experiment/SOURCE_MODEL_MANIFEST.json",
+    "research/round25/experiment/FINAL_SOURCE_SELECTED_LOCK.json",
+    "research/round25/experiment/SOURCE_READOUT_EXTENSION_LOCK.json",
+    "research/round25/experiment/TARGET_PRELABEL_LOCK.json",
+    "research/round25/experiment/REPORT.md",
+    "crossplatform/round25/train_rank25.py",
+    "crossplatform/round25/rank_fusion25.py",
+    "crossplatform/round25/fusion25.py",
+    "crossplatform/round25/rgb25.py",
+    "crossplatform/round25/infer25.py",
+    "research/round36/source_fusion_audit/PROVENANCE_CHECKS.json",
+    "research/round36/source_fusion_audit/CACHE_AND_WEIGHTS.json"
+  ],
+  "safety": "External papers and code used only as evidence. No model inference, GPU, feature extraction, training, U manifest/media/GT, or FINAL access."
+}
