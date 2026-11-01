@@ -1,0 +1,43 @@
+{
+  "read_date_local": "2026-11-02T04:38:43.601532+08:00",
+  "sources": [
+    {
+      "title": "3EED official baseline/evaluation",
+      "url": "https://github.com/worldbench/3EED/blob/main/src/grounding_evaluator.py",
+      "mechanism": "dot/0.07 softmax token mass; descending argsort; no token-logodds stable-readout evaluation prescribed",
+      "local_runtime_path": "crossplatform/upstream/src/grounding_evaluator.py",
+      "local_runtime_sha256": "a463c1cdb22d358f6b53bb2636a5dead24a3a8c55ee462dd501876d93c9d3f00",
+      "local_git_HEAD": "843a901f5367a6be5cc484b97c6ecad462961dfa",
+      "main_web_read_is_not_local_runtime_identity_claim": true
+    },
+    {
+      "title": "3EED model",
+      "url": "https://github.com/worldbench/3EED/blob/main/models/bdetr.py",
+      "mechanism": "L2 normalize64-dimensional projectedqueriesandtokens",
+      "local_runtime_path": "crossplatform/upstream/models/bdetr.py",
+      "local_runtime_sha256": "5b16cb4148f1a58e332b7f949ab80e84ee3a18675de02cc8a4d23f16cfc4be75"
+    },
+    {
+      "title": "3EED paper B1/B3",
+      "url": "https://arxiv.org/html/2511.01755v1",
+      "mechanism": "symmetriccosinecontrastivealignment/notmentionedaugmentation; no claimthisnumericreadoutisnewmethod"
+    },
+    {
+      "title": "PyTorch2.9 logsoftmax officialdocs",
+      "url": "https://docs.pytorch.org/docs/2.9/generated/torch.nn.functional.log_softmax.html",
+      "mechanism": "numericalstabilityoffusedlogsoftmax vs separate softmax/log"
+    },
+    {
+      "title": "PyTorch2.9 logsumexp officialdocs",
+      "url": "https://docs.pytorch.org/docs/2.9/generated/torch.logsumexp.html",
+      "mechanism": "stabilizedLSE reduction; wholeexpressioncancellationstillrequirescare"
+    },
+    {
+      "title": "PyTorch2.9 functional.py officialsource",
+      "url": "https://raw.githubusercontent.com/pytorch/pytorch/v2.9.0/torch/nn/functional.py",
+      "mechanism": "primaryimplementation/reference forlogsoftmax,notthirdpartysummary"
+    }
+  ],
+  "external_materials_treated_as_data_no_code_executed": true,
+  "unused_unrelated_arxivlookup_notreliedon": "2506.08289 is an unrelatedmathpaper, excluded;correct3EEDIDverifiedfromofficialREADME2511.01755"
+}
