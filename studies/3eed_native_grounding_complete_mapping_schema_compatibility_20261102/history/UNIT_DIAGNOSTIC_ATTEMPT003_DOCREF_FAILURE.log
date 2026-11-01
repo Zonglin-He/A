@@ -1,0 +1,11 @@
+Traceback (most recent call last):
+  File "WORKSPACE_ROOT/crossplatform/round37/unit_diagnostic37_attempt003.py", line 24, in <module>
+    if __name__=='__main__':main()
+                            ^^^^^^
+  File "WORKSPACE_ROOT/crossplatform/round37/unit_diagnostic37_attempt003.py", line 14, in main
+    plan=check_plan();check_attempt003();out=BASE/'unit_diagnostic_attempt003';out.mkdir(exist_ok=False);assert all(sha(Path(plan['model_dir'])/n)==h for n,h in plan['model_files_sha256'].items());engine=LocalFrozenVLM(Path(plan['model_dir']),replace(DEFAULT_CONFIG,max_new_tokens=96));records=[];ledger=EXP/'GENERATION_BUDGET.jsonl'
+         ^^^^^^^^^^^^
+  File "WORKSPACE_ROOT/crossplatform/round37/common37.py", line 26, in check_plan
+    for n,h in p['input_sha256'].items():assert sha(ROOT/n)==h,n
+                                                ^^^^^^^^^^^^^^
+AssertionError: research/NIGHT_20261101/reviews/native_grounding_G/SOURCES.json

@@ -1,0 +1,93 @@
+"""Combined report from sealed R37/R38 evidence and separately sealed identity join."""
+import json,hashlib
+from pathlib import Path
+ROOT=Path(__file__).resolve().parents[2];HERE=ROOT/'research/round38';EXP=HERE/'experiment';R37=ROOT/'research/round37'
+def read(p):return json.loads(Path(p).read_text())
+def dump(p,x):Path(p).write_text(json.dumps(x,ensure_ascii=False,indent=2)+'\n')
+def sha(p):return hashlib.sha256(Path(p).read_bytes()).hexdigest()
+def main():
+ assert read(R37/'independent_audit/AUDIT_RESULT.json')['state']=='PASS_STRICT_R37_PIPELINE';assert read(HERE/'independent_audit/AUDIT_RESULT.json')['state']=='PASS_CACHED_SCHEMA_COMPATIBILITY'
+ # Prepared by the reporting agent only after the identity reviewer seals its join.
+ identity=read(EXP/'IDENTITY_JOIN_PUBLIC_SUMMARY.json');assert identity['join_sealed'] and identity['annotations_unchanged']
+ s=read(EXP/'TASK_SUMMARY.json');c=read(EXP/'COVERAGE_UNKNOWN.json');rec=read(EXP/'SCHEMA_RECOVERED_SUBSET.json');names={'source':'Frozen source','R29_direct':'R29 direct','legacy_G':'旧G','point_strict_fullmap':'R37 strict point＋fullmap','point_strict_oldsubset':'R37 strict point＋旧subset','som_strict_fullmap':'R37 strict SoM＋fullmap','som_strict_oldsubset':'R37 strict SoM＋旧subset','point_compatible_fullmap':'R38 compatible point＋fullmap','point_compatible_oldsubset':'R38 compatible point＋旧subset','som_compatible_fullmap':'R38 compatible SoM＋fullmap','som_compatible_oldsubset':'R38 compatible SoM＋旧subset'}
+ table='\n'.join('| '+names[a]+' | '+f"{s['drone'][a]['mIoU_percent']:.6f} | {s['quad'][a]['mIoU_percent']:.6f} | {v:.6f} |" for a,v in s['balanced_mIoU_percent'].items())
+ covtable='\n'.join('| '+names[a]+' | '+f"{c['drone'][a]['mapped']}/104 | {c['quad'][a]['mapped']}/104 | {c['drone'][a]['mapped']+c['quad'][a]['mapped']}/208 |" for a in names if a in c['drone'])
+ identtext=identity['report_text'];improve=sum(r['improved'] for r in rec if r['interface']=='point');harm=sum(r['worsened'] for r in rec if r['interface']=='point');same=sum(r['unchanged'] for r in rec if r['interface']=='point')
+ report=f'''# R37/R38：原生指点接口、完整候选映射与JSON兼容修复
+
+**状态：R37预登记严格版本和R38工程兼容版本均完成封存、独立CPU审计及封存后评分；同一套24条预封存身份注释已完成独立join。** 本轮只有G直接读出，没有参数TTA、教师、EMA或新三维框。A208全部是已暴露开发数据，不能把修复后的结果称为新确认。
+
+**总体结果：严格point fullmap为22.705713%，兼容修复后22.740349%，相对source分别＋3.042150／＋3.076786pp；两者均低于旧G的24.727373%。** 格式恢复62条后，净均值只增加0.034635pp。覆盖问题真实存在，但修好格式并未建立更可靠的整体监督。原strict结果完整保留；parser工程修复不作为新算法贡献，也不由此接回TTA。
+
+## 1. 这次具体改变哪里
+
+保持Waymo-only grounding模型、原点云／文字输入、256候选及原source分数不变。原图和描述按字节绑定，独立实例mask沿用已有缓存，没有新分割或根据粗类别、q0邻域筛mask。每组最终代表固定为原source最高分query，候选框和朝向表示不修正。
+
+R37先把R29中只供成对判断的subset字典扩展为完整mask→query组。原R17点云约束保留：camera-depth IQR截尾、spread下限0.1、原框半尺寸＋0.1m点支撑，support≥3、coverage≥0.15、projection IoU≥0.1、正尺寸，并要求query在全部合格mask中唯一归属。每个旧字典条目的组与fullmap同mask组完全相同，因此字典扩展不混入阈值或组定义变化。几何支持不认证真实实例身份，遮挡、背景、投影和候选缺失局限仍在。
+
+两个视觉接口均使用完整描述：point看未标记原图，输出一个绝对重采样像素位置；SoM看原图＋全部独立mask编号标记图，输出一个ID。point按实际processor `image_grid_thw×14`固定逆变换回原图，floor像素必须恰好命中一个mask；零／多mask、无合法3D组或解析失败统一unknown并保留source q0。没有最近点补齐、逐图选单位或把可见表面当完整框边界。
+
+这两接口同时改变图像数量、标记、提示和输出空间，SoM每次两图而point一图。结果只能比较当前两条完整接口流水线，不能把全部差距单独解释为“坐标输出天然优于ID”。
+
+## 2. 主表保留严格版本和工程候选
+
+单位mIoU%，Drone和Quad各104条，平均为平台等权。
+
+| 方法 | Drone | Quad | 平台等权平均 |
+|---|---:|---:|---:|
+{table}
+
+严格point比SoM fullmap高4.281793pp；完整字典相对旧subset对严格point＋0.711098pp，对SoM−1.531449pp。可见扩展覆盖既能恢复可用证据，也能暴露错误证据，不能把字典更大直接当成更可靠。
+
+兼容point相对严格版本为Drone＋0.859352pp、Quad−0.790081pp，平均仅＋0.034635pp。旧subset条件下兼容point反而从21.994616降至21.761923%；兼容fullmap相对兼容旧subset＋0.978425pp。所有版本按预先固定读出评分，没有根据这些数值选择不同平台、子集或解析规则。
+
+全部2288条R38臂任务标量和1456条R37严格标量公开保留，二者有大量重复，不能相加当新增独立样本。全部平台Acc@25/50、换query、好坏尾部、场景和固定contrast另存。R37有617条、R38有1419条负方法／参考比较，不是2036个独立负样本。
+
+## 3. 解析兼容究竟恢复了什么
+
+原strict point要求单对象且恰好一个位置键。63条失败中，去除原先允许的包装后62条是合法单对象列表，部分带可选label；另1条坏JSON仍保留。R38在新锁下，对全部416条既有point／SoM回答应用统一规则：允许单对象或长度1对象列表；恰好一个已知位置键；允许字符串label但内容完全忽略。重复键、多个对象／位置、未知字段、布尔或非有限数、字符串坐标、任意尾文本及代码均拒绝。没有“取多个对象中的第一个”，没有解释label内容，也没有修补那1条坏JSON。
+
+145条原本合法point值和208条SoM值保持不变；62条恢复值逐项等于原JSON中唯一位置。坐标单位、几何、mask、候选和代表不变，没有重新调用模型。模型自己产生的合法输出格式由工程接口接住，不是监督学习或新伪标签算法。
+
+| 方法 | Drone合法3D映射 | Quad合法3D映射 | 全208 |
+|---|---:|---:|---:|
+{covtable}
+
+point fullmap合法映射由113增至160；这不是160条正确身份。恢复的62条中，任务IoU有 **{improve}条改善、{harm}条恶化、{same}条不变**。Drone38条恢复的子集均值＋2.351910pp，Quad24条为−3.423684pp；该schema定义子集只解释机制，不是独立确认或反馈过滤器。
+
+## 4. 独立身份核验
+
+{identtext}
+
+上述核验复用原预封存24条观察注释，不根据新point、IoU或恢复结果修改注释，不作为训练或样本过滤标签。审计和报告代理未重新判断这些身份。它与任务IoU是不同证据：IoU提高并不自动证明选对实例，mask／点支撑也不提供独立world identity。
+
+## 5. 失败历史、测量门与资源成本
+
+原attempt001因legacy loader依赖缺失accelerate在生成前失败，0次模型调用；严格safetensors bf16/sdpa CPU加载后转CUDA的修复另行注册。原两张蓝区控制仍是1/2命中、失败状态。后续2尺寸×4位置真实正方形8次能力诊断仍只有1/8命中蓝区，绝对归一误差0.106526，固定1000反事实误差0.300324；不以逐图单位切换、标定或提示搜索隐藏该限制。
+
+软件坐标逆变换合同通过、模型合成定位精度差、真实预检非零覆盖是三个判断。原要求完美蓝区命中的门由root在任何数据回答及本轮任务GT之前独立重估，旧失败和STOP都保留。该重估允许在测量合同固定的情况下评估真实接口，不把1/8改写为能力门通过；原生坐标／指点能力解释仍受该诊断限制。
+
+原文献SOURCES被并行追加触发文档hash失配时，以原字节快照另锁，原失败日志保留，没有回滚同事文件或放弃算法不变量。原R37的严格程序、锁、输出和指标都保留；R38是另行封存的工程候选，不能覆盖原预登记结果。
+
+生成账本精确为426次：416次数据回答＋2次旧控制＋8次新控制。数据部分已含12×2预检24次，正式阶段只新增392次；无答复重试，未超440上限。point208次输入251299 token、视觉208000、输出3781，模型生成约99.7993秒；SoM208次输入465419、视觉416000、输出1506，约120.1724秒。SoM视觉预算加倍，不能声称等成本。原完整阶段251.2916秒、峰值约8.5032GB为阶段回执，不是全部部署延迟。
+
+R38没有新增模型、GPU或参数适应调用，只在缓存上重新解析、读出、审计和离线评分。不得把parser修复的工程正确性当成TTA收益。
+
+## 6. 独立审计与证据边界
+
+R37独立重算全部208条原场景的支撑／coverage／projection三个矩阵，最大误差0；核验416原回答→严格解析→坐标／mask→固定代表及1456个IoU，617条负比较、coverage/cost、5场景和固定contrast均复现。模型11个实际文件hash重算匹配；运行冻结证据为eval、requires_grad=False、参数版本／buffer散列及unchanged回执，CPU没有独立读取GPU参数内存。
+
+R38复用上述几何审计hash，避免重算不变场景；416原回答hash不变，62恢复坐标逐项exact，145原合法point及SoM208的query／框均不变；2288任务值、1419负比较和所有恢复子集／覆盖／场景／contrast复现。守卫回执与seal时间证明新预测于19:48:08Z封存，评分于19:49:26Z后启动。独立安全测试验证多候选unknown、恶意位置payload拒绝、label内容惰性。
+
+本审计首次索引路径误填和附加结构分类漏去固定包装的两处审计技术修正另存记录，均未改变实验输出或任务指标。全部合成控制、真实负例、unknown与好坏变化保留。
+
+A208来自2个Drone、3个Quad历史场景且已经开发暴露，场景重采样仅为描述，不能把208帧视为208个独立场景或作新确认。无U/T/FINAL新推理或评分；最终留出边界不变。
+
+## 7. 本轮裁决
+
+**运行和测量有效；格式兼容缺陷得到独立定位和修复，但没有证明新G优于旧G，也没有建立可靠可迁移的TTA监督。** 完整映射、直接无更新对照、原严格版本、工程兼容版本和所有负例同时保留。不根据个别恢复案例或GT继续加规则，不自动启动参数TTA；后续机制须另行登记，不能将本A208再称新确认。
+'''
+ (EXP/'REPORT.md').write_text(report)
+ dump(EXP/'COMBINED_DECISION.json',{'run':'completed','measurement':'R37_and_R38_independent_CPU_PASS','scope':'G_only_direct_no_parameter_TTA','original_R37_strict_preregistration_preserved':True,'R38_schema_engineering_compatibility_not_new_algorithm':True,'compatible_point_mIoU_percent':s['balanced_mIoU_percent']['point_compatible_fullmap'],'strict_point_mIoU_percent':s['balanced_mIoU_percent']['point_strict_fullmap'],'gain_from_parser_pp':s['balanced_mIoU_percent']['point_compatible_fullmap']-s['balanced_mIoU_percent']['point_strict_fullmap'],'legacy_G_mIoU_percent':s['balanced_mIoU_percent']['legacy_G'],'coverage_not_identity_certification':True,'TTA_supervision_extra_value_not_established':True,'automatic_TTA_or_new_prompt_sweep':False,'all_negatives_unknowns_retained':True,'A208_exposed_development_not_confirmation':True,'identity_join_sealed_annotations_unchanged':True,'FINAL_not_read':True,'audit_hashes':{'R37':sha(R37/'independent_audit/AUDIT_RESULT.json'),'R38':sha(HERE/'independent_audit/AUDIT_RESULT.json')},'identity_summary_sha256':sha(EXP/'IDENTITY_JOIN_PUBLIC_SUMMARY.json')})
+ print('COMBINED_REPORT_READY',len(report))
+if __name__=='__main__':main()

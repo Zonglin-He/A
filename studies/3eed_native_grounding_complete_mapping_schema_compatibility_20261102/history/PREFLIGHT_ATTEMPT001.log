@@ -1,0 +1,17 @@
+You have video processor config saved in `preprocessor.json` file which is deprecated. Video processor configs should be saved in their own `video_preprocessor.json` file. You can rename the file or load and save the processor back which renames it automatically. Loading from `preprocessor.json` will be removed in v5.0.
+Traceback (most recent call last):
+  File "WORKSPACE_ROOT/crossplatform/round37/run37.py", line 56, in <module>
+    if __name__=='__main__':main()
+                            ^^^^^^
+  File "WORKSPACE_ROOT/crossplatform/round37/run37.py", line 33, in main
+    allrows=rows();lookup={r['id']:r for r in allrows};preids={x['id_PRIVATE'] for x in read(EXP/'PREFLIGHT12_PRIVATE.json')};rr=[r for r in allrows if r['id'] in preids] if a.phase=='preflight' else allrows;assert len(rr)==(12 if a.phase=='preflight' else 208);modeldir=Path(plan['model_dir']);assert read(modeldir/'config.json')['model_type']=='qwen2_5_vl';assert all(sha(modeldir/n)==h for n,h in plan['model_files_sha256'].items());cfg=replace(DEFAULT_CONFIG,max_new_tokens=96);engine=FrozenVLM(modeldir,cfg);start=time.perf_counter();records=[];ledger=EXP/'GENERATION_BUDGET.jsonl';newcalls=0
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "WORKSPACE_ROOT/crossplatform/round13/association_runner.py", line 37, in __init__
+    self.model,info=Qwen2_5_VLForConditionalGeneration.from_pretrained(model_dir,local_files_only=True,trust_remote_code=False,use_safetensors=True,torch_dtype=torch.bfloat16,device_map='cuda',attn_implementation='sdpa',output_loading_info=True)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "LOCAL_HOME/visual grounding/.conda/tubedetr/lib/python3.11/site-packages/transformers/modeling_utils.py", line 309, in _wrapper
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "LOCAL_HOME/visual grounding/.conda/tubedetr/lib/python3.11/site-packages/transformers/modeling_utils.py", line 4286, in from_pretrained
+    raise ValueError(
+ValueError: Using a `device_map`, `tp_plan`, `torch.device` context manager or setting `torch.set_default_device(device)` requires `accelerate`. You can install it with `pip install accelerate`
