@@ -1,0 +1,16 @@
+{
+  "state": "engineering_error_detected_before_any_fusion_training",
+  "problem": "Waymo source points lacked official camera-view rotation; target-only generic sampler had been reused",
+  "affected": "R25 source features001,source labels001,and partialRGB001; not earlier R24 target or source checkpoint",
+  "invalid_for_performance": true,
+  "source_checkpoint_unchanged": true,
+  "no_fusion_training_or_target_scoring_had_started": true,
+  "failed_code_sha256": {
+    "capture25.py": "0b24f411ff6164756e55037a916eee756fc9eb3be9f54a2037fbd34691cb6aab",
+    "rgb25.py": "d11b1b3f28adbe80aa3b72b234c86fa212b7db81850bf26cb61952480a0dde01"
+  },
+  "old_source_seal_sha256": "85a2954092197262653ed6eef7302c660d2296026f366483d6fd09aee1e332c2",
+  "old_label_seal_sha256": "37c2ba2cd3d4983ca80f8525fd195c9e1d393336b539ede801bdcc187249aaeb",
+  "partial_RGB_count": 3023,
+  "repair": "official transform_to_front_view after exact point sampling; official comma/whitespace source text formatting; entirely new002 source and RGB caches; all negative/invalid artifacts retained"
+}

@@ -1,0 +1,21 @@
+{
+  "claim": "Can source-trained small RGB-point-language feature fusion improve frozen-box candidate matching on new platforms without Qwen feedback?",
+  "source_model": "Waymo-only epoch100,sha256 0d8766abaf06c9f3e2500fcb187337982d391f9e4d46ca854f3b3bb70fd33bbd",
+  "train": "new fusion and matching parameters on3682Waymo source labels only; rest frozen",
+  "RGB": "frozen ImageNet ResNet34 layer2/layer3 dense features, calibrated candidate ROIAlign tokens; full language and point query condition cross-attention/gating",
+  "stage": "first establish source fusion and frozen cross-domain performance; no random-layer target TTA",
+  "controls": [
+    "original XYZ+text source",
+    "source-trained matching with same fusion capacity but no RGB",
+    "RGB feature fusion",
+    "same-information frozen visual/prototype direct-use where feasible",
+    "RGB-zero and RGB-permutation readouts of trained fusion"
+  ],
+  "selection": "Waymo VAL512 only; target labels excluded; fixed finite training budget after pilot",
+  "targets": "400observations including64new content,32/platform; historical VAL exposure disclosed",
+  "pilot": "32 source observations for timing/projection, do not select based on target scores",
+  "budget": "cache frozen features; at most30 fusion epochs,2seeds or optimizer configs if necessary; source-only validation chooses",
+  "coordinate_policy": "native6D boxes/yaw0 all methods, no box refinement",
+  "all_negative_cases_retained": true,
+  "run_state": "registered_before_R25_outputs"
+}

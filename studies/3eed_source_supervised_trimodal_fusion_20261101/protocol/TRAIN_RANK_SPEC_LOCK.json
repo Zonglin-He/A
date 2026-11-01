@@ -1,0 +1,28 @@
+{
+  "seeds": [
+    0,
+    1
+  ],
+  "variants": [
+    "rgb",
+    "no_rgb"
+  ],
+  "epochs": 30,
+  "batch_size": 32,
+  "optimizer": "AdamW",
+  "fusion_lr": 0.001,
+  "matching_projection_lr": 0.0001,
+  "weight_decay": 0.0001,
+  "RGB_feature_dropout": 0.1,
+  "GT_IoU_temperature": 0.05,
+  "source_probability_anchor": 0.1,
+  "residual_energy_weight": 0.001,
+  "eligible_supervision": "source candidates with oracleIoU>=.05, all failures retained in evaluation",
+  "source_validation_selection": "maximum VAL512 mIoU, earliest epoch on ties; every5epochs and epoch1",
+  "target_supervision_or_selection": false,
+  "whole_model_finetuning": false,
+  "code_sha256": "26c659a6036ca76f418a02cdfee755b2725fb40b62a9ecd643f75e6f0581aa52",
+  "fusion_code_sha256": "b9742baef8279180a7faa3b7432b55836c3588fbda5bfd9733c4ad720c9202c7",
+  "readout": "source token-mass log-prior + zero-init gated learned ranking residual",
+  "old_matching_projection_frozen": true
+}

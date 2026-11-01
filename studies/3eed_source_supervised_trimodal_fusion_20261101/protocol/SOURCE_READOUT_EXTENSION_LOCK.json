@@ -1,0 +1,15 @@
+{
+  "reason": "Initial token-mass fusion shows only small sourceVAL movement; test learned feature-level residual ranking before target evaluation rather than infer all fusion fails",
+  "not_claimed_confirmed_cause": "token-mass interface may constrain useful ranking, source score saturation alone not established as cause",
+  "families": [
+    "token_mass_fusion_matching_projection_trainable",
+    "logmass_plus_gated_ranking_frozen_original_projection"
+  ],
+  "same_source_data_RGB_and_noRGB_two_seeds_each_family": true,
+  "source_training_cache_reused_not_source_backbone_retrained": true,
+  "selection": "choose family by mean RGB sourceVAL performance across2fixed seeds; noRGB matched family and independently source-selected stronger noRGB comparator retained",
+  "hard_end": "after this second finite family, freeze source selection and evaluate targets; no target-driven sweep",
+  "target_predictions_and_task_scores_not_yet_run": true,
+  "program_sha256": "26c659a6036ca76f418a02cdfee755b2725fb40b62a9ecd643f75e6f0581aa52",
+  "fusion_sha256": "b9742baef8279180a7faa3b7432b55836c3588fbda5bfd9733c4ad720c9202c7"
+}

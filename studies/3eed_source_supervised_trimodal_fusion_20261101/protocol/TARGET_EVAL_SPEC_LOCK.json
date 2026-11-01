@@ -1,0 +1,14 @@
+{
+  "primary_model": "source-trained RGB fusion seed0, sourceVAL512 selects checkpoint",
+  "replication": "fixed seed1, report separately rather than choose target winner",
+  "primary_comparators": [
+    "original source",
+    "same-Waymo-supervision/no-RGB-feature matching control seed0"
+  ],
+  "primary_metric": "equal-platform mean mIoU on all400target expressions; report newN64 separately as content-heldout confirmation",
+  "secondary": "zeroRGB,within-observation candidateRGB permutation,globalRGB-only ablations; previousQwenG on sharedold336 with its extra model-resource disclosure",
+  "no_target_model_selection_or_updates": true,
+  "all_target_negative_cases_preserved": true,
+  "current_round_is_source_fusion_baseline_not_TTA": true,
+  "fusion_source_code_sha256": "3739263a7ecb63ab5be937cdf94ebcf94d0e971676ba4072902390baf4fac992"
+}

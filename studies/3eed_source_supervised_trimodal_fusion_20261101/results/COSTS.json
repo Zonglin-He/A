@@ -1,0 +1,58 @@
+{
+  "new_RGB_asset": {
+    "url": "https://download.pytorch.org/models/resnet34-b627a593.pth",
+    "sha256": "b627a593bcbe140c234610266fe4f8ae95ea42fc881d091c9b6052e6b1d0590f",
+    "bytes": 87319819,
+    "seconds": 29.964513019192964,
+    "official_torchvision_enum": "ResNet34_Weights.IMAGENET1K_V1"
+  },
+  "valid_source_feature_cache": {
+    "state": "R25_frozen_source_features_GT_free",
+    "n": 4594,
+    "forwards": 4226,
+    "reused_exact_features": 368,
+    "source_unchanged": true,
+    "max_tokens": 125,
+    "seconds": 236.10657929303125,
+    "peak_bytes": 687897088
+  },
+  "valid_RGB_feature_cache": {
+    "state": "R25_frozen_ImageNet_RGB_projected_ROI_features_no_GT",
+    "n": 4594,
+    "reused_pilot_features": 32,
+    "valid_candidate_ROIs": 1174286,
+    "missing_distortion_zero_assumption_observations": 4594,
+    "model_unchanged": true,
+    "seconds": 323.04737570369616,
+    "peak_bytes": 143301632
+  },
+  "training_seconds": {
+    "training_attempt001": 275.85675078677014,
+    "training_rank_attempt001": 266.1863883151673
+  },
+  "all_source_optimizer_steps": 27840,
+  "models_trained": 8,
+  "point_or_RGB_backbone_training_steps": 0,
+  "source_train_n": 3682,
+  "source_validation_n": 512,
+  "target_TTA_steps": 0,
+  "target_model_selection": false,
+  "invalid_cache_attempt_retained": {
+    "state": "engineering_error_detected_before_any_fusion_training",
+    "problem": "Waymo source points lacked official camera-view rotation; target-only generic sampler had been reused",
+    "affected": "R25 source features001,source labels001,and partialRGB001; not earlier R24 target or source checkpoint",
+    "invalid_for_performance": true,
+    "source_checkpoint_unchanged": true,
+    "no_fusion_training_or_target_scoring_had_started": true,
+    "failed_code_sha256": {
+      "capture25.py": "0b24f411ff6164756e55037a916eee756fc9eb3be9f54a2037fbd34691cb6aab",
+      "rgb25.py": "d11b1b3f28adbe80aa3b72b234c86fa212b7db81850bf26cb61952480a0dde01"
+    },
+    "old_source_seal_sha256": "85a2954092197262653ed6eef7302c660d2296026f366483d6fd09aee1e332c2",
+    "old_label_seal_sha256": "37c2ba2cd3d4983ca80f8525fd195c9e1d393336b539ede801bdcc187249aaeb",
+    "partial_RGB_count": 3023,
+    "repair": "official transform_to_front_view after exact point sampling; official comma/whitespace source text formatting; entirely new002 source and RGB caches; all negative/invalid artifacts retained"
+  },
+  "new_packages": 0,
+  "full_model_closure_seconds": 2.989289893768728
+}
