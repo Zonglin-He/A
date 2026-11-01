@@ -1,0 +1,77 @@
+{
+  "state": "PASS",
+  "root_primary_lock_sha256": "4f3823de10bf40b3d6c8c275f3a0bceaed9f76949df5a19c41c551005843f5b4",
+  "fixed_primary": "h_scoped_R30",
+  "primary_unchanged_despite_U_best_R30": true,
+  "registration_precedes_all_three_U_capture_prediction_jobs": [
+    {
+      "job_receipt": "20261101T181710_1291425.json",
+      "started_utc": "2026-11-01T18:17:10.136541+00:00",
+      "command": [
+        "crossplatform/env/bin/python",
+        "crossplatform/round35/predictU35.py"
+      ]
+    },
+    {
+      "job_receipt": "20261101T181338_1290413.json",
+      "started_utc": "2026-11-01T18:13:38.188307+00:00",
+      "command": [
+        "crossplatform/env/bin/python",
+        "crossplatform/round34/keyscope34.py",
+        "--split",
+        "U128"
+      ]
+    },
+    {
+      "job_receipt": "20261101T181241_1290041.json",
+      "started_utc": "2026-11-01T18:12:41.374397+00:00",
+      "command": [
+        "crossplatform/env/bin/python",
+        "crossplatform/round34/captureU34.py"
+      ]
+    }
+  ],
+  "U128_scenes": {
+    "drone": 1,
+    "quad": 3
+  },
+  "FINAL_manifest_media_GT_not_read": true,
+  "no_GPU_optimizer_training_autograd": true,
+  "content_audit_pass": true,
+  "no_between_Drone_scene_CI": true,
+  "all_negative_cases_retained": true,
+  "CPU_argmax_differences": [],
+  "CPU_head_probability_maxerror": 1.185735225561757e-06,
+  "CPU_head_exactlogodds_maxerror": 6.704494623477331e-06,
+  "limitations": [
+    "U content is distinct from historical observations but allU scenes overlap history; no unseen-scene claim.",
+    "Recorded GPU nearest indices are used for arithmetic; no CPU neighbor substitution. GPU fullclosure receipts cover all128, reviewed here without rerunningGPU.",
+    "Source/R30 fullclosure256forwards plus two newR35heads256forwards total512 unique fullmodel calls; do not doublecount R30 twice.",
+    "Partialkeep reduces unjudged A drift but has no IoU improvement overR30 onU and lowerDEV; not evidence generally betterTTA."
+  ],
+  "R34_score_vectors_and_task_values": 1280,
+  "R35_probability_and_logodds_vectors": 512,
+  "R34_fullscore_replay_maxerror": 0.0,
+  "R34_selected_cosine_maxerror": 5.081959846275907e-07,
+  "R34_R35_source_and_R30_probabilities_bitexact": true,
+  "fullmodel_closure_coordinate_scores_maxerror": 7.453002865531744e-06,
+  "fullmodel_closure_score_errors_match_original_receipts": true,
+  "R34_negative_comparisons": 204,
+  "R35_combined_control_negative_comparisons": 400,
+  "all128_fullclosure_selected_queries_and_boxes_checked": 128,
+  "balanced_U_mIoU_percent": {
+    "source": 14.960674049431377,
+    "R30_ungated": 16.313208117782814,
+    "h_scoped_R30": 15.481330561372857,
+    "noun_scoped_R30": 15.433944629853787,
+    "h_samegate_QP": 15.063310157185168,
+    "noun_samegate_QP": 14.582981062720807,
+    "h_global_mean": 14.960674049431377,
+    "h_global_norm": 14.960674049431377,
+    "noun_global_mean": 14.960674049431377,
+    "noun_global_norm": 14.960674049431377
+  },
+  "primary_balanced_gain_vs_source_pp": 0.5206565119414801,
+  "auditor_strict_closure_bitexact_assumption_corrected": "Initial audit asserted complete GPU closure scores bitexact; actual original receipt permits probability tolerance and records coordinate drift. Failure log retained; corrected audit checks actual errors vs original receipts plus exact queries/boxes, no predictions changed.",
+  "seconds": 4.437265279702842
+}

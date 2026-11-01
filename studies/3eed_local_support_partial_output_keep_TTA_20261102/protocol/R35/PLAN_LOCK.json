@@ -1,0 +1,68 @@
+{
+  "hypothesis": "R30 excludes entire feedback observations from source-output preservation. Retaining unjudged query-relative coordinates may reduce collateral ranking drift while allowing exactly accepted endpoint groups to adapt.",
+  "run": "planned_not_run",
+  "measurement": "CPU_mask_prerequisite_pass_only",
+  "claim": "untested",
+  "created_utc": "2026-11-01T18:05:40.386039+00:00",
+  "configurations": [
+    "R30_U_rows",
+    "U_rows_matched_denominator",
+    "partial_output_keep"
+  ],
+  "single_change": "partial keep mask intervention plus matched denominator-only control isolating its automatically derived normalization consequence; other training choices fixed",
+  "update_layer": "existing full query matching MLP, six arrays,184960params",
+  "source": "same Waymo-only source projection; independent source initialization for each configuration/platform",
+  "source_projection_sha256": "713fe85698ccdd10ee4c3dfbb87c8768d2e76229bd541c6a0f3d7d8efc557dd5",
+  "R30_reference_seal_sha256": "caa0dea731b950581f6049c9f030323daf716dcba9b874002ac692d713cc32f2",
+  "feedback_sha256": "f95e03c437a5850b74909677ce3980b33e88517b2768b5bf4d2a54b28bc06fb8",
+  "feedback": "all22accepted original preferences,19observations; no new G calls/no label deletion",
+  "preference_denominators": {
+    "drone": 10,
+    "quad": 12
+  },
+  "lr": 0.0005,
+  "steps": 16,
+  "beta": 1,
+  "tau": 0.1,
+  "optimizer": "AdamW weight_decay0",
+  "seed": 0,
+  "source_q0": "fixed original official probability argmax for every A row",
+  "loss": "mean softplus(-(max_P exactlogodds-max_N exactlogodds)/.1) + beta*mean((d_theta-d_source)^2 over retained mask); d=z-z[q0_source]",
+  "mask": "all104x256 per platform except union of every accepted positive and negative group query within each feedback observation; repeated endpoints counted once; all nofeedback U96/93 rows retained",
+  "normalization": "actual retained scalar coordinate count per platform, no per-observation rebalance; q0zero included when retained",
+  "normalization_consequence": "old-U per-coordinate contribution decreases by24576/26042(Drone) and23808/26484(Quad); this is a known consequence of the requested common mean, not a fixed-strength added penalty",
+  "mask_counts_lock_sha256": "8ab02d690b43d5cbf4b96981a4a596b3c6c8f814eef1d1d89d117f58c80eb695",
+  "selection": "DEV64 only after allA/DEVpredictionssealed; feasible if >=5of6Bdirections and>=4of6Bfinalpositive. Compare sole new config to reproduced originalR30; common config acrossplatforms. Root may prespecify cross-R34/R35primary before any U labels.",
+  "confirmation": "No confirmation launched by preparer. Root locks R34/R35 methods and primary using DEV before one sealed U128 prediction batch. Report R30, matched-denominator control and fixed partialmask main on DEV/U; never select usingU; FINAL384 protected.",
+  "controls": "R30same-feedbacksame-budget control mandatory; retain existing frozen/same-informationdirect-use andR32QPmemory controls at confirmation. Do not claim adaptation benefit from beatingfrozen alone.",
+  "stop": "no beta/lr/step/architecture sweep; stop if source replay or R30 control fails; no protected confirmation for an ineligible config",
+  "budget": "6states(3arms x2platforms),96optimizersteps, including fixed count-derived nominalstrengthcontrol; no sweep",
+  "risks": [
+    "source q0 anchoring plus releasing acceptedP/N can indirectly favor one endpoint over unjudgedC; keep is a conservative source prior, not evidence B>C or a new negative label.",
+    "Some unjudged source decisions are wrong; preserving them can suppress useful transfer.",
+    "Feedback identity errors and student missingRGB remain; this mask cannot fix them.",
+    "Source-anchored relative coordinates shareq0; their gradients are coupled even if the mask looks local.",
+    "Larger retainedmask lowers each oldU coordinate weight under common normalization; fixed matched-denominator control isolates the added-coordinate contribution but cannot match gradientnorm or optimizerpath."
+  ],
+  "implementation_sha256": {
+    "partial_keep35.py": "49060a3108c54d5ace6c0a95f400a308eb454252867a87099a6c99064b6fd46b",
+    "mask35.py": "8bf55f082540754f20b06421c611ce6978b6e15c3cd66989f50c96af9184298a",
+    "common35.py": "4b419ede80ecb5ac1adbbbf95c1181260f4082a46883eefaf68847e7c851efdf"
+  },
+  "no_GPU_work_by_preparer": true,
+  "no_U_FINAL_rows_labels_media_read": true,
+  "derived_strength_control": {
+    "mask": "original_U_rows_only",
+    "denominator": "new_partial_mask_coordinate_count",
+    "equivalent_R30_keep_beta_by_platform": {
+      "drone": 0.9437063205590969,
+      "quad": 0.8989578613502492
+    },
+    "computed_from_maskcounts_without_GT": true,
+    "used_for_tuning": false,
+    "isolation": "main and matchedcontrol share identical originalU-coordinate weights; main adds unjudged feedbackrowcoordinates only. Nominalstrength does not equate gradientnorm/Adamstep.",
+    "report_DEV_and_U": true
+  },
+  "amended_before_run_utc": "2026-11-01T18:06:39.343019+00:00",
+  "amendment": "Parent requested count-derived matchedstrength control before any R35run; no GT-based choice."
+}

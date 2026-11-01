@@ -1,0 +1,31 @@
+{
+  "amendment": "R34 pre-execution diagnostic closure budget only",
+  "created_local": "2026-11-02T02:06:06.342009+08:00",
+  "timing": "Before any R34 real-data inference or task scoring; U manifest/media/GT not read",
+  "authorized_by": "root explicit execution-scope instruction",
+  "original_plan_sha256": "eb8fefd5ebf10fc49d851e5447076389216931dbf94f806baeeddff65d21c230",
+  "reason": "Source/R30/boxes already received full-model closure in R32 and prior rounds; this round changes only source retrieval key. Repeating 1056 full forwards on diagnostic rows is not necessary.",
+  "changes": {
+    "diagnostic_prediction_and_CPU_arithmetic_audit_observations": 528,
+    "diagnostic_full_model_closure_observations": 10,
+    "selection": "One per each of five diagnostic splits x two platforms. Hash canonical JSON input manifest excluding stage/alias/frame_alias/split; minimum SHA256, then id tie break. No input files, labels or metrics used to select.",
+    "diagnostic_full_model_forwards": 20,
+    "U128_prediction_CPU_audit_and_full_closure_observations": 128,
+    "U128_full_model_forwards": 256,
+    "scorer_requires_closure_n": {
+      "diagnostic": 10,
+      "U128": 128
+    }
+  },
+  "algorithm_and_all_predictions_unchanged": true,
+  "NN_topk_ties_key_heads_feedback_scores_and_controls_unchanged": true,
+  "new_program_sha256": {
+    "crossplatform/round34/common34.py": "80aab1b9d4bce36315debea4952ca8fb828dfdd702ca1c19833bfc2a20a326bd",
+    "crossplatform/round34/keyscope34.py": "a006b8be2499b6da8af5b7769888a225b606d9d1165d0c215ef3f74dc86a4c0f",
+    "crossplatform/round34/audit34.py": "af719a98f80da236f1801bead780a3a88a0b072d6c0e222c2984e0119e271733",
+    "crossplatform/round34/closure34.py": "a099469f6f831bb70b03a34911bf81ad5c1fb4dfe0ed69924820a5f07e6ca8a5",
+    "crossplatform/round34/score34.py": "a453b1a9b96719f0f034966aa0cd6a9b7cc36450cca054e1e293e771393a5089"
+  },
+  "U_currently_deferred_to_root_joint_R34_R35_sealing": true,
+  "not_GRACE_reproduction": true
+}

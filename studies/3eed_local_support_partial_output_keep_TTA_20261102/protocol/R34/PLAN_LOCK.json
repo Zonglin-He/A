@@ -1,0 +1,92 @@
+{
+  "round": "R34",
+  "created_local": "2026-11-02T02:03:48.505051+08:00",
+  "runtime_status": "planned; child did not execute real-data inference or task scoring",
+  "measurement_status": "synthetic_numpy_and_syntax_valid_only",
+  "claim": "Changing only source retrieval key from noun-times-query64 to normalized preprojection h288 improves conditional propagation, judged by total metrics and same-information controls",
+  "primary": "h_scoped_R30",
+  "initialization": "original Waymo-only model with already sealed platform-specific R30 b1 query projection; no new optimizer steps",
+  "single_factor": "normalized source h288 vs exact R32 normalized query64-times-normalized-source-noun-mean; both keys fixed source",
+  "fixed": {
+    "heads": "R30 b1 original query MLP",
+    "feedback_pairs": 22,
+    "feedback_observations": 19,
+    "keep_training_provenance": {
+      "unlabeled_nonfeedback_rows_drone": 96,
+      "quad": 93,
+      "total": 189,
+      "beta": 1,
+      "steps": 16
+    },
+    "preference_denominator": {
+      "drone": 10,
+      "quad": 12
+    },
+    "endpoint_flag": "only P/N query indices in original accepted pairs; unknown query is not negative",
+    "k": 1,
+    "NN_topk_computed": 4,
+    "QP_group_margin": 0.1,
+    "retrieval_temperature": 0.1,
+    "q0": "official source probability argmax, fixed for both states",
+    "score_coordinates": "R32 float64 ell_eps(p)=log(p+1e-6)-log(1+1e-6-p), each anchored to same source q0",
+    "scope": "d0+g*(d30-d0), preserve exact binary endpoints",
+    "no_A_self_exclusion_in_actual_experiment": true,
+    "no_new_feedback_labels_no_new_G_calls": true
+  },
+  "arms": [
+    "source",
+    "R30_ungated",
+    "h_scoped_R30",
+    "noun_scoped_R30",
+    "h_samegate_QP",
+    "noun_samegate_QP",
+    "h_global_mean",
+    "h_global_norm",
+    "noun_global_mean",
+    "noun_global_norm"
+  ],
+  "amount_controls": "same gate mean alpha and actual correction L2 ratio, same as R32",
+  "diagnostic_splits": [
+    "A208",
+    "DEV64",
+    "R64",
+    "S64",
+    "T128"
+  ],
+  "diagnostic_n": 528,
+  "confirmation": "U128 fixed primary and controls, no DEV reselection or k sweep",
+  "coordination_boundary": "U capture/read/inference deferred until root completes R35 registration; root seals R34 and R35 U predictions before scoring either; child did not read U manifest/media/GT",
+  "FINAL384": "protected, no read or definition in rows interface",
+  "ties_and_precision": {
+    "NN": "original GPU float32 einsum; max candidate; torch.topk(4) then first, unchanged from R32",
+    "ties": "candidate max first index; row exact tie uses unchanged Torch topk implementation, no stable-sort replacement",
+    "log": "save actual GPU obs/query/top4 cos/weights/gate, exact ties and boundary gaps for every candidate",
+    "CPU_audit": "recorded GPU indices only, no CPU NN replacement; validate selected cosine then recompute complete vectors",
+    "all_scores": "10x256 float64 score vectors + official p0/p30 + selected queries and boxes"
+  },
+  "closure": "source/R30 actual full-model forwards all requested rows; boxes exact; source restored; nonmatching frozen; GPU neighbors and all selected queries exact; all coordinate errors logged",
+  "evaluation": "post-seal CPU task scoring per platform, scene, aggregate balanced metrics, all negative cases and same-information QP controls; one-scene limits disclosed",
+  "no_GT_based_feedback_or_test_selection": true,
+  "no_change_to_R33_text_budget": true,
+  "publication_provenance": "GRACE hidden-activation locality is mechanism inspiration only, not reproduction; no labeled correct-edit oracle",
+  "paper": "https://papers.neurips.cc/paper_files/paper/2023/hash/95b6e2ff961580e03c0a662a63a71812-Abstract-Conference.html",
+  "program_sha256": {
+    "crossplatform/round34/common34.py": "5e6e155d6a055ca37dad457c62598e435eaa57e9b1fd38687befa135013bf821",
+    "crossplatform/round34/keyscope34.py": "c4cfdde8c96de785a2c03aae33ec870a04f049acfa34d6fc82e2a178b2ffdac2",
+    "crossplatform/round34/captureU34.py": "16605cda87e208c3a7b6891f13f13f0463d020aef6537b49afc3cb4c1cc96a4c",
+    "crossplatform/round34/audit34.py": "40e73e71326f6195cf40b7a9e009378c8924915d21862d28eb860bf89c7657b0",
+    "crossplatform/round34/closure34.py": "806dde7176cf904f65ea9eeb4d99a3c131c5f712ef8bbcba64601a5d8a97a542",
+    "crossplatform/round34/score34.py": "58b9f2ff789beedf74d6c7f7692dda3c0875157542d7fda570e15ed32243c20c",
+    "crossplatform/round34/synthetic34.py": "cde518986f2f3a761b3ad8b97764c8079e148b0d734bee5908aa7af8ffb6d99d",
+    "crossplatform/round32/coordinate_projection32.py": "2e3da33387a71928e1b7f5e154008956601e19686eaaab6dc7ce4487bc6c4090",
+    "crossplatform/round32/common32.py": "1b3fa7b86b8dae77a0c590bb1967e6246543d80bcc6c50276cbb8af09c9cf6e5",
+    "crossplatform/round33/common33.py": "b804dc5939e3d274927e46d02e01dc4dc182c0097024a47ca07cecab73928b13"
+  },
+  "immutable_input_sha256": {
+    "crossplatform/round29/direct208_attempt001/FEEDBACK_PRIVATE.json": "f95e03c437a5850b74909677ce3980b33e88517b2768b5bf4d2a54b28bc06fb8",
+    "crossplatform/round30/screen_attempt001/states_PRIVATE/drone_b1.npz": "e0ebf1580826511aa921a8d2c42e3197a2d8a5691140f5d441d9fd78863575f9",
+    "crossplatform/round30/screen_attempt001/states_PRIVATE/quad_b1.npz": "93e6e8d8cce9d570d34bf552a67a63056046dbc87897ad91e99ae66a5f282dfe",
+    "crossplatform/round24/capture336_attempt001/projection_source_PRIVATE.npz": "713fe85698ccdd10ee4c3dfbb87c8768d2e76229bd541c6a0f3d7d8efc557dd5"
+  },
+  "source_key_diagnostic_seal_sha256": "161d752b9f6bcef4d42715a1b76e8c336b5b4c21815974b7d852b9209c5f837c"
+}

@@ -1,0 +1,76 @@
+{
+  "state": "PASS",
+  "root_primary_lock_sha256": "4f3823de10bf40b3d6c8c275f3a0bceaed9f76949df5a19c41c551005843f5b4",
+  "fixed_primary": "h_scoped_R30",
+  "primary_unchanged_despite_U_best_R30": true,
+  "registration_precedes_all_three_U_capture_prediction_jobs": [
+    {
+      "job_receipt": "20261101T181710_1291425.json",
+      "started_utc": "2026-11-01T18:17:10.136541+00:00",
+      "command": [
+        "crossplatform/env/bin/python",
+        "crossplatform/round35/predictU35.py"
+      ]
+    },
+    {
+      "job_receipt": "20261101T181338_1290413.json",
+      "started_utc": "2026-11-01T18:13:38.188307+00:00",
+      "command": [
+        "crossplatform/env/bin/python",
+        "crossplatform/round34/keyscope34.py",
+        "--split",
+        "U128"
+      ]
+    },
+    {
+      "job_receipt": "20261101T181241_1290041.json",
+      "started_utc": "2026-11-01T18:12:41.374397+00:00",
+      "command": [
+        "crossplatform/env/bin/python",
+        "crossplatform/round34/captureU34.py"
+      ]
+    }
+  ],
+  "U128_scenes": {
+    "drone": 1,
+    "quad": 3
+  },
+  "FINAL_manifest_media_GT_not_read": true,
+  "no_GPU_optimizer_training_autograd": true,
+  "content_audit_pass": true,
+  "no_between_Drone_scene_CI": true,
+  "all_negative_cases_retained": true,
+  "CPU_argmax_differences": [],
+  "CPU_head_probability_maxerror": 1.185735225561757e-06,
+  "CPU_head_exactlogodds_maxerror": 6.704494623477331e-06,
+  "limitations": [
+    "U content is distinct from historical observations but allU scenes overlap history; no unseen-scene claim.",
+    "Recorded GPU nearest indices are used for arithmetic; no CPU neighbor substitution. GPU fullclosure receipts cover all128, reviewed here without rerunningGPU.",
+    "Source/R30 fullclosure256forwards plus two newR35heads256forwards total512 unique fullmodel calls; do not doublecount R30 twice.",
+    "Partialkeep reduces unjudged A drift but has no IoU improvement overR30 onU and lowerDEV; not evidence generally betterTTA."
+  ],
+  "R35_saved_heads": 6,
+  "source_projection_also_CPU_replayed": true,
+  "U_probability_and_exactlogodds_vectors": 512,
+  "R35_own_task_values_checked": 512,
+  "merged_R34_controls_task_values_checked": 1536,
+  "partial_vs_R30_per_observation_IoU_exact": 128,
+  "partial_vs_R30_different_queries": 4,
+  "A_drift_decomposition_states_recomputed": 6,
+  "balanced_U_mIoU_percent": {
+    "source": 14.960674049431377,
+    "R30_U_rows": 16.313208117782814,
+    "U_rows_matched_denominator": 16.109055533587416,
+    "partial_output_keep": 16.313208117782814,
+    "R34_h_scoped_R30": 15.481330561372857,
+    "R34_noun_scoped_R30": 15.433944629853787,
+    "R34_h_samegate_QP": 15.063310157185168,
+    "R34_noun_samegate_QP": 14.582981062720807,
+    "R34_h_global_mean": 14.960674049431377,
+    "R34_h_global_norm": 14.960674049431377,
+    "R34_noun_global_mean": 14.960674049431377,
+    "R34_noun_global_norm": 14.960674049431377
+  },
+  "new_R35_fullclosure_forward_receipt": 256,
+  "R30_source_closure_reused_from_R34": true
+}
