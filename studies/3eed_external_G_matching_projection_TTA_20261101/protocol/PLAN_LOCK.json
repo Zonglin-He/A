@@ -1,0 +1,23 @@
+{
+  "question": "Does external G provide reliable geometry-conditioned instance preferences, and which ranking-update interface generalizes beyond fitted observations?",
+  "source": "Waymo-only epoch100 sha256 0d8766abaf06c9f3e2500fcb187337982d391f9e4d46ca854f3b3bb70fd33bbd",
+  "frozen": "all boxes,backbones,decoder,regression; model eval; no EMA",
+  "interfaces": [
+    "interaction residual ranking adapter 64 weights + intercept",
+    "last query projection Linear(288,64)",
+    "full query matching projection MLP 288-288-288-64",
+    "full text matching projection MLP 288-288-288-64"
+  ],
+  "controls": [
+    "source",
+    "current Qwen G direct no-update",
+    "remove Qwen subject and reference checks, retain masks/DINO/pointmapping/globalposition",
+    "CLIP ViT-B32 replacing Qwen on identical crops/phrases",
+    "same A evidence nonparametric similarity memory on unseen observations"
+  ],
+  "protocol": "per-platform shared state fit on unlabeled D208 G, choose interface/config on exposed V64 labels, freeze before M64 predictions/scoring; no M64 feedback used to update transfer model",
+  "optimization": "AdamW, candidate-level teacher-score distillation and top1 pair margin, source anchor, fixed finite LR/step grid; exact details locked before fits",
+  "selection": "balanced mIoU primary, aggregate net benefit, retain all harms; no all-negative/perfect gate",
+  "limits": "all target VAL historical labels exposed; M new content not new independent scene; no full Reg/TDA/RLCF reproduction claim",
+  "run": "registered_before_any_R24_model_output"
+}

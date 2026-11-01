@@ -1,0 +1,13 @@
+# R24 — frozen external G and ranking-projection adaptation
+
+Waymo-only source100 → Drone/Quad. Keep Qwen; matched same-candidate/crop/text no-Qwen and CLIP controls; four real parameter interfaces; same-A no-gradient cache; complete-model replay on64 new observations.
+
+New M64 (32/platform,2Drone/3Quadscenes): mean mIoU source22.639159%, no-Qwen23.317627%, CLIP24.556213%, Qwen direct26.330773%, full-query-MLP transfer23.105303%, adapted+same-current-G26.809724%. Extra gain vs direct G +0.478950pp,2 improvements/1 harm/61 ties. Four other query changes remain IoU0. Few scenes, cluster interval touches0, no certified instance-identity correction. Retain a research candidate, not robust validated production TTA.
+
+Update `contrastive_align_projection_image` all three Linear layers (288-288-288-64,184960params), AdamW5e-4,16steps, frozen boxes/backbones/decoder. Loss is G-distribution KL +source KL anchor +actual competing Top1 margin +parameter anchor. D208 unlabeled G fit; exposed V64 labels select layer/LR/steps, exposed D208 labels select CLIP scale40. M64 content-disjoint from recent manifests, selected before R24 outputs; all target VAL historically scored. No M64 G/labels used to fit. Main protocol is block target adaptation then new-observation inference, not a complete continual-online reproduction. Current-G hybrid was a secondary readout added before M64 scoring.
+
+Source actual input is XYZ+text; use_color config is not actual RGB input. Qwen is frozen external teacher-like feedback, no EMA copy; not teacher-free. No-Qwen still retains independent Mask R-CNN, GroundingDINO and point geometry; CLIP is a VLM replacement. RLCF/TTD/TDA are mechanism references, not reproduced baselines.
+
+All7296anonymous scalar rows include development alternatives, negative tails, memory grid and fixed confirmation, reusing336unique observations rather than7296independent samples. Matching-cost replay: same722images, Qwen44.07s vsCLIP4.93s excluding model startup and common detector.256complete-model head-installation forwards reproduced cached matching scores and bitexact frozen boxes; all nonmatching parameters unchanged and source restored. No new downloads, environments or source training.
+
+Read REPORT.md, protocol/*LOCK.json, results/CPU_AUDIT.json and results/DECISION.json. Execute own scripts in crossplatform/round24 and research/round24 with licensed data and dependencies from prior studies, especially R23 at7ecdfe7497e0242161ba59e293834d349b865b47. No raw media, captions, coordinates, features, task IDs, weights or third-party model code are redistributed. Report gives execution order and limits.

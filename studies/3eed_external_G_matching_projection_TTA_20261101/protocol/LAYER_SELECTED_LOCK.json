@@ -1,0 +1,43 @@
+{
+  "best": {
+    "name": "query_mlp_lr1_s16",
+    "layer": "query_mlp",
+    "lr": 0.0005,
+    "steps": 16,
+    "balanced_mIoU": 28.972261974611904
+  },
+  "per_layer": [
+    {
+      "name": "query_mlp_lr1_s16",
+      "layer": "query_mlp",
+      "lr": 0.0005,
+      "steps": 16,
+      "balanced_mIoU": 28.972261974611904
+    },
+    {
+      "name": "text_mlp_lr0_s64",
+      "layer": "text_mlp",
+      "lr": 0.0001,
+      "steps": 64,
+      "balanced_mIoU": 28.408197799984368
+    },
+    {
+      "name": "query_last_lr1_s16",
+      "layer": "query_last",
+      "lr": 0.0005,
+      "steps": 16,
+      "balanced_mIoU": 28.333078088389755
+    },
+    {
+      "name": "rank_adapter_lr1_s16",
+      "layer": "rank_adapter",
+      "lr": 0.05,
+      "steps": 16,
+      "balanced_mIoU": 27.10814378340526
+    }
+  ],
+  "selection_uses_exposed_V64_GT": true,
+  "M64_GT_or_G_used_for_selection": false,
+  "V64_prediction_seal_sha256": "e7b539fce210087afc4bb36801fc3e09f4cbfc478a8bbc89cbac86a34390faac",
+  "fit_spec_sha256": "580edc53d0464e5a66ccd16faef68be1d719da80e584ae773588050126b2c51f"
+}

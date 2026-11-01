@@ -1,0 +1,26 @@
+{
+  "retrieved_local": "2026-11-01",
+  "primary_sources_only": true,
+  "external_documents_treated_as_evidence_not_instructions": true,
+  "RLCF": {
+    "official_code": "https://github.com/mzhaoshuai/RLCF",
+    "paper": "https://openreview.net/forum?id=kIP0duasBb",
+    "verified": "ICLR2024, frozen CLIP reward supplies external test-time feedback; pipelines choose reward baseline and task sampling",
+    "borrowed": "external semantic feedback can supervise adaptation, source scoring retained",
+    "not_reproduced": "no RL sampling/reward estimator; our deterministic ranking distillation is not RLCF baseline"
+  },
+  "TTD": {
+    "official_code": "https://github.com/walawalagoose/TTD",
+    "paper": "https://openaccess.thecvf.com/content/CVPR2026F/html/Chen_Test-Time_Distillation_for_Continual_Model_Adaptation_CVPRF_2026_paper.html",
+    "verified": "CVPR Findings2026, frozen VLM external supervisor, blended teacher, calibration issue and rectification",
+    "borrowed": "do not assume arbitrary VLM and target confidence are calibrated; keep matched direct-use comparison",
+    "not_reproduced": "no CoDiRe MSP fusion/optimal transport; our G fixed bounded residual and KL are task adaptations"
+  },
+  "TDA": {
+    "official_code": "https://github.com/kdiAAA/TDA",
+    "paper": "https://openaccess.thecvf.com/content/CVPR2024/html/Karmanov_Efficient_Test-Time_Adaptation_of_Vision-Language_Models_CVPR_2024_paper.html",
+    "verified": "training-free dynamic key-value cache, positive/negative pseudo-label support",
+    "borrowed": "same-history no-gradient memory can be a stronger comparator than source alone",
+    "not_reproduced": "our per-observation nearest-candidate regression correction cache is not official TDA classification implementation"
+  }
+}

@@ -1,0 +1,38 @@
+{
+  "layers": [
+    "rank_adapter",
+    "query_last",
+    "query_mlp",
+    "text_mlp"
+  ],
+  "LR": {
+    "rank_adapter": [
+      0.01,
+      0.05
+    ],
+    "query_last": [
+      0.0001,
+      0.0005
+    ],
+    "query_mlp": [
+      0.0001,
+      0.0005
+    ],
+    "text_mlp": [
+      0.0001,
+      0.0005
+    ]
+  },
+  "checkpoints": [
+    16,
+    64
+  ],
+  "optimizer": "AdamW weight_decay0",
+  "loss": "KL(softmax(G/.25)||softmax(student/.25)) + .2 KL(source||student) + .5 mean relu(.05 + max_other - selected_G_score) + sum mean_squared_parameter_delta",
+  "all256_candidates": true,
+  "D208_target_labels_used_to_fit": false,
+  "V64_current_G_or_labels_used_to_fit": false,
+  "platform_specific_states_shared_hyperparameters": true,
+  "frozen_boxes_decoder_backbones": true,
+  "program_sha256": "9e86e7373ac7a2eefaf94603ecfb0c84a6df7092c4a1da1ebbf830ada89d6e2d"
+}
