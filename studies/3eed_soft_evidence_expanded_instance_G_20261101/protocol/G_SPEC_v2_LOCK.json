@@ -1,0 +1,170 @@
+{
+  "objective": "Aggregate balanced-platform mean mIoU primary; Acc25/50 and per-scene tails reported. Individual negative cases allowed; no zero-harm requirement.",
+  "development": "208 exposed samples; one prespecified12configuration grid, global shared configuration only; target-dev tuning disclosed.",
+  "confirmation": "64 new decoded-content-disjoint inputs selected before outputs; all targetVAL historical exposure disclosed; no currentGT until predictions sealed.",
+  "weights": [
+    {
+      "gamma": 0.0,
+      "vision": 0.5,
+      "relation": 0.0,
+      "prior": "log"
+    },
+    {
+      "gamma": 0.0,
+      "vision": 0.5,
+      "relation": 0.25,
+      "prior": "log"
+    },
+    {
+      "gamma": 0.0,
+      "vision": 1.0,
+      "relation": 0.0,
+      "prior": "log"
+    },
+    {
+      "gamma": 0.0,
+      "vision": 1.0,
+      "relation": 0.25,
+      "prior": "log"
+    },
+    {
+      "gamma": 0.0,
+      "vision": 2.0,
+      "relation": 0.0,
+      "prior": "log"
+    },
+    {
+      "gamma": 0.0,
+      "vision": 2.0,
+      "relation": 0.25,
+      "prior": "log"
+    },
+    {
+      "gamma": 0.25,
+      "vision": 0.5,
+      "relation": 0.0,
+      "prior": "log"
+    },
+    {
+      "gamma": 0.25,
+      "vision": 0.5,
+      "relation": 0.25,
+      "prior": "log"
+    },
+    {
+      "gamma": 0.25,
+      "vision": 1.0,
+      "relation": 0.0,
+      "prior": "log"
+    },
+    {
+      "gamma": 0.25,
+      "vision": 1.0,
+      "relation": 0.25,
+      "prior": "log"
+    },
+    {
+      "gamma": 0.25,
+      "vision": 2.0,
+      "relation": 0.0,
+      "prior": "log"
+    },
+    {
+      "gamma": 0.25,
+      "vision": 2.0,
+      "relation": 0.25,
+      "prior": "log"
+    },
+    {
+      "gamma": 0.0,
+      "vision": 0.5,
+      "relation": 0.0,
+      "prior": "linear"
+    },
+    {
+      "gamma": 0.0,
+      "vision": 0.5,
+      "relation": 0.25,
+      "prior": "linear"
+    },
+    {
+      "gamma": 0.0,
+      "vision": 1.0,
+      "relation": 0.0,
+      "prior": "linear"
+    },
+    {
+      "gamma": 0.0,
+      "vision": 1.0,
+      "relation": 0.25,
+      "prior": "linear"
+    },
+    {
+      "gamma": 0.0,
+      "vision": 2.0,
+      "relation": 0.0,
+      "prior": "linear"
+    },
+    {
+      "gamma": 0.0,
+      "vision": 2.0,
+      "relation": 0.25,
+      "prior": "linear"
+    },
+    {
+      "gamma": 0.25,
+      "vision": 0.5,
+      "relation": 0.0,
+      "prior": "linear"
+    },
+    {
+      "gamma": 0.25,
+      "vision": 0.5,
+      "relation": 0.25,
+      "prior": "linear"
+    },
+    {
+      "gamma": 0.25,
+      "vision": 1.0,
+      "relation": 0.0,
+      "prior": "linear"
+    },
+    {
+      "gamma": 0.25,
+      "vision": 1.0,
+      "relation": 0.25,
+      "prior": "linear"
+    },
+    {
+      "gamma": 0.25,
+      "vision": 2.0,
+      "relation": 0.0,
+      "prior": "linear"
+    },
+    {
+      "gamma": 0.25,
+      "vision": 2.0,
+      "relation": 0.25,
+      "prior": "linear"
+    }
+  ],
+  "evidence": "Frozen BBF source log prior + bounded decoupled token residual + mean two-crop full-subject image evidence + soft marginal relation scores. No category increment gate, no unanimity veto, no U hard rejection.",
+  "candidate_pool": "Top6 mapped language-class independent masks plus source mapping and legacy pair masks. Duplicate decoder queries are not independent votes; geometry-normalized association weights.",
+  "selection": "Highest development balanced-domain meanIoU; tie by meanAcc25+50 then lower weights. Freeze before K64scores.",
+  "references": "Own full-phrase proposals; unknown frame/no proposal neutral; soft visual confidence weights and distinct-target exclusion; image-frame relations only, no forced observer-depth interpretation.",
+  "baselines": [
+    "source",
+    "EDA_raw_component_readout",
+    "main_plus_attributes",
+    "R21_no_reference_appearance",
+    "soft_no_reference_same_weights",
+    "soft_no_token_same_weights",
+    "soft_restricted_legacy_pool",
+    "selected_soft_full"
+  ],
+  "no_source_training": true,
+  "no_TTA_this_G_test": true,
+  "max_frozen_VLM_calls": 5000,
+  "all_negatives_retained": true,
+  "revision": "After initial12config exposed development results, before any K64task labels. Singlefactor log/linear sourceprior comparison, identical fixed evidence. First grid and first selection retained."
+}

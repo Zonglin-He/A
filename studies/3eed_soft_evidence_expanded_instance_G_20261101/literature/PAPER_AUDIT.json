@@ -1,0 +1,41 @@
+{
+  "papers": [
+    {
+      "name": "EDA",
+      "paper": "https://arxiv.org/html/2209.14941v3",
+      "official": "https://github.com/yanmin-wu/EDA",
+      "tree_sha": "f35d5431c0c7839da394111a530e2ace0d153acf",
+      "files": [
+        {
+          "path": "models/losses.py",
+          "blob_sha": "44c42089ee8a2441c31974a04d2a768a0d4744ef"
+        },
+        {
+          "path": "src/grounding_evaluator.py",
+          "blob_sha": "f13b4c5a373162b4d61e7ae5a027924a5e31901e"
+        }
+      ],
+      "verified_mechanism": "Explicit main/attribute/pronoun/relation/auxiliary component supervision and inference Eq7. EDA uses dense training losses; copying readout alone onto3EED is a transfer hypothesis, not reproduction."
+    },
+    {
+      "name": "SeeGround",
+      "paper": "https://seeground.github.io/",
+      "official": "https://github.com/iris0329/SeeGround",
+      "tree_sha": "928d827b18345454c6083cf49c9a7348cc04f6c1",
+      "files": [
+        {
+          "path": "inference/inference_scanrefer.py",
+          "blob_sha": "cfeb47c8e54b79fc1daad28fb844a1ba4a026728"
+        }
+      ],
+      "verified_mechanism": "Target/anchor candidate object lookup, view-aligned rendering and image+spatial description fusion. Original code calls a VLM service and uses object proposals. We reuse candidate/component idea; no learned view selector, no multi-view rendering reproduction."
+    },
+    {
+      "name": "ZSVG3D",
+      "paper": "https://arxiv.org/html/2311.15383v2",
+      "verified_mechanism": "Separate LOC and executable spatial functions, view-dependent frame construction, LOC variants includeVQA. Our soft score fusion and marginal anchors are own choices, not an official ZSVG3D reproduction."
+    }
+  ],
+  "implementation_boundary": "3EED official and current source readout select class/name-token probability. Keep baseline untouched. New attribute scoring is added as an inference control; no claim that original baseline forgot a required trick.",
+  "aggregate_policy": "Latest user accepts individual harms if overall metrics improve. Supersedes earlier no-harm gate; retain cases for analysis only."
+}
