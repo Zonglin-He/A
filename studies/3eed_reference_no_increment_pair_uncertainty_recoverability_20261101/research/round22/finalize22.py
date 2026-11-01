@@ -1,0 +1,78 @@
+import sys,datetime
+from pathlib import Path
+ROOT=Path(__file__).resolve().parents[2];sys.path.insert(0,str(ROOT/'crossplatform/round22'))
+from common22 import *
+def main():
+    audit=read(EXP/'CPU_AUDIT.json');assert audit['state']=='PASSED';s=read(EXP/'scored_direct208_attempt001/SUMMARY.json');scene=read(EXP/'scored_scene21_attempt001/SUMMARY.json');elig=read(EXP/'OFFLINE_RECOVERABILITY_COUNTS.json');counts=audit['counts'];gate={}
+    for p in ['drone','quad']:
+        x=s['ALL'][p]['direct_pair_depth_tiebreak'];y=s['OFFERED_RECOVERABLE25_WITH_REL'][p]['direct_pair_depth_tiebreak'];gate[p]={'all_sample_positive_relation_gain':x['gain_vs_no_reference_pp']>0,'recoverable_with_relation_positive_gain':y['gain_vs_no_reference_pp']>0,'no_harmful_relation_decisions':x['harms_vs_no_reference']==0,'independent_confirmation_completed':False,'TTA_allowed':False}
+    assert not any(x['all_sample_positive_relation_gain'] for x in gate.values());dump(EXP/'TTA_GATE.json',gate)
+    decision={'run':'completed','measurement':'valid_CPU_replay_and_all_seals_pass','reference_increment_veto_removed':True,'recovered_reference_proposals':52,'recovered_person_proposals':7,'two_Quad_regressions_prevented_by_abstention':True,'not_established_identity_recognition':True,'primary_relation_increment_pp':{'drone':0.,'quad':0.},'candidate_recovery_strata_label_selected_diagnostic_only':True,'scene21_GT_enriched_probe_not_confirmation':True,'new_G_adopted':False,'TTA_steps':0,'TTA_effect_tested':False,'reason':'No extra relation gain on offered-recoverable real cases or overall; hard reference veto and observer-depth variants introduce harms; joint uncertainty rule drops useful corrections.','all_negatives_retained':True,'no_new_GPU_queued':True};dump(EXP/'DECISION.json',decision)
+    arms=['source','r21_no_ref','drop_increment_full','conservative_no_ref','direct_pair_no_ref','direct_pair_full','direct_pair_depth_full','direct_pair_depth_tiebreak'];table='| 方法（全部208，每平台104） | Drone mIoU% | Quad mIoU% |\n|---|---:|---:|\n'
+    for a in arms:table+=f"| {a} | {s['ALL']['drone'][a]['mIoU_percent']:.6f} | {s['ALL']['quad'][a]['mIoU_percent']:.6f} |\n"
+    recover='| 带关系且候选可恢复的诊断子集 | Drone n=8 | Quad n=10 |\n|---|---:|---:|\n'
+    for a in ['direct_pair_no_ref','direct_pair_full','direct_pair_depth_full','direct_pair_depth_tiebreak']:recover+=f"| {a} | {s['OFFERED_RECOVERABLE25_WITH_REL']['drone'][a]['mIoU_percent']:.6f} | {s['OFFERED_RECOVERABLE25_WITH_REL']['quad'][a]['mIoU_percent']:.6f} |\n"
+    reg='| 已知负例 | Source IoU | R21误纠错后 | 新成对方案（有/无参照相同） |\n|---|---:|---:|---:|\n'
+    for x in read(EXP/'REGRESSION_CASES.json')[:2]:reg+=f"| {x['alias']} | {x['ious']['source']:.6f} | {x['ious']['r21_no_ref']:.6f} | {x['ious']['direct_pair_depth_tiebreak']:.6f} |\n"
+    scene_table='| 场景级标签已知诊断 | 去参照 mIoU% | 完整原文 mIoU% | 增量pp |\n|---|---:|---:|---:|\n'
+    for p in ['drone','quad']:
+        x=scene['ALL'][p];scene_table+=f"| {p}, n={x['source']['n']} | {x['scene_no_ref']['mIoU_percent']:.6f} | {x['scene_full']['mIoU_percent']:.6f} | {x['scene_full']['gain_vs_no_reference_pp']:+.6f} |\n"
+    report=f'''# R22：撤销参照增量门、真实候选比较与可恢复性诊断
+
+**完整短语相对类别词增量已从新G的接收/拒绝规则中完全删除；52个提案不再被该门拒绝，其中7个人物参照提案。新成对比较保住两条Quad原预测，但丢掉不少有益纠错；关系额外增益仍为0，场景级诊断也未支持关系收益。当前G不采用，TTA0步。**
+
+## 数据、执行和暴露
+
+Waymo-only100epoch source→Drone/Quad；原模型、256候选框与已有RGB/点云观测保持冻结。全部208是R20/R21已经评分过的开发/回归观测，每平台104，所有旧/新负例保留。不是新的独立验证集。新视觉模型实际前向1194次：主体/参照比较1014次，场景级诊断180次；无自由生成、格式拒绝0、没有源模型重训或TTA。
+
+先封存缓存消融208×7，评分发现撤掉增量门会引入新的错误否决；在新成对结果评分前登记关系策略附录和保守深度对照。成对208×13全部封存后评分。最后的场景21条面板明确按已有标签选择，属于机制诊断，不作为源无标签或盲测成绩。所有规则变化、失败、暴露顺序均留档，无阈值扫描。
+
+## 修改及对照
+
+1. 参照提案仅检查完整短语的原始Yes/No分数及图像相对空白证据；modifier_increment只留作诊断，任何符号均不再触发拒绝。原来223/382被接收，现为275/382。新增52个是模型提案接收，不是52个独立正确实例；人物提案新增7个。V_quad_004坐在墙边的人现在被接收，源目标也保留。
+2. 对全部154原候选对，直接比较真实A/B，允许U；遮罩紧裁剪/上下文裁剪、两种编号与对应空白图记录固定A/B/U logits，无字符串解析。主体与有描述属性的参照人分别问。新主体判定A19/B4/U131；U是未通过跨视图/编号/间隔规则，不等于生成了131个U字符串。空白条件单独阻止了1个本来通过原始/U间隔的B，过度回退主要不来自空白校准一项。
+3. 图像关系硬否决、只在不确定时辅助选择、去掉角色冲突规则均保留。辅助选择策略不以弱参照证据覆盖已经成立的无参照选择；本轮没有出现强角色冲突，不能将收益归给角色冲突处理。
+4. 增加相机深度区间对照：参照只能唯一匹配独立实例mask，使用独占可见点，要求源框点支持与投影支持。深度分位区间再按源框完整尺寸的深度投影扩展，避免把可见表面当完整框边界。不更新几何、不使用GT尺寸。这个完整尺寸仍是模型先验，不是真实完整形状保证；观察者坐标系从上下文继承的假设也单独披露。
+
+## 全部真实样本的直接使用结果
+
+{table}
+
+新保守方案vsSource：Drone2条IoU改善0恶化，Quad4条改善0恶化；相对R21去参照方案丢掉Drone7条、Quad11条有益修正。平均分下降不是隐藏的TTA失败，而是当前监督选择更保守的代价。所有方法都是直接重排，优化器0步。完整主策略与同信息无参照结果相同，未证明关系增量。
+
+## 有恢复空间的诊断，而不是GT运行时筛选
+
+对所有208条离线检查：Source失败但全部256候选中存在IoU>0.25的，Drone47条、Quad39条；真正提供给G的q0与候选对中可恢复的，只有Drone10条、Quad16条。带有参照关系的是8/10条。说明候选构造/关联/截断还损失了大量原框池恢复空间。IoU可恢复性不是实例身份金标。
+
+GT只在离线评分和诊断分层使用，任何运行时G不读取可恢复标记，也不据GT选query；新成对推理仍覆盖全部154对，不只选容易获益的案例。
+
+{recover}
+
+无参照新方案与关系辅助方案完全相同。硬关系在这组可恢复观测上反而退化；不能再把关系无效归因于全部框都不覆盖目标。
+
+## 两条Quad负例的处理
+
+{reg}
+
+两例主体比较都判为U，因此保留源预测；没有依据GT写个案分支。有/无参照结果相同，这支持避免无依据改选，不支持已经学会辨认正确身份。第一例恢复到0.237646仍未达到Acc25，不能称完全纠正。
+
+## 关系失败和坐标系边界
+
+硬参照规则在V_drone_006将无参照IoU0.239205降到0；硬深度规则在Z_quad_026将0.466849降到0。后者“behind”被解释为观察者深度，实际描述可能采用主体朝向等参考系；这是当前未确认的关系框架，不能按GT倒推翻转符号。123条候选深度关系中，A有115条未知、B有119条未知，深度观测/映射或先验区间多不具可辨性。保守辅助策略避免了这两种否决，但没有产生额外救回。
+
+## 场景级完整文字探针
+
+面板包含全部18个带关系且候选可恢复的已知案例、两条Quad旧负例、一个参照人回归案例；共21条/30对。相同整幅RGB及A/B标记，比较完整原文与从首个参照实体起遮去参照分句的文字，两个编号顺序，空白图仅诊断。遮去的后缀也可能含后续主体上下文，因此是字面参照后缀消融，不能称纯空间谓词因果效应。
+
+{scene_table}
+
+W_drone_014去参照IoU0.413929，完整文字回到0，是该探针的负例。它不是独立测试，也没有证明“关系信息本身有害”；当前场景读出没有正确利用额外文字。
+
+## 审核、成本与裁决
+
+CPU重放全部冻结框输出、旧Source/R21选择与分数，核验新旧所有封存；新运行时没有modifier_increment或离线oracle的读取路径。全部4223任务-方法行保留（1456缓存消融+2704成对正式+63场景诊断），重复使用208输入，不是4223独立样本。新增GPU前向1194，预算1200；源权重未改、几何未改、TTA0步。一次深度字段schema错误在首条预测前报错，失败脚本/锁/空目录保留，改为全局深度数组按独占点索引后重跑，没有重算模型证据。
+
+当前机制判断：参照增量误拒修复成立；两例误纠错可用保守弃权避免；关系额外收益未成立，跨实例角色判断、参考坐标系、候选覆盖和不确定性规则仍是瓶颈。不采用新G，不启动独立确认或TTA，不把这一配置的失败推广成整个任务不存在有效关系或TTA信号。没有新GPU任务排队。
+'''
+    (EXP/'REPORT.md').write_text(report);dump(EXP/'RUN_STATE.json',{'state':'R22_COMPLETED_SCORED_AUDITED_PUBLICATION_PENDING','TTA_steps':0,'new_G_adopted':False,'relationship_increment_pp':{'drone':0.,'quad':0.},'all_negatives_kept':True,'no_new_GPU_queued':True,'client_local_date':'2026-11-01','updated_utc':datetime.datetime.now(datetime.timezone.utc).isoformat()});print('FINALIZED22')
+if __name__=='__main__':main()

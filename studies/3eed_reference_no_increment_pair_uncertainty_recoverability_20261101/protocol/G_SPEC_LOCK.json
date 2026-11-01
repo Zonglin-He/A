@@ -1,0 +1,26 @@
+{
+  "scope": "All208 exposed development, all154 original real pairs. Do not select GPU inputs by oracle.",
+  "reference_acceptance": "Full phrase raw logodds>=.5 and image-gray evidence>=.5 only. modifier_increment is diagnostic, NEVER acceptance/rejection.",
+  "subject_comparison": "Fixed A/B/U logits on masked/context pair panels, both object orders and matching blank; support requires both views and both orders raw margin>=.5 over other candidate and U, image-vs-blank candidate margin>=.5. No category comparison.",
+  "pair_margin": 0.5,
+  "source_and_boxes_frozen": true,
+  "weak_crop_compatibility_min": -0.5,
+  "relation_policy": "Use current no-increment reference graph and camera projection. Spatial evidence can distinguish when subject comparison is unknown, cannot override a clear subject preference for A. Known B contradiction vetoes. Described reference-person B preference conflicts with target B preference => abstain on role ambiguity.",
+  "controls": [
+    "source",
+    "r21_no_ref",
+    "r21_full",
+    "drop_increment_no_ref",
+    "drop_increment_full",
+    "conservative_no_ref",
+    "conservative_full",
+    "direct_pair_no_ref",
+    "direct_pair_full",
+    "direct_pair_no_role_conflict"
+  ],
+  "offline_recoverability": "GT stratifies source-fail/offered-best IoU>.25 and all256 recoverability only in scorer after all predictions sealed. No runtime filtering or oracle selection.",
+  "TTA_gate": "No TTA unless full vs matched pair-no-reference has positive relation gain and no harmful relation decisions on recoverable offered-candidate strata and all-sample results, then separate current-input validation with scene-cluster positive lowerbound. No threshold sweeps.",
+  "expected_new_forwards_cap": 1200,
+  "no_free_generation": true,
+  "all_negatives_retained": true
+}
