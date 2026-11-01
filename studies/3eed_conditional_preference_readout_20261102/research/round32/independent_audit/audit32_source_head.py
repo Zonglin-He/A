@@ -1,0 +1,11 @@
+"""CPU source/R30head replay on newT128, no fitting or GPU."""
+import sys,numpy as np,json,time
+from pathlib import Path
+ROOT=Path(__file__).resolve().parents[3];sys.path[:0]=[str(ROOT/'crossplatform/round32'),str(ROOT/'research/round31/independent_audit')]
+from common32 import read,dump,verify,load_npz,rows,feature
+from audit31_independent import head
+start=time.perf_counter();base=ROOT/'crossplatform/round32';verify(base/'sourceT128_attempt001');capture=read(base/'sourceT128_attempt001/SEALED.json');assert capture['n']==128 and capture['source_unchanged'] and capture['point_input_shape']==[16384,3] and not capture['source_uses_RGB_point_features']
+source=load_npz(base/'sourceT128_attempt001/projection_source_PRIVATE.npz');old=load_npz(ROOT/'crossplatform/round24/capture336_attempt001/projection_source_PRIVATE.npz');assert source.keys()==old.keys() and all(np.array_equal(source[k],old[k]) for k in source);source={k[6:]:v for k,v in source.items() if k.startswith('image.')};adapt={pl:load_npz(ROOT/'crossplatform/round30/screen_attempt001/states_PRIVATE'/(pl+'_b1.npz')) for pl in ['drone','quad']};e0=et=0.;n=0;sourceq=ttaq=0
+for r in rows('T128'):
+ z=feature(r);_,ps=head(source,z);_,pt=head(adapt[r['platform']],z);pred=load_npz(base/'selectedT128_attempt001/predictions_PRIVATE'/(r['id']+'.npz'));e0=max(e0,float(abs(ps-z['scores']).max()));et=max(et,float(abs(pt-pred['adapted_probability']).max()));assert e0<2e-5 and et<2e-5;sourceq+=int(ps.argmax())==int(z['scores'].argmax());ttaq+=int(pt.argmax())==int(pred['adapted_probability'].argmax());n+=1
+result={'state':'PASS_NUMERIC_REPLAY','n':n,'source_projection_source_T128_bitexact_oldsource':True,'source_max_abs_error':e0,'R30_head_max_abs_error':et,'source_CPU_argmax_matches':sourceq,'R30_CPU_argmax_matches':ttaq,'official_saved_float32_probabilities_used_for_readout_tie_contract':True,'R30heads_reused_no_new_neural_training':True,'CPU_double_replay_not_used_to_overwrite_official_float32_scores':True,'source_actual_input_shape':[16384,3],'no_GPU_or_optimization':True,'seconds':time.perf_counter()-start};dump(ROOT/'research/round32/independent_audit/SOURCE_HEAD_AUDIT_RESULT.json',result);print(json.dumps(result,indent=2))

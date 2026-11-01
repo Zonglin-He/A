@@ -1,0 +1,15 @@
+{
+ "failure_evidence":"R31correctfeedbackW_drone012causesnegativeStransfer; knownwrongW_quad010also helpsotherSinputs; globaldeletion/identityfilter notadequate. Nominalmasscontrols separatenormalizationeffect. Testconditionalpropagation, not newteacher/adapter.",
+ "paper_inspiration":"GRACE selective latent support; this is adapted-readout locality experiment, not GRACE reproduction. SeeR31primarypapers/officialcodeaudit.",
+ "fixed":"R30beta1heads,sourceonlyWaymo100,boxes/backbone/decoder/text frozen,all22originalfeedback kept. No newneuraloptimization or GTfeedbackfilter in R32.",
+ "support_keys":["noun_interaction","full_literal_caption_interaction"],
+ "key_definition":"Normalizedsourcequery times normalizedmeantokenembedding,productrenormalized; fulltext excludes special/added notmentioned tokens usingoffsets. Keys fixedsource,candidate-wise; eachAobservation contributes itsclosestcandidate then nearestkdistinctAobservations selected.",
+ "k_options":[1,4],
+ "gate":"g_i=1 if any of k nearestAobservations hasacceptedfeedback,else0. Fixed hard support,no GTorconfidence threshold. Feedbackmembershipisobservationalsupport,notproofcorrectness.",
+ "readout":"Officialp0,p30 converted through strictmonotone ell_epsilon(p)=log(p+1e-6)-log(1+1e-6-p) to retainfloat32tie-order,not confusedwithR30exactdifferentiablelosslogodds. Bothanchortosourceq0, dscope=d0+g*(d30-d0). g0/1endpoints mustreproducefrozen/R30ordersincludingties. No arbitraryzero-cueadvantage.",
+ "sameinformation_control":"Sourcegroup-coordinateminL2projection onto acceptedpairmargins0.1 (<=2perobs,eachgroupweight1,no newnegativeconstraints), rawcorrections stored in sameAqueryfeaturememory; retrievedcorrectionanchoredatcurrentq0andappliedwithsameselectedg. Otherqueryrawcorrection0. KeepR30originalmemoryandallAzeroUmemoryreferences.",
+ "amount_controls":"Perobservationglobalalpha_mean=mean(g); globalalpha_norm=||g*Delta_d||/||Delta_d||. Samecurrentdata,not GT-tuned. Comparelocalizeddcorrection withglobalcorrectionofmatchedmean/norm. Not claimscopeifonlyamounthelps.",
+ "selection":"Four key/kfamilies on exposedoldQ64DEV only. Forparamscope require>=5/6Bpairdirections and>=4/6Bfinalpositivechoices onA to avoidfrozen-onlywin; maximizebalancedDEVmIoU,tie fixedfamilyorder. Samegate directmemory reported; itsownbestofsame4families selectedonDEV as strongerreference. No R64/S64/T labels used tochoose.",
+ "evaluation":"A/DEV/R/S are diagnostic; T12864perplatformactualnewRGBXYZ content, selectedindependentlybeforelabels. Planandselectedfamilylock plusTpredictionssealedbeforeTscore. NightFINAL384reserveuntouched. HistoricalfullVAL/sceneexposure disclosed.",
+ "run":"planned","measurement":"unchecked","claim":"untested;scopecontrolmay merely shrinkupdates"
+}

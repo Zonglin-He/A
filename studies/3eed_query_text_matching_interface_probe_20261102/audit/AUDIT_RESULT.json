@@ -1,0 +1,41 @@
+{
+  "state": "PASS_WITH_EXECUTION_SCOPE_LIMIT",
+  "models": 8,
+  "steps_from_code_and_receipts": 128,
+  "parameters_each": 184960,
+  "CPU_recomputed_score_vectors": 1088,
+  "task_values_adapted": 1088,
+  "source_task_values_also_recomputed": 272,
+  "DEV_task_values_matched": 256,
+  "preference_states_checked": 88,
+  "R30_state_bitexact_platforms": 2,
+  "R30_prediction_and_task_exact": 272,
+  "max_score_replay_error": 1.184323572545054e-06,
+  "max_initial_loss_replay_error": 3.951967205928497e-06,
+  "max_parameter_delta_norm_error": 8.900618930773874e-08,
+  "fixed_contract": {
+    "denominators": {
+      "drone": 10,
+      "quad": 12
+    },
+    "keep": {
+      "drone": 96,
+      "quad": 93
+    },
+    "feedback_pairs": 22,
+    "feedback_observations": 19
+  },
+  "selection_DEV_only_exact": true,
+  "all_negatives_retained": true,
+  "gradient_independent_recheck": "PASS",
+  "U_FINAL_inputs_labels_media_not_accessed": true,
+  "no_GPU_training_autograd_called": true,
+  "update_scope_evidence": "Only an isolated six-array MLP module is constructed and optimized in the inspected fit path, using frozen precomputed features. No full model is instantiated. Thus other branches cannot be changed by this path; no new full-model GPU closure was executed for unselected text heads.",
+  "limitations": [
+    "Independent audit replays saved CPU heads and geometry; it does not retrain states or independently trace every optimizer step.",
+    "Final text-head fitting is incomplete under the registered16-step/two-rate budget. This is not evidence all text-side adaptation is ineffective.",
+    "DEV is exposed historical development; no new U128 confirmation is warranted because the selected state exactly equals the prior R30 reference.",
+    "Data-access claims follow inspected control flow and audit scope, not an OS-level historical file-access trace."
+  ],
+  "seconds": 3.3885340630076826
+}

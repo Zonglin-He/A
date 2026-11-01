@@ -1,0 +1,16 @@
+AUDIT32_SCOPE 64 querymismatches 0 gateaggdiff 0
+AUDIT32_SCOPE 128 querymismatches 0 gateaggdiff 0
+AUDIT32_SCOPE 192 querymismatches 0 gateaggdiff 0
+AUDIT32_SCOPE 256 querymismatches 0 gateaggdiff 2
+AUDIT32_SCOPE 320 querymismatches 0 gateaggdiff 2
+AUDIT32_SCOPE 384 querymismatches 0 gateaggdiff 3
+AUDIT32_SCOPE 448 querymismatches 2 gateaggdiff 3
+AUDIT32_SCOPE 512 querymismatches 6 gateaggdiff 3
+Traceback (most recent call last):
+  File "WORKSPACE_ROOT/research/round32/independent_audit/audit32_independent.py", line 145, in <module>
+    if __name__=='__main__':main()
+                            ^^^^^^
+  File "WORKSPACE_ROOT/research/round32/independent_audit/audit32_independent.py", line 141, in main
+    assert not all_query_mismatches,all_query_mismatches[:3]
+           ^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: [{'alias': 'T_drone_009', 'differences': [('R30_feedbackA_memory', 51, 47)]}, {'alias': 'T_drone_037', 'differences': [('R30_feedbackA_memory', 117, 98)]}, {'alias': 'T_drone_048', 'differences': [('R30_feedbackA_memory', 211, 107)]}]

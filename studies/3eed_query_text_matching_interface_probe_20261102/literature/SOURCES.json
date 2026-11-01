@@ -1,0 +1,74 @@
+{
+  "scope": "Primary papers and original author code; static inspection only; local model claims checked against implementation",
+  "sources": [
+    {
+      "id": "TPT",
+      "venue": "NeurIPS 2022",
+      "paper": "https://proceedings.neurips.cc/paper_files/paper/2022/hash/5bf2b802e24106064dc547ae9283bb0c-Abstract-Conference.html",
+      "official_code": "https://github.com/azshue/TPT",
+      "verified_code": "https://raw.githubusercontent.com/azshue/TPT/main/tpt_classification.py",
+      "evidence": [
+        "select_confident_samples: low-entropy view selection",
+        "avg_entropy: entropy of averaged view predictions",
+        "test_time_tuning: prompt optimization",
+        "parameters outside prompt learner frozen for default prompt variant"
+      ],
+      "transfer_limit": "Prompt context adaptation is not contextual token projection MLP adaptation; image classification augmentations may remove grounding references."
+    },
+    {
+      "id": "RLCF",
+      "venue": "ICLR 2024",
+      "paper": "https://proceedings.iclr.cc/paper_files/paper/2024/file/0faa4bc5f522076947a030273629d4fe-Paper-Conference.pdf",
+      "official_code": "https://github.com/mzhaoshuai/RLCF",
+      "verified_code": [
+        "https://raw.githubusercontent.com/mzhaoshuai/RLCF/master/TPT/tpt_cls_rl.py",
+        "https://raw.githubusercontent.com/mzhaoshuai/RLCF/master/TPT/tune_cls_rl.py"
+      ],
+      "evidence": [
+        "Section 3.2.2: adapt query-side branch and freeze retrieval candidate branch",
+        "Section 3.2.2: no augmentation for holistic retrieval queries",
+        "Section 3.2: CLIP feedback, reward baseline, policy-gradient update"
+      ],
+      "transfer_limit": "Partial instance preferences do not supply rewards for all candidates; this project is not a policy-gradient RLCF reproduction.",
+      "safety": "Raw scripts inspected only; unrelated shell statement ignored, not executed or imported."
+    },
+    {
+      "id": "PCGrad",
+      "venue": "NeurIPS 2020",
+      "paper": "https://papers.neurips.cc/paper_files/paper/2020/file/3fe78a8acf5fda99de95303940a2420c-Paper.pdf",
+      "official_code": "https://github.com/tianheyu927/PCGrad",
+      "verified_code": "https://raw.githubusercontent.com/tianheyu927/PCGrad/master/PCGrad_tf.py",
+      "evidence": [
+        "Algorithm 1 projects task gradients against negative-inner-product peer gradients",
+        "Zero gradient requires explicit numerical treatment; source keep-loss gradient zero has undefined cosine"
+      ],
+      "transfer_limit": "Current local weighted gradient diagnostic does not establish important preference-task conflict; no PCGrad state trained in this child task."
+    },
+    {
+      "id": "3EED_local",
+      "local_path": "crossplatform/round3/p0/upstream/models/bdetr.py",
+      "evidence": [
+        "cross_encoder outputs contextual points_features and text_feats",
+        "text_memory cached before contrastive_align_projection_text",
+        "decoder consumes text_feats, not projected tokens",
+        "contrastive_align_projection_image applied separately to decoder query"
+      ],
+      "transfer_limit": "Both query and text projection inputs are already conditioned on full text and point-cloud interactions; changing projection does not introduce new RGB observations."
+    },
+    {
+      "id": "R33_local_gradient",
+      "local_paths": [
+        "research/round33/gradient_diagnostic/attempt001/STATE_SUMMARY.json",
+        "research/round33/gradient_diagnostic/CPU_AUDIT.json"
+      ],
+      "evidence": [
+        "4 unchanged parameter states",
+        "0 optimizer steps",
+        "19 original feedback observations",
+        "gradient sum closure relative error less than 3.8e-8",
+        "weighted negative-dot-energy fraction at most 0.000137 at measured states"
+      ],
+      "transfer_limit": "Source and R30 endpoint only, not all intermediate optimization states."
+    }
+  ]
+}

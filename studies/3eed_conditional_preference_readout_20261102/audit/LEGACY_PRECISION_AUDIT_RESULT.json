@@ -1,0 +1,139 @@
+{
+  "state": "LEGACY_NUMERICAL_REPLAY_WARNING_POSTHOC_CONTROLS_SEALED",
+  "mismatches": {
+    "numpy32_vs_original_GPU": 7,
+    "fixed_float64_vs_original_GPU": 6,
+    "literal_torchCPU32_vs_original_GPU": 4
+  },
+  "posthoc_task_summary": {
+    "R30_feedbackA_memory": {
+      "drone": {
+        "original_GPU": {
+          "n": 64,
+          "mIoU_percent": 4.3588519502759935,
+          "task_changed_vs_originalGPU": 0,
+          "query_changed_vs_originalGPU": 0,
+          "gain_vs_originalGPU_pp": 0.0
+        },
+        "numpy32": {
+          "n": 64,
+          "mIoU_percent": 4.41545912175412,
+          "task_changed_vs_originalGPU": 2,
+          "query_changed_vs_originalGPU": 7,
+          "gain_vs_originalGPU_pp": 0.05660717147812636
+        },
+        "torchCPU32": {
+          "n": 64,
+          "mIoU_percent": 4.456740417824932,
+          "task_changed_vs_originalGPU": 2,
+          "query_changed_vs_originalGPU": 3,
+          "gain_vs_originalGPU_pp": 0.09788846754893905
+        },
+        "float64": {
+          "n": 64,
+          "mIoU_percent": 4.736060889219032,
+          "task_changed_vs_originalGPU": 3,
+          "query_changed_vs_originalGPU": 6,
+          "gain_vs_originalGPU_pp": 0.37720893894303875
+        }
+      },
+      "quad": {
+        "original_GPU": {
+          "n": 64,
+          "mIoU_percent": 23.953459847497093,
+          "task_changed_vs_originalGPU": 0,
+          "query_changed_vs_originalGPU": 0,
+          "gain_vs_originalGPU_pp": 0.0
+        },
+        "numpy32": {
+          "n": 64,
+          "mIoU_percent": 23.953459847497093,
+          "task_changed_vs_originalGPU": 0,
+          "query_changed_vs_originalGPU": 0,
+          "gain_vs_originalGPU_pp": 0.0
+        },
+        "torchCPU32": {
+          "n": 64,
+          "mIoU_percent": 24.010710278942415,
+          "task_changed_vs_originalGPU": 1,
+          "query_changed_vs_originalGPU": 1,
+          "gain_vs_originalGPU_pp": 0.057250431445320146
+        },
+        "float64": {
+          "n": 64,
+          "mIoU_percent": 23.953459847497093,
+          "task_changed_vs_originalGPU": 0,
+          "query_changed_vs_originalGPU": 0,
+          "gain_vs_originalGPU_pp": 0.0
+        }
+      }
+    },
+    "R30_allA_zeroU_memory": {
+      "drone": {
+        "original_GPU": {
+          "n": 64,
+          "mIoU_percent": 6.983971021331758,
+          "task_changed_vs_originalGPU": 0,
+          "query_changed_vs_originalGPU": 0,
+          "gain_vs_originalGPU_pp": 0.0
+        },
+        "numpy32": {
+          "n": 64,
+          "mIoU_percent": 6.983971021331758,
+          "task_changed_vs_originalGPU": 0,
+          "query_changed_vs_originalGPU": 0,
+          "gain_vs_originalGPU_pp": 0.0
+        },
+        "torchCPU32": {
+          "n": 64,
+          "mIoU_percent": 6.983971021331758,
+          "task_changed_vs_originalGPU": 0,
+          "query_changed_vs_originalGPU": 0,
+          "gain_vs_originalGPU_pp": 0.0
+        },
+        "float64": {
+          "n": 64,
+          "mIoU_percent": 6.983971021331758,
+          "task_changed_vs_originalGPU": 0,
+          "query_changed_vs_originalGPU": 0,
+          "gain_vs_originalGPU_pp": 0.0
+        }
+      },
+      "quad": {
+        "original_GPU": {
+          "n": 64,
+          "mIoU_percent": 23.965451903164304,
+          "task_changed_vs_originalGPU": 0,
+          "query_changed_vs_originalGPU": 0,
+          "gain_vs_originalGPU_pp": 0.0
+        },
+        "numpy32": {
+          "n": 64,
+          "mIoU_percent": 23.965451903164304,
+          "task_changed_vs_originalGPU": 0,
+          "query_changed_vs_originalGPU": 0,
+          "gain_vs_originalGPU_pp": 0.0
+        },
+        "torchCPU32": {
+          "n": 64,
+          "mIoU_percent": 23.965451903164304,
+          "task_changed_vs_originalGPU": 0,
+          "query_changed_vs_originalGPU": 0,
+          "gain_vs_originalGPU_pp": 0.0
+        },
+        "float64": {
+          "n": 64,
+          "mIoU_percent": 23.965451903164304,
+          "task_changed_vs_originalGPU": 0,
+          "query_changed_vs_originalGPU": 0,
+          "gain_vs_originalGPU_pp": 0.0
+        }
+      }
+    }
+  },
+  "raw_GPU_neighbor_indices_not_logged": true,
+  "no_primary_or_original_control_replaced": true,
+  "float64control_prespecified_precision_path_not_perf_selected": true,
+  "numeric_scope": "literal original numpykeyconstruction; NumPyBLAS32/TorchCPU32 differ in cosine and weightedfloat32rounding; floating ties in candidate scores can change selectedquery",
+  "seconds": 12.757332873996347
+}

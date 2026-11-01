@@ -1,0 +1,26 @@
+{
+  "mechanism": "R31correctfeedbacknegative-transfer andR32narrowcoverage suggest shared matching interface limits. Officialtext_h is point-conditioned text_memory, not statictext; tryexistingtextprojection as conditionedupdateinterface whilequery/boxesfrozen. It cannotcreateRGBinformation.",
+  "paper_audit": "RLCF query-side branch adaptation andTPT language-side adaptation inspire interfacechoice, not reproduction. R24testedtextprojectionunderoldG; new22feedback+outputkeep nottested.",
+  "gradient_diagnostic": "Source/endstate per-observationgradients showrawcosconflicts butnorm-weightednegative-dotenergy<=0.014percent; dominantpref directions largelyalign. Pref-keeptradeoff remains. NoPCGradtrial solelyfromrawnegativecounts; thisdoesnotexcludeintermediatetrajectoryconflicts.",
+  "matrix": {
+    "interfaces": [
+      "query_mlp",
+      "text_mlp"
+    ],
+    "learning_rates": [
+      0.0001,
+      0.0005
+    ],
+    "steps": 16,
+    "beta": 1,
+    "parameters_each": 184960
+  },
+  "fixed": "all22R29feedback,originalU189,logoddsRankNettau.1,sourceq0,AdamWweightdecay0,seed0. NoGlabel/architecture/RGBtrainingchange; nooracleblacklist.",
+  "source": "sameWaymo-onlyepoch100, source initialization perinterface/rate/platform. Query5e-4mustreproduceR30b1state/predictions. textprojectiononlyusesfrozenpoint-conditionedtext_h; Roberta,text_projector,cross_encoder,decoder andboxesfrozen.",
+  "selection": "common interface/rate pair acrossplatforms usingexposedoldQ64DEV balancedmIoU among>=5/6Bdirections and>=4/6Bfinalpositivechoices. Recordbesttextandbestquery separately as mechanism comparison. NoR/S/T/Ulabels tochoose.",
+  "confirmation": "U128 preselected64/platform, actualRGBXYZdisjointhistoryandT128; FINAL384 protected. Plan,selectedconfiguration andUpredictions sealedbeforeUscore. Source/R30/R32scopeandmatchedno-updatecontrols remainreferences.",
+  "budget": "8states*16steps=128updates, no furtherLR/beta/step sweep. Iftext cannot satisfy feedback withinbudget, reportboundedcapacityfailure ratherthan claim alltextTTAfails.",
+  "run": "planned",
+  "measurement": "unchecked",
+  "claim": "untested"
+}
