@@ -1,0 +1,32 @@
+{
+  "state": "PROPOSED_NOT_AUTHORIZED_FOR_NEW_RANK_PREDICTION_OR_TTA",
+  "phase0_authorized_separately": "CPU exact source-array gate only; any nonexact stops group reuse",
+  "phase1_requires_root_approval_after_gate": {
+    "data": "all fixed original R24 A208, exposed development",
+    "fixed_G": "original float64 F=source_native_p+2vision+2position+2relation; no new VLM/prompts/score weights",
+    "frozen_q0": "original native source argmax; same source after exact gate",
+    "candidate_qG": "original F argmax, exact F tie versus q0 cannot form a strict preference",
+    "eligibility": "qG and q0 each exactly one nonempty R37 full mask-query group, mask IDs differ, qG!=q0, FqG>Fq0; else UNKNOWN/nochange",
+    "groups": "canonical complete R37 unique-query partition; no AB-only restriction, no new IoU/class/score thresholds",
+    "representative": "fixed original source highest probability query, smallest index on ties; return positive group rep only",
+    "controls": [
+      "source",
+      "original unrestricted G direct query",
+      "eligible fixed-source-group representative direct no-update"
+    ],
+    "safety": "not physical identity gold; independent mask hypotheses can still be wrong; no global negative labels or per-GT filtering",
+    "before_task_labels": "all208 eligibility reasons/groups and full predictions sealed, CPU replay then independent taskscore",
+    "decision": "beforeprediction rootmustseparatelylockacceptance;proposednumericalrule eligibleN>0 ANDbalancedoverallmIoUgain>0;elseSTOP. No posthoccoverage/uncertaintythresholdchanges;limits/resourcejudgmentseparate;eligible subset explanatoryonly"
+  },
+  "phase2_not_authorized": {
+    "trigger": "root accepts clear overall eligible-direct feedback evidence and separately locks finite budget",
+    "scope": "frozen source boxes, query projection MLP, local group-max exact-z RankNet plus relative source output keep, no dense teacher posterior KL",
+    "partial_label": "one group preference per eligible observation, no unknown candidates set negative, third winner is recorded",
+    "keep": "if U=A\\eligible then membership/count and pref normalization change from old R30 U189/10and12; coupled changes disclosed, no single-factor comparison to R30",
+    "controls": "same eligible A preferences directly used without update and same-information memory; correction units/source endpoints/readout separately locked, no probability delta added to z",
+    "no_effect_claim": "RankNet avoids absolute teacher posterior fitting but student gap/temperature/gradient and wrong pseudo-preference risks remain",
+    "historical_novelty_limit": "R24/R43 already implicitly enforce qG>q0 through max-other hinge; R29/R30 already have another-path RankNet and keep; full proposed combination not found, not novel algorithm"
+  },
+  "current_new_GPU_G_VLM_training_taskscore": 0,
+  "FINAL_U_T_forbidden": true
+}
