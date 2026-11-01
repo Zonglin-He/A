@@ -1,0 +1,31 @@
+{
+  "question": "Can one image-text matching signal replace hand-added position/reference/gray/crop/residual rules?",
+  "source": "same Waymo-only100 frozen checkpoint and6Dcandidateboxes; no training or TTA",
+  "fixed": "same independent masks/candidatepool/2Dto3Dassociation across variants;GT never chooses candidates/gates",
+  "strict_first_change": "oldG minus explicit position/reference only; retain previous subject query,crops,gray,relative bounded visual residual",
+  "then": "independently remove gray,doublecrop and source-relative clipping; raw e mapped toqueries, F=source+lambda*e",
+  "fulltext": "do not relabel old subject-only cache as full-description joint scoring; add literal fulltext scene-marked candidate numericYesNo score",
+  "CLIP": "shared image/text cosine, native77 truncation audited and full-coverage chunk-average version distinct from cross-attention",
+  "development_lambdas": {
+    "Qwen": [
+      0,
+      0.1,
+      0.25,
+      0.5,
+      1,
+      2
+    ],
+    "CLIP": [
+      0,
+      1,
+      2,
+      4,
+      8,
+      16
+    ]
+  },
+  "selection": "one shared lambda acrossplatforms pervariant on exposedD208; freeze beforeP64 scoring; no additional sweeps afterP",
+  "primary": "balancedP64mIoU,report replay400 and192 separately with Acc25/50,sceneclusters,all harms",
+  "no_more_source_fusion_training": true,
+  "R25_internal_fusion": "retained separate reference, not claimed G/TTA gain"
+}

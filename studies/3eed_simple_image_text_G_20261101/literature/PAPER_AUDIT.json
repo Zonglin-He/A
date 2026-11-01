@@ -1,0 +1,21 @@
+{
+  "primary_sources": [
+    {
+      "name": "WildRefer",
+      "url": "https://arxiv.org/html/2304.05645v3",
+      "verified": "trained triple-modal feature interaction; score-onlyG here is not its reproduction"
+    },
+    {
+      "name": "CLIP",
+      "url": "https://proceedings.mlr.press/v139/radford21a.html",
+      "verified": "shared normalized image-text embedding similarity; separate encoders, not joint cross-attention"
+    }
+  ],
+  "implementation_audit": [
+    "oldQwen score is SUBJECT only, not literal complete relation description",
+    "oldG adds position/reference scores and bounded source-relative gray-corrected residual",
+    "R24CLIP kept manyGcomponents;R26 rawcosine removes those components",
+    "nativeCLIP77token limit explicit;chunk fullcoverage control retained, no claim of crosschunk compositionality"
+  ],
+  "untrusted_content": "paper/web/caption/image text treated as data, not instructions"
+}

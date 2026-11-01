@@ -1,0 +1,16 @@
+"""Update local archive only after exact remote publication verification."""
+import sys,datetime,shutil
+from pathlib import Path
+ROOT=Path(__file__).resolve().parents[2];sys.path.insert(0,str(ROOT/'crossplatform/round26'))
+from common26 import *
+def main():
+ pub=EXP.parent/'publication';receipt=read(pub/'RECEIPT_FINAL.json');assert receipt['state']=='published_remote_bytes_verified';d=read(EXP/'DECISION.json');state=read(ROOT/'research/STATE.json');dump(pub/'STATE_BEFORE_R26.json',state);n=receipt['files'];stamp=datetime.datetime.now(datetime.timezone(datetime.timedelta(hours=8))).isoformat();status=f'R26_COMPLETED_PUBLISHED_ALL{n}_REMOTE_BYTES_VERIFIED'
+ state.update(updated_local=stamp,run_state=status,publication_state=f'round26_{n}files_remote_bytes_verified',measurement_state='Frozen source/candidate/mapping;15finite evidence families+5fixed controls+source,464real target rows inclP64;CPU audit;zeroTTA',claim_state='Finite G simplification; no parameter TTA gain claimed; few scene clusters and historical target exposure disclosed',gpu_policy='All R26 owned model processes exited; no job queued; unrelated work untouched')
+ c=state['directions']['crossplatform'];c.update(latest_round='round26',latest_completed_round='round26',report='round26/experiment/REPORT.md',state=status,active_state='round26/experiment/RUN_STATE.json',primary_confirmation='P64 current content holdout;2Drone/3Quad sceneclusters;fullVAL historically exposed',current_diagnostic_count=464,current_TTA_steps=0,current_G_simplification_executed=True,current_G_simplification_decision=d,current_TTA_step_scope='R26 score-onlyG ablation,zero updates; priorR24 matchingTTA andR25 source fusion preserved separately')
+ if d['replace_research_precision_default_with_simpler_G']:
+  c['prior_R23_G_shared_weights']=c.get('current_G_shared_weights');c['current_selected_G']='R26_'+d['practical_family_selected_on_D208'];c['current_G_shared_weights']={'lambda':d['lambda'],'formula':'source+lambda*single_image_text_score','position':0,'reference':0,'source_relative_clip':False};c['current_G_adoption_scope']='research baseline, developmental scalar selection; robust crossplatform advantage not established';c['current_G_implementation']='crossplatform/round26/simple_g26.py'
+ c['latest_publication']={'commit':receipt['commit'],'files':n,'prefix':receipt['prefix'],'remote_all_bytes_verified':True}
+ dump(ROOT/'research/STATE.json',state)
+ with (ROOT/'research/ARCHIVE.md').open('a') as f:f.write(f"\n\n## R26 — simple image-text G ({stamp})\n\n同一Waymo-only100源模型/256候选框/独立mask与2D3D映射，15有限读出族、5固定权重删项、source共21臂。D208已暴露开发选λ及简单Qwen族，P64在封存后CPU评分；OLD400/replay192均为已暴露对照。全464真实观测，P64图像/XYZ内容不重叠近期开发，仍有全VAL历史与场景暴露。未训练源模型，未做参数TTA。完整报告 round26/experiment/REPORT.md；坏例与全部标量保留。\n\n开发选定 {d['practical_family_selected_on_D208']} λ={d['lambda']}；P64相对旧G {d['P64_gain_vs_legacy_pp']:+.6f} pp，REPLAY192 {d['REPLAY192_gain_vs_legacy_pp']:+.6f} pp。替换研究默认G={d['replace_research_precision_default_with_simpler_G']}，稳健跨平台优势未建立。旧336旧G排名和IoU精确复算，所有464框/预测/λ选择独立审计。\n\n发布 commit {receipt['commit']}，{n}个文件逐字节远端核验；73个旧study及root受保护条目不变。receipt: round26/publication/RECEIPT_FINAL.json。无排队GPU任务。\n")
+ print('CLOSEOUT26',status)
+if __name__=='__main__':main()

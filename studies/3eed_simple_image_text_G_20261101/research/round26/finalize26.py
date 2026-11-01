@@ -1,0 +1,35 @@
+"""Evidence-backed report and bounded decision; no new inference or tuning."""
+import sys,collections,numpy as np
+from pathlib import Path
+ROOT=Path(__file__).resolve().parents[2];sys.path.insert(0,str(ROOT/'crossplatform/round26'))
+from common26 import *
+def main():
+ assert read(EXP/'CPU_AUDIT.json')['state']=='PASSED'
+ rr=read(EXP/'ALL464_ROWS_PRIVATE.json');effects=read(EXP/'EFFECTS.json');family=read(EXP/'PRACTICAL_FAMILY_LOCK.json');chosen=family['name'];sel=read(EXP/'SELECTED_LAMBDAS_LOCK.json')['lambda_by_variant']
+ def ef(phase,a,b='legacy_complex'):return effects[phase+'__'+a+'__vs__'+b]['balanced']
+ strict=ef('P64','no_position_reference_fixed2');pr=ef('P64',chosen);replay=ef('REPLAY192',chosen)
+ mapping=read(EXP/'MAPPING_COVERAGE.json');md={}
+ for phase,rs in [('OLD400',mapping[:400]),('P64',mapping[400:])]:
+  md[phase]={p:{'n':len([x for x in rs if x['platform']==p]),'with_pool':sum(x['has_pool'] for x in rs if x['platform']==p),'source_q0_mapped':sum(x['q0_mapped'] for x in rs if x['platform']==p),'mean_mapped_queries':float(np.mean([x['mapped_queries'] for x in rs if x['platform']==p]))} for p in ['drone','quad']}
+ dump(EXP/'MAPPING_DIAGNOSTIC_SUMMARY.json',md)
+ cost={}
+ for n in ['sourceP64_attempt001','masksP64_attempt001','dinoF128_attempt001','evidenceF128_attempt001','joint464_attempt001','clip464_attempt001']:
+  s=read(BASE/n/'SEALED.json');cost[n]={k:v for k,v in s.items() if k not in ['files','sha256'] and not isinstance(v,(dict,list))}
+ jointrows=[read(BASE/'joint464_attempt001/cases_PRIVATE'/(r['id']+'.json')) for r in rows()];oldforwards=0;oldtokens=0;newtokens=0;clips=collections.Counter()
+ for r,j in zip(rows(),jointrows):
+  e=read(paths(r)['evidence']/'cases_PRIVATE'/(r['id']+'.json'));ev=[z for a in e['targets_PRIVATE'].values() for x in a for z in [x['full'],x['gray']]]+[z for a in e['references'].values() for x in a for z in [x['full'],x['gray']]];oldforwards+=len(ev);oldtokens+=sum(z['input_tokens'] for z in ev);newtokens+=sum(z['input_tokens'] for z in j['targets_PRIVATE'].values());c=read(BASE/'clip464_attempt001/cases_PRIVATE'/(r['id']+'.json'))
+  if 'text_receipt' in c:clips['descriptions_with_pool']+=1;clips['native_fulltext_truncated']+=c['text_receipt']['original_token_lengths'][0]>77;clips['native_fulltext_tokens_dropped']+=max(0,c['text_receipt']['original_token_lengths'][0]-77);clips['chunk_total']+=c['chunk_receipt']['chunk_count']
+ cost['matched464_Qwen_forward_work']={'legacy_with_references':oldforwards,'simple_full_scene':sum(len(j['targets_PRIVATE']) for j in jointrows),'legacy_input_token_sum':oldtokens,'simple_full_scene_input_token_sum':newtokens,'legacy_counts_reconstructed_from_frozen_cache_not_new_endtoend_timing':True,'whole_scene_has_more_context_and_token_cost_per_forward':True}
+ cost['CLIP_text_coverage']=dict(clips);cost['target_optimizer_steps']=0;cost['new_source_training_steps']=0;dump(EXP/'COSTS.json',cost)
+ adopted=bool(pr['gain_pp']>0 and replay['gain_pp']>0 and sel[chosen]>0)
+ dec={'state':'completed_measured_audited','primary_strict_delete_position_reference_P64_gain_vs_legacy_pp':strict['gain_pp'],'practical_family_selected_on_D208':chosen,'lambda':sel[chosen],'P64_gain_vs_legacy_pp':pr['gain_pp'],'P64_scene_cluster95_pp':pr['cluster95_pp'],'REPLAY192_gain_vs_legacy_pp':replay['gain_pp'],'OLD400_gain_vs_legacy_pp':ef('OLD400',chosen)['gain_pp'],'retain_simplified_research_candidate':bool(sel[chosen]>0),'replace_research_precision_default_with_simpler_G':adopted,'robust_cross_platform_advantage_established':False,'no_family_or_lambda_switch_after_P64':True,'TTA_executed':False,'parameter_updates':0,'all_negatives_retained':True,'R25_internal_fusion_preserved_separately':True,'new_GPU_queued':False}
+ dump(EXP/'DECISION.json',dec)
+ names=['source','legacy_complex','no_position_reference_fixed2','no_position_reference','bounded_no_gray_dual_fixed2','bounded_gray_tight_fixed2','bounded_gray_context_fixed2','centered_unclipped_gray_dual_fixed2','qwen_subject_gray_dual','qwen_subject_raw_dual','qwen_subject_raw_tight','qwen_subject_raw_context','qwen_full_scene_raw','clip_subject_dual','clip_full_native_dual','clip_full_chunk_dual']
+ lines=['# R26：用单一图文分数简化G','',f"本轮完成464条真实目标观测，Waymo-only epoch100源权重、256个候选框、独立实例mask及2D↔3D关联权重固定。没有新增源域训练，没有参数TTA。开发集先选定的简单方案为 {chosen}，共享λ={sel[chosen]}。",'',f"主要单因素检验：只删位置/参照评分、保留旧λ=2及其余视觉处理，P64相对旧G为 {strict['gain_pp']:+.6f} pp。开发集选定简单方案在P64相对旧G为 {pr['gain_pp']:+.6f} pp，场景聚类95%描述性区间 {pr['cluster95_pp']}；已暴露REPLAY192为 {replay['gain_pp']:+.6f} pp。",'','## 协议与证据边界','','- D208为反复暴露的目标开发集，用其标签选择每版本共享λ及有限简单Qwen读出族；并非完全无目标标签的开发历史。选择后锁定整个464预测，再读P64本轮评分标签。','- REPLAY192及OLD400都已暴露。P64来自旧501mask帧外，按输入哈希和场景轮转选取，图像解码与XYZ哈希不重叠近期开发；全VAL历史评分、2Drone/3Quad场景重叠，不能称全新盲测。','- 主检验是 no_position_reference_fixed2 vs legacy_complex。其他删项保留fixed2单因素版本，另报告开发集重新选择λ后的版本。15个有限证据族，5个fixed2对照，source，共21臂，未按P64挑选赢家。','- 无映射、错误、退化、坏例全部保留；GT只用于开发标量选择和封存后评价，从未选mask、候选或运行时门槛。IoU差异不是独立实例身份金标。','- 旧Qwen仅主体描述，不能改名成完整文字。新full_scene把完整文字和标记候选的整张场景图输入冻结Qwen，只读取Yes/No log-odds，不再叠加位置、参照、灰图或source相对残差；它比主体裁剪多了场景上下文，不是纯单因素比较。','- CLIP简单分数为真实图文余弦，无旧G关系评分。native77右截断记录；chunk覆盖所有token但不建模跨块关系，不是联合cross-attention。','','## 结果','','mIoU单位为%；均值为平台等权平均。']
+ for phase in ['OLD400','REPLAY192','P64']:
+  summ=read(EXP/(phase+'_SUMMARY.json'));lines+=['',f'### {phase}','','| 版本 | λ | Drone | Quad | 均值 |','|---|---:|---:|---:|---:|']
+  for n in names:
+   l='—' if n=='source' else '2 固定' if n.endswith('_fixed2') or n=='legacy_complex' else str(sel[n]);d=summ['drone'][n]['mIoU_percent'];q=summ['quad'][n]['mIoU_percent'];lines.append(f'| {n} | {l} | {d:.6f} | {q:.6f} | {(d+q)/2:.6f} |')
+ lines+=['','## 解释与裁决','',f"简化方案是否替换研究默认G：{adopted}。裁决看新观测和已暴露重放的净均值，不以单个负例为否决理由；所有平台差异、坏例和聚类区间保留。少量场景不足以建立稳健跨平台优势。",'','本轮只检验监督/直接重排。没有新增参数更新，不从图文重排收益推导TTA额外收益。先前R24匹配投影TTA与R25源域三模态训练保留为独立分支。','','去位置/参照、去灰图、改单裁剪、取消残差裁剪均有独立对照；不能从full_scene结果单独归因于关系理解，因为上下文、指令和评分条件同时不同。绝对log-odds给未对应候选的证据为0，负分候选可能被未对应候选超过，这种校准后果全部保留，未事后加门。','','## 开销与复现','',f"旧G对应464的Qwen forward数（缓存证据重建）{oldforwards}；完整场景单分数{cost['matched464_Qwen_forward_work']['simple_full_scene']}次。Token工作量分别{oldtokens}/{newtokens}，更少forward不自动等于同倍延迟降低。旧464端到端延迟未重测，实际阶段时间、显存见COSTS.json。",f"有池CLIP描述{clips['descriptions_with_pool']}条，native77截断{clips['native_fulltext_truncated']}条，丢失{clips['native_fulltext_tokens_dropped']}个token。",'','最简实现 crossplatform/round26/simple_g26.py：F = source + lambda * (weights @ image_text_evidence)，一个最终分数、固定框argmax。没有额外位置、参照、灰图或相对source winner规则。候选生成和几何对应沿用公共流程，简化的是评分G，不是声称解决全部2D/3D关联。','','CPU_AUDIT核验全部464预测、框与source相同、旧336旧G排名/IoU精确复算、开发λ和族选择复算、输入哈希与封存。ALL_NEGATIVE_CASES保留所有负变化；重复臂比较不是独立样本。','','文献边界：内部交互需训练接口，参见 [WildRefer](https://arxiv.org/html/2304.05645v3)；共享图文嵌入参见 [CLIP原论文](https://proceedings.mlr.press/v139/radford21a.html)。本轮是分数融合对照，不是两篇模型的完整复现。']
+ (EXP/'REPORT.md').write_text('\n'.join(lines)+'\n');dump(EXP/'RUN_STATE.json',{'run':'completed','measurement':'valid_CPU_audited','claim':'bounded_G_score_comparison_no_TTA_claim','decision':dec,'queued_GPU':False});print('FINAL26',dec)
+if __name__=='__main__':main()
