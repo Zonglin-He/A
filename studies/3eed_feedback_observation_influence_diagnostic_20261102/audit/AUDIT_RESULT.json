@@ -1,0 +1,54 @@
+{
+  "state": "PASS",
+  "reviewer": "independent_cpu_subagent",
+  "counts": {
+    "fixed_denominator_initial_objectives_recomputed": 23,
+    "state_score_vectors_recomputed": 4600,
+    "group_readouts_recomputed": 4600,
+    "zero_source_choices_reproduced": 400,
+    "selected_box_task_values_recomputed": 4600,
+    "influence_rows_recomputed": 3800,
+    "aggregate_subsets_recomputed": 133
+  },
+  "models": 23,
+  "model_kinds": {
+    "all": 2,
+    "leave_one_observation": 19,
+    "zero": 2
+  },
+  "original_pair_denominators": {
+    "drone": 10,
+    "quad": 12
+  },
+  "original_keep_counts": {
+    "drone": 96,
+    "quad": 93
+  },
+  "all_omitted_observations_outside_keep": true,
+  "initial_fixed_denominator_objective_max_error": 4.829421059504568e-06,
+  "source_score_replay_max_error": 1.181698891461469e-06,
+  "state_score_replay_max_error": 1.401107106668853e-06,
+  "final_pair_gap_CPU_GPU_max_error": 5.343295231163836e-06,
+  "all_feedback_state_vs_R30_bitexact": true,
+  "zero_states_vs_source_bitexact": true,
+  "R30_shared_prediction_and_task_exact": 336,
+  "cross_platform": {
+    "only_own_platform_rows_materialized": true,
+    "other_platform_state_uses_unchanged_all_reference": true,
+    "cross_platform_delta_is_structural_zero_not_3800_new_scored_predictions": true
+  },
+  "Aothers_excludes_own_observation": true,
+  "all_19_LOO_x200_equals3800": true,
+  "raw_GTs_used_only_in_diagnostic_CPU_taskscore": true,
+  "attempt001_failure_preserved_no_optimizer_states": true,
+  "no_GPU_or_optimizer_or_Qwen_called": true,
+  "all_positive_and_negative_influence_rows_retained": true,
+  "limitations": [
+    "Code/receipts plus initial loss reconstruction establish denominator and fixed-U contract; no independent training rerun was performed.",
+    "Numerical scores and task geometries are reconstructed independently from saved states/feature banks and bound metadata, using approved independent_core_v2 geometry.",
+    "R64/S64 andDEV labels are exposed diagnostic evidence, not new confirmation or runtime feedback filtering.",
+    "Single-observation removal effects under nonlinear optimization are not additive; cannot turn influence rankings into deployable label quality gates.",
+    "Only corresponding-platform counterfactuals are materialized; opposite platform is fixed all-state by experimental construction."
+  ],
+  "seconds": 21.868538182228804
+}

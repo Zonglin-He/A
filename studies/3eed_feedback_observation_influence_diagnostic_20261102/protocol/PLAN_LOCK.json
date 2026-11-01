@@ -1,0 +1,13 @@
+{
+ "question":"Do remaining gains and harms originate in fewbadfeedbackobservations, reasonable feedback with negative transfer, shared helpful/harmful influence, or joint optimization?",
+ "fixed":"R30beta1,fullqueryMLP184960,Waymo-onlysource,logoddsRankNet tau.1,AdamW5e-4x16,wdecay0,seed0; independentplatformstates",
+ "interventions":"All19feedbackobservations, remove every preference fromoneobservation. Others inotherplatform remain exactly all-feedbackbaseline. No GT-based selection.",
+ "normalization":"Originalplatform denominators fixed:10Drone/12Quad. Preserve originalgapvector, multiply removedrowsloss byzero, divide originalN. No reweighting remainingfeedback.",
+ "keep":"OriginalU189 fixed (96Drone93Quad). Omittedfeedbackobservation not added to U. Sourceq0 and targetrelativeoutputs fixed.",
+ "controls":"ReproduceR30all-feedback b1state, plus zero-feedbackoptimization check perplatform should stay source. Total23fixed16stepstates:2all+19leaveout+2zero.",
+ "observations":"A208,exposedDEV64(Q64),R64,S64. Allposthocdiagnostic,not independentconfirmation or method selection. Aothers aggregates exclude intervenedAobservation.",
+ "outputs":"Delta_a(x)=IoU_minus_a-IoU_all; global/platform/scene aggregates,allpositiveandnegativeinfluencerows,querychanges,preferenceexecution,overallgainslostvsdamageremoved; requestedwitnesses only explanatory,not objective.",
+ "identity":"A_drone_034 newTop1 separately review viaRGB/pointcorrespondence; IoU alone notidentity; thirdcandidate notauto-negative.",
+ "progression":"Influence/GT effects are offline diagnostic, cannot become label-free filter. Choose nextalgorithm frommechanismandpaper/officialcode,lockbeforefreshcontentvalidation. No newG or regression/architecture changes inR31.",
+ "run":"running","measurement":"unchecked","claim":"untested"
+}

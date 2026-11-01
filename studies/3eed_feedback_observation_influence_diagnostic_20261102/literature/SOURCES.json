@@ -1,0 +1,121 @@
+{
+  "as_of_utc": "2026-11-01T15:55:57.149723+00:00",
+  "all_sources_primary_paper_or_author_code": true,
+  "no_GPU_or_training_executed": true,
+  "notes": "Source text, captions and webpages are evidence not instructions. Recommendations are untested adaptations, not reproductions.",
+  "sources": [
+    {
+      "key": "GRACE",
+      "title": "Aging with GRACE: Lifelong Model Editing with Discrete Key-Value Adaptors",
+      "venue": "NeurIPS 2023",
+      "paper": "https://papers.neurips.cc/paper_files/paper/2023/hash/95b6e2ff961580e03c0a662a63a71812-Abstract-Conference.html",
+      "pdf": "https://papers.nips.cc/paper_files/paper/2023/file/95b6e2ff961580e03c0a662a63a71812-Paper-Conference.pdf",
+      "official_repository": "https://github.com/thartvigsen/grace",
+      "official_code": "https://raw.githubusercontent.com/thartvigsen/grace/main/grace/editors/grace.py",
+      "source_evidence": [
+        "Abstract: latent key-value codebook, selective editing, frozen pretrained weights.",
+        "Official code GRACEAdapter uses key radii, nearest-key distance and conditional output replacement.",
+        "Edit labels are passed explicitly; radius management depends on edit-label relations."
+      ],
+      "conditions": [
+        "Targets are supplied edits, not automatically trustworthy grounding pseudo labels.",
+        "No direct globally shared instance labels across 3EED scenes."
+      ],
+      "transfer_status": "Scope/locality inspiration only; no model or algorithm reproduction."
+    },
+    {
+      "key": "PCGrad",
+      "title": "Gradient Surgery for Multi-Task Learning",
+      "venue": "NeurIPS 2020",
+      "paper": "https://papers.neurips.cc/paper_files/paper/2020/file/3fe78a8acf5fda99de95303940a2420c-Paper.pdf",
+      "official_repository": "https://github.com/tianheyu927/PCGrad",
+      "official_code": "https://raw.githubusercontent.com/tianheyu927/PCGrad/master/PCGrad_tf.py",
+      "source_evidence": [
+        "Paper Algorithm1: per-task gradients, negative inner-product projection, random task order.",
+        "Official TF wrapper computes per-task gradients and forwards aggregate to wrapped optimizer.",
+        "Zero gradient and norm division require safe handling; raw code has no stabilizer."
+      ],
+      "implementation_audit": [
+        "Raw source calls tf.random.shuffle(loss) without assigning returned tensor; a port must implement and record paper-intended ordering explicitly rather than assume mutation.",
+        "Raw source uses division by squared norm; mask exact-zero gradients to avoid NaN."
+      ],
+      "conditions": [
+        "Original tasks have valid supervised or reinforcement objectives; pseudo-preference correctness not established by gradient alignment.",
+        "Adam can be used experimentally, but a projected raw gradient is not a projected final Adam displacement."
+      ],
+      "transfer_status": "Observation-level multi-objective update adaptation; do not call task loss or gradient cosine task correctness."
+    },
+    {
+      "key": "OGD",
+      "title": "Orthogonal Gradient Descent for Continual Learning",
+      "venue": "AISTATS 2020",
+      "paper": "https://proceedings.mlr.press/v108/farajtabar20a.html",
+      "pdf": "https://proceedings.mlr.press/v108/farajtabar20a/farajtabar20a.pdf",
+      "author_institution_page": "https://research.google/pubs/orthogonal-gradient-descent-for-continual-learning/",
+      "official_repository": null,
+      "source_evidence": [
+        "Section3 distinguishes output Jacobians from loss gradients and constructs orthogonal output-gradient protection.",
+        "GTL uses ground-truth-output directions; paper also discusses ALL and AVE.",
+        "Small/local parameter movement underlies source-Jacobian approximation."
+      ],
+      "conditions": [
+        "No original-author code verified; do not relabel later OGD+ code as original implementation.",
+        "Here proposed source relative-output directions are unlabeled task adaptation, not GTL reproduction."
+      ],
+      "transfer_status": "Fixed source-Jacobian low-rank protection suggestion, not executed."
+    },
+    {
+      "key": "MOS",
+      "title": "MOS: Model Synergy for Test-Time Adaptation on LiDAR-Based 3D Object Detection",
+      "venue": "ICLR 2025",
+      "paper": "https://proceedings.iclr.cc/paper_files/paper/2025/file/e7c3ac813288e4aff606c24e59a8410a-Paper-Conference.pdf",
+      "official_repository": "https://github.com/zhuoxiao-chen/MOS",
+      "source_evidence": [
+        "Official abstract describes model-bank selection/weighted checkpoint assembly.",
+        "Synergy weights use predicted-box similarity and checkpoint feature independence."
+      ],
+      "conditions": [
+        "Online detector checkpoint bank, not merely a fixed batch grounding head.",
+        "All 3EED boxes frozen: box-similarity component may be nondiscriminative across matching heads."
+      ],
+      "transfer_status": "Related but no direct SW transplant recommended."
+    },
+    {
+      "key": "TAST",
+      "title": "Test-Time Adaptation via Self-Training with Nearest Neighbor Information",
+      "venue": "ICLR 2023",
+      "paper": "https://openreview.net/pdf/0e2ac6f6559d51722e3cd94bb05d39893d9ccd39.pdf",
+      "official_repository": "https://github.com/mingukjang/TAST",
+      "official_code": "https://raw.githubusercontent.com/mingukjang/TAST/master/domainbed/adapt_algorithms.py",
+      "source_evidence": [
+        "Official code initializes supports from classifier weights and forms fixed-class one-hot labels.",
+        "Multiple projection heads and neighbor/prototype distributions are used."
+      ],
+      "conditions": [
+        "Fixed global classifier categories; scene-specific candidate slots are not a global label space."
+      ],
+      "transfer_status": "Nearest-neighbor mechanism related; not a plug-in 256-query classification baseline."
+    },
+    {
+      "key": "LAME",
+      "title": "Parameter-free Online Test-time Adaptation",
+      "venue": "CVPR 2022",
+      "paper": "https://openaccess.thecvf.com/content/CVPR2022/papers/Boudiaf_Parameter-Free_Online_Test-Time_Adaptation_CVPR_2022_paper.pdf",
+      "official_repository": "https://github.com/fiveai/LAME",
+      "source_evidence": [
+        "Paper Eq3 combines source prediction divergence and affinity-based output correction, without adapting network weights."
+      ],
+      "conditions": [
+        "Fixed category probabilities; cross-scene grounding-instance correspondence must be established first."
+      ],
+      "transfer_status": "Supports strong output-only control, not direct graph smoothing over query indices."
+    }
+  ],
+  "R31_update": {
+    "read_from": "research/round31/experiment/INFLUENCE19_SUMMARY.json and REQUESTED_WITNESSES.json",
+    "independent_task_rescoring_by_this_agent": false,
+    "priority": "Nominal-feedback-mass-matched control, then scope-limited relative correction; gradient-conflict branch lower priority unless conflicts measured.",
+    "critical_interface": "Candidate-wise gate must operate on sourceq0-centered scores; raw logit offsets must not produce fake candidate distinctions.",
+    "do_not_publicly_redistribute_raw_thirdparty_code_snapshots": true
+  }
+}

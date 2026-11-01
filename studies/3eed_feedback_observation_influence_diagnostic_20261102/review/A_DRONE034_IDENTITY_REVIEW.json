@@ -1,0 +1,37 @@
+{
+  "alias": "A_drone_034",
+  "reviewer": "assistant visual review, not external expert gold",
+  "task_GT_or_IoU_used_for_identity": false,
+  "visible_instances": {
+    "M0": "near foreground black/dark sedan, side/rear visible",
+    "M1": "white compact hatchback/wagon-like vehicle adjacent behind M0; strongest visible white compact candidate in this part of scene",
+    "M5": "farther white SUV/wagon in vehicle row"
+  },
+  "identity_judgment": "R30 final predicted box is supported by M0 black foreground sedan. This visibly contradicts the target's white attribute. This conclusion is stronger than merely saying lower IoU, but it does not certify an independent world-instance ID.",
+  "source_target_judgment": "Source box is supported chiefly by M1 white vehicle. M1 is appearance-compatible with target; full-caption direction/left-right clauses have viewpoint or annotation ambiguity in the RGB, so do not certify complete description correctness or force exact referent identity solely from image.",
+  "source_support": {
+    "mask1_points": 170,
+    "known_foreground_points": 184,
+    "target_mask_fraction": 0.9239130434782609,
+    "other_mask0_points": 14,
+    "unassigned_visible_points": 5
+  },
+  "R30_support": {
+    "mask0_points": 109,
+    "known_foreground_points": 109,
+    "mask0_fraction": 1.0,
+    "mask1_points": 0,
+    "unassigned_visible_points": 5
+  },
+  "accepted_supervision": "Only M1>M5 was accepted. It does not specify M1>M0.",
+  "pair00_scope": "M1 versus M0 was actually presented to Qwen. It favored physicalM0 in bothlabelings but one margin was only0.125<0.5, so runtime feedback label wasU and no loss used. Thus M0 is compared-but-abstained, not absent from the original candidate pool.",
+  "readout_detail": "Final q7 is source-selected representative of groupM0. Adapted groupM0 maximum occurs atq17(score0.141399562); groupM1 maximumatq18(score0.116817176). Do not callq7 the raw highestscorequery or conflate group winner and representative.",
+  "mechanism_hypothesis": "This feedback observation is excluded from the nofeedback-only keep set. Accepted M1>M5 can be satisfied while its unaccepted M0 relation changes. This is partial supervision plus shared-update interference, pending LOO attribution to specific observations; no claim that this observation alone caused the drift.",
+  "limits": [
+    "Mask and point support share original calibration/visibility and predicted masks, not independent world truth.",
+    "Visible surface support is not complete-box boundary or geometry correctness.",
+    "The literal phrase says a direction inconsistent or ambiguous with apparent image orientation; no dataset text was rewritten.",
+    "No new pseudo label or negative has been created; this is offline descriptive diagnosis.",
+    "Singlecase is not methodselection evidence; aggregate19LOO outcomes control next mechanism decision."
+  ]
+}
