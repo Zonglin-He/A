@@ -1,0 +1,10 @@
+"""Seal all cached bbox-IoU assignment predictions before task scoring."""
+from common40 import *
+
+def main():
+ check_plan();assert read(EXP/'CPU_TECH_CHECKS.json')['state']=='PASSED';verify(PREVIOUS);verify(ROOT/'crossplatform/round37/prepared208_attempt001');out=BASE/'predictions208_attempt001';out.mkdir(exist_ok=False)
+ for n in ['cases_PRIVATE','predictions_PRIVATE']:(out/n).mkdir()
+ for r in rows():
+  z=arrays(r);case=prepared(r);old=load_npz(PREVIOUS/'predictions_PRIVATE'/(r['id']+'.npz'));rec=read(PREVIOUS/'predictions_PRIVATE'/(r['id']+'.json'));rawfile=PREVIOUS/rec['call_ref']['file'];assert sha(rawfile)==rec['call_ref']['sha256'];raw=read(rawfile)['result'];assignment=iou_assignment(raw,case,z);reads={'bbox_IoU_'+m:iou_readout(assignment,case,z,subset=m=='oldsubset') for m in ['fullmap','oldsubset']};assert old['arm_names'].tolist()==previous.ARMS;q=np.r_[old['queries'],[reads[n]['query'] for n in ['bbox_IoU_fullmap','bbox_IoU_oldsubset']]].astype(np.int64);np.savez_compressed(out/'predictions_PRIVATE'/(r['id']+'.npz'),arm_names=np.array(ARMS),queries=q,boxes=z['source_boxes'][q]);center=rec['readouts']['bbox_fullmap'];dump(out/'cases_PRIVATE'/(r['id']+'.json'),{'alias':r['alias'],'id_PRIVATE':r['id'],'platform':r['platform'],'raw_file':str(rawfile.relative_to(ROOT)),'raw_sha256':sha(rawfile),'bbox_parsed_original':raw['parsed'],'bbox_position_values_exact':assignment['bbox_resized_unchanged']==raw['parsed']['value'],'assignment':assignment,'readouts':reads,'original_center_readouts':rec['readouts'],'subgroups_defined_without_GT':{'center_unknown':not center['mapped'],'center_IoU_mask_conflict':center['mask_index'] is not None and assignment['mask_index'] is not None and center['mask_index']!=assignment['mask_index']}})
+ seal(out,'R40_all208_cached_geometry_assignment_before_task_GT',n=208,new_VLM_GPU_TTA_calls=0,previous_R39_seal_sha256=sha(PREVIOUS/'SEALED.json'),plan_sha256=sha(EXP/'PLAN_LOCK.json'),implementation_lock_sha256=sha(EXP/'IMPLEMENTATION_LOCK.json'),all13_cached_controls_unchanged=True);print('R40_PREDICTIONS_SEALED')
+if __name__=='__main__':main()
