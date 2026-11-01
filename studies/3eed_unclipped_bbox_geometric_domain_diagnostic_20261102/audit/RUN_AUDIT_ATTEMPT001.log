@@ -1,0 +1,8 @@
+Traceback (most recent call last):
+  File "WORKSPACE_ROOT/research/round47/independent_audit/audit47.py", line 68, in <module>
+    if __name__=='__main__':main()
+                            ^^^^^^
+  File "WORKSPACE_ROOT/research/round47/independent_audit/audit47.py", line 52, in main
+    call=read(path);call=call['result'] if cap=='3B' else call;raw=call['raw_answer_PRIVATE'] if 'raw_answer_PRIVATE' in call else call['raw'];p,f=domain(raw,call['model_resized_wh']);author=saved['details'][cap];assert p['status']==author['domain_parsed']['status'] and p['value']==author['domain_parsed']['value'] and f==author['domain_flags'];assert sha(path)==saved['raw_refs'][cap]['sha256'];counts[cap][f['strict_status']]+=1;counts[cap]['recovered_outside_only']+=int(f['outside_only_recovered']);flags[cap]=f;cc=dict(call,parsed=p);a=assign(cc,case,z);aa=author['assignment']
+                                                                                                                                                                                                                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError
