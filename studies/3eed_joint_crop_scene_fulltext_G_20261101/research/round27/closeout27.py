@@ -1,0 +1,14 @@
+"""Archive after verified immutable remote publication; no GPU work."""
+import sys,datetime
+from pathlib import Path
+ROOT=Path(__file__).resolve().parents[2];sys.path.insert(0,str(ROOT/'crossplatform/round27'))
+from common27 import *
+def main():
+ pub=EXP.parent/'publication';receipt=read(pub/'RECEIPT_FINAL.json');assert receipt['state']=='published_remote_bytes_verified';d=read(EXP/'DECISION.json');state=read(ROOT/'research/STATE.json');dump(pub/'STATE_BEFORE_R27.json',state);status=f"R27_COMPLETED_PUBLISHED_ALL{receipt['files']}_REMOTE_BYTES_VERIFIED";state.update(updated_local=datetime.datetime.now(datetime.timezone(datetime.timedelta(hours=8))).isoformat(),run_state=status,publication_state=f"round27_{receipt['files']}files_remote_bytes_verified",measurement_state='528realobservations;fourjointinputcontrols;sealedQ64;resolution/prompt/image/CPUaudits;zeroTTA',claim_state='jointfulltextG finite evidence;resize-only explanation not established;fewscenes/exposure disclosed',gpu_policy='All R27 owned model processes exited; no job queued; unrelated work untouched')
+ c=state['directions']['crossplatform'];c.update(latest_round='round27',latest_completed_round='round27',report='round27/experiment/REPORT.md',state=status,active_state='round27/experiment/RUN_STATE.json',current_diagnostic_count=528,current_TTA_steps=0,current_joint_crop_scene_executed=True,current_joint_crop_scene_decision=d,current_TTA_step_scope='R27directjointG,noTTA; priorR24matching andR25sourcefusion preserved separately',latest_publication={'commit':receipt['commit'],'files':receipt['files'],'prefix':receipt['prefix'],'remote_all_bytes_verified':True})
+ if d['replace_research_precision_reference']:
+  c['prior_precision_G']=c.get('current_selected_G');c.update(current_selected_G='R27_crop_scene_joint',current_G_shared_weights={'lambda':d['lambda'],'formula':'source+lambda*jointcrop_scene_ITscore','handadded_components':0},current_G_adoption_scope='research baseline;fewscenes/exposeddevelopment;robustness unestablished')
+ dump(ROOT/'research/STATE.json',state)
+ with (ROOT/'research/ARCHIVE.md').open('a') as f:f.write(f"\n\n## R27 — joint crop/context full-text G (2026-11-01)\n\n同Waymo-only100源模型、256候选框和2D3D映射；四个统一提示词输入对照（整图/提高上限/重复整图/主体裁剪+场景），一次联合logodds，无额外手工分数。528真实观测含新Q64；D208选共享λ，固定joint主版本，预测封存后评分。旧464 source/旧G/R26整图重放精确，所有框不变，全部坏例保留。38旧400退化候选缩放后短边中位数Drone135.89/Quad81.86px，不支持极小主体解释全部退化。输入分辨率和实际processorgrid逐条核验。Q64内容不重叠近期开发，但全VAL及场景已有暴露。\n\n主版本λ={d['lambda']}；Q64相对同提示词整图 {d['Q64_joint_vs_sameprompt_scene']['gain_pp']:+.6f}pp，相对旧G {d['Q64_joint_vs_legacyG']['gain_pp']:+.6f}pp；旧400相对旧G {d['OLD400_joint_vs_legacyG']['gain_pp']:+.6f}pp。研究精度参照替换={d['replace_research_precision_reference']}，未训练源模型/未做参数TTA。报告round27/experiment/REPORT.md；commit{receipt['commit']}，{receipt['files']}文件远端逐字节核验，74旧study及其他root项不变。receipt round27/publication/RECEIPT_FINAL.json。无排队GPU。\n")
+ print('CLOSEOUT27',status)
+if __name__=='__main__':main()

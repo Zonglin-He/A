@@ -1,0 +1,29 @@
+{
+  "hypothesis": "whole-scene downscaling loses subject detail;joint localcrop+scene may recover",
+  "four_variants": [
+    "scene_base",
+    "scene_hires",
+    "scene_repeat",
+    "crop_scene_joint"
+  ],
+  "same_literal_full_caption_prompt": true,
+  "primary": "crop_scene_joint vs scene_base on newQ64",
+  "controls": "samepromptoneimage,2xwholeframepixelcap,twoidenticalscenes sameperimagecap,R26oldfullscene,legacyG,FrozenSource",
+  "score": "one YesNo logodds jointly per instance;source+lambda*weights@e;no additional scores",
+  "lambdas": [
+    0,
+    0.1,
+    0.25,
+    0.5,
+    1,
+    2,
+    4
+  ],
+  "selection": "one shared scalar/variant D208 only,freeze beforeQ64GT;also reportfixed2",
+  "no_family_switch": "crop_scene_joint is primary,not chosen onQ64",
+  "source_and_boxes": "frozenWaymo-only100,all256boxes andsame2D3Dmapping",
+  "budget": "4variants*all528*poolmax6;no training/noTTA,noGTfiltering",
+  "heldout": "Q64currentinputcontent,fullVALhistoricalexposure andsharedscenes disclosed",
+  "resolution_audit": "actual processor grid,projected subjectbbox shortestside andmask foregroundpixel area;descriptive size not correctness certification",
+  "grid_reason": "priorR26bestQwenlambdasatupper2;addoneprespecified4endpointbeforeR27scores,allnewandR26_sceneuseequalgrid"
+}
