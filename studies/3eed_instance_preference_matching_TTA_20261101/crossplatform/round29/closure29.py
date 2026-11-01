@@ -1,0 +1,24 @@
+"""Full grounding installation, both losses, all64 independent observations."""
+import sys,time,random,numpy as np
+from common29 import *
+sys.path[:0]=[str(ROOT/'crossplatform/round24'),str(ROOT/'crossplatform/round9'),str(ROOT/'crossplatform/round7'),str(ROOT/'crossplatform/round7/experiment')]
+from closure24 import fp_except
+from run_diagnostic import load_model,fingerprint,mask_for
+from runner_helpers import sample_points
+from regression_adapter import text_bbf_scores
+
+def main():
+ import torch
+ torch.set_num_threads(4);torch.manual_seed(0);np.random.seed(0);random.seed(0);torch.set_float32_matmul_precision('highest');torch.backends.cudnn.allow_tf32=False;torch.backends.cuda.matmul.allow_tf32=False;torch.backends.cudnn.benchmark=False;torch.backends.cudnn.deterministic=True
+ out=BASE/'closureR64_attempt001';out.mkdir(exist_ok=False);start=time.perf_counter();model,_=load_model(read(ROOT/'research/round15/experiment/SOURCE_CAPTURE_PLAN_LOCK.json'));original=fingerprint(model);outside=fp_except(model,'contrastive_align_projection_image.');initial={k:v.detach().clone() for k,v in model.contrastive_align_projection_image.state_dict().items()};receipt=[]
+ for arm in ['ranknet_attempt001','ranknet_logodds_attempt001']:
+  verify(BASE/arm);maxerr=0.;maxbox=0.;n=0
+  for pl in ['drone','quad']:
+   s=load_npz(BASE/arm/'states_PRIVATE'/(pl+'_query_mlp.npz'));model.contrastive_align_projection_image.load_state_dict({k:torch.tensor(v,device='cuda') for k,v in s.items()})
+   for r in [r for r in read(EXP.parent/'input/R64_PRIVATE.json') if r['platform']==pl]:
+    z=feature(r);pc,_,_=sample_points({k:v for k,v in r.items() if k not in ('stage','alias','frame_alias')});text=r['caption']+' . not mentioned';mask,_=mask_for(model,text,'all_content_tokens')
+    with torch.inference_mode():o=model({'point_clouds':torch.tensor(pc,device='cuda')[None],'text':[text]});ss=text_bbf_scores(o,mask)[0].cpu().numpy();b=torch.cat([o['last_center'],o['last_pred_size']],-1)[0].cpu().numpy()
+    pred=load_npz(BASE/arm/'R64_predictions/predictions_PRIVATE'/(r['id']+'.npz'));expected=pred['ranknet_group_scores'];er=float(abs(ss-expected).max());be=float(abs(b-z['boxes']).max());assert er<2e-5 and be==0.;ix=pred['arm_names'].tolist().index('ranknet_group');q=int(pred['queries'][ix]);assert ss[q]>=ss.max()-2e-6;maxerr=max(maxerr,er);maxbox=max(maxbox,be);n+=1
+  assert fp_except(model,'contrastive_align_projection_image.')==outside;model.contrastive_align_projection_image.load_state_dict(initial);assert fingerprint(model)==original;receipt.append({'arm':arm,'full_model_forwards':n,'score_max_abs_error':maxerr,'box_max_abs_error':maxbox,'nonmatching_weights_unchanged':True,'source_restored_bitexact':True});print('CLOSURE29',arm,n,maxerr,flush=True)
+ dump(out/'CLOSURE_AUDIT.json',receipt);seal(out,'R29_two_matching_states_full_model_closure',forwards=128,seconds=time.perf_counter()-start,peak_bytes=torch.cuda.max_memory_allocated());print('CLOSURE29_SEALED')
+if __name__=='__main__':main()

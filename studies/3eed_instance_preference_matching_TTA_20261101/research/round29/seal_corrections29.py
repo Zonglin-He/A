@@ -1,0 +1,8 @@
+import sys,collections
+from pathlib import Path
+ROOT=Path(__file__).resolve().parents[2];sys.path.insert(0,str(ROOT/'crossplatform/round29'))
+from common29 import *
+out=BASE/'correction_review6_attempt001';out.mkdir(exist_ok=False);a=[{'case':'D01','target':'X','confidence':'high','reason':'Dark gray sedan rear adjacent to white SUV.'},{'case':'D02','target':'Y','confidence':'high','reason':'Orange top light shorts person away from right backpack pedestrian.'},{'case':'D03','target':'X','confidence':'high','reason':'Orange shirt light shorts central person.'},{'case':'D04','target':'X','confidence':'high','reason':'Silver rear-facing sedan with license plate.'},{'case':'D05','target':'Y','confidence':'medium','reason':'Partly occluded dark sedan beside front dark SUV; blue car is behind-right.'},{'case':'D06','target':'Y','confidence':'high','reason':'Gray shirt dark trousers foreground person holding small item; reference left.'}];dump(out/'ANNOTATIONS.json',a);seal(out,'R29_all_correction_visual_labels_before_direction_unblind',n=6,no_training_filter=True,assistant_not_expert_gold=True);rr=[]
+for k,x in zip(read(EXP.parent/'input/CORRECTION6_KEY_PRIVATE.json'),a):
+ correct=k['labels_to_mask_PRIVATE'][x['target']]==k['positive_mask_PRIVATE'];rr.append({'case':x['case'],'alias':k['alias'],'platform':k['platform'],'correct_preference':correct,'confidence':x['confidence']})
+dump(EXP/'CORRECTION6_VISUAL_ROWS.json',rr);dump(EXP/'CORRECTION6_VISUAL_SUMMARY.json',{'n':6,'correct':sum(x['correct_preference'] for x in rr),'wrong':sum(not x['correct_preference'] for x in rr),'postfit_audit_not_independent_confirmation':True,'labels_never_filter_pseudo_feedback':True});print(rr)
