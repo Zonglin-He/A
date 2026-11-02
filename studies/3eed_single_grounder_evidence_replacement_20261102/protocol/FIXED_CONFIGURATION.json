@@ -1,0 +1,70 @@
+{
+  "prefix": "studies/3eed_single_grounder_evidence_replacement_20261102",
+  "source_boxes_per_observation": 256,
+  "full_n": 5912,
+  "DEV_n": 336,
+  "source_platform": "waymo",
+  "source_epoch": 100,
+  "source_checkpoint_sha256": "0d8766abaf06c9f3e2500fcb187337982d391f9e4d46ca854f3b3bb70fd33bbd",
+  "appearance_factor": 0.5,
+  "shared_platform_factor": true,
+  "full_arms": [
+    "source",
+    "external_G",
+    "replace_all",
+    "no_relation",
+    "no_instance_association"
+  ],
+  "selected_method": "grouped_replace_all_c05",
+  "TTA_executed": false,
+  "GT_used_for_DEV_factor_selection": true,
+  "new_full_calibration": false,
+  "full_existing_baselines_reused_not_rescored": true,
+  "UNKNOWN_neutral_not_negative": true,
+  "full_method_external_vision_cache_dependency": false,
+  "parameter_updates": 0,
+  "frame_selection_no_new_boxes": true,
+  "full_noR_not_selected_after_results": true,
+  "new_RGB_encoder_training": false,
+  "original_source_sampling_preserved": true,
+  "grouping": {
+    "point_Jaccard_min": 0.7,
+    "bidirectional_coverage_min": 0.75,
+    "minimum_points": 6,
+    "complete_link": true,
+    "mutual_source_centers_required": true,
+    "box_IoU_only_grouping": false,
+    "ambiguous_membership_UNKNOWN": true,
+    "representative": "maximum_mean_member_point_Jaccard_tie_lowest_original_query",
+    "cross_query_point_union": false,
+    "semantic_instance_identity_certified": false
+  },
+  "appearance": {
+    "actual_globally_visible_point_pixels_only": true,
+    "alternative_hypothesis_shared_pixels_retained": true,
+    "minimum_pixels": 8,
+    "HSV_Lab_support": true,
+    "pseudocount": 0.5,
+    "logodds_clip": 4.0,
+    "reliability": "n_over_n_plus_8",
+    "complex_appearance": "UNKNOWN"
+  },
+  "references": {
+    "same_grounder_only": true,
+    "pure_text_headspan": true,
+    "source_fixed_top_k": 3,
+    "UNKNOWN_logit": 0.0,
+    "truncated_mass_retained": true,
+    "minimum_support_points": 3,
+    "minimum_carrier_coverage": 0.15,
+    "source_logits_not_calibrated_identity_probabilities": true
+  },
+  "fusion_coefficients": {
+    "appearance": 2.0,
+    "global_position": 2.0,
+    "reference_relation": 2.0
+  },
+  "relation_denominator": "one_plus_supported_probability_mass",
+  "UNKNOWN_cue_exact_zero_after_anchoring": true,
+  "measured_surface_not_full_object_boundary": true
+}
