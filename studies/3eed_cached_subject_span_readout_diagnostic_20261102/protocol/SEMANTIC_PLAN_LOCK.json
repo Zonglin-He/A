@@ -1,0 +1,65 @@
+{
+  "state": "ROOT_P0_SEMANTIC_SCOPE_FROZEN_PENDING_PARSER_AND_CODE_REVIEW",
+  "created_utc": "2026-11-02T00:27:17.404249+00:00",
+  "human_scope": "P0 only on already exposed development data; no FINAL384 access; no new TTA loss or parameter updates",
+  "cohort_paths": [
+    "research/round24/input/D208_PRIVATE.json",
+    "research/round24/input/V64_PRIVATE.json",
+    "research/round24/input/M64_PRIVATE.json"
+  ],
+  "all_path": "research/round24/input/ALL336_PRIVATE.json",
+  "n": 336,
+  "split_counts": {
+    "D208": 208,
+    "V64": 64,
+    "M64": 64
+  },
+  "platform_counts": {
+    "drone": 168,
+    "quad": 168
+  },
+  "scene_counts": {
+    "drone": 2,
+    "quad": 3
+  },
+  "exposure": "All development exposed including all historical GT; postR46 hypothesis diagnosis,notnewconfirmation",
+  "feature_path": "crossplatform/round24/capture336_attempt001/samples_PRIVATE/{id}.npz",
+  "source_cache_seal_sha256": "88d6e92e11ff3257e306a519ffac3551829eaa0fd934baec210e34452c678e83",
+  "manifest_sha256": {
+    "research/round24/input/D208_PRIVATE.json": "ee1a1a4b7c952673e16a0151102f32fd15deb53513664d844b4d7050e1f7f536",
+    "research/round24/input/V64_PRIVATE.json": "e1dd41e8c72a0f313aaecbc374ebd7f62855ad80a87b2e8f54d6296c25cd656a",
+    "research/round24/input/M64_PRIVATE.json": "eb4fa39fa734a91a82b66f12978e98fa71857d898a751007cc95ed3259965c19",
+    "research/round24/input/ALL336_PRIVATE.json": "bd8ede69293292f9747cc2d84fb4b25713e6dc5508a50f019851989e71724373"
+  },
+  "arms": [
+    "current_proxy_CPU64",
+    "official_LITERAL_indices_DIAGNOSTIC",
+    "text_only_subject_parser",
+    "official_charspan_REMAP_DIAGNOSTIC",
+    "cached_native_current_BRIDGE"
+  ],
+  "primary_comparison": "ALL336 equally weighted platforms; allD208/V64/M64/platform/scene strata separately descriptive, no hyperparameter selection",
+  "fixed_representation": "source query/tokens/boxes from immutable cache; actualtext caption + literal sentinel; no forward/recoding/feature or box changes",
+  "probability": "one shared float64 softmax(cachedquery @cachedtokens.T/.07) over ALL actual tokens/BOS/EOS/sentinel; no extra embedding normalization or token dropping",
+  "mask_sum": "boolean positive masks, no normalized token-map weighting",
+  "official": "literal source-training snapshot class→platformsynonympriority→firstmatch; original formattedcaption tokenindices literal toactualcachedpadded256 distribution; samecharspan remap subtractoneleadingchar toactualtokenization separate fixed diagnostic; never choose fromtaskIoU",
+  "class_information_boundary": "only official diagnostics may use indexed GT class; class/caption allowliststream with exact historical index/hash; noGTbbox before seal; textparser signaturecaptiononly, separately sealed beforeofficialclassread",
+  "parser_unknown": "UNKNOWN preserved and fallback to currentproxy_CPU64; no oracle/class-informed fallback",
+  "official_unknown": "no match/empty/out-of-domain map status preserved, fallback currentproxy_CPU64/all336denominator; loader difference disclosed",
+  "native_bridge": "use original stored scores q0 and boxes; report CPU64 tolerance/argmax/ties separately; no silently replacing originalsource",
+  "blind_text_audit": "24 fixed hash selections,platform×structured/freeform6each;noGT/noalgorithmoutputs,notexpertgold,annotationssealedbeforetaskunblind",
+  "seal_then_score": "all5x336 predictions and spanstatus sealed, independentCPUarithmetic/schemaaudit, separate rootGTbbox authorization, one unified taskscore; keepallnegative/UNKNOWN/failures",
+  "score": "common existing P5 transformed7DGT vs unchangedsource6Dyaw0; strictIoU>.25/.5; classinfo officialdiagnosticonly,not deployableoracle",
+  "forbidden": [
+    "FINAL384 any manifest/prediction/media/XYZ/GT file access",
+    "R46 edits",
+    "grounder/VLM GPU or source reencoding",
+    "newloss/TTA/fitting",
+    "label-based parser or mask selection",
+    "unseen-scene or fullyunexposed confirmation claim"
+  ],
+  "deadline_local": "2026-11-02T09:30:00+08:00",
+  "guard": "tools/night_guard.py resource cpu for parsing/prediction/audit/scoring; no overlap of ownedCPU score jobs",
+  "publication": "newR48study followingexisting publicexport/independentprivacyreview/remote94style verification/CAS preserveall92existingstudies;exclude rawcaptions/spans/IDs/indices/coords/features/weights",
+  "execution_authorized_by_this_draft": false
+}

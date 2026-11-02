@@ -1,0 +1,52 @@
+{
+  "state": "ROOT_APPROVED_CAPTION_ONLY_RULES_IMPLEMENTED_PENDING_ACTUAL_CODE_EXECUTION_AUTH",
+  "input": "exact raw normalized caption only plus frozen existing Stanza dependency words;no sentinel in NLP;actual grounder tokenization remains caption+' . not mentioned'",
+  "primary_mask": "only selected nominal head word raw [start_char,end_char),all its actual BPE pieces;compound/flat/fixed descendant spans diagnostic only,not added",
+  "explicit_priority": "unique Object type marker;literal value bounded bysemicolon/newline/next explicit field;within value require exactly one nonmeta nominal without another nominal ancestor within field;coordinated or ambiguous type UNKNOWN",
+  "freeform_order": [
+    "unique matrix-root-attached lexical nominal nsubj or nominal csubj",
+    "non-nominal clausal subject UNKNOWN rather than choose a reference",
+    "bare or deictic-copular nonmeta nominal root",
+    "unique direct obj of predefined imperative verb with no lexical subject (only optional you)"
+  ],
+  "imperative_lemmas": [
+    "find",
+    "locate",
+    "identify",
+    "select",
+    "choose",
+    "show",
+    "pick",
+    "spot"
+  ],
+  "meta_nominals": [
+    "image",
+    "picture",
+    "photo",
+    "photograph",
+    "scene",
+    "view",
+    "frame",
+    "description",
+    "object",
+    "target",
+    "entity",
+    "type",
+    "information",
+    "appearance",
+    "feature",
+    "features",
+    "position",
+    "environment"
+  ],
+  "sentence_rule": "only leading sentences with metadata nominals exclusively may be skipped;first unresolved referential sentence UNKNOWN;never scan later reference nouns for a winner",
+  "ambiguity": "multiple roots with referential nouns,multiple nominal matrix subjects,coordinated selected referents,nonunique imperative object,missing/nonexact offsets all UNKNOWN",
+  "offset_contract": "selected word text equals exact caption[start:end],0<=start<end<=len(caption);no str.find relocation,renormalization or text reencoding",
+  "fallback": "UNKNOWN preserved,driver uses original currentproxy CPU64 mask only;no class/IoU-informed fallback",
+  "no_target_category_lexicon_in_parser": true,
+  "no_GT_class_bbox_image_point_or_FINAL": true,
+  "no_rule_selection_using_task_metrics": true,
+  "existing_textZ_limit": "freeform category was heads[0] of nonSTOP nouns,not matrix dependency selection;its cached category/subject cannot substitute for this rule",
+  "implementation": "crossplatform/round48/parser48.py",
+  "offset_schema_failure": "Any NOUN/PROPN missing or nonexact raw offsets returns UNKNOWN before role selection; prevents deleting a true head and promoting its compound dependent. No real data or task label used."
+}

@@ -1,0 +1,35 @@
+{
+  "state": "FIXED_TEXT_ONLY_BLIND_COHORT_BEFORE_ANNOTATION",
+  "utc": "2026-11-02T00:27:29.662459+00:00",
+  "source": "research/round24/input/ALL336_PRIVATE.json",
+  "source_manifest_sha256": "bd8ede69293292f9747cc2d84fb4b25713e6dc5508a50f019851989e71724373",
+  "fields_read_for_selection": [
+    "id",
+    "platform",
+    "caption"
+  ],
+  "explicit_field_rule": "\\bobject\\s+type\\s*: case-insensitive",
+  "selection": "lowest6 sha256('R48blind|'+id) independently in eachplatformxstratum; no GT or algorithm outputs",
+  "stratum_counts": {
+    "drone|explicitObjecttype": {
+      "available": 10,
+      "selected": 6
+    },
+    "drone|freeform": {
+      "available": 158,
+      "selected": 6
+    },
+    "quad|explicitObjecttype": {
+      "available": 77,
+      "selected": 6
+    },
+    "quad|freeform": {
+      "available": 91,
+      "selected": 6
+    }
+  },
+  "n": 24,
+  "cohort_sha256": "7b8e65ce84274b61fa80412c199f9a9c042f3be8556b1a2c58a9d645b9fbe8ea",
+  "no_algorithm_output_GTclass_bbox_IoU_media_XYZ_metadata_FINAL_access": true,
+  "nonexpert_text_role_review_not_gold": true
+}

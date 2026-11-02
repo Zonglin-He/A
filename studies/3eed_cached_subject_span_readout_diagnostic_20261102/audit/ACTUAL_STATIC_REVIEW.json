@@ -1,0 +1,39 @@
+{
+  "state": "PASS_R48_ACTUAL_STATIC_REVIEW",
+  "plan_sha256": "3f748b86b2f3f0412915296ce0dc95388398e4f358c39c1a4d67f5623c26d706",
+  "created_utc": "2026-11-02T00:38:40.377804+00:00",
+  "reviewer": "round31_report_independent",
+  "program_sha256": {
+    "crossplatform/round48/parser48.py": "3c19882d939e7ebf5cee7f29e4b089e2640470e58573266be464cf1cd6312855",
+    "crossplatform/round48/common48.py": "8468a9f3972fe2dfe3754ff0dc53a8faf47480b4d02b760486a173ae56c5802f",
+    "crossplatform/round48/parse48.py": "d8aa5f8450cb258a829eb93c39a31f4b6c5d25d4cbfafa70a3b48adc74de915d",
+    "crossplatform/round48/predict48.py": "e3c65dd2f1f1b6ca829c1331ec0e9e9b5226c2d5ab5f4f4314a0bec19a229ddc",
+    "crossplatform/round48/official48.py": "6c0053c23d7350a7b4f7690a1ed7107e6aa3b76d2bc2f6e28da5f3f5754ece9f"
+  },
+  "execution_performed": false,
+  "GT_class_or_box_read": false,
+  "FINAL_read": false,
+  "checks": {
+    "five_actual_programs_read": true,
+    "caption_only_parser_signature": true,
+    "parser_sealed_before_official_class_access": true,
+    "same_cached_query_and_tokens_for_all_four_CPU64_arms": true,
+    "softmax_over_actual_T_then_boolean_positive_mass_sum": true,
+    "literal_256_boolean_map_sliced_to_actual_T": true,
+    "remap_same_official_char_span_minus_one_not_reselected": true,
+    "native_current_bridge_retains_stored_float32_scores": true,
+    "all_336_unknown_fallback_without_row_skip": true,
+    "source_boxes_unchanged": true,
+    "manifest_program_and_input_hash_gates_present": true,
+    "class_metadata_allowlist_excludes_bbox_retention": true
+  },
+  "limits": [
+    "Cached historical input_ids absent: tokenizer length and current-mask reconstruction are checks, not proof of exact historical IDs.",
+    "Official-class arms are annotation-informed span diagnostics, not an oracle or complete official inference pipeline.",
+    "Static approval does not authorize execution, GT boxes, FINAL, or establish semantic correctness of parser heads."
+  ],
+  "supersedes_preexecution_revision001_static_PASS": true,
+  "technical_revision": "All nominal dependency words require exact raw caption offsets; malformed schema returns UNKNOWN before nominal ancestor filtering. Well-formed selection priority unchanged.",
+  "synthetic_check_author_PASS_reported": true,
+  "synthetic_check_execution_by_this_reviewer": false
+}
