@@ -1,0 +1,92 @@
+"""Final R46 narrative from sealed independent scalar results; no new scoring."""
+import json,hashlib
+from pathlib import Path
+R=Path(__file__).resolve().parents[3];E=R/'research/round46/final';S=R/'research/round46/independent_final/score384_attempt001';A=R/'research/round46/independent_final/audit384_attempt001';B=R/'crossplatform/round46/final384_attempt001'
+def read(p):return json.loads(Path(p).read_text())
+def sha(p):return hashlib.sha256(Path(p).read_bytes()).hexdigest()
+def main():
+ t=read(S/'TASK_SUMMARY.json');receipt=read(S/'SCORING_RECEIPT.json');audit=read(A/'AUDIT_RESULT.json');oracle=read(S/'SOURCE_POOL_DIAGNOSTIC_SUMMARY.json');assert receipt['task_values']==9216 and receipt['all_ordered_negative_comparisons']==37622 and oracle['completed_n']==384 and oracle['state']=='complete';means=t['equal_platform_mIoU_percent'];source=means['main::source'];r30=means['main::R30_beta1'];r24=means['main::R24_query_mlp_lr1_s16'];g=means['main::source_plus_current_oldG'];primary_delta=r30-source;secondary_delta=r24-source
+ def table(names):
+  text='| 配置 | Drone mIoU % | Quad mIoU % | 两平台等权 mIoU % |\n|---|---:|---:|---:|\n'
+  for arm,label in names:text+=f"| {label} | {t['drone'][arm]['mIoU_percent']:.6f} | {t['quad'][arm]['mIoU_percent']:.6f} | {means[arm]:.6f} |\n"
+  return text
+ mainnames=[('main::source','Frozen source'),('main::R30_beta1','R30 β=1（预定主方法）'),('main::R30_memory_E_only','R30 同信息 E-only memory，无更新'),('main::R30_memory_allA_zeroU','R30 同信息 all-A/zero-U memory，无更新'),('main::R24_query_mlp_lr1_s16','R24（预定次方法）'),('main::R24_memory_alpha1','R24 同信息 dense-G memory，无更新')]
+ gnames=[('main::source_plus_current_oldG','Source + 当前 G，直接读出'),('main::R30_beta1_plus_current_oldG','R30 + 相同当前 G'),('main::R30_memory_E_only_plus_current_oldG','R30 E-only memory + 相同 G'),('main::R30_memory_allA_zeroU_plus_current_oldG','R30 all-A memory + 相同 G'),('main::R24_query_mlp_lr1_s16_plus_current_oldG','R24 + 相同当前 G'),('main::R24_memory_alpha1_plus_current_oldG','R24 memory + 相同 G')]
+ extnames=[('episodic::source','Frozen source'),('episodic::Tent_BN_statistics_first_pre','TENT：BN 当前统计，更新前'),('episodic::Tent_clean_post_port','TENT：更新后 clean 读出'),('episodic::SAR_LN_first_pre','SAR LN-only：更新前'),('episodic::SAR_LN_clean_post_port','SAR LN-only：更新后'),('episodic::MEMO_BN_prior_only','MEMO：BN prior only，无参数更新'),('episodic::MEMO_augmentation_only','MEMO：增强直接读出，无参数更新'),('episodic::MEMO_AdamW1e5_clean_post_port','MEMO：AdamW 1e-5 更新后'),('episodic::Reg_inspired_teacher_pre','Reg-TTA3D-inspired：teacher pre'),('episodic::Reg_inspired_teacher_post','Reg-TTA3D-inspired：teacher post'),('episodic::Reg_inspired_student_post','Reg-TTA3D-inspired：student post'),('episodic::Reg_inspired_direct_pseudo','Reg-TTA3D-inspired：直接伪框，无更新')]
+ scenes=read(S/'SCENE_SUMMARIES_PRIVATE.json');scene_table='| 平台/匿名场景 | n | Frozen | R30 | R24 | Source + G |\n|---|---:|---:|---:|---:|---:|\n';counter={'drone':0,'quad':0}
+ for x in scenes:
+  counter[x['platform']]+=1;v=x['mIoU_percent'];scene_table+=f"| {x['platform']} scene {counter[x['platform']]} | {x['n']} | {v['main::source']:.6f} | {v['main::R30_beta1']:.6f} | {v['main::R24_query_mlp_lr1_s16']:.6f} | {v['main::source_plus_current_oldG']:.6f} |\n"
+ diag_table='| 平台 | Source Top-1 | GT best of Top-5 | GT best of Top-10 | 全256 GT oracle | oracle Acc@25 / Acc@50 % |\n|---|---:|---:|---:|---:|---:|\n'
+ for pl in ['drone','quad']:
+  o=oracle[pl];q=o['all256_oracle'];diag_table+=f"| {pl} | {o['1']['mIoU_percent']:.6f} | {o['5']['mIoU_percent']:.6f} | {o['10']['mIoU_percent']:.6f} | {q['mIoU_percent']:.6f} | {q['Acc25_percent']:.6f} / {q['Acc50_percent']:.6f} |\n"
+ wall=read(B/'SEALED.json')['seconds'];stage_sum=sum(x['seconds'] for x in read(B/'STAGES.json'));sar=means['episodic::SAR_LN_clean_post_port']-source
+ text=f'''# R46：锁定方法与外部对照的384条最终统一评估
+
+**当前不把 R30 或 R24 采纳为总体提升方案。** 预先锁定的主方法 R30 在两平台等权 mIoU 上为 **{r30:.6f}%**，Frozen source 为 **{source:.6f}%**，差 **{primary_delta:+.6f} pp**；次方法 R24 为 **{r24:.6f}%**，差 **{secondary_delta:+.6f} pp**。两者分别胜过部分匹配 memory 对照，但都没有胜过 source。方法、主次顺序和超参数没有按本轮结果更换。
+
+既有A上适应的参数确实改变了最终读出：冻结的R30 head相对source，在本轮192条Drone上改变106个query，在192条Quad上改变30个。本轮FINAL没有再训练这些head。框冻结时，query变化仍可能对应同一实例、相同框或零IoU；不能把这些变化当作136次实例纠错。
+
+## 协议、数据与来源
+
+使用固定 Waymo-only100epoch checkpoint，源 checkpoint SHA为 `0d8766abaf06c9f3e2500fcb187337982d391f9e4d46ca854f3b3bb70fd33bbd`。R24/R30只复用原 A208 上已经拟合并选定的 matching query MLP，最终384条不再拟合这些主模型或选择超参数。MLP为288→288→288→64，共184960个参数；R30原监督为接受的局部偏好加 β=1 相对source分数差保持，R24保留原dense-G配方。主方法当前输入仍是XYZ与完整文字；RGB/外部3B VLM知识来自A监督或额外当前G路径。
+
+384条中Drone/Quad各192，模型与规则锁定之后才首次读取本轮FINAL清单和输入；384×24输出全部封存，独立CPU审计PASS，再由根任务另授权标签访问，统一评分一次。该池没有参与本夜方法选择或拟合，但它来自以前做过full-validation评估的数据，且仅含1个既有Drone场景和3个既有Quad场景，可能有场景/实例重叠。**不能称为全新场景、完全无历史暴露的gold确认集。**
+
+所有臂使用实际 GT-free first-lexicon-noun、无命中时all-content-token fallback，并保留完整token分母、sentinel和温度0.07。它不是官方依赖GT类别的positive_map；源100训练的官方map与当前推理代理的差别保留。主表使用冻结source6D框、yaw=0与相同7D GT协议；IoU阈值为严格大于0.25/0.5，不使用PCA、回归修框或GT选候选。
+
+## A上适应、B上冻结迁移：六个主配置
+
+{table(mainnames)}
+R30相对source在Drone为 +0.031081pp、Quad为 −0.373737pp；相对all-A/zero-U memory平均 +0.163085pp，但仍低于source。R24相对source在Drone为 −0.275250pp、Quad为 +0.163469pp。R24比dense-G memory高3.326070pp，不能据此忽略它相对source的负结果。
+
+R30相对source的任务改善/恶化为Drone25/25、Quad6/13；R24为Drone12/14、Quad6/6。全部正、负和任务相同的观测均保留，没有按反馈方向、IoU或场景删样本。
+
+## 同一份当前G信息：直接读出与所有配对控制
+
+G完全使用原R24复杂规则，先从冻结source候选生成一次 `F=s0+2vision+2position+2relation`；source+G使用literal F，其余臂在native概率分数上加同一份冻结ΔG。没有给不同方法重新请求VLM答案、改关联、调融合系数或更换候选框。
+
+{table(gnames)}
+直接当前G相对裸source平均 **{g-source:+.6f}pp**：Drone +0.852207pp，Quad −1.459695pp。它在这批观测上也没有显示稳定的总体监督优势。R30+G相对同信息direct-G为 **{means['main::R30_beta1_plus_current_oldG']-g:+.6f}pp**，相对对应all-A memory+G为 −0.351162pp。R24+G相对direct-G为 **+0.158719pp**，但仍比裸source低0.145025pp；保留这个局部正增量，不反选成新主方法，不包装成整体升级。
+
+当前G同时引入RGB与外部VLM知识；因此这些系统不能与只看点云和文字的外部方法混排后声称更新算法更强。G依然只是有限可靠证据，数字审计不等于语义身份认证。
+
+## 外部方法：当前输入上的episodic端口，单独成表
+
+这些方法每条表达、每种方法都恢复source，在当前输入上做原登记的一次更新或合法skip，并分别保留更新前/native返回时机与clean post。它们与上表A适应→B冻结迁移协议不同。TENT/SAR/MEMO是明确的grounding移植，Reg保留inspired名称，不能宣称完整复现原三维检测论文。
+
+{table(extnames)}
+TENT更新后相对BN-statistics-first只增加约0.002253pp，主要退化已经发生在BN当前统计读出。MEMO保留Transformer配置AdamW1e-5、weight decay0.01、BN prior16、4个保持描述含义的采样/微扰观测及几何候选对应；更新后同时低于prior-only和增强直接读出，不能把退化归结为没有使用官方优化设置或没有做query对应。SAR LN-only相对source仅 **{sar:+.6f}pp**，两平台Acc@25/50和query均不变；这是极小数值差，不作为实质任务提升。Reg-inspired的teacher、student和直接伪框全部保留，不把近零EMA变化解读成原Reg-TTA3D的普遍失效。
+
+实际逻辑优化步骤1186：TENT384、SAR129、MEMO291、Reg382；分别有0、255、93、2条合法skip。SAR的SAM两阶段、MEMO的多增强前向和Reg的多扰动前向不能用这个逻辑步数当作物理forward总数。参数范围分别为42816个BN affine、24768个LN/GN参数、144527419个全模型参数和1734个最终回归参数；这些是既定端口范围，不是强制所有方法只改同一层。
+
+## 冻结候选池的离线空间诊断
+
+{diag_table}
+Top-K由保存的native source分数稳定排序（同分取低query index），然后用GT只在评分时取最好IoU。K个query不等于K个不同物体。all256 oracle只约束从同一冻结source框池选框的主表方法，不能作为MEMO/Reg生成新框的上界，也不是可部署成绩。
+
+Source到oracle的差距说明候选选择/排序仍有空间，**不证明现有无标签G能够找出这些候选**；它也混合了实例选择与同一实例框变体的几何质量。严格Acc@50 oracle在Drone仅13.020833%、Quad27.083333%，说明当前冻结候选/框表示仍有限制，但本轮没有把中心、尺寸和朝向贡献再分解，不能把这些上限全部归因于朝向。
+
+384条诊断全部完成，额外诊断wall约{oracle['seconds_sourcepool_geometry_only']:.3f}秒，包含sourcecache读取、候选几何、排序和逐行统计；不称纯几何kernel时间。没有触发120秒预算，没有按部分完成子集汇总。
+
+## 场景结果与负例边界
+
+{scene_table}
+Quad较小场景的正增量没有覆盖另两个场景的损失；不按结果删场景或把小场景的最好值作为总体结果。一个Drone场景不能支持总体跨场景CI。全部9216个任务IoU、37622个有序负比较、30条预登记配对汇总和所有场景记录保留；有序负比较重复使用同384条观测，不能当37622个独立证据。
+
+## 工程与独立核验
+
+真正缺失的fresh-frame I/O已在最终访问前修复：旧501缓存不覆盖新帧，新增的是原R12同权重/FP32/800–1333/score0.5/mask0.5的Mask R-CNN前端与流式camera白名单，而不是换G或缺缓存时默默退回source。旧A2扩展总共2次Mask调用，完整mask、camera、scene和R17prepare与历史逐位/递归相同；两次纯I/O失败、首个完成raw的复用和独立比较器dataclass修复全部保留，没有增加Qwen/DINO/优化调用。最终清单没有继承工程mask复用。
+
+最终集合实际1152次source/两固定head完整前向、384次fresh Mask、4272次Qwen数值forward、916次DINO，生成式VLM调用0。9个阶段全部exit0，逐阶段wall相加为 **{stage_sum:.3f}秒（{stage_sum/60:.3f}分钟）**，controller含最终核对/封存的总wall为{wall:.3f}秒。它们是收集所有24输出与闭环证据的联合成本，包含模型加载、CPU准备和输出持久化，不是某个方法的部署延迟。所有模型顺序使用单GPU。独立CPU审计{audit['seconds']:.3f}s，唯一统一评分{receipt['seconds']:.3f}s。最终正式预测、审计和评分均一次成功；前述失败属于独立的旧A2工程准备，二者不能混记。
+
+独立审计全384源采样、mask/camera/file绑定、两个head CPU64算术（最大概率误差{audit['head_CPU64_maxerror']:.3g}、argmax差异0）、54.7356672亿个CPU32记忆相似度单元及合法实际近邻/weights/correction、共享G读出、全部external每臂256框池及MEMO query/Reg box override。kth相似度存在62个multiplicity/tie-query记录，实际合法邻居没有被替换。审计不独立重跑backbone/优化器；Reg伪框override只作构造合同/finite值审查，不认证其语义正确。位置/参照几何复用锁定引擎及绑定，不能称为独立身份金标准。
+
+## 最终裁决
+
+冻结前确定的主、次方法都未在本轮超过source；同信息memory对照中的相对优势不等于总体正收益。当前G直接使用也平均退化，扩大参数范围、迭代次数或改融合规则没有被这轮结果授权，本轮之后不拿FINAL继续选方法。
+
+保留已有开发阶段的有效结论：输出保持确实减少了大范围干扰，正确反馈也可能负迁移，query匹配MLP相对部分接口更有效，旧G在部分开发集合有正增量。**这些历史阳性不被抹掉，但最终384条没有确认它们形成稳定的整体升级。** 后续若继续研究，应在另行登记的开发数据上改进可迁移的候选偏好及作用范围；本报告不宣称3EED或所有TTA都无研究价值。
+'''
+ (E/'REPORT.md').write_text(text)
+ decision={'state':'NO_CONFIRMED_OVERALL_GAIN_LOCKED_PARAMETER_TTA_FINAL384','primary_remains':'R30_beta1','secondary_remains':'R24_query_mlp_lr1_s16','no_postscore_reselection':True,'source_balanced_mIoU':source,'primary_balanced_mIoU':r30,'primary_minus_source_pp':primary_delta,'secondary_balanced_mIoU':r24,'secondary_minus_source_pp':secondary_delta,'R30_minus_allA_memory_pp':r30-means['main::R30_memory_allA_zeroU'],'R24_plusG_minus_directG_pp':means['main::R24_query_mlp_lr1_s16_plus_current_oldG']-g,'R24_plusG_still_below_bare_source':True,'all_main12_below_frozen_source':all(v<source for k,v in means.items() if k.startswith('main::') and k!='main::source'),'external_SAR_tiny_nonthreshold_delta_pp':sar,'not_general_TTA_or_3EED_impossibility':True,'new_final_methods_not_fit_or_selected_on384':True,'historical_fullval_and_scene_instance_exposure_disclosed':True,'one_drone_three_quad_no_overall_sceneCI':True,'source_pool_oracle_complete':True,'task_values':9216,'ordered_negative_comparisons':37622,'audit_result_sha256':sha(A/'AUDIT_RESULT.json'),'scoring_receipt_sha256':sha(S/'SCORING_RECEIPT.json'),'prediction_seal_sha256':receipt['prediction_seal_sha256']};(E/'RESULT_DECISION.json').write_text(json.dumps(decision,indent=2)+'\n');print(json.dumps(decision))
+if __name__=='__main__':main()

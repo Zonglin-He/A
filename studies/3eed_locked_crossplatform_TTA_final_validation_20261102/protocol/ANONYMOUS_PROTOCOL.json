@@ -1,0 +1,70 @@
+{
+  "state": "FINAL_METHODS_FROZEN_BEFORE_DATA_AND_ALL_PREDICTIONS_SEALED_BEFORE_SINGLE_LABEL_SCORE",
+  "n": 384,
+  "platform_observations": {
+    "drone": 192,
+    "quad": 192
+  },
+  "historical_scene_counts": {
+    "drone": 1,
+    "quad": 3
+  },
+  "primary": "R30_beta1",
+  "secondary": "R24_query_mlp_lr1_s16",
+  "main_arms": [
+    "source",
+    "R24_query_mlp_lr1_s16",
+    "R24_memory_alpha1",
+    "R30_beta1",
+    "R30_memory_E_only",
+    "R30_memory_allA_zeroU",
+    "source_plus_current_oldG",
+    "R24_query_mlp_lr1_s16_plus_current_oldG",
+    "R24_memory_alpha1_plus_current_oldG",
+    "R30_beta1_plus_current_oldG",
+    "R30_memory_E_only_plus_current_oldG",
+    "R30_memory_allA_zeroU_plus_current_oldG"
+  ],
+  "main_protocol": "fixedA208adaptation_thenfrozenfinalforward,nocurrentupdates",
+  "external_arms": [
+    "source",
+    "Tent_BN_statistics_first_pre",
+    "Tent_clean_post_port",
+    "SAR_LN_first_pre",
+    "SAR_LN_clean_post_port",
+    "MEMO_BN_prior_only",
+    "MEMO_augmentation_only",
+    "MEMO_AdamW1e5_clean_post_port",
+    "Reg_inspired_teacher_pre",
+    "Reg_inspired_teacher_post",
+    "Reg_inspired_student_post",
+    "Reg_inspired_direct_pseudo"
+  ],
+  "external_protocol": "reset_each_current_input_nativefirst_and_addedcleanpost_separate",
+  "main_parameters_per_head": 184960,
+  "source_input": "XYZ16384+fulltext;noRGBstudentbranch",
+  "source_checkpoint_sha256": "0d8766abaf06c9f3e2500fcb187337982d391f9e4d46ca854f3b3bb70fd33bbd",
+  "source_training_platforms": [
+    "waymo"
+  ],
+  "source_training_epochs": 100,
+  "readout": "GTfree_first_lexicon_noun_fallback_all_content_tokens_not_official_GTclasspositive_map",
+  "source_training_official_map_history_disclosed": true,
+  "native_query_token_temperature": 0.07,
+  "sentinel": " . not mentioned",
+  "memory": "frozenquery*normalizednoun_keyL2,CPU32perArownearestquery_thenTop4exp((cos-1)/.1),alpha1,nativeprobabilityincrements",
+  "same_current_G": "oncefrozen-sourcepool F64 F=s0+2vision+2position+2relation,sharedDelta,source+G/head+G/memory+Gallreported",
+  "current_G_resources": [
+    "sameR12MaskRCNN",
+    "originalcameraallowlistandpointgeometry",
+    "localStanza",
+    "GroundingDINO",
+    "frozenQwen2.5VL3Bnumericfullgray"
+  ],
+  "Reg_name": "Reg-TTA3D-inspired,notoriginaldetectorreproduction",
+  "no_final_hyperparameter_or_method_selection": true,
+  "offline_source_coverage": "postsealonlystablequeryTop1/5/10and256oracle,120scap;nofeedbackorreadoutusesGT;upperonlyfrozenpoolmain",
+  "raw_private_registration_distributed": false,
+  "opaque_original_plan_sha256": "f0db1dba7b121d1e493b46da51b962fccfd25ca0ab2fe58661f3c8cd9b23834c",
+  "opaque_prediction_seal_sha256": "9970abdacaf45f6a3f0fa13a91ad31e3dc3b698f990f419d09a8762596f7c4cf"
+}

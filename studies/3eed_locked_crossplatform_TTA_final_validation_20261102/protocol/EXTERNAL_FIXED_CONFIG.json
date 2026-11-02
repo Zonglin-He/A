@@ -1,0 +1,41 @@
+{
+  "Tent": {
+    "optimizer": "SGD",
+    "lr": 0.001,
+    "momentum": 0.9,
+    "steps": 1,
+    "selected_parameters": 42816,
+    "BN_statistics_control_and_cleanpost": true
+  },
+  "SAR_LN_only": {
+    "optimizer": "officialSAM_SGD",
+    "lr": 0.001,
+    "momentum": 0.9,
+    "rho": 0.05,
+    "max_logical_steps": 1,
+    "entropy_margin": ".4ln256",
+    "recovery_threshold": 0.2,
+    "selected_parameters": 24768,
+    "sourceBN_retained": true,
+    "nativefirst_and_cleanpost": true
+  },
+  "MEMO_Transformer_AdamW": {
+    "lr": 1e-05,
+    "weight_decay": 0.01,
+    "max_steps": 1,
+    "views": 4,
+    "BN_prior": 16,
+    "common_groups_min": 2,
+    "all_view_mass_coverage_min": 0.5,
+    "selected_parameters": 144527419,
+    "prior_aug_cleanpost_controls_same_original_run": true
+  },
+  "Reg_inspired": {
+    "optimizer": "Adam",
+    "lr": 0.001,
+    "max_steps": 1,
+    "selected_parameters": 1734,
+    "substituted_RoI_yaw_class_confidence_interfaces": true,
+    "teacherpre_teacherpost_studentpost_directpseudo_retained": true
+  }
+}
