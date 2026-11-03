@@ -1,0 +1,55 @@
+{
+  "schema": "source_validation36_each_direction_frozen_four_configs_v1",
+  "scope": "72 actually new Source extractions on SOURCE-DOMAIN VALIDATION inputs, correct source-trained checkpoint for each direction. Not source-training36, not target-domain configuration selection. Opposite-direction prior target exposure disclosed. Same8existingexpert masks/boxes,0newteacher.",
+  "configs": [
+    {
+      "temperature": 0.05,
+      "topk": 10,
+      "context": 20
+    },
+    {
+      "temperature": 0.05,
+      "topk": 20,
+      "context": 20
+    },
+    {
+      "temperature": 0.1,
+      "topk": 10,
+      "context": 20
+    },
+    {
+      "temperature": 0.1,
+      "topk": 20,
+      "context": 20
+    }
+  ],
+  "selection": "Source validation cohort was metadata/SHA-selected before calibration. For targetHC calibrate only on36Vid using Vid-trained Source; for targetVid only36HC using HC-trained Source. Never average the two source sets to select shared parameters. No target labels may be read in acquisition or target config selection.",
+  "inference": "Original frozen_native_forward at original224FP16visual/FP32heads, cudnnTF32True matmulFalse Torch4. Save native_Source.pt and SHA BEFORE ANY compatibility/feature check. Extract same postfusion visual tokens/valid grid; use exact old same8expert Source-grid soft masks and raw boxes, no E or Source boxes input to propagation. Reset Torch1 for matching and restore4 before every Source. Keep all source paid raw through calibration and root source acceptance.",
+  "bridge": "First2 paid queries PER TARGET-MODEL source cohort normally WAIT until ROOT rereads full paid native state, re-extracts postfusion feature grid, compares serialized arrays/source-native checkpoint SHA, reruns all4 matching configs twice exact and acknowledges. These are new source-input/model pairs, so no claim of equality to the opposite-model historical Source outputs.",
+  "calibration": "All72*4 predictions sealed before source labels. Source GT-supported unobserved native-frame IoU queryequal; report all configs and pure expert/Source references. Mean across queries per source domain; choose max, deterministic original config order on ties. Source performance/empty masks and feature-value controls root-reviewed before target configuration freeze. No blind target launch after source score.",
+  "max_new_Source": 72,
+  "max_new_expert": 0,
+  "max_new_optimizer": 0,
+  "resources": "GPU1, CPU14-15nice19idleIO, originalSourceTorch4/matching1, RAM8GiB/disk80GiB/private160GiB/72h. Wait foreignGPU and globallease; signal no other process.",
+  "code_sha256": {
+    "studies/spatial_temporal_six_v1/source_validation.py": "bc5206be9e775cb4044379b8af2270e8a51038ee4b17b5bd6a40ff4ddf33c4bb",
+    "studies/spatial_temporal_six_v1/matching.py": "b7a9d44d58642d38c57fc85dce15e6e340ec07e1ba4437a87a18afefcedb41a0",
+    "studies/spatial_temporal_six_v1/cpu.py": "ce5d8317d4f9b865c32805db31a2373b14a98a85830747ccf3cac6200b13034d",
+    "stvg/native.py": "e34d3b08a76ec1baac08e4f158f42ce8e0bf1795a4034ee80801422d0b04ccbc",
+    "stvg/evidence.py": "ea866f3e209a60ae83f97b53d8b3eb9326d94fe0b94f61c106d29bcdb2634a4a",
+    "stvg/runtime.py": "4b1fcfbfeefec90643c0c92621f4a1d28339aa5c1bf68ad8d7f69ab413176381",
+    "stvg/representation.py": "1e10152274996a046dc45a1bbfd90727dda4083f3c1afcea21f2765f97f0e666"
+  },
+  "input_sha256": {
+    "outputs/spatial_temporal_six_v1/source_validation_cohort_v1.json": "261fd213afda27fd58e58e86a281dd7ee7d0d9da067c1ec5a2589c268177d50a",
+    "outputs/spatial_temporal_six_v1/matching_contract_preflight.json": "f4d58dd5f65f38bf126936ced88bfd335c7c1e7c779050aec1141fd35fead058",
+    "outputs/spatial_temporal_six_v1/matching_preparation_v1.json": "354e856bd30bcb496653e3878827416c8d8b47ee6f07336e9bea9626b9ad149f",
+    "configs/default.json": "a129564085d12fdb7d0c663b486407f783d8cb66eb08e36d00f52c794dd8e9ec",
+    "outputs/simplepath_full_v2/plan.json": "4a34668741e08bbd68fb2268a87a1fc193d4ca6efa02b4e14972dbfd746c7ab4",
+    "outputs/simplepath_full_v2/hc2/sealed.json": "bc209ac67273f0f2835c929cf5d977452dff04c901e7ed56223414a04fcb44a2",
+    "outputs/simplepath_full_v2/vidstg/sealed.json": "faf739e72a065bbac2079715aea4f4e89b0e2014da854013ea0c9728cb295c81",
+    "checkpoints/TASTVG_VidSTG.pth": "5ab12c86363ef0ce0ee006c00fd11c6b659c3a9b2cb01a4f2c613efe22a2aa83",
+    "checkpoints/TASTVG_HCSTVG2.pth": "47d8f15841cd57e7bbf5a10e8bf23b1054d23b753e0becbd38a07f3dd60d5036"
+  },
+  "fingerprint": "9597382cd55ad046bf9af4fe8747e46795c2cb1fb5bf51fa5218a52d7937cdcd"
+}

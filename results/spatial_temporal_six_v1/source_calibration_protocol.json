@@ -1,0 +1,23 @@
+{
+  "schema": "source36_validation_controls_calibration_audit_v1",
+  "source_plan_fingerprint": "9597382cd55ad046bf9af4fe8747e46795c2cb1fb5bf51fa5218a52d7937cdcd",
+  "objective": "Per direction, query-equal mean box IoU on GT-supported native unobserved frames of only that direction source-domain validation36. Missing support excluded and counted, never0. Max over the original4configs, exact ties original config order. Not source-training36; these videos were exposed as target in opposite direction. No averaging directions or reading current target scores.",
+  "controls": "Uniform all-one vectors and SHA256 fixed temporal permutation of entire feature grids AND valid masks, all4configs; fixed masks/physical positions/boxes unchanged. Identity permutation rotated. Controls have no new hyperparameter and are NOT candidates. All72 controls seal before source labels. Report array-change and feature-effect, do not force superiority.",
+  "audit": "Independent process rereads each input/native/pred/control SHA; cold recomputes all4configs+controls; separate normalized-coordinate IoU formula agrees with official pixel IoU on every scored frame. Reconstruct all means/selection, parentCI, support and empty counts. Root must inspect source functioning and explicitly accept candidate before target plan. No automatic target launch.",
+  "max_new_Source": 0,
+  "max_new_expert": 0,
+  "max_new_optimizer": 0,
+  "code_sha256": {
+    "studies/spatial_temporal_six_v1/source_calibration.py": "4d2e76646d76186513f7e55315d5578fe99daf46c57f61b91bc0c45826182090",
+    "studies/spatial_temporal_six_v1/source_validation.py": "bc5206be9e775cb4044379b8af2270e8a51038ee4b17b5bd6a40ff4ddf33c4bb",
+    "studies/spatial_temporal_six_v1/matching.py": "b7a9d44d58642d38c57fc85dce15e6e340ec07e1ba4437a87a18afefcedb41a0",
+    "studies/spatial_temporal_six_v1/cpu.py": "ce5d8317d4f9b865c32805db31a2373b14a98a85830747ccf3cac6200b13034d",
+    "stvg/metrics_base.py": "4257912cd58f441f36bcafb1ce93eeeae83de18312166ac9017a28687e31f6d0"
+  },
+  "input_sha256": {
+    "outputs/spatial_temporal_six_v1/source_validation/plan.json": "15f1adf3b55312747f142c7bbaabdb4299a26449d3df324d2558e461c9aa2da5",
+    "outputs/spatial_temporal_six_v1/source_validation_cohort_v1.json": "261fd213afda27fd58e58e86a281dd7ee7d0d9da067c1ec5a2589c268177d50a",
+    "outputs/simplepath_full_v2/plan.json": "4a34668741e08bbd68fb2268a87a1fc193d4ca6efa02b4e14972dbfd746c7ab4"
+  },
+  "fingerprint": "6223e57de8d157ad7ff430f3a3099531f9ed5c26b2d52d920d03ff065730d072"
+}

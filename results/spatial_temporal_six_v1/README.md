@@ -1,0 +1,21 @@
+# Six reviewer experiments: measured CPU results and pending GPU stages
+
+This independently registered scope follows the direct request to run all six experiments. The current method, parameters, eight observations and manuscript remain fixed. Full pure interpolation and the two requested offline quality diagnostics are complete, independently audited and root-exported. Matching source validation is actually running; matching target predictions, controlled actual costs and sampling-density numerical experiments are not complete.
+
+- [HC full results, temporal bins and quality quarters](cpu_complete/hc2/ANALYSIS.md)
+- [Vid full results, temporal bins and quality quarters](cpu_complete/vidstg/ANALYSIS.md)
+- [Full pure protocol](cpu_protocol.json), [source validation protocol](source_validation_protocol.json), [source calibration/independent audit protocol](source_calibration_protocol.json).
+
+Pure interpolation uses only eight original expert boxes/time, interpolation between observations and nearest endpoint outside them. It contains no shared-correction tail, Source fallback, temporal update or spatial DP. The same Current interval is used for the main spatial contrast. The original native Source interval is separately inherited for the standalone pure comparison. Old hybrid results remain explicitly named.
+
+Fixed-time Current-minus-pure vIoU is HC +2.171679pp, CI [1.839911,2.519693], and Vid -.146243pp, CI [-.294717,-.000487]. The Vid upper limit is very close to zero; this is a pointwise full-cohort result, not a large disadvantage or familywise finding. Same-current-interval unobserved IoU differences are HC/Vid reported in the full tables; frame-level observations are not treated as independent queries.
+
+Native-Source tIoU bins were fixed at [0,.3), [.3,.5), [.5,1]. Under the SAME jointMAP readout, the visual update harms the >=.5 group on average in both domains (HC -1.377636pp, CI [-2.413482,-.357925]; Vid -.909048pp, CI [-1.759557,-.060808]). The lower-quality groups improve on average. Whole-branch changes are separately reported, not substituted for the visual-update effect. Tie tolerance is 1e-10pp; decline median/p90 use positive magnitudes among harmed queries.
+
+Expert-quality quarters and missing observations are preserved. At fixed Current time, HC beats pure in every scored quality bin; Vid's highest-quality bin instead favors pure by .818188pp, CI [.505111,1.133296] in pure-minus-Current orientation. Thus the data do not establish universal robustness to expert errors. Missing support22HC/1796Vid is not assigned quality0. All own-interval versus common-interval results, positive and negative per-query outcomes, severe union/rescues, short/long strata and parent CIs remain in JSON/TSV.
+
+The propagation candidate adapts the pinned official VideoWalk inference module to the exact Source postfusion token features used by Current spatial inference, with the same eight expert soft masks. Its original learned encoder is not reproduced. Official kernel equality and a synthetic moving-object control have passed; actual source-domain validation uses36 queries per direction with the correct source-trained Source checkpoint. These are source-domain validation queries, not the historical36 source-training calibration queries. Each direction is selected only from its own source domain, never by averaging target outcomes. Full candidate scores and feature-value controls precede root acceptance and target configuration freeze; no claim of a strong baseline is made before validation.
+
+Cost/density panels and grids are metadata-only preparations, not measurements. Actual ready-input spatial time and full-pipeline time will be measured separately. Density requires corresponding actual Source forwards with fixed physical expert times, not cache thinning. Old CG/gamma/full-corruption/generic work is not reopened. No new agents/chats/automation, model training, optional perturbation, EdgeTAM re-experiment or manuscript change.
+
+Every completed stage is published with all signed outcomes, protocols, source snapshots and measured costs. Cached CPU wall is not deployment latency; inherited Source/expert costs are nonzero. No media, captions, GT coordinates, feature/mask tensors, weights or credentials are public. This CPU-stage publication is not completion of all six experiments.

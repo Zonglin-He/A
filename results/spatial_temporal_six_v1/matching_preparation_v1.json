@@ -1,0 +1,36 @@
+{
+  "status": "source_algorithm_and_real_input_validation_pending_no_target_release",
+  "official_repository": "https://github.com/ajabri/videowalk",
+  "pinned_commit": "047f3f40135a4b1be2f837793b89c3dbfe7a6683",
+  "official_affinity_source_sha256": "5b37c91269974d528c1cda33cd0f5bf2fae2b6f21bcf06d24d0ec5c3be156c03",
+  "adapter": "Original Source postfusion tokens/valid grid and same8expert soft masks; all8anchor memory plus20recurrent unobserved memories, forward/reverse softmask average; no E or OursDP. This is a module adaptation, not original learned VideoWalk encoder reproduction.",
+  "source_calibration": "36 fixed distinct source-domain validation parents per direction, no overlap with that direction target metadata ID/videoSHA. Existing local domain validation data; explicitly NOT source-training36. These source videos were exposed targets in the opposite transfer direction. No currently evaluated target-label configuration selection. Correct Source model trained on that source domain must actually extract features; opposite-direction target raw grids have different model and cannot be substituted.",
+  "source_cohort_sha256": "261fd213afda27fd58e58e86a281dd7ee7d0d9da067c1ec5a2589c268177d50a",
+  "finite_configs": [
+    {
+      "temperature": 0.05,
+      "topk": 10,
+      "context": 20
+    },
+    {
+      "temperature": 0.05,
+      "topk": 20,
+      "context": 20
+    },
+    {
+      "temperature": 0.1,
+      "topk": 10,
+      "context": 20
+    },
+    {
+      "temperature": 0.1,
+      "topk": 20,
+      "context": 20
+    }
+  ],
+  "source_objective": "source GT-supported unobserved-frame IoU, query equal, fixed deterministic tie rule; show all configs/negatives and pure-interpolation comparator. Official-kernel equality and identity/moving-patch/empty tests first; do not call strong before real source checks.",
+  "maximum_new_source_calibration_calls": 72,
+  "new_expert_source_calibration": 0,
+  "target_config_frozen_after_source_only": true,
+  "GPU_execution_frozen_or_launched": false
+}
