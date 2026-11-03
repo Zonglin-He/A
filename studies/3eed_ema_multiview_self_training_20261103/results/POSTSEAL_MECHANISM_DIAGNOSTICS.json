@@ -1,0 +1,103 @@
+{
+  "pairwise_task_diagnostics": [
+    {
+      "arm": "epi_ema_teacher_1",
+      "reference": "frozen_ABC",
+      "improve": 1,
+      "worsen": 0,
+      "query_changes": 1,
+      "balanced_delta_pp": 0.08319567319502898,
+      "improved_scene_clusters": 1,
+      "worsened_scene_clusters": 0
+    },
+    {
+      "arm": "epi_ema_teacher_3",
+      "reference": "frozen_ABC",
+      "improve": 1,
+      "worsen": 1,
+      "query_changes": 2,
+      "balanced_delta_pp": 0.07477588989322023,
+      "improved_scene_clusters": 1,
+      "worsened_scene_clusters": 1
+    },
+    {
+      "arm": "epi_ema_teacher_16",
+      "reference": "frozen_ABC",
+      "improve": 2,
+      "worsen": 4,
+      "query_changes": 12,
+      "balanced_delta_pp": 0.00890009429241187,
+      "improved_scene_clusters": 2,
+      "worsened_scene_clusters": 2
+    },
+    {
+      "arm": "online_ema_AB_teacher_post",
+      "reference": "frozen_ABC",
+      "improve": 10,
+      "worsen": 10,
+      "query_changes": 46,
+      "balanced_delta_pp": -0.16439056948144742,
+      "improved_scene_clusters": 3,
+      "worsened_scene_clusters": 3
+    },
+    {
+      "arm": "online_ema_AB_student_post",
+      "reference": "online_fixed_AB_student_post",
+      "improve": 14,
+      "worsen": 6,
+      "query_changes": 45,
+      "balanced_delta_pp": 0.43256791188209226,
+      "improved_scene_clusters": 4,
+      "worsened_scene_clusters": 2
+    }
+  ],
+  "episodic_optimization": {
+    "fixed": {
+      "1": {
+        "median_KL_before": 0.1629870503951058,
+        "median_KL_after_same_target": 0.1711017605803414,
+        "loss_decreased_cases": 156
+      },
+      "3": {
+        "median_KL_before": 0.14738239938414016,
+        "median_KL_after_same_target": 0.14288664594124859,
+        "loss_decreased_cases": 208
+      },
+      "16": {
+        "median_KL_before": 0.12818536781115175,
+        "median_KL_after_same_target": 0.12809318668695463,
+        "loss_decreased_cases": 227
+      },
+      "end_to_end": {
+        "median_initial_KL": 0.1629870503951058,
+        "median_final_KL": 0.12809318668695463,
+        "final_loss_below_initial_cases": 297,
+        "targets_move_in_EMA_comparison": false
+      }
+    },
+    "ema": {
+      "1": {
+        "median_KL_before": 0.1629870503951058,
+        "median_KL_after_same_target": 0.1711017605803414,
+        "loss_decreased_cases": 156
+      },
+      "3": {
+        "median_KL_before": 0.147381467082558,
+        "median_KL_after_same_target": 0.1432585276710154,
+        "loss_decreased_cases": 206
+      },
+      "16": {
+        "median_KL_before": 0.1266807724443867,
+        "median_KL_after_same_target": 0.12754648564147847,
+        "loss_decreased_cases": 225
+      },
+      "end_to_end": {
+        "median_initial_KL": 0.1629870503951058,
+        "median_final_KL": 0.12754648564147847,
+        "final_loss_below_initial_cases": 262,
+        "targets_move_in_EMA_comparison": true
+      }
+    }
+  },
+  "interpretation": "Postseal descriptive analysis, not deployment filtering, identity truth, hyperparameter selection or new method."
+}
