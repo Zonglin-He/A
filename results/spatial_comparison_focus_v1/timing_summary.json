@@ -1,0 +1,211 @@
+{
+  "summary": {
+    "hc2": {
+      "methods": {
+        "PureExpert": {
+          "queries": 128,
+          "repeats_per_query": 3,
+          "mean_seconds": 0.00042312145833333335,
+          "CI95_mean_seconds": [
+            0.0004161029486328126,
+            0.00043058497838541676
+          ],
+          "p50_query_mean_seconds": 0.0004138218333333333,
+          "p90_query_mean_seconds": 0.00046875890000000004
+        },
+        "Matching": {
+          "queries": 128,
+          "repeats_per_query": 3,
+          "mean_seconds": 0.34480298147916666,
+          "CI95_mean_seconds": [
+            0.33177642473821617,
+            0.3598627782798831
+          ],
+          "p50_query_mean_seconds": 0.31904874133333333,
+          "p90_query_mean_seconds": 0.40831420426666665
+        },
+        "Current": {
+          "queries": 128,
+          "repeats_per_query": 3,
+          "mean_seconds": 0.16562723552604167,
+          "CI95_mean_seconds": [
+            0.1641253884953776,
+            0.16695956222864583
+          ],
+          "p50_query_mean_seconds": 0.16796376583333333,
+          "p90_query_mean_seconds": 0.17285073473333332
+        }
+      },
+      "paired": {
+        "Current-Matching": {
+          "mean_seconds": -0.179175745953125,
+          "CI95_seconds": [
+            -0.19421047488281262,
+            -0.16628781068808585
+          ],
+          "ratio_of_means": 0.4803532580127908,
+          "CI95_ratio_of_means": [
+            0.46020240761790604,
+            0.4989645277916094
+          ]
+        },
+        "Current-PureExpert": {
+          "mean_seconds": 0.16520411406770832,
+          "CI95_seconds": [
+            0.16370549372337237,
+            0.16653803484003907
+          ],
+          "ratio_of_means": 391.4413515647349,
+          "CI95_ratio_of_means": [
+            384.13534556747834,
+            398.5110618302451
+          ]
+        },
+        "Matching-PureExpert": {
+          "mean_seconds": 0.3443798600208333,
+          "CI95_seconds": [
+            0.33135313694069024,
+            0.3594423889442711
+          ],
+          "ratio_of_means": 814.9030844177424,
+          "CI95_ratio_of_means": [
+            782.4488305725266,
+            851.909432670483
+          ]
+        }
+      }
+    },
+    "vidstg": {
+      "methods": {
+        "PureExpert": {
+          "queries": 128,
+          "repeats_per_query": 3,
+          "mean_seconds": 0.00043249140364583335,
+          "CI95_mean_seconds": [
+            0.00042555773606770827,
+            0.0004397937678385417
+          ],
+          "p50_query_mean_seconds": 0.0004256903333333333,
+          "p90_query_mean_seconds": 0.0004824235666666667
+        },
+        "Matching": {
+          "queries": 128,
+          "repeats_per_query": 3,
+          "mean_seconds": 0.5517435464505209,
+          "CI95_mean_seconds": [
+            0.48593505930136704,
+            0.6172716201164062
+          ],
+          "p50_query_mean_seconds": 0.4777731371666667,
+          "p90_query_mean_seconds": 1.1475026015333332
+        },
+        "Current": {
+          "queries": 128,
+          "repeats_per_query": 3,
+          "mean_seconds": 0.2598768798880209,
+          "CI95_mean_seconds": [
+            0.23369607768938802,
+            0.2854277629790363
+          ],
+          "p50_query_mean_seconds": 0.23887713983333336,
+          "p90_query_mean_seconds": 0.486365193
+        }
+      },
+      "paired": {
+        "Current-Matching": {
+          "mean_seconds": -0.2918666665625,
+          "CI95_seconds": [
+            -0.3324920342630205,
+            -0.2509781191651692
+          ],
+          "ratio_of_means": 0.4710102756250834,
+          "CI95_ratio_of_means": [
+            0.4578939341569232,
+            0.4862349057876723
+          ]
+        },
+        "Current-PureExpert": {
+          "mean_seconds": 0.259444388484375,
+          "CI95_seconds": [
+            0.23327078666966145,
+            0.28500045285566394
+          ],
+          "ratio_of_means": 600.8833417203217,
+          "CI95_ratio_of_means": [
+            541.6261551811587,
+            660.3513574712615
+          ]
+        },
+        "Matching-PureExpert": {
+          "mean_seconds": 0.5513110550468749,
+          "CI95_seconds": [
+            0.48549750404622377,
+            0.6168385638035155
+          ],
+          "ratio_of_means": 1275.7329782728884,
+          "CI95_ratio_of_means": [
+            1125.748452775502,
+            1427.054869313999
+          ]
+        }
+      }
+    }
+  },
+  "hardware": {
+    "CPU": "Intel(R) Core(TM) i5-14600KF",
+    "platform": "Linux",
+    "Python": "3.11.16",
+    "Torch": "2.7.0+cu128",
+    "NumPy": "1.26.4",
+    "OpenCV": "4.11.0",
+    "torch_threads": 1,
+    "cv2_threads": 1,
+    "affinity": [
+      14,
+      15
+    ],
+    "nice": 19,
+    "GPU_used": false
+  },
+  "measurement_sha256": "e37a762e38c0ad21843d048682750150d39559f63e69203a64da1d2064c0e272",
+  "aggregation": "per-query average3repeats, then128queryequal/128pairedparent10000bootstrap; pointwise",
+  "scope": "CPU input-ready spatial functions only, no Source/expert/inference/decoding/IO/time-update cost. Current includes its real E initialization/candidate geometry/finalDP; no observed-anchor method change.",
+  "warmup": [
+    {
+      "dataset": "hc2",
+      "arm": "PureExpert",
+      "elapsed_ns": 451666,
+      "excluded": true
+    },
+    {
+      "dataset": "hc2",
+      "arm": "Matching",
+      "elapsed_ns": 334635924,
+      "excluded": true
+    },
+    {
+      "dataset": "hc2",
+      "arm": "Current",
+      "elapsed_ns": 175876781,
+      "excluded": true
+    },
+    {
+      "dataset": "vidstg",
+      "arm": "PureExpert",
+      "elapsed_ns": 366381,
+      "excluded": true
+    },
+    {
+      "dataset": "vidstg",
+      "arm": "Matching",
+      "elapsed_ns": 732733502,
+      "excluded": true
+    },
+    {
+      "dataset": "vidstg",
+      "arm": "Current",
+      "elapsed_ns": 337067744,
+      "excluded": true
+    }
+  ]
+}

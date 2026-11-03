@@ -1,0 +1,54 @@
+{
+  "schema": "three_spatial_strategy_cache128_actual_CPU_timing_v1",
+  "methods": [
+    "PureExpert",
+    "Matching",
+    "Current"
+  ],
+  "counts": {
+    "hc2": 128,
+    "vidstg": 128
+  },
+  "repeats": 3,
+  "total_measured_spatial_calls": 2304,
+  "warmup_calls": 6,
+  "selection": "Same existing128queries/128distinctparents/domain. All existing accuracy predictions/metrics independently audited and reused exactly, no new official scores/GT/model/Source/expert/optimizer. Not fulltarget or an unseen panel.",
+  "common_inputs": "Same original8expert masks/boxes/positions and complete Source postfusion feature grid/valid mask/Source boxes and Current event interval. All resident CPU inputs/parameters and references loaded before timer. Matching settings fixed only from source validation (.05,K10,context20). Pure need not use available features.",
+  "clock": "time.perf_counter_ns around a complete actual spatial function call producing an owned CPU box array. Current includes shared E initialization at originalgamma/calibration, SourceEvidence construction, candidate geometry/appearance/links, bank building and final intervalDP; no firstauxDP/time-prototype branch. Matching includes feature normalization, two-direction propagation and native-resolution mask-to-box readout. Pure includes interpolation/nearestexpert tails/exactanchors. Disk IO/experimental SHA/GT/reference equality/array digest/resource guards/input preparation/cleanup outside measured window. Original intrinsic eight-box initialization hash/checks remain inside the unchanged function. These are ready-input CPU spatial clocks, not endtoend deployment or saved components subtraction.",
+  "ordering": "Each query loads once outside clocks, runs3repeats. MetadataSHA bit chooses forward/reverse base arm order; rotate by repeat so every arm appears each order position once. Warmup one firstquery per arm/domain outside formalcalls. No shared normalized-feature/geometry/output cache across calls.",
+  "resources": "singleownedCPUjob, affinity14-15 nice19 idleIO, Torch/BLAS/OpenCV thread1, CUDAhidden; RAM8GiB/disk80GiB/private160GiB/72h. No GPU/model/oldowner signals. No heavy own concurrent compute/IO during measured stage.",
+  "statistics": "Per query first average3repeat, then equal-query means,p50,p90,paired10000parentbootstrap for timingdifference and ratio-of-means seed20261103. All256distinctparents share same8evidence and fixedinterval within query. PointwiseCI. Actual2304call costs/hardware/processstart/threads/warmup separate. No accuracy/interval/seed/setting retuning.",
+  "caveat": "Current unchanged, observed experts are soft candidates rather than fixed output; Pure/Matching preserve expert anchors. Existing observed-frame implementation-contract audit retained; this is as-implemented comparison, no hard-anchor-method correctness claim. Adapter functional/sourcevalidated but weaker than interpolation, not strong learnedVideoWalk reproduction.",
+  "code_sha256": {
+    "studies/spatial_comparison_focus_v1/run.py": "aa9ace7c7a593d9f322614706a7de7c9149cfcbe4c223d8685b7708fb0b59e76",
+    "studies/spatial_comparison_focus_v1/controller.py": "eca91c3e9aab68f79dddb21426110c4b0d5b3e45442d347b9b3a94d1af0410c3",
+    "studies/spatial_comparison_focus_v1/report.py": "041324cecea05fa3e5062895935e1a433089df136be6ca7168e65d5f11dfd1f0",
+    "studies/spatial_temporal_six_v1/matching.py": "b7a9d44d58642d38c57fc85dce15e6e340ec07e1ba4437a87a18afefcedb41a0",
+    "studies/pure_expert_interpolation_v1/run.py": "5b0f02fe37610953d2b0f2c5237696731f37734d8ae5134c64fa26c7863e0800",
+    "stvg/initialization.py": "21168f4a6740e5b4f306863bd1b852587cc71ed8d15dd0dc3b8b643da70e7842",
+    "stvg/consensus.py": "c8539c78a8ec278866e5bc077e55911ffaae85e9efc44cc7262a4dc58488c34c",
+    "stvg/predictor.py": "166f6de17304deff0336d3acc731a8cc90a365e90e5cf93b4c6dc525f6754c38",
+    "stvg/evidence.py": "ea866f3e209a60ae83f97b53d8b3eb9326d94fe0b94f61c106d29bcdb2634a4a",
+    "stvg/spatial.py": "54c3cec0ec643e47464957730f482302609855164196b361ee4bee1efd025c10",
+    "stvg/_spatial_math.py": "5bc273271a08dabffa086aff663795400e084b70a60e1dcd98d80099a2039e2e"
+  },
+  "input_sha256": {
+    "outputs/spatial_comparison_focus_v1/intent.json": "a55018faa350e9e3ed111343f7ce05f7510ef84d7e2802c8ce90df1253bca5e1",
+    "outputs/spatial_temporal_six_v1/matching_pilot/plan.json": "99c04e6d0ea84785f8eb32e37d1278ec5105d178109aa99b6a057bb0175de0e8",
+    "outputs/spatial_temporal_six_v1/matching_pilot/selection.json": "705df2dc3f3b6b7f2c9c95ed98970522b4ff7399fffb4d10043a7c8e8fcdd07a",
+    "outputs/spatial_temporal_six_v1/matching_pilot/raw_inventory.json": "fd93f85527a4b416347fa0e022f3758e671ac46074c9b424c5807497c7f392fe",
+    "outputs/spatial_temporal_six_v1/source_validation/calibration/root_acceptance.json": "289e980a1e2f12bfbbf302b69eb800e72bbe36ffbe2dd8324cfd1d2807b16d83",
+    "configs/default.json": "a129564085d12fdb7d0c663b486407f783d8cb66eb08e36d00f52c794dd8e9ec",
+    "CURRENT_METHOD_v2.json": "e964f42157acbf430e073a6852a616ab6bc2882dd9f0b6cfcad63eb1feb17b7c",
+    "profiles/shared_corrected_roi_v1.json": "4cac5022f8fd35f4606f65dbba3ff4a1f333c42a4903c2ca5a25eb6514c246ed",
+    "outputs/spatial_temporal_six_v1/matching_pilot/hc2/sealed.json": "54471888b19921061da70354ee573b363a2089e665f6f1a45fcc934bf02e49eb",
+    "outputs/spatial_temporal_six_v1/matching_pilot/hc2/metrics.json": "a4bc28b9deed5b1f01716b96e0adb1916dfe746fd2237fa5357d1d3baf81465c",
+    "outputs/spatial_temporal_six_v1/matching_pilot/hc2/reporting_receipt.json": "0525e61fb609248fab766bb5bd01afc98494ccb16b9fc647a5b3fae7950fb907",
+    "outputs/spatial_temporal_six_v1/matching_pilot/hc2/root_receipt.json": "39d2b335676d1723f3d31e713a338f137a0d244f3f5125c5ad4e1c548cb15740",
+    "outputs/spatial_temporal_six_v1/matching_pilot/vidstg/sealed.json": "97f4fb02ae1ea13818ddd996b202204189ba35343df227f219b86d86ad5774da",
+    "outputs/spatial_temporal_six_v1/matching_pilot/vidstg/metrics.json": "60cf78a963d650c36df7439fec8ed9781334f55b975968e362a9af603cffb228",
+    "outputs/spatial_temporal_six_v1/matching_pilot/vidstg/reporting_receipt.json": "ec2f1cd2260c9e9ae7637bdc18ce294159205f1c86e7686e17df096541125dca",
+    "outputs/spatial_temporal_six_v1/matching_pilot/vidstg/root_receipt.json": "05a55d2210e9491f0254c4dbcf5a2fea1caf8c950f933b3ac3212e25162b2594"
+  },
+  "fingerprint": "cf4f9a28bb8f3681613466df249c593e23fcc28f95a811ddaf80b0534044eb73"
+}
