@@ -1,0 +1,197 @@
+{
+  "new_model": 0,
+  "new_Source": 0,
+  "new_expert": 0,
+  "new_GPU": 0,
+  "new_optimizer": 0,
+  "inherited_Source_and_expert_acquisition_cost_nonzero": true,
+  "deployment_latency_measured_here": false,
+  "actual_stage_costs": {
+    "regions_vidstg_predict": {
+      "task": "regions",
+      "dataset": "vidstg",
+      "stage": "predict",
+      "worker": {
+        "pid": 1520540,
+        "startticks": 328865698
+      },
+      "actual_subprocess_wait": true,
+      "exit_code": 0,
+      "elapsed_wall_seconds": 14.034453414846212
+    },
+    "combination_hc2_predict": {
+      "task": "combination",
+      "dataset": "hc2",
+      "stage": "predict",
+      "worker": {
+        "pid": 1520162,
+        "startticks": 328855890
+      },
+      "actual_subprocess_wait": true,
+      "exit_code": 0,
+      "elapsed_wall_seconds": 50.01641587680206
+    },
+    "combination_hc2_score": {
+      "task": "combination",
+      "dataset": "hc2",
+      "stage": "score",
+      "worker": {
+        "pid": 1520331,
+        "startticks": 328860892
+      },
+      "actual_subprocess_wait": true,
+      "exit_code": 0,
+      "elapsed_wall_seconds": 17.648704862222075
+    },
+    "regions_vidstg_score": {
+      "task": "regions",
+      "dataset": "vidstg",
+      "stage": "score",
+      "worker": {
+        "pid": 1520626,
+        "startticks": 328867102
+      },
+      "actual_subprocess_wait": true,
+      "exit_code": 0,
+      "elapsed_wall_seconds": 8.211138770915568
+    },
+    "regions_hc2_audit": {
+      "task": "regions",
+      "dataset": "hc2",
+      "stage": "audit",
+      "worker": {
+        "pid": 1520510,
+        "startticks": 328864735
+      },
+      "actual_subprocess_wait": true,
+      "exit_code": 0,
+      "elapsed_wall_seconds": 9.633755489252508
+    },
+    "regions_hc2_score": {
+      "task": "regions",
+      "dataset": "hc2",
+      "stage": "score",
+      "worker": {
+        "pid": 1520509,
+        "startticks": 328864337
+      },
+      "actual_subprocess_wait": true,
+      "exit_code": 0,
+      "elapsed_wall_seconds": 3.981986802071333
+    },
+    "combination_hc2_audit": {
+      "task": "combination",
+      "dataset": "hc2",
+      "stage": "audit",
+      "worker": {
+        "pid": 1520419,
+        "startticks": 328862657
+      },
+      "actual_subprocess_wait": true,
+      "exit_code": 0,
+      "elapsed_wall_seconds": 6.950213307049125
+    },
+    "regions_vidstg_audit": {
+      "task": "regions",
+      "dataset": "vidstg",
+      "stage": "audit",
+      "worker": {
+        "pid": 1520628,
+        "startticks": 328867923
+      },
+      "actual_subprocess_wait": true,
+      "exit_code": 0,
+      "elapsed_wall_seconds": 13.662865265272558
+    },
+    "combination_vidstg_predict": {
+      "task": "combination",
+      "dataset": "vidstg",
+      "stage": "predict",
+      "worker": {
+        "pid": 1520161,
+        "startticks": 328855890
+      },
+      "actual_subprocess_wait": true,
+      "exit_code": 0,
+      "elapsed_wall_seconds": 1850.352169664111
+    },
+    "combination_vidstg_score": {
+      "task": "combination",
+      "dataset": "vidstg",
+      "stage": "score",
+      "worker": {
+        "pid": 1536225,
+        "startticks": 329040926
+      },
+      "actual_subprocess_wait": true,
+      "exit_code": 0,
+      "elapsed_wall_seconds": 109.64584313333035
+    },
+    "regions_hc2_predict": {
+      "task": "regions",
+      "dataset": "hc2",
+      "stage": "predict",
+      "worker": {
+        "pid": 1520420,
+        "startticks": 328863352
+      },
+      "actual_subprocess_wait": true,
+      "exit_code": 0,
+      "elapsed_wall_seconds": 9.845200284849852
+    },
+    "combination_vidstg_audit": {
+      "task": "combination",
+      "dataset": "vidstg",
+      "stage": "audit",
+      "worker": {
+        "pid": 1536593,
+        "startticks": 329051890
+      },
+      "actual_subprocess_wait": true,
+      "exit_code": 0,
+      "elapsed_wall_seconds": 30.704556562006474
+    }
+  },
+  "prediction_seal_clocks": {
+    "combination_hc2": 48.414496860001236,
+    "combination_vidstg": 1848.576705021318,
+    "regions_hc2": 8.223842030856758,
+    "regions_vidstg": 12.41340931225568
+  },
+  "windows_nested_not_additive": true,
+  "root_outer_wait": {
+    "main_HC": {
+      "tool_session": 36749,
+      "actual_tool_wait": true,
+      "exit_code": 0,
+      "entry": "root_export_v2.py"
+    },
+    "regions_HC": {
+      "tool_session": null,
+      "actual_tool_wait": null,
+      "exit_code": null,
+      "root_receipt_sha256": "29b4a05ff687bc03d0f078be333c8fa63283bf1063dde9cde16769d0933511ca",
+      "reason": "Actual launch session identifier not recoverable after tool response truncation; success evidenced by program root_receipt, do not invent an outer wait."
+    },
+    "regions_Vid": {
+      "tool_session": 45518,
+      "actual_tool_wait": true,
+      "exit_code": 0,
+      "entry": "root_export_v2.py"
+    },
+    "main_Vid": {
+      "tool_session": 21613,
+      "actual_tool_wait": true,
+      "exit_code": 0,
+      "entry": "root_export_v2.py"
+    },
+    "final_export_v1": {
+      "tool_session": 72356,
+      "actual_tool_wait": true,
+      "exit_code": 0,
+      "entry": "root_finalize_v1.py"
+    }
+  },
+  "report_failure_clock": null,
+  "report_failure_clock_reason": "Outer v1 exporter result lost in tool response truncation; traceback preserved, not imputed0"
+}

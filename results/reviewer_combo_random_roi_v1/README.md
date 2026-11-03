@@ -10,11 +10,15 @@ Whole-domain seals precede separate CPU official scoring of the new arm and inde
 
 Current still allows soft E/expert candidates at observed frames and is not a repaired hard-anchor implementation. Results describe this unchanged implementation. No clamping, old-result rewriting, target tuning, paper change or old queue restart. All observed-frame metrics include GT-supported frames outside the predicted interval too. Cached CPU construction/analysis clocks are not deployment costs; inherited Source/expert acquisition costs remain nonzero.
 
-Three units complete and root-interpreted locally: full HC combination and both regional panels. Full Vid strict-combination cache assembly remains active; no prefix accuracy is evaluated. Publication receipts state the exact completed scope.
+All four units are now scientifically complete and ROOT interpreted: HC1902/227parents and Vid10303/732parents strict simple-combination comparisons, and unchanged128distinctparent regional panels per domain.12461newofficialchecks,maxdiscrepancy2.997602166488e-15; independent cold-array/input/predreceiptSHA/reused-metric/means audits;330ROOTpairedgroupCIchecks;12actualchildwait0/controller81479actualwait0. The partial6e088ed stage remains in history. Final completion requires the final private ALLremote publication receipt.
 
+- [Full two-domain analysis](ANALYSIS.md)
+- [Vid full combination](combination/vidstg/ROOT_FINDINGS.md)
 - [HC full combination](combination/hc2/ROOT_FINDINGS.md)
 - [HC regional evidence](regions/hc2/ROOT_FINDINGS.md)
 - [Vid regional evidence](regions/vidstg/ROOT_FINDINGS.md)
 - [Frozen protocol](protocol.json)
 
 One report-only v1 fixed-table exporter failed because the generic scalar reporter requires a Source reference key. The independent v2 labels original Source boxes at the fixed expert-derived interval as Source in that diagnostic table; numerical values/predictions/scoring/science are unchanged. Original source and traceback are preserved. Regional v1 completed successfully and is not rerun.
+
+Full minus strict simple-combination vIoU: HC+2.208185CI[1.878230,2.553212]; Vid-.151437CI[-.305699,-.000675]pointwise upper bound close to0. Full-minus-Einitpositivebothdomains does not establish Full superiority over pure interpolation onVid. Region evidence supports HCcorrected-randomt/vpositive, nottwo-domaincorrectedROInecessity or actionsemantics. Full signed harm/rescue/shortlong/cost retained.
