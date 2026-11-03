@@ -1,0 +1,40 @@
+{
+  "schema": "pure_expert_interpolation_fixed128_v1",
+  "authorization": "2026-11-03 user rejects additions to pure expert interpolation; correction of baseline definition, unchanged prior fixed128/domain panel; no GPU or full expansion",
+  "baseline": "Only original eight expert boxes, physical observation times and requested frame times. Linear center/log-size interpolation between consecutive anchors; outside anchor span keep nearest endpoint expert box. Overwrite anchors exactly. No Source/E/shared correction/features/DP/temporal refinement/model. All256 have eight valid boxes; no invalid-box fallback or skipped query.",
+  "temporal": "Same existing audited Current interval for Source boxes, old hybrid, pure interpolation and Current. Temporal conditioning is common evaluation support, not a temporal update inside PureExpert. This is NOT a standalone native-interval pipeline ranking.",
+  "original": "Old interpolation retained E outside anchor span. Old published full gaps +2.134753 HC/-0.106955 Vid concern that hybrid, not this pure baseline. Preserve all old source/plans/predictions/scores/negatives.",
+  "score": "Whole128 seal before separate official CPU score of PureExpert only, reuse all audited matched-time Source/old-hybrid/Current scalars; separate all arrays/SHA/input/means audit. No new GT acquisition, no new model/Source/expert/optimizer/media. Fixed previously exposed panel, not unknown validation or outcome-selected subset.",
+  "counts": {
+    "hc2": 128,
+    "vidstg": 128
+  },
+  "new_GPU": 0,
+  "new_Source": 0,
+  "new_expert": 0,
+  "new_optimizer": 0,
+  "new_model": 0,
+  "code_sha256": {
+    "studies/pure_expert_interpolation_v1/run.py": "5b0f02fe37610953d2b0f2c5237696731f37734d8ae5134c64fa26c7863e0800",
+    "studies/pure_expert_interpolation_v1/controller.py": "176043bd5b3340f3da92a0a60feca69c0fa8640d96e87ddb4a43601d0c2dc54c",
+    "studies/reviewer_key_controls_v1/common_v1.py": "fdd90e7dd582d885254f7253ccbed4046e5decc107438b6f4cba674408f51822",
+    "stvg/paper_panel.py": "505a061289956cba2544c3323a5d9b6fde33d62e61ea2a78da7d41de6d7bc459",
+    "tools/full_score.py": "419f03f9b68c1e63962f1a742bde485d92daf8662dace2167579d1a6dd423c08"
+  },
+  "input_sha256": {
+    "outputs/matched_pipeline_timing_v1/selection.json": "705df2dc3f3b6b7f2c9c95ed98970522b4ff7399fffb4d10043a7c8e8fcdd07a",
+    "outputs/pure_expert_interpolation_v1/selection.json": "705df2dc3f3b6b7f2c9c95ed98970522b4ff7399fffb4d10043a7c8e8fcdd07a",
+    "outputs/simplepath_full_v2/plan.json": "4a34668741e08bbd68fb2268a87a1fc193d4ca6efa02b4e14972dbfd746c7ab4",
+    "outputs/reviewer_key_controls_v1/interpolation_definition_audit_20261103/read_only_fixed128_tail_audit.json": "8beaf1f54a5b7cfff0e1eb5888b087eb84b12f1cddc8f7c86d559da7ac44844d",
+    "outputs/simplepath_full_v2/hc2/sealed.json": "bc209ac67273f0f2835c929cf5d977452dff04c901e7ed56223414a04fcb44a2",
+    "outputs/review_strengthening_v1/matched_cpu/hc2/sealed.json": "bc87a4c2eda83c027b001dc87a4ab3685365dc8b0817eaa716817f116e73a8ad",
+    "outputs/review_strengthening_v1/matched_cpu/hc2/metrics.json": "56a3e83121e4101b0072e87a60b3d89ad2c0ce306647d2ba4d0fb4102d521a4b",
+    "outputs/review_strengthening_v1/matched_cpu/hc2/reporting_receipt.json": "8a39b7f900065154e2dc4a4a9d1fb7dc5deb489ee3f49af90c54caca01179da3",
+    "outputs/simplepath_full_v2/vidstg/sealed.json": "faf739e72a065bbac2079715aea4f4e89b0e2014da854013ea0c9728cb295c81",
+    "outputs/review_strengthening_v1/matched_cpu/vidstg/sealed.json": "e792f51c6b1cc7256758818353853bd1fc5ca99d7f06e9c3e7d480562a65a2ee",
+    "outputs/review_strengthening_v1/matched_cpu/vidstg/metrics.json": "5621d10396c577c8079fabac4e577ca4544ea794dce68ba7a10148d1717db4ae",
+    "outputs/review_strengthening_v1/matched_cpu/vidstg/reporting_receipt.json": "0cb998e2eb795d903c3a8a70e0274d69f2a307fb9022a52305e5d41829b0c3c1",
+    "outputs/pure_expert_interpolation_v1/inventory.json": "f9eb59e8d5a48d28fd9017c4658178f8368a4d9c6cb536efda56a9c93e20ca13"
+  },
+  "fingerprint": "099af66ad0cd5cb1fd7b105dcf509d425b2bafbee496f94f5887d5ff06e4d18b"
+}
