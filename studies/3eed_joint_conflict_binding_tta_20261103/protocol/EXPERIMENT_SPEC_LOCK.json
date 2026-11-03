@@ -1,0 +1,34 @@
+{
+  "state": "LOCKED_R55_JOINT_CONTRADICTION_BINDING_TTA",
+  "n": 336,
+  "cohort": "EXPOSED_DEV336",
+  "source": "Waymo-only epoch100",
+  "fixed_original_256_boxes": true,
+  "entity_hypotheses": "all256 queries of same full-sentence source, T native firstnoun preserved; R literal span masks in same token sequence, no top3/NMS cutoff",
+  "joint": "P_T(i)P_R(j) per edge, each candidate distribution softmax(native entity logodds), temperature1; not calibrated probability claim",
+  "multiple_references": "factor star: T marginal pT_i * product_r sum_j pR_rj*(1-C_rij); reference scores recomputed in each update; no joint argmax pair assumed true",
+  "loss": "mean_r -log1p(-sum_ij pT_i pR_rj C_rij) + relative_source_entity_logodds_MSE + .01realized_projection_delta_mean_square",
+  "conflict": "1-(1-geo)*(1-target_color)*(1-reference_color), cap.95; unknown measurements give zero constraint, not trainable mass",
+  "spatial": "camera_image LEFT/RIGHT only, directed graph endpoints used. Full eight-corner box projection positive-depth and in-frame; >=8 actual visible points in sourcebox; conservative interval contains projected box center and visible-pixel10/90quantile plus5percent projected width; opposite intervals separated by.02imagewidth and shared visible support/min(count)<=.1. No surface-as-full-boundary claim",
+  "color": "actual calibrated/zbuffer visible raw-point pixels only; same sourcebox scaled.85/1/1.15;>=16points each, pixelspan >=.35of projectedwidth ANDheight each; exactlyone nonnegated measurable color word; stable alternative descriptor>=.45, requested<=.20, margin>=.30 across all supports. Distant hue>=.24cycle or black/white only. Confidence<=.95; absence alone never contradiction",
+  "reference_missing": "never generates contradiction; all weak/missing measurements remain in336denominator",
+  "parameter_interface": "last Linear of contrastive_align_projection_image 288->64 rank4 alpha4 LoRA,1408params; text head/backbone/all other weights frozen; all entity scores rerun",
+  "optimizer": "Adam lr.0005 betas.9/.999 eps1e-8 weightdecay0, gradientcap1,source reset per input/variant",
+  "steps": [
+    1,
+    3
+  ],
+  "control": "RGBshuffle permutes RGB values among fixed actuallyvisible points; endpointshuffle permutes reference column of spatial conflicts only; everything else fixed",
+  "readouts": "source,zero_step and 3variants each direct,tta1_raw,tta1_joint,tta3_raw,tta3_joint;17arms",
+  "no_teacher_no_new_models_no_source_training": true,
+  "no_FINAL_or_ALL5912": true,
+  "before_GT": "seal evidence and predictions, independent audit before one score; no grid or postGT method repair",
+  "budgets": {
+    "new_full_grounding_forwards": 0,
+    "cached_feature_TTA_inputs": 336,
+    "max_optimizer_steps": 3024,
+    "GPU_wall_seconds": 1800,
+    "CPU_preparation_wall_seconds": 1800
+  },
+  "stop": "if loss decreases without balancedmIoU gain or TTA not above same-information direct joint, do not adopt fixed recipe"
+}

@@ -1,0 +1,8 @@
+{
+  "state": "LOCKED_BEFORE_FIRST_TTA_OR_TASK_SCORE",
+  "reason": "Availability must not become a trainable UNKNOWN escape route.",
+  "rule": "For each entity/variant, fixed known-candidate stratum = any positive conflict in its row/column. Source softmax(logodds) mass in known/unknown strata is fixed. Updated scores redistribute only within each stratum. No explicit learned UNKNOWN category or increase in unmeasured mass. Strata are frozen from observation conflicts, not GT.",
+  "readout": "raw arms use the same stratum-normalized target marginal; joint arms additionally condition on 1-C factors. source initialization has exactly the native ordering.",
+  "caveat": "Unmeasured hypotheses remain possible at fixed source mass; lack of contradiction is never a positive label. Raw native logodds are retained privately for audit. No assertion source strata are calibrated or correct.",
+  "no_hyperparameter_or_GT_selection": true
+}

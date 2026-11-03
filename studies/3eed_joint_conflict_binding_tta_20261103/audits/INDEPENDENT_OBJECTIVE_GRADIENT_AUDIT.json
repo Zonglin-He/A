@@ -1,0 +1,131 @@
+{
+  "state": "PASS_R55_INDEPENDENT_CPU_NATIVE_PROJECTION_OBJECTIVE_GRADIENT_AUDIT",
+  "cases": 4,
+  "selection": "two active-observation cases per platform by fixed input hash, no GT",
+  "independent_gradients": 12,
+  "max_gradient_norm_abs_error": 1.862645149230957e-08,
+  "first_Bzero_Agrad_zero_expected": true,
+  "trainable_parameters": 1408,
+  "records": [
+    {
+      "platform": "drone",
+      "variant": "real",
+      "gradient_norm": 0.04442138224840164,
+      "producer_norm_abs_error": 1.862645149230957e-08,
+      "first_A_gradient_exactly_zero": true,
+      "conflict_loss": 0.1481901609581113
+    },
+    {
+      "platform": "drone",
+      "variant": "RGBshuffle",
+      "gradient_norm": 0.04253134876489639,
+      "producer_norm_abs_error": 1.862645149230957e-08,
+      "first_A_gradient_exactly_zero": true,
+      "conflict_loss": 0.14818469399356082
+    },
+    {
+      "platform": "drone",
+      "variant": "endpointshuffle",
+      "gradient_norm": 0.013043919578194618,
+      "producer_norm_abs_error": 3.725290298461914e-09,
+      "first_A_gradient_exactly_zero": true,
+      "conflict_loss": 0.16702329407147273
+    },
+    {
+      "platform": "drone",
+      "real_vs_RGBshuffle_gradient_difference_L2": 0.00529527710750699,
+      "real_vs_endpointshuffle_gradient_difference_L2": 0.05472242087125778
+    },
+    {
+      "platform": "drone",
+      "variant": "real",
+      "gradient_norm": 1.7323610563835246e-06,
+      "producer_norm_abs_error": 4.888534022029489e-12,
+      "first_A_gradient_exactly_zero": true,
+      "conflict_loss": 3.2861946749208974e-05
+    },
+    {
+      "platform": "drone",
+      "variant": "RGBshuffle",
+      "gradient_norm": 1.7323610563835246e-06,
+      "producer_norm_abs_error": 4.888534022029489e-12,
+      "first_A_gradient_exactly_zero": true,
+      "conflict_loss": 3.2861946749208974e-05
+    },
+    {
+      "platform": "drone",
+      "variant": "endpointshuffle",
+      "gradient_norm": 2.728411345742643e-06,
+      "producer_norm_abs_error": 2.7284841053187847e-12,
+      "first_A_gradient_exactly_zero": true,
+      "conflict_loss": 3.385662872699127e-05
+    },
+    {
+      "platform": "drone",
+      "real_vs_RGBshuffle_gradient_difference_L2": 0.0,
+      "real_vs_endpointshuffle_gradient_difference_L2": 3.1643467082176358e-06
+    },
+    {
+      "platform": "quad",
+      "variant": "real",
+      "gradient_norm": 0.02775721438229084,
+      "producer_norm_abs_error": 0.0,
+      "first_A_gradient_exactly_zero": true,
+      "conflict_loss": 0.09538472142287807
+    },
+    {
+      "platform": "quad",
+      "variant": "RGBshuffle",
+      "gradient_norm": 0.0,
+      "producer_norm_abs_error": 0.0,
+      "first_A_gradient_exactly_zero": true,
+      "conflict_loss": -0.0
+    },
+    {
+      "platform": "quad",
+      "variant": "endpointshuffle",
+      "gradient_norm": 0.02775721438229084,
+      "producer_norm_abs_error": 0.0,
+      "first_A_gradient_exactly_zero": true,
+      "conflict_loss": 0.09538472142287807
+    },
+    {
+      "platform": "quad",
+      "real_vs_RGBshuffle_gradient_difference_L2": 0.02775721438229084,
+      "real_vs_endpointshuffle_gradient_difference_L2": 0.0
+    },
+    {
+      "platform": "quad",
+      "variant": "real",
+      "gradient_norm": 0.011208441108465195,
+      "producer_norm_abs_error": 3.725290298461914e-09,
+      "first_A_gradient_exactly_zero": true,
+      "conflict_loss": 0.1509082941067516
+    },
+    {
+      "platform": "quad",
+      "variant": "RGBshuffle",
+      "gradient_norm": 0.011208441108465195,
+      "producer_norm_abs_error": 3.725290298461914e-09,
+      "first_A_gradient_exactly_zero": true,
+      "conflict_loss": 0.1509082941067516
+    },
+    {
+      "platform": "quad",
+      "variant": "endpointshuffle",
+      "gradient_norm": 0.00677769398316741,
+      "producer_norm_abs_error": 0.0,
+      "first_A_gradient_exactly_zero": true,
+      "conflict_loss": 0.14799311942403212
+    },
+    {
+      "platform": "quad",
+      "real_vs_RGBshuffle_gradient_difference_L2": 0.0,
+      "real_vs_endpointshuffle_gradient_difference_L2": 0.007166886702179909
+    }
+  ],
+  "no_optimizer_or_new_full_grounder": true,
+  "GT_reads": 0,
+  "seconds": 0.3593365401029587,
+  "program_sha256": "4018d306dfdb429e265b981be88d27d014dd39e10373aabff3fdf0b31aa5be24"
+}
