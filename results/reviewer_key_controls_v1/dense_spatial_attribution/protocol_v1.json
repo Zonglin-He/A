@@ -1,0 +1,19 @@
+{
+  "schema": "exact_dense_matched_time_spatial_v_attribution_v1",
+  "scope": "Only original complete audited same-interval Ours and ExpertInterpolation paths, no new prediction/model/acquisition. Offline GT only. Decompose the exact already-published Table10 per-query vIoU difference, not infer contribution from native-frame means.",
+  "groups": [
+    "observed",
+    "unobserved_0_05",
+    "unobserved_05_1",
+    "unobserved_1_2",
+    "unobserved_2_4",
+    "unobserved_4_inf"
+  ],
+  "rule": "Ground-truth-annotated dense frame IDs in predicted AND GT half-open interval, official prediction pixel interpolation/no extrapolation. Distances from actual8 physical observed IDs/fps. Observed frames separate; unobserved bins[0,.5),[.5,1),[1,2),[2,4),[4,inf).",
+  "contribution": "100*sum(frameIoU_Ours-frameIoU_Interpolation on group)/official temporal enclosing-span denominator per query. Sum6groups equals old audited delta-v pointwise. All queries remain denominator, absence of group support contributes0.",
+  "statistics": "query-equal and parent10000 bootstrap seed20261022 pointwise95%, counts of supported queries/frames also report; not independent-frame tests, not unique causal attribution or new method.",
+  "code_sha256": {
+    "studies/reviewer_key_controls_v1/dense_spatial_attribution_v1.py": "569cf7cd70f6487706e7804cdc197445fe5490e92b61f91c261e79f4e4edd0d2"
+  },
+  "fingerprint": "629dc1014921b24eaa1b309da34abf3f9952d01cc75f71a5990e0706bd9e9f4b"
+}

@@ -1,0 +1,5 @@
+# Root arithmetic interpretation
+
+Both complete domains passed independent coordinate interpolation/IoU formulas and each query reproduces its original matched-time vIoU difference within1e-12pp. In VidSTG the whole -0.106955pp comparison decomposes into observed -0.010054; unobserved<.5s -.296012; .5-1s +.048980;1-2s+.076440;2-4s+.051287;>4s+.022403pp. Near-observation losses outweigh farther-distance benefits in the exact score arithmetic. Far-distance benefits are not confined to outside the final predicted event. This identifies where the score difference arises, not a unique causal algorithmic explanation. Parent pointwise CIs for each contribution and all support counts are in each report; CI endpoints do not add.
+
+HC whole +2.134753pp decomposes into observed-.019056,<.5s+.057518 (CIcross0),.5-1s+.729569,1-2s+1.158859,2-4s+.207863,>4s0(no support). Zero-support queries remain in every group's primary denominator; zero unsupported HC>4s contribution is an arithmetic identity, not evidence of equal performance in a supported group. No new predictions/model/Source/expert or paper edits.
