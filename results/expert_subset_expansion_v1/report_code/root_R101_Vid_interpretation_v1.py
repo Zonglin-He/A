@@ -1,0 +1,20 @@
+"""Read fully audited Vid R101 scalars only; no model/Source/expert/GT."""
+from pathlib import Path
+import json,hashlib,time
+R=Path.cwd();D=R/'outputs/expert_subset_expansion_v1/referformer_r101/vidstg';P=R/'results/expert_subset_expansion_v1/referformer_r101/vidstg';read=lambda p:json.loads(p.read_text());sha=lambda p:hashlib.sha256(p.read_bytes()).hexdigest()
+a=read(D/'reporting_receipt.json');assert a['queries']==a['parents']==128 and a['report_sha256']==sha(P/'report.json')and a['metrics_sha256']==sha(D/'metrics.json')
+text='''# Root interpretation: ReferFormer-R101, VidSTG fixed128
+
+Whole128queries/128parents independently input/raw/preprocessing/Source-grid/E-ROI/geometry/posterior/finalDP/cold-array audited, officially scored and all72means checked. Native Source32.121535t/13.322903v; pure Source-time32.121535t/15.246319v; pure under own Current event35.297444t/16.643761v; Current35.297444t/16.713032v, R.3 19.531250/R.5 11.718750/unobserved40.197912 percent.
+
+Current versus native-time pure: t+3.175909pp CI[.908013,5.702781],v+1.466713 CI[.188205,2.912947]. Against the SAME own-event pure trajectory, spatial v+.069271 CI[−.650472,.768972] crosseszero; all128tIoUs identical. The pure path's interval change alone v+1.397442 CI[.226477,2.896471]. Thus the total gain cannot be presented as established spatial superiority on VidSTG.
+
+Fixed-own-event path gains49/harm46/tie33;7severevloss>5pp/9rescues. Total native-time-pure comparison gains58/harm38/tie32;severe t19/v8/union-once21 and45rescues. Native Source comparison v+3.390130 CI[1.292310,5.649311],severe tvunion27/rescue54. Unobserved IoU versus Source+3.784975 CI[.165433,7.537416] is pointwise nearzero positive; versus pure+1.085255 CI[−1.010511,3.197501] crosseszero. Observed IoU versus pure−2.441819 CI[−4.366719,−.741004] on103scorablequeries;25unsupported not0. Current's existing soft E/expert anchor selection remains unchanged; numerical audit does not establish the intended hard-anchor contract.
+
+Short78: totalv+.397035 CI[−.661672,1.374049] crosseszero; fixed-own-event spatial+.504333 CI[.026765,1.044448] pointwise nearzero positive. Long50: totalv+3.135411 CI[.373111,6.426619] positive; spatial−.609424 CI[−2.169193,1.012962] crosseszero. No claim of positive gains in every stratum or statistical equivalence; exposed subset/pointwise10000parentCI, not unknown/familywise confirmation. R.3 also differs: own-event pure22.65625 versus Current19.53125 percent; do not hide mixed metric directions.
+
+Actual128newR101 eight-frame requests/0newSource/originalReferDINO/optimizer. Model load6.498500149s is the same PID1356249/start327716514 single load shared with HC, not another Vid model load. Vid preprocessing4.128929942s, transfer+forward14.137503493s, rawcheckpoint2.668259991s, postprocess.290608394s, finish38.098639969s and querywall-beforecommit148.936246795s nest and cannot be added or called uncacheddeployment latency. AllocatedGPUpeak3,606,887,424bytes is expert-worker only, not complete-system VRAM. Historical Source/oldexpert costs nonzero.
+
+No new model/expert/Source/GT/prediction or parameter choice for this interpretation. All signed tails/shortlong/recall and costs retained. R101 both domains now numerically audited and root interpreted, still pending stage publication. MTTR zero-model startup process-check failure and its independent engineering recovery are separate preserved provenance, not a R101 scientific failure or model rerun. OnlineRefer-R50 and SgMg–Video-Swin-T are authorized subsequent subset work; no other paused work reopened.
+'''
+(P/'ROOT_FINDINGS_v1.md').write_text(text);rec=dict(status='ROOT_complete_R101_Vid_signed_positive_negative_duration_cost_interpretation',audit_sha256=sha(D/'reporting_receipt.json'),report_sha256=sha(P/'report.json'),findings_sha256=sha(P/'ROOT_FINDINGS_v1.md'),code_sha256=sha(Path(__file__)),new_Source=0,new_expert=0,new_GT=0,new_prediction=0,not_yet_published=True,time=time.time());(D/'root_interpretation_v1.json').write_text(json.dumps(rec,indent=2)+'\n');print('R101 Vid root scalar interpretation complete')

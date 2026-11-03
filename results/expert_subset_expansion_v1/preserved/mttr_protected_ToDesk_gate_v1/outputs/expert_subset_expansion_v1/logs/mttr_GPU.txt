@@ -1,0 +1,16 @@
+Traceback (most recent call last):
+  File "/home/wwww/visual grounding/stvg-native2d-simplepath/studies/expert_subset_expansion_v1/worker_v1.py", line 61, in <module>
+    a=argparse.ArgumentParser();a.add_argument('stage',choices=['GPU','reuse']);a.add_argument('--expert',required=True,choices=EXPERTS+REUSE);q=a.parse_args();(run if q.stage=='GPU'else reuse)(q.expert)
+                                                                                                                                                                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/wwww/visual grounding/stvg-native2d-simplepath/studies/expert_subset_expansion_v1/worker_v1.py", line 15, in run
+    foreign=foreign_check();lock=lease();who=identity();atomic(folder/'worker.json',who);atomic(folder/'GPU_gate.json',dict(allowed_only_exact_ToDesk=foreign,global_gpu_lock_acquired=True,worker=who));counts=dict(attempted_new_expert=0,successful_new_expert=0,committed=0,new_Source=0,new_original_ReferDINO=0,new_optimizer=0);model=None
+            ^^^^^^^^^^^^^^^
+  File "/home/wwww/visual grounding/stvg-native2d-simplepath/studies/expert_subset_expansion_v1/worker_v1.py", line 9, in foreign_check
+    pid,name=line.split(',',1);pid=int(pid);exe=Path(f'/proc/{pid}/exe').resolve();assert str(exe)=='/opt/todesk/bin/ToDesk_Session',(pid,str(exe));entries.append(dict(pid=pid,exe=str(exe)))
+                                                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/wwww/visual grounding/stvg-native2d-simplepath/.conda/tubedetr/lib/python3.11/pathlib.py", line 993, in resolve
+    s = os.path.realpath(self, strict=strict)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<frozen posixpath>", line 413, in realpath
+  File "<frozen posixpath>", line 480, in _joinrealpath
+PermissionError: [Errno 13] Permission denied: '/proc/1363269/exe'

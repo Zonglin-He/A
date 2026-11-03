@@ -1,0 +1,174 @@
+{
+  "actual_new_expert_queries": 512,
+  "actual_new_expert_observations": 4096,
+  "new_Source": 0,
+  "new_original_ReferDINO": 0,
+  "new_optimizer": 0,
+  "unique_actual_GPU_model_loads": {
+    "1356249/327716514": {
+      "worker": {
+        "pid": 1356249,
+        "startticks": 327716514
+      },
+      "seconds": 6.498500149231404,
+      "checkpoint_sha256": "035f08da42b6312d0b3ba3d7c6af344eab7d4d09c9396141a766be4dc941c77d",
+      "load_audit": {
+        "status": "all_learned_and_shared_tensors_exact_checkpoint",
+        "missing_deterministic_buffers": [],
+        "unexpected_verified_deterministic_buffers": [
+          "text_encoder.embeddings.position_ids"
+        ],
+        "parameters": 195202111,
+        "official_vendor_unchanged": true
+      },
+      "device": "NVIDIA GeForce RTX 5090",
+      "torch_version": "2.7.0+cu128",
+      "dtype": "FP32",
+      "TF32": false,
+      "instances": 1
+    },
+    "1418949/327873735": {
+      "worker": {
+        "pid": 1418949,
+        "startticks": 327873735
+      },
+      "seconds": 5.871865258086473,
+      "checkpoint_sha256": "ee299bc1170a6f2cea9e6027dd154459ef63ba1a5dbe08857bf552d0e8aeb67e",
+      "load_audit": {
+        "status": "all_learned_and_shared_tensors_exact_checkpoint",
+        "missing_deterministic_buffers": [],
+        "unexpected_verified_deterministic_buffers": [
+          "transformer.text_encoder.embeddings.position_ids"
+        ],
+        "parameters": 146489864,
+        "official_vendor_unchanged": true
+      },
+      "device": "NVIDIA GeForce RTX 5090",
+      "torch_version": "2.7.0+cu128",
+      "dtype": "FP32",
+      "TF32": false,
+      "instances": 1
+    }
+  },
+  "CPU_model_doctor_costs": {
+    "referformer_r101": {
+      "status": "all_learned_and_shared_tensors_exact_checkpoint",
+      "missing_deterministic_buffers": [],
+      "unexpected_verified_deterministic_buffers": [
+        "text_encoder.embeddings.position_ids"
+      ],
+      "parameters": 195202111,
+      "official_vendor_unchanged": true,
+      "actual_model_CPU_construction": 1,
+      "actual_GPU_or_forward": 0,
+      "elapsed_seconds": 6.159535281825811,
+      "code_sha256": "64377bc850223272baf806cc27d69e13386a9190a078ee97d4afb8348c4053a4"
+    },
+    "mttr": {
+      "status": "all_learned_and_shared_tensors_exact_checkpoint",
+      "missing_deterministic_buffers": [],
+      "unexpected_verified_deterministic_buffers": [
+        "transformer.text_encoder.embeddings.position_ids"
+      ],
+      "parameters": 146489864,
+      "official_vendor_unchanged": true,
+      "actual_model_CPU_construction": 1,
+      "actual_GPU_or_forward": 0,
+      "elapsed_seconds": 5.186482541728765,
+      "code_sha256": "64377bc850223272baf806cc27d69e13386a9190a078ee97d4afb8348c4053a4"
+    }
+  },
+  "checkpoint_downloads": {
+    "referformer_r101_refytvos.pth": {
+      "status": "official_checkpoint_downloaded_length_SHA",
+      "url": "https://drive.usercontent.google.com/download?id=1QJU8HC8xk_3gMcj-Yi4vkUHaeHeP8n82&export=download&confirm=t",
+      "bytes": 1344684350,
+      "sha256": "035f08da42b6312d0b3ba3d7c6af344eab7d4d09c9396141a766be4dc941c77d",
+      "elapsed_wall_seconds": 626.6875677779317,
+      "new_model": 0,
+      "new_GPU": 0,
+      "new_Source": 0,
+      "new_expert": 0
+    },
+    "mttr_refytvos_window12.pth.tar": {
+      "status": "official_checkpoint_downloaded_length_SHA",
+      "url": "https://drive.usercontent.google.com/download?id=1R_F0ETKipENiJUnVwarHnkPmUIcKXRaL&export=download&confirm=t",
+      "bytes": 598417995,
+      "sha256": "ee299bc1170a6f2cea9e6027dd154459ef63ba1a5dbe08857bf552d0e8aeb67e",
+      "elapsed_wall_seconds": 382.24498829012737,
+      "new_model": 0,
+      "new_GPU": 0,
+      "new_Source": 0,
+      "new_expert": 0
+    }
+  },
+  "preserved_failed_zero_model_startup": {
+    "stage": "GPU",
+    "expert": "mttr",
+    "dataset": null,
+    "worker": {
+      "pid": 1408917,
+      "startticks": 327853016
+    },
+    "actual_subprocess_wait": true,
+    "exit_code": 1,
+    "elapsed_wall_seconds": 3.240462535060942
+  },
+  "original_controller_actual_exit": {
+    "tool_session": 90139,
+    "actual_tool_wait": true,
+    "exit_code": 1,
+    "controller": {
+      "pid": 1355931,
+      "startticks": 327707771
+    },
+    "reason": "new MTTR zero-model foreign-service proc/exe permission failure; old successful stages preserved",
+    "time": 1793713356.908388
+  },
+  "new_controller_actual_exit": {
+    "tool_session": 6505,
+    "actual_tool_wait": true,
+    "exit_code": 0,
+    "controller": {
+      "pid": 1418871,
+      "startticks": 327873491
+    },
+    "all_remaining9_stages_actual_exit0": true,
+    "prior27_stages_reused": true,
+    "prior_failed90139_preserved_exit1": true,
+    "time": 1793716358.990035
+  },
+  "nested_not_additive": true,
+  "whole_worker_wall_includes_root_waits_and_IO_not_deployment": true,
+  "Source_and_old_expert_acquisition_inherited_nonzero": true,
+  "mask_to_box_interface_counts": {
+    "referformer_r101/hc2": {
+      "observations": 1024,
+      "empty_observations": 0,
+      "queries_any_empty": 0,
+      "queries_all8_empty": 0,
+      "all128_queries_retained": true
+    },
+    "referformer_r101/vidstg": {
+      "observations": 1024,
+      "empty_observations": 0,
+      "queries_any_empty": 0,
+      "queries_all8_empty": 0,
+      "all128_queries_retained": true
+    },
+    "mttr/hc2": {
+      "observations": 1024,
+      "empty_observations": 199,
+      "queries_any_empty": 78,
+      "queries_all8_empty": 0,
+      "all128_queries_retained": true
+    },
+    "mttr/vidstg": {
+      "observations": 1024,
+      "empty_observations": 148,
+      "queries_any_empty": 51,
+      "queries_all8_empty": 1,
+      "all128_queries_retained": true
+    }
+  }
+}

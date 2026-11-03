@@ -1,0 +1,10 @@
+Traceback (most recent call last):
+  File "/home/wwww/visual grounding/stvg-native2d-simplepath/studies/expert_subset_expansion_v1/controller_v1.py", line 29, in <module>
+    if __name__=='__main__':run()
+                            ^^^^^
+  File "/home/wwww/visual grounding/stvg-native2d-simplepath/studies/expert_subset_expansion_v1/controller_v1.py", line 24, in run
+    step('worker_v1.py','GPU',expert)
+  File "/home/wwww/visual grounding/stvg-native2d-simplepath/studies/expert_subset_expansion_v1/controller_v1.py", line 11, in step
+    rec=dict(stage=stage,expert=expert,dataset=ds,worker=who,actual_subprocess_wait=True,exit_code=code,elapsed_wall_seconds=time.perf_counter()-start);atomic(D/'exits'/f'{key}.json',rec);assert code==0,rec
+                                                                                                                                                                                                   ^^^^^^^
+AssertionError: {'stage': 'GPU', 'expert': 'mttr', 'dataset': None, 'worker': {'pid': 1408917, 'startticks': 327853016}, 'actual_subprocess_wait': True, 'exit_code': 1, 'elapsed_wall_seconds': 3.240462535060942}
