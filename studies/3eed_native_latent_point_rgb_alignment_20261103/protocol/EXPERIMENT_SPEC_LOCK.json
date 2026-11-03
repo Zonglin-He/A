@@ -1,0 +1,46 @@
+{
+  "state": "LOCKED_R53_LATENT_ASSOCIATION_ONLY",
+  "n": 336,
+  "cohort": "EXPOSED_DEV336",
+  "original_256_boxes_fixed": true,
+  "frozen_waymo_epoch100": true,
+  "new_main_source_forwards": 336,
+  "repair_forward_cap": 4,
+  "same_reference_proposals_and_source_group_probabilities": true,
+  "reference_slots_never_shared_with_main_phrase": true,
+  "references_use_full_caption_entity_tokens_not_new_phrase_slot_ids": true,
+  "keep_R51_group_medoids_and_geometric_visible_point_bags": true,
+  "variants": [
+    "geometry",
+    "pre_feature",
+    "native_attention",
+    "seed_permutation_control"
+  ],
+  "support": "soft reweighting within each fixed medoid box; nearest seed restricted to the same box; no raw point outside carrier enters RGB",
+  "pre_feature": "affine cosine (1+cos)/2 between pre-fusion point features and the original proposal anchor seed feature; no query-feature dot product",
+  "native_attention": "sqrt(last query-to-point * entity-restricted normalized last query-to-token @ final encoder token-to-point), normalized on global seed grid; same-box nearest seed lift",
+  "seed_permutation_control": "fixed SHA-seeded permutation of semantic seed values before lifting; same geometry and marginal values",
+  "entity_spans": "unchanged R51 literal subject/ref character spans; exact overlap with RoBERTa offsets; invalid spans UNKNOWN",
+  "measurement": "same HSV/Lab prototypes; weighted color mean and weighted pixel/UV center; Kish effective N for pseudo-count and minimum-eight/reliability; uniform weights exactly preserve R51 measurement",
+  "no_seed_in_box": "UNKNOWN latent measurement; geometry fallback retained and flagged",
+  "readouts": [
+    "full_VPR",
+    "V_only",
+    "VR_no_position"
+  ],
+  "fixed_coefficients": [
+    2,
+    2,
+    2
+  ],
+  "fixed_color_factor": 0.5,
+  "primary": "equal_platform_mIoU full_VPR across three association variants; no coefficient search or best-subset promotion",
+  "secondary": "fixed V-only and VR diagnostics separate known harmful P; fixed permutation is mapping negative control",
+  "no_TTA_or_new_loss": true,
+  "no_3modal_shared_embedding_claim": true,
+  "no_attention_is_instance_mask_claim": true,
+  "no_new_GT_before_seal": true,
+  "no_holdout_or_full_run": true,
+  "visualizations": "engineering only, never selection evidence",
+  "independent_audit": "all original candidate/readout bridges, composition/seed coordinate checks, native attention reconstruction selected modules on hash samples, scalar reaggregation, all negative comparisons and scenes"
+}
