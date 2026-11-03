@@ -1,0 +1,43 @@
+{
+  "state": "PASS_R54_INDEPENDENT_OFFICIAL_DECODER_REPLAY_AND_OBJECTIVE_GRADIENT_AUDIT",
+  "hash_selected_observations": 4,
+  "rows_per_platform": 2,
+  "readouts_replayed": 52,
+  "maximum_score_error": 0.0,
+  "maximum_independent_objective_error": 9.313225746154785e-09,
+  "only_QK_LoRA_gradient_scope": true,
+  "zero_B_initial_A_gradients_zero_expected": true,
+  "gradient_comparisons": [
+    {
+      "platform": "drone",
+      "QK_source_gradient_norm": 0.00347339385189116,
+      "shuffled_gradient_norm": 0.003880647011101246,
+      "true_minus_shuffled_gradient_norm": 0.0024378926027566195
+    },
+    {
+      "platform": "drone",
+      "QK_source_gradient_norm": 0.00431338045746088,
+      "shuffled_gradient_norm": 0.003544326638802886,
+      "true_minus_shuffled_gradient_norm": 0.0012251145672053099
+    },
+    {
+      "platform": "quad",
+      "QK_source_gradient_norm": 0.005202114582061768,
+      "shuffled_gradient_norm": 0.0041289483197033405,
+      "true_minus_shuffled_gradient_norm": 0.0051229712553322315
+    },
+    {
+      "platform": "quad",
+      "QK_source_gradient_norm": 0.002752868225798011,
+      "shuffled_gradient_norm": 0.0023210919462144375,
+      "true_minus_shuffled_gradient_norm": 0.0009019902790896595
+    }
+  ],
+  "source_model_restored_byteexact": true,
+  "new_optimizer_steps": 0,
+  "new_full_grounder_or_backbone_forwards": 0,
+  "new_GT_reads": 0,
+  "prediction_seal_sha256": "eefc6bd03fe7f47b021fe33095b3476b5d64cfa647e65b095a979e09dd984777",
+  "seconds": 5.406058201100677,
+  "peak_GPU_bytes": 729551360
+}

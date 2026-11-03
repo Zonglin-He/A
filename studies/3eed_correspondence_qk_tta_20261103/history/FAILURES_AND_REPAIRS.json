@@ -1,0 +1,62 @@
+{
+  "events": [
+    {
+      "stage": "ENGINEERING_SOURCE_STATE_AUDIT",
+      "attempt": 1,
+      "status": "FAILED_AFTER_TWO_VALID_CASES",
+      "failure_type": "STATE_DICT_INSERTION_ORDER_CHANGED",
+      "repair_type": "EXACT_ORIGINAL_NAME_ORDER_DIGEST",
+      "valid_outputs": 2,
+      "before_GT": true,
+      "producer_predictions_changed": false,
+      "tolerance_changed": false,
+      "prior_attempt_preserved": true
+    },
+    {
+      "stage": "MAIN_EPISODIC_ADAPTATION",
+      "attempt": 2,
+      "status": "PASS_REUSED_TWO_VALID_CASES",
+      "failure_type": "NONE",
+      "repair_type": "AUDIT_ONLY_NO_METHOD_CHANGE",
+      "valid_outputs": 336,
+      "before_GT": true,
+      "producer_predictions_changed": false,
+      "tolerance_changed": false,
+      "prior_attempt_preserved": true
+    },
+    {
+      "stage": "OBSERVATION_AUDIT",
+      "attempt": 1,
+      "status": "FAILED_RECEIPT_WRITER",
+      "failure_type": "MISSING_DUMP_HELPER",
+      "repair_type": "WRITER_ONLY_NEW_ATTEMPT",
+      "before_GT": true,
+      "producer_predictions_changed": false,
+      "tolerance_changed": false,
+      "prior_attempt_preserved": true
+    },
+    {
+      "stage": "OBSERVATION_AUDIT",
+      "attempt": 2,
+      "status": "PASS",
+      "failure_type": "NONE",
+      "repair_type": "WRITER_ONLY",
+      "valid_outputs": 336,
+      "before_GT": true,
+      "producer_predictions_changed": false,
+      "tolerance_changed": false,
+      "prior_attempt_preserved": true
+    },
+    {
+      "stage": "STRONG_DIRECT_CONTROL",
+      "attempt": 1,
+      "status": "PASS",
+      "failure_type": "NONE",
+      "repair_type": "FIXED_TWENTY_STEPS_REGISTERED_BEFORE_GT",
+      "valid_outputs": 336,
+      "before_GT": true,
+      "producer_predictions_changed": false,
+      "tolerance_changed": false
+    }
+  ]
+}
