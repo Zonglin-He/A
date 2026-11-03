@@ -1,0 +1,41 @@
+{
+  "schema": "reviewer_key_controls_cached_cpu_v1",
+  "authorization": "2026-11-03 all pasted reviewer experiments; GPU missing-cache work allowed only after prior GPU task finishes. CPU first; no paper/profile changes; no EdgeTAM extra expert.",
+  "tasks": {
+    "temporal": "Full HC1902/Vid10303: original Source, joint-readout control, no-expert SourceROI TR with original boxes; expert E-ROI TR with E boxes, Ours final DP; fixed-E SourceTR and expert TR; original interpolation with each own TR interval.",
+    "regions": "Retained192/domain only: same main spatial geometry and q0, independently refit temporal prototypes/posterior/legalMAP; primary fixed same E trajectory. SourceROI/E-ROI/all-valid-global/outside expanded-E background/SHA fixed box permutation. No model or new acquisition."
+  },
+  "params": {
+    "kappa": 0,
+    "beta": 1,
+    "context_scale": 1.5,
+    "expert_positions": 8,
+    "rounds": 1,
+    "first_auxiliary_DP": false
+  },
+  "background": "valid native grid support minus original expanded E ROI weights, pooled directly; empty complement uses all valid grid and is counted, no row dropped",
+  "shuffle": "SHA256 UTF8 20261103|dataset|query_id|source_index order, index tie break, identity N>1 leftrotate1; permute whole E boxes, preserve exact box multiset and sizes; fixed E output path and spatial geometry are never shuffled",
+  "statistics": "Query equal,10000 parent-cluster percentile95% bootstrap seed20261022; short<=5s GT duration/long; signed severe t/v loss>5pp union once/rescues; negative10pp supplementary. Previously exposed targets, no new unknown confirmation or full-label parameter selection.",
+  "prediction_labels": false,
+  "whole_each_task_domain_seal_before_separate_official_score": true,
+  "separate_all_arrays_cold_rederive_SHA_means_audit": true,
+  "new_Source": 0,
+  "new_expert": 0,
+  "new_optimizer": 0,
+  "new_model": 0,
+  "GPU": false,
+  "resources": "max2 own low priority CPU14-15 nice19 idleIO thread1 CUDAhidden, RAM8GiB/disk80GiB/private160GiB/domain72h; do not signal unrelated services",
+  "full_regions_and_full_uniform_gamma": "new independent GPU plan pending raw inventory; not represented by retained192",
+  "code_sha256": {
+    "studies/reviewer_key_controls_v1/common_v1.py": "fdd90e7dd582d885254f7253ccbed4046e5decc107438b6f4cba674408f51822",
+    "studies/reviewer_key_controls_v1/core_v1.py": "d661fe7e79755fc036ff647745c6bf7b06b406eace38ad3f6c11986a0c22bbd2",
+    "studies/reviewer_key_controls_v1/run_v1.py": "a11169cef24044b2fab0918b49965c8213cc29bc9bdb56ec0ddbf4797f599c4c",
+    "studies/reviewer_key_controls_v1/execute_v1.py": "b6609c944df711335ba8f7f27fe87c32e88884b39b41999318bb8f5b7baf4b80",
+    "stvg/prototype.py": "b263154ae8c6ff4e4f8162e4ddea4498302b86f2ec65e8cfac0aa92d351d425b",
+    "stvg/representation.py": "1e10152274996a046dc45a1bbfd90727dda4083f3c1afcea21f2765f97f0e666",
+    "stvg/spatial.py": "54c3cec0ec643e47464957730f482302609855164196b361ee4bee1efd025c10",
+    "stvg/current_shared_roi.py": "83e440aafdba60a69086e141bc837388f8dd5e2d2c2f8e1b2475b48ce35a80c6",
+    "tools/full_score.py": "419f03f9b68c1e63962f1a742bde485d92daf8662dace2167579d1a6dd423c08"
+  },
+  "fingerprint": "dc9310bb018723c05b50a7b41060c24e4e13b24db739cbe6a04b2a23f1f186db"
+}

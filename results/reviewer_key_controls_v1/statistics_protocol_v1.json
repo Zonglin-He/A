@@ -1,0 +1,25 @@
+{
+  "schema": "offline_reviewer_diagnostics_v1",
+  "authorization": "2026-11-03 all reviewer diagnostics; offline annotations allowed for analysis only, never inference/tuning",
+  "tasks": [
+    "C: query-equal spatial IoU distance bins all/predicted-event/GT-event; same Table10 interval",
+    "D: declarative/interrogative x fixed expert IoU thirds and unscorable; spatial/temporal/final gains separated",
+    "E: saved native and actually post-update Tent/SAR entropy/logit/state norms and interval changes, matched native/joint readouts",
+    "F: per-query event/background evidence means and AUROC; source tIoU [0,.2),[.2,.5),[.5,.8),[.8,1]; Source quality/control gain/harm",
+    "risk: dV>+1,dV<-1,dV<=-10; Source vIoU>=.5 and >=.8 and tIoU>=.8",
+    "robustness: reuse all36 clean-vs-corrupt degradation and paired difference of degradation"
+  ],
+  "distance_bins": "[0,.5),[.5,1),[1,2),[2,4),[4,inf); native actually GT-supported unobserved frames only; half-open event intervals matching official scorer; empty strata explicit, never synthetic zeros",
+  "quality_bins": "low[0,1/3),medium[1/3,2/3),high[2/3,1],unscorable; preserve continuous original GT-supported anchor IoU; not quantile or performance-selected",
+  "AUROC": "Within-query tie-aware Mann Whitney rank AUROC, only queries containing both GT event/background native sampled frames; retain one-class/missing as unscorable; query/parent CI, frames not independent",
+  "bootstrap": "10000parent clusters seed20261022, query-equal; pointwise not familywise; full development exposure",
+  "no_model": true,
+  "no_optimizer": true,
+  "no_acquisition": true,
+  "no_GPU": true,
+  "code_sha256": {
+    "studies/reviewer_key_controls_v1/statistics_v1.py": "7404c7ddac26545bea748306bf6a994101af5c972950235eaa9a2e2f84a988a8",
+    "studies/reviewer_key_controls_v1/common_v1.py": "fdd90e7dd582d885254f7253ccbed4046e5decc107438b6f4cba674408f51822"
+  },
+  "fingerprint": "df49874d1794e4269a4ade9443b71331687a828453c846afe13370f287257eaa"
+}
