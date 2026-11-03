@@ -1,0 +1,13 @@
+Traceback (most recent call last):
+  File "/home/wwww/visual grounding/stvg-native2d-simplepath/studies/expert_subset_followups_v1/adapter_v1.py", line 114, in <module>
+    p=argparse.ArgumentParser();p.add_argument('expert',choices=EXPERTS);q=p.parse_args();torch.set_num_threads(1);t=time.perf_counter();model,tok,rec=construct(q.expert);assert not torch.cuda.is_initialized();rec.update(actual_model_CPU_construction=1,actual_GPU_or_forward=0,elapsed_seconds=time.perf_counter()-t,code_sha256=hashlib.sha256(Path(__file__).read_bytes()).hexdigest(),pid=os.getpid());(D/(q.expert+'_CPU_model_doctor.json')).write_text(json.dumps(rec,indent=2)+'\n');print(json.dumps(rec))
+                                                                                                                                                       ^^^^^^^^^^^^^^^^^^^
+  File "/home/wwww/visual grounding/stvg-native2d-simplepath/studies/expert_subset_followups_v1/adapter_v1.py", line 22, in construct
+    import opts,models
+  File "/home/wwww/visual grounding/stvg-native2d-simplepath/outputs/expert_subset_followups_v1/vendor/OnlineRefer/models/__init__.py", line 1, in <module>
+    from .referformer import build
+  File "/home/wwww/visual grounding/stvg-native2d-simplepath/outputs/expert_subset_followups_v1/vendor/OnlineRefer/models/referformer.py", line 12, in <module>
+    from util.misc import (NestedTensor, nested_tensor_from_tensor_list,
+  File "/home/wwww/visual grounding/stvg-native2d-simplepath/outputs/expert_subset_followups_v1/vendor/OnlineRefer/util/misc.py", line 37, in <module>
+    from torchvision.ops import _new_empty_tensor
+ImportError: cannot import name '_new_empty_tensor' from 'torchvision.ops' (/home/wwww/visual grounding/stvg-native2d-simplepath/.conda/tubedetr/lib/python3.11/site-packages/torchvision/ops/__init__.py)

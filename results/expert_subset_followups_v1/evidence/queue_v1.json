@@ -1,0 +1,81 @@
+{
+  "schema": "authorized_finite_external_expert_subset_followup_queue_v1",
+  "status_at_registration": "queued_after_existing_R101_MTTR_experiments_root_analysis_and_publication",
+  "authorization": "2026-11-03 direct user: 那你选几个吧，加入到后续的实验队列里",
+  "chosen": [
+    {
+      "order": 1,
+      "id": "onlinerefer_r50",
+      "name": "OnlineRefer-R50",
+      "paper": "ICCV2023",
+      "official_repository": "https://github.com/wudongming97/OnlineRefer",
+      "source_pin": "5f13c5e35dd8231d29c52ad7b2d298471e9edbc8",
+      "official_checkpoint_url": "https://github.com/wudongming97/OnlineRefer/releases/download/v1.0/ytvos-r50-checkpoint.pth",
+      "new_logical_expert_queries": 256,
+      "observed_RGB_frames_per_query": 8,
+      "forward_contract": "Only the same8 chronological observations. Native causal query-state propagation; no intermediate RGB or target GT. Log each model step and all slot/track identities; prove same referred object interface before release.",
+      "planned_model_steps_cap": 2048
+    },
+    {
+      "order": 2,
+      "id": "sgmg_videoswin_t",
+      "name": "SgMg-Video-Swin-T",
+      "paper": "ICCV2023",
+      "official_repository": "https://github.com/bo-miao/SgMg",
+      "source_pin": "90fd3c476858218b1ed0c21ec28e64e762ca2c84",
+      "official_checkpoint_url": "https://drive.google.com/file/d/1SiHl7oYqBabaN28nsrNOJeiZrJyhRixl/view",
+      "new_logical_expert_queries": 256,
+      "observed_RGB_frames_per_query": 8,
+      "forward_contract": "Only the same8 observations and same expression; preserve native clip/global selection and mask readout. CPU prove any box/mask interface and empty handling before frozen target run.",
+      "planned_model_steps_cap": 256
+    }
+  ],
+  "not_selected": [
+    "UNINEXT",
+    "SOC"
+  ],
+  "parent_scope": "expert_subset_expansion_v1",
+  "parent_scientific_fingerprint": "f1cdcfbdfa51276f01fdbddecf22a4ab9244d6f4b7b43f865c9963fc972c0e6b",
+  "parent_controller": {
+    "pid": 1355931,
+    "startticks": 327707771
+  },
+  "parent_controller_tool": 90139,
+  "parent_actual_exit_receipt_required": true,
+  "counts": {
+    "hc2": 128,
+    "vidstg": 128
+  },
+  "same_exact_parent_selection": true,
+  "current_experts_reused_not_rerun": [
+    "ReferDINO",
+    "ReferFormer-R50",
+    "ReferFormer-R101",
+    "MTTR"
+  ],
+  "new_logical_expert_queries_cap": 512,
+  "new_Source": 0,
+  "new_original_ReferDINO": 0,
+  "new_optimizer": 0,
+  "old_paused_scopes_not_reopened": true,
+  "paper_changed": false,
+  "Current_method_changed": false,
+  "observed_hard_anchor_fix_added": false,
+  "controls": "Same8physicalobservations/Sourcegrid/querylist/currentparams. Per expert raw8pure nearest tails under Source native interval and own Current interval, plus expert-specific structured current geometry/actual E-ROI/prototype/ownposterior/MAP/finalDP. No target sweep/best expert selection. Single expert per branch; do not add detector/segmenter. All empty cases retained with declared interface.",
+  "release": "First actual parentcontroller/tool wait0 +all36stages exit0/all8whole128audits/root interpretation+ALLremote stage publication, then new official checkpoint complete SHA/strict CPU state doctor/immutable source+tokenizer+input locks/actual backend contract validation; independently freeze new science and execution before ONE owned GPU controller. ROOT actual first2/domain paidraw checkpoint-before-readout, native source+mask/ROI/geometry/posterior/DP twice cold array exact. No handmade ack/skip/fallback/hashwaive/blind repaid calls.",
+  "runtime_status": "official_sources_pinned_only; checkpoint_download_runtime_adapter_and_numerical_plan_pending; no_new_waiting_dispatcher_no_GPU_lock",
+  "resource_limits": "GPU1 +CPU1heavy, CPU14-15nice19idleIO1thread, RAM8GiB/disk80GiB/private160GiB/72h; no unrelated signals",
+  "report": "whole-domain seal then separate official CPUscore/independent allarray/input/parent/SHA/means audit; root allsigned/positive-negative/severe tvuniononce>5pp/rescues/shortlong/paired10000parentCI/actual perPIDstartcost, native stepcounts distinct from logical query. Inherited Source costs nonzero/nested cannot add/cachedwall not deployment. Publish both positive-negative and code via archivecleanexport check-snapshot-check/freshCAS main+research/independent newbare every mode rawbytesSHA tree allancestors.",
+  "code_sha256": {
+    "studies/expert_subset_followups_v1/release_gate_v1.py": "89b418f31d39224621f0a9332f23e0d0f21afdf7e8417afabce4a87dd9bdafc9",
+    "studies/expert_subset_followups_v1/register_queue_v1.py": "a816bdbc694514c35a976d091cf547fdee88f4aa7d3b96e2efa5f3e06868cdc3"
+  },
+  "input_sha256": {
+    "outputs/expert_subset_expansion_v1/plan.json": "cb95f21a558f1c69e8b46d6968d6ae59f4f0b61dc1af9ddf27766ebcc4518fc5",
+    "outputs/expert_subset_expansion_v1/selection.json": "705df2dc3f3b6b7f2c9c95ed98970522b4ff7399fffb4d10043a7c8e8fcdd07a",
+    "outputs/expert_subset_followups_v1/selection.json": "705df2dc3f3b6b7f2c9c95ed98970522b4ff7399fffb4d10043a7c8e8fcdd07a",
+    "outputs/expert_subset_followups_v1/source_pins.json": "2f7f4eb72a6516cca9db1be61d91eed8f4d7fd7e30f8c7b010b59aca625f742a"
+  },
+  "time": 1793713071.8713984,
+  "fingerprint": "07af4bbefa250a2f46132e0260d99db530da55b14a66d710ce153608d969dc01"
+}

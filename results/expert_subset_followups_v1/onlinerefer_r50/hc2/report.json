@@ -1,0 +1,927 @@
+{
+  "queries": 128,
+  "parents": 128,
+  "means": {
+    "Source": {
+      "v": 0.2512425286412039,
+      "t": 0.46509477679431427,
+      "s": 0.5256204548915578,
+      "fixed_actual_sIoU": 0.5288800918917594,
+      "observed_actual_sIoU": 0.52604723375025,
+      "unobserved_actual_sIoU": 0.5306732451745338,
+      "boundary_MAE": 83.53515625,
+      "start_error_seconds": 3.1923334330505937,
+      "end_error_seconds": 3.1303359777789206,
+      "interval_length_seconds": 6.262376149251184,
+      "length_error_seconds": 3.3165903062722952,
+      "vIoU_at_03": 0.4296875,
+      "vIoU_at_05": 0.140625,
+      "vIoU_ge_03": 0.4296875,
+      "vIoU_ge_05": 0.140625,
+      "tIoU_ge_05": 0.453125,
+      "tIoU_eq_0": 0.140625,
+      "boundary_MAE_seconds": 3.1613347054147574
+    },
+    "PureSource": {
+      "v": 0.22920533038030758,
+      "t": 0.46509477679431427,
+      "s": 0.4506033032766499,
+      "fixed_actual_sIoU": 0.4501903725924873,
+      "observed_actual_sIoU": 0.5196247526912833,
+      "unobserved_actual_sIoU": 0.438336750122378,
+      "boundary_MAE": 83.53515625,
+      "start_error_seconds": 3.1923334330505937,
+      "end_error_seconds": 3.1303359777789206,
+      "interval_length_seconds": 6.262376149251184,
+      "length_error_seconds": 3.3165903062722952,
+      "vIoU_at_03": 0.375,
+      "vIoU_at_05": 0.109375,
+      "vIoU_ge_03": 0.375,
+      "vIoU_ge_05": 0.109375,
+      "tIoU_ge_05": 0.453125,
+      "tIoU_eq_0": 0.140625,
+      "boundary_MAE_seconds": 3.1613347054147574
+    },
+    "PureOwn": {
+      "v": 0.25344175786017187,
+      "t": 0.5412479459264681,
+      "s": 0.4506033032766499,
+      "fixed_actual_sIoU": 0.4501903725924873,
+      "observed_actual_sIoU": 0.5196247526912833,
+      "unobserved_actual_sIoU": 0.438336750122378,
+      "boundary_MAE": 77.08984375,
+      "start_error_seconds": 2.7832673017560507,
+      "end_error_seconds": 3.0406603921936117,
+      "interval_length_seconds": 8.91837650513418,
+      "length_error_seconds": 3.2888822154868147,
+      "vIoU_at_03": 0.390625,
+      "vIoU_at_05": 0.140625,
+      "vIoU_ge_03": 0.390625,
+      "vIoU_ge_05": 0.140625,
+      "tIoU_ge_05": 0.5625,
+      "tIoU_eq_0": 0.09375,
+      "boundary_MAE_seconds": 2.9119638469748312
+    },
+    "Current": {
+      "v": 0.27509405167676415,
+      "t": 0.5412479459264681,
+      "s": 0.4979060018973123,
+      "fixed_actual_sIoU": 0.4982541859936285,
+      "observed_actual_sIoU": 0.5117424740513434,
+      "unobserved_actual_sIoU": 0.4955967883687163,
+      "boundary_MAE": 77.08984375,
+      "start_error_seconds": 2.7832673017560507,
+      "end_error_seconds": 3.0406603921936117,
+      "interval_length_seconds": 8.91837650513418,
+      "length_error_seconds": 3.2888822154868147,
+      "vIoU_at_03": 0.4296875,
+      "vIoU_at_05": 0.203125,
+      "vIoU_ge_03": 0.4296875,
+      "vIoU_ge_05": 0.203125,
+      "tIoU_ge_05": 0.5625,
+      "tIoU_eq_0": 0.09375,
+      "boundary_MAE_seconds": 2.9119638469748312
+    }
+  },
+  "severe_vs_Source": {
+    "Source": {
+      "t": 0,
+      "v": 0,
+      "union": 0
+    },
+    "PureSource": {
+      "t": 0,
+      "v": 26,
+      "union": 26
+    },
+    "PureOwn": {
+      "t": 21,
+      "v": 29,
+      "union": 42
+    },
+    "Current": {
+      "t": 21,
+      "v": 22,
+      "union": 36
+    }
+  },
+  "paired": {
+    "Current-PureSource": {
+      "v": {
+        "mean": 4.588872129645659,
+        "CI95": [
+          2.6638870802816426,
+          6.556355946781818
+        ],
+        "queries": 128,
+        "parents": 128,
+        "improved": 79,
+        "harmed": 32,
+        "unchanged": 17,
+        "declined_over5pp": 17
+      },
+      "t": {
+        "mean": 7.615316913215375,
+        "CI95": [
+          4.531805995550674,
+          10.716840735696376
+        ],
+        "queries": 128,
+        "parents": 128,
+        "improved": 78,
+        "harmed": 31,
+        "unchanged": 19,
+        "declined_over5pp": 21
+      },
+      "observed_actual_sIoU": {
+        "mean": -0.7882278639939945,
+        "CI95": [
+          -2.685235463640039,
+          1.1455678517553038
+        ],
+        "queries": 126,
+        "parents": 126,
+        "improved": 39,
+        "harmed": 52,
+        "unchanged": 35,
+        "declined_over5pp": 24
+      },
+      "unobserved_actual_sIoU": {
+        "mean": 5.726003824633831,
+        "CI95": [
+          3.213932918770344,
+          8.376126615361017
+        ],
+        "queries": 128,
+        "parents": 128,
+        "improved": 86,
+        "harmed": 36,
+        "unchanged": 6,
+        "declined_over5pp": 18
+      },
+      "boundary_MAE_seconds": {
+        "mean": -0.24937085843992626,
+        "CI95": [
+          -0.4452229210361298,
+          -0.05718842682279752
+        ],
+        "queries": 128,
+        "parents": 128,
+        "improved": 70,
+        "harmed": 46,
+        "unchanged": 12,
+        "declined_over5pp": null
+      }
+    },
+    "Current-PureOwn": {
+      "v": {
+        "mean": 2.1652293816592256,
+        "CI95": [
+          1.0071814023363919,
+          3.3702985567938715
+        ],
+        "queries": 128,
+        "parents": 128,
+        "improved": 72,
+        "harmed": 39,
+        "unchanged": 17,
+        "declined_over5pp": 13
+      },
+      "t": {
+        "mean": 0.0,
+        "CI95": [
+          0.0,
+          0.0
+        ],
+        "queries": 128,
+        "parents": 128,
+        "improved": 0,
+        "harmed": 0,
+        "unchanged": 128,
+        "declined_over5pp": 0
+      },
+      "observed_actual_sIoU": {
+        "mean": -0.7882278639939945,
+        "CI95": [
+          -2.685235463640039,
+          1.1455678517553038
+        ],
+        "queries": 126,
+        "parents": 126,
+        "improved": 39,
+        "harmed": 52,
+        "unchanged": 35,
+        "declined_over5pp": 24
+      },
+      "unobserved_actual_sIoU": {
+        "mean": 5.726003824633831,
+        "CI95": [
+          3.213932918770344,
+          8.376126615361017
+        ],
+        "queries": 128,
+        "parents": 128,
+        "improved": 86,
+        "harmed": 36,
+        "unchanged": 6,
+        "declined_over5pp": 18
+      },
+      "boundary_MAE_seconds": {
+        "mean": 0.0,
+        "CI95": [
+          0.0,
+          0.0
+        ],
+        "queries": 128,
+        "parents": 128,
+        "improved": 0,
+        "harmed": 0,
+        "unchanged": 128,
+        "declined_over5pp": null
+      }
+    },
+    "PureOwn-PureSource": {
+      "v": {
+        "mean": 2.423642747986433,
+        "CI95": [
+          0.9096584490820059,
+          4.035877287067767
+        ],
+        "queries": 128,
+        "parents": 128,
+        "improved": 60,
+        "harmed": 39,
+        "unchanged": 29,
+        "declined_over5pp": 14
+      },
+      "t": {
+        "mean": 7.615316913215375,
+        "CI95": [
+          4.531805995550674,
+          10.716840735696376
+        ],
+        "queries": 128,
+        "parents": 128,
+        "improved": 78,
+        "harmed": 31,
+        "unchanged": 19,
+        "declined_over5pp": 21
+      },
+      "observed_actual_sIoU": {
+        "mean": 0.0,
+        "CI95": [
+          0.0,
+          0.0
+        ],
+        "queries": 126,
+        "parents": 126,
+        "improved": 0,
+        "harmed": 0,
+        "unchanged": 126,
+        "declined_over5pp": 0
+      },
+      "unobserved_actual_sIoU": {
+        "mean": 0.0,
+        "CI95": [
+          0.0,
+          0.0
+        ],
+        "queries": 128,
+        "parents": 128,
+        "improved": 0,
+        "harmed": 0,
+        "unchanged": 128,
+        "declined_over5pp": 0
+      },
+      "boundary_MAE_seconds": {
+        "mean": -0.24937085843992626,
+        "CI95": [
+          -0.4452229210361298,
+          -0.05718842682279752
+        ],
+        "queries": 128,
+        "parents": 128,
+        "improved": 70,
+        "harmed": 46,
+        "unchanged": 12,
+        "declined_over5pp": null
+      }
+    },
+    "Current-Source": {
+      "v": {
+        "mean": 2.3851523035560285,
+        "CI95": [
+          -0.8780222463078714,
+          5.515703444062963
+        ],
+        "queries": 128,
+        "parents": 128,
+        "improved": 73,
+        "harmed": 42,
+        "unchanged": 13,
+        "declined_over5pp": 22
+      },
+      "t": {
+        "mean": 7.615316913215375,
+        "CI95": [
+          4.531805995550674,
+          10.716840735696376
+        ],
+        "queries": 128,
+        "parents": 128,
+        "improved": 78,
+        "harmed": 31,
+        "unchanged": 19,
+        "declined_over5pp": 21
+      },
+      "observed_actual_sIoU": {
+        "mean": -1.4304759698906686,
+        "CI95": [
+          -5.891835421526108,
+          2.8665842680910494
+        ],
+        "queries": 126,
+        "parents": 126,
+        "improved": 69,
+        "harmed": 51,
+        "unchanged": 6,
+        "declined_over5pp": 33
+      },
+      "unobserved_actual_sIoU": {
+        "mean": -3.5076456805817586,
+        "CI95": [
+          -7.08535890101094,
+          -0.05495043235842925
+        ],
+        "queries": 128,
+        "parents": 128,
+        "improved": 71,
+        "harmed": 55,
+        "unchanged": 2,
+        "declined_over5pp": 32
+      },
+      "boundary_MAE_seconds": {
+        "mean": -0.24937085843992626,
+        "CI95": [
+          -0.4452229210361298,
+          -0.05718842682279752
+        ],
+        "queries": 128,
+        "parents": 128,
+        "improved": 70,
+        "harmed": 46,
+        "unchanged": 12,
+        "declined_over5pp": null
+      }
+    }
+  },
+  "CI": "pointwise parent bootstrap; no familywise correction",
+  "timegroups": {
+    "short_le5s": {
+      "queries": 42,
+      "paired": {
+        "Current-PureSource": {
+          "v": {
+            "mean": 1.8263917212951248,
+            "CI95": [
+              -0.9138297550753031,
+              4.914196425039985
+            ],
+            "queries": 42,
+            "parents": 42,
+            "improved": 20,
+            "harmed": 14,
+            "unchanged": 8,
+            "declined_over5pp": 7
+          },
+          "t": {
+            "mean": 2.9709851037135926,
+            "CI95": [
+              -1.5488373426737823,
+              7.495863845380028
+            ],
+            "queries": 42,
+            "parents": 42,
+            "improved": 22,
+            "harmed": 11,
+            "unchanged": 9,
+            "declined_over5pp": 9
+          },
+          "observed_actual_sIoU": {
+            "mean": 1.390371504068095,
+            "CI95": [
+              -2.0523610089563644,
+              5.592274149904953
+            ],
+            "queries": 40,
+            "parents": 40,
+            "improved": 13,
+            "harmed": 13,
+            "unchanged": 14,
+            "declined_over5pp": 6
+          },
+          "unobserved_actual_sIoU": {
+            "mean": 9.354108511478485,
+            "CI95": [
+              4.574013189276981,
+              14.947519575444556
+            ],
+            "queries": 42,
+            "parents": 42,
+            "improved": 31,
+            "harmed": 10,
+            "unchanged": 1,
+            "declined_over5pp": 2
+          },
+          "boundary_MAE_seconds": {
+            "mean": -0.05665529234724037,
+            "CI95": [
+              -0.40769774299551415,
+              0.2321790854580301
+            ],
+            "queries": 42,
+            "parents": 42,
+            "improved": 18,
+            "harmed": 19,
+            "unchanged": 5,
+            "declined_over5pp": null
+          }
+        },
+        "Current-PureOwn": {
+          "v": {
+            "mean": 1.8038021098836363,
+            "CI95": [
+              0.21558004010373366,
+              3.681369264096958
+            ],
+            "queries": 42,
+            "parents": 42,
+            "improved": 23,
+            "harmed": 11,
+            "unchanged": 8,
+            "declined_over5pp": 3
+          },
+          "t": {
+            "mean": 0.0,
+            "CI95": [
+              0.0,
+              0.0
+            ],
+            "queries": 42,
+            "parents": 42,
+            "improved": 0,
+            "harmed": 0,
+            "unchanged": 42,
+            "declined_over5pp": 0
+          },
+          "observed_actual_sIoU": {
+            "mean": 1.390371504068095,
+            "CI95": [
+              -2.0523610089563644,
+              5.592274149904953
+            ],
+            "queries": 40,
+            "parents": 40,
+            "improved": 13,
+            "harmed": 13,
+            "unchanged": 14,
+            "declined_over5pp": 6
+          },
+          "unobserved_actual_sIoU": {
+            "mean": 9.354108511478485,
+            "CI95": [
+              4.574013189276981,
+              14.947519575444556
+            ],
+            "queries": 42,
+            "parents": 42,
+            "improved": 31,
+            "harmed": 10,
+            "unchanged": 1,
+            "declined_over5pp": 2
+          },
+          "boundary_MAE_seconds": {
+            "mean": 0.0,
+            "CI95": [
+              0.0,
+              0.0
+            ],
+            "queries": 42,
+            "parents": 42,
+            "improved": 0,
+            "harmed": 0,
+            "unchanged": 42,
+            "declined_over5pp": null
+          }
+        },
+        "PureOwn-PureSource": {
+          "v": {
+            "mean": 0.02258961141148818,
+            "CI95": [
+              -1.590960823206765,
+              1.6654889960781605
+            ],
+            "queries": 42,
+            "parents": 42,
+            "improved": 13,
+            "harmed": 15,
+            "unchanged": 14,
+            "declined_over5pp": 6
+          },
+          "t": {
+            "mean": 2.9709851037135926,
+            "CI95": [
+              -1.5488373426737823,
+              7.495863845380028
+            ],
+            "queries": 42,
+            "parents": 42,
+            "improved": 22,
+            "harmed": 11,
+            "unchanged": 9,
+            "declined_over5pp": 9
+          },
+          "observed_actual_sIoU": {
+            "mean": 0.0,
+            "CI95": [
+              0.0,
+              0.0
+            ],
+            "queries": 40,
+            "parents": 40,
+            "improved": 0,
+            "harmed": 0,
+            "unchanged": 40,
+            "declined_over5pp": 0
+          },
+          "unobserved_actual_sIoU": {
+            "mean": 0.0,
+            "CI95": [
+              0.0,
+              0.0
+            ],
+            "queries": 42,
+            "parents": 42,
+            "improved": 0,
+            "harmed": 0,
+            "unchanged": 42,
+            "declined_over5pp": 0
+          },
+          "boundary_MAE_seconds": {
+            "mean": -0.05665529234724037,
+            "CI95": [
+              -0.40769774299551415,
+              0.2321790854580301
+            ],
+            "queries": 42,
+            "parents": 42,
+            "improved": 18,
+            "harmed": 19,
+            "unchanged": 5,
+            "declined_over5pp": null
+          }
+        },
+        "Current-Source": {
+          "v": {
+            "mean": 0.6685355482143442,
+            "CI95": [
+              -3.4585359088422,
+              4.681432665766161
+            ],
+            "queries": 42,
+            "parents": 42,
+            "improved": 18,
+            "harmed": 16,
+            "unchanged": 8,
+            "declined_over5pp": 9
+          },
+          "t": {
+            "mean": 2.9709851037135926,
+            "CI95": [
+              -1.5488373426737823,
+              7.495863845380028
+            ],
+            "queries": 42,
+            "parents": 42,
+            "improved": 22,
+            "harmed": 11,
+            "unchanged": 9,
+            "declined_over5pp": 9
+          },
+          "observed_actual_sIoU": {
+            "mean": -3.636377285049458,
+            "CI95": [
+              -12.069918643293258,
+              4.386207716986955
+            ],
+            "queries": 40,
+            "parents": 40,
+            "improved": 22,
+            "harmed": 16,
+            "unchanged": 2,
+            "declined_over5pp": 13
+          },
+          "unobserved_actual_sIoU": {
+            "mean": -5.192636587201816,
+            "CI95": [
+              -11.56933100040458,
+              0.499058043624234
+            ],
+            "queries": 42,
+            "parents": 42,
+            "improved": 23,
+            "harmed": 18,
+            "unchanged": 1,
+            "declined_over5pp": 10
+          },
+          "boundary_MAE_seconds": {
+            "mean": -0.05665529234724037,
+            "CI95": [
+              -0.40769774299551415,
+              0.2321790854580301
+            ],
+            "queries": 42,
+            "parents": 42,
+            "improved": 18,
+            "harmed": 19,
+            "unchanged": 5,
+            "declined_over5pp": null
+          }
+        }
+      }
+    },
+    "long_gt5s": {
+      "queries": 86,
+      "paired": {
+        "Current-PureSource": {
+          "v": {
+            "mean": 5.9379904686075475,
+            "CI95": [
+              3.4858249194094024,
+              8.497698238484938
+            ],
+            "queries": 86,
+            "parents": 86,
+            "improved": 59,
+            "harmed": 18,
+            "unchanged": 9,
+            "declined_over5pp": 10
+          },
+          "t": {
+            "mean": 9.883478959716246,
+            "CI95": [
+              5.914579664504611,
+              13.864957941159341
+            ],
+            "queries": 86,
+            "parents": 86,
+            "improved": 56,
+            "harmed": 20,
+            "unchanged": 10,
+            "declined_over5pp": 12
+          },
+          "observed_actual_sIoU": {
+            "mean": -1.8015298956507804,
+            "CI95": [
+              -4.02334054621069,
+              0.3206035514511702
+            ],
+            "queries": 86,
+            "parents": 86,
+            "improved": 26,
+            "harmed": 39,
+            "unchanged": 21,
+            "declined_over5pp": 18
+          },
+          "unobserved_actual_sIoU": {
+            "mean": 3.954138745012025,
+            "CI95": [
+              1.2825958510785906,
+              6.68597702399583
+            ],
+            "queries": 86,
+            "parents": 86,
+            "improved": 55,
+            "harmed": 26,
+            "unchanged": 5,
+            "declined_over5pp": 16
+          },
+          "boundary_MAE_seconds": {
+            "mean": -0.34348776281077287,
+            "CI95": [
+              -0.580639595048654,
+              -0.09371179053073139
+            ],
+            "queries": 86,
+            "parents": 86,
+            "improved": 52,
+            "harmed": 27,
+            "unchanged": 7,
+            "declined_over5pp": null
+          }
+        },
+        "Current-PureOwn": {
+          "v": {
+            "mean": 2.341740374851955,
+            "CI95": [
+              0.8877899811737961,
+              3.9308409060727425
+            ],
+            "queries": 86,
+            "parents": 86,
+            "improved": 49,
+            "harmed": 28,
+            "unchanged": 9,
+            "declined_over5pp": 10
+          },
+          "t": {
+            "mean": 0.0,
+            "CI95": [
+              0.0,
+              0.0
+            ],
+            "queries": 86,
+            "parents": 86,
+            "improved": 0,
+            "harmed": 0,
+            "unchanged": 86,
+            "declined_over5pp": 0
+          },
+          "observed_actual_sIoU": {
+            "mean": -1.8015298956507804,
+            "CI95": [
+              -4.02334054621069,
+              0.3206035514511702
+            ],
+            "queries": 86,
+            "parents": 86,
+            "improved": 26,
+            "harmed": 39,
+            "unchanged": 21,
+            "declined_over5pp": 18
+          },
+          "unobserved_actual_sIoU": {
+            "mean": 3.954138745012025,
+            "CI95": [
+              1.2825958510785906,
+              6.68597702399583
+            ],
+            "queries": 86,
+            "parents": 86,
+            "improved": 55,
+            "harmed": 26,
+            "unchanged": 5,
+            "declined_over5pp": 16
+          },
+          "boundary_MAE_seconds": {
+            "mean": 0.0,
+            "CI95": [
+              0.0,
+              0.0
+            ],
+            "queries": 86,
+            "parents": 86,
+            "improved": 0,
+            "harmed": 0,
+            "unchanged": 86,
+            "declined_over5pp": null
+          }
+        },
+        "PureOwn-PureSource": {
+          "v": {
+            "mean": 3.596250093755592,
+            "CI95": [
+              1.4493380345648919,
+              5.813829880770041
+            ],
+            "queries": 86,
+            "parents": 86,
+            "improved": 47,
+            "harmed": 24,
+            "unchanged": 15,
+            "declined_over5pp": 8
+          },
+          "t": {
+            "mean": 9.883478959716246,
+            "CI95": [
+              5.914579664504611,
+              13.864957941159341
+            ],
+            "queries": 86,
+            "parents": 86,
+            "improved": 56,
+            "harmed": 20,
+            "unchanged": 10,
+            "declined_over5pp": 12
+          },
+          "observed_actual_sIoU": {
+            "mean": 0.0,
+            "CI95": [
+              0.0,
+              0.0
+            ],
+            "queries": 86,
+            "parents": 86,
+            "improved": 0,
+            "harmed": 0,
+            "unchanged": 86,
+            "declined_over5pp": 0
+          },
+          "unobserved_actual_sIoU": {
+            "mean": 0.0,
+            "CI95": [
+              0.0,
+              0.0
+            ],
+            "queries": 86,
+            "parents": 86,
+            "improved": 0,
+            "harmed": 0,
+            "unchanged": 86,
+            "declined_over5pp": 0
+          },
+          "boundary_MAE_seconds": {
+            "mean": -0.34348776281077287,
+            "CI95": [
+              -0.580639595048654,
+              -0.09371179053073139
+            ],
+            "queries": 86,
+            "parents": 86,
+            "improved": 52,
+            "harmed": 27,
+            "unchanged": 7,
+            "declined_over5pp": null
+          }
+        },
+        "Current-Source": {
+          "v": {
+            "mean": 3.223500021281038,
+            "CI95": [
+              -1.1253853401848235,
+              7.326125625178559
+            ],
+            "queries": 86,
+            "parents": 86,
+            "improved": 55,
+            "harmed": 26,
+            "unchanged": 5,
+            "declined_over5pp": 13
+          },
+          "t": {
+            "mean": 9.883478959716246,
+            "CI95": [
+              5.914579664504611,
+              13.864957941159341
+            ],
+            "queries": 86,
+            "parents": 86,
+            "improved": 56,
+            "harmed": 20,
+            "unchanged": 10,
+            "declined_over5pp": 12
+          },
+          "observed_actual_sIoU": {
+            "mean": -0.4044753581889067,
+            "CI95": [
+              -5.706408884070993,
+              4.756120727032252
+            ],
+            "queries": 86,
+            "parents": 86,
+            "improved": 47,
+            "harmed": 35,
+            "unchanged": 4,
+            "declined_over5pp": 20
+          },
+          "unobserved_actual_sIoU": {
+            "mean": -2.6847431447905663,
+            "CI95": [
+              -7.097031158919326,
+              1.5099895322851087
+            ],
+            "queries": 86,
+            "parents": 86,
+            "improved": 48,
+            "harmed": 37,
+            "unchanged": 1,
+            "declined_over5pp": 22
+          },
+          "boundary_MAE_seconds": {
+            "mean": -0.34348776281077287,
+            "CI95": [
+              -0.580639595048654,
+              -0.09371179053073139
+            ],
+            "queries": 86,
+            "parents": 86,
+            "improved": 52,
+            "harmed": 27,
+            "unchanged": 7,
+            "declined_over5pp": null
+          }
+        }
+      }
+    }
+  }
+}
