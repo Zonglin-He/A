@@ -1,0 +1,790 @@
+{
+  "actual_new_logical_expert_queries": 512,
+  "actual_observed_RGB_frames": 4096,
+  "OnlineRefer_native_frame_steps": 2048,
+  "SgMg_joint8_clip_steps": 256,
+  "unique_GPU_model_loads": {
+    "1465754/328422115": {
+      "worker": {
+        "pid": 1465754,
+        "startticks": 328422115
+      },
+      "seconds": 5.968251100741327,
+      "checkpoint_sha256": "cbf25a845662b9e314d9044334382997227b3b36adc1703f178a9a049ca595c9",
+      "load_audit": {
+        "status": "all_learned_and_shared_tensors_exact_official_checkpoint",
+        "missing_deterministic_buffers": [],
+        "unexpected_verified_deterministic_buffers": [
+          "text_encoder.embeddings.position_ids"
+        ],
+        "parameters": 176394303,
+        "official_vendor_unchanged": true,
+        "args": {
+          "lr": 0.0001,
+          "lr_backbone": 5e-05,
+          "lr_backbone_names": [
+            "backbone.0"
+          ],
+          "lr_text_encoder": 1e-05,
+          "lr_text_encoder_names": [
+            "text_encoder"
+          ],
+          "lr_linear_proj_names": [
+            "reference_points",
+            "sampling_offsets"
+          ],
+          "lr_linear_proj_mult": 1.0,
+          "batch_size": 1,
+          "weight_decay": 0.0005,
+          "epochs": 10,
+          "lr_drop": [
+            6,
+            8
+          ],
+          "clip_max_norm": 0.1,
+          "pretrained_weights": null,
+          "with_box_refine": true,
+          "two_stage": false,
+          "backbone": "resnet50",
+          "backbone_pretrained": null,
+          "use_checkpoint": false,
+          "dilation": false,
+          "position_embedding": "sine",
+          "num_feature_levels": 4,
+          "enc_layers": 4,
+          "dec_layers": 4,
+          "dim_feedforward": 2048,
+          "hidden_dim": 256,
+          "dropout": 0.1,
+          "nheads": 8,
+          "num_frames": 5,
+          "num_queries": 5,
+          "dec_n_points": 4,
+          "enc_n_points": 4,
+          "pre_norm": false,
+          "freeze_text_encoder": true,
+          "masks": true,
+          "mask_dim": 256,
+          "controller_layers": 3,
+          "dynamic_mask_channels": 8,
+          "rel_coord": true,
+          "aux_loss": true,
+          "set_cost_class": 2,
+          "set_cost_bbox": 5,
+          "set_cost_giou": 2,
+          "set_cost_mask": 2,
+          "set_cost_dice": 5,
+          "mask_loss_coef": 2,
+          "dice_loss_coef": 5,
+          "cls_loss_coef": 2,
+          "bbox_loss_coef": 5,
+          "giou_loss_coef": 2,
+          "eos_coef": 0.1,
+          "focal_alpha": 0.25,
+          "dataset_file": "ytvos",
+          "coco_path": "/data/Dataset/coco",
+          "ytvos_path": "/data/Dataset/ref-youtube-vos",
+          "davis_path": "/data/Dataset/ref-davis",
+          "a2d_path": "/data/Dataset/a2d_sentences",
+          "jhmdb_path": "/data/Dataset/jhmdb_sentences",
+          "max_skip": 3,
+          "max_size": 640,
+          "binary": true,
+          "remove_difficult": false,
+          "output_dir": "output",
+          "device": "cpu",
+          "seed": 42,
+          "resume": "",
+          "start_epoch": 0,
+          "eval": false,
+          "num_workers": 4,
+          "threshold": 0.5,
+          "ngpu": 8,
+          "split": "valid",
+          "visualize": false,
+          "draw_init_point": false,
+          "world_size": 1,
+          "dist_url": "env://",
+          "cache_mode": false,
+          "online": true,
+          "semi_online": false,
+          "update_pos": false,
+          "use_checkpoint_for_more_frames": false,
+          "sampler_interval": 3,
+          "sampler_steps": null,
+          "sampler_lengths": null,
+          "num_clips": 1
+        },
+        "import_only_compatibility": {
+          "status": "two_modern_torchvision_version_guards_reverse_exact_original_vendor_unchanged",
+          "torchvision_version": "0.22.0+cu128",
+          "original_sha256": "a80fa9b2fcdd9f9517175d494293f3fc1c1c91a87de54c7c468f0988dd79cc0b",
+          "runtime_source_sha256": "4faebe6c353ade4af67a1a2b41768f3f5886006e661ccc843359fe73ee8c5bcf",
+          "nonempty_and_empty_interpolation_exact": true
+        },
+        "original_adapter_code_sha256": "a493f5b08c758813045a5f77ce6bc501ca000e2def7d3e53bef1dceb6584bdcc"
+      },
+      "device": "NVIDIA GeForce RTX 5090",
+      "torch_version": "2.7.0+cu128",
+      "dtype": "FP32",
+      "TF32": false,
+      "instances": 1
+    },
+    "1477173/328526743": {
+      "worker": {
+        "pid": 1477173,
+        "startticks": 328526743
+      },
+      "seconds": 6.054205176886171,
+      "checkpoint_sha256": "7d9fa94025a0b271ae4567acc5bb612c4a1db264e2c4a63921d0e29df800f422",
+      "load_audit": {
+        "status": "all_learned_and_shared_tensors_exact_official_checkpoint",
+        "missing_deterministic_buffers": [],
+        "unexpected_verified_deterministic_buffers": [
+          "text_encoder.text_backbone.embeddings.position_ids"
+        ],
+        "parameters": 177877628,
+        "official_vendor_unchanged": true,
+        "args": {
+          "lr": 0.0001,
+          "lr_backbone": 5e-05,
+          "lr_backbone_names": [
+            "backbone.0"
+          ],
+          "lr_text_encoder": 1e-05,
+          "lr_text_encoder_names": [
+            "text_encoder"
+          ],
+          "lr_linear_proj_names": [
+            "reference_points",
+            "sampling_offsets"
+          ],
+          "lr_linear_proj_mult": 1.0,
+          "batch_size": 1,
+          "weight_decay": 0.0005,
+          "epochs": 10,
+          "lr_drop": [
+            6,
+            8
+          ],
+          "clip_max_norm": 0.1,
+          "amp": false,
+          "exp_name": "main",
+          "current_epoch": 0,
+          "pretrained_weights": null,
+          "with_box_refine": true,
+          "two_stage": false,
+          "backbone": "video_swin_t_p4w7",
+          "text_backbone": "Roberta",
+          "backbone_pretrained": null,
+          "use_checkpoint": false,
+          "dilation": false,
+          "position_embedding": "sine",
+          "num_feature_levels": 4,
+          "output_levels": 4,
+          "enc_layers": 4,
+          "dec_layers": 4,
+          "dim_feedforward": 2048,
+          "hidden_dim": 256,
+          "dropout": 0.1,
+          "nheads": 8,
+          "num_frames": 5,
+          "num_queries": 5,
+          "dec_n_points": 4,
+          "enc_n_points": 4,
+          "pre_norm": false,
+          "freeze_text_encoder": true,
+          "masks": true,
+          "mask_dim": 256,
+          "controller_layers": 2,
+          "dynamic_mask_channels": 16,
+          "rel_coord": true,
+          "aux_loss": true,
+          "set_cost_class": 2,
+          "set_cost_bbox": 5,
+          "set_cost_giou": 2,
+          "set_cost_mask": 2,
+          "set_cost_boundary": 2,
+          "set_cost_dice": 5,
+          "mask_loss_coef": 2,
+          "boundary_loss_coef": 2,
+          "dice_loss_coef": 5,
+          "cls_loss_coef": 2,
+          "bbox_loss_coef": 5,
+          "giou_loss_coef": 2,
+          "eos_coef": 0.1,
+          "focal_alpha": 0.25,
+          "dataset_file": "ytvos",
+          "coco_path": "../datasets/coco",
+          "ytvos_path": "../datasets/refer_youtube_vos",
+          "davis_path": "../datasets/refer_davis",
+          "a2d_path": "../datasets/a2d_sentences",
+          "jhmdb_path": "../datasets/jhmdb_sentences",
+          "max_skip": 3,
+          "max_size": 640,
+          "binary": true,
+          "remove_difficult": false,
+          "output_dir": "output",
+          "device": "cpu",
+          "seed": 42,
+          "resume": "",
+          "start_epoch": 0,
+          "eval": true,
+          "num_workers": 4,
+          "threshold": 0.5,
+          "ngpu": 8,
+          "split": "valid",
+          "visualize": false,
+          "world_size": 1,
+          "dist_url": "env://",
+          "cache_mode": false
+        },
+        "original_adapter_code_sha256": "a493f5b08c758813045a5f77ce6bc501ca000e2def7d3e53bef1dceb6584bdcc"
+      },
+      "device": "NVIDIA GeForce RTX 5090",
+      "torch_version": "2.7.0+cu128",
+      "dtype": "FP32",
+      "TF32": false,
+      "instances": 1
+    }
+  },
+  "CPU_checkpoint_doctors": {
+    "onlinerefer_r50": {
+      "status": "all_learned_and_shared_tensors_exact_official_checkpoint",
+      "missing_deterministic_buffers": [],
+      "unexpected_verified_deterministic_buffers": [
+        "text_encoder.embeddings.position_ids"
+      ],
+      "parameters": 176394303,
+      "official_vendor_unchanged": true,
+      "args": {
+        "lr": 0.0001,
+        "lr_backbone": 5e-05,
+        "lr_backbone_names": [
+          "backbone.0"
+        ],
+        "lr_text_encoder": 1e-05,
+        "lr_text_encoder_names": [
+          "text_encoder"
+        ],
+        "lr_linear_proj_names": [
+          "reference_points",
+          "sampling_offsets"
+        ],
+        "lr_linear_proj_mult": 1.0,
+        "batch_size": 1,
+        "weight_decay": 0.0005,
+        "epochs": 10,
+        "lr_drop": [
+          6,
+          8
+        ],
+        "clip_max_norm": 0.1,
+        "pretrained_weights": null,
+        "with_box_refine": true,
+        "two_stage": false,
+        "backbone": "resnet50",
+        "backbone_pretrained": null,
+        "use_checkpoint": false,
+        "dilation": false,
+        "position_embedding": "sine",
+        "num_feature_levels": 4,
+        "enc_layers": 4,
+        "dec_layers": 4,
+        "dim_feedforward": 2048,
+        "hidden_dim": 256,
+        "dropout": 0.1,
+        "nheads": 8,
+        "num_frames": 5,
+        "num_queries": 5,
+        "dec_n_points": 4,
+        "enc_n_points": 4,
+        "pre_norm": false,
+        "freeze_text_encoder": true,
+        "masks": true,
+        "mask_dim": 256,
+        "controller_layers": 3,
+        "dynamic_mask_channels": 8,
+        "rel_coord": true,
+        "aux_loss": true,
+        "set_cost_class": 2,
+        "set_cost_bbox": 5,
+        "set_cost_giou": 2,
+        "set_cost_mask": 2,
+        "set_cost_dice": 5,
+        "mask_loss_coef": 2,
+        "dice_loss_coef": 5,
+        "cls_loss_coef": 2,
+        "bbox_loss_coef": 5,
+        "giou_loss_coef": 2,
+        "eos_coef": 0.1,
+        "focal_alpha": 0.25,
+        "dataset_file": "ytvos",
+        "coco_path": "/data/Dataset/coco",
+        "ytvos_path": "/data/Dataset/ref-youtube-vos",
+        "davis_path": "/data/Dataset/ref-davis",
+        "a2d_path": "/data/Dataset/a2d_sentences",
+        "jhmdb_path": "/data/Dataset/jhmdb_sentences",
+        "max_skip": 3,
+        "max_size": 640,
+        "binary": true,
+        "remove_difficult": false,
+        "output_dir": "output",
+        "device": "cpu",
+        "seed": 42,
+        "resume": "",
+        "start_epoch": 0,
+        "eval": false,
+        "num_workers": 4,
+        "threshold": 0.5,
+        "ngpu": 8,
+        "split": "valid",
+        "visualize": false,
+        "draw_init_point": false,
+        "world_size": 1,
+        "dist_url": "env://",
+        "cache_mode": false,
+        "online": true,
+        "semi_online": false,
+        "update_pos": false,
+        "use_checkpoint_for_more_frames": false,
+        "sampler_interval": 3,
+        "sampler_steps": null,
+        "sampler_lengths": null,
+        "num_clips": 1
+      },
+      "import_only_compatibility": {
+        "status": "two_modern_torchvision_version_guards_reverse_exact_original_vendor_unchanged",
+        "torchvision_version": "0.22.0+cu128",
+        "original_sha256": "a80fa9b2fcdd9f9517175d494293f3fc1c1c91a87de54c7c468f0988dd79cc0b",
+        "runtime_source_sha256": "4faebe6c353ade4af67a1a2b41768f3f5886006e661ccc843359fe73ee8c5bcf",
+        "nonempty_and_empty_interpolation_exact": true
+      },
+      "original_adapter_code_sha256": "a493f5b08c758813045a5f77ce6bc501ca000e2def7d3e53bef1dceb6584bdcc",
+      "actual_model_CPU_construction": 1,
+      "actual_GPU_or_forward": 0,
+      "elapsed_seconds": 5.026953225955367,
+      "code_sha256": "90c1ea4c78abeee64ae7c247187d3d0db00508b22c6faa7af20b606770e66387",
+      "pid": 1465455
+    },
+    "sgmg_videoswin_t": {
+      "status": "all_learned_and_shared_tensors_exact_official_checkpoint",
+      "missing_deterministic_buffers": [],
+      "unexpected_verified_deterministic_buffers": [
+        "text_encoder.text_backbone.embeddings.position_ids"
+      ],
+      "parameters": 177877628,
+      "official_vendor_unchanged": true,
+      "args": {
+        "lr": 0.0001,
+        "lr_backbone": 5e-05,
+        "lr_backbone_names": [
+          "backbone.0"
+        ],
+        "lr_text_encoder": 1e-05,
+        "lr_text_encoder_names": [
+          "text_encoder"
+        ],
+        "lr_linear_proj_names": [
+          "reference_points",
+          "sampling_offsets"
+        ],
+        "lr_linear_proj_mult": 1.0,
+        "batch_size": 1,
+        "weight_decay": 0.0005,
+        "epochs": 10,
+        "lr_drop": [
+          6,
+          8
+        ],
+        "clip_max_norm": 0.1,
+        "amp": false,
+        "exp_name": "main",
+        "current_epoch": 0,
+        "pretrained_weights": null,
+        "with_box_refine": true,
+        "two_stage": false,
+        "backbone": "video_swin_t_p4w7",
+        "text_backbone": "Roberta",
+        "backbone_pretrained": null,
+        "use_checkpoint": false,
+        "dilation": false,
+        "position_embedding": "sine",
+        "num_feature_levels": 4,
+        "output_levels": 4,
+        "enc_layers": 4,
+        "dec_layers": 4,
+        "dim_feedforward": 2048,
+        "hidden_dim": 256,
+        "dropout": 0.1,
+        "nheads": 8,
+        "num_frames": 5,
+        "num_queries": 5,
+        "dec_n_points": 4,
+        "enc_n_points": 4,
+        "pre_norm": false,
+        "freeze_text_encoder": true,
+        "masks": true,
+        "mask_dim": 256,
+        "controller_layers": 2,
+        "dynamic_mask_channels": 16,
+        "rel_coord": true,
+        "aux_loss": true,
+        "set_cost_class": 2,
+        "set_cost_bbox": 5,
+        "set_cost_giou": 2,
+        "set_cost_mask": 2,
+        "set_cost_boundary": 2,
+        "set_cost_dice": 5,
+        "mask_loss_coef": 2,
+        "boundary_loss_coef": 2,
+        "dice_loss_coef": 5,
+        "cls_loss_coef": 2,
+        "bbox_loss_coef": 5,
+        "giou_loss_coef": 2,
+        "eos_coef": 0.1,
+        "focal_alpha": 0.25,
+        "dataset_file": "ytvos",
+        "coco_path": "../datasets/coco",
+        "ytvos_path": "../datasets/refer_youtube_vos",
+        "davis_path": "../datasets/refer_davis",
+        "a2d_path": "../datasets/a2d_sentences",
+        "jhmdb_path": "../datasets/jhmdb_sentences",
+        "max_skip": 3,
+        "max_size": 640,
+        "binary": true,
+        "remove_difficult": false,
+        "output_dir": "output",
+        "device": "cpu",
+        "seed": 42,
+        "resume": "",
+        "start_epoch": 0,
+        "eval": true,
+        "num_workers": 4,
+        "threshold": 0.5,
+        "ngpu": 8,
+        "split": "valid",
+        "visualize": false,
+        "world_size": 1,
+        "dist_url": "env://",
+        "cache_mode": false
+      },
+      "actual_model_CPU_construction": 1,
+      "actual_GPU_or_forward": 0,
+      "elapsed_seconds": 5.313151462934911,
+      "code_sha256": "a493f5b08c758813045a5f77ce6bc501ca000e2def7d3e53bef1dceb6584bdcc",
+      "pid": 1463131
+    }
+  },
+  "official_downloads_sanitized": {
+    "onlinerefer_r50": {
+      "expert": "onlinerefer_r50",
+      "url": "https://github.com/wudongming97/OnlineRefer/releases/download/v1.0/ytvos-r50-checkpoint.pth",
+      "bytes": 1118522318,
+      "sha256": "cbf25a845662b9e314d9044334382997227b3b36adc1703f178a9a049ca595c9",
+      "elapsed_wall_seconds": 817.7709280382842,
+      "status": "official_checkpoint_downloaded_length_SHA"
+    },
+    "sgmg_videoswin_t": {
+      "expert": "sgmg_videoswin_t",
+      "url": "https://drive.usercontent.google.com/download?id=1SiHl7oYqBabaN28nsrNOJeiZrJyhRixl&export=download&confirm=t",
+      "bytes": 726438476,
+      "sha256": "7d9fa94025a0b271ae4567acc5bb612c4a1db264e2c4a63921d0e29df800f422",
+      "elapsed_wall_seconds": 233.10565376095474,
+      "status": "official_checkpoint_downloaded_length_SHA"
+    }
+  },
+  "all18_actual_stage_exits": [
+    {
+      "stage": "input_audit",
+      "expert": "sgmg_videoswin_t",
+      "dataset": "hc2",
+      "worker": {
+        "pid": 1496598,
+        "startticks": 328590182
+      },
+      "actual_subprocess_wait": true,
+      "exit_code": 0,
+      "elapsed_wall_seconds": 245.18629934685305
+    },
+    {
+      "stage": "score",
+      "expert": "sgmg_videoswin_t",
+      "dataset": "vidstg",
+      "worker": {
+        "pid": 1502952,
+        "startticks": 328634935
+      },
+      "actual_subprocess_wait": true,
+      "exit_code": 0,
+      "elapsed_wall_seconds": 11.617206970695406
+    },
+    {
+      "stage": "GPU",
+      "expert": "sgmg_videoswin_t",
+      "dataset": null,
+      "worker": {
+        "pid": 1477173,
+        "startticks": 328526743
+      },
+      "actual_subprocess_wait": true,
+      "exit_code": 0,
+      "elapsed_wall_seconds": 634.3925479766913
+    },
+    {
+      "stage": "GPU",
+      "expert": "onlinerefer_r50",
+      "dataset": null,
+      "worker": {
+        "pid": 1465754,
+        "startticks": 328422115
+      },
+      "actual_subprocess_wait": true,
+      "exit_code": 0,
+      "elapsed_wall_seconds": 580.3008603798226
+    },
+    {
+      "stage": "score",
+      "expert": "onlinerefer_r50",
+      "dataset": "hc2",
+      "worker": {
+        "pid": 1474551,
+        "startticks": 328504886
+      },
+      "actual_subprocess_wait": true,
+      "exit_code": 0,
+      "elapsed_wall_seconds": 7.280431980267167
+    },
+    {
+      "stage": "audit",
+      "expert": "sgmg_videoswin_t",
+      "dataset": "vidstg",
+      "worker": {
+        "pid": 1502954,
+        "startticks": 328636097
+      },
+      "actual_subprocess_wait": true,
+      "exit_code": 0,
+      "elapsed_wall_seconds": 3.9920211997814476
+    },
+    {
+      "stage": "score",
+      "expert": "sgmg_videoswin_t",
+      "dataset": "hc2",
+      "worker": {
+        "pid": 1500289,
+        "startticks": 328614701
+      },
+      "actual_subprocess_wait": true,
+      "exit_code": 0,
+      "elapsed_wall_seconds": 7.379820716101676
+    },
+    {
+      "stage": "export",
+      "expert": "sgmg_videoswin_t",
+      "dataset": "vidstg",
+      "worker": {
+        "pid": 1502955,
+        "startticks": 328636496
+      },
+      "actual_subprocess_wait": true,
+      "exit_code": 0,
+      "elapsed_wall_seconds": 3.841326075140387
+    },
+    {
+      "stage": "input_audit",
+      "expert": "onlinerefer_r50",
+      "dataset": "hc2",
+      "worker": {
+        "pid": 1471748,
+        "startticks": 328480146
+      },
+      "actual_subprocess_wait": true,
+      "exit_code": 0,
+      "elapsed_wall_seconds": 247.403770764824
+    },
+    {
+      "stage": "audit",
+      "expert": "sgmg_videoswin_t",
+      "dataset": "hc2",
+      "worker": {
+        "pid": 1500291,
+        "startticks": 328615439
+      },
+      "actual_subprocess_wait": true,
+      "exit_code": 0,
+      "elapsed_wall_seconds": 3.9726394079625607
+    },
+    {
+      "stage": "export",
+      "expert": "sgmg_videoswin_t",
+      "dataset": "hc2",
+      "worker": {
+        "pid": 1500292,
+        "startticks": 328615836
+      },
+      "actual_subprocess_wait": true,
+      "exit_code": 0,
+      "elapsed_wall_seconds": 3.9346866249106824
+    },
+    {
+      "stage": "input_audit",
+      "expert": "onlinerefer_r50",
+      "dataset": "vidstg",
+      "worker": {
+        "pid": 1474558,
+        "startticks": 328506386
+      },
+      "actual_subprocess_wait": true,
+      "exit_code": 0,
+      "elapsed_wall_seconds": 183.68883505370468
+    },
+    {
+      "stage": "input_audit",
+      "expert": "sgmg_videoswin_t",
+      "dataset": "vidstg",
+      "worker": {
+        "pid": 1500303,
+        "startticks": 328616230
+      },
+      "actual_subprocess_wait": true,
+      "exit_code": 0,
+      "elapsed_wall_seconds": 187.05415930692106
+    },
+    {
+      "stage": "export",
+      "expert": "onlinerefer_r50",
+      "dataset": "vidstg",
+      "worker": {
+        "pid": 1477170,
+        "startticks": 328526354
+      },
+      "actual_subprocess_wait": true,
+      "exit_code": 0,
+      "elapsed_wall_seconds": 3.887872864957899
+    },
+    {
+      "stage": "audit",
+      "expert": "onlinerefer_r50",
+      "dataset": "hc2",
+      "worker": {
+        "pid": 1474554,
+        "startticks": 328505614
+      },
+      "actual_subprocess_wait": true,
+      "exit_code": 0,
+      "elapsed_wall_seconds": 3.9240676602348685
+    },
+    {
+      "stage": "export",
+      "expert": "onlinerefer_r50",
+      "dataset": "hc2",
+      "worker": {
+        "pid": 1474557,
+        "startticks": 328506006
+      },
+      "actual_subprocess_wait": true,
+      "exit_code": 0,
+      "elapsed_wall_seconds": 3.799808611627668
+    },
+    {
+      "stage": "audit",
+      "expert": "onlinerefer_r50",
+      "dataset": "vidstg",
+      "worker": {
+        "pid": 1477165,
+        "startticks": 328525930
+      },
+      "actual_subprocess_wait": true,
+      "exit_code": 0,
+      "elapsed_wall_seconds": 4.245049222838134
+    },
+    {
+      "stage": "score",
+      "expert": "onlinerefer_r50",
+      "dataset": "vidstg",
+      "worker": {
+        "pid": 1477151,
+        "startticks": 328524755
+      },
+      "actual_subprocess_wait": true,
+      "exit_code": 0,
+      "elapsed_wall_seconds": 11.743472534231842
+    }
+  ],
+  "actual_controller_wait": {
+    "controller": {
+      "pid": 1465749,
+      "startticks": 328421757
+    },
+    "tool_session": 10667,
+    "actual_tool_wait": true,
+    "exit_code": 0,
+    "all18_successful_subprocess_waits": true,
+    "time": 1793721141.8824685
+  },
+  "all_own_experiment_process_incarnations_exited": true,
+  "Source_and_old_experts_inherited_nonzero_acquisition": true,
+  "new_Source": 0,
+  "new_original_ReferDINO": 0,
+  "new_optimizer": 0,
+  "nested_costs_not_additive": true,
+  "Source_cached_and_IO_root_wait_wall_not_uncached_deployment": true,
+  "OnlineRefer_forward_contains_per_step_checkpoint_IO": true,
+  "mask_conversion_counts": {
+    "onlinerefer_r50/hc2": {
+      "observations": 1024,
+      "queries": 128,
+      "parents": 128,
+      "box_conversion_empty_observations": 0,
+      "queries_any_empty_box_conversion": 0,
+      "queries_all8_empty_box_conversion": 0,
+      "native_empty_masks_not_measured_for_direct_boxhead": true,
+      "native_empty_mask_count": null,
+      "all_queries_retained": true
+    },
+    "onlinerefer_r50/vidstg": {
+      "observations": 1024,
+      "queries": 128,
+      "parents": 128,
+      "box_conversion_empty_observations": 0,
+      "queries_any_empty_box_conversion": 0,
+      "queries_all8_empty_box_conversion": 0,
+      "native_empty_masks_not_measured_for_direct_boxhead": true,
+      "native_empty_mask_count": null,
+      "all_queries_retained": true
+    },
+    "sgmg_videoswin_t/hc2": {
+      "observations": 1024,
+      "queries": 128,
+      "parents": 128,
+      "box_conversion_empty_observations": 100,
+      "queries_any_empty_box_conversion": 55,
+      "queries_all8_empty_box_conversion": 0,
+      "native_empty_masks_not_measured_for_direct_boxhead": false,
+      "native_empty_mask_count": 100,
+      "all_queries_retained": true
+    },
+    "sgmg_videoswin_t/vidstg": {
+      "observations": 1024,
+      "queries": 128,
+      "parents": 128,
+      "box_conversion_empty_observations": 78,
+      "queries_any_empty_box_conversion": 30,
+      "queries_all8_empty_box_conversion": 0,
+      "native_empty_masks_not_measured_for_direct_boxhead": false,
+      "native_empty_mask_count": 78,
+      "all_queries_retained": true
+    }
+  },
+  "unmeasured_native_empty_masks_for_direct_boxhead_are_null": true,
+  "preserved_CPU_import_failure": {
+    "tool": 8050,
+    "actual_exit_code": 1,
+    "before_model_construction": true,
+    "new_model": 0,
+    "new_expert": 0,
+    "new_GPU": 0,
+    "whole_failure_clock_seconds": null
+  }
+}

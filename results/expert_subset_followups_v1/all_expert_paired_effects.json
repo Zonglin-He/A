@@ -1,0 +1,1324 @@
+{
+  "hc2": {
+    "experts": {
+      "referdino": {
+        "audit_sha256": "08caa38e9e7a46f4aeef62bd0bfc38aec45ad86501b1f267d37546742841e944",
+        "metrics_sha256": "c0c6eddac5552dd55a3961d68cd35b3d89ba44e62f3576cfd907fa30afc1f0d3",
+        "report_sha256": "043b76e8c69938bedfc492112b06f50f4195d36b9ac516a56f4e20b7a9bedf16"
+      },
+      "referformer_r50": {
+        "audit_sha256": "a626f3880b0af97c85dc62c851332c1a2d06828e2ccf491c16af9794943ba62e",
+        "metrics_sha256": "54363d88fc9633384f774ad8ffe6a4524178668b98372179df8092ebac4c36e8",
+        "report_sha256": "c1c845888664956d400c66be98da9378ce00e697adc7e9803e965d5a2ae0c7af"
+      },
+      "referformer_r101": {
+        "audit_sha256": "ebaa97ecff114bda45bb661a322d86f43008e6a378a1d87db63f5ead16aa62d8",
+        "metrics_sha256": "4d54bc6897340acad8f4303c0433fd77e91ab4a29b8de5b75010a2d02a73f93d",
+        "report_sha256": "8dd788bd771ec2942dcb978685ac1283f0fa6a4389f9bae60cd9ee407e9e2f99"
+      },
+      "mttr": {
+        "audit_sha256": "de6a1a5f0fb5da079c955ebc77ec3f416973d30ebfdbe9b5e49262abc2056d7e",
+        "metrics_sha256": "57f8fae87c00ffa91bf4877557426bdbfdf0a9d6af3033e8a33e191cc169864f",
+        "report_sha256": "242ce273baf15baecbaba0f295061a8f137644fb6456952c4a4e2605d7c37e1d"
+      },
+      "onlinerefer_r50": {
+        "audit_sha256": "1834827e41dc9562e74eb8ae936dbadbdd5586767b08cdf2535aaa92582bea5a",
+        "metrics_sha256": "3b4399069a9ed47260c188f3bed0bb67213ca71a9b1d4a125d1b9c82c1d98cb9",
+        "report_sha256": "f20fd7b719246594ea7c73900f06f2bf163495a84d69c276768e15fcedd42efb"
+      },
+      "sgmg_videoswin_t": {
+        "audit_sha256": "9b7c4d69c7daa87defde1c5cc2d6f8bab2707727f9ab40e5a625a431eaf26fa9",
+        "metrics_sha256": "d3fd95ac67d1dee9fc5b0cf07009bf11e2ca3c65a998c4fa4d882401c1d8fc41",
+        "report_sha256": "454e2bf517dd870098ad7cc5ff0e114133915204c9a447d2b4fbe60ac4ec5928"
+      }
+    },
+    "effects": {
+      "referformer_r50": {
+        "Current_vs_ReferDINO": {
+          "t": {
+            "mean": -0.19936787672136774,
+            "CI95": [
+              -0.9209644041929725,
+              0.5363202650027828
+            ],
+            "queries": 128,
+            "parents": 128,
+            "improved": 15,
+            "harmed": 19,
+            "unchanged": 94,
+            "declined_over5pp": 13
+          },
+          "v": {
+            "mean": -4.238949686657097,
+            "CI95": [
+              -6.94380071135964,
+              -1.6846865614959465
+            ],
+            "queries": 128,
+            "parents": 128,
+            "improved": 43,
+            "harmed": 72,
+            "unchanged": 13,
+            "declined_over5pp": 31
+          },
+          "unobserved_actual_sIoU": {
+            "mean": -5.666552698892415,
+            "CI95": [
+              -9.251510481481857,
+              -2.169697975699802
+            ],
+            "queries": 128,
+            "parents": 128,
+            "improved": 50,
+            "harmed": 76,
+            "unchanged": 2,
+            "declined_over5pp": 44
+          }
+        },
+        "total_gain_difference_vs_ReferDINO": {
+          "t": {
+            "mean": -0.19936787672136774,
+            "CI95": [
+              -0.9209644041929725,
+              0.5363202650027828
+            ],
+            "queries": 128,
+            "parents": 128,
+            "improved": 15,
+            "harmed": 19,
+            "unchanged": 94,
+            "declined_over5pp": 13
+          },
+          "v": {
+            "mean": -0.3939160040152432,
+            "CI95": [
+              -1.6409096201447704,
+              0.8761583185233865
+            ],
+            "queries": 128,
+            "parents": 128,
+            "improved": 55,
+            "harmed": 60,
+            "unchanged": 13,
+            "declined_over5pp": 25
+          },
+          "unobserved_actual_sIoU": {
+            "mean": -2.0356671811169074,
+            "CI95": [
+              -4.687747828789368,
+              0.5761058950981003
+            ],
+            "queries": 128,
+            "parents": 128,
+            "improved": 58,
+            "harmed": 68,
+            "unchanged": 2,
+            "declined_over5pp": 44
+          }
+        },
+        "own_interval_spatial_gain_difference_vs_ReferDINO": {
+          "t": {
+            "mean": 0.0,
+            "CI95": [
+              0.0,
+              0.0
+            ],
+            "queries": 128,
+            "parents": 128,
+            "improved": 0,
+            "harmed": 0,
+            "unchanged": 128,
+            "declined_over5pp": 0
+          },
+          "v": {
+            "mean": -0.715915323562248,
+            "CI95": [
+              -1.7743420754728698,
+              0.2951791389879135
+            ],
+            "queries": 128,
+            "parents": 128,
+            "improved": 55,
+            "harmed": 60,
+            "unchanged": 13,
+            "declined_over5pp": 24
+          },
+          "unobserved_actual_sIoU": {
+            "mean": -2.0356671811169074,
+            "CI95": [
+              -4.687747828789368,
+              0.5761058950981003
+            ],
+            "queries": 128,
+            "parents": 128,
+            "improved": 58,
+            "harmed": 68,
+            "unchanged": 2,
+            "declined_over5pp": 44
+          }
+        }
+      },
+      "referformer_r101": {
+        "Current_vs_ReferDINO": {
+          "t": {
+            "mean": 0.4819930681738727,
+            "CI95": [
+              -0.19817031594636328,
+              1.1960586954447925
+            ],
+            "queries": 128,
+            "parents": 128,
+            "improved": 20,
+            "harmed": 15,
+            "unchanged": 93,
+            "declined_over5pp": 7
+          },
+          "v": {
+            "mean": -2.900378254134631,
+            "CI95": [
+              -5.237621126849815,
+              -0.7434349433357337
+            ],
+            "queries": 128,
+            "parents": 128,
+            "improved": 50,
+            "harmed": 65,
+            "unchanged": 13,
+            "declined_over5pp": 33
+          },
+          "unobserved_actual_sIoU": {
+            "mean": -4.7534806438175075,
+            "CI95": [
+              -7.80805178479423,
+              -1.9029263653384176
+            ],
+            "queries": 128,
+            "parents": 128,
+            "improved": 57,
+            "harmed": 69,
+            "unchanged": 2,
+            "declined_over5pp": 42
+          }
+        },
+        "total_gain_difference_vs_ReferDINO": {
+          "t": {
+            "mean": 0.4819930681738727,
+            "CI95": [
+              -0.19817031594636328,
+              1.1960586954447925
+            ],
+            "queries": 128,
+            "parents": 128,
+            "improved": 20,
+            "harmed": 15,
+            "unchanged": 93,
+            "declined_over5pp": 7
+          },
+          "v": {
+            "mean": 0.1130669798253752,
+            "CI95": [
+              -1.0937539876732543,
+              1.4563321031768275
+            ],
+            "queries": 128,
+            "parents": 128,
+            "improved": 51,
+            "harmed": 64,
+            "unchanged": 13,
+            "declined_over5pp": 25
+          },
+          "unobserved_actual_sIoU": {
+            "mean": -2.175269278932014,
+            "CI95": [
+              -4.967258782245914,
+              0.5000827291145878
+            ],
+            "queries": 128,
+            "parents": 128,
+            "improved": 59,
+            "harmed": 67,
+            "unchanged": 2,
+            "declined_over5pp": 47
+          }
+        },
+        "own_interval_spatial_gain_difference_vs_ReferDINO": {
+          "t": {
+            "mean": 0.0,
+            "CI95": [
+              0.0,
+              0.0
+            ],
+            "queries": 128,
+            "parents": 128,
+            "improved": 0,
+            "harmed": 0,
+            "unchanged": 128,
+            "declined_over5pp": 0
+          },
+          "v": {
+            "mean": -0.7676450036643612,
+            "CI95": [
+              -1.8582061693105538,
+              0.3015978029973532
+            ],
+            "queries": 128,
+            "parents": 128,
+            "improved": 51,
+            "harmed": 64,
+            "unchanged": 13,
+            "declined_over5pp": 21
+          },
+          "unobserved_actual_sIoU": {
+            "mean": -2.175269278932014,
+            "CI95": [
+              -4.967258782245914,
+              0.5000827291145878
+            ],
+            "queries": 128,
+            "parents": 128,
+            "improved": 59,
+            "harmed": 67,
+            "unchanged": 2,
+            "declined_over5pp": 47
+          }
+        }
+      },
+      "mttr": {
+        "Current_vs_ReferDINO": {
+          "t": {
+            "mean": -0.4276343670896012,
+            "CI95": [
+              -1.733940399252981,
+              0.5777391159382428
+            ],
+            "queries": 128,
+            "parents": 128,
+            "improved": 22,
+            "harmed": 22,
+            "unchanged": 84,
+            "declined_over5pp": 13
+          },
+          "v": {
+            "mean": -9.760354842816593,
+            "CI95": [
+              -13.210601362562548,
+              -6.442323680050674
+            ],
+            "queries": 128,
+            "parents": 128,
+            "improved": 32,
+            "harmed": 84,
+            "unchanged": 12,
+            "declined_over5pp": 62
+          },
+          "unobserved_actual_sIoU": {
+            "mean": -14.593328974483025,
+            "CI95": [
+              -19.02226648179638,
+              -10.163088524930032
+            ],
+            "queries": 128,
+            "parents": 128,
+            "improved": 33,
+            "harmed": 94,
+            "unchanged": 1,
+            "declined_over5pp": 72
+          }
+        },
+        "total_gain_difference_vs_ReferDINO": {
+          "t": {
+            "mean": -0.4276343670896011,
+            "CI95": [
+              -1.733940399252981,
+              0.5777391159382428
+            ],
+            "queries": 128,
+            "parents": 128,
+            "improved": 22,
+            "harmed": 22,
+            "unchanged": 84,
+            "declined_over5pp": 13
+          },
+          "v": {
+            "mean": -0.6693370241651166,
+            "CI95": [
+              -2.2505137881098234,
+              0.8642657116656072
+            ],
+            "queries": 128,
+            "parents": 128,
+            "improved": 58,
+            "harmed": 58,
+            "unchanged": 12,
+            "declined_over5pp": 31
+          },
+          "unobserved_actual_sIoU": {
+            "mean": -1.0705523097918261,
+            "CI95": [
+              -3.9465605073039747,
+              1.6977051160007455
+            ],
+            "queries": 128,
+            "parents": 128,
+            "improved": 62,
+            "harmed": 66,
+            "unchanged": 0,
+            "declined_over5pp": 43
+          }
+        },
+        "own_interval_spatial_gain_difference_vs_ReferDINO": {
+          "t": {
+            "mean": 0.0,
+            "CI95": [
+              0.0,
+              0.0
+            ],
+            "queries": 128,
+            "parents": 128,
+            "improved": 0,
+            "harmed": 0,
+            "unchanged": 128,
+            "declined_over5pp": 0
+          },
+          "v": {
+            "mean": -0.7716011287069853,
+            "CI95": [
+              -1.9943786150744327,
+              0.4073147751308302
+            ],
+            "queries": 128,
+            "parents": 128,
+            "improved": 58,
+            "harmed": 58,
+            "unchanged": 12,
+            "declined_over5pp": 28
+          },
+          "unobserved_actual_sIoU": {
+            "mean": -1.0705523097918261,
+            "CI95": [
+              -3.9465605073039747,
+              1.6977051160007455
+            ],
+            "queries": 128,
+            "parents": 128,
+            "improved": 62,
+            "harmed": 66,
+            "unchanged": 0,
+            "declined_over5pp": 43
+          }
+        }
+      },
+      "onlinerefer_r50": {
+        "Current_vs_ReferDINO": {
+          "t": {
+            "mean": -0.8437537229678832,
+            "CI95": [
+              -2.189825418574223,
+              0.24845032901386763
+            ],
+            "queries": 128,
+            "parents": 128,
+            "improved": 17,
+            "harmed": 18,
+            "unchanged": 93,
+            "declined_over5pp": 13
+          },
+          "v": {
+            "mean": -4.281893173893156,
+            "CI95": [
+              -7.638997214150844,
+              -1.0991987615561343
+            ],
+            "queries": 128,
+            "parents": 128,
+            "improved": 50,
+            "harmed": 65,
+            "unchanged": 13,
+            "declined_over5pp": 33
+          },
+          "unobserved_actual_sIoU": {
+            "mean": -5.077324866785235,
+            "CI95": [
+              -9.135102078404238,
+              -1.1320106005687913
+            ],
+            "queries": 128,
+            "parents": 128,
+            "improved": 55,
+            "harmed": 71,
+            "unchanged": 2,
+            "declined_over5pp": 37
+          }
+        },
+        "total_gain_difference_vs_ReferDINO": {
+          "t": {
+            "mean": -0.8437537229678833,
+            "CI95": [
+              -2.189825418574223,
+              0.24845032901386763
+            ],
+            "queries": 128,
+            "parents": 128,
+            "improved": 17,
+            "harmed": 18,
+            "unchanged": 93,
+            "declined_over5pp": 13
+          },
+          "v": {
+            "mean": -0.33509401326043425,
+            "CI95": [
+              -1.7705292794510676,
+              1.142855960865098
+            ],
+            "queries": 128,
+            "parents": 128,
+            "improved": 58,
+            "harmed": 57,
+            "unchanged": 13,
+            "declined_over5pp": 25
+          },
+          "unobserved_actual_sIoU": {
+            "mean": -1.0405847475565466,
+            "CI95": [
+              -3.248695114810871,
+              1.1552962554140411
+            ],
+            "queries": 128,
+            "parents": 128,
+            "improved": 64,
+            "harmed": 62,
+            "unchanged": 2,
+            "declined_over5pp": 38
+          }
+        },
+        "own_interval_spatial_gain_difference_vs_ReferDINO": {
+          "t": {
+            "mean": 0.0,
+            "CI95": [
+              0.0,
+              0.0
+            ],
+            "queries": 128,
+            "parents": 128,
+            "improved": 0,
+            "harmed": 0,
+            "unchanged": 128,
+            "declined_over5pp": 0
+          },
+          "v": {
+            "mean": -0.27985297000212195,
+            "CI95": [
+              -1.2826884276243167,
+              0.7288754733992096
+            ],
+            "queries": 128,
+            "parents": 128,
+            "improved": 57,
+            "harmed": 58,
+            "unchanged": 13,
+            "declined_over5pp": 22
+          },
+          "unobserved_actual_sIoU": {
+            "mean": -1.0405847475565466,
+            "CI95": [
+              -3.248695114810871,
+              1.1552962554140411
+            ],
+            "queries": 128,
+            "parents": 128,
+            "improved": 64,
+            "harmed": 62,
+            "unchanged": 2,
+            "declined_over5pp": 38
+          }
+        }
+      },
+      "sgmg_videoswin_t": {
+        "Current_vs_ReferDINO": {
+          "t": {
+            "mean": -0.48632510289426334,
+            "CI95": [
+              -1.705027380016854,
+              0.4150630671809504
+            ],
+            "queries": 128,
+            "parents": 128,
+            "improved": 14,
+            "harmed": 14,
+            "unchanged": 100,
+            "declined_over5pp": 8
+          },
+          "v": {
+            "mean": -0.29550752974718586,
+            "CI95": [
+              -2.696267050744546,
+              1.9526082521824315
+            ],
+            "queries": 128,
+            "parents": 128,
+            "improved": 62,
+            "harmed": 53,
+            "unchanged": 13,
+            "declined_over5pp": 22
+          },
+          "unobserved_actual_sIoU": {
+            "mean": -0.6622212335046407,
+            "CI95": [
+              -3.8225280073781396,
+              2.4482050787930443
+            ],
+            "queries": 128,
+            "parents": 128,
+            "improved": 68,
+            "harmed": 59,
+            "unchanged": 1,
+            "declined_over5pp": 31
+          }
+        },
+        "total_gain_difference_vs_ReferDINO": {
+          "t": {
+            "mean": -0.4863251028942634,
+            "CI95": [
+              -1.7050273800168545,
+              0.41506306718095026
+            ],
+            "queries": 128,
+            "parents": 128,
+            "improved": 14,
+            "harmed": 14,
+            "unchanged": 100,
+            "declined_over5pp": 8
+          },
+          "v": {
+            "mean": -0.3126293292235264,
+            "CI95": [
+              -1.3678827842919774,
+              0.7777919263525181
+            ],
+            "queries": 128,
+            "parents": 128,
+            "improved": 57,
+            "harmed": 58,
+            "unchanged": 13,
+            "declined_over5pp": 20
+          },
+          "unobserved_actual_sIoU": {
+            "mean": -3.10881432494406,
+            "CI95": [
+              -5.440795927704021,
+              -0.8708766502034971
+            ],
+            "queries": 128,
+            "parents": 128,
+            "improved": 49,
+            "harmed": 78,
+            "unchanged": 1,
+            "declined_over5pp": 37
+          }
+        },
+        "own_interval_spatial_gain_difference_vs_ReferDINO": {
+          "t": {
+            "mean": 0.0,
+            "CI95": [
+              0.0,
+              0.0
+            ],
+            "queries": 128,
+            "parents": 128,
+            "improved": 0,
+            "harmed": 0,
+            "unchanged": 128,
+            "declined_over5pp": 0
+          },
+          "v": {
+            "mean": -0.8535197140229975,
+            "CI95": [
+              -1.7296946265448718,
+              -0.006099094950531018
+            ],
+            "queries": 128,
+            "parents": 128,
+            "improved": 49,
+            "harmed": 66,
+            "unchanged": 13,
+            "declined_over5pp": 19
+          },
+          "unobserved_actual_sIoU": {
+            "mean": -3.10881432494406,
+            "CI95": [
+              -5.440795927704021,
+              -0.8708766502034971
+            ],
+            "queries": 128,
+            "parents": 128,
+            "improved": 49,
+            "harmed": 78,
+            "unchanged": 1,
+            "declined_over5pp": 37
+          }
+        }
+      }
+    }
+  },
+  "vidstg": {
+    "experts": {
+      "referdino": {
+        "audit_sha256": "19c1cdbf39bb99218068f7c559bc911f5c1be183d096c7d7b2f6f8865be2f88b",
+        "metrics_sha256": "53c122aea71035ecf8f71ae104d93876561b09931bd8ca697703122dda7178bc",
+        "report_sha256": "c96e5d24d0026d6d2202bb5f5f5640b8893f3abacc05332cc6e405e81fd90ae0"
+      },
+      "referformer_r50": {
+        "audit_sha256": "80918589eda3154c5b3e9e39c7d434d3da1b5a54e5cefacc71f79f5d5cefc623",
+        "metrics_sha256": "542ddc1445d2b4aca476a29bce95adf99cc41e0856d509684d034405dff16334",
+        "report_sha256": "55166baf769f72d063c08fc43b37d823f21e5602526efa39499b8eb8cbc29a28"
+      },
+      "referformer_r101": {
+        "audit_sha256": "4b0d32db180b9f4a95959e810bb72a775b27660cdefc221e27e57aadc675ea67",
+        "metrics_sha256": "835d42659b81c09931a698ffc12fe37aba9c5e6a84d59dba1d236716087e9709",
+        "report_sha256": "0f6eb4c93a0e4bfbf9d921b4d25021d07da6735d876492633515fa20651d5a3d"
+      },
+      "mttr": {
+        "audit_sha256": "782c1c52159d814671531111da27718fac81fd3842eb0ff3a1cb6772fba265d3",
+        "metrics_sha256": "75d2f5affbb6ade58bf272e6164a8214b83e3b35f51d6f9b49679dc13ca35f94",
+        "report_sha256": "6a6daece1c531d0fe68c46e3109c2b7c84fd73286edce94c53d917b11394250b"
+      },
+      "onlinerefer_r50": {
+        "audit_sha256": "83911f9d10565f35c4086d21a5dc539ac37e45b545be20f006960b1a005217a6",
+        "metrics_sha256": "bb0d9ac9ba3dfd8417d5346609a424ec2ba0831b774058e8219103fa60c5df59",
+        "report_sha256": "4edc88412d33bbc9243ea71ba6732466d775e80aa9d0ae77daeeed4067beac21"
+      },
+      "sgmg_videoswin_t": {
+        "audit_sha256": "b5be4bfdd7d1515cb7ba8043f77ec9e896f0d9f93343897f7ca8def730868cae",
+        "metrics_sha256": "7c41d5c3350982f68fe81d85a342c0e8f0249a78a31faac9dd635ec722d91fe7",
+        "report_sha256": "bd369f12cd1afe8d9b9a9daea3a32140dad9872ce995cf0531fe48fd60e74e9f"
+      }
+    },
+    "effects": {
+      "referformer_r50": {
+        "Current_vs_ReferDINO": {
+          "t": {
+            "mean": -0.5988736726427317,
+            "CI95": [
+              -1.6325655872790064,
+              0.29247820631324334
+            ],
+            "queries": 128,
+            "parents": 128,
+            "improved": 23,
+            "harmed": 26,
+            "unchanged": 79,
+            "declined_over5pp": 12
+          },
+          "v": {
+            "mean": 0.2998204223553172,
+            "CI95": [
+              -1.9986399694270065,
+              2.604791396154297
+            ],
+            "queries": 128,
+            "parents": 128,
+            "improved": 43,
+            "harmed": 60,
+            "unchanged": 25,
+            "declined_over5pp": 22
+          },
+          "unobserved_actual_sIoU": {
+            "mean": 0.29977544984020865,
+            "CI95": [
+              -4.407371251989626,
+              4.899167124090923
+            ],
+            "queries": 128,
+            "parents": 128,
+            "improved": 53,
+            "harmed": 68,
+            "unchanged": 7,
+            "declined_over5pp": 41
+          }
+        },
+        "total_gain_difference_vs_ReferDINO": {
+          "t": {
+            "mean": -0.5988736726427317,
+            "CI95": [
+              -1.6325655872790064,
+              0.29247820631324334
+            ],
+            "queries": 128,
+            "parents": 128,
+            "improved": 23,
+            "harmed": 26,
+            "unchanged": 79,
+            "declined_over5pp": 12
+          },
+          "v": {
+            "mean": -0.1832874581012886,
+            "CI95": [
+              -1.3376305876950647,
+              0.9593839735833304
+            ],
+            "queries": 128,
+            "parents": 128,
+            "improved": 43,
+            "harmed": 61,
+            "unchanged": 24,
+            "declined_over5pp": 11
+          },
+          "unobserved_actual_sIoU": {
+            "mean": -1.80790278257044,
+            "CI95": [
+              -4.637991112006965,
+              0.9108154154716578
+            ],
+            "queries": 128,
+            "parents": 128,
+            "improved": 54,
+            "harmed": 71,
+            "unchanged": 3,
+            "declined_over5pp": 39
+          }
+        },
+        "own_interval_spatial_gain_difference_vs_ReferDINO": {
+          "t": {
+            "mean": 0.0,
+            "CI95": [
+              0.0,
+              0.0
+            ],
+            "queries": 128,
+            "parents": 128,
+            "improved": 0,
+            "harmed": 0,
+            "unchanged": 128,
+            "declined_over5pp": 0
+          },
+          "v": {
+            "mean": -0.276499471188166,
+            "CI95": [
+              -1.2463391754998905,
+              0.6229580552351742
+            ],
+            "queries": 128,
+            "parents": 128,
+            "improved": 47,
+            "harmed": 56,
+            "unchanged": 25,
+            "declined_over5pp": 10
+          },
+          "unobserved_actual_sIoU": {
+            "mean": -1.80790278257044,
+            "CI95": [
+              -4.637991112006965,
+              0.9108154154716578
+            ],
+            "queries": 128,
+            "parents": 128,
+            "improved": 54,
+            "harmed": 71,
+            "unchanged": 3,
+            "declined_over5pp": 39
+          }
+        }
+      },
+      "referformer_r101": {
+        "Current_vs_ReferDINO": {
+          "t": {
+            "mean": 0.09500878628332568,
+            "CI95": [
+              -0.6635405313068236,
+              0.7908215300524368
+            ],
+            "queries": 128,
+            "parents": 128,
+            "improved": 28,
+            "harmed": 25,
+            "unchanged": 75,
+            "declined_over5pp": 10
+          },
+          "v": {
+            "mean": 1.3737734571909173,
+            "CI95": [
+              -1.1566250682173445,
+              3.957941252174947
+            ],
+            "queries": 128,
+            "parents": 128,
+            "improved": 47,
+            "harmed": 57,
+            "unchanged": 24,
+            "declined_over5pp": 23
+          },
+          "unobserved_actual_sIoU": {
+            "mean": 1.9903368433370774,
+            "CI95": [
+              -2.9744474313973837,
+              6.996718820258033
+            ],
+            "queries": 128,
+            "parents": 128,
+            "improved": 55,
+            "harmed": 68,
+            "unchanged": 5,
+            "declined_over5pp": 35
+          }
+        },
+        "total_gain_difference_vs_ReferDINO": {
+          "t": {
+            "mean": 0.0950087862833257,
+            "CI95": [
+              -0.6635405313068234,
+              0.7908215300524369
+            ],
+            "queries": 128,
+            "parents": 128,
+            "improved": 28,
+            "harmed": 25,
+            "unchanged": 75,
+            "declined_over5pp": 10
+          },
+          "v": {
+            "mean": 0.02366891427989698,
+            "CI95": [
+              -1.2830144990567949,
+              1.34797165954625
+            ],
+            "queries": 128,
+            "parents": 128,
+            "improved": 50,
+            "harmed": 55,
+            "unchanged": 23,
+            "declined_over5pp": 12
+          },
+          "unobserved_actual_sIoU": {
+            "mean": -1.2045596715141595,
+            "CI95": [
+              -4.012267272554863,
+              1.4929600661054059
+            ],
+            "queries": 128,
+            "parents": 128,
+            "improved": 61,
+            "harmed": 64,
+            "unchanged": 3,
+            "declined_over5pp": 34
+          }
+        },
+        "own_interval_spatial_gain_difference_vs_ReferDINO": {
+          "t": {
+            "mean": 0.0,
+            "CI95": [
+              0.0,
+              0.0
+            ],
+            "queries": 128,
+            "parents": 128,
+            "improved": 0,
+            "harmed": 0,
+            "unchanged": 128,
+            "declined_over5pp": 0
+          },
+          "v": {
+            "mean": -0.35787377794139413,
+            "CI95": [
+              -1.3100139154084909,
+              0.46896696808568433
+            ],
+            "queries": 128,
+            "parents": 128,
+            "improved": 53,
+            "harmed": 51,
+            "unchanged": 24,
+            "declined_over5pp": 11
+          },
+          "unobserved_actual_sIoU": {
+            "mean": -1.2045596715141595,
+            "CI95": [
+              -4.012267272554863,
+              1.4929600661054059
+            ],
+            "queries": 128,
+            "parents": 128,
+            "improved": 61,
+            "harmed": 64,
+            "unchanged": 3,
+            "declined_over5pp": 34
+          }
+        }
+      },
+      "mttr": {
+        "Current_vs_ReferDINO": {
+          "t": {
+            "mean": 0.546162050569559,
+            "CI95": [
+              -0.17599121662595663,
+              1.248130480900643
+            ],
+            "queries": 128,
+            "parents": 128,
+            "improved": 32,
+            "harmed": 18,
+            "unchanged": 78,
+            "declined_over5pp": 4
+          },
+          "v": {
+            "mean": -2.0630626068490865,
+            "CI95": [
+              -4.475881617409797,
+              0.34701715144734907
+            ],
+            "queries": 128,
+            "parents": 128,
+            "improved": 44,
+            "harmed": 59,
+            "unchanged": 25,
+            "declined_over5pp": 27
+          },
+          "unobserved_actual_sIoU": {
+            "mean": -5.471405280822525,
+            "CI95": [
+              -9.988617106314154,
+              -1.0444902669362064
+            ],
+            "queries": 128,
+            "parents": 128,
+            "improved": 48,
+            "harmed": 76,
+            "unchanged": 4,
+            "declined_over5pp": 50
+          }
+        },
+        "total_gain_difference_vs_ReferDINO": {
+          "t": {
+            "mean": 0.5461620505695591,
+            "CI95": [
+              -0.17599121662595663,
+              1.248130480900643
+            ],
+            "queries": 128,
+            "parents": 128,
+            "improved": 32,
+            "harmed": 18,
+            "unchanged": 78,
+            "declined_over5pp": 4
+          },
+          "v": {
+            "mean": -0.6359157683465249,
+            "CI95": [
+              -2.057948565166765,
+              0.7953828976772747
+            ],
+            "queries": 128,
+            "parents": 128,
+            "improved": 48,
+            "harmed": 56,
+            "unchanged": 24,
+            "declined_over5pp": 14
+          },
+          "unobserved_actual_sIoU": {
+            "mean": -2.3529455770015213,
+            "CI95": [
+              -5.367658971608085,
+              0.5704444916239388
+            ],
+            "queries": 128,
+            "parents": 128,
+            "improved": 54,
+            "harmed": 71,
+            "unchanged": 3,
+            "declined_over5pp": 37
+          }
+        },
+        "own_interval_spatial_gain_difference_vs_ReferDINO": {
+          "t": {
+            "mean": 0.0,
+            "CI95": [
+              0.0,
+              0.0
+            ],
+            "queries": 128,
+            "parents": 128,
+            "improved": 0,
+            "harmed": 0,
+            "unchanged": 128,
+            "declined_over5pp": 0
+          },
+          "v": {
+            "mean": -0.60787133204987,
+            "CI95": [
+              -1.7025325828697242,
+              0.36910557856388315
+            ],
+            "queries": 128,
+            "parents": 128,
+            "improved": 42,
+            "harmed": 62,
+            "unchanged": 24,
+            "declined_over5pp": 12
+          },
+          "unobserved_actual_sIoU": {
+            "mean": -2.3529455770015213,
+            "CI95": [
+              -5.367658971608085,
+              0.5704444916239388
+            ],
+            "queries": 128,
+            "parents": 128,
+            "improved": 54,
+            "harmed": 71,
+            "unchanged": 3,
+            "declined_over5pp": 37
+          }
+        }
+      },
+      "onlinerefer_r50": {
+        "Current_vs_ReferDINO": {
+          "t": {
+            "mean": -0.07248973428590283,
+            "CI95": [
+              -1.0278692825567697,
+              0.7633562478039562
+            ],
+            "queries": 128,
+            "parents": 128,
+            "improved": 25,
+            "harmed": 19,
+            "unchanged": 84,
+            "declined_over5pp": 9
+          },
+          "v": {
+            "mean": 1.3696591687088677,
+            "CI95": [
+              -1.043131605044479,
+              3.828326758551113
+            ],
+            "queries": 128,
+            "parents": 128,
+            "improved": 51,
+            "harmed": 51,
+            "unchanged": 26,
+            "declined_over5pp": 19
+          },
+          "unobserved_actual_sIoU": {
+            "mean": 1.0303054640649734,
+            "CI95": [
+              -3.7141937385179946,
+              5.757901466306142
+            ],
+            "queries": 128,
+            "parents": 128,
+            "improved": 53,
+            "harmed": 65,
+            "unchanged": 10,
+            "declined_over5pp": 37
+          }
+        },
+        "total_gain_difference_vs_ReferDINO": {
+          "t": {
+            "mean": -0.0724897342859028,
+            "CI95": [
+              -1.0278692825567697,
+              0.7633562478039562
+            ],
+            "queries": 128,
+            "parents": 128,
+            "improved": 25,
+            "harmed": 19,
+            "unchanged": 84,
+            "declined_over5pp": 9
+          },
+          "v": {
+            "mean": -0.007051579876852468,
+            "CI95": [
+              -1.3541347931513688,
+              1.3148311979459761
+            ],
+            "queries": 128,
+            "parents": 128,
+            "improved": 49,
+            "harmed": 55,
+            "unchanged": 24,
+            "declined_over5pp": 12
+          },
+          "unobserved_actual_sIoU": {
+            "mean": -1.4962750486044127,
+            "CI95": [
+              -4.6566263150618035,
+              1.5107766792124684
+            ],
+            "queries": 128,
+            "parents": 128,
+            "improved": 50,
+            "harmed": 74,
+            "unchanged": 4,
+            "declined_over5pp": 33
+          }
+        },
+        "own_interval_spatial_gain_difference_vs_ReferDINO": {
+          "t": {
+            "mean": 0.0,
+            "CI95": [
+              0.0,
+              0.0
+            ],
+            "queries": 128,
+            "parents": 128,
+            "improved": 0,
+            "harmed": 0,
+            "unchanged": 128,
+            "declined_over5pp": 0
+          },
+          "v": {
+            "mean": -0.005376406570887171,
+            "CI95": [
+              -1.130247798661914,
+              1.0623614668873758
+            ],
+            "queries": 128,
+            "parents": 128,
+            "improved": 48,
+            "harmed": 55,
+            "unchanged": 25,
+            "declined_over5pp": 10
+          },
+          "unobserved_actual_sIoU": {
+            "mean": -1.4962750486044127,
+            "CI95": [
+              -4.6566263150618035,
+              1.5107766792124684
+            ],
+            "queries": 128,
+            "parents": 128,
+            "improved": 50,
+            "harmed": 74,
+            "unchanged": 4,
+            "declined_over5pp": 33
+          }
+        }
+      },
+      "sgmg_videoswin_t": {
+        "Current_vs_ReferDINO": {
+          "t": {
+            "mean": 0.4538771521467963,
+            "CI95": [
+              -0.3246011549973513,
+              1.1565669752495413
+            ],
+            "queries": 128,
+            "parents": 128,
+            "improved": 30,
+            "harmed": 14,
+            "unchanged": 84,
+            "declined_over5pp": 4
+          },
+          "v": {
+            "mean": 0.3341814848331338,
+            "CI95": [
+              -2.4464266413470095,
+              3.0764988085926683
+            ],
+            "queries": 128,
+            "parents": 128,
+            "improved": 49,
+            "harmed": 55,
+            "unchanged": 24,
+            "declined_over5pp": 17
+          },
+          "unobserved_actual_sIoU": {
+            "mean": -1.4257414328821914,
+            "CI95": [
+              -6.074546253038311,
+              3.302262790401031
+            ],
+            "queries": 128,
+            "parents": 128,
+            "improved": 57,
+            "harmed": 65,
+            "unchanged": 6,
+            "declined_over5pp": 37
+          }
+        },
+        "total_gain_difference_vs_ReferDINO": {
+          "t": {
+            "mean": 0.4538771521467963,
+            "CI95": [
+              -0.32460115499735126,
+              1.1565669752495413
+            ],
+            "queries": 128,
+            "parents": 128,
+            "improved": 30,
+            "harmed": 14,
+            "unchanged": 84,
+            "declined_over5pp": 4
+          },
+          "v": {
+            "mean": -0.14301893776475827,
+            "CI95": [
+              -1.451110598369449,
+              1.1706719210448202
+            ],
+            "queries": 128,
+            "parents": 128,
+            "improved": 54,
+            "harmed": 51,
+            "unchanged": 23,
+            "declined_over5pp": 13
+          },
+          "unobserved_actual_sIoU": {
+            "mean": -1.0302238716752856,
+            "CI95": [
+              -4.378653564414082,
+              2.229571140155329
+            ],
+            "queries": 128,
+            "parents": 128,
+            "improved": 61,
+            "harmed": 64,
+            "unchanged": 3,
+            "declined_over5pp": 38
+          }
+        },
+        "own_interval_spatial_gain_difference_vs_ReferDINO": {
+          "t": {
+            "mean": 0.0,
+            "CI95": [
+              0.0,
+              0.0
+            ],
+            "queries": 128,
+            "parents": 128,
+            "improved": 0,
+            "harmed": 0,
+            "unchanged": 128,
+            "declined_over5pp": 0
+          },
+          "v": {
+            "mean": -0.07678593910249754,
+            "CI95": [
+              -1.3401541865742084,
+              1.2891249081301206
+            ],
+            "queries": 128,
+            "parents": 128,
+            "improved": 48,
+            "harmed": 56,
+            "unchanged": 24,
+            "declined_over5pp": 10
+          },
+          "unobserved_actual_sIoU": {
+            "mean": -1.0302238716752856,
+            "CI95": [
+              -4.378653564414082,
+              2.229571140155329
+            ],
+            "queries": 128,
+            "parents": 128,
+            "improved": 61,
+            "harmed": 64,
+            "unchanged": 3,
+            "declined_over5pp": 38
+          }
+        }
+      }
+    }
+  }
+}
