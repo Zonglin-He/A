@@ -1,0 +1,20 @@
+Traceback (most recent call last):
+  File "/home/wwww/visual grounding/stvg-native2d-simplepath/results/reviewer_combo_random_roi_v1/report_code/root_export_v1.py", line 48, in <module>
+    p=argparse.ArgumentParser();p.add_argument('--task',choices=['combination','regions'],required=True);p.add_argument('--dataset',choices=COUNTS,required=True);a=p.parse_args();export(a.task,a.dataset)
+                                                                                                                                                                                   ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/wwww/visual grounding/stvg-native2d-simplepath/results/reviewer_combo_random_roi_v1/report_code/root_export_v1.py", line 28, in export
+    fpairs=[('Full',x)for x in ['SourceBoxesFixed','PureExpertFixed','InitializedFixed']];selected.suite().parent_report(fixedrows,list(fixedrows[0]['values']),fpairs,p/'fixed_interval');selected.suite().signed_tails(fixedrows,fpairs,p/'fixed_interval')
+                                                                                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/wwww/visual grounding/stvg-native2d-simplepath/studies/map_paper_completion_v1/common.py", line 40, in parent_report
+    return report(rows,arms,pairs,folder)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/wwww/visual grounding/stvg-native2d-simplepath/studies/paper_followup_v1/common.py", line 42, in report
+    severe={a:dict(t=sum(r['values'][a]['t']-r['values']['Source']['t']<-.05 for r in rows),v=sum(r['values'][a]['v']-r['values']['Source']['v']<-.05 for r in rows),union=sum(any(r['values'][a][f]-r['values']['Source'][f]<-.05 for f in ['t','v'])for r in rows))for a in arms}
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/wwww/visual grounding/stvg-native2d-simplepath/studies/paper_followup_v1/common.py", line 42, in <dictcomp>
+    severe={a:dict(t=sum(r['values'][a]['t']-r['values']['Source']['t']<-.05 for r in rows),v=sum(r['values'][a]['v']-r['values']['Source']['v']<-.05 for r in rows),union=sum(any(r['values'][a][f]-r['values']['Source'][f]<-.05 for f in ['t','v'])for r in rows))for a in arms}
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/wwww/visual grounding/stvg-native2d-simplepath/studies/paper_followup_v1/common.py", line 42, in <genexpr>
+    severe={a:dict(t=sum(r['values'][a]['t']-r['values']['Source']['t']<-.05 for r in rows),v=sum(r['values'][a]['v']-r['values']['Source']['v']<-.05 for r in rows),union=sum(any(r['values'][a][f]-r['values']['Source'][f]<-.05 for f in ['t','v'])for r in rows))for a in arms}
+                                             ~~~~~~~~~~~^^^^^^^^^^
+KeyError: 'Source'
