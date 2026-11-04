@@ -1,0 +1,3 @@
+# GPU initialization failure before Source forward
+
+The bounded two-source-query gradient check stopped on the first model transfer to CUDA. A separate fresh process with only PyTorch and CUDA_VISIBLE_DEVICES=0 also failed on allocating one CUDA tensor, although nvidia-smi and device_count=1 worked. This is not a baseline accuracy outcome or evidence that adaptation failed. One additional CPU model construction occurred; zero Source/expert forwards and optimizer steps. The original source/plan/log/attempt are preserved unchanged. No driver reset, service signal or precision/parameter fallback was used. Source calibration/pilot/full/timing remain unexecuted.
