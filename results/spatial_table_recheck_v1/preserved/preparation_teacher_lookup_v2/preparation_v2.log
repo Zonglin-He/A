@@ -1,0 +1,8 @@
+Traceback (most recent call last):
+  File "/home/wwww/visual grounding/stvg-native2d-simplepath/studies/spatial_table_recheck_v1/run.py", line 45, in <module>
+    p=argparse.ArgumentParser();p.add_argument('stage',choices=['prepare','predict']);p.add_argument('--dataset',choices=COUNTS);a=p.parse_args();globals()[a.stage](*([]if a.stage=='prepare'else[a.dataset]))
+                                                                                                                                                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/wwww/visual grounding/stvg-native2d-simplepath/studies/spatial_table_recheck_v1/run.py", line 17, in prepare
+    hits=index[k];assert hits,(ds,row['id'],'missing raw teacher');current=[h for h in hits if h['producer_runtime_fingerprint']==runtime];original=current if current else hits;matched=[]
+                         ^^^^
+AssertionError: ('vidstg', 'PRIVATE_QUERY', 'missing raw teacher')

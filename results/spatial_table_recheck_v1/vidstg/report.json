@@ -1,0 +1,939 @@
+{
+  "queries": 10303,
+  "parents": 732,
+  "means": {
+    "Source": {
+      "t": 0.3172845440512224,
+      "v": 0.11138483673086509,
+      "s": 0.3272905497398442,
+      "fixed_actual_sIoU": 0.33022235369893305,
+      "observed_actual_sIoU": 0.3353659380174769,
+      "unobserved_actual_sIoU": 0.3302537792777132,
+      "vIoU_ge_03": 0.12831214209453556,
+      "vIoU_ge_05": 0.033485392604095894,
+      "boundary_MAE_seconds": 7.908044572911928
+    },
+    "SourceTemporal": {
+      "t": 0.34908527581297816,
+      "v": 0.12224897526974685,
+      "s": 0.3272905497398442,
+      "fixed_actual_sIoU": 0.33022235369893305,
+      "observed_actual_sIoU": 0.3353659380174769,
+      "unobserved_actual_sIoU": 0.3302537792777132,
+      "vIoU_ge_03": 0.15005338250994857,
+      "vIoU_ge_05": 0.04387071726681549,
+      "boundary_MAE_seconds": 7.619737066352473
+    },
+    "ComboLog": {
+      "t": 0.34908527581297816,
+      "v": 0.14709588589636718,
+      "s": 0.3609630472994136,
+      "fixed_actual_sIoU": 0.36355761617750615,
+      "observed_actual_sIoU": 0.45940580432869815,
+      "unobserved_actual_sIoU": 0.3554213152624234,
+      "vIoU_ge_03": 0.19819470057264874,
+      "vIoU_ge_05": 0.08696496166165195,
+      "boundary_MAE_seconds": 7.619737066352473
+    },
+    "Full": {
+      "t": 0.3491819212403351,
+      "v": 0.1455815121540986,
+      "s": 0.3609015267785993,
+      "fixed_actual_sIoU": 0.36373214753970035,
+      "observed_actual_sIoU": 0.4188649154546217,
+      "unobserved_actual_sIoU": 0.35785761516814213,
+      "vIoU_ge_03": 0.1941182179947588,
+      "vIoU_ge_05": 0.08463554304571484,
+      "boundary_MAE_seconds": 7.606517511659983
+    },
+    "PureLogFixed": {
+      "t": 0.3491819212403351,
+      "v": 0.14704394018101463,
+      "s": 0.3609630472994136,
+      "fixed_actual_sIoU": 0.36355761617750615,
+      "observed_actual_sIoU": 0.45940580432869815,
+      "unobserved_actual_sIoU": 0.3554213152624234,
+      "vIoU_ge_03": 0.19722410948267494,
+      "vIoU_ge_05": 0.08638260700766767,
+      "boundary_MAE_seconds": 7.606517511659983
+    },
+    "ComboLinear": {
+      "t": 0.34908527581297816,
+      "v": 0.14810023039177855,
+      "s": 0.3651866515070418,
+      "fixed_actual_sIoU": 0.36775851596968734,
+      "observed_actual_sIoU": 0.45940580432869815,
+      "unobserved_actual_sIoU": 0.3600694511784966,
+      "vIoU_ge_03": 0.19965058720760945,
+      "vIoU_ge_05": 0.08754731631563623,
+      "boundary_MAE_seconds": 7.619737066352473
+    },
+    "PureLinearFixed": {
+      "t": 0.3491819212403351,
+      "v": 0.14804402232099356,
+      "s": 0.3651866515070418,
+      "fixed_actual_sIoU": 0.36775851596968734,
+      "observed_actual_sIoU": 0.45940580432869815,
+      "unobserved_actual_sIoU": 0.3600694511784966,
+      "vIoU_ge_03": 0.19858293700863827,
+      "vIoU_ge_05": 0.08686790255265457,
+      "boundary_MAE_seconds": 7.606517511659983
+    }
+  },
+  "severe_vs_Source": {
+    "Source": {
+      "t": 0,
+      "v": 0,
+      "union": 0
+    },
+    "SourceTemporal": {
+      "t": 1531,
+      "v": 526,
+      "union": 1535
+    },
+    "ComboLog": {
+      "t": 1531,
+      "v": 1364,
+      "union": 2373
+    },
+    "Full": {
+      "t": 1562,
+      "v": 1222,
+      "union": 2294
+    },
+    "PureLogFixed": {
+      "t": 1562,
+      "v": 1364,
+      "union": 2392
+    },
+    "ComboLinear": {
+      "t": 1531,
+      "v": 1339,
+      "union": 2356
+    },
+    "PureLinearFixed": {
+      "t": 1562,
+      "v": 1347,
+      "union": 2381
+    }
+  },
+  "paired": {
+    "Full-ComboLog": {
+      "v": {
+        "mean": -0.15143737422685877,
+        "CI95": [
+          -0.3056990926834267,
+          -0.0006753564060865137
+        ],
+        "queries": 10303,
+        "parents": 732,
+        "improved": 3590,
+        "harmed": 3917,
+        "unchanged": 2796,
+        "declined_over5pp": 858
+      },
+      "t": {
+        "mean": 0.009664542735696181,
+        "CI95": [
+          -0.11616379699015322,
+          0.13288186737485677
+        ],
+        "queries": 10303,
+        "parents": 732,
+        "improved": 2055,
+        "harmed": 2045,
+        "unchanged": 6203,
+        "declined_over5pp": 748
+      },
+      "observed_actual_sIoU": {
+        "mean": -4.054088887407644,
+        "CI95": [
+          -4.477223753916055,
+          -3.6607264774967065
+        ],
+        "queries": 8507,
+        "parents": 715,
+        "improved": 1566,
+        "harmed": 4044,
+        "unchanged": 2897,
+        "declined_over5pp": 1900
+      },
+      "unobserved_actual_sIoU": {
+        "mean": 0.24362999057188212,
+        "CI95": [
+          -0.3058622108395606,
+          0.7902496874093025
+        ],
+        "queries": 10300,
+        "parents": 732,
+        "improved": 4367,
+        "harmed": 4856,
+        "unchanged": 1077,
+        "declined_over5pp": 2466
+      },
+      "boundary_MAE_seconds": {
+        "mean": -0.01321955469249025,
+        "CI95": [
+          -0.05738923849334074,
+          0.025765703333961748
+        ],
+        "queries": 10303,
+        "parents": 732,
+        "improved": 2551,
+        "harmed": 2518,
+        "unchanged": 5234,
+        "declined_over5pp": null
+      }
+    },
+    "Full-PureLogFixed": {
+      "v": {
+        "mean": -0.14624280269160253,
+        "CI95": [
+          -0.2947173881630048,
+          -0.0004867693543357092
+        ],
+        "queries": 10303,
+        "parents": 732,
+        "improved": 3421,
+        "harmed": 4044,
+        "unchanged": 2838,
+        "declined_over5pp": 714
+      },
+      "t": {
+        "mean": 0.0,
+        "CI95": [
+          0.0,
+          0.0
+        ],
+        "queries": 10303,
+        "parents": 732,
+        "improved": 0,
+        "harmed": 0,
+        "unchanged": 10303,
+        "declined_over5pp": 0
+      },
+      "observed_actual_sIoU": {
+        "mean": -4.054088887407644,
+        "CI95": [
+          -4.477223753916055,
+          -3.6607264774967065
+        ],
+        "queries": 8507,
+        "parents": 715,
+        "improved": 1566,
+        "harmed": 4044,
+        "unchanged": 2897,
+        "declined_over5pp": 1900
+      },
+      "unobserved_actual_sIoU": {
+        "mean": 0.24362999057188212,
+        "CI95": [
+          -0.3058622108395606,
+          0.7902496874093025
+        ],
+        "queries": 10300,
+        "parents": 732,
+        "improved": 4367,
+        "harmed": 4856,
+        "unchanged": 1077,
+        "declined_over5pp": 2466
+      },
+      "boundary_MAE_seconds": {
+        "mean": 0.0,
+        "CI95": [
+          0.0,
+          0.0
+        ],
+        "queries": 10303,
+        "parents": 732,
+        "improved": 0,
+        "harmed": 0,
+        "unchanged": 10303,
+        "declined_over5pp": null
+      }
+    },
+    "Full-ComboLinear": {
+      "v": {
+        "mean": -0.25187182376799677,
+        "CI95": [
+          -0.40618845728677444,
+          -0.10258472260149988
+        ],
+        "queries": 10303,
+        "parents": 732,
+        "improved": 3527,
+        "harmed": 3983,
+        "unchanged": 2793,
+        "declined_over5pp": 878
+      },
+      "t": {
+        "mean": 0.009664542735696181,
+        "CI95": [
+          -0.11616379699015322,
+          0.13288186737485677
+        ],
+        "queries": 10303,
+        "parents": 732,
+        "improved": 2055,
+        "harmed": 2045,
+        "unchanged": 6203,
+        "declined_over5pp": 748
+      },
+      "observed_actual_sIoU": {
+        "mean": -4.054088887407644,
+        "CI95": [
+          -4.477223753916055,
+          -3.6607264774967065
+        ],
+        "queries": 8507,
+        "parents": 715,
+        "improved": 1566,
+        "harmed": 4044,
+        "unchanged": 2897,
+        "declined_over5pp": 1900
+      },
+      "unobserved_actual_sIoU": {
+        "mean": -0.2211836010354412,
+        "CI95": [
+          -0.753062513866481,
+          0.30506053200145244
+        ],
+        "queries": 10300,
+        "parents": 732,
+        "improved": 4273,
+        "harmed": 4958,
+        "unchanged": 1069,
+        "declined_over5pp": 2549
+      },
+      "boundary_MAE_seconds": {
+        "mean": -0.01321955469249025,
+        "CI95": [
+          -0.05738923849334074,
+          0.025765703333961748
+        ],
+        "queries": 10303,
+        "parents": 732,
+        "improved": 2551,
+        "harmed": 2518,
+        "unchanged": 5234,
+        "declined_over5pp": null
+      }
+    },
+    "Full-PureLinearFixed": {
+      "v": {
+        "mean": -0.24625101668949662,
+        "CI95": [
+          -0.39280908525085456,
+          -0.10161520129364383
+        ],
+        "queries": 10303,
+        "parents": 732,
+        "improved": 3348,
+        "harmed": 4123,
+        "unchanged": 2832,
+        "declined_over5pp": 734
+      },
+      "t": {
+        "mean": 0.0,
+        "CI95": [
+          0.0,
+          0.0
+        ],
+        "queries": 10303,
+        "parents": 732,
+        "improved": 0,
+        "harmed": 0,
+        "unchanged": 10303,
+        "declined_over5pp": 0
+      },
+      "observed_actual_sIoU": {
+        "mean": -4.054088887407644,
+        "CI95": [
+          -4.477223753916055,
+          -3.6607264774967065
+        ],
+        "queries": 8507,
+        "parents": 715,
+        "improved": 1566,
+        "harmed": 4044,
+        "unchanged": 2897,
+        "declined_over5pp": 1900
+      },
+      "unobserved_actual_sIoU": {
+        "mean": -0.2211836010354412,
+        "CI95": [
+          -0.753062513866481,
+          0.30506053200145244
+        ],
+        "queries": 10300,
+        "parents": 732,
+        "improved": 4273,
+        "harmed": 4958,
+        "unchanged": 1069,
+        "declined_over5pp": 2549
+      },
+      "boundary_MAE_seconds": {
+        "mean": 0.0,
+        "CI95": [
+          0.0,
+          0.0
+        ],
+        "queries": 10303,
+        "parents": 732,
+        "improved": 0,
+        "harmed": 0,
+        "unchanged": 10303,
+        "declined_over5pp": null
+      }
+    }
+  },
+  "CI": "pointwise parent bootstrap; no familywise correction",
+  "timegroups": {
+    "short_le5s": {
+      "queries": 6060,
+      "paired": {
+        "Full-ComboLog": {
+          "v": {
+            "mean": -0.16032854205503552,
+            "CI95": [
+              -0.31072919666610943,
+              -0.0203324474525776
+            ],
+            "queries": 6060,
+            "parents": 588,
+            "improved": 1901,
+            "harmed": 2069,
+            "unchanged": 2090,
+            "declined_over5pp": 382
+          },
+          "t": {
+            "mean": -0.02756586755928448,
+            "CI95": [
+              -0.15457811671697713,
+              0.10247488546152252
+            ],
+            "queries": 6060,
+            "parents": 588,
+            "improved": 1057,
+            "harmed": 1055,
+            "unchanged": 3948,
+            "declined_over5pp": 368
+          },
+          "observed_actual_sIoU": {
+            "mean": -3.6719924041258554,
+            "CI95": [
+              -4.249439796402553,
+              -3.131757880427043
+            ],
+            "queries": 4404,
+            "parents": 556,
+            "improved": 711,
+            "harmed": 1611,
+            "unchanged": 2082,
+            "declined_over5pp": 775
+          },
+          "unobserved_actual_sIoU": {
+            "mean": 0.7504071393421098,
+            "CI95": [
+              0.09292619595883335,
+              1.3832491981806405
+            ],
+            "queries": 6057,
+            "parents": 588,
+            "improved": 2542,
+            "harmed": 2740,
+            "unchanged": 775,
+            "declined_over5pp": 1413
+          },
+          "boundary_MAE_seconds": {
+            "mean": -0.012371365573523505,
+            "CI95": [
+              -0.05103408683269259,
+              0.023257210476564222
+            ],
+            "queries": 6060,
+            "parents": 588,
+            "improved": 1448,
+            "harmed": 1429,
+            "unchanged": 3183,
+            "declined_over5pp": null
+          }
+        },
+        "Full-PureLogFixed": {
+          "v": {
+            "mean": -0.14698708467225102,
+            "CI95": [
+              -0.2893290493548842,
+              -0.01507114309969368
+            ],
+            "queries": 6060,
+            "parents": 588,
+            "improved": 1820,
+            "harmed": 2113,
+            "unchanged": 2127,
+            "declined_over5pp": 315
+          },
+          "t": {
+            "mean": 0.0,
+            "CI95": [
+              0.0,
+              0.0
+            ],
+            "queries": 6060,
+            "parents": 588,
+            "improved": 0,
+            "harmed": 0,
+            "unchanged": 6060,
+            "declined_over5pp": 0
+          },
+          "observed_actual_sIoU": {
+            "mean": -3.6719924041258554,
+            "CI95": [
+              -4.249439796402553,
+              -3.131757880427043
+            ],
+            "queries": 4404,
+            "parents": 556,
+            "improved": 711,
+            "harmed": 1611,
+            "unchanged": 2082,
+            "declined_over5pp": 775
+          },
+          "unobserved_actual_sIoU": {
+            "mean": 0.7504071393421098,
+            "CI95": [
+              0.09292619595883335,
+              1.3832491981806405
+            ],
+            "queries": 6057,
+            "parents": 588,
+            "improved": 2542,
+            "harmed": 2740,
+            "unchanged": 775,
+            "declined_over5pp": 1413
+          },
+          "boundary_MAE_seconds": {
+            "mean": 0.0,
+            "CI95": [
+              0.0,
+              0.0
+            ],
+            "queries": 6060,
+            "parents": 588,
+            "improved": 0,
+            "harmed": 0,
+            "unchanged": 6060,
+            "declined_over5pp": null
+          }
+        },
+        "Full-ComboLinear": {
+          "v": {
+            "mean": -0.23642718632333232,
+            "CI95": [
+              -0.38627190272672685,
+              -0.0970373737130585
+            ],
+            "queries": 6060,
+            "parents": 588,
+            "improved": 1867,
+            "harmed": 2106,
+            "unchanged": 2087,
+            "declined_over5pp": 395
+          },
+          "t": {
+            "mean": -0.02756586755928448,
+            "CI95": [
+              -0.15457811671697713,
+              0.10247488546152252
+            ],
+            "queries": 6060,
+            "parents": 588,
+            "improved": 1057,
+            "harmed": 1055,
+            "unchanged": 3948,
+            "declined_over5pp": 368
+          },
+          "observed_actual_sIoU": {
+            "mean": -3.6719924041258554,
+            "CI95": [
+              -4.249439796402553,
+              -3.131757880427043
+            ],
+            "queries": 4404,
+            "parents": 556,
+            "improved": 711,
+            "harmed": 1611,
+            "unchanged": 2082,
+            "declined_over5pp": 775
+          },
+          "unobserved_actual_sIoU": {
+            "mean": 0.21527369969849885,
+            "CI95": [
+              -0.4144148920494747,
+              0.8305855194483033
+            ],
+            "queries": 6057,
+            "parents": 588,
+            "improved": 2477,
+            "harmed": 2813,
+            "unchanged": 767,
+            "declined_over5pp": 1460
+          },
+          "boundary_MAE_seconds": {
+            "mean": -0.012371365573523505,
+            "CI95": [
+              -0.05103408683269259,
+              0.023257210476564222
+            ],
+            "queries": 6060,
+            "parents": 588,
+            "improved": 1448,
+            "harmed": 1429,
+            "unchanged": 3183,
+            "declined_over5pp": null
+          }
+        },
+        "Full-PureLinearFixed": {
+          "v": {
+            "mean": -0.2229542823658214,
+            "CI95": [
+              -0.36548038514984926,
+              -0.09191298716153314
+            ],
+            "queries": 6060,
+            "parents": 588,
+            "improved": 1778,
+            "harmed": 2161,
+            "unchanged": 2121,
+            "declined_over5pp": 327
+          },
+          "t": {
+            "mean": 0.0,
+            "CI95": [
+              0.0,
+              0.0
+            ],
+            "queries": 6060,
+            "parents": 588,
+            "improved": 0,
+            "harmed": 0,
+            "unchanged": 6060,
+            "declined_over5pp": 0
+          },
+          "observed_actual_sIoU": {
+            "mean": -3.6719924041258554,
+            "CI95": [
+              -4.249439796402553,
+              -3.131757880427043
+            ],
+            "queries": 4404,
+            "parents": 556,
+            "improved": 711,
+            "harmed": 1611,
+            "unchanged": 2082,
+            "declined_over5pp": 775
+          },
+          "unobserved_actual_sIoU": {
+            "mean": 0.21527369969849885,
+            "CI95": [
+              -0.4144148920494747,
+              0.8305855194483033
+            ],
+            "queries": 6057,
+            "parents": 588,
+            "improved": 2477,
+            "harmed": 2813,
+            "unchanged": 767,
+            "declined_over5pp": 1460
+          },
+          "boundary_MAE_seconds": {
+            "mean": 0.0,
+            "CI95": [
+              0.0,
+              0.0
+            ],
+            "queries": 6060,
+            "parents": 588,
+            "improved": 0,
+            "harmed": 0,
+            "unchanged": 6060,
+            "declined_over5pp": null
+          }
+        }
+      }
+    },
+    "long_gt5s": {
+      "queries": 4243,
+      "paired": {
+        "Full-ComboLog": {
+          "v": {
+            "mean": -0.13873869945930006,
+            "CI95": [
+              -0.4176183246831732,
+              0.1443387322008319
+            ],
+            "queries": 4243,
+            "parents": 540,
+            "improved": 1689,
+            "harmed": 1848,
+            "unchanged": 706,
+            "declined_over5pp": 476
+          },
+          "t": {
+            "mean": 0.06283830808747154,
+            "CI95": [
+              -0.18038265090999406,
+              0.31026367339285776
+            ],
+            "queries": 4243,
+            "parents": 540,
+            "improved": 998,
+            "harmed": 990,
+            "unchanged": 2255,
+            "declined_over5pp": 380
+          },
+          "observed_actual_sIoU": {
+            "mean": -4.464216333757389,
+            "CI95": [
+              -4.960393980684569,
+              -3.9731484432342414
+            ],
+            "queries": 4103,
+            "parents": 538,
+            "improved": 855,
+            "harmed": 2433,
+            "unchanged": 815,
+            "declined_over5pp": 1125
+          },
+          "unobserved_actual_sIoU": {
+            "mean": -0.47980842331010426,
+            "CI95": [
+              -1.1943197448279863,
+              0.24673955044643564
+            ],
+            "queries": 4243,
+            "parents": 540,
+            "improved": 1825,
+            "harmed": 2116,
+            "unchanged": 302,
+            "declined_over5pp": 1053
+          },
+          "boundary_MAE_seconds": {
+            "mean": -0.014430967857924719,
+            "CI95": [
+              -0.08687510141432278,
+              0.05578253673391945
+            ],
+            "queries": 4243,
+            "parents": 540,
+            "improved": 1103,
+            "harmed": 1089,
+            "unchanged": 2051,
+            "declined_over5pp": null
+          }
+        },
+        "Full-PureLogFixed": {
+          "v": {
+            "mean": -0.1451797933108036,
+            "CI95": [
+              -0.4128590233139016,
+              0.12643182181017998
+            ],
+            "queries": 4243,
+            "parents": 540,
+            "improved": 1601,
+            "harmed": 1931,
+            "unchanged": 711,
+            "declined_over5pp": 399
+          },
+          "t": {
+            "mean": 0.0,
+            "CI95": [
+              0.0,
+              0.0
+            ],
+            "queries": 4243,
+            "parents": 540,
+            "improved": 0,
+            "harmed": 0,
+            "unchanged": 4243,
+            "declined_over5pp": 0
+          },
+          "observed_actual_sIoU": {
+            "mean": -4.464216333757389,
+            "CI95": [
+              -4.960393980684569,
+              -3.9731484432342414
+            ],
+            "queries": 4103,
+            "parents": 538,
+            "improved": 855,
+            "harmed": 2433,
+            "unchanged": 815,
+            "declined_over5pp": 1125
+          },
+          "unobserved_actual_sIoU": {
+            "mean": -0.47980842331010426,
+            "CI95": [
+              -1.1943197448279863,
+              0.24673955044643564
+            ],
+            "queries": 4243,
+            "parents": 540,
+            "improved": 1825,
+            "harmed": 2116,
+            "unchanged": 302,
+            "declined_over5pp": 1053
+          },
+          "boundary_MAE_seconds": {
+            "mean": 0.0,
+            "CI95": [
+              0.0,
+              0.0
+            ],
+            "queries": 4243,
+            "parents": 540,
+            "improved": 0,
+            "harmed": 0,
+            "unchanged": 4243,
+            "declined_over5pp": null
+          }
+        },
+        "Full-ComboLinear": {
+          "v": {
+            "mean": -0.27393039150654647,
+            "CI95": [
+              -0.5526510901431043,
+              0.004190124834542967
+            ],
+            "queries": 4243,
+            "parents": 540,
+            "improved": 1660,
+            "harmed": 1877,
+            "unchanged": 706,
+            "declined_over5pp": 483
+          },
+          "t": {
+            "mean": 0.06283830808747154,
+            "CI95": [
+              -0.18038265090999406,
+              0.31026367339285776
+            ],
+            "queries": 4243,
+            "parents": 540,
+            "improved": 998,
+            "harmed": 990,
+            "unchanged": 2255,
+            "declined_over5pp": 380
+          },
+          "observed_actual_sIoU": {
+            "mean": -4.464216333757389,
+            "CI95": [
+              -4.960393980684569,
+              -3.9731484432342414
+            ],
+            "queries": 4103,
+            "parents": 538,
+            "improved": 855,
+            "harmed": 2433,
+            "unchanged": 815,
+            "declined_over5pp": 1125
+          },
+          "unobserved_actual_sIoU": {
+            "mean": -0.8442384845012615,
+            "CI95": [
+              -1.5506873697927819,
+              -0.1225515904522766
+            ],
+            "queries": 4243,
+            "parents": 540,
+            "improved": 1796,
+            "harmed": 2145,
+            "unchanged": 302,
+            "declined_over5pp": 1089
+          },
+          "boundary_MAE_seconds": {
+            "mean": -0.014430967857924719,
+            "CI95": [
+              -0.08687510141432278,
+              0.05578253673391945
+            ],
+            "queries": 4243,
+            "parents": 540,
+            "improved": 1103,
+            "harmed": 1089,
+            "unchanged": 2051,
+            "declined_over5pp": null
+          }
+        },
+        "Full-PureLinearFixed": {
+          "v": {
+            "mean": -0.2795242219691271,
+            "CI95": [
+              -0.5440266457894004,
+              -0.011746469114177763
+            ],
+            "queries": 4243,
+            "parents": 540,
+            "improved": 1570,
+            "harmed": 1962,
+            "unchanged": 711,
+            "declined_over5pp": 407
+          },
+          "t": {
+            "mean": 0.0,
+            "CI95": [
+              0.0,
+              0.0
+            ],
+            "queries": 4243,
+            "parents": 540,
+            "improved": 0,
+            "harmed": 0,
+            "unchanged": 4243,
+            "declined_over5pp": 0
+          },
+          "observed_actual_sIoU": {
+            "mean": -4.464216333757389,
+            "CI95": [
+              -4.960393980684569,
+              -3.9731484432342414
+            ],
+            "queries": 4103,
+            "parents": 538,
+            "improved": 855,
+            "harmed": 2433,
+            "unchanged": 815,
+            "declined_over5pp": 1125
+          },
+          "unobserved_actual_sIoU": {
+            "mean": -0.8442384845012615,
+            "CI95": [
+              -1.5506873697927819,
+              -0.1225515904522766
+            ],
+            "queries": 4243,
+            "parents": 540,
+            "improved": 1796,
+            "harmed": 2145,
+            "unchanged": 302,
+            "declined_over5pp": 1089
+          },
+          "boundary_MAE_seconds": {
+            "mean": 0.0,
+            "CI95": [
+              0.0,
+              0.0
+            ],
+            "queries": 4243,
+            "parents": 540,
+            "improved": 0,
+            "harmed": 0,
+            "unchanged": 4243,
+            "declined_over5pp": null
+          }
+        }
+      }
+    }
+  }
+}
