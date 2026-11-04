@@ -1,0 +1,26 @@
+Traceback (most recent call last):
+  File "/home/wwww/visual grounding/stvg-native2d-simplepath/results/temporal_query_semantics_v1/report_code/root_sampling_ceiling_v1.py", line 27, in <module>
+    if __name__=='__main__':main()
+                            ^^^^^^
+  File "/home/wwww/visual grounding/stvg-native2d-simplepath/results/temporal_query_semantics_v1/report_code/root_sampling_ceiling_v1.py", line 20, in main
+    atomic(P/'sampling_ceiling.json',report);atomic(D/'sampling_ceiling_private_rows.json',rows)
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/wwww/visual grounding/stvg-native2d-simplepath/tools/full.py", line 21, in atomic
+    p=Path(p);p.parent.mkdir(parents=True,exist_ok=True);t=p.with_suffix(p.suffix+'.tmp');t.write_text(json.dumps(x,indent=2,allow_nan=False)+'\n');os.replace(t,p)
+                                                                                                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/wwww/visual grounding/stvg-native2d-simplepath/.conda/tubedetr/lib/python3.11/json/__init__.py", line 238, in dumps
+    **kw).encode(obj)
+          ^^^^^^^^^^^
+  File "/home/wwww/visual grounding/stvg-native2d-simplepath/.conda/tubedetr/lib/python3.11/json/encoder.py", line 202, in encode
+    chunks = list(chunks)
+             ^^^^^^^^^^^^
+  File "/home/wwww/visual grounding/stvg-native2d-simplepath/.conda/tubedetr/lib/python3.11/json/encoder.py", line 432, in _iterencode
+    yield from _iterencode_dict(o, _current_indent_level)
+  File "/home/wwww/visual grounding/stvg-native2d-simplepath/.conda/tubedetr/lib/python3.11/json/encoder.py", line 406, in _iterencode_dict
+    yield from chunks
+  File "/home/wwww/visual grounding/stvg-native2d-simplepath/.conda/tubedetr/lib/python3.11/json/encoder.py", line 439, in _iterencode
+    o = _default(o)
+        ^^^^^^^^^^^
+  File "/home/wwww/visual grounding/stvg-native2d-simplepath/.conda/tubedetr/lib/python3.11/json/encoder.py", line 180, in default
+    raise TypeError(f'Object of type {o.__class__.__name__} '
+TypeError: Object of type int64 is not JSON serializable
