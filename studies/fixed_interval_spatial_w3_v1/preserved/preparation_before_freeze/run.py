@@ -1,0 +1,29 @@
+from common import *
+import argparse
+def prepare():
+ assert not(D/'plan.json').exists();old.validate();old.selected.validate();torch.set_num_threads(1);cases=[];inputs=[R/'CURRENT_METHOD_v2.json',R/'profiles/shared_corrected_roi_v1.json',old.selected.PREV/'raw_reuse_index.json',TEMP/'plan_v1.json',COMP/'plan.json']
+ for ds in COUNTS:
+  keys={r['id']for r in rows(ds)};assert len(keys)==COUNTS[ds]
+  for path in [RECHECK/ds/'sealed.json',TEMP/'temporal'/ds/'sealed.json',COMP/f'components_{ds}_sealed.json']:
+   assert set(read(path)['files'])==keys;inputs.append(path)
+  inputs += [RECHECK/ds/'metrics.json',RECHECK/ds/'audit_receipt.json',TEMP/'temporal'/ds/'metrics.json',TEMP/'temporal'/ds/'reporting_receipt.json',COMP/'components'/ds/'metrics.json',COMP/f'components_{ds}_reporting_receipt.json',old.selected.PREV/'spatial'/f'{ds}_sealed.json']
+  aa=read(RECHECK/ds/'audit_receipt.json');assert aa['metrics_sha256']==sha(RECHECK/ds/'metrics.json')
+  bb=read(TEMP/'temporal'/ds/'reporting_receipt.json');assert bb['status']
+  cc=read(COMP/f'components_{ds}_reporting_receipt.json');assert cc['all_arrays_cold_rederived_exact']and cc['all_means_recomputed']
+  for row in rows(ds)[:2]:
+   a,p=derive(ds,row,preflight=True);b,q=derive(ds,row,independent=True);assert p==q and all(np.array_equal(v,b[k])for k,v in a.items());cases.append(dict(dataset=ds,query=row['id'],actual_cached_mainDP_independent_exact=True,new_two_controls_numpy_cold_exact=True))
+ atomic(D/'preflight.json',dict(cases=cases,passed=True,new_Source=0,new_expert=0,new_GPU=0,new_model=0,new_GT_score=0))
+ code=list(S.glob('*.py'))+[R/'studies/reviewer_key_controls_v1/common_v1.py',R/'studies/shared_corrected_roi_v1/shared_common.py',R/'stvg/spatial.py',R/'tools/full_score.py',R/'studies/spatial_table_recheck_v1/score.py']
+ p=dict(schema='fixed_interval_spatial_W3_v1',counts=COUNTS,authorization='2026-11-04 user requests full same-expert same-interval interpolation/shared-correction/final-path comparison and independent bidirectional/DP value.',arms=ARMS,pairs=PAIRS,new_arms=NEW,reuse='Unchanged PureLog/PureLinear/Full from independent full table recheck; E ExpertInitTR from full temporal controls; same-candidate FinalIndependent from shared-corrected-ROI full components; all their official scores reused, not rescored.',interpolation='Both explicit raw8nearest-tail definitions retained: original center/logsize and independent linear xyxycorner; no E tail, no target choice.',PastOnlyFixed='Cached original main geometry: future candidate/support removed, unaries recomputed; own observed and past candidates retained. Final exactDP at original Full interval, no temporal update. Not online inference.',OneWayMatchFixed='Same both anchors/source features/masks/fit constraints, original cached a-to-t fit uses at*seed in place of reciprocal at*ta.T*seed; finalDP fixed original Full interval. No refit/new Source here, cached legitimately computed geometry.',DP_control='Original FinalIndependent at exact Full interval, identical bank/unaries/validity; delete adjacent links and global optimization only. Full may change all-frame path including observed E/expert soft choices.',contract='Same raw8expert INPUTS; Full/E/DP do not hard-lock observed OUTPUTS. Existing hard-anchor mismatch unresolved, no method repair/overwrite/manuscript changes; no claim exclusively unobserved propagation or intended hardanchor implementation.',prediction_labels=False,whole_seal_before_separate_new_only_official_score=True,separate_audit='Cold cached input/SHA/allarray rederive with independent NumPy DP recurrence and normalized dense IoU evaluator; means/parent/querycoverage.',stats='queryequal 10000pairedparent bootstrap seed20261022 pointwise/exposed, signedsevere uniononce>5pp/rescues/short<=5s/long; no target tuning/equivalence/universalTTA claim.',resources='max2CPU14-15nice19idleIO1threadCUDAhidden,RAM8GiB/disk80/private160/72h',new_Source=0,new_expert=0,new_GPU=0,new_model=0,new_optimizer=0,code_sha256={str(f.relative_to(R)):sha(f)for f in code},input_sha256={str(f.relative_to(R)):sha(f)for f in inputs})
+ p['fingerprint']=digest(p);atomic(D/'plan.json',p);atomic(P/'protocol.json',{k:v for k,v in p.items()if k!='input_sha256'});atomic(P/'preflight.json',dict(passed=True,actual_cached_cases=4,new_Source=0,new_expert=0,new_GT_score=0));print(p['fingerprint'],flush=True)
+def predict(ds):
+ p=validate();old.infer_guard();torch.set_num_threads(1);start=time.perf_counter();dest=D/ds;assert not(dest/'sealed.json').exists();files={}
+ for i,row in enumerate(rows(ds),1):
+  resources(start);begin=time.perf_counter();arrays,proof=derive(ds,row);path=dest/'predictions'/(row['id']+'.npz');path.parent.mkdir(parents=True,exist_ok=True);assert not path.exists()
+  with path.open('wb')as f:np.savez_compressed(f,**arrays)
+  with np.load(path)as z:assert set(z.files)==set(arrays)and all(np.array_equal(v,z[k])for k,v in arrays.items())
+  rec=dict(path=str(path.relative_to(D)),sha256=sha(path),proof=proof,worker=identity(),conditional_cached_query_wall_seconds=time.perf_counter()-begin,GT_read=False);rp=dest/'receipts'/(row['id']+'.json');atomic(rp,rec);files[row['id']]={**rec,receipt_path=str(rp.relative_to(D)),receipt_sha256=sha(rp)}
+  if i%50==0 or i==COUNTS[ds]:atomic(dest/'progress.json',dict(completed=i,total=COUNTS[ds],GT_read=False,worker=identity()))
+ atomic(dest/'sealed.json',dict(files=files,queries=len(files),GT_read=False,worker=identity(),elapsed_wall_seconds=time.perf_counter()-start,plan_fingerprint=p['fingerprint']));print(ds,len(files),'sealed',flush=True)
+if __name__=='__main__':
+ a=argparse.ArgumentParser();a.add_argument('stage',choices=['prepare','predict']);a.add_argument('--dataset',choices=COUNTS);x=a.parse_args();globals()[x.stage](*([]if x.stage=='prepare'else[x.dataset]))

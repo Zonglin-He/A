@@ -1,0 +1,76 @@
+{
+  "schema": "fixed_interval_spatial_W3_v1",
+  "counts": {
+    "hc2": 1902,
+    "vidstg": 10303
+  },
+  "authorization": "2026-11-04 user requests full same-expert same-interval interpolation/shared-correction/final-path comparison and independent bidirectional/DP value.",
+  "arms": [
+    "PureLog",
+    "PureLinear",
+    "SharedCorrection",
+    "Independent",
+    "PastOnlyFixed",
+    "OneWayMatchFixed",
+    "Full"
+  ],
+  "pairs": [
+    [
+      "Full",
+      "PureLog"
+    ],
+    [
+      "Full",
+      "PureLinear"
+    ],
+    [
+      "Full",
+      "SharedCorrection"
+    ],
+    [
+      "Full",
+      "Independent"
+    ],
+    [
+      "Full",
+      "PastOnlyFixed"
+    ],
+    [
+      "Full",
+      "OneWayMatchFixed"
+    ]
+  ],
+  "new_arms": [
+    "PastOnlyFixed",
+    "OneWayMatchFixed"
+  ],
+  "reuse": "Unchanged PureLog/PureLinear/Full from independent full table recheck; E ExpertInitTR from full temporal controls; same-candidate FinalIndependent from shared-corrected-ROI full components; all their official scores reused, not rescored.",
+  "interpolation": "Both explicit raw8nearest-tail definitions retained: original center/logsize and independent linear xyxycorner; no E tail, no target choice.",
+  "PastOnlyFixed": "Cached original main geometry: future candidate/support removed, unaries recomputed; own observed and past candidates retained. Final exactDP at original Full interval, no temporal update. Not online inference.",
+  "OneWayMatchFixed": "Same both anchors/source features/masks/fit constraints, original cached a-to-t fit uses at*seed in place of reciprocal at*ta.T*seed; finalDP fixed original Full interval. No refit/new Source here, cached legitimately computed geometry.",
+  "DP_control": "Original FinalIndependent at exact Full interval, identical bank/unaries/validity; delete adjacent links and global optimization only. Full may change all-frame path including observed E/expert soft choices.",
+  "contract": "Same raw8expert INPUTS; Full/E/DP do not hard-lock observed OUTPUTS. Existing hard-anchor mismatch unresolved, no method repair/overwrite/manuscript changes; no claim exclusively unobserved propagation or intended hardanchor implementation.",
+  "prediction_labels": false,
+  "whole_seal_before_separate_new_only_official_score": true,
+  "separate_audit": "Cold cached input/SHA/allarray rederive with independent NumPy DP recurrence and normalized dense IoU evaluator; means/parent/querycoverage.",
+  "stats": "queryequal 10000pairedparent bootstrap seed20261022 pointwise/exposed, signedsevere uniononce>5pp/rescues/short<=5s/long; no target tuning/equivalence/universalTTA claim.",
+  "resources": "max2CPU14-15nice19idleIO1threadCUDAhidden,RAM8GiB/disk80/private160/72h",
+  "new_Source": 0,
+  "new_expert": 0,
+  "new_GPU": 0,
+  "new_model": 0,
+  "new_optimizer": 0,
+  "code_sha256": {
+    "studies/fixed_interval_spatial_w3_v1/score.py": "9bc5850dee38b466bcfc212378f22e686597f37c099ad539b2d4d7f932213239",
+    "studies/fixed_interval_spatial_w3_v1/common.py": "250c4a0af940204a50b78f2223e2c72ffe399fb2521ccf56350bf54e11075ec6",
+    "studies/fixed_interval_spatial_w3_v1/controller.py": "5190fdd10355602d04e577b76c3645df2e3bdc964c836bf23f9b9abe940ceb85",
+    "studies/fixed_interval_spatial_w3_v1/run.py": "835f86d56097026d613c23b66708fcbd9a9a342cb12104ead4cb299182a5a6ea",
+    "studies/fixed_interval_spatial_w3_v1/audit.py": "653eb2ef6f79181a887010c2a1327cff833bfac9ea485c98ca5f9d5e9d645082",
+    "studies/reviewer_key_controls_v1/common_v1.py": "fdd90e7dd582d885254f7253ccbed4046e5decc107438b6f4cba674408f51822",
+    "studies/shared_corrected_roi_v1/shared_common.py": "4baab238e0eddbadba2ed21495f839a51425a9a412c776519c003da28d0e27f2",
+    "stvg/spatial.py": "54c3cec0ec643e47464957730f482302609855164196b361ee4bee1efd025c10",
+    "tools/full_score.py": "419f03f9b68c1e63962f1a742bde485d92daf8662dace2167579d1a6dd423c08",
+    "studies/spatial_table_recheck_v1/score.py": "750ea490e321faf7e169c3ff5b93ca3a039235b58ecc517da6d9a8c3fa96478a"
+  },
+  "fingerprint": "fe1e8c0797aeb82cd5ede66918183d9b55036cd5105f8ea80d39e4b9429184c6"
+}

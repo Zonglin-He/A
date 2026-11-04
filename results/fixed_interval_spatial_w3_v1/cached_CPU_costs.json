@@ -1,0 +1,126 @@
+{
+  "domains": {
+    "hc2": {
+      "prediction_segments": {
+        "1824722:332352937": {
+          "queries": 1902,
+          "query_wall_sum_seconds": 73.59370431350544
+        }
+      },
+      "prediction_whole_wall": 74.50192603515461,
+      "stages": {
+        "hc2_predict": {
+          "dataset": "hc2",
+          "stage": "predict",
+          "worker": {
+            "pid": 1824722,
+            "startticks": 332352937
+          },
+          "actual_subprocess_wait": true,
+          "exit_code": 0,
+          "elapsed_wall_seconds": 76.52982604317367
+        },
+        "hc2_score": {
+          "dataset": "hc2",
+          "stage": "score",
+          "worker": {
+            "pid": 1875194,
+            "startticks": 332411542
+          },
+          "actual_subprocess_wait": true,
+          "exit_code": 0,
+          "elapsed_wall_seconds": 29.524217136204243
+        },
+        "hc2_audit": {
+          "dataset": "hc2",
+          "stage": "audit",
+          "worker": {
+            "pid": 1877711,
+            "startticks": 332414495
+          },
+          "actual_subprocess_wait": true,
+          "exit_code": 0,
+          "elapsed_wall_seconds": 66.3206556928344
+        }
+      },
+      "scope": "Cached geometry/NPZ readback, finalDP and experimental audit/scoring costs, not end-to-end or pure spatial deployment latency. Inherited Source/features/expert calls remain nonzero; nested clocks cannot be added; no model load this task. Outside actual measured scope unknown clocks null, not0."
+    },
+    "vidstg": {
+      "prediction_segments": {
+        "1824723:332352937": {
+          "queries": 10303,
+          "query_wall_sum_seconds": 559.0039965296164
+        }
+      },
+      "prediction_whole_wall": 563.8431834699586,
+      "stages": {
+        "vidstg_predict": {
+          "dataset": "vidstg",
+          "stage": "predict",
+          "worker": {
+            "pid": 1824723,
+            "startticks": 332352937
+          },
+          "actual_subprocess_wait": true,
+          "exit_code": 0,
+          "elapsed_wall_seconds": 566.4279776397161
+        },
+        "vidstg_score": {
+          "dataset": "vidstg",
+          "stage": "score",
+          "worker": {
+            "pid": 1875193,
+            "startticks": 332411542
+          },
+          "actual_subprocess_wait": true,
+          "exit_code": 0,
+          "elapsed_wall_seconds": 186.80229775700718
+        },
+        "vidstg_audit": {
+          "dataset": "vidstg",
+          "stage": "audit",
+          "worker": {
+            "pid": 1891262,
+            "startticks": 332430223
+          },
+          "actual_subprocess_wait": true,
+          "exit_code": 0,
+          "elapsed_wall_seconds": 473.4900723332539
+        }
+      },
+      "scope": "Cached geometry/NPZ readback, finalDP and experimental audit/scoring costs, not end-to-end or pure spatial deployment latency. Inherited Source/features/expert calls remain nonzero; nested clocks cannot be added; no model load this task. Outside actual measured scope unknown clocks null, not0."
+    }
+  },
+  "original_failed_score_stages": {
+    "hc2_score": {
+      "dataset": "hc2",
+      "stage": "score",
+      "worker": {
+        "pid": 1831148,
+        "startticks": 332360590
+      },
+      "actual_subprocess_wait": true,
+      "exit_code": 1,
+      "elapsed_wall_seconds": 3.0359154799953103
+    },
+    "vidstg_score": {
+      "dataset": "vidstg",
+      "stage": "score",
+      "worker": {
+        "pid": 1873415,
+        "startticks": 332409580
+      },
+      "actual_subprocess_wait": true,
+      "exit_code": 1,
+      "elapsed_wall_seconds": 9.56276041502133
+    }
+  },
+  "new_Source": 0,
+  "new_expert": 0,
+  "new_GPU": 0,
+  "new_model": 0,
+  "new_optimizer": 0,
+  "inherited_acquisition_nonzero": true,
+  "deployment_latency": false,
+  "nested_clocks_not_additive": true
+}
