@@ -1,0 +1,33 @@
+{
+  "scope": "Only first metadata-preselected SOURCE validation query per direction, correct source-trained model; actual pos_fc/full spatial decoder gradient and bitwise Source/reset/ROI compatibility. Not target pilot or calibration config selection.",
+  "new_Source_cap": 2,
+  "new_expert": 0,
+  "optimizer_steps_cap": 10,
+  "config": {
+    "lr": 1e-05,
+    "steps": 5,
+    "lambda_l1": 5,
+    "lambda_giou": "official source ratio HCtarget3/Vidtarget4",
+    "clip_norm": 0.1
+  },
+  "code_and_input_sha256": {
+    "studies/expert_guided_ttft_v1/core.py": "6f0131669e9691902f69d7ea540b888ebd56ee313a3d5b5902f31fbe7b0e1800",
+    "studies/expert_guided_ttft_v1/preflight_gpu.py": "c4c52d772b683f7b1e34660201454446e913986caf394645a1f4ae77e40ef5de",
+    "studies/expert_guided_ttft_v1/preflight_runtime_v2.py": "4684a88b93a943df3debd459ee4eb893356f72bc8a65cc5534fd640789e4f45f",
+    "studies/expert_guided_ttft_v1/model_utils.py": "27c6455bf64be09ba03c5eae2d2637bfaca688e6a80b9ae8f9897550ed57a394",
+    "studies/expert_guided_ttft_v1/doctor.py": "4d4ec03adcf1e77d7afe1f02121e05f27f6dcb7537580383500fe73ebca64907",
+    "stvg/native.py": "e34d3b08a76ec1baac08e4f158f42ce8e0bf1795a4034ee80801422d0b04ccbc",
+    "stvg/representation.py": "1e10152274996a046dc45a1bbfd90727dda4083f3c1afcea21f2765f97f0e666",
+    "stvg/prototype.py": "b263154ae8c6ff4e4f8162e4ddea4498302b86f2ec65e8cfac0aa92d351d425b",
+    "stvg/prior.py": "341ef6c18534a17d52979827d6ca12d29dd34236648abca506632ff25bdc45a2",
+    "stvg/runtime.py": "4b1fcfbfeefec90643c0c92621f4a1d28339aa5c1bf68ad8d7f69ab413176381",
+    "studies/expert_subset_followups_v1/protected_service_gate_runtime_v2.py": "61c73f49a0c95f72c6372cc9d335bdbec07cc63d599fe3696b25e3a93969a5dc",
+    "outputs/spatial_temporal_six_v1/source_validation_cohort_v1.json": "261fd213afda27fd58e58e86a281dd7ee7d0d9da067c1ec5a2589c268177d50a",
+    "outputs/expert_guided_ttft_v1/source_gradient_preflight_v2/calibration_intent_v1.json": "d99f8fd0c4d61c981d064ab0ce027009b9e327128abe2dfc7dbb85d7a189a2cb",
+    "outputs/spatial_temporal_six_v1/source_validation/hc2/sealed.json": "a1b70522ec1ad019a2948c96a42f84599b1cb30908ffea1ae493541bccd877e6",
+    "outputs/spatial_temporal_six_v1/source_validation/vidstg/sealed.json": "bddf7486e23a979e25ccbef849fba7451cf16dc2af8457b0efa8e9bcea7e64b1"
+  },
+  "failures": "Full paid native/context/adapted checkpoints preserved before check; hardfail/no fallback/no blind new Source.",
+  "priority_gate_sha256": "c272e75afef8770adac733720fd829e6fbe5960685f2343d8e684095408263ca",
+  "fingerprint": "3610180cd58b1edbac6537456535595eea00f5277049bdccdd15d0d9f0211edc"
+}

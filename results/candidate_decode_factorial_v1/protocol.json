@@ -1,0 +1,106 @@
+{
+  "schema": "full_fixed_time_candidate_inclusion_x_decoder_v1",
+  "authorization": "2026-11-04 user requests five-row candidate generation x trajectory decoding plus distance supplement",
+  "counts": {
+    "hc2": 1902,
+    "vidstg": 10303
+  },
+  "arms": [
+    "E",
+    "AnchorsIndependent",
+    "AnchorsDP",
+    "TransportIndependent",
+    "Full"
+  ],
+  "new_arms": [
+    "AnchorsIndependent",
+    "AnchorsDP"
+  ],
+  "pairs": [
+    [
+      "AnchorsIndependent",
+      "E"
+    ],
+    [
+      "AnchorsDP",
+      "E"
+    ],
+    [
+      "TransportIndependent",
+      "E"
+    ],
+    [
+      "Full",
+      "E"
+    ],
+    [
+      "AnchorsDP",
+      "AnchorsIndependent"
+    ],
+    [
+      "TransportIndependent",
+      "AnchorsIndependent"
+    ],
+    [
+      "Full",
+      "TransportIndependent"
+    ],
+    [
+      "Full",
+      "AnchorsDP"
+    ]
+  ],
+  "Full_interval": "Exact immutable current Full interval per query; E/experts/features/eightpositions/geometry/prototype/parameters unchanged; no temporal inference or new features.",
+  "no_transport": "Remove only valid transported candidate1/2 at unobserved native nodes. Keep E everywhere and original legal expert candidates at observed nodes. Preserve common original node/edge scores, support and normalization. Candidate-inclusion experiment, not end-to-end deletion/refit of all geometry/appearance computation.",
+  "independent": "Masked per-node original score_unary argmax, first-index ties. Not interpolation.",
+  "DP": "Original exact global recurrence with unchanged score_unary/score_pair/validity/weights; no hard anchor clamp.",
+  "reuse": "E/Full all original official and dense-conditional metrics reused by exact arrays/SHA; TransportIndependent original official v/t/recalls reused, new common-event dense unobserved/observed IoUs computed. Only two new anchor controls require official tube scoring.",
+  "metric": "vIoU over whole exact full query list; event_unobserved_IoU conditional querymean over common predicted/GT interval annotated dense frames excluding exact8physicalobservations. Same support all5. Empty conditional support null, primary v retains zeros/allqueries. Not original128 all-video native-grid IoU.",
+  "distance": "Same conditional dense unobserved support bins0-.5/.5-1/1-2/2-4/>=4seconds for E/TransportIndependent/Full; exactphysicaltime nearest8. Perquery thenparentCI, bin empty null. Official densification means changing observed native boxes can affect nearby unobserved dense frames even without transported candidates.",
+  "statistics": "All signed/severe tvuniononce>5pp/rescues/short<=5s-long; 10000parentcluster bootstrap20261022 pointwise/exposed/not tuning; include2x2interaction.",
+  "resources": "max2CPU14-15/nice19/ionice3/one thread/CUDAhidden; RAM8GiB/disk80GiB/private160GiB/domain72h",
+  "phase": "Whole domain new prediction seal before independent officialCPU score, separate allarray/inputSHA/independent DP+normalizedIoU/means audit; ROOT then reporting",
+  "new_Source": 0,
+  "new_expert": 0,
+  "new_GPU": 0,
+  "new_model": 0,
+  "new_optimizer": 0,
+  "old_frozen_or_method_or_manuscript_changed": false,
+  "preflight": [
+    {
+      "dataset": "hc2",
+      "main_Full_and_independent_bitwise_existing": true,
+      "new_anchors_independent_and_DP_numpy_repeat_exact": true,
+      "unobserved_native_no_transport_E_exact": true
+    },
+    {
+      "dataset": "hc2",
+      "main_Full_and_independent_bitwise_existing": true,
+      "new_anchors_independent_and_DP_numpy_repeat_exact": true,
+      "unobserved_native_no_transport_E_exact": true
+    },
+    {
+      "dataset": "vidstg",
+      "main_Full_and_independent_bitwise_existing": true,
+      "new_anchors_independent_and_DP_numpy_repeat_exact": true,
+      "unobserved_native_no_transport_E_exact": true
+    },
+    {
+      "dataset": "vidstg",
+      "main_Full_and_independent_bitwise_existing": true,
+      "new_anchors_independent_and_DP_numpy_repeat_exact": true,
+      "unobserved_native_no_transport_E_exact": true
+    }
+  ],
+  "code_sha256": {
+    "studies/candidate_decode_factorial_v1/study.py": "47b3dd8ff78e29c1dfe2b0753a776ff5c3f4eb02b605dc46fc259224bf9649b8",
+    "stvg/spatial.py": "54c3cec0ec643e47464957730f482302609855164196b361ee4bee1efd025c10",
+    "stvg/metrics.py": "c8db46913786a9f300984d7d7ca7ab219be30e8c91a1d27781d23155597d5665",
+    "stvg/metrics_base.py": "4257912cd58f441f36bcafb1ce93eeeae83de18312166ac9017a28687e31f6d0",
+    "stvg/metrics_hc.py": "a4ed56bf48e0bcb8d3193a421048a1a6dd7373027f90e43bfcc6afd6e64b0927",
+    "studies/shared_time_spatial_recalc_v2/score.py": "9276b5f4eb5cb092e81fe86bece3b202c7053660d1d1889c9db7f6dd3125f750",
+    "studies/reviewer_key_controls_v1/common_v1.py": "fdd90e7dd582d885254f7253ccbed4046e5decc107438b6f4cba674408f51822",
+    "studies/shared_corrected_roi_v1/shared_common.py": "4baab238e0eddbadba2ed21495f839a51425a9a412c776519c003da28d0e27f2"
+  },
+  "fingerprint": "d92c9ed90a7a680295a28b2653bb13af8dd60a1dc35233d39aee2e4bdc108fe7"
+}
