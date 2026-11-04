@@ -1,0 +1,65 @@
+from pathlib import Path
+import sys,json,time,csv,inspect
+R=Path(__file__).resolve().parents[3];sys.path.insert(0,str(R/'studies/pure_linear_standalone_v1'))
+from common import *
+from native_time_v2 import N,Q,check
+from tools.full_score import cluster
+
+def main():
+ check();torch.set_num_threads(1);sys.addaudithook(guard);begin=time.perf_counter();who=identity();oldouter=read(D/'controller_actual_exit.json');outer=read(N/'controller_actual_exit.json');assert oldouter['actual_tool_wait']and oldouter['exit_code']==0 and outer['actual_tool_wait']and outer['exit_code']==0
+ exits={f'v1_{p.stem}':read(p)for p in(D/'exits').glob('*.json')};exits.update({f'v2_{p.stem}':read(p)for p in(N/'exits').glob('*.json')});assert len(exits)==10 and all(e['actual_subprocess_wait']and e['exit_code']==0 for e in exits.values())
+ for w in [read(D/'controller.json'),read(N/'controller.json')]+[e['worker']for e in exits.values()]:
+  p=Path('/proc')/str(w['pid'])/'stat';assert not p.exists()or int(p.read_text().split()[21])!=w['startticks']
+ reports={};audits={};nativeaudits={};costs={};rootchecks=0;effects={};rawfields=[('v',100),('t',100),('boundary_MAE_seconds',1)]
+ for ds in COUNTS:
+  a=read(D/ds/'audit_receipt.json');b=read(N/ds/'audit_receipt.json');assert a['report_sha256']==sha(P/ds/'report.json')and b['report_sha256']==sha(Q/ds/'report.json')and b['metrics_sha256']==sha(N/ds/'metrics.json');audits[ds]=a;nativeaudits[ds]=b
+  rr=read(N/ds/'metrics.json')['private_rows'];r=read(Q/ds/'report.json');assert len(rr)==COUNTS[ds];parents={z['parent']for z in rr};assert len(parents)=={'hc2':227,'vidstg':732}[ds]
+  means={arm:{k:v for k,v in m.items()if k in ['v','t','vIoU_ge_03','vIoU_ge_05','boundary_MAE_seconds']}for arm,m in r['means'].items()};pairs=[('OriginalFull',ARMS[1]),(ARMS[1],'OldSparseLinearFixed')];paired={}
+  for aa,bb in pairs:
+   got=cluster(rr,aa,bb,rawfields);assert all(got[k]==r['paired'][aa+'-'+bb][k]for k,_ in rawfields);rootchecks+=len(got);paired[aa+'-'+bb]=got
+  groups={}
+  for group,part in r['timegroups'].items():
+   subset=[z for z in rr if z['duration_group']==group];gp={}
+   for aa,bb in pairs:
+    x=cluster(subset,aa,bb,rawfields);assert all(x[k]==part['paired'][aa+'-'+bb][k]for k,_ in rawfields);rootchecks+=len(x);gp[aa+'-'+bb]=x
+   groups[group]=dict(queries=len(subset),paired=gp)
+  tail={}
+  for aa,bb in pairs:
+   dv=np.array([100*(z['values'][aa]['v']-z['values'][bb]['v'])for z in rr]);dt=np.array([100*(z['values'][aa]['t']-z['values'][bb]['t'])for z in rr]);tail[aa+'-'+bb]=dict(improved=int((dv>1e-10).sum()),harmed=int((dv< -1e-10).sum()),unchanged=int((abs(dv)<=1e-10).sum()),severe_v_over5pp=int((dv< -5).sum()),severe_t_over5pp=int((dt< -5).sum()),severe_union_once=int(((dv< -5)|(dt< -5)).sum()),rescues_union_once=int(((dv>5)|(dt>5)).sum()),loss_v_ge10pp=int((dv<=-10).sum()))
+  full_missing=0;source_missing=0;seal=read(D/ds/'sealed.json')
+  for row in rows(ds):
+   key=row['id'];proof=seal['files'][key]['proof'];start,end=proof['video_segment_halfopen'];first,last=proof['old_source_grid_range'];entry=fixed(CHECK/ds/'sealed.json')['files'][key]
+   with np.load(CHECK/entry['path'])as z:full_iv=z['Full_interval'];source_iv=z['Source_interval']
+   for iv,which in [(full_iv,'full'),(source_iv,'source')]:
+    lo,hi=map(int,iv);missing=max(0,min(hi,first,end)-max(lo,start))+max(0,min(hi,end)-max(lo,last+1,start))
+    if which=='full':full_missing+=missing
+    else:source_missing+=missing
+  boundary=dict(old_uncovered_input_frames=a['old_source_grid_uncovered_video_frames'],queries_affected=a['queries_affected_by_old_missing_coverage'],uncovered_input_frames_inside_Full_evaluation_interval=full_missing,uncovered_input_frames_inside_native_Source_evaluation_interval=source_missing,Full_time_new_minus_old_v_pp=paired[ARMS[1]+'-OldSparseLinearFixed']['v'],scope='Input-frame coverage counts without GT selection. A missing tail outside evaluated event cannot affect that vIoU. HC sparse-grid clipping and full-frame clipping need not commute; do not presume large score correction.')
+  result=dict(dataset=ds,queries=len(rr),parents=len(parents),means=means,paired=paired,timegroups=groups,tails=tail,boundary_diagnosis=boundary,one_spatial_algorithm=True,SourceTime_definition='Original Source per-offset MAP physical hull, no visual update; every perquery tIoU equals original native Source metric.',FullTime_definition='External same-Full-interval spatial evaluation only; no Full output enters the interpolator.',unobserved_support_warning='Pure unobserved diagnostic in private raw reports uses dense input-frame GT support; historical Full unobserved diagnostic uses native sample support. Those unobserved differences are not matched and are EXCLUDED from this verified public comparison. vIoU/tIoU use identical official dense labels and are matched.')
+  dest=P/'verified'/ds;atomic(dest/'report.json',result)
+  with(dest/'all_signed_scalars.tsv').open('w')as f:
+   w=csv.writer(f,delimiter='\t');w.writerow(['query','timegroup','arm','tIoU','vIoU','R03','R05'])
+   for i,row in enumerate(rr,1):
+    for arm in means:v=row['values'][arm];w.writerow([f'Q{i:05}',row['duration_group'],arm,*[v[k]for k in ['t','v','vIoU_ge_03','vIoU_ge_05']]])
+  reports[ds]=result;effects[ds]=paired
+  legacy=read(D/ds/'metrics.json')['private_rows'];lm=read(P/ds/'report.json')['means'][ARMS[0]]
+  with(dest/'preserved_legacy_readout_attempt.tsv').open('w')as f:
+   w=csv.writer(f,delimiter='\t');w.writerow(['query','legacy_production_readout_tIoU_NOT_nativeSource','vIoU'])
+   for i,row in enumerate(legacy,1):v=row['values'][ARMS[0]];w.writerow([f'Q{i:05}',v['t'],v['v']])
+  atomic(dest/'legacy_readout_issue.json',dict(v1_label_was_incorrect=True,meaning='Historical production MBR-like Source_interval was wrongly called native SourceTime; preserved only as failed-binding diagnostic. Complete video trajectory and FullTime scored arrays unchanged. No Source/model rerun.',legacy_t=lm['t'],legacy_v=lm['v'],correct_native_t=means[ARMS[0]]['t'],correct_native_v=means[ARMS[0]]['v'],original_metrics_sha256=sha(D/ds/'metrics.json')))
+  costs[ds]=dict(stages={k:v for k,v in exits.items()if ds in k},prediction_clock=read(D/ds/'sealed.json')['elapsed_wall_seconds'],initial_official_checks=read(D/ds/'score_receipt.json')['official_checks'],additional_native_only_official_checks=read(N/ds/'score_receipt.json')['official_checks'],nested_not_additive=True,initial_legacy_source_readout_attempt_cost_retained=True,new_Source=0,new_expert=0,new_GPU=0,new_model=0,new_optimizer=0,deployment_latency=False,inherited_acquisition_cost_nonzero=True)
+ atomic(P/'cached_CPU_costs.json',costs);atomic(P/'effect_summary.json',effects)
+ text='# Plain expert linear interpolation: independent implementation and corrected protocol\n\nOne estimator only: `pure.py:interpolate(anchor_times,anchor_xyxy,frame_ids)`. Eight original expert pixel-corner boxes, physical times, every frame of the input video segment; four-coordinate ordinary np.interp, exact observed boxes, nearest endpoint hold. NumPy only. No Source boxes, E/shared correction, appearance features, masks, prototypes, temporal prior/posterior/update, transport/candidates/DP/logsize. Prediction does not read Source or Full time intervals; evaluator supplies them only after whole-domain trajectory seal.\n\n'
+ text+='## Independent baseline, original native Source interval\n\nThis is Source + raw expert linear interpolation; expert-only boxes do not themselves predict an event interval. Use actual native Source event without any proposed temporal refinement.\n\n|Dataset|Queries/parents|tIoU %|vIoU %|R.3 %|R.5 %|\n|---|---|---:|---:|---:|---:|\n'
+ for ds,r in reports.items():
+  m=r['means'][ARMS[0]];text+=f'|{ds}|{r["queries"]}/{r["parents"]}|'+ '|'.join(f'{100*m[k]:.6f}'for k in ['t','v','vIoU_ge_03','vIoU_ge_05'])+'|\n'
+ text+='\n## Separate controlled spatial evaluation\n\nThis is the same generated pure trajectory evaluated with Full interval, not a standalone expert temporal method. It answers only the previously requested same-time spatial question.\n\n|Dataset|Plain expert linear vIoU %|Unchanged Full vIoU %|Full-pure pp [95% CI]|\n|---|---:|---:|---|\n'
+ for ds,r in reports.items():
+  z=r['paired']['OriginalFull-'+ARMS[1]]['v'];text+=f'|{ds}|{100*r["means"][ARMS[1]]["v"]:.6f}|{100*r["means"]["OriginalFull"]["v"]:.6f}|{z["mean"]:+.6f} [{z["CI95"][0]:+.6f},{z["CI95"][1]:+.6f}]|\n'
+ text+='\n## Confirmed coupling and measured effects\n\nOld PureLinearFixed generated only Source sample-grid frames; official dense interpolation does not extend beyond first/last supplied frame. This violated full-video endpoint-hold coverage. New direct expert-only trajectory covers the original full input segment: HC[0,frame_count), Vid[start_frame,end_frame).\n\n'
+ for ds,r in reports.items():
+  b=r['boundary_diagnosis'];text+=f'{ds}:old uncovered input frames={b["old_uncovered_input_frames"]},affected queries={b["queries_affected"]},uncovered frames within Full interval={b["uncovered_input_frames_inside_Full_evaluation_interval"]},within native Source interval={b["uncovered_input_frames_inside_native_Source_evaluation_interval"]}. Corrected FullTime pure minus old sparse pure vIoU={b["Full_time_new_minus_old_v_pp"]["mean"]:+.12g}pp.\n\n'
+ text+='A boundary bug does not establish its magnitude on vIoU. Missing frames outside a predicted event do not change that event vIoU; HC clipping/interpolation order and numeric roundoff can cause small remaining differences. Retain results even when the complete expert-only rewrite leaves the earlier spatial conclusion unchanged.\n\nPrevious chat called FullTime score a standalone pure baseline; that label mixed in the proposed temporal update. FullTime is explicitly a controlled evaluation now, never an interpolation input. Additionally the initial new wrapper used a historical production `Source_interval` alias; independent v2 corrects only the source-time reference to actual native per-offset MAP hull, checks two independent reference producers and everyquery nativeSource tIoU. All initial arrays/scalars/receipts/code and actual costs are preserved; only native-time scoring added, no re-prediction or FullTime rescoring. Public verified/ reports are authoritative; raw v1 SourceTime names are historical failed-binding diagnostics, not the native baseline.\n\nUnobserved raw diagnostics have different dense versus native support across old/new studies, so cross-support unobserved CIs are excluded from verified public comparison. All reported vIoU/tIoU/R use identical official dense labels. No claim that original interpolation corner formula used E/features is established: confirmed issues are full-frame coverage and temporal evaluation/readout binding. No method/production/paper/oldhash changes; Full observed-anchor mismatch remains unresolved.\n\nAllnewraw8trajectories are sealed before separate CPU official scoring and independent rawinputSHA/physicaltime/parent/completeframes/anchors/tails/manualpiecewise/normalizedIoU/meansaudit. 36615officialcalls include initial legacy-time attempt12205+FullTime12205+correct nativeSource12205; no cost hidden or mislabeled as0. Queryequal10000parentbootstrap seed20261022, all signed severe/rescues/short<=5s-long, pointwise on exposed cohorts/no target tuning/equivalence claim. Cached CPU IO/scoring walls notdeployment; inherited Source/expert acquisition remains nonzero. Private media/caption/GT/box/interval/feature/mask/weights remain private.\n'
+ (P/'ANALYSIS.md').write_text(text);atomic(P/'functional_contract.json',dict(signature=str(inspect.signature(interpolate)),source_sha256=sha(S/'pure.py'),parameters=list(inspect.signature(interpolate).parameters),only_spatial_estimator='four-coordinate linear interpolation of8rawexpertboxes',no_other_method_input=True,one_algorithm=True,two_external_evaluation_protocols_not_two_interpolation_methods=True,new_Source=0,new_expert=0,new_GPU=0,new_model=0,new_optimizer=0))
+ rec=dict(status='plain_raw8_linear_full_video_and_native_time_binding_ROOT_complete_PENDING_publication',scientific_fingerprint=validate()['fingerprint'],native_execution_fingerprint=read(D/'native_execution_v2.json')['fingerprint'],queries=COUNTS,official_checks=36615,all10actualchildstage_wait0=True,original_controller_actual_wait=oldouter,controller_actual_wait=outer,trajectory_audit_sha256={ds:sha(D/ds/'audit_receipt.json')for ds in COUNTS},native_audit_sha256={ds:sha(N/ds/'audit_receipt.json')for ds in COUNTS},verified_report_sha256={ds:sha(P/'verified'/ds/'report.json')for ds in COUNTS},analysis_sha256=sha(P/'ANALYSIS.md'),root_paired_metric_CI_checks=rootchecks,root_worker=who,root_export_seconds=time.perf_counter()-begin,new_Source=0,new_expert=0,new_GPU=0,new_model=0,new_optimizer=0,method_or_paper_changed=False,one_plain_interpolation_estimator=True,raw_unmatched_unobserved_CIs_excluded_from_public_verdict=True,time=time.time());atomic(D/'ROOT_completion.json',rec);atomic(P/'completion_scalars.json',rec);print(json.dumps({ds:r['means']for ds,r in reports.items()}),flush=True)
+if __name__=='__main__':main()

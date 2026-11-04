@@ -1,0 +1,341 @@
+{
+  "dataset": "vidstg",
+  "queries": 10303,
+  "parents": 732,
+  "means": {
+    "ExpertLinear_SourceTime": {
+      "t": 0.3172845440512224,
+      "v": 0.13631223704142978,
+      "vIoU_ge_03": 0.17218285936135105,
+      "vIoU_ge_05": 0.07376492283800835,
+      "boundary_MAE_seconds": 7.908044572911928
+    },
+    "ExpertLinear_FullTime_EvalOnly": {
+      "t": 0.3491819212403351,
+      "v": 0.14804402232099356,
+      "vIoU_ge_03": 0.19858293700863827,
+      "vIoU_ge_05": 0.08686790255265457,
+      "boundary_MAE_seconds": 7.606517511659983
+    },
+    "OriginalFull": {
+      "t": 0.3491819212403351,
+      "v": 0.1455815121540986,
+      "vIoU_ge_03": 0.1941182179947588,
+      "vIoU_ge_05": 0.08463554304571484,
+      "boundary_MAE_seconds": 7.606517511659983
+    },
+    "OldSparseLinearFixed": {
+      "t": 0.3491819212403351,
+      "v": 0.14804402232099356,
+      "vIoU_ge_03": 0.19858293700863827,
+      "vIoU_ge_05": 0.08686790255265457,
+      "boundary_MAE_seconds": 7.606517511659983
+    }
+  },
+  "paired": {
+    "OriginalFull-ExpertLinear_FullTime_EvalOnly": {
+      "v": {
+        "mean": -0.24625101668949662,
+        "CI95": [
+          -0.39280908525085456,
+          -0.10161520129364376
+        ],
+        "queries": 10303,
+        "parents": 732,
+        "improved": 3348,
+        "harmed": 4123,
+        "unchanged": 2832,
+        "declined_over5pp": 734
+      },
+      "t": {
+        "mean": 0.0,
+        "CI95": [
+          0.0,
+          0.0
+        ],
+        "queries": 10303,
+        "parents": 732,
+        "improved": 0,
+        "harmed": 0,
+        "unchanged": 10303,
+        "declined_over5pp": 0
+      },
+      "boundary_MAE_seconds": {
+        "mean": 0.0,
+        "CI95": [
+          0.0,
+          0.0
+        ],
+        "queries": 10303,
+        "parents": 732,
+        "improved": 0,
+        "harmed": 0,
+        "unchanged": 10303,
+        "declined_over5pp": null
+      }
+    },
+    "ExpertLinear_FullTime_EvalOnly-OldSparseLinearFixed": {
+      "v": {
+        "mean": -2.140054756281011e-17,
+        "CI95": [
+          -7.143880134997358e-17,
+          3.0127516904697864e-17
+        ],
+        "queries": 10303,
+        "parents": 732,
+        "improved": 0,
+        "harmed": 0,
+        "unchanged": 10303,
+        "declined_over5pp": 0
+      },
+      "t": {
+        "mean": 0.0,
+        "CI95": [
+          0.0,
+          0.0
+        ],
+        "queries": 10303,
+        "parents": 732,
+        "improved": 0,
+        "harmed": 0,
+        "unchanged": 10303,
+        "declined_over5pp": 0
+      },
+      "boundary_MAE_seconds": {
+        "mean": 0.0,
+        "CI95": [
+          0.0,
+          0.0
+        ],
+        "queries": 10303,
+        "parents": 732,
+        "improved": 0,
+        "harmed": 0,
+        "unchanged": 10303,
+        "declined_over5pp": null
+      }
+    }
+  },
+  "timegroups": {
+    "short_le5s": {
+      "queries": 6060,
+      "paired": {
+        "OriginalFull-ExpertLinear_FullTime_EvalOnly": {
+          "v": {
+            "mean": -0.22295428236582135,
+            "CI95": [
+              -0.3654803851498491,
+              -0.09191298716153308
+            ],
+            "queries": 6060,
+            "parents": 588,
+            "improved": 1778,
+            "harmed": 2161,
+            "unchanged": 2121,
+            "declined_over5pp": 327
+          },
+          "t": {
+            "mean": 0.0,
+            "CI95": [
+              0.0,
+              0.0
+            ],
+            "queries": 6060,
+            "parents": 588,
+            "improved": 0,
+            "harmed": 0,
+            "unchanged": 6060,
+            "declined_over5pp": 0
+          },
+          "boundary_MAE_seconds": {
+            "mean": 0.0,
+            "CI95": [
+              0.0,
+              0.0
+            ],
+            "queries": 6060,
+            "parents": 588,
+            "improved": 0,
+            "harmed": 0,
+            "unchanged": 6060,
+            "declined_over5pp": null
+          }
+        },
+        "ExpertLinear_FullTime_EvalOnly-OldSparseLinearFixed": {
+          "v": {
+            "mean": -4.102503922922859e-17,
+            "CI95": [
+              -9.249506972476041e-17,
+              1.1249283522096276e-17
+            ],
+            "queries": 6060,
+            "parents": 588,
+            "improved": 0,
+            "harmed": 0,
+            "unchanged": 6060,
+            "declined_over5pp": 0
+          },
+          "t": {
+            "mean": 0.0,
+            "CI95": [
+              0.0,
+              0.0
+            ],
+            "queries": 6060,
+            "parents": 588,
+            "improved": 0,
+            "harmed": 0,
+            "unchanged": 6060,
+            "declined_over5pp": 0
+          },
+          "boundary_MAE_seconds": {
+            "mean": 0.0,
+            "CI95": [
+              0.0,
+              0.0
+            ],
+            "queries": 6060,
+            "parents": 588,
+            "improved": 0,
+            "harmed": 0,
+            "unchanged": 6060,
+            "declined_over5pp": null
+          }
+        }
+      }
+    },
+    "long_gt5s": {
+      "queries": 4243,
+      "paired": {
+        "OriginalFull-ExpertLinear_FullTime_EvalOnly": {
+          "v": {
+            "mean": -0.2795242219691271,
+            "CI95": [
+              -0.5440266457894003,
+              -0.011746469114177894
+            ],
+            "queries": 4243,
+            "parents": 540,
+            "improved": 1570,
+            "harmed": 1962,
+            "unchanged": 711,
+            "declined_over5pp": 407
+          },
+          "t": {
+            "mean": 0.0,
+            "CI95": [
+              0.0,
+              0.0
+            ],
+            "queries": 4243,
+            "parents": 540,
+            "improved": 0,
+            "harmed": 0,
+            "unchanged": 4243,
+            "declined_over5pp": 0
+          },
+          "boundary_MAE_seconds": {
+            "mean": 0.0,
+            "CI95": [
+              0.0,
+              0.0
+            ],
+            "queries": 4243,
+            "parents": 540,
+            "improved": 0,
+            "harmed": 0,
+            "unchanged": 4243,
+            "declined_over5pp": null
+          }
+        },
+        "ExpertLinear_FullTime_EvalOnly-OldSparseLinearFixed": {
+          "v": {
+            "mean": 6.627833181591496e-18,
+            "CI95": [
+              -8.993934270992094e-17,
+              1.0284327267102945e-16
+            ],
+            "queries": 4243,
+            "parents": 540,
+            "improved": 0,
+            "harmed": 0,
+            "unchanged": 4243,
+            "declined_over5pp": 0
+          },
+          "t": {
+            "mean": 0.0,
+            "CI95": [
+              0.0,
+              0.0
+            ],
+            "queries": 4243,
+            "parents": 540,
+            "improved": 0,
+            "harmed": 0,
+            "unchanged": 4243,
+            "declined_over5pp": 0
+          },
+          "boundary_MAE_seconds": {
+            "mean": 0.0,
+            "CI95": [
+              0.0,
+              0.0
+            ],
+            "queries": 4243,
+            "parents": 540,
+            "improved": 0,
+            "harmed": 0,
+            "unchanged": 4243,
+            "declined_over5pp": null
+          }
+        }
+      }
+    }
+  },
+  "tails": {
+    "OriginalFull-ExpertLinear_FullTime_EvalOnly": {
+      "improved": 3348,
+      "harmed": 4123,
+      "unchanged": 2832,
+      "severe_v_over5pp": 734,
+      "severe_t_over5pp": 0,
+      "severe_union_once": 734,
+      "rescues_union_once": 625,
+      "loss_v_ge10pp": 265
+    },
+    "ExpertLinear_FullTime_EvalOnly-OldSparseLinearFixed": {
+      "improved": 0,
+      "harmed": 0,
+      "unchanged": 10303,
+      "severe_v_over5pp": 0,
+      "severe_t_over5pp": 0,
+      "severe_union_once": 0,
+      "rescues_union_once": 0,
+      "loss_v_ge10pp": 0
+    }
+  },
+  "boundary_diagnosis": {
+    "old_uncovered_input_frames": 41472,
+    "queries_affected": 8899,
+    "uncovered_input_frames_inside_Full_evaluation_interval": 0,
+    "uncovered_input_frames_inside_native_Source_evaluation_interval": 0,
+    "Full_time_new_minus_old_v_pp": {
+      "mean": -2.140054756281011e-17,
+      "CI95": [
+        -7.143880134997358e-17,
+        3.0127516904697864e-17
+      ],
+      "queries": 10303,
+      "parents": 732,
+      "improved": 0,
+      "harmed": 0,
+      "unchanged": 10303,
+      "declined_over5pp": 0
+    },
+    "scope": "Input-frame coverage counts without GT selection. A missing tail outside evaluated event cannot affect that vIoU. HC sparse-grid clipping and full-frame clipping need not commute; do not presume large score correction."
+  },
+  "one_spatial_algorithm": true,
+  "SourceTime_definition": "Original Source per-offset MAP physical hull, no visual update; every perquery tIoU equals original native Source metric.",
+  "FullTime_definition": "External same-Full-interval spatial evaluation only; no Full output enters the interpolator.",
+  "unobserved_support_warning": "Pure unobserved diagnostic in private raw reports uses dense input-frame GT support; historical Full unobserved diagnostic uses native sample support. Those unobserved differences are not matched and are EXCLUDED from this verified public comparison. vIoU/tIoU use identical official dense labels and are matched."
+}
