@@ -1,0 +1,38 @@
+{
+  "schema": "same_ReferDINO8_selected_masks_SAM21_L_fixedFullTime_128_v1",
+  "authorization": "2026-11-05 \u90a3\u5c31\u6309\u7167\u4f60\u8bf4\u7684\u505a: matched original expert propagation and source-only correction reliability",
+  "scope": "Only matched propagation original128 distinctparents per domain; no automatic full expansion or other paused experiment resume",
+  "arms": [
+    "Full",
+    "SAM2MatchedMask"
+  ],
+  "pairs": [
+    [
+      "Full",
+      "SAM2MatchedMask"
+    ]
+  ],
+  "counts": {
+    "hc2": 128,
+    "vidstg": 128
+  },
+  "model": {
+    "repository": "https://github.com/facebookresearch/sam2",
+    "commit": "2b90b9f5ceec907a1c18123530e92e794ad901a4",
+    "checkpoint_sha256": "2647878d5dfa5098f2f8649825738a9345572bae2d4350a2468587ece47dd318",
+    "config": "configs/sam2.1/sam2.1_hiera_l.yaml",
+    "weights": "originalFP32 strict903tensors doctor reused",
+    "compute": "pinned official BF16 CUDA autocast and TF32True; no compile; strict CUDA fillholes8 kernel mandatory"
+  },
+  "evidence": "Exact original selected ReferDINO track nativefloat masks, actual8RGB, physicalpositions and Source grid/prediction references. Native no-padding bilinear logits to original size >0; empty mask retained. All8 masks in fresh official SAM2 state before frame0 native forward; no boxprompt, Sourcebox/E/DP overwrite, prompt-frame output is SAM2 native too. New SAM2 backbone feature encoder means same expert evidence, not same representation or model/compute budget.",
+  "time": "Identical matching Full Ours_interval perquery; Full Ours arrays already independently audited with same teacherpayload, including6 prior genuine expert cache misses. No new temporal inference and no approximation matching different payloads.",
+  "outputs": "Every native float score checkpoint+SHA BEFORE validation; binary masks losslessly packed/compressed; independent halfopen bbox emptyzero; retain all first2 raw until actual independent CPU bridge; only own NEW raw scratch disposable after exact readback. Failed state always preserved; no retry/skip/fallback.",
+  "metrics": "vIoU strict R>.3/R>.5; common Full tIoU exact; conditional dense GT annotated frames in Full predicted event intersection GTevent, exclude exact8observed physical times. Queryequal means with empty support null, whole query primaryv retains all128. ObservedIoU separately. Parentcluster10000 seed20261022 pointwise exposed panel; no target tuning.",
+  "lease": "Original Source-prompt full remains USER_PAUSED T with in-flight paid state and original globalflock retained. Independent exclusive cooperative borrow lock plus exact oldPID/start/argv/T checks before every query; precise foreigncompute gate; no oldsignals/resume or service changes. Only newworker actively computes.",
+  "resources": "GPU1+CPU1, CPU12-15 nice19 ionice3 thread1, RAM8GiB/disk80GiB/private160GiB/72h. Original Source/ReferDINO cost inherited nonzero, newSource/expert/optimizer0. Experimental checkpoints included in clock; not matched deployment latency.",
+  "new_Source": 0,
+  "new_ReferDINO": 0,
+  "new_optimizer": 0,
+  "new_SAM2_queries_cap": 256,
+  "fingerprint": "8f666981d1d1674ed2fe202e40efd7f6e86f97f21efd9c3ca71b7ff2d5a09490"
+}

@@ -1,0 +1,49 @@
+{
+  "schema": "expert_guided_TTFT_source_selected_original128_target_pilot_v1",
+  "configs": {
+    "hc2": {
+      "lr": 0.0001,
+      "lambda_l1": 1,
+      "lambda_giou": 1,
+      "steps": 5,
+      "optimizer": "AdamW",
+      "betas": [
+        0.9,
+        0.999
+      ],
+      "eps": 1e-08,
+      "weight_decay": 0,
+      "foreach": false,
+      "clip_norm": 0.1
+    },
+    "vidstg": {
+      "lr": 0.0001,
+      "lambda_l1": 1,
+      "lambda_giou": 1,
+      "steps": 20,
+      "optimizer": "AdamW",
+      "betas": [
+        0.9,
+        0.999
+      ],
+      "eps": 1e-08,
+      "weight_decay": 0,
+      "foreach": false,
+      "clip_norm": 0.1
+    }
+  },
+  "queries_per_domain": 128,
+  "source_config_choice": "Frozen only by corresponding source-validation36/36; no target config/threshold/step choice. Exposed fixed original128 distinct parents/domain, not unknown confirmation.",
+  "method": "Same raw8ReferDINO boxes/physicalpositions, complete Source pos_fc+PosDecoder+bbox head, frozen backbone/text/time; L1+GIoU episodic AdamW exact reset, full sampled-frame output, adapted-box native pretextROI one-pair kappa0/beta1/context1.5/jointMAP. No shared correction/transport/candidates/DP.",
+  "controls": "Original Source, Source-box TR and Current full arrays/scalars reused by exact references. Zero-update Source replay/initial SourceROI pooling/q0/nativeheads and zero-update TR interval exact every query.",
+  "acquisition": "At most256 necessary Source runs to obtain actual spatial decoder context and frames_cls observer, 0newexpert. Every paid full native state saved/SHA BEFORE compatibility/gradient checks. Keep all paid raw/context/selected states throughout pilot. No fallback/skip/hash relaxation or blind retry.",
+  "bridge": "After first2 NEW Source+adaptation commits/domain wait for actual ROOT CPU paid/context/nativeheads/initialROI/selectedprediction cold input and interval audit. Root cannot handwrite ACK. Independent GPU process then replays all256 saved states and reset exactly without Source or updates.",
+  "score": "Both128 predictions seal and independent GPU replay before separate officialCPUscore and another CPU allinput/feature/prototype/interval/independent dense scalar/means audit. Allsigned/shortlong/severe/rescue/parent10000CI and actual costs, no prefixGT.",
+  "new_Source_cap": 256,
+  "new_expert": 0,
+  "optimizer_steps_cap": 3200,
+  "Source_preflight_and_calibration_costs_nonzero": true,
+  "precision": "Original Source224 visualFP16/FP32 head+gradients, cudnnTF32True/matmulFalse, Torch4, unchanged optimizer/reduction math.",
+  "resources": "SingleGPU/globallease/foreigncompute gate;CPU12-15 nice19 idleIO SourceTorch4, CPUaudit1thread, RAM8GiB/disk80GiB/private160GiB/72h. No other process signal. Source/update/trace/checkpoint costs nested, not matched deployment speed.",
+  "fingerprint": "e6f7e51d89b658462b9f9ef649250f6e4e94a77646315783950c12e895565456"
+}

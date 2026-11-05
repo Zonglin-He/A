@@ -1,0 +1,11 @@
+# Source-prompt SAM2.1 Hiera-L + Source-box temporal refinement
+
+Authorized 2026-11-05: original fixed128 queries/128 distinct parents per domain first, then full HC1902/Vid10303 with the same frozen model/protocol and exact reuse of all256 pilot predictions. Sole current controller and actual progress are under outputs/source_sam21_tr_v1; no old owner is restored. TTFT128 and every completed positive/negative result remain intact; no TTFT full is launched.
+
+SAM2 receives original Source box prompts at exactly the original eight physical positions, and the original full native sampled RGB grid. No ReferDINO, caption, shared E, Current event, candidates or DP enters tracking. The primary tube uses the independently audited expert-free Source-box temporal-refinement event; a secondary native-Source-event readout shares the same new SAM2 trajectory. Outputs come directly from native masks on all frames including prompts, logit>0/half-open boxes, emptyzero, no Source-frame writeback or fallback.
+
+Official pinned SAM2.1 Hiera-L commit2b90b9f5ceec907a1c18123530e92e794ad901a4/checkpoint2647878d5dfa5098f2f8649825738a9345572bae2d4350a2468587ece47dd318,1024 input, FP32 weights/BF16 autocast/TF32 per official notebook. Exact CUDA postprocessing mandatory. Same external-model count does not mean same eight-frame compute, knowledge, evidence, resolution or precision. No target search or accuracy-based full-release gate.
+
+Each whole domain is independently input/mask audited, officially scored, manually rescored and audited for fileSHA/means/parentCI before signed/cost exports. First2 new requests/domain/stage use an automatically invoked actual independent raw/RGB/preprocessing bridge; there is no manual acknowledgment wait. Only own transient full-resolution float output files are disposed after their SHA/packed-mask/readback checks and first2 bridge; losslessly compressed binary masks and all prediction/evidence hashes remain private.
+
+Currently actual GPU pilot running; no accuracy claim from prefix predictions. Entire new code/protocol/results stage is LOCAL, not yet a new verified GitHub publication. Model weights, RGB, captions, GT coordinates and masks remain private. Cached experimental request wall includes checkpoint/provenance IO, not matched deployment latency. Primary method, paper and paused/cancelled old scopes are unchanged.

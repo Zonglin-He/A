@@ -1,0 +1,263 @@
+{
+  "schema": "expert_guided_TTFT_source36_each_direction_calibration_v1",
+  "scope": "72 correct source-trained model/source-domain validation queries. Metadata preselected; no same-direction source-target video overlap; reverse-direction previous target exposure disclosed. Not the historical training36. Target labels never select configurations.",
+  "configs": {
+    "hc2": [
+      {
+        "lr": 1e-05,
+        "lambda_l1": 5,
+        "lambda_giou": 3,
+        "steps": 5,
+        "optimizer": "AdamW",
+        "betas": [
+          0.9,
+          0.999
+        ],
+        "eps": 1e-08,
+        "weight_decay": 0,
+        "foreach": false,
+        "clip_norm": 0.1
+      },
+      {
+        "lr": 1e-05,
+        "lambda_l1": 5,
+        "lambda_giou": 3,
+        "steps": 20,
+        "optimizer": "AdamW",
+        "betas": [
+          0.9,
+          0.999
+        ],
+        "eps": 1e-08,
+        "weight_decay": 0,
+        "foreach": false,
+        "clip_norm": 0.1
+      },
+      {
+        "lr": 1e-05,
+        "lambda_l1": 1,
+        "lambda_giou": 1,
+        "steps": 5,
+        "optimizer": "AdamW",
+        "betas": [
+          0.9,
+          0.999
+        ],
+        "eps": 1e-08,
+        "weight_decay": 0,
+        "foreach": false,
+        "clip_norm": 0.1
+      },
+      {
+        "lr": 1e-05,
+        "lambda_l1": 1,
+        "lambda_giou": 1,
+        "steps": 20,
+        "optimizer": "AdamW",
+        "betas": [
+          0.9,
+          0.999
+        ],
+        "eps": 1e-08,
+        "weight_decay": 0,
+        "foreach": false,
+        "clip_norm": 0.1
+      },
+      {
+        "lr": 0.0001,
+        "lambda_l1": 5,
+        "lambda_giou": 3,
+        "steps": 5,
+        "optimizer": "AdamW",
+        "betas": [
+          0.9,
+          0.999
+        ],
+        "eps": 1e-08,
+        "weight_decay": 0,
+        "foreach": false,
+        "clip_norm": 0.1
+      },
+      {
+        "lr": 0.0001,
+        "lambda_l1": 5,
+        "lambda_giou": 3,
+        "steps": 20,
+        "optimizer": "AdamW",
+        "betas": [
+          0.9,
+          0.999
+        ],
+        "eps": 1e-08,
+        "weight_decay": 0,
+        "foreach": false,
+        "clip_norm": 0.1
+      },
+      {
+        "lr": 0.0001,
+        "lambda_l1": 1,
+        "lambda_giou": 1,
+        "steps": 5,
+        "optimizer": "AdamW",
+        "betas": [
+          0.9,
+          0.999
+        ],
+        "eps": 1e-08,
+        "weight_decay": 0,
+        "foreach": false,
+        "clip_norm": 0.1
+      },
+      {
+        "lr": 0.0001,
+        "lambda_l1": 1,
+        "lambda_giou": 1,
+        "steps": 20,
+        "optimizer": "AdamW",
+        "betas": [
+          0.9,
+          0.999
+        ],
+        "eps": 1e-08,
+        "weight_decay": 0,
+        "foreach": false,
+        "clip_norm": 0.1
+      }
+    ],
+    "vidstg": [
+      {
+        "lr": 1e-05,
+        "lambda_l1": 5,
+        "lambda_giou": 4,
+        "steps": 5,
+        "optimizer": "AdamW",
+        "betas": [
+          0.9,
+          0.999
+        ],
+        "eps": 1e-08,
+        "weight_decay": 0,
+        "foreach": false,
+        "clip_norm": 0.1
+      },
+      {
+        "lr": 1e-05,
+        "lambda_l1": 5,
+        "lambda_giou": 4,
+        "steps": 20,
+        "optimizer": "AdamW",
+        "betas": [
+          0.9,
+          0.999
+        ],
+        "eps": 1e-08,
+        "weight_decay": 0,
+        "foreach": false,
+        "clip_norm": 0.1
+      },
+      {
+        "lr": 1e-05,
+        "lambda_l1": 1,
+        "lambda_giou": 1,
+        "steps": 5,
+        "optimizer": "AdamW",
+        "betas": [
+          0.9,
+          0.999
+        ],
+        "eps": 1e-08,
+        "weight_decay": 0,
+        "foreach": false,
+        "clip_norm": 0.1
+      },
+      {
+        "lr": 1e-05,
+        "lambda_l1": 1,
+        "lambda_giou": 1,
+        "steps": 20,
+        "optimizer": "AdamW",
+        "betas": [
+          0.9,
+          0.999
+        ],
+        "eps": 1e-08,
+        "weight_decay": 0,
+        "foreach": false,
+        "clip_norm": 0.1
+      },
+      {
+        "lr": 0.0001,
+        "lambda_l1": 5,
+        "lambda_giou": 4,
+        "steps": 5,
+        "optimizer": "AdamW",
+        "betas": [
+          0.9,
+          0.999
+        ],
+        "eps": 1e-08,
+        "weight_decay": 0,
+        "foreach": false,
+        "clip_norm": 0.1
+      },
+      {
+        "lr": 0.0001,
+        "lambda_l1": 5,
+        "lambda_giou": 4,
+        "steps": 20,
+        "optimizer": "AdamW",
+        "betas": [
+          0.9,
+          0.999
+        ],
+        "eps": 1e-08,
+        "weight_decay": 0,
+        "foreach": false,
+        "clip_norm": 0.1
+      },
+      {
+        "lr": 0.0001,
+        "lambda_l1": 1,
+        "lambda_giou": 1,
+        "steps": 5,
+        "optimizer": "AdamW",
+        "betas": [
+          0.9,
+          0.999
+        ],
+        "eps": 1e-08,
+        "weight_decay": 0,
+        "foreach": false,
+        "clip_norm": 0.1
+      },
+      {
+        "lr": 0.0001,
+        "lambda_l1": 1,
+        "lambda_giou": 1,
+        "steps": 20,
+        "optimizer": "AdamW",
+        "betas": [
+          0.9,
+          0.999
+        ],
+        "eps": 1e-08,
+        "weight_decay": 0,
+        "foreach": false,
+        "clip_norm": 0.1
+      }
+    ]
+  },
+  "selection": "Per direction maximum unrounded query-equal source-vIoU, first config on exact ties. All72*8 predictions sealed and separate GPU saved-state replay audited before source-only labels. Root review before target release.",
+  "branch": "Full pos_fc+PosDecoder+bbox_embed, 14344208 unique scalars/288 tensors; fixed video/text/temporal encoders, cached actual frames_cls and spatial kwargs; actual fresh spatial forwards with gradients, L1+GIoU on same raw8 ReferDINO boxes. No E/shared correction/transport/candidate/DP. Adapted all-frame boxes pooled on native pretext grid, same one-pair kappa0/beta1/context1.5 posterior/MAP.",
+  "optimization": "Four episodic AdamW streams/query to20, checkpoints5+20; every stream starts original parameters and fresh optimizer. lr1e-5/1e-4 x official source L1/GIoU ratio or1:1; eval dropout, clip.1, wd0/foreachFalse. All 8 configs reported, no target best step.",
+  "new_Source_cap": 70,
+  "preflight_Source_reused": 2,
+  "new_expert": 0,
+  "new_optimizer_steps_cap": 5760,
+  "preflight_optimizer_steps_separate": 10,
+  "evidence": "Every paid Source checkpoint BEFORE numerical validation. All context/source/frames_cls/native logits/records/RGB/8teacher refs SHA retained. All adapted state step5/20 saved and cold-forward exact in acquisition, then separate GPU process replays every saved state without optimization; CPU independently rederives every feature/prototype/interval and official scalar/means/selection. Full paid failure evidence retained, no fallback or silent retry.",
+  "precision": "Original Source224 visualFP16/FP32 heads and gradients, cudnnTF32True/matmulFalse, Torch4. No AMP/changed backbone. Decoder replay must be bitwise Source before every stream and exact Source after every reset.",
+  "resources": "1 GPU owner+at most1 root CPU job; CPU14-15 nice19 idleIO, RAM8GiB/disk80GiB/private160GiB/72h; GPU lease+live protected-service identity gate. Source acquisition/cached update/checkpoint wall distinct, nested costs not additive, not deployment timing.",
+  "no_paper_or_production_or_old_bound_code_changes": true,
+  "fingerprint": "6e056bbcf766595d833f1dcda962c419f86bf4154af181cff1c2ff4152df341b"
+}

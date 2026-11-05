@@ -1,0 +1,22 @@
+# ROOT review: vidstg, original128 parents, matched ReferDINO mask evidence
+
+Whole128 predictions, exact teacher/RGB/input/Fulltime audit, official tube scores, separate normalized pixel-IoU/SHA/means/CI audit and signed export completed. ROOT independently recomputed 30 mean/CI checks from the sealed scalar rows.
+
+|Spatial strategy|tIoU|vIoU|R.3|R.5|Conditional dense unobserved IoU|Conditional observed IoU|
+|---|---:|---:|---:|---:|---:|---:|
+|Full|35.202435|15.339259|19.531250|10.156250|40.179617|46.447107|
+|SAM2MatchedMask|35.202435|17.010337|22.656250|10.937500|45.500241|47.140254|
+
+Full minus SAM2 vIoU -1.671078 pp,95%CI [-2.8640928423296135, -0.5498597842865688]: negative CI.
+Conditional unobserved difference -5.320624460614096 pp,95%CI [-8.570928558023532, -2.2661109448917984]; observed difference -0.693146594363261 pp,95%CI [-2.2076842845091007, 0.8273570396120229].
+
+Full v improves 30, harms 70, unchanged 28 of128. Severe t/v declines uniononce 16; rescues uniononce 4.
+short_le5s: 78 queries; Full-SAM2 statistics {"delta_event_observed_IoU_pp": {"CI95": [-1.5346223176694744, 2.226249572048154], "mean": 0.2957616925213847, "parents": 42, "queries": 42}, "delta_event_unobserved_IoU_pp": {"CI95": [-10.778319450046984, -1.782048229067363], "mean": -6.036530317693819, "parents": 58, "queries": 58}, "delta_t_pp": {"CI95": [0.0, 0.0], "mean": 0.0, "parents": 78, "queries": 78}, "delta_v_pp": {"CI95": [-2.3234637944263383, -0.06754057082519731], "mean": -1.1413164061024073, "parents": 78, "queries": 78}, "harmed_v_percent": {"CI95": [35.8974358974359, 58.97435897435897], "mean": 47.43589743589744, "parents": 78, "queries": 78}, "improved_v_percent": {"CI95": [12.820512820512821, 30.76923076923077], "mean": 21.794871794871796, "parents": 78, "queries": 78}, "rescue_union_once_percent": {"CI95": [0.0, 3.8461538461538463], "mean": 1.2820512820512822, "parents": 78, "queries": 78}, "severe_union_once_percent": {"CI95": [1.2820512820512822, 12.820512820512821], "mean": 6.410256410256411, "parents": 78, "queries": 78}}
+long_gt5s: 50 queries; Full-SAM2 statistics {"delta_event_observed_IoU_pp": {"CI95": [-3.9508543970685075, 0.7213352637035285], "mean": -1.596062856301416, "parents": 46, "queries": 46}, "delta_event_unobserved_IoU_pp": {"CI95": [-8.705862483452881, 0.08795181338192193], "mean": -4.455571549976102, "parents": 48, "queries": 48}, "delta_t_pp": {"CI95": [0.0, 0.0], "mean": 0.0, "parents": 50, "queries": 50}, "delta_v_pp": {"CI95": [-4.878355803723742, -0.16347170839165656], "mean": -2.4975058565095813, "parents": 50, "queries": 50}, "harmed_v_percent": {"CI95": [52.0, 78.0], "mean": 66.0, "parents": 50, "queries": 50}, "improved_v_percent": {"CI95": [14.0, 38.0], "mean": 26.0, "parents": 50, "queries": 50}, "rescue_union_once_percent": {"CI95": [0.0, 14.0], "mean": 6.0, "parents": 50, "queries": 50}, "severe_union_once_percent": {"CI95": [12.0, 34.0], "mean": 22.0, "parents": 50, "queries": 50}}
+
+Empty/input/cost: {"empty_conditioning_outputs": 62, "empty_input_masks": 62, "empty_native_masks": 1401, "mean_active_query_seconds": 9.38526402977351, "mean_request_including_checkpoints_seconds": 8.82479295074205, "native_masks": 13502, "queries": 128, "queries_any_output_empty": 53, "scope": {"Source_ReferDINO_acquisition_inherited_nonzero": true, "additional_SAM2_model_budget": true, "nested_timers_not_additive": true, "not_deployment_latency": true, "paused_other_GPU_context_excluded": true}}
+One model load shared by both domains: 3.360152s at PID/start {'pid': 539896, 'startticks': 6201848}; do not add to every query or sum nested clocks. Source and ReferDINO acquisition is inherited, not zero; no claim of deployment-speed superiority.
+
+Exact same original eight ReferDINO selected masks and physicaltimes, same Source predictions/roster and common Full event. SAM2.1 Hiera-L encodes the full sampled video and adds a model. This controls evidence and time, not representation/knowledge/model count/compute. Full remains the unmodified soft-anchor implementation; this does not validate an intended hard-anchor variant. No target configuration selection; panel already exposed.
+
+The overall paired difference does not separately identify shared-correction, bidirectional transport and DP contributions. The completed candidate×decoder controls retain that role. All negative outcomes, empty masks and unsupported conditional queries remain. No automatic full expansion or old Source-prompt full resumption.

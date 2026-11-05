@@ -1,0 +1,59 @@
+{
+  "schema": "Source_prompt_SAM21_L_plus_Source_box_temporal_refinement_pilot_then_full_v1",
+  "authorization": "2026-11-05 user: \u90a3\u5c31\u8fd9\u6837\u505a\uff0c\u5148\u505a128 \u7136\u540e\u5168\u91cf",
+  "primary": "Frozen Source original eight boxes/physical times prompt SAM2.1 Hiera-L, all native sampled RGB frames, then original Source-box TR interval. Same Source-TR rule and intervals already audited, no new Source/features/ReferDINO/optimizer.",
+  "stages": [
+    "original128queries_and_distinctparents_per_domain",
+    "same_frozen_method_full_HC1902_and_Vid10303_reusing_all256pilot_outputs"
+  ],
+  "full_release": "Automatic only after BOTH128 prediction seals, separate input audits/official scoring/independent all-mask/manual-score/meansaudits and export complete. No target accuracy threshold, parameter/precision/seed/model search or manual ACK wait. Predeclared same model/protocol. Existing completed TTFT128 results retained; TTFT full not launched.",
+  "model": {
+    "repository": "https://github.com/facebookresearch/sam2",
+    "commit": "2b90b9f5ceec907a1c18123530e92e794ad901a4",
+    "checkpoint": "https://dl.fbaipublicfiles.com/segment_anything_2/092824/sam2.1_hiera_large.pt",
+    "checkpoint_sha256": "2647878d5dfa5098f2f8649825738a9345572bae2d4350a2468587ece47dd318",
+    "config": "configs/sam2.1/sam2.1_hiera_l.yaml",
+    "image_size": 1024,
+    "weights": "strict_FP32_checkpoint_all_tensor_exact",
+    "compute": "official BF16 CUDA autocast, TF32 allowed as official Ampere+ notebook; eval, deterministic flags, no torch.compile",
+    "postprocessing": "official fillholes8/stability switches unchanged; exact CUDA extension mandatory, strict wrapper removes silent exception fallback, original kernel/math unchanged"
+  },
+  "prompts": "Exactly original Source nativeMAPhull-selected8 physical positions/raw Source boxes. No ReferDINO boxes/masks/caption/E/current time/candidates/DP input to tracker. All8box conditioning before official frame0 forward; no custom reverse/fusion. SAM output is native logit>0 halfopen mask-to-box including observed frames, emptyzero/no Source overwrite or fallback.",
+  "temporal": "SourceTR primary interval comes only from original Source boxes/native pretext features/prior, one pair kappa0/beta1/context1.5/MAP; no temporal update on SAM2 trajectory and no expert input to temporal branch. SAM2Native secondary uses Source original nativeMAPhull event, same tracking output/no extra forward.",
+  "budget": "One external model per pipeline, but SAM2 encodes all sampled frames, so neither eight-expert-forward compute nor knowledge/precision equality is claimed.",
+  "arms": [
+    "Source",
+    "SourceTR",
+    "SAM2Native",
+    "SAM2TR",
+    "Current"
+  ],
+  "pairs": [
+    [
+      "SAM2TR",
+      "Source"
+    ],
+    [
+      "SAM2TR",
+      "SourceTR"
+    ],
+    [
+      "Current",
+      "SAM2TR"
+    ],
+    [
+      "SAM2TR",
+      "SAM2Native"
+    ]
+  ],
+  "new_Source": 0,
+  "new_ReferDINO": 0,
+  "new_optimizer": 0,
+  "new_SAM_video_queries_cap": 12205,
+  "pilot_video_queries": 256,
+  "full_additional_video_queries_cap": 11949,
+  "raw": "Every full native-resolution float score checkpoint+SHA BEFORE validation; packed masks compressed losslessly and all boxes cold rederived before only own transient float disposal. First2 NEW requests/domain/stage independently reread all raw scores/RGB/preprocessing/Source fields/masks before disposal, coordinator invokes actual CPU bridge and records wait0 automatically. No manual marker/skip/fallback/blind retry.",
+  "evaluation": "Each whole stage/domain seals before separate CPU input audit, new SAM2Native/SAM2TR official scores, other arms audited scalar reuse, separate manual dense pixel-IoU/allmask/InputSHA/allmeans/parent10kCI/severe uniononce/rescues/shortlong audit/export. PointwiseCI, exposed cohorts, no unknown confirmation claim.",
+  "resources": "1 GPU+at most1 CPU child; CPU12-15nice19idleIO, Source inherited nonzero cost, RAM8GiB/disk80GiB/private160GiB/domain72h, exact foreign-service gate/globallease, no unrelated service signal. Resident model loads uniquePIDstart, raw checkpoint/IO timers nested; cached experiment wall not deployment.",
+  "fingerprint": "55c36c5b69db64e1808581aa4cb14f73865e6acdc95fa75cb2aa5d99e677ddf7"
+}

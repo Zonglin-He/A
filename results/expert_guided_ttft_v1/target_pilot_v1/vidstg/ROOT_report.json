@@ -1,0 +1,1124 @@
+{
+  "queries": 128,
+  "parents": 128,
+  "config": {
+    "lr": 0.0001,
+    "lambda_l1": 1,
+    "lambda_giou": 1,
+    "steps": 20,
+    "optimizer": "AdamW",
+    "betas": [
+      0.9,
+      0.999
+    ],
+    "eps": 1e-08,
+    "weight_decay": 0,
+    "foreach": false,
+    "clip_norm": 0.1
+  },
+  "means": {
+    "Source": {
+      "v": 0.13322902725343239,
+      "t": 0.32121534755059167,
+      "s": 0.3605295478212531,
+      "unobserved_actual_sIoU": 0.3641293618234618,
+      "R03": 0.1640625,
+      "R05": 0.0390625
+    },
+    "SourceTR": {
+      "v": 0.1454833283128698,
+      "t": 0.35528602764037387,
+      "s": 0.3605295478212531,
+      "unobserved_actual_sIoU": 0.3641293618234618,
+      "R03": 0.1796875,
+      "R05": 0.078125
+    },
+    "TTFT": {
+      "v": 0.16094270205629277,
+      "t": 0.35087348971750953,
+      "s": 0.41365476638546356,
+      "unobserved_actual_sIoU": 0.4141763623222603,
+      "R03": 0.1953125,
+      "R05": 0.109375
+    },
+    "Current": {
+      "v": 0.15339259040681869,
+      "t": 0.3520243473184055,
+      "s": 0.3839284008532412,
+      "unobserved_actual_sIoU": 0.38207574656684784,
+      "R03": 0.1953125,
+      "R05": 0.1015625
+    }
+  },
+  "paired": {
+    "TTFT-Current": {
+      "queries": 128,
+      "parents": 128,
+      "statistics": {
+        "delta_t_pp": {
+          "mean": -0.11508576008959984,
+          "CI95": [
+            -1.087574960532444,
+            0.8149158037013323
+          ],
+          "queries": 128,
+          "parents": 128
+        },
+        "delta_v_pp": {
+          "mean": 0.7550111649474084,
+          "CI95": [
+            -0.03454370508299148,
+            1.5724415984133873
+          ],
+          "queries": 128,
+          "parents": 128
+        },
+        "improved_v_percent": {
+          "mean": 48.4375,
+          "CI95": [
+            39.84375,
+            57.03125
+          ],
+          "queries": 128,
+          "parents": 128
+        },
+        "harmed_v_percent": {
+          "mean": 29.6875,
+          "CI95": [
+            21.875,
+            37.5
+          ],
+          "queries": 128,
+          "parents": 128
+        },
+        "severe_t_percent": {
+          "mean": 6.25,
+          "CI95": [
+            2.34375,
+            10.9375
+          ],
+          "queries": 128,
+          "parents": 128
+        },
+        "severe_v_percent": {
+          "mean": 5.46875,
+          "CI95": [
+            2.34375,
+            9.375
+          ],
+          "queries": 128,
+          "parents": 128
+        },
+        "severe_union_percent": {
+          "mean": 10.9375,
+          "CI95": [
+            6.25,
+            16.40625
+          ],
+          "queries": 128,
+          "parents": 128
+        },
+        "rescue_union_percent": {
+          "mean": 14.84375,
+          "CI95": [
+            8.59375,
+            21.09375
+          ],
+          "queries": 128,
+          "parents": 128
+        }
+      },
+      "unobserved": {
+        "queries": 128,
+        "parents": 128,
+        "statistics": {
+          "delta_U_pp": {
+            "mean": 3.2100615755412427,
+            "CI95": [
+              1.0695725577460988,
+              5.206782687277708
+            ],
+            "queries": 128,
+            "parents": 128
+          }
+        }
+      }
+    },
+    "TTFT-SourceTR": {
+      "queries": 128,
+      "parents": 128,
+      "statistics": {
+        "delta_t_pp": {
+          "mean": -0.4412537922864417,
+          "CI95": [
+            -1.1975032943549198,
+            0.3121771672199276
+          ],
+          "queries": 128,
+          "parents": 128
+        },
+        "delta_v_pp": {
+          "mean": 1.545937374342297,
+          "CI95": [
+            -0.4057675146330762,
+            3.525075490711594
+          ],
+          "queries": 128,
+          "parents": 128
+        },
+        "improved_v_percent": {
+          "mean": 48.4375,
+          "CI95": [
+            39.84375,
+            57.03125
+          ],
+          "queries": 128,
+          "parents": 128
+        },
+        "harmed_v_percent": {
+          "mean": 33.59375,
+          "CI95": [
+            25.78125,
+            42.1875
+          ],
+          "queries": 128,
+          "parents": 128
+        },
+        "severe_t_percent": {
+          "mean": 11.71875,
+          "CI95": [
+            6.25,
+            17.96875
+          ],
+          "queries": 128,
+          "parents": 128
+        },
+        "severe_v_percent": {
+          "mean": 12.5,
+          "CI95": [
+            7.03125,
+            18.75
+          ],
+          "queries": 128,
+          "parents": 128
+        },
+        "severe_union_percent": {
+          "mean": 23.4375,
+          "CI95": [
+            16.40625,
+            31.25
+          ],
+          "queries": 128,
+          "parents": 128
+        },
+        "rescue_union_percent": {
+          "mean": 28.90625,
+          "CI95": [
+            21.09375,
+            36.71875
+          ],
+          "queries": 128,
+          "parents": 128
+        }
+      },
+      "unobserved": {
+        "queries": 128,
+        "parents": 128,
+        "statistics": {
+          "delta_U_pp": {
+            "mean": 5.0047000498798555,
+            "CI95": [
+              1.1838154843431108,
+              8.870846125434698
+            ],
+            "queries": 128,
+            "parents": 128
+          }
+        }
+      }
+    },
+    "TTFT-Source": {
+      "queries": 128,
+      "parents": 128,
+      "statistics": {
+        "delta_t_pp": {
+          "mean": 2.965814216691784,
+          "CI95": [
+            0.7217367891293206,
+            5.436768179871791
+          ],
+          "queries": 128,
+          "parents": 128
+        },
+        "delta_v_pp": {
+          "mean": 2.771367480286036,
+          "CI95": [
+            0.7857079075336811,
+            4.836698901845389
+          ],
+          "queries": 128,
+          "parents": 128
+        },
+        "improved_v_percent": {
+          "mean": 50.0,
+          "CI95": [
+            41.40625,
+            58.59375
+          ],
+          "queries": 128,
+          "parents": 128
+        },
+        "harmed_v_percent": {
+          "mean": 29.6875,
+          "CI95": [
+            21.875,
+            37.5
+          ],
+          "queries": 128,
+          "parents": 128
+        },
+        "severe_t_percent": {
+          "mean": 15.625,
+          "CI95": [
+            9.375,
+            21.875
+          ],
+          "queries": 128,
+          "parents": 128
+        },
+        "severe_v_percent": {
+          "mean": 15.625,
+          "CI95": [
+            9.375,
+            21.875
+          ],
+          "queries": 128,
+          "parents": 128
+        },
+        "severe_union_percent": {
+          "mean": 26.5625,
+          "CI95": [
+            18.75,
+            34.375
+          ],
+          "queries": 128,
+          "parents": 128
+        },
+        "rescue_union_percent": {
+          "mean": 46.09375,
+          "CI95": [
+            37.5,
+            54.6875
+          ],
+          "queries": 128,
+          "parents": 128
+        }
+      },
+      "unobserved": {
+        "queries": 128,
+        "parents": 128,
+        "statistics": {
+          "delta_U_pp": {
+            "mean": 5.0047000498798555,
+            "CI95": [
+              1.1838154843431108,
+              8.870846125434698
+            ],
+            "queries": 128,
+            "parents": 128
+          }
+        }
+      }
+    }
+  },
+  "tails": {
+    "TTFT-Current": {
+      "improved_v": 62,
+      "unchanged_v": 28,
+      "harmed_v": 38,
+      "severe_v_gt5pp": 7,
+      "rescue_v_gt5pp": 11,
+      "severe_v_ge10pp": 3,
+      "severe_t_or_v_union_once": 14,
+      "rescue_t_or_v_union_once": 19
+    },
+    "TTFT-SourceTR": {
+      "improved_v": 62,
+      "unchanged_v": 23,
+      "harmed_v": 43,
+      "severe_v_gt5pp": 16,
+      "rescue_v_gt5pp": 32,
+      "severe_v_ge10pp": 14,
+      "severe_t_or_v_union_once": 30,
+      "rescue_t_or_v_union_once": 37
+    },
+    "TTFT-Source": {
+      "improved_v": 64,
+      "unchanged_v": 26,
+      "harmed_v": 38,
+      "severe_v_gt5pp": 20,
+      "rescue_v_gt5pp": 39,
+      "severe_v_ge10pp": 15,
+      "severe_t_or_v_union_once": 34,
+      "rescue_t_or_v_union_once": 59
+    }
+  },
+  "short_long": {
+    "all": {
+      "TTFT-Source": {
+        "queries": 128,
+        "parents": 128,
+        "statistics": {
+          "delta_t_pp": {
+            "mean": 2.965814216691784,
+            "CI95": [
+              0.7217367891293206,
+              5.436768179871791
+            ],
+            "queries": 128,
+            "parents": 128
+          },
+          "delta_v_pp": {
+            "mean": 2.771367480286036,
+            "CI95": [
+              0.7857079075336811,
+              4.836698901845389
+            ],
+            "queries": 128,
+            "parents": 128
+          },
+          "improved_v_percent": {
+            "mean": 50.0,
+            "CI95": [
+              41.40625,
+              58.59375
+            ],
+            "queries": 128,
+            "parents": 128
+          },
+          "harmed_v_percent": {
+            "mean": 29.6875,
+            "CI95": [
+              21.875,
+              37.5
+            ],
+            "queries": 128,
+            "parents": 128
+          },
+          "severe_t_percent": {
+            "mean": 15.625,
+            "CI95": [
+              9.375,
+              21.875
+            ],
+            "queries": 128,
+            "parents": 128
+          },
+          "severe_v_percent": {
+            "mean": 15.625,
+            "CI95": [
+              9.375,
+              21.875
+            ],
+            "queries": 128,
+            "parents": 128
+          },
+          "severe_union_percent": {
+            "mean": 26.5625,
+            "CI95": [
+              18.75,
+              34.375
+            ],
+            "queries": 128,
+            "parents": 128
+          },
+          "rescue_union_percent": {
+            "mean": 46.09375,
+            "CI95": [
+              37.5,
+              54.6875
+            ],
+            "queries": 128,
+            "parents": 128
+          }
+        }
+      },
+      "TTFT-SourceTR": {
+        "queries": 128,
+        "parents": 128,
+        "statistics": {
+          "delta_t_pp": {
+            "mean": -0.4412537922864417,
+            "CI95": [
+              -1.1975032943549198,
+              0.3121771672199276
+            ],
+            "queries": 128,
+            "parents": 128
+          },
+          "delta_v_pp": {
+            "mean": 1.545937374342297,
+            "CI95": [
+              -0.4057675146330762,
+              3.525075490711594
+            ],
+            "queries": 128,
+            "parents": 128
+          },
+          "improved_v_percent": {
+            "mean": 48.4375,
+            "CI95": [
+              39.84375,
+              57.03125
+            ],
+            "queries": 128,
+            "parents": 128
+          },
+          "harmed_v_percent": {
+            "mean": 33.59375,
+            "CI95": [
+              25.78125,
+              42.1875
+            ],
+            "queries": 128,
+            "parents": 128
+          },
+          "severe_t_percent": {
+            "mean": 11.71875,
+            "CI95": [
+              6.25,
+              17.96875
+            ],
+            "queries": 128,
+            "parents": 128
+          },
+          "severe_v_percent": {
+            "mean": 12.5,
+            "CI95": [
+              7.03125,
+              18.75
+            ],
+            "queries": 128,
+            "parents": 128
+          },
+          "severe_union_percent": {
+            "mean": 23.4375,
+            "CI95": [
+              16.40625,
+              31.25
+            ],
+            "queries": 128,
+            "parents": 128
+          },
+          "rescue_union_percent": {
+            "mean": 28.90625,
+            "CI95": [
+              21.09375,
+              36.71875
+            ],
+            "queries": 128,
+            "parents": 128
+          }
+        }
+      },
+      "Current-TTFT": {
+        "queries": 128,
+        "parents": 128,
+        "statistics": {
+          "delta_t_pp": {
+            "mean": 0.11508576008959984,
+            "CI95": [
+              -0.8149158037013327,
+              1.087574960532444
+            ],
+            "queries": 128,
+            "parents": 128
+          },
+          "delta_v_pp": {
+            "mean": -0.7550111649474084,
+            "CI95": [
+              -1.5724415984133873,
+              0.03454370508299139
+            ],
+            "queries": 128,
+            "parents": 128
+          },
+          "improved_v_percent": {
+            "mean": 29.6875,
+            "CI95": [
+              21.875,
+              37.5
+            ],
+            "queries": 128,
+            "parents": 128
+          },
+          "harmed_v_percent": {
+            "mean": 48.4375,
+            "CI95": [
+              39.84375,
+              57.03125
+            ],
+            "queries": 128,
+            "parents": 128
+          },
+          "severe_t_percent": {
+            "mean": 7.8125,
+            "CI95": [
+              3.125,
+              12.5
+            ],
+            "queries": 128,
+            "parents": 128
+          },
+          "severe_v_percent": {
+            "mean": 8.59375,
+            "CI95": [
+              3.90625,
+              14.0625
+            ],
+            "queries": 128,
+            "parents": 128
+          },
+          "severe_union_percent": {
+            "mean": 14.84375,
+            "CI95": [
+              8.59375,
+              21.09375
+            ],
+            "queries": 128,
+            "parents": 128
+          },
+          "rescue_union_percent": {
+            "mean": 10.9375,
+            "CI95": [
+              6.25,
+              16.40625
+            ],
+            "queries": 128,
+            "parents": 128
+          }
+        }
+      }
+    },
+    "short_le5s": {
+      "TTFT-Source": {
+        "queries": 78,
+        "parents": 78,
+        "statistics": {
+          "delta_t_pp": {
+            "mean": -0.7129600800062537,
+            "CI95": [
+              -2.5737437680203654,
+              1.1260254105449248
+            ],
+            "queries": 78,
+            "parents": 78
+          },
+          "delta_v_pp": {
+            "mean": 0.41656281836733244,
+            "CI95": [
+              -1.2309922005693772,
+              2.0312720476376143
+            ],
+            "queries": 78,
+            "parents": 78
+          },
+          "improved_v_percent": {
+            "mean": 39.743589743589745,
+            "CI95": [
+              29.487179487179485,
+              51.282051282051285
+            ],
+            "queries": 78,
+            "parents": 78
+          },
+          "harmed_v_percent": {
+            "mean": 29.487179487179485,
+            "CI95": [
+              19.23076923076923,
+              39.743589743589745
+            ],
+            "queries": 78,
+            "parents": 78
+          },
+          "severe_t_percent": {
+            "mean": 17.94871794871795,
+            "CI95": [
+              10.256410256410257,
+              26.923076923076923
+            ],
+            "queries": 78,
+            "parents": 78
+          },
+          "severe_v_percent": {
+            "mean": 15.384615384615385,
+            "CI95": [
+              7.6923076923076925,
+              24.358974358974358
+            ],
+            "queries": 78,
+            "parents": 78
+          },
+          "severe_union_percent": {
+            "mean": 26.923076923076923,
+            "CI95": [
+              17.94871794871795,
+              37.17948717948718
+            ],
+            "queries": 78,
+            "parents": 78
+          },
+          "rescue_union_percent": {
+            "mean": 32.05128205128205,
+            "CI95": [
+              21.794871794871796,
+              42.30769230769231
+            ],
+            "queries": 78,
+            "parents": 78
+          }
+        }
+      },
+      "TTFT-SourceTR": {
+        "queries": 78,
+        "parents": 78,
+        "statistics": {
+          "delta_t_pp": {
+            "mean": -0.06790489143420125,
+            "CI95": [
+              -0.7198559821562008,
+              0.6042239528019216
+            ],
+            "queries": 78,
+            "parents": 78
+          },
+          "delta_v_pp": {
+            "mean": 1.0348127948125088,
+            "CI95": [
+              -0.3223780152351048,
+              2.4189928824772253
+            ],
+            "queries": 78,
+            "parents": 78
+          },
+          "improved_v_percent": {
+            "mean": 43.58974358974359,
+            "CI95": [
+              33.333333333333336,
+              55.12820512820513
+            ],
+            "queries": 78,
+            "parents": 78
+          },
+          "harmed_v_percent": {
+            "mean": 29.487179487179485,
+            "CI95": [
+              19.23076923076923,
+              39.743589743589745
+            ],
+            "queries": 78,
+            "parents": 78
+          },
+          "severe_t_percent": {
+            "mean": 7.6923076923076925,
+            "CI95": [
+              2.5641025641025643,
+              14.102564102564102
+            ],
+            "queries": 78,
+            "parents": 78
+          },
+          "severe_v_percent": {
+            "mean": 8.974358974358974,
+            "CI95": [
+              3.8461538461538463,
+              15.384615384615385
+            ],
+            "queries": 78,
+            "parents": 78
+          },
+          "severe_union_percent": {
+            "mean": 16.666666666666668,
+            "CI95": [
+              8.974358974358974,
+              25.641025641025642
+            ],
+            "queries": 78,
+            "parents": 78
+          },
+          "rescue_union_percent": {
+            "mean": 19.23076923076923,
+            "CI95": [
+              11.538461538461538,
+              28.205128205128204
+            ],
+            "queries": 78,
+            "parents": 78
+          }
+        }
+      },
+      "Current-TTFT": {
+        "queries": 78,
+        "parents": 78,
+        "statistics": {
+          "delta_t_pp": {
+            "mean": 0.16045553046424688,
+            "CI95": [
+              -0.7292706771958047,
+              1.157920076087143
+            ],
+            "queries": 78,
+            "parents": 78
+          },
+          "delta_v_pp": {
+            "mean": -0.30053218697932005,
+            "CI95": [
+              -1.1010710059027853,
+              0.4955072975361629
+            ],
+            "queries": 78,
+            "parents": 78
+          },
+          "improved_v_percent": {
+            "mean": 29.487179487179485,
+            "CI95": [
+              19.23076923076923,
+              39.743589743589745
+            ],
+            "queries": 78,
+            "parents": 78
+          },
+          "harmed_v_percent": {
+            "mean": 38.46153846153846,
+            "CI95": [
+              28.205128205128204,
+              48.717948717948715
+            ],
+            "queries": 78,
+            "parents": 78
+          },
+          "severe_t_percent": {
+            "mean": 6.410256410256411,
+            "CI95": [
+              1.2820512820512822,
+              12.820512820512821
+            ],
+            "queries": 78,
+            "parents": 78
+          },
+          "severe_v_percent": {
+            "mean": 5.128205128205129,
+            "CI95": [
+              1.2820512820512822,
+              10.256410256410257
+            ],
+            "queries": 78,
+            "parents": 78
+          },
+          "severe_union_percent": {
+            "mean": 10.256410256410257,
+            "CI95": [
+              3.8461538461538463,
+              17.94871794871795
+            ],
+            "queries": 78,
+            "parents": 78
+          },
+          "rescue_union_percent": {
+            "mean": 10.256410256410257,
+            "CI95": [
+              3.8461538461538463,
+              16.666666666666668
+            ],
+            "queries": 78,
+            "parents": 78
+          }
+        }
+      }
+    },
+    "long_gt5s": {
+      "TTFT-Source": {
+        "queries": 50,
+        "parents": 50,
+        "statistics": {
+          "delta_t_pp": {
+            "mean": 8.704702119540721,
+            "CI95": [
+              4.138054096551905,
+              13.879171773297172
+            ],
+            "queries": 50,
+            "parents": 50
+          },
+          "delta_v_pp": {
+            "mean": 6.444862752879215,
+            "CI95": [
+              2.0640068685634607,
+              10.905473117078003
+            ],
+            "queries": 50,
+            "parents": 50
+          },
+          "improved_v_percent": {
+            "mean": 66.0,
+            "CI95": [
+              52.0,
+              78.0
+            ],
+            "queries": 50,
+            "parents": 50
+          },
+          "harmed_v_percent": {
+            "mean": 30.0,
+            "CI95": [
+              18.0,
+              44.0
+            ],
+            "queries": 50,
+            "parents": 50
+          },
+          "severe_t_percent": {
+            "mean": 12.0,
+            "CI95": [
+              4.0,
+              22.0
+            ],
+            "queries": 50,
+            "parents": 50
+          },
+          "severe_v_percent": {
+            "mean": 16.0,
+            "CI95": [
+              6.0,
+              26.0
+            ],
+            "queries": 50,
+            "parents": 50
+          },
+          "severe_union_percent": {
+            "mean": 26.0,
+            "CI95": [
+              14.0,
+              38.0
+            ],
+            "queries": 50,
+            "parents": 50
+          },
+          "rescue_union_percent": {
+            "mean": 68.0,
+            "CI95": [
+              54.0,
+              80.0
+            ],
+            "queries": 50,
+            "parents": 50
+          }
+        }
+      },
+      "TTFT-SourceTR": {
+        "queries": 50,
+        "parents": 50,
+        "statistics": {
+          "delta_t_pp": {
+            "mean": -1.0236780776159369,
+            "CI95": [
+              -2.598406889138199,
+              0.5924289801547895
+            ],
+            "queries": 50,
+            "parents": 50
+          },
+          "delta_v_pp": {
+            "mean": 2.343291718408767,
+            "CI95": [
+              -2.218981466357777,
+              6.936955539036625
+            ],
+            "queries": 50,
+            "parents": 50
+          },
+          "improved_v_percent": {
+            "mean": 56.0,
+            "CI95": [
+              42.0,
+              70.0
+            ],
+            "queries": 50,
+            "parents": 50
+          },
+          "harmed_v_percent": {
+            "mean": 40.0,
+            "CI95": [
+              26.0,
+              54.0
+            ],
+            "queries": 50,
+            "parents": 50
+          },
+          "severe_t_percent": {
+            "mean": 18.0,
+            "CI95": [
+              8.0,
+              30.0
+            ],
+            "queries": 50,
+            "parents": 50
+          },
+          "severe_v_percent": {
+            "mean": 18.0,
+            "CI95": [
+              8.0,
+              30.0
+            ],
+            "queries": 50,
+            "parents": 50
+          },
+          "severe_union_percent": {
+            "mean": 34.0,
+            "CI95": [
+              22.0,
+              48.0
+            ],
+            "queries": 50,
+            "parents": 50
+          },
+          "rescue_union_percent": {
+            "mean": 44.0,
+            "CI95": [
+              30.0,
+              58.0
+            ],
+            "queries": 50,
+            "parents": 50
+          }
+        }
+      },
+      "Current-TTFT": {
+        "queries": 50,
+        "parents": 50,
+        "statistics": {
+          "delta_t_pp": {
+            "mean": 0.0443089183051507,
+            "CI95": [
+              -1.7930299941642656,
+              1.9602651080290658
+            ],
+            "queries": 50,
+            "parents": 50
+          },
+          "delta_v_pp": {
+            "mean": -1.463998370577626,
+            "CI95": [
+              -3.0498208860434257,
+              0.10877464496344101
+            ],
+            "queries": 50,
+            "parents": 50
+          },
+          "improved_v_percent": {
+            "mean": 30.0,
+            "CI95": [
+              18.0,
+              42.0
+            ],
+            "queries": 50,
+            "parents": 50
+          },
+          "harmed_v_percent": {
+            "mean": 64.0,
+            "CI95": [
+              50.0,
+              78.0
+            ],
+            "queries": 50,
+            "parents": 50
+          },
+          "severe_t_percent": {
+            "mean": 10.0,
+            "CI95": [
+              2.0,
+              18.0
+            ],
+            "queries": 50,
+            "parents": 50
+          },
+          "severe_v_percent": {
+            "mean": 14.0,
+            "CI95": [
+              6.0,
+              24.0
+            ],
+            "queries": 50,
+            "parents": 50
+          },
+          "severe_union_percent": {
+            "mean": 22.0,
+            "CI95": [
+              12.0,
+              34.0
+            ],
+            "queries": 50,
+            "parents": 50
+          },
+          "rescue_union_percent": {
+            "mean": 12.0,
+            "CI95": [
+              4.0,
+              22.0
+            ],
+            "queries": 50,
+            "parents": 50
+          }
+        }
+      }
+    }
+  },
+  "efficiency": {
+    "queries": 128,
+    "mean_active_experimental_query_wall_seconds": 9.682086815367214,
+    "mean_Source_forward_and_observer_seconds": 4.380727777562484,
+    "mean_conditional_update_stream_seconds": 3.4771561276717193,
+    "Source_model_load": {
+      "worker": {
+        "pid": 18967,
+        "startticks": 471184
+      },
+      "seconds": 3.5611149930000465,
+      "checkpoint_load": {
+        "loader": "strict_source_architecture_with_known_transformers_extra_filter",
+        "model_key": "model_ema",
+        "checkpoint_state_key_count": 1660,
+        "model_state_key_count": 1659,
+        "ignored_deterministic_extra_keys": [
+          "text_encoder.body.embeddings.position_ids"
+        ],
+        "missing_keys": [],
+        "unexpected_keys_before_filter": [
+          "text_encoder.body.embeddings.position_ids"
+        ],
+        "shape_mismatch_keys": [],
+        "skipped_cross_dataset_shape_keys": [],
+        "cross_dataset_partial_spatial_load": false,
+        "strict_all_model_weights": true,
+        "source_dataset": "hcstvg2",
+        "target_dataset": "hcstvg2"
+      }
+    },
+    "cost_scope": "Actual query wall includes reference reads, decoding, transfers, readonly Source observers, raw checkpoints, SHA, adaptation diagnostics/checkpoint cold reads, prototype/readout and prediction commit. Conditional update stream includes transfers/state diagnostics/checkpoints; nested clocks overlap and must not be added. Not audit-free matched deployment timing."
+  },
+  "optimization_checks": {
+    "episodes": 128,
+    "all_actual_gradients_finite_nonzero": true,
+    "all_parameter_update_and_allframe_changes_observed": true,
+    "all_exact_resets_and_cold_replays": true,
+    "pseudo_loss_increased_queries": 0
+  },
+  "limitations": [
+    "Fixed128 exposed parent panel, not full target lists or unknown confirmation.",
+    "Configs selected solely on source validation36 per direction before target predictions.",
+    "SourceTR has no expert; its contrast includes added expert information and parameter updates, not a same-information adaptation attribution.",
+    "Current Full and TTFT use same8raw expert observations, different complete inference/optimization pipelines and own refined intervals. Not isolated propagation comparison.",
+    "Original Current soft E/expert anchor choice unchanged; not validation of an intended hard-anchor variant.",
+    "No complete matched deployment timing for TTFT measured."
+  ]
+}
