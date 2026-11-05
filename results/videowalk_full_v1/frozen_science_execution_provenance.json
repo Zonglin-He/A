@@ -1,0 +1,477 @@
+{
+  "plan": {
+    "schema": "full_target_fixed_Source_feature_VideoWalk_propagation_v1",
+    "authorization": "2026-11-05 direct user requests original128query VideoWalk-based matched Source feature propagation expanded to both complete testlists; unused disk scratch cleanup authorized separately",
+    "counts": {
+      "hc2": 1902,
+      "vidstg": 10303
+    },
+    "source_config": {
+      "hc2": {
+        "temperature": 0.05,
+        "topk": 10,
+        "context": 20
+      },
+      "vidstg": {
+        "temperature": 0.05,
+        "topk": 10,
+        "context": 20
+      }
+    },
+    "matching_science_sha256": "b7a9d44d58642d38c57fc85dce15e6e340ec07e1ba4437a87a18afefcedb41a0",
+    "pinned_official_commit": "047f3f40135a4b1be2f837793b89c3dbfe7a6683",
+    "comparison": "Matching vs unchanged Current, with already complete pure expert interpolation reference. Same8rawexpert boxes+Source-grid softmask seeds, physicaltimes, native Source postfusionvisualprefix256/cell+valid grids, perquery fixed Current jointMAPinterval. No additional expert/encoder/model/teacher or changed params. Matching does not receive E/Sourcebox paths/currentDP/timeprior; interval attached after its fullvideo propagation.",
+    "definition": "Original frozen Source-feature VideoWalk module adapter: l2normalize Source vectors, temperature.05/K10, all8fixedlongterm mask memories+past20predictedunobserved memories in each temporal direction, native twodirection softmean, officialforeground>.5/halfopenbox, emptyzero. Native observed8boxes exactlyexpert. Not original VideoWalk learned encoder reproduction; source and pilot performance weak vs pure is retained, not renamed strong or tuned on target.",
+    "reuse": "Original256 pilot predictions/scalars/completefeaturecompacts and original source selection audited receipts reused exactly without new Source/Matching predictions/officialscores. Remaining128retainedraw queries use original fullgrids. All other11821Source grids missing and may each be acquired exactlyonce using originalTA224Source, originalquery/frames/subject/backend/weights. No original expert calls or other paused scope release.",
+    "maximum_new_Source": {
+      "hc2": 1710,
+      "vidstg": 10111
+    },
+    "maximum_new_Source_total": 11821,
+    "maximum_new_expert": 0,
+    "maximum_new_optimizer": 0,
+    "source_checkpoints": {
+      "hc2": "5ab12c86363ef0ce0ee006c00fd11c6b659c3a9b2cb01a4f2c613efe22a2aa83",
+      "vidstg": "47d8f15841cd57e7bbf5a10e8bf23b1054d23b753e0becbd38a07f3dd60d5036"
+    },
+    "Source_precision": "Original224 input/maxwidth313 twooffset sameallframes; FP16visualprefix/FP32nativeheads, cudnnTF32True/matmulFalse/eval/SourceTorch4; parserTorch4, matchingTorch1. NativeSource/logits/records/q0/8positions exact old capture; regeneratepostfusionfullgrids and originalcurrent geometry/pretextauxpool/Epool/posterior/ownMAP/fullDP arrays exact.",
+    "paid_state": "Save complete native_Source.pt+SHA BEFORE any compatibility/ROI check. New complete postfusionfeatures/valid/8seeds/nativeboxes/physicalgrid sufficientstate retained+SHA/coldmatching exact. First2actuallyNEW/domain separate actualCPU nativegrid/Source/current/allMatching arrays audit before morepaidSource; actualwait0 required, no manualfakeack. Every32queryshard independently Source/fullgrid/allarray audited with noGT; only own redundant native checkpoint disposed afterthisaudit. Retain all new minimal fullgrids for future reuse. All oldroots/raw immutable; no retry/skip/fallback/hashwaive.",
+    "storage": {
+      "cleanup_receipt_sha256": "6e14d756f035ce7541887d9e7fadcc4d4e8076e7271f19af74d89462fa252536",
+      "complete_fullgrid_upper_bytes": 88326910880,
+      "free_at_freeze": 181472104448,
+      "max_private_bytes": 171798691840,
+      "min_disk_free": 85899345920,
+      "shard_size": 32
+    },
+    "evaluation": "Each whole domain ALLqueries sealed and every noGTshard+wholeinputaudit before separate officialCPUscore onlynewMatching11949total; original256matching/current/pureprimaryscalars adopted by identity. New commonGTsupportdenseunobs/nativeunobs/distance diagnostic derived, separate normalizedpixel scoreaudit and separate allmeans/parent10000CI audit. Allsigned/severev>5pp/rescues/short<=5s-long, all support/empty counts retained. Conditionaldenseunobs predGTintersection excludingexact8physicalobs; nativeallvideo distinct. Targetexposed/pointwise/no targetparamselection. CurrentsoftE/expert anchor choices notclamped.",
+    "resources": "One new SourceGPUworker+oneindependentCPUauditor maximum; CPU12-15nice19idleIO, RAM8GiB/disk80GiB/private160GiB/domain72h. OldSourcepromptfull465516/479820 remains exactT/inflightpaidstate/originalglobalflock/context preserved; sameexclusive cooperativeborrow lock whileoldownerstopped, exactforeigngate onlyToDeskallowed, no serviceoroldqueuesignals.",
+    "cost": "NewSource acquisition/checkpoint/rawIO/matching CPU/independentreplay/domainPIDstartmodelLoad allrecorded; reusedpilot acquisitioninheritednonzero/null whereunknown, not0. Nestedclocks notadditive, cachedexperimentalwall notdeployment.",
+    "code_sha256": {
+      "studies/videowalk_full_v1/common.py": "ebc9fd068a4b43a028f3eb58bc7c1dfdf686ad6d51f564aea5ec073290dd76c0",
+      "studies/videowalk_full_v1/controller.py": "abb59931c0eb5e338c629882cb986d0046aa359c63316887f11cb659ba752792",
+      "studies/videowalk_full_v1/worker.py": "299f5da1882ebe2aadeb095f0353607e5322d4a50991a13ff761ac2367f5bdda",
+      "studies/videowalk_full_v1/compatibility.py": "da51f18c50bcd093462ca3ab18fef0e9d8aa3d6f1fde9f97e3af39f3f6142d59",
+      "studies/videowalk_full_v1/evaluate.py": "6473b0c6f353b1483831602c2fb8917bf90bbecef9fe59e1e8ee570360ed7a2b",
+      "studies/videowalk_full_v1/prepare.py": "93c192913bdd7c8f02357800bdac4357c44cd952382813f911ddf12c739f46cb",
+      "studies/spatial_temporal_six_v1/matching.py": "b7a9d44d58642d38c57fc85dce15e6e340ec07e1ba4437a87a18afefcedb41a0",
+      "studies/expert_subset_followups_v1/protected_service_gate_runtime_v2.py": "61c73f49a0c95f72c6372cc9d335bdbec07cc63d599fe3696b25e3a93969a5dc",
+      "stvg/metrics.py": "c8db46913786a9f300984d7d7ca7ab219be30e8c91a1d27781d23155597d5665",
+      "stvg/__main__.py": "d37dda44438961178fb2caea65b206a73fa2a2139222f6f41f2339c2fd4bd477",
+      "stvg/native.py": "e34d3b08a76ec1baac08e4f158f42ce8e0bf1795a4034ee80801422d0b04ccbc",
+      "stvg/readout.py": "dd22b7f4627375514df61b9a18cbfafcac2352de74b4a4dd5fcefc934da2f3e0",
+      "stvg/_attention.py": "5eea2e096e96ee5a011b827341677d107a1a763b4586f465b2f099b7618abf38",
+      "stvg/metrics_base.py": "4257912cd58f441f36bcafb1ce93eeeae83de18312166ac9017a28687e31f6d0",
+      "stvg/visual_cache.py": "659cf4402001d09a5a7c6092c8d577fff48fa7b19ce71a62d050251b52f15fff",
+      "stvg/metrics_hc.py": "a4ed56bf48e0bcb8d3193a421048a1a6dd7373027f90e43bfcc6afd6e64b0927",
+      "stvg/inputs.py": "f9023daa8737cabc71045ef5dd4199e0d9b7823bcc6eb8430b1097f6159759f7",
+      "stvg/evaluation.py": "7d06ebb331a58a6ccc172bbc8ff578bb971b363737316ad02764d2e5031470a1",
+      "stvg/decode.py": "3c5d0237a97c650970a76266874bcd83b1f77f302a70dda842fa38f9c22be2a8",
+      "stvg/current_shared_roi.py": "83e440aafdba60a69086e141bc837388f8dd5e2d2c2f8e1b2475b48ce35a80c6",
+      "stvg/positions.py": "d22e4fbceea353f060276ff09d4d298f87e99116ff1624328048b7ee86541d15",
+      "stvg/teacher.py": "8ddfa01c26becbff3dad094cf6d96d3075ea2088a97ec20487ebe6749d4f2fa5",
+      "stvg/teacher_bridge.py": "123070ae2f38c0c1f30afeb79a90de3278d370c9794eaabe81a48db1f70188e8",
+      "stvg/worker.py": "21ecab248a8ad4fc6b9004b5c7f2b8c242e8b18f3a286a6b4cbf370b58926274",
+      "stvg/capture.py": "bd198dfb18073d9806ffd082beb633b3df544308878fcac7ce9f2b4a4557b520",
+      "stvg/source.py": "0f06660b3cccea6f8af720c5c7668e9c1a98fb6ed217922ddfaf402fa7a05ede",
+      "stvg/representation.py": "1e10152274996a046dc45a1bbfd90727dda4083f3c1afcea21f2765f97f0e666",
+      "stvg/predictor.py": "166f6de17304deff0336d3acc731a8cc90a365e90e5cf93b4c6dc525f6754c38",
+      "stvg/prior.py": "341ef6c18534a17d52979827d6ca12d29dd34236648abca506632ff25bdc45a2",
+      "stvg/visual_prefix.py": "fb937f5f15d2b3b6c6399bfc223c2d470981382931e0daaf72fc0d38938e36b5",
+      "stvg/_host.py": "9901dfcbe40ee7a4377c7d61de61c5dfa6e9666fd09c0dd5af3323c280a9957e",
+      "stvg/query.py": "cb0cac6ea1b71cb80c61b42201e4740a24f3a8aeeafb25e13baa98e739520637",
+      "stvg/_visual.py": "33e2b8040979aca964620d8734cea62b0295111943767a337e3664b278802966",
+      "stvg/temporal_hidden.py": "b2ca065a86e447b1c6f40615abb67a96cff5612e4b8b97124cd00a8cc50701c5",
+      "stvg/current.py": "d000f6edd15a2ef23a513efc7ef6ad8ecb8fd0889983bec6d384756e7e29ed87",
+      "stvg/teacher_worker.py": "884448d03776ae733bcdb8cc684ff1637e50d407d180c60ecf4ae5a3daa86493",
+      "stvg/tensors.py": "11533fb059d6e2f6cd7913ace762ae5c553955bbbe670fadf87d660f573581a3",
+      "stvg/source_loader.py": "f480f9c30cec9ea468ef60f4707c4928c04acdca038aeea556cf9674dafe41de",
+      "stvg/paper_panel.py": "505a061289956cba2544c3323a5d9b6fde33d62e61ea2a78da7d41de6d7bc459",
+      "stvg/initialization.py": "21168f4a6740e5b4f306863bd1b852587cc71ed8d15dd0dc3b8b643da70e7842",
+      "stvg/consensus.py": "c8539c78a8ec278866e5bc077e55911ffaae85e9efc44cc7262a4dc58488c34c",
+      "stvg/__init__.py": "c904c38c274d6791c9c3cfed40753e917cd1b647b6f38497151394ba73d9b6ca",
+      "stvg/_spatial_math.py": "5bc273271a08dabffa086aff663795400e084b70a60e1dcd98d80099a2039e2e",
+      "stvg/evidence.py": "ea866f3e209a60ae83f97b53d8b3eb9326d94fe0b94f61c106d29bcdb2634a4a",
+      "stvg/spatial.py": "54c3cec0ec643e47464957730f482302609855164196b361ee4bee1efd025c10",
+      "stvg/runtime.py": "4b1fcfbfeefec90643c0c92621f4a1d28339aa5c1bf68ad8d7f69ab413176381",
+      "stvg/prototype.py": "b263154ae8c6ff4e4f8162e4ddea4498302b86f2ec65e8cfac0aa92d351d425b",
+      "stvg/temporal.py": "50499490a53bce6f46f0f3f080f5314236ccccf7c7ec919ee817d9df0a7ac710",
+      "external/TA-STVG/config/__init__.py": "190bd51178fbb88767c06333c96af093fac6409f325c152cb0ef85332a0fedbc",
+      "external/TA-STVG/config/defaults.py": "44b63b9b24084f25513057736b251fd3b942f8a95d16ec80c39cc98dfd64fdab",
+      "external/TA-STVG/datasets/__init__.py": "c26dcf40d3d1be98d7577c41e8ecf6c7ab95c5ac9fab79f2cd1387d8fda7efca",
+      "external/TA-STVG/datasets/build.py": "f61d8fa353230ab08d6d909ecfe72c317fa49f9454e3ac416a0be65d446a83fb",
+      "external/TA-STVG/datasets/collate_batch.py": "c5503845737d2b761eccd0e29b4c7833155f92941a45b9e025b04a2187b24a50",
+      "external/TA-STVG/datasets/data_utils.py": "3ebd7fea50a16e351c7cd1617f1a896e5d42d5f7e02a208d01711dc3fff05a1c",
+      "external/TA-STVG/datasets/evaluation/__init__.py": "d84a1102658c92cb29207e877e8a44119f47c00772a258397a131185ce611f30",
+      "external/TA-STVG/datasets/evaluation/hcstvg_eval.py": "e00975f864cad07fe2eb70cefd55d26107acf8aba41ac1788b252b754c95d653",
+      "external/TA-STVG/datasets/evaluation/vidstg_eval.py": "925faaeb2bed124ef3c0c37566a2ea71c9d41f60b284a4964f4aac2cdeb9b59a",
+      "external/TA-STVG/datasets/gaussion_hm.py": "f66596c9b02bc753ae4fc69f13cc71fc72050e2fb6c8c009815667b86e39b0d0",
+      "external/TA-STVG/datasets/hcstvg.py": "3b2c72c289af72c1828ebcc63483af92280948b22724d22980f53a486bc6bfc2",
+      "external/TA-STVG/datasets/samplers/__init__.py": "98218e3902641ad70d284e6a2e8aebed19b41cf2e7b7be6e74b2a17090a559ce",
+      "external/TA-STVG/datasets/samplers/grouped_batch_sampler.py": "6e7473ad5b63a9303296fd1b60876f07642a6c1961a6bfa1754f334c5dfed8d3",
+      "external/TA-STVG/datasets/samplers/iteration_based_batch_sampler.py": "52b746c52f3dd6083bcea8a01f991c44a7640263af4c86cad91c38bd7632e014",
+      "external/TA-STVG/datasets/transforms.py": "0349cac6f0bcca1f39905955ad4879dd5f05be61fad49062f980fc39b8d3f64d",
+      "external/TA-STVG/datasets/vidstg.py": "580ec8c3a258954eb28d6ac93a54a5516989c03f24919caa45fd9770fb31740f",
+      "external/TA-STVG/datasets/words.py": "0dd6ba7c66c968064f7bb90312eb22741e406de1f91bc715770c08257e556b90",
+      "external/TA-STVG/engine/__init__.py": "3b2a7cac38ad8a92dea0a2dd44a397ccf9904af3137e0bb388a1b2187b04ff2e",
+      "external/TA-STVG/engine/evaluate.py": "aa6403839f2c10e85ae503a4b7de45c3642d34c0d032f6e534c999c1f38d12a2",
+      "external/TA-STVG/engine/lr_scheduler.py": "2a1f62c300200af644e5e175c2cfe9a82b1518ef05d92b90d5aa2e1992f0285e",
+      "external/TA-STVG/engine/optimizer.py": "d57fb39049980d7895afd4e7f1dad8318d359e5b0b6bdc6aaf1a02dbcfcd2211",
+      "external/TA-STVG/experiments/hcstvg.yaml": "4af60d4eaf57f0df4a366579c7af3351fb122ffc42fe62af6e7d7734bbaa8b4a",
+      "external/TA-STVG/experiments/hcstvg2.yaml": "534c3808e6b79b37b54b367c0e5b3f04213b34f80b37954a8c96ebf96c66727a",
+      "external/TA-STVG/experiments/vidstg.yaml": "1e9fe86ecfd2fddbad53d4345ce828c5cb13d59f76d1f848bc274b49aa165adb",
+      "external/TA-STVG/models/__init__.py": "25cb01628da0d61e48877973263e7c0144114529936c040e53042418ad7e84a7",
+      "external/TA-STVG/models/bert_model/bert_module.py": "98f43fc58aada89aea2be47b292ac076ab66bd766a9787c44239047e6139e401",
+      "external/TA-STVG/models/criterion.py": "601cbf16f5b77e45ce5f96718c1faabe7db0e4c5716e2d1d32c7369d1981d517",
+      "external/TA-STVG/models/grounding_model/__init__.py": "9103fc57a73066ddd233fd81dbf7831599cd440e5557b96f49f03791d100a706",
+      "external/TA-STVG/models/grounding_model/attention.py": "c036272f1143f9ff3360f1ef80dd1e420c8307c762ac247298e76fe476d7773d",
+      "external/TA-STVG/models/grounding_model/classifier.py": "d0c04ce156149fb748114a5644b7844b16c8932ea9548d5ab4eba78c840e53c2",
+      "external/TA-STVG/models/grounding_model/modal_encoder.py": "0fece56cd68911c75fcd89be80837edd232845b9bae05d318c65e71fb73b7c2d",
+      "external/TA-STVG/models/grounding_model/position_encoding.py": "ed96bc8f0145791ebb86e261e1e4628fa7fd95768894f7d635bfb012562d6a0a",
+      "external/TA-STVG/models/grounding_model/query_decoder.py": "9cb4062b5f91403853b697f5901501969956c799e79f07ef47a581e28d6cf79c",
+      "external/TA-STVG/models/language_model/__init__.py": "64d6cf8e73776fcfc0f7fcd36fbd34dd0452bda6838c4e4e9071ab2e79e3def8",
+      "external/TA-STVG/models/language_model/bert.py": "8ad3eef3393024dba2a62e171f3c3121860b62868c3cb1a5e23b63366436c201",
+      "external/TA-STVG/models/language_model/lstm.py": "0bff54fc7b8cdf27a3ff52ae28136991c52cbe4a5da9d65a13fa899acf32fcb7",
+      "external/TA-STVG/models/map2d_head.py": "e600872fe3cd8e5af73bd79431b0fbaec6f1cd83556d677b1a0a6d54fdd7c956",
+      "external/TA-STVG/models/net_utils.py": "fd7b94ab2a2642d4910efedb4df7735b23462c258c2f6d092d0c89cdf137c62a",
+      "external/TA-STVG/models/pipeline.py": "7c9723d8110192ffd80deaf624752165ad0399a7be28480ef70e3eeb30ae49f3",
+      "external/TA-STVG/models/post_processor.py": "dcf7dbe07b275777b32592f3736d623ef1dc3d95bfbd69421d519257f8707586",
+      "external/TA-STVG/models/vidswin/video_swin_transformer.py": "703a4257a0567ec00ac909bc22b28d97fb8d3041d1e541aef57cd76faff101d3",
+      "external/TA-STVG/models/vision_model/__init__.py": "b664843704d6445af5aae237a49e8b1ee798ffc5ac31abb557f65bf4c5634660",
+      "external/TA-STVG/models/vision_model/backbone.py": "89781a4239f9ec32fa7c09ebfea20743ad215eaa7593404143f3aba886b06eb2",
+      "external/TA-STVG/models/vision_model/position_encoding.py": "172d95e10c99c09113ddb4f8b12ea8849797bc0c6314a2aa70a7d43b9efd7831",
+      "external/TA-STVG/scripts/test_net.py": "0352cdcbb12ead98cea0b4337ce13f597986d4d357105c05b5e791c85c9e25d4",
+      "external/TA-STVG/scripts/train_net.py": "fccc908143d311c60f323448df3f2b4bb0819b4ed73d204ac18307c20058942c",
+      "external/TA-STVG/utils/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "external/TA-STVG/utils/bounding_box.py": "b56747c34e021f9bc1e6944713e538ffed5bdd9606ed9a91132d63df9a0d229c",
+      "external/TA-STVG/utils/box_utils.py": "84b8c603a28ee95a0d2ce713f428b4c78f14123df05cc77a91bb4ee9b9bfa67d",
+      "external/TA-STVG/utils/checkpoint.py": "2a8e92eb453902204ce55c63a0d4126a1a081b35fa0666675b529d23092fb07e",
+      "external/TA-STVG/utils/comm.py": "6a32639c5b6fa790ac0645b1cb677cd9ad2c5339d6ec59614fd1e121c5c0b480",
+      "external/TA-STVG/utils/imports.py": "194a8819f82415c79bb8b868cc1df6818779a294004f2e8c454d0f8d23f3f9d0",
+      "external/TA-STVG/utils/logger.py": "790b0731111c8efb068f2476624ecf48bc23861c3559b3760250bf84100ae568",
+      "external/TA-STVG/utils/metric_logger.py": "7b233dc2d5b6ef736813f925c8bc9bbda93a75517ed94b28a522ecfb380dd81c",
+      "external/TA-STVG/utils/misc.py": "96f22c150132cfde011ca4e3f64f1cb4aea137950116fde88bccb0b3fd190077",
+      "external/TA-STVG/utils/model_serialization.py": "bdebcb7722287d747e536e1b9793f6207f9826bc951e33f74a118439ae6580ce",
+      "external/TA-STVG/utils/video_list.py": "0e5bb2d08992527b8fb497415bade742336cf6e99110291adb8d39a75a851873"
+    },
+    "input_sha256": {
+      "outputs/videowalk_full_v1/authorization.json": "ba43157b52037465c8bf79ea0b0ac08388be7201a6dc178b7ca33925d3370690",
+      "outputs/videowalk_full_v1/selection.json": "3566196bd54b7df0589a230f424822f7feaad7bff49063bbf284301801a54f7c",
+      "outputs/videowalk_full_v1/raw_inventory.json": "2193e852a3f7c9e87622efa345532b21be636d4730b108d58ce164ca9d7df129",
+      "outputs/videowalk_full_v1/inventory.json": "4b39063e4cbac4a61828f1122276451e0a15c8b0769c3a6b5c353f953ee388b0",
+      "outputs/videowalk_full_v1/preflight.json": "4393fbc534345abe1b25b99d446961506c3c751a3c6098dbea071cc51eb11a40",
+      "outputs/videowalk_full_v1/paused_owner_contract.json": "fe79d54558148550e5fe4ca37c5b355d45926dd0caf8707c6a9cc31175b6f0e8",
+      "outputs/spatial_temporal_six_v1/matching_pilot/plan.json": "99c04e6d0ea84785f8eb32e37d1278ec5105d178109aa99b6a057bb0175de0e8",
+      "outputs/spatial_temporal_six_v1/source_validation/calibration/root_acceptance.json": "289e980a1e2f12bfbbf302b69eb800e72bbe36ffbe2dd8324cfd1d2807b16d83",
+      "outputs/spatial_temporal_six_v1/source_validation/calibration/audit_receipt.json": "d6d0c8fbc9a1eec8ba0d2f4b6780f9e877d56b5de8edee1bc82d091d5e6e65a0",
+      "configs/default.json": "a129564085d12fdb7d0c663b486407f783d8cb66eb08e36d00f52c794dd8e9ec",
+      "profiles/shared_corrected_roi_v1.json": "4cac5022f8fd35f4606f65dbba3ff4a1f333c42a4903c2ca5a25eb6514c246ed",
+      "outputs/simplepath_full_v2/plan.json": "4a34668741e08bbd68fb2268a87a1fc193d4ca6efa02b4e14972dbfd746c7ab4",
+      "outputs/maintenance/videowalk_disk_cleanup_20261105/receipt.json": "6e14d756f035ce7541887d9e7fadcc4d4e8076e7271f19af74d89462fa252536",
+      ".conda/tubedetr/bin/ffmpeg": "bfec0e82c8497b0b979b1a7812ba1101da3646e8a3330bcb5537badb840a527e",
+      "checkpoints/TASTVG_HCSTVG2.pth": "47d8f15841cd57e7bbf5a10e8bf23b1054d23b753e0becbd38a07f3dd60d5036",
+      "checkpoints/TASTVG_VidSTG.pth": "5ab12c86363ef0ce0ee006c00fd11c6b659c3a9b2cb01a4f2c613efe22a2aa83",
+      "checkpoints/huggingface/hub/models--roberta-base/refs/main": "11c68c3e779c25a0bbefd88f7bbd5cb82d1bc8b5beeaa988df782fa888f9ce83",
+      "checkpoints/huggingface/hub/models--roberta-base/snapshots/e2da8e2f811d1448a5b465c236feacd80ffbac7b/config.json": "ef0185e2aae6e06c5f105a285006952c340e20c7dbf43c86ec82601b13fc45e9",
+      "checkpoints/huggingface/hub/models--roberta-base/snapshots/e2da8e2f811d1448a5b465c236feacd80ffbac7b/merges.txt": "1ce1664773c50f3e0cc8842619a93edc4624525b728b188a9e0be33b7726adc5",
+      "checkpoints/huggingface/hub/models--roberta-base/snapshots/e2da8e2f811d1448a5b465c236feacd80ffbac7b/model.safetensors": "5bde1d28afb363d0103324efeb5afc8b2b397fe5e04beabb9b1ef355255ade81",
+      "checkpoints/huggingface/hub/models--roberta-base/snapshots/e2da8e2f811d1448a5b465c236feacd80ffbac7b/tokenizer.json": "847bbeab6174d66a88898f729d52fa8d355fafe1bea101cf960dd404581df70e",
+      "checkpoints/huggingface/hub/models--roberta-base/snapshots/e2da8e2f811d1448a5b465c236feacd80ffbac7b/tokenizer_config.json": "994f46754c5bf4014f1aa92d34b1374319c3a6b3f702105cd5b742beaecd18ce",
+      "checkpoints/huggingface/hub/models--roberta-base/snapshots/e2da8e2f811d1448a5b465c236feacd80ffbac7b/vocab.json": "9e7f63c2d15d666b52e21d250d2e513b87c9b713cfa6987a82ed89e5e6e50655",
+      "checkpoints/stanza/en/depparse/ewt_nocharlm.pt": "a5f1de2b11916cc89ca35aaf2d83c7e1724d6f263345b54e9586bc8320397e2d",
+      "checkpoints/stanza/en/lemma/ewt_nocharlm.pt": "d0c24e8baeafeba7734205db91dcb0dbf7996ed8b5c79f2bc580410c97346d74",
+      "checkpoints/stanza/en/mwt/ewt.pt": "73411a30da7638bbda2ebd9490e017d78feb4e029e90c9f5c9f37e5433292eb0",
+      "checkpoints/stanza/en/pos/ewt_nocharlm.pt": "67038ce603f183942006466f30dec5a2999490b52d143a55c52d231e8dd2c25c",
+      "checkpoints/stanza/en/pretrain/conll17.pt": "edde4c195f91ba45aab3f3a6254202011f284559da8a5ead5e62ce522f819c5e",
+      "checkpoints/stanza/en/tokenize/ewt.pt": "fc2fed0cd74dbaef1620bd3e776141ae76c4e28eb5aeff369b2715c31cc73cba",
+      "checkpoints/stanza/resources.json": "4e41c1df152146fa26ed0c006a08feea7a60bb3414bb6d57dbda24ad2e3cb99c",
+      "checkpoints/tastvg_model_zoo/swin_tiny_patch244_window877_kinetics400_1k.pth": "9950e3be6b0b3763f80575dfbbe7db7cbeb18345e32363b73e8d44952ef76acc",
+      "checkpoints/torch/hub/checkpoints/resnet101-cd907fc2.pth": "cd907fc2a0de2292b2ba2b27d2216bc672d84632d1cf20058d01c0c03b5e020e",
+      "outputs/simplepath_full_v2/hc2/sealed.json": "bc209ac67273f0f2835c929cf5d977452dff04c901e7ed56223414a04fcb44a2",
+      "outputs/spatial_temporal_six_v1/matching_pilot/hc2/sealed.json": "54471888b19921061da70354ee573b363a2089e665f6f1a45fcc934bf02e49eb",
+      "outputs/spatial_temporal_six_v1/matching_pilot/hc2/reporting_receipt.json": "0525e61fb609248fab766bb5bd01afc98494ccb16b9fc647a5b3fae7950fb907",
+      "outputs/spatial_temporal_six_v1/matching_pilot/hc2/metrics.json": "a4bc28b9deed5b1f01716b96e0adb1916dfe746fd2237fa5357d1d3baf81465c",
+      "outputs/spatial_temporal_six_v1/pure_full/hc2/sealed.json": "f73d2e454b8a61b0afc090d12439d3d2e64568bda206ec7b12106275bd8d811b",
+      "outputs/spatial_temporal_six_v1/pure_full/hc2/reporting_receipt.json": "093bbcc296dd8d5e8caff091396049c8ca1ca503d64026a60068865f5782bb87",
+      "outputs/spatial_temporal_six_v1/pure_full/hc2/metrics.json": "bb87f5a344cc1d665639933251dcbf3843299a5f93c7a3983c747e82748f17e6",
+      "outputs/simplepath_full_v2/vidstg/sealed.json": "faf739e72a065bbac2079715aea4f4e89b0e2014da854013ea0c9728cb295c81",
+      "outputs/spatial_temporal_six_v1/matching_pilot/vidstg/sealed.json": "97f4fb02ae1ea13818ddd996b202204189ba35343df227f219b86d86ad5774da",
+      "outputs/spatial_temporal_six_v1/matching_pilot/vidstg/reporting_receipt.json": "ec2f1cd2260c9e9ae7637bdc18ce294159205f1c86e7686e17df096541125dca",
+      "outputs/spatial_temporal_six_v1/matching_pilot/vidstg/metrics.json": "60cf78a963d650c36df7439fec8ed9781334f55b975968e362a9af603cffb228",
+      "outputs/spatial_temporal_six_v1/pure_full/vidstg/sealed.json": "72e76448dc09785dde8ad91725d8aae22dcec60f1a69e2fed9cbf82cf09a4fa0",
+      "outputs/spatial_temporal_six_v1/pure_full/vidstg/reporting_receipt.json": "e8f6acd3549cdeb1d152c48e2930656b6e9749300bf95960863d96d490415331",
+      "outputs/spatial_temporal_six_v1/pure_full/vidstg/metrics.json": "91fb1daf1cd2290c85e7d8075c594b8c328c00426e1ea0f9acf2c7257839b0b0"
+    },
+    "fingerprint": "fcd591382398efcfae0bde972fdc2a738c7e02b7011a450a9008e0fd78f941c1"
+  },
+  "preflight": {
+    "status": "four_real_pilot_arrays_full_Source_grid_current_geometry_Epool_jointMAP_finalDP_repeat_exact",
+    "cases": [
+      {
+        "dataset": "hc2",
+        "pilot_prediction_sha256": "3982f45b2f7f7e765dc324a2fb1e8c9f06595dab2d7458c6fc55306dc59b7fc6",
+        "retained_raw_sha256": "299e237115f9896dc0c86c9888ec8d916daa2c393e4c7baf72dbef877f3a7d7d",
+        "original_pilot_Matching_array_exact": true,
+        "all8observed_boxes_exact": true,
+        "current_compatibility": {
+          "original_Source_records_logits_q0_observation_positions_exact": true,
+          "original_current_geometry_tensors_exact": 18,
+          "original_pretext_aux_pool_exact": true,
+          "current_Epool_posterior_interval_finalDP_exact": true
+        }
+      },
+      {
+        "dataset": "hc2",
+        "pilot_prediction_sha256": "81d3df20d39f3f8ea8c65880a2134c0d2bbb9a3da437ec62d33b1f2c8cb46c87",
+        "retained_raw_sha256": "fa489ad7e4b5bc47b35aa1641c413b9ae2399308835743ad2f91a034df8e2df7",
+        "original_pilot_Matching_array_exact": true,
+        "all8observed_boxes_exact": true,
+        "current_compatibility": {
+          "original_Source_records_logits_q0_observation_positions_exact": true,
+          "original_current_geometry_tensors_exact": 18,
+          "original_pretext_aux_pool_exact": true,
+          "current_Epool_posterior_interval_finalDP_exact": true
+        }
+      },
+      {
+        "dataset": "vidstg",
+        "pilot_prediction_sha256": "39bee55c06a4fd6650c1d344b88b69714d345c6de507d9384c7d1246b6e70e89",
+        "retained_raw_sha256": "c176d97b90aa4472d6134907e76e84c92ff6af7c976ac32351d63387d554e205",
+        "original_pilot_Matching_array_exact": true,
+        "all8observed_boxes_exact": true,
+        "current_compatibility": {
+          "original_Source_records_logits_q0_observation_positions_exact": true,
+          "original_current_geometry_tensors_exact": 18,
+          "original_pretext_aux_pool_exact": true,
+          "current_Epool_posterior_interval_finalDP_exact": true
+        }
+      },
+      {
+        "dataset": "vidstg",
+        "pilot_prediction_sha256": "e79b30e662d5abc2439f950a7323b9e051019ac92951318da5d0df1bb6ad23b9",
+        "retained_raw_sha256": "c6905fe1035c4ac518d7814d5a0b3f87d710e212b96777ad1bda52b745b68d50",
+        "original_pilot_Matching_array_exact": true,
+        "all8observed_boxes_exact": true,
+        "current_compatibility": {
+          "original_Source_records_logits_q0_observation_positions_exact": true,
+          "original_current_geometry_tensors_exact": 18,
+          "original_pretext_aux_pool_exact": true,
+          "current_Epool_posterior_interval_finalDP_exact": true
+        }
+      }
+    ],
+    "new_Source": 0,
+    "new_expert": 0,
+    "new_GPU": 0,
+    "new_model": 0,
+    "new_GT": 0
+  },
+  "freeze_actual_execution": {
+    "status": "prepared_for_unique_new_controller",
+    "plan_fingerprint": "fcd591382398efcfae0bde972fdc2a738c7e02b7011a450a9008e0fd78f941c1",
+    "plan_sha256": "278eb6d5f9d116762cd14126dedd846a257f07d837b16d14a81ed03858ee703f",
+    "entry": "studies/videowalk_full_v1/controller.py",
+    "command": "CUDA_VISIBLE_DEVICES='' taskset -c 14-15 nice -n 19 ionice -c 3 .conda/tubedetr/bin/python -B studies/videowalk_full_v1/controller.py",
+    "freeze_actual_tool_session": 79982,
+    "freeze_actual_wait": true,
+    "freeze_exit_code": 0,
+    "preflight_actual_tool_session": 81702,
+    "preflight_actual_wait": true,
+    "preflight_exit_code": 0,
+    "old_paused_owners_untouched": true,
+    "publication_complete": false,
+    "time": 1793852469.5771403
+  },
+  "actual_launch": {
+    "status": "actual_controller_process_launched",
+    "controller": {
+      "pid": 868064,
+      "startticks": 6909951,
+      "state": "S",
+      "argv": [
+        ".conda/tubedetr/bin/python",
+        "-B",
+        "studies/videowalk_full_v1/controller.py"
+      ]
+    },
+    "tool_session": 81403,
+    "actual_tool_wait": false,
+    "exit_code": null,
+    "time": 1793852477.2217615
+  },
+  "controller": {
+    "pid": 868064,
+    "startticks": 6909951,
+    "plan_fingerprint": "fcd591382398efcfae0bde972fdc2a738c7e02b7011a450a9008e0fd78f941c1"
+  },
+  "HC_main_stage_exits": {
+    "hc2_GPU": {
+      "worker": {
+        "pid": 868482,
+        "startticks": 6910429
+      },
+      "actual_subprocess_wait": true,
+      "exit_code": 0,
+      "elapsed_wall_seconds": 14769.813838732996,
+      "log_sha256": "b83df123b7da53bc3c00072d81735f537337b71e011f71a11a840142d5c72de2"
+    },
+    "hc2_whole_input_audit": {
+      "worker": {
+        "pid": 1080763,
+        "startticks": 8387414
+      },
+      "actual_subprocess_wait": true,
+      "exit_code": 0,
+      "elapsed_wall_seconds": 14.140258739003912,
+      "log_sha256": "9b2a166bfe44a9745e88625e0dc7cc003f83054decfcec638aaf6daf8395c48e"
+    },
+    "hc2_score": {
+      "worker": {
+        "pid": 1080768,
+        "startticks": 8388827
+      },
+      "actual_subprocess_wait": true,
+      "exit_code": 0,
+      "elapsed_wall_seconds": 20.117597024000133,
+      "log_sha256": "bfc32002be8ae6a683977c1c2270309d80051b55161f3cd282f11bcaf335ba39"
+    },
+    "hc2_score_audit": {
+      "worker": {
+        "pid": 1080855,
+        "startticks": 8390839
+      },
+      "actual_subprocess_wait": true,
+      "exit_code": 0,
+      "elapsed_wall_seconds": 12.890211463003652,
+      "log_sha256": "e616cff5b96077be5fdbf86110038ae0f40cea931a34159c65add29c0a780d61"
+    },
+    "hc2_export": {
+      "worker": {
+        "pid": 1080938,
+        "startticks": 8392128
+      },
+      "actual_subprocess_wait": true,
+      "exit_code": 0,
+      "elapsed_wall_seconds": 6.299700616000337,
+      "log_sha256": "8dace454ab0b61cd850658a1de3ed0fe91a3a03ee2e6e10fe44e5573ea25107a"
+    },
+    "hc2_report_audit": {
+      "worker": {
+        "pid": 1080941,
+        "startticks": 8392759
+      },
+      "actual_subprocess_wait": true,
+      "exit_code": 0,
+      "elapsed_wall_seconds": 5.9935990259982646,
+      "log_sha256": "8c238de8b016f7cea342efcbf40789c7a6bffa9acd9a8d1a7931ff8d7039e4e9"
+    }
+  },
+  "HC_shard_exit_count": 60,
+  "HC_seal_sha256": "dbc5eefe58d4f0ffa35e79cc208687187c9280e7cdf902fc5e7422b6bbe73101",
+  "HC_root_receipt": {
+    "status": "ROOT_personally_reviewed_complete_domain_all_means_signed_tails_shortlong_distance_empty_cost",
+    "queries": 1902,
+    "report_sha256": "8e604083b7d7804543ac1842ffcb7789a588639b231d68a9a6d6ce2d7a2713e6",
+    "review_sha256": "2b5dda786a5fb9c880073cfea5a937cf15f5d5098ff07c070b8ee0ef796671fe",
+    "findings_sha256": "6eec9ba30e6251305f71869360156560ade8b3a7b3c4ec42f27a7e4c41386c19",
+    "root_code_sha256": "8a39cf70d7e0fae87a5e9d8f3aca25f6902f20b45f237a365c6398d5ed4270c9",
+    "score_audit_sha256": "5b34467aa97d4e8b643e791a1bea1f2012ac99c9317975dfa5c57688f208d677",
+    "statistics_audit_sha256": "ff2f0c8aa53681c068a7257c20f03cf1322f4952b6995ec8bee758a15978025b",
+    "new_model": 0,
+    "new_Source": 0,
+    "new_expert": 0,
+    "new_GT": 0,
+    "whole_suite_complete": false,
+    "time": 1793869161.569624
+  },
+  "actual_first_two_bridges": {
+    "hc2": {
+      "actual_first_two_new_Source": {
+        "status": "passed_actual_two_new_original_Source_nativeheads_grid_current_Epool_geometry_interval_finalDP_VideoWalk_cold_exact",
+        "cases": [
+          {
+            "fullgrid_cold_exact": true,
+            "raw_native_Source_and_current_rederived": true,
+            "GT_read": false
+          },
+          {
+            "fullgrid_cold_exact": true,
+            "raw_native_Source_and_current_rederived": true,
+            "GT_read": false
+          }
+        ],
+        "plan_fingerprint": "fcd591382398efcfae0bde972fdc2a738c7e02b7011a450a9008e0fd78f941c1",
+        "worker": {
+          "pid": 871491,
+          "startticks": 6913697
+        },
+        "new_Source": 0,
+        "new_expert": 0,
+        "new_GT": 0
+      },
+      "actual_exit": {
+        "worker": {
+          "pid": 871491,
+          "startticks": 6913697
+        },
+        "actual_subprocess_wait": true,
+        "exit_code": 0,
+        "elapsed_wall_seconds": 7.560343580989866,
+        "log_sha256": "f18557c81ce11f2c32d7c5aeb9f37af81cb3e58a6a6380bc7afd072e25683400"
+      }
+    },
+    "vidstg": {
+      "actual_first_two_new_Source": {
+        "status": "passed_actual_two_new_original_Source_nativeheads_grid_current_Epool_geometry_interval_finalDP_VideoWalk_cold_exact",
+        "cases": [
+          {
+            "fullgrid_cold_exact": true,
+            "raw_native_Source_and_current_rederived": true,
+            "GT_read": false
+          },
+          {
+            "fullgrid_cold_exact": true,
+            "raw_native_Source_and_current_rederived": true,
+            "GT_read": false
+          }
+        ],
+        "plan_fingerprint": "fcd591382398efcfae0bde972fdc2a738c7e02b7011a450a9008e0fd78f941c1",
+        "worker": {
+          "pid": 1081085,
+          "startticks": 8396115
+        },
+        "new_Source": 0,
+        "new_expert": 0,
+        "new_GT": 0
+      },
+      "actual_exit": {
+        "worker": {
+          "pid": 1081085,
+          "startticks": 8396115
+        },
+        "actual_subprocess_wait": true,
+        "exit_code": 0,
+        "elapsed_wall_seconds": 6.800245164005901,
+        "log_sha256": "8c59603a46fe71c5c25f0dc6ff1d3d929a18d142732ab653b5ac5c55efcc7cc8"
+      }
+    }
+  },
+  "watch_policy": {
+    "user_request": "luna max\u6bcf\u534a\u5c0f\u65f6\u68c0\u67e5\u4e00\u6b21\uff0c\u6709\u95ee\u9898\u5411\u4f60\u6c47\u62a5\u5e76\u4fee\u590d",
+    "watcher": "/root/ttft_luna_max_watch",
+    "check_interval_seconds": 1800,
+    "notify": "Only meaningful failures, resource guard risk, complete domain/stage or required root actions; healthy unchanged silent.",
+    "repair_owner": "/root",
+    "repair_rules": "Preserve original code/plan/log/all paid raw/attempts first; diagnose; independent compatible runtime only when needed. No frozen science/hash edits, target retuning, skip/fallback, duplicate workers or blind paid Source retry. No signals to old paused owners or unrelated services.",
+    "scope": "videowalk_full_v1 only",
+    "new_agent": false,
+    "new_chat": false,
+    "new_automation": false,
+    "time": 1793856518.7413473
+  },
+  "HC_complete": true,
+  "Vid_complete": false,
+  "whole_suite_complete": false,
+  "controller_actual_exit": null,
+  "old_paused_scopes_untouched": true
+}

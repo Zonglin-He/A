@@ -1,0 +1,11 @@
+# Full-list same-Source-feature VideoWalk propagation
+
+Direct user authorization extends the original completed 128-query-per-domain adapter to HC-STVG-v2 1,902 and VidSTG 10,303. Exact original eight ReferDINO observations, Source postfusion feature grids, fixed Current event intervals and source-selected `.05 / K10 / context20` settings remain. No new expert, optimizer, learned encoder or target tuning. Current soft E/expert anchor decisions are unchanged.
+
+HC is fully predicted, independently input/grid/array audited, officially scored, independently normalized-pixel scored and statistics audited; root complete signed/support/distance/empty/cost review is in [HC findings](hc2/ROOT_FINDINGS_v1.md). VidSTG has actually launched with its first-two new Source strong bridge passed; it is not complete and no prefix accuracy is reported. Whole authorized scope remains active.
+
+HC vIoU: Matching 21.729104; original pure center/log-size interpolation with nearest-observation endpoints 25.177364; Current 27.349044. Current minus Matching +5.619940 pp [5.200883, 6.049638]; Matching minus Pure -3.448261 [-3.904733, -3.004145]. All three use identical per-query Current intervals. The comparison retains the functional but weak Source-feature VideoWalk adapter; it is not a reproduction of the original learned encoder or evidence against every strong propagator.
+
+Missing full grids are reacquired once with the unchanged original Source; at most 11,821 necessary new Source queries across both domains, zero new expert calls. All new minimal complete matching grids remain private and retained; only newly generated redundant native Source checkpoints may be released after independent first-two and shard audits. Old roots/caches and paused paid in-flight processes remain intact. All completed original128 predictions, primary scores and audits are adopted without rerun.
+
+Public artifacts contain code, protocols, scalar outcomes, full signed gains/tails, support counts, parent-bootstrap intervals and actual costs. Video/captions/GT coordinates, native grids/features, masks and weights stay private. Experimental acquisition/checkpoint/replay clocks are not matched deployment latency; nested clocks are not additive and inherited Source/expert acquisition is not zero.
