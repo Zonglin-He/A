@@ -1,0 +1,14 @@
+{
+  "state": "R58_DECISION_RULE_BEFORE_NEW_TASK_SCORES",
+  "process_claim": "Backtracking accepted steps decrease the fixed current-target KL; report acceptance and nonzero displacement so zero-update fallback cannot be called optimization progress.",
+  "primary_task_readout": "backtrack_online_ema_teacher_post",
+  "primary_task_references": [
+    "original_online_ema_teacher_post",
+    "frozen_ABC",
+    "r56_one"
+  ],
+  "primary_task_criterion": "Balanced Drone/Quad mIoU exceeds all three references; report both platforms and five scene clusters without a zero-negative-case requirement.",
+  "secondary_task_readouts": "All fixed/EMA episodic 1/3/16 and online pre/post endpoints retained without selecting a best step or teacher after task scores.",
+  "interpretation": "Exposed DEV336 can support a bounded optimization/mechanism result or a development candidate, not independent final validation.",
+  "negative_result_action": "Stop this fixed recipe; distinguish eliminating auxiliary-loss overshoot from task gains. No new loss, source training or holdout evaluation starts automatically."
+}
