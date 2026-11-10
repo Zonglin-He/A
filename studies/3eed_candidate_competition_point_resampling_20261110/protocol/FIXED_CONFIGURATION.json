@@ -1,0 +1,48 @@
+{
+  "source": "Waymo_only_epoch100",
+  "n": 336,
+  "sampling_modes": [
+    "random",
+    "directed",
+    "coverage"
+  ],
+  "new_views": [
+    "B",
+    "C"
+  ],
+  "point_budget": 16384,
+  "per_policy_forward_budget": 3,
+  "A_shared_frozen": true,
+  "source_A256_final_boxes_fixed": true,
+  "candidate_hypotheses": 4,
+  "reference_hypotheses": 2,
+  "geometry_diversity_box_IoU": 0.5,
+  "global_quota": 8192,
+  "focus_quota": 4096,
+  "context_quota": 4096,
+  "focus_box_scale": 1.25,
+  "context_box_scale": 2.5,
+  "reference_box_scale": 1.5,
+  "reference_available_context_split": [
+    2048,
+    2048
+  ],
+  "unknown_reference_uses_context_shell": true,
+  "empty_region_falls_back_global": true,
+  "random_and_directed_same_seed_and_global_prefix": true,
+  "full_coverage_control": "All raw points once then uniform replacement padding; independently permuted each view.",
+  "association": "same_R57_affinity_sqrt_pointJaccard_times_boxIoU_min4support;all_raw_points_shared_for_all_policies_and_common_ABC_reference",
+  "fusion": "unchanged_R59_readouts_and_ordinary_ABC_mean_no_coefficient_search",
+  "decision": "admit_development_candidate_only_if_directed_R59_exceeds_random_R59_coverage_R59_common_R59_and_old_R59;otherwise_stop_no_quota_or_pool_search",
+  "raw_scene_information_not_new_sensor_view": true,
+  "no_gradient_or_new_loss": true,
+  "FINAL384_accessed": false,
+  "ALL5912_evaluated": false,
+  "GPU_full_forward_upper_bound": 4100,
+  "scene_clusters": 5,
+  "one_fixed_configuration": true,
+  "no_postscore_tuning": true,
+  "source_training": false,
+  "source_nativeTop1_ties": 0,
+  "source_probability_vs_logodds_Top1_changes": 0
+}
