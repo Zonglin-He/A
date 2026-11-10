@@ -1,0 +1,54 @@
+{
+  "events": [
+    {
+      "stage": "engineering_trace",
+      "attempt": 1,
+      "status": "PASS",
+      "repair_type": "PRE_ENGINEERING_TRACE_SET_COST_AND_ARM_ORDER_ONLY",
+      "before_GT": true,
+      "producer_predictions_changed": false
+    },
+    {
+      "stage": "formal",
+      "attempt": 1,
+      "status": "PREDICTIONS_SEALED",
+      "valid_outputs": 11088,
+      "before_GT": true
+    },
+    {
+      "stage": "metadata",
+      "attempt": 2,
+      "status": "PASS",
+      "failure_type": "R58_METHOD_LEVEL_NO_UPDATE_FLAGS",
+      "repair_type": "SOURCE_STATE_HASH_AND_ORIGINAL_STATUS_JOIN",
+      "valid_outputs": 11088,
+      "before_GT": true,
+      "producer_predictions_changed": false,
+      "prior_attempt_preserved": true
+    },
+    {
+      "stage": "independent_audit",
+      "attempt": 1,
+      "status": "PASS",
+      "before_GT": true
+    },
+    {
+      "stage": "derived_historical_audit",
+      "attempt": 1,
+      "status": "FAILED",
+      "failure_type": "OVERSPECIFIED_HISTORICAL_ABC_BITEXACT_CHECK",
+      "repair_type": "REPORT_PROBABILITY_DRIFT_REQUIRE_SAME_TOP1",
+      "before_GT": false,
+      "producer_predictions_changed": false,
+      "tolerance_changed": true,
+      "prior_attempt_preserved": true
+    },
+    {
+      "stage": "saved_IoU_scoring",
+      "attempt": 1,
+      "status": "PASS",
+      "valid_outputs": 11088,
+      "producer_predictions_changed": false
+    }
+  ]
+}
