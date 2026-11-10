@@ -1,0 +1,8 @@
+# Mechanism sources and limits
+
+Current-turn primary sources read: DICE ECCV2022 abstract and official code; ASH ICLR2023 abstract and official `ash.py`. These are OOD-detection mechanisms, not 3EED/TTA reproductions or performance guarantees.
+
+- DICE ranks weights by estimated contribution and masks them; official RouteDICE forms `info * weight`, applies a percentile and retains the original bias. This motivates inspecting effective contribution rather than weight magnitude alone. Its source statistics/task and elementwise sparsity differ from our current-input column scaling. https://www.ecva.net/papers/eccv_2022/papers_ECCV/html/4405_ECCV_2022_paper.php and https://github.com/deeplearning-wisc/dice/blob/master/models/route.py
+- ASH applies post-hoc activation shaping; official code contains pruning, filling and rescaling variants and a random control. It shows a no-backprop intervention is implementable but does not establish grounding accuracy. Our eight-column bounded attenuation neither reproduces its pruning percentages nor assumes OOD energy predicts correct instance selection. https://arxiv.org/abs/2209.09858 and https://github.com/andrijazz/ash/blob/main/ash.py
+
+Necessary implementation conditions checked: original two hidden ReLU layers frozen; final bias untouched; native final L2 normalization, full token logsumexp numerator/denominator, original temperature, original soft transport and fixed source-neutral UNKNOWN all replayed. Do not bypass normalization or report the diagnostic token-direction projection as final grounding logits. Real parameter edit and mathematically equivalent activation gate are both run, with rounding differences checked explicitly. No model/weights/third-party code added to deployment or public exports.
