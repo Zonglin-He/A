@@ -1,0 +1,31 @@
+{
+  "state": "R63_VALUE_ROLE_EXCLUSIVE_SUBSPACE_V3_BEFORE_HEAD_SCORING",
+  "created_utc": "2026-11-10T11:16:45.985843+00:00",
+  "reason_for_pre_score_revision": "Screen cuts V paths, so it does not identify a Q/K logit defect. Prefer editing the V computation actually intervened upon. Initial Q-bias hypothesis/code not executed.",
+  "conditional_on_positive_single_head_role_path_effect": true,
+  "selected_layer_head_role_fixed_by_exposed_DEV": true,
+  "runtime_direction": "augment language with1; residualize all erased-role token rows against protected-role span; SVD residual rows defines U",
+  "physical_patch": "selected head augmented V M <- M - M U U^T; Q/K,out_proj and scales fixed",
+  "fixed_projection_strength": 1.0,
+  "protected_role": "subject if removing reference helped; reference if removing subject helped",
+  "numerical_rule": "float64 SVD, each span rank determined by singular values >1e-6 relative largest; residual span singular scale <1e-6 UNKNOWN unchanged",
+  "controls": [
+    "functional_projected_V_direction_removal_no_weight_write",
+    "opposite_sign_same_rank1_change",
+    "hash_permuted_erase_role_direction_orthogonal_to_same_protected_span_matched_parameter_Frobenius_change",
+    "fresh_R59_combo_no_refit",
+    "same_layer_visual_output_restored_source",
+    "source_text_residual_with_only_edited_visual_output",
+    "inherited_selected_head_value_path_knockout",
+    "random_equal_count_value_path_knockout_matched_output_delta_norm"
+  ],
+  "verification": "all protected token projected V outputs unchanged within numerical tolerance; actual M changes measured; same-info functional readout must match; source restored eachview",
+  "no_new_loss_fit_optimizer_training_GLOBAL_gain_FINAL_or_fulltarget": true,
+  "no_query_or_pseudo_target_fitting": true,
+  "no_strength_search_or_per_sample_GT": true,
+  "mediation_not_additive_causal_fraction": true,
+  "rationale": "The causal intervention deletes all erased-role value contributions. A mean-only rank1 edit could leave arbitrary token-specific components; use the full role-exclusive residual span, with rank determined from input SVD rather than a chosen low-rank capacity.",
+  "no_prespecified_rank_or_rank_search": true,
+  "initial_Qbias_and_mean_rank1_designs_not_executed": true,
+  "post_screen_pre_head_score_revision_disclosed": true
+}

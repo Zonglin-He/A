@@ -1,0 +1,27 @@
+{
+  "state": "R63_CONDITIONAL_VALUE_DIRECTION_DESIGN_V2_LOCKED_BEFORE_SCREEN_SCORING",
+  "created_utc": "2026-11-10T11:07:17.130714+00:00",
+  "reason_for_pre_score_revision": "Screen cuts V paths, so it does not identify a Q/K logit defect. Prefer editing the V computation actually intervened upon. Initial Q-bias hypothesis/code not executed.",
+  "conditional_on_positive_single_head_role_path_effect": true,
+  "selected_layer_head_role_fixed_by_exposed_DEV": true,
+  "runtime_direction": "augment frozen language vectors with 1; erase-role token mean minus its projection into protected-role token span; unit residual direction u",
+  "physical_patch": "selected head augmented V matrix M <- M - (M u) u^T; includes V weight rows and bias; Q/K,out_proj and scales fixed",
+  "fixed_projection_strength": 1.0,
+  "protected_role": "subject if removing reference helped; reference if removing subject helped",
+  "numerical_rule": "float64 SVD protected span, singular cutoff 1e-6 relative largest, residual norm below1e-6 UNKNOWN unchanged",
+  "controls": [
+    "functional_projected_V_direction_removal_no_weight_write",
+    "opposite_sign_same_rank1_change",
+    "hash_permuted_erase_role_direction_orthogonal_to_same_protected_span_matched_parameter_Frobenius_change",
+    "fresh_R59_combo_no_refit",
+    "same_layer_visual_output_restored_source",
+    "source_text_residual_with_only_edited_visual_output",
+    "inherited_selected_head_value_path_knockout",
+    "random_equal_count_value_path_knockout_matched_output_delta_norm"
+  ],
+  "verification": "all protected token projected V outputs unchanged within numerical tolerance; actual M changes measured; same-info functional readout must match; source restored eachview",
+  "no_new_loss_fit_optimizer_training_GLOBAL_gain_FINAL_or_fulltarget": true,
+  "no_query_or_pseudo_target_fitting": true,
+  "no_strength_search_or_per_sample_GT": true,
+  "mediation_not_additive_causal_fraction": true
+}

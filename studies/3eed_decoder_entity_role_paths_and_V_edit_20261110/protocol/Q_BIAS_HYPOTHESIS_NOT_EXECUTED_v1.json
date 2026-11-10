@@ -1,0 +1,27 @@
+{
+  "fixed_before_screen_task_scoring": true,
+  "conditional_on_positive_single_head_causal_path_effect": true,
+  "source_start_and_restore_each_input_view": true,
+  "Q_bias_delta_head": "sign * sqrt(36) * ln(2) * (mean_K_subject - mean_K_reference) / squared_norm_key_difference",
+  "sign": "positive if removing reference value path helped; negative if removing subject path helped",
+  "delta_norm_cap": "0.5 * median_native_projected_Q_head_norm_over_256_queries",
+  "no_norm_or_direction_strength_grid": true,
+  "numerical_UNKNOWN": "fixed_roles_invalid_or_key_difference_norm_below_1e-6_or_zero_native_Q_scale",
+  "physical_edit": "assign selected head Q slice of cross_l.in_proj_bias; all other parameters and output scales unchanged",
+  "controls": [
+    "functional_Q_bias_argument_same_delta_no_parameter_write",
+    "opposite_sign_same_delta_norm",
+    "hash_permuted_role_spans_key_direction_same_delta_norm",
+    "edited_fresh_R59_no_fusion_refit",
+    "edit_with_same_layer_visual_output_restored_from_source",
+    "source_text_residual_with_only_edited_visual_output",
+    "selected_head_value_path_knockout_inherited",
+    "hash_permuted_equal_count_value_path_knockout_delta_output_norm_matched"
+  ],
+  "mediation_interpretation": "path_specific_activation_interventions; nonlinear effects not additive causal fractions",
+  "main_reference": "frozen_ABC_and_R59_direct_both_retained",
+  "readout": "original_A256_boxes_and_fixed_ABC_transport_UNKNOWN",
+  "no_new_loss_fit_training_FINAL_or_fulltarget": true,
+  "no_per_sample_GT_selection": true,
+  "all_exposed_DEV_and_all_negative_outcomes_retained": true
+}

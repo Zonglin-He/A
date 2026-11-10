@@ -1,0 +1,4 @@
+"""Read only pure selected-site configuration; never copy task scores to runtime."""
+from common63 import *
+H=ROOT/'research/round63';p=read(H/'experiment/FORMAL_EXECUTION_PLAN_LOCK.json');r=read(H/'experiment/SITE_RUNTIME_CONFIG_LOCK.json');assert r['selected_layer'] is not None;p.update(r);p['heads_root']=p['head_root'];p['heads_arms']=p['reference_arms']+['H'+str(i) for i in range(8)]
+p['programs_sha256']={f:sha(ROOT/f) for f in ['research/round63/common63.py','research/round63/paths_heads63.py','research/round63/run_heads63.py','research/round62/compute62.py','tools/manual_r63_guard.py']};p['inputs_sha256']['research/round63/experiment/SITE_RUNTIME_CONFIG_LOCK.json']=sha(H/'experiment/SITE_RUNTIME_CONFIG_LOCK.json');out=H/'experiment/HEAD_EXECUTION_PLAN_LOCK.json';assert not out.exists();dump(out,p);print({'plan_sha256':sha(out),'selected_layer':r['selected_layer'],'selected_kind':r['selected_kind']})

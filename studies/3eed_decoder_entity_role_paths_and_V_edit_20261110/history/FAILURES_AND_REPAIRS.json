@@ -1,0 +1,99 @@
+{
+  "events": [
+    {
+      "stage": "screen_engineering",
+      "attempt": 1,
+      "status": "completed",
+      "valid_outputs": 2,
+      "before_GT": true
+    },
+    {
+      "stage": "screen",
+      "attempt": 1,
+      "status": "completed_prediction_and_scalar_audited",
+      "valid_outputs": 7056,
+      "before_GT": true
+    },
+    {
+      "stage": "screen_strength_logging",
+      "attempt": 1,
+      "status": "invalid_diagnostic_only",
+      "failure_type": "cached_mutable_receipt_alias",
+      "producer_predictions_changed": false,
+      "tolerance_changed": false,
+      "prior_attempt_preserved": true
+    },
+    {
+      "stage": "native_trace_reaggregation",
+      "attempt": 1,
+      "status": "completed_saved_only",
+      "repair_type": "quarantine_strength_validate_native_traces",
+      "producer_predictions_changed": false,
+      "prior_attempt_preserved": true
+    },
+    {
+      "stage": "conditional_Qbias_design",
+      "attempt": 1,
+      "status": "not_executed",
+      "before_GT": true
+    },
+    {
+      "stage": "conditional_meanV_design",
+      "attempt": 2,
+      "status": "not_executed",
+      "before_GT": true
+    },
+    {
+      "stage": "conditional_fullV_subspace_design",
+      "attempt": 3,
+      "status": "locked_after_screen_before_head_score",
+      "before_GT": false
+    },
+    {
+      "stage": "heads",
+      "attempt": 1,
+      "status": "completed_audited",
+      "valid_outputs": 3696,
+      "before_GT": true
+    },
+    {
+      "stage": "value_engineering",
+      "attempt": 1,
+      "status": "completed",
+      "valid_outputs": 2,
+      "before_GT": true
+    },
+    {
+      "stage": "value_edit",
+      "attempt": 1,
+      "status": "completed_audited",
+      "valid_outputs": 4032,
+      "before_GT": true
+    },
+    {
+      "stage": "source_control_diagnostic",
+      "attempt": 1,
+      "status": "postresult_descriptive",
+      "valid_outputs": 1008,
+      "before_GT": false
+    },
+    {
+      "stage": "local_public_export",
+      "attempt": 1,
+      "status": "failed_before_publication",
+      "failure_type": "stale_guard_filename_allowlist",
+      "producer_predictions_changed": false,
+      "tolerance_changed": false,
+      "prior_attempt_preserved": true
+    },
+    {
+      "stage": "local_public_export",
+      "attempt": 2,
+      "status": "registered_saved_only_retry",
+      "repair_type": "correct_guard_filename_allowlist",
+      "producer_predictions_changed": false,
+      "tolerance_changed": false,
+      "prior_attempt_preserved": true
+    }
+  ]
+}
