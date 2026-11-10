@@ -1,0 +1,13 @@
+{
+  "state": "R59_PRE_TASK_SCORE_DECISION_RULE",
+  "primary_edit": "ridge_edit",
+  "primary_references": [
+    "direct_all",
+    "grad256",
+    "r58_online_ema_teacher"
+  ],
+  "criterion": "overall_balanced_mIoU_positive_against_all_primary_references_on_exposed_DEV336",
+  "equivalent_functional_control": "must_match_within_FP32_same_operator_numerics_not_expected_to_be_outperformed",
+  "interpretation": "Only_same_representation_objective_GD_vs_ridge_is_an_edit_algorithm_comparison;R58_differs_in_objective_scope_and_online_history",
+  "stop": "Do_not_pick_best_step_lambda_radius_after_scores;retain_all_negative_unknown_and_failure_rows;no_source_training_or_holdout_runs_automatically"
+}
