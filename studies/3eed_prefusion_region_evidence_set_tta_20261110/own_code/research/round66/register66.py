@@ -1,0 +1,5 @@
+from common66 import *
+H=ROOT/'research/round66';p=read(H/'experiment/DESIGN_LOCK.json');p.update(arm_names=ARMS,reference_arms=REFS,independent_audit='research/round66/independent_audit_attempt001/AUDIT_RESULT.json',score_root='research/round66/score_dev336_attempt001',scalar_audit_root='research/round66/independent_scalar_audit_attempt001',mode='region',programs_sha256={},inputs_sha256={})
+for f in ['research/round66/common66.py','research/round66/interface66.py','research/round66/groups66.py','research/round66/capture66.py','tools/manual_r66_guard.py','crossplatform/round51/model51.py']:p['programs_sha256'][f]=sha(ROOT/f)
+for f in [p['manifest'],p['source_plan'],p['AB_root']+'/SEALED.json',p['AB_root']+'/SOURCE_MATCHING_MLP_PRIVATE.npz',p['r59_root']+'/SEALED.json',p['association_root']+'/SEALED.json','research/round66/engineering_capture_attempt001/SEALED.json']:p['inputs_sha256'][f]=sha(ROOT/f)
+path=H/'experiment/EXPERIMENT_SPEC_LOCK.json';assert not path.exists();dump(path,p);print({'plan_sha256':sha(path),'arms':len(ARMS),'no_C_evidence':True})
