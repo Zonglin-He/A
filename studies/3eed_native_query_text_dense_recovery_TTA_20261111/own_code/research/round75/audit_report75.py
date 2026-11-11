@@ -1,0 +1,7 @@
+from common75 import *
+r=read(H/'ALL_METHOD_ROWS.json');m={(x['scope'],x['platform'],x['method']):x for x in r};a=m['ALL336','balanced','dense_ensemble'];assert abs(a['mIoU_percent']-22.088554359252587)<1e-12 and a['improved']==0 and a['worsened']==1;assert abs(a['gain_vs_reference_pp']+.08462357578270695)<1e-12
+s=read(H/'HELD_SEMANTIC_SUMMARY.json');d={x['method']:x for x in s if x['platform']=='balanced'};assert d['dense']['held_row_KL']<d['source']['held_row_KL'] and d['dense']['held_column_KL']<d['source']['held_column_KL'];assert d['dense']['held_row_top1_agreement']<d['source']['held_row_top1_agreement'];assert abs(m['ALL336','balanced','held_mask_dense']['gain_vs_reference_pp']+.08505115982268165)<1e-12
+step=read(H/'ALL_OPTIMIZER_STEP_ROWS.json');assert len(step)==1008 and sum(x['accepted'] for x in step)==1002;assert all(x['parameter_step_L2']>0 for x in step if x['accepted']);assert not any(x['loss_after']>x['loss_before'] for x in step if x['accepted'])
+rep=(H/'REPORT.md').read_text();assert all(x in rep for x in ['Do not adopt','22.088554','22.173178','M3','1,002','5,376','1,325','99.4501','14.94%','not raw sensor-point deletion'])
+dump(H/'REPORT_NUMERIC_AUDIT.json',{'state':'PASS_R75_REPORT_NATIVE_SEMANTIC_RECOVERY_TASK_CONTROL_AND_STOP_CLAIMS','n':336,'task_values':5376,'ordered_negatives':1325,'accepted_updates':1002,'held_semantic_KL_improves':True,'same_information_task_gain':False,'report_sha256':sha(H/'REPORT.md')})
+print(read(H/'REPORT_NUMERIC_AUDIT.json'))
