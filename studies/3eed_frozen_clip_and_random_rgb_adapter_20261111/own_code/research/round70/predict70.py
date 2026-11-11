@@ -1,0 +1,8 @@
+from common70 import *
+p=read(H/'experiment/DESIGN_LOCK.json');out=ROOT/p['prediction_root'];assert not out.exists();out.mkdir(parents=True);(out/'samples_PRIVATE').mkdir();statuses=[]
+for i,r in enumerate(rows()):
+ sid=r['id'];rel='samples_PRIVATE/'+sid+'.npz';z=prefix(r);a=load(ROOT/p['A_root']/rel);b=load(ROOT/p['B_root']/rel);v=load(ROOT/'crossplatform/round59/edited336_attempt001'/rel,['arm_names','scores']);d={k:s for w in [a,b] for k,s in zip(w['arm_names'],w['scores'])};old=dict(zip(v['arm_names'],v['scores']));d.update(frozen_ABC=old['frozen_ABC'],R59=old['direct_all']);scores=np.stack([d[k] for k in ARMS]);assert scores.shape==(len(ARMS),256) and np.isfinite(scores).all();q=scores.argmax(1);prep=load(ROOT/p['prepared_root']/rel,['reliability','B_eligible']);unknown=bool(prep['reliability'].sum()==0);ss={}
+ for arm in ARMS:
+  isA=arm.startswith('A_');isB=arm.startswith('B_');update=arm.startswith('A_adapter') or arm in ['B_step3','B_step32','B_wrongtest32','B_wrongtrain32'];ss[arm]={'unknown':unknown if isA else (not bool(prep['B_eligible']) if isB else False),'fallback':unknown if isA and arm!='A_projectonly_joint' else (not bool(prep['B_eligible']) if isB else False),'no_parameter_update':not update or (not bool(prep['B_eligible']) if isB else unknown)}
+ np.savez_compressed(out/rel,arm_names=np.array(ARMS),scores=scores,queries=q,source_boxes=z['boxes'],source_scores=z['scores'],selected_original_boxes=z['boxes'][q]);statuses.append({'id':sid,'arm_statuses':ss})
+dump(out/'READOUT_STATUS_PRIVATE.json',statuses);seal(out,'R70_ALL18_ARMS_FIXED_SOURCE_A256_PRELABEL_PREDICTIONS',n=336,arm_names=ARMS);print({'n':336,'arms':len(ARMS),'seal_sha256':sha(out/'SEALED.json')})

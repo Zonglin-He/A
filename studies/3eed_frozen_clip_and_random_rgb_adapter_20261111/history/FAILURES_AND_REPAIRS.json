@@ -1,0 +1,43 @@
+{
+  "events": [
+    {
+      "stage": "A_initial_plan",
+      "attempt": 1,
+      "status": "FAILED_BEFORE_MODEL",
+      "failure_type": "STALE_REGISTERED_CLIP_DIGEST",
+      "repair_type": "PIN_ACTUAL_SEALED_CLIP_PRODUCER",
+      "before_GT": true,
+      "producer_predictions_changed": false,
+      "prior_attempt_preserved": true
+    },
+    {
+      "stage": "CPU_audit",
+      "attempt": 1,
+      "status": "FAILED_BEFORE_GT",
+      "failure_type": "FLOAT32_REDUCTION_VS_BLAS",
+      "repair_type": "EXACT_REPLAY_PLUS_FLOAT64_SOFTMAX_ERROR_BOUND",
+      "before_GT": true,
+      "producer_predictions_changed": false,
+      "prior_attempt_preserved": true
+    },
+    {
+      "stage": "score_plan",
+      "attempt": 1,
+      "status": "FAILED_BEFORE_LABEL_LOOKUP",
+      "failure_type": "STALE_REGISTERED_CLIP_DIGEST",
+      "repair_type": "MERGE_ACTUAL_SEALED_STAGE_DIGESTS",
+      "before_GT": true,
+      "producer_predictions_changed": false,
+      "prior_attempt_preserved": true
+    },
+    {
+      "stage": "public_export",
+      "attempt": 1,
+      "status": "FAILED_LOCAL_NO_NETWORK",
+      "failure_type": "OLD_GUARD_ALLOWLIST_FILENAME",
+      "repair_type": "CORRECT_OWN_CODE_GUARD_PATH",
+      "producer_predictions_changed": false,
+      "prior_attempt_preserved": true
+    }
+  ]
+}
