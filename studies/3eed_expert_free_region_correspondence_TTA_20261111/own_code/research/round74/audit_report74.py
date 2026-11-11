@@ -1,0 +1,11 @@
+"""Verify the central report claims against saved scalar analysis."""
+from common74 import *
+r=read(H/'ALL_METHOD_ROWS.json');m={(x['scope'],x['platform'],x['method']):x for x in r};d=read(H/'COHORT_DIAGNOSTICS.json');b=m['ALL2304','balanced','corr_RGB'];assert abs(b['gain_vs_frozen_AB_pp']-.014106720473385894)<1e-12;assert b['improve_vs_frozen_AB']==18 and b['worse_vs_frozen_AB']==12 and b['query_change_vs_frozen_AB']==83;assert b['rescue25_vs_frozen_AB']-b['break25_vs_frozen_AB']==1
+assert d['regions']==36854 and d['recordings']==9 and d['frame_clusters']==2057 and d['RGB_noRGB_task_differences']==d['C_RGB_noRGB_task_differences']==0 and d['RGB_noRGB_mask_different_inputs']==224
+aux=read(H/'REGION_RETRIEVAL_ROWS.json');a={(x['scope'],x['method'],x['direction']):x for x in aux};assert a['ALL2304','source','AB_to_C']['valid_regions']==28894 and a['ALL2304','source','AB_to_C']['unknown_regions']==7960
+for k,target in [('source',81.55326365335364),('corr_RGB',81.1362220530214),('corr_shuffled',82.46867861839828)]:assert abs(np.mean([a['ALL2304',k,d]['micro_accuracy_percent'] for d in ['AB_to_C','C_to_AB']])-target)<1e-9
+c=read(H/'LARGEST_CONTRIBUTIONS.json');v=next(x for x in c if x['scope']=='ALL2304' and x['platform']=='balanced' and x['method']=='corr_RGB' and x['reference']=='frozen_AB');assert abs(v['largest_positive_contribution_pp']-.014011605307365579)<1e-12
+assert abs(m['VAL1280','balanced','corr_RGB']['gain_vs_frozen_AB_pp']-.065372294696665)<1e-10;assert abs(m['TRAIN1024','balanced','corr_RGB']['gain_vs_frozen_AB_pp']+.04997524730571)<1e-10
+rep=(H/'REPORT.md').read_text();assert all(s in rep for s in ['Do not adopt','18.342345','18.328238','18.519979','CLIP','post-pilot','36,854','6,909','29,952','7,960','2,057'])
+assert read(H/'independent_scalar_audit_attempt001/AUDIT_RESULT.json')['state'].startswith('PASS_');assert read(H/'independent_union_audit_attempt001/AUDIT_RESULT.json')['state'].startswith('PASS_')
+v={'state':'PASS_R74_REPORT_MAIN_TASK_RETRIEVAL_COVERAGE_COST_AND_ADOPTION_CLAIMS','unique_inputs':2304,'unique_task_values':29952,'negative_comparisons_VAL_TRAIN':21611,'overlapping_pilot_negatives':659,'RGB_specific_task_changes':0,'do_not_adopt':True,'full_experiment_not_blind_test':True,'report_sha256':sha(H/'REPORT.md')};dump(H/'REPORT_NUMERIC_AUDIT.json',v);print(v)

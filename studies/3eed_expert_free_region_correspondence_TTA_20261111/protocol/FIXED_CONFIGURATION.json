@@ -1,0 +1,49 @@
+{
+  "source_model": "Waymo_only_epoch100",
+  "source_checkpoint_sha256": "0d8766abaf06c9f3e2500fcb187337982d391f9e4d46ca854f3b3bb70fd33bbd",
+  "box_policy": "original_A256_unchanged",
+  "source_input": "XYZ_and_complete_language",
+  "weight_policy": "existing_matching_MLP_only;source_reset_per_input_and_arm",
+  "trainable_parameters": 184960,
+  "regions_max": 16,
+  "minimum_shared_raw_points": 4,
+  "negative_box_IoU_max": 0.05,
+  "negative_raw_overlap_max": 0.05,
+  "negative_surface_overlap_max": 0.05,
+  "tau": 0.07,
+  "source_keep_strength": 1.0,
+  "Adam_learning_rate": 0.0005,
+  "gradient_clip": 1.0,
+  "proposals": 1,
+  "backtrack_scales": [
+    1.0,
+    0.5,
+    0.25,
+    0.125,
+    0.0625,
+    0.03125,
+    0.015625,
+    0.0078125,
+    0.00390625
+  ],
+  "C_feedback": false,
+  "source_retraining": false,
+  "external_pretrained_visual_feedback": false,
+  "noRGB_control": "remove_RGB_line_boundary_test_only;keep_camera_visibility_and_geometry",
+  "shuffle_control": "derange_B_region_keys_fixed_mask;corrupt_positive_and_negative_binding",
+  "cohorts": {
+    "pilot": 64,
+    "remaining": 2240,
+    "unique_total": 2304,
+    "VAL": 1280,
+    "TRAIN": 1024
+  },
+  "holdout_policy": "C_after_AB_fit_seal;no_FINAL_access",
+  "direct_controls": [
+    "AB_probability_mean",
+    "AB_unit_representation_fixed_gamma1",
+    "same_RGB_region_centroid_half_shift",
+    "historical_R59_ABC_reference"
+  ],
+  "extra_direct_reader_registration": "postpilot_pre_remaining_task_lookup"
+}
