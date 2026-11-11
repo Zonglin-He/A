@@ -1,0 +1,36 @@
+{
+  "n": 2304,
+  "dev_control_n": 336,
+  "source": "Waymo_only_epoch100",
+  "CLIP_model": "OpenAI_ViT_B32_fixed_R70_revision_and_safetensors",
+  "text": "R70_literal_first_entity_prefix_before_relation_no_LLM",
+  "crops": "R70_square_grey127_pad_1.0_and_1.25_context_official_CLIP_preprocessor",
+  "grouping": "R70_complete_link_boxIoU0.7_pointJaccard0.7_shared4_original256",
+  "weight_policy": "R70_projection_area_fraction_valid_positive_depth_and_image_intersection",
+  "scale": "unchanged_native_CLIP_logit_scale_lambda1",
+  "centering": "weighted_mean_over_groups_then_propagate_once_to_original_queries",
+  "mismatch": "only_permute_similarities_among_projection_valid_groups; preserve_unknown_mask_weights_source_crops_text_scale; same_R70Avisualbinding_salt",
+  "arms": [
+    "source",
+    "frozen_ABC",
+    "R59",
+    "CLIP_direct",
+    "CLIP_mismatch"
+  ],
+  "reference_arms": [
+    "source",
+    "frozen_ABC",
+    "R59",
+    "CLIP_direct"
+  ],
+  "cohorts": {
+    "VAL1280": 1280,
+    "TRAIN1024": 1024,
+    "DEV336_DIAGNOSTIC": 336
+  },
+  "no_new_algorithm_or_hyperparameter_selection": true,
+  "no_Adapter_or_TTA_training": true,
+  "source_training": false,
+  "FINAL_access": false,
+  "previous_data_exposure": "R69_both_cohorts_and_R70_DEV_already_scored;fixed_configuration_expanded_evaluation_not_blind_test"
+}
