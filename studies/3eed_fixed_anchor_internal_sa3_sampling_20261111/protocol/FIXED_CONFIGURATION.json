@@ -1,0 +1,27 @@
+{
+  "n": 336,
+  "source": "Waymo_only_epoch100",
+  "stage": "SA3_1024_to_512_only",
+  "policies": [
+    "native",
+    "random",
+    "feature"
+  ],
+  "fixed_D_count": 256,
+  "fixed_secondary_count": 256,
+  "F_distance": "source_unnormalized_concat_XYZ_and_SA2_128features_squared_native_3DSSD_style",
+  "dedup": "first_unique_D256;secondary_order_until256_new;D_order_then_index_fill",
+  "final_seed_xyz_and_SA1_SA2_unchanged": true,
+  "query_seed_indices_and_six_geometry_positions_fixed": true,
+  "transport_and_UNKNOWN_and_R59_fusion_unchanged": true,
+  "source_training": false,
+  "parameter_updates": 0,
+  "FINAL_accessed": false,
+  "full_target_evaluation": false,
+  "adoption_requires_feature_exceed": [
+    "R59",
+    "native_R59",
+    "random_R59"
+  ],
+  "no_after_score_tuning": true
+}

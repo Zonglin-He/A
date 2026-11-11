@@ -1,0 +1,12 @@
+"""Unchanged native R57 transport and R59 formula; fixed original boxes."""
+import sys,time,torch
+from common67 import *
+sys.path.insert(0,str(ROOT/'research/round62'));from compute62 import cpu_head,readouts
+H=ROOT/'research/round67';p=read(H/'experiment/PREDICT_PLAN_LOCK.json');pin(p);cap=ROOT/p['capture_root'];cs=read(cap/'SEALED.json');cert=read(H/'independent_capture_audit_attempt001/AUDIT_RESULT.json');assert cert['state'].startswith('PASS_') and cert['capture_seal_sha256']==sha(cap/'SEALED.json');rows=read(ROOT/p['manifest']);out=ROOT/p['prediction_root'];assert not out.exists();out.mkdir(parents=True);(out/'samples_PRIVATE').mkdir();head=cpu_head(load(ROOT/p['AB_root']/'SOURCE_MATCHING_MLP_PRIVATE.npz'));torch.set_grad_enabled(False);torch.set_num_threads(4);statuses=[];start=time.perf_counter();prior_status={x['id']:x['arm_statuses']['R59_tta1'] for x in read(ROOT/p['r66_prediction_root']/'READOUT_STATUS_PRIVATE.json')}
+for r in rows:
+ sid=r['id'];rel='samples_PRIVATE/'+sid+'.npz';assert sha(cap/rel)==cs['files'][rel];z=load(cap/rel);g=load(ROOT/p['association_root']/rel);prior=load(ROOT/p['r59_root']/rel);old66=load(ROOT/p['r66_prediction_root']/rel);result={a:prior['scores'][prior['arm_names'].tolist().index(b)] for a,b in [('source','source'),('frozen_ABC','frozen_ABC'),('R59','direct_all')]};result['R66_R59_tta1']=old66['scores'][old66['arm_names'].tolist().index('R59_tta1')]
+ for mode in p['policies']:
+  zz={v+'_'+k:z[mode+'_'+v+'_'+k] for v in 'ABC' for k in ['h','tokens']};zz.update({v+'_token_mask':z[v+'_token_mask'] for v in 'ABC'});hs={v:z[mode+'_'+v+'_h'] for v in 'ABC'};_,result[mode+'_R59'],_=readouts(head,hs,zz,g)
+ assert np.max(np.abs(result['native_R59']-result['R59']))<1e-6 and result['native_R59'].argmax()==result['R59'].argmax()
+ scores=np.stack([result[a] for a in ARMS]);q=scores.argmax(1);np.savez_compressed(out/rel,arm_names=np.array(ARMS),scores=scores,queries=q,source_boxes=z['A_boxes'],source_scores=z['A_scores'],selected_original_boxes=z['A_boxes'][q]);statuses.append({'id':sid,'arm_statuses':{a:{'unknown':False,'fallback':False,'no_parameter_update':True if a!='R66_R59_tta1' else prior_status[sid]['no_parameter_update']} for a in ARMS}})
+dump(out/'READOUT_STATUS_PRIVATE.json',statuses);dump(out/'COSTS.json',{'n':336,'arms':len(ARMS),'seconds':time.perf_counter()-start,'new_parameter_updates':0});seal(out,'R67_ALL_FIXED_A256_POLICY_PREDICTIONS_SEALED_BEFORE_SCORE',n=336,arm_names=ARMS);print({'n':336,'predictions_sealed':True})

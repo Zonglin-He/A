@@ -1,0 +1,53 @@
+"""Report only from sealed scored tables; no parameter/design selection."""
+from common67 import *
+H=ROOT/'research/round67';p=read(H/'experiment/DESIGN_LOCK.json');methods=read(H/'ALL_METHOD_ROWS.json');scenes=read(H/'ALL_SCENE_ROWS.json');pr=read(H/'ALL_SAMPLING_PROCESS_ROWS.json');d=read(H/'DECISION.json');summ=[]
+for pl in ['drone','quad']:
+ for v in 'ABC':
+  for mode in ['native','random','feature']:
+   a=[r for r in pr if r['platform']==pl and r['view']==v and r['policy']==mode];eligible=[r for r in a if r['postseal_good_box_proxy_available'] and r['postseal_proxy_SA2_unique_support']>0];summ.append({'platform':pl,'view':v,'policy':mode,'n':len(a),'mean_unique_SA3_coordinates':float(np.mean([r['unique_coordinates_n'] for r in a])),'mean_changed_indices_vs_native':float(np.mean([r['changed_indices_vs_native'] for r in a])),'mean_XYZ_pair_squared_distance':float(np.mean([r['mean_pair_XYZ_squared_distance'] for r in a])),'mean_feature_pair_squared_distance':float(np.mean([r['mean_pair_feature_squared_distance'] for r in a])),'fallback_indices_total':sum(r['secondary_fallback_n'] for r in a),'postseal_good_box_with_SA2_support_n':len(eligible),'postseal_mean_unique_SA3_proxy_support':float(np.mean([r['postseal_proxy_SA3_unique_support'] for r in eligible])) if eligible else None,'postseal_zero_SA3_proxy_support':sum(r['postseal_proxy_SA3_unique_support']==0 for r in eligible)})
+dump(H/'SUPPORT_PROXY_SUMMARY.json',summ)
+def table(rr,keys):return '| '+' | '.join(keys)+' |\n|'+'|'.join(['---']*len(keys))+'|\n'+'\n'.join('| '+' | '.join(f'{r[k]:.6f}' if isinstance(r[k],float) else str(r[k]) for k in keys)+' |' for r in rr)+'\n'
+mi={m['method']:m['balanced_mIoU'] for m in methods};cost=read(ROOT/p['capture_root']/'COSTS.json');au=read(H/'independent_capture_audit_attempt001/AUDIT_RESULT.json');receipt=read(H/'score_dev336_attempt001/SCORING_RECEIPT.json');text='''# R67 — fixed-anchor internal SA3 mixed sampling
+
+Actual test-time representation adjustment with frozen Waymo-only epoch100 on all historically exposed DEV336 (168/platform, two Drone and three Quad scenes). Not parameter TTA. Original A256 final boxes, ABC input samples, source weights, native first-noun proxy readout, R57 transport/UNKNOWN and R59 fusion held fixed. No source training/external model/cache feedback, R66 regional supervision, new loss/gradient, FINAL384 or full5912 access. One location and one fixed ratio; no task-score-driven revision.
+
+## Results
+
+'''+table(methods,['method','Drone_mIoU','Quad_mIoU','balanced_mIoU','Acc25','Acc50','gain_vs_R59_pp','improved','worsened','query_changes'])
+text+=f"\nFeature minus originalR59: **{mi['feature_R59']-mi['R59']:+.6f} pp**; feature minus same-budget random: **{mi['feature_R59']-mi['random_R59']:+.6f} pp**; feature minus historicalR66+R59: **{mi['feature_R59']-mi['R66_R59_tta1']:+.6f} pp**. Prelocked overall criterion passed: **{d['criterion_passed']}**. All rows/negative outcomes retained; per-platform unanimity or zero harm is not required. R66 is a historical development reference with a different evidence/computation budget, not an isolated sampling comparator.\n"
+text+='''
+## What actually changes
+
+SA1=2048 and SA2=1024 original points/features recaptured with original source samples. Only SA3 1024->512 centers changed:256 geometryFPS indices plus256 novel indices from featureFPS or a fixed hash-seeded random permutation. FeatureFPS uses unnormalized squared distance on concatenated XYZ and native128-dimensional SA2 features, matching the official3DSSD distance construction. Explicit indices bypass the misleading native FS branch. Deduplicate preserving traversal order; if insufficient novel secondary indices, fill with geometry order then ascending unused index. Both modified arms share D256 and exactly512 unique indices. Coordinate uniqueness is separately recorded; physical repeated points are not magically new evidence.
+
+All downstream SA3 grouping/MLPs, SA4, FP1/FP2 and language-point fusion genuinely recomputed with source weights. Final1024 seedXYZ stay bitexact because FP2 returns to SA2. Original per-view queryseedindices and all six decoder geometry inputs remain fixed, with queryfeatures re-gathered from new fused features. The final model still selects original A256 boxes; no proposal geometry gain is mixed in. R57 transport/masses remain unchanged because the original hypotheses remain the carriers. Native suffix replay reproduces source features and h/query/tokens bitexact on every ABC input.
+
+Thus this tests coarse-layer aggregation under frozen D-FPS-trained weights. It does not increase final seed count or recover targets already absent at SA2. No parameter updates occurred for any new policy; inherited R66 result retains its actual historical update-status metadata.
+
+[3DSSD official code](https://github.com/JIA-Lab-research/3DSSD/blob/master/lib/utils/layers_util.py) concatenates XYZ/features for F-FPS. [3EED backbone](https://github.com/worldbench/3EED/blob/main/models/point_backbone_module_v2.py) propagates back to SA2 XYZ. [Native sampling code](https://github.com/worldbench/3EED/blob/main/ops/teed_pointnet/pointnet2_batch/pointnet2_modules.py) uses XYZ in FS when features are present; this experiment does not simply rename its config. This is a sampling-mechanism transfer, not complete3DSSD reproduction; that detector was trained with its sampling scheme, while this checkpoint was not. Unnormalized feature/geometry scales and frozen feature-distribution mismatch remain explicit limitations, not evidence that all featureFPS fails.
+
+## Scene results
+
+All five exposed clusters are reported; no independent-frame CI or new-confirmation claim.
+
+'''+table(scenes,['method','platform','scene_alias','n','mIoU','gain_vs_R59_pp'])
+text+='''
+## Sampling process and postseal support proxies
+
+Support below is measured inside the best existing A256 candidate with saved IoU>0.25, only after all predictions are sealed. It is an offline approximate object-box proxy, not exact target segmentation or independent identity truth. No GT is used to choose points, scales, location, policies, readouts or acceptance. Fixed final seed support cannot increase by construction; these statistics examine changed SA3 coarse support, not a claim of new fp2 seeds.
+
+'''+table(summ,list(summ[0]))
+text+='''
+The intervention materially changes representative points: feature sampling replaces about153.20/150.29 SA3 indices per Drone/Quad view relative to native. Averaged over ABC, good-candidate-box proxy support rises from6.752 to10.699 in Drone and2.405 to3.857 in Quad; random gives6.909/2.690. These are postseal approximate supports, not exact ground-truth object points. More proxy-region coarse support therefore did not translate into superior candidate ranking under this fixed representation/readout. This is evidence against the simple explanation that the intervention never changed sampling; it does not uniquely identify why the frozen model fails to exploit the new aggregation. Feature-policy comparison is negative even though random policy has a small positive overall development result(+0.167459ppR59,10improved7worsened). Preserve that positive control without attributing it to semantic feature selection.
+
+## Validity, budget and decision
+
+Two real engineering inputs/six original source forwards and18 suffixes passed. Formal1008 full-source captures plus3024 native/random/feature suffixes. Independent1008 full-source recaptures establish SA2 feature/coordinate provenance and source h/query/tokens/indices, then independently reconstruct explicit sampling and manually execute SA3 group/MLP/max aggregation plus native SA4/FP/encoder/decoder for3024 suffixes. All arrays/indices bitexact. Source fingerprint remains unchanged. Collection times include private cache writes and audit overhead, not isolated per-policy deployment latency; F-FPS additionally computes a joint distance matrix despite equal selected-point/forward budgets. Independent CPU readouts and saved-IoU/scene/negative audit run before reporting. All2352 task values reuse already saved original-candidate IoUs; no new raw GT geometry score or annotation-media access for scoring.
+
+'''
+text+=f"Decision: **{d['state']}**. This decision is bounded to one SA3/256+256/source-scale implementation on exposedDEV336. {'Retain as a development representation-adjustment signal; no new parameter TTA is claimed or adopted.' if d['criterion_passed'] else 'Do not adopt this fixed sampling recipe; do not rescue it with postscore scale/ratio/site searches or regional supervision. This does not reject all internal sampling or the overall3EED direction.'}\n\nAll negative ordered comparisons, status rows and five-scene results are public. Original data, descriptions, raw IDs/coordinates, model features/weights/secrets and upstream snapshots remain private. Publication requires independent privacy audit, immutable remote-byte verification and preservation of previous root/study trees before CASmain.\n"
+(H/'REPORT.md').write_text(text)
+config={k:v for k,v in p.items() if k in ['n','source','stage','policies','fixed_D_count','fixed_secondary_count','F_distance','dedup','final_seed_xyz_and_SA1_SA2_unchanged','query_seed_indices_and_six_geometry_positions_fixed','transport_and_UNKNOWN_and_R59_fusion_unchanged','source_training','parameter_updates','FINAL_accessed','full_target_evaluation','adoption_requires_feature_exceed','no_after_score_tuning']};dump(H/'PUBLIC_FIXED_CONFIGURATION.json',config)
+dump(H/'NORMALIZED_COSTS.json',{'counts':{'inputs':336,'scene_clusters':5,'policies':3,'arms':7,'task_values':2352,'ordered_negatives':receipt['ordered_negative_comparisons'],'primary_full_source_forwards':1008,'independent_full_source_forwards':1008,'engineering_full_source_forwards':6,'primary_suffix_replays':3024,'independent_suffix_replays':3024,'engineering_suffix_replays':18,'new_parameter_updates':0,'new_raw_GT_scores':0},'timing_seconds':{'capture':cost['seconds'],'independent_capture':au['seconds']},'peak_bytes':{'capture':cost['peak_GPU_bytes'],'independent_capture':au['peak_GPU_bytes']},'flags':{'source_training':False,'external_model':False,'FINAL_accessed':False,'all_negatives_retained':True,'candidate_boxes_fixed':True}})
+dump(H/'NORMALIZED_HISTORY.json',{'events':[{'stage':'engineering','attempt':1,'status':'passed','valid_outputs':2,'completed_calls':6,'before_GT':True},{'stage':'formal_capture','attempt':1,'status':'passed','valid_outputs':336,'completed_calls':1008,'before_GT':True},{'stage':'independent_capture','attempt':1,'status':'passed','valid_outputs':336,'completed_calls':1008,'before_GT':True}]})
+print({'decision':d,'report_bytes':len(text.encode())})
