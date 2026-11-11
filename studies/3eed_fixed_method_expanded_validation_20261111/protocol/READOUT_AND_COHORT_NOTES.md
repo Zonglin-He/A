@@ -1,0 +1,13 @@
+# Fixed interfaces and interpretation
+
+R69 preserves the existing native first-lexicon-noun token mask and explicit all-content fallback from R68/model51. It does not substitute annotated subject spans, tune a new text parser or claim a fresh reproduction of every official span-dependent reporting protocol. Full descriptions enter the source model; target-span readout remains the same tested label-free interface. Any readout bias is shared by the registered fixed methods and is not repaired during this validation.
+
+All candidate distributions are evaluated on the canonical original A256 boxes. B/C distributions are associated through the fixed raw-point/geometry transport; unknown transport mass is retained with the existing source fallback rather than forced to arbitrary candidate matches. The task output always selects a box, so an output-status UNKNOWN flag of false does not assert that correspondence unknown mass is zero. The transport masses and all no-update/fallback statuses remain auditable privately; public scalar tables retain the original output-status schema.
+
+VAL1280 is a deterministic scene/time-stratified cohort with equal target-platform counts, not an unbiased natural-frequency estimate of all5912 expressions. TRAIN1024 is separately indexed from all runtime-eligible caption records, without GT-class/box filtering, so its absolute score should not be compared as if its expression distribution were identical to VAL. It supplies additional recording conditions, not a certified geographical holdout.
+
+The random repeats use identical point-count and three-sampling budgets to each other. R66 additionally acquires region/control perturbation evidence; therefore R66 vs random is a system-efficiency comparison, while R66 vs E/set direct retains exactly its own evidence without a parameter update. No best seed, cohort, recording or individual example is selected from the new task scores.
+
+Public artifacts expose owned implementation, fixed configuration, dependency/input/prediction hashes and anonymous scalar results. Full rerunning requires the official private/local data and exact source checkpoint; those payloads, cached features and third-party source snapshots are intentionally excluded. The package alone is not a standalone distribution of the complete dataset/model.
+
+Resource receipt peaks are PyTorch max_memory_allocated, not total process VRAM including the CUDA context and vendor workspaces. Stage timers start after source loading where implemented and include cache/input I/O and computation; they are not separately measured end-to-end latency for each alternative method. Counts distinguish full source calls, regional encoder/decoder replays, suffix replays and independent verification.

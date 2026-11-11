@@ -1,0 +1,12 @@
+"""Fixed R66v2 AB evidence; all cases fit before any C/random capture."""
+import sys,time,torch,argparse
+from common69 import *
+from method69 import evidence,fit
+sys.path.insert(0,str(ROOT/'crossplatform/round51'));from model51 import load_source,fingerprint
+ap=argparse.ArgumentParser();ap.add_argument('--engineering',action='store_true');a=ap.parse_args();H=ROOT/'research/round69';p=read(H/('experiment/EVIDENCE_FIT_PLAN_LOCK_ENGINEERING.json' if a.engineering else 'experiment/EVIDENCE_FIT_PLAN_LOCK.json'));pin(p);cap=H/'engineering_capture_attempt001' if a.engineering else ROOT/p['AB_capture_root'];cs=read(cap/'SEALED.json');rows=read(ROOT/p['manifest']);rows=[r for r in rows if ('samples_PRIVATE/'+r['id']+'.npz') in cs['files']];out=H/'engineering_evidence_attempt001' if a.engineering else ROOT/p['evidence_root'];fout=H/'engineering_fit_attempt001' if a.engineering else ROOT/p['fit_root'];assert not out.exists() and not fout.exists()
+for folder in [out,fout]:folder.mkdir(parents=True);(folder/'samples_PRIVATE').mkdir();(folder/'cases_PRIVATE').mkdir()
+m=load_source(read(ROOT/p['source_plan']));torch.set_grad_enabled(False);fp=fingerprint(m);initial=load(ROOT/p['initial_head']);start=time.perf_counter();count=eligible=accepted=0
+for i,r in enumerate(rows):
+ rel='samples_PRIVATE/'+r['id']+'.npz';assert sha(cap/rel)==cs['files'][rel];cc=load(cap/rel);path=Path(r['pointpath']);raw=np.load(path,allow_pickle=False) if path.suffix=='.npy' else np.fromfile(path,np.float32).reshape(-1,4);e,proof,calls=evidence(m,r,cc,raw);count+=calls;state,rec=fit(initial,cc,e);eligible+=int(e['update_allowed']);accepted+=int(rec['accepted']);np.savez_compressed(out/rel,**e);dump(out/'cases_PRIVATE'/(r['id']+'.json'),{'proof':proof,'category_available':bool(cc['category_available'])});np.savez_compressed(fout/rel,**state);dump(fout/'cases_PRIVATE'/(r['id']+'.json'),rec)
+ if(i+1)%32==0:print('EVIDENCE_FIT69',i+1,len(rows),count,eligible,accepted,flush=True)
+assert fingerprint(m)==fp;cost={'n':len(rows),'encoder_decoder_replays':count,'eligible':eligible,'accepted':accepted,'C_read_or_used':False,'source_unchanged':True,'seconds':time.perf_counter()-start,'peak_GPU_bytes':int(torch.cuda.max_memory_allocated())};dump(out/'COSTS.json',cost);dump(fout/'COSTS.json',cost);seal(out,'R69_FIXED_R66V2_AB_EVIDENCE_NO_C_OR_LABELS',n=len(rows));seal(fout,'R69_FIXED_R66V2_AB_FITS_ALL_SEALED_BEFORE_C',n=len(rows));print(cost)

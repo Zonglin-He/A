@@ -1,0 +1,107 @@
+{
+  "state": "R69_COHORTS_LOCKED_BEFORE_MODEL_OR_GT_SCORING",
+  "VAL1280": [
+    {
+      "platform": "drone",
+      "n": 640,
+      "scene_count": 2,
+      "unique_directory_records": 640,
+      "unique_point_media": 428,
+      "unique_image_media": 428,
+      "max_descriptions_per_media_pair": 2
+    },
+    {
+      "platform": "quad",
+      "n": 640,
+      "scene_count": 3,
+      "unique_directory_records": 640,
+      "unique_point_media": 605,
+      "unique_image_media": 605,
+      "max_descriptions_per_media_pair": 2
+    }
+  ],
+  "TRAIN1024": [
+    {
+      "platform": "drone",
+      "n": 512,
+      "scene_count": 2,
+      "unique_directory_records": 512,
+      "unique_point_media": 512,
+      "unique_image_media": 512,
+      "max_descriptions_per_media_pair": 1
+    },
+    {
+      "platform": "quad",
+      "n": 512,
+      "scene_count": 2,
+      "unique_directory_records": 512,
+      "unique_point_media": 512,
+      "unique_image_media": 512,
+      "max_descriptions_per_media_pair": 1
+    }
+  ],
+  "split_audit": {
+    "drone": {
+      "VAL_unique_point_hashes": 788,
+      "VAL_unique_image_hashes": 788,
+      "VAL_unique_sequence_local_time_keys": 692,
+      "nominal_train_sequences": 3,
+      "retained_train_sequences": 2,
+      "same_place_family_sequences_excluded": 1
+    },
+    "quad": {
+      "VAL_unique_point_hashes": 965,
+      "VAL_unique_image_hashes": 965,
+      "VAL_unique_sequence_local_time_keys": 776,
+      "nominal_train_sequences": 4,
+      "retained_train_sequences": 2,
+      "same_place_family_sequences_excluded": 2
+    }
+  },
+  "TRAIN_sequence_audit": [
+    {
+      "platform": "drone",
+      "retained_train_sequence_alias": "T1",
+      "frames_with_no_exact_VAL_duplicate": 249,
+      "frames_excluded_exact_VAL_duplicate": 0
+    },
+    {
+      "platform": "drone",
+      "retained_train_sequence_alias": "T2",
+      "frames_with_no_exact_VAL_duplicate": 922,
+      "frames_excluded_exact_VAL_duplicate": 0
+    },
+    {
+      "platform": "quad",
+      "retained_train_sequence_alias": "T1",
+      "frames_with_no_exact_VAL_duplicate": 3778,
+      "frames_excluded_exact_VAL_duplicate": 0
+    },
+    {
+      "platform": "quad",
+      "retained_train_sequence_alias": "T2",
+      "frames_with_no_exact_VAL_duplicate": 781,
+      "frames_excluded_exact_VAL_duplicate": 0
+    }
+  ],
+  "DEV336_and_FINAL384_ID_overlap": 0,
+  "DEV336_and_FINAL384_pointpath_overlap": 0,
+  "cross_sequence_timestamp_not_used_for_exclusion_because_local_and_empty_origin_sequence": true,
+  "exact_VAL_duplicate_train_frames_excluded": 0,
+  "train_text_runtime_ineligible": 0,
+  "protected_manifest_used_only_for_exclusion_identity": true,
+  "protected_media_bytes_hashed_for_exclusion_identity_only": true,
+  "protected_media_decoded_or_inferred": false,
+  "protected_predictions_or_labels_read": false,
+  "scene_definition": "distinct_official_recording_sequences_and_distinct_place_name_families;not_certified_global_geographic_disjointness_or_absolute_wallclock",
+  "timestamp_semantics": "sequence_local_index_may_overlap_across_different_sequences;not_global_time",
+  "VAL_history": "ALL5912 historically source/other_methods scored, remaining observations are outside DEV/FINAL for this fixed-method validation, not never-exposed data",
+  "TRAIN_index": "all_caption_records_with_runtime_text_length_eligible;no_GTclass_correctness_or_box_filter",
+  "no_GT_boxes_classes_materialized_or_used_for_selection": true,
+  "protected_manifest_sha256": "dae7e411aa6f7c89a067a612c6faa2069691502aabcf3bff3c869e5f9b79378a",
+  "excluded_DEV_FINAL_point_hashes": 720,
+  "excluded_DEV_FINAL_image_hashes": 720,
+  "no_selected_VAL_media_fingerprint_in_DEV_FINAL": true,
+  "selected_media_hashes_private": true,
+  "input_manifest_sha256": "a1d0d422b5744bcdf4a319c7e95e5c24f690f5e2b8f0fecb151097d598629cc8"
+}

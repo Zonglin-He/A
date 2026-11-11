@@ -1,0 +1,80 @@
+{
+  "events": [
+    {
+      "stage": "cohort_metadata_selection",
+      "attempt": 1,
+      "status": "repaired_before_models",
+      "failure_type": "local_timestamp_treated_as_global_identity",
+      "repair_type": "media_byte_identity_and_sequence_local_strata",
+      "before_GT": true,
+      "producer_predictions_changed": false,
+      "prior_attempt_preserved": true
+    },
+    {
+      "stage": "engineering_source",
+      "attempt": 1,
+      "status": "passed",
+      "completed_calls": 8,
+      "before_GT": true
+    },
+    {
+      "stage": "engineering_evidence_fit",
+      "attempt": 1,
+      "status": "passed",
+      "completed_calls": 128,
+      "before_GT": true
+    },
+    {
+      "stage": "formal_source_AB",
+      "attempt": 1,
+      "status": "passed",
+      "completed_calls": 4608,
+      "before_GT": true
+    },
+    {
+      "stage": "formal_evidence_fit",
+      "attempt": 1,
+      "status": "passed",
+      "completed_calls": 72356,
+      "before_GT": true
+    },
+    {
+      "stage": "formal_C_random",
+      "attempt": 1,
+      "status": "passed",
+      "completed_calls": 23040,
+      "before_GT": true
+    },
+    {
+      "stage": "CPU_audit",
+      "attempt": 1,
+      "status": "failed_before_valid_case_output",
+      "failure_type": "missing_independent_support_import",
+      "valid_outputs": 0,
+      "before_GT": true,
+      "producer_predictions_changed": false,
+      "prior_attempt_preserved": true
+    },
+    {
+      "stage": "CPU_audit",
+      "attempt": 2,
+      "status": "passed",
+      "repair_type": "import_existing_independent_support_primitive",
+      "valid_outputs": 2304,
+      "before_GT": true,
+      "producer_predictions_changed": false,
+      "prior_attempt_preserved": true
+    },
+    {
+      "stage": "numeric_parser_preflight",
+      "attempt": 1,
+      "status": "passed_after_prospective_schema_fix",
+      "failure_type": "streaming_Decimal_plus_float",
+      "repair_type": "explicit_float_stream_and_box_input",
+      "valid_outputs": 0,
+      "before_GT": true,
+      "producer_predictions_changed": false,
+      "prior_attempt_preserved": true
+    }
+  ]
+}
