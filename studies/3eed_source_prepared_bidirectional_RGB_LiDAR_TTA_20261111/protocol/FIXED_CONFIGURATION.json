@@ -1,0 +1,80 @@
+{
+  "source_model": "Waymo_only_epoch100",
+  "source_checkpoint_sha256": "0d8766abaf06c9f3e2500fcb187337982d391f9e4d46ca854f3b3bb70fd33bbd",
+  "source_preparation": "new_RGB_CNN_adapters_local_interaction_gates_aux_heads_and_matching_copy_only",
+  "source_train_n": 512,
+  "source_val_n": 128,
+  "source_train_recordings": 94,
+  "source_val_recordings": 82,
+  "source_recordings_disjoint": true,
+  "source_epochs": 8,
+  "source_seed": 0,
+  "source_selected_epochs": {
+    "independent": 6,
+    "rgb_to_point": 6,
+    "bidirectional": 6
+  },
+  "source_precision": "BF16_features_and_transformer;FP32_matching_and_validation",
+  "source_AdamW_lr": 0.0003,
+  "source_weight_decay": 0.0001,
+  "source_gradient_clip": 1,
+  "source_match_target": "softmax_saved_source_GT_IoU_over0.1;allzero_ground_loss_zero_only",
+  "source_trainable_parameters": 338343,
+  "TTA_trainable_parameters": 102498,
+  "image_grid": [
+    48,
+    32
+  ],
+  "image_size": [
+    384,
+    256
+  ],
+  "point_tokens": 1024,
+  "point_width": 288,
+  "image_width": 64,
+  "forward_RGB_neighbors": 9,
+  "reverse_point_neighbors_max": 8,
+  "reverse_radius_feature_cells": 1.5,
+  "depth_visibility_tolerance": "0.3+0.02depth",
+  "reverse_depth_band": "0.5+0.03frontdepth",
+  "box_policy": "original_A256_fixed;source_anchor_query_indices_and_six_positions_fixed",
+  "initialization": "zero_interaction_and_late_scalar_gates;zero_adapter_up;source_matching_copy",
+  "unknown_policy": "zero_crossmodal_output;late_RGB_residual_mask_after_projection_including_bias",
+  "source_loss_coefficients": {
+    "ground": 1.0,
+    "point_recovery": 0.1,
+    "RGB_recovery": 0.1,
+    "depth": 0.01
+  },
+  "depth_head_policy": "preinteraction_image_only_no_point_features_or_depth_inputs",
+  "TTA_aux_views": 2,
+  "TTA_steps": [
+    1,
+    3
+  ],
+  "TTA_Adam_lr": 0.0001,
+  "TTA_KL_keep": 1.0,
+  "TTA_query_keep": 0.1,
+  "TTA_gradient_clip": 1.0,
+  "TTA_backtracking_scales": [
+    1.0,
+    0.5,
+    0.25,
+    0.125,
+    0.0625,
+    0.03125,
+    0.015625,
+    0.0078125,
+    0.00390625
+  ],
+  "TTA_reset_per_input": true,
+  "no_pretrained_visual_network": true,
+  "EMA": false,
+  "target_n": 336,
+  "FINAL_access": false,
+  "source_selected_module_sha256": {
+    "independent": "6ff6f23e73d58044c7fa087096732fb2b4ff05fe1659ad47181eb20e26810e5e",
+    "rgb_to_point": "a764d0aa22d4ad8a634aee7a15f29f4022eb46dfa5fe487b8bb436ef8a4dc563",
+    "bidirectional": "84f3455b52c1ca9ded0dca394af17b9ea9949cafb720eb24728c505e79ed9f3e"
+  }
+}

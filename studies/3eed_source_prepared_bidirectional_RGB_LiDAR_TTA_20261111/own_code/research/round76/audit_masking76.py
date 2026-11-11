@@ -1,0 +1,10 @@
+"""Source-prepared auxiliary target-leakage and real bidirectional influence checks."""
+from common76 import *
+from model76 import *
+import time
+sys.path.insert(0,str(ROOT/'crossplatform/round51'));from model51 import load_source,fingerprint
+p=read(H/'experiment/DESIGN_LOCK.json');sr=BASE/'trained_source_attempt002';sel=read(sr/'SELECTED_SOURCE_ONLY.json')['bidirectional'];base=load_source(read(ROOT/p['source_plan']));fp=fingerprint(base);m=Fusion(base.contrastive_align_projection_image).cuda().eval().requires_grad_(False);restore(m,load(ROOT/sel['state_path']));rr=source_rows('VAL128')[:2]+[next(r for r in target_rows() if r['platform']==pl) for pl in ['drone','quad']];recs=[]
+with torch.no_grad():
+ for r in rr:
+  z=tensor_prefix(prefix(r));d=tensor_data(load(casepath(r)),r);pm,im=masks(r,d,76001);P=z['vis0'][0];P0,I0,If=m.features(P,d,'bidirectional',point_mask=pm,image_mask=im);altP=P.clone();altP[pm]=1234.5;P1,I1,_=m.features(altP,d,'bidirectional',point_mask=pm,image_mask=im);assert torch.equal(P0,P1) and torch.equal(I0,I1);pixmask=im.reshape(1,1,32,48).repeat_interleave(8,2).repeat_interleave(8,3);altimage=d['image'].clone().masked_fill(pixmask,-19.);P2,I2,_=m.features(P,d,'bidirectional',image=altimage,point_mask=pm,image_mask=im);assert torch.equal(P0,P2) and torch.equal(I0,I2);_,_,orig=m.features(P,d,'bidirectional');_,_,other=m.features(P*13,d,'bidirectional');assert torch.equal(m.pred_depth(orig),m.pred_depth(other));a,_,_=m.main(base,z,d,'bidirectional');b,_,_=m.main(base,z,d,'bidirectional',reverse_off=True);recs.append({'platform':r['platform'],'point_mask_n':int(pm.sum()),'RGB_mask_cells':int(im.sum()),'point_target_values_not_copied':True,'masked_RGB_pixels_not_copied':True,'depth_input_independent_of_point_features':True,'reverse_off_max_probability_delta':float(abs(a-b).max())})
+assert fingerprint(base)==fp;out=H/'independent_masking_audit_attempt001';assert not out.exists();out.mkdir();dump(out/'AUDIT_RESULT.json',{'state':'PASS_R76_TRAINED_BIDIRECTIONAL_AUXILIARY_TARGET_LEAKAGE_CHECKS','n':len(rr),'source_unchanged':True,'target_GT_read':False,'checks':recs});print(read(out/'AUDIT_RESULT.json'))

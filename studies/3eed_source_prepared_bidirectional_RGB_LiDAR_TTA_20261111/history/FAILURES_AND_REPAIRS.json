@@ -1,0 +1,87 @@
+{
+  "events": [
+    {
+      "stage": "geometry",
+      "attempt": 1,
+      "status": "failed",
+      "failure_type": "NumPy_container_binary_reader",
+      "repair_type": "container_aware_np_load",
+      "before_GT": true,
+      "producer_predictions_changed": false
+    },
+    {
+      "stage": "geometry",
+      "attempt": 2,
+      "status": "failed",
+      "failure_type": "raw_column_guess_retained_header",
+      "repair_type": "container_aware_np_load",
+      "before_GT": true,
+      "producer_predictions_changed": false
+    },
+    {
+      "stage": "geometry",
+      "attempt": 3,
+      "status": "failed",
+      "failure_type": "None_target_suffix_int",
+      "repair_type": "target_suffix_zero",
+      "before_GT": true,
+      "producer_predictions_changed": false
+    },
+    {
+      "stage": "geometry",
+      "attempt": 4,
+      "status": "passed",
+      "valid_outputs": 7,
+      "before_GT": true
+    },
+    {
+      "stage": "source_training",
+      "attempt": 1,
+      "status": "interrupted",
+      "failure_type": "unknown_RGB_late_bias",
+      "repair_type": "postprojection_support_mask",
+      "prior_attempt_preserved": true,
+      "before_GT": true
+    },
+    {
+      "stage": "source_training",
+      "attempt": 2,
+      "status": "completed",
+      "valid_outputs": 24,
+      "before_GT": true
+    },
+    {
+      "stage": "camera_audit",
+      "attempt": 1,
+      "status": "failed",
+      "failure_type": "Decimal_array_dtype",
+      "repair_type": "explicit_float_array",
+      "producer_predictions_changed": false
+    },
+    {
+      "stage": "counter_audit",
+      "attempt": 1,
+      "status": "passed",
+      "repair_type": "derive_all_objective_suffix_calls",
+      "producer_predictions_changed": false
+    },
+    {
+      "stage": "publication_registry",
+      "attempt": 1,
+      "status": "failed",
+      "failure_type": "inherited_coverage_metadata_missing",
+      "repair_type": "preserve_original_coverage_with_source_extension",
+      "prior_attempt_preserved": true,
+      "producer_predictions_changed": false
+    },
+    {
+      "stage": "publication_registry",
+      "attempt": 2,
+      "status": "failed",
+      "failure_type": "new_media_path_kind_mismatch",
+      "repair_type": "use_existing_media_path_schema_and_deduplicate",
+      "prior_attempt_preserved": true,
+      "producer_predictions_changed": false
+    }
+  ]
+}
