@@ -1,0 +1,39 @@
+{
+  "n": 336,
+  "gamma_values": [
+    0.0,
+    0.5,
+    1.0,
+    1.5,
+    2.0
+  ],
+  "eta_values": [
+    0.25,
+    0.5,
+    0.75,
+    1.0
+  ],
+  "random_repeats": [
+    0,
+    1,
+    2
+  ],
+  "new_random_seed_prefixes": [
+    "R68random_repeat1",
+    "R68random_repeat2"
+  ],
+  "primary_metric": "platform_equal_DEV336_mIoU",
+  "target_rho_and_transport_UNKNOWN_and_temperature_and_boxes_fixed": true,
+  "gamma_changes_only_outer_confidence_clip": true,
+  "eta_actual_weights_scaled_not_outputs": true,
+  "eta_rule": "same_permitted_loss_decrease_vs_source;reject_to_source;no_eta_search_per_input",
+  "random_seed_selection": false,
+  "random_seeds_are_repeats_not_ensemble": true,
+  "no_cross_axis_combinations": true,
+  "selection": "highest_DEV_mIoU;gamma/eta tie within1e-10 choose smallest coefficient;family tie prefer no-update gamma then random policy then eta;random candidate uses three-repeat mean never best seed",
+  "C_is_diagnostic_not_veto": true,
+  "FINAL384_accessed": false,
+  "source_training": false,
+  "new_algorithm": false,
+  "max_extra_random_replays": 2016
+}
