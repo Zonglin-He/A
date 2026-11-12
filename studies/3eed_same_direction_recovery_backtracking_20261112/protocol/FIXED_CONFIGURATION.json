@@ -1,0 +1,52 @@
+{
+  "round": "R82",
+  "source_plan": "research/round15/experiment/SOURCE_CAPTURE_PLAN_LOCK.json",
+  "init_state": "crossplatform/round76/trained_source_attempt002/states_PRIVATE/bidirectional_e06.npz",
+  "init_state_sha256": "84f3455b52c1ca9ded0dca394af17b9ea9949cafb720eb24728c505e79ed9f3e",
+  "purpose": "R80_exact_direction_label_free_shortening_and_original_wrong_binding_control",
+  "source_training": false,
+  "external_models": false,
+  "FINAL_access": false,
+  "source_and_A256_fixed": true,
+  "parameters": 102498,
+  "masks": [
+    76001,
+    76002
+  ],
+  "heldout_mask": 76003,
+  "alpha_grid": [
+    0.5,
+    0.25,
+    0.125,
+    0.0625,
+    0.03125,
+    0.015625,
+    0.0078125,
+    0.00390625,
+    0.001953125
+  ],
+  "Armijo_c": 0.0001,
+  "tolerance": 1e-10,
+  "objective": "R80_native_uniform_P.1_RGB.1_depth.01_plus_output_KL_and_query_keep.1",
+  "gradient": "R80_native_gradient79;clip1;one_direction;no_recompute_after_proposal",
+  "wrong_control": "R80_wrong_logical_point_pixel_binding;not_R81_reconstruction_target_shuffle",
+  "correct_reuse": "R81_all_ALL_accepted_outputs_and_first7_trials;native_gradient_direction_and_final_acceptance_rechecked;all_rejected_or_near_boundary_trace_replayed_then_extend_two_smaller_steps",
+  "reuse_tolerance": 1e-07,
+  "no_method_or_threshold_selection_with_task_GT": true,
+  "rosters": {
+    "DEV336": 336,
+    "VAL1280": 1280,
+    "TRAIN1024": 1024
+  },
+  "historically_exposed": true,
+  "labels": "cached_candidate_IoU_join_only_after_all_predictions_sealed_and_native_audited",
+  "heldout": "same_frame_third_mask;not_independent_view;may_overlap_training_target_positions;never_step_acceptance",
+  "analyses": [
+    "R80_aux_descent_vs_grounding_contingency",
+    "R80_vs_backtracking_task_and_harm",
+    "heldout_descent_vs_grounding",
+    "correct_vs_original_wrong_binding;separate_parameter_norms",
+    "all_negatives_scenes_unknown_rejections"
+  ],
+  "resource_budget": "one_exclusive_GPU_producer_then_independent_native_audit;no_follow_on_or_new_losses"
+}
