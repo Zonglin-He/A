@@ -1,0 +1,22 @@
+"""Pin an explicit scalar/code-only export; no data or checkpoint export."""
+from pathlib import Path
+import sys,argparse
+ROOT=Path(__file__).resolve().parents[2];sys.path.insert(0,str(ROOT/'research/round76'))
+from common76 import read,dump,sha
+H=ROOT/'research/round84';PREFIX='studies/3eed_visual_case_attribution_and_recovery_support_20261112'
+ap=argparse.ArgumentParser();ap.add_argument('stage',choices=['export','audit']);ap.add_argument('--attempt',type=int,default=1);a=ap.parse_args();tag='' if a.attempt==1 else '_attempt'+str(a.attempt).zfill(3);E=H/'experiment'
+def put(f,x):assert not f.exists();dump(f,x)
+if a.stage=='export':
+ p={'prefix':PREFIX,'no_network_models_GT_or_media':True,'scalar_runs':[],'private_registry':'research/round76/publication/PRIVATE_PRIVACY_TOKEN_REGISTRY.json','publication_base_snapshot':'research/round84/publication/BASE_SNAPSHOT_PRIVATE.json','report':'research/round84/REPORT.md','decision':'research/round84/DECISION.json','public_fixed_configuration':'research/round84/PUBLIC_FIXED_CONFIGURATION.json','normalized_costs':'research/round84/NORMALIZED_COSTS.json','normalized_history':'research/round84/NORMALIZED_HISTORY.json','own_code_allowlist':[f.relative_to(ROOT).as_posix() for f in sorted(H.glob('*.py'))]+[f.relative_to(ROOT).as_posix() for f in sorted((H/'attempts').glob('*.py'))]+['tools/manual_r83_guard.py'],'auxiliary_saved_scalar_reports':[],'auxiliary_text_reports':[{'source':'research/round84/ITERATION_RECORD.md','public_path':'protocol/ITERATION_RECORD.md'}],'inputs_sha256':{}}
+ for n in ['PUBLIC_CASE_ROWS','PUBLIC_HYBRID_ROWS','PUBLIC_SUPERVISION_ROWS','PUBLIC_LOSS_REGION_ROWS','PUBLIC_PRIORITY_RANK_ROWS','VISUAL_GROUP_COUNTS']:p['auxiliary_saved_scalar_reports'].append({'source':'research/round84/'+n+'.json','public_path':'results/'+n+'.csv','table_csv':True})
+ for n in ['PUBLIC_PROVENANCE','CASE_DIAGNOSIS_SUMMARY','ORACLE_PROXY_SUPERVISION_SUMMARY']:p['auxiliary_saved_scalar_reports'].append({'source':'research/round84/'+n+'.json','public_path':'results/'+n+'.json'})
+ for name in ['native','supervision_support','scalar_visual']:p['auxiliary_saved_scalar_reports'].append({'source':'research/round84/independent_'+name+'_audit_attempt001/AUDIT_RESULT.json','public_path':'results/'+name.upper()+'_AUDIT.json'})
+ paths=[p[k] for k in ['private_registry','publication_base_snapshot','report','decision','public_fixed_configuration','normalized_costs','normalized_history']]+p['own_code_allowlist']+[x['source'] for x in p['auxiliary_saved_scalar_reports']+p['auxiliary_text_reports']]
+ for run in p['scalar_runs']:paths+=[run['independent_audit'],run['saved_scalar_audit']]+[f.relative_to(ROOT).as_posix() for f in (ROOT/run['score_root']).glob('*.json')]
+ for f in paths:p['inputs_sha256'][f]=sha(ROOT/f)
+ path=E/('LOCAL_PUBLIC_EXPORT_PLAN_LOCK'+tag+'.json');put(path,p);put(E/('LOCAL_PUBLIC_EXPORT_AUTH'+tag+'.json'),{'state':'ROOT_AUTHORIZED_R84_LOCAL_SAVED_SCALAR_WHITELIST_EXPORT','program_sha256':sha(H/'publish84.py'),'plan_sha256':sha(path),'private_registry_sha256':sha(ROOT/p['private_registry']),'publication_base_snapshot_sha256':sha(ROOT/p['publication_base_snapshot'])})
+else:
+ author='research/round84/experiment/LOCAL_PUBLIC_EXPORT_PLAN_LOCK'+tag+'.json';p0=read(ROOT/author);p={'no_GT_models_geometry_media_network_or_original_manifest_read':True,'public_package':'research/round84/publication/public_export_attempt'+str(a.attempt).zfill(3),'manifest':'research/round84/publication/public_export_attempt'+str(a.attempt).zfill(3)+'/MANIFEST.json','payload':'research/round84/publication/TREE_PAYLOAD_LOCAL_attempt'+str(a.attempt).zfill(3)+'.json','publication_plan':author,'private_registry':p0['private_registry'],'expected_registry_tokens':len(read(ROOT/p0['private_registry'])['tokens']),'output_directory':'research/round84/independent_public_audit_attempt'+str(a.attempt).zfill(3),'inputs_sha256':dict(p0['inputs_sha256'])}
+ for f in [author,p['manifest'],p['payload']]:p['inputs_sha256'][f]=sha(ROOT/f)
+ path=E/('INDEPENDENT_PUBLIC_AUDIT_PLAN_LOCK'+tag+'.json');put(path,p);put(E/('INDEPENDENT_PUBLIC_AUDIT_AUTH'+tag+'.json'),{'state':'ROOT_AUTHORIZED_R84_INDEPENDENT_LOCAL_PUBLIC_EXPORT_AUDIT_SAVED_ONLY','program_sha256':sha(H/'audit_public84.py'),'plan_sha256':sha(path),'manifest_sha256':sha(ROOT/p['manifest']),'payload_sha256':sha(ROOT/p['payload']),'private_registry_sha256':sha(ROOT/p['private_registry']),'base_snapshot_sha256':sha(ROOT/p0['publication_base_snapshot'])})
+print({'stage':a.stage,'sha256':sha(path)})
