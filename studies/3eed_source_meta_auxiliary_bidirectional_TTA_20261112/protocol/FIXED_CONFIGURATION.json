@@ -1,0 +1,42 @@
+{
+  "round": "R78",
+  "hypothesis": "source_post_auxiliary_update_grounding_training_produces_more_useful_unlabeled_adaptation_than_joint_continuation",
+  "source_plan": "research/round15/experiment/SOURCE_CAPTURE_PLAN_LOCK.json",
+  "init_state": "crossplatform/round76/trained_source_attempt002/states_PRIVATE/bidirectional_e06.npz",
+  "init_state_sha256": "84f3455b52c1ca9ded0dca394af17b9ea9949cafb720eb24728c505e79ed9f3e",
+  "arms": [
+    "joint",
+    "meta"
+  ],
+  "source_train": 512,
+  "source_val": 128,
+  "epochs_each": 4,
+  "source_outer_updates_each": 2048,
+  "outer_optimizer": "AdamW_lr0.0001_wd0.0001_batch1_clip1",
+  "seed": 0,
+  "epoch_order_seed": "78000+epoch_same_branches",
+  "source_train_masks": "two_complementary_R76_masks_repeats78000+2*epoch_and78001+2*epoch_same_branches",
+  "evaluation_masks": [
+    76001,
+    76002
+  ],
+  "inner": "one_functional_SGD_no_momentum_no_backtracking_differentiable_clip_global_L2_at1",
+  "inner_alpha": 0.5,
+  "alpha_selection": "fixed_before_training;median_R77_aux_gradient0.05134_yields_step0.02567_comparable_to_prior_first_Adam_radius0.02820;no_target_selection_no_grid",
+  "TTA_parameters": 102498,
+  "source_trainable_parameters": 338343,
+  "joint_loss": "ground0+aux",
+  "meta_loss": "0.5ground0+0.5ground1+aux",
+  "ground_target": "same_R76_candidate_IoU_softmax_temperature0.1;zero_ground_if_all_IoUs_zero",
+  "training_precision": "FP32_all_new_modules_and_suffix;no_detached_inner_gradient_in_meta",
+  "engineering_gate": "first2WaymoTRAIN:ground1_auxhead_metagrad_nonzero_and_detached_gradient_control_zero;functional_adapted_predictions_equal_real_SGD_write;original_base_frozen_but_graph_connected",
+  "selection": "shared_epoch_earliest_max_equal_branch_mean_sourceVAL_post_update_mIoU;same_epoch_for_both;no_per_platform_or_target_selection",
+  "target_protocol": "allDEV336_once_after_source_selection;J0/J1/M0/M1;each_same_model_three_observation_direct_mean;each_wrong_binding_aux1;R76_frozen/source/ABC/R59_reused;current_sample_epiosodic_reset",
+  "target_hypothesis_gate": "only_if_meta1_exceeds_meta0_and_joint1_and_own_same_information_direct_mean_on_DEV336_consider_fixed_VAL1280_TRAIN1024_expansion_after_LOCK;otherwise_stop",
+  "source_data_exposure_not_compute_matched": true,
+  "no_full_compute_efficiency_claim": true,
+  "original_A256_anchors_and_six_decoder_positions_fixed": true,
+  "FINAL_access": false,
+  "external_experts": false,
+  "original_checkpoint_sha256": "0d8766abaf06c9f3e2500fcb187337982d391f9e4d46ca854f3b3bb70fd33bbd"
+}

@@ -1,0 +1,54 @@
+{
+  "counts": {
+    "source_train_n": 512,
+    "source_val_n": 128,
+    "source_epochs_per_branch": 4,
+    "outer_updates_per_branch": 2048,
+    "source_TTA_parameters": 102498,
+    "source_outer_parameters": 338343,
+    "joint_training_grounding_suffix_calls": 2048,
+    "meta_training_grounding_suffix_calls": 4096,
+    "source_validation_suffix_calls": 2048,
+    "source_validation_auxiliary_fusion_calls": 2048,
+    "source_training_auxiliary_fusion_calls": 8192,
+    "training_inner_gradient_calls": 2048,
+    "validation_inner_gradient_calls": 1024,
+    "training_outer_backward_calls": 4096,
+    "target_inputs": 336,
+    "target_arms": 12,
+    "target_suffix_calls": 3360,
+    "target_auxiliary_fusion_calls": 2688,
+    "target_SGD_proposals": 1344,
+    "saved_target_TTA_states": 1344,
+    "new_raw_target_GT_geometry_calls": 0,
+    "extension_inputs": 2304,
+    "extension_task_values": 27648,
+    "extension_grounding_suffix_calls": 25344,
+    "extension_auxiliary_fusion_calls": 18432,
+    "extension_saved_TTA_states": 9216,
+    "extension_native_audit_suffix_calls": 25344
+  },
+  "timing_seconds": {
+    "joint_training_and_all_source_val_epochs": 154.60854716203175,
+    "meta_training_and_all_source_val_epochs": 232.97058395214844,
+    "source_entire_producer": 397.41924038296565,
+    "target_all_arms": 75.30505016993266,
+    "native_audit_source_and_target": 104.93403943092562,
+    "engineering_graph_check": 1.691067030071281,
+    "extension_RGB_geometry": 120.6203498300165,
+    "extension_all_predictions": 581.0271247549681,
+    "extension_native_audit": 578.3357043589931
+  },
+  "peak_bytes": {
+    "source_GPU_allocated": 1309421568,
+    "target_GPU_allocated": 691492864,
+    "extension_GPU_allocated": 692909568
+  },
+  "flags": {
+    "data_outer_updates_matched": true,
+    "compute_matched": false,
+    "FP32_both_branches": true,
+    "cached_prefix_timings_not_end_to_end": true,
+    "all_trials_and_negatives_retained": true
+  }
+}
