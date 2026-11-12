@@ -1,0 +1,82 @@
+"""Write the prespecified full-prototype result, including all negative arms."""
+from core85 import *
+main=read(H85/'score_dev336_attempt001/TASK_SUMMARY.json')['ALL336'];supp=read(H85/'score_supp30_attempt001/TASK_SUMMARY.json')['ALL30'];coverage=read(H85/'EVIDENCE_COVERAGE_ROWS.json');updates=read(H85/'ALL_UPDATE_ROWS.json');obs=read(H85/'OBSERVATION_COVERAGE_ROWS.json');targets=read(H85/'POSTSEAL_TARGET_PROXY_COVERAGE.json');primary='full1';values=main['balanced_mIoU_percent'];gain=values[primary]-values['source'];dd=values[primary]-values['direct_constraints'];dm=values[primary]-values['direct_multiview_constraints'];dc=values[primary]-values['mismatch1'];dn=values[primary]-values['no_constraints1'];passed=dd>0 and dm>0 and dc>0 and dn>0 and gain>0
+def table(summary):
+ out=['|方法|Drone mIoU %|Quad mIoU %|两平台平均 %|平均Acc@25 %|平均Acc@50 %|','|---|---:|---:|---:|---:|---:|']
+ for a in ARMS85:out.append('|'+a+'|'+f"{summary['drone'][a]['mIoU_percent']:.6f}|{summary['quad'][a]['mIoU_percent']:.6f}|{summary['balanced_mIoU_percent'][a]:.6f}|{np.mean([summary[pl][a]['Acc25_percent'] for pl in ['drone','quad']]):.4f}|{np.mean([summary[pl][a]['Acc50_percent'] for pl in ['drone','quad']]):.4f}|" )
+ return '\n'.join(out)
+decision={'state':'R85_COMPLETE_PROTOTYPE_DEVELOPMENT_EVALUATED','primary_arm':primary,'primary_gain_vs_source_pp':gain,'primary_gain_vs_same_constraints_direct_pp':dd,'primary_gain_vs_same_views_direct_pp':dm,'primary_gain_vs_mismatch_pp':dc,'primary_gain_vs_no_constraints_pp':dn,'passes_prespecified_development_increment_checks':passed,'robust_TTA_adoption':False,'primary_steps':1,'secondary_steps':3,'three_step_not_promoted_posthoc':True,'FINAL_access':False,'source_retraining':False,'new_visual_experts':False,'no_follow_on_queued':True}
+dump(H85/'DECISION.json',decision)
+rr=read(H85/'R84_CASE_FOLLOWUP_ROWS.json');changes=main['drone'][primary]['improved_vs_source']+main['quad'][primary]['improved_vs_source'];harms=main['drone'][primary]['worsened_vs_source']+main['quad'][primary]['worsened_vs_source'];active=[x for x in coverage if x['part']=='DEV336' and x['active_evidence']];gr=[x for x in updates if x['part']=='DEV336' and x['variant']=='full' and x['step']==1 and x['classification_gradient_norm'] is not None];fullt=[x for x in targets if x['part']=='DEV336'];counts=read(B85/'prediction366_attempt002/COUNTS.json');native=read(H85/'independent_native_audit_attempt001/AUDIT_RESULT.json');eng=read(B85/'engineering_attempt002/COUNTS.json');prep=read(B85/'observations366_attempt001/COUNTS.json')
+text='''# R85：结构化跨模态证据、候选判别与局部恢复的完整原型
+
+本轮已经实际实现并运行完整链条，而非再单独做遮挡、换头或步长诊断。原始3EED、R76双向模块及其已有RGB编码器/恢复头保持，原A256框不变；不使用CLIP、LLM、检测/分割专家，不重新训练源域，不访问FINAL。主结果固定DEV336；另30条是R84诊断集合中不在DEV336的观测，单独报告，不混入主分母。全部属于历史暴露开发数据，不声称新测试确认。
+
+## 预先固定的方法
+
+1. 完整描述使用已保存的、仅从文字得到的Stanza依存结构及主体解析；按词组归属生成主体/属性/参照物/有向关系。结构化描述的主体外观字段保留为主体短语。最多保留四个参照词组；未执行的复杂组合/其他参照保持未知。类别和实体短语先验由同一冻结原始3EED重新前向获得，短语使用原有首词典名词读出，找不到词典名词则使用既有全文内容回退；点前缀、query锚点索引和六层位置固定，不生成另一套框，也不假定两次新proposal的query编号等同。主体短语先验用于提出局部恢复区域，参照短语先验进入关系边缘化；主判别先验仍是完整句source，不把主体短语Top1升级成正标签。RoBERTa属于原模型，没有新预训练视觉模块。
+2. 在已标定、带前表面可见性筛选的1024 seed与48×32 RGB网格上测量。RGB仅提供13种软颜色描述，多颜色/否定属性不强作单色代价；属性用0.85/1/1.15三种支持范围下稳定的明显异色支持，连续可靠度降低稀疏/覆盖不足区域的代价。未见所需颜色本身不等于反证。支持区域仍可能混入邻物，不能当实例mask。
+3. 关系只执行明确相机参考系下的LEFT/RIGHT；前后、邻近、内在朝向及复杂外观本轮UNKNOWN，不硬猜。区间同时包含可见支持范围与投影框中心，避免把可见表面均值当完整物体中心。重复候选结合实际seed支持及框重叠分组，参照先验按组log-mean-exp聚合，再对多个参照假设做温度0.25的软边缘化。同组参照质量保留为中性未知，不因排除自组而强行重新分配。
+4. 得到代价C后，冻结目标π=softmax(s0−C)，λ=1。s0是原始3EED原生候选log-odds；这是拟议的软约束分布，不是真实身份标签。新读出为softmax(s0+[log p_fusion(ψ)−log p_fusion(ψ0)])，先计算括号内增量，零步严格等于原始source。原始第一名没有被当成正确标签；没有可区分代价的输入不更新，保留source并留在总体分母。
+5. 保留同一套102,498个可更新Adapter/双向局部交互Q/K/V/O/门控参数，原始3EED、RGB CNN、匹配副本、late RGB层和恢复头冻结。目标为KL(π||完整读出)+两遮挡KL均值+原系数局部恢复(.1点特征+.1RGB+.01稀疏深度)。辅助遮挡可以覆盖锚点特征，主完整输入和所有坐标/索引/框保留。候选区域来自各实体和source的前四个不同假设组，不仅当前第一名；遮挡75%优先候选局部、其余全局。恢复聚合也是75%局部/25%全局。点/image遮挡格互补，已遮挡点从LiDAR→RGB反向键中移除；深度头只看交互前图像特征。
+6. 每输入恢复同一source-prepared状态，SGD提议lr0.1、梯度范数裁剪1，并在同一固定联合目标上执行预设1至1/256的Armijo回溯；不按任务分数验收，也不按GT调参。一步为主、三步为预先规定的拟合强度对照。π、观测、组、参照先验和遮挡在更新前固定，不随学生重新挑监督。
+
+## 对照为什么足够接近
+
+直接π与使用同两遮挡冻结预测的平均再施加相同C都保留；额外输入信息不能全部算作参数适应。no_constraints把π换为source分布，保留相同恢复、样本资格、参数、步数与遮挡。protected只从同一遮挡中删除锚点目标，不另外重采样，故同时改变监督覆盖与目标数；不声称纯数量不变。mismatch按固定随机映射打乱候选所接收的完整代价，保持代价集合和预算，局部恢复仍用真实绑定；这是证据到候选的部分错配控制，不是整个RGB/LiDAR链条全部错配。
+
+无证据时各适应臂均退回source，但资格不根据GT/性能决定；不通过只保留正例提高均值。旧source、R76、R82、ABC、R59沿用同样本缓存并保持其原状态标记。原始source残差保留会舍弃R76静态收益，必须同时列两者，不能将撤回静态破坏包装成更新收益。
+
+## DEV336完整结果
+
+'''+table(main)+f'''
+
+主臂full1相对source {gain:+.6f} pp，相对直接π {dd:+.6f} pp，相对同遮挡直接读出 {dm:+.6f} pp，相对错配 {dc:+.6f} pp，相对去约束 {dn:+.6f} pp。相对source共{changes}条IoU改善、{harms}条恶化。三步不会事后替代一步作为主结果。
+
+主臂同时超过source、两个同信息无更新读出、错配和去约束的开发检查结果：**{passed}**。这不是统计显著性证明，也不要求每个场景都上涨。所有平台/场景/阈值/UNKNOWN/回退/无更新和有向负比较都保留在结果文件。只有5个历史场景，未构造单场景总体置信区间。
+
+## 覆盖、梯度和局部监督
+
+DEV336中有{len(active)}条产生非恒定软代价，其他输入保留source。整个366中主体解析成功{sum(x['subject_parsed'] for x in obs)}条，目标含颜色词{sum(x['target_color'] for x in obs)}条，存在可执行相机左右关系{sum(x['known_camera_relations']>0 for x in obs)}条；解析/可测不等于证据正确。
+
+主臂首步候选判别梯度范数中位数{float(np.median([x['classification_gradient_norm'] for x in gr])):.8g}，恢复梯度中位数{float(np.median([x['recovery_gradient_norm'] for x in gr])):.8g}。两者已经明确进入可更新接口，不能只凭总梯度非零声称约束有用；每条的分量和夹角均保留。新源域准备没有加入，已有恢复头可能未针对遮挡锚点分布训练，因此若失败仍有辅助头适用条件的竞争解释。
+
+封存后、仅用于诊断的最高IoU候选代理中，DEV336拟合点目标零覆盖从protected的{sum(x['oracle_proxy_point_targets_protected']==0 for x in fullt)}条变为unprotected的{sum(x['oracle_proxy_point_targets_unprotected']==0 for x in fullt)}条。这不是GT参与的监督选择。改善覆盖不等于改善grounding，仍以任务对照为准。
+
+## R84重点路径与另外30条
+
+R84全部33条均保留在R84_CASE_FOLLOWUP_ROWS，只有原来已确认的候选身份沿用；出现新query时不自动宣称纠正了主体或参照角色。两条预先指定案例：
+
+|匿名案例|source|R76冻结|R80大步|R82回溯|直接π|新方法1步|新方法3步|
+|---|---:|---:|---:|---:|---:|---:|---:|
+'''
+for x in rr[:2]:text+='|'+x['case']+'|'+'|'.join(f'{x[k]:.6f}' for k in ['source_IoU','R76_frozen_IoU','R80_raw_IoU','R82_BT_IoU','direct_IoU','full1_IoU','full3_IoU'])+'|\n'
+text+='\nSUPP30按历史案例选出，不能作为扩大样本确认，也不能用其均值替代主结果：\n\n'+table(supp)+'''
+
+## 真实执行、独立审计与文献边界
+
+真实Drone/Quad工程输入均有非零梯度、非零更新，零步概率误差0。改写已遮挡点特征或已遮挡RGB像素后，融合输出误差0，验证直接输入路径被遮断；没有声称排除自然邻域相关性。初始固定步长尝试在任何任务评分前因68/178条有证据已完成样本的首步联合损失上升而中断，212条已完成输出及未完成现场全部保留、局部封存，不评分也不混入主结果。仅修复无GT优化验收后，以相同G/损失/参数/样本/四个分支重新执行attempt002。完整预测先封存，独立重放所有保存端点、原始框、零残差、代价和遮挡，再一次性关联既有A256 IoU表。没有重新打开原始GT框进行几何评分。各状态、失败和所有负例保留。
+
+EDA的显式解耦/稠密对齐及MAttNet主体/位置/关系模块是在有监督任务中建立的能力；本轮只借鉴组件分工。逻辑规则蒸馏启发约束分布到网络的传递，不能继承其正确性保证。已核对[EDA原论文](https://arxiv.org/abs/2209.14941)、[官方实现](https://github.com/yanmin-wu/EDA)、[MAttNet官方实现](https://github.com/lichengunc/MAttNet)和[逻辑规则蒸馏论文](https://arxiv.org/abs/1603.06318)。这是新的受控原型，不命名为这些论文的复现或已成立novelty。
+
+最终裁决见DECISION.json。即使辅助任务下降、锚点覆盖提高或少数重点案例被保留，也不能替代全体任务结果与同信息对照；不继续追加步长/阈值网格挽救本配置。没有排队后续实验，FINAL继续封存。
+'''
+active_main=[x for x in coverage if x['part']=='DEV336' and x['active_evidence']]
+source_zero=sum(x['cost_at_source_top1']<=1e-12 for x in active_main);direct_changes=sum(x['direct_changes_source_query'] for x in active_main)
+conclusion=f'''
+
+## 本配置的最终判断
+
+**完整原型已跑通，但不采用当前配方。** 一步相对source、直接π、去约束和错配均为负；三步没有反转结论。full1只超过较弱的多遮挡直接读出，不能选择性地用这一行宣称TTA增益。恢复原锚点保护的protected1与full1的任务值完全相同，protected3反而高于full3；当前没有目标任务证据支持解除保护这一组件带来收益。
+
+{len(active_main)}条主样本产生了非恒定代价，但其中{source_zero}条source第一名的代价为0，直接π总共只改变{direct_changes}条第一名，最终只有3条IoU改善、2条恶化。代价覆盖不是有效身份监督覆盖；其余候选受到约束也不代表决定当前第一名的错误得到纠正。正确映射的full1低于错配，当前不能证明这套观测约束的方向可靠。
+
+原模型残差设计确实让两个重点案例保留source的0.398376和0.737252，但零步source和直接π已达到同样结果。因此这是结构上的保留原输出，不是参数适应额外纠错。全DEV336上原R76冻结22.611596高于source21.830331，撤回静态融合有总体代价，不能因为这两条被保护就采用该基座。
+
+本次已排除零梯度、监督未进入可更新模块、直接遮挡值泄漏、原框被改、验收放任联合损失上升、漏掉负例等解释。没有排除低层颜色/区间证据缺乏实例身份信息、固定源先验压过有限代价、语法/可见支持有误、恢复头不适用于锚点遮挡以及恢复与判别方向不匹配。不能把一个已实现但无净收益的原型提升为路线结论；也不继续放大这份目标或事后改主臂。
+'''
+text+=conclusion
+(H85/'REPORT.md').write_text(text)
+dump(H85/'PUBLIC_FIXED_CONFIGURATION.json',read(H85/'experiment/DESIGN_LOCK.json'))
+actual_ground=counts['explicit_reader_calls']+counts['objective_calls']*3+counts['entity_phrase_suffix_calls']+counts['original_fulltext_suffix_calls'];dump(H85/'NORMALIZED_COSTS.json',{'counts':{'main':336,'supplements':30,'arms':len(ARMS85),'optimizer_steps':counts['actual_optimizer_steps'],'grounding_suffix_calls_producer':actual_ground,'auxiliary_fusion_calls_producer':counts['objective_calls']*2,'independent_saved_endpoint_replays':native['saved_endpoint_replays'],'engineering_inputs':2,'new_task_GT_scores':0},'timing_seconds':{'observations':prep['seconds'],'engineering':eng['seconds'],'prototype_all366':counts['seconds'],'independent_native_audit':native['seconds']},'peak_bytes':{'prototype_GPU_allocated':counts['peak_GPU_bytes']},'flags':{'cached_prefix_not_end_to_end':True,'new_external_vision_models':False,'FINAL_access':False}});dump(H85/'NORMALIZED_HISTORY.json',{'events':[{'stage':'prototype_fixed_step','attempt':1,'status':'interrupted','failure_type':'pre_GT_joint_objective_overshoot','valid_outputs':212,'before_GT':True,'producer_predictions_changed':False,'prior_attempt_preserved':True},{'stage':'prototype_backtracking','attempt':2,'status':'completed','repair_type':'label_free_fixed_Armijo_rollback','before_GT':True,'prior_attempt_preserved':True}]});dump(H85/'PUBLIC_PROVENANCE.json',{'prediction_seal_sha256':sha(B85/'prediction366_attempt002/SEALED.json'),'design_lock_sha256':sha(H85/'experiment/DESIGN_LOCK.json'),'observation_seal_sha256':sha(B85/'observations366_attempt001/SEALED.json'),'native_audit_sha256':sha(H85/'independent_native_audit_attempt001/AUDIT_RESULT.json'),'scalar_audit_sha256':sha(H85/'independent_scalar_audit_attempt001/AUDIT_RESULT.json'),'no_raw_media_description_coordinates_or_model_states_exported':True})
+print(decision)

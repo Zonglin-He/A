@@ -1,0 +1,64 @@
+{
+  "round": "R85",
+  "source_plan": "research/round15/experiment/SOURCE_CAPTURE_PLAN_LOCK.json",
+  "init_state": "crossplatform/round76/trained_source_attempt002/states_PRIVATE/bidirectional_e06.npz",
+  "main_cohort": "DEV336",
+  "main_n": 336,
+  "supplement_n": 30,
+  "total_n": 366,
+  "historically_exposed_development_only": true,
+  "A256_original_fixed": true,
+  "entity_priors": "frozen_original_3EED_phrase_forward_on_original_xyz_query_anchor_indices_and_six_positions;no_query_number_transport_between_new_proposals",
+  "observation": "visible_seed_supported_RGB_grid;three_support_scales;.85_1_1.15;soft_opposite_color_support;camera_LEFT_RIGHT_only;others_UNKNOWN",
+  "reference_groups": "source_box_and_actual_seed_overlap_duplicate_groups;logmeanexp_per_group;neutral_same_group_unknown_mass",
+  "target_distribution": "softmax(original_fulltext_logodds_minus_frozen_observation_cost);stop_gradient;lambda1;tau0.25",
+  "residual_readout": "softmax(source_logits+log(fusion_current)-log(fusion_initial_same_view));zero_step_source_exact",
+  "adaptation_parameters": "existing102498_image_point_adapters_bidirectional_QKVO_gates_only",
+  "optimizer": "episodic_SGD_proposal_lr0.1_clip1;fixed_Armijo_scales1_to1/256;source_and_pi_frozen;no_GT;restore_rejected_step;1_primary3_secondary",
+  "loss": "KL_full+mean_KL_two_masked+native_weighted_local_recovery(.1P+.1RGB+.01D)",
+  "masking": "75percent_prefer_candidate_local25percent_global;disjoint_complementary_point_image_cells;feature_mask_anchors_allowed_coordinates_indices_fixed;masked_P_removed_from_reverse_keys",
+  "no_evidence": "costrange<=1e-8:keep_source_no_update_all_rows_retained",
+  "ablations": [
+    "full",
+    "no_constraints_same_recovery",
+    "original_anchor_protection",
+    "fixed_candidate_cost_permutation_control"
+  ],
+  "direct_controls": [
+    "structured_pi",
+    "same_frozen_mask_views_mean_plus_same_cost",
+    "mismatch_pi"
+  ],
+  "existing_controls": [
+    "original_source",
+    "frozen_R76",
+    "R82_BT",
+    "frozen_ABC",
+    "R59"
+  ],
+  "FINAL_access": false,
+  "new_source_training": false,
+  "new_external_visual_models": false,
+  "no_hyperparameter_sweep": true,
+  "budget": "one engineering2_no_GT, then all366, independent replay, one cached_IoU_join;no_follow_on_queued",
+  "inputs_sha256": {
+    "research/round24/input/ALL336_PRIVATE.json": "bd8ede69293292f9747cc2d84fb4b25713e6dc5508a50f019851989e71724373",
+    "research/round85/experiment/ALL366_PRIVATE.json": "9f680db3ea862c92946fdf3dedbea0d33e1cf36a8cc4a1cbb3fafc4c0c5ac1d0",
+    "research/round15/experiment/SOURCE_CAPTURE_PLAN_LOCK.json": "1b3d9ff155096fcad9d80bb022888609b207fe8d44f748d58dfb721a77670f3e",
+    "crossplatform/round76/trained_source_attempt002/states_PRIVATE/bidirectional_e06.npz": "84f3455b52c1ca9ded0dca394af17b9ea9949cafb720eb24728c505e79ed9f3e"
+  },
+  "programs_sha256": {
+    "research/round85/evidence85.py": "bce8e89d5f7c75ad3496bc22c1211c7fccdf135d9c5ed4b596e78225911eed0c",
+    "research/round85/core85.py": "b7bacec347208218b257284001ec8acca7560f34334537da23bffcb9660801f4",
+    "research/round85/prepare85.py": "dbc050e4d407bc79322f862cea40f459a384e35a2b0e23934291e336eb13cde7",
+    "research/round85/run85.py": "2930bfa6db6ed68bfb566f638e7b696f691430468a84dd6d8f0d887ad3984fbd",
+    "research/round76/model76.py": "5824d71f9d79dd418fec125c2b6c86ac14d4cceb520b3a1e26730839cdaec44b",
+    "research/round79/core79.py": "c1057978c3041444b268180481ab0bf10c9b32a9b710d11692475b25f65f878e",
+    "research/round84/core84.py": "3d7dda5462178b56d3efd2e158ff8fa788082207a392bce8d67427fadc99aa9c",
+    "research/round85/audit85.py": "edd0b4337eb3efded4c4b020674eb6b586bf35e5d4421a25b775cd14de81b0d6",
+    "research/round85/score85.py": "98bc81f6b4c05f21bffc3d9eb3e9d685ca7da97c7fcc00b137ca157467fb61ed"
+  },
+  "zero_residual_execution": "compute log_current_minus_log_initial first, exactly zero for identical states",
+  "pre_GT_amendment": "attempt001_interrupted_for_68_first_joint_loss_increases_of178_active_completed_cases;all212_completed_records_preserved;no_task_scoring;only_optimization_acceptance_repaired",
+  "active_prediction_attempt": 2
+}
