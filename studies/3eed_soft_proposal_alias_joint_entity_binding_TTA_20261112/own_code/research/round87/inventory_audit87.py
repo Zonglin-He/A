@@ -1,0 +1,7 @@
+"""Whole-DEV text-only inventory audit, no task values consumed."""
+from core87 import *
+from reference_roles87 import repair_inventory87
+O=B87/'role_inventory336_attempt003';(O/'cases_PRIVATE').mkdir(parents=True,exist_ok=False);rows=[]
+for nr,r in enumerate(read(H87/'experiment/DEV336_PRIVATE.json')):
+ old=read(B86/'evidence366_attempt002/cases_PRIVATE'/(r['id']+'.json'))['graph'];doc=read(ROOT/'crossplatform/round48/parse336_attempt001/dependencies_PRIVATE'/(r['id']+'.json'));new=repair_inventory87(r['caption'],doc,old);oldsp={tuple(e['span']) for e in old['entities'][1:]};newsp={tuple(e['span']) for e in new['entities'][1:]};dump(O/'cases_PRIVATE'/(r['id']+'.json'),{'graph':new,'caption_sha256':hashlib.sha256(r['caption'].encode()).hexdigest()});rows.append({'row':'DEV'+str(nr+1).zfill(4),'platform':r['platform'],'old_reference_count':len(oldsp),'new_reference_count':len(newsp),'references_retained':len(oldsp&newsp),'old_references_not_dependency_arguments':len(oldsp-newsp),'new_dependency_arguments_previously_missed':len(newsp-oldsp),'old_owned_edges':len(old['relations']),'new_owned_edges':len(new['relations'])})
+dump(H87/'WHOLE_DEV_REFERENCE_INVENTORY_AUDIT.json',rows);seal(O,'R87_WHOLE_DEV_DEPENDENCY_ARGUMENT_ROLE_INVENTORY_NO_TASK_GT',n=336);print({k:sum(r[k] for r in rows) for k in ['old_reference_count','new_reference_count','old_references_not_dependency_arguments','new_dependency_arguments_previously_missed','old_owned_edges','new_owned_edges']})

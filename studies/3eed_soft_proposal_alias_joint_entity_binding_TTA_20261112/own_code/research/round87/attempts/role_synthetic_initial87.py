@@ -1,0 +1,9 @@
+"""Existing parser, synthetic syntax tests; no corpus labels or case exceptions."""
+from core87 import *
+from reference_roles87 import repair_inventory87
+sys.path.insert(0,str(ROOT/'crossplatform/round20/runtime'));sys.path.insert(0,str(ROOT/'crossplatform/round48'));import stanza
+from parser48 import dependency_document
+torch.set_num_threads(4);receipt=read(ROOT/'crossplatform/round20/assets/STANZA_ASSET_RECEIPT.json');nlp=stanza.Pipeline('en',dir=str(ROOT/'crossplatform/round20/assets/stanza'),processors='tokenize,mwt,pos,lemma,depparse',package=None,use_gpu=False,download_method=None,verbose=False,**receipt['kwargs']);out=[]
+for caption,target,expected in [('The man wearing a coat is in the view. There is a truck on the left and a wall with graffiti on the right.','man',{'truck','wall'}),('Object type: person; Appearance: wearing boots; Environment: there is a trash bin beside a wall.','person',{'bin','wall'})]:
+ i=caption.index(target);g={'usable':True,'entities':[{'role':'T','head':target,'span':[i,i+len(target)],'phrase':target,'attributes':[]}],'relations':[]};fixed=repair_inventory87(caption,dependency_document(nlp(caption)),g);heads={e['head'].lower() for e in fixed['entities'][1:]};assert heads==expected,(heads,expected);out.append({'expected_references':len(expected),'actual_references':len(heads),'no_accessory_or_field_header_as_instance':True,'compound_phrase_preserved':any('trash bin' in e['phrase'] for e in fixed['entities']) if 'bin' in expected else any('with graffiti' in e['phrase'] for e in fixed['entities'])})
+assert all(r['compound_phrase_preserved'] for r in out) and not torch.cuda.is_initialized();dump(H87/'STRUCTURAL_ROLE_SYNTHETIC_AUDIT.json',{'state':'PASS_R87_DEPENDENCY_ROLES_COMPOSITE_NP_FIELDS_AND_ACCESSORIES','tests':out,'dataset_GT_read':False,'new_models_downloaded':False});print('PASS_STRUCTURAL_ROLES')
