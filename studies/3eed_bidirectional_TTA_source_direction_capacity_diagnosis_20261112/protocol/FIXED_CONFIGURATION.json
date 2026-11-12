@@ -1,0 +1,32 @@
+{
+  "round": "R77",
+  "scope": "exposed_sourceVAL128_controlled_diagnosis_then_prespecified_conditional_target_confirmation",
+  "source_plan": "research/round15/experiment/SOURCE_CAPTURE_PLAN_LOCK.json",
+  "source_checkpoint": "crossplatform/round6/waymo_source100/checkpoints/epoch100_model_attempt001.pth",
+  "source_checkpoint_sha256": "0d8766abaf06c9f3e2500fcb187337982d391f9e4d46ca854f3b3bb70fd33bbd",
+  "source_prepared_module": "crossplatform/round76/trained_source_attempt002/states_PRIVATE/bidirectional_e06.npz",
+  "source_prepared_module_sha256": "84f3455b52c1ca9ded0dca394af17b9ea9949cafb720eb24728c505e79ed9f3e",
+  "source_n": 128,
+  "source_cohort": "R76_exposed_sourceVAL128_not_new_generalization_evidence",
+  "source_supervision": "same_candidate_IoU_softmax_temperature0.1_as_R76_source_grounding;no_ground_when_all_IoUs_zero",
+  "TTA_scope": "same_102498_R76_adapter_local_attention_gates_only",
+  "ground_match_control_scope": "copied_matching_MLP_only_source_oracle_capacity_control",
+  "source_masks": [
+    76001,
+    76002
+  ],
+  "native_TTA": "R76_objective_Adam_lr0.0001_clip1_9trial_backtracking_1_and3_steps",
+  "matched_radius": "initial_Adam_auxiliary_direction_delta;raw_factors1_and10;grounding_Adam_direction_normalized_to_same_L2_radius_per_input;no_backtracking_for_direction_interventions",
+  "capacity_control": "10_grounding_only_Adam_steps_lr0.001_clip1_9trial_grounding_loss_backtracking_same_TTA_interface_and_separate_matching_interface",
+  "unknowns": "all128_in_denominator;no_GT_sample_selection;zero_target_gradient_noop_if_candidate_oracle_zero",
+  "target_gate": "aux_raw10_source_mean_IoU>frozen_and_aux1_by1e-10_and_source_Acc25_not_below_frozen_and_more_than_half_active_inputs_have_negative_ground_gradient_dot_Adam_aux_delta",
+  "target_if_gate_pass": "lock_unchanged_aux_raw10_and_wrongbinding_raw10_before_DEV336_prediction;reuse_R76_frozen_bi_R59_ABC_native_TTA_and_mismatch_controls;seal_before_saved_IoU_join",
+  "target_if_gate_fail": "no_new_target_algorithm_or_scoring;retain_R76_all336_frozen_R59_ABC_TTA_and_wrongbinding_as_existing_context",
+  "FINAL_access": false,
+  "external_experts": false,
+  "new_source_model_training": false,
+  "max_candidates": 256,
+  "original_boxes_unchanged": true,
+  "parameter_sweep": false,
+  "GT_direction_and_fit_are_diagnostics_not_TTA": true
+}

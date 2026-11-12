@@ -1,0 +1,49 @@
+{
+  "events": [
+    {
+      "stage": "source_interventions",
+      "attempt": 1,
+      "status": "completed_sealed",
+      "valid_outputs": 1408,
+      "completed_calls": 13568,
+      "seconds": 194.74150843103416,
+      "producer_predictions_changed": false
+    },
+    {
+      "stage": "independent_audit",
+      "attempt": 1,
+      "status": "failed",
+      "failure_type": "dict_iteration_size_attribute",
+      "repair_type": "iterate_values",
+      "producer_predictions_changed": false,
+      "tolerance_changed": false,
+      "prior_attempt_preserved": true
+    },
+    {
+      "stage": "independent_audit",
+      "attempt": 2,
+      "status": "passed",
+      "valid_outputs": 1408,
+      "seconds": 38.68042451690417,
+      "producer_predictions_changed": false,
+      "tolerance_changed": false
+    },
+    {
+      "stage": "saved_scalar_analysis",
+      "attempt": 1,
+      "status": "failed",
+      "failure_type": "frozen_endpoint_missing_in_event_table",
+      "repair_type": "read_existing_sealed_frozen_records",
+      "producer_predictions_changed": false,
+      "tolerance_changed": false,
+      "prior_attempt_preserved": true
+    },
+    {
+      "stage": "saved_scalar_analysis",
+      "attempt": 2,
+      "status": "passed",
+      "producer_predictions_changed": false,
+      "tolerance_changed": false
+    }
+  ]
+}
