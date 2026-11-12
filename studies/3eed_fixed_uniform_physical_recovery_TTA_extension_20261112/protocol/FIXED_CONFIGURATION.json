@@ -1,0 +1,25 @@
+{
+  "round": "R80",
+  "init_state_sha256": "84f3455b52c1ca9ded0dca394af17b9ea9949cafb720eb24728c505e79ed9f3e",
+  "arms": [
+    "source",
+    "frozen_bi",
+    "frozen_direct3",
+    "uniform_sgd1",
+    "uniform_wrong_sgd1",
+    "frozen_ABC",
+    "R59"
+  ],
+  "primary": "uniform_sgd1_minus_same_model_frozen_bi;minus_same_information_frozen_direct3",
+  "mechanism_control": "same_uniform_weights_same_SGD_alpha0.5_clip1_two_masks76001_76002;wrong_logical_binding_only;not_equal_radius_rescaled",
+  "step": "exact_R79_gradient79_and_objective79;one_step_episodic_reset;102498_parameters",
+  "DEV336": "reuse_sealed_R79_source_frozen_bi_direct3_uniform_ABC_R59;new_uniform_wrong_only",
+  "VAL1280_TRAIN1024": "same_R69_fixed_rosters_and_A256;reuse_R78_verified_RGB_geometry;new_predictions_original_R76_e6_not_R78_weights",
+  "source_reference": "reuse_R79_all_source128_tables;no_new_source_inference_or_GT_diagnostic",
+  "claims": "all_cohorts_historically_exposed_development;no_blind_test_claim",
+  "conditional_ablation": "only_if_uniform_gain_vs_frozen_bi_and_direct3_positive_in_both_VAL1280_and_TRAIN1024;fixed_budget_single_modality_or_noncomplementary_recovery_then;no_search",
+  "source_training": false,
+  "external_models": false,
+  "FINAL_access": false,
+  "resource_limit": "single_GPU;each_process<=3600seconds;no_timer_or_other_paused_direction"
+}

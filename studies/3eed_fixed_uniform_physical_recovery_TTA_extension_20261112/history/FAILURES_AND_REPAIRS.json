@@ -1,0 +1,57 @@
+{
+  "events": [
+    {
+      "stage": "engineering",
+      "attempt": 1,
+      "status": "passed",
+      "valid_outputs": 4,
+      "before_GT": true
+    },
+    {
+      "stage": "predictions",
+      "attempt": 1,
+      "status": "passed",
+      "valid_outputs": 2640,
+      "before_GT": true
+    },
+    {
+      "stage": "independent_native_audit",
+      "attempt": 1,
+      "status": "passed",
+      "valid_outputs": 5280,
+      "before_GT": true
+    },
+    {
+      "stage": "saved_IoU_join",
+      "attempt": 1,
+      "status": "passed",
+      "valid_outputs": 18480,
+      "producer_predictions_changed": false
+    },
+    {
+      "stage": "saved_scope_optimization_readout",
+      "attempt": 1,
+      "status": "passed",
+      "valid_outputs": 1,
+      "producer_predictions_changed": false
+    },
+    {
+      "stage": "local_public_export",
+      "attempt": 1,
+      "status": "failed",
+      "failure_type": "copied_guard_filename_in_export_allowlist",
+      "repair_type": "metadata_filename_only",
+      "producer_predictions_changed": false,
+      "prior_attempt_preserved": true
+    },
+    {
+      "stage": "local_public_export",
+      "attempt": 2,
+      "status": "failed",
+      "failure_type": "heterogeneous_saved_auxiliary_scalar_row_schema",
+      "repair_type": "union_CSV_columns_missing_values_explicit_empty",
+      "producer_predictions_changed": false,
+      "prior_attempt_preserved": true
+    }
+  ]
+}

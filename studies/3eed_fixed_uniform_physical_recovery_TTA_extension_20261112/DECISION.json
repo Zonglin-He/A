@@ -1,0 +1,46 @@
+{
+  "state": "R80_COMPLETED_FIXED_UNIFORM_RECOVERY_EXTENSION",
+  "adopt_uniform_recovery_TTA": false,
+  "retain_bidirectional_structure": true,
+  "R79_DEV_positive_retained": true,
+  "repeatable_positive_vs_own_frozen_and_direct_both_cohorts": false,
+  "cohort_gains": {
+    "DEV336": {
+      "vs_frozen_pp": 0.34847965262561686,
+      "vs_direct3_pp": 0.35454575193202587,
+      "vs_uniform_wrong_pp": 0.09695516336683596
+    },
+    "VAL1280": {
+      "vs_frozen_pp": 0.27460011131454465,
+      "vs_direct3_pp": 0.19651198000853398,
+      "vs_uniform_wrong_pp": 0.158845629900906
+    },
+    "TRAIN1024": {
+      "vs_frozen_pp": -0.1732321593591024,
+      "vs_direct3_pp": -0.22234101505624793,
+      "vs_uniform_wrong_pp": -0.1540542997928327
+    }
+  },
+  "pooled2304_balanced_mIoU_percent": {
+    "source": 18.079629741734102,
+    "frozen_bi": 17.706131895900562,
+    "frozen_direct3": 17.771340349158194,
+    "uniform_sgd1": 17.781695442471268,
+    "uniform_wrong_sgd1": 17.7619164479898,
+    "frozen_ABC": 18.37074811137829,
+    "R59": 18.55563674850974
+  },
+  "conditional_complementary_ablation_executed": false,
+  "reason_no_conditional_ablation": "fixed_primary_did_not_repeat_positive_self_adaptation_vs_zero_and_direct3_in_both_extension_cohorts;not_an_R59_rank_gate",
+  "no_source_training": true,
+  "no_external_models": true,
+  "original_A256_unchanged": true,
+  "FINAL_access": false,
+  "no_follow_on_queued": true,
+  "retain_VAL1280_positive_result": true,
+  "VAL1280_positive_result_not_independent_confirmation": true,
+  "TRAIN1024_negative_retained": true,
+  "uniform_development_candidate_scope": "fixed_exposed_DEV336_and_VAL1280;not_validated_on_TRAIN1024",
+  "all_auxiliary_steps_descent_guaranteed": false,
+  "do_not_attribute_all_negative_transfer_to_auxiliary_task_misalignment_without_step_diagnostics": true
+}
