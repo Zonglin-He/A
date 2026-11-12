@@ -1,0 +1,47 @@
+{
+  "round": "R86",
+  "main_n": 336,
+  "supplement_n": 30,
+  "total_n": 366,
+  "source_plan": "research/round15/experiment/SOURCE_CAPTURE_PLAN_LOCK.json",
+  "init_state": "crossplatform/round76/trained_source_attempt002/states_PRIVATE/bidirectional_e06.npz",
+  "fixed_original_A256": true,
+  "new_source_training": false,
+  "new_external_visual_models": false,
+  "FINAL_access": false,
+  "evidence": "positive_counter_unknown_per_group;unknown_mass_fixed_each_conditional_transfer;at_least_both_support_and_counter;dependency_owned_edges_with_reference_message_pass",
+  "reference_uncertainty": "same_group_neutral;source_frozen_entity_priors_not_truth;reference_reference_one_synchronous_message_pass",
+  "readout": "raw_and_feedback_qualified_both_reported;qualified_keeps_original_winner_group_and_only_replacements_with_positive_local_evidence_against_it",
+  "bases": [
+    "S_original_source_zero_residual",
+    "F_full_R76_zero_residual"
+  ],
+  "primary_arm": "F_joint1_guard",
+  "primary_direct_control": "F_direct_guard",
+  "secondary_steps": 3,
+  "steps": "candidate_joint_mismatch_1_and3;sum1_only",
+  "optimizer": "SGD_proposal_lr0.1_clip1;fixedArmijo1_to1/256;candidate_only_class_acceptance;priorityjoint_class_AND_total_acceptance;sumcontrol_total_only",
+  "projection": "unilateral_PCGrad_inspired;keep_gc;project_conflicting_gr_off_gc;actual_finite_endpoint_checked;not_official_PCGrad_reproduction",
+  "parameters": "existing102498_adapters_local_bidirectional_projections_gates;all_other_parameters_frozen",
+  "masking": "50percent_global_uniform_quota_selected_before_rank_based_local_quota;anchors_features_maskable;geometry_fixed;complementary_masks;reverse_masked_keys_blocked",
+  "loss": "R85_full_plus_two_masked_KL_to_fixed_conditional_pi;native_local_recovery;unknown_target_probability_preserved",
+  "inputs_sha256": {
+    "research/round86/experiment/ALL366_PRIVATE.json": "9f680db3ea862c92946fdf3dedbea0d33e1cf36a8cc4a1cbb3fafc4c0c5ac1d0",
+    "research/round15/experiment/SOURCE_CAPTURE_PLAN_LOCK.json": "1b3d9ff155096fcad9d80bb022888609b207fe8d44f748d58dfb721a77670f3e",
+    "crossplatform/round76/trained_source_attempt002/states_PRIVATE/bidirectional_e06.npz": "84f3455b52c1ca9ded0dca394af17b9ea9949cafb720eb24728c505e79ed9f3e",
+    "crossplatform/round85/observations366_attempt001/SEALED.json": "dee876246e8aa4d09d4ce74441a5ba1f323071e8cd55a4808c978bbc83807476",
+    "crossplatform/round85/prediction366_attempt002/SEALED.json": "7e68a5ed3d2ad4b9d7082e43081b38bb396a92ef5e0ae148544e8bf04ba441d1",
+    "crossplatform/round86/evidence366_attempt002/SEALED.json": "fd4e5c6099693607ad4c4f0caebabafb37f475665def1090e09ceb0314772738"
+  },
+  "programs_sha256": {
+    "research/round86/evidence86.py": "4f42cdd83878f9f6f7c0122aa03661cebbce91e8ffa78c8222dbd09a7c855692",
+    "research/round86/core86.py": "daadc3169af89c7bb49ef283e844ddd5ad245ba62efcaec81e5a03a9d543df56",
+    "research/round86/run86.py": "152a8b77980d1430340bb72a382598edae95ffd39e6b6596c2aa2c1692105894",
+    "research/round85/core85.py": "b7bacec347208218b257284001ec8acca7560f34334537da23bffcb9660801f4",
+    "research/round76/model76.py": "5824d71f9d79dd418fec125c2b6c86ac14d4cceb520b3a1e26730839cdaec44b"
+  },
+  "no_GT_step_or_evidence_selection": true,
+  "no_hyperparameter_grid": true,
+  "preflight_repair": "initial_dependency_parser_unnecessarily_rejected_multi_reference_existential_clauses;fixed_before_GPU_and_task_scoring;both_preparations_retained",
+  "budget": "one2input_engineering;onefull366;native_endpoint_and_priority_audit;onesaved_IoU_join;3localcase_visuals;no_followon"
+}
