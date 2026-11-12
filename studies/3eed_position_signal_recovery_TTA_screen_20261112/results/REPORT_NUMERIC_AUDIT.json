@@ -1,0 +1,113 @@
+{
+  "state": "PASS_R81_REPORT_USES_AUDITED_SAVED_VALUES",
+  "gains_pp": {
+    "DEV336": {
+      "frozen_bi": 0.25641200546390763,
+      "frozen_direct3": 0.26247810477031663,
+      "R80_uniform_raw": -0.09206764716170923,
+      "all__ALL": 0.10696139715047792,
+      "all__P": 0.10696139715047792
+    },
+    "VAL1280": {
+      "frozen_bi": 0.0012667128121215399,
+      "frozen_direct3": -0.07682141849388913,
+      "R80_uniform_raw": -0.2733333985024231,
+      "all__ALL": -0.10343681919355774,
+      "all__P": -0.0933222458053038,
+      "shuffled_target_control": -0.0020744053136176888
+    },
+    "TRAIN1024": {
+      "frozen_bi": 0.013025100218278851,
+      "frozen_direct3": -0.036083755478866664,
+      "R80_uniform_raw": 0.18625725957738126,
+      "all__ALL": -0.04569532271610299,
+      "all__P": -0.03301614206487358,
+      "shuffled_target_control": 0.04281718764790199
+    }
+  },
+  "DEV_selected_parameters": 45313,
+  "task_values": 31056,
+  "ordered_negatives": 21491,
+  "exploratory_full_combined_results": {
+    "VAL1280": {
+      "mIoU_percent": 18.758334023879712,
+      "gain_vs_frozen_pp": 0.10470353200567928,
+      "gain_vs_direct3_pp": 0.026615400699668612,
+      "gain_vs_raw_R80_pp": -0.16989657930886537,
+      "gain_vs_P_only_all_scope_pp": 0.010114573388253945,
+      "gain_vs_shuffled_target_pp": 0.06775342951471686,
+      "shuffle_gain_vs_direct3_pp": -0.041138028815048244,
+      "improved_vs_frozen": 11,
+      "worsened_vs_frozen": 4,
+      "query_changes_vs_frozen": 31
+    },
+    "TRAIN1024": {
+      "mIoU_percent": 16.580479073868116,
+      "gain_vs_frozen_pp": 0.058720422934381844,
+      "gain_vs_direct3_pp": 0.00961156723723633,
+      "gain_vs_raw_R80_pp": 0.23195258229348426,
+      "gain_vs_P_only_all_scope_pp": 0.012679180651229416,
+      "gain_vs_shuffled_target_pp": 0.03939979227345347,
+      "shuffle_gain_vs_direct3_pp": -0.029788225036217142,
+      "improved_vs_frozen": 10,
+      "worsened_vs_frozen": 3,
+      "query_changes_vs_frozen": 20
+    }
+  },
+  "descriptive_candidate_concentration": [
+    {
+      "cohort": "VAL1280",
+      "reference": "frozen_bi",
+      "gain_pp": 0.10470353200568032,
+      "improved": 11,
+      "worsened": 4,
+      "largest_positive_contribution_pp": 0.048624262768365165,
+      "gain_excluding_largest_positive_original_denominator_pp": 0.056079269237315155
+    },
+    {
+      "cohort": "VAL1280",
+      "reference": "frozen_direct3",
+      "gain_pp": 0.026615400699669278,
+      "improved": 26,
+      "worsened": 20,
+      "largest_positive_contribution_pp": 0.03180947857256243,
+      "gain_excluding_largest_positive_original_denominator_pp": -0.005194077872893152
+    },
+    {
+      "cohort": "VAL1280",
+      "reference": "all__ALL__shuffle",
+      "gain_pp": 0.06775342951471607,
+      "improved": 6,
+      "worsened": 6,
+      "largest_positive_contribution_pp": 0.04115677489240038,
+      "gain_excluding_largest_positive_original_denominator_pp": 0.026596654622315682
+    },
+    {
+      "cohort": "TRAIN1024",
+      "reference": "frozen_bi",
+      "gain_pp": 0.05872042293438163,
+      "improved": 10,
+      "worsened": 3,
+      "largest_positive_contribution_pp": 0.019825414867370966,
+      "gain_excluding_largest_positive_original_denominator_pp": 0.03889500806701066
+    },
+    {
+      "cohort": "TRAIN1024",
+      "reference": "frozen_direct3",
+      "gain_pp": 0.009611567237237491,
+      "improved": 20,
+      "worsened": 22,
+      "largest_positive_contribution_pp": 0.037091229525147075,
+      "gain_excluding_largest_positive_original_denominator_pp": -0.027479662287909584
+    },
+    {
+      "cohort": "TRAIN1024",
+      "reference": "all__ALL__shuffle",
+      "gain_pp": 0.039399792273452354,
+      "improved": 10,
+      "worsened": 8,
+      "largest_positive_contribution_pp": 0.037091229525147075,
+      "gain_excluding_largest_positive_original_denominator_pp": 0.002308562748305279
+    }
+  ]
+}

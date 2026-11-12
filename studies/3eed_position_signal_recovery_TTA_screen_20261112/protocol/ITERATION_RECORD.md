@@ -1,0 +1,3 @@
+# R81 position × recovery signal
+
+Goal: identify an effective TTA interface and unlabeled signal, not merely reject a complete recipe. Existing R77 shows interface capacity; R80 shows DEV/VAL gain and TRAIN harm with some auxiliary overshoot. Keep R76e6/A256/source fixed. Enumerate only graph-motivated existing branch positions and native P/RGB/depth losses, no new loss heads. Label-free Armijo on the current objective removes failed-descent steps; task GT still never accepts per-input steps. Eleven unique nonzero cells, shared settings; DEV selects at most one, then lock before existing VAL/TRAIN extension. All negative cells, controls, heldout recovery and recording results retained. No new source training/expert/FINAL.

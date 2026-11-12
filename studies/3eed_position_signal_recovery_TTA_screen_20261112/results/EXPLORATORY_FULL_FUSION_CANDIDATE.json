@@ -1,0 +1,112 @@
+{
+  "state": "R81_WEAK_FULL_FUSION_COMBINED_RECOVERY_CANDIDATE",
+  "parameters": 102498,
+  "update_modules": [
+    "point_adapter",
+    "image_adapter",
+    "point_to_image",
+    "image_to_point",
+    "gate_I",
+    "gate_P"
+  ],
+  "frozen_modules": [
+    "original_3EED_backbones_cross_encoder_decoder",
+    "RGB_CNN",
+    "matching_and_reconstruction_heads",
+    "original_A256_boxes"
+  ],
+  "signal": ".1_masked_frozen_point_feature_recovery_plus_.1_RGB_patch_recovery_plus_.01_sparse_image_only_log_depth",
+  "update": "one_SGD_direction_clip1_Armijo_alpha.5_halved_to.0078125;selected_auxiliary_plus_source_output_query_keep;episodic_source_reset",
+  "was_prespecified_secondary_comparator": true,
+  "not_the_DEV_selected_primary": true,
+  "signal_shuffle_control_added_postscore": true,
+  "small_positive_vs_frozen_and_same_information_direct_both_cohorts": true,
+  "correct_target_advantage_both_cohorts": true,
+  "independent_confirmation": false,
+  "practical_large_gain_established": false,
+  "results": {
+    "VAL1280": {
+      "mIoU_percent": 18.758334023879712,
+      "gain_vs_frozen_pp": 0.10470353200567928,
+      "gain_vs_direct3_pp": 0.026615400699668612,
+      "gain_vs_raw_R80_pp": -0.16989657930886537,
+      "gain_vs_P_only_all_scope_pp": 0.010114573388253945,
+      "gain_vs_shuffled_target_pp": 0.06775342951471686,
+      "shuffle_gain_vs_direct3_pp": -0.041138028815048244,
+      "improved_vs_frozen": 11,
+      "worsened_vs_frozen": 4,
+      "query_changes_vs_frozen": 31
+    },
+    "TRAIN1024": {
+      "mIoU_percent": 16.580479073868116,
+      "gain_vs_frozen_pp": 0.058720422934381844,
+      "gain_vs_direct3_pp": 0.00961156723723633,
+      "gain_vs_raw_R80_pp": 0.23195258229348426,
+      "gain_vs_P_only_all_scope_pp": 0.012679180651229416,
+      "gain_vs_shuffled_target_pp": 0.03939979227345347,
+      "shuffle_gain_vs_direct3_pp": -0.029788225036217142,
+      "improved_vs_frozen": 10,
+      "worsened_vs_frozen": 3,
+      "query_changes_vs_frozen": 20
+    }
+  },
+  "no_new_source_training_or_external_expert": true,
+  "FINAL_access": false,
+  "same_information_increment_concentration": [
+    {
+      "cohort": "VAL1280",
+      "reference": "frozen_bi",
+      "gain_pp": 0.10470353200568032,
+      "improved": 11,
+      "worsened": 4,
+      "largest_positive_contribution_pp": 0.048624262768365165,
+      "gain_excluding_largest_positive_original_denominator_pp": 0.056079269237315155
+    },
+    {
+      "cohort": "VAL1280",
+      "reference": "frozen_direct3",
+      "gain_pp": 0.026615400699669278,
+      "improved": 26,
+      "worsened": 20,
+      "largest_positive_contribution_pp": 0.03180947857256243,
+      "gain_excluding_largest_positive_original_denominator_pp": -0.005194077872893152
+    },
+    {
+      "cohort": "VAL1280",
+      "reference": "all__ALL__shuffle",
+      "gain_pp": 0.06775342951471607,
+      "improved": 6,
+      "worsened": 6,
+      "largest_positive_contribution_pp": 0.04115677489240038,
+      "gain_excluding_largest_positive_original_denominator_pp": 0.026596654622315682
+    },
+    {
+      "cohort": "TRAIN1024",
+      "reference": "frozen_bi",
+      "gain_pp": 0.05872042293438163,
+      "improved": 10,
+      "worsened": 3,
+      "largest_positive_contribution_pp": 0.019825414867370966,
+      "gain_excluding_largest_positive_original_denominator_pp": 0.03889500806701066
+    },
+    {
+      "cohort": "TRAIN1024",
+      "reference": "frozen_direct3",
+      "gain_pp": 0.009611567237237491,
+      "improved": 20,
+      "worsened": 22,
+      "largest_positive_contribution_pp": 0.037091229525147075,
+      "gain_excluding_largest_positive_original_denominator_pp": -0.027479662287909584
+    },
+    {
+      "cohort": "TRAIN1024",
+      "reference": "all__ALL__shuffle",
+      "gain_pp": 0.039399792273452354,
+      "improved": 10,
+      "worsened": 8,
+      "largest_positive_contribution_pp": 0.037091229525147075,
+      "gain_excluding_largest_positive_original_denominator_pp": 0.002308562748305279
+    }
+  ],
+  "same_information_increment_fragile": true
+}
