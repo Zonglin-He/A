@@ -1,0 +1,52 @@
+{
+  "events": [
+    {
+      "stage": "real_model_engineering",
+      "attempt": 1,
+      "status": "passed",
+      "valid_outputs": 4,
+      "before_GT": true
+    },
+    {
+      "stage": "source_only_output_schema_draft",
+      "attempt": 1,
+      "status": "revised_before_prediction",
+      "repair_type": "omit_unavailable_source_ABC_R59",
+      "producer_predictions_changed": false,
+      "prior_attempt_preserved": true
+    },
+    {
+      "stage": "unlabeled_predictions",
+      "attempt": 1,
+      "status": "completed_sealed",
+      "valid_outputs": 5312,
+      "seconds": 204.68567513290327,
+      "before_GT": true
+    },
+    {
+      "stage": "native_audit",
+      "attempt": 1,
+      "status": "failed",
+      "failure_type": "historical_source_normalization_dtype_contract",
+      "repair_type": "exact_actual_source_probabilities_and_historical_argmax",
+      "producer_predictions_changed": false,
+      "tolerance_changed": false,
+      "prior_attempt_preserved": true
+    },
+    {
+      "stage": "native_audit",
+      "attempt": 2,
+      "status": "passed",
+      "valid_outputs": 2320,
+      "seconds": 163.04846829397138,
+      "before_GT": true
+    },
+    {
+      "stage": "task_and_source_gradient_join",
+      "attempt": 1,
+      "status": "passed",
+      "valid_outputs": 5312,
+      "producer_predictions_changed": false
+    }
+  ]
+}

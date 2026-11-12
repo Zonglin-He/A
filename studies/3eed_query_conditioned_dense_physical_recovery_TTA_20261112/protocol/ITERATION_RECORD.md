@@ -1,0 +1,11 @@
+# R79 fixed-model query-conditioned dense recovery
+
+Claim: query competition sensitivity selects local physical recovery signals whose aggregate parameter direction improves grounding more than uniform recovery. Fixed R76e6/102498params/A256/originalsource, no source training or external experts or FINAL. Point/RGB scalar gates are analysis-only; unsigned log-odds-margin derivatives of top4 deduplicated hypotheses (3equalpairs) produce frozen saliencies. Grounding targets never supplied by query winner.
+
+Per-valid-mask/type weights retain25%uniform floor with capped normalized saliency; identical weights shuffled withinvalidpositions control, wronglogicalpointpixelbindingcontrol preservesRGB/depthmeasurements. SameSGDalpha.5clip1one-step and same76001/76002masks. Primary alldirections at uniform per-input parameterL2radius; rawquery secondary. Preservation fromR76 retained but initialone-stepgradientzero. Physics recovery targets/headsunchanged.
+
+Source128andDEV336methods lockedtogether, allunlabeled predictions sealedbeforelabels; sourceGTgradients previouslysealedR77cache onlypostsealdiagnostic, notstep/weight/eligibilityselection. No arbitrarysource-angle gate. Source128has10actualarms(noABC/R59),target12withhistoricalAdam1/3/ABC/R59. R76cachedstatusmeansactualoldmethodupdate, notwhethernewroundreranit.
+
+Nativeaudit001 caught rawsourcefloat32 versus historicalfloat64 normalization check contract, not changedchoices;all464argmaxidentical. Audit002 checks exact implemented normalization plus historicalargmax, allotherprobability/parameter/sensitivitychecksretainstrict tolerances. No predictions,weights,selectedqueries,taskmetricsor scientificconfigchanged. Failedauditandpreexecutionunusedsource-placeholderformatdraft archived.
+
+Results: primaryquery22.695777% vsuniform22.960076%,shuffle23.033713%,wrong22.705396%,frozen22.611596%,direct22.605530%. Conditionalextensiongatefails;stopqueryweightingwithoutgrid. UniformSGD+.348480ppdevelopmentobservationretainednotnewmethodcontributionorsafeconfirmedalgorithm. Sourcequeryexpectedfavorable47/128vsuniform53/shuffle57;actualsourcemIoUallupdatesbelowfrozen. No causalrootclaimbeyondspecificproxyfailure. Allnegatives/UNKNOWN/5sceneskept.

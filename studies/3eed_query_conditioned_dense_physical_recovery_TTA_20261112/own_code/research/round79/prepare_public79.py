@@ -1,0 +1,24 @@
+"""Register saved-only R79 publication with full source diagnostics and prior target controls."""
+from pathlib import Path
+import sys,argparse
+ROOT=Path(__file__).resolve().parents[2];sys.path.insert(0,str(ROOT/'research/round76'))
+from common76 import read,dump,sha
+H=ROOT/'research/round79';PREFIX='studies/3eed_query_conditioned_dense_physical_recovery_TTA_20261112'
+ap=argparse.ArgumentParser();ap.add_argument('stage',choices=['export','audit']);ap.add_argument('--attempt',type=int,default=1);a=ap.parse_args();tag='' if a.attempt==1 else '_attempt'+str(a.attempt).zfill(3);E=H/'experiment'
+def put(path,value):assert not path.exists();dump(path,value)
+if a.stage=='export':
+ p={'prefix':PREFIX,'no_network_models_GT_or_media':True,'scalar_runs':[{'label':'DEV336','score_root':'research/round79/score_dev336_attempt001','independent_audit':'research/round79/independent_native_audit_attempt002/AUDIT_RESULT.json','saved_scalar_audit':'research/round79/independent_scalar_audit_attempt001/AUDIT_RESULT.json'}],'private_registry':'research/round76/publication/PRIVATE_PRIVACY_TOKEN_REGISTRY.json','publication_base_snapshot':'research/round79/publication/BASE_SNAPSHOT_PRIVATE.json','report':'research/round79/REPORT.md','decision':'research/round79/DECISION.json','public_fixed_configuration':'research/round79/PUBLIC_FIXED_CONFIGURATION.json','normalized_costs':'research/round79/NORMALIZED_COSTS.json','normalized_history':'research/round79/NORMALIZED_HISTORY.json','own_code_allowlist':[x.relative_to(ROOT).as_posix() for x in sorted(H.glob('*.py'))]+[x.relative_to(ROOT).as_posix() for x in sorted((H/'attempts').glob('*.py'))]+['tools/manual_r79_guard.py'],'auxiliary_saved_scalar_reports':[],'auxiliary_text_reports':[{'source':'research/round79/ITERATION_RECORD.md','public_path':'protocol/ITERATION_RECORD.md'}],'inputs_sha256':{}}
+ for name in ['ALL_METHOD_ROWS','ALL_SCENE_ROWS','SOURCE128_TASK_SCALARS','SOURCE128_ORDERED_NEGATIVES','SOURCE_DIRECTION_ROWS','ALL_ENDPOINT_SCALAR_ROWS','WEIGHT_DIAGNOSTIC_ROWS','UPDATE_SUMMARY_ROWS']:
+  p['auxiliary_saved_scalar_reports'].append({'source':'research/round79/'+name+'.json','public_path':'results/'+name+'.csv','table_csv':True})
+ for name in ['SOURCE128_SUMMARY','SOURCE_DIRECTION_SUMMARY','PUBLIC_PROVENANCE','REPORT_NUMERIC_AUDIT','EXTENSION_GATE']:
+  p['auxiliary_saved_scalar_reports'].append({'source':'research/round79/'+name+'.json','public_path':'results/'+name+'.json'})
+ p['auxiliary_saved_scalar_reports'].append({'source':'research/round79/independent_native_audit_attempt002/AUDIT_RESULT.json','public_path':'results/NATIVE_SENSITIVITY_WEIGHT_AND_PARAMETER_REPLAY_AUDIT.json'})
+ paths=[p[k] for k in ['private_registry','publication_base_snapshot','report','decision','public_fixed_configuration','normalized_costs','normalized_history']]+p['own_code_allowlist']+[x['source'] for x in p['auxiliary_saved_scalar_reports']+p['auxiliary_text_reports']]
+ for run in p['scalar_runs']:paths+=[run['independent_audit'],run['saved_scalar_audit']]+[x.relative_to(ROOT).as_posix() for x in (ROOT/run['score_root']).glob('*.json')]
+ for path in paths:p['inputs_sha256'][path]=sha(ROOT/path)
+ path=E/('LOCAL_PUBLIC_EXPORT_PLAN_LOCK'+tag+'.json');put(path,p);put(E/('LOCAL_PUBLIC_EXPORT_AUTH'+tag+'.json'),{'state':'ROOT_AUTHORIZED_R79_LOCAL_SAVED_SCALAR_WHITELIST_EXPORT','program_sha256':sha(H/'publish79.py'),'plan_sha256':sha(path),'private_registry_sha256':sha(ROOT/p['private_registry']),'publication_base_snapshot_sha256':sha(ROOT/p['publication_base_snapshot'])})
+else:
+ author='research/round79/experiment/LOCAL_PUBLIC_EXPORT_PLAN_LOCK'+tag+'.json';p0=read(ROOT/author);p={'no_GT_models_geometry_media_network_or_original_manifest_read':True,'public_package':'research/round79/publication/public_export_attempt'+str(a.attempt).zfill(3),'manifest':'research/round79/publication/public_export_attempt'+str(a.attempt).zfill(3)+'/MANIFEST.json','payload':'research/round79/publication/TREE_PAYLOAD_LOCAL_attempt'+str(a.attempt).zfill(3)+'.json','publication_plan':author,'private_registry':p0['private_registry'],'expected_registry_tokens':len(read(ROOT/p0['private_registry'])['tokens']),'output_directory':'research/round79/independent_public_audit_attempt'+str(a.attempt).zfill(3),'inputs_sha256':dict(p0['inputs_sha256'])}
+ for rel in [author,p['manifest'],p['payload']]:p['inputs_sha256'][rel]=sha(ROOT/rel)
+ path=E/('INDEPENDENT_PUBLIC_AUDIT_PLAN_LOCK'+tag+'.json');put(path,p);put(E/('INDEPENDENT_PUBLIC_AUDIT_AUTH'+tag+'.json'),{'state':'ROOT_AUTHORIZED_R79_INDEPENDENT_LOCAL_PUBLIC_EXPORT_AUDIT_SAVED_ONLY','program_sha256':sha(H/'audit_public79.py'),'plan_sha256':sha(path),'manifest_sha256':sha(ROOT/p['manifest']),'payload_sha256':sha(ROOT/p['payload']),'private_registry_sha256':sha(ROOT/p['private_registry']),'base_snapshot_sha256':sha(ROOT/p0['publication_base_snapshot'])})
+print({'stage':a.stage,'sha256':sha(path)})
