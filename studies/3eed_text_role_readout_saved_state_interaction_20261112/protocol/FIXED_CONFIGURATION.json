@@ -1,0 +1,38 @@
+{
+  "round": "R83",
+  "n": 2304,
+  "cohorts": {
+    "VAL1280": 1280,
+    "TRAIN1024": 1024
+  },
+  "source_plan": "research/round15/experiment/SOURCE_CAPTURE_PLAN_LOCK.json",
+  "init_state": "crossplatform/round76/trained_source_attempt002/states_PRIVATE/bidirectional_e06.npz",
+  "init_state_sha256": "84f3455b52c1ca9ded0dca394af17b9ea9949cafb720eb24728c505e79ed9f3e",
+  "saved_update_root": "crossplatform/round82/prediction2640_attempt001",
+  "saved_update_arm": "bt_correct",
+  "fixed_states": [
+    "R76e6",
+    "R82_BT_correct"
+  ],
+  "readouts": [
+    "native",
+    "background",
+    "role_equal_name_attr",
+    "same_token_count_attribute_mismatch"
+  ],
+  "background": "official_losses.py contrastive no-object positions: last_valid_token and penultimate;includes_EOS_and_final_mentioned_subtoken;not_invented_punctuation_or_all_complement",
+  "name": "inherited native noun mask;caption-only parsed head+compound must cover/agree;otherwise all new arms fall back to native",
+  "attributes": "explicit subject appearance field content;natural-caption head amod/nummod and adjectival predicate only;references never included as independent attributes;ambiguous ownership UNKNOWN",
+  "mismatch": "hash-fixed same-caption non-name non-background non-attribute real-word subtoken set;exact attribute token count;insufficient pool triggers shared UNKNOWN fallback",
+  "parser": "reuse local frozen R48 Stanza+R48 subject-head rules;no vision expert/new downloads/GT",
+  "caption_stays_complete": true,
+  "A256_fixed": true,
+  "no_new_parameter_updates": true,
+  "no_losses_or_step_search": true,
+  "source_training": false,
+  "FINAL_access": false,
+  "labels": "only post-all-prediction-seal and independent native audit;reuse saved candidate IoU",
+  "primary_effect": "(BT_role-frozen_role)-(BT_native-frozen_native);role vs background and role vs mismatch both states;report all outcomes",
+  "no_selection_or_revision_after_scores": true,
+  "readout_formula": "LME_name-LME_native_bg;role .5*LME_name+.5*LME_attr-LME_bg;no_attr name-bg;no tuning"
+}

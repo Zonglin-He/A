@@ -1,0 +1,3 @@
+# R83 — fixed state × text-role readout
+
+Question: can current subject-attribute similarities improve static ranking and enlarge the existing recovery TTA increment? Freeze R76/R82 states and A256. No new losses/updates/source training/experts/FINAL. Native background is read from original contrastive loss positions, not guessed punctuation. Reuse R48 caption-only parser; ambiguous ownership/shared control failures retain native for all new arms. Twelve fixed endpoints, full VAL1280/TRAIN1024, no data/parameter selection after scores. Report static readout and adaptation interaction separately.
