@@ -1,0 +1,10 @@
+from target90 import *
+import matplotlib
+matplotlib.use('Agg')
+import matplotlib.pyplot as plt
+s=read(H90/'score_dev336_attempt001/TASK_SUMMARY.json')['ALL336']['balanced_mIoU_percent'];rr=read(H90/'COMPONENT_EFFECT_ROWS.json');fig,axs=plt.subplots(1,2,figsize=(14,6));arms=['frozen_bi','R59','candidate_headonly_frozen','query_joint_frozen','candidate_joint_frozen','candidate_joint_feature3','candidate_joint_tta1','candidate_joint_tta3','continue_joint_tta1'];labels=['Frozen R76','R59','Strict head-only preparation','Query-only joint preparation','Joint binding frozen','Same3 feature mean / no update','Joint binding +1 step','Joint binding +3 steps','Matching joint +1 step'];ax=axs[0];ax.barh(labels,[s[a] for a in arms],color=['#777777','#b279a2','#72b7b2','#999999','#4c78a8','#54a24b','#f58518','#e45756','#a0a0a0']);ax.invert_yaxis();ax.set_xlabel('DEV336 balanced mIoU (%)')
+for i,a in enumerate(arms):ax.text(s[a]+.01,i,f'{s[a]:.3f}',va='center',fontsize=8)
+ax.set_xlim(min(s[a] for a in arms)-.4,max(s[a] for a in arms)+.7);ax.grid(axis='x',alpha=.2);ax=axs[1];names=['no_ref','soft_pool','wrong_space','adaptation_or_control_candidate_joint_bypass1','adaptation_or_control_candidate_joint_physical1','adaptation_or_control_candidate_joint_shuffle1'];vals=[next(r['net_pp'] for r in rr if r['component']==k and r['platform']=='balanced' and r['arm']=='candidate_joint_tta1') for k in names];display=['Reference reading','Strict object pooling','Original spatial support','Conditional vs upstream recovery','Conditional vs physical only','Unshuffled target correspondence'];ax.barh(display,vals,color=['#f58518' if v>=0 else '#4c78a8' for v in vals]);ax.invert_yaxis();ax.axvline(0,c='black',lw=.8);ax.set_xlabel('Full minus control mIoU (percentage points)');ax.grid(axis='x',alpha=.2)
+ax.set_xlim(min(0,min(vals))-.08,max(0,max(vals))+.12)
+for i,v in enumerate(vals):ax.text(v,i,f' {v:+.3f}',va='center',fontsize=8)
+fig.suptitle('R90 / live joint preparation and conditional-recovery TTA');fig.tight_layout();fig.savefig(H90/'RESULTS.png',dpi=150);plt.close(fig)

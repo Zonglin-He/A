@@ -1,0 +1,38 @@
+{
+  "counts": {
+    "source_train_n": 512,
+    "source_val_n": 128,
+    "source_branches": 4,
+    "source_epochs_each": 2,
+    "source_updates_each": 1024,
+    "source_native_training_forwards": 12288,
+    "source_native_validation_forwards": 3072,
+    "source_aux_updates": 1152,
+    "target_n": 336,
+    "target_arms": 33,
+    "target_accepted_updates": 4032,
+    "target_trial_calls": 6809,
+    "full_TTA_parameters": 158339,
+    "source_original_model_parameters_updated": 0
+  },
+  "timing_seconds": {
+    "source_live_training_all_branches": 538.1575493619312,
+    "source_aux_producer": 272.2316589009715,
+    "source_aux_native_audit": 169.1303491659928,
+    "target_prediction_all_arms": 1046.6923788740532,
+    "target_native_audit": 530.1092276299605
+  },
+  "peak_bytes": {
+    "source_train_allocated_GPU": 1602416640,
+    "target_allocated_GPU": 1586376192
+  },
+  "flags": {
+    "same_source_exposure_not_same_capacity": true,
+    "full_original_model_training": false,
+    "postfusion_constant_cache_training": false,
+    "source_GT_in_training_only": true,
+    "source_GT_after_seal_diagnostic_not_inner_update": true,
+    "target_GT_for_update_or_selection": false,
+    "FINAL_access": false
+  }
+}

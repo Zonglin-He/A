@@ -1,0 +1,8 @@
+from core90 import *
+import argparse
+ap=argparse.ArgumentParser();ap.add_argument('stage',choices=['source_eval','target']);args=ap.parse_args();choice=B90/'trained_source_attempt001/SELECTED_SOURCE_ONLY.json';assert choice.exists();assert read(H90/'independent_source_audit_attempt001/AUDIT_RESULT.json')['state'].startswith('PASS_')
+if args.stage=='source_eval':
+ p=H90/'experiment/SOURCE_AUX_LOCK.json';files=['core90.py','adapt90.py','views90.py','source_aux90.py','audit_source_aux90.py','score_source90.py'];extra={'source_aux_GT_task_scores_are_diagnostic_only':True,'source_model_selection_already_sealed':True,'source_aux_steps':[1,3]}
+else:
+ assert read(H90/'independent_source_aux_audit_attempt001/AUDIT_RESULT.json')['state'].startswith('PASS_');p=H90/'experiment/TARGET_LOCK.json';files=['core90.py','adapt90.py','views90.py','target90.py','run_target90.py','audit_target90.py'];extra={'primary':'candidate_joint_tta1','secondary':'candidate_joint_tta3','source_auxiliary_diagnostic_not_used_to_change_method':True,'same_information_controls':['probability_mean3','projected_native_and_conditional_feature_mean3'],'original_A256_unchanged':True,'target_GT_for_selection':False,'FINAL_access':False,'target_views':[88001,88002],'target_lr':.1,'target_steps':[1,3],'target_clip':1.,'Armijo_coefficient':.0001}
+assert not p.exists();dump(p,{'round':'R90','source_selection_sha256':sha(choice),'source_training_seal_sha256':sha(choice.parent/'SEALED.json'),'programs_sha256':{str((H90/f).relative_to(ROOT)):sha(H90/f) for f in files},'inputs_sha256':{str(choice.relative_to(ROOT)):sha(choice),str((choice.parent/'SEALED.json').relative_to(ROOT)):sha(choice.parent/'SEALED.json')},**extra});print('LOCKED',args.stage)

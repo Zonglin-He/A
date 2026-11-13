@@ -1,0 +1,44 @@
+{
+  "round": "R90",
+  "source_waymo_only": true,
+  "source_train_n": 512,
+  "source_val_n": 128,
+  "source_epochs_each": 2,
+  "source_selected_common_epoch": 1,
+  "source_branches": [
+    "continue_joint",
+    "query_joint",
+    "candidate_headonly",
+    "candidate_joint"
+  ],
+  "source_lr": 0.0001,
+  "source_conditional_weight": 0.1,
+  "source_target_slot_geometric_proxy_weight": 0.1,
+  "source_target_slot_positive_IoU": 0.25,
+  "target_primary": "candidate_joint_tta1",
+  "target_secondary": "candidate_joint_tta3",
+  "target_n": 336,
+  "target_original_candidate_boxes": 256,
+  "target_steps": [
+    1,
+    3
+  ],
+  "target_lr": 0.1,
+  "target_clip": 1.0,
+  "target_conditional_weight": 0.1,
+  "target_discriminator_out_frozen": true,
+  "source_model_original_weights_frozen_but_suffix_differentiable": true,
+  "new_visual_expert": false,
+  "meta_learning": false,
+  "object_pooling_inside_support_only": true,
+  "global_context_independent": true,
+  "candidate_and_reference_proposals_are_not_instance_GT": true,
+  "same_information_controls": [
+    "probability_mean3",
+    "native_and_conditional_feature_mean3"
+  ],
+  "no_reference_identity_GT_invented": true,
+  "source_labels_only_for_training_and_postseal_diagnostic": true,
+  "target_labels_for_update_or_selection": false,
+  "FINAL_access": false
+}
