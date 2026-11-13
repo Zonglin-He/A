@@ -1,0 +1,49 @@
+{
+  "events": [
+    {
+      "stage": "source_parse",
+      "attempt": 1,
+      "status": "failed",
+      "failure_type": "pure_module_search_path_missing",
+      "valid_outputs": false,
+      "before_GT": true,
+      "prior_attempt_preserved": true
+    },
+    {
+      "stage": "source_parse",
+      "attempt": 2,
+      "status": "completed",
+      "repair_type": "pure_parser_module_search_path",
+      "before_GT": true,
+      "producer_predictions_changed": false
+    },
+    {
+      "stage": "source_native_audit",
+      "attempt": 1,
+      "status": "failed",
+      "failure_type": "saved_FP32_head_probability_tolerance_1e10",
+      "valid_outputs": false,
+      "before_GT": true,
+      "prior_attempt_preserved": true
+    },
+    {
+      "stage": "source_native_audit",
+      "attempt": 2,
+      "status": "completed",
+      "repair_type": "native_cache_feature_exactness_and_all_Top1_checks",
+      "tolerance_changed": true,
+      "producer_predictions_changed": false,
+      "before_GT": true
+    },
+    {
+      "stage": "task_summary",
+      "attempt": 1,
+      "status": "failed",
+      "failure_type": "historical_reference_name_copy_error",
+      "repair_type": "restore_R88_direct_name_only",
+      "before_GT": false,
+      "producer_predictions_changed": false,
+      "prior_attempt_preserved": true
+    }
+  ]
+}

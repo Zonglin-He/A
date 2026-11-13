@@ -1,0 +1,55 @@
+{
+  "round": "R89",
+  "source": "Waymo_only_epoch100_then_R76_frozen_features",
+  "source_preparation": {
+    "train": 512,
+    "validation": 128,
+    "epochs_each": 4,
+    "shared_selected_epoch": 1,
+    "branches": [
+      "matching_continuation",
+      "query_only_residual",
+      "candidate_conditioned_residual"
+    ],
+    "lr": 0.0001,
+    "weight_decay": 0.0001,
+    "full_grounding_weight": 1.0,
+    "masked_grounding_weight": 1.0,
+    "train_val_scene_intersection": 0,
+    "train_val_frame_intersection": 0,
+    "new_visual_experts": false,
+    "source_grounding_labels_only": true
+  },
+  "target": {
+    "n": 336,
+    "platform_n_each": 168,
+    "historically_exposed_scenes": 5,
+    "original_boxes": 256,
+    "primary": "candidate_tta1",
+    "secondary": "candidate_tta3",
+    "steps": [
+      1,
+      3
+    ],
+    "learning_rate": 0.1,
+    "gradient_clip": 1.0,
+    "Armijo_c": 0.0001,
+    "prepared_heads_frozen": true,
+    "adapted_existing_adapter_interaction_parameters": 102498,
+    "same_information_zero_update": "full_plus_two_masked_probability_mean",
+    "target_GT_for_selection": false,
+    "FINAL_access": false,
+    "evidence_hypotheses_fixed_before_update": true,
+    "unknown_retained": true
+  },
+  "control_scope": {
+    "wrong_space": "local_point_support_permutation_only",
+    "role_swap": "global_role_support_permutation_with_own_subject_support_retained",
+    "shared_mix": "withdraw_own_support_and_candidate_geometry_conditioning_combined",
+    "continuation": "matching_MLP_only_not_full_R76_retraining"
+  },
+  "source_native_saved_probability_tolerance": 1e-06,
+  "native_fresh_cache_exact": true,
+  "source_native_Top1_changes": 0,
+  "main_n": 336
+}

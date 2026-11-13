@@ -1,0 +1,11 @@
+"""Prepare target observation supports only after source-only selection and audit."""
+from core89 import *
+import time
+sys.path.insert(0,str(ROOT/'crossplatform/round51'));from model51 import load_source
+assert read(H89/'independent_source_audit_attempt001/AUDIT_RESULT.json')['state'].startswith('PASS_');choice=read(B89/'trained_source_attempt001/SELECTED_SOURCE_ONLY.json');assert read(B89/'trained_source_attempt001/SEALED.json')['state'].startswith('R89_SOURCE_ONLY');base=load_source(read(ROOT/'research/round15/experiment/SOURCE_CAPTURE_PLAN_LOCK.json'));torch.manual_seed(0);m=Fusion89(base.contrastive_align_projection_image).cuda().eval().requires_grad_(False);load_R76(m);m.use_interface=False;O=B89/'target_evidence336_attempt001';(O/'samples_PRIVATE').mkdir(parents=True,exist_ok=False);(O/'records_PRIVATE').mkdir();rows=read(H89/'experiment/DEV336_PRIVATE.json');stats=[];start=time.perf_counter()
+with torch.no_grad():
+ for nr,r in enumerate(rows):
+  # This is the first target feature access in R89; original R76 carrier is common to all heads.
+  z0=prefix(r);z=tensor_prefix(z0);g=load(casepath(r));d=tensor_data(g,r);m.route=None;aa=[];hk=base.cross_encoder.layers[-1].cross_layer.cross_lv.register_forward_hook(lambda _m,_a,o:aa.append(o[1].cpu().numpy()[0]));p0,_,_=m.main(base,z,d,'bidirectional');hk.remove();graph=read(ROOT/'crossplatform/round87/role_inventory336_attempt003/cases_PRIVATE'/(r['id']+'.json'))['graph'];doc=read(ROOT/'crossplatform/round48/parse336_attempt001/dependencies_PRIVATE'/(r['id']+'.json'));roles,offset=token_roles88(base,r,z0,graph,doc);route,info=route89(r,{**z0,'frozen_probability':p0.cpu().numpy()},g,graph,roles,aa[0],offset,doc);np.savez_compressed(O/'samples_PRIVATE'/(r['id']+'.npz'),**route,source_boxes=z0['boxes'],native_role_attention=aa[0]);dump(O/'records_PRIVATE'/(r['id']+'.json'),{'graph':graph,'counts':info});stats.append({'row':'DEV'+str(nr+1).zfill(4),'platform':r['platform'],**info})
+  if (nr+1)%64==0:print('PREP_TARGET89',nr+1,flush=True)
+dump(O/'COUNTS.json',{'n':336,'native_suffix_calls':336,'seconds':time.perf_counter()-start,'source_selection_already_sealed':True,'target_labels_read':False});seal(O,'R89_TARGET_OBSERVATION_SUPPORTS_SEALED_BEFORE_TTA',n=336);dump(H89/'TARGET_SUPPORT_ROWS.json',stats);print(read(O/'COUNTS.json'))
