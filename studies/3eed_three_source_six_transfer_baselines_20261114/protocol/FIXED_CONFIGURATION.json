@@ -1,0 +1,68 @@
+{
+  "state": "LOCKED_R96_SIX_SOURCE100_FROZEN_TRANSFERS_NO_TARGET_SELECTION",
+  "sources": [
+    "waymo",
+    "drone",
+    "quad"
+  ],
+  "primary_epoch": 100,
+  "directions": [
+    [
+      "waymo",
+      "drone"
+    ],
+    [
+      "waymo",
+      "quad"
+    ],
+    [
+      "drone",
+      "waymo"
+    ],
+    [
+      "drone",
+      "quad"
+    ],
+    [
+      "quad",
+      "waymo"
+    ],
+    [
+      "quad",
+      "drone"
+    ]
+  ],
+  "batch_size": 24,
+  "num_workers": 4,
+  "seed": 0,
+  "torch_num_threads": 4,
+  "primary_readout": "last_text_logodds",
+  "secondary_readouts": [
+    "text_bbf",
+    "text_bbs",
+    "official_bbf_class_span_assisted",
+    "official_bbs_class_span_assisted"
+  ],
+  "protected_frame_identity_exclusion_only": true,
+  "FINAL_inference_or_scoring": false,
+  "TTA": false,
+  "training_checkpoint_selection": "fixed epoch100; target and source VAL metrics cannot choose a different primary",
+  "same_target_point_sampling_seed": 0,
+  "created_utc": "2026-11-13T08:35:43.673640+00:00",
+  "repair": "explicit imports prevent factory.R from overwriting repository root; preflight absolute source checkpoints",
+  "source_training_repeated": false,
+  "predictions_before_repair": 0,
+  "task_scores_before_repair": 0,
+  "original_lock_sha256": "1295bd6d274bba829b589aac013aea2a2d53b066b01d643aca2488aea76840f4",
+  "locked_utc": "2026-11-13T16:33:09.964710+00:00",
+  "evaluation_only_backend_repair": true,
+  "CUDNN_benchmark": false,
+  "TF32_allowed": false,
+  "torch_deterministic_algorithms": true,
+  "CUBLAS_WORKSPACE_CONFIG": ":4096:8",
+  "training_weights_changed": false,
+  "task_GT_numeric_scores_before_backend_choice": 0,
+  "unstable_prediction_directory_preserved": "crossplatform/round96/frozen_matrix",
+  "stable_prediction_directory": "crossplatform/round96/frozen_matrix_attempt003",
+  "repeated_forward_preflight_sha256": "4b2436e829c630428165d9285e8b2b47b46a089766a201e4086e5fe5e57091a8"
+}
