@@ -1,0 +1,48 @@
+{
+  "events": [
+    {
+      "stage": "engineering",
+      "attempt": 1,
+      "status": "PASS",
+      "valid_outputs": 8,
+      "before_GT": true,
+      "producer_predictions_changed": false
+    },
+    {
+      "stage": "main_prediction",
+      "attempt": 1,
+      "status": "SEALED",
+      "valid_outputs": 336,
+      "before_GT": true,
+      "producer_predictions_changed": false
+    },
+    {
+      "stage": "native_audit",
+      "attempt": 1,
+      "status": "PASS",
+      "valid_outputs": 336,
+      "before_GT": true,
+      "tolerance_changed": false
+    },
+    {
+      "stage": "postseal_case_review",
+      "attempt": 1,
+      "status": "FAILED",
+      "failure_type": "JSON_NON_NATIVE_INTEGER",
+      "valid_outputs": 0,
+      "before_GT": false,
+      "producer_predictions_changed": false,
+      "prior_attempt_preserved": true
+    },
+    {
+      "stage": "postseal_case_review",
+      "attempt": 2,
+      "status": "PASS",
+      "repair_type": "CONVERT_COUNT_TO_PYTHON_INT",
+      "valid_outputs": 8,
+      "before_GT": false,
+      "producer_predictions_changed": false,
+      "prior_attempt_preserved": true
+    }
+  ]
+}

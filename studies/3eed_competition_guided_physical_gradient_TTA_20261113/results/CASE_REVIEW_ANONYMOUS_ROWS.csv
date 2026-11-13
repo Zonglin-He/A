@@ -1,0 +1,9 @@
+case,full_scene_caption_crop_BEV_reviewed,observation,platform,postseal_descriptive_not_deployment_rule,primary_zero_to_TTA_identity
+CASE001,True,原近处车辆仍被主TTA和直接偏好改到远处上沿区域。task-only和反向控制保住原框。该例接受反馈真实反对原第一名，故错误不只是物理项单独造成。,drone,True,different_visible_objects
+CASE002,True,主BT和直接使用仍选中另一行人；raw仍可改到左侧主体。唯一接受偏好不包含原第一名，未覆盖最终关键竞争者。不能由两候选偏好推出它超过未监督第一名。,quad,True,same_candidate_wrong_visible_person
+CASE003,True,同一SUV附近的重复框由0.2332改到0.2724，沿用原物理后备；该例没有接受pair，不归因于新增竞争监督。,quad,True,same_visible_object_duplicate_boxes
+CASE004,True,仍是左侧同一行人附近较差重复框，0.4461降到0.3280。只保护原第一名的控制能避免，反向偏好BT仍未避免。,quad,True,same_visible_object_duplicate_boxes
+CASE005,True,主TTA和直接读出从远处背景回到右侧车辆附近，但仅0.1443，目标边缘裁切，精确物体身份保留部分未知。胜出的是接受pair之外的第三候选，反向BT也得到相同框，不能认证为正确偏好带来的身份纠错。,drone,True,different_visible_regions_target_identity_partial
+CASE006,True,主BT保持白色车辆原框，直接使用偏好则转向前景深色车辆并降到零。此项TTA相对直接的改善是避免直接重排损伤，没有超过零步。,drone,True,same_candidate
+CASE007,True,主BT保留原SUV框；直接使用改到同一SUV更合适的重复框，0.2468到0.2748，跨过Acc25。参数更新没有执行这份有益变化。,drone,True,same_candidate
+CASE008,True,同一前景车辆区域两个很差重复框从0.0060到0.0014；高IoU候选一直存在但排名很低。无接受pair，属于原物理后备，不能叫新增语义身份错误。,drone,True,same_visible_object_duplicate_boxes
