@@ -1,0 +1,12 @@
+case,full_scene_caption_crop_BEV_reviewed,initial_primary_identity,observation,platform,postseal_descriptive_not_deployment_rule,secondary_raw_image_overlay_not_separately_viewed,secondary_solver_saved_prediction_checked
+CASE001,True,different_visible_objects,新q和精确混合均保留近处车辆；初版Adam和修复GN仍转向远处区域。证据未要求该误改，说明共享末层更新未忠实执行这份正确保护。,drone,True,True,True
+CASE002,True,same_candidate_wrong_person,新q直接读出改到左侧主体，0到0.5376；混合仍选另一行人，Adam与GN也没有改正。源分布保护会阻碍这份有益变化，不能再只归因于G没信号。,quad,True,True,True
+CASE003,True,same_candidate,同一SUV框保持，旧物理更新中的重复框改善本轮未复现。普通梯度次对照可换到较高IoU重复框，不等同实例身份监督。,quad,True,True,True
+CASE004,True,same_candidate,直接证据和一步更新保留同一左侧行人框；三步Adam才改到较差重复框。更充分拟合当前目标没有带来更好的定位。,quad,True,True,True
+CASE005,True,different_visible_regions_target_partially_clipped,从远处区域回到左侧边缘车辆附近，q/Adam/GN均0到0.3185，shuffleAdam未实现。目标边缘裁切，精确身份细节仍部分未知；全体总分中正常计入。,drone,True,True,True
+CASE006,True,same_visible_object_duplicate_boxes,同一SUV附近由0.2468换到0.2748，q/Adam/GN均执行并跨Acc25；不是找回另一物体。,drone,True,True,True
+CASE007,True,same_visible_object_duplicate_boxes,同一SUV附近改到较差重复框0.2788到0.2503，q与更新共同继承此负例，仍计总体。,drone,True,True,True
+CASE008,True,same_candidate,q与混合转到同一白色车辆的较差重复框0.5116到0.3722；Adam/GN保留原框。更新相对直接读出变好只是避免伪目标损伤，没有超过零步。,drone,True,True,True
+CASE009,True,same_candidate,画面右边缘同一人物的重复框，q/混合略差；Adam/GN一步保持原框，三步Adam继承较差框。不能把保持原框称新实例纠错。,quad,True,True,True
+CASE010,True,same_candidate,同一白色车辆已有更好重复框，q/混合从0.2841到0.3596，Adam/GN都未执行这份提升。,drone,True,True,True
+CASE011,True,same_candidate,q从SUV附近转到远处上沿区域并降到0；混合、Adam和GN保留原低IoU框。该例证明新证据仍可误导，不因总体净收益而删除。,drone,True,True,True

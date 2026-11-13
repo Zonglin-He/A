@@ -1,0 +1,14 @@
+"""One post-seal saved-IoU join for secondary solver; original primary table unchanged."""
+from pathlib import Path
+import sys,json,numpy as np,itertools,hashlib
+R=Path(__file__).resolve().parents[2];H=R/'research/round94';P=R/'crossplatform/round94/solver_repair336_attempt001';F=R/'crossplatform/round94/prediction336_attempt001';sys.path.insert(0,str(R/'research/round55'));from score55 import summarize
+rd=lambda p:json.loads(p.read_text());sha=lambda p:hashlib.sha256(p.read_bytes()).hexdigest()
+def dump(p,x):p.write_text(json.dumps(x,indent=2,ensure_ascii=False)+'\n')
+au=rd(H/'independent_solver_audit_attempt001/AUDIT_RESULT.json');assert au['state'].startswith('PASS_') and au['prediction_seal_sha256']==sha(P/'SEALED.json');rows=rd(H/'experiment/DEV336_PRIVATE.json');Y={x['id_PRIVATE']:x['candidate_IoUs_PRIVATE'] for x in rd(R/'research/round55/score_dev336_attempt001/ALL_CANDIDATE_IOUS_PRIVATE.json')};old={x['id_PRIVATE']:x for x in rd(H/'score_dev336_attempt001/ALL_TASK_ROWS_PRIVATE.json')};refs=['R91_frozen','R59','binding_direct','binding_optimal_mixture','binding_bt1'];new=rd(P/'SEALED.json')['arm_names'];arms=refs+new;tasks=[]
+for r in rows:
+ o=old[r['id']];z=np.load(P/'samples_PRIVATE'/(r['id']+'.npz'));q=dict(zip(new,map(int,z['queries'])));allq={k:o['queries'][k] for k in refs}|q;rec=rd(P/'records_PRIVATE'/(r['id']+'.json'));st={k:o['statuses'][k] for k in refs}
+ for k in new:st[k]={'unknown':False,'fallback':k.endswith('_bt') and not rec[k.rsplit('_',1)[0]]['accepted'],'no_parameter_update':k.endswith('_bt') and not rec[k.rsplit('_',1)[0]]['accepted']}
+ tasks.append({k:o[k] for k in ['row','id_PRIVATE','platform','scene_PRIVATE','part','split']}|{'queries':allq,'IoU':{k:float(Y[r['id']][v]) for k,v in allq.items()},'statuses':st})
+su,sc=summarize(tasks,arms,refs+['gn_bt'],336);neg=[{'row':t['row'],'platform':t['platform'],'part':t['part'],'split':t['split'],'arm':a,'reference':b,'delta_pp':100*(t['IoU'][a]-t['IoU'][b])} for t in tasks for a,b in itertools.permutations(arms,2) if t['IoU'][a]-t['IoU'][b]<-1e-10];O=H/'score_solver336_attempt001';O.mkdir();rc={'state':'PASS_R94_SECONDARY_POSTSEAL_SAVED_IOU_JOIN','n':336,'arm_names':arms,'task_values':336*len(arms),'ordered_negative_comparisons':len(neg),'single_saved_IoU_join':True,'new_GT_scored_task_values':0,'reused_saved_task_values':336*len(arms),'after_original_DEV_exposure':True,'prediction_seal_sha256':sha(P/'SEALED.json'),'target_GT_for_updates_or_selection':False}
+for n,x in [('ALL_TASK_ROWS_PRIVATE',tasks),('TASK_SUMMARY',su),('ALL_SCENE_SUMMARIES_PRIVATE',sc),('ALL_ORDERED_NEGATIVE_COMPARISONS',neg),('SCORING_RECEIPT',rc),('SHARED_CALIBRATION_SELECTION',None)]:dump(O/(n+'.json'),x)
+dump(O/'SEALED.json',{'state':rc['state'],'files':{f.name:sha(f) for f in O.glob('*.json')}});print(su['ALL336']['balanced_mIoU_percent'])
