@@ -1,0 +1,78 @@
+{
+  "round": "R91",
+  "source_bases": [
+    "R76",
+    "R89continue"
+  ],
+  "source_heads": [
+    "query_disc",
+    "full_ce",
+    "full_disc",
+    "no_ref_disc",
+    "no_local_disc"
+  ],
+  "source_train_n": 512,
+  "source_val_n": 128,
+  "source_epochs_each": 4,
+  "source_lr": 0.0001,
+  "source_weight_decay": 0.0001,
+  "source_clip": 1,
+  "source_pair_margin": 0.2,
+  "source_pair_weight": 1,
+  "source_negative_max_distinct_objects": 4,
+  "source_competitor_same_class_required": true,
+  "source_assign_IoU_gt": 0.25,
+  "source_assignment_margin": 0.1,
+  "source_target_negative_max_IoU": 0.05,
+  "source_pair_max_box_IoU": 0.1,
+  "source_pair_max_point_Jaccard": 0.1,
+  "source_min_support_points": 2,
+  "source_full_spatial_residual_direct_query_block_zero": true,
+  "source_fusion_frozen": true,
+  "no_roles_spatial_residual_zero": true,
+  "target_steps": 1,
+  "target_alpha": 0.5,
+  "target_clip": 1,
+  "target_parameter_n": 102498,
+  "target_physical_weights": [
+    0.1,
+    0.1,
+    0.01
+  ],
+  "target_masks": [
+    76001,
+    76002
+  ],
+  "target_primary": "R76_full_disc_physical_bt",
+  "target_backtracking_scales": [
+    0.5,
+    0.25,
+    0.125,
+    0.0625,
+    0.03125,
+    0.015625,
+    0.0078125,
+    0.00390625,
+    0.001953125
+  ],
+  "target_conditional_control_weight": 0.1,
+  "target_hyperparameter_selection_by_GT": false,
+  "FINAL_access": false,
+  "source_selected_common_epoch": 1,
+  "source_joint_fusion_training": false,
+  "source_additional_non_target_box_annotations": true,
+  "reference_role_identity_GT_used": false,
+  "target_arms": 69,
+  "target_heldout_mask": 76003,
+  "target_head_and_matching_frozen": true,
+  "target_teacher_identity_labels": false,
+  "unknown_status_means_missing_parsed_spatial_roles_for_new_spatial_heads": true,
+  "same_information_controls": [
+    "full_plus_two_masked_probability_mean",
+    "full_plus_two_masked_native_and_actual_head_input_mean"
+  ],
+  "target_labels_for_update_or_method_selection": false,
+  "readout_FP32_probability_tolerance": 1e-06,
+  "state_FP32_tolerance": 1e-07,
+  "all_top1_replays_must_match": true
+}
