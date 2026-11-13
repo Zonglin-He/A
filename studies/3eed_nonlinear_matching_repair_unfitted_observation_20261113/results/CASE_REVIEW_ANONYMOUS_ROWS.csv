@@ -1,0 +1,12 @@
+all_samples_retained,case,full_scene_crop_BEV_rank_table_reviewed,independent_identity_annotation,observation,platform,postseal_descriptive_only,visual_category
+True,CASE001,True,False,Direct factual keeps the nearby vehicle; factual head edit and all C-containing readouts select a distant region.,drone,True,object_to_distant_region
+True,CASE002,True,False,"Factual head edit follows direct evidence to the left-side person. Frozen C already selects the same person, so this case does not establish additional C adaptation value.",quad,True,distinct_people
+True,CASE003,True,False,Direct and adapted results select the visible border vehicle region; frozen C already does so.,drone,True,background_to_vehicle_region
+True,CASE004,True,False,Factual head keeps the vehicle box; adapted C and C-containing fusion select a wider neighboring support region. Precise object identity of that region remains unknown.,drone,True,mixed_support_identity_unknown
+True,CASE005,True,False,Parameter result restores the original overlapping vehicle box; direct selects an offset overlapping box. This is not evidence of new instance recognition.,drone,True,overlapping_vehicle_boxes
+True,CASE006,True,False,"Parameter result restores source geometry for an overlapping vehicle hypothesis, rather than finding a new target.",drone,True,overlapping_vehicle_boxes
+True,CASE007,True,False,Adaptation picks a shifted overlapping vehicle box. IoU decline alone must not be described as a confirmed different-object switch.,drone,True,overlapping_vehicle_boxes
+True,CASE008,True,False,"Factual adaptation follows the better overlapping SUV box; C and FC revert to the original duplicate, losing the Acc25 crossing.",drone,True,overlapping_vehicle_boxes
+True,CASE009,True,False,"Adapted C recovers the vehicle hypothesis already selected in the source factual view. This is restoration, not a new target discovery.",drone,True,C_restores_source
+True,CASE010,True,False,"A tree or elevated background hypothesis gives way to the van region, but final IoU stays below Acc25.",drone,True,background_to_vehicle_region
+True,CASE011,True,False,Factual and C adaptation select an elevated building or vegetation region instead of the visible vehicle.,quad,True,object_to_background_region
