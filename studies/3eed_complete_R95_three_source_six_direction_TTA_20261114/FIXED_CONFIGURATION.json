@@ -1,0 +1,21 @@
+{
+  "method": "R95_complete_lm_FC",
+  "user_confirmed": "R95 完整版本（当前登记）",
+  "architecture": "R91_R76_full_disc",
+  "no_source_training": true,
+  "same_R97_points_boxes_and_source_modules": true,
+  "evidence": "R94 native correct3view base scores minus2visibility-preserving wrongbindings x3views, centered dense correction; frozen factual competition residual",
+  "solver": "exact existing lm95: last64x288W+64bias,18496params;4variants lm/lm_mixture/lm_shuffle/lm_capped,10relinearizations x6damping trials, gainratio>.1; primary uncapped lm",
+  "primary": "lm_FC",
+  "unfitted_C_mask": 76003,
+  "C_access_only_after_all_four_fits": true,
+  "controls": "R97 original/prepared/directmean/directfeature/physicalBT references; R94 direct/mix/Adam/GN; exact R95 direct_C/direct_FC/direct_four/mixture_FC/shuffle_FC/frozen_C; additional zero-delta frozen_FC/frozen_four; all4fits F/C/FC",
+  "no_target_GT_for_evidence_update_acceptance_stopping_selection": true,
+  "source_or_platform_hyperparameter_search": false,
+  "FINAL_access": false,
+  "prediction_seal_before_task_score": true,
+  "storage": "keep every sample, all four final patches and all accepted/rejected trial scalars locally; reconstruct intermediate trial weights in independent audit instead of materializing ~1million full matrices",
+  "all_task_negatives_retained": true,
+  "primary_aggregation": "six direction equal mean, target means of two incoming sources",
+  "R97_is_old_physical_reference_not_complete_method": true
+}
