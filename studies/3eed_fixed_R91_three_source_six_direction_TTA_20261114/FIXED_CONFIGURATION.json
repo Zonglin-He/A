@@ -1,0 +1,45 @@
+{
+  "method": "R91_R76_full_disc_physical_bt",
+  "mainline_choice": "user-selected R91 architecture and original physical BT, not stopped R95 LM recipe or posthoc best method",
+  "target_n": {
+    "waymo": 3782,
+    "drone": 2792,
+    "quad": 2736
+  },
+  "source_preparation": {
+    "drone": {
+      "train_n": 512,
+      "val_n": 128,
+      "train_scenes": 3,
+      "val_scenes": 2
+    },
+    "quad": {
+      "train_n": 512,
+      "val_n": 128,
+      "train_scenes": 4,
+      "val_scenes": 3
+    }
+  },
+  "Waymo_preparation_reused": "crossplatform/round91/trained_source_attempt001 selected R76_full_disc, R76 bidirectional e06",
+  "new_source_preparation": "R76 bidirectional only: 512/128,8epochs,AdamW3e-4/wd1e-4/clip1,BF16training/FP32sourceVAL,sourceVAL earliest max; R91 full_disc only:4epochs,AdamW1e-4/wd1e-4/clip1,sourceVAL earliest max; no ten-branch architecture search",
+  "source_original_weights_frozen": true,
+  "target_original_A256_fixed": true,
+  "target_sampling": "per-expression deterministic seed, same points for original source, prepared zero, all frozen views and TTA; R96 batch-sampling scores retained as historical cohort reference only",
+  "TTA": "episodic original102498 params; two masks76001/76002; physical .1P+.1RGB+.01depth; SGD clipped1 step .5; Armijo1e-4,tol1e-10,9scales .5/2**k; original R91 dynamic readout; no new loss",
+  "arms": [
+    "original_source",
+    "prepared_frozen",
+    "direct_mean3",
+    "direct_feature3",
+    "physical_raw",
+    "physical_bt",
+    "wrong_physical_raw",
+    "wrong_physical_bt"
+  ],
+  "no_GT_for_target_update_gate_or_selection": true,
+  "target_score_after_all_predictions_sealed": true,
+  "new_hyperparameter_search": false,
+  "FINAL_input": false,
+  "all_negatives_and_unknown_retained": true,
+  "primary_aggregation": "six directed tasks equal weight; each target platform mean of its two incoming sources; per-direction and anonymous-scene rows also retained"
+}

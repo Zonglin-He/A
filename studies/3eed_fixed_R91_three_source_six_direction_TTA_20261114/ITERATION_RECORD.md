@@ -1,0 +1,3 @@
+# R97 fixed six-direction TTA
+
+Claim: fixed existing R91 task recipe transfers across independently trained source models. No method search. Missing Drone/Quad-specific source-prepared modules are trained only on the matching source with the old losses/architecture; original source100 remains frozen. Waymo preparation reused. All target VAL expressions outside protected frames retained. Matched zero controls, wrong binding and raw/BT negative controls, prediction sealing before scores. Distinct deterministic point sampling from R96 is disclosed and matched original-source scores recomputed. No FINAL.
