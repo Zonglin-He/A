@@ -1,0 +1,24 @@
+{
+  "round": "R99",
+  "baseline": "R98_complete_R95_fixed_primary",
+  "question": "does single-F parameter fitting cause held-out-mask transfer loss; isolate fit-view count",
+  "part_A": "all18620 sealed old outcomes, good/bad cases and only-one-component readout contrasts; descriptive not new test",
+  "part_B": "three-fit-view matching projection vs same existing one-view LM, same frozen G and parameters, fixed10x6LM; matching target shuffle control; no C read until all fits complete",
+  "source_models": "reuse unchanged R96/R97 all three sources",
+  "cohort": "128 scene-stratified expressions per target, same128 for each incoming source,768directed; based only on source input IDs and scenes; all exposed development",
+  "primary": "joint3_FC",
+  "main_controls": [
+    "prepared_frozen",
+    "lm_FC",
+    "direct_FC",
+    "direct_four",
+    "frozen_FC",
+    "joint3_shuffle_FC"
+  ],
+  "GT_policy": "no GT for evidence/optimization/acceptance/stopping; all old outcomes exposed DEV only; new predictions sealed before scoring",
+  "FINAL_access": false,
+  "no_external_experts": true,
+  "no_source_training": true,
+  "deadline_utc": "2026-11-16T01:30:00+00:00",
+  "stop_rule": "do not increase steps or change evidence based on an isolated case; if multi-view loss improves but grounding/control does not, reject this fit-view recipe"
+}
