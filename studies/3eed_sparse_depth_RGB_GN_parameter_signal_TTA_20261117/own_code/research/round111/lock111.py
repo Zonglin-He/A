@@ -1,0 +1,3 @@
+from pathlib import Path
+import hashlib,json
+R=Path(__file__).resolve().parents[2];H=R/'research/round111';sha=lambda p:hashlib.sha256(Path(p).read_bytes()).hexdigest();old=json.loads((R/'research/round110/experiment/CODE_LOCK.json').read_text());fs={k:sha(R/k) for k in old['files']};fs.update({str(p.relative_to(R)):sha(p) for p in H.glob('*.py')});fs['tools/exploration_guard_round111.py']=sha(R/'tools/exploration_guard_round111.py');out=H/'experiment/ENGINEERING_CODE_LOCK.json';assert not out.exists();out.write_text(json.dumps({'files':fs,'upstream_dependency_sha256':old['upstream_dependency_sha256'],'design_sha256':sha(H/'experiment/DESIGN_LOCK.json')},indent=2)+'\n')
