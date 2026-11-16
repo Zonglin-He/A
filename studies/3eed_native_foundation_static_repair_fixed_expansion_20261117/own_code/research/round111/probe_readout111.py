@@ -1,0 +1,7 @@
+"""Before-GT numerical mismatch attribution; no policy or threshold tuning."""
+from core111 import *
+def main():
+ name='waymo_to_drone';done={p.stem for p in (B111/name/'samples_PRIVATE').glob('*.npz')};rows=jread(R111/'research/round99/input/TARGET_DRONE128_PRIVATE.json');r=next(r for r in rows if r['id'] not in done);setsource97('waymo');base=base97('waymo');z0,receipt=sourceprefix111(base,r,'waymo');z=tensor_prefix(z0);A=original111(base,z);old=load(R111/'crossplatform/round110/original_PRIVATE'/name/(r['id']+'.npz'))
+ with torch.no_grad():p,q=direct111(base.contrastive_align_projection_image,A['h'],A['tokens'],A['mask']);q0=torch.as_tensor(old['query'],device='cuda');u0=torch.as_tensor(old['tokens'],device='cuda');po=native_scores(q0,u0,A['mask']).double().softmax(0)
+ out={'h_error':float(abs(A['h']-torch.as_tensor(old['h'],device='cuda')).max()),'query_error':float(abs(A['query']-q0).max()),'tokens_error':float(abs(A['tokens']-u0).max()),'batchMM_old_probability_error':float(abs(A['p'].cpu().numpy()-old['p']).max()),'native2DMM_old_probability_error':float(abs(p.cpu().numpy()-old['p']).max()),'saved_original_Q_U_old_probability_error':float(abs(po.cpu().numpy()-old['p']).max()),'batch_vs_native_same_argmax':int(A['p'].argmax())==int(p.argmax()),'completed_prefix_rows':len(done),'GT_used':False};jdump(H111/'READOUT_ENGINEERING_AMENDMENT.json',out);print(out)
+if __name__=='__main__':main()
