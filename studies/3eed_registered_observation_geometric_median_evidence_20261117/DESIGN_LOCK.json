@@ -1,0 +1,39 @@
+{
+  "utc": "2026-11-16T21:30:46.179942+00:00",
+  "round": "R122",
+  "question": "Does exact geometric-median aggregation of existing physically aligned pre-language seed observations improve object ranking over mean and same-information controls?",
+  "scope": "Evidence prerequisite for later task-capable matchingTTA, NOT parameterTTA or completed adaptation method",
+  "fixed": "3epoch100/R91preparedmodules/originalA256/all6decoderpositions/fullcaption/currentRGBcalibration andoldregistration/support/UNKNOWN/aliases unchanged",
+  "cohorts": "AlreadyexposedDEV768+EXP1536, all2304. No independentconfirmationclaim, no newmedia/PointNet/FINAL",
+  "primary": "robust_context",
+  "aggregation": "At each Aseed withA/B/Cvalid, exact minimizer sum3Euclidean feature distances in native288D space viaFermat barycentric/120degreevertex. Duplicatevectors handled. Withonly1or2valid, equal-weightmean unchanged. No normalization/smoothing/solverstrengthgrid.",
+  "readout": "Onlynativefusedh/U changes; keep sourceA late/sourceMeanF competitionr asR118F_lSA_rSF. This exposedsecondarybase is NOTadoptedmethod. Native-only paired readout also retained.",
+  "new_controls": [
+    "geometricmedian weights shuffled spatially within3validseeds (viewweightset preserved)",
+    "single currentinput perview averageweights (sameglobalviewbias)",
+    "B/Cfeaturevectors independentlyderanged among3validseeds: median andmean"
+  ],
+  "budget": "SameexistingA/B/C backbonesandfixedpositions; only5frozen suffixvariants. No trainableparameter update or loss/step search",
+  "primary_gate": "BothDEVandEXP all-six-equal mIoU AND count-only fullscene-poststratified mIoU must exceed mean_context,weight_shuffle_context,weight_mean_context,wrong_robust_context,wrong_mean_context,native_ABC andlateOnly_F. No perplatform orcaseconfig. Allnull/nontriple/aliases retained. Failure stopsrecipe/no matrix ofmedianstrengths. Passing onlyqualifiesnewobservationtarget, notparameterTTAextra benefit.",
+  "audit": "Engineering24realoldmean h/Ubitexact/fixedanchors; CPUallnewmatchingreplay, independentgeometricmedian convexKKT & objective, weightshuffle/globalcontrols; postsealdualgeometry/sourcecountscalars/allnegatives",
+  "next_gate": "Onlyif newevidence passes considerseparatelylockedmatchingadaptation withsameinformation directreadout, originalsource/no-update, mismatches andunusedobservation checks. No fittingweakoldG ornewTTA loss now.",
+  "literature": "Pillutla/Kakade/HarchaouiRFA2022 geometricmedian andofficialrobustaggregation; Fermattriangleexactoptimization. TheirFLguarantees NOTgrounding guarantees, no >half independentclean observation assumption verified here.",
+  "no_experts": true,
+  "no_source_training": true,
+  "FINAL_access": false,
+  "files": {
+    "research/round122/aggregate122.py": "22cf18b20ed0dfc45e42d171937a805888e3b3106d1418c0e0ad2f7c1e9c94d3",
+    "research/round122/core122.py": "9487101d7553c0049818d6facffafc13eac525ff69b2f8bfbc5e0016559c381f",
+    "research/round122/run122.py": "93a621194b1e4aa47b8930a6f54bf55eb5902f7215ac91fef617b843a7e7f99b",
+    "research/round122/CACHE_REGISTRY_PRIVATE.json": "627c6ee48657c5eb484f972f1789c3cae5b780b5f2b2349f99c2730709b9021b",
+    "research/round122/PREFLIGHT.json": "134937314efa63a62f7f149f41b3d1a47adf6bf9503cc3987f0b6e2ea26dcbf8",
+    "tools/exploration_guard_round122.py": "87b061c982ef4464f721e45ad3e6c1f6b0d77f64a62c676bc4350888afa596af",
+    "research/round120/core120.py": "f2e5ab641170433db274b758865671be88cf20e8fdc2eaed60a9829829f5d379",
+    "research/round118/core118.py": "b169a084dfde2beaed03e27395765f521115abc70f0ab03950cd7ef38ca76c58",
+    "research/round112/core112.py": "d4bd32897b3be92b247d244589cca2185ac05e28545073e1694bff29788e788d",
+    "research/round106/core106.py": "0752d1eb5650df36583c5818ee721aeeadba00863cee7f38e6dcc10f4ecad275",
+    "research/round97/core97.py": "172aedf101f84fd18a13a9eaa5df47dc8b21a26d1b3cd665f3c71b7bb824f731",
+    "research/round96/SOURCE_MODEL_COLLECTION_PRIVATE.json": "f2504cd0554f972852eaa529c915c870814c5c0ce27e2c618b7986daab9288ea",
+    "research/round97/SOURCE_PREPARED_COLLECTION_PRIVATE.json": "93f95e700bf3a224aec216f0815debedc05a396f4ea34f8d9b25edfa7087e596"
+  }
+}
