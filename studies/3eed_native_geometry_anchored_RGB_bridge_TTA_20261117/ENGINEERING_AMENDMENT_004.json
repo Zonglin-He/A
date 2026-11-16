@@ -1,0 +1,10 @@
+{
+  "before_GT": true,
+  "no_prediction_or_model_change": true,
+  "probability_tolerance_unchanged": 5e-06,
+  "observed_independent_CPU_probability_error": 3.018278026123422e-07,
+  "observed_native_top_gap_at_CPU_winner": 1.4490326288862931e-07,
+  "cause": "independent CPU versus native GPU FP32 projection/readout rounding changes winner only in unresolved near tie. Actual complete native versus fast edited readout remains bitexact.",
+  "audit_policy": "retain native chosen query and all negatives. CPU requires unchanged 5e-6 probability parity; if winners differ, native gap at CPU winner <=2 times measured infinity error is mandatory, report as numerical ambiguity, not verified CPU identity. No target GT or task selection involved.",
+  "failed_attempts_retained": true
+}
