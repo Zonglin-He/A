@@ -1,0 +1,31 @@
+{
+  "registered_utc": "2026-11-16T11:11:47.154143+00:00",
+  "data": "same exposed DEV768 six directions, all failures/UNKNOWN/fallbacks retained",
+  "source": "same three source100 checkpoints and source-prepared R91 states; no new training/expert",
+  "one_evidence_factor": "actual registered additional LiDAR observations instead of additional RGB banks; original A RGB and its graph retained",
+  "fixed": "A text/coordinates/1024 seed positions/query anchor IDs/originalA256 boxes/positions and model weights except last matching projection",
+  "point_budget": "A original16384, each B/C16384; alternative control two independent16384-point samplings of the SAME A raw cloud; same number backbone/readout calls",
+  "B_raw_to_A": "sealed sensor-only PnP transform in raw coords then A raw-to-model transform; no B-text coordinate reinterpretation",
+  "correspondence": "three nearest B backbone seeds, inverse distance as PointNet feature propagation; exact zero-distance onehot for identity control; max third-neighbor<=1.6m from original SA2 radius; A anchor nearest B raw return<=.25m; unknown keeps A feature",
+  "direct_fusion": "per canonical A seed mean of original and known aligned B/C pre-language features; no new network or hand-written target score",
+  "readout": "unchanged R91 native full semantic model; per-view frozen competition residual is natural when adapting matching projection only",
+  "teacher": "q=(frozen p_A+frozen p_alignedB)/2; stopgradient; target sameq for fitted A and alignedB; no identity certification",
+  "TTA": "same centered-log L2 LM10x6 and18496 last-query-projection params, episodic reset",
+  "heldout": "C backbone/feature/readout only after all fitted states/acceptance finished; final primary actual fusedABC feature view; unavailable B nofit/C no updatedfinal output; cost retained",
+  "arms": [
+    "original/prepared/R100references",
+    "actual frozen ensemble and prefix-fusedABC",
+    "actual TTA heldoutC/fusedABC/ensemble",
+    "equal-budget sameA-resampling frozen and TTA",
+    "wrong B/C feature-to-Apoint correspondence frozen and TTA",
+    "candidate-shuffled qB TTA"
+  ],
+  "binding_shuffle": "shuffle only valid aligned feature rows, keep canonical coordinates/support mask/value set and A fallback unchanged",
+  "primary": "real_TTA_fusedABC vs BOTH real_frozen_fusedABC/real_frozen_ensemble AND randomA_TTA_fusedABC/wrong_TTA_fusedABC/teacher_shuffle_fusedABC; equal six-direction mIoU",
+  "preprocessing_check": "actual training and inference both16384XYZ; factory use_color does not add a learned RGB branch because dataset returnsXYZ and backbone input_channels3; no missingRGB-input bug established",
+  "coverage_limits": "new .1m voxels may reflect sampling or registration noise; coverage is not useful semantics or instance truth",
+  "engineering": "source raw-to-model, zero-distance self alignment, original A native/cache, patched native/replay and exact LM Jacobian before formal",
+  "GT": "none for correspondence,target,stopping,stepacceptance; postseal evaluation only",
+  "FINAL_access": false,
+  "deadline_utc": "2026-11-17T01:00:00+00:00"
+}
