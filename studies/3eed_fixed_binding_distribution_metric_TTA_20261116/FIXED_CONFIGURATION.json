@@ -1,0 +1,32 @@
+{
+  "primary": "kl3_FC",
+  "hypothesis": "uniform centered-score L2 fits low-probability tails; exact categorical KL/Fisher may allocate finite head updates to candidate competition",
+  "single_changed_factor": "fitting metric and its matched generalized-Gauss-Newton curvature, same q teacher and unchanged budget",
+  "unchanged": [
+    "R91preparedsource",
+    "R98G",
+    "R99threefitviews",
+    "18496lastlinearparameters",
+    "10iterations6dampingtrials",
+    "source_reset",
+    "originalA256",
+    "unfittedCread_afterallfits"
+  ],
+  "cohort": "sameR99historicallyexposed768",
+  "controls": [
+    "R100joint3_FC",
+    "prepared_frozen",
+    "direct_FC",
+    "direct_four",
+    "kl3_shuffle_FC"
+  ],
+  "no_GT_for_update_or_acceptance": true,
+  "no_external_experts": true,
+  "no_source_retraining": true,
+  "FINAL_access": false,
+  "acceptance": "actual fixed-target KL decrease and positive quadratic predicted reduction, gainratio>.1; damping heuristic unchanged",
+  "metric_derivation": "Jp=sqrt(p)*(J-weighted_mean_pJ); residual=(q-p)/sqrt(p); dualsolve then exact-KL gain ratio; not copying L2 gain formula",
+  "stop_rule": "reject if no gain vs ownfrozen/direct/shuffle; do not increase steps or alter G on individual negatives",
+  "deadline_utc": "2026-11-17T01:00:00+00:00",
+  "initial_registered_deadline_utc": "2026-11-16T01:30:00+00:00"
+}
