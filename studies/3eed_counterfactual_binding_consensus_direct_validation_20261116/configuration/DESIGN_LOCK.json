@@ -1,0 +1,27 @@
+{
+  "primary": "signcommon_FC",
+  "task": "decompose two counterfactual RGB binding contrasts, no fitting or new model forward",
+  "cohort": "fixed R99 exposed768, same128targetinputs perincoming source",
+  "single_factor": "counterfactual delta aggregation only",
+  "delta_c": "center_candidate(mean_view(correct-wrong[c]))",
+  "signcommon": "sign(d0)*min(abs(d0),abs(d1)) if d0*d1>0 else0; center again",
+  "controls": [
+    "prepared_frozen",
+    "direct_FC",
+    "single0_FC",
+    "single1_FC",
+    "scaledmean_FC",
+    "shufflecommon_FC",
+    "joint3_FC",
+    "kl3_FC"
+  ],
+  "scaledmean": "old mean delta times L2norm(signcommon)/L2norm(old delta), matched perinput magnitude control",
+  "same_evidence": true,
+  "new_model_forward": false,
+  "no_source_training": true,
+  "no_experts": true,
+  "FINAL_access": false,
+  "GT_before_prediction_seal": false,
+  "acceptance_rule": "only advance aggregation if positive main gain vs own frozen, old direct, amplitude control and shuffled correspondence; no threshold/parameter search",
+  "deadline_utc": "2026-11-17T01:00:00+00:00"
+}
