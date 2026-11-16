@@ -1,0 +1,7 @@
+# Source/task compatibility prerequisite, not a ProxyTTA reproduction
+
+[Park et al., CVPR 2024 paper](https://arxiv.org/html/2402.03312v1) studies depth completion and prepares a source-trained mapping from depth-only to joint features, freezes that map, then adapts limited parameters using proxy alignment plus measured sparse depth/smoothness. The important condition is that the adapted representation remains connected to a source-prepared task path. Our existing depth head is source-trained, but there is no equivalent learned proxy map and grounding is a different task. Its performance does not guarantee ours.
+
+[Official implementation](https://github.com/seobbro/TTA-depth-completion/blob/main/bash/adapt/adapt_costdc_vkitti.sh) uses a prepared checkpoint, meta_bn adaptation, a one-iteration setting, cosine/sparse-depth/smoothness terms and its own augmentation/normalization. Those rates/units, GT paths for evaluation and source preparation cannot be transplanted into fixed3EED. We execute none of its scripts or setup instructions, download no weights and introduce no expert. The PDF endpoint returned403; the original arXiv HTML and official README/script were read instead.
+
+R120 keeps the exact R116 physical signal and raw GN224 proposals. The only new hypothesis is whether a live, trained semantic context can transmit that update while preserving the original point/text foundation. No new loss, normalization-layer grid or source training is added. R118 static-A-context primary remains rejected; this does not fit its outputs.
