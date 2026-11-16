@@ -1,0 +1,30 @@
+Traceback (most recent call last):
+  File "WORKSPACE_ROOT/research/round123/score123.py", line 55, in <module>
+    if __name__=='__main__':main()
+                            ^^^^^^
+  File "WORKSPACE_ROOT/research/round123/score123.py", line 54, in main
+    decision['development_gate_pass']=all(x['passes_all_prelocked_controls'] and x['unused_C_gate'] for x in decision['cohorts'].values());decision['TTA_robustly_adopted']=False;dump(H/'DECISION.json',decision);dump(H/'GEOMETRY_AUDIT.json',{'n':2304,'new_readouts':newn,'reused_readouts':25344,'geometry_max_error':mx});print(json.dumps(decision,indent=2),flush=True)
+                                                                                                                                                                                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "WORKSPACE_ROOT/research/round123/score123.py", line 9, in dump
+    def dump(p,x):p.write_text(json.dumps(x,indent=2,allow_nan=False)+'\n')
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "LOCAL_HOME/visual grounding/.conda/tubedetr/lib/python3.11/json/__init__.py", line 238, in dumps
+    **kw).encode(obj)
+          ^^^^^^^^^^^
+  File "LOCAL_HOME/visual grounding/.conda/tubedetr/lib/python3.11/json/encoder.py", line 202, in encode
+    chunks = list(chunks)
+             ^^^^^^^^^^^^
+  File "LOCAL_HOME/visual grounding/.conda/tubedetr/lib/python3.11/json/encoder.py", line 432, in _iterencode
+    yield from _iterencode_dict(o, _current_indent_level)
+  File "LOCAL_HOME/visual grounding/.conda/tubedetr/lib/python3.11/json/encoder.py", line 406, in _iterencode_dict
+    yield from chunks
+  File "LOCAL_HOME/visual grounding/.conda/tubedetr/lib/python3.11/json/encoder.py", line 406, in _iterencode_dict
+    yield from chunks
+  File "LOCAL_HOME/visual grounding/.conda/tubedetr/lib/python3.11/json/encoder.py", line 406, in _iterencode_dict
+    yield from chunks
+  File "LOCAL_HOME/visual grounding/.conda/tubedetr/lib/python3.11/json/encoder.py", line 439, in _iterencode
+    o = _default(o)
+        ^^^^^^^^^^^
+  File "LOCAL_HOME/visual grounding/.conda/tubedetr/lib/python3.11/json/encoder.py", line 180, in default
+    raise TypeError(f'Object of type {o.__class__.__name__} '
+TypeError: Object of type bool_ is not JSON serializable
