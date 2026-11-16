@@ -1,0 +1,35 @@
+"""Anonymous full evidence export, excluding all learned/media/identity arrays."""
+from pathlib import Path
+import json,csv,io,hashlib,shutil
+R=Path(__file__).resolve().parents[2];H=R/'research/round115';P=H/'publication';O=P/'public_export_attempt001';rd=lambda p:json.loads(Path(p).read_text());sha=lambda p:hashlib.sha256(Path(p).read_bytes()).hexdigest()
+def dump(p,x):p.parent.mkdir(parents=True,exist_ok=True);p.write_text(json.dumps(x,indent=2,allow_nan=False)+'\n')
+def table(p,rr):
+ p.parent.mkdir(parents=True,exist_ok=True);s=io.StringIO();w=csv.DictWriter(s,fieldnames=list(rr[0]),lineterminator='\n');w.writeheader();w.writerows(rr);p.write_text(s.getvalue())
+def main():
+ assert rd(H/'SCALAR_AUDIT.json')['n']==768;O.mkdir(parents=True,exist_ok=False);mapping={};allupdates=[]
+ for f in sorted((H/'scores_attempt001').glob('*_ALL_ROWS_PRIVATE.json')):
+  name=f.stem.replace('_ALL_ROWS_PRIVATE','');rr=rd(f);sc=sorted({r['scene_PRIVATE'] for r in rr});mapping[name]=sc;tasks=[]
+  for i,r in enumerate(rr):
+   row={'row':f'ROW{i+1:06d}','source':r['source'],'target':r['target'],'scene_cluster':f"CLUSTER{sc.index(r['scene_PRIVATE'])+1:03d}",'protected_alias_fallback':r['protected_alias_fallback'],'C_available':r['C_available'],'seconds':r['seconds']}
+   for k,x in r['arms'].items():
+    for m,v in x.items():
+     if m!='query_PRIVATE':row[k+'__'+m]=v
+   tasks.append(row)
+   for k,v in r.get('updates',{}).get('proposals',{}).items():allupdates.append({'row':f'ROW{i+1:06d}','source':r['source'],'target':r['target'],'setting':k,'parameter_L2':v['parameter_L2'],'wrong_same_L2':v['wrong_same_L2']})
+  table(O/'tasks'/(name+'.csv'),tasks)
+ table(O/'UPDATE_PROPOSALS.csv',allupdates)
+ for n in ['ALL_METHOD_ROWS','ALL_PAIRED_ROWS','AGGREGATE_ROWS']:table(O/'results'/(n+'.csv'),rd(H/'scores_attempt001'/(n+'.json')))
+ scenes=[]
+ for x in rd(H/'scores_attempt001/ALL_SCENE_ROWS_PRIVATE.json'):
+  name=x['source']+'_to_'+x['target'];scenes.append({k:v for k,v in x.items() if k!='scene_PRIVATE'}|{'scene_cluster':f"CLUSTER{mapping[name].index(x['scene_PRIVATE'])+1:03d}"})
+ table(O/'results/ALL_SCENE_ROWS.csv',scenes)
+ for n in ['DECISION','CONCENTRATION_SUMMARY','GATE_SPLIT_SUMMARY','NATIVE_AUDIT','SCALAR_AUDIT','GEOMETRY_AUDIT','ENGINEERING','AUDIT_AMENDMENT_001']:
+  if (H/(n+'.json')).exists():dump(O/(n+'.json'),rd(H/(n+'.json')))
+ (O/'REPORT.md').write_text((H/'REPORT.md').read_text());dump(O/'DESIGN.json',rd(H/'experiment/DESIGN_LOCK.json'))
+ files={R/p for p in rd(H/'experiment/DESIGN_LOCK.json')['files']};files.update(H.glob('*.py'));files.add(R/'tools/exploration_guard_round115.py');sources=[]
+ for f in sorted(files):
+  assert '/upstream/' not in str(f);rel=f.relative_to(R);dst=O/'own_code'/rel;dst.parent.mkdir(parents=True,exist_ok=True);dst.write_text(f.read_text().replace(str(R),'WORKSPACE_ROOT').replace('LOCAL_HOME','LOCAL_HOME'));sources.append({'source':str(rel),'public':str(dst.relative_to(O))})
+ for f in sorted(list((H/'attempts').glob('*.py.attempt*'))+list((H/'attempts').glob('*.py'))):
+  dst=O/'failed_attempts'/(f.name.replace('.py.','_')+'.py');dst.parent.mkdir(parents=True,exist_ok=True);dst.write_text(f.read_text().replace(str(R),'WORKSPACE_ROOT').replace('LOCAL_HOME','LOCAL_HOME'));sources.append({'source':str(f.relative_to(R)),'public':str(dst.relative_to(O))})
+ ff=sorted(f for f in O.rglob('*') if f.is_file());dump(O/'MANIFEST.json',{'prefix':'studies/3eed_input_specific_scalar_gate_calibration_controls_20261117','files':[{'path':str(f.relative_to(O)),'bytes':f.stat().st_size,'sha256':sha(f)} for f in ff]});dump(P/'EXPORT_INDEX_PRIVATE.json',{'sources':sources});print('EXPORT114',len(ff)+1,flush=True)
+if __name__=='__main__':main()

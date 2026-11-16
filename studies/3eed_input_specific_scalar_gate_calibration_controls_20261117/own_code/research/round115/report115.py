@@ -1,0 +1,13 @@
+from pathlib import Path
+import json,numpy as np
+R=Path(__file__).resolve().parents[2];H=R/'research/round115';rd=lambda p:json.loads(Path(p).read_text())
+def main():
+ assert rd(H/'SCALAR_AUDIT.json')['n']==768;aa=rd(H/'scores_attempt001/AGGREGATE_ROWS.json');rows=[r for f in (H/'scores_attempt001').glob('*_ALL_ROWS_PRIVATE.json') for r in rd(f)];p='native_gate_only_fusedABC';conc=[];summary=[]
+ for c in ['neither_correct_fusedABC','fixed_source_mean_gate_fusedABC','shuffled_gate_fusedABC']:
+  ds=np.array([r['arms'][p]['IoU']-r['arms'][c]['IoU'] for r in rows]);conc.append({'control':c,'n':len(ds),'gain_pp':float(ds.mean()*100),'better':int((ds>1e-12).sum()),'worse':int((ds< -1e-12).sum()),'same':int((abs(ds)<=1e-12).sum()),'largest_positive_single_input_pp':float(max(0,ds.max())*100/768),'largest_negative_single_input_pp':float(min(0,ds.min())*100/768)});summary.append({'control':c,'same_query_as_primary':sum(r['arms'][p]['query_PRIVATE']==r['arms'][c]['query_PRIVATE'] for r in rows),'n':768,'identity_not_certified':True})
+ for n,x in [('CONCENTRATION_SUMMARY',conc),('GATE_SPLIT_SUMMARY',summary)]: (H/(n+'.json')).write_text(json.dumps(x,indent=2)+'\n')
+ lines=['# R115 — 输入特定单门适应与固定/打乱门校准','','本轮只补上R114单门正信号的关键控制，不增加loss、source训练、专家或更新层。历史暴露DEV768/384表达、六方向、44保护别名回退，原A256/坐标/decoder位置不变；FINAL未访问。既有动态单门输出全部复用，新增6读出共4608任务值，4344非别名CPU端点与全体双几何/独立聚合审计完成。','','## 机制和对照','','R114证明仅gateI可复现45k桥更新的全部Top1，但门归零有害。此处比较实际A-only梯度给出的动态标量更新，source内全部开发观测的平均更新量，以及固定哈希非自身置换的同一组更新量。均值和置换先读取既有当前A梯度，在任何C隐藏状态读取前固定；没有任务标签筛选/选强度。均值与打乱需要其他输入的梯度，属于转导开发诊断，不冒称同一在线信息预算。部署参数没有利用GT，开发架构/主张选择已有历史标签曝光。','','## 总体与平台','','| 范围 | 方法 | mIoU% | Acc25% | Acc50% |','|---|---|---:|---:|---:|']
+ for x in aa:
+  if x['arm'].endswith('fusedABC'):lines.append(f"| {x['group']} | {x['arm']} | {x['mIoU_percent']:.6f} | {x['Acc25_percent']:.6f} | {x['Acc50_percent']:.6f} |")
+ lines+=['','动态17.383951%，固定source平均17.384108%，打乱17.394825%，均高于零步17.265658%。动态没有优于固定或打乱，不支持“当前输入的恢复误差提供有用的特定门调整”。保留小幅静态/均值校准信号，但不升级为已成立的输入适应或跨模态身份修复。按预锁定规则结束该逐输入gate配方，不进行扩展TTA或强度网格；当前结果也不能排除不同协议下的域级校准，但本轮没有验证它。','','## 全体差异与负例','','```json',json.dumps(conc,indent=2),'```','','```json',json.dumps(summary,indent=2),'```','','原主项与全部负例保留；没有看新图，query一致或IoU改变量均不认证真实物体身份。没有按平台/个案选择更新量。','','## 工程与审计','','12真实输入验证动态概率逐值复现R114、两个新控制实际完整模型和冻结基础缓存重放位等、源状态恢复。第一版复制审计的24臂门槛未替换成实际6臂而失败，在任何任务GT前修复为实际契约并将参考预测authority改为R114，隐藏基础仍来自R113；预测/封存完全未改。失败audit代码与日志留存。全部新CPU概率误差<5e-6，无近平赢家歧义。','','下一项只考虑已有深度监督确实经过的RGB参数，依据R113深度对桥零梯度事实，不重新解释门控制阴性为整个TTA方向失败。'];(H/'REPORT.md').write_text('\n'.join(lines)+'\n');print('REPORT115_COMPLETE',flush=True)
+if __name__=='__main__':main()
