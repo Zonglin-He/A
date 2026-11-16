@@ -1,0 +1,14 @@
+Some weights of RobertaModel were not initialized from the model checkpoint at ./data/roberta_base/ and are newly initialized: ['pooler.dense.bias', 'pooler.dense.weight']
+You should probably TRAIN this model on a down-stream task to be able to use it for predictions and inference.
+RUN121 True waymo 1 1.77 total 3.6
+Traceback (most recent call last):
+  File "WORKSPACE_ROOT/research/round121/run121.py", line 19, in <module>
+    if __name__=='__main__':B121.mkdir(exist_ok=True);main()
+                                                      ^^^^^^
+  File "WORKSPACE_ROOT/research/round121/run121.py", line 13, in main
+    t=time.perf_counter();sid=e['row']['id'];sc,ff,st,rec=analyze121(base,m,S,e,a.engineering);arr=np.stack([sc[k] for k in ARMS121]);assert arr.shape==(13,256) and np.isfinite(arr).all() and np.allclose(arr.sum(1),1,atol=1e-10);np.savez_compressed(D/'samples_PRIVATE'/(sid+'.npz'),arm_names=np.array(ARMS121),scores=arr,queries=arr.argmax(1));np.savez_compressed(D/'features_PRIVATE'/(sid+'.npz'),**ff);np.savez_compressed(D/'states_PRIVATE'/(sid+'.npz'),**st);rec['seconds']=time.perf_counter()-t;jdump(D/'records_PRIVATE'/(sid+'.json'),rec);total+=1
+                                                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "WORKSPACE_ROOT/research/round121/core121.py", line 44, in analyze121
+    nh,nu=native['h'].detach(),native['u'].detach();raw=m.match(nh[None])[0].detach();mask=native['mask'].bool();np0=native_scores(F.normalize(raw,dim=-1),nu,mask).double().softmax(0);src=torch.as_tensor(z0['scores'],device='cuda').double();src=src/src.sum();err=float(abs(np0-src).max());assert err<5e-6,err
+                                                                                                                                                                                                                                                                                                        ^^^^^^^^
+AssertionError: 0.364832215135783

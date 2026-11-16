@@ -1,0 +1,8 @@
+{
+  "utc": "2026-11-16T21:04:08.313551+00:00",
+  "reason": "Engineering assertion incorrectly compared perquery original token probability sigmoid(logodds) to acrossquery softmax(logodds). Captured h/U and actual replay h/U were bitexact and matchingheads exact on both checkedsourceinputs. This is an assertion/readout-domain mistake, not model mismatch.",
+  "change": "Check original captured raw probability against sigmoid(logodds), and assert native h/U bitexact tooriginalprefix. Arms/proposals/taskobjective/GNscopeunchanged. Originalsource normalized sigmoid scores retained; logoddssoftmax is monotonic forselection.",
+  "formal_predictions_or_scores_run": false,
+  "failed_attempts_preserved": true,
+  "new_code_sha256": "87ee23538002928dffc35c0b973403ec6f0982befe7ac65986ec34571dfca3a0"
+}
