@@ -1,0 +1,53 @@
+{
+  "registered_utc": "2026-11-16T09:15:05.146668+00:00",
+  "primary": "late_FC",
+  "cohort": "fixed exposedR99_DEV768",
+  "one_changed_factor_relative_R100": "update existing source-trained late RGB64->64 projection instead of query288->64 projection",
+  "source_preparation": "R91 existing per-source modules unchanged",
+  "G": "original R98 centered mean factual-minus-two-wrong-bindings, not R102 consensus; exactR100teacher",
+  "updated_parameters": 4160,
+  "frozen": [
+    "RGBencoder",
+    "RGBandpointadapters",
+    "bidirattention",
+    "allgates",
+    "PointNet",
+    "RoBERTa",
+    "decoder",
+    "querymatchingMLP",
+    "competitionresidual"
+  ],
+  "fit_views": 3,
+  "max_iterations": 10,
+  "damping_trials": 6,
+  "solver": "same centered-score L2 LM, same damping/gainratio/stop rules",
+  "C_read_only_after_fits": true,
+  "controls": [
+    "prepared_frozen",
+    "direct_FC",
+    "direct_four",
+    "joint3_FC",
+    "late_shuffle_FC"
+  ],
+  "primary_gates": [
+    "prepared_frozen",
+    "direct_FC",
+    "direct_four",
+    "late_shuffle_FC"
+  ],
+  "mechanism_invariants": [
+    "zero update matches native source exactly",
+    "unmapped candidates raw logits invariant per view",
+    "actual updated late layer native replay equals cached replay"
+  ],
+  "native_RGB_input": "recompute frozen bidirectional RGB query features by exact original point/pixel indices; no inversion of weights",
+  "scope_source_gates_nonzero_verified": true,
+  "no_target_GT_for_update_acceptance_or_stopping": true,
+  "no_experts": true,
+  "no_source_training": true,
+  "FINAL_access": false,
+  "historically_exposed_development_only": true,
+  "parameter_count_difference_reported": true,
+  "no_parameter_or_scope_grid": true,
+  "deadline_utc": "2026-11-17T01:00:00+00:00"
+}

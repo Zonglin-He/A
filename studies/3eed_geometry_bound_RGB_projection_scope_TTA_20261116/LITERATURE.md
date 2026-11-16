@@ -1,0 +1,9 @@
+# Scope evidence and limits
+
+The actual R76/R91 graph contains a source-trained RGB-query `late` projection64→64 gated by per-query calibrated pixel availability. Updating it can change visual contributions while leaving raw per-view logits of unmapped queries invariant. This is an implementation fact, verified on native source and patched replays; not a paper claim.
+
+[READ official implementation](https://raw.githubusercontent.com/XLearning-SCU/2024-ICLR-READ/main/TTA/READ.py), `collect_params` and `configure_model`, selects fusion-attention Q/K/V while freezing other parameters. It motivates examining the adaptation interface rather than always adapting the final classifier. READ uses audiovisual classification and a different reliability/balance objective. R104 does not reproduce READ, import its fixed-class balancing, use its exp(-1) confidence threshold, or claim its evidence transfers to grounding.
+
+[xMUDA primary abstract](https://arxiv.org/abs/1911.12676) separates cross-modal mutual mimicking from segmentation supervision to prevent a stronger modality adopting weaker predictions. It supports distinguishing modalities and tasks. It is source-supervised UDA, not this fixed-checkpoint TTA, and does not establish that RGB projection editing is correct here. The CVF HTML fetch failed403; only the author abstract was reread for this comparison.
+
+Our experiment keeps the R100 factual/wrong-binding teacher, three fit observations, L2-LM budget and FC endpoint. Only the updated linear interface changes from query288→64 (18,496parameters) to existing lateRGB64→64 (4,160parameters). The parameter-count difference is inherent in the interfaces and must be reported; performance alone cannot prove that count is irrelevant. No source retraining, new network, external expert or GT-based acceptance is added. Same-information direct readout and shuffled teacher are required controls.
