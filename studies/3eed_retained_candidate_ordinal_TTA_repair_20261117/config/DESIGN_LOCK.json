@@ -1,0 +1,27 @@
+{
+  "question": "Can frozen AB-supported ordinal inversions within retained C provide useful final-reader supervision beyond existing LOG partial labels?",
+  "primary": "partial_pair_F",
+  "controls": [
+    "zero_F",
+    "partial_direct_F",
+    "partial3_F",
+    "pair_direct_F",
+    "partial3_pair_direct_F",
+    "wrongpair_direct_F",
+    "pair_only_F",
+    "partial_wrongpair_F"
+  ],
+  "fixed": "R132 three source/prepared models, original A256 and original B, full FAB readout, kappa2.742430260548657, S/C, point Up4896, source-derived per-step rho,3steps,feature keep1,Armijo9,episodic reset",
+  "new_evidence": "For retained geometric groups i,j, both frozen full A/B group-max log scores prefer i over j while initial full FAB group-max score prefers j. Freeze pair (i,j) and margin=min(gapA,gapB,kappa). No positive unique label, no all-other negatives, no new observation or manual attribute rule.",
+  "scope_note": "Original partial loss retains log-mean group aggregation unchanged. New ordinal term uses group maximum, exactly the best-query decision relevant to a final A256 selection. Geometric duplicate groups do not certify object identity.",
+  "loss": "partial task + mean positive-part ordinal margin violation + feature keep; each weight1 fixed before target scoring. pair_only omits partial. No full-distribution teacher KL or unknown-output guard.",
+  "wrong_control": "Keep S,C, group multiplicities, pair graph and margin multiset. Permute pair endpoints only within retained equal-multiplicity group bins. Report identity permutations, initial loss and accepted budgets; wrong loss/semantic mass are not claimed equal.",
+  "direct_controls": "Minimum squared group-log-score displacement under exact same pair margin constraints, common shift of queries in each participating group, others unchanged before final normalization. Applied to no-update partial direct readout and to existing partial3 readout; the latter is the strong same-three-step-budget hybrid. Wrong graph also projected. These controls can fully enforce pair constraints and are stronger than a soft three-step fit.",
+  "reuse": "All1798 included; partial3/zero/partial_direct reused bit-exact. Only381 pair-active inputs get3new3step fits; absent pairs combined/wrong reuse partial3, pair-only reuses zero.114 pair-active inputs previously had C=S, now receive ordinal evidence.7,157 frozen pairs. No larger cumulative step budget than each standalone three-step baseline.",
+  "comparison_decision": "Report all six directions and raw/design-weighted macro. New working recipe only supported if primary improves over zero, original partial3, zero-update pair-direct, same-budget partial3+direct projection and wrong-pair update in both aggregations. Individual direction regressions remain; no per-direction selection, no claim of independent validation/significance. Failure retains R1323 and rejects this specific ordinal recipe without a hidden follow-on sweep.",
+  "postseal_diagnosis": "All old49good27bad plus all new tails; characterize teacher pair coverage on recoverable zero errors, pair correctness by within-pair IoU only as a box-quality proxy, final leader changes and auxiliary fit; IoU/group membership is not true identity. Target GT never constructs pairs or selects radius/weights/outputs.",
+  "resource": "One exclusive GPU, one engineering11 then one381-input neural matrix with full1798 fallback readouts; <=10800 seconds each guarded job. CPU evidence/direct projection and all scoring guarded. No external model, source retraining, B3, new sampled view, FINAL or old paused-goal reopening.",
+  "target_GT_configuration_selection": false,
+  "FINAL_access": false,
+  "source_training": false
+}

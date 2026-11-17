@@ -1,0 +1,12 @@
+{
+  "status": "fixed_before_any_R134_task_scoring",
+  "basis": "GT-free preflight:381 inputs have inversions, only12 contain an inversion against the initial final top group. This is a mechanism-based eligibility ablation, not target-score tuning.",
+  "original_primary_unchanged": "partial_pair_F; its original comparisons are never rewritten",
+  "additional_development_candidate": "tasklinked_pair_F",
+  "rule": "If at least one frozen correct pair has its losing endpoint equal to the original full-FAB top group, use existing partial_pair_F output; otherwise retain original partial3_F. No new gradient, output search, extra source inference, unique pseudo-label or case-specific threshold.",
+  "matched_controls": "tasklinked_wrongpair_F uses wrong-pair fit on the same12 eligible inputs; tasklinked_direct_F uses zero-update pair projection at those inputs and old partial direct elsewhere; tasklinked_partial3_direct_F uses oldpartial3+pair projection at those12 and oldpartial3 elsewhere.",
+  "decision": "Original primary gate remains. Separately retain tasklinked candidate only if both raw/design-weighted aggregate exceed zero, oldpartial3, tasklinked zero-update direct, tasklinked same-three-step-budget direct and tasklinked wrong update. No best-direction or best-case selection and no target hyperparameter search. Any retained candidate remains exposed-development, not independent/robust adoption.",
+  "resource": "Only deterministic cached readout selection, all outputs sealed before task scores. Same three-step deployment fit choice from precomputed frozen teacher evidence; no requirement to execute baseline partial3 before this gate, since gate uses zero source A/B/FAB only.",
+  "GT_used": false,
+  "FINAL_access": false
+}
