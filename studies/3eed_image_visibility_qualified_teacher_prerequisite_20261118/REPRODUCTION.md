@@ -1,0 +1,2 @@
+# Reproduction
+Private pinned R149parent/R145nativeA-B predictions+visibility/R131prefixes/R135evidence required, excluded. metadata150 -> frozen150 -> audit_frozen150 -> score_frozen150 -> package150. Allnumericlocksretainactualpre-GTorder. No new model/gradient/sourceweights/ROI/FINAL. Sourcecalibration and TTA notrun because evidencegate failed. Archived09:00BeijingNov18cutoff forbidsnewexperimentswithoutfreshauthorization.
