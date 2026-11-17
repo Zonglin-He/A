@@ -1,0 +1,3 @@
+# Reproduction
+Private licensed inputs/source-prepared three checkpoints, immutableR135/R136 caches are required; thirdparty3EED is not re-vendored.
+Run guard138 --resource gpu -- python evidence138 --engineering; CPUaudit138 --engineering; evidence138 formal; original_control138 prescore; CPUaudit138; score138 cachedGT only afterallseals; package138. Fullsource/architecture/A256 unchanged. SourceGGweights remainfrozen, no train/TTA here. All1798rows incl1034noB fullA. New downstreamTTA must have a separately locked plan and passingdirectprerequisite. Deadline guardenforces Beijing2026-11-18 09:00 by clipped ownedprocessgroup timeout. Targetdata previouslyexposed. NoFINAL.

@@ -1,0 +1,31 @@
+{
+  "hypothesis": "The existing points_obj_cls head learns languageconditioned priority forseedpoints nearreferredGTcenters via focal loss; finalquery-textmatching maydiscard complementary target-localization evidence. Thisisnotgenericobjectness/finalboxquality/maskGT. Queryanchorsmaymoveoffbox.",
+  "history_checked": "R56 testedquerycontrastive stages/rolephrase; R108-110 testedindependentsofttokenCEheadandBNtransport. Neither constitutes thisseedpoints_obj_cls branch. No thosefailedrecipes rerun. R137 boxRGBpoolfailedandclosed.",
+  "interface": "sameoriginaltrained3EED/R91 architecture/source3/fullcompetition/A256; no newnetwork/train/BNcalibration or extraRGBencoder. Existing points_obj_cls Conv-BN eval frozen. PointUp4896 remains only permitted futureTTA scope, no actualTTA inthisprerequisite.",
+  "data": "same1798 exposed sixdirection inputs; noB1034 completeFrozenA. QueryIDs alwaysoriginalA256, notnewtopk.",
+  "evidence": "recomputelanguagefusedseedbank fromoriginalA orregisteredFsourcepreparedP; frozenpointtargethead rawlogit atoriginalqueryanchor; originalrawP seedheadtop256 check sourcequeryselector bridge. Reusingtrainedfocalheaddoesnot certifytargetidentity.",
+  "primary": "F_seed_product = softmax(logcompleteFrozenF + seed_anchor_rawlogit); fixedcoefficient1, natural logodds addition notcalibrationclaim. No strength/threshold/temperaturegrid.",
+  "controls": [
+    "Frozen_A",
+    "Frozen_F",
+    "AB_mean",
+    "R135_A",
+    "R135_F",
+    "A_seed_product",
+    "A_seed_only",
+    "F_seed_only",
+    "A_wrong_seed_product",
+    "F_wrong_seed_product"
+  ],
+  "wrong": "deterministicderangement ofall256anchor logits, preservesrawlogitmultiset andcoverage/nominalcomputation, sameFrozenF/A. Sourcequeryanchor identitynotassumedacrossinputs.",
+  "decision": "IfprimarydoesnotexceedFrozenF/A andmatchedwrong inrawanddesignweighted, stopthissimpletargetnesscombination,noTTA. Secondaryarmsremainreported,notretrospectivemainchoice. Ifpositive, separatelylockqualifiedcandidatepairorsoftTTAusingindependentseedcue, completeAoutputandUp4896, sameinformationfullseedproductanddirectcontrols, noGTteacher.",
+  "GT": "onlypostseal cachedcandidateIoUscore. No targetlabels inseedgeneration/qualification/permutation/teacher or adaptation; FINALnotread. No sourceGTtraining.",
+  "primary_sources": [
+    "crossplatform/round3/p0/upstream/models/bdetr.py:_generate_queries",
+    "crossplatform/round3/p0/upstream/models/modules.py:PointsObjClsModule",
+    "crossplatform/round3/p0/upstream/models/losses.py:compute_points_obj_cls_loss_hard_topk",
+    "crossplatform/round3/p0/upstream/src/joint_det_dataset.py:_get_3eed_target_boxes"
+  ],
+  "deadline_utc": "2026-11-18T01:00:00+00:00",
+  "cost": "oneexclusiveGPU/nativeCPUaudit, deadlineclippedguard, sourcegeometry/mediaalreadycached"
+}
