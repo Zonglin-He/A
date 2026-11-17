@@ -1,0 +1,52 @@
+{
+  "round": "R151",
+  "primary": "high_local",
+  "controls": [
+    "low_local_same_graph",
+    "wrong_local_same_pixels",
+    "duplicate_local_same_bankcount",
+    "originalR145jointzero",
+    "R145TTA",
+    "allR150andR149historicalarms"
+  ],
+  "algorithm": "original A+B scenes plus <=3 native CNN crop banks; no new weights or model architecture",
+  "crop_selection": "original S groups descending max query score under fixed(.5pA+.5pB), geometry-support Jaccard<=.5 relative selected, require >=4unique visible points in at leastone view, choose view with larger visible count/tieA; no GT/category",
+  "crop_rect": {
+    "margin": 1.5,
+    "aspect_ratio": 1.5,
+    "minimum_raw_width": 48,
+    "minimum_raw_height": 32,
+    "within_image_shift": true
+  },
+  "images": "high from original licensedRGB; low from original384x256bilinear image with exactsame floating ROI/crop affine; both resize384x256; same per-bank CNN/GroupNorm",
+  "graphs": "same original1024physicalseeds, original camera visibility subset inside ROI, exactcrop affine then recompute local3x3 p2i anddepth-gated8point i2p; do notkeepoldindices",
+  "wrong": "permute logicalpointbindings among cropvisiblepoints, inverse remap i2p; preservepointdegrees/visibilitycount, images unchanged",
+  "duplicate": "repeat corresponding fullA/Bscene per selectedcrop, same CNN bankcount; visibilityextent differs deliberately, low isolates graph/context versus freshpixels",
+  "fixed": [
+    "original3sourceE100 plus existingR76/R91preparedstates",
+    "Fpoint1024",
+    "R145normalizedpositions",
+    "originalA256",
+    "originalS/roles/physicalgeometry",
+    "all1034noBcompleteFrozenA"
+  ],
+  "frozen_gate": "primary high_local beats original jointzero, wrong_local and duplicate_local in both raw/designweighted; low_local fullyreported, no percase/direction family choice",
+  "source_phase_if_gate": "per-own-source matching actualAimage/newfullscene+cropteacher loggap q90, no source weight training",
+  "TTA_phase_if_gate": "same R145 ABstudent/Up4896/3steps/rho0/partial+conditionalteacherKL+keep1; comparematchedsameinformationhigh/low/dups/wrong/frozen/means/direct/R145",
+  "resource": {
+    "payload_cap_GiB": 0.4,
+    "free_floor_GiB": 12,
+    "safety_GiB": 1,
+    "streamed_native_CPU_audit_chunk": 8,
+    "store_only_new_prediction_arms": true,
+    "new_temporary_features_and_graphs": "seal+independentCPUauditbeforedeletingONLYnewTEMP; predictions/geometryrecipes/hashreceiptsretained"
+  },
+  "models_run": false,
+  "new_source_weight_training": false,
+  "new_experts": false,
+  "new_A256": false,
+  "FINAL_access": false,
+  "exposed_development_not_independent": true,
+  "deadline_utc": "2026-11-18T01:00:00+00:00",
+  "locked_utc": "2026-11-17T22:18:16.066362+00:00"
+}

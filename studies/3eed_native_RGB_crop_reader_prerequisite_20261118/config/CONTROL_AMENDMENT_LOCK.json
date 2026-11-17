@@ -1,0 +1,10 @@
+{
+  "stage": "BEFORE_FIRST_MODEL_OR_TASK_SCORE",
+  "reason": "Within-crop point permutation may preserve the same object/region evidence, so it is a fine-correspondence diagnostic, not a decisive region-identity misbinding. Add cyclic crop-image-to-region swap with identical crop image multiset and identical graphs; retain original fine point-permutation arm.",
+  "new_arm": "region_swap_local",
+  "new_mean": "region_swap_parent_mean",
+  "frozen_gate": "high_local > original jointzero, duplicate_local, region_swap_local in both raw/designweighted; original wrong_local/low_local remain fullyreported diagnostics, no percase/direction choices",
+  "all_original_recipe_and_cropparameters_unchanged": true,
+  "no_model_or_task_score_yet": true,
+  "utc": "2026-11-17T22:26:07.956356+00:00"
+}
