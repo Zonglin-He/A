@@ -1,0 +1,22 @@
+{
+  "author_pretrained": "cloudfixer ModelNet40 diffusion, additional model/data reported separately",
+  "weights_audit": {
+    "weights_only_safe_load": true,
+    "file": "crossplatform/round128/checkpoints/cloudfixer_modelnet40.pt",
+    "sha256": "b64841d022e08b1a89f58dd9b16d9023e00be52fbca3dca735d5798362bb5a5a",
+    "bytes": 159801477,
+    "state_keys": 158,
+    "tensor_elements": 39934457
+  },
+  "hyperparameters": "author run_cloudfixer.sh: 30steps, Adamax delta.2 rotation.02 warmup.2 endfactor.05, t_min.02 t_len.1, k5 inverse-density, reg10->1",
+  "task_adaptation": "scene1024 normalized sparse cloud, nearest-point lift to original16384, undo optimized rigid frame before grounding, freeze256 originalboxes/anchors",
+  "controls": [
+    "source",
+    "shuffled deformation, same learned displacement set"
+  ],
+  "no_target_GT": true,
+  "scope": "allDEV768 same protected alias fallbacks",
+  "files": {
+    "research/round128/run128_cloudfixer.py": "5f1895be8870d8dfe682ba8f02beae3dd5743bfdede13c085a7eb84d42bb9845"
+  }
+}

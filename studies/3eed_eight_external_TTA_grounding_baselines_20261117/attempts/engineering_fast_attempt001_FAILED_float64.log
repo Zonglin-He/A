@@ -1,0 +1,44 @@
+Some weights of RobertaModel were not initialized from the model checkpoint at ./data/roberta_base/ and are newly initialized: ['pooler.dense.bias', 'pooler.dense.weight']
+You should probably TRAIN this model on a down-stream task to be able to use it for predictions and inference.
+WORKSPACE_ROOT/crossplatform/round3/p0/upstream/ops/teed_pointnet/pointnet2_batch/pointnet2_utils.py:33: UserWarning: The torch.cuda.*DtypeTensor constructors are no longer recommended. It's best to use methods such as torch.tensor(data, dtype=*, device='cuda') to create tensors. (Triggered internally at /pytorch/torch/csrc/tensor/python_tensor.cpp:78.)
+  output = torch.cuda.IntTensor(B, npoint)
+Traceback (most recent call last):
+  File "WORKSPACE_ROOT/research/round128/run128_fast.py", line 25, in <module>
+    if __name__=='__main__':B.mkdir(exist_ok=True);main()
+                                                   ^^^^^^
+  File "WORKSPACE_ROOT/research/round128/run128_fast.py", line 7, in main
+    base=base97(src);S=snapshot(base);fish,recs=fisher(base,src,S);fd=B/'fisher_PRIVATE';fd.mkdir(exist_ok=True);torch.save({k:v.cpu() for k,v in fish.items()},fd/(src+'.pt'));jdump(H/(src+'_FISHER.json'),{'source_only_unlabeled_inputs':len(recs),'target_GT_used':False,'source_checkpoint_sha256':source97(src)['checkpoint_sha256'],'records':recs})
+                                                ^^^^^^^^^^^^^^^^^^
+  File "WORKSPACE_ROOT/research/round128/core128.py", line 83, in fisher
+    z=load(R/e['files']['prefix']['path']);pc=points(e['row'],z);base.zero_grad(set_to_none=True);s,_=native(base,pc,e['row'],z);loss=F.cross_entropy(s[None],s.detach().argmax()[None]);loss.backward()
+                                                                                                      ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "WORKSPACE_ROOT/research/round128/core128.py", line 31, in native
+    out=base._run_backbones({'point_clouds':pc,'text':[row['caption']+SENTINEL]})
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "WORKSPACE_ROOT/crossplatform/round3/p0/upstream/models/bdetr.py", line 130, in _run_backbones
+    end_points = self.backbone_net(inputs["point_clouds"])
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "LOCAL_HOME/visual grounding/.conda/tubedetr/lib/python3.11/site-packages/torch/nn/modules/module.py", line 1751, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "LOCAL_HOME/visual grounding/.conda/tubedetr/lib/python3.11/site-packages/torch/nn/modules/module.py", line 1762, in _call_impl
+    return forward_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "WORKSPACE_ROOT/crossplatform/round3/p0/upstream/models/point_backbone_module_v2.py", line 120, in forward
+    li_xyz, li_features, li_cls_pred, sampled_idx_list = self.SA_modules[i](xyz_input, feature_input, li_cls_pred, ctr_xyz=ctr_xyz)
+                                                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "LOCAL_HOME/visual grounding/.conda/tubedetr/lib/python3.11/site-packages/torch/nn/modules/module.py", line 1751, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "LOCAL_HOME/visual grounding/.conda/tubedetr/lib/python3.11/site-packages/torch/nn/modules/module.py", line 1762, in _call_impl
+    return forward_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "WORKSPACE_ROOT/crossplatform/round3/p0/upstream/ops/teed_pointnet/pointnet2_batch/pointnet2_modules.py", line 264, in forward
+    sample_idx = pointnet2_utils.furthest_point_sample(xyz_tmp.contiguous(), npoint)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "LOCAL_HOME/visual grounding/.conda/tubedetr/lib/python3.11/site-packages/torch/autograd/function.py", line 575, in apply
+    return super().apply(*args, **kwargs)  # type: ignore[misc]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "WORKSPACE_ROOT/crossplatform/round3/p0/upstream/ops/teed_pointnet/pointnet2_batch/pointnet2_utils.py", line 36, in forward
+    pointnet2.farthest_point_sampling_wrapper(B, N, npoint, xyz, temp, output)
+RuntimeError: expected scalar type Float but found Double

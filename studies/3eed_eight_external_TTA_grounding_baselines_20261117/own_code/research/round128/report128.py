@@ -1,0 +1,27 @@
+from pathlib import Path
+import json,numpy as np
+R=Path(__file__).resolve().parents[2];H=R/'research/round128';O=H/'scores_attempt001';rd=lambda p:json.loads(Path(p).read_text())
+def main():
+ assert rd(H/'SCALAR_AUDIT.json')['n']==768;plan=rd(H/'experiment/COMPARISON_LOCK.json');A=rd(O/'AGGREGATE_ROWS.json');methods=rd(O/'ALL_METHOD_ROWS.json');pairs=rd(O/'ALL_PAIRED_ROWS.json');get=lambda k,g='all_six_equal':next(r for r in A if r['arm']==k and r['group']==g);lines=['# R128：八类外部TTA方法的六方向grounding适配试跑','', '**八类方法均完成真实数据运行；这是固定A256的任务适配开发实验，不是原论文任务的完整复现，也不是可直接用于宣称优于原方法的SOTA表。** 所有预测先封存，独立CPU几何与标量复算后报告；所有负例和修复前attempt保留。','', '三份source-only epoch100分别迁移到其余两个平台。每方向128，共768条方向—输入记录；同一目标输入被两个source分别测试，因此不是768个独立物理观测。44条受保护别名只复用历史source预测与分数，不读新媒体/特征、不索引其GT。FINAL、三份原始source权重及主方法均未改动。DEV多轮曝光，不是独立确认集。','', '## 总体结果（六方向等权，%）','', '| 方法 | mIoU | Acc@25 | Acc@50 | 自身冻结/统计零步 | 相对该零步 pp |','|---|---:|---:|---:|---:|---:|']
+ controls={'Tent':'BN_statistics_only','MEMO':'memo_BNprior_zero','EATA':'eata_zero','MATE':'MATE_prepared_zero','MM-TTA':'MMTTA_independent_frozen_ensemble','BFTT3D':'pair_prepared_zero','CloudFixer':'source','Uni-Adapter':'pair_prepared_zero'}
+ for name,k in plan['primary_readouts'].items():
+  a=get(k);c=get(controls[name]);lines.append(f"| {name} adapted | {a['mIoU_percent']:.6f} | {a['Acc25_percent']:.4f} | {a['Acc50_percent']:.4f} | {c['mIoU_percent']:.6f} | {a['mIoU_percent']-c['mIoU_percent']:+.6f} |")
+ lines+=['', f"原始source：**{get('source')['mIoU_percent']:.6f}%**；同观测四视图冻结平均：{get('frozen_four_view_mean')['mIoU_percent']:.6f}%；原有R127冻结AB完整读出参照：{get('R127_frozen_AB_full_reference')['mIoU_percent']:.6f}%。这些系统信息/模块和准备成本不同，不能只靠跨行绝对值判断更新算法优劣。",'', 'MM-TTA主读出遵循原机制使用慢模型更新前预测；学生更新后另报。MATE固定3步主结果、1步辅助结果；原论文更长episodic预算未穷尽。没有按本轮目标成绩选择步数或新配置。','', '## 六个方向与各目标平台','', '| 方法 | W→D | W→Q | D→W | D→Q | Q→W | Q→D |','|---|---:|---:|---:|---:|---:|---:|']
+ directions=[('waymo','drone'),('waymo','quad'),('drone','waymo'),('drone','quad'),('quad','waymo'),('quad','drone')]
+ for name,k in {'Source':'source',**plan['primary_readouts']}.items():
+  values=[next(r['mIoU_percent'] for r in methods if r['source']==s and r['target']==t and r['arm']==k) for s,t in directions];lines.append('| '+name+' | '+' | '.join(f'{v:.4f}' for v in values)+' |')
+ lines+=['','各目标平台取两个入向source的均值；完整mIoU/Acc25/Acc50和匿名场景结果见results CSV。场景有限且部分重复，不给虚假的跨场景总体CI。','','| 方法 | target Waymo | target Drone | target Quad |','|---|---:|---:|---:|']
+ for name,k in {'Source':'source',**plan['primary_readouts']}.items():lines.append('| '+name+' | '+' | '.join(f"{get(k,g)['mIoU_percent']:.4f}" for g in ['waymo','drone','quad'])+' |')
+ lines+=['','## 同信息对照与结论边界','','| 更新/适应 | 同信息或机制对照 | 净变化 pp | 改善/恶化/相同 |','|---|---|---:|---|']
+ summaries=[]
+ for name,k in plan['primary_readouts'].items():
+  for c in plan['matched_controls'][name]:
+   gain=get(k)['mIoU_percent']-get(c)['mIoU_percent'];p=[r for r in pairs if r['method']==k and r['control']==c]
+   # Any predeclared comparison not in scorer pairs is still computed from rows.
+   if not p:
+    rows=sum([rd(f) for f in O.glob('*_ALL_ROWS_PRIVATE.json')],[]);d=[r['IoUs'][k]-r['IoUs'][c] for r in rows];b=sum(x>1e-12 for x in d);w=sum(x< -1e-12 for x in d);same=len(d)-b-w
+   else:b=sum(r['better'] for r in p);w=sum(r['worse'] for r in p);same=sum(r['same'] for r in p)
+   lines.append(f'| {name} | {c} | {gain:+.6f} | {b}/{w}/{same} |');summaries.append({'method':name,'arm':k,'control':c,'gain_pp':gain,'better':b,'worse':w,'same':same})
+ lines+=['','- Tent/EATA的绝大部分下降已由BN目标统计引入；不能全部归为熵梯度失败。EATA过滤拒绝合法保留，实际Fisher/多步覆盖单列。','- MEMO相对自己的BN先验零步只有微小变化；对比增强平均的差异不能全部解释为权重更新收益，因为原始A零步本身已更强。','- MATE相对source的优势主要来自额外源域准备。只有MATE prepared zero→TTA3的差值属于本轮适应增量，当前很小。','- MM-TTA已修复诊断前向推进BN统计的问题，并用pre-cross-encoder语言保证RGB语义分支不读取LiDAR条件化文本；旧stats3/旧融合文本attempt全保留。RGB分支源验证仍明显弱于点文模型：这是当前端口的准备/任务限制，不能据此否定原分割方法。','- Uni-Adapter必须同时看清空历史和打乱键值对照；小幅绝对变化不足以证明正确检索起作用。','- CloudFixer使用作者的对象数据扩散先验作用于整场景。该端口退化严重，说明当前scene适配不适合采用；不是对其原始物体分类设置的否定。','','## 适配与资源','','原论文和实现入口、准确移植差异见[METHOD_CARDS.md](METHOD_CARDS.md)与[OFFICIAL_REPOSITORIES.json](OFFICIAL_REPOSITORIES.json)。Tent/MEMO/EATA重算完整原始点云和文字，MATE/MM-TTA/BFTT3D/Uni-Adapter使用已存在的原生表征缓存；后者增量耗时不含历史骨干提取与区域预处理，不能据此宣称更快部署。','', '源域准备每source训练192、验证64；每个准备阶段6个固定epoch，source-only选择。主MATE为Chamfer masked patch autoencoder；主MM-TTA为独立RGB/点文任务头、norm-only快慢状态。历史L2与混合文本RGB准备的成本和负记录保留。BFTT3D还使用源标注原型；Uni-Adapter使用source-prepared固定二角色空间，而非原ULIP/OpenShape/Uni3D分类接口。额外源监督/模型不与主方法混淆。','', 'CloudFixer额外加载作者39,934,457个张量元素、159,801,477字节的ModelNet40扩散权重；30步输入优化，另30次相同噪声冻结去噪强对照；不反传扩散网络、不更新原3EED。Point-NN非参数流、缓存/图解适应均不伪装成梯度更新。','', '## 测量、负例与采纳决定','','原始source全768条Top1与既有结果一致；native概率重放最大误差1.634e-6。独立OBB与批量IoU最大误差6.7e-16；标量与配对结果另由独立脚本重算。逐例全表、全部改善和损害、source准备历史、更新覆盖、资源与所有对照一并保存。','', '**本轮交付是可运行、可追溯的八类grounding适配基线。它没有建立任何方法在六方向上稳定带来TTA增量的结论，不自动替换主方法。** 尤其需要额外结构准备的几类仍是有限预算任务移植；用于论文正式外部对比前，应继续验证源准备充分性、原机制保真度及更大未选参范围，不能把本轮弱端口写成原论文已被充分击败。']
+ (H/'REPORT.md').write_text('\n'.join(lines)+'\n');(H/'MAIN_COMPARISONS.json').write_text(json.dumps(summaries,indent=2)+'\n');(H/'DECISION.json').write_text(json.dumps({'status':'completed_development_adapted_suite','original_paper_full_reproduction':False,'new_main_method_adopted':False,'target_hyperparameters_selected':False,'FINAL_access':False,'six_direction_records':768,'actual_neural_records':724,'all_negatives_retained':True,'formal_full_cohort_external_benchmark_ready':False},indent=2)+'\n');print('REPORT128_READY',len(lines))
+if __name__=='__main__':main()

@@ -1,0 +1,34 @@
+{
+  "scope": "Eight published baselines adapted explicitly to grounding; six transfers, DEV768 first, original A256 endpoints, all protected aliases fallback without media or GT access. Additional source training and pretrained models baseline-only.",
+  "sources": [
+    "waymo",
+    "drone",
+    "quad"
+  ],
+  "targets": "all unequal source-target pairs",
+  "protected_FINAL": "never access",
+  "target_GT": "post-seal scoring only",
+  "fast": {
+    "Tent": "BN1d/2d target statistics + affine entropy, SGD1e-3 momentum.9, one episodic step, original pre/post both retained",
+    "MEMO": "All existing native backbone/text/matching parameters, 3 mild raw-point noise augmentations, physical-anchor assignment, average marginal entropy, official transformer AdamW1e-5 wd.01, BN prior16. No real adjacent-frame A/B/C substitution.",
+    "EATA": "Episodic3 view proposals, entropy<.4ln256, redundancy cosine<.05 on this input anchored candidate inventory only, source-unlabeled16 Fisher/alpha2000. No candidate-class history across different descriptions. Anti-forgetting inactive when only first update accepted: explicitly report.",
+    "zero_controls": [
+      "original_source",
+      "pure_three_augment_mean",
+      "BN_statistics_only",
+      "MEMO_BNprior_zero",
+      "MEMO_BNprior_three_mean"
+    ],
+    "token_readout": "existing native subject mask and token log-odds, candidate softmax; do not retune masks",
+    "positions": "original six decoder positions and256 physical source query anchors fixed; full backbone and text recomputed",
+    "scoring": "all DEV768 equally per direction; all scene/task rows and negatives retained; compare raw and same-information no-update controls"
+  },
+  "hard_methods": "Each must satisfy its source preparation and architectural prerequisites; do not fill unavailable methods with generic renamed update. Separate per-method design lock before its training/inference.",
+  "no_automatic_adoption": true,
+  "official_repositories_sha256": "288d06c7e520ac00bd74e6eebbee7a9214ba94ccb1d3addf6b97f01565ffcf48",
+  "files": {
+    "research/round128/core128.py": "e13aaf9b3914ff64f73c565691f69293726899378046edc635b752eeb07ee2ca",
+    "research/round128/run128_fast.py": "8f946016ab2aa3a322f65bf1dfae65ed6066cd9f0e45bf40efc2565fc989ea8b",
+    "tools/experiment_guard_round128.py": "c5c714d9f76b7a780590138a16f930fb68a5fb46c007f5644672c15987eebad4"
+  }
+}

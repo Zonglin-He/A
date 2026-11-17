@@ -1,0 +1,110 @@
+{
+  "native": {
+    "tent": {
+      "actual_updates": 724,
+      "inputs_updated": 724,
+      "multi_step_inputs": 0,
+      "nonzero_Fisher_penalty_inputs": 0,
+      "selected_parameters": 42816,
+      "max_gradient_parameters": 17472,
+      "mean_seconds": 0.2875123025161823,
+      "max_GPU_GiB": 1.9313545227050781
+    },
+    "memo": {
+      "actual_updates": 724,
+      "inputs_updated": 724,
+      "multi_step_inputs": 0,
+      "nonzero_Fisher_penalty_inputs": 0,
+      "selected_parameters": 144527419,
+      "max_gradient_parameters": 139731056,
+      "mean_seconds": 0.6642705382257381,
+      "max_GPU_GiB": 4.697680950164795
+    },
+    "eata": {
+      "actual_updates": 508,
+      "inputs_updated": 447,
+      "multi_step_inputs": 55,
+      "nonzero_Fisher_penalty_inputs": 441,
+      "selected_parameters": 42816,
+      "max_gradient_parameters": 42816,
+      "mean_seconds": 0.38406667297116537,
+      "max_GPU_GiB": 2.669428825378418
+    }
+  },
+  "MATE": {
+    "actual_neural_inputs": 724,
+    "actual_target_steps": 2172,
+    "selected_parameters": 203386,
+    "max_gradient_parameters": 182520,
+    "mean_incremental_GPU_seconds": 0.028632172434983096
+  },
+  "MMTTA": {
+    "actual_neural_inputs": 724,
+    "actual_nonzero_parameter_steps": 724,
+    "mean_CPU_seconds": 0.06573542027795483,
+    "norm_parameters": 608,
+    "fast_stat_updates_per_input": 1,
+    "diagnostic_BN_state_restored": true
+  },
+  "CloudFixer": {
+    "actual_inputs": 724,
+    "actual_input_optimization_steps": 21720,
+    "diffusion_forwards_with_matched_control": 43440,
+    "mean_GPU_seconds": 0.5855135168149092,
+    "max_GPU_GiB": 0.839745044708252,
+    "mean_deformation_m": 1.776900512078849
+  },
+  "source_preparation": {
+    "waymo": {
+      "train": 192,
+      "val": 64,
+      "epochs_each": 6,
+      "initial_three_head_steps": 3456,
+      "MATE_Chamfer_steps": 1152,
+      "independent_RGB_steps": 1152,
+      "initial_CPU_seconds": 95.27464347300702,
+      "MATE_Chamfer_CPU_seconds": 39.8786484169832,
+      "independent_RGB_CPU_seconds": 21.5831913370057,
+      "prepared_parameters": {
+        "pair": 8834,
+        "rgb": 18114,
+        "mate": 203386
+      },
+      "independent_RGB_source_val_mIoU_percent": 17.70816911155468
+    },
+    "drone": {
+      "train": 192,
+      "val": 64,
+      "epochs_each": 6,
+      "initial_three_head_steps": 3456,
+      "MATE_Chamfer_steps": 1152,
+      "independent_RGB_steps": 1152,
+      "initial_CPU_seconds": 78.01332369100419,
+      "MATE_Chamfer_CPU_seconds": 41.04301252498408,
+      "independent_RGB_CPU_seconds": 22.616487674997188,
+      "prepared_parameters": {
+        "pair": 8834,
+        "rgb": 18114,
+        "mate": 203386
+      },
+      "independent_RGB_source_val_mIoU_percent": 3.696598044330214
+    },
+    "quad": {
+      "train": 192,
+      "val": 64,
+      "epochs_each": 6,
+      "initial_three_head_steps": 3456,
+      "MATE_Chamfer_steps": 1152,
+      "independent_RGB_steps": 1152,
+      "initial_CPU_seconds": 56.15436651901109,
+      "MATE_Chamfer_CPU_seconds": 41.28048925899202,
+      "independent_RGB_CPU_seconds": 24.446355231979396,
+      "prepared_parameters": {
+        "pair": 8834,
+        "rgb": 18114,
+        "mate": 203386
+      },
+      "independent_RGB_source_val_mIoU_percent": 13.40094864990874
+    }
+  }
+}

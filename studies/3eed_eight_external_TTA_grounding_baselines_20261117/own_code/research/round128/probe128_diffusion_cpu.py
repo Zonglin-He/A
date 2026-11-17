@@ -1,0 +1,7 @@
+from pathlib import Path
+import sys,torch,numpy as np,json,types,hashlib
+R=Path(__file__).resolve().parents[2];H=R/'research/round128';B=R/'crossplatform/round128';sys.path.insert(0,str(B/'official/cloudfixer'));from diffusion.build_model import get_model
+torch.set_num_threads(4);cfg=types.SimpleNamespace(model='transformer',probabilistic_model='diffusion',diffusion_steps=500,diffusion_noise_schedule='polynomial_2',diffusion_noise_precision=1e-5,diffusion_loss_type='l2');m=get_model(cfg,torch.device('cpu'));m.load_state_dict(torch.load(B/'checkpoints/cloudfixer_modelnet40.pt',map_location='cpu',weights_only=True));m.eval().requires_grad_(False)
+registry=json.load(open(H/'REGION_REGISTRY_PRIVATE.json'));e=next(e for e in registry if e['role']=='source');a=np.load(R/e['path']);x=torch.from_numpy(a['crops'][0])[None];x=x-x.mean(1,keepdim=True);x=x/x.std().clamp_min(.01);t=torch.ones((1,1))*.05;node=torch.ones((*x.shape[:2],1));g=m.inflate_batch_array(m.gamma(t),x);alpha=m.alpha(g,x);sigma=m.sigma(g,x)
+with torch.no_grad():noise,est=m(x*alpha+torch.randn_like(x)*sigma,phi=True,return_x0_est=True,t=t,node_mask=node)
+assert est.shape==x.shape and torch.isfinite(est).all();(H/'CLOUDFIXER_CPU_FORWARD_AUDIT.json').write_text(json.dumps({'status':'PASS_AUTHOR_DIFFUSION_REAL_SOURCE_REGION_FORWARD','nodes':128,'shape':list(est.shape),'finite':True,'target_data_loaded':False,'weights_only':True},indent=2)+'\n');print('PASS',est.shape)

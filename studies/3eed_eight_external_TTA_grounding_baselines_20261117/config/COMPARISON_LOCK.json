@@ -1,0 +1,55 @@
+{
+  "locked_utc": "2026-11-17T04:23:05.429767+00:00",
+  "target_GT_scores_observed": false,
+  "primary_readouts": {
+    "Tent": "tent_post",
+    "MEMO": "memo_post",
+    "EATA": "eata_post",
+    "MATE": "MATE_step3",
+    "MM-TTA": "MMTTA_independent_teacher_pre",
+    "BFTT3D": "BFTT3D",
+    "CloudFixer": "CloudFixer",
+    "Uni-Adapter": "UniAdapter_online"
+  },
+  "update_readout_notes": "Tent/MEMO/EATA current-input post; MATE3steps primary/1secondary (original episodic20 not tested); MM-TTA original teacher-before-update primary, student/teacher after separate; fixed metadata order, no natural-time claim.",
+  "matched_controls": {
+    "Tent": [
+      "BN_statistics_only"
+    ],
+    "MEMO": [
+      "memo_BNprior_zero",
+      "memo_BNprior_four_view_mean"
+    ],
+    "EATA": [
+      "eata_zero",
+      "BN_four_view_mean"
+    ],
+    "MATE": [
+      "MATE_prepared_zero"
+    ],
+    "MM-TTA": [
+      "MMTTA_independent_frozen_ensemble",
+      "MMTTA_independent_BN_pre"
+    ],
+    "BFTT3D": [
+      "pair_prepared_zero",
+      "BFTT3D_no_TCA"
+    ],
+    "CloudFixer": [
+      "source",
+      "CloudFixer_frozen_direct_denoise"
+    ],
+    "Uni-Adapter": [
+      "pair_prepared_zero",
+      "UniAdapter_episodic",
+      "UniAdapter_shuffled"
+    ]
+  },
+  "repair_attempts_retained": [
+    "float64 Waymo raw import fixed before FAST formal",
+    "initial source MATE L2 replaced by source-Chamfer main before task inference",
+    "MM-TTA initial diagnostic-BN-history advancement repaired with one update and buffer restoration",
+    "MM-TTA projected fused text could contain point information, RGB branch retrained source-only with pre-cross-encoder text, corrected before target scoring"
+  ],
+  "primary_not_chosen_from_target_results": true
+}
