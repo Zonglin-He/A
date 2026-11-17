@@ -1,0 +1,90 @@
+{
+  "description_only_no_new_predictions_or_scores": true,
+  "vs_ownzero_better_worse": [
+    52,
+    47
+  ],
+  "vs_ownzero_net_pp": 0.07988990954349155,
+  "vs_ownzero_largest_positive_pp": 0.030260612572096602,
+  "vs_ownzero_positive_sum_pp": 0.3200965379138527,
+  "vs_ownzero_negative_sum_pp": -0.2402066283703611,
+  "positive_directions_vs_zero": 3,
+  "negative_directions_vs_zero": 3,
+  "directions": [
+    {
+      "source": "drone",
+      "target": "quad",
+      "aggregation": "design_weighted",
+      "method": "norm_TTA",
+      "control": "norm_joint_zero",
+      "gain_pp": -0.07725668991093534,
+      "better": 10,
+      "worse": 10,
+      "query_changed": 37
+    },
+    {
+      "source": "drone",
+      "target": "waymo",
+      "aggregation": "design_weighted",
+      "method": "norm_TTA",
+      "control": "norm_joint_zero",
+      "gain_pp": -0.014674456144572284,
+      "better": 0,
+      "worse": 2,
+      "query_changed": 4
+    },
+    {
+      "source": "quad",
+      "target": "drone",
+      "aggregation": "design_weighted",
+      "method": "norm_TTA",
+      "control": "norm_joint_zero",
+      "gain_pp": 0.06618108819292377,
+      "better": 10,
+      "worse": 10,
+      "query_changed": 37
+    },
+    {
+      "source": "quad",
+      "target": "waymo",
+      "aggregation": "design_weighted",
+      "method": "norm_TTA",
+      "control": "norm_joint_zero",
+      "gain_pp": -0.13418668347598864,
+      "better": 4,
+      "worse": 3,
+      "query_changed": 12
+    },
+    {
+      "source": "waymo",
+      "target": "drone",
+      "aggregation": "design_weighted",
+      "method": "norm_TTA",
+      "control": "norm_joint_zero",
+      "gain_pp": 0.3732118364830008,
+      "better": 15,
+      "worse": 10,
+      "query_changed": 33
+    },
+    {
+      "source": "waymo",
+      "target": "quad",
+      "aggregation": "design_weighted",
+      "method": "norm_TTA",
+      "control": "norm_joint_zero",
+      "gain_pp": 0.2660643621165219,
+      "better": 13,
+      "worse": 12,
+      "query_changed": 34
+    }
+  ],
+  "diagnostic_binary_oracle_choose_FrozenA_or_current_R145": {
+    "mIoU": 14.363056558508113,
+    "gain_over_FrozenA_pp": 0.9685930933539616,
+    "below_2pp_goal": true,
+    "uses_GT_diagnosis_not_deployable": true,
+    "only_bounds_accept_or_revert_between_these_two_fixed_endpoints": true,
+    "does_not_bound_new_views_new_update_endpoints_or_all_TTA": true
+  },
+  "FINAL_access": false
+}
