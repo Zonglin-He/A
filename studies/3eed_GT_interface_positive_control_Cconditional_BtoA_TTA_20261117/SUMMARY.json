@@ -1,0 +1,107 @@
+{
+  "oracle_positive_control": {
+    "interface_positive_control_passed": true,
+    "same_budget3step": true,
+    "diagnostic_not_TTA": true,
+    "gain_pp": {
+      "raw": 1.2519394353297617,
+      "design_weighted": 1.273760179553598
+    },
+    "eligible": 764,
+    "nontrivial_eligible": 708,
+    "best_GT_margin_improves": 666,
+    "better": 131,
+    "worse": 24,
+    "same": 1643,
+    "mean_initial_loss": 4.749680865089101,
+    "mean_final_loss": 4.151623025958823,
+    "target_GT_does_not_select_unlabeled_threshold_or_sample": true,
+    "unlabeled_method_design_already_locked": true,
+    "FINAL_access": false
+  },
+  "GT3_fraction_of_GT_direct_gain": 0.15041140544812323,
+  "method_decision": {
+    "primary": "C_B_A",
+    "GT_diagnostic_is_not_a_method": true,
+    "comparisons": {
+      "raw": {
+        "Frozen_A": 0.06983618009064152,
+        "Frozen_F": -0.13297695453418612,
+        "Frozen_B": -0.050057387343073856,
+        "AB_mean": -0.003916793824201292,
+        "direct_C_B_A": -0.010327248313892312,
+        "wrong_C_B_A": 0.23704756531079418
+      },
+      "design_weighted": {
+        "Frozen_A": 0.0653799145159244,
+        "Frozen_F": -0.12101786157728611,
+        "Frozen_B": -0.04005274388290303,
+        "AB_mean": 0.012650501079891185,
+        "direct_C_B_A": -0.017578282245070298,
+        "wrong_C_B_A": 0.24512334088557175
+      }
+    },
+    "source_training": false,
+    "FINAL_access": false,
+    "target_GT_hyperparameter_or_sample_selection": false,
+    "independent_validation": false,
+    "unlabeled_candidate_retained": false,
+    "current_working_version": "R135_intact_reader_baselines_retained_R136_recipe_not_adopted"
+  },
+  "method_process": [
+    {
+      "kind": "GT3_diagnostic",
+      "fitted": 764,
+      "nonzero": 761,
+      "accepted_steps": 2283,
+      "line_search_trials": 2285,
+      "mean_parameter_L2": 0.10477621700428809
+    },
+    {
+      "kind": "C_B_A",
+      "fitted": 764,
+      "nonzero": 764,
+      "accepted_steps": 2292,
+      "line_search_trials": 2535,
+      "mean_parameter_L2": 0.09305856699244597
+    },
+    {
+      "kind": "wrong_C_B_A",
+      "fitted": 764,
+      "nonzero": 764,
+      "accepted_steps": 2292,
+      "line_search_trials": 2300,
+      "mean_parameter_L2": 0.10372936564096115
+    }
+  ],
+  "supervision_flow": [
+    {
+      "subset": "all",
+      "n": 1798,
+      "nonzero_updates": 764,
+      "A_leader_explicitly_demoted_by_C_teacher": 414,
+      "good_margin_improves": 211,
+      "good_margin_worsens": 212,
+      "rescues_Acc25": 20
+    },
+    {
+      "subset": "recoverable",
+      "n": 423,
+      "nonzero_updates": 423,
+      "A_leader_explicitly_demoted_by_C_teacher": 234,
+      "good_margin_improves": 211,
+      "good_margin_worsens": 212,
+      "rescues_Acc25": 20
+    },
+    {
+      "subset": "recoverable_goodC",
+      "n": 297,
+      "nonzero_updates": 297,
+      "A_leader_explicitly_demoted_by_C_teacher": 176,
+      "good_margin_improves": 160,
+      "good_margin_worsens": 137,
+      "rescues_Acc25": 18
+    }
+  ],
+  "gradient_alignment_is_GT_best_set_surrogate_not_identity_GT": true
+}
