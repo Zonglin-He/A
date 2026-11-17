@@ -1,0 +1,2 @@
+# Reproduction
+RequireslicensedprivateR135/R142prefixes/sourceweights/physicalgraphs/sourceR140metadata; notredistributed. prepare144 ->run144 engineering ->audit144 engineering ->run144 formal ->audit144 ->score144 ->package144. No parametersupdated ornewtraining. OriginalA256/nobox/noBcompleteFrozenA retained. ExistingR142refs byte-reused, notrerun. Quantileformula isfixedsource-only; targetGTonlypostseal. CSVchunksunderstemfolders preserveallrows/order. NoFINAL. Archiveddeadlineguardneedsfreshauthorizationaftercutoff.

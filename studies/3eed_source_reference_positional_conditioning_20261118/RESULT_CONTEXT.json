@@ -1,0 +1,69 @@
+{
+  "description_only_no_new_prediction_score_or_selection": true,
+  "direction_gains_vs_sameinfo_zero": [
+    {
+      "source": "drone",
+      "target": "quad",
+      "aggregation": "design_weighted",
+      "control": "F_RGBB_only",
+      "gain_pp": -0.680956079941959,
+      "better": 15,
+      "worse": 25
+    },
+    {
+      "source": "drone",
+      "target": "waymo",
+      "aggregation": "design_weighted",
+      "control": "F_RGBB_only",
+      "gain_pp": 0.4261645758489855,
+      "better": 11,
+      "worse": 6
+    },
+    {
+      "source": "quad",
+      "target": "drone",
+      "aggregation": "design_weighted",
+      "control": "F_RGBB_only",
+      "gain_pp": -0.09162437850828042,
+      "better": 4,
+      "worse": 4
+    },
+    {
+      "source": "quad",
+      "target": "waymo",
+      "aggregation": "design_weighted",
+      "control": "F_RGBB_only",
+      "gain_pp": 0.706035258671948,
+      "better": 6,
+      "worse": 1
+    },
+    {
+      "source": "waymo",
+      "target": "drone",
+      "aggregation": "design_weighted",
+      "control": "F_RGBB_only",
+      "gain_pp": 0.041462984708717336,
+      "better": 7,
+      "worse": 7
+    },
+    {
+      "source": "waymo",
+      "target": "quad",
+      "aggregation": "design_weighted",
+      "control": "F_RGBB_only",
+      "gain_pp": 0.012998465470021292,
+      "better": 6,
+      "worse": 7
+    }
+  ],
+  "better_worse_vs_zero": [
+    49,
+    50
+  ],
+  "largest_positive_pp": 0.053304207197498364,
+  "total_gain_vs_zero_pp": 0.06901347104157196,
+  "direction_limits": "4positive/2negative. Drone-to-Quad negative-.680956pp; bothsources-to-Waymopositive. Overallgain doesnotcertify allsourceheightreferences or groundedentityidentity.",
+  "Acc50_limit": "aligned4.793982vsR1424.859808; bestmIoU isnot allmetricdominance.",
+  "input_state_not_parameter_TTA": true,
+  "exposed_development_only": true
+}
