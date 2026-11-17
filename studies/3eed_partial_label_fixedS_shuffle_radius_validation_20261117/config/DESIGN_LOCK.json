@@ -1,0 +1,46 @@
+{
+  "round": "R130",
+  "locked_utc": "2026-11-17T06:17:48.175283+00:00",
+  "authorization": "Current user explicitly requests fixed R129 unguarded partial_F, matched within-S shuffle and bounded radius sensitivity; not reopening old paused/night exploration",
+  "primary": "partial_F (R129 original rho, reused)",
+  "reference_commit": "1dd3ff25b0d22ddc34001143d81a282d9f718e13",
+  "cohorts": "DEV768+EXP1536, six directions,2304 direction-inputs,154 protected aliases fallback; exposed development not independent confirmation",
+  "fixed": "Exact R129 initialized three source100/R91,4896 Point Up weight/bias only,A256,6decoder anchors,F_AB,source-initialized A lateRGB/r; source calibration n4,Bfraction.5,tau.3356115962106995",
+  "loss": "R129 group logmeanexp conditional partial label + original feature keep weight1; no unknown-output KL guard",
+  "optimization": "Original normalized GD3 steps,9 Armijo halves1e-4,numerical task/g floor1e-12; rho factors .5/1/2 shared by all sources/targets",
+  "new_gpu_arms": [
+    "proper_half",
+    "proper_double",
+    "wrong_half",
+    "wrong_base",
+    "wrong_double"
+  ],
+  "reuse": "R129 original partial states/predictions/scalars,ownzero/directpartial/reference outputs; 12 engineering active original-rho replay checks only, not formal leaderboard rerun",
+  "shuffle": "S fixed. Within each equal query-count group-size bin inside S swap retained and excluded groups without GT or q0; maximum feasible disjoint swaps using fixed seed; matched |C| and query counts.252 effective/5 no-effective retained as explicit identities, same update not zero. Report all rows and effective subset",
+  "additional_direct_wrong": "No-update same mismatched C projection, diagnostic no extra inference",
+  "controls": "Own zero,correct directpartial,matched unguarded wrong_base are primary controls. Half/double paired to same-radius wrong; no choosing best radius from target results",
+  "interpretation": "Correct>wrong tests value of plausible-set identity against arbitrary matched labels. It does not alone isolate cross-observation geometry from initial semantic confidence/q0 retention; report retained teacher mass and q0 inclusion confounds",
+  "primary_gate": "Original rho partial_F exceeds zero_F/direct_partial_F/wrong_base_F in BOTH DEV and EXP raw six-macro and existing scene-frequency poststratified means. No requirement each direction/radius improves. Radius endpoints sensitivity only; no post-score primary switch. Exposed-cohort candidate only, no robust adoption",
+  "C": "Only decoded after all new states for an input fixed; fitting/acceptance/selection never use C; descriptive not independent scene",
+  "case_audit": "After sealing, revisit all18 existing R129 IoU-changing direction-input records (11 positive7negative), diagnose S absence vs C exclusion vs unresolved within-C ranking; GT descriptive only, all negative records retained, IoU/group not instance identity",
+  "budget": "One exclusive GPU;engineering24 incl12 active;formal2304 with257 active;no new source training/external models/FINAL;guardmax10800secs;no extra parameter search",
+  "files": {
+    "research/round130/prepare130.py": "c51249fca57e94461356fabd1444d5dcc86207571c719235916493d63d2258e0",
+    "research/round130/core130.py": "4b57f4adf8cbfedf9491e04a673c386da5349065728b065d6b5f383cae1c34ee",
+    "research/round130/run130.py": "d5e36a7355f64cb504b15afa82b8da73df5bf6dace86700f0d15387a7b0d2c56",
+    "tools/experiment_guard_round130.py": "e7b93e4cf0744141951620fe5ca6baae8381d015d01f3a78f5a19f898c444826"
+  },
+  "dependencies": {
+    "research/round129/core129.py": "b5e399c3cde40a9f3c089485048948bc620ed26102501c927945a3b3a78bf854",
+    "research/round129/support129.py": "31a1bdbdef40a6ebce74a768f2e0e720fda91c2b23d03001ff22d9b0de29a269",
+    "research/round127/core127.py": "b3ebcd5ddb634864ea2d950dc4df24ad5037bf23bdef8c122a3d47206f7f5761",
+    "research/round123/core123.py": "d9cfc57f1a0c391a647e66b81b121698ec6db41168aa109a0e359d7447624adc",
+    "research/round123/math123.py": "9645d2d19358a1d70923f74211ecb8978095b00cfce257cfb4e53dce582c4519",
+    "research/round129/experiment/EXECUTION_LOCK.json": "c5d067265bb54b70494d957dac21e7ac55675f520397e02891c7421c9078c78a",
+    "research/round129/SOURCE_CALIBRATION.json": "03cd2a7648133c55c58c8671b0920698971a7426348980530c6cd7adcba761e2",
+    "research/round129/SCOPE_SEALED.json": "7e2a8a5155a8a6837a8a8abc68c70b281ef0d8bbcb79bf07c82c277a50300557",
+    "crossplatform/round129/MATRIX_SEALED.json": "d69ca335867e4886eb345c181b5b90fae820c1ba216882ad95c85fc374677295"
+  },
+  "control_seal_sha256": "7f49d8bffb5ef1b1be4f72b4c29d9308a4373060391d308f6d8d8301dce4cc87",
+  "new_target_GT_used_before_lock": false
+}

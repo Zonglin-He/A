@@ -1,0 +1,17 @@
+{
+  "minimum_support_points": 4,
+  "minimum_registered_fraction": 0.5,
+  "tau": 0.3356115962106995,
+  "unknown_KL_epsilon": 0.000789698105090917,
+  "source_inputs": 384,
+  "source_eligible_for_tau": 326,
+  "source_task_improving_oracle1_KL_count": 23,
+  "tau_rule": "pooled source-A 90th percentile gap to any IoU>.25 group under supported group conditional probabilities",
+  "epsilon_rule": "pooled median nonzero unknown-collapsed KL of saved R124 source-GT task-improving one-step states; floor1e-6; source-only development",
+  "no_new_source_training_or_inference": true,
+  "no_source_B_registration_calibration_available": true,
+  "coverage_majority_is_fixed_convention": true,
+  "target_data_or_GT_loaded": false,
+  "duplicate_rule": "complete-link boxIoU>=.8 AND supportJaccard>=.8, both nonempty; per-group logmeanexp",
+  "per_source_or_target_thresholds": false
+}
