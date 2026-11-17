@@ -1,0 +1,215 @@
+{
+  "counts": {
+    "n": 1798,
+    "has_B": 764,
+    "no_B": 1034,
+    "active": 749,
+    "partial_active": 596,
+    "pair_active": 478,
+    "pairs": 3619,
+    "content_groups": 384,
+    "frame_paths": 851,
+    "descriptions": 899
+  },
+  "factorial_effects": [
+    {
+      "effect": "reset_only_A",
+      "gain_pp": -0.7832083323988712
+    },
+    {
+      "effect": "fixed_only_A",
+      "gain_pp": 0.0
+    },
+    {
+      "effect": "fixed_after_reset_A",
+      "gain_pp": 0.09955491247917436
+    },
+    {
+      "effect": "reset_under_fixed_A",
+      "gain_pp": -0.6836534199196969
+    },
+    {
+      "effect": "AB_fusion_intact_live",
+      "gain_pp": 0.1863977760932105
+    },
+    {
+      "effect": "AB_fusion_reset_fixed",
+      "gain_pp": -0.0802916168576111
+    },
+    {
+      "effect": "joint_reset_fixed_A",
+      "gain_pp": -0.6836534199196969
+    }
+  ],
+  "reset_fixed_A_interaction_pp": 0.09955491247917436,
+  "comparisons": [
+    {
+      "method": "tta_A",
+      "control": "intact_live_A",
+      "gain_pp": 0.10452578974894244,
+      "better": 29,
+      "worse": 17,
+      "query_changed": 85,
+      "largest_positive_contribution_pp": 0.028354980714743683
+    },
+    {
+      "method": "tta_A",
+      "control": "direct_A",
+      "gain_pp": 0.14478325739086984,
+      "better": 31,
+      "worse": 18,
+      "query_changed": 96,
+      "largest_positive_contribution_pp": 0.034101421441406064
+    },
+    {
+      "method": "tta_A",
+      "control": "wrong_A",
+      "gain_pp": 0.086261355174722,
+      "better": 25,
+      "worse": 26,
+      "query_changed": 87,
+      "largest_positive_contribution_pp": 0.02801809033939881
+    },
+    {
+      "method": "tta_A",
+      "control": "legacy_R134",
+      "gain_pp": 0.625001059175462,
+      "better": 349,
+      "worse": 318,
+      "query_changed": 1186,
+      "largest_positive_contribution_pp": 0.07615306868123624
+    },
+    {
+      "method": "tta_F",
+      "control": "intact_live_F",
+      "gain_pp": 0.02575232995436494,
+      "better": 25,
+      "worse": 26,
+      "query_changed": 98,
+      "largest_positive_contribution_pp": 0.05330420719749839
+    },
+    {
+      "method": "tta_F",
+      "control": "intact_live_A",
+      "gain_pp": 0.21215010604757545,
+      "better": 85,
+      "worse": 83,
+      "query_changed": 285,
+      "largest_positive_contribution_pp": 0.05330420719749839
+    },
+    {
+      "method": "tta_F",
+      "control": "direct_F",
+      "gain_pp": 0.0621954292791127,
+      "better": 27,
+      "worse": 28,
+      "query_changed": 109,
+      "largest_positive_contribution_pp": 0.05330420719749839
+    }
+  ],
+  "group_diagnostics": [
+    {
+      "method": "tta_A",
+      "control": "intact_live_A",
+      "changed": 46,
+      "same_geometric_group": 1,
+      "higher_candidate_outside_C": 9,
+      "good_C_but_wrong_final": 283
+    },
+    {
+      "method": "tta_F",
+      "control": "intact_live_F",
+      "changed": 51,
+      "same_geometric_group": 3,
+      "higher_candidate_outside_C": 6,
+      "good_C_but_wrong_final": 285
+    }
+  ],
+  "costs": [
+    {
+      "source": "drone",
+      "target": "quad",
+      "n": 357,
+      "prepare_seconds": 103.3041032597539,
+      "all_four_fit_seconds": 379.72786350303795,
+      "note": "measured matrix wallcost, includes controls/I/O; source model loading excluded"
+    },
+    {
+      "source": "drone",
+      "target": "waymo",
+      "n": 176,
+      "prepare_seconds": 58.00441136735026,
+      "all_four_fit_seconds": 119.44447895820485,
+      "note": "measured matrix wallcost, includes controls/I/O; source model loading excluded"
+    },
+    {
+      "source": "quad",
+      "target": "drone",
+      "n": 366,
+      "prepare_seconds": 104.66640473547159,
+      "all_four_fit_seconds": 333.8522100811242,
+      "note": "measured matrix wallcost, includes controls/I/O; source model loading excluded"
+    },
+    {
+      "source": "quad",
+      "target": "waymo",
+      "n": 176,
+      "prepare_seconds": 47.083283719897736,
+      "all_four_fit_seconds": 90.8891625488177,
+      "note": "measured matrix wallcost, includes controls/I/O; source model loading excluded"
+    },
+    {
+      "source": "waymo",
+      "target": "drone",
+      "n": 366,
+      "prepare_seconds": 120.01071001228411,
+      "all_four_fit_seconds": 324.69200232450385,
+      "note": "measured matrix wallcost, includes controls/I/O; source model loading excluded"
+    },
+    {
+      "source": "waymo",
+      "target": "quad",
+      "n": 357,
+      "prepare_seconds": 122.14197942410829,
+      "all_four_fit_seconds": 355.94443639868405,
+      "note": "measured matrix wallcost, includes controls/I/O; source model loading excluded"
+    }
+  ],
+  "scientific_disposition_postscore": {
+    "registered_A_protocol_gate_passed": true,
+    "registered_primary_unchanged": "tta_A",
+    "not_global_best_same_information_method": true,
+    "A_TTA_minus_complete_F_zero_pp": -0.08187198634426807,
+    "A_TTA_minus_F_direct_pp": -0.0454288870195203,
+    "F_TTA_minus_own_zero_pp": 0.02575232995436494,
+    "F_TTA_largest_positive_contribution_exceeds_net_gain": true,
+    "A_TTA_minus_legacy_R134_Acc50_pp": -0.5261330554255705,
+    "old_zero_to_intact_A_gain_pp": 0.763945036777308,
+    "old_TTA_gain_pp": 0.2434697673507884,
+    "new_A_TTA_gain_pp": 0.10452578974894244,
+    "new_A_vs_old_R134_gain_pp": 0.625001059175462,
+    "A_zero_fixed_vs_live_pp": 0.0,
+    "A_reset_only_pp": -0.7832083323988712,
+    "fixed_context_after_reset_compensation_pp": 0.09955491247917436,
+    "complete_F_live_minus_fixed_pp": 0.06545838470207777,
+    "actual_updates": {
+      "tta_A": {
+        "fitted": 749,
+        "nonzero": 522
+      },
+      "tta_F": {
+        "fitted": 749,
+        "nonzero": 749
+      },
+      "wrong_A": {
+        "fitted": 478,
+        "nonzero": 461
+      },
+      "wrong_F": {
+        "fitted": 478,
+        "nonzero": 460
+      }
+    },
+    "interpretation": "engineering restoration passes; A-protocol adaptation improves over its own zero/direct/ABmean/wrong but remains below complete-F no-update; F adaptation has a small fragile incremental gain. No global/robust TTA superiority claim, target-based output switching or new run."
+  }
+}
