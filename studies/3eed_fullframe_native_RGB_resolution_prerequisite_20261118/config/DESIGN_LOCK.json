@@ -1,0 +1,55 @@
+{
+  "round": "R152",
+  "parent": "R145_with_R151_historical_controls",
+  "primary": "full_high",
+  "claim": "Fresh full-frame detail can improve native candidate discrimination without candidate-selected crop context changes",
+  "inputs": "same1798 exposed six-direction entries; originalB764 and noB1034 completeFrozenA",
+  "image_size": [
+    768,
+    512
+  ],
+  "CNN_grid": [
+    96,
+    64
+  ],
+  "bank_tokens": 6144,
+  "views": [
+    "A",
+    "original_registered_B"
+  ],
+  "point_features": "sameR145 fused1024 F andnormalizedpos; no source/backbone/pointcloud newforward",
+  "high": "original licensed RGB resized768x512; preservefullframe",
+  "low": "original384x256bilinear downsize thenbilinear upsize768x512; EXACTsamehighgraphs",
+  "wrong": "highpixels with deterministic visible-point permutation WITHIN per-point forward-degree buckets in each full-frame camera and inversei2p; identical visibility/imagecontent/lattice and exact forward degree perpoint",
+  "graph": "same originalphysicalcamera visibility; recompute3x3 p2i,8pointdepth-gatedi2p on96x64; physical kernelcoverage halvesvsnative32x48",
+  "architecture": "unchangedfullyconvolutionalCNN/GroupNorm/adapter/bidirectionalfusion/3Dlanguagepath/competition; dynamicflattenedimagegrid ONLY; noimage-maskauxiliary",
+  "readout": "original256sourceboxes andallfulllearnedpaths",
+  "new_arms": [
+    "full_high",
+    "full_low",
+    "full_wrong",
+    "full_high_zero_mean",
+    "full_high_parent_mean",
+    "full_low_parent_mean",
+    "full_wrong_parent_mean"
+  ],
+  "means": "fixedhalfmeanwithsameinputparentR145zeroorTTA, notnewparameterupdates",
+  "frozen_gate": "full_high > originalnorm_joint_zero, full_low, full_wrong inBOTHrawanddesignweighted six-directionmeans; noeverydirectionpositivecondition",
+  "ensemble_gate": "full_high_parent_mean > norm_TTA,full_high_zero_mean,full_high,full_low_parent_mean,full_wrong_parent_mean inbothmetrics",
+  "if_gate": "matchedper-own-source newreaderq90loggap calibration AFTERsourcepredseal/nativeaudit, thenR145Up4896samepartial+conditionalKL+featurekeep/3steps/rho0/9Armijo; comparematchedsameinfodirect/wrong/fullhigh/means",
+  "if_fail": "stopthis2xfullframe recipe, no sourcecal/newTTA/scalegrid",
+  "resource": {
+    "payload_cap_GiB": 0.18,
+    "free_floor_GiB": 12,
+    "safety_GiB": 1,
+    "streamed_native_CPU_audit_chunk": 2,
+    "only_new_TEMP_delete_after_CPU_PASS": true
+  },
+  "new_source_weight_training": false,
+  "new_experts": false,
+  "new_A256": false,
+  "FINAL_access": false,
+  "exposed_development_not_independent": true,
+  "deadline_utc": "2026-11-18T01:00:00+00:00",
+  "locked_utc": "2026-11-17T22:47:32.808128+00:00"
+}

@@ -1,0 +1,2 @@
+# Reproduction
+Private source states, original licensed RGB, calibration, point features and parent R145/R149/R150/R151 outputs are required and excluded. prepare152 (independent geometry included) -> profile152 -> frozen152 --engineering -> audit_frozen152 --engineering -> frozen152 -> audit_frozen152 -> score_frozen152 -> package152. Every model and CPU task scoring uses experiment_guard_round152 and the fixed 09:00 Beijing Nov18 cutoff. No new source calibration or TTA after failed full-frame gate.
