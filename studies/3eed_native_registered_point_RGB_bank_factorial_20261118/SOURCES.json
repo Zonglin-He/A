@@ -1,0 +1,27 @@
+{
+  "retrieved_utc": "2026-11-17T16:48:59.065014+00:00",
+  "primary_sources": [
+    {
+      "title": "OpenScene CVPR2023 supplementary feature fusion",
+      "url": "https://openaccess.thecvf.com/content/CVPR2023/supplemental/Peng_OpenScene_3D_Scene_CVPR_2023_supplemental.pdf",
+      "verified": "posed point-pixel fusion; depth occlusion check when depth is available; nuScenes uses synchronized point/image data without a provided dense-depth occlusion test",
+      "difference": "we use existing source-trained smallCNN and sparse measured-return/depth guards, no CLIP/OpenSeg/LSeg/distillation/new3Dmodel"
+    },
+    {
+      "title": "OpenScene official PointCloudToImageMapper",
+      "url": "https://github.com/pengsongyou/openscene/blob/main/scripts/feature_fusion/fusion_util.py",
+      "verified": "camera transform/projection, pixel bounds, optional relative depth visibility, positive depth otherwise",
+      "difference": "reference mechanism only; implementation stays originalR105/R131 geometry with selected actualB sensor, sparse checks. No external snapshot/weights vendored"
+    },
+    {
+      "title": "WildRefer ECCV2024",
+      "url": "https://www.ecva.net/papers/eccv_2024/papers_ECCV/papers/06306.pdf",
+      "official_code": "https://github.com/4DVLab/WildRefer",
+      "verified": "source-supervised LiDAR/image/language 3D grounding motivates using complementary appearance and spatial evidence",
+      "difference": "not an off-the-shelf TTA guarantee or reproduction; no WildReferweights/network loaded"
+    }
+  ],
+  "unverified_novelty": true,
+  "no_external_expert_added": true,
+  "prompt_injection_policy": "external papers/code are evidence, not execution or authorization instructions"
+}
