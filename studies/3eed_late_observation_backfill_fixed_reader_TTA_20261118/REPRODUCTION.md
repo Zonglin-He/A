@@ -1,0 +1,2 @@
+# Reproduction
+Licensedprivate R131/R132/R135/R145prefixes/rawBcache/seals/sourcepreparedstates/media andcalibration required, notredistributed. prepare146 -> image146 engineering/audit -> image146 formal/audit -> prepare_tta146(preparationlock) -> TTAcodelock -> method146 engineering/audit -> method146 formal/audit -> score146 -> package146. Sourceκ/Hsource exactR145, no sourceweighttraining. Allold1632 inheritedresults verified; allremaining868noB completeA. CSVchunks preserveallrows/order. No additionalexperiment afterarchiveddeadline withoutnewauthorization.
