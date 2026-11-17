@@ -1,0 +1,66 @@
+{
+  "utc": "2026-11-17T07:46:51.688156+00:00",
+  "selection_code_path": "select_content131.py",
+  "selection_code_sha256": "c05f667ff99fd1b79e82d516b13307c35838b15b869846f8682e115cd9a17e51",
+  "files": {
+    "ANCHORS_PRIVATE.json": "73359180050ebe5f0eb2398681e145b56c0dd2d0c4c6d916d2dae5c93d6efcbf",
+    "PAIRS_PRIVATE.json": "37666070455c68057676ea64cdaa3c68abbffb2ff81b6ef18c0afc4b2cde84ec",
+    "INPUT_REGISTRY_PRIVATE.json": "38035be8022d15f4c6867f48a44b60e1eee6288f29b43be17b743559bca52e45",
+    "STRATA_PRIVATE.json": "9bf72d5966dec874367a6b721aade1f735cd1718e056bd0113bb394b42926535",
+    "CONTENT_GROUPS_PRIVATE.json": "b5da471321f6368bfe271a76008be2ac49898b2b30845f487be09a57411bc1a5"
+  },
+  "summary": {
+    "selected_content_groups": 384,
+    "selected_frame_paths": 851,
+    "expressions": 899,
+    "directed_inputs": 1798,
+    "pairs_attempted": 845,
+    "groups": [
+      {
+        "target": "waymo",
+        "population_content_groups": 2000,
+        "selected_content_groups": 128,
+        "population_frame_paths": 2000,
+        "selected_frame_paths": 128,
+        "selected_expressions": 176,
+        "recording_clusters": 80,
+        "known_old_point_content_overlap": 0,
+        "protected_content_groups_selected": 0
+      },
+      {
+        "target": "drone",
+        "population_content_groups": 205,
+        "selected_content_groups": 128,
+        "population_frame_paths": 580,
+        "selected_frame_paths": 366,
+        "selected_expressions": 366,
+        "recording_clusters": 1,
+        "known_old_point_content_overlap": 0,
+        "protected_content_groups_selected": 0
+      },
+      {
+        "target": "quad",
+        "population_content_groups": 236,
+        "selected_content_groups": 128,
+        "population_frame_paths": 693,
+        "selected_frame_paths": 357,
+        "selected_expressions": 357,
+        "recording_clusters": 3,
+        "known_old_point_content_overlap": 0,
+        "protected_content_groups_selected": 0
+      }
+    ],
+    "selector": "up to128 raw-point-content groups perplatform; minimum one/remaining recording then proportional group allocation; fixed hash withinrecording; allframealiases/captions and bothsource directions together",
+    "ordinary_pool": "exclude entire raw-point SHA groups touching old DEV/EXP A/B/C paths or known protected-image aliases; no model/GT/registration-result filtering",
+    "primary_metric": "six-direction mean of inverse-content-group-sampling-weighted expression means; raw means and target/recording results also retained",
+    "population_scope": "remaining ordinary content-disjoint point groups, not original fullVAL; no new scene/blind claim",
+    "historical_full_VAL_exposed": true,
+    "FINAL_access": false,
+    "new_C_generated": false,
+    "no_source_training": true,
+    "old_attempt": "path-only1696 plan cancelled before any GT;239 selected paths repeated old point content; all logs/partial predictions retained separately",
+    "GT_or_model_used_for_selector": false
+  },
+  "no_task_GT": true,
+  "FINAL_access": false
+}
