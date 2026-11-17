@@ -1,0 +1,61 @@
+{
+  "round": "R129",
+  "locked_utc": "2026-11-17T04:53:25.015209+00:00",
+  "question": "Does candidate-level real registered spatial support, partial-label supervision, and an actual unknown-output endpoint constraint improve fixed-model grounding over full-distribution fitting?",
+  "authorization": "One user attachment3b454a99 do this, fresh bounded suite, old exploration not reopened",
+  "fixed": "Exact R127 native-foundation Up0 gateP0 baseline, same three source100/R91 states,4896 pointUp weight/bias only, fixed allA256 and6decoderpositions/sourceA lateRGB/r",
+  "cohorts": "DEV768 EXP1536 all2304 direction-inputs,154 protected aliases fallback R127 zero with no feature/media/GT indexing",
+  "source_calibration": {
+    "minimum_support_points": 4,
+    "minimum_registered_fraction": 0.5,
+    "tau": 0.3356115962106995,
+    "unknown_KL_epsilon": 0.000789698105090917,
+    "source_inputs": 384,
+    "source_eligible_for_tau": 326,
+    "source_task_improving_oracle1_KL_count": 23,
+    "tau_rule": "pooled source-A 90th percentile gap to any IoU>.25 group under supported group conditional probabilities",
+    "epsilon_rule": "pooled median nonzero unknown-collapsed KL of saved R124 source-GT task-improving one-step states; floor1e-6; source-only development",
+    "no_new_source_training_or_inference": true,
+    "no_source_B_registration_calibration_available": true,
+    "coverage_majority_is_fixed_convention": true,
+    "target_data_or_GT_loaded": false,
+    "duplicate_rule": "complete-link boxIoU>=.8 AND supportJaccard>=.8, both nonempty; per-group logmeanexp",
+    "per_source_or_target_thresholds": false
+  },
+  "model_loss_arms": [
+    "archived R127 global full KL (reuse)",
+    "same-qualified-input global full KL (reuse existing states where eligibility unchanged)",
+    "conditional group KL",
+    "conditional partial label",
+    "conditional partial+unknown endpoint KL constraint (primary)",
+    "matched-cardinality wrong group qualification+partial+unknown constraint"
+  ],
+  "primary": "partial_guard_F",
+  "optimization": "3normalized gradient steps, radius .01 original full pointAdapter norm,9Armijohalves1e-4,feature preserve1,actual full F_AB readout; unknown KL bounded against INITIAL F output each endpoint,not penalty",
+  "groups": "complete-link boxIoU.8/supportJaccard.8,unique coordinate supports,group logmeanexp removes duplicate count bonus; not instance truth",
+  "sets": "Bvalid only, copiedA invalid rows do not count; S n_A/n_B>=source nmin andcoverage>=.5; C=union viewA/viewB near-max conditional groups atsource tau; no forcedtop1; C=S gives no partial supervision",
+  "noC_before_all_states_fixed": true,
+  "C_eval_only": "unfitted registered observation descriptive,not independent newscene or config gate",
+  "same_information_zero_controls": [
+    "own zero_F/C",
+    "full A/B teacher direct",
+    "conditional group teacher direct with fixed unknown mass",
+    "partial-set I-projection direct with fixed unknown probabilities/S total mass"
+  ],
+  "numerical_floor": "g norm<=1e-12 or task<=1e-12 no step; identity not expanded by normalized SGD",
+  "no_new_source_training": true,
+  "no_external_experts": true,
+  "no_rawmedia_or_PointNet_new_forward": true,
+  "source_improved_oracle_saved_states_used_for_threshold_calibration_only": true,
+  "task_score_after_all_predictions_sealed": true,
+  "adoption_gate": "primary beatsownzero/directedpartial/directedconditional/global_samescope andwrong control inbothDEV/EXP raw andscene-poststratified six-direction means; no per-domain positivityrequirement, no target threshold/step/arm switch. C diagnostic only. If no signal stop recipe.",
+  "resource": "one exclusiveGPU; engineering<=24 andformal2304; eachguard<=10800seconds; baselineR128notrerun",
+  "files": {
+    "research/round129/run129.py": "73c639f8ee78cf2cc7d777c2228e23622e8e06783643af8991cc1d0c848e72ca",
+    "research/round129/core129.py": "b5e399c3cde40a9f3c089485048948bc620ed26102501c927945a3b3a78bf854",
+    "research/round129/prepare129.py": "29532fc4596436eda96a4640b960a2a16c1c1c22960447049bb6ac856dec389f",
+    "research/round129/calibrate129.py": "08bf7d10490a67511decca2b83a782efee71e5895b8ed0f8b57e8c3c322ac3ea",
+    "research/round129/support129.py": "31a1bdbdef40a6ebce74a768f2e0e720fda91c2b23d03001ff22d9b0de29a269",
+    "tools/experiment_guard_round129.py": "3161300567769b341bdabc6b04ae01ee1b39ae3544fa2df9c4b0933efdf960b7"
+  }
+}
