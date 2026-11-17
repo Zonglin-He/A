@@ -1,0 +1,70 @@
+{
+  "status": "POSTSEAL_DESCRIPTIVE_ONLY",
+  "GT_scores_or_models_not_rerun": true,
+  "does_not_choose_outputs_or_parameters": true,
+  "all1798_denominators_preserved": true,
+  "rows": [
+    {
+      "comparison": "raw_Apoints_jointB_vs_originalA",
+      "method": "pa_raw_joint",
+      "control": "Frozen_A",
+      "n": 166,
+      "query_changed": 1,
+      "IoU_better": 0,
+      "IoU_worse": 0,
+      "whole_cohort_weighted_contribution_pp": 0.0
+    },
+    {
+      "comparison": "normalized_jointB_vs_normalized_Aimage",
+      "method": "pa_zero",
+      "control": "pa_Aimage",
+      "n": 166,
+      "query_changed": 0,
+      "IoU_better": 0,
+      "IoU_worse": 0,
+      "whole_cohort_weighted_contribution_pp": 0.0
+    },
+    {
+      "comparison": "normalized_jointB_vs_wrong_binding",
+      "method": "pa_zero",
+      "control": "pa_wrong_joint",
+      "n": 166,
+      "query_changed": 3,
+      "IoU_better": 0,
+      "IoU_worse": 2,
+      "whole_cohort_weighted_contribution_pp": -0.042299162814247476
+    },
+    {
+      "comparison": "position_effect_Apoints",
+      "method": "pa_zero",
+      "control": "pa_raw_joint",
+      "n": 166,
+      "query_changed": 30,
+      "IoU_better": 6,
+      "IoU_worse": 14,
+      "whole_cohort_weighted_contribution_pp": -0.06283269245946903
+    },
+    {
+      "comparison": "position_effect_mixed_points",
+      "method": "bf_zero",
+      "control": "bf_raw_joint",
+      "n": 166,
+      "query_changed": 30,
+      "IoU_better": 8,
+      "IoU_worse": 7,
+      "whole_cohort_weighted_contribution_pp": 0.06048783348040022
+    },
+    {
+      "comparison": "Apoints_vs_mixed_after_position",
+      "method": "pa_zero",
+      "control": "bf_zero",
+      "n": 166,
+      "query_changed": 61,
+      "IoU_better": 21,
+      "IoU_worse": 17,
+      "whole_cohort_weighted_contribution_pp": 0.004818255515241358
+    }
+  ],
+  "unused_B_interpolation_zero_fields_in_inherited_auditor_are_placeholders_not_new_checks": true,
+  "actual_new_input_check": "allPointAdapterforward_input_hashesmatchoriginalA, no newBbackbone interpolation feedsreader"
+}
