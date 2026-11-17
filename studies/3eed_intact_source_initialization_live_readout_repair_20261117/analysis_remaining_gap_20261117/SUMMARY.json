@@ -1,0 +1,181 @@
+{
+  "n": 1798,
+  "B": 764,
+  "counterfactuals_are_posthoc_not_new_method": true,
+  "absolute_candidate_bins": {
+    "below25": 344,
+    "above50": 280,
+    "25to50": 1157,
+    "zero_overlap": 17
+  },
+  "conditional_counts": [
+    {
+      "subset": "all",
+      "n": 1798,
+      "B_top_rescues_A": 47,
+      "B_top_breaks_A": 41,
+      "F_top_rescues_A": 24,
+      "F_top_breaks_A": 22,
+      "B_supports_good_C_over_A_top": 79,
+      "A_top_supported": 546,
+      "A_top_excluded_by_C": 0,
+      "A_top_pair_challenged": 0,
+      "F_top_pair_challenged": 2
+    },
+    {
+      "subset": "B",
+      "n": 764,
+      "B_top_rescues_A": 47,
+      "B_top_breaks_A": 41,
+      "F_top_rescues_A": 24,
+      "F_top_breaks_A": 22,
+      "B_supports_good_C_over_A_top": 79,
+      "A_top_supported": 546,
+      "A_top_excluded_by_C": 0,
+      "A_top_pair_challenged": 0,
+      "F_top_pair_challenged": 2
+    },
+    {
+      "subset": "A_recoverable_error",
+      "n": 995,
+      "B_top_rescues_A": 47,
+      "B_top_breaks_A": 0,
+      "F_top_rescues_A": 24,
+      "F_top_breaks_A": 0,
+      "B_supports_good_C_over_A_top": 79,
+      "A_top_supported": 304,
+      "A_top_excluded_by_C": 0,
+      "A_top_pair_challenged": 0,
+      "F_top_pair_challenged": 0
+    },
+    {
+      "subset": "A_recoverable_error_with_B",
+      "n": 423,
+      "B_top_rescues_A": 47,
+      "B_top_breaks_A": 0,
+      "F_top_rescues_A": 24,
+      "F_top_breaks_A": 0,
+      "B_supports_good_C_over_A_top": 79,
+      "A_top_supported": 304,
+      "A_top_excluded_by_C": 0,
+      "A_top_pair_challenged": 0,
+      "F_top_pair_challenged": 0
+    },
+    {
+      "subset": "A_recoverable_error_good_C",
+      "n": 297,
+      "B_top_rescues_A": 40,
+      "B_top_breaks_A": 0,
+      "F_top_rescues_A": 18,
+      "F_top_breaks_A": 0,
+      "B_supports_good_C_over_A_top": 79,
+      "A_top_supported": 234,
+      "A_top_excluded_by_C": 0,
+      "A_top_pair_challenged": 0,
+      "F_top_pair_challenged": 0
+    },
+    {
+      "subset": "A_recoverable_error_good_C_actual_update",
+      "n": 208,
+      "B_top_rescues_A": 33,
+      "B_top_breaks_A": 0,
+      "F_top_rescues_A": 17,
+      "F_top_breaks_A": 0,
+      "B_supports_good_C_over_A_top": 57,
+      "A_top_supported": 170,
+      "A_top_excluded_by_C": 0,
+      "A_top_pair_challenged": 0,
+      "F_top_pair_challenged": 0
+    }
+  ],
+  "margin_diagnostics": [
+    {
+      "subset": "recoverable_actual_update",
+      "n": 294,
+      "margin_improves": 92,
+      "margin_worsens": 202,
+      "unchanged": 0,
+      "median_initial_logit_gap": 1.1558198481798174,
+      "median_margin_change": -0.07496106624603283,
+      "median_absolute_change_to_gap_ratio": 0.12962282121418506,
+      "cross_old_leader": 12,
+      "actually_good_TA": 12
+    },
+    {
+      "subset": "recoverable_goodC_actual_update",
+      "n": 208,
+      "margin_improves": 85,
+      "margin_worsens": 123,
+      "unchanged": 0,
+      "median_initial_logit_gap": 0.6555465944111349,
+      "median_margin_change": -0.024940788745879905,
+      "median_absolute_change_to_gap_ratio": 0.16104802903201793,
+      "cross_old_leader": 11,
+      "actually_good_TA": 11
+    }
+  ],
+  "zero_update_reasons": [
+    {
+      "arm": "tta_A",
+      "reason": "no_B",
+      "n": 1034
+    },
+    {
+      "arm": "tta_F",
+      "reason": "no_B",
+      "n": 1034
+    },
+    {
+      "arm": "tta_A",
+      "reason": "pair_only_already_satisfied_in_A",
+      "n": 153
+    },
+    {
+      "arm": "tta_F",
+      "reason": "nonzero_update",
+      "n": 749
+    },
+    {
+      "arm": "tta_A",
+      "reason": "nonzero_update",
+      "n": 522
+    },
+    {
+      "arm": "tta_A",
+      "reason": "all_proposals_rejected",
+      "n": 74
+    },
+    {
+      "arm": "tta_A",
+      "reason": "B_but_no_task",
+      "n": 15
+    },
+    {
+      "arm": "tta_F",
+      "reason": "B_but_no_task",
+      "n": 15
+    }
+  ],
+  "pair_quality_proxy": {
+    "pair_count": 3619,
+    "pair_better_proxy": 427,
+    "pair_worse_proxy": 353,
+    "pair_tied_proxy": 2839,
+    "pair_both_zero_proxy": 2839,
+    "pair_winner_good25": 131,
+    "pair_loser_good25": 58
+  },
+  "unsupported_good_reasons": {
+    "B_registered_support_below4": 18,
+    "A_point_support_below4": 51,
+    "B_registered_fraction_below0.5": 3
+  },
+  "native_token_alignment_proxy": {
+    "parsed_subject_present": 1678,
+    "native_subject_overlap_zero": 0,
+    "native_overlap_reference_tokens": 0,
+    "not_ground_truth_subject_role_audit": true
+  },
+  "physical_RGB_instance_correspondence_not_verified": true,
+  "FINAL_access": false
+}
