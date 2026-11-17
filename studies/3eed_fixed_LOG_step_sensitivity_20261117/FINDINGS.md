@@ -1,0 +1,64 @@
+# R133 fixed-step sensitivity
+
+{
+  "primary_steps": 3,
+  "primary_unchanged_from_R132": true,
+  "target_GT_selects_steps": false,
+  "new_step_configuration_adopted": false,
+  "no_parameter_selection_in_this_round": true,
+  "sensitivity_steps": [
+    1,
+    5
+  ],
+  "FINAL_access": false,
+  "comparisons": {
+    "raw": {
+      "1": {
+        "mIoU_percent": 12.779620619745685,
+        "gain_vs_zero_pp": 0.08435793545293713,
+        "gain_vs_direct_pp": 0.07233567788976636,
+        "gain_vs_matched_wrong_pp": 0.031115789925790338,
+        "gain_vs_primary3_pp": -0.0486844574921097
+      },
+      "3": {
+        "mIoU_percent": 12.828305077237795,
+        "gain_vs_zero_pp": 0.13304239294504683,
+        "gain_vs_direct_pp": 0.12102013538187606,
+        "gain_vs_matched_wrong_pp": 0.22265156140150033,
+        "gain_vs_primary3_pp": 0.0
+      },
+      "5": {
+        "mIoU_percent": 12.821480892928328,
+        "gain_vs_zero_pp": 0.12621820863557964,
+        "gain_vs_direct_pp": 0.11419595107240887,
+        "gain_vs_matched_wrong_pp": 0.4285120752526339,
+        "gain_vs_primary3_pp": -0.006824184309467185
+      }
+    },
+    "design_weighted": {
+      "1": {
+        "mIoU_percent": 12.720862392649147,
+        "gain_vs_zero_pp": 0.09034396427230362,
+        "gain_vs_direct_pp": 0.07670988586237115,
+        "gain_vs_matched_wrong_pp": 0.04692982548824354,
+        "gain_vs_primary3_pp": -0.07224451025687628
+      },
+      "3": {
+        "mIoU_percent": 12.793106902906024,
+        "gain_vs_zero_pp": 0.1625884745291799,
+        "gain_vs_direct_pp": 0.14895439611924743,
+        "gain_vs_matched_wrong_pp": 0.253790189238142,
+        "gain_vs_primary3_pp": 0.0
+      },
+      "5": {
+        "mIoU_percent": 12.794151765370742,
+        "gain_vs_zero_pp": 0.16363333699389848,
+        "gain_vs_direct_pp": 0.149999258583966,
+        "gain_vs_matched_wrong_pp": 0.479872579998613,
+        "gain_vs_primary3_pp": 0.0010448624647185767
+      }
+    }
+  }
+}
+
+Three steps remains primary; every endpoint is reported, no target-GT step selection. See full report for cumulative-budget and all76 case analysis.
