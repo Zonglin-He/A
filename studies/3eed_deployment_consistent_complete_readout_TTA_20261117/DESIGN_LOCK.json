@@ -1,0 +1,53 @@
+{
+  "round": "R127",
+  "state": "LOCKED_BEFORE_ANY_R127_MODEL_OR_TASK_RESULT",
+  "utc": "2026-11-17T02:05:01.007473+00:00",
+  "question": "Does matching fit/serve aggregation and using the actual complete multimodal readout to generate gradients improve fixed-A256 task selection?",
+  "authorization": "User 2026-11-17 attachment a85c1c6c do this: one bounded stage-one factorial, no night-goal resume",
+  "fixed": "Three epoch100 source checkpoints and R91 source-prepared state; exact R124/R125 native-foundation pointUp0 gateP0 baseline; Down and all other weights frozen; only Up4896 may change; full text and all256 final boxes and all6 anchor positions fixed",
+  "factorial": {
+    "input": [
+      "separate_A_B",
+      "actual_FAB_valid_registered_mean"
+    ],
+    "readout_teacher_and_student": [
+      "native_point_text",
+      "complete_sourceA_RGB_late_plus_sourceA_competition"
+    ]
+  },
+  "teacher": "Stopped arithmetic mean frozen native or complete A/B probabilities. Complete contexts are existing sourceA late/r values, shared between fit and serve; no C-dependent provider is loaded",
+  "loss": "KL(T||prediction) mean over chosen fit views plus mean normalized point-feature distance/2 with weight1; three normalized SGD steps cap .01 original full point Adapter norm each,9 Armijo halves1e-4; rollback on failure",
+  "primary": "fab_full_F",
+  "controls": [
+    "zero_F",
+    "direct_full_F",
+    "direct_native_bridge_F",
+    "wrong_fab_full_F",
+    "random_F"
+  ],
+  "factorial_comparators": [
+    "ab_native_F",
+    "ab_full_F",
+    "fab_native_F"
+  ],
+  "holdout": "All gradients, steps and random states fixed before decoding any C arrays; C never in teacher/fit/line search/config choice. Final F=FAB has no C. C is descriptive transfer endpoint, not independent new scene",
+  "cohort": "All2304 historical DEV768/EXP1536 across six directions,154protected aliases prechecked no features fallbackpreparedA,786ABactive under unchanged geometric eligibility; all negatives retained",
+  "gate": "Primary must beat own zero and both same-information direct controls and wrong/random in DEV and EXP six-direction mean and existing count-only scene poststratification; no every-direction-positive requirement. C reported separately, never used to select configuration. No one-step or alternate-primary switch after GT",
+  "stop": "One fixed factorial; if no task gain, stop this recipe; no loss/support/EMA/threshold/source-training additions in this round",
+  "resource": "One exclusive GPU; engineering24 plus full2304; per job max10800seconds. No new raw media/PointNet/source training/external expert or FINAL; old exploration remains deadline_completed",
+  "files": {
+    "research/round127/core127.py": "b3ebcd5ddb634864ea2d950dc4df24ad5037bf23bdef8c122a3d47206f7f5761",
+    "research/round127/run127.py": "09f6b6e74a9cd8d5a56df5a1c83ab97ef00ea001ac33cf7fc8979f269ccf1335",
+    "research/round127/audit127.py": "5339d5392bb36b892a598c38cc56e1c47c35be0f2b29637119f3dd3ce2f98672",
+    "tools/experiment_guard_round127.py": "62e68414b1f9fda7d388e10804b7301e5f7bf252bd8e3dda9b0e4dfa3493f9db",
+    "research/round125/core125.py": "b44a246c9f3da4d120c32b00255345a25fc076f7dbb284f36e3be25bfb828f46",
+    "research/round123/core123.py": "d9cfc57f1a0c391a647e66b81b121698ec6db41168aa109a0e359d7447624adc",
+    "research/round123/math123.py": "9645d2d19358a1d70923f74211ecb8978095b00cfce257cfb4e53dce582c4519",
+    "research/round122/CACHE_REGISTRY_PRIVATE.json": "627c6ee48657c5eb484f972f1789c3cae5b780b5f2b2349f99c2730709b9021b",
+    "research/round76/model76.py": "5824d71f9d79dd418fec125c2b6c86ac14d4cceb520b3a1e26730839cdaec44b",
+    "research/round91/core91.py": "9100986a6ed3134d88279efda281463a0d4eed067815d149e65ec889473d8145",
+    "research/round97/core97.py": "172aedf101f84fd18a13a9eaa5df47dc8b21a26d1b3cd665f3c71b7bb824f731",
+    "research/round96/SOURCE_MODEL_COLLECTION_PRIVATE.json": "f2504cd0554f972852eaa529c915c870814c5c0ce27e2c618b7986daab9288ea",
+    "research/round97/SOURCE_PREPARED_COLLECTION_PRIVATE.json": "93f95e700bf3a224aec216f0815debedc05a396f4ea34f8d9b25edfa7087e596"
+  }
+}
