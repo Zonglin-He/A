@@ -1,0 +1,54 @@
+{
+  "round": "R149",
+  "hypothesis": "Source-own teacher competition calibration x withholding teacher B RGB from student, fixed R145 C and complete final reader",
+  "parent": "R145",
+  "parent_publication": "6ddf85d760d8370c150d1e34d0496982b6bc8938",
+  "last_completed": "R148",
+  "primary": "cal_A_TTA",
+  "secondary": "cal_AB_TTA",
+  "ablation": "plain_A_TTA",
+  "source_alpha_candidates": [
+    0.5,
+    1.0,
+    2.0
+  ],
+  "source_selection": "each own source separately maximize mean candidate IoU of B teacher within original C, all geometry eligible source cases; tie prefer1 then closest1 then lower; predictions sealed and independently CPU checked before source labels; no source-weight training or target numerical selection",
+  "teacher_formula": "softmax(alpha*log(frozen_pB)+(1-alpha)*native_base_B); alpha1 returns exact pB",
+  "student_bank_factors": [
+    "A image only",
+    "A plus B images"
+  ],
+  "point_input": "same R145 frozen F1024 both banks",
+  "target_evidence": "exact original R145 S/C/assignment/eligible and registered original B; no R148 cumulative C or R146 late B",
+  "training": "Up4896 only; same partial(S,C)+KL(frozen calibrated B groupMAX|C || student groupMAX|C)+featurekeep1;3steps/rho0/9Armijo/full prepared source reset; final reader unit base+competition for all students",
+  "unknown": "all1034 noB exact completeFrozenA; no teacher-label assumption when C unknown",
+  "controls": [
+    "all75 R148 arms retained exact",
+    "plain_A_TTA/wrong",
+    "cal_A_TTA/wrong",
+    "cal_AB_TTA/wrong",
+    "Aimagezero",
+    "jointABzero",
+    "calBfull",
+    "calB_Cconditional direct for A and AB",
+    "halfmean calB with Aimage and jointAB",
+    "wrong conditional identity permutation matched groupmultiplicity entropy budget"
+  ],
+  "adoption": "primary and separately declared secondary must beat R145 and respective zero/direct/full calibrated B/two means/wrong both raw and designweighted; no percase or perdirection winner",
+  "resource": {
+    "payload_cap_GiB": 0.75,
+    "free_floor_GiB": 12,
+    "safety_GiB": 1,
+    "streamed_audit_batch": 32,
+    "new_temporary_nativefeatures": "chunk sealed then independent CPU native audit before removing ONLY new temporary feature files; keep predictions/states/gradients/traces/hash receipts permanently; all old artifacts unchanged",
+    "engineering_full_adapted_A": true,
+    "formal_fixed32pointprobes_and_fullkeepreconstructed": true
+  },
+  "source_checkpoints_immutable": true,
+  "A256_fixed": true,
+  "FINAL_access": false,
+  "target_exposed_development": true,
+  "source_alpha_calibration_not_source_training": true,
+  "deadline_utc": "2026-11-18T01:00:00+00:00",
+  "registered_utc": "2026-11-17T21:23:57.869483+00:00"
+}
