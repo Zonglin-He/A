@@ -1,0 +1,36 @@
+{
+  "round": "R155",
+  "locked_utc": "2026-11-18T00:43:52.901619+00:00",
+  "scope": "One CPU-only transfer of historical 3-yaw unsigned surface-distance selection to existing complete R145 states. All R154 1798 ordinary six directional development records. No access to FINAL, no new source or target fit, no expert, no novel views or network forward.",
+  "inputs": {
+    "research/round131/INPUT_REGISTRY_PRIVATE.json": "38035be8022d15f4c6867f48a44b60e1eee6288f29b43be17b743559bca52e45",
+    "research/round145/INPUT_REGISTRY_PRIVATE.json": "6df8cbc22aff3b8c945c6a50c6a23ec5c3b559d46f200618cfb91e83a220ad85",
+    "crossplatform/round145/method/SEALED.json": "ac4a9cf70845431f1509c195afb2664a9593c75388fd48b6880483ff62a6ca31",
+    "crossplatform/round154/predictions/SEALED.json": "4dcb67195aee3af8cab43571cd43a82d38591a3107a4b64ffa24631d6c44c9da",
+    "research/round154/results/task_all_rows.csv": "3b76c59b108bfa35022e79e25ed9caefd8dec3dd5736b1e3d420fe81924d4bb2",
+    "crossplatform/surface_dev45/refine.py": "7403f307b86ebe6572a5b4bf48fbd697b513f4e3e2aa3f4f143c41625d75b6d9",
+    "crossplatform/replication36_surface/common.py": "c779a23d4949bd7e06a912c8d8144132ca94bc98fd965a45dccb03bd5aebdcd2"
+  },
+  "states": [
+    "joint_zero",
+    "R145"
+  ],
+  "arms": [
+    "axis",
+    "pca",
+    "surface",
+    "sign_flip"
+  ],
+  "primary": "R145_surface",
+  "controls": [
+    "intact Frozen-A",
+    "R145_axis",
+    "joint_zero_surface",
+    "R145_pca",
+    "R145_sign_flip"
+  ],
+  "method": "Exactly the previously published local 3EED rule, preserving every selected query, native center and full extents. Original A model-sampled 16384 points in native LiDAR metric coordinates, unique physically repeated rows collapsed. Crop axis box with 1e-7 tolerance. Fewer than 8 crop points, L/W <1.5, nonpositive dimensions, or max eigenvalue <=1e-12: retain yaw 0. Else take XY covariance principal direction modulo pi, angle orthogonal to it, and zero. Minimize mean absolute point-to-cuboid signed distance divided by min(L,W). Ties within 1e-12 favor original then PCA then perpendicular. Negative control mirrors the selected angle about zero modulo pi; correlations near axes possible. No point/degree-of-freedom or threshold tuning.",
+  "ordering": "fixed R131 registry; verify R145/R154 endpoints; predict+seal then geometry replay/audit then evaluate using target GT. Preserve all rows and negatives.",
+  "metrics": "Historical strict IoU>0.25 and >0.50, design-weight within direction / six equal average, counts not weighted. Cluster paired bootstrap fixed sampled recordings and 384 point-content clusters 2000 draws seed 155, no between-scene generalization.",
+  "decision": "Evaluate signed geometry against both same winner axis and sign control. Attribute parameter gain only to R145_surface minus joint_zero_surface; check interaction relative to prior TTA. Candidate is only a development geometry refinement until tested separately."
+}
