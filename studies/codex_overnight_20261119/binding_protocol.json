@@ -1,0 +1,16 @@
+{
+  "study": "reciprocal_role_permutation_verification",
+  "objective": "test whether two candidate objects jointly explain the two grammatical roles, beyond fixed single-role utilities and left/right",
+  "features": "for each immutable physical region, transport native log probability from both the frozen original and swapped-role frontends by Jaccard-weighted mean probability. Retain physical overlaps >=0.25 and >=3 shared unique input points. Do not equate independently generated query indices",
+  "pair_potential": "compare the proposed assignment with its role-exchanged alternative in the two frontends separately. Use log-sigmoid of the within-role log odds gap clipped to [-4,4]. Double-center each of the two potential matrices on the shared eligible rectangle",
+  "fixed_inputs": "R171 subject and native D pools with fixed F and D texts, source models, PCA, unaries and left/right; shared UNKNOWN and unsupported input fallback",
+  "source": "only the archived R168 source-own training calibration manifest. For any frame with multiple supported annotated relations take the first parsed eligible relation in ascending role order. Infer source reference labels from R168 archived annotation proxies, distinguish from independently verified identity",
+  "source_fit": "two nonnegative coefficients between 0 and 1, regularization 0.1 times squared norm. Compare correctly bound candidate pairs to other known-object candidates with a positive same-direction relation factor and within 0.25 relation score. Use balanced frame-weighted pair log loss, group duplicates by physical identities. Separate by source platform, evaluate leave-recording-out. No source pretrained weights are updated",
+  "source_gate": "only use source-fit variant for platforms with at least 8 eligible physical frames across at least 2 recordings and negative log loss improvement and dual correctness not worse on leave-recording-out evaluation vs same-info additive baseline. Use the heldout fixed alternative if the fitted coefficient is not supported. Report both fixed and source-fit statuses, including fallbacks",
+  "controls": "same transported scores as additive correction, same geometry, and circularly shuffled double-centered pair terms. Also retain R158+PCA and archived R171 native joint. Reference abstention is deliberately inherited to isolate a new pair term",
+  "target_evaluation": "same 168 exposed ordinary R171 direction records for mechanism screening. No target-label fitting, parameter selection or exclusions. New evaluation only if a credible signal exists, preserving recording grouping",
+  "gpu_budget": "one sequential frozen source pass and optional one sequential target collection, <=120 source physical frames and 168 target direction records. Source fitting is CPU with two scalar coefficients per source",
+  "external_models": false,
+  "target_updates": false,
+  "protected_data_access": false
+}

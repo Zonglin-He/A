@@ -1,0 +1,12 @@
+{
+  "study": "source_calibrated_missing_reference",
+  "question": "Can a nonempty reference pool admit a neutral UNKNOWN based on individual physical-instance evidence?",
+  "scope": "reuse 111 sealed reference-query source features with an R168 source annotation proxy. Compare all qualified source records under leave-recording-out folds. Test a complete target packet only if a source choice neither collapses nor loses source heldout validity.",
+  "features": "native D reference ranking stays fixed as an offset. Add two per-reference witnesses, the bounded D/F difference after normalization over commonly supported physical reference candidates and the weaker of the two physical overlap supports. A learned null logit can beat low-evidence references. All candidates and existing geometry stay fixed.",
+  "loss": "negative log mass of the actual supported reference instance over all physical or null choices. When the annotated instance has at least three physical seeds but none of the candidate boxes has its verified ownership, assign the source label to UNKNOWN. Optimize two witness weights and one intercept, penalty .1*(w@w)/2, bounded within [-2,2].",
+  "gate": "enable per source only with at least two recordings, at least one correctly accepted source reference and one correctly abstained source frame in held-out folds and higher overall source correct-or-absent accuracy than forced calibrated selection. Report all source measurements.",
+  "target_conditions": ["R158+PCA","fixed role exchange","calibrated instance selection forced","calibrated selection with UNKNOWN","same calibrated evidence shuffled"],
+  "target_labels_used_for_fit_or_choice": false,
+  "target_domain_frozen": true,
+  "protected_data_access": false
+}

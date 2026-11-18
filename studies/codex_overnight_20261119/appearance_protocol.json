@@ -1,0 +1,20 @@
+{
+  "study": "source_prepared_foreground_evidence",
+  "hypothesis": "Local RGB and LiDAR evidence helps identify the two roles before joint assignment. Subtracting a nearby exterior read reduces shared scene bias. For two candidate roles, rereading after removing shared seed support tests whether the roles can be supported by distinguishable physical evidence.",
+  "source_scope": "only R76/R97 registered source-own train manifests, disjoint from original R165 ordinary recording groups and exact R165/R159 scan/image/physical-frame content. R159 historical recording IDs may recur on the source platform only; fits never share labels across source platforms. Up to 180 unique physical frames per source, deterministic recording round robin. One possible source reference per frame, using the R168 annotation-proxy rule and an authorized LEFT/RIGHT rewrite",
+  "source_monitoring": "each source fit separately; Waymo uses 5 deterministic recording folds, Drone and Quad leave one recording out; no target data in training or selection",
+  "features": "fixed PointNet++ pre-language features and frozen RGB branch activations gathered with actual calibrated visible-point graph. Mean L2 normalized per modality. Foreground is fixed box membership; exterior is the 1.5x box with foreground removed. Require >=3 visible unique seeds per measurement and keep unknowns.",
+  "head": "rank-16 bilinear readout of frozen pre-visual RoBERTa content token mean and candidate descriptors. Each identity contributes once. Merge evidence using 2*tanh of the normalized match to offset frozen per-role scores. AdamW, LR .002, 16 epochs and deterministic source-recording folds",
+  "controls": [
+    "no auxiliary score",
+    "inside-only RGB+LiDAR",
+    "inside-minus-exterior RGB+LiDAR",
+    "inside-minus-exterior LiDAR-only",
+    "same evidence additive vs jointly shared-support removal",
+    "geometry- or role-mismatched evidence"
+  ],
+  "budget": "max 540 source physical frames, cached foreground/exterior features, three small heads per supported source fit on CPU, 16 epochs, no new pretrained network or base weight fitting",
+  "source_gate": "the declared foreground-minus-exterior head needs at least 8 independently held out informative reference phrases from >=2 source recordings, must improve held-out physically observed reference identity against frozen unary on same-class competition and against the inside-only head. Report all output variants and denominators. Sources meeting the gate are then evaluated on all target rows; other sources retain frozen control",
+  "target_policy": "no adaptation, no target fitting, old R171 pool and full validation fallback, seal first. If source premise does not pass, do not promote this source-trained variant. Continue other already supported mechanisms",
+  "protected_data_access": false
+}

@@ -1,0 +1,10 @@
+{
+  "study": "frozen_predicate_polarity_discrimination",
+  "hypothesis": "Holding both entity phrases fixed while changing only relation polarity should provide contrastive endpoint evidence. Test correct-vs-wrong physical endpoint discrimination before using a new joint factor.",
+  "scope": "all 168 existing non-protected mechanism direction records, full denominator with absent support retained. Identity metrics on all 60 previously independent dual-identity annotations, stratified by availability and both factual/opposite support",
+  "intervention": "B and D canonical role-preserving queries from R169. Flip exactly the one left/right word, update character offsets. Re-ground all four phrases with the same frozen 3EED and same original physical sample",
+  "alignment": "for each fixed subject and D native candidate, Jaccard-weighted mean probability transport in original sampled point space, Jaccard minimum .25 and at least 3 shared points; normalize on the intersection of factual and opposite support per role. Every changed query uses geometry rather than query integer identity",
+  "contrast": "bounded delta of normalized factual vs opposite log probabilities added once to the inherited single-role score. Offset and clip at +/-1 log units. Same evidence geometry-permuted control rolls the matched candidate corrections. No target choice of offsets and no learned parameters",
+  "gate": "require correct identity plausibility discrimination over inherited single-role scores and matched wrong binding in both exposed panels, with correct reference and full numerator gains before considering a new common relation factor",
+  "protected_data_access": false
+}
