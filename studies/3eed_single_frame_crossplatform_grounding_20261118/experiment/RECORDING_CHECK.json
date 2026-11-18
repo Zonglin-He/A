@@ -1,0 +1,53 @@
+{
+  "name": "Locked forward-only evaluation on other official target recording IDs",
+  "algorithm": "R159 deployed default, one frame, seed 0, identical A256 and source state across all three arms",
+  "eligibility": "Enumerate the full registered R69 ordinary target TRAIN1024 and R76 Waymo SOURCE_TRAIN512. Keep all records whose target recording is absent from R158 selection and ordinary check, excluding shared point or image contents with the known validation inventories. Keep all descriptions and both other source platforms. No target correctness, class, or IoU selection. No access to FINAL media or its own manifest. Report actual counts and exclusion reasons.",
+  "split": "Secondary evaluation only. These official TRAIN records had historical exposure; Waymo data were used by other source preparation studies. Each evaluated model was trained on its own other platform. Do not claim entire project or strict geographic independence.",
+  "arms": [
+    "old_axis",
+    "old_pca",
+    "r158_pca"
+  ],
+  "ground_truth": "postseal standard upright 3D IoU; strict greater than .25/.50; independent second oriented IoU implementation",
+  "weights": "equal per record within each direction, mean over six directions; retain paired harms and recording strata",
+  "seed": 0,
+  "source_weights_and_inference_code_sha256": {
+    "crossplatform/geometry_refine.py": "3b3b0ab212b795a986fb9338ac555109f236e70bf7ac407de8a8fbe63ed7961d",
+    "crossplatform/ground_single_frame.py": "783fd515a2dd0ad86ba19e95114bc6c7f5dadddeaa52e43c699d3dd75e9f1898",
+    "crossplatform/replication36_surface/common.py": "c779a23d4949bd7e06a912c8d8144132ca94bc98fd965a45dccb03bd5aebdcd2",
+    "crossplatform/round48/parser48.py": "3c19882d939e7ebf5cee7f29e4b089e2640470e58573266be464cf1cd6312855",
+    "crossplatform/round51/model51.py": "7303d74b81b9d1a0f419d5fe2e4448e1fb79746db139293f6734db9e7f7365c8",
+    "crossplatform/round7/camera_projection.py": "b343c04d3a3b72ffed6dc041449f5dc38892964755108a3cab5a8c86572066ce",
+    "crossplatform/round7/experiment/runner_helpers.py": "c73431a4871ede56674636d66b636e6d77389b9f41eb0cf9160209876d5c1e59",
+    "crossplatform/round7/regression_adapter.py": "2d23f99c57c63d2bc794b3ab768f9868631c84118e40568e9a9a3b6219af03a2",
+    "crossplatform/round96/factory.py": "1ab07705a4c605969e9590ec7452f2d2463d01d7f5496f410a403d8a2bec5b29",
+    "research/round158/grounding158.py": "0e822ac701f69b5b82a76364d00730f6d94f89732fed24299b9452882c90e764",
+    "research/round158/reader158.py": "804c110d7fb4d496512cac524ce6f53673583b99e57c252b9c557f8bb60eb890",
+    "research/round66/common66.py": "5673cdd9f4e3eec5e9b329eee44ee137b6141d97661019971c8844165e2e3ef0",
+    "research/round66/interface66.py": "277fd6e9924d4433358e0c08907ab5f5ce67f69a7ee257f61d1b02ae0f884d15",
+    "research/round76/common76.py": "7400ad261d9d687dade217dd42eb443e952a818879268b06a0aff09668464854",
+    "research/round76/model76.py": "5824d71f9d79dd418fec125c2b6c86ac14d4cceb520b3a1e26730839cdaec44b",
+    "research/round76/prepare76.py": "ccf888418d40c16d10f50f5972077abb1945c1f5e6a09ce1d4c67ae9c02d1d62",
+    "research/round79/core79.py": "c1057978c3041444b268180481ab0bf10c9b32a9b710d11692475b25f65f878e",
+    "research/round85/evidence85.py": "bce8e89d5f7c75ad3496bc22c1211c7fccdf135d9c5ed4b596e78225911eed0c",
+    "research/round86/evidence86.py": "4f42cdd83878f9f6f7c0122aa03661cebbce91e8ffa78c8222dbd09a7c855692",
+    "research/round87/reference_roles87.py": "041511ac6cebee72ee1e598987bca6c1b99a13b2309c36d47af01837d2003613",
+    "research/round88/routing88.py": "f0404b79a6f691a492e08ccafe522d11289aabd72755ccecfd2d4ab8e9113eb6",
+    "research/round89/core89.py": "705f41e019c1cc65b312de5ad598f3579ffa239f7cdfd385f877549f2ff359e6",
+    "research/round90/core90.py": "2794b142817ce453ab41748a75ee0f99abfbe178b415db39727b61accb8262d8",
+    "research/round97/parse97.py": "be3dae253fed83eb3159d0102da03f66f822c03f6c8c3d8f7e1520c6005efc52",
+    "crossplatform/single_frame_sources.json": "68f27c2c6641ab72eec7015f65c9ec2c11700ca04b659cc8f1ad90e304754e07",
+    "research/round159/experiment/PROTOCOL.json": "68c3c506c9dd1863f3a3e96fa7678beea152845ce194db869e7597bb6b9eed5c"
+  },
+  "input_files_sha256": {
+    "research/round69/input/TRAIN1024_PRIVATE.json": "955cf5ac9ec6da03d1b637f34716a6c3753dcd65413109f6130cb1c8656b22d7",
+    "research/round76/input/SOURCE_TRAIN512_PRIVATE.json": "6fa15bfe13702673f8fc40d316aa73d81939f6ea5ae6437db08f9979f3d44cb6",
+    "research/round131/CONTENT_GROUPS_PRIVATE.json": "b5da471321f6368bfe271a76008be2ac49898b2b30845f487be09a57411bc1a5",
+    "research/round145/INPUT_REGISTRY_PRIVATE.json": "6df8cbc22aff3b8c945c6a50c6a23ec5c3b559d46f200618cfb91e83a220ad85",
+    "crossplatform/round158/EXTRA_REGISTRY_PRIVATE.json": "d4020acc4a347479401bd8a592ac725e8d7d556d412da354896314f335fc8adf"
+  },
+  "no_method_reselection": true,
+  "parameter_updates": 0,
+  "source_training": 0,
+  "FINAL_access": false
+}

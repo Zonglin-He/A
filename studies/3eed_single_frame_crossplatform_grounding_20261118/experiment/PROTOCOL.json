@@ -1,0 +1,19 @@
+{
+  "version": "single_frame_v1",
+  "parent": "da7522dfb5bd9f70194c8e69b5a4b031e0641d09",
+  "task": "Cross-platform zero-shot 3D visual grounding, one sensor frame per prediction",
+  "source_platforms": ["waymo", "drone", "quad"],
+  "source_state": "Existing epoch100 and matching R91 full_disc state belonging to the same source",
+  "observations": ["target LiDAR", "synchronized target RGB", "target camera calibration", "English referring expression"],
+  "sampling": "16384 points using NumPy default_rng; replace only if the cloud is smaller. Seed 0 by default; historical comparisons retain their sealed input seeds.",
+  "default": "Complete frozen A readout, R158 overlap decision on A256, R155 sampled-A PCA, return box in raw target LiDAR frame",
+  "source_training_runs": 0,
+  "test_time_parameter_updates": 0,
+  "single_frame_arms": ["old winner + native axis", "old winner + PCA", "R158 winner + PCA"],
+  "primary_table": "All 5942 ordinary R158 extra single-frame direction-records, same geometry and seeds per record, per-direction ordinary means and equal weight over six directions",
+  "secondary_tables": "1798 development records forcing A for all. On the 764 registered records only, compare A with A+B within the same records using original design weights. Mixed availability is historical context only.",
+  "accept_runtime": "From raw sensor files with camera-only metadata and uncached text parsing, reproduce both sealed winners, final boxes and all 256 prepared-source probabilities. Use first record in each direction, include each available Waymo camera view for both sources. Check inverse coordinates and a novel expression.",
+  "acceptance_tolerance": {"probability_max_abs": 0.00001, "box_max_abs_m_or_rad": 0.0001, "winner": "exact"},
+  "holdout": "Ordinary, previously exposed validation data only; no FINAL access or target tuning",
+  "all_paired_losses_retained": true
+}
