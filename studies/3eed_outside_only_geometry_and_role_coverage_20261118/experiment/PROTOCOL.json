@@ -1,0 +1,26 @@
+{
+  "round": "R164",
+  "parent": "be240edd6e5346e767c29b0c26f4bd2f5135d9cd",
+  "geometry_scope": "The sealed 192 R163 own-platform validation expressions, 64 each Waymo/Drone/Quad, with one frozen replay per expression to reconstruct dense fitter inputs.",
+  "primary_question": "Does removing the inside-point surface term reduce task damage with the same h0, pose bounds, weights, evidence and optimization budget?",
+  "geometry": {
+    "readout": "Keep the initial winning hypothesis h0, or the original fallback when absent. Same 7 coordinates, L-BFGS-B budget, initialization, scale, pseudo-Huber, missing-support constant/denominator and regularizer as its parent.",
+    "arms": ["r158", "initial", "surface_s0", "outside_s0", "surface_s1", "outside_s1", "surface_s1_no_relation"],
+    "replay": "Check h0, original boxes and both seed supports against R163. surface_s1 must reproduce the R163 fixed-h0 all7 output to 1e-10 on all rows. Only surface_s1_no_relation suppresses the inherited relation force.",
+    "holdout": "Secondary fit-stage diagnostic. Replay matching five fits with a deterministic 80/20 split of the local sampled returns. Unique original raw point indices and coincident XYZ kept together. Use the same held-out returns and within-support weights for paired residuals. Frozen inference and support generation already saw these points. Positive held-out mass and effective count >= 3 are needed for residual reporting.",
+    "outcomes": "mIoU, strict IoU > .25/.50, paired improved/harmed/tied and threshold crosses, geometry update frequency at 1e-6 (axial yaw), effective support, actual objective calls and initial outside mass. Retain fallback and failures."
+  },
+  "conditional_face": {
+    "gate": "Both outside_s0 and outside_s1 must have fewer gross Acc@50 harms relative to initial than their matching surface arms on all 192. This enables a single exposed-scope one-face prototype.",
+    "rule": "Start at h0 and use S0 on the existing fit/holdout split. Along one horizontal face, separate point envelopes only: high support >= .5 times the maximum fit weight, tangential point coordinates inside the other original faces, with at least 6 fit and 3 held-out points strictly beyond the old face by > .03 m. Form the largest normalized fit-side candidate from the fit-weighted median violation, bounded by .20 times initial local dimension. Accept only if the same held-out subset confirms weighted outside loss improvement. Move only that plane, preserve the opposite plane, both other dimensions and the yaw. Treat extra observations as enclosure witnesses, without assuming a return lies on the amodal face and without any assumed LiDAR origin.",
+    "comparison": "Report all 192 against initial, R158+PCA and same-split outside_s0. This is a one-sided outward-envelope diagnostic, not a shrink or ray-fitting method."
+  },
+  "language": {
+    "prediction_scope": "All 132 declared LEFT/RIGHT edges from the sealed R162 DEV mechanism panel. Seal predictions before reading annotation inventory for scoring. Fixed original A256 and fixed LCIB initial geometric hypotheses.",
+    "coverage_and_ranking": "Evaluate proposal coverage and ranks for full A256, R88-eligible A256, exact native R88 shortlist under native and plain route scores, and eligible LCIB initial hypotheses. Preserve R88 shortlist recreation and the initial LCIB readout.",
+    "comparison": "Unchanged R88 route weights and shortlist per role in independent selection versus distinct joint selection. Block identical query or seed support Jaccard > .5, the original R88 duplicate threshold, and allow UNKNOWN. Known parser endpoints are distinct mention slots, not identity labels.",
+    "evaluation": "Primary denominator is the 14 R163 cases with two independently visually checked annotation boxes. Track missing hypothesis, R88 shortlist loss and retained-candidate misranking, plus strict dual-endpoint correctness. Keep 3 visual-only and 16 unresolved/malformed records in the 33-row record, and availability on all 132 edges. Use inherited oriented box-ownership proxy (minimum .20 IoU, margin .08); seed ownership is a secondary check."
+  },
+  "authorization": "Manual bounded experiment. R159/R158+PCA remains deployed, baselines paused, no new source training, target network updates, or FINAL access.",
+  "decision_rule": "Separate harm avoidance from new net correction relative to fixed h0. Report all three platforms and paired losses, with repeated-scope and recording caveats. Do not adopt a new default on this diagnostic."
+}
