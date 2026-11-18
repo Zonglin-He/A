@@ -1,0 +1,53 @@
+{
+  "version": "R154",
+  "time_utc": "2026-11-18T00:30:07.945581+00:00",
+  "authorization": "One new bounded candidate-update experiment, old overnight goal stays closed",
+  "scope": "same 1798 exposed ordinary directed records in six directions, including noB and all negative arms",
+  "inputs": {
+    "research/round145/INPUT_REGISTRY_PRIVATE.json": "6df8cbc22aff3b8c945c6a50c6a23ec5c3b559d46f200618cfb91e83a220ad85",
+    "research/round131/experiment/INPUT_LOCK.json": "b54004d36e55062d301e037f2212334860c4993819d7a0c09c96bd860e119868",
+    "crossplatform/round145/method/SEALED.json": "ac4a9cf70845431f1509c195afb2664a9593c75388fd48b6880483ff62a6ca31",
+    "research/round97/experiment/DESIGN_LOCK.json": "49980f25cc8957ff95f2a9cee8bba73e64100954bed3e6906367f05c829b8c4e"
+  },
+  "primary": "fusion_TTA",
+  "same_information_zero": "fusion_zero",
+  "arm_names": [
+    "frozen_A",
+    "joint_zero",
+    "direct_R145",
+    "R145",
+    "wrong_R145",
+    "alternate_single",
+    "geometry_zero",
+    "geometry_TTA",
+    "anchored_score_TTA",
+    "union_representative_TTA",
+    "fusion_zero",
+    "fusion_TTA",
+    "shuffled_fusion_TTA"
+  ],
+  "pool_names": [
+    "original_A",
+    "alternate",
+    "geometry",
+    "fusion_zero",
+    "fusion_TTA"
+  ],
+  "baseline": "intact R145 Frozen_A plus previous TTA",
+  "proposal": "one fresh 16384-point resampling of exactly A in the same coordinates and full expression, identical source network and full source-prepared Frozen-A readout, new 256 boxes including noB. Seed from SHA256(R154|original seed) fixed before scoring; three-source original-seed replay required",
+  "matching": "valid AABBs only, IoU strictly >0.55, descending IoU then ascending A then alternate index, greedy one-to-one. Unmatched predictions remain independent",
+  "geometry": "Matched centers/sizes averaged by original norm_joint_zero and alternate frozen grounding probabilities; zero sum equal weights. Same geometry for all TTA and zero comparisons. Anchored geometry keeps all A identities.",
+  "ranking": "one half sum of anchor and alternate scores with missing view zero. 256 anchor groups then unmatched alternate in ascending ID. Stable sort, truncate to 256 independent clusters. Anchor scores norm_joint_zero or norm_TTA. Alternate singleton is eligible to win. Wrong arm shuffles only alternate semantic scores, true coordinates fixed; seed SHA256(R154-shuffle|src|tgt|id) first8 little-endian",
+  "checks": [
+    "mIoU vs R145 for total algorithm",
+    "mIoU vs fusion_zero for incremental historical R145 parameter update",
+    "vs shuffled for evidence attribution",
+    "geometry-only fixed winner and actual capacity Acc25/50 and pool oracle",
+    "paired gains losses raw and weighted six directions, has B and no B; adopt only as development candidate, no target-based grid"
+  ],
+  "external_mechanism": "Solovyev et al. WBF confidence weighted localization, adapted to two ranked sets of referring predictions and no same-view pooling; no new test fit",
+  "FINAL_access": false,
+  "external_experts": false,
+  "source_weight_training": false,
+  "new_target_fitting": false
+}
