@@ -1,0 +1,7 @@
+# Reference mechanism and transfer
+
+WeakM3D (Peng et al., ICLR 2022) §3.3 traces a ray from the camera optical center toward an object point to identify the first intersected box surface. Its explicit ray term in Eq. 2 assigns zero when there is no hit; §3.4 rescales pointwise losses by inverse neighborhood density. The method trains a monocular detector under weak supervision with object regions. [Paper, §§3.3–3.4](https://arxiv.org/pdf/2203.08332) · [Authors’ implementation](https://github.com/SPengLiang/WeakM3D)
+
+R157 compares two frozen geometric proposals with the same held-out sensor returns. For ranges it uses a verified laser origin, a capped absolute range residual and a capped penalty for a miss. Equal total weight per occupied voxel supplies a discrete density correction. A is retained when the pair is spatially separated or evidence is insufficient. A secondary unsigned closest-surface score requires no sensor origin; it can also fit a hidden face. The scored local component expresses shared spatial support without a semantic identity label. No external object mask or new source training is used.
+
+The 15 exposed, visually adjudicated positive geometry records motivated testing both components. They were not used to set the selector gates, switch thresholds or method weights. Their joint substitution reproduces 15 improvements; all negative records remain in the separately scored full comparison.
