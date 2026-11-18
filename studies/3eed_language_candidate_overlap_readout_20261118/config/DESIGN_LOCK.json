@@ -1,0 +1,16 @@
+{
+  "study":"R158 replacement of text-to-winner decoding, preceding any new task scores",
+  "cohort":"all 1798 EXT records in the R145 registry, in original order, six directed tasks; already exposed",
+  "registry_sha256":"6df8cbc22aff3b8c945c6a50c6a23ec5c3b559d46f200618cfb91e83a220ad85",
+  "primary":"role_risk",
+  "model":"three existing fully source-prepared frozen checkpoints. New decoder of decisions, no source training, no test-time weight update, no external experts",
+  "candidate_universe":"256 original A boxes with fixed physical seed IDs and all six original decoder position tensors. Re-encode target and directly linked reference phrases on those anchors, never match role-forward query numbers from fresh proposals.",
+  "language":"full-sentence native scores from literal target head, equal log weight with separately encoded subject phrase and explicit appearance field; missing parse falls back to full-sentence native evidence",
+  "B":"registered B on A coordinates, coverage per A box from visible registered seeds; mix centered candidate log evidence with B weight <=0.5. No B goes through the same new A reader. A-camera layout only.",
+  "inference":"normalize semantic posterior across all candidates with inverse sum of squared overlaps as duplicate density; marginalize known left/right target-reference edges across all reference hypotheses, neutral for unavailable geometry, explicit target image-position intervals with half-neutral lapse. Decode expected pairwise 3D box IoU. All arms share final sampled-A PCA, additionally report axis-aligned scores.",
+  "baselines":["frozen_A","joint_zero","R145"],
+  "controls":["same_posterior_MAP","old_scores_risk","new_A_only","without_reference","without_layout","without_phrase","misbound_reference","misbound_B","inverted_layout"],
+  "report":"design-weighted six-direction mean and by direction and B availability; mIoU, Acc25/50, all paired improvements and losses, box overlap and unknowns. Report stratified scene results. Compare modified base scores and identical geometry. No per-case, domain or endpoint selection.",
+  "decision":"prefer primary for continued development only if above joint_zero on mIoU and stronger than old_scores_risk; component evidence requires its own matched ablation. Do not deploy solely based on this exposed cohort. Keep baseline if primary fails.",
+  "FINAL_access":false,"target_labels_before_seal":false
+}
