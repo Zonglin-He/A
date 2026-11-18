@@ -1,0 +1,54 @@
+{
+  "round": "R165",
+  "question": "Re-evaluate the existing frozen single-frame system and strictly isolate its components on the official 3EED cross-platform Validation protocol.",
+  "paper": {
+    "table": "https://arxiv.org/html/2511.01755v1#S5.T2",
+    "protocol": "https://arxiv.org/html/2511.01755v1#A2.SS5",
+    "release": "https://huggingface.co/datasets/RRRong/3EED/blob/main/baseline_ckpt_pred.zip",
+    "rows": "Six off-diagonal source-to-target directions only; quote BUTD-DETR, EDA, WildRefer, and the paper's 3EED separately from measured local source checkpoints."
+  },
+  "official_population": {
+    "raw_expressions": {"waymo": 3794, "drone": 2984, "quad": 2928},
+    "expected_eligible": {"waymo": 3782, "drone": 2984, "quad": 2928},
+    "initial_eligible": {"waymo": 3782, "drone": 2792, "quad": 2736},
+    "category_span_screen": "Exactly the released loader's category/synonym eligibility. The 12 unmatched Waymo expressions do not enter any head-to-head primary denominator.",
+    "protected_boundary": "Previously protected FINAL384 is excluded from the initial run. Add exactly those official-overlap rows, only with direct user authorization and using this same locked bundle, before computing the official full aggregates."
+  },
+  "source_checkpoints": "Existing three independent epoch100 3EED and matching same-source R76/R91 states. The authors' released union checkpoint is a different training setup and is excluded.",
+  "paired_inputs": "Single target frame, identical raw 16,384 uniform samples with replacement only if necessary, canonical upstream full caption/sentinel, model axes and original A256. Fixed R97 per-expression seed policy for reproducible batch-one forward and reuse of compatible sealed predictions. Characterize this sampling versus the historical R96 native batch sampling without pooling the two.",
+  "reference": "Released last-layer contrastive BBF, token softmax at .07, annotated-class positive map, official descending argsort, native minimum size, axis-aligned prediction. Include R96 original loader/batch comparable slice as a second frozen-reference bridge. Class spans only serve the official reference; no target GT category enters our methods.",
+  "arms": [
+    "official_bbf_axis", "official_bbf_pca",
+    "native_text_axis", "native_text_pca",
+    "r76_lidar_axis", "r76_lidar_pca",
+    "r76_rgb_axis", "r76_rgb_pca", "r76_overlap_axis", "r76_overlap_pca",
+    "r91_axis", "r91_pca", "r158_axis", "r158_pca"
+  ],
+  "contrasts": [
+    ["native_text_axis", "official_bbf_axis"],
+    ["r76_lidar_axis", "native_text_axis"],
+    ["r76_rgb_axis", "r76_lidar_axis"],
+    ["r76_rgb_pca", "r76_lidar_pca"],
+    ["r91_axis", "r76_rgb_axis"],
+    ["r91_pca", "r76_rgb_pca"],
+    ["r158_axis", "r76_overlap_axis"],
+    ["r158_pca", "r76_overlap_pca"],
+    ["r76_overlap_axis", "r76_rgb_axis"],
+    ["r76_overlap_pca", "r76_rgb_pca"],
+    ["r158_axis", "r91_axis"],
+    ["r158_pca", "r91_pca"],
+    ["official_bbf_pca", "official_bbf_axis"],
+    ["native_text_pca", "native_text_axis"],
+    ["r76_lidar_pca", "r76_lidar_axis"],
+    ["r76_rgb_pca", "r76_rgb_axis"],
+    ["r76_overlap_pca", "r76_overlap_axis"],
+    ["r91_pca", "r91_axis"],
+    ["r158_pca", "r158_axis"],
+    ["r158_pca", "official_bbf_pca"],
+    ["r158_pca", "official_bbf_axis"]
+  ],
+  "interventions": "R76 LiDAR keeps the prepared point adapter and match projection but disables both early RGB interactions and zeros the entire calibrated image-to-query late path. R76 RGB vs R91 holds the same weights and only enables the trained competition interface. R158 replaces argmax by frozen overlap readout without changing boxes. PCA holds winner, center and dimensions fixed and changes only axial yaw. Retain all switched, harmed, zero and unchanged results. Rejected R162/R164 geometry is not an active method component.",
+  "runtime": "Single GPU and source-frozen inference. Reuse R97 prepared R91 distributions only after same-code, same-input native and full-reader parity. Score with official float32 geometry and identical OBB metric for rotated predictions via a frame rotation; audit independently in sensor coordinates.",
+  "metrics": "Last-layer Top1 Acc@25/50 with strict > thresholds and mIoU. Keep every direction, per-target group, six-direction equal-weight macro, pooled micro, paired switch and threshold gains/losses, and recording groups. Published differences are truly numerical references, not same author checkpoints matched per-record differences.",
+  "selection": "All arms frozen before first run. Target GT boxes are scored after prediction seals, never used for selection or tuning. R161 remains paused. Zero new training and no target parameter updates."
+}

@@ -1,0 +1,10 @@
+{
+  "amendment": "Numerical geometry implementation only. Recorded after a constructed fixture and before any R165 target-box scores.",
+  "locked_prediction_arms_or_predictions_changed": false,
+  "problem": "The official FP32 clipping implementation can return invalid IoU when rotating a predicted box onto its axes creates coincident polygon edges. A synthetic identical rotated pair returns 27.884992599487305, where the IoU is exactly 1.",
+  "primary": "All paired comparisons use one common FP64 yaw-aware 3D IoU implementation with the original loader's GT representation. A separate sensor-frame 3D convex-hull implementation independently checks every endpoint and both accuracy thresholds.",
+  "literal_bridge": "Run the original FP32 routine in parallel for every endpoint. Keep and report any numerical discrepancies, threshold flips, or invalid IoUs. This includes an unmodified numeric scorer for the local official 3EED axis-aligned baseline.",
+  "metric_definition_unchanged": ["single-object Top1", "3D oriented IoU", "IoU strictly greater than 0.25 or 0.50", "mIoU in percent"],
+  "box_labels_read_by_r165_before_amendment": false,
+  "fixture_path": "score165.py, run with argument fixture"
+}

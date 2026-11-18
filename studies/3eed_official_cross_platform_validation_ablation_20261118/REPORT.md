@@ -1,0 +1,3 @@
+# Official 3EED cross-platform evaluation and matched ablations
+
+[Chinese main report](REPORT_ZH.md). For the local paired model and published values, use the main report and [paper bridge](results/paper_bridge.csv). [Matched contrasts](results/paired.csv) include both positive and negative outcomes. Each affected direction is measured with the same local source-only checkpoint, aligned raw samples and A256. PCA modifies yaw on a fixed selected candidate. The native-code geometry bridge provides the literal FP32 outcome for each arm. Published accuracy is a separate benchmark reference. Replaying the model requires the official inputs and local source weights, source-prepared states, and audited R97 artifacts.

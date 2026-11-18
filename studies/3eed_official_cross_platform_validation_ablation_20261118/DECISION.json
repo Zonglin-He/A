@@ -1,0 +1,241 @@
+{
+  "finding": "完整单帧方法相对逐条配对的官方 Frozen，六方向等权 mIoU / Acc@25 / Acc@50 变化为 +2.711 / +4.790 / +4.005 pp。",
+  "paired_scope": "ordinary",
+  "n": 18620,
+  "official_full": false,
+  "final_authorization_needed_to_complete_scope": true,
+  "FINAL_access": false,
+  "task_reports_target_GT_selection": false,
+  "source_training_runs": 0,
+  "target_parameter_updates": 0,
+  "published_reference_numerical_gaps_pp": {
+    "Acc25": 3.078294580025112,
+    "Acc50": 2.006046304896717
+  },
+  "paired_component_findings": [
+    {
+      "component": "R76 源域准备，关闭 RGB",
+      "after": "r76_lidar_axis",
+      "before": "native_text_axis",
+      "deltas_pp": {
+        "mIoU": 0.5563134213571832,
+        "Acc25": 0.4293801498986767,
+        "Acc50": -0.13208300099462278
+      },
+      "directions": {
+        "mIoU": {
+          "higher": 5,
+          "lower": 1
+        },
+        "Acc25": {
+          "higher": 5,
+          "lower": 1
+        },
+        "Acc50": {
+          "higher": 2,
+          "lower": 4
+        }
+      }
+    },
+    {
+      "component": "R76 的 RGB 路径，统一 PCA",
+      "after": "r76_rgb_pca",
+      "before": "r76_lidar_pca",
+      "deltas_pp": {
+        "mIoU": -0.25442868854805845,
+        "Acc25": -0.33912483294232487,
+        "Acc50": -0.5408297899254855
+      },
+      "directions": {
+        "mIoU": {
+          "higher": 1,
+          "lower": 5
+        },
+        "Acc25": {
+          "higher": 2,
+          "lower": 4
+        },
+        "Acc50": {
+          "higher": 0,
+          "lower": 6
+        }
+      }
+    },
+    {
+      "component": "R91 竞争接口，统一原选框和 PCA",
+      "after": "r91_pca",
+      "before": "r76_rgb_pca",
+      "deltas_pp": {
+        "mIoU": 0.08069659839963172,
+        "Acc25": 0.1406948778290662,
+        "Acc50": 0.16869599151689307
+      },
+      "directions": {
+        "mIoU": {
+          "higher": 3,
+          "lower": 3
+        },
+        "Acc25": {
+          "higher": 3,
+          "lower": 2
+        },
+        "Acc50": {
+          "higher": 5,
+          "lower": 1
+        }
+      }
+    },
+    {
+      "component": "R91 竞争接口，统一去重和 PCA",
+      "after": "r158_pca",
+      "before": "r76_overlap_pca",
+      "deltas_pp": {
+        "mIoU": 0.057210941521923075,
+        "Acc25": 0.08860320446039793,
+        "Acc50": 0.21486564443883083
+      },
+      "directions": {
+        "mIoU": {
+          "higher": 4,
+          "lower": 2
+        },
+        "Acc25": {
+          "higher": 4,
+          "lower": 2
+        },
+        "Acc50": {
+          "higher": 3,
+          "lower": 1
+        }
+      }
+    },
+    {
+      "component": "重叠去重，冻结 R91 和 PCA",
+      "after": "r158_pca",
+      "before": "r91_pca",
+      "deltas_pp": {
+        "mIoU": 0.6415817294713619,
+        "Acc25": 1.269208666388689,
+        "Acc50": 1.0205747352868073
+      },
+      "directions": {
+        "mIoU": {
+          "higher": 5,
+          "lower": 1
+        },
+        "Acc25": {
+          "higher": 4,
+          "lower": 2
+        },
+        "Acc50": {
+          "higher": 5,
+          "lower": 1
+        }
+      }
+    },
+    {
+      "component": "PCA，固定完整方法的候选、中心和尺寸",
+      "after": "r158_pca",
+      "before": "r158_axis",
+      "deltas_pp": {
+        "mIoU": 1.7584977248470413,
+        "Acc25": 3.234303115873466,
+        "Acc50": 3.535699550678273
+      },
+      "directions": {
+        "mIoU": {
+          "higher": 6,
+          "lower": 0
+        },
+        "Acc25": {
+          "higher": 6,
+          "lower": 0
+        },
+        "Acc50": {
+          "higher": 6,
+          "lower": 0
+        }
+      }
+    },
+    {
+      "component": "PCA，直接加在官方 Frozen 上",
+      "after": "official_bbf_pca",
+      "before": "official_bbf_axis",
+      "deltas_pp": {
+        "mIoU": 1.7653261514172947,
+        "Acc25": 2.961597482588612,
+        "Acc50": 3.785637242846974
+      },
+      "directions": {
+        "mIoU": {
+          "higher": 6,
+          "lower": 0
+        },
+        "Acc25": {
+          "higher": 6,
+          "lower": 0
+        },
+        "Acc50": {
+          "higher": 6,
+          "lower": 0
+        }
+      }
+    },
+    {
+      "component": "完整方法相对同样带 PCA 的 Frozen",
+      "after": "r158_pca",
+      "before": "official_bbf_pca",
+      "deltas_pp": {
+        "mIoU": 0.9455041180105237,
+        "Acc25": 1.8279734597902433,
+        "Acc50": 0.2189590506400627
+      },
+      "directions": {
+        "mIoU": {
+          "higher": 4,
+          "lower": 2
+        },
+        "Acc25": {
+          "higher": 4,
+          "lower": 2
+        },
+        "Acc50": {
+          "higher": 3,
+          "lower": 3
+        }
+      }
+    },
+    {
+      "component": "完整方法相对原始 Frozen",
+      "after": "r158_pca",
+      "before": "official_bbf_axis",
+      "deltas_pp": {
+        "mIoU": 2.7108302694278184,
+        "Acc25": 4.789570942378855,
+        "Acc50": 4.004596293487037
+      },
+      "directions": {
+        "mIoU": {
+          "higher": 6,
+          "lower": 0
+        },
+        "Acc25": {
+          "higher": 6,
+          "lower": 0
+        },
+        "Acc50": {
+          "higher": 6,
+          "lower": 0
+        }
+      }
+    }
+  ],
+  "component_evidence": {
+    "PCA": "在官方 Frozen 与完整方法上均改善六方向的 mIoU、Acc@25 和 Acc@50，是已验证的主要贡献。",
+    "overlap_readout": "固定 R91 与 PCA 后仍有总体净收益，Acc@50 在五个方向提高。",
+    "R91": "统一去重和 PCA 后有小幅净增量，三个方向的 Acc@50 提升，两个持平，一个下降。",
+    "R76_RGB": "对同一套 R76 权重，打开完整 RGB 路径使六个方向的 Acc@50 都下降。"
+  },
+  "evaluation_geometry": "common yaw-aware OBB IoU with exact released evaluation bridge",
+  "geometry_audit_sha256": "eee5e28668bab28f6f77729d4cec4a71edefba70cfab0366f52ced0e63927dd7"
+}
