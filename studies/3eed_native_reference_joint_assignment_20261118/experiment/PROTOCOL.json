@@ -1,0 +1,24 @@
+{
+  "round": "R171",
+  "r169_commit": "8c2c8b4a97254368bb194d5b1b98cb6e8c4690ef",
+  "r170_commit": "145fb621661b7095631444cec684e678f97c403f",
+  "arms": [
+    "r158_pca", "C_mapped_independent", "C_mapped_joint", "D_mapped_independent", "D_mapped_joint",
+    "D_native_independent", "D_native_fixed_reference", "D_native_linked_joint", "D_native_joint"
+  ],
+  "cohorts": {
+    "replay170": "All 48 R170 physical frames and 96 directions. Mechanism development panel with previously exposed outcomes. Require exact reproduction of all five previous endpoints, geometry and physical links before scoring the new arms. The five known lost-reference records are a prespecified subgroup of these 96 records.",
+    "new_frames": "12 distinct frames per target from the R159 ordinary TRAIN registry, with both other source checkpoints. Exclude every R170 physical frame plus exact point/image content, all R165 ordinary recordings and content, and the R168 source-quality audit identities and content. Prefer recordings not used by R170 within each platform. Waymo has such recordings. Drone and Quad share their registered recording directories with R170. This is a physical-frame holdout for R171 with historical fixed-baseline exposure, not a geographically independent or fully unexposed evaluation."
+  },
+  "sampling_seed": "R171-native-reference-20261118-v1",
+  "frames_per_target": 12,
+  "lexical_slots_per_target": 8,
+  "sampling": "Original text and R170 parser only, one relation and one description per frame. Select eight from the text-only stratum whose selected reference span contains an ordinary object noun (see select171.py) and four from other spans, without looking at annotation inventory or using rewrite success as a filter. Use round-robin by recording within each stratum, a fixed hash for ties, and prevent exact frame, point or image reuse. If a stratum has insufficient choices, fill from the other registered stratum and record this. Keep all outcomes, including no rewrite. Do not extrapolate panel metrics to the unfiltered benchmark.",
+  "locked_method": "Same original subject pool, subject unary, R169-C and D text, point samples, RGB, deduplication, maximum 32 donor boxes, PCA readout, and R169 mapped controls. Native D keeps its original query boxes and unary contrast log(u/max u) directly. For each possible subject/reference compute the unchanged bounded R167 camera-left/right factor using camera projection and visible support of the shared frozen input seeds inside their pre-PCA boxes. No cross-role query-ID correspondence. Explicit unknown reference uses the inherited score -2 with any physical candidate, else 0. No overlap penalty, new gate, or tuning. Independent and joint share pools and unaries, with only the left/right factor removed in independent. Fixed-reference selects the same unary-best native reference before spatial subject selection. Native linked-only uses native geometry and same centered native unary but masks donors with no old physical link, isolating the effect of retaining them. C and mapped D retain inherited association and Jaccard discount. No-evidence arms fall back to full R158+PCA.",
+  "blind_review": "R170 uses its existing sealed one-reader image identities. New frames get one new prediction-blind two-endpoint visual pass with shuffled official annotation slots and whole RGB, no choices or metrics. Seal both predictions and all identity inputs before scoring. Report reader/GT disagreements and unresolved labels. No case-specific changes after inspection.",
+  "measures": "Separate cohorts. Official threshold IoU strictly greater than 0.25/0.50, six directions equally weighted on complete panels. All negatives and fallbacks included. On verified endpoints compare native/mapped coverage, selected reference identity, reference IoU, dual identity, and which rescued subject results have both endpoints correct. Track coverage and selection for each of the known five lost-reference rows. Record native extent and visible support, relation sign and comparability against verified endpoint geometry, and same-known-object output for geometry diagnostics without tuning. Pair against mapped D and same-information independent and fixed reference. Report platform/direction results and recording counts, with descriptive leave-one-recording-out and no claim of independent direction records or confidence interval from two recordings.",
+  "decision": "Coverage recovery tests the existence of candidates, selection and true dual identity test use of evidence. Keep D as a research candidate only if useful changes survive matched comparisons; deployment is decided separately and requires stronger generalization evidence. Retain all unfavorable results. Do not select thresholds or run an additional variant after seeing outcomes.",
+  "source_training_runs": 0,
+  "target_updates": 0,
+  "FINAL_access": false
+}
