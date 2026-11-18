@@ -1,0 +1,33 @@
+{
+  "evidence_export": [
+    {
+      "attempt": 1,
+      "outcome": "Camera helper module was missing from the observer's import path.",
+      "disposition": "Load the existing projection module used by the original single-frame input path."
+    },
+    {
+      "attempt": 2,
+      "outcome": "The observer assumed the reference PointNet++ structure. The actual frozen model uses Point_Backbone_V2.",
+      "disposition": "Compose the first two sa_ins arrays following the checked backbone implementation; verify all recovered seed coordinates against original sampled XYZ."
+    },
+    {
+      "attempt": 3,
+      "outcome": "All six real-direction comparisons reproduced the original boxes, point samples and old winners. Captured sparse attention exactly reconstructs both local readouts."
+    }
+  ],
+  "post_seal_diagnostics": [
+    {
+      "component": "Annotation inventory",
+      "outcome": "The diagnostic reader initially conflated seven-field neighboring boxes with the nine-field Drone/Quad target format.",
+      "disposition": "Use each source annotation's yaw-only seven-dimensional geometry in the shared transformation. Prediction arrays and task scores were already sealed."
+    },
+    {
+      "component": "Reciprocal language evaluation",
+      "outcome": "The case in the output folder name differed from the scoring scope.",
+      "disposition": "Rename the directory and verify its original file hashes. Retain all existing sealed outputs."
+    }
+  ],
+  "main_predictions_changed_after_target_scoring": false,
+  "extra_visual_expert_or_source_train_run": false,
+  "FINAL_access": false
+}

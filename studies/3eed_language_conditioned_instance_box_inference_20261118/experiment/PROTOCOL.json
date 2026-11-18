@@ -1,0 +1,25 @@
+{
+  "round": "R162",
+  "question": "Does language-conditioned shared instance support improve continuous box inference beyond equal-work serial fitting on one synchronized frame?",
+  "frozen_pipeline": "Three existing epoch100 source checkpoints and source-prepared R76/R91 full_disc. The deployed R159/R158 code and its source weights are reused. No pretraining, target weight updates, extra sensors, new visual experts or FINAL access.",
+  "inputs": {
+    "calibration": "64 source-own official VAL frames per source, distinct from registered R160 camera and point cloud content. Source labels supply weak log-size statistics and configuration selection for that source only.",
+    "development": "All 1798 R160 development directions. Original weights and all records.",
+    "paired_evaluation": "All R160 5942 ordinary records and 3072 other-recording records in separate summaries. Same text, seed, 16384 points and A256. Both ranges have historical exposure.",
+    "mechanism_panel": "16 prior R158 successes and 16 failures per direction from DEV with distinct point content inside each stratum, drawn once from the prior result. Panel outcomes cannot change the method or evaluation denominators."
+  },
+  "fixed_search": {
+    "old_regions_per_role": 4,
+    "extra_scene_peaks_per_role": 2,
+    "max_sparse_to_dense_points_per_fit": 320,
+    "support_sweeps_per_cycle": 4,
+    "box_cycles": 3,
+    "box_lbfgsb_max_iterations_per_cycle": 5,
+    "comparison": "Use all the same origins, representation and observed points for serial and alternating. Serial uses 12 support sweeps on the initial boxes and three fit cycles with that fixed support. The fit-only feedback control keeps the initial box in its support subproblems. Report actual objective evaluations as well."
+  },
+  "model": "Q0 from captured entity-to-seed attention and spatial hypotheses, with unknown. Unary quadratic fidelity, local and bidirectional quadratic graph terms, normalized robust dense surface fit with nonzero missing-mass cost, weak log-size and center/yaw trust. Independent assignments for potentially coreferent roles. Camera LEFT/RIGHT only, including bounded geometry and assignment factors for clear distinct entities. Source-locked local hypothesis starts and bounded continuous 7D outputs.",
+  "configuration_selection": "Before new target predictions, per source select the highest mean of Acc25 and Acc50 among default, wider role support, weaker geometry feedback. Stable default-first tie. Also select the strongest of uniform-fit, uniform fixed-dimensions and simple robust PCA/OBB in the same source-only way. No target performance influences configuration, origins, gates or per-case decisions.",
+  "controls": "Prior official and prepared-arm predictions. R158 + PCA, fixed-winner uniform-fit, fixed-winner new support with same fitter, uniform fixed-size fit, robust PCA/OBB, and equal-budget serial. Panel includes one-cycle, removal of geometric feedback, constrained original supports, expanded original supports, explicit relation factor off, graph off, true RGB path off, native adjacency uniform, swapped same-scene neighborhood and wrong-frame RGB, no size prior, fixed sizes and missing RGB as negative.",
+  "metric": "Paired upright oriented 3D IoU scored after sealing. Strict greater than .25/.50 following R160, both co-primary, auxiliary mIoU. Six direction equal means; scene bootstrap shares target recording weights across both incoming sources. No broad CI for one-scene target. Compare raw A256, uniformly old-PCA A256 and generated hypothesis oracles, for diagnosis only. Match point count when comparing support quality; only box containment can be measured without per-instance point labels.",
+  "acceptance": "Require correct correspondence beating both geometry and wrong pairing on verifiable support; require alternating beating matched serial; require gains on both full-cohort accuracy thresholds over current and simple refits and successful final outputs beyond old PCA256 coverage. Keep all regressions. Treat any metric tradeoff as tradeoff, and retain failed mechanism outcomes."
+}
