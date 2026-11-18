@@ -1,0 +1,89 @@
+{
+  "status": "PASS",
+  "positive_gain_oracle_mass_pp": 2.7225172822172397,
+  "reader_seals": [
+    "9bdd542922f5ea3fb98616d3f592b7706823cdbdfc118ade8d09e485c7682634",
+    "85ded02802d23520ef8ad2b3b3ffa76b3dcc854b4a7c533b786a5e0f66b772ad"
+  ],
+  "paired_reader_classification_disagreements": 2,
+  "sampling": "36 draws IID with replacement proportional to positive six-direction weighted D-minus-A gain; 6 negative controls drawn without replacement proportional to magnitude. Repeated draws reuse the same masked interpretation.",
+  "uncertainty": "Category-specific marginal 95% Wilson intervals quantify draw uncertainty conditional on the fixed development observations and these readings. They do not quantify reader error, sampling of scenes, or out-of-domain performance. UNKNOWN covers ambiguous and discordant reads.",
+  "review_boundary": "Two independent masked reads by AI agents of the same calibrated imagery, text, annotated referent and point cloud. There is no independent human instance ground truth for the predictions.",
+  "positive": {
+    "draws": 36,
+    "unique_direction_records": 30,
+    "physical_frames": 30,
+    "scene_clusters": 14,
+    "agreed_A_background_draws": 5,
+    "classification_agreement_draws": 33,
+    "categories": {
+      "SAME_TARGET_GEOMETRY": {
+        "draws": 17,
+        "unique_records": 15,
+        "gain_mass_share": 0.4722222222222222,
+        "gain_mass_share_wilson95": [
+          0.31986041515179064,
+          0.6299406197701239
+        ],
+        "estimated_oracle_mass_pp": 1.2856331610470297
+      },
+      "DIFFERENT_TARGET_RESCUE": {
+        "draws": 8,
+        "unique_records": 8,
+        "gain_mass_share": 0.2222222222222222,
+        "gain_mass_share_wilson95": [
+          0.11716331975796465,
+          0.38084702946118176
+        ],
+        "estimated_oracle_mass_pp": 0.6050038404927199
+      },
+      "OTHER": {
+        "draws": 0,
+        "unique_records": 0,
+        "gain_mass_share": 0.0,
+        "gain_mass_share_wilson95": [
+          0,
+          0.09641862859446362
+        ],
+        "estimated_oracle_mass_pp": 0.0
+      },
+      "UNKNOWN": {
+        "draws": 11,
+        "unique_records": 7,
+        "gain_mass_share": 0.3055555555555556,
+        "gain_mass_share_wilson95": [
+          0.18004451594829923,
+          0.46856272850510333
+        ],
+        "estimated_oracle_mass_pp": 0.8318802806774899
+      }
+    }
+  },
+  "negative": {
+    "draws": 6,
+    "unique_direction_records": 6,
+    "physical_frames": 6,
+    "scene_clusters": 5,
+    "agreed_A_background_draws": 0,
+    "classification_agreement_draws": 6,
+    "categories": {
+      "SAME_TARGET_GEOMETRY": {
+        "draws": 0,
+        "unique_records": 0
+      },
+      "DIFFERENT_TARGET_RESCUE": {
+        "draws": 0,
+        "unique_records": 0
+      },
+      "OTHER": {
+        "draws": 6,
+        "unique_records": 6
+      },
+      "UNKNOWN": {
+        "draws": 0,
+        "unique_records": 0
+      }
+    }
+  },
+  "prelocked_branch": "UNRESOLVED"
+}

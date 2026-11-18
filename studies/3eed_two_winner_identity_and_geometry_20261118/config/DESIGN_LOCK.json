@@ -1,0 +1,19 @@
+{
+  "created_utc": "2026-11-18T01:10:32.080373+00:00",
+  "stage": "R156 paired winners and attribution",
+  "primary": "A = R145 joint_zero winner and D = R154 alternate_single original winner, both on original A common unique sampled cloud (16384 before dedup). Same historical PCA eligibility. Both also compared on full native raw frame points common to both as sensitivity. On rows with B A has privileged B; on no_B identical observation budget. Add symmetric single-observation sensitivity using Frozen_A original winner on the same 16k versus D.",
+  "inputs": {
+    "research/round145/INPUT_REGISTRY_PRIVATE.json": "6df8cbc22aff3b8c945c6a50c6a23ec5c3b559d46f200618cfb91e83a220ad85",
+    "crossplatform/round154/captures/SEALED_PRIVATE.json": "9f9d6ab42bc870f75d7f0a4bc43c121ac232af1b79c81509c43a4117092615b3",
+    "crossplatform/round154/predictions/SEALED.json": "4dcb67195aee3af8cab43571cd43a82d38591a3107a4b64ffa24631d6c44c9da",
+    "crossplatform/round155/SEAL.json": "7e9971a7116e2a6d78e79790ceb3a804d7920814f8db75568d02a31a414ebf15",
+    "research/round155/results/task_all_rows.csv": "e8b15df735d2dc37a55a43617d18c78a035ff6a07683e20ef1296e2011160b9f",
+    "research/round154/results/task_all_rows.csv": "3b76c59b108bfa35022e79e25ed9caefd8dec3dd5736b1e3d420fe81924d4bb2",
+    "crossplatform/replication36_surface/common.py": "c779a23d4949bd7e06a912c8d8144132ca94bc98fd965a45dccb03bd5aebdcd2"
+  },
+  "target": "All 1798 exposed ordinary six-direction records; no FINAL/source training. All pairs fixed, preserve all excluded/fallback/negative outcomes. New predictions sealed before scoring. Independent oriented-IoU.",
+  "comparisons": "A and D on common 16k, on full raw, A_PCA vs D_axis (published reference), zero-vs-R145 both PCA (old enable/disable oracle). Design weights within six equal directions and separate raw, B, no-B. Argmax GT is diagnostic only.",
+  "review": "After scoring, positive mass by ordinal = weight/(6 * sum weights in that source-direction) * max(D_pca - A_pca,0). Draw 36 iid with replacement from positive mass with np.random.default_rng(156).choice then 6 without replacement from analogous negative mass with same RNG. Review dedup observations retaining draws, masked IoU/sign, full RGB and projected A/D/GT, LiDAR and original description. Same visible target geometry / distinct target rescue / other / unknown; record A-on-background separately, do not infer object identity from IoU alone. Two readers, unresolved discrepancies UNKNOWN. Report sampling uncertainty and joint/unresolved mass.",
+  "branch": "If over half all positive-mass draws credited to distinct identified target/referent rescue, evaluate frozen two-candidate full-versus-class language comparator on all ordinary rows. If over half credited same identifiable object/target geometry, evaluate fixed-winner horizontal-center correction with PCA yaw and extents fixed. If unresolved, report uncertainty and avoid selecting branch by GT guesses. Controls/implementation lock before each downstream eval. No additional source training, no external semantic expert for prediction.",
+  "prelocked_seed": 156
+}
