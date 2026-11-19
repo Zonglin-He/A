@@ -1,0 +1,51 @@
+{
+  "round": "R177",
+  "parent_commit": "e3970edf9427d9bfc7aeaca2b8dfa6f2a197d1f1",
+  "main_method": {
+    "round": "R174",
+    "variant": "full",
+    "commit": "261676dd7ed9cc9b6d87aa9514d5a083b4e5c860",
+    "selected_by": "user"
+  },
+  "target": {
+    "n": 18620,
+    "population": "Exactly the six R174 ordinary Validation directions, with the same frozen features, candidates and oriented output boxes",
+    "cohorts": ["all", "direct_left_right", "reference_mention", "no_reference"],
+    "metrics": ["Acc25", "Acc50", "mIoU"],
+    "aggregation": "Equal weight on the six direction means; recording-level paired resampling within each target platform",
+    "target_labels": "Read only the previously sealed and independently audited four subject-slot IoUs after the new prediction seal",
+    "FINAL_access": false
+  },
+  "fixed": {
+    "checkpoint": "R174 full head of each source, same source backbone, candidate IDs and parser",
+    "role_pools": "Original four subject and four reference boxes, with a two-reference truncation tested separately",
+    "source_retraining": 0,
+    "target_updates": 0,
+    "score_baseline": "Complete R174 full. Existing R174 source-trained 2x2 cells are retained as a separate comparison."
+  },
+  "arms": {
+    "full": {},
+    "without_reference_to_subject": {"reference_to_subject": false},
+    "without_subject_to_reference": {"subject_to_reference": false},
+    "without_role_messages": {"reference_to_subject": false, "subject_to_reference": false},
+    "without_final_pair_score": {"final_pair_score": false},
+    "without_subject_geometry_feedback": {"subject_geometry_feedback": false},
+    "without_reference_geometry_feedback": {"reference_geometry_feedback": false},
+    "without_geometry_feedback": {"subject_geometry_feedback": false, "reference_geometry_feedback": false},
+    "fixed_internal_boxes": {"internal_boxes": "anchor"},
+    "fixed_internal_yaw": {"internal_boxes": "fixed_yaw"},
+    "without_pair_projection": {"pair_projection": false},
+    "without_predicate_vector": {"predicate_vector": false},
+    "two_rounds": {"rounds": 2},
+    "one_round": {"rounds": 1},
+    "two_reference_slots": {"reference_slots": 2},
+    "without_terminal_messages": {"terminal_messages": false}
+  },
+  "interpretation": {
+    "unchanged": "Numerical endpoint equality and per-record equality are reported separately. Both subject and reference must retain the same boxes for two-role output equivalence.",
+    "improved": "Report every signed point estimate, every paired improvement and harm, and descriptive recording uncertainty. A positive exposed Validation comparison alone does not replace the registered main method.",
+    "runtime": "Measure decoder-only latency on each direction's first full batch after warm-up. Count actual decoded slots, recurrent rounds and terminal message projections. Keep end-to-end claims separate.",
+    "reference": "Report reference box switches and exact same-box assignments on direct left-right records. Box equality is observable without target annotations. It does not measure verified reference identity.",
+    "retention": "Retain all ordinary records, positive and negative cases, ties, and failed attempts."
+  }
+}
