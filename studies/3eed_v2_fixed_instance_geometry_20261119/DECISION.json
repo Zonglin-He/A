@@ -1,0 +1,45 @@
+{
+  "study": "R179",
+  "state": "complete",
+  "measurement": "valid",
+  "adopt": false,
+  "default_method": "v1",
+  "guard_eligible": 2002,
+  "strict_recoverable": 70,
+  "strict_recovered": 27,
+  "strict_harmed": 28,
+  "net_acc50_by_direction": {
+    "waymo_to_drone": -1,
+    "waymo_to_quad": -10,
+    "drone_to_waymo": 10,
+    "drone_to_quad": -7,
+    "quad_to_waymo": 6,
+    "quad_to_drone": 1
+  },
+  "delta_vs_v1_pp": {
+    "Acc25": -0.7161458333333321,
+    "Acc50": -0.032552083333333925,
+    "mIoU": -0.14665059208334696
+  },
+  "source_thresholds": {
+    "waymo": {
+      "direct_physical": null,
+      "geometry_only_pair": null,
+      "physical_pair": 0.0
+    },
+    "drone": {
+      "direct_physical": null,
+      "geometry_only_pair": null,
+      "physical_pair": 0.5823575877170171
+    },
+    "quad": {
+      "direct_physical": null,
+      "geometry_only_pair": 0.3842449094781772,
+      "physical_pair": 0.3196014154196698
+    }
+  },
+  "reason": "The point-supported selector reduces harms relative to the old quality head, but loses to v1 and the geometry-only control on strict accuracy, with lower Acc25 and mIoU than v1.",
+  "scope": "Previously exposed Ordinary TRAIN 3072 direction panel; v2 geometry stage only",
+  "target_updates": 0,
+  "FINAL_access": false
+}

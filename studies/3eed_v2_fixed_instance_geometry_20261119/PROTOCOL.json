@@ -1,0 +1,56 @@
+{
+  "study": "R179",
+  "task": "Choose raw or refined geometry for the same frozen v1 winner",
+  "baseline_release": "d0592f91d698a632d5c40783c3ef9518625411aa",
+  "prior_study_commit": "adfe7af73d1b34f4885188c1cd75d3609b112ff8",
+  "old_prediction_seal_sha256": "15c841c29a709cfdf3dbeb18a18a0ec80dc38a16f8c627b9c494532dd861bcc5",
+  "source_feature_seal_sha256": "1e41f84b455634a97df1cdefdc4e63db710c7dc0df93ccc8e6a59310b5eb7239",
+  "source_input_seal_sha256": "fed86ccfe78938834aca89d424967aaeed2af98b687d05bd4331d9a55bd99972",
+  "refinement_weight_seal_sha256": "9264f2d1e157aea3b2b6f7030495fc9b8659d7fe42385fc2b254e030e77ec4da",
+  "v1_registration_sha256": "c50ffe6c4a4f9f2c91328e00917bd1468586d1d6fd922a9e98a58f018d5d7533",
+  "v1_entrypoint_sha256": "8faec0ebd5c6c338e93613cd7f3ff9926b3f6fd111e6277b85fa3fe2abd6a40e",
+  "point_sampler_sha256": "c73431a4871ede56674636d66b636e6d77389b9f41eb0cf9160209876d5c1e59",
+  "evaluation": {
+    "cohort": "Previously exposed Ordinary TRAIN recording panel",
+    "manifest_sha256": "08cad14cf7271911123d5dda0c661ccdbcd111aa504605762df4954c194c18c1",
+    "direction_records": 3072,
+    "per_direction": 512,
+    "aggregation": "Equal weight for six source-to-target directions",
+    "metric": "Exact oriented 3D IoU, strict thresholds >0.25 and >0.50. Acc50 is primary."
+  },
+  "geometry_pair": {
+    "raw": "Frozen v1 winning carrier with incumbent PCA yaw",
+    "refined": "Existing source-trained continuous residual box for that carrier, before the old quality decision",
+    "point_seed": 0,
+    "points": 8192,
+    "crop": "Common region around raw box in its oriented coordinates, half-size times 1.70 plus 0.15 meters, deduplicate identical XYZ",
+    "guard": "At least 8 unique points inside the raw box, at least 8 inside the refined box, at least 4 shared, shared fraction at least 0.50 in each box",
+    "support_note": "Overlap of observed points is a conservative eligibility test and does not certify object identities."
+  },
+  "source_only": {
+    "fit": "Three separate models. 640 natural rows per corresponding source. These rows previously fit the frozen residual box head.",
+    "calibration": "Separate source recordings from selector and residual-head fit. Part of prior checkpoint selection.",
+    "calibration_counts": {"waymo": 160, "drone": 64, "quad": 160},
+    "logistic": "L2-regularized antisymmetric pair difference; scale by training RMS with a 0.03 floor; weight non-tied examples by clipped absolute oriented IoU gap; learn only from support-eligible pairs.",
+    "tie_epsilon_iou": 0.001,
+    "weight_absolute_gap_cap_iou": 0.10,
+    "regularization": 0.05,
+    "threshold_quantiles": [0.0, 0.25, 0.50, 0.75, 0.90, 0.98],
+    "threshold_selection": "For each score, consider 0, higher quantiles of positive eligible source-fit scores, and always raw. On corresponding source calibration, discard only configurations reducing Acc25 or total IoU relative to raw. Maximize Acc50 gain, then total IoU gain, then minimize switches. One threshold for both outgoing directions."
+  },
+  "arms": [
+    "v1_raw", "always_refined", "old_quality",
+    "direct_physical", "geometry_only_pair", "physical_pair"
+  ],
+  "diagnostics": [
+    "Fixed-winner pair oracle after prediction seal",
+    "Strict-threshold recoverable, rescued, harmed, remaining and overlap-blocked counts",
+    "IoU wins and losses, calibration and target ranking accuracy on eligible non-tied pairs, all direction results",
+    "Paired recording resampling with limited-recording disclosure"
+  ],
+  "decision": "Advance physical selector only with positive target equal-six Acc50 versus v1 and both simple controls, no overall Acc25 or mIoU regression vs v1, and strict gains surviving removal of the largest positive direction. Use paired recording intervals descriptively. A positive development result would support locked ordinary validation before integration.",
+  "base_model_updates": 0,
+  "refinement_updates": 0,
+  "target_updates": 0,
+  "FINAL_access": false
+}
