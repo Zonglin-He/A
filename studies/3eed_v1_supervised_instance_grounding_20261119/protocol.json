@@ -1,0 +1,47 @@
+{
+  "method": "v1",
+  "baseline_release": "d0592f91d698a632d5c40783c3ef9518625411aa",
+  "baseline_predictions_sha256": "6a1d020a6267f29fa3df5a11f36e84e521cc35424fe046f0db53c92d33484102",
+  "seed": 20261119,
+  "point_seed": 0,
+  "evaluation": {
+    "manifest": "crossplatform/round159/RECORDING_INPUTS_PRIVATE.json",
+    "sha256": "08cad14cf7271911123d5dda0c661ccdbcd111aa504605762df4954c194c18c1",
+    "records": 3072,
+    "per_target": 512,
+    "cohort": "Existing ordinary TRAIN recording panel, previously exposed for development"
+  },
+  "source": {
+    "splits": "Official platform TRAIN only, one separate model per source; recording-disjoint fit and head selection",
+    "natural_fit": 640,
+    "natural_calibration": 160,
+    "budgets_are_caps": "For small platforms choose fit and holdout recordings using unique frame counts only. Log shortfalls after content exclusion.",
+    "synthetic_fit_cap": 256,
+    "synthetic_calibration_cap": 64,
+    "exclude_all_evaluation_frames_and_point_content": true,
+    "natural_reference": "Known only where resolved via singular language role, class and unique compatible visible annotated instance. Ambiguous and absent inventory remain unknown.",
+    "synthetic_reference": "Explicit geometry-checked left and right pairs from the source inventory, with same-class subject alternatives"
+  },
+  "proposal": {
+    "original": 256,
+    "new_seed_votes": 64,
+    "raw_points_for_local_support": 8192,
+    "samples_per_candidate": 64,
+    "roles": "Both roles score every carrier. Subject never uses a shortlist."
+  },
+  "optimization": {
+    "batch_size": 8,
+    "learning_rate": 0.001,
+    "weight_decay": 0.0005,
+    "epochs": 12,
+    "checkpoint_epochs": [4, 8, 12],
+    "selection": "Use only the corresponding source held-out recordings and the fixed criterion in train.py"
+  },
+  "comparisons": ["v1", "fixed_winner_geometry", "native_carriers_only", "no_membership_weight",
+                  "full_pool_unary", "full_pool_joint", "wrong_reference", "source_selected"],
+  "adoption": "Measure paired six-direction Acc@25, Acc@50, mIoU and coverage. Preserve all adverse outcomes. Subject and reference identity support is evaluated on the source holdout with respective label provenance. Warn when a target claim remains unverified.",
+  "external_models_added": 0,
+  "source_backbone_updates": 0,
+  "target_updates": 0,
+  "FINAL_access": false
+}

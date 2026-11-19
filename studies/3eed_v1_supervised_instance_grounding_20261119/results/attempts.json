@@ -1,0 +1,25 @@
+{
+  "attempts": [
+    {
+      "phase": "source_inputs",
+      "status": "stopped",
+      "reason": "A hash-only recording split left too few Drone fit rows. Replaced with a source-count-only recording split.",
+      "labels_outside_source_train_read": false,
+      "log": "catalog_attempt001.log"
+    },
+    {
+      "phase": "source_inputs",
+      "status": "superseded_before_features",
+      "reason": "Drone recording allocation needs to account for repeated LiDAR contents, not only frame names.",
+      "labels_outside_source_train_read": false,
+      "log": "catalog_attempt002.log"
+    },
+    {
+      "phase": "source_feature_smoke",
+      "status": "stopped_before_first_feature",
+      "reason": "Source annotation projection needs its explicit package import before the first backbone forward.",
+      "log": "features_smoke_attempt001.log"
+    }
+  ],
+  "FINAL_access": false
+}
