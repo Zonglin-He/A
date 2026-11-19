@@ -1,0 +1,107 @@
+{
+  "old_aligned_and_misaligned_replays": 216,
+  "groups": {
+    "enriched_waymo": {
+      "n": 36,
+      "changed_winner": 23,
+      "top1_lost": 1,
+      "top1_recovered": 0,
+      "loss_winner_owners": {
+        "unassigned": 1
+      },
+      "loss_winner_eligible_for_paired_supervision": 0,
+      "losses_missing_c": 0,
+      "losses_missing_c_with_positive_coefficient": 0,
+      "losses_reversed_with_fixed_coefficient_centering": 0,
+      "local_win_global_rank_down": []
+    },
+    "initial_drone": {
+      "n": 36,
+      "changed_winner": 0,
+      "top1_lost": 0,
+      "top1_recovered": 0,
+      "loss_winner_owners": {},
+      "loss_winner_eligible_for_paired_supervision": 0,
+      "losses_missing_c": 0,
+      "losses_missing_c_with_positive_coefficient": 0,
+      "losses_reversed_with_fixed_coefficient_centering": 0,
+      "local_win_global_rank_down": []
+    },
+    "initial_waymo": {
+      "n": 36,
+      "changed_winner": 20,
+      "top1_lost": 3,
+      "top1_recovered": 1,
+      "loss_winner_owners": {
+        "unassigned": 3
+      },
+      "loss_winner_eligible_for_paired_supervision": 0,
+      "losses_missing_c": 0,
+      "losses_missing_c_with_positive_coefficient": 0,
+      "losses_reversed_with_fixed_coefficient_centering": 0,
+      "local_win_global_rank_down": [
+        "A080",
+        "A078"
+      ]
+    }
+  },
+  "audit_examples": [
+    {
+      "case": "A080",
+      "recording": "G03",
+      "cohort": "initial",
+      "platform": "waymo",
+      "arm": "aligned",
+      "status": "covered",
+      "original_rank": 15,
+      "new_rank": 25,
+      "before_type": "annotated_subject",
+      "after_type": "unassigned",
+      "missing_c": false,
+      "missing_bare_noun": false,
+      "winner_eligible_entity_in_prior_pair_loss": false,
+      "winner_eligible_representative_in_prior_pair_loss": false,
+      "chosen_candidate_changed": true,
+      "known_outcome": "both_unverified_or_wrong",
+      "hard_concordance_before": 0.0,
+      "hard_concordance_after": 1.0,
+      "hard_improved": true,
+      "whole_pool_rank_worsened": true,
+      "positive_c_weight": false,
+      "centered_fixed_weight_changes_winner": false,
+      "centered_fixed_weight_selected_true": false
+    },
+    {
+      "case": "A078",
+      "recording": "G29",
+      "cohort": "initial",
+      "platform": "waymo",
+      "arm": "aligned",
+      "status": "covered",
+      "original_rank": 2,
+      "new_rank": 5,
+      "before_type": "verified_same_class_same_side_foil",
+      "after_type": "unassigned",
+      "missing_c": false,
+      "missing_bare_noun": false,
+      "winner_eligible_entity_in_prior_pair_loss": false,
+      "winner_eligible_representative_in_prior_pair_loss": false,
+      "chosen_candidate_changed": true,
+      "known_outcome": "both_unverified_or_wrong",
+      "hard_concordance_before": 0.0,
+      "hard_concordance_after": 1.0,
+      "hard_improved": true,
+      "whole_pool_rank_worsened": true,
+      "positive_c_weight": false,
+      "centered_fixed_weight_changes_winner": false,
+      "centered_fixed_weight_selected_true": false
+    }
+  ],
+  "provenance": {
+    "prior_audit": "ccdd97b0c6572fb21268eb35f0073a5d2238da4221d30986ea07e529228b70ea",
+    "initial_truth": "577d652ea7e016b937ae309646d90acb383c9ed896e53c619181fb919011faec",
+    "initial_predictions": "29e8711e2bfaa86b01c6c73e992a251e61ce6bf48dfd96190060a9f398a7fa72",
+    "enriched_truth": "61b9f58b916cb8b035ad1217fdccad5fec3d65621e132b8fe38f8d4765ed0c48",
+    "enriched_predictions": "3aa753b5f6033ea111bbf2b6a53dbbc929d8cb04565e8f3c82276f5b4d3b682b"
+  }
+}

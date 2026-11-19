@@ -1,0 +1,27 @@
+{
+  "study": "Complete candidate pool reference ranking and actual winner verification",
+  "prior_public_commit": "6da7432bb2518e0e3688e57ca6fd21bbd479043f",
+  "inputs": "Reuse the previous sealed 108-frame source panel and the 36-frame Waymo absence enrichment. Retain all 144 frames, the existing single-reviewer adjudications, and every frozen native D box. The recordings are held out from the new calibration. They come from existing source training lists.",
+  "audit": "First exactly replay the old pair scores against the prior published rows. For A078, A080, and all physical winner changes, audit owner kind, C and bare-noun availability, and whether the new winner would be a supervised foil or the old D-max representative under the prior objective. Actual test entries are never used to fit their scores. Replay one fixed-coefficient contrast using median-relative C so a missing transfer is zero relative to typical observed evidence.",
+  "rank_params": "Every fitted ranker uses the same three available C/D evidence features, add-on to the original D unary, [-2,2] bounds and L2=0.15. The physical instance logit for supervised loss and diagnostic ranking is the best candidate logit under the current weights. Distinct unassigned candidates never enter the numerator or denominator of training, and they still compete at test. The actual test winner is the argmax over candidate slots and does not use annotated instance identities.",
+  "rank_arms": {
+    "D": "raw D candidate scores",
+    "legacy_pair": "previous selected-D-representative pair loss and original features",
+    "pair_entity": "pair loss over exact entity maxima, original features",
+    "pool_same_frames": "listwise loss over all known physical entities in the same hard training frames as pair_entity, original features",
+    "pool_all": "the same listwise loss using all covered fit frames with a known alternative, original features",
+    "pool_centered": "pool_all with the C score term median-relative among genuinely supported candidate slots. Unavailable slots receive zero contribution. This is the preregistered candidate.",
+    "pool_shuffled": "pool_centered with the previous exact within-frame rotation of the full cue tuple, same loss, data and fitting budget"
+  },
+  "rejection": "Fit separate binary classifiers for missing physical coverage and wrong selection or verified absence. For selection, supervised labels are verified correct, physically assigned wrong on covered inputs, and verified natural misses. Unassigned covered winners and unresolved cases are not negative training labels. Evaluate a 2 by 2 control with coverage or winner-correctness supervision and features at the original D winner or the actual new winner of the same preregistered ranker. Add raw keep, unchanged D with a winner verifier, and the full shuffled control. Balance the two classes, use standardization fitted on calibration only, fixed 0.5 cutoff and L2=0.15. Scores remain class-balanced research readouts.",
+  "splits": "Keep the prior outer splits. Initial fits use other recordings of the same source in the initial panel. The enriched fold can use initial Waymo plus other enriched Waymo recordings. The actual-winner verifier receives only inner recording-held-out ranking predictions within each outer training fold, using five deterministic groups if available. A rank fit without eligible examples returns D. A logistic fit without both classes uses the observed class prior or accepts if completely unlabeled. Quad has only one recording and reports raw D only.",
+  "metrics": "Whole-pool physical Top-1 and MRR where the true instance is covered, candidate-slot rank for historical replay, both rescue and damage counts, all negative and unresolved cases, supervised and unsupervised rivals, natural misses rejected, wrong selected covered rejected, covered correct penalty and correct accepts. Show separate results for recorded panels and groups and retain separate labels for unassigned winners.",
+  "joint_gate": "Preregistered pool_centered must exceed D, legacy_pair and pool_shuffled for pooled Waymo correct count and mean physical-instance MRR without losing raw D Top-1 count on either Waymo panel. On the supplementary holdouts, the matched actual-winner verifier must reject more known-wrong covered outputs than the coverage-trained control, achieve higher covered winner balanced accuracy than the shuffled verifier, and retain at least as many correct covered accepts as raw D, coverage control, and the D winner verifier. If supported, lock a separate nonprotected joint experiment using the same input pools, evidence and budget for independent, fixed-reference serial, joint, and misaligned evidence. Repeat only on platforms with support.",
+  "scope": {
+    "gpu_runs": 0,
+    "source_checkpoint_update": false,
+    "protected_data_access": false,
+    "current_deployment": "R158+PCA"
+  },
+  "rank_optimizer": "Legacy uses the original L-BFGS-B solver. All arms with max-entity aggregation use identical deterministic bounded Powell fitting from zero and plus/minus 0.4 in the first dimension, with 240 objective evaluations per start and a minimum-observed objective decision. No setting is selected by outer results."
+}
