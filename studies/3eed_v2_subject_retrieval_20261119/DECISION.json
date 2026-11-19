@@ -1,0 +1,53 @@
+{
+  "study": "R180",
+  "complete": true,
+  "measurement_valid": true,
+  "advance_to_locked_validation": false,
+  "deployment": "v1",
+  "evaluation_records": 3072,
+  "source_k": {
+    "waymo": 4,
+    "drone": 4,
+    "quad": 4
+  },
+  "source_selected_delta_pp": {
+    "v1": {
+      "Recall25": 4.980468750000007,
+      "Recall50": 1.6276041666666714,
+      "Acc25": 0.0,
+      "Acc50": -0.032552083333333925,
+      "mIoU": 0.0013665860053251322
+    },
+    "native_source_K": {
+      "Recall25": 4.980468750000007,
+      "Recall50": 1.6276041666666714,
+      "Acc25": 0.0,
+      "Acc50": -0.032552083333333925,
+      "mIoU": 0.0013665860053251322
+    }
+  },
+  "transition_at_25": {
+    "four_slot_misses": 1036,
+    "four_slot_misses_recalled": 224,
+    "four_slot_misses_reachable": 141,
+    "four_slot_misses_rescued": 1,
+    "other_outside_rescues": 1,
+    "total_rescues": 2,
+    "total_harms": 2,
+    "harms_by_outside": 2
+  },
+  "transition_at_50": {
+    "four_slot_misses": 683,
+    "four_slot_misses_recalled": 122,
+    "four_slot_misses_reachable": 86,
+    "four_slot_misses_rescued": 0,
+    "other_outside_rescues": 0,
+    "total_rescues": 0,
+    "total_harms": 1,
+    "harms_by_outside": 1
+  },
+  "reason": "Recall gains fail to produce a positive Acc25 change over v1 or equal-K frozen retrieval. Acc50 loses one case.",
+  "backbone_updates": 0,
+  "target_updates": 0,
+  "FINAL_access": false
+}

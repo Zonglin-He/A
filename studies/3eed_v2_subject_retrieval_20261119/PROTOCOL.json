@@ -1,0 +1,42 @@
+{
+  "study": "R180",
+  "baseline_release": "d0592f91d698a632d5c40783c3ef9518625411aa",
+  "prior_public_main": "b7c152c022b34fa854d26edc4091a4fd2a704e69",
+  "scope": "Previously exposed Ordinary TRAIN panel; 1536 expressions, 3072 direction records, 512 per direction",
+  "registry_sha256": "08cad14cf7271911123d5dda0c661ccdbcd111aa504605762df4954c194c18c1",
+  "archived_candidate_seal_sha256": "15c841c29a709cfdf3dbeb18a18a0ec80dc38a16f8c627b9c494532dd861bcc5",
+  "source_feature_seal_sha256": "1e41f84b455634a97df1cdefdc4e63db710c7dc0df93ccc8e6a59310b5eb7239",
+  "source_input_seal_sha256": "fed86ccfe78938834aca89d424967aaeed2af98b687d05bd4331d9a55bd99972",
+  "subject_candidates": "Exactly the 256 v1 original proposals with their existing PCA yaw and fixed point seed 0",
+  "k_values": [4, 8, 16],
+  "training": {
+    "seed": 202611180,
+    "n_fit_per_source": 640,
+    "calibration_counts": {"waymo": 160, "drone": 64, "quad": 160},
+    "batch_size": 16,
+    "epochs": 12,
+    "learning_rate": 0.001,
+    "weight_decay": 0.001,
+    "objective": "Negative log probability mass on source proposals with exact oriented IoU > 0.25; rows without a positive proposal are counted and skipped for loss",
+    "architecture": "Bounded additive residual over frozen overlap prior, 196->32->1, zero final layer initialization; source-specific heads on frozen query and subject/full-text matching features"
+  },
+  "shortlist": {
+    "incumbent": "v1 final winner is inserted before diversity selection for every K and retains its original decoder slot",
+    "diversity": "Existing v1 overlap threshold of 0.35 with ranking fallback to fill exactly K, applied identically to trained and frozen scores",
+    "ordering": "Retained v1 hypotheses stay in their original slots. Other slots filled with selected proposals in frozen overlap-prior order.",
+    "readout": "Existing frozen v1 wider readout from the local ablation with extra subject slots sharing the fourth embedding; same four reference anchors, priors and token masks as v1; original v1 priors for all subjects"
+  },
+  "select_k": "One K per source, the same for both outgoing directions. Maximize source recording-held-out actual Acc25, then Acc50, then mIoU, then smaller K. Only the trained retriever plans K. The frozen control copies its K.",
+  "arms": ["v1", "native4", "native8", "native16", "trained4", "trained8", "trained16", "native_source_K", "trained_source_K"],
+  "measurements": [
+    "Recall@K is the fraction of all records with an available shortlist box above strict IoU 0.25 or 0.50; additionally report conditional recall given a pool hit.",
+    "Four-slot miss means no v1 slot is above threshold while A256 contains a passing box. Report new recall, final rescues, outsider rescues outside the miss subset, and harms versus v1.",
+    "Report whether retrieved good boxes are within the frozen decoder's prior margin bound (2.5 with reference; 1.5 without), for diagnosis after sealing.",
+    "Equal six directions, paired recording resampling and complete signed scalar outcomes."
+  ],
+  "decision": "A retrieval candidate advances to locked ordinary validation only if source-selected K improves overall actual Acc25 over v1 and same-K frozen retrieval, with no net overall Acc50 harm. Report per-direction and recall effects regardless.",
+  "backbone_updates": 0,
+  "decoder_updates": 0,
+  "target_updates": 0,
+  "FINAL_access": false
+}
