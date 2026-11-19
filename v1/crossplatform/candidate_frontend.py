@@ -1,4 +1,5 @@
-"""Cross-platform 3D grounding from one target frame and an English expression."""
+"""Point-cloud candidate scores for single-frame v1 grounding."""
+from copy import deepcopy
 from dataclasses import dataclass
 import hashlib
 import json
@@ -69,7 +70,7 @@ class CandidateFrontend:
             raise ValueError(f'Unknown source platform: {source}')
         os.environ.setdefault('CUBLAS_WORKSPACE_CONFIG', ':4096:8')
         self.asset_root = Path(asset_root).resolve(strict=True) if asset_root is not None else ROOT
-        code_paths = ('research/round158', 'research/round97', 'research/round90', 'research/round76',
+        code_paths = ('research/round158', 'research/round97',
                       'research/round66', 'crossplatform/round51', 'crossplatform/round7/experiment')
         dependencies = ('crossplatform/round3/p0/upstream', 'crossplatform/round20/runtime')
         upstream = self.asset_root / dependencies[0]
@@ -80,9 +81,7 @@ class CandidateFrontend:
         os.environ.update(TOKENIZERS_PARALLELISM='false', TRANSFORMERS_OFFLINE='1', HF_HUB_OFFLINE='1')
         import torch
         from models import BeaUTyDETR
-        from core90 import Fusion90
         from model51 import strict_runtime
-        from model76 import restore
         import parse97
 
         if not torch.cuda.is_available():
@@ -125,20 +124,24 @@ class CandidateFrontend:
             backbone.load_state_dict(state['model'], strict=True)
             del state
             self.base = backbone.cuda().eval().requires_grad_(False)
-            self.matcher = Fusion90(self.base.contrastive_align_projection_image).cuda().eval().requires_grad_(False)
+            from torch import nn
+
+            self.point_adapter = nn.Sequential(nn.Linear(288, 16), nn.GELU(), nn.Linear(16, 288))
+            self.match_projection = deepcopy(self.base.contrastive_align_projection_image)
             with np.load(matcher, allow_pickle=False) as prepared:
-                restore(self.matcher, prepared)
-            # Preserve the trained competition head's spatial readout.
-            # The query still conditions subject and reference reads inside the head.
-            query_width = self.matcher.interface.q.out_features
-            def spatial_head_input(_head, inputs):
-                features = inputs[0]
-                return (torch.cat((features[:, :query_width] * 0, features[:, query_width:]), dim=1),)
-            self.matcher.interface.out.register_forward_pre_hook(spatial_head_input)
-            self.matcher.pool_mode = 'strict'
-            self.matcher.variant = 'full'
-            self.matcher.route = None
-            self.matcher.use_interface = False
+                self.point_adapter.load_state_dict({
+                    name: torch.from_numpy(prepared['point_adapter.' + key])
+                    for name, key in (
+                        ('0.weight', 'down.weight'), ('0.bias', 'down.bias'),
+                        ('2.weight', 'up.weight'), ('2.bias', 'up.bias'),
+                    )
+                }, strict=True)
+                self.match_projection.load_state_dict({
+                    name: torch.from_numpy(prepared['match.' + name])
+                    for name in self.match_projection.state_dict()
+                }, strict=True)
+            self.point_adapter.cuda().eval().requires_grad_(False)
+            self.match_projection.eval().requires_grad_(False)
             assets = self.asset_root / 'crossplatform/round20/assets'
             kwargs = json.loads((assets / 'STANZA_ASSET_RECEIPT.json').read_text())['kwargs']
             for key in kwargs:
@@ -148,15 +151,47 @@ class CandidateFrontend:
                 'en', dir=str(assets / 'stanza'), processors='tokenize,mwt,pos,lemma,depparse',
                 package=None, use_gpu=False, download_method=None, verbose=False, **kwargs)
 
-    def score_frame(self, *, target, points, rgb, calibration, text, seed=0, waymo_view='F'):
-        """Return A256 and the complete source-prepared language probabilities for one frame."""
+    def _point_probability(self, raw):
+        """Replay the prepared point-only matcher on the original query positions."""
         import torch
-        from core89 import route89, tensor_route89, token_roles88
+        from torch.nn.functional import normalize
+
+        device = next(self.base.parameters()).device
+
+        def tensor(key):
+            return torch.as_tensor(raw[key], device=device)
+
+        base = self.base
+        points = tensor('vis0')[0]
+        text_padding = tensor('textpad')
+        vision, language = base.cross_encoder(
+            vis_feats=(points + self.point_adapter(points))[None],
+            pos_feats=tensor('pos0'),
+            padding_mask=torch.zeros((1, len(points)), device=device, dtype=torch.bool),
+            text_feats=tensor('lang0'), text_padding_mask=text_padding, end_points={},
+            detected_feats=None, detected_mask=None,
+        )
+        indices = tensor('query_points_sample_inds').long()[None]
+        _, seeds, _ = base.gsample_module(
+            tensor('xyz'), vision.transpose(1, 2).contiguous(), indices.int())
+        query = base.decoder_query_proj(seeds).transpose(1, 2).contiguous()
+        for index, layer in enumerate(base.decoder):
+            query = layer(query, vision, language, tensor('position' + str(index)), None,
+                          text_padding, detected_feats=None, detected_mask=None)
+        with torch.autocast(device_type='cuda', enabled=False):
+            q = normalize(self.match_projection(query.float())[0], dim=-1)
+            tokens = normalize(base.contrastive_align_projection_text(language.float()), dim=-1)[0]
+            logits = q @ tokens.T / .07
+            subject = tensor('token_mask').bool()
+            odds = (torch.logsumexp(logits[:, subject], dim=-1)
+                    - torch.logsumexp(logits[:, ~subject], dim=-1))
+        return odds.double().softmax(0)
+
+    def score_frame(self, *, target, points, text, seed=0, waymo_view='F'):
+        """Return A256 and point-cloud/language candidate probabilities."""
+        import torch
         from interface66 import capture
         from model51 import SENTINEL
-        from model76 import tensor_data, tensor_prefix
-        from parse97 import dependency_document, parse85, parse_subject, repair_inventory87
-        from prepare76 import geometry
         from runner_helpers import sample_points
         from utils.transform_waymo import transform_to_front_view
         if target not in PLATFORMS or waymo_view not in WAYMO_VIEWS or (target != 'waymo' and waymo_view != 'F'):
@@ -169,42 +204,13 @@ class CandidateFrontend:
         if len(self.base.tokenizer(caption + SENTINEL)['input_ids']) > 256:
             raise ValueError('Expression exceeds the native 256-token readout capacity')
         view = WAYMO_VIEWS.index(waymo_view)
-        paths = [str(Path(p).resolve(strict=True)) for p in (points, rgb, calibration)]
-        row = dict(platform=target, suffix=view, seed=int(seed), caption=caption,
-                   pointpath=paths[0], imagepath=paths[1], metapath=paths[2],
-                   id=hashlib.sha256(caption.encode()).hexdigest())
+        row = dict(platform=target, seed=int(seed), pointpath=Path(points).resolve(strict=True))
         with self._lock, torch.inference_mode():
             sampled, indices, _ = sample_points(row)
             if target == 'waymo':
                 sampled, _ = transform_to_front_view(sampled, np.empty((0, 7)), waymo_view)
                 sampled = np.ascontiguousarray(sampled, dtype=np.float32)
             raw, _ = capture(self.base, sampled, indices, caption)
-            graph, _ = geometry(row, raw)
-            prefix = tensor_prefix(raw)
-            pixels = tensor_data(graph, row)
-            doc = dependency_document(self.parser(caption))
-            subject = parse_subject(caption, doc)
-            roles = repair_inventory87(caption, doc, parse85(caption, doc, subject))
-            matcher = self.matcher
-            # Bootstrap the source-trained role routing with native language-to-point attention.
-            attention = []
-            layer = self.base.cross_encoder.layers[-1].cross_layer.cross_lv
-            hook = layer.register_forward_hook(lambda _m, _a, out: attention.append(out[1][0].detach().cpu().numpy()))
-            try:
-                initial, _, _ = matcher.main(self.base, prefix, pixels, 'bidirectional')
-            finally:
-                hook.remove()
-            token_roles, offsets = token_roles88(self.base, row, raw, roles, doc)
-            route, _ = route89(row, dict(raw, frozen_probability=initial.cpu().numpy()),
-                               graph, roles, token_roles, attention[0], offsets, doc)
-            matcher.route = tensor_route89(route)
-            # A missing parsed entity produces zero competition residual.
-            matcher.use_interface = bool(len(matcher.route['token_roles']))
-            try:
-                probability, _, _ = matcher.main(self.base, prefix, pixels, 'bidirectional')
-            finally:
-                matcher.route = None
-                matcher.use_interface = False
-                matcher.local = {}
+            probability = self._point_probability(raw)
             return ScoredFrame(raw['boxes'], probability.cpu().numpy(), sampled, target, view)
 

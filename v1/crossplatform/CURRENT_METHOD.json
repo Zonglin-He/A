@@ -10,22 +10,32 @@
   "main_entrypoint": "crossplatform/ground.py",
   "source_assets": "crossplatform/single_frame_sources.json",
   "source_training_commit": "261676dd7ed9cc9b6d87aa9514d5a083b4e5c860",
-  "evaluation_commit": "b8cc5449d3cbd709a71fdc64c43edf00af28f561",
-  "evaluation_report": "https://github.com/Zonglin-He/A/blob/b8cc5449d3cbd709a71fdc64c43edf00af28f561/studies/3eed_r178_r174_combined_simplification_20261119/REPORT_ZH.md",
+  "evaluation_report": "studies/3eed_v1_frontend_simplification_20261119/REPORT_ZH.md",
   "evaluation": {
-    "ordinary_validation_direction_records": 18620,
+    "ordinary_train_direction_records": 3072,
+    "expressions": 1536,
+    "scope": "Previously used ordinary TRAIN recording panel with six directions equally weighted",
+    "baseline_commit": "dd5b3c94393420a11de6f207daf2a506f973f9cb",
     "overall": {
-      "Acc25": 27.50214914001967,
-      "Acc50": 10.229639941127301,
-      "mIoU": 14.553793751895965
+      "Acc25": 29.036458333333332,
+      "Acc50": 14.35546875,
+      "mIoU": 16.054465190369257
     },
     "direct_left_right": {
-      "Acc25": 32.06406241510579,
-      "Acc50": 13.024666207475713,
-      "mIoU": 17.072838659756265
+      "Acc25": 32.500482346131584,
+      "Acc50": 16.872467682809187,
+      "mIoU": 17.569172342682283
     },
-    "scope": "ordinary Validation development comparison",
-    "decoder_time_reduction_pct": 42.34004422010915
+    "vs_previous_v1_pp": {
+      "Acc25": 0.32552083333333215,
+      "Acc50": 0.390625,
+      "mIoU": 0.1486958221476815
+    },
+    "vs_frozen_text_pp": {
+      "Acc25": 2.2135416666666643,
+      "Acc50": 4.6875,
+      "mIoU": 2.2480524910735085
+    }
   },
   "FINAL_access": false,
   "decoders": {
@@ -46,5 +56,14 @@
     }
   },
   "version": "v1",
-  "asset_root_cli": "--asset-root"
+  "asset_root_cli": "--asset-root",
+  "evaluation_public_path": "v1/verification/README.md",
+  "frontend": {
+    "rgb_features": false,
+    "candidate_competition_residual": false,
+    "lidar_adapter": "source-prepared",
+    "candidate_overlap_correction": true,
+    "image_geometry": "image dimensions, calibration, projection and visibility",
+    "output_yaw": "lidar_pca"
+  }
 }

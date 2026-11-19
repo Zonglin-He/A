@@ -1,0 +1,25 @@
+{
+  "method": "v1",
+  "change": "Remove RGB feature computation and the front-end candidate competition residual together.",
+  "retained_evidence": "Source-trained point adapter and text matching projection, original A256, calibrated projection and visibility, overlap-corrected four subject slots, four reference slots, two decoder rounds, PCA yaw.",
+  "input_registry": "crossplatform/round159/RECORDING_INPUTS_PRIVATE.json",
+  "input_seal": "research/round159/RECORDING_INPUT_SEAL.json",
+  "input_sha256": "08cad14cf7271911123d5dda0c661ccdbcd111aa504605762df4954c194c18c1",
+  "per_target_expressions": 512,
+  "direction_records": 3072,
+  "point_seed": 0,
+  "baseline_commit": "dd5b3c94393420a11de6f207daf2a506f973f9cb",
+  "baseline_prediction_seal_sha256": "eeecaa3198adcdbca645bc82e8d1e03b9707418c4cab5350fab1448edaa35ad1",
+  "score_helpers_sha256": "6f62f78c8c589ea9445c3a0270b27fb9a43d45787e0cabe9450607362d22bc7e",
+  "cached_arms": {
+    "frozen_text": "frozen_text",
+    "previous_v1": "v1",
+    "rgb_off_only": "no_rgb",
+    "residual_off_only": "no_competition"
+  },
+  "primary": "Six-direction equally weighted Acc@25, Acc@50 and mIoU, oriented 3D IoU, strict inequalities.",
+  "score_subsets": ["all", "reference_mention", "direct_left_right", "no_reference"],
+  "source_training_runs": 0,
+  "target_parameter_updates": 0,
+  "FINAL_access": false
+}

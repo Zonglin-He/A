@@ -58,7 +58,9 @@ class Grounder:
 
         handle = frontend.base.register_forward_hook(record_native)
         try:
-            scored = frontend.score_frame(**frame)
+            scored = frontend.score_frame(target=frame['target'], points=frame['points'],
+                                          text=frame['text'], seed=frame['seed'],
+                                          waymo_view=frame['waymo_view'])
         finally:
             handle.remove()
         caption = frame['text'].strip()
@@ -93,7 +95,7 @@ def main():
     parser.add_argument('--source', required=True, choices=PLATFORMS)
     parser.add_argument('--target', required=True, choices=PLATFORMS)
     parser.add_argument('--points', type=Path, required=True, help='.npy Nx3+ or raw float32 XYZI')
-    parser.add_argument('--rgb', type=Path, required=True)
+    parser.add_argument('--rgb', type=Path, required=True, help='camera image for dimensions only')
     parser.add_argument('--calibration', type=Path, required=True, help='3EED camera JSON')
     parser.add_argument('--text', required=True, help='English referring expression')
     parser.add_argument('--seed', type=int, default=0, help='LiDAR sampling seed')
