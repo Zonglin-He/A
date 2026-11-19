@@ -1,0 +1,40 @@
+{
+  "study": "Role interaction x box-to-support feedback in the frozen-target recurrent decoder",
+  "parent_study": "3eed_recurrent_role_support_decoder_20261119",
+  "parent_public_commit": "2699fdcb9b246f1764a0bb84d383cd35f3cefe82",
+  "design": {
+    "role_interaction": "The existing learned pair compatibility (including its inter-box relative geometry features) and reciprocal role messages.",
+    "box_feedback": "The existing direct previous-predicted-box scale and centre bias on the next point-support read, for both roles.",
+    "cells": {
+      "off_off": [false, false],
+      "role_only": [true, false],
+      "geometry_only": [false, true],
+      "joint": [true, true]
+    },
+    "fixed": "RGB, 3EED, architecture widths and slots, original proposal priors, three iterations, continuous output, source labels, original objective, initialization, matched seed and shuffled order, AdamW settings, 12 epochs, final-epoch selection, target cohort and scorer.",
+    "reuse": "Reuse sealed R158+PCA, both-off and both-on endpoints and associated source states. Replay both-on to recover final scores and reference slots, checking all frozen endpoints and final subject slots against the archive. Train only role_only and geometry_only for each source."
+  },
+  "scope": {
+    "ordinary_direction_rows": 18620,
+    "six_directions_equal_weight": true,
+    "primary": ["Acc25", "Acc50", "mIoU"],
+    "strict_iou_thresholds": [0.25, 0.50],
+    "subsets": ["all", "explicit_reference_mention", "direct_left_right"],
+    "target_updates": 0,
+    "FINAL_access": false
+  },
+  "estimands": {
+    "conditional": ["role_on_at_geometry_off", "role_on_at_geometry_on", "geometry_on_at_role_off", "geometry_on_at_role_on"],
+    "averaged": ["role_main_effect", "geometry_main_effect"],
+    "interaction": "joint - role_only - geometry_only + off_off, on the same paired records.",
+    "interpreting": "Single matched training seed. Report all effects and directional differences, and distinguish an internal improvement from system-level performance over R158+PCA."
+  },
+  "reference_diagnostics": {
+    "missed": "Full joint subject prediction below or at threshold and at least one of its fixed final subject slots above threshold.",
+    "no_pair_readout": "Select by final subject unary on the same state and boxes, after all recurrent interaction. Record rescues and harms on the full cohort.",
+    "switch_reference": "For each existing reference slot, select the subject using the unchanged final joint score in that reference column. Check the native reference column reproduces the chosen subject. Report any alternative rescue, and rescue via a different identifiable physical owner. Alternative-reference rescue is a readout sensitivity bound, not a verified reference error.",
+    "known_reference": "R163 visually adjudicated ordinary records with 3D reference labels. Compare actual and alternative slot physical ownership with the adjudicated reference. Correct-reference intervention selects the highest joint pair among columns physically assigned to the verified reference. The subject IoU is measured after this choice.",
+    "unverified_reference": "Report unknown ownership and lack of semantic labels explicitly. Frame inventory is usable for physical ownership, and does not generally identify the entity intended by the expression.",
+    "outcome_order": "Seal frozen replay choices and all counterfactual scores before reading ordinary evaluation labels."
+  }
+}
