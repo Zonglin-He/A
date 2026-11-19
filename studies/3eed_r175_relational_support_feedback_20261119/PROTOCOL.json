@@ -1,0 +1,25 @@
+{
+  "round": "R175",
+  "title": "Source-Supervised Relational Support Feedback",
+  "parent_commit": "261676dd7ed9cc9b6d87aa9514d5a083b4e5c860",
+  "scope": {
+    "backbone": "Three existing independently trained single-platform 3EED epoch100 checkpoints. Reuse the existing frozen same-source projected RGB stem. Native A256 selection, four initial slots per role with native token scores, no dependence on R158 scores or candidates selected by R158. Keep exact native candidate centre and extent at inference, with the same sampled-point PCA orientation.",
+    "recurrence": "Three steps with shared parameters. Keep the single-role learned box-to-point geometry term. Joint compatibility consumes subject, reference, relative 3D and projected geometry, and relation language. Full feeds relation-conditioned fields into the next point softmax for both roles using conditionally normalized pair probabilities. No cross-role state message. Ineligible or unprojectable relations fall back to geometrically valid single-role reads.",
+    "source_roster": "Reuse all natural subjects, cached 3EED evidence and recording splits from the sealed R173 source rosters. Assign natural reference labels only for a single syntactically linked supported relation and unique geometrically consistent visible annotated object. Other natural rows have masked reference/pair/support supervision. At most one generated relation per physical source frame, at most 1024 train and 192 monitor per platform, with competing same-class subject and a unique grounded reference. Improve relation diversity using signed horizontal and vertical screen position, camera depth, and nearest-in-3D. All rosters respect the existing source recording split. Novel language remains template data. Box-derived seed support does not imply an instance segmentation label.",
+    "controls": {
+      "self_geometry": "Self geometry, native noun priors, matched source subject and reference objective, pair term disabled.",
+      "pair_only": "Self geometry and trained pair compatibility; pair belief affects the slot decision, point attention does not read pair-conditioned spatial fields.",
+      "full": "Self geometry, pair compatibility and direct bilateral pair-weighted spatial update before each next point softmax.",
+      "without_dual": "Same architecture and source inputs as full. Disable labelled reference, joint pair, and knowledge of reference box/points in the loss.",
+      "full_off": "Full checkpoint with only the point-field injection disabled at inference.",
+      "full_shuffled": "Full checkpoint with a fixed one-slot cyclic mismatch between conditional pair weights and counterpart spatial fields only."
+    },
+    "selection": "Prespecify epochs 4, 8 and 12. Choose among these by oriented point-PCA subject mIoU on the natural source monitor recordings, ties by higher source Acc50 and earlier epoch. All training arms run the whole 12 epochs, same source rows, batch order, seed and AdamW budget. Source arm and target checkpoints locked before ordinary target predictions. No target annotations, metrics or test fitting in checkpoint choice.",
+    "assessment": "18,620 paired ordinary Validation rows across all six directions, with historically exposed inputs and no FINAL access. Report authoritative matched official BBF and disclose its annotated-positive-token readout. Include native text+PCA (fully label-free readout) and archived R158+PCA secondary comparisons. Acc25, Acc50, mIoU, good and bad rows, per-direction and by parsed relation, paired recording resampling. Judge relation support against self geometry and pair-only, probe dependence on spatial intervention and dual labels. Evaluate source paired seed support and target visually verified subset only after sealing. No continuous output arm.",
+    "FINAL_access": false
+  },
+  "training": {"epochs": 12, "batch_size": 32, "lr": 0.0006, "weight_decay": 0.0005, "seed": 175, "checkpoint_epochs": [4,8,12]},
+  "relation_kinds": ["none", "left", "right", "above", "below", "near", "closer", "farther"],
+  "synthetic_caps": {"train": 1024, "monitor": 192},
+  "target_n": 18620
+}
