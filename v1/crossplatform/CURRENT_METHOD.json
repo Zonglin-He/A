@@ -1,0 +1,50 @@
+{
+  "name": "v1",
+  "variant": "two_round_four_reference",
+  "single_frame": true,
+  "source_retraining": 0,
+  "target_updates": 0,
+  "rounds": 2,
+  "subject_slots": 4,
+  "reference_slots": 4,
+  "main_entrypoint": "crossplatform/ground.py",
+  "source_assets": "crossplatform/single_frame_sources.json",
+  "source_training_commit": "261676dd7ed9cc9b6d87aa9514d5a083b4e5c860",
+  "evaluation_commit": "b8cc5449d3cbd709a71fdc64c43edf00af28f561",
+  "evaluation_report": "https://github.com/Zonglin-He/A/blob/b8cc5449d3cbd709a71fdc64c43edf00af28f561/studies/3eed_r178_r174_combined_simplification_20261119/REPORT_ZH.md",
+  "evaluation": {
+    "ordinary_validation_direction_records": 18620,
+    "overall": {
+      "Acc25": 27.50214914001967,
+      "Acc50": 10.229639941127301,
+      "mIoU": 14.553793751895965
+    },
+    "direct_left_right": {
+      "Acc25": 32.06406241510579,
+      "Acc50": 13.024666207475713,
+      "mIoU": 17.072838659756265
+    },
+    "scope": "ordinary Validation development comparison",
+    "decoder_time_reduction_pct": 42.34004422010915
+  },
+  "FINAL_access": false,
+  "decoders": {
+    "waymo": {
+      "path": "v1_weights/waymo.pth",
+      "sha256": "b72a1c9f959febf3a62f2c757328a3e1478e9fc67703c15c8f4c81f1dc9f9957",
+      "original_checkpoint_sha256": "5bc88c72c289f3f7d41d29bf84d28aa60024907122969c3bed8e7015c2a4b439"
+    },
+    "drone": {
+      "path": "v1_weights/drone.pth",
+      "sha256": "dacaba3efea09205621a43bd8fcc0ac34692cfac7b93e900520b8dd91bd88e61",
+      "original_checkpoint_sha256": "55471eb5695680f175e46d2b6120ae80908ba4381a03db6c8fb0c9feb037d547"
+    },
+    "quad": {
+      "path": "v1_weights/quad.pth",
+      "sha256": "3293f561afeea90e671f2c3c3d20f672822dba849678dcc84ffd132102a8d09a",
+      "original_checkpoint_sha256": "bf76b607cfa24a38040c02d541acfef0bdf3c1395bdffc1f05d9387fde03b357"
+    }
+  },
+  "version": "v1",
+  "asset_root_cli": "--asset-root"
+}

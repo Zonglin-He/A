@@ -1,0 +1,45 @@
+{
+  "method": "v1",
+  "cohort": {
+    "split": "ordinary Validation already used in development comparisons",
+    "direction_records": 18620,
+    "eligible_official_direction_records": 19388,
+    "protected_records_excluded": 768,
+    "point_count_per_input": 16384,
+    "single_target_frame": true,
+    "source_architecture_and_checkpoint": "one platform-only epoch100 checkpoint per source",
+    "aggregation": "unweighted mean of the six direction-level percentages",
+    "thresholds": "strict rotated 3D IoU > 0.25, > 0.50"
+  },
+  "frozen": {
+    "commit": "0c68f2c94c0d00cf91305f16df4e0884c97300e0",
+    "path": "studies/3eed_official_cross_platform_validation_ablation_20261118/results/metrics.csv",
+    "row_filter": {
+      "aggregation": "direction",
+      "arm": "official_bbf_axis"
+    },
+    "readout": "official final BBF using annotation-provided category span and native axis-aligned box",
+    "modalities": [
+      "LiDAR",
+      "language"
+    ],
+    "file_sha256": "14e52420a616028816220141f99ca6911d95930d0c0fc09f6ae367cb9ca66105"
+  },
+  "v1": {
+    "commit": "b8cc5449d3cbd709a71fdc64c43edf00af28f561",
+    "path": "studies/3eed_r178_r174_combined_simplification_20261119/results/endpoints.csv",
+    "row_filter": {
+      "subset": "all",
+      "variant": "two_round_four_reference"
+    },
+    "modalities": [
+      "LiDAR",
+      "RGB",
+      "camera calibration",
+      "language"
+    ],
+    "file_sha256": "8c8b6037261a06d43c992e784537fba58f1f456da8b21df2bf6986d95b1d8fa4"
+  },
+  "delta": "v1 minus Frozen on the matched direction cohorts, in percentage points",
+  "new_scoring_for_release": false
+}
