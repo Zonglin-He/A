@@ -1,0 +1,13 @@
+{
+  "round": "R176",
+  "method": "overlap_retrieval",
+  "intervention": "Replace greedy center-distance diversity with overlap diversity in both roles. Retain native per-role token scores, the first slot, four slots, the penalty 4.0 and all source checkpoints.",
+  "overlap": "Maximum of axis-aligned proposal-box IoU and point-support Jaccard on the R175 frozen seed coordinates. Point-support Jaccard applies when each support has at least four seeds; otherwise use box IoU.",
+  "unchanged": "Same A256 order and underlying boxes; same point draw, RGB, parsed spans, role scores, PCA, all pair_only parameters, within-slot normalization and final readout.",
+  "controls": ["Original R175 pair_only replay", "Archived matched R158+PCA"],
+  "selection": "One fixed intervention with no parameter search or label inputs. Use complete ordinary six-direction Validation and all positive and negative paired outcomes.",
+  "primary": "Six-direction equally weighted Acc@25 and Acc@50; mIoU, paired outcomes, full/slot coverage and supported-relation subsets explain the result.",
+  "decision": "Assess performance against original pair_only and R158+PCA. Coverage gain alone cannot establish a new main method.",
+  "FINAL_access": false,
+  "target_parameter_updates": 0
+}
