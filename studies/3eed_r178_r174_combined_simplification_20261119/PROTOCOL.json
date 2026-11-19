@@ -1,0 +1,49 @@
+{
+  "round": "R178",
+  "parent_commit": "1b4dc50a318332a1245aced6efba3d2e017af32c",
+  "method": "R174",
+  "purpose": "Test interactions among the R177 inference simplifications by replaying complete combinations. Evaluate relations and decoder time as well as overall scores.",
+  "design": {
+    "population": "All 18,620 ordinary R174 Validation records in the same six directions, with the fixed 2,538-record direct left/right subset",
+    "fixed": "Three original R174 full checkpoints, parser, four subject slots, candidate pool, inputs, original output box geometry and slot IoUs",
+    "updates": "Frozen inference with no training or parameter updates",
+    "rounds": [2, 3],
+    "sealing": "Seal choices for every direction and arm before opening historical target slot IoUs",
+    "metrics": "Equal-weight direction Acc@25, Acc@50 and mIoU, IoU changes, reference switches, left/right same-box assignments, and matched decoder-only CUDA latency",
+    "statistics": "Shared recording-level bootstrap draws for the two source routes into each target. Descriptive evaluation on the existing ordinary cohort.",
+    "comparison": "Complete R174 plus adjacent prefix comparisons. Maximal simplification removes explicit role interaction and acts as a diagnostic.",
+    "FINAL_access": false
+  },
+  "arms": {
+    "full": {"parent": null, "overrides": {}},
+    "fixed_boxes": {
+      "parent": "full",
+      "overrides": {"internal_boxes": "anchor", "terminal_messages": false}
+    },
+    "fixed_boxes_no_reference_feedback": {
+      "parent": "fixed_boxes",
+      "overrides": {"reference_geometry_feedback": false}
+    },
+    "two_round_four_reference": {
+      "parent": "fixed_boxes_no_reference_feedback",
+      "overrides": {"rounds": 2}
+    },
+    "two_round_two_reference": {
+      "parent": "two_round_four_reference",
+      "overrides": {"reference_slots": 2}
+    },
+    "reduced_pair_inputs": {
+      "parent": "two_round_two_reference",
+      "overrides": {"pair_projection": false, "predicate_vector": false}
+    },
+    "maximal_simplification": {
+      "parent": "reduced_pair_inputs",
+      "overrides": {
+        "subject_geometry_feedback": false,
+        "reference_to_subject": false,
+        "subject_to_reference": false,
+        "final_pair_score": false
+      }
+    }
+  }
+}
