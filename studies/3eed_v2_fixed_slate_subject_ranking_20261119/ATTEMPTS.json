@@ -1,0 +1,25 @@
+{
+  "attempts": [
+    {
+      "phase": "source-smoke",
+      "outcome": "stopped by the archive fingerprint assertion before opening samples",
+      "issue": "a manually transcribed R181 protocol digest was two characters short",
+      "recovery": "read back the digest of the pinned R181 local protocol, kept the initial protocol and stderr as local attempt artifacts, and reran the smoke",
+      "affected_training_or_scoring": false
+    },
+    {
+      "phase": "source capture closeout",
+      "outcome": "all six blocks completed row-level checks and were written before final count assertion",
+      "issue": "the literal total 2264 was incorrect for 1920 fit and 384 heldout rows",
+      "recovery": "derive the expected total from the locked protocol, compare every frozen score and source IoU to R181, verify finite features and label masks, and seal the existing 2304 rows",
+      "affected_training_or_scoring": false
+    },
+    {
+      "phase": "first target score replay",
+      "outcome": "all predictions originally sealed, scorer stopped before loading the IoU block",
+      "issue": "the R181 IoU digest table used strings rather than the nested entries in other cache receipts",
+      "recovery": "normalize only the IoU receipt schema, reseal predictions from the unchanged weights and features, and assert equality to all prior prediction arrays before scoring",
+      "affected_training_or_scoring": false
+    }
+  ]
+}

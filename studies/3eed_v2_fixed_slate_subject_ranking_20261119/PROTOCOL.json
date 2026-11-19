@@ -1,0 +1,66 @@
+{
+  "study": "R182",
+  "baseline": "v1",
+  "prior_public_commit": "6c5e37829333b797e66ee63bc00f24e850625700",
+  "baseline_release": "d0592f91d698a632d5c40783c3ef9518625411aa",
+  "r181_protocol_sha256": "8f03aa40d03c731ce3838911d4e82d3d587ec9061d7c7673b441a3d71d1cfe20",
+  "r181_target_terms_sha256": "10323e8c37268fb0e4b73542b1e25a37ec52a363c7efd313ed66d5a7bfe4a415",
+  "r181_source_terms_sha256": "cddc826cf52c316ff115d8104a0328582064a7046572256c0488ee485c93e31d",
+  "r181_audited_iou_sha256": "5b56863c116f301fe29f8d0f0034a9788a44e1a25ef321d668992feaa675513e",
+  "r180_target_slate_sha256": "d96e003361e5291d5f6950047181f0a05da91757a58d20ab51f14ce3ad19198f",
+  "evaluation": {
+    "split": "Previously exposed Ordinary TRAIN",
+    "direction_rows": 3072,
+    "rows_per_direction": 512,
+    "candidate_count": 16,
+    "fixed": "Exact sealed R180 trained16 order and unrefined geometry with existing PCA. Preserve v1 incumbent in every slate. R181 frozen controls and audited target IoU are reused after input and seal verification.",
+    "metrics": "Oriented IoU strictly greater than 0.25 and 0.50, mIoU, paired threshold rescues and harms, original-four misses, outside-four transitions, and the same 381 reachable failures."
+  },
+  "source": {
+    "fit_per_source": 640,
+    "heldout_per_source": {
+      "waymo": 160,
+      "drone": 64,
+      "quad": 160
+    },
+    "policy": "Reuse registered natural descriptions and recording-disjoint heldout from R181. For hard negatives use annotated source objects only. The source labels used in one fit belong to its own platform.",
+    "hard_negative": "Among the top four negatives by frozen joint score, require target IoU at most 0.25 and a unique best annotated non-target instance match with IoU above 0.25 and exactly the target category. The two annotated instance boxes also must have IoU at most 0.10. Unknown or ambiguous objects do not receive the hard weight."
+  },
+  "ranker": {
+    "input_width": 299,
+    "hidden_width": 48,
+    "inputs": "Frozen independent subject state, normalized native query, subject and full-text query products and cosines, anchor position and dimensions, frozen visible support centroid and mass. The frozen prior is not an input to the learned MLP.",
+    "score": "Unbounded candidate-specific MLP residual plus frozen independent score. Preserve unit weights on prior and frozen subject residual. Add R181 joint-minus-independent reference effect as-is for joint and mismatched controls. Exact score ties retain v1 if tied.",
+    "objective": "Multi-positive log mass at IoU >0.25, plus half the mass loss at >0.50, plus half the row-normalized positive-negative logistic pair loss. Only the verified high-scoring same-class pairs receive weight 4. The generic comparator uses weight 1 for all pairs.",
+    "seed": 182361,
+    "optimizer": "AdamW",
+    "learning_rate": 0.001,
+    "weight_decay": 0.002,
+    "batch_size": 32,
+    "dropout": 0.1,
+    "epochs": 20,
+    "checkpoint_epochs": [
+      5,
+      10,
+      15,
+      20
+    ],
+    "checkpoint_selection": "Joint Acc25, Acc50, mIoU, then earlier epoch on the source's registered heldout recordings. Hard and generic trainers use the same budget and independent source-only checkpoint selection. Subject and mismatch use the selected hard model without new tuning."
+  },
+  "arms": [
+    "v1",
+    "frozen_joint",
+    "frozen_subject",
+    "frozen_mismatch",
+    "rank_subject",
+    "rank_joint",
+    "rank_mismatch",
+    "generic_joint"
+  ],
+  "inference": "Frozen source head after training. One original K16 box returned. No target labels, GT-based filtering, target fitting or target model updates.",
+  "decision": "Consider the learned hard-negative readout for ordinary confirmation only if it improves Acc25 against both v1 and fixed-slate frozen joint without lowering Acc50 versus v1. Assess hard supervision separately against generic training and reference effect separately against same-head independent and mismatch. Keep deployed v1.",
+  "backbone_updates": 0,
+  "decoder_updates": 0,
+  "target_updates": 0,
+  "FINAL_access": false
+}

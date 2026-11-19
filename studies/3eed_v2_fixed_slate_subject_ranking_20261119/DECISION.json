@@ -1,0 +1,162 @@
+{
+  "study": "R182",
+  "deployment": "v1",
+  "verdict": "advance_for_ordinary_confirmation",
+  "deploy": false,
+  "progression_gates": {
+    "Acc25_gain_vs_v1": true,
+    "Acc25_gain_vs_frozen_joint": true,
+    "Acc50_no_loss_vs_v1": true
+  },
+  "main_metrics": {
+    "Acc25": 30.143229166666668,
+    "Acc50": 14.583333333333334,
+    "mIoU": 16.480881031498935
+  },
+  "deltas_pp": {
+    "v1": {
+      "Acc25": 1.1067708333333357,
+      "Acc50": 0.22786458333333393,
+      "mIoU": 0.4264158411296748
+    },
+    "frozen_joint": {
+      "Acc25": 1.1393229166666679,
+      "Acc50": 0.29296875,
+      "mIoU": 0.4486396854630641
+    },
+    "frozen_subject": {
+      "Acc25": 1.171875,
+      "Acc50": 0.26041666666666785,
+      "mIoU": 0.48854985745681745
+    },
+    "frozen_mismatch": {
+      "Acc25": 1.171875,
+      "Acc50": 0.29296875,
+      "mIoU": 0.4569625782594926
+    },
+    "rank_subject": {
+      "Acc25": -0.09765625,
+      "Acc50": -0.06510416666666607,
+      "mIoU": -0.0325134919704837
+    },
+    "rank_mismatch": {
+      "Acc25": -0.03255208333333215,
+      "Acc50": 0.0,
+      "mIoU": -0.004840701350445897
+    },
+    "generic_joint": {
+      "Acc25": -0.1627604166666643,
+      "Acc50": -0.06510416666666607,
+      "mIoU": -0.04008525325505374
+    }
+  },
+  "matched_same_information": {
+    "mismatch": {
+      "direction": "six_equal",
+      "arm": "rank_joint",
+      "against": "rank_mismatch",
+      "n": "3072",
+      "different_winner": "2",
+      "different_iou": "1",
+      "iou_gains": "0",
+      "iou_harms": "1",
+      "delta_mIoU": "-0.004840701350443819",
+      "Acc25_rescue": "0",
+      "Acc25_harm": "1",
+      "Acc50_rescue": "0",
+      "Acc50_harm": "0"
+    },
+    "subject": {
+      "direction": "six_equal",
+      "arm": "rank_joint",
+      "against": "rank_subject",
+      "n": "3072",
+      "different_winner": "86",
+      "different_iou": "40",
+      "iou_gains": "18",
+      "iou_harms": "22",
+      "delta_mIoU": "-0.03251349197048054",
+      "Acc25_rescue": "6",
+      "Acc25_harm": "9",
+      "Acc50_rescue": "2",
+      "Acc50_harm": "4"
+    },
+    "generic": {
+      "direction": "six_equal",
+      "arm": "rank_joint",
+      "against": "generic_joint",
+      "n": "3072",
+      "different_winner": "35",
+      "different_iou": "9",
+      "iou_gains": "4",
+      "iou_harms": "5",
+      "delta_mIoU": "-0.0400852532550524",
+      "Acc25_rescue": "0",
+      "Acc25_harm": "5",
+      "Acc50_rescue": "0",
+      "Acc50_harm": "2"
+    }
+  },
+  "main_transitions": [
+    {
+      "direction": "six_equal",
+      "arm": "rank_joint",
+      "threshold": "0.25",
+      "n": "3072",
+      "rescued_original_four_miss": "27",
+      "rescued_by_outside": "64",
+      "total_rescues": "104",
+      "harms_by_outside": "40",
+      "total_harms": "70",
+      "net": "34"
+    },
+    {
+      "direction": "six_equal",
+      "arm": "rank_joint",
+      "threshold": "0.5",
+      "n": "3072",
+      "rescued_original_four_miss": "18",
+      "rescued_by_outside": "27",
+      "total_rescues": "42",
+      "harms_by_outside": "18",
+      "total_harms": "35",
+      "net": "7"
+    }
+  ],
+  "frozen_381": {
+    "reachable_count": 381,
+    "covered_four_miss": 664,
+    "passes_381": {
+      "v1": 0,
+      "frozen_joint": 0,
+      "frozen_subject": 0,
+      "frozen_mismatch": 0,
+      "rank_subject": 21,
+      "rank_joint": 20,
+      "rank_mismatch": 20,
+      "generic_joint": 21
+    },
+    "passes_covered_four_miss": {
+      "v1": 0,
+      "frozen_joint": 0,
+      "frozen_subject": 0,
+      "frozen_mismatch": 0,
+      "rank_subject": 26,
+      "rank_joint": 27,
+      "rank_mismatch": 27,
+      "generic_joint": 28
+    }
+  },
+  "source_fit_counts": {
+    "same_class_negatives": 5653,
+    "high_scoring_same_class_negatives": 2153,
+    "rows_with_positive_and_hard": 1046,
+    "hard_pairs": 4582
+  },
+  "source_only": true,
+  "target_labels_used_for_fit_or_selection": false,
+  "backbone_updates": 0,
+  "decoder_updates": 0,
+  "target_updates": 0,
+  "FINAL_access": false
+}
