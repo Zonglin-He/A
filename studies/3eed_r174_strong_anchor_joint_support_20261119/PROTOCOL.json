@@ -1,0 +1,31 @@
+{
+  "study": "R174 Strong-Anchor Joint Support Refinement",
+  "parent_commit": "ea26e7a4e0cc2c0b61f660f62042bf2bf07b6376",
+  "design": {
+    "subject": "Always include the exact R158 winner and add three high-utility A256 candidates with greedy overlap diversity. This candidate set is fixed before supervision. The decision starts from log R158 utility with a bounded learned residual. Subject and reference use four slots.",
+    "reference": "Four native role-token match anchors with shared A256 spatial coordinates. Keep full role-specific instance support and no additional experts.",
+    "recurrence": "Reuse three shared updates and the R173 point support, internal box geometry and pair compatibility modules. A locked learned pose remains an internal state. The fixed output is one original A256 prediction followed by the standard sampled-frame PCA.",
+    "modalities": "R158 baseline retains its complete RGB-LiDAR path. The added recurrence consumes frozen point and language features with calibrated visible geometry. No additional RGB seed descriptor is injected.",
+    "cells": {"unary":[false,false],"self_only":[false,true],"cross_only":[true,false],"full":[true,true]},
+    "unary_control": "Same trained residual and evidence with both recurrence switches off. Distinguishes the benefit of learning candidate competition from either feedback path."
+  },
+  "source": {
+    "roster": "Exactly the R173 source natural descriptions, geometry and existing recording holdouts. Rephrase the same source-only synthetic examples one-for-one, with preserved physical endpoints, camera-relative sign, uniqueness and same-class scene competition. No target labels for source choice.",
+    "supervision": "Actual fixed A256+PCA IoU for subject candidate competition, supervised reference candidates and positive pair preference when both known endpoints have support. Support and box auxiliary losses use known endpoints. Natural unknown reference remains latent.",
+    "training": "Exact R173 matched AdamW budget, seed, 12 epochs, final checkpoint per arm. Frozen 3EED and R158 throughout."
+  },
+  "target": {
+    "n": 18620,
+    "population": "Same ordinary unprotected six-direction Validation, exact matched samples with R158+PCA.",
+    "metrics": ["Acc25","Acc50","mIoU"],
+    "six_direction_equal_weight": true,
+    "target_updates": 0,
+    "FINAL_access": false
+  },
+  "mechanism": {
+    "source": "Existing recording-holdout synthetic pairs. Insert correct reference versus a distinct same annotated category foil. Use both same geometry with swapped appearance-support descriptor and a complete physical-reference replacement. Any insufficient support is retained as unknown.",
+    "target": "Previously visually verified ordinary reference labels of the same role, post-seal. Same matched intervention, descriptive only. Neither oracle intervention is evaluated as a deployed method.",
+    "control": "Self-only must be invariant to reference replacement at fixed subject inputs. Log support-qualified denominator and both gains and harms."
+  },
+  "decision": "Fixed target-frozen locked comparison. Adopt no weaker system; distinguish improvements of interaction within one trained head from improvement over R158 and from dependence on correct reference evidence."
+}

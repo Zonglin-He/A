@@ -1,0 +1,5 @@
+# R174 engineering attempts
+
+- The first source identity preflight found that synthetic source rows have no natural annotation index by design. The diagnostic now uses the full source inventory and verifies the reference by oriented overlap with its explicit synthetic label. Target verified-reference indexing is identical to the previous review. No training, ground-truth scoring of ordinary Validation, or candidate-generation result was changed by this fix.
+- A synthetic scoring fixture caught the four-term average factorial contrasts entering the two-arm gain/loss counter. The scorer now requires two nonzero contrast coefficients for those counts. The factorial estimator always uses all four terms. This was resolved before opening any ordinary ground-truth score in R174.
+- The first standalone audit launch resolved the legacy tools module with the same evidence module name. The audit launcher imports the pinned study predictor first, then runs the original audit entry point. The sealed predictions, checkpoints, evaluator and scoring code were reused byte for byte.
