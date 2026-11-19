@@ -1,0 +1,16 @@
+{
+  "study": "source_reference_verification_same_class",
+  "lineage": "92e2a177e83326a9b14c461ccb4a50fb6814170f",
+  "source_input": "only the exact R161 source platform training indexes pinned by R168",
+  "sampling": "natural source descriptions, one frame per image and sequence timestamp, no previous source-verification frame or R159 ordinary frame, deterministic recording round robin up to 36 review invitations per platform. Screen before running D with a supported R169 horizontal edge and at least two independently annotated objects of the same class on the reference side of the annotated subject",
+  "truth": "single prediction-blind internal visual adjudication of the source description, full RGB and all labelled same-class candidate crops. Keep ambiguous, unreadable and inconsistent observations as unresolved. Actual source annotation slot only provides the object inventory and the original subject identity",
+  "candidate_pool": "unchanged R169/R171 D native distinct donors and PCA role boxes. Record every sealed invitation. Among resolved references separate covered with a known same-class geometrically valid distractor, covered without it, natural missing, and physical assignment ambiguous. Do not infer a missing reference from visual ambiguity or lack of annotated point support",
+  "evidence": "same frozen D and C phrases, plus a reference bare-noun query using the same checkpoint and original sample. Use physical-share-projected C scores and referenced phrase lift above the bare noun, with support neutral on unavailable candidates. No additional pretrained model",
+  "controls": "original D without rejection, D-only confidence-calibrated with rejection, C-minus-noun cue, and score-matched wrong correspondence after shifting the complete cue tuples within each D pool. Same fit, quota, and features for aligned and mismatched cues",
+  "fit": "source recording held out within each platform. At most three scalar rank coefficients and an ordinary-reading confidence threshold determined only on the other recordings. Balance known covered and natural missing examples when fitting UNKNOWN; no learned checkpoint or source model parameter updated",
+  "outcomes": ["known same-class same-side identity concordance", "correct reference rank and MRR", "natural absent UNKNOWN recall", "covered false rejection and correct accepted identity", "case and recording counts and all negatives"],
+  "gate": "advance only if held-out actual same-class competition improves against both original D and matched wrong evidence and absent rejection improves against D-only confidence with no net loss of correct covered acceptance. Keep actual class and recording support explicit. Only consider joint inference on the same source holdout if both prerequisites pass",
+  "no_target_input": true,
+  "no_source_model_update": true,
+  "protected_data_access": false
+}
