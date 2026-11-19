@@ -36,3 +36,5 @@ python crossplatform/ground.py \
 Frozen 使用官方发布代码的末层 BBF 和评测注释提供的类别跨度，框沿用原始轴对齐输出。v1 额外读取同步 RGB 和标定，以原句定位，并用框内 LiDAR 点估计朝向。以上数值衡量整条推理流程在已参与研发的 Validation 范围上的差值。 [Frozen 原始结果](https://github.com/Zonglin-He/A/blob/0c68f2c94c0d00cf91305f16df4e0884c97300e0/studies/3eed_official_cross_platform_validation_ablation_20261118/results/metrics.csv) · [v1 原始结果](https://github.com/Zonglin-He/A/blob/b8cc5449d3cbd709a71fdc64c43edf00af28f561/studies/3eed_r178_r174_combined_simplification_20261119/results/endpoints.csv)
 
 [研究历史](studies/) · [封存评测报告](https://github.com/Zonglin-He/A/blob/b8cc5449d3cbd709a71fdc64c43edf00af28f561/studies/3eed_r178_r174_combined_simplification_20261119/REPORT_ZH.md)
+
+[组件消融](v1/ablation/README.md) · [消融逐方向结果](v1/ablation/results/endpoints.csv)
