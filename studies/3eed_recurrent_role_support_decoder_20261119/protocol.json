@@ -1,0 +1,64 @@
+{
+  "study": "Frozen-3EED recurrent role-support and continuous-box joint decoder",
+  "hypothesis": "Learned subject/reference interaction and relative geometry feedback improve cross-platform subject localization over the same source supervision and evidence without interaction/feedback.",
+  "source_protocol": {
+    "platforms": [
+      "waymo",
+      "drone",
+      "quad"
+    ],
+    "natural": "All usable rows from the pinned single-platform source TRAIN manifests. Subject boxes from existing labels. Natural references remain unsupervised.",
+    "holdout": "Use whole recordings as a source-only diagnostic split. Hold the smallest recording on Drone and Quad to retain the available training mass, and a hash-fixed approximately 10 percent of recordings on Waymo. Source diagnostics do not select checkpoints.",
+    "synthetic": "At most 768 train and 192 diagnostic expressions per platform, recording round-robin and one per camera frame. In the visible annotated inventory, identify a unique-class or geometrically separated leftmost/rightmost reference, then a uniquely closest same-class subject on the described side by horizontal image coordinate. Require another visible subject-class distractor, separated chosen intervals, and a winner margin. These relations are verified relative to the source inventory.",
+    "frozen": "Three existing single-source 3EED epoch100 checkpoints and the corresponding R76/R91 RGB stems. No external grounding expert.",
+    "training": {
+      "epochs": 12,
+      "batch_size": 32,
+      "learning_rate": 0.0006,
+      "weight_decay": 0.0005,
+      "seed": 174,
+      "gradient_clip": 2.0,
+      "checkpoint": "last epoch"
+    },
+    "same_training_data_and_budget_for_all_arms": true
+  },
+  "model": {
+    "point_seeds": 1024,
+    "roles": [
+      "subject",
+      "reference"
+    ],
+    "slots_per_role": 4,
+    "width": 96,
+    "shared_iterations": 3,
+    "output": "Continuous centre, positive dimensions and axial yaw. Original proposals are priors, with access to all seed features.",
+    "geometry": "After first support read, revised geometry and reciprocal messages condition the next support reads. Both roles update jointly.",
+    "source_loss": "Matched object slot and continuous box supervision, instance-support loss on seeds inside labelled boxes, and synthetic known reference supervision. Same supervision in every arm.",
+    "arms": {
+      "joint": "All pathways enabled with continuous output",
+      "without_feedback": "No cross-role messages/pair scores or box-to-support geometry feedback. Same first-read proposal prior, role text, RGB and three shared updates",
+      "without_rgb": "Zero only the calibrated RGB descriptor; common scene geometry, visibility, role text and geometry feedback retained",
+      "fixed_proposals": "Same latent joint decoder and continuous loss as joint, plus identical categorical proposal loss available to all arms; output constrained to the original unmodified A256 centre and dimensions plus historical deterministic PCA yaw. No continuous correction at output. Shared proposal readout for every arm."
+    }
+  },
+  "target_protocol": {
+    "population": "The 18,620 R165 ordinary Validation direction rows, on the three pinned nonprotected R97 manifests.",
+    "counts_by_target_per_source": {
+      "waymo": 3782,
+      "drone": 2792,
+      "quad": 2736
+    },
+    "baseline": "R158 + PCA, exact same-row R165 archived boxes",
+    "metrics": [
+      "Acc@25",
+      "Acc@50",
+      "mIoU"
+    ],
+    "primary_aggregation": "Equal weights for six transfer directions, with strict IoU > threshold",
+    "secondary": "Per-direction and pooled metrics, paired gains/losses, full relation subset, source-held synthetic subject/reference/dual identity and point support. Existing human verified target identities are descriptive when safely joinable.",
+    "target_training_updates": 0,
+    "read_target_box_labels_only_after_all_predictions_sealed": true,
+    "final_access": false
+  },
+  "decision": "Report all arms and signs regardless of outcome. Positive attribution to feedback requires the full arm to improve over the matched no-feedback arm; state the limits of any differences, particularly on relationship text. Report the best existing R158 baseline separately and do not promote a weaker system."
+}
