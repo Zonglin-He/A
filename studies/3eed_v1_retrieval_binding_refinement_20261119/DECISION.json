@@ -1,0 +1,14 @@
+{
+  "method": "v1",
+  "evaluated": "frozen retrieval, binding and local geometry prototypes",
+  "production_adopted": false,
+  "default_method_commit": "d0592f91d698a632d5c40783c3ef9518625411aa",
+  "summary_zh": "本轮三个原型均未达到替换当前 v1 的条件。八槽多覆盖 298 条 Acc@25 可恢复输入，其中 235 条通过分差上限的检查，最终在这 298 条中选中达标框 0 条。固定四槽的正确角色检索增加覆盖，但其总体选框成绩低于错配控制。物理屏蔽消除了规则能够识别的同支持配对，对定位的增量没有超过错配屏蔽。固定同一主体的局部几何细化在 Acc@50 上救回 8 条、损伤 11 条。组合的三项总体指标均低于当前 v1。",
+  "retrieval": "Coverage gain is attributable to changed shortlist membership. Frozen scoring did not convert the added coverage into task gains.",
+  "binding": "Duplicate-support exclusion works as wired. Identity correctness is unmeasured. The unphysical column-shift control achieved a larger task effect.",
+  "geometry": "This untrained same-support median shifts center and size at fixed yaw and query. It failed the paired Acc@50 and mIoU comparison.",
+  "scope": "All 3072 direction records use a previously exposed ordinary TRAIN panel and fixed inference settings. Source-supervised retrieval and regression heads were outside this first frozen comparison.",
+  "source_training_runs": 0,
+  "target_parameter_updates": 0,
+  "FINAL_access": false
+}

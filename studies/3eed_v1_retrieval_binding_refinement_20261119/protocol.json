@@ -1,0 +1,45 @@
+{
+  "method": "v1",
+  "baseline_commit": "d0592f91d698a632d5c40783c3ef9518625411aa",
+  "baseline_prediction_seal_sha256": "6a1d020a6267f29fa3df5a11f36e84e521cc35424fe046f0db53c92d33484102",
+  "input_registry": "crossplatform/round159/RECORDING_INPUTS_PRIVATE.json",
+  "input_seal": "research/round159/RECORDING_INPUT_SEAL.json",
+  "input_sha256": "08cad14cf7271911123d5dda0c661ccdbcd111aa504605762df4954c194c18c1",
+  "point_seed": 0,
+  "direction_records": 3072,
+  "inputs_per_target": 512,
+  "dataset": "Previously exposed ordinary TRAIN recordings, 94 Waymo, 2 Drone and 2 Quad",
+  "source_training_runs": 0,
+  "target_parameter_updates": 0,
+  "FINAL_access": false,
+  "arms": [
+    "v1", "direct4", "wide8", "role4", "role_swap", "binding", "binding_shift",
+    "role_binding", "refine", "combined"
+  ],
+  "retrieval": {
+    "wide8": "Extend the current rank rules to 8 subject plus 8 reference slots; extra slots use the trained fourth embedding.",
+    "role4": "Keep the first anchor. In slots 2 and 4 retrieve by full subject span or reference-minus-subject span evidence, using native frozen query/token scores; slot 3 uses the original ranking; require overlap <= 0.35 when possible.",
+    "role_swap": "Exchange the two role score tensors where a parsed reference exists. Keep the same slot allocation and unaries.",
+    "prior": "Use the deployed candidate overlap utility and reference unaries for every retained anchor. No new scale."
+  },
+  "binding": {
+    "active": "Exactly one direct owned LEFT/RIGHT edge to a parsed non-region reference.",
+    "invalid": "Same query or identical proposal, or box IoU >= .55 and unique LiDAR support Jaccard >= .70 with >=8 points in both boxes. References with fewer than 4 points are unsupported.",
+    "unknown": "Transfer invalid or unsupported reference mass to a neutral likelihood and zero messages. No renormalization onto remaining hypotheses. A null reference is available for reporting.",
+    "control": "Rotate the reference columns of the same mask by one at fixed budget."
+  },
+  "geometry": {
+    "same_identity": "Keep selected query and PCA yaw. Require at least three same-support proposal siblings including the selected query.",
+    "rule": "Use sibling median center and extents, limited to 10% of the original extents along each local axis. Require >=8 contained measured points and retain at least 90% of them.",
+    "evidence": "Use the uniquely sampled LiDAR input points, not the much sparser decoder seeds. One deterministic trial per selected proposal.",
+    "combined": "Apply the same refinement after role4 and binding."
+  },
+  "measurements": [
+    "Six direction uniform-weight strict oriented Acc@25, Acc@50 and mIoU",
+    "A256 PCA best available overlap, subject slot recall and selection conditional on recall",
+    "Eligible explicit relation subset, same-support output, UNKNOWN, and mask-specific control",
+    "Fixed-query geometry improvement and harm on all inputs and within newly modified boxes"
+  ],
+  "identity_labels": "Ordinary panel supplies subject GT only. Pair validity is a diagnostic. Correct reference and dual-identity accuracy require independent instance GT.",
+  "decision": "Report all fixed arms on every row. Prefer a production change only with positive overall Acc@25, Acc@50 and mIoU against current v1 and compatible mechanism evidence. No per-direction or per-row selection by GT."
+}
