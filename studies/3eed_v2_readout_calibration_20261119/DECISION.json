@@ -1,0 +1,93 @@
+{
+  "study": "R181",
+  "verdict": "do_not_adopt",
+  "deployment": "v1",
+  "gates": {
+    "Acc25_gain_vs_v1": true,
+    "Acc25_gain_vs_frozen_joint": true,
+    "Acc25_gain_vs_calibrated_subject": true,
+    "Acc25_gain_vs_calibrated_mismatch": false,
+    "Acc50_no_net_loss_vs_v1": true
+  },
+  "joint_metrics": {
+    "Acc25": 29.069010416666668,
+    "Acc50": 14.35546875,
+    "mIoU": 16.044446986909925
+  },
+  "joint_deltas_pp": {
+    "v1": {
+      "Acc25": 0.0325520833333357,
+      "Acc50": 0.0,
+      "mIoU": -0.01001820345933524
+    },
+    "frozen_joint": {
+      "Acc25": 0.06510416666666785,
+      "Acc50": 0.06510416666666607,
+      "mIoU": 0.012205640874054069
+    },
+    "frozen_subject": {
+      "Acc25": 0.09765625,
+      "Acc50": 0.032552083333333925,
+      "mIoU": 0.05211581286780742
+    },
+    "frozen_mismatch": {
+      "Acc25": 0.09765625,
+      "Acc50": 0.06510416666666607,
+      "mIoU": 0.020528533670482574
+    },
+    "calibrated_subject": {
+      "Acc25": 0.26041666666666785,
+      "Acc50": 0.032552083333333925,
+      "mIoU": 0.11065539160190241
+    },
+    "calibrated_mismatch": {
+      "Acc25": 0.0,
+      "Acc50": 0.0,
+      "mIoU": 0.0
+    }
+  },
+  "target_records": 3072,
+  "joint_vs_matched_mismatch": {
+    "different_winners": 2,
+    "exact_equal_iou": 3072
+  },
+  "diagnostic_381": {
+    "rows": 381,
+    "joint_rescues_at_IoU25": 1,
+    "mismatch_rescues_at_IoU25": 1
+  },
+  "transitions": [
+    {
+      "direction": "six_equal",
+      "arm": "calibrated_joint",
+      "threshold": "0.25",
+      "n": "3072",
+      "rescued_original_four_miss": "1",
+      "rescued_by_outside": "4",
+      "total_rescues": "6",
+      "harms_by_outside": "2",
+      "total_harms": "5",
+      "net": "1"
+    },
+    {
+      "direction": "six_equal",
+      "arm": "calibrated_joint",
+      "threshold": "0.5",
+      "n": "3072",
+      "rescued_original_four_miss": "0",
+      "rescued_by_outside": "1",
+      "total_rescues": "1",
+      "harms_by_outside": "1",
+      "total_harms": "1",
+      "net": "0"
+    }
+  ],
+  "margin_selection": "Every tested setting preserved v1 on each source-heldout partition; prespecified tie order retained zero.",
+  "candidate_policy": "Reuse exact learned R180 K=16 slate, input order, original geometry and v1 incumbent.",
+  "source_only": true,
+  "target_labels_used_for_training_or_selection": false,
+  "backbone_updates": 0,
+  "decoder_updates": 0,
+  "target_updates": 0,
+  "FINAL_access": false
+}

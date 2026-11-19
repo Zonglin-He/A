@@ -1,0 +1,38 @@
+{
+  "study": "R181",
+  "baseline_release": "d0592f91d698a632d5c40783c3ef9518625411aa",
+  "prior_main": "36285665e203eefd54e804e6a2d52bebfa8926b6",
+  "ordinary_evaluation": {
+    "registry_sha256": "08cad14cf7271911123d5dda0c661ccdbcd111aa504605762df4954c194c18c1",
+    "r180_prediction_seal_sha256": "d96e003361e5291d5f6950047181f0a05da91757a58d20ab51f14ce3ad19198f",
+    "r180_source_fit_sha256": "4f1656b30b2963718b08266cccced16c10dae8e425304f9cdbf497797828e746",
+    "direction_records": 3072,
+    "records_per_direction": 512,
+    "selection": "Read the sealed R180 trained16 slate in its exact decoder order, raw A256 geometry with existing PCA yaw, and keep incumbent v1 ID. No target retrieval is rerun."
+  },
+  "decomposition": {
+    "frozen": "P + U_joint + R, where U_joint is the second-pass subject residual after reference messages and R is the final reference marginal.",
+    "independent": "P + U_ind, with actual cross-role messages and final relation term disabled; text, boxes and model weights stay fixed.",
+    "mismatch": "Rotate the four reference logits by one while leaving reference box, point and slot assignments fixed. Replay both frozen passes. This changes score-to-reference assignment only.",
+    "diagnostic_cohort": "The same 381 R180 rows with no IoU>0.25 in original four slots and at least one passing trained16 candidate inside the frozen score bound.",
+    "audit": "Exact prior, subject and relation differences against the old winner and actual trained16 output for the highest frozen-scoring eligible good candidate. Measure rank and sign reversals after removing final relation or reference-message contribution."
+  },
+  "source_calibration": {
+    "fit_per_source": 640,
+    "heldout_source_counts": {"waymo":160,"drone":64,"quad":160},
+    "inputs": "Natural source rows from recording-disjoint prior source fit/calibration manifests; same fixed learned K16 retrieval rules applied on source only.",
+    "training": "Fit nonnegative weights on P, U_ind and [(U_joint-U_ind)+R], with matched independent controls fitting P, U_ind. Objective is mean multi-positive negative log mass at oriented IoU>0.25 plus half-weighted IoU>0.50, and shrink weights toward 1.",
+    "regularization": 0.025,
+    "bounds": [[0.05,3.0],[0.0,8.0],[0.0,8.0]],
+    "margin_grid": [0.0,0.05,0.10,0.25,0.50,1.0,null],
+    "select_margin": "Subject must beat the original v1 carrier by the margin (null always keeps v1). Choose on correspondingly held-out source recordings by actual Acc25, Acc50, mIoU, then fewer switches.",
+    "calibrated_mismatch": "Apply the same correct joint weights and margin to mismatched reference evidence. No separate tuning."
+  },
+  "arms": ["v1","frozen_joint","frozen_subject","frozen_mismatch","calibrated_subject","calibrated_joint","calibrated_mismatch"],
+  "diagnostic_target_labels": "First seal frozen components and initial decisions, then identify and analyze the 381 cases. Calibration design is fixed before diagnostics and source fitting reads source features and source labels only. Seal calibrated choices before their target performance score.",
+  "decision": "Advance joint readout as a development candidate only with positive Acc25 over v1, frozen joint, calibrated subject and calibrated mismatch, and no net Acc50 loss versus v1. Report all arms regardless.",
+  "backbone_updates": 0,
+  "decoder_updates": 0,
+  "target_updates": 0,
+  "FINAL_access": false
+}
