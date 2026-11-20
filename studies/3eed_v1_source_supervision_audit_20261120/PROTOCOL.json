@@ -1,0 +1,11 @@
+{
+  "question": "Which v1 decoder supervision was present in the original source annotations, which was derived, and when would reversing a source relation require a new target?",
+  "historical_commit": "261676dd7ed9cc9b6d87aa9514d5a083b4e5c860",
+  "platforms": ["waymo", "drone", "quad"],
+  "input": "Use only the fitted source and source-monitor inventories inherited by the registered decoder. Reconstruct natural examples and both-endpoint synthetic examples in the archived order. Check every endpoint and known-reference flag against the historical training-feature cache, and match the rows with rewritten language features against the R174 cache.",
+  "intervention": "For each historically derived expression keep the subject category, specific reference instance and anchor phrase fixed. In its source inventory reverse only the horizontal predicate. Reuse the exact historical nearest-on-that-side rule, visible objects and 0.015 image-width separation and tie margins. Classify as unique other subject, no same-class candidate on that side, or insufficient separation. Independently check the original direction reproduces its subject. Count every original row, also when the reversed expression cannot be labelled.",
+  "use": "This is a read-only annotation audit. An eligible opposite is relative to the existing labelled inventory and the explicit nearest-horizontal definition. It is not a human identity annotation or a model prediction. No derived examples from this audit enter training, selection or evaluation. The fixed selector was defined before the counts were measured.",
+  "target_data_access": false,
+  "parameter_updates": 0,
+  "FINAL_access": false
+}
