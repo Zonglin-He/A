@@ -1,0 +1,29 @@
+{
+  "question": "Can joint retention of two physical endpoints on the full original and role-reversed query pools reduce retrieval failures and yield extra precise localization for a correctly identified subject?",
+  "basis": "Prior frozen panel: in 42 natural directions with known endpoints, 18/42 geometric and 31/42 point-based cases had both endpoints available before their original four-slot retrieval. The study tests joint nomination before either list is truncated.",
+  "data": "All 501 previously exposed direction-inputs in the locked reciprocal study: 96 natural170, 72 natural171, 111 own proxy and 222 cross proxy. Results are development evidence. No FINAL, additional training or target parameter choices.",
+  "parent_seal": "abf19bf3d1faa5c2b17d54583414124738f64dddff0a5b65ec33860c9b724e90",
+  "weights": "68f27c2c6641ab72eec7015f65c9ec2c11700ca04b659cc8f1ad90e304754e07",
+  "input": "Generate frozen simplified v1 subject candidates on original caption A. Detect a single distinct, horizontal subject-to-entity edge in the native parse and call the existing R169 text-only canonical converse. Its own 256 source predictions are the full reference pool D. Same physical LiDAR point indices. For unsupported text or degenerate pair distribution return the original v1 for every arm. Role-specific proposal indices never transferred across queries.",
+  "posterior": "Pre-smoothing v1 density-corrected full candidate probabilities in the two native pools. Project the same raw sampled deduplicated LiDAR points with native visibility, collect actual viewport pixel columns for returns inside each upright PCA cuboid. L_ij is probability of correctly ordered columns drawing one visible return per candidate, half for ties, neutral 1/2 for missing observations. Multiply by 1 minus normalized physical intersection of the two upright boxes. P_ij proportional to the product of the two frozen role mass estimates, distinctness and measured order. L is a model of compatible supports, not an instance label.",
+  "nomination": "Keep exactly four source and four reference anchors when active from their respective full 256. Within-role physical coverage kernel K is volume intersection divided by geometric mean of volumes. For each side A=1-product(1-K) across selected anchors. Select one unused subject anchor and one unused reference anchor per round to maximize the true incremental expected joint coverage A_s^T P A_r. Four rounds, deterministic ties. No claim of globally optimal slate.",
+  "readout": "Split covered mass for each latent pair among selected anchors, proportional to K on each side, conserving exactly A_s^T P A_r. Select the maximum captured joint mass in the 4x4 slate. Given the winner, the same posterior supplies geometric weights over all native A subject boxes. Output squared horizontal shape tensor barycenter, arithmetic center, log-height mean; report raw and final identity. Conditional optimum is only in this parameterized squared-error space.",
+  "arms": [
+    "v1",
+    "original_slots",
+    "independent_nomination",
+    "independent_roles",
+    "no_bearing",
+    "wrong_reference",
+    "reverse_bearing",
+    "whole_pool_map",
+    "joint_nomination_raw",
+    "subject_only_shape",
+    "joint_nomination"
+  ],
+  "controls": "Independent_nomination uses the exact observed posterior marginals to build a same-size slate, then uses the original joint distribution and shape code. Independent_roles also factorizes the downstream posterior. Wrong_reference circularly shifts D's adjusted role masses on the lexicographic physical ordering, with locations, point profiles, mass multiset and budget intact. Reverse the observed order for reverse_bearing. Whole_pool_map maximizes raw pair posterior on 256x256 and has the same local posterior box fusion. Subject_only_shape keeps exactly the main chosen pair, uses only the observed subject marginal and its assignment to the same subject site for geometry. Original_slots uses native v1 subject and reference anchors evaluated under identical full-pool evidence.",
+  "evaluation": "Seal every result before evaluation. Report six direction macro Acc@25/50 and mIoU, all rescues and harms; paired natural identity under unique IoU>.25 and historical point voting with identical independently recovered human role IDs; unknown explicit. Report both endpoint shortlist coverage vs actually selected; official task separately. Geometry conditioned on a correct pre-refinement physical instance, audited after modification, check wins beyond original A256 raw/PCA as well as entire A+D 512 raw/PCA, compare conditional and subject-only geometry. Source proxy not natural independent identity; exposures, frame and recording counts and recording-resampled uncertainty.",
+  "advance": "Preserve v1 unless correct pair nomination shows actual independent positive dual-identity changes over the matched controls and reliable out-of-pool geometry adds to the independent shape score across recordings. If either link lacks evidence or a factor is algebraically redundant, report it and do not call the goal achieved. Full ordinary target benchmark reserved for evidence that warrants expansion.",
+  "final_access": false,
+  "wrong_correspondence": "Rotate by 128 positions on the D-box lexicographic physical ordering. Fixed before observing the new arms."
+}
