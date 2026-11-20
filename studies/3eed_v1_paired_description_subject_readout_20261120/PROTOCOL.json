@@ -1,0 +1,51 @@
+{
+  "method": "paired natural descriptions on a common physical v1 subject slate",
+  "source": "waymo",
+  "source_splits": {
+    "fit": 640,
+    "calibration": 160
+  },
+  "source_pairs": "All unordered same-class natural descriptions for distinct raw annotated centers (distance >= 0.12m), different normalized captions, one registered frame per input. Original registered sentence selects its four existing anchors once for every pair in its frame.",
+  "common_slate": "Use exactly these four PCA boxes under both sentences. Use each sentence native reference branch and point/text evidence. For its fixed subjects evaluate native density-corrected overlap kernel against its own 256 proposals. Never align native query indices across sentences.",
+  "source_slot_identity": "Largest IoU slot with strict IoU >0.25 to the annotated endpoint and no other annotated inventory object above 0.25 for that slot. Both endpoints must have distinct slots. No replacement or GT injection. Expose both, one, neither and ambiguous cases; also Acc50 geometric coverage.",
+  "optim": {
+    "interface": "Only second-round subject copy of final 96->1 affine, 97 parameters. Original .75*tanh scale; first pass, references, priors and pair terms frozen.",
+    "arms": [
+      "v1",
+      "mean",
+      "worst"
+    ],
+    "loss": [
+      "frozen",
+      "mean(softplus(-mA),softplus(-mB))",
+      "softplus(-min(mA,mB))"
+    ],
+    "optimizer": "Adam full batch",
+    "lr": 0.001,
+    "steps": 64,
+    "weighting": "uniform per eligible physical pair",
+    "weight_decay": 0,
+    "selection": "single predetermined last step; holdout only evaluates"
+  },
+  "source_primary": "Both strict pairwise margins positive on recording-disjoint source calibration. Report absolute counts and denominator among available and among all registered potential pairs. Four-way identity reported separately.",
+  "target_primary": "Waymo to Drone and Waymo to Quad. Every single ordinary Validation description, original native four slots. Direction-equal Acc@50; report rescue/harm versus v1 and mean, Acc25, mean IoU, recordings, pooled and direction macro. Target label access only after joint seal.",
+  "decision": "Adoption would require increased held-out joint pair resolution and positive target Acc50 versus v1. Attribute effect to worst-margin loss only if distinguishable from equal-budget mean; retain harms and report uncertainty.",
+  "ordinary_counts": {
+    "drone": 2792,
+    "quad": 2736
+  },
+  "data_limits": "Public previously evaluated ordinary panel. Source-only annotation. No new source backbone training; no FINAL access.",
+  "pins": {
+    "studies/3eed_v1_supervised_instance_grounding_20261119/inputs_PRIVATE/SEAL.json": "fed86ccfe78938834aca89d424967aaeed2af98b687d05bd4331d9a55bd99972",
+    "studies/3eed_v1_supervised_instance_grounding_20261119/protocol.json": "770ae9048e018a5f05712f0fe5e25731ce7b4bf6ba5585eaf294be4517023faf",
+    "studies/3eed_v2_ordinary_val_subject_ranking_20261119/ordinary_PRIVATE/SEALED.json": "ff49bfee56b244118e0ee0aea092db3dfb5f4fc84fb39112ad1e442bc3398369",
+    "studies/3eed_v2_ordinary_val_subject_ranking_20261119/predictions_PRIVATE/SEALED.json": "2d221316af70d76dc719ce4e397e4be0b02cb208ff26f7765041db143c30f5e5",
+    "studies/3eed_v2_ordinary_val_subject_ranking_20261119/audited_iou_PRIVATE/SEALED.json": "102d6a15614fb5f49f2132278235c3121c75a97330a4a4f238abdbdd0d68d10b",
+    "crossplatform/CURRENT_METHOD.json": "cba916e92eecf0169fc898db643c6263c86f6a3c43a7a4399c6a5f5373fe3669",
+    "crossplatform/ground.py": "8faec0ebd5c6c338e93613cd7f3ff9926b3f6fd111e6277b85fa3fe2abd6a40e",
+    "crossplatform/candidate_frontend.py": "b13bca14718bd0bd2e02131a341e497ebb029980a2d15cceb2a01d1f9d031d81",
+    "crossplatform/v1_decoder.py": "69799dda68e97e4eabc4006e101d5f0e8c07f294b3970229cf94b59480f20a7a",
+    "crossplatform/v1_evidence.py": "27375dc3b57259cd5f670dd2b2ebc4a67b0d2c3889ac6e7b2b17b43989d10763",
+    "crossplatform/v1_weights/waymo.pth": "b72a1c9f959febf3a62f2c757328a3e1478e9fc67703c15c8f4c81f1dc9f9957"
+  }
+}
