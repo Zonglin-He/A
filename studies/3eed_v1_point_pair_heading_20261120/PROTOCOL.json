@@ -1,0 +1,19 @@
+{
+  "question": "Does treating two LiDAR returns as a displacement only when one rotated copy of the selected box can contain them together improve fixed-instance yaw?",
+  "arms": ["v1", "shared", "independent", "disk", "crossed", "recrop_once", "crop_45"],
+  "primary": "shared: principal eigenvector of the uniform axial-angle integral of within-crop pair scatter. Weight each unordered pair by Pr(both points are retained by one common rectangle at the original center and with original dimensions). Compute the angular integral exactly by sorting entry and exit events. Equal weights for native unique XYZ returns; use the original width, length and vertical crop.",
+  "controls": "independent uses the product of the two exact pointwise inclusion probabilities. disk uses all returns in the circumscribed cylinder with equal weights. crossed computes pair inclusion when the two footprints differ by 90 degrees, preserving each point's marginal. recrop_once is ordinary PCA after rotating the original crop to v1's first PCA estimate. crop_45 turns the native initial crop by 45 degrees in model coordinates for a coordinate-sensitivity diagnostic. Each one-crop PCA requires at least eight unique points.",
+  "eligibility": "Every arm keeps v1 on original length/width <1.5, fewer than eight unique native crop points, or a degenerate native horizontal scatter. Each alternative also retains v1 on its own undefined/isotropic scatter. Existing threshold for native variance is 1e-12. For new scatters, compare the eigengap to 1e-12 times max(trace,1), after dividing by pair mass. The same candidate identity, center, L/W/H, original 16384 samples and source/target frame convention are required throughout. Only the returned final yaw may change; the inner two-round grounding computation is never rerun with the new orientation.",
+  "cohorts": "384 exposed source recording-holdout records, 3072 exposed ordinary cross-platform TRAIN direction records, 18620 exposed ordinary Validation direction records. Run all three, with all controls, independent of intermediate scores. Seal all yaw predictions before opening their task GT. No training, calibration, new data, target selection or FINAL access.",
+  "evaluation": "Primary six-direction macro on ordinary Validation is strict oriented 3D IoU >0.50. Also report >0.25, mIoU, all six directions, paired rescues and harms, original fallbacks, recording-paired 95 percent bootstrap, and a label-only comparison of angular errors among records with original or new positive overlap. Separately report pilot rescues with no original A256 PCA box passing, ordinary rescues with no original K16 box passing, and diagnostic GT yaw inserted at the same winner. It is a distinct reference, not an IoU upper bound for an off-center box.",
+  "decision": "A task benefit requires improved primary macro Acc50 over v1. To attribute added value to joint inclusion require it to improve ordinary Acc50 beyond independent, disk, crossed and one-step recrop as well, with direction-level harms, development exposure and uncertainty disclosed. A simpler winning control is evidence about geometry only and cannot validate the claimed pair mechanism.",
+  "source_assets": "68f27c2c6641ab72eec7015f65c9ec2c11700ca04b659cc8f1ad90e304754e07",
+  "baseline_seals": {
+    "source": "e62396c76bc3572d19531f44b8a17f81e3fc0a7fecf31185a21fb945ef905b8e",
+    "pilot": "d2581d8dec761f4da285746c715f0c5b80913644510ab72e57f3f31fd8cd41a5",
+    "ordinary": "2d221316af70d76dc719ce4e397e4be0b02cb208ff26f7765041db143c30f5e5"
+  },
+  "ordinary_roster": "ff49bfee56b244118e0ee0aea092db3dfb5f4fc84fb39112ad1e442bc3398369",
+  "training_steps": 0,
+  "FINAL_access": false
+}
