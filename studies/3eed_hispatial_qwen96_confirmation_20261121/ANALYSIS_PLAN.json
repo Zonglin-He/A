@@ -1,0 +1,22 @@
+{
+  "same_image_comparisons": [
+    ["global_scale", "moge"],
+    ["prior_depth", "moge"],
+    ["prior_depth", "global_scale"],
+    ["global_scale", "wrong_geometry"],
+    ["oracle_depth", "prior_depth"]
+  ],
+  "previous_54_frame_level_readout": {
+    "L0": "prior_depth",
+    "L1": "moge",
+    "L2": "prior_depth",
+    "L3": "moge"
+  },
+  "level_readout_note": "Diagnostic only. Compare a fixed rule selected from the previous, physically disjoint 54-frame audit with uniform MoGe and prior_depth. No best-arm choice on the 96-frame questions. Report arithmetic-mean level accuracy and exact pooled wins/losses with per-platform counts. This is an offline comparison reusing already computed predictions.",
+  "intervals": "Use recording-clustered paired resampling and equal target weights. Retain all positive and negative responses. Same-frame consistency is evaluated on pairs before any electronic confidence filtering.",
+  "central_checks": [
+    "L0: text improvement and direct point-map ordering.",
+    "L1/L2: improvement per question family, and harm/rescue when each named object's local surface depth improved.",
+    "L3: both-correct opposite turns and old-view persistence, compare fixed fit-only map, measured-depth oracle, and explicit exact-center text probe."
+  ]
+}

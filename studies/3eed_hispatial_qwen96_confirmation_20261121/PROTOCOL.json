@@ -1,0 +1,31 @@
+{
+  "study": "Frozen HiSpatial geometry and reasoning on the exact Qwen 96-frame roster",
+  "scope": {
+    "frame_roster": "Reuse all 96 ordered physical frames from the sealed Qwen ordinary Validation panel. Verify every RGB and point hash and the protected ordinary roster membership before opening observations. No replacements. Compare against the earlier disjoint 54-frame HiSpatial result as a separate cohort.",
+    "frames_per_platform": 32,
+    "observation": "Single original RGB, synchronized by the dataset pairing, and the released camera/LiDAR transform. Zero distortion is assumed when unspecified. Independent sensor time offsets are unavailable.",
+    "FINAL_access": false
+  },
+  "revision": {
+    "hispatial": "9b0a5718ed0fb3b8bd9d9e0b36b6192bd3e99be1",
+    "moge": "b942f00bdc2a2a23ebb474fbe034d487e6dcceec",
+    "prior_depth": "8c029cbca669443fe0bbf8dcefb5f91ad531084d",
+    "utils3d": "3fab839f0be9931dac7c8488eb0e1600c236e183"
+  },
+  "arms": {
+    "moge": "Pinned official MoGe-2 point map.",
+    "global_scale": "Robust median log depth ratio from fit pixels with registered camera rays.",
+    "prior_depth": "Official Prior Depth Anything v1.1 ViT-B using exactly the same fit return subset and registered rays.",
+    "wrong_geometry": "Within-frame left-right depth swap of global_scale across mutually valid pixels, preserving mask and depth histogram.",
+    "oracle_depth": "Diagnostic measured-depth oracle. Use the same Prior Depth Anything with all valid LiDAR return cells, including holdout cells. At observed sites overwrite the completion's optical depth with the measured optical depth. Camera rays and validity footprint stay the same. Geometry at injected locations is not a held-out result. Free space and object centers are not ground truth in the dense map."
+  },
+  "primary_qa": {
+    "eligibility": "All frames contribute geometry. Use the previous audit's L0 probes when eligible. L1/L2/L3 use only objects whose visual identity is independently checked on the original image before predictions. Distinct objects and sufficient true separation are required for pair tasks. Preserve all ambiguous cases in geometry and count absent tasks by platform. Do not substitute model-supplied boxes or Qwen results into questions. Issue one fixed set of original-image prompts across the five arms.",
+    "families": "L0 pixel XYZ and inverse camera depth ordering. L1 center distance and height. L2 center range comparison, horizontal separation and static right. L3 fixed-origin opposite 90-degree yaw, reported separately with paired correctness.",
+    "depth_anchors": "Reuse the previous geometry pipeline, 448 squared, nearest positive valid return per cell, 8x8 block holdout, common MoGe-valid footprint. The oracle explicitly uses anchors not available to ordinary arms.",
+    "additional_diagnosis": "For the same named L3 pairs and same fit-only completed map, append exact annotation centers in original ground-plane (right, forward) coordinates to the verbatim question. Preserve object IDs and answer ordering. Text contains coordinates but no answer or projected values. Run explicit deterministic dot products on the same centers as a label sanity check. This tests reasoning given coordinates and is separate from ordinary QA and the oracle point-map comparison. Coordinate rounding to two decimals must preserve both gold choices."
+  },
+  "model": "Official HiSpatial-3B shared across all platforms, FP32, greedy up to 100 new tokens. Cached image features and batches up to six only if verified against the released single-query path, with exact single-query fallback. Neither source nor target parameters are updated.",
+  "scoring": "Missing and unparsable responses are failures. Numeric pass means at most 25 percent relative error, numeric MAE uses valid responses. Report pooled counts, equal weighting of per-platform metrics, recording-cluster intervals, paired rescue/harm, and inverse consistency. Use the same held-out depth cells for ordinary geometry metrics. Oracle-depth in-anchor geometry is marked explicitly. Compare question-family responses, including smaller same-object-region errors with worse answers. No data-dependent choice of geometry or prompt after results.",
+  "decision": "Test whether independent depth and reasoning improvements reproduce and whether exact depth or explicit true coordinates resolve the L3 failure. Evaluate possible query-conditioned correction only through observed task heterogeneity in this round."
+}
