@@ -1,4 +1,4 @@
-"""Shared-cut inference and physically feasible decisions for both roles."""
+"""Direct subject selection for simple order, shared-cut decoding for ordered witnesses."""
 import ctypes
 import hashlib
 import os
@@ -150,13 +150,15 @@ def select(data, subject_proposals, words, side, depth, nearest, points, *, read
         joint,_ = shared(parent,disjoint_pairs(parent),stop,data['p'],words,data['view'],side,depth,nearest,'physical')
         mass = joint.sum(axis=1)
     else:
-        evidence = SideEvidence(parent,stop,data['view'])
+        evidence = SideEvidence(parent,stop,data['view'],shared_cut=False)
         mass = evidence.marginal(subject,reference,side)
     feasible = mass>0
     if not feasible.any():
         return -1,-1
     weight = overlap_prior(data,subject_proposals,'t',points)
-    utility = overlap_sum(parent,size,weight*mass)
+    utility = weight * mass
+    if ordered:
+        utility = overlap_sum(parent,size,utility)
     i = int(np.argmax(np.where(feasible,utility,-1.)))
     if not read_reference:
         return i,-1

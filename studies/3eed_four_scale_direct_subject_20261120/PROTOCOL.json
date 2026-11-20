@@ -1,0 +1,19 @@
+{
+  "baseline_commit": "a5d6ca6c088e0eb9ee5d4bfaa21544a870c33d61",
+  "baseline_seal_sha256": "91084dfd3b02f5e3630c1527c220430d762029196fbb130faea1a5c5a2bc796a",
+  "baseline_boxes_sha256": "b669151ade3817c4b315dd64ca08723e8f35adce479f383188be431154e5b28c",
+  "ordinary_iou_table_sha256": "4808bd04f47885fa4686656b5ed6608729d83929ffd6fa27554110b601d3da98",
+  "question": "How much localization accuracy does a direct subject decision trade for removal of common-ancestor conditioning and overlapping-node voting?",
+  "scopes": {"ordinary": 18620, "simple_relation": 1294, "frozen_fallback": 17326, "ordered_control": 128},
+  "arms": ["shared_overlap", "separate_overlap", "shared_direct", "separate_direct"],
+  "primary": "separate_direct",
+  "factorial": "Ordinary left/right only. Factor one uses the product of two marginal node occupancies in place of shared-cut joint occupancy. Factor two selects the largest weighted subject marginal without a second Jaccard vote. All four retain visibility, disjoint support, strict interval order, the entire subject phrase nomination and class-conditioned anchored completion. First feasible maximum wins ties, empty evidence falls back.",
+  "ordered_and_fallback": "Keep the complete previous ordered-witness decoder and both diagnostic endpoints on all controlled sentences. Reuse pinned ordinary fallback predictions. Optional simple-reference diagnosis preserves the previous conditional overlap readout using its arm's pair mass and selected subject.",
+  "frontend": "Keep all seven word orders and six noun prompts. Omit the unused terminal box head for word scores and the unused final contrastive projections for noun sizes. Check retained outputs against the original forward from raw scene inputs.",
+  "measurement": "Preselect the combined arm, without choosing on target labels. Seal all four predictions before scoring. Recompute active-case oriented IoUs, reconcile the previous baseline and keep every fallback row. Report strict Acc@25, Acc@50, mIoU, per-direction rescue/harm, region-subset macro and counts, ordinary per-row results, and recording-cluster paired uncertainty on all six directions.",
+  "decision": "The user prioritizes the simpler ordinary rule and accepts a small accuracy decrease. Report the observed tradeoff on both populations, including all negative directions. No numeric noninferiority margin or significance requirement was specified.",
+  "budget": "One four-arm CPU replay; raw end-to-end verification on preselected paths. No parameter search.",
+  "source_training": false,
+  "target_updates": 0,
+  "FINAL_access": false
+}

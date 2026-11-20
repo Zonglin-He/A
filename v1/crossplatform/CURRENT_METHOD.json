@@ -1,26 +1,27 @@
 {
   "name": "four_scale_physical_joint",
   "display_name": "四尺度物理区域联合读出",
-  "variant": "four_without_reference_prior",
-  "version": "2",
+  "variant": "four_scale_direct_subject",
+  "version": "3",
   "paper_main_method": {
     "status": "locked",
     "confirmed_by": "user",
-    "registered_at_local": "2026-11-20T22:05:03+08:00",
-    "selection": "user-selected previously evaluated four-scale ablation without reference phrase nominations",
-    "prediction_lineage": "4f6292f8eec44cc3b9dc2adc999b33165ea49275",
-    "ablation_arm": "four_without_reference_prior",
+    "registered_at_local": "2026-11-20T23:00:06+08:00",
+    "selection": "User-selected simpler ordinary left/right scoring; both edits fixed before target scoring.",
+    "prediction_lineage": "a5d6ca6c088e0eb9ee5d4bfaa21544a870c33d61",
+    "ablation_arm": "separate_direct",
     "evaluation": {
       "scope": "ordinary Validation; six-direction macro; previously exposed",
       "direction_records": 18620,
       "region_records": 1294,
       "fallback_records": 17326,
       "overall": {
-        "Acc25": 27.357197424341148,
-        "Acc50": 11.156940489114263,
-        "mIoU": 14.806796578216927
+        "Acc25": 27.298454749316974,
+        "Acc50": 11.098075632641565,
+        "mIoU": 14.765739481978743
       }
-    }
+    },
+    "prediction_seal_sha256": "16e5e5b70d8d75a03983e5288c05ba17c156561c8870d7a7737e2d3d1759e245"
   },
   "main_entrypoint": "crossplatform/ground_regions.py",
   "single_frame": true,
@@ -55,7 +56,7 @@
   ],
   "relation": "camera-frame horizontal order; immediate and camera depth when specified",
   "inference": {
-    "simple_order": "strict camera interval sweep; reference mass conditional on each subject along the shared-cut forest",
+    "simple_order": "strict horizontal interval sweep over disjoint visible supports, product of marginal occupancies",
     "ordered_witnesses": "shared tree dynamic program",
     "region_budget": "all distinct retained return supports",
     "output": "PCA region box, locally conditioned noun dimensions, near horizontal and lower vertical faces anchored",
@@ -63,14 +64,16 @@
     "reference_phrase_nominations": false,
     "reference_evidence": "frozen noun scores on physical regions and the observed spatial predicate",
     "extra_proposal_forwards_on_nonempty_inventory": 1,
-    "subject_decision": "overlap-weighted joint subject marginal over feasible nodes",
+    "subject_decision": "simple: direct maximum of subject phrase weight times subject noun evidence times total eligible reference evidence; ordered: shared-cut and overlap vote",
     "extract_reference_endpoint_for_subject_output": false,
     "completion": "one class-conditioned box after subject selection; zero region completions on fallback",
-    "shared_ancestor_survival": true,
+    "shared_ancestor_survival": false,
     "graph": "incremental component merging across the four fixed inclusive edge thresholds",
     "noun_evidence": "one softmax over six foreground noun logits plus log dimension compatibility",
-    "overlap_decision": "two passes over nested point supports",
-    "fallback_execution": "build decoder evidence and run the frozen fallback decoder on demand"
+    "overlap_decision": "subject nominations always use box-to-region point overlap; only ordered subjects use a second region-to-region overlap vote; optional reference diagnosis retains its conditional overlap readout",
+    "fallback_execution": "build decoder evidence and run the frozen fallback decoder on demand",
+    "ordered_shared_cut": true,
+    "prompt_outputs": "7 rotations read word matches, 6 noun prompts read geometry; each skips the unused terminal output"
   },
   "fallback": {
     "method": "frozen compact v1 plus local ground bottom adjustment",
@@ -81,7 +84,7 @@
   "target_updates": 0,
   "rgb_pixels": false,
   "FINAL_access": false,
-  "evidence_study": "studies/3eed_eight_scale_component_ablation_20261120",
+  "evidence_study": "studies/3eed_four_scale_direct_subject_20261120",
   "scale_levels_one_based": [
     1,
     3,
@@ -89,6 +92,7 @@
     8
   ],
   "preceding_eight_scale_release": "4f6292f8eec44cc3b9dc2adc999b33165ea49275",
-  "paired_comparisons": "studies/3eed_eight_scale_component_ablation_20261120/results/four_default_comparisons.csv",
-  "execution_verification": "studies/3eed_four_scale_tree_readout_20261120/results/verification.json"
+  "paired_comparisons": "studies/3eed_four_scale_direct_subject_20261120/results/metrics.csv",
+  "execution_verification": "studies/3eed_four_scale_direct_subject_20261120/results/verification.json",
+  "preceding_four_scale_release": "a5d6ca6c088e0eb9ee5d4bfaa21544a870c33d61"
 }

@@ -30,9 +30,9 @@ def disjoint_pairs(parent):
 
 
 class SideEvidence:
-    """Sum evidence from disjoint sibling subtrees past a horizontal interval boundary."""
+    """Sum eligible reference mass in disjoint subtrees across a horizontal boundary."""
 
-    def __init__(self, parent, stop, view):
+    def __init__(self, parent, stop, view, *, shared_cut=True):
         n = len(parent)
         self.visible = np.flatnonzero(np.isfinite(view[:, 0]))
         self.view = view
@@ -42,7 +42,8 @@ class SideEvidence:
             if p >= 0:
                 reach[node] = reach[p] * (1. - stop[p])
         self.occupancy = reach * stop
-        self.stop = stop
+        # Separately occupied endpoints carry their full marginal into the scan.
+        self.reference_weight = stop if shared_cut else self.occupancy
 
         # Group siblings into binary sums. This lets us read "all other children"
         # using only positive additions, even when one sibling dominates the sum.
@@ -51,7 +52,7 @@ class SideEvidence:
             groups[p if p >= 0 else n].append(node)
         self.up = [-1] * (n + 1)
         self.sibling = [-1] * (n + 1)
-        self.split = list(1. - stop) + [1.]
+        self.split = list(1. - stop) + [1.] if shared_cut else None
         for p, children in enumerate(groups):
             while len(children) > 1:
                 a, b = children.popleft(), children.popleft()
@@ -60,7 +61,8 @@ class SideEvidence:
                 self.sibling[a], self.sibling[b] = b, a
                 self.up.append(-1)
                 self.sibling.append(-1)
-                self.split.append(1.)
+                if self.split is not None:
+                    self.split.append(1.)
                 children.append(group)
             if children:
                 self.up[children[0]] = p
@@ -79,11 +81,11 @@ class SideEvidence:
             while cursor < len(refs) and left[refs[cursor]] > right[i]:
                 node = refs[cursor]
                 cursor += 1
-                value = self.stop[node] * reference[node]
+                value = self.reference_weight[node] * reference[node]
                 while node >= 0 and value > 0:
                     subtree[node] += value
                     node = self.up[node]
-                    if node >= 0:
+                    if self.split is not None and node >= 0:
                         value *= self.split[node]
             total = 0.
             node = i

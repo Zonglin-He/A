@@ -1,58 +1,39 @@
 {
   "method": "four_scale_physical_joint",
-  "nominal_variant": "four_without_reference_prior",
+  "nominal_variant": "four_scale_direct_subject",
   "current_metrics": {
     "scope": "ordinary Validation; six-direction macro; previously exposed",
     "direction_records": 18620,
     "region_records": 1294,
     "fallback_records": 17326,
     "overall": {
-      "Acc25": 27.357197424341148,
-      "Acc50": 11.156940489114263,
-      "mIoU": 14.806796578216927
+      "Acc25": 27.298454749316974,
+      "Acc50": 11.098075632641565,
+      "mIoU": 14.765739481978743
     }
   },
-  "study": "studies/3eed_eight_scale_component_ablation_20261120",
-  "results_delta_reference": "full (preceding eight-scale release)",
-  "paired_comparisons": "studies/3eed_eight_scale_component_ablation_20261120/results/four_default_comparisons.csv",
-  "same_scale_control": "direct_four_scales",
-  "prediction_sha256": "82d904b3d47c27324a8a5710308c82f7dde55f92c8274f4407a152835a768d8e",
-  "sealed_release": "4f6292f8eec44cc3b9dc2adc999b33165ea49275",
-  "cached_endpoints": 2844,
+  "study": "studies/3eed_four_scale_direct_subject_20261120",
+  "results_delta_reference": "previous four-scale shared-cut subject overlap decision",
+  "paired_comparisons": "studies/3eed_four_scale_direct_subject_20261120/results/metrics.csv",
+  "same_scale_control": "shared_overlap",
+  "prediction_sha256": "01e669cc2901b309b03bed207ee8f11b7f6071e4b0b66306d9e7216bd9074c80",
+  "prediction_seal_sha256": "16e5e5b70d8d75a03983e5288c05ba17c156561c8870d7a7737e2d3d1759e245",
+  "baseline_release": "a5d6ca6c088e0eb9ee5d4bfaa21544a870c33d61",
   "raw_single_frame_cases": 14,
   "raw_max_coordinate_error": 0.0,
   "isolated_cli_cases": 3,
   "source_retraining": 0,
   "target_updates": 0,
   "FINAL_access": false,
-  "subject_readout_verification": {
-    "report": "studies/3eed_four_scale_subject_readout_20261120/REPORT_ZH.md",
-    "metrics": "studies/3eed_four_scale_subject_readout_20261120/results/metrics.csv",
-    "base_commit": "99da304b9a397b2d5196b2a83a20196a0ae7805e",
+  "preceding_results": "https://github.com/Zonglin-He/A/blob/a5d6ca6c088e0eb9ee5d4bfaa21544a870c33d61/v1/EVALUATION.json",
+  "direct_subject_verification": {
+    "formula": "subject_nomination * subject_occupancy * subject_noun * sum(disjoint,visible,ordered reference_occupancy * reference_noun)",
     "ordinary_active": 1294,
-    "ordinary_untouched_fallback": 17326,
-    "subject_and_optional_reference_boxes_checked": 2844,
-    "raw_input_cases": 14,
-    "isolated_cli_cases": 3,
-    "maximum_coordinate_error": 0,
-    "final_reference_index_extracted_in_deployment": false,
-    "completion": "selected subject only",
-    "shared_ancestor_model": true
-  },
-  "tree_readout_verification": {
-    "report": "studies/3eed_four_scale_tree_readout_20261120/REPORT_ZH.md",
-    "metrics": "studies/3eed_four_scale_tree_readout_20261120/results/metrics.csv",
-    "base_commit": "dff06fddc0eeeacb77e9c65767903e507806280d",
-    "ordinary_active": 1294,
-    "ordinary_unchanged_fallback": 17326,
-    "controlled_ordered_noun": 128,
-    "endpoint_boxes_checked": 2844,
-    "all_coordinates_identical": true,
-    "simple_relation_working_memory": "linear in the number of regions",
-    "ordered_witness_path": "shared forest dynamic program",
-    "readout_timing": "studies/3eed_four_scale_tree_readout_20261120/results/timing.json",
-    "warm_raw_prediction_timing": "studies/3eed_four_scale_tree_readout_20261120/results/entry.json",
-    "raw_input_cases": 14,
-    "isolated_cli_cases": 3
+    "ordinary_fallback_reused": 17326,
+    "ordered_control": 128,
+    "both_ordered_endpoints_equal": true,
+    "report": "studies/3eed_four_scale_direct_subject_20261120/REPORT_ZH.md",
+    "sealed_rows": "studies/3eed_four_scale_direct_subject_20261120/results/ordinary_rows.csv.gz",
+    "audit": "studies/3eed_four_scale_direct_subject_20261120/results/audit.json"
   }
 }

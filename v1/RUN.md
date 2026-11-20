@@ -17,7 +17,7 @@
 
 ## 命令行和 Python
 
-默认入口是 `crossplatform/ground_regions.py`。普通左右关系在投影区间上排序，沿嵌套区域树累计参照质量。首次处理明确带紧邻或深度次序的描述时，使用 C++17 编译器在用户缓存目录生成有序关系递推核。各分支均在本地运行。
+默认入口是 `crossplatform/ground_regions.py`。普通左右关系在投影区间上排序，沿嵌套区域树累计合法参照证据，乘以主体自身的证据后直接选框。首次处理明确带紧邻或深度次序的描述时，使用 C++17 编译器在用户缓存目录生成有序关系递推核。各分支均在本地运行。
 
 ```python
 from crossplatform.ground_regions import Grounder
@@ -28,7 +28,7 @@ box = grounder.predict(
     points="/path/to/frame/points.bin",
     rgb="/path/to/frame/image.jpg",
     calibration="/path/to/frame/camera.json",
-    text="Find the car immediately to the left of the bus in the camera image.",
+    text="The car to the left of the bus in the camera image.",
 )
 ```
 
@@ -36,6 +36,4 @@ box = grounder.predict(
 
 默认调用和显式 `--scales 4` 都使用四层区域，分别对应前景点云邻接图边权的 6.25%、31.25%、68.75%、93.75% 分位。关系句在有可用区域时额外运行一次主体短语候选提名。参照名词使用冻结语义在区域上评分，候选对按句中的相机左右关系联合选择。有紧邻或深度条件时仍使用树递推。输出框按已选主体点簇的可见面补全。回退沿用基础冻结读出与地面修正。[当前配置](crossplatform/CURRENT_METHOD.json) · [基础配置](crossplatform/FROZEN_V1.json)
 
-复现上一版八尺度及其参照短语投票时，使用当时的发布提交。[八尺度历史版本](https://github.com/Zonglin-He/A/tree/4f6292f8eec44cc3b9dc2adc999b33165ea49275)
-
-主体框接口对可行参照的联合质量求和，再分别自底向上、自顶向下累计重叠区域对主体的贡献。普通左右句的区域读出使用与区域数成正比的额外空间。只有回退时才构建冻结解码器输入并运行解码器。用于检查双端的 `selection.select` 默认返回主体及参照区域索引，`regions.assemble` 可用于检查全部区域及名词的补全框。
+在普通左右路径中，主体和参照各自按尺度计权，严格排除同一区域及其祖先、后代。可行区间上的参照证据按和汇总，直接选主体。区域读出的额外存储与区域数成正比。紧邻与深度句沿用共享切分和跨尺度投票；冻结回退按需运行。检查双端时，`selection.select` 默认返回主体及诊断参照索引；部署入口只提取主体。保留上一版的提交可复现两个判决的差异。[上一版四尺度读出](https://github.com/Zonglin-He/A/tree/a5d6ca6c088e0eb9ee5d4bfaa21544a870c33d61)
