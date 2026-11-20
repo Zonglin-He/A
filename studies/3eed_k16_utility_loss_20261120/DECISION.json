@@ -1,0 +1,135 @@
+{
+  "production_method": "simplified v1",
+  "candidate": "unnormalized PAL@25, fixed K16",
+  "decision": "stop this loss replacement; retain the candidate-count sensitivity diagnosis",
+  "reasons": [
+    "C loses to matched B on the preregistered primary Acc25 and both secondary metrics",
+    "All three C seeds lose Acc25 to the frozen joint baseline; recording intervals for C minus B and C minus frozen are below zero",
+    "Candidate-count gradient effects exist on source; ground-truth frequencies in target transfer vary, and no unique physical identity inference is established"
+  ],
+  "scope": {
+    "ordinary_validation_direction_records": 18620,
+    "descriptions": 9310,
+    "sources": 3,
+    "train_seeds": 3,
+    "heads": 45,
+    "recording_count_by_target": {
+      "waymo": 93,
+      "drone": 2,
+      "quad": 3
+    },
+    "evaluation": "previously exposed ordinary validation"
+  },
+  "six_direction_seed_means": {
+    "v1": {
+      "Acc25": 27.37398238812561,
+      "Acc50": 10.160299869195311,
+      "mIoU": 14.53847894360227,
+      "success_given_covered25": 41.237627939559076
+    },
+    "frozen_joint": {
+      "Acc25": 27.384372011035822,
+      "Acc50": 10.170957096891781,
+      "mIoU": 14.547421571580545,
+      "success_given_covered25": 41.25434545701315
+    },
+    "A_old_matched": {
+      "Acc25": 26.985785136753837,
+      "Acc50": 10.228064246264667,
+      "mIoU": 14.288803071631653,
+      "success_given_covered25": 40.739205323756785
+    },
+    "B_mass25": {
+      "Acc25": 26.934487595110724,
+      "Acc50": 10.22471578353341,
+      "mIoU": 14.25638440826846,
+      "success_given_covered25": 40.67920777524867
+    },
+    "C_PAL25": {
+      "Acc25": 26.23163329120055,
+      "Acc50": 9.476970918259566,
+      "mIoU": 14.002829726871608,
+      "success_given_covered25": 39.58438384276275
+    },
+    "D_normalized_PAL25": {
+      "Acc25": 26.457685616279463,
+      "Acc50": 9.631913329542186,
+      "mIoU": 14.080250055925378,
+      "success_given_covered25": 39.939080630237946
+    },
+    "E_BCE25": {
+      "Acc25": 27.25257366626377,
+      "Acc50": 10.288309998323966,
+      "mIoU": 14.489725238394499,
+      "success_given_covered25": 41.165309685208285
+    }
+  },
+  "paired_C": {
+    "v1": {
+      "Acc25_pp": -1.142349096925063,
+      "Acc50_pp": -0.6833289509357456,
+      "mIoU_pp": -0.5356492167306612,
+      "rescue25": 578.3333333333334,
+      "harm25": 770.3333333333334,
+      "rescue50": 208.0,
+      "harm50": 322.3333333333333
+    },
+    "frozen_joint": {
+      "Acc25_pp": -1.1527387198352734,
+      "Acc50_pp": -0.6939861786322155,
+      "mIoU_pp": -0.5445918447089362,
+      "rescue25": 567.0,
+      "harm25": 758.0,
+      "rescue50": 203.33333333333334,
+      "harm50": 318.6666666666667
+    },
+    "A_old_matched": {
+      "Acc25_pp": -0.7541518455532881,
+      "Acc50_pp": -0.7510933280051013,
+      "mIoU_pp": -0.28597334476004477,
+      "rescue25": 488.3333333333333,
+      "harm25": 611.3333333333334,
+      "rescue50": 154.66666666666666,
+      "harm50": 284.3333333333333
+    },
+    "B_mass25": {
+      "Acc25_pp": -0.7028543039101756,
+      "Acc50_pp": -0.7477448652738445,
+      "mIoU_pp": -0.2535546813968512,
+      "rescue25": 520.0,
+      "harm25": 628.0,
+      "rescue50": 163.0,
+      "harm50": 290.3333333333333
+    },
+    "D_normalized_PAL25": {
+      "Acc25_pp": -0.22605232507891415,
+      "Acc50_pp": -0.15494241128262054,
+      "mIoU_pp": -0.07742032905376917,
+      "rescue25": 310.0,
+      "harm25": 346.0,
+      "rescue50": 119.66666666666667,
+      "harm50": 146.0
+    },
+    "E_BCE25": {
+      "Acc25_pp": -1.0209403750632227,
+      "Acc50_pp": -0.8113390800643998,
+      "mIoU_pp": -0.48689551152289035,
+      "rescue25": 442.6666666666667,
+      "harm25": 614.3333333333334,
+      "rescue50": 156.33333333333334,
+      "harm50": 293.0
+    }
+  },
+  "target_labels_for_selection": false,
+  "backbone_training": false,
+  "target_parameter_update": false,
+  "FINAL_access": false,
+  "hashes": {
+    "PROTOCOL.json": "615b0e98faf153f7cbfbdf48e32d0abc4ce61f32c43cde2d6195886166b626c6",
+    "results/mechanism.json": "35306e1eeadf320f19b2c9665a149edcca64061730f25e1863aa10312cdd2996",
+    "results/source_fit_audit.json": "675fcb4e7a25becd91cc3c8d9cf17fa485b1ae26cab5812641bef17f3d291b69",
+    "results/score_receipt.json": "b914f7a29f432d5658aa2fc4a8494dfc724a8b96fec35de6f5bd6c041e1dbe69",
+    "results/audit.json": "cde231cda130d325f19e92f572223cd353b7c0ee482656af3dcf7da8505cbcea",
+    "REPORT_ZH.md": "614137bf75c3a48ee3527bb95fa99a7b4ec052a2261158b8362d4c6abdc6de7f"
+  }
+}
