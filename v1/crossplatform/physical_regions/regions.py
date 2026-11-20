@@ -1,4 +1,4 @@
-"""Construct the eight nested physical inventories in the model coordinate frame."""
+"""Construct nested physical regions in the model coordinate frame."""
 import numpy as np
 from PIL import Image
 from scipy.sparse import coo_matrix
@@ -8,6 +8,9 @@ from scipy.special import softmax
 from crossplatform.candidate_frontend import WAYMO_VIEWS
 from crossplatform.round7.camera_projection import CameraSpec, read_camera_allowlist, project_model_points, model_to_camera_matrix
 from .language import CLASSES
+
+# Indices on the original eight-quantile grid. Keeping the grid fixes the radii.
+FOUR_LEVEL_INDICES = (0, 2, 5, 7)
 
 
 def camera(platform, index, calibration, image):
@@ -104,7 +107,7 @@ def projection(x,f):
     seen=valid & (p['depth']<=zbuf[flat]+.30+.02*p['depth'])
     return uv[:,0]/size[0],p['depth'],seen
 
-def levels(x,fg,indices=tuple(range(8))):
+def levels(x,fg,indices=FOUR_LEVEL_INDICES):
     cuts=np.full(len(indices),np.nan)
     out=np.full((len(indices),len(x)),-1,dtype=np.int32)
     ids=np.flatnonzero(fg)
@@ -141,7 +144,7 @@ def describe(x,labels,pointscores,proj):
             desc[g]=[lo,mid,hi,np.median(depth[ix]),len(ix)]
     return sizes.astype(np.int32),softmax(scores,axis=1),desc
 
-def build(x,scores,seeds,frame,indices=tuple(range(8))):
+def build(x,scores,seeds,frame,indices=FOUR_LEVEL_INDICES):
     xyz=np.unique(x.astype(float),axis=0)
     ground=terrain(xyz)
     height=xyz[:,2]-xyz[:,:2]@ground[:2]-ground[2]

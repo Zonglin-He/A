@@ -1,4 +1,4 @@
-"""Single-frame grounding by joint selection of eight-scale physical regions."""
+"""Single-frame grounding with four physical scales and subject phrase nominations."""
 import argparse
 from contextlib import redirect_stdout
 import json
@@ -34,12 +34,10 @@ def phrase_bank(scene, observed, frame):
 
 class Grounder(FrozenGrounder):
     """Predict one target LiDAR box using one frozen source model."""
-    def __init__(self, source, *, asset_root=None, scales=8):
-        indices = {8: tuple(range(8)), 4: (0, 2, 5, 7)}
-        if scales not in indices:
-            raise ValueError("Supported physical inventories have eight or four scales.")
+    def __init__(self, source, *, asset_root=None, scales=4):
+        if scales != len(regions.FOUR_LEVEL_INDICES):
+            raise ValueError("This release uses four scales. The preceding eight-scale release is 4f6292f8.")
         super().__init__(source, asset_root=asset_root)
-        self._scale_indices = indices[scales]
 
     @torch.inference_mode()
     def predict(self, *, target, points, rgb, calibration, text, seed=0, waymo_view='F'):
@@ -59,18 +57,15 @@ class Grounder(FrozenGrounder):
                 if not hasattr(self,'_noun_banks'):
                     self._noun_banks = semantic.prompts(base),semantic.prepare_nouns(base)
                 scores, word_data = semantic.observe(base,scene.sampled_points,*self._noun_banks)
-                seg = regions.build(scene.sampled_points,scores,word_data['xyz'],frame,self._scale_indices)
+                seg = regions.build(scene.sampled_points,scores,word_data['xyz'],frame)
                 plane = seg['plane']
                 data = regions.assemble(seg,word_data)
                 if len(data['parent']):
-                    roles = {}
-                    for key,phrase in zip(('t','r'),parsed[:2]):
-                        query = 'The '+language.role_text(phrase)+'.'
-                        other = self._frontend.score_frame(target=target,points=points,text=query,
-                                                           seed=seed,waymo_view=waymo_view)
-                        for name,value in phrase_bank(other,scene,frame).items():
-                            roles[key+'_'+name] = value
-                    chosen,_ = selection.select(data,roles,words,*parsed[2:],regions.Returns(data['xyz']))
+                    query = 'The '+language.role_text(parsed[0])+'.'
+                    nominations = self._frontend.score_frame(target=target,points=points,text=query,
+                                                             seed=seed,waymo_view=waymo_view)
+                    subject_proposals = {'t_'+name: value for name,value in phrase_bank(nominations,scene,frame).items()}
+                    chosen,_ = selection.select(data,subject_proposals,words,*parsed[2:],regions.Returns(data['xyz']))
                     if chosen>=0:
                         return sensor_frame_box(data['completed'][chosen,words[0]],target,scene.view_index)
             else:
@@ -82,7 +77,7 @@ class Grounder(FrozenGrounder):
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--asset-root',type=Path)
-    parser.add_argument('--scales',type=int,choices=(8,4),default=8,help='eight by default; four is the measured compact variant')
+    parser.add_argument('--scales',type=int,choices=(4,),default=4,help='four fixed physical scales (default)')
     parser.add_argument('--source',required=True,choices=PLATFORMS)
     parser.add_argument('--target',required=True,choices=PLATFORMS)
     parser.add_argument('--points',type=Path,required=True)

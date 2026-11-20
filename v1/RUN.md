@@ -1,4 +1,4 @@
-# 八尺度物理区域联合读出运行说明
+# 四尺度物理区域联合读出运行说明
 
 ## 环境和本地资产
 
@@ -34,4 +34,6 @@ box = grounder.predict(
 
 `--source`、`--target` 接受 `waymo`、`drone`、`quad`。点云为 .npy XYZ 或原始 float32 XYZI 二进制文件。固定 `--seed` 决定同帧 16,384 点采样，默认为 0。相机内外参及可选畸变参数沿用 3EED 约定。Waymo 可设置 `--waymo-view F|FL|FR|SL|SR`。输出中心和尺寸单位为米，yaw 单位为弧度。
 
-默认 `scales=8` 对应登记的主方法。`Grounder("waymo", scales=4)` 或 CLI 的 `--scales 4` 运行精简对照。四尺度仍保留两条短语投票和同一几何补全。基础冻结精简 v1 的历史单帧入口是 `crossplatform/ground.py`，权重按源校验。当前两种尺度均以同一冻结基础读出作为回退起点。[当前配置](crossplatform/CURRENT_METHOD.json) · [基础配置](crossplatform/FROZEN_V1.json)
+默认调用和显式 `--scales 4` 都使用四层区域，分别对应前景点云邻接图边权的 6.25%、31.25%、68.75%、93.75% 分位。关系句在有可用区域时额外运行一次主体短语候选提名。参照名词使用冻结语义在区域上评分，候选对按句中的相机左右关系联合选择。有紧邻或深度条件时仍使用树递推。输出框按已选主体点簇的可见面补全。回退沿用基础冻结读出与地面修正。[当前配置](crossplatform/CURRENT_METHOD.json) · [基础配置](crossplatform/FROZEN_V1.json)
+
+复现上一版八尺度及其参照短语投票时，使用当时的发布提交。[八尺度历史版本](https://github.com/Zonglin-He/A/tree/4f6292f8eec44cc3b9dc2adc999b33165ea49275)

@@ -1,5 +1,7 @@
 # 八尺度物理区域联合读出及组件消融
 
+本报告记录八尺度版本的原始实验。随后按用户决定，将其中已评测的“四尺度、去参照短语候选框投票”登记为默认推理配置。本版保留主体提名、参照名词和几何关系，六方向等权 Acc@25 / Acc@50 / mIoU 为 27.3572% / 11.1569% / 14.8068%。[该组合的全部配对比较](results/four_default_comparisons.csv) · [单帧入口重放](results/four_default_entry.json) · [原始报告快照](https://github.com/Zonglin-He/A/blob/4f6292f8eec44cc3b9dc2adc999b33165ea49275/studies/3eed_eight_scale_component_ablation_20261120/REPORT_ZH.md)
+
 按本轮用户决定，完整八尺度版本成为论文主方法。复用三份冻结源模型和单帧输入。普通的相机左右谓词采用经验证等价的闭式计算，含紧邻或深度次序的描述采用原树上递推。八尺度与四尺度共用推理入口，默认值为八。 [组件配置](PROTOCOL.json) · [入口逐方向重放](results/entry_replay.json)
 
 ## 主方法在六个方向上的定位成绩

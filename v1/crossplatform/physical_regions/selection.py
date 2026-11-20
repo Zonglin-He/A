@@ -129,7 +129,7 @@ def closed_joint(parent,stop,occupancy,probs,words,view,valid,side):
             gain*valid*(gap>0)*vis[:,None]*vis[None,:])
 
 
-def select(data, roles, words, side, depth, nearest, points):
+def select(data, subject_proposals, words, side, depth, nearest, points):
     stop = data['stop']
     if not len(stop):
         return -1,-1
@@ -139,7 +139,7 @@ def select(data, roles, words, side, depth, nearest, points):
         joint,_ = shared(data['parent'],valid,stop,data['p'],words,data['view'],side,depth,nearest,'physical')
     else:
         joint = closed_joint(data['parent'],stop,occupancy,data['p'],words,data['view'],valid,side)
-    subject = overlap_prior(data,roles,'t',points)
-    reference = overlap_prior(data,roles,'r',points)
-    i,j,_ = medoid(joint,kernel_overlap,subject,reference,valid)
+    subject = overlap_prior(data,subject_proposals,'t',points)
+    # The reference noun and its geometry already contribute to the joint mass.
+    i,j,_ = medoid(joint,kernel_overlap,subject,1.0,valid)
     return i,j
