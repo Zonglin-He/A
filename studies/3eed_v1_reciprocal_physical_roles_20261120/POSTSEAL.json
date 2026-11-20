@@ -1,0 +1,9 @@
+{
+  "status": "Descriptive follow-up specified after scoring the eight frozen readouts. No method selection or new inference.",
+  "question": "With the original subject fixed, do other original proposals for that same physical target even contain geometric errors that cancel at their midpoint?",
+  "data": "Use all 501 sealed rows, the original four subject slots, original A256 and existing same-frame factual and reverse proposal clouds. Keep all fallback rows.",
+  "direct_controls": "Keep the v1 subject raw box. Select every distinct PCA proposal with oriented IoU above 0.55 with this box; average centers, log heights, and squared horizontal edge tensors equally, including the original. Run separately on original A256 alone and the union with both rewrites. No labels are read by these two rules. These are anchored geometry-averaging controls; no new 3EED predictions or confidence fits.",
+  "posthoc_diagnostic": "Only after the label-free controls are computed, restrict analysis to a v1 subject that uniquely overlaps the official target above 0.25. For each alternative PCA proposal that passes this same unique-instance test, compute its half-way shape to the fixed v1 box. Record whether the best of these shapes and the original clears strict Acc50, including when every original, factual and reversed proposal with either native or PCA yaw misses. This gold-selected existence count is a lower bound on possible geometric representation and cannot be used as a deployed predictor.",
+  "published_comparison": "The 0.55 geometric association threshold is fixed at the common Weighted Boxes Fusion reference implementation default. This anchored 3D baseline uses equal weights and a fixed anchor rather than the full 2D detection ensembling procedure.",
+  "FINAL_access": false
+}
