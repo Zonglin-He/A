@@ -7,6 +7,7 @@ from pathlib import Path
 import subprocess
 from tempfile import TemporaryDirectory
 import numpy as np
+from .tree import SideEvidence, disjoint_pairs, overlap_sum
 
 
 @lru_cache(maxsize=1)
@@ -29,9 +30,11 @@ def kernel():
     return fun
 
 
-def prepare(z,prefix):
+def prepare(z,prefix,*,normalize=True):
     boxes=z[prefix+'_box']
     p=np.asarray(z[prefix+'_p'],float)
+    if not len(p):
+        return boxes,p,p.copy(),z[prefix+'_project']
     if not np.isfinite(p).all() or np.any(p<0) or p.max()<=0:
         raise ValueError('Invalid native semantic probabilities')
     p=p/p.max()
@@ -40,16 +43,18 @@ def prepare(z,prefix):
     strength=np.zeros(len(idx)); weight=np.zeros(len(idx))
     np.maximum.at(strength,inv,p)
     np.maximum.at(weight,inv,z[prefix+'_m'])
-    weight/=weight.sum()
+    if normalize and weight.sum()>0:
+        weight/=weight.sum()
     proj=z[prefix+'_project'][idx]
     take=(proj[:,7]>0) & (z[prefix+'_count'][idx]>0)
     return unique[take],strength[take],weight[take],proj[take]
 
 
 def overlap_prior(data,z,prefix,points):
-    boxes,_,mass,_=prepare(z,prefix)
+    boxes,_,mass,_=prepare(z,prefix,normalize=False)
     counts=data['size']; total=np.zeros(len(counts)); n=len(total)
     if not n:return total
+    voting_mass=0.
     for b,w in zip(boxes,mass):
         loc=points.local(b)[0]
         if not len(loc):continue
@@ -61,8 +66,11 @@ def overlap_prior(data,z,prefix,points):
             if len(v):
                 votes=np.maximum(votes,np.bincount(v,minlength=n))
         j=votes/(counts+len(loc)-votes)
-        if j.sum()>0:total+=w*j/j.sum()
-    if total.sum()>0:total/=total.sum()
+        per_box=j.sum()
+        if per_box>0:
+            total+=w*(j/per_box)
+            voting_mass+=w
+    if voting_mass>0:total/=voting_mass
     return np.sqrt(1.+n*total)
 
 
@@ -135,13 +143,33 @@ def select(data, subject_proposals, words, side, depth, nearest, points, *, read
     stop = data['stop']
     if not len(stop):
         return -1,-1
-    occupancy, kernel_overlap = structure(data['parent'],stop,data['size'])
-    valid = kernel_overlap == 0
-    if depth or nearest:
-        joint,_ = shared(data['parent'],valid,stop,data['p'],words,data['view'],side,depth,nearest,'physical')
+    parent, size = data['parent'],data['size']
+    subject, reference = data['p'][:,words[0]],data['p'][:,words[1]]
+    ordered = depth or nearest
+    if ordered:
+        joint,_ = shared(parent,disjoint_pairs(parent),stop,data['p'],words,data['view'],side,depth,nearest,'physical')
+        mass = joint.sum(axis=1)
     else:
-        joint = closed_joint(data['parent'],stop,occupancy,data['p'],words,data['view'],valid,side)
-    subject = overlap_prior(data,subject_proposals,'t',points)
-    # The reference noun and its geometry already contribute to the joint mass.
-    i,j,_ = medoid(joint,kernel_overlap,subject,1.0,valid,read_reference=read_reference)
+        evidence = SideEvidence(parent,stop,data['view'])
+        mass = evidence.marginal(subject,reference,side)
+    feasible = mass>0
+    if not feasible.any():
+        return -1,-1
+    weight = overlap_prior(data,subject_proposals,'t',points)
+    utility = overlap_sum(parent,size,weight*mass)
+    i = int(np.argmax(np.where(feasible,utility,-1.)))
+    if not read_reference:
+        return i,-1
+
+    at_subject = np.zeros(len(parent))
+    at_subject[i] = 1.
+    neighborhood = overlap_sum(parent,size,at_subject)
+    if ordered:
+        reference_mass = (neighborhood*weight)@joint
+        allowed = joint[i]>0
+    else:
+        reference_mass = evidence.marginal(reference,subject*weight*neighborhood,-side)
+        allowed = evidence.marginal(reference,subject*at_subject,-side)>0
+    ref_utility = overlap_sum(parent,size,reference_mass)
+    j = int(np.argmax(np.where(allowed,ref_utility,-1.)))
     return i,j

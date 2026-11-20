@@ -111,22 +111,36 @@ def levels(x,fg,indices=FOUR_LEVEL_INDICES):
     cuts=np.full(len(indices),np.nan)
     out=np.full((len(indices),len(x)),-1,dtype=np.int32)
     ids=np.flatnonzero(fg)
-    if len(ids)<9:return cuts,out
+    if len(ids)<9 or not len(indices):return cuts,out
     dist,neigh=cKDTree(x[ids]).query(x[ids],k=9)
     u=np.repeat(np.arange(len(ids)),8)
     v=neigh[:,1:].reshape(-1)
     d=np.maximum.reduce((dist[:,1:].reshape(-1),dist[u,4],dist[v,4]))
     cuts=np.quantile(d,(np.asarray(indices)+.5)/8)
-    for k,cut in enumerate(cuts):
-        mask=d<=cut
-        graph=coo_matrix((np.ones(mask.sum(),np.uint8),(u[mask],v[mask])),shape=(len(ids),len(ids))).tocsr()
-        count,lab=connected_components(graph,directed=False)
+    # Each directed edge enters exactly one bucket. Merge the components retained
+    # from the last threshold, including those too small to emit at that threshold.
+    cut_order=np.argsort(cuts,kind='stable')
+    bucket=np.searchsorted(cuts[cut_order],d,side='left')
+    edge_order=np.argsort(bucket,kind='stable')
+    ends=np.cumsum(np.bincount(bucket,minlength=len(cuts)+1))
+    lab=np.arange(len(ids),dtype=np.int32)
+    count=len(ids)
+    start=0
+    for k,end in zip(cut_order,ends):
+        added=edge_order[start:end]
+        src,dst=lab[u[added]],lab[v[added]]
+        cross=src!=dst
+        if cross.any():
+            graph=coo_matrix((np.ones(cross.sum(),np.uint8),(src[cross],dst[cross])),shape=(count,count))
+            count,merged=connected_components(graph,directed=False)
+            lab=merged[lab]
         keep=np.bincount(lab,minlength=count)>=8
         lookup=np.where(keep,np.cumsum(keep)-1,-1)
         out[k,ids]=lookup[lab]
+        start=end
     return cuts,out
 
-def describe(x,labels,pointscores,proj):
+def describe(x,labels,pointscores,proj,*,native_logits=False):
     u,depth,view=proj
     count=int(labels.max())+1
     sizes=np.bincount(labels[labels>=0],minlength=count)
@@ -142,9 +156,9 @@ def describe(x,labels,pointscores,proj):
             g=int(labels[ix[0]])
             lo,mid,hi=np.quantile(u[ix],[.25,.5,.75])
             desc[g]=[lo,mid,hi,np.median(depth[ix]),len(ix)]
-    return sizes.astype(np.int32),softmax(scores,axis=1),desc
+    return sizes.astype(np.int32),scores if native_logits else softmax(scores,axis=1),desc
 
-def build(x,scores,seeds,frame,indices=FOUR_LEVEL_INDICES):
+def build(x,scores,seeds,frame,indices=FOUR_LEVEL_INDICES,*,native_logits=False):
     xyz=np.unique(x.astype(float),axis=0)
     ground=terrain(xyz)
     height=xyz[:,2]-xyz[:,:2]@ground[:2]-ground[2]
@@ -155,8 +169,10 @@ def build(x,scores,seeds,frame,indices=FOUR_LEVEL_INDICES):
     proj=projection(xyz,frame)
     result=dict(xyz=xyz.astype(np.float32),plane=ground,labels=lab,cuts=cuts)
     for k in range(len(cuts)):
-        size,prob,desc=describe(xyz,lab[k],point_scores,proj)
-        result['size'+str(k)]=size;result['p'+str(k)]=prob;result['view'+str(k)]=desc
+        size,values,desc=describe(xyz,lab[k],point_scores,proj,native_logits=native_logits)
+        result['size'+str(k)]=size
+        result[('logits' if native_logits else 'p')+str(k)]=values
+        result['view'+str(k)]=desc
     return result
 
 
@@ -235,7 +251,9 @@ def build_inventory(seg,word):
     dim/=np.bincount(inv)[:,None,None]
     near=cKDTree(loc).query(x)[1]
     allids=np.full_like(seg['labels'],-1)
-    index={};para=[];levels=[];size=[];boxes=[];views=[];probs=[];stops=[];dimensions=[]
+    index={};para=[];levels=[];size=[];boxes=[];views=[];noun=[];matches=[];dimensions=[]
+    logits='logits0' in seg
+    field='logits' if logits else 'p'
     for k,lab in enumerate(seg['labels']):
         ordered=np.flatnonzero(lab>=0)
         if not len(ordered):continue
@@ -250,9 +268,8 @@ def build_inventory(seg,word):
                 obs=box[3:6].copy();obs[:2]=np.sort(obs[:2])[::-1]
                 canonical=proto.copy();canonical[:,:2]=np.sort(proto[:,:2],axis=1)[:,::-1]
                 match=np.prod(np.minimum(obs,canonical)/np.maximum(obs,canonical),axis=1)
-                s=seg['p'+str(k)][c,:-1]*match
-                probs.append(s/max(s.sum(),np.finfo(float).tiny))
-                stops.append(match.max());para.append(-1);levels.append(0)
+                noun.append(seg[field+str(k)][c,:-1]);matches.append(match)
+                para.append(-1);levels.append(0)
                 size.append(len(ids));boxes.append(box);views.append(seg['view'+str(k)][c])
                 dimensions.append(proto)
             n=index[key];levels[n]|=1<<k
@@ -263,10 +280,22 @@ def build_inventory(seg,word):
                         assert child<n and para[child] in (-1,n)
                         para[child]=n
     count=len(para);nclass=len(CLASSES)-1
+    noun=np.asarray(noun,float).reshape(count,nclass)
+    matches=np.asarray(matches,float).reshape(count,nclass)
+    stops=matches.max(axis=1)
+    if logits:
+        probs=np.zeros_like(matches)
+        good=stops>0
+        with np.errstate(divide='ignore'):
+            probs[good]=softmax(noun[good]+np.log(matches[good]),axis=1)
+    else:
+        # Archived partitions store a background-inclusive probability vector.
+        probs=noun*matches
+        probs/=np.maximum(probs.sum(axis=1,keepdims=True),np.finfo(float).tiny)
     return dict(parent=np.array(para,int),level=np.array(levels,int),size=np.array(size,int),
         boxes=np.array(boxes,float).reshape(count,7),dimensions=np.array(dimensions,float).reshape(count,nclass,3),
-        view=np.array(views,float).reshape(count,5),p=np.array(probs,float).reshape(count,nclass),
-        stop=np.array(stops),assign=allids,xyz=seg['xyz'],plane=seg['plane'])
+        view=np.array(views,float).reshape(count,5),p=probs,
+        stop=stops,assign=allids,xyz=seg['xyz'],plane=seg['plane'])
 
 
 def assemble(seg,word):

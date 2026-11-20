@@ -9,7 +9,6 @@ if __package__ in (None, ''):
     sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 
 import numpy as np
-from scipy.special import softmax
 import torch
 from crossplatform.candidate_frontend import PLATFORMS, WAYMO_VIEWS, orient_box, sensor_frame_box
 from crossplatform.ground import Grounder as FrozenGrounder
@@ -17,14 +16,16 @@ from crossplatform.v1_evidence import visible_pixels
 from crossplatform.physical_regions import language, regions, selection, semantic
 
 
-def phrase_bank(scene, observed, frame):
+def phrase_bank(scene, observed, frame, *, normalize=True):
     from reader158 import overlaps
 
     points = np.unique(observed.sampled_points, axis=0)
     np.testing.assert_array_equal(scene.sampled_points, observed.sampled_points)
     boxes = np.stack([orient_box(points, box) for box in scene.boxes]).astype(float)
     overlap = overlaps(scene.boxes)
-    weight = softmax(np.log(np.maximum(scene.probability,1e-300)) - np.log((overlap**2).sum(1)))
+    weight = np.maximum(np.asarray(scene.probability,float),1e-300)/(overlap**2).sum(1)
+    if normalize:
+        weight /= weight.sum()
     projection = regions.box_projection(boxes,scene.target,scene.view_index,frame['calibration'],frame['rgb'])
     _, visible = visible_pixels(points,points,scene.target,scene.view_index,frame['rgb'],frame['calibration'])
     returns = regions.Returns(points[visible])
@@ -45,9 +46,8 @@ class Grounder(FrozenGrounder):
                      text=text,seed=seed,waymo_view=waymo_view)
         with self._lock:
             capture = {}
-            scene, evidence = self._read_observation(frame,capture=capture)
-            frozen = self._decoder(evidence)['boxes'][0,0].double().cpu().numpy()
-            xyz = np.unique(scene.sampled_points.astype(float),axis=0)
+            scene, fallback_evidence = self._read_observation(frame,capture=capture,defer_decoder_evidence=True)
+            plane = None
             parsed = language.interpret(text.strip(),capture)
             words = [] if parsed is None else [language.nominal(p) for p in parsed[:2]]
             words = ['other vehicle' if w=='othervehicle' else w for w in words]
@@ -57,20 +57,23 @@ class Grounder(FrozenGrounder):
                 if not hasattr(self,'_noun_banks'):
                     self._noun_banks = semantic.prompts(base),semantic.prepare_nouns(base)
                 scores, word_data = semantic.observe(base,scene.sampled_points,*self._noun_banks)
-                seg = regions.build(scene.sampled_points,scores,word_data['xyz'],frame)
+                seg = regions.build(scene.sampled_points,scores,word_data['xyz'],frame,native_logits=True)
                 plane = seg['plane']
                 data = regions.build_inventory(seg,word_data)
                 if len(data['parent']):
                     query = 'The '+language.role_text(parsed[0])+'.'
                     nominations = self._frontend.score_frame(target=target,points=points,text=query,
                                                              seed=seed,waymo_view=waymo_view)
-                    subject_proposals = {'t_'+name: value for name,value in phrase_bank(nominations,scene,frame).items()}
+                    bank = phrase_bank(nominations,scene,frame,normalize=False)
+                    subject_proposals = {'t_'+name: value for name,value in bank.items()}
                     chosen,_ = selection.select(data,subject_proposals,words,*parsed[2:],
                                                 regions.Returns(data['xyz']),read_reference=False)
                     if chosen>=0:
                         box = regions.complete(data['boxes'][chosen],data['dimensions'][chosen,words[0]])
                         return sensor_frame_box(box,target,scene.view_index)
-            else:
+            frozen = self._decoder(fallback_evidence())['boxes'][0,0].double().cpu().numpy()
+            xyz = np.unique(scene.sampled_points.astype(float),axis=0)
+            if plane is None:
                 plane = regions.terrain(xyz)
             lower = regions.bottom(frozen,xyz,plane,regions.split_returns(xyz))
             return sensor_frame_box(regions.only_ground(frozen,lower),target,scene.view_index)

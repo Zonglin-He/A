@@ -17,7 +17,7 @@
 
 ## 命令行和 Python
 
-默认入口是 `crossplatform/ground_regions.py`。首次处理明确带紧邻或深度次序的描述时，使用 C++17 编译器在用户缓存目录生成树递推核。普通左右关系使用 NumPy 闭式计算，其他描述走地面回退。安装依赖后可以离线运行。
+默认入口是 `crossplatform/ground_regions.py`。普通左右关系在投影区间上排序，沿嵌套区域树累计参照质量。首次处理明确带紧邻或深度次序的描述时，使用 C++17 编译器在用户缓存目录生成有序关系递推核。各分支均在本地运行。
 
 ```python
 from crossplatform.ground_regions import Grounder
@@ -38,4 +38,4 @@ box = grounder.predict(
 
 复现上一版八尺度及其参照短语投票时，使用当时的发布提交。[八尺度历史版本](https://github.com/Zonglin-He/A/tree/4f6292f8eec44cc3b9dc2adc999b33165ea49275)
 
-主体框接口会对所有可行参照的联合质量求和。选定主体后只补全该区域和主体名词对应的一个框。用于检查双端的 `selection.select` 默认仍返回两个区域索引，`regions.assemble` 可用于检查所有区域及名词的补全框。普通左右句保留共享祖先的存活概率，紧邻与深度条件保留树递推。
+主体框接口对可行参照的联合质量求和，再分别自底向上、自顶向下累计重叠区域对主体的贡献。普通左右句的区域读出使用与区域数成正比的额外空间。只有回退时才构建冻结解码器输入并运行解码器。用于检查双端的 `selection.select` 默认返回主体及参照区域索引，`regions.assemble` 可用于检查全部区域及名词的补全框。

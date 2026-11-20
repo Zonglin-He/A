@@ -2,6 +2,7 @@
 
 import argparse
 from contextlib import redirect_stdout
+from functools import partial
 import json
 from pathlib import Path
 import sys
@@ -41,7 +42,7 @@ class Grounder:
                                      self._frontend.asset_root)
 
     @torch.inference_mode()
-    def _read_observation(self, frame, *, capture=None):
+    def _read_observation(self, frame, *, capture=None, defer_decoder_evidence=False):
         from model51 import SENTINEL
         from parse97 import dependency_document, parse85, parse_subject, repair_inventory87
 
@@ -78,9 +79,10 @@ class Grounder:
         if capture is not None:
             capture.update(native=observed, graph=roles, offsets=encoded['offset_mapping'][0],
                            valid=valid, document=document)
-        evidence = decoder_evidence(scored, observed, masks, has_reference, valid,
-                                    frame['rgb'], frame['calibration'])
-        return scored, evidence
+        inputs = (scored, observed, masks, has_reference, valid, frame['rgb'], frame['calibration'])
+        if defer_decoder_evidence:
+            return scored, partial(decoder_evidence,*inputs)
+        return scored, decoder_evidence(*inputs)
 
     @torch.inference_mode()
     def predict(self, *, target, points, rgb, calibration, text, seed=0, waymo_view='F'):
