@@ -1,0 +1,26 @@
+{
+  "source": "Three registered frozen source networks. Single target frame and full expression. No source preparation or target updates; FINAL excluded.",
+  "inputs": [
+    "cba916e92eecf0169fc898db643c6263c86f6a3c43a7a4399c6a5f5373fe3669",
+    "68f27c2c6641ab72eec7015f65c9ec2c11700ca04b659cc8f1ad90e304754e07",
+    "7f594350a78993beccd51a62ece50c59af8802b96341d32c09854473612541e3",
+    "169ada45ebbcd105dc477869a5ab14d265eda3827e2ee1d6b783b2a65fa9a4ba"
+  ],
+  "question": "On fixed physical component and phrase priors, does the three-dimensional arrangement of its returns, read before the frozen point backbone, carry class-specific evidence that corrects a same-frame subject/reference assignment? Does completion conditioned on that arrangement improve IoU for the same identified object?",
+  "population": "Exactly the sealed 18,620 ordinary transfer records, existing 1,204-record small panels, and 128 descriptions on the 32 physical single-noun substitution frames. Panels overlap ordinary; two sources on the same frame are paired. Ordinary validation and small panels previously exposed. All ordinary fallback and all losses retained.",
+  "budget": "Up to eight subjects and eight references per expression receive a local read. Greedily cover the original physical joint marginal for that role with the preexisting tree overlap kernel. If two slots nominate the same node read once. Unnominated nodes retain their original class and geometry; no cross-caption nomination is allowed. Up to 2048 distinct points per crop, uniform deterministic subsample if necessary then repeat to 2048. Same two fixed cyclic list prompts (rotations 0 and 3), native 256 query generation and original weights for every crop.",
+  "intervention": "Use only the measured node returns. In its horizontal PCA frame independently permute the second and vertical coordinate columns, keeping the first column; sort and deterministically index the result. Same number of distinct returns, each coordinate marginal, all three bounds and center in that frame. No jitter or rescaling. If an unambiguous scramble cannot be made return the real crop and flag. Both in observed frame and position. For query duplicates give one unit total mass to each distinct query anchor. Average vocabulary token logits over both list prompts. For dimension estimates use per-class token posterior across anchors and coordinate-wise weighted median of valid extents in sorted horizontal order.",
+  "identity": "Main class score is original log physical class probability + local_real class logit minus local_scrambled. Normalize over six known foreground classes; nullable evidence leaves old decision. Controls tree, point-only direct local evidence multiplied into the same prior, matched scrambled direct, inverse subtraction, independent choice, and rotating reference positions in the same frame. Use identical full physical pool and geometry at identity comparison.",
+  "geometry": "Keep the measured visible faces, original yaw, and measured containment. Per-axis predicted length is max(measured length, baseline completed extent times real/scrambled local median extent); use the existing near-face anchor, same chosen node. Controls include measured box, original completion, and using real local sizes directly with the same anchor, all on the same chosen identity. Degenerate missing local extents retain baseline per class.",
+  "arms": [
+    "v1",
+    "tree",
+    "local_direct",
+    "scrambled_direct",
+    "inverse",
+    "independent",
+    "misbound_reference",
+    "shape_difference"
+  ],
+  "offline": "After actual predictions are sealed, use all annotated boxes on the single-word pairs as a diagnostic-only inventory, stripping entity labels and target IDs from the local-reader invocation. Score candidate category discrimination, pairwise swaps, and oracle class positive control separately. Report references and subjects in natural evidence and fully specified paired trials. Strong candidate evidence requires outperforming tree and matched simpler controls, a genuine endpoint improvement, and useful geometry on correctly identified subjects beyond full raw A256. Distinguish strict semantic and IoU effects; no automatic promotion based on an aggregate or oracle."
+}
