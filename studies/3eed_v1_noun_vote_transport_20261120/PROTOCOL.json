@@ -1,0 +1,28 @@
+{
+  "question": "Does the destination of an isolated-noun regression vote identify a physical instance beyond the marginal distributions of words and destinations? Does the same selected object's enclosure improve when its hidden faces are estimated from votes which reach it?",
+  "model": "Official registered compact v1, three frozen single-source checkpoints. Each input is one frame, exact original 16,384 samples, lexical scores and native six-word regression at the same 1,024 seeds. Zero training, no new annotator or external model and no FINAL.",
+  "rosters": "Previous 1,204 records including 576 ordinary and 168 natural relationship records; the previous 128 single-word challenge descriptions (32 distinct Waymo frames and 64 direction-pairs); full 18,620 ordinary directions, including every fallback. These are previously exposed development observations. All decisions sealed before new scoring; no answer from a paired caption is used to predict the other.",
+  "evidence": "Emit probability mass from a seed to the measured returns inside each currently regressed axis-aligned word box. Empty boxes and points not in an emitted component have an explicit unassigned sink. Allocate a return to its path of nested components by their pre-existing marginal probabilities of emission. Background probability stays uncast. Duplicate coordinates from multiple seeds split one physical seed vote. Q is the seven-class lexical softmax after removing frame-wide class and per-seed prompt offsets, averaged over frozen list rotations, conditional on a foreground class.",
+  "main": "For each physical component and each noun, contrast actual transported count M with E under conditional independence of noun and vote destination given the same seed. Use q_original(c|v)*(M+1/6)/(E+1/6), normalized across the six nouns. One uniform pseudo-observation in both tables prevents a zero denominator. Keep the physical node hypothesis, stop probabilities, old phrase priors and relation solver. If all noun boxes agree at every seed the update is identically neutral. Preserve every row when inapplicable.",
+  "arms": [
+    "v1",
+    "tree",
+    "direct_votes",
+    "direct_null",
+    "centers_only",
+    "sizes_only",
+    "independent",
+    "misbound_reference",
+    "inverse_association",
+    "association"
+  ],
+  "ablations": "Direct votes and direct null add one baseline categorical observation and normalize, with the exact same amount of word and physical mass. Center-only and size-only fix the other coordinate at its weighted within-seed mean. Inverse association flips the ratio. Independent drops subject-reference coupling. Misbound retains candidate and unary information and rotates the physical reference positions in the same frame. The tree control uses the registered predecessor's complete physical relation decision.",
+  "geometry": "For each selected component report measured box, its existing fixed-face completion, plus the coordinate-wise weighted median of inward and outward faces of votes arriving there, constrained to contain the observed box. Axial PCA yaw stays fixed. Rotate voted horizontal sizes into the local long/short-axis order. An additional geometry control removes noun-to-box pairing at the same component. Unsupported fits fall back to the existing fixed-face completion. Report both rescues and harms with the node fixed; audit verified improvements beyond A256.",
+  "decision": "Evaluate name association at initially fixed geometry, comparing the paired word intervention, natural dual-end identity, full task and matched alternatives. To attribute task benefit to the distinctive correction it must distinguish aligned from independent-marginal or straightforward voting evidence. A threshold crossing without verified endpoint evidence is reported as localization only. Keep separate the role contribution and the continuous geometry effect, the absolute result versus v1, and source/recording dependence. Refrain from adopting a method on a single selected case.",
+  "frozen_registry": "cba916e92eecf0169fc898db643c6263c86f6a3c43a7a4399c6a5f5373fe3669",
+  "source_registry": "68f27c2c6641ab72eec7015f65c9ec2c11700ca04b659cc8f1ad90e304754e07",
+  "small_seal": "0329ecbfc5cd6fa74ed62f5251cd48804654fa40a3d43b99be771f2f85f911fb",
+  "ordinary_seal": "c1238bfa2bbc4df09d9f2d96e95d3d861ffb94dfee0efbd93ba1ac8a9ce0cd69",
+  "single_word_seal": "4ea7a52bd9f33e66cf50b4a6759ae197333a0c37618eb651c87fb3899977ce93",
+  "FINAL": false
+}
