@@ -1,0 +1,25 @@
+{
+  "study": "Native language-induced displacement rays on frozen K16",
+  "scope": "source calibration, followed only conditionally by ordinary Validation",
+  "arms": ["v1", "frozen_joint", "seed", "origin", "ray", "reverse", "mismatch"],
+  "source_sizes": {"waymo": 160, "drone": 64, "quad": 160},
+  "ordinary_sizes": {"waymo": 3782, "drone": 2792, "quad": 2736},
+  "draw": "Take first 64 ordinal indices in ascending SHA256('native-ray-v1|stage|platform|ordinal') per platform. Reuse target indices across both sources. The first 32 ranked Waymo source rows are the timing and same-prompt replay pilot. Select with no filtering.",
+  "category": "Use the registered dependency subject head and the existing singular nominal taxonomy. Keep 'a ' + canonical category, or fall back for an unknown or plural head. Both native queries append the original sentinel.",
+  "seeds": "Use the original full prompt's 256 FP2 IDs for both native forwards. Share frozen FP2 tensors. Recompute the proposal and all six decoder box heads and their downstream positional inputs for each text.",
+  "readout": "Float64 directed half-line squared distance weighted by squared full-minus-category displacement. Select among the 16 fixed PCA boxes. Reverse negates each displacement at its original origin. Mismatch uniformly deranges the 256 displacements against origins using the row-specific SHA256 seed. Pure origin uses identical weights with squared Euclidean distance. Seed uses the original matched physical seed's full-prompt pre-sigmoid objectness. Exact ties prefer the archived frozen joint score then stable slate order. For an unknown category or zero total response the four geometric arms emit frozen_joint.",
+  "evidence": "Evaluate oriented IoU at strict 0.25/0.50, mIoU, gain/harm threshold crossings versus frozen_joint and v1, true-center distance and same-row separation from competing candidate centers, matched query weight, effective direction count and minimum eigenvalue. All rows remain in task denominators.",
+  "gate": "Source stage measures necessity using the mean of the two threshold hit rates. Ray must beat each of seed, origin, reverse and mismatch, have at least one net crossing gain and no net crossing loss at either threshold versus frozen_joint. At the known target center, paired ray error should be smaller than reverse and mismatch for the median responding row. A positive but inconclusive cluster comparison against frozen_joint remains unresolved, with no expansion. No per-source tuning or filtering. If a stop condition is clearest at one threshold report that threshold explicitly.",
+  "uncertainty": "Sample recordings with replacement within physical platform, pair arms and keep shared recordings paired across both directions on a target. 2000 deterministic draws, seed 6147. Report limitations when a platform has one recording. Positive expansion requires a positive lower descriptive 95% bound on the paired two-threshold hit utility vs frozen_joint; inspect comparisons and negative tails.",
+  "budget": "One GPU hour for the source and conditional ordinary panels together. Measure the first 32; projected total includes source/target native lookups, pilots and initialization. The original registered checkpoint and all buffers stay frozen. No parameter fitting.",
+  "pins": {
+    "registry":"68f27c2c6641ab72eec7015f65c9ec2c11700ca04b659cc8f1ad90e304754e07",
+    "source_roster":"fed86ccfe78938834aca89d424967aaeed2af98b687d05bd4331d9a55bd99972",
+    "source_k16":"9e09001321d8f93aef8412f492b38336b9026764dbcc5d58d8888290f7f6cd49",
+    "source_scores":"cddc826cf52c316ff115d8104a0328582064a7046572256c0488ee485c93e31d",
+    "ordinary_roster":"ff49bfee56b244118e0ee0aea092db3dfb5f4fc84fb39112ad1e442bc3398369",
+    "ordinary_boxes":"2d221316af70d76dc719ce4e397e4be0b02cb208ff26f7765041db143c30f5e5"
+  },
+  "target_updates": 0,
+  "FINAL_access": false
+}
