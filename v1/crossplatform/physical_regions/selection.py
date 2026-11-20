@@ -100,7 +100,7 @@ def shared(parents,valid,stop,p,words,view,side,depth,nearest,mode):
         f(r[:,3]),f(gap),side,depth,int(nearest),int(words[0]==words[1]),m,ref)
     return m,ref
 
-def medoid(joint,K,us,ur,valid):
+def medoid(joint,K,us,ur,valid,*,read_reference=True):
     mass=(us[:,None]*joint)*ur
     marginal=K@mass.sum(1)
     if marginal.max(initial=0.)<=0:return -1,-1,marginal
@@ -109,6 +109,8 @@ def medoid(joint,K,us,ur,valid):
     feasible=allowed.any(1)
     if not feasible.any():return -1,-1,marginal
     i=int(np.argmax(np.where(feasible,marginal,-1.)))
+    if not read_reference:
+        return i,-1,marginal
     score=K@(K[i]@mass)
     r=int(np.argmax(np.where(allowed[i],score,-1.)))
     return i,r,marginal
@@ -129,7 +131,7 @@ def closed_joint(parent,stop,occupancy,probs,words,view,valid,side):
             gain*valid*(gap>0)*vis[:,None]*vis[None,:])
 
 
-def select(data, subject_proposals, words, side, depth, nearest, points):
+def select(data, subject_proposals, words, side, depth, nearest, points, *, read_reference=True):
     stop = data['stop']
     if not len(stop):
         return -1,-1
@@ -141,5 +143,5 @@ def select(data, subject_proposals, words, side, depth, nearest, points):
         joint = closed_joint(data['parent'],stop,occupancy,data['p'],words,data['view'],valid,side)
     subject = overlap_prior(data,subject_proposals,'t',points)
     # The reference noun and its geometry already contribute to the joint mass.
-    i,j,_ = medoid(joint,kernel_overlap,subject,1.0,valid)
+    i,j,_ = medoid(joint,kernel_overlap,subject,1.0,valid,read_reference=read_reference)
     return i,j

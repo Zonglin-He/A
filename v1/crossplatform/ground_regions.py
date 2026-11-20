@@ -59,15 +59,17 @@ class Grounder(FrozenGrounder):
                 scores, word_data = semantic.observe(base,scene.sampled_points,*self._noun_banks)
                 seg = regions.build(scene.sampled_points,scores,word_data['xyz'],frame)
                 plane = seg['plane']
-                data = regions.assemble(seg,word_data)
+                data = regions.build_inventory(seg,word_data)
                 if len(data['parent']):
                     query = 'The '+language.role_text(parsed[0])+'.'
                     nominations = self._frontend.score_frame(target=target,points=points,text=query,
                                                              seed=seed,waymo_view=waymo_view)
                     subject_proposals = {'t_'+name: value for name,value in phrase_bank(nominations,scene,frame).items()}
-                    chosen,_ = selection.select(data,subject_proposals,words,*parsed[2:],regions.Returns(data['xyz']))
+                    chosen,_ = selection.select(data,subject_proposals,words,*parsed[2:],
+                                                regions.Returns(data['xyz']),read_reference=False)
                     if chosen>=0:
-                        return sensor_frame_box(data['completed'][chosen,words[0]],target,scene.view_index)
+                        box = regions.complete(data['boxes'][chosen],data['dimensions'][chosen,words[0]])
+                        return sensor_frame_box(box,target,scene.view_index)
             else:
                 plane = regions.terrain(xyz)
             lower = regions.bottom(frozen,xyz,plane,regions.split_returns(xyz))

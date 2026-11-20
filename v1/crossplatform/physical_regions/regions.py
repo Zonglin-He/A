@@ -226,7 +226,7 @@ def complete(box,dimensions):
     b[3:6]+=increase
     return b
 
-def assemble(seg,word):
+def build_inventory(seg,word):
     x=seg['xyz'].astype(float)
     loc,inv=np.unique(word['xyz'],return_inverse=True,axis=0)
     pred=np.maximum(word['extent'].astype(float),1e-6)
@@ -235,7 +235,7 @@ def assemble(seg,word):
     dim/=np.bincount(inv)[:,None,None]
     near=cKDTree(loc).query(x)[1]
     allids=np.full_like(seg['labels'],-1)
-    index={};para=[];levels=[];size=[];boxes=[];views=[];probs=[];stops=[];completed=[]
+    index={};para=[];levels=[];size=[];boxes=[];views=[];probs=[];stops=[];dimensions=[]
     for k,lab in enumerate(seg['labels']):
         ordered=np.flatnonzero(lab>=0)
         if not len(ordered):continue
@@ -254,7 +254,7 @@ def assemble(seg,word):
                 probs.append(s/max(s.sum(),np.finfo(float).tiny))
                 stops.append(match.max());para.append(-1);levels.append(0)
                 size.append(len(ids));boxes.append(box);views.append(seg['view'+str(k)][c])
-                completed.append([complete(box,d) for d in proto])
+                dimensions.append(proto)
             n=index[key];levels[n]|=1<<k
             allids[k,ids]=n
             if k:
@@ -264,6 +264,15 @@ def assemble(seg,word):
                         para[child]=n
     count=len(para);nclass=len(CLASSES)-1
     return dict(parent=np.array(para,int),level=np.array(levels,int),size=np.array(size,int),
-        boxes=np.array(boxes,float).reshape(count,7),completed=np.array(completed,float).reshape(count,nclass,7),
+        boxes=np.array(boxes,float).reshape(count,7),dimensions=np.array(dimensions,float).reshape(count,nclass,3),
         view=np.array(views,float).reshape(count,5),p=np.array(probs,float).reshape(count,nclass),
         stop=np.array(stops),assign=allids,xyz=seg['xyz'],plane=seg['plane'])
+
+
+def assemble(seg,word):
+    """Materialize all noun-conditioned boxes for callers that inspect both endpoints."""
+    data = build_inventory(seg,word)
+    sizes = data.pop('dimensions')
+    boxes = [[complete(box,d) for d in row] for box,row in zip(data['boxes'],sizes)]
+    data['completed'] = np.asarray(boxes,dtype=float).reshape(*sizes.shape[:2],7)
+    return data

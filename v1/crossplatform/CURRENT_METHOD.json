@@ -62,7 +62,11 @@
     "subject_phrase_nominations": true,
     "reference_phrase_nominations": false,
     "reference_evidence": "frozen noun scores on physical regions and the observed spatial predicate",
-    "extra_proposal_forwards_on_nonempty_inventory": 1
+    "extra_proposal_forwards_on_nonempty_inventory": 1,
+    "subject_decision": "overlap-weighted joint subject marginal over feasible nodes",
+    "extract_reference_endpoint_for_subject_output": false,
+    "completion": "one class-conditioned box after subject selection; zero region completions on fallback",
+    "shared_ancestor_survival": true
   },
   "fallback": {
     "method": "frozen compact v1 plus local ground bottom adjustment",
@@ -81,5 +85,6 @@
     8
   ],
   "preceding_eight_scale_release": "4f6292f8eec44cc3b9dc2adc999b33165ea49275",
-  "paired_comparisons": "studies/3eed_eight_scale_component_ablation_20261120/results/four_default_comparisons.csv"
+  "paired_comparisons": "studies/3eed_eight_scale_component_ablation_20261120/results/four_default_comparisons.csv",
+  "execution_verification": "studies/3eed_four_scale_subject_readout_20261120/results/verification.json"
 }
