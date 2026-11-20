@@ -1,4 +1,4 @@
-# v1 运行说明
+# 八尺度物理区域联合读出运行说明
 
 ## 环境和本地资产
 
@@ -17,31 +17,21 @@
 
 ## 命令行和 Python
 
-从 `v1/` 目录运行 `python crossplatform/ground.py --help` 查看参数。 [命令示例](../README.md#运行)
+默认入口是 `crossplatform/ground_regions.py`。首次处理明确带紧邻或深度次序的描述时，使用 C++17 编译器在用户缓存目录生成树递推核。普通左右关系使用 NumPy 闭式计算，其他描述走地面回退。安装依赖后可以离线运行。
 
 ```python
-from crossplatform.ground import Grounder
+from crossplatform.ground_regions import Grounder
 
-model = Grounder("waymo", asset_root="/path/to/3eed-workspace")
-box = model.predict(
+grounder = Grounder("waymo", asset_root="/path/to/3eed-workspace")
+box = grounder.predict(
     target="drone",
     points="/path/to/frame/points.bin",
     rgb="/path/to/frame/image.jpg",
     calibration="/path/to/frame/camera.json",
-    text="the white vehicle next to the pole",
+    text="Find the car immediately to the left of the bus in the camera image.",
 )
 ```
 
-- `--source` 和 `--target` 接受 `waymo`、`drone`、`quad`。同一个实例可复用该源平台的权重。六个迁移方向使用同一解码配置。
-- 点云使用原始 LiDAR 坐标和米。支持至少三列的 `.npy` 数组，或每点四个 float32 的 XYZI 二进制文件。模型使用 XYZ，采样 16,384 点。默认种子为 0，点数不足时有放回采样。
-- `--rgb` 为几何投影提供图像宽高。相机 JSON 提供 `image_intrinsic`、`image_extrinsic` 和可选 `camera_distortion`。外参沿用 3EED 各平台约定。Waymo 相机默认为前视，其他视角传 `--waymo-view FL`、`FR`、`SL`、`SR`。
-- 输入一条英文描述，含模型固定后缀的长度最多为 256 个 token。
-- 命令行标准输出为一行 JSON。 `box` 是目标 LiDAR 坐标系中的 `[x, y, z, length, width, height, yaw]`，yaw 以弧度计，模 π。Python 接口返回同一七维框。
+`--source`、`--target` 接受 `waymo`、`drone`、`quad`。点云为 .npy XYZ 或原始 float32 XYZI 二进制文件。固定 `--seed` 决定同帧 16,384 点采样，默认为 0。相机内外参及可选畸变参数沿用 3EED 约定。Waymo 可设置 `--waymo-view F|FL|FR|SL|SR`。输出中心和尺寸单位为米，yaw 单位为弧度。
 
-## 推理过程
-
-冻结的点云与语言前端为 256 个原始候选打分。候选重叠校正用于主体排序。主体与参照各保留四个候选，使用同次点云采样中的框内点估计朝向。第一轮读取局部点支持，交换两个角色的消息并对主体槽应用固定框几何反馈。第二轮重新读取点支持，通过配对分数选出最匹配的主体框。没有参照角色时，由主体分数选择。
-
-六个方向分别核验了点云匹配分数和图像像素替换行为。更换为同宽高的黑图时，输出七维框逐值相同。
-
-隔离发布包的命令行输出已与封存预测逐值核对。 [运行核验](verification/bundle_check.json)
+默认 `scales=8` 对应登记的主方法。`Grounder("waymo", scales=4)` 或 CLI 的 `--scales 4` 运行精简对照。四尺度仍保留两条短语投票和同一几何补全。基础冻结精简 v1 的历史单帧入口是 `crossplatform/ground.py`，权重按源校验。当前两种尺度均以同一冻结基础读出作为回退起点。[当前配置](crossplatform/CURRENT_METHOD.json) · [基础配置](crossplatform/FROZEN_V1.json)

@@ -1,0 +1,95 @@
+{
+  "name": "v1",
+  "variant": "two_round_four_reference",
+  "paper_main_method": {
+    "status": "locked",
+    "confirmed_by": "user",
+    "registered_at_local": "2026-11-19T22:57:45+08:00",
+    "implementation_public_commit": "d0592f91d698a632d5c40783c3ef9518625411aa",
+    "source_assets_sha256": "68f27c2c6641ab72eec7015f65c9ec2c11700ca04b659cc8f1ad90e304754e07",
+    "local_core_sha256": {
+      "crossplatform/ground.py": "8faec0ebd5c6c338e93613cd7f3ff9926b3f6fd111e6277b85fa3fe2abd6a40e",
+      "crossplatform/candidate_frontend.py": "b13bca14718bd0bd2e02131a341e497ebb029980a2d15cceb2a01d1f9d031d81",
+      "crossplatform/v1_decoder.py": "69799dda68e97e4eabc4006e101d5f0e8c07f294b3970229cf94b59480f20a7a",
+      "crossplatform/v1_evidence.py": "27375dc3b57259cd5f670dd2b2ebc4a67b0d2c3889ac6e7b2b17b43989d10763"
+    },
+    "ordinary_validation": {
+      "study": "R183",
+      "arm": "v1",
+      "direction_records": 18620,
+      "aggregation": "six_direction_macro",
+      "report": "studies/3eed_v2_ordinary_val_subject_ranking_20261119/REPORT_ZH.md",
+      "public_commit": "b3c9f9b6cc92ab79706ff3c0fa6241f6d9e05198",
+      "overall": {
+        "Acc25": 27.37398238812561,
+        "Acc50": 10.160299869195311,
+        "mIoU": 14.538478943602277
+      }
+    }
+  },
+  "single_frame": true,
+  "source_retraining": 0,
+  "target_updates": 0,
+  "rounds": 2,
+  "subject_slots": 4,
+  "reference_slots": 4,
+  "main_entrypoint": "crossplatform/ground.py",
+  "source_assets": "crossplatform/single_frame_sources.json",
+  "source_training_commit": "261676dd7ed9cc9b6d87aa9514d5a083b4e5c860",
+  "evaluation_report": "studies/3eed_v1_frontend_simplification_20261119/REPORT_ZH.md",
+  "evaluation": {
+    "ordinary_train_direction_records": 3072,
+    "expressions": 1536,
+    "scope": "Previously used ordinary TRAIN recording panel with six directions equally weighted",
+    "baseline_commit": "dd5b3c94393420a11de6f207daf2a506f973f9cb",
+    "overall": {
+      "Acc25": 29.036458333333332,
+      "Acc50": 14.35546875,
+      "mIoU": 16.054465190369257
+    },
+    "direct_left_right": {
+      "Acc25": 32.500482346131584,
+      "Acc50": 16.872467682809187,
+      "mIoU": 17.569172342682283
+    },
+    "vs_previous_v1_pp": {
+      "Acc25": 0.32552083333333215,
+      "Acc50": 0.390625,
+      "mIoU": 0.1486958221476815
+    },
+    "vs_frozen_text_pp": {
+      "Acc25": 2.2135416666666643,
+      "Acc50": 4.6875,
+      "mIoU": 2.2480524910735085
+    }
+  },
+  "FINAL_access": false,
+  "decoders": {
+    "waymo": {
+      "path": "v1_weights/waymo.pth",
+      "sha256": "b72a1c9f959febf3a62f2c757328a3e1478e9fc67703c15c8f4c81f1dc9f9957",
+      "original_checkpoint_sha256": "5bc88c72c289f3f7d41d29bf84d28aa60024907122969c3bed8e7015c2a4b439"
+    },
+    "drone": {
+      "path": "v1_weights/drone.pth",
+      "sha256": "dacaba3efea09205621a43bd8fcc0ac34692cfac7b93e900520b8dd91bd88e61",
+      "original_checkpoint_sha256": "55471eb5695680f175e46d2b6120ae80908ba4381a03db6c8fb0c9feb037d547"
+    },
+    "quad": {
+      "path": "v1_weights/quad.pth",
+      "sha256": "3293f561afeea90e671f2c3c3d20f672822dba849678dcc84ffd132102a8d09a",
+      "original_checkpoint_sha256": "bf76b607cfa24a38040c02d541acfef0bdf3c1395bdffc1f05d9387fde03b357"
+    }
+  },
+  "version": "v1",
+  "asset_root_cli": "--asset-root",
+  "evaluation_public_path": "v1/verification/README.md",
+  "frontend": {
+    "rgb_features": false,
+    "candidate_competition_residual": false,
+    "lidar_adapter": "source-prepared",
+    "candidate_overlap_correction": true,
+    "image_geometry": "image dimensions, calibration, projection and visibility",
+    "output_yaw": "lidar_pca"
+  }
+}

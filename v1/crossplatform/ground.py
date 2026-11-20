@@ -41,7 +41,7 @@ class Grounder:
                                      self._frontend.asset_root)
 
     @torch.inference_mode()
-    def _read_observation(self, frame):
+    def _read_observation(self, frame, *, capture=None):
         from model51 import SENTINEL
         from parse97 import dependency_document, parse85, parse_subject, repair_inventory87
 
@@ -55,6 +55,8 @@ class Grounder:
                             xyz=raw['fp2_xyz'], text=raw['text_feats'].half(),
                             queries=raw['last_proj_queries'], tokens=raw['proj_tokens'],
                             token_ids=raw['tokenized']['input_ids'])
+            if capture is not None:
+                observed['objectness'] = raw['seeds_obj_cls_logits'].squeeze(1)
 
         handle = frontend.base.register_forward_hook(record_native)
         try:
@@ -73,6 +75,9 @@ class Grounder:
                                    parse85(caption, document, parse_subject(caption, document)))
         valid = encoded['attention_mask'][0].astype(bool)
         masks, has_reference = role_masks(caption, roles, document, encoded['offset_mapping'][0], valid)
+        if capture is not None:
+            capture.update(native=observed, graph=roles, offsets=encoded['offset_mapping'][0],
+                           valid=valid, document=document)
         evidence = decoder_evidence(scored, observed, masks, has_reference, valid,
                                     frame['rgb'], frame['calibration'])
         return scored, evidence
