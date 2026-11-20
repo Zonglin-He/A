@@ -1,0 +1,9 @@
+{
+  "purpose": "Isolate the contribution of the additional source supervision for the explicit camera word while keeping the frozen trained v1 identical.",
+  "status": "Supplement added in response to training-protocol question after source evaluation, during target prediction, before opening any target task result in this study. The original selection and expansion decision stay fixed.",
+  "fixed_equation": "For projected center u in [0,1], take a hypothetical vertical dividing line T uniform on [0,1]. P(right|u)=P(T<u)=u; P(left|u)=1-u. No parameter fitting, label access, optimization or target-dependent thresholds for this readout.",
+  "arms": ["v1", "add_no_fit", "replace_no_fit", "add_source_fit", "replace_source_fit"],
+  "observations": "Use sealed original and flipped scores at the same four physical anchors and the same visibility mask. Add uses normalized factual masses; replace uses their normalized equal mixture with the flipped distribution. Retain the original total mass of comparable slots, with exact v1 fallback below two comparable slots or zero eligible likelihood.",
+  "scope": "All 3072 target development records; also report for 18620 only if the already registered primary gate runs that stage. Seal choices separately before scoring these arms. Report both GT conventions and all rescues and harms. Do not use this supplement to decide expansion or select a per-source version.",
+  "status_of_v1": "Zero incremental training refers only to the new camera factor. All arms inherit the identical source-trained simplified v1."
+}
