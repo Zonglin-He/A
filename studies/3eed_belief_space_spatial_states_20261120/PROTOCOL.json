@@ -1,0 +1,32 @@
+{
+  "stage": "Frozen, controlled prerequisite for spatial-state simulation",
+  "parent": "eede68539fc8752832d854b8482076fc23d81957",
+  "ordinary": "Existing filtered ordinary Validation manifest, no FINAL payload or manifest. Three target platforms, both non-target sources for each frame. No target training or model selection.",
+  "panel": "At most 48 distinct LiDAR contents per target. Start from all ordinary recordings, one deterministic hash-ordered view per content, recording round-robin. Require at least two distinct nouns uniquely represented among annotated camera-visible object centers with positive corner depths; use the first hash-ordered ordered noun pair. Retain every issued question, including missing predictions. No choice by answer, outcome, node count, confidence or historical grounding success. Original captions withheld. Annotation completeness beyond the dataset inventory is unknown.",
+  "inputs": "Single frozen source 3EED. Same four-scale region forest, stop and six noun weights, one subject noun-only nomination, PCA and frozen noun-size completion for every arm. Calibration and original image dimensions. No original LEFT/RIGHT clue, pixels for 3EED, role GT, predicted answer, or online update.",
+  "prior": "On reaching a node, select it with its frozen stop weight or recurse independently into all children. A continuing leaf contributes empty foreground. Points outside retained nodes are unassigned. Visible endpoints only. World/pair weight proportional to prior world probability times the sum over possible distinct ordered designations, each weighted by subject nomination and two noun likelihoods. This is a count-weighted role model, not uniform world averaging or a calibrated world posterior.",
+  "arms": [
+    "map_cut",
+    "map_world_pair",
+    "map_pair",
+    "independent",
+    "masked_product",
+    "tree_joint",
+    "permuted_reference"
+  ],
+  "primary_static": [
+    "right",
+    "forward"
+  ],
+  "coordinate_system": "Leveled camera-centered horizontal coordinates: right is normalized horizontal projection of camera right; forward is its 90 degree counterclockwise rotation about model +z. Queries compare metric center coordinates, not image pixels. Endpoint identity remains fixed within each pair.",
+  "candidate_interventions": [
+    "right_after_yaw45",
+    "separation_grows_after_shift2"
+  ],
+  "interventions": "Rotate observer clockwise 45 degrees from original forward toward right and ask if subject is to the right of reference. Move only the subject two meters along original right and ask if its horizontal separation from reference increased. Static identity and whole cohort are locked before scoring. For transfer report unchanged-state baseline and change-only subset as well as all questions. Opposite sign ties use strict >.",
+  "evaluation": "Primary six-direction macro forced-decision accuracy with fair half credit at exactly 0.5, binary Brier and risk at 50% coverage with proportional pooling at tied confidence. Explicit no-evidence yields 0.5 and is disclosed separately. Hard-cut confidences use within-cut top pair fraction; hard joint maximizers use their selected pair's compatible posterior mass. Soft confidences use max(y,1-y). Full selective curves and conditional identifiable-pair duplication, definite dual-identity masses, directional and negative records also reported. Annotation reference: unique inventory box with oriented IoU > 0.25; no GT for construction of predictions. Use fixed empirical quantiles of pre-label observed support and visibility as descriptive strata; close neighbors if box-center separation <=5m diagnostics only. Cluster uncertainty resamples target recordings jointly across both sources, 2000 draws seed 1947.",
+  "decision": "Advance past A only if tree_joint has a strict positive difference on the same primary decision metric (accuracy higher OR 50% risk lower) relative to masked_product, map_pair and map_world_pair, with no worsening of Brier versus masked_product. Compare map_cut and raw independent too. Report actual margins and uncertainty; interpret weak support as descriptive. If this prerequisite fails, stop the recipe, do not promote, run the MLLM or score expanded simulation. No new threshold or search. Geometry transformations can be implemented and unit-checked before the gate, with prediction probabilities sealed blind.",
+  "model_files": "Existing source assets and current selector are read-only. Exact pair integration on all eligible nodes, no Monte Carlo or extra source training.",
+  "budget": "At most 144 frames across both panels and 288 frozen source/frame captures total given the sealed eligibility counts. Static and transformed answer weights may be sealed together; expanded interventions and MLLM comparison only if prerequisite yields utility. No threshold search.",
+  "amendment_before_predictions": "Pure different-noun eligibility in first authoring pass selected 48 Waymo, 23 Drone and 0 Quad after exhausting that target. Preserve all 71 and add up to 24 distinct physical contents per target in a separate shape-designated cohort. It requires exactly two visible inventory objects of one named class with a height difference strictly greater than 0.10 m. Hash fixes class and role orientation; model receives only higher/lower and noun, never numeric height. All arms apply the same strict ordering to predicted completed heights; other predicted same-class entities are marginalized as possible distractors. Full mixed six-direction estimand plus separate pure and height strata. No predictions or derived QA outcomes were inspected before amendment."
+}
