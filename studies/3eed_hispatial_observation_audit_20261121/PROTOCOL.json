@@ -1,0 +1,35 @@
+{
+  "study": "Frozen HiSpatial-3B on 3EED, staged observation and reasoning audit",
+  "scope": {
+    "ordinary_roster": "Pinned 9,310 ordinary Validation utterances, excluding the protected FINAL identifiers before observation access",
+    "target_platforms": ["waymo", "drone", "quad"],
+    "physical_frames_per_platform": 18,
+    "distinct": "One RGB view per SHA256 LiDAR content, recording round-robin. Exclude the preceding 96-frame Qwen measurement panel by content hash. Geometry-eligible candidate pool requires a visible annotated object pair. Candidate choices and visual identity checks precede all model predictions.",
+    "units": "All metric values are meters, boxes supply annotation centers and height only for offline question construction/scoring. A shared frozen model runs only once for each conditioning arm and question."
+  },
+  "revision": {
+    "hispatial": "9b0a5718ed0fb3b8bd9d9e0b36b6192bd3e99be1",
+    "moge": "b942f00bdc2a2a23ebb474fbe034d487e6dcceec",
+    "prior_depth": "8c029cbca669443fe0bbf8dcefb5f91ad531084d",
+    "utils3d": "3fab839f0be9931dac7c8488eb0e1600c236e183"
+  },
+  "arms": {
+    "moge": "Official RGB and MoGe-2 ViT-L-normal XYZ with estimated intrinsics and nearest resize to 448",
+    "camera_rays": "Same valid z values and mask as MoGe with x and y recomputed from measured camera rays. No LiDAR range.",
+    "global_scale": "Registered camera rays; one positive scale exp(median(log measured Z minus log monocular Z)) using fit bins, no labels.",
+    "prior_depth": "Released Prior Depth Anything v1.1 ViT-B using its own official DAv2 ViT-B and the same fit returns, native image aspect ratio through capped 640 px width/max side. Reproject output with measured rays and use the same MoGe validity footprint.",
+    "wrong_geometry": "Starting at global_scale, swap the depth of symmetric pixels across the horizontal axis of the image coordinate array (left-right reflection) only when both are valid, then lift the swapped depth onto the original camera rays. Preserve the valid mask and per-frame depth histogram exactly. Diagnosis only."
+  },
+  "anchors": "Use the shipped same-frame camera calibration, explicit zero distortion when absent, z-buffer nearest positive return on 448 grid. Physically valid 0.25 to 250 m inclusive; selected fit and holdout assigned using fixed spatial blocks of 8 x 8 cells by a deterministic hash. Policy retains only physical fit points at native-valid pixels in both corrections. No holdout ray is supplied as depth to either correction. Require 5 fit anchors or revert to registered calibrated depth and count the fallback. Report overlap, stored alignment and missing independent sensor timing explicitly.",
+  "weights": "MODEL manifest pins all public files. No source training or target parameter updates, dense inputs only. Official numerical FP32 and greedy max_new_tokens=100 using transformers 4.50.0. One fresh prompt per question; all prediction arms/images sealed before scoring. Package runtime CUDA 12.8 on RTX 5090.",
+  "qa": {
+    "L0": "Official positional tokens for a single held-out XYZ point and an inverse depth comparison pair between two held-out pixels. No target annotations used to choose the pixels. Also directly measure all held-out camera-z and full camera-XYZ errors at the pixels.",
+    "L1": "Language-only straight-line distance from camera center to target annotation center and upright height of a visibly identifiable object. Appearance cues are filtered and checked without any generated answers. Captions with hidden geometry removed by constructing cues from a restricted list.",
+    "L2": "Language-only pair questions: closer/farther in straight-line center distance, signed original level-camera right coordinate, and horizontal separation in both argument orders. Require annotated distinct visible objects with actual separations and no ambiguous appearance identification.",
+    "L3": "Explicit hypothetical +90 and -90 degrees observer yaw about the source vertical axis, fixed position and fixed objects. Query the greater signed right coordinate, including behind the virtual observer. Separate from primary L1-L2, report subset where applying the correct rotation changes the static answer.",
+    "oracle_identity": "For the exact same authored pair in a separate controlled probe, the RGB image displays red and blue 2D markers obtained from annotations; asks the original and both rotated right-coordinate questions. No oracle question is combined with primary natural-language metrics. All map inputs for these questions are derived from the unmarked original frame."
+  },
+  "metrics": "Keep all issued questions. Numeric MAE/median error on parseable answers, numeric pass at <=25% relative error with failures in denominator; for L0 3D array primary numeric pass tests depth Z with positive z; also report 3D point error. Binary exact choice, invalid counts, paired rescue/harm, flip and consistency rates by platform/task and clusters. Marked oracle probes separate. Compare opposite relations and reversed distances for consistency; no credit for invalid output. For high-level mechanism, assess same-frame heldout depth error globally and in annotated question-object support after prediction seal, count both improvement and degradation. Camera-space z is optical depth, not L1 Euclidean distance.",
+  "budget": "At most 54 distinct physical frames. Start using fixed arms above. This first experiment tests sensitivity and conditional failure before developing task-conditioned adjustment. No per-question predicted answer or GT used to choose point map, arm, code or output.",
+  "FINAL_access": false
+}
