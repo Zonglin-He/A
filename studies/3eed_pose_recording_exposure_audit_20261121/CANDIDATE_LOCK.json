@@ -1,0 +1,62 @@
+{
+  "status": "locked_candidate_pending_eligible_recordings",
+  "source_commit": "8e00f0eff790f614a34cb5612c18ac6ce972795a",
+  "published_study_sha256": {
+    "surface_grounding.py": "5b92dcbc6fb2e5490b9f4420ab5e97196fbdb9b4bbe9f452414d4d61e7d24133",
+    "evaluate_surface.py": "73612a5870a2b01e11758f6cf45cb1f359fbcdf972687f1f8c198f63e6108f1e",
+    "recount.py": "44facd9c1881f727963d0120051ea6dcb5666eedf4edec5b45363f5969f81384",
+    "PROTOCOL.json": "9ff4d9d19cf2cd5992a20f6ea8d955356bd23dd16badf5d8536319320b1ecbbd",
+    "results/rows.csv": "c3c6d6bfcc194934c39f4e859783db7fac388747b66cf571707511ceeec131c5",
+    "results/evaluation_receipt.json": "b623930b1c6a5a56ef968ecd35e016a015bce15ea0f000ea48119c3e132a7202",
+    "results/prediction_seal.json": "c26815daa265955fa6ecfaed1877aeddcc77b8723d301ca774f605f795d640f6"
+  },
+  "local_dependency_sha256": {
+    "studies/3eed_qwen_four_scale_recording_confirmation_20261121/METHOD_LOCK.json": "847c6849d4f57da40a87fcb6eaabc31bb7c9b89ed8bdf3414bf4570891578a71",
+    "studies/3eed_qwen_four_scale_recording_confirmation_20261121/predict.py": "0e17de7327385bbdab03646061fc7649c2a92fc78317c64f6bf4c3c052e113ea",
+    "studies/3eed_qwen_four_scale_recording_confirmation_20261121/run_qwen.py": "50bd1df1a71f4dbb0d64438a13d8581b014350e708ba427584716c1b091f6db9",
+    "studies/3eed_frozen_qwen_metric_grounding_20261120/infer.py": "db001c33cf57d8cca121dfaa4bc56d23ecbcab680b2613d6ea9a4af868b2893e",
+    "studies/3eed_frozen_qwen_metric_grounding_20261120/MODEL.json": "0b66239e01ed741ba6ca4ac85fdb18c481308995f2b3de8103dfa62548cf5524",
+    "studies/3eed_frozen_qwen_metric_grounding_20261120/geometry.py": "d27b42b0f72113b283c5a897d8470bef2fb142a1a0bd05708f72871418e55f93",
+    "studies/3eed_frozen_qwen_metric_grounding_20261120/score.py": "3a0e2eaa5e3fdc0a93ce975c3b32ba0b6e8276b82d093a9eeebd9fa3e4f21ca3",
+    "studies/3eed_qwen_four_scale_region_grounding_20261121/region_depth.py": "59b3359493523b3834c4fd7cbbae4cb14d8b5433e6aa25030fcdabaa033bdc63",
+    "crossplatform/round7/experiment/runner_helpers.py": "c73431a4871ede56674636d66b636e6d77389b9f41eb0cf9160209876d5c1e59",
+    "crossplatform/round7/camera_projection.py": "b343c04d3a3b72ffed6dc041449f5dc38892964755108a3cab5a8c86572066ce",
+    "crossplatform/physical_regions/regions.py": "05603aa2e81795ac5f89ddf4253f576f2bd634ffbf260ddbe91225b3a7e742ed",
+    "crossplatform/candidate_frontend.py": "b13bca14718bd0bd2e02131a341e497ebb029980a2d15cceb2a01d1f9d031d81"
+  },
+  "qwen_checkpoint": "Qwen/Qwen3-VL-4B-Instruct",
+  "qwen_revision": "ebb281ec70b05090aa6165b016eac8ec08e71b17",
+  "arms": {
+    "H": {
+      "historical_column": "P",
+      "procedure": "Original C_E_Qsize with the original full-region four-scale PCA completion."
+    },
+    "fixed_pca": {
+      "historical_column": "C_pca",
+      "procedure": "Fixed Qwen dimensions, same fit-side node/terrain and same camera-slab center calculation as pose_ray, choose the PCA yaw."
+    },
+    "pose_ray": {
+      "historical_column": "C_ray",
+      "procedure": "Compute separate camera-slab centers for PCA and frozen Qwen yaw using fixed Qwen dimensions and the same fit-side node. Select the lower optical-depth residual on independent selection returns."
+    }
+  },
+  "partition": {
+    "projection_cell_px": 4,
+    "fit_selection_audit": "Existing reserve() hash gives fit/selection/audit; the last two are excluded at source draw from fit tree and ground. Attach z-buffered returns inside original window by existing transfer to fit node.",
+    "samples": 16384
+  },
+  "selection": {
+    "minimum_rays": 5,
+    "cap": "max(0.10 metres, half the smaller horizontal Qwen extent)",
+    "loss": "Mean of capped absolute first camera-origin slab optical-depth residual divided by cap; miss costs 1.",
+    "qwen_win": "cost_qwen < cost_pca - 1e-12",
+    "missing_fit": "Keep original Qwen ray-depth (median) fallback; missing 3D decode may have no box and counts as zero.",
+    "insufficient_selection": "Matched fixed PCA if fitted candidates exist."
+  },
+  "scope_rule": "Only Ordinary recordings absent from previous evaluation, source fit, calibration, and development rosters. Split by recording identity and retain all its selected physical frames and failures. Seal identity/inputs and predictions before fresh task GT. Record platform coverage and do not reuse the exposed 416 as confirmation.",
+  "reporting": "Strict oriented IoU > 0.25 and > 0.50; mIoU; all paired rescues and harms against both H and fixed PCA; recording paired bootstrap within platform; all fallbacks and platform counts.",
+  "source_training": false,
+  "target_updates": false,
+  "hyperparameter_search": false,
+  "FINAL_access": false
+}
