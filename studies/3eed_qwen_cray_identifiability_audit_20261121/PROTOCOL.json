@@ -1,0 +1,23 @@
+{
+  "scope": "The sealed 9310 ordinary descriptions used by the locked C_ray_simple at f3d5239e43b19081e4a60ba37664d3b4aba0a3a2",
+  "purpose": "Audit whether poor pose switches concentrate where the original selection rays offer little ability to distinguish the reanchored PCA and Qwen boxes, or where the actual score favors the poorer box despite geometric separation",
+  "cohorts": {
+    "production": "The rows that used the ray branch in sealed simple4",
+    "all_pairs": "All rows with at least five original selection returns and a fitted pair, regardless of the 2D category gate. Used only to examine the historical ungated behavior, by target category and platform.",
+    "visual_switch": "The original clipped ray score selected the Qwen pose. Compare the two complete boxes directly.",
+    "ground_truth": "Open the Ordinary Validation boxes and classes only after sealing both pose candidates and the original rays. Out-of-scope or unavailable pairs remain in coverage."
+  },
+  "measurements": {
+    "common_hit": "On rays intersecting both boxes, record RMS predicted optical-depth separation and the normalized sums I and Lambda specified in the study. Normalize by the historical clipped-depth scale delta, not calibrated measurement noise.",
+    "hit_miss": "Separate common-hit, one-box-hit and neither-hit rays. Include one-box hits in a label-free upper bound on normalized original score separation. Report the observed score gap and its decomposition.",
+    "GT_relation": "Spearman correlation with absolute GT IoU difference. Compare unaltered score margin, distinguishability, overlap indicators and signed evidence using AUC. Compare lower/upper distinguishability quintiles defined among actual visual switches, without using GT to choose cutpoints.",
+    "decisions": "Analyze both IoU-improving versus IoU-harming choices and Acc@50 rescues versus harms. Use the same common-hit subset when comparing common-hit signals and the original score.",
+    "GT_control": "Post-seal target-box membership on the original Selection rays. Count what changes when scoring only in-box rays where at least five remain. For those rays compare actual optical depths with an idealized GT cuboid's first depth as a geometry-model sanity check. Both controls are diagnostic and never feed inference."
+  },
+  "metric_thresholds": {"IoU_tie_absolute": 1e-8, "Acc50_strict": 0.5, "replay_coordinate_tolerance": 5e-10},
+  "recording_bootstrap": {"draws": 1600, "seed": 20261121, "paired_within_platform": true},
+  "new_Qwen_queries": 0,
+  "training": false,
+  "gate_implemented": false,
+  "FINAL_access": false
+}
