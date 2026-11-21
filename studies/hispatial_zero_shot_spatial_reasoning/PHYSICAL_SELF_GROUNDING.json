@@ -1,0 +1,27 @@
+{
+  "previous_diagnosis_commit": "7ad9f248b14793ba8bcae75c42a427b9d5f75f0b",
+  "scope": "All 1206 EmbSpatial-Bench close/far rows from the sealed geometry diagnosis and 96 of the same rows for the marker-order control.",
+  "models": ["frozen HiSpatial-3B", "frozen MoGe-2 with cached aligned pointmaps"],
+  "new_trainable_parameters": 0,
+  "pointmap_height": 448,
+  "grid_stride": 4,
+  "graph_scales": [120, 280, 560, 1120],
+  "graph_sigma": 0.55,
+  "graph_min_component": 18,
+  "graph_feature_weights": {"lab": 0.65, "log_z": 0.85, "xy_over_z": 0.25},
+  "max_relative_xyz_step": 0.10,
+  "region_min_cells": 24,
+  "region_max_frame_fraction": 0.45,
+  "max_marked_regions": 8,
+  "marked_max_containment": 0.65,
+  "marked_max_iou": 0.50,
+  "extra_audit": "Reverse letter assignments on the fixed 96-question panel, retaining the same highlighted shapes, positions and original XYZ.",
+  "controls": {
+    "region_depth": "HiSpatial binds by mark ID. Mean valid Z in selected, 3D-consistent mask.",
+    "window_depth": "Same selected region and binding. Mean valid Z in its enclosing rectangular window.",
+    "whole_map_depth": "Highlight depth across the whole image using an aligned warm-near cool-far overlay, then run the same frozen HiSpatial on the original question.",
+    "original_hispatial": "Use sealed native RGB and aligned MoGe HiSpatial answers from the previous paired diagnosis."
+  },
+  "readout": "Use the minimum or maximum object-level depth only when every concrete choice binds to a distinct region and both depth readouts have a unique extreme. Use original HiSpatial as fallback. Unknown is kept as an explicit unbound choice.",
+  "limits": "The first experiment diagnoses visible-region binding and depth readout. Amodal size and pose are outside the evaluation. All labels, target boxes and correctness are offline only."
+}
