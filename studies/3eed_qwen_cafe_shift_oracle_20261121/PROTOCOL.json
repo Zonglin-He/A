@@ -1,0 +1,21 @@
+{
+  "study": "GT-only horizontal translation control for the frozen CAFE audit",
+  "previous_audit_commit": "82722dd82749697cd425f4ea87401663e44b9926",
+  "scope": "The 2769 previously exposed Ordinary Validation descriptions where both sealed C_ray_simple pose candidates have IoU <= 0.50",
+  "focus": "The same 388 descriptions where a particular original pose is opposed by qualified witnesses and its preceding joint IoU upper bound exceeds 0.50. Preserve the pose identities that satisfy both conditions.",
+  "source_method_sha256": "8224823efab925bb73e2fd058adfda9389b59d0bb6d0660e015d6249f88acc3b",
+  "fixed": ["the two sealed candidates and original chosen pose", "original box length, width, height, vertical center and yaw within each pose", "selected Fit points and accepted Selection witnesses", "ground-truth scoring convention and strict IoU > 0.50"],
+  "arms": {
+    "positive": "All target Fit points must fit inside the horizontally translated box, with the original compatibility tolerance.",
+    "joint": "The identical positive set minus the open rectangles of the exact same qualified witnesses from the preceding audit.",
+    "free_reference": "Center horizontally at GT under the same dimensions, yaw and vertical center, the unrestricted horizontal IoU ceiling for two oriented rectangular footprints. Used only to attribute immutable-geometry versus center-support limitations."
+  },
+  "solver": "Decompose the joint set into closed rectangles and degenerate boundaries. For each rectangular piece, test the aligned GT center if feasible, otherwise maximize along its perimeter. For each segment, split at vertex/supporting-edge events. Intersection volume is quadratic between events. Evaluate interval endpoints and interior maxima in float64 with the project yaw IoU scorer and validate winning positions with the independent 3D IoU implementation.",
+  "readouts": "Counts rescued across both original poses, with the original C_ray_simple pose alone, and with the audited opposed poses alone in the 388 subset. Count any positive-only rescue removed by exclusion and independently check no joint-only rescues. Report all platform denominators and keep all failures. Empty feasible sets cannot rescue.",
+  "data_flow": "Select only the established cohort using prior sealed outcomes. Rebuild the exact label-free geometry and verify prior counts and feasible-set summaries before opening the Ordinary GT for its members. GT is used only to score the translation optimum.",
+  "decision": "Leave CAFE stopped. Oracle results diagnose available geometric headroom under the frozen constraints and impose no method or threshold change.",
+  "prediction_changes": 0,
+  "FINAL_access": false,
+  "new_Qwen_queries": 0,
+  "training": false
+}
