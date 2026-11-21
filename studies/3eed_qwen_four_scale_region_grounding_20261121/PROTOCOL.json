@@ -1,0 +1,22 @@
+{
+  "study": "Experiment C: Qwen-window guided physical region assignment",
+  "cohort": "Exact sealed Qwen3-VL panel of 96 ordinary Validation physical frames, Waymo/Drone/Quad 32 each, same description and original seed. Confirm RGB, LiDAR and ordinary roster identity. Reuse the 192 sealed Qwen outputs. Replay frozen official v3 on both incoming sources per target for all 192 direction records. Ground truth is read only after prediction sealing.",
+  "pinned_public_versions": {
+    "qwen_baseline": "9c0bf6066e1695fc5b244a08c760ee46005bb0de",
+    "official_v3": "eede68539fc8752832d854b8482076fc23d81957"
+  },
+  "arms": {
+    "A_median": "Exactly reproduce the original measured-depth Qwen baseline. Keep the independent 2D center ray, original 9D dimensions and pose, front-face offset, central half-size window, one nearest return per 4x4 pixel cell, fit half, and old fallback.",
+    "B_v3": "Unmodified registered v3 entry, seeded for the exact panel. Check fresh per-record IoU and active branch against the pinned published v3 result.",
+    "C_expanded": "Use the official four-scale geometry and original 16384-point model-frame sample. No labels, proposals, noun scores or referent evidence. Assign each observed nearest-return cell to an eligible sampled region through the nearest sampled point with the same scale-specific cut as the maximum transfer radius. Choose the node by squared intersection of visible unique fit cells with the full Qwen 2D window divided by node visible count and window visible count. The node must supply at least five of A's central fit cells. Restrict A's depth median to its central fit cells, leaving the ray and 9D geometry alone. If A is invalid or C is unsupported, use A exactly.",
+    "C_strict": "Apply the same C only when the frozen v3 language gate actually enters the physical region path for that source and frame. All other cases emit A. Track both v3 region entry and successful v3 output.",
+    "C_fit_tree": "Held-out sensitivity. Use the same ranking, matching, depth and fallback, but remove every camera-visible sampled point in held-out pixel cells before constructing the official geometric tree. Points outside the camera view can still define the local partition.",
+    "F_matched": "Same scene, same Qwen 2D bearing, and same C validity, fallback and number of central fit cells per frame. Deterministically permute the region-to-cell membership within each frame's central fit set, using a fixed seed and ensuring a different subset whenever possible. Reapply the unchanged median and front-face offset. Report F for both C variants."
+  },
+  "sampling_notes": "Use the original registered four thresholds and minimum component size eight. Reuse official terrain, connected components and exact nested region deduplication. The full tree may observe withheld scan geometry but held-out ranges never enter its final median or visual score. Only the fit-tree sensitivity provides a strict held-out ray comparison. Deduplicate the full-image raw visible set by 4x4 z-buffer and use only fit cells for region matching.",
+  "evaluation": "All 96 frames count for independent Qwen arms. Match frozen source rows by canonical anonymous ordinary ordinal and report 192 source-direction pairs for B and strict C. Task metrics are strict oriented IoU greater than 0.25 or 0.50 and mIoU. Report by target, source/target for B and strict, all rescue/harm and no-fit fallback. Compare fit-set purity within post-seal 5cm-expanded GT, center/optical depth errors and same-target-ray held-out residuals on the fit-tree condition. Diagnose candidate recall versus winner selection using GT only after seal. Record recording-cluster paired intervals.",
+  "continuation": "Proceed to D (noun/relationship) and E (shape) only when C gives a positive Acc@50 and mIoU difference over A, beats its matched mismatch in mIoU, and supports a geometric or task improvement in at least one of the motivating Drone/Quad domains. Otherwise state which prerequisite failed and preserve C as an evaluated research variant.",
+  "source_training": 0,
+  "target_updates": 0,
+  "FINAL_access": false
+}

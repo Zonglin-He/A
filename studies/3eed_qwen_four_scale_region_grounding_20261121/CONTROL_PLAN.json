@@ -1,0 +1,8 @@
+{
+  "status": "Exploratory followup controls after the paired D/E study and before generating these outputs",
+  "question": "Does same-region 3D completion still help with just the visual/physical selector, and does geometry benefit from the matched region identities rather than an arbitrary subset?",
+  "only_C_region": "Freeze the visually selected C node. Repeat E_qwen_size and E_qwen_pose without frozen noun scoring, proposal nominations or reference evidence, using the same full region geometry and known Qwen shape priors.",
+  "same_geometry_controls": "On frames with a usable fit-tree C region, use identical measured PCA, terrain and Qwen size anchored completion in three arms. Fit-region uses C's central fit returns. Fit-mismatch uses its count-matched F returns in the same original window. Fit-window uses all the original central fit returns. None uses held-out returns for these frame-local measured boxes or the terrain estimate. All use identical fallback to A when the fit-tree node is unavailable.",
+  "constraints": "The same 96 frames and 192 Qwen replies. All metrics and signs reported without selecting a method by platform. Keep the main C and D/E protocols and all negatives. No weights, network training or target updates. Results still measure the same previously exposed cohort.",
+  "FINAL_access": false
+}
