@@ -1,0 +1,41 @@
+{
+  "method": "C_ray_applicable",
+  "policy": "original C_ray for two valid frozen motor-vehicle labels and eligible independent rays",
+  "fallback": {
+    "method": "C_E_Qsize",
+    "source_arm": "H"
+  },
+  "entry": {
+    "file": "studies/3eed_qwen_cray_category_balance_20261121/cray.py",
+    "function": "predict",
+    "sha256": "3bae8499dad572b615a4b9f9f15e80398af225327aeabdf59dff8deefc63e9fe"
+  },
+  "state": "frozen",
+  "target_updates": 0,
+  "new_model_calls": 0,
+  "model": {
+    "name": "Qwen/Qwen3-VL-4B-Instruct",
+    "revision": "ebb281ec70b05090aa6165b016eac8ec08e71b17"
+  },
+  "historical_pins": {
+    "studies/3eed_qwen_full_ordinary_validation_20261121/geometry_full.py": "e66971b98f53eab971840552e70f285e7425297fa1544b30f82df7cadd272628",
+    "studies/3eed_qwen_full_ordinary_validation_20261121/results/qwen_seal.json": "c36980784d6a04e223efa87dfa175c08eb3216a663745fb97c622c8a6c282b36",
+    "studies/3eed_qwen_full_ordinary_validation_20261121/results/prediction_seal.json": "930507955843644659802b7ec925219efc07884e489f995aaf6b10a3f405b384",
+    "studies/3eed_qwen_full_ordinary_validation_20261121/results/input_seal.json": "003253c3f473dcd5b1cad4e5b9aa4eaa947ff6ce02114eb2494c6f07af676d16"
+  },
+  "minimum_selection_rays": 5,
+  "inputs": [
+    "original frame geometry, camera calibration and point cloud",
+    "frozen 2D and 3D replies"
+  ],
+  "outputs": {
+    "box": "upright 7D box in the raw sensor coordinate frame, or None for invalid 3D"
+  },
+  "post_seal_validation": {
+    "descriptions": 9310,
+    "replayed_entry_routes": 9,
+    "verification": "studies/3eed_qwen_cray_category_balance_20261121/results/verification.json",
+    "independent_generalization": "pending_data"
+  },
+  "FINAL_access": false
+}

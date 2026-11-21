@@ -1,0 +1,23 @@
+{
+  "question": "Why does the frozen dual-pose readout lose Acc@50 on pedestrians and cyclists, and can its vehicle gains coexist with a suitable fallback?",
+  "cohort": "The same 9310 previously exposed Ordinary Validation descriptions and exact Qwen replies from 824b6a48bf7db54a4678296bb11ee78586d31838",
+  "primary_metric": "Upright oriented IoU > 0.50 on all descriptions, plus Acc@25 and mIoU, by category, platform, category-platform and recording",
+  "diagnosis": "Use H and C_pca to exchange horizontal center, horizontal extent, vertical interval and yaw. Rebuild an H-rule box on the exact C fit support to isolate support and terrain from the anchor change.",
+  "arms": {
+    "H": "Original C_E_Qsize",
+    "C_pca": "Original isolated fitting-side fixed-size PCA",
+    "C_ray": "Original two-pose ray selector",
+    "F_complete": "Original measured_box and complete on the same isolation-side support as C_pca",
+    "B_pca": "Original fit support and PCA pose. Expand the Qwen prior to at least the measured span in that pose, then reanchor.",
+    "B_ray": "The same measured lower bounds in both poses, with the original independent rays and clipping scale",
+    "C_ray_applicable": "Retain the original two-pose instance and independent ray score only if both valid frozen outputs identify a road motor vehicle and the existing independent-ray eligibility is satisfied. In other cases use H. Apply the same rule across platforms.",
+    "C_ray_shuffled": "Permute the applicable flags among ray-eligible descriptions within each recording with a fixed seed, preserving activation count"
+  },
+  "category_features": "A fixed allowlist of common road-motor-vehicle head terms in the two already produced Qwen label fields. A conflicting human, bicycle, motorcycle, or animal term invalidates a vehicle label. Ground-truth categories are reserved for post-seal diagnosis and reporting.",
+  "selection_rule": "Prefer a repair that restores H on pedestrians and cyclists in pooled Acc@50 and retains most of the original vehicle gain, with all losses and recording-level uncertainty reported. Compare against a count-matched shuffled route and retain the physical-width alternative as a control. Decide within this exposed benchmark.",
+  "negative_control_seed": 20261121,
+  "training": false,
+  "new_qwen_inferences": false,
+  "target_Gt_for_predictions": false,
+  "FINAL_access": false
+}
