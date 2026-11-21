@@ -1,0 +1,27 @@
+{
+  "study": "CAFE phase 1 counterfactual exclusion evidence audit",
+  "scope": "9310 previously exposed Ordinary Validation descriptions and the same 5910 applicable C_ray_simple candidate pairs",
+  "locked_method_sha256": "8224823efab925bb73e2fd058adfda9389b59d0bb6d0660e015d6249f88acc3b",
+  "pinned_prior_commit": "e15cd10f9744b1bff8dabe81bee6cef38c0696ce",
+  "fixed": ["Qwen answers", "arbitrary original frame seed", "2D vehicle gate", "fit support and region winner", "both original 7D boxes", "target Selection rays and old decision", "all 3400 fallbacks"],
+  "negative_evidence": {
+    "fit": "Build the original four scales on the original Fit sample. Reproduce the original winner and compare the birth scale and the next coarser scale, or the last two scales when the winner is born at the coarsest scale.",
+    "selection": "Use nearest visible returns per 4-pixel cell in the original Selection split across the camera image, including outside the Qwen window. Verify the original target Selection subset exactly. Audit does not use audit-split or Fit returns as witnesses.",
+    "stable": "The nearest Fit seed is within both original scale radii, belongs to a labeled component at both scales, and belongs to no component containing any selected target seed at those scales.",
+    "inside": "Use strict 3D cuboid interior with a 1e-9 m numerical tolerance. Only returns inside exactly one candidate can supply exclusion evidence.",
+    "agreement": "Require at least the original five-return support count within one finer component and one exclusive side. Retain counts of unfiltered XOR points and stable-separated cells before this last requirement. Components are unverified instance proxies. Distinct pixel cells are disjoint observations, with no statistical independence claim.",
+    "readout": "A one-sided witness opposes the candidate containing it. Two-sided witnesses count as conflict. Record cell and component counts, window membership and all zero-evidence pairs. No prediction is changed."
+  },
+  "center_diagnostic": {
+    "positive": "Use all frozen selected Fit seeds and exact archived candidate dimensions, yaw and vertical center. Compute the closed axis intervals for horizontal centers. An unsupported vertical extent or spans larger than the original size makes the positive set empty. A tolerance of 1e-9 m covers numerical equality only.",
+    "negative": "For each pose exclude the open horizontal rectangles induced by either side's corroborated witness returns within that pose's fixed vertical interval. Measure nonemptiness, area and coordinate envelope by rectangle endpoints. Do not construct, select or score a shifted box.",
+    "bound": "For candidate IoU t and maximum possible fraction s of original box volume replaced by translation, unknown shifted IoU is at most min(1,(t+s)/(1-s)). Compute s conservatively from the coordinate envelope. Bound exceeding 0.50 means unresolved, with no attributed recovery. Report bounds for both positive-only and joint constraints."
+  },
+  "evaluation": "Seal all label-free evidence and the immutable trace digest before opening archived candidate IoU CSVs. Compare directions in the 64 harms, 284 missed Qwen rescues, 623 original rescues, remaining single-pass cases, and 2769 both-fail pairs. Report all platforms and recordings.",
+  "decision": "Coverage screen fails if a majority of the 348 previous avoidable failures have no unambiguous one-sided witness. Direction, contravened original successes and platform concentration inform the interpretation. This protocol runs only phase 1.",
+  "new_Qwen_queries": 0,
+  "additional_GT_file_reads": 0,
+  "training": false,
+  "prediction_changes": 0,
+  "FINAL_access": false
+}
