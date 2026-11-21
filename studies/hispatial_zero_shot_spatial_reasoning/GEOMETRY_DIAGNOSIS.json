@@ -1,0 +1,22 @@
+{
+  "baseline_commit": "e6872cc221d6b257ad7f69177cd54260c49c0755",
+  "official_baseline": "OFFICIAL_BASELINE.json",
+  "scope": {
+    "3dsrbench": ["multi_object_viewpoint_towards_object"],
+    "embspatial": ["close", "far"]
+  },
+  "focus_counts": {"3dsrbench_rows": 1372, "3dsrbench_groups": 175, "embspatial_rows": 1206},
+  "conditions": {
+    "aligned": "Rerun the official original MoGe input. All three conditions share the exact same SigLIP tensor for each frame. Keep the previous sealed baseline for a separate reproducibility check.",
+    "rgb_only": "The same HiSpatial RGB-XYZ checkpoint. Before the learned projector, replace encoded depth features with exact zeros. Retain SigLIP, RGB projector weights, projector bias and LM.",
+    "mismatched_xyz": "Use one other image's complete MoGe-2 XYZ and mask. Use a deterministic frame-level derangement within benchmark, source and mirror status, across different scenes. Keep recipient RGB and prompt."
+  },
+  "embspatial_probe_per_source_relation": 16,
+  "sr_role_probe_groups": 48,
+  "localization_probe": "One A-I 3 by 3 image grid question per queried object. Check consistency against offline reference boxes when available.",
+  "ordering_probe": "Ask nearest-to-farthest ranking of the same named choices. Inspect only after sealing. Separate from the official task score.",
+  "camera_side_probe": "One non-mirrored frame per original group. Ask which side of the question's subject faces the camera, using no ground-truth pose or answer.",
+  "box_depth_audit": "Offline only. Compute mean valid camera Z in each supplied object box. Check repeatability with the central half of each box. Compare argmin or argmax with the benchmark answer.",
+  "label_use": "GT answers and role/option annotation boxes are used only offline after all predictions and pointmaps are sealed. All cohort membership and donor assignments depend only on public question types, image keys and source metadata.",
+  "frozen": true
+}
