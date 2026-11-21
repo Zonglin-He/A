@@ -1,0 +1,331 @@
+{
+  "protocol_sha256": "46368cbe86a2b28e92886c0a3f9d741d7dced8ee2477fb6d7e601b052bf5462f",
+  "evaluation_order": [
+    "cv_bench",
+    "3dsrbench",
+    "embspatial"
+  ],
+  "benchmarks": {
+    "cv_bench": {
+      "prediction_rows": 1850,
+      "distinct_image_inputs": 1785,
+      "official_groups": null,
+      "official_metrics": {
+        "3d": {
+          "total_questions": 1200,
+          "correct_answers": 1173,
+          "accuracy": 0.9775
+        },
+        "2d": {
+          "total_questions": 650,
+          "correct_answers": 620,
+          "accuracy": 0.9538461538461539
+        }
+      },
+      "headline_counts": [
+        {
+          "benchmark": "cv_bench",
+          "level": "split",
+          "category": "3d",
+          "metric": "correct",
+          "questions": 1200,
+          "correct": 1173,
+          "errors": 27,
+          "accuracy": 0.9775
+        },
+        {
+          "benchmark": "cv_bench",
+          "level": "split",
+          "category": "2d",
+          "metric": "correct",
+          "questions": 650,
+          "correct": 620,
+          "errors": 30,
+          "accuracy": 0.9538461538461539
+        }
+      ],
+      "parity": {
+        "probed_rows": 24,
+        "single_exact": 24,
+        "batch_exact": 24,
+        "mode": "cached_batch",
+        "batch_size": 4
+      },
+      "inference_seconds_excluding_model_load_and_parity": 480.3017993180547,
+      "peak_allocated_cuda_bytes": 19772225536,
+      "decode_modes": {
+        "cached_batch": 1850
+      },
+      "ungenerated_rows": 0,
+      "row_errors_under_either_parser": 57,
+      "official_replay_verified": true,
+      "input_manifest_has_no_gold_field": true,
+      "answers_loaded_in_predictor": 0,
+      "dataset_release": {
+        "repository": "nyu-visionx/CV-Bench",
+        "revision": "bc284db50d036958861cb60cdd7b77612052ce0d",
+        "files": [
+          {
+            "file": "test_3d.parquet",
+            "size": 219902227,
+            "sha256": "ef91fe8b5392eb2a16e318ca68fa02449d45ba1e152afece12a0a526e9fbbc25"
+          },
+          {
+            "file": "test_2d.parquet",
+            "size": 184906137,
+            "sha256": "33196034ef4bf3265cae4a7ff5c4071b2ff1cc21123e8e285c6a91393897ecbc"
+          }
+        ]
+      },
+      "scorer_sha256": "70560b4b44474482e720a854652d3cf8b22ecb1c39ea94ffb9f3140330cef397",
+      "upstream_scoring_script_sha256": "f236dafa05ca0c9607228cdf90df5633fc96d57711b935319980455243feb620",
+      "artifact_sha256": {
+        "predictions.jsonl": "1aeaa85e1fafc706ed82ccc343a0d1657b8d99622eb8a0226913d67ed96bdf69",
+        "inputs.jsonl": "e6470de9dd8b0265f15ba5a5c130e194c131d642487139741fca6b34689051d6",
+        "runtime.json": "d59debab23691093ceda64d5bfafa8b960383abb47b5da31bd6df629ed2127ee",
+        "predictions_seal.json": "5eb22e17b95b5536ff2bd90e51aac4934b6404ab0bca54f71dc80232093bb37e",
+        "score_seal.json": "6d7a26b6827fb8846dbaa182fc028d6f706cff24433d8dbb0397dcbd024733b9",
+        "scored_rows.jsonl": "ccce045de7a29f2032c85abc7b42e3cd1ac037684260e754a14cbdc981541361",
+        "errors.jsonl": "7b74895852066278004047e5f4c678450539aecbf30d06689339969fc10cbaa6",
+        "breakdown.csv": "b9f252a93b9ea1f9ee7de2dbd91dc77d51b451ec3b58534ae22b12572469a878"
+      }
+    },
+    "3dsrbench": {
+      "prediction_rows": 11686,
+      "distinct_image_inputs": 3603,
+      "official_groups": 2625,
+      "official_metrics": {
+        "truncate": {
+          "accuracy": 0.6361904761904762,
+          "by_category": {
+            "height": 0.7,
+            "location": 0.6605714285714286,
+            "orientation": 0.7619047619047619,
+            "multi_object": 0.5108571428571429
+          },
+          "by_subcategory": {
+            "height_higher": 0.7,
+            "location_above": 0.47714285714285715,
+            "location_closer_to_camera": 0.86,
+            "location_next_to": 0.6285714285714286,
+            "orientation_in_front_of": 0.7657142857142857,
+            "orientation_on_the_left": 0.8457142857142858,
+            "orientation_viewpoint": 0.6742857142857143,
+            "multi_object_closer_to": 0.7314285714285714,
+            "multi_object_facing": 0.52,
+            "multi_object_viewpoint_towards_object": 0.32,
+            "multi_object_parallel": 0.48,
+            "multi_object_same_direction": 0.5028571428571429
+          }
+        },
+        "regex": {
+          "accuracy": 0.6361904761904762,
+          "by_category": {
+            "height": 0.7,
+            "location": 0.6605714285714286,
+            "orientation": 0.7619047619047619,
+            "multi_object": 0.5108571428571429
+          },
+          "by_subcategory": {
+            "height_higher": 0.7,
+            "location_above": 0.47714285714285715,
+            "location_closer_to_camera": 0.86,
+            "location_next_to": 0.6285714285714286,
+            "orientation_in_front_of": 0.7657142857142857,
+            "orientation_on_the_left": 0.8457142857142858,
+            "orientation_viewpoint": 0.6742857142857143,
+            "multi_object_closer_to": 0.7314285714285714,
+            "multi_object_facing": 0.52,
+            "multi_object_viewpoint_towards_object": 0.32,
+            "multi_object_parallel": 0.48,
+            "multi_object_same_direction": 0.5028571428571429
+          }
+        }
+      },
+      "headline_counts": [
+        {
+          "benchmark": "3dsrbench",
+          "level": "official_group",
+          "category": "overall",
+          "metric": "correct_truncate",
+          "questions": 2625,
+          "correct": 1670,
+          "errors": 955,
+          "accuracy": 0.6361904761904762
+        },
+        {
+          "benchmark": "3dsrbench",
+          "level": "official_group",
+          "category": "overall",
+          "metric": "correct_regex",
+          "questions": 2625,
+          "correct": 1670,
+          "errors": 955,
+          "accuracy": 0.6361904761904762
+        }
+      ],
+      "parity": {
+        "probed_rows": 24,
+        "single_exact": 24,
+        "batch_exact": 24,
+        "mode": "cached_batch",
+        "batch_size": 4
+      },
+      "inference_seconds_excluding_model_load_and_parity": 1849.4849279789487,
+      "peak_allocated_cuda_bytes": 22689022976,
+      "decode_modes": {
+        "cached_batch": 11686
+      },
+      "ungenerated_rows": 0,
+      "row_errors_under_either_parser": 3811,
+      "official_replay_verified": true,
+      "input_manifest_has_no_gold_field": true,
+      "answers_loaded_in_predictor": 0,
+      "dataset_release": {
+        "repository": "ccvl/3DSRBench",
+        "revision": "5c90e422b68d0484d50a3ff06b3096ea7d288026",
+        "files": [
+          {
+            "file": "3dsrbench_v1_vlmevalkit_circular.tsv",
+            "size": 843116238,
+            "sha256": "5e25853ab24d8410379773a881d5d15e5ee5d0b9ea6031902e08dbc9565ced77"
+          }
+        ]
+      },
+      "scorer_sha256": "70560b4b44474482e720a854652d3cf8b22ecb1c39ea94ffb9f3140330cef397",
+      "upstream_scoring_script_sha256": "c7722f755473752b57d54ef8cfc6962e3263bc5d243ca2c5ebe78bbda262ce1e",
+      "artifact_sha256": {
+        "predictions.jsonl": "bd6820ed902f97158bf1d0ba934067b689e5d59f873855bde860106118c02e8a",
+        "inputs.jsonl": "3901f4de0740b2b9ee0706dd00617d63c45947676940607e2ccf349a83b19bc6",
+        "runtime.json": "24e554e4fad6488176355d1f9ee21580f83e9a69cd67c5fb6f71e437c842ad11",
+        "predictions_seal.json": "07d5c89b50575e9f7b68726890918e1139e5a0c22dc6b81fbb3637f0ee4d5827",
+        "score_seal.json": "1cc0127fd29f94153b6d8dad31c9860f9659aa3cceb30bb9801e7ededde55070",
+        "scored_rows.jsonl": "954ac696812cb139b9f9997e06cf83e1ec1082340e07bb64fc391edaa25ec2f6",
+        "errors.jsonl": "cb19841403e3ca91d8acbe64824aabc2cb111627a8acf0d4551b4ef45c9124ec",
+        "breakdown.csv": "9c9f1085985d551f4ceabedf14309babff48f277fec831d34be75edf874cb4da",
+        "original_groups.jsonl": "3df0274f1b401722972889dc09d13bbbb6e441811c465ed923700696ef52fd48"
+      }
+    },
+    "embspatial": {
+      "prediction_rows": 3640,
+      "distinct_image_inputs": 2141,
+      "official_groups": null,
+      "official_metrics": {
+        "total_questions": 3640,
+        "correct_answers": 2932,
+        "accuracy": 0.8054945054945055
+      },
+      "headline_counts": [
+        {
+          "benchmark": "embspatial",
+          "level": "overall",
+          "category": "All",
+          "metric": "correct",
+          "questions": 3640,
+          "correct": 2932,
+          "errors": 708,
+          "accuracy": 0.8054945054945055
+        }
+      ],
+      "parity": {
+        "probed_rows": 24,
+        "single_exact": 24,
+        "batch_exact": 24,
+        "mode": "cached_batch",
+        "batch_size": 4
+      },
+      "inference_seconds_excluding_model_load_and_parity": 716.4381390099879,
+      "peak_allocated_cuda_bytes": 20312842752,
+      "decode_modes": {
+        "cached_batch": 3640
+      },
+      "ungenerated_rows": 0,
+      "row_errors_under_either_parser": 708,
+      "official_replay_verified": true,
+      "input_manifest_has_no_gold_field": true,
+      "answers_loaded_in_predictor": 0,
+      "dataset_release": {
+        "repository": "Phineas476/EmbSpatial-Bench",
+        "revision": "e2733cacf0f20371518c687176e881d79644e61e",
+        "files": [
+          {
+            "file": "embspatial_bench.json",
+            "size": 253512493,
+            "sha256": "f9427218bb69afa218ca075e7efc1ca7a0a2379f87c0b55e4813ca19b9de0fa8"
+          }
+        ]
+      },
+      "scorer_sha256": "70560b4b44474482e720a854652d3cf8b22ecb1c39ea94ffb9f3140330cef397",
+      "upstream_scoring_script_sha256": "0c53685de78177dbe59b4c79e8dbc178d2f990e91019e922a3c13be71307c7ce",
+      "artifact_sha256": {
+        "predictions.jsonl": "a3a225b1a99de3deb14af75b669d616041a9ac492dd34c45e17aa473812eb1ae",
+        "inputs.jsonl": "aa8b7a00ddfacefae4761a8f9f141911fe9d4df2b9c4092d0bc159e2a552437d",
+        "runtime.json": "531afdcf32ac9d7d83df485068d49f07ab613505fa8f7eb492b6c171b47d1f3c",
+        "predictions_seal.json": "eeefa80ac619d30b01841aa09d1a1c03ebf9ee62f707dfd104ab7a2277db02ea",
+        "score_seal.json": "6d0b6b07e99091965db438ec91f599d554078d2fd3e5c539c6d12111fbab8af4",
+        "scored_rows.jsonl": "42d8dff65d0eef873b6aa87f89b4a1f4b99e1a887fdea6b4bbc72892e44bfbe8",
+        "errors.jsonl": "6528b9cc970e495964f87b82f82fff1811a9a960699bb408f96fcff5d2204db2",
+        "breakdown.csv": "6cf6baf0d61c5d9ac43e501432cb188189176135c7fd2d2b9b515dc0decebac1"
+      }
+    }
+  },
+  "runtime": {
+    "upstream_commits": {
+      "hispatial": "9b0a5718ed0fb3b8bd9d9e0b36b6192bd3e99be1",
+      "moge": "b942f00bdc2a2a23ebb474fbe034d487e6dcceec"
+    },
+    "assets": {
+      "hispatial": {
+        "repository": "lhzzzzzy/HiSpatial-3B",
+        "revision": "75a5e3d65351d7602c492aa91533f62b8a252604",
+        "files": {
+          "weights.pt": {
+            "size": 14688317615,
+            "sha256": "bb89a5ef3fb635f5e54a24836fb79d358678ca65999c6fa3ff4e6239ba1a3756"
+          },
+          "config.json": {
+            "size": 2630,
+            "git_blob_sha1": "194e460e72deaa837570a699208af84abdb0c93a"
+          },
+          "preprocessor_config.json": {
+            "size": 425,
+            "git_blob_sha1": "77bc692dcae67acc343539d9f0659d7de3c302b1"
+          },
+          "tokenizer.json": {
+            "size": 34600820,
+            "sha256": "172fab587d68c56b63eb3620057c62dfd15e503079ff7fce584692e3fd5bf4da"
+          },
+          "tokenizer_config.json": {
+            "size": 242627,
+            "git_blob_sha1": "439958637ea48c4bca26b67ef2cef82860e1a4d6"
+          },
+          "special_tokens_map.json": {
+            "size": 733,
+            "git_blob_sha1": "f48cea75e45286da1529fb88a24e851bc1a3c882"
+          }
+        }
+      },
+      "moge": {
+        "repository": "Ruicheng/moge-2-vitl-normal",
+        "revision": "cb0e8bbd6b1e243589717c78e750b1ba4c093acf",
+        "files": {
+          "model.pt": {
+            "size": 1323815904,
+            "sha256": "280741fd09bc3f403ccff9967784c2a391b52d2c0742ae3efdb21d9f90cc1a01"
+          }
+        }
+      }
+    },
+    "torch": "2.7.0+cu128",
+    "transformers": "4.50.0",
+    "cuda_device": "NVIDIA GeForce RTX 5090",
+    "pillow": "12.3.0",
+    "cv2": "4.11.0",
+    "precision": "float32",
+    "float32_matmul_tf32": false,
+    "max_new_tokens": 100,
+    "do_sample": false,
+    "frozen_parameters": true
+  },
+  "prediction_rows_total": 17176
+}

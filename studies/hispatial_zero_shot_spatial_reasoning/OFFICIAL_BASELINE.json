@@ -1,0 +1,36 @@
+{
+  "official_source": "https://github.com/microsoft/HiSpatial",
+  "hispatial_commit": "9b0a5718ed0fb3b8bd9d9e0b36b6192bd3e99be1",
+  "moge_source": "https://github.com/microsoft/MoGe",
+  "moge_commit": "b942f00bdc2a2a23ebb474fbe034d487e6dcceec",
+  "weights_manifest": "studies/3eed_hispatial_observation_audit_20261121/MODELS.json",
+  "weights": ["hispatial", "moge"],
+  "order": ["cv_bench", "3dsrbench", "embspatial"],
+  "datasets": {
+    "cv_bench": {
+      "repository": "nyu-visionx/CV-Bench",
+      "revision": "bc284db50d036958861cb60cdd7b77612052ce0d",
+      "files": ["test_3d.parquet", "test_2d.parquet"],
+      "official_entry": "eval/eval_cv_bench.py",
+      "scope": "All test 3D and only Relation from test 2D"
+    },
+    "3dsrbench": {
+      "repository": "ccvl/3DSRBench",
+      "revision": "5c90e422b68d0484d50a3ff06b3096ea7d288026",
+      "files": ["3dsrbench_v1_vlmevalkit_circular.tsv"],
+      "official_entry": "eval/eval_3dsrbench.py",
+      "scope": "All valid-column rows of the official circular TSV, grouped using the HiSpatial rule"
+    },
+    "embspatial": {
+      "repository": "Phineas476/EmbSpatial-Bench",
+      "revision": "e2733cacf0f20371518c687176e881d79644e61e",
+      "files": ["embspatial_bench.json"],
+      "official_entry": "eval/eval_emb_spatial.py",
+      "scope": "All original evaluation records"
+    }
+  },
+  "inference": {"precision": "float32", "max_new_tokens": 100, "do_sample": false, "image_size": 448},
+  "execution": "Per-benchmark answer-free parity probes compare cached and batched generation to the official single-query method, with automatic fallback to the exact single-query path on differences.",
+  "offline_scoring": "Official scripts are replayed on sealed generation text with model and image/depth I/O replaced by stubs. Compare detailed per-question scoring with those official metrics. The GPU runner reads only projected questions, options, and images.",
+  "training": false
+}
