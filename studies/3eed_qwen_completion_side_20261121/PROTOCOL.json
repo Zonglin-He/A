@@ -1,0 +1,23 @@
+{
+  "study": "Can measured region spans identify the unobserved end of a frozen box?",
+  "parent": "3eed_qwen_four_scale_recording_confirmation_20261121",
+  "parent_prediction_seal_sha256": "205e1b46f96a1076a359b6b3dea9ff18b44116825a9f13575587bb21bbd6415f",
+  "population": "All 416 distinct ordinary frames in the parent roster, once per frame. Retain every unselected region, missing prediction, invalid response and negative case. Ordinary Validation and recording extension remain labelled, with original recording separation.",
+  "frozen": "Parent H = C_E_Qsize. Reuse its original RGB window, selected physical support, output dimensions and axial yaw. No resampling, new detections or extent fitting. Precompletion sizes come from parent sensor-coordinate Qwen prior, aligned to the measured PCA axes as in regions.complete().",
+  "axis": "One horizontal axis per selected frame, chosen before prompts: the larger difference between H extent and measured point span (metres); tie uses first stored PCA axis. Vertical position is fixed. At <=1e-6 m of slack hold the original box. Compute and record all four prompt responses for every usable selection including zero slack.",
+  "frame": "Signed internal axis is the frozen box axis or its perpendicular. All arms have the same calibrated image-direction and optical-depth legend for + versus -, and the same tested/other-axis ordering. No support outline, projected support location, 3D center, original completion side, or platform name in any prompt.",
+  "arms": {
+    "H": "Unmodified sealed C_E_Qsize. No new inference.",
+    "A": "Original RGB crop and referring sentence; shared axis legend; no numeric extent hint.",
+    "B": "A plus actual LiDAR support spans in metres on tested, other horizontal and vertical axes and two ratios. Vertical span is between physical returns, excluding terrain extension.",
+    "C": "A plus frozen completed box sizes in the same axis order, units, precision and ratios.",
+    "D": "A plus original precompletion Qwen dimensions aligned to the same axes. C and D use exactly the same hint wording and format; only numbers may differ."
+  },
+  "readout": "Greedy frozen Qwen3-VL-4B-Instruct, pinned revision ebb281ec70b05090aa6165b016eac8ec08e71b17. Same crop with original Qwen 2D window padded by 12.5 percent on each side, original text quoted as data, same decoding and options. Each call chooses positive, negative, balanced or unknown. Malformed answers and undefined calibrated axes abstain.",
+  "geometry": "For support interval [l,h], midpoint m, fixed extent d, measured span s, selected-axis center is m + eta*(d-s)/2 with eta = +1/-1/0 for positive/negative/balanced. Keep the other two center components fixed. Unknown means exact parent box, distinct from balanced. Snap sub-micrometre roundoff to parent. All three possible boxes materialized before scoring for diagnostic oracle.",
+  "measurement": "Seal geometry, raw response hashes and decoded predictions before reading ordinary target labels. Strict oriented IoU >0.50; also >0.25 and mIoU. Report platform-specific and three-platform equal-weight rates, pooled counts, all gains/losses against H and directly for B-A and C-D, and paired recording-cluster bootstrap. GT best among H and three locked offsets is diagnostic only.",
+  "interpretation": "A numeric span describes extent, with no sign information by itself. Incremental support requires better task decisions in a matched comparison. Compare center changes, fallback coverage, threshold crossings and recovered oracle opportunities. No target-label selection or retuning.",
+  "source_training": false,
+  "target_updates": false,
+  "FINAL_access": false
+}
