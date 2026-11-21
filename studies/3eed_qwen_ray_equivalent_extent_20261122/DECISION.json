@@ -1,0 +1,160 @@
+{
+  "study_type": "locked_method_candidate",
+  "decision": "admit_ray_equivalent_extent_as_research_candidate",
+  "inference": "live.py:predict",
+  "method": "ray_equivalent_extent",
+  "shadow_method_lock_sha256": "20c52cb77721f69403237154ad3588f7282a14f29bf90a127e6c5835ddece3c5",
+  "main_method": "C_ray_simple",
+  "main_method_lock_sha256": "8224823efab925bb73e2fd058adfda9389b59d0bb6d0660e015d6249f88acc3b",
+  "descriptions": 9310,
+  "production_applicable": 5910,
+  "corrected": 5904,
+  "macro_metrics_percent": {
+    "baseline": {
+      "acc25": 53.708334950112246,
+      "acc50": 34.40889469558785,
+      "miou": 32.25597127315853
+    },
+    "intrinsic": {
+      "acc25": 53.97973065649152,
+      "acc50": 37.32092571114798,
+      "miou": 33.834648670813856
+    },
+    "support_only": {
+      "acc25": 54.15112201488375,
+      "acc50": 37.44487911835459,
+      "miou": 33.9898027762107
+    },
+    "full_or_stay": {
+      "acc25": 54.10575862845186,
+      "acc50": 37.35713118403388,
+      "miou": 33.85409885845303
+    },
+    "ray_equivalent": {
+      "acc25": 54.15424720902459,
+      "acc50": 37.47132015484322,
+      "miou": 34.01304384562576
+    }
+  },
+  "delta_acc50_pp": 3.0624254592553743,
+  "delta_miou_pp": 1.7570725724672003,
+  "rescues50": 273,
+  "harms50": 13,
+  "held_rays_preserved": 687409,
+  "audit_rays": 687828,
+  "audit_rays_changed": 473,
+  "scope": "previously exposed Ordinary Validation and locked Ordinary TRAIN extension",
+  "extension": {
+    "pooled": {
+      "n": 128,
+      "recordings": 4,
+      "changed": 42,
+      "applicable": 43,
+      "baseline": {
+        "acc25": 49.21875,
+        "acc50": 17.1875,
+        "miou": 23.659215924987063
+      },
+      "ray_equivalent": {
+        "acc25": 51.5625,
+        "acc50": 19.53125,
+        "miou": 25.681526138949483
+      },
+      "rescue50": 4,
+      "harm50": 1
+    },
+    "drone": {
+      "n": 64,
+      "recordings": 2,
+      "changed": 25,
+      "applicable": 26,
+      "baseline": {
+        "acc25": 51.5625,
+        "acc50": 23.4375,
+        "miou": 26.22543378444685
+      },
+      "ray_equivalent": {
+        "acc25": 54.6875,
+        "acc50": 28.125,
+        "miou": 29.94664904686027
+      },
+      "rescue50": 4,
+      "harm50": 1
+    },
+    "quad": {
+      "n": 64,
+      "recordings": 2,
+      "changed": 17,
+      "applicable": 17,
+      "baseline": {
+        "acc25": 46.875,
+        "acc50": 10.9375,
+        "miou": 21.09299806552727
+      },
+      "ray_equivalent": {
+        "acc25": 48.4375,
+        "acc50": 10.9375,
+        "miou": 21.416403231038704
+      },
+      "rescue50": 0,
+      "harm50": 0
+    }
+  },
+  "matched_axis_controls": {
+    "uniform": {
+      "delta_acc50_pp": 0.5771933778082445,
+      "delta_miou_pp": 0.7094046881655168,
+      "recording_resampling": {
+        "acc25": [
+          -0.04643682572197855,
+          0.302209223201651
+        ],
+        "acc50": [
+          0.07569540404344918,
+          0.7026716525886824
+        ],
+        "miou": [
+          0.5272456487713909,
+          0.8241614382103156
+        ]
+      }
+    },
+    "height_first": {
+      "delta_acc50_pp": 0.07402534327203333,
+      "delta_miou_pp": 0.12386485753091894,
+      "recording_resampling": {
+        "acc25": [
+          -0.15742053100075482,
+          0.03462330846634582
+        ],
+        "acc50": [
+          -0.06962617369130522,
+          0.13726575979828626
+        ],
+        "miou": [
+          0.08790170399218214,
+          0.1416994058040097
+        ]
+      }
+    }
+  },
+  "recording_resampling": {
+    "acc25": [
+      0.05592530864021229,
+      0.654588374931111
+    ],
+    "acc50": [
+      0.5274837663327224,
+      3.5420199097885368
+    ],
+    "miou": [
+      0.9585747215404483,
+      1.9776631380070138
+    ]
+  },
+  "no_new_Qwen_or_training": true,
+  "training": false,
+  "new_Qwen_queries": 0,
+  "FINAL_access": false,
+  "production_prediction_changes": 0
+}

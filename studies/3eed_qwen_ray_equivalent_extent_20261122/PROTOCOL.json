@@ -1,0 +1,23 @@
+{
+  "study": "Ray-equivalent removal of tilt-induced upright box padding",
+  "scope": "All 9310 descriptions of the same previously exposed Ordinary Validation cohort. Use the 5910 current vehicle ray-branch predictions and preserve the 3400 fallbacks.",
+  "baseline_method_commit": "f3d5239e43b19081e4a60ba37664d3b4aba0a3a2",
+  "frozen_method_sha256": "8224823efab925bb73e2fd058adfda9389b59d0bb6d0660e015d6249f88acc3b",
+  "mechanism": "Separate intrinsically predicted object dimensions from the padding introduced when the rotated 9D prediction is replaced by a yaw-only outer envelope. Remove padding only as far as preserves the original predicted ray hits, first intersections and previously enclosed target points.",
+  "intrinsic_prior": "The raw 9D dimension most aligned with sensor vertical supplies intrinsic height. Sort the two remaining dimensions into long and short. Only reductions relative to the locked extents are permitted. Keep the locked yaw, nearer outer faces, midpoint on horizontal axes containing the camera and the original estimated ground-contact bottom.",
+  "positive_points": "The selected Fit region and original Selection measurements inside the incumbent box remain inside. For every originally hit Selection ray, preserve its incumbent synthetic entry point as well. All cases with no originally hit ray or a camera origin inside the incumbent default to the original prediction across arms. The latter respects the original scorer's exclusion of rays that start inside the box.",
+  "solver": "Each lower or upper wall moves inward linearly toward the intrinsic dimension. A protected point limits motion of each wall. Take the maximum permitted reduction independently for each axis, with a 1e-8 m outward numerical margin. Nested containment and preservation of earlier hits certify exact original entry depths, verified against the locked depth trace.",
+  "arms": {
+    "intrinsic": "Apply the full extent reduction and retained-anchor rule without evidence constraints.",
+    "support_only": "Maximal extent reduction conditioned on preservation of the measured in-box returns only.",
+    "full_or_stay": "Take the same full intrinsic reduction only if it preserves both measured and incumbent synthetic intersection points. Otherwise keep the locked box.",
+    "ray_equivalent": "Maximal per-axis extent reduction subject to both constraints. This is the proposed arm."
+  },
+  "audit": "Use the already defined untouched third split to measure held-out optical first-depth changes and measured point containment. It does not select variants or change their extents. The optical-ray proxy follows C_ray_simple, not a claim about LiDAR emitter provenance.",
+  "evaluation": "Seal candidates and consistency diagnostics before reading existing ordinary GT for changed descriptions. Report paired Acc@25/50, mIoU, per-platform and recording outcomes, changed prediction count, padding removed, and exact agreement on the original and audit rays. Candidate scores are development evidence.",
+  "admission": "Check nonnegative macro Acc@50 and mIoU and assess each platform and matched controls. The registered production method is kept fixed during the study.",
+  "new_Qwen_queries": 0,
+  "training": false,
+  "FINAL_access": false,
+  "production_prediction_changes": 0
+}

@@ -1,0 +1,15 @@
+{
+  "study": "Equal-volume controls for ray-equivalent intrinsic extent correction",
+  "cohort": "The same 9310 exposed Ordinary Validation descriptions, with exactly the same changed cases and retained volume per description as the sealed ray-equivalent correction.",
+  "scope": "Post-result mechanism audit, with control formulas fixed before their candidate generation and scoring. No choice or fit from any target GT.",
+  "fixed": ["incumbent box and yaw", "face anchoring convention and contact bottom", "measured inlier and original first-entry constraints", "relative volume of the corrected box on every description", "non-edited and fallback descriptions"],
+  "controls": {
+    "uniform": "At a common dimension-relative shrink fraction, saturate each axis at its independently computed feasible maximum. Solve for the fraction that exactly matches the proposed box volume.",
+    "height_first": "Remove volume from height up to its feasible limit, then distribute any remaining contraction with equal feasible fractions along the two horizontal axes. Match the proposed volume exactly."
+  },
+  "comparison": "Use the sealed ray-equivalent proposal plus the two matched controls. Verify preserved measurements, identical original Selection hits and first depths, and held-out Audit differences before scoring. Compare Acc@50 and mIoU with the development baseline and across the three axis allocations.",
+  "new_Qwen_queries": 0,
+  "training": false,
+  "FINAL_access": false,
+  "production_prediction_changes": 0
+}

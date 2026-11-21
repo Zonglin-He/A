@@ -1,0 +1,21 @@
+{
+  "study": "Geometry of connected support deletion at an active amodal anchor",
+  "goal": "Test whether a connected part of the selected target region can misplace the horizontal anchor, and whether intervening on this part generalizes to untouched returns beyond equal-count endpoint deletion.",
+  "baseline_commit": "0acf38c81a996c78b3001f56913d82cf314f61bd",
+  "frozen_method_sha256": "8224823efab925bb73e2fd058adfda9389b59d0bb6d0660e015d6249f88acc3b",
+  "cohort": "All 9310 previously exposed Ordinary Validation descriptions. Use the original 5910 applicable branches and keep the 3400 deployed fallbacks.",
+  "fixed": ["Qwen replies and road-vehicle gate", "the original chosen 3D pose, yaw, dimensions and vertical center", "Fit sample and region winner", "fit/selection/audit cell partition", "camera-ray first-entry loss and clipping threshold"],
+  "intervention": "In the selected Fit component find the immediately finer partition. Consider deleting only a labeled child that owns all supporting points of at least one active horizontal anchor extreme. Keep at least five original central Fit cells attached to retained support. Recompute both horizontal anchor components using the frozen rule and the retained support.",
+  "controls": {
+    "tail": "For each admissible connected deletion remove the same number of Fit points from the active directional extremum by ordinary axis rank. The original five-central-cell constraint also applies.",
+    "axis": "For each connected deletion apply just the first active component of its horizontal shift in the incumbent box basis. Use the same proposed owner and score budget.",
+    "selection_only": "Select a connected deletion using the original Selection rays without the second check, quantify whether the same proposal survives on Audit."
+  },
+  "score": "Compare every family to the frozen box with the same original Selection ray mask. For the main and matched controls change the box only if its Selection winner also reduces the same clipped error on at least five independent original-region Audit cells. Both masks are kept intact after deletion. Ties retain the baseline. No extra center or metric tuning.",
+  "evaluation": "Seal all candidates and label-free choices before opening the existing Ordinary GT, for active descriptions with new hypotheses only. Reuse archived original task IoUs and report paired Acc@25, Acc@50, mIoU, platform and recording strata, candidate ceilings, rescues and harms. GT candidate ceilings are solely diagnostic.",
+  "interpretation": "Keep the baseline as the production method. Claim preliminary mechanism support only if the main arm maintains Acc@50 and mIoU and provides a distinguishable advantage over same-information endpoint and axis controls. A positive candidate ceiling alone establishes geometry opportunities.",
+  "source_training": false,
+  "new_Qwen_queries": 0,
+  "FINAL_access": false,
+  "production_prediction_changes": 0
+}
