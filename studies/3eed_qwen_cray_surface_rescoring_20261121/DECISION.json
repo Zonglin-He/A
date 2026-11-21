@@ -1,0 +1,110 @@
+{
+  "study_type": "fixed_candidate_score_comparison",
+  "scope": "previously exposed Ordinary Validation",
+  "descriptions": 9310,
+  "recordings": 98,
+  "active_pairs": 5910,
+  "main_method": "C_ray_simple",
+  "main_method_lock_sha256": "8224823efab925bb73e2fd058adfda9389b59d0bb6d0660e015d6249f88acc3b",
+  "decision": {
+    "interval": "closed_negative",
+    "fit_offset": "limited_positive_development_evidence_not_adopted"
+  },
+  "rationale": "Interval scoring loses many original rescues through weak discrimination. Fit offsets recover some first-surface errors, with a small net increase, a recording resampling interval spanning zero, and losses on Waymo and other motor vehicles.",
+  "macro_percent": {
+    "first": {
+      "acc25": 53.708334950112246,
+      "acc50": 34.40889469558785,
+      "miou": 32.25597127315853
+    },
+    "interval": {
+      "acc25": 52.711289341658464,
+      "acc50": 30.663226459454552,
+      "miou": 30.728897605758615
+    },
+    "fit_offset": {
+      "acc25": 54.29212108639852,
+      "acc50": 34.67255404654516,
+      "miou": 32.45662430120012
+    }
+  },
+  "paired_vs_first": {
+    "interval": {
+      "delta_acc25_pp": -0.9970456084537851,
+      "delta_acc50_pp": -3.7456682361332936,
+      "delta_miou_pp": -1.52707366739991,
+      "rescue50": 138,
+      "harm50": 481,
+      "recording_resample_interval_pp": {
+        "acc25": [
+          -1.476070054588108,
+          0.7278930838381404
+        ],
+        "acc50": [
+          -4.507235932186168,
+          -1.2927692311127632
+        ],
+        "miou": [
+          -1.8251266507145087,
+          -0.4675047876471557
+        ]
+      }
+    },
+    "fit_offset": {
+      "delta_acc25_pp": 0.5837861362862677,
+      "delta_acc50_pp": 0.2636593509573179,
+      "delta_miou_pp": 0.2006530280415903,
+      "rescue50": 142,
+      "harm50": 123,
+      "recording_resample_interval_pp": {
+        "acc25": [
+          0.22424952063084286,
+          0.7863917550465641
+        ],
+        "acc50": [
+          -0.20835037259178402,
+          0.4949565425009742
+        ],
+        "miou": [
+          -0.009921574099639311,
+          0.3054495036518065
+        ]
+      }
+    }
+  },
+  "original_cases": {
+    "both_pass": 1501,
+    "original_correct_pca": 669,
+    "neither_pass": 2769,
+    "original_harm": 64,
+    "missed_qwen": 284,
+    "original_rescue": 623
+  },
+  "case_accounting": {
+    "first": {
+      "rescue_kept": 623,
+      "harm_fixed": 0,
+      "missed_recovered": 0,
+      "new_harms": 0
+    },
+    "interval": {
+      "rescue_kept": 213,
+      "harm_fixed": 59,
+      "missed_recovered": 79,
+      "new_harms": 71
+    },
+    "fit_offset": {
+      "rescue_kept": 515,
+      "harm_fixed": 42,
+      "missed_recovered": 100,
+      "new_harms": 15
+    }
+  },
+  "offset_supported_pairs": 5897,
+  "score_seal_sha256": "0326d0637773fd75d0c7ca75793d854e6a015b5033a2dbe8918a2523d8791cf0",
+  "evaluation_receipt_sha256": "b070c24d73dd242c6c927a4c722638b97224a4b1b1a546c569321afd420a3bed",
+  "training": false,
+  "new_Qwen_queries": 0,
+  "additional_GT_file_reads": 0,
+  "FINAL_access": false
+}

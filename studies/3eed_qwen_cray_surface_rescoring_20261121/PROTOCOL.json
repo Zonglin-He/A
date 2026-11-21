@@ -1,0 +1,23 @@
+{
+  "study": "Frozen first-surface, interval, and Fit-offset ray rescoring",
+  "scope": "The same 9310 previously exposed Ordinary Validation descriptions. Rescore only the 5910 actual C_ray_simple ray-branch pairs sealed in the preceding Selection audit at 0c38b7a8e6b73604cff980f29c3b1571664b6351.",
+  "fixed": ["Qwen replies", "2D motor-vehicle gate", "original four scales and fit region", "both candidate boxes", "Selection returns", "minimum Selection count", "non-ray fallback", "tie breaks to PCA"],
+  "arms": {
+    "first": "Original clipped absolute optical-depth error to the first entry. Cost one for a miss.",
+    "interval": "Clipped distance from the observed depth to the forward ray interval of the same candidate. Cost one for a miss.",
+    "fit_offset": "One nonnegative offset per box, the median observed-minus-entry depth over a common Fit-hit mask, clipped at the median Fit thickness. Per Selection ray clip the shifted predicted depth at the back of the candidate interval. Same clipped absolute loss and miss penalty as first."
+  },
+  "fit_rules": {
+    "association": "Use the original region winner and its transfer rule. Fit cells are nearest visible rays in the frozen 2D window with split 0, assigned to the same region. Do not double-count central-crop cells.",
+    "common_hit": "Keep identical Fit cells for both estimates by requiring a forward intersection with both candidates. Require at least 5 such cells, otherwise set both offsets to zero.",
+    "independence": "Rebuild and compare the original held Selection rays exactly. Fit and Selection have disjoint cell indices. No observed Selection depth participates in offset estimation.",
+    "tuning": "One prespecified median estimator. No threshold or parameter sweep."
+  },
+  "primary": "Paired strict Acc@50 and mIoU on the entire ordinary roster. Report three-platform macro values, platform/category groups, all recording outcomes, and counts among the existing 64 harms, 623 rescues, 284 missed Qwen rescues and the PCA-correct residual cohort.",
+  "secondary": ["Acc@25", "PCA/Qwen choices", "ties", "ray hits and misses", "Fit common-hit and bounded-offset coverage", "recording bootstrap intervals"],
+  "evaluation": "After sealing the three choices, join the archived candidate IoUs from the validated previous audit by description. No additional ground-truth file reads are needed.",
+  "decision": "Keep the running main method C_ray_simple. Stop development of an alternative that lowers primary performance under this fixed comparison.",
+  "new_Qwen_queries": 0,
+  "training": false,
+  "FINAL_access": false
+}
