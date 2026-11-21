@@ -1,0 +1,14 @@
+{
+  "prior_experiment_commit": "b35360cbf64a61ad2e50b5477945a6c718efe7b4",
+  "scope": {"benchmark": "EmbSpatial-Bench close and far", "questions": 1206, "physical_frames": 897},
+  "inputs": "Sealed 448x448 aligned MoGe-2 maps, source RGB, complete physical candidate bank, and original HiSpatial/marked prototype outputs from the same rows.",
+  "candidate_geometry": "Rebuild the complete candidate bank with the exact prior four-scale algorithm. Use the same fine XYZ continuity and valid-pixel rule as the prior region readout for all candidates.",
+  "oracle_primary": "For every concrete option, use its annotated rectangle to compute IoU with each refined candidate envelope. Choose the one-to-one assignment with maximum total IoU subject to all assigned IoUs >= 0.25. Candidate rows follow the checkpointed enumeration. No depth value or gold answer is used in assignment.",
+  "same_binding_readouts": "On the same assignment, compare mean camera Z in the candidate's refined support mask versus its enclosing rectangular window. The GT Box arm uses mean valid Z inside the annotated rectangle.",
+  "decision": "Use argmin or argmax of the concrete options, with tie tolerance 0.000001. Keep the prior original answer for both oracle arms if the assignment is infeasible or either depth readout is invalid or tied. GT Box uses its own coverage and the same tie/fallback rule. The abstract Unknown option remains in official scoring.",
+  "fixed_sensitivities": ["Per-option maximum IoU at 0.25 with same distinct-ID and fallback rules", "Joint maximum IoU with positive overlap", "Joint maximum IoU at 0.50"],
+  "scores": "Replay official EmbSpatial scores on the sealed responses. Report all questions, common eligible questions, source/near/far slices, and paired scene-cluster intervals. GT used for offline diagnosis only.",
+  "stage_gate": "Continue to frozen single-highlight verification on the fixed 96-question panel only if primary Oracle Region improves over the original HiSpatial on all 1206 records and the lower 95% paired scene-cluster bound is positive.",
+  "new_model_calls": 0,
+  "training_steps": 0
+}

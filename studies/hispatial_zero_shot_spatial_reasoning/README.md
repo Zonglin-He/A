@@ -55,6 +55,8 @@ GPU 端读取分离的图像、问题、选项和行 ID。每套先用 24 道题
 - 先按对象定位、空间几何读取和关系推理分析错误。几何输入诊断可在开发样本上比较原始 MoGe、错配 XYZ 和仅 RGB 条件。有真值深度时，将它作为单独标明的诊断条件。
 - 用开发数据形成无训练的推理方法。确定方法后在未参与选型的评测范围复核，与官方基线及同预算对照比较，并记录模型调用次数、运行时间和显存。
 
+[单区域语义核验与 Oracle 报告](REGION_VERIFICATION_ZH.md)记录 EmbSpatial 近／远题上物理区域匹配、同区矩形读出和联合绑定的配对结果。
+
 ## 分支状态
 
 本次基线复跑在 `research/hispatial-zero-shot-spatial-reasoning` 登记。分支从 `Zonglin-He/A` 的 `main` 提交 `5a39e13ff2ee073c137e378a5b5780ac3fd7cce2` 建立。 [分支起点](https://github.com/Zonglin-He/A/commit/5a39e13ff2ee073c137e378a5b5780ac3fd7cce2)

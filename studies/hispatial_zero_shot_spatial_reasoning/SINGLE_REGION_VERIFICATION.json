@@ -1,0 +1,21 @@
+{
+  "parent_commit": "b35360cbf64a61ad2e50b5477945a6c718efe7b4",
+  "stage_rationale": "The primary distinct Oracle with box IoU >= 0.25 did not pass its prespecified interval gate. The literal independent maximum-IoU Oracle with native fallback, stricter-IoU sensitivity, and GT-box geometry all support potential. Limit this exploratory mechanism check to the existing marked panel.",
+  "panel": "The same 96 marker-order questions and 379 concrete choices. Use exactly the original displayed candidate sets, with up to eight per image.",
+  "models": "Frozen HiSpatial-3B and the same aligned cached MoGe-2 pointmaps",
+  "training_steps": 0,
+  "positive_prompt": "Does the highlighted region correspond to the object named {name}? Answer with only Yes or No.",
+  "complement_prompt": "Is the highlighted region an object other than the one named {name}? Answer with only Yes or No.",
+  "score": "First-token log p(Yes) minus log p(No), using canonical no-leading-space tokens. Keep the original RGB context and XYZ and mark exactly one region with the original first overlay color and no letters.",
+  "primary": "Joint assignment using positive-prompt log odds, one choice per physical group, independently zero-scored rejection for each choice. Per-group score is the best matching member's log odds.",
+  "physical_groups": "Connected components of overlapping fixed display masks, using the parent shortlist's strict IoU > 0.50 or containment > 0.65. No region is removed from scoring.",
+  "controls": {
+    "individual": "Raw positive likelihood ranking before rejection, then independent choice with zero-log-odds rejection",
+    "complement": "Reversed complement score and sign agreement. Joint readout with half the difference is diagnostic.",
+    "swapped": "Rotate concrete option names within each question by one fixed step and reassign those score rows to the original choices",
+    "unrelated": "Offline same-choice candidates with box IoU <= 0.05, paired against box IoU >= 0.25",
+    "budget": "The parent grouped control used 1462 logical model calls. Score the first three geometry-ranked marked proposals per concrete choice, and the fourth for 325 choices chosen by stable hash. Evaluate only the same 1462 positive score records. Record candidate exposure separately."
+  },
+  "question_gate": "Primary joint scoring must exceed the matched prior grouped 81/379 object hits at box IoU >= 0.25 and exceed its 0/96 all-concrete-correct questions. Only then evaluate the sealed geometric QA readout with the official scorer. Keep all rows and report the fixed controls.",
+  "data_access": "Predict from sealed answer-free input only. Grade bindings after predictions and readouts are sealed. Use the official answer only in the final offline QA evaluation."
+}

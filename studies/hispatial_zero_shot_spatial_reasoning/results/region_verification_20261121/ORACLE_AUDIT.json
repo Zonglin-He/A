@@ -1,0 +1,114 @@
+{
+  "independent_assignment_replay_matches": {
+    "primary": 1206,
+    "independent25": 1206,
+    "positive_overlap": 1206,
+    "strict50": 1206
+  },
+  "scopes": {
+    "both": {
+      "count": 829,
+      "correct": {
+        "original_hispatial": 554,
+        "oracle_region": 598,
+        "oracle_window": 590,
+        "independent25_region": 598,
+        "gt_box": 620
+      }
+    },
+    "joint_only": {
+      "count": 141,
+      "correct": {
+        "original_hispatial": 82,
+        "oracle_region": 64,
+        "oracle_window": 66,
+        "independent25_region": 82,
+        "gt_box": 96
+      }
+    }
+  },
+  "paired_sensitivity": [
+    {
+      "from_condition": "original_hispatial",
+      "to_condition": "independent25_region",
+      "metric": "correct",
+      "n": 1206,
+      "from_correct": 786,
+      "to_correct": 830,
+      "both_right": 695,
+      "rescued": 135,
+      "harmed": 91,
+      "both_wrong": 285,
+      "delta_pp": 3.6484245439469323,
+      "scene_clusters": 200,
+      "ci95_pp": [
+        0.19672652153186082,
+        6.763249178327881
+      ]
+    },
+    {
+      "from_condition": "original_hispatial",
+      "to_condition": "positive_overlap_region",
+      "metric": "correct",
+      "n": 1206,
+      "from_correct": 786,
+      "to_correct": 806,
+      "both_right": 618,
+      "rescued": 188,
+      "harmed": 168,
+      "both_wrong": 232,
+      "delta_pp": 1.658374792703151,
+      "scene_clusters": 200,
+      "ci95_pp": [
+        -2.838729950069764,
+        5.5111821086261985
+      ]
+    },
+    {
+      "from_condition": "original_hispatial",
+      "to_condition": "strict50_region",
+      "metric": "correct",
+      "n": 1206,
+      "from_correct": 786,
+      "to_correct": 811,
+      "both_right": 769,
+      "rescued": 42,
+      "harmed": 17,
+      "both_wrong": 378,
+      "delta_pp": 2.0729684908789388,
+      "scene_clusters": 200,
+      "ci95_pp": [
+        0.6725228906485552,
+        3.4458623165086513
+      ]
+    }
+  ],
+  "source_predictions_sha256": "d840d4077f541180863996bc6e7ebaae96730fae7670f4e46b42cc0fe4bab677",
+  "additional_official_scoring_replays": {
+    "independent25_region": {
+      "matches": 1206,
+      "correct": 830
+    },
+    "independent25_window": {
+      "matches": 1206,
+      "correct": 822
+    },
+    "positive_overlap_region": {
+      "matches": 1206,
+      "correct": 806
+    },
+    "positive_overlap_window": {
+      "matches": 1206,
+      "correct": 799
+    },
+    "strict50_region": {
+      "matches": 1206,
+      "correct": 811
+    },
+    "strict50_window": {
+      "matches": 1206,
+      "correct": 809
+    }
+  },
+  "official_source_sha256": "0c53685de78177dbe59b4c79e8dbc178d2f990e91019e922a3c13be71307c7ce"
+}
