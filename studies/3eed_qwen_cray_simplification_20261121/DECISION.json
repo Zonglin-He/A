@@ -1,0 +1,124 @@
+{
+  "main_method": "C_ray_simple",
+  "main_arm": "simple4",
+  "status": "passed_and_adopted",
+  "extra_arm": "simple2",
+  "extra_arm_status": "measured_comparison_only",
+  "target_descriptions": 9310,
+  "recordings": 98,
+  "platform_macro_percent": {
+    "current": {
+      "acc25": 53.708334950112246,
+      "acc50": 34.40008101675831,
+      "miou": 32.251735601699146
+    },
+    "simple4": {
+      "acc25": 53.708334950112246,
+      "acc50": 34.40889469558785,
+      "miou": 32.25597127315853
+    },
+    "simple2": {
+      "acc25": 52.15063870616666,
+      "acc50": 32.586905883813145,
+      "miou": 31.28071278369353
+    }
+  },
+  "class_acc50_percent": {
+    "bus": {
+      "current": 81.81818181818183,
+      "simple4": 81.81818181818183,
+      "simple2": 81.81818181818183
+    },
+    "car": {
+      "current": 41.55605761084439,
+      "simple4": 41.57017791584298,
+      "simple2": 39.04264332109574
+    },
+    "cyclist": {
+      "current": 61.038961038961034,
+      "simple4": 61.038961038961034,
+      "simple2": 61.038961038961034
+    },
+    "othervehicle": {
+      "current": 20.0,
+      "simple4": 20.0,
+      "simple2": 20.0
+    },
+    "pedestrian": {
+      "current": 20.125482625482626,
+      "simple4": 20.125482625482626,
+      "simple2": 20.125482625482626
+    },
+    "truck": {
+      "current": 44.44444444444444,
+      "simple4": 44.44444444444444,
+      "simple2": 46.03174603174603
+    }
+  },
+  "paired_macro": [
+    {
+      "group": "macro",
+      "value": "all",
+      "arm": "simple4",
+      "reference": "current",
+      "n": "9310",
+      "recordings": "98",
+      "better_iou": "2",
+      "worse_iou": "0",
+      "same_iou": "9308",
+      "delta_acc25_pp": "0.0",
+      "delta_acc50_pp": "0.008813678829543451",
+      "delta_miou_pp": "0.00423567145939099",
+      "rescue25": "0",
+      "harm25": "0",
+      "rescue50": "1",
+      "harm50": "0"
+    },
+    {
+      "group": "macro",
+      "value": "all",
+      "arm": "simple2",
+      "reference": "simple4",
+      "n": "9310",
+      "recordings": "98",
+      "better_iou": "255",
+      "worse_iou": "428",
+      "same_iou": "8627",
+      "delta_acc25_pp": "-1.557696243945593",
+      "delta_acc50_pp": "-1.8219888117747003",
+      "delta_miou_pp": "-0.9752584894650029",
+      "rescue25": "38",
+      "harm25": "193",
+      "rescue50": "28",
+      "harm50": "206"
+    },
+    {
+      "group": "macro",
+      "value": "all",
+      "arm": "simple2",
+      "reference": "current",
+      "n": "9310",
+      "recordings": "98",
+      "better_iou": "257",
+      "worse_iou": "428",
+      "same_iou": "8625",
+      "delta_acc25_pp": "-1.557696243945593",
+      "delta_acc50_pp": "-1.8131751329451569",
+      "delta_miou_pp": "-0.9710228180056122",
+      "rescue25": "38",
+      "harm25": "193",
+      "rescue50": "29",
+      "harm50": "206"
+    }
+  ],
+  "scope": "previously exposed Ordinary Validation",
+  "training": false,
+  "new_Qwen_queries": 0,
+  "FINAL_access": false,
+  "independent_recording_generalization": "pending_data",
+  "receipts": {
+    "studies/3eed_qwen_cray_simplification_20261121/results/verification.json": "53f5f9c04991af3c1c6dd250bb1c4b6b06afeb1f224cc560c8b43bbf3a2f9458",
+    "studies/3eed_qwen_cray_simplification_20261121/results/evaluation_receipt.json": "b4fa1ca59ba47bbf971a1797534f6bd0b4aa413aa996769b417eb0c01fcbb9f4",
+    "studies/3eed_qwen_cray_simplification_20261121/results/prediction_seal.json": "e01b91d7dcf86f05f37c6d10108dbe531c45e512d8397795b3c9971735ee7902"
+  }
+}

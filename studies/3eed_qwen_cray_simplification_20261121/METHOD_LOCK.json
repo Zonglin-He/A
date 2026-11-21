@@ -1,0 +1,42 @@
+{
+  "method": "C_ray_simple",
+  "prior_method": "C_ray_applicable",
+  "entry": {
+    "file": "studies/3eed_qwen_cray_simplification_20261121/cray_simple.py",
+    "function": "predict",
+    "sha256": "c533d62d7e077e76cd12531bf1ea5e66761407aeabd7b28a08997a6fca2b56ca"
+  },
+  "parent_lock": {
+    "file": "studies/3eed_qwen_cray_category_balance_20261121/METHOD_LOCK.json",
+    "sha256": "fa618076a409d13df08f741b1437e53f39413fbe8d9c0482b03dbde5dd8a8821"
+  },
+  "model": {
+    "name": "Qwen/Qwen3-VL-4B-Instruct",
+    "revision": "ebb281ec70b05090aa6165b016eac8ec08e71b17"
+  },
+  "vehicle_scales": [
+    0,
+    2,
+    5,
+    7
+  ],
+  "fallback_scales": [
+    0,
+    2,
+    5,
+    7
+  ],
+  "extra_experiment_vehicle_scales": [
+    0,
+    7
+  ],
+  "extra_experiment_deployed": false,
+  "gate": "valid Qwen 2D road-vehicle label and at least five independent region-linked selection rays",
+  "box_prior": "dimensions and heading of the frozen Qwen 3D prediction",
+  "region_vote": "h squared divided by exposure",
+  "ray_score": "sum of clipped absolute optical-depth errors over the same held-out rays",
+  "fallback": "four-scale H and its original A fallback",
+  "verifier": "studies/3eed_qwen_cray_simplification_20261121/results/verification.json",
+  "target_updates": 0,
+  "FINAL_access": false
+}
