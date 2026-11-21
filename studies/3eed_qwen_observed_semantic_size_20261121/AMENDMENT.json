@@ -1,0 +1,12 @@
+{
+  "stage": "Parser repair before any task scoring. The initial greedy reads showed that Qwen sometimes returns a registered subtype in the category slot. The signed experiment design, model, taxonomy, cohorts, original completion operator, and four arms stay as specified in PROTOCOL.json. Preserve all initial model replies and their committed hashes.",
+  "rules": [
+    "Keep a valid two-field category/subtype answer.",
+    "Keep a valid coarse category and use subtype unknown when the supplied subtype is outside that category's fixed vocabulary.",
+    "If category is exactly a registered subtype with a unique parent and the answer has two text fields, move it to the subtype slot and use its fixed parent. When another different registered subtype is also provided, keep only the inferred coarse category.",
+    "Missing fields, malformed JSON, or a category that matches neither an allowed category nor a unique exact subtype still fail and select H. No synonyms or new vocabulary, and no inference from geometry inside this parser."
+  ],
+  "readout": "Apply the same repair to S and GS. Build independent size contexts from repaired category/subtype only. Reuse raw size reads by exact prompt hash and identical frozen RGB within the same frame; run only missing downstream calls. An identical S and GS pair shares one size result exactly. GD keeps the originally generated answer.",
+  "task_labels_opened": false,
+  "FINAL_access": false
+}

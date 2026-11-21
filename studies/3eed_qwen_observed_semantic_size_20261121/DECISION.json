@@ -1,0 +1,77 @@
+{
+  "status": "completed_and_verified",
+  "scope": "416 previously exposed ordinary physical frames",
+  "adopt": false,
+  "retain": "C_E_Qsize",
+  "source_training": false,
+  "target_updates": false,
+  "FINAL_access": false,
+  "frames": 416,
+  "selected": 320,
+  "total_model_calls": 1283,
+  "shared_size_calls": 317,
+  "semantics_changed": 3,
+  "coarse_changes": 0,
+  "prior_changed": 2,
+  "box_geometry_changed_by_semantic_conditioning": 1,
+  "raw_span_exact_echo_GD": 120,
+  "arms": {
+    "H": {
+      "acc25": 56.31944444444444,
+      "acc50": 28.680555555555554,
+      "miou": 31.345278452389742
+    },
+    "S": {
+      "acc25": 55.34722222222223,
+      "acc50": 24.86111111111111,
+      "miou": 30.033267847383044
+    },
+    "GS": {
+      "acc25": 55.55555555555555,
+      "acc50": 24.86111111111111,
+      "miou": 30.042532112282082
+    },
+    "GD": {
+      "acc25": 51.66666666666667,
+      "acc50": 21.319444444444443,
+      "miou": 27.099766409799674
+    }
+  },
+  "GS_vs_H": {
+    "acc50_delta_pp": -3.819444444444444,
+    "acc25_delta_pp": -0.763888888888889,
+    "miou_delta_pp": -1.3027463401076582,
+    "rescue50": 6,
+    "harm50": 19,
+    "rescue25": 6,
+    "harm25": 9
+  },
+  "GS_vs_S": {
+    "acc50_delta_pp": 0.0,
+    "acc25_delta_pp": 0.20833333333333334,
+    "miou_delta_pp": 0.009264264899039934,
+    "rescue50": 0,
+    "harm50": 0,
+    "rescue25": 1,
+    "harm25": 0
+  },
+  "GS_vs_GD": {
+    "acc50_delta_pp": 3.5416666666666665,
+    "acc25_delta_pp": 3.8888888888888897,
+    "miou_delta_pp": 2.9427657024824043,
+    "rescue50": 17,
+    "harm50": 2,
+    "rescue25": 28,
+    "harm25": 8
+  },
+  "GD_vs_H": {
+    "acc50_delta_pp": -7.361111111111112,
+    "acc25_delta_pp": -4.652777777777778,
+    "miou_delta_pp": -4.245512042590063,
+    "rescue50": 6,
+    "harm50": 34,
+    "rescue25": 6,
+    "harm25": 29
+  },
+  "finding": "The semantic conditioning changes very few predictions and recovers no new Acc@50 successes over S. The new size readout loses more original positives than it rescues. Direct numeric size readout loses more than the two-stage readouts."
+}

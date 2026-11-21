@@ -1,0 +1,32 @@
+{
+  "study": "Do partial LiDAR spans improve complete box size through an explicit category and subtype?",
+  "parent": "3eed_qwen_four_scale_recording_confirmation_20261121",
+  "parent_prediction_seal": "205e1b46f96a1076a359b6b3dea9ff18b44116825a9f13575587bb21bbd6415f",
+  "parent_model_seal": "45ffce48b3f53654b1e2fcbd0002e5282dcecb6801c0e4d60ce5a1b163ce798a",
+  "roster": "Same 416 ordinary physical frames and 70 recordings. Retain every failed or missing prediction. Primary results are the three-platform equal-weight means. Keep the 288 ordinary Validation rows, 128 ordinary recording extensions and 224 recording-separated rows identifiable.",
+  "geometry": "Read the previously selected four-scale node without selecting again; replay its points and original terrain from the sealed seeded sample. Reconstruct the precompletion box with the existing measured_box and require parity with H when using the originally archived Qwen size. Compute prompt spans only from support points on the original horizontal PCA axes and raw vertical z; give longer/shorter horizontal extents, vertical span, longer/shorter and vertical/shorter ratios rounded to two decimals. If a ratio has a near-zero denominator (<=1 micrometre) label it unavailable.",
+  "arms": {
+    "H": "Sealed C_E_Qsize unchanged.",
+    "S": "RGB target crop and original expression predict a category/subtype; a clean independent chat with the same crop and expression and only those two fields predicts metric complete length, width, height.",
+    "GS": "S with support-derived span/ratios added to the first call only. The second call and parser are shared with S. Cache the second call per frame and exact valid category/subtype, including an explicit unknown/unknown result.",
+    "GD": "Direct complete size readout from the same crop/expression and the same measured geometry as GS, with no category/subtype response. Uses the same size prompt and parser as S/GS apart from the replaced conditioning field."
+  },
+  "taxonomy": {
+    "vehicle": ["passenger_car", "suv_crossover", "pickup_truck", "van", "box_truck", "heavy_truck", "bus", "trailer", "unknown"],
+    "person": ["adult", "child", "unknown"],
+    "cycle": ["bicycle", "motorcycle", "scooter", "unknown"],
+    "rider": ["bicyclist", "motorcyclist", "scooter_rider", "unknown"],
+    "roadside_object": ["cone", "bollard", "traffic_sign", "traffic_light", "pole", "barrier", "unknown"],
+    "other_object": ["bench", "bin", "vegetation", "equipment", "unknown"],
+    "animal": ["unknown"],
+    "unknown": ["unknown"]
+  },
+  "scope_of_semantics": "Label the same designated object, never change object/crop/region. Use unknown subtype when appropriate. No class-size lookup, source training or subtype ground truth. Strict two-field JSON including both category and subtype. Do not give anticipated dimensions or use the baseline size.",
+  "readout": "Same local frozen Qwen3-VL-4B-Instruct checkpoint (ebb281ec70b05090aa6165b016eac8ec08e71b17), model greedy BF16, no training. Reuse original RGB crop with 12.5 percent padding. Stateless one-turn chat in every call. Parse scientific metric lengths only if the exact three-field JSON contains finite numeric values in [0.01, 100] metres. All invalid stages or unavailable regions fall back to H. Record reasons, never drop frames.",
+  "completion": "Send each new valid size through canonical regions.complete(original measured_box, dimensions) in model coordinates and then the existing sensor_frame_box. It sorts horizontal dimensions to the frozen axes, preserves observed extent floors and yaw, and moves the center under the original anchoring rule. Do not call complete from H.",
+  "evaluation": "Seal all predictions before opening ordinary task GT. Use the existing two independently implemented upright oriented IoU scorers and all original paired rows. Report Acc@25, Acc@50, mIoU, threshold rescues/harms, and grouped bootstrap by recording (within platform, 4000 draws) for GS versus H, S and GD and other baseline comparisons. Trace category and subtype changes, prior and completed dimensions, center displacement and final IoU. Label changes are not subtype accuracy.",
+  "decision": "This ordinary panel was previously exposed. Keep the frozen reference as deployment unless separately validated. State whether the explicit semantic path improves over H, the matched two-stage S, and direct numeric GD, and how many frames actually differ through each link.",
+  "source_training": false,
+  "target_updates": false,
+  "FINAL_access": false
+}
