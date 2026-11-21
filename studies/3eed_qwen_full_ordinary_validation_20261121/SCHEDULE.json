@@ -1,0 +1,6 @@
+{
+  "authoritative_decoding": "Restore the entire original infer.py configuration, including physical ordering of two rows with interleaved 3D and 2D at batch size 4. Resume only trackable outputs. Leave model, image tokenizer, prompt, parser, BF16, SDPA and greedy decoding intact.",
+  "why": "A matched 32-item, task-homogeneous scheduling probe reproduced the prior 3D values exactly on only 9 of 96 historical 3D records. Those probe outputs are excluded from measurement. Exact replays use the original interleaved four-query blocks.",
+  "affects_gt": false,
+  "FINAL_access": false
+}

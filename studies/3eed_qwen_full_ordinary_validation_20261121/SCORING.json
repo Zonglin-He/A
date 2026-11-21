@@ -1,0 +1,14 @@
+{
+  "thresholds": [0.25, 0.50],
+  "comparison": "Strict greater-than, upright 3D oriented IoU. All five arms on the identical roster. A missing 3D prediction yields IoU zero for each affected arm and stays in the denominator.",
+  "aggregation": "Three target platforms equally weighted for the headline, and actual-pool mean and per-platform means as additional views. Every recording and every anonymous description exported.",
+  "descriptive_strata": {
+    "category": "Original target annotation class after prediction seal",
+    "target_distance_m_edges": [15, 30, 60],
+    "annotated_instances": ["1", "2", "3-4", "5+"],
+    "definition": "Distance is Euclidean norm of the target 3D center in the raw LiDAR frame. Count distinct valid annotated 3D boxes in the same view. These measure available annotations."
+  },
+  "bootstrap": "Paired per-recording resampling within platform, 4000 draws, seed 20261121. Also report per-platform intervals and all recording outcomes. These describe uncertainty on the previously used recordings.",
+  "primary_target_labels_access": "After full Qwen and geometry seals",
+  "FINAL_access": false
+}
