@@ -1,0 +1,24 @@
+{
+  "question": "Does the placement of the two observed axial endpoints against the target's visible RGB outline help identify which end to complete?",
+  "parent": "3eed_qwen_completion_side_20261121",
+  "parent_inputs": "3a3dc9a43d67f5116d8b31d7fa17c99b9567056847a8ebe46cd71fd8d53934c4",
+  "parent_predictions": "6e07dbbc0427409c626a6a662a3e7af6a916a4dcaa08a5fd390d0703b51dd2d3",
+  "cohort": "The identical 416 previously exposed ordinary physical frames. Keep all upstream fallbacks and missing boxes on the denominator. Preexisting 23 GT-rescuable frames are an evaluation-only stratum, opened by ID only after sealing.",
+  "frozen_geometry": "Reuse H, the selected support, chosen signed horizontal axis, original fixed dimensions, yaw, and the three complete candidate boxes directly from the sealed parent. No new search, axis, candidate, training, or GT choice.",
+  "endpoints": "Use the real primitive LiDAR returns corresponding to the minimum and maximum signed stations in the original support. Replay the parent seeded raw indices with its float32 transforms to verify provenance. For numerical ties within 1 micrometre prefer the lowest raw index visible in the camera. Never substitute an interior point or a fictitious box corner. Honor intrinsics, extrinsics and distortion. Reject behind/outside points or points more than 5 cm behind the closest whole-scene return in the same original camera pixel. This screens observed occluders only.",
+  "views": "Identical full RGB and original Qwen crop with 12.5 percent padding, fitted into two 448-square panes on one canvas. All views are determined by RGB and the old Qwen window. The model judges the visible target outline in the photograph. No GT mask, GT window, new silhouette model or inferred hidden contour. Two 4-pixel-radius hollow markers leave their central pixels and the object texture visible. Reject indistinguishable endpoint pairs less than 10 display pixels apart in every shared pane.",
+  "arms": {
+    "H": "Sealed C_E_Qsize.",
+    "span": "Both RGB views and the parent's measured spans and ratios, with no endpoint marks. Same prompt, sampling, sign check and endpoint-eligibility mask as correct/mismatch.",
+    "endpoint": "Exactly the span inputs plus registered min/max return markers. Inspect target silhouette continuing beyond each marked end.",
+    "mismatch": "Same frame, crop, markers, colors, numeric hint and accepted geometry. Rigidly translate the pair's midpoint within the same image; preserve inter-end vector, ordering and each endpoint's zoom-pane membership. Reflect midpoint within feasible translations, cap translations by half the crop in each dimension. Near-identical misregistrations are retained and separately counted.",
+    "span_all": "Coverage audit: allow the same new span-only readout on all movable frames even if endpoints do not project.",
+    "previous_B": "Original full-cohort single-call span-only output from the parent, reused verbatim for a historical comparison."
+  },
+  "decision": "Before scoring use the same two independent greedy Qwen encodings on each available arm. The second reverses the signed coordinate legend and exchanges marker colors at the same physical locations. Map answers back to the frozen axis. Only two agreeing explicit physical decisions (positive, negative or balanced) select the existing box; unknown, invalid, sign conflict, unusable endpoints or zero slack return H exactly. Report single-pass results as a prespecified sensitivity, not a replacement.",
+  "metrics": "Strict upright oriented 3D IoU >.50 with paired rescues and harms versus H, matched span, mismatch, full span, archived B, all 416 and each platform. Also Acc@25, mIoU, recording-separated ordinary subset, all per-frame effects, and the 23 oracle opportunities with loss point in the evidence/decision funnel. Primary rates give the three target platforms equal weight. Paired recording bootstrap within platform, using parent protocol. Report exact differences on frames where the null visibly moved.",
+  "boundary": "The current direction must beat the original box and its controlled alternatives to support adopting it. Separate changes from correct registration, refusal, and selection coverage. All 416 ordinary IDs stay in the results. FINAL is excluded.",
+  "source_training": false,
+  "target_updates": false,
+  "FINAL_access": false
+}
