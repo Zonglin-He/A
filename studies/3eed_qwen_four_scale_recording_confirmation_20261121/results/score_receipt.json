@@ -1,0 +1,817 @@
+{
+  "rows": 416,
+  "source_rows": 832,
+  "audit": {
+    "max_cross_iou_error": 8.881784197001252e-16,
+    "v3_archive_match_rows": 576,
+    "v3_archive_max_error": 6.661338147750939e-16,
+    "fit_tree_isolation": {
+      "draws": 6733824,
+      "retained": 3691321,
+      "withheld": 3042501,
+      "retained_withheld_raw": 0,
+      "additionally_removed_raw_by_model": 2,
+      "additionally_removed_model_by_raw": 6
+    }
+  },
+  "coverage": {
+    "validation/waymo": {
+      "frames": 96,
+      "selected": 92,
+      "fit_only": 93,
+      "matched_support": 92,
+      "nontrivial_mismatch": 66,
+      "statuses": {
+        "used_region": 92,
+        "invalid_qwen_3d": 3,
+        "no_region_with_five_central_cells": 1
+      },
+      "recordings": 61
+    },
+    "validation/drone": {
+      "frames": 96,
+      "selected": 65,
+      "fit_only": 63,
+      "matched_support": 65,
+      "nontrivial_mismatch": 38,
+      "statuses": {
+        "under_five_original_fit_cells": 27,
+        "used_region": 65,
+        "no_region_with_five_central_cells": 4
+      },
+      "recordings": 2
+    },
+    "validation/quad": {
+      "frames": 96,
+      "selected": 79,
+      "fit_only": 80,
+      "matched_support": 78,
+      "nontrivial_mismatch": 50,
+      "statuses": {
+        "under_five_original_fit_cells": 10,
+        "used_region": 79,
+        "no_region_with_five_central_cells": 5,
+        "invalid_qwen_3d": 1,
+        "empty_region_tree": 1
+      },
+      "recordings": 3
+    },
+    "validation/macro": {
+      "frames": 288,
+      "selected": 236,
+      "fit_only": 236,
+      "matched_support": 235,
+      "nontrivial_mismatch": 154,
+      "statuses": {
+        "used_region": 236,
+        "invalid_qwen_3d": 4,
+        "no_region_with_five_central_cells": 10,
+        "under_five_original_fit_cells": 37,
+        "empty_region_tree": 1
+      },
+      "recordings": 66
+    },
+    "recording_extension/drone": {
+      "frames": 64,
+      "selected": 38,
+      "fit_only": 38,
+      "matched_support": 38,
+      "nontrivial_mismatch": 23,
+      "statuses": {
+        "under_five_original_fit_cells": 11,
+        "used_region": 38,
+        "no_region_with_five_central_cells": 14,
+        "invalid_qwen_3d": 1
+      },
+      "recordings": 2
+    },
+    "recording_extension/quad": {
+      "frames": 64,
+      "selected": 46,
+      "fit_only": 48,
+      "matched_support": 46,
+      "nontrivial_mismatch": 26,
+      "statuses": {
+        "used_region": 46,
+        "under_five_original_fit_cells": 11,
+        "no_region_with_five_central_cells": 7
+      },
+      "recordings": 2
+    },
+    "recording_extension/macro": {
+      "frames": 128,
+      "selected": 84,
+      "fit_only": 86,
+      "matched_support": 84,
+      "nontrivial_mismatch": 49,
+      "statuses": {
+        "under_five_original_fit_cells": 22,
+        "used_region": 84,
+        "no_region_with_five_central_cells": 21,
+        "invalid_qwen_3d": 1
+      },
+      "recordings": 4
+    },
+    "all_recording_separated/waymo": {
+      "frames": 96,
+      "selected": 92,
+      "fit_only": 93,
+      "matched_support": 92,
+      "nontrivial_mismatch": 66,
+      "statuses": {
+        "used_region": 92,
+        "invalid_qwen_3d": 3,
+        "no_region_with_five_central_cells": 1
+      },
+      "recordings": 61
+    },
+    "all_recording_separated/drone": {
+      "frames": 64,
+      "selected": 38,
+      "fit_only": 38,
+      "matched_support": 38,
+      "nontrivial_mismatch": 23,
+      "statuses": {
+        "under_five_original_fit_cells": 11,
+        "used_region": 38,
+        "no_region_with_five_central_cells": 14,
+        "invalid_qwen_3d": 1
+      },
+      "recordings": 2
+    },
+    "all_recording_separated/quad": {
+      "frames": 64,
+      "selected": 46,
+      "fit_only": 48,
+      "matched_support": 46,
+      "nontrivial_mismatch": 26,
+      "statuses": {
+        "used_region": 46,
+        "under_five_original_fit_cells": 11,
+        "no_region_with_five_central_cells": 7
+      },
+      "recordings": 2
+    },
+    "all_recording_separated/macro": {
+      "frames": 224,
+      "selected": 176,
+      "fit_only": 179,
+      "matched_support": 176,
+      "nontrivial_mismatch": 115,
+      "statuses": {
+        "used_region": 176,
+        "invalid_qwen_3d": 4,
+        "no_region_with_five_central_cells": 22,
+        "under_five_original_fit_cells": 22
+      },
+      "recordings": 65
+    }
+  },
+  "intervals": {
+    "validation/waymo": {
+      "H/A": {
+        "acc25": [
+          -3.225806451612903,
+          11.766287160025305
+        ],
+        "acc50": [
+          14.583333333333334,
+          39.58333333333333
+        ],
+        "miou": [
+          6.60932273541991,
+          16.202150730272635
+        ]
+      },
+      "H/B": {
+        "acc25": [
+          38.70967741935484,
+          55.729166666666664
+        ],
+        "acc50": [
+          35.93580163043478,
+          57.609804791481814
+        ],
+        "miou": [
+          28.227947052560914,
+          37.641290665495696
+        ]
+      },
+      "H_yaw_only/H": {
+        "acc25": [
+          -8.421052631578947,
+          2.1052631578947367
+        ],
+        "acc50": [
+          -24.752475247524753,
+          -7.291666666666667
+        ],
+        "miou": [
+          -10.433749079852499,
+          -3.2338940536096095
+        ]
+      },
+      "Fit_region/Fit_mismatch": {
+        "acc25": [
+          23.232323232323232,
+          43.67995689655174
+        ],
+        "acc50": [
+          9.473684210526317,
+          28.421052631578945
+        ],
+        "miou": [
+          10.257897981871247,
+          19.00049514827994
+        ]
+      }
+    },
+    "validation/drone": {
+      "H/A": {
+        "acc25": [
+          0.0,
+          33.33333333333333
+        ],
+        "acc50": [
+          2.083333333333333,
+          25.0
+        ],
+        "miou": [
+          0.8369995816124268,
+          17.346076242476048
+        ]
+      },
+      "H/B": {
+        "acc25": [
+          14.583333333333334,
+          14.583333333333334
+        ],
+        "acc50": [
+          -4.166666666666666,
+          6.25
+        ],
+        "miou": [
+          4.764364953647285,
+          7.695863084827642
+        ]
+      },
+      "H_yaw_only/H": {
+        "acc25": [
+          -8.333333333333332,
+          -6.25
+        ],
+        "acc50": [
+          -18.75,
+          -4.166666666666666
+        ],
+        "miou": [
+          -10.194691269959327,
+          -2.7161558009162756
+        ]
+      },
+      "Fit_region/Fit_mismatch": {
+        "acc25": [
+          6.25,
+          8.333333333333332
+        ],
+        "acc50": [
+          2.083333333333333,
+          4.166666666666666
+        ],
+        "miou": [
+          2.7346703000578243,
+          3.7188519319204647
+        ]
+      }
+    },
+    "validation/quad": {
+      "H/A": {
+        "acc25": [
+          -3.125,
+          68.75
+        ],
+        "acc50": [
+          0.0,
+          6.25
+        ],
+        "miou": [
+          2.736519827647686,
+          14.974359672087246
+        ]
+      },
+      "H/B": {
+        "acc25": [
+          -18.75,
+          37.5
+        ],
+        "acc50": [
+          -34.375,
+          14.0625
+        ],
+        "miou": [
+          -13.679210843807033,
+          10.48812340777899
+        ]
+      },
+      "H_yaw_only/H": {
+        "acc25": [
+          -9.375,
+          3.125
+        ],
+        "acc50": [
+          -6.25,
+          3.125
+        ],
+        "miou": [
+          -3.7872562382136876,
+          -0.1781224134719459
+        ]
+      },
+      "Fit_region/Fit_mismatch": {
+        "acc25": [
+          9.375,
+          21.875
+        ],
+        "acc50": [
+          0.0,
+          3.125
+        ],
+        "miou": [
+          2.8698633254944594,
+          9.881626188923624
+        ]
+      }
+    },
+    "validation/macro": {
+      "H/A": {
+        "acc25": [
+          0.32570603999175435,
+          29.54680131107338
+        ],
+        "acc50": [
+          7.755774447499138,
+          21.180555555555554
+        ],
+        "miou": [
+          4.687569248030897,
+          13.674627706368844
+        ]
+      },
+      "H/B": {
+        "acc25": [
+          14.553140096618359,
+          32.99684994272623
+        ],
+        "acc50": [
+          3.3092184673494858,
+          20.659722222222225
+        ],
+        "miou": [
+          8.606515499005349,
+          17.149299114736625
+        ]
+      },
+      "H_yaw_only/H": {
+        "acc25": [
+          -7.249160396481825,
+          -1.7583299244195103
+        ],
+        "acc50": [
+          -13.947642543859647,
+          -4.664757388462632
+        ],
+        "miou": [
+          -7.00302891672806,
+          -2.7239913564473017
+        ]
+      },
+      "Fit_region/Fit_mismatch": {
+        "acc25": [
+          15.10753259637188,
+          23.117124856815575
+        ],
+        "acc50": [
+          4.484983533791524,
+          11.00739189576174
+        ],
+        "miou": [
+          6.192039663379533,
+          9.891797084530637
+        ]
+      }
+    },
+    "recording_extension/drone": {
+      "H/A": {
+        "acc25": [
+          12.5,
+          21.875
+        ],
+        "acc50": [
+          6.25,
+          9.375
+        ],
+        "miou": [
+          4.255489807170976,
+          4.7252207544685385
+        ]
+      },
+      "H/B": {
+        "acc25": [
+          12.5,
+          17.1875
+        ],
+        "acc50": [
+          -1.5625,
+          0.0
+        ],
+        "miou": [
+          1.8949990624792836,
+          4.864122976434899
+        ]
+      },
+      "H_yaw_only/H": {
+        "acc25": [
+          -28.125,
+          -3.125
+        ],
+        "acc50": [
+          -18.75,
+          -9.375
+        ],
+        "miou": [
+          -5.917843794818168,
+          -4.626733752795917
+        ]
+      },
+      "Fit_region/Fit_mismatch": {
+        "acc25": [
+          9.375,
+          12.5
+        ],
+        "acc50": [
+          0.0,
+          3.125
+        ],
+        "miou": [
+          1.7105606339007138,
+          5.053009263747658
+        ]
+      }
+    },
+    "recording_extension/quad": {
+      "H/A": {
+        "acc25": [
+          -15.625,
+          28.125
+        ],
+        "acc50": [
+          -12.5,
+          6.25
+        ],
+        "miou": [
+          -5.6065932495943205,
+          8.296415680301939
+        ]
+      },
+      "H/B": {
+        "acc25": [
+          14.0625,
+          15.625
+        ],
+        "acc50": [
+          -15.625,
+          0.0
+        ],
+        "miou": [
+          3.2460219921813818,
+          6.2671794453257075
+        ]
+      },
+      "H_yaw_only/H": {
+        "acc25": [
+          -6.25,
+          -3.125
+        ],
+        "acc50": [
+          -3.125,
+          -3.125
+        ],
+        "miou": [
+          -2.5646543112608766,
+          0.20054010613583945
+        ]
+      },
+      "Fit_region/Fit_mismatch": {
+        "acc25": [
+          3.125,
+          9.375
+        ],
+        "acc50": [
+          0.0,
+          3.125
+        ],
+        "miou": [
+          1.7036359766170184,
+          3.423170848651086
+        ]
+      }
+    },
+    "recording_extension/macro": {
+      "H/A": {
+        "acc25": [
+          -1.5625,
+          25.0
+        ],
+        "acc50": [
+          -3.125,
+          7.8125
+        ],
+        "miou": [
+          -0.6755517212116723,
+          6.510818217385239
+        ]
+      },
+      "H/B": {
+        "acc25": [
+          13.28125,
+          16.40625
+        ],
+        "acc50": [
+          -8.59375,
+          0.0
+        ],
+        "miou": [
+          2.570510527330333,
+          5.565651210880303
+        ]
+      },
+      "H_yaw_only/H": {
+        "acc25": [
+          -17.1875,
+          -3.125
+        ],
+        "acc50": [
+          -10.9375,
+          -6.25
+        ],
+        "miou": [
+          -4.241249053039523,
+          -2.2130968233300385
+        ]
+      },
+      "Fit_region/Fit_mismatch": {
+        "acc25": [
+          6.25,
+          10.9375
+        ],
+        "acc50": [
+          0.0,
+          3.125
+        ],
+        "miou": [
+          1.707098305258866,
+          4.238090056199371
+        ]
+      }
+    },
+    "all_recording_separated/waymo": {
+      "H/A": {
+        "acc25": [
+          -3.225806451612903,
+          11.766287160025305
+        ],
+        "acc50": [
+          14.583333333333334,
+          39.58333333333333
+        ],
+        "miou": [
+          6.60932273541991,
+          16.202150730272635
+        ]
+      },
+      "H/B": {
+        "acc25": [
+          38.70967741935484,
+          55.729166666666664
+        ],
+        "acc50": [
+          35.93580163043478,
+          57.609804791481814
+        ],
+        "miou": [
+          28.227947052560914,
+          37.641290665495696
+        ]
+      },
+      "H_yaw_only/H": {
+        "acc25": [
+          -8.421052631578947,
+          2.1052631578947367
+        ],
+        "acc50": [
+          -24.752475247524753,
+          -7.291666666666667
+        ],
+        "miou": [
+          -10.433749079852499,
+          -3.2338940536096095
+        ]
+      },
+      "Fit_region/Fit_mismatch": {
+        "acc25": [
+          23.232323232323232,
+          43.67995689655174
+        ],
+        "acc50": [
+          9.473684210526317,
+          28.421052631578945
+        ],
+        "miou": [
+          10.257897981871247,
+          19.00049514827994
+        ]
+      }
+    },
+    "all_recording_separated/drone": {
+      "H/A": {
+        "acc25": [
+          12.5,
+          21.875
+        ],
+        "acc50": [
+          6.25,
+          9.375
+        ],
+        "miou": [
+          4.255489807170976,
+          4.7252207544685385
+        ]
+      },
+      "H/B": {
+        "acc25": [
+          12.5,
+          17.1875
+        ],
+        "acc50": [
+          -1.5625,
+          0.0
+        ],
+        "miou": [
+          1.8949990624792836,
+          4.864122976434899
+        ]
+      },
+      "H_yaw_only/H": {
+        "acc25": [
+          -28.125,
+          -3.125
+        ],
+        "acc50": [
+          -18.75,
+          -9.375
+        ],
+        "miou": [
+          -5.917843794818168,
+          -4.626733752795917
+        ]
+      },
+      "Fit_region/Fit_mismatch": {
+        "acc25": [
+          9.375,
+          12.5
+        ],
+        "acc50": [
+          0.0,
+          3.125
+        ],
+        "miou": [
+          1.7105606339007138,
+          5.053009263747658
+        ]
+      }
+    },
+    "all_recording_separated/quad": {
+      "H/A": {
+        "acc25": [
+          -15.625,
+          28.125
+        ],
+        "acc50": [
+          -12.5,
+          6.25
+        ],
+        "miou": [
+          -5.6065932495943205,
+          8.296415680301939
+        ]
+      },
+      "H/B": {
+        "acc25": [
+          14.0625,
+          15.625
+        ],
+        "acc50": [
+          -15.625,
+          0.0
+        ],
+        "miou": [
+          3.2460219921813818,
+          6.2671794453257075
+        ]
+      },
+      "H_yaw_only/H": {
+        "acc25": [
+          -6.25,
+          -3.125
+        ],
+        "acc50": [
+          -3.125,
+          -3.125
+        ],
+        "miou": [
+          -2.5646543112608766,
+          0.20054010613583945
+        ]
+      },
+      "Fit_region/Fit_mismatch": {
+        "acc25": [
+          3.125,
+          9.375
+        ],
+        "acc50": [
+          0.0,
+          3.125
+        ],
+        "miou": [
+          1.7036359766170184,
+          3.423170848651086
+        ]
+      }
+    },
+    "all_recording_separated/macro": {
+      "H/A": {
+        "acc25": [
+          -0.02125850340136034,
+          18.72905927835052
+        ],
+        "acc50": [
+          4.568894389438945,
+          16.646489403842345
+        ],
+        "miou": [
+          2.368038182706496,
+          9.096288714457089
+        ]
+      },
+      "H/B": {
+        "acc25": [
+          22.68846649484536,
+          28.766934974747475
+        ],
+        "acc50": [
+          7.773237416272657,
+          17.742213380444227
+        ],
+        "miou": [
+          11.867689831024073,
+          15.568189728860391
+        ]
+      },
+      "H_yaw_only/H": {
+        "acc25": [
+          -13.22523923133083,
+          -2.4446536006875865
+        ],
+        "acc50": [
+          -14.508161512027492,
+          -7.358156028368794
+        ],
+        "miou": [
+          -5.791109084570265,
+          -3.0185363776931005
+        ]
+      },
+      "Fit_region/Fit_mismatch": {
+        "acc25": [
+          13.126861974836494,
+          20.710440074906366
+        ],
+        "acc50": [
+          4.066932624113475,
+          10.65340909090909
+        ],
+        "miou": [
+          5.1473344691151075,
+          8.538729097886604
+        ]
+      }
+    }
+  },
+  "seals": {
+    "prediction_seal.json": "205e1b46f96a1076a359b6b3dea9ff18b44116825a9f13575587bb21bbd6415f",
+    "v3_seal.json": "90d95ae11f249b65d7b012700c337f1007f2426865c1d82cca151ab02592b4db",
+    "panel_seal.json": "6c77ffe5b50893e7246146e4df4e9fbd345b7505e01f0c162f9108128284be02"
+  },
+  "evaluator_sha256": "b406f0cd28751e56abfec6eeefb8f7d5223bcd50e514ba61f9e50e2c9ba9d809",
+  "FINAL_access": false
+}
