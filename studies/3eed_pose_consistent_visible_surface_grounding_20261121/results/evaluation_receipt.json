@@ -1,0 +1,941 @@
+{
+  "pins": {
+    "max_two_scorer_gap": 8.881784197001252e-16,
+    "max_previous_score_gap": 0.0,
+    "prior_score_matches": 1664,
+    "run_seal": "c26815daa265955fa6ecfaed1877aeddcc77b8723d301ca774f605f795d640f6"
+  },
+  "coverage": {
+    "validation/waymo": {
+      "frames": 96,
+      "recordings": 61,
+      "full": 92,
+      "fit_pair": 93,
+      "selection": 93,
+      "transfer": 40,
+      "statuses": {
+        "usable_pair": 93,
+        "missing_reply": 3
+      }
+    },
+    "validation/drone": {
+      "frames": 96,
+      "recordings": 2,
+      "full": 65,
+      "fit_pair": 63,
+      "selection": 61,
+      "transfer": 24,
+      "statuses": {
+        "insufficient_original_center": 27,
+        "usable_pair": 61,
+        "no_fit_node": 6,
+        "too_few_selection_rays": 2
+      }
+    },
+    "validation/quad": {
+      "frames": 96,
+      "recordings": 3,
+      "full": 79,
+      "fit_pair": 80,
+      "selection": 79,
+      "transfer": 28,
+      "statuses": {
+        "insufficient_original_center": 10,
+        "usable_pair": 79,
+        "too_few_selection_rays": 1,
+        "missing_reply": 1,
+        "no_fit_node": 5
+      }
+    },
+    "validation/macro": {
+      "frames": 288,
+      "recordings": 66,
+      "full": 236,
+      "fit_pair": 236,
+      "selection": 233,
+      "transfer": 92,
+      "statuses": {
+        "usable_pair": 233,
+        "missing_reply": 4,
+        "insufficient_original_center": 37,
+        "no_fit_node": 11,
+        "too_few_selection_rays": 3
+      }
+    },
+    "recording_extension/drone": {
+      "frames": 64,
+      "recordings": 2,
+      "full": 38,
+      "fit_pair": 38,
+      "selection": 37,
+      "transfer": 9,
+      "statuses": {
+        "insufficient_original_center": 11,
+        "usable_pair": 37,
+        "no_fit_node": 14,
+        "too_few_selection_rays": 1,
+        "missing_reply": 1
+      }
+    },
+    "recording_extension/quad": {
+      "frames": 64,
+      "recordings": 2,
+      "full": 46,
+      "fit_pair": 48,
+      "selection": 46,
+      "transfer": 19,
+      "statuses": {
+        "usable_pair": 46,
+        "no_fit_node": 5,
+        "insufficient_original_center": 11,
+        "too_few_selection_rays": 2
+      }
+    },
+    "recording_extension/macro": {
+      "frames": 128,
+      "recordings": 4,
+      "full": 84,
+      "fit_pair": 86,
+      "selection": 83,
+      "transfer": 28,
+      "statuses": {
+        "insufficient_original_center": 22,
+        "usable_pair": 83,
+        "no_fit_node": 19,
+        "too_few_selection_rays": 3,
+        "missing_reply": 1
+      }
+    },
+    "all_recording_separated/waymo": {
+      "frames": 96,
+      "recordings": 61,
+      "full": 92,
+      "fit_pair": 93,
+      "selection": 93,
+      "transfer": 40,
+      "statuses": {
+        "usable_pair": 93,
+        "missing_reply": 3
+      }
+    },
+    "all_recording_separated/drone": {
+      "frames": 64,
+      "recordings": 2,
+      "full": 38,
+      "fit_pair": 38,
+      "selection": 37,
+      "transfer": 9,
+      "statuses": {
+        "insufficient_original_center": 11,
+        "usable_pair": 37,
+        "no_fit_node": 14,
+        "too_few_selection_rays": 1,
+        "missing_reply": 1
+      }
+    },
+    "all_recording_separated/quad": {
+      "frames": 64,
+      "recordings": 2,
+      "full": 46,
+      "fit_pair": 48,
+      "selection": 46,
+      "transfer": 19,
+      "statuses": {
+        "usable_pair": 46,
+        "no_fit_node": 5,
+        "insufficient_original_center": 11,
+        "too_few_selection_rays": 2
+      }
+    },
+    "all_recording_separated/macro": {
+      "frames": 224,
+      "recordings": 65,
+      "full": 176,
+      "fit_pair": 179,
+      "selection": 176,
+      "transfer": 68,
+      "statuses": {
+        "usable_pair": 176,
+        "missing_reply": 4,
+        "insufficient_original_center": 22,
+        "no_fit_node": 19,
+        "too_few_selection_rays": 3
+      }
+    }
+  },
+  "paired_recording_intervals": {
+    "validation/waymo/Q_joint-P": {
+      "acc25": [
+        1.0,
+        8.422790466732875
+      ],
+      "acc50": [
+        -19.791666666666664,
+        2.914063250985298
+      ],
+      "miou": [
+        -5.206881254397861,
+        2.267928152062614
+      ]
+    },
+    "validation/waymo/P_transfer-P": {
+      "acc25": [
+        0.0,
+        7.07070707070707
+      ],
+      "acc50": [
+        -9.71058463486703,
+        9.473684210526317
+      ],
+      "miou": [
+        -1.3961389777645032,
+        3.746212249964779
+      ]
+    },
+    "validation/waymo/C_ray-P": {
+      "acc25": [
+        -5.377805049088359,
+        8.16326530612245
+      ],
+      "acc50": [
+        -3.961386138613861,
+        12.371134020618557
+      ],
+      "miou": [
+        -1.699635249793036,
+        3.9678944700996985
+      ]
+    },
+    "validation/waymo/F_ray-F_pca": {
+      "acc25": [
+        0.0,
+        3.296703296703297
+      ],
+      "acc50": [
+        -11.458333333333332,
+        6.453366058906036
+      ],
+      "miou": [
+        -1.8816715028808861,
+        3.221730355202809
+      ]
+    },
+    "validation/waymo/C_ray-C_pca": {
+      "acc25": [
+        -3.061224489795918,
+        3.125
+      ],
+      "acc50": [
+        -1.9801980198019802,
+        10.1010101010101
+      ],
+      "miou": [
+        0.48378394422923104,
+        4.218768545305867
+      ]
+    },
+    "validation/drone/Q_joint-P": {
+      "acc25": [
+        -4.166666666666666,
+        0.0
+      ],
+      "acc50": [
+        -18.75,
+        4.166666666666666
+      ],
+      "miou": [
+        -8.657798589931307,
+        1.0327068555825814
+      ]
+    },
+    "validation/drone/P_transfer-P": {
+      "acc25": [
+        -4.166666666666666,
+        -2.083333333333333
+      ],
+      "acc50": [
+        0.0,
+        6.25
+      ],
+      "miou": [
+        -0.44711547267830415,
+        0.9796070281752814
+      ]
+    },
+    "validation/drone/C_ray-P": {
+      "acc25": [
+        -4.166666666666666,
+        -2.083333333333333
+      ],
+      "acc50": [
+        -2.083333333333333,
+        10.416666666666668
+      ],
+      "miou": [
+        -2.8974522224214807,
+        1.4275707695433884
+      ]
+    },
+    "validation/drone/F_ray-F_pca": {
+      "acc25": [
+        -2.083333333333333,
+        -2.083333333333333
+      ],
+      "acc50": [
+        0.0,
+        8.333333333333332
+      ],
+      "miou": [
+        -0.2791279453180026,
+        2.1016792464809755
+      ]
+    },
+    "validation/drone/C_ray-C_pca": {
+      "acc25": [
+        -2.083333333333333,
+        0.0
+      ],
+      "acc50": [
+        0.0,
+        8.333333333333332
+      ],
+      "miou": [
+        -0.07479442383723245,
+        1.23484154175988
+      ]
+    },
+    "validation/quad/Q_joint-P": {
+      "acc25": [
+        -9.375,
+        -3.125
+      ],
+      "acc50": [
+        -6.25,
+        9.375
+      ],
+      "miou": [
+        -3.5348897420099203,
+        -0.8166767559564039
+      ]
+    },
+    "validation/quad/P_transfer-P": {
+      "acc25": [
+        -3.125,
+        0.0
+      ],
+      "acc50": [
+        0.0,
+        3.125
+      ],
+      "miou": [
+        -0.5926980112999025,
+        -0.09417297665482646
+      ]
+    },
+    "validation/quad/C_ray-P": {
+      "acc25": [
+        -3.125,
+        0.0
+      ],
+      "acc50": [
+        -3.125,
+        3.125
+      ],
+      "miou": [
+        -1.9040260642945954,
+        -0.9211828919570897
+      ]
+    },
+    "validation/quad/F_ray-F_pca": {
+      "acc25": [
+        -3.125,
+        3.125
+      ],
+      "acc50": [
+        0.0,
+        0.0
+      ],
+      "miou": [
+        -0.6920424000590549,
+        -0.1624988375764202
+      ]
+    },
+    "validation/quad/C_ray-C_pca": {
+      "acc25": [
+        -3.125,
+        0.0
+      ],
+      "acc50": [
+        0.0,
+        0.0
+      ],
+      "miou": [
+        -0.40027563247439313,
+        -0.1536126703534403
+      ]
+    },
+    "validation/macro/Q_joint-P": {
+      "acc25": [
+        -3.1104112230931946,
+        0.9849773242630385
+      ],
+      "acc50": [
+        -11.604094895082993,
+        2.072149587270555
+      ],
+      "miou": [
+        -4.830626893285335,
+        0.18349897222976094
+      ]
+    },
+    "validation/macro/P_transfer-P": {
+      "acc25": [
+        -1.7959770114942506,
+        0.7387706855791961
+      ],
+      "acc50": [
+        -2.1735606463429042,
+        4.943008117225386
+      ],
+      "miou": [
+        -0.5608043737631617,
+        1.2947200479897016
+      ]
+    },
+    "validation/macro/C_ray-P": {
+      "acc25": [
+        -3.403465346534653,
+        1.3888888888888893
+      ],
+      "acc50": [
+        -1.0872821350762507,
+        6.881189438833954
+      ],
+      "miou": [
+        -1.7308302447212491,
+        1.0150162662364755
+      ]
+    },
+    "validation/macro/F_ray-F_pca": {
+      "acc25": [
+        -1.3888888888888888,
+        0.9882680976430979
+      ],
+      "acc50": [
+        -2.8678143093465676,
+        4.166666666666666
+      ],
+      "miou": [
+        -0.602704621470848,
+        1.4050802275360326
+      ]
+    },
+    "validation/macro/C_ray-C_pca": {
+      "acc25": [
+        -2.003489411441144,
+        0.39251207729468607
+      ],
+      "acc50": [
+        0.054166666666667036,
+        5.498866213151927
+      ],
+      "miou": [
+        0.18684778674552413,
+        1.584157380811411
+      ]
+    },
+    "recording_extension/drone/Q_joint-P": {
+      "acc25": [
+        -6.25,
+        0.0
+      ],
+      "acc50": [
+        -12.5,
+        -6.25
+      ],
+      "miou": [
+        -2.6648439013842893,
+        -1.6348315058065568
+      ]
+    },
+    "recording_extension/drone/P_transfer-P": {
+      "acc25": [
+        0.0,
+        0.0
+      ],
+      "acc50": [
+        -3.125,
+        3.125
+      ],
+      "miou": [
+        -0.05029840910710731,
+        2.083020438897963
+      ]
+    },
+    "recording_extension/drone/C_ray-P": {
+      "acc25": [
+        -12.5,
+        0.0
+      ],
+      "acc50": [
+        0.0,
+        9.375
+      ],
+      "miou": [
+        -2.0699828674439456,
+        3.8683025048394133
+      ]
+    },
+    "recording_extension/drone/F_ray-F_pca": {
+      "acc25": [
+        0.0,
+        6.25
+      ],
+      "acc50": [
+        0.0,
+        0.0
+      ],
+      "miou": [
+        0.6088546372783203,
+        2.404838847096958
+      ]
+    },
+    "recording_extension/drone/C_ray-C_pca": {
+      "acc25": [
+        -3.125,
+        6.25
+      ],
+      "acc50": [
+        0.0,
+        0.0
+      ],
+      "miou": [
+        -0.3649830488370318,
+        2.1036684303760236
+      ]
+    },
+    "recording_extension/quad/Q_joint-P": {
+      "acc25": [
+        -3.125,
+        25.0
+      ],
+      "acc50": [
+        3.125,
+        15.625
+      ],
+      "miou": [
+        -0.4509285583079987,
+        9.211251809566262
+      ]
+    },
+    "recording_extension/quad/P_transfer-P": {
+      "acc25": [
+        0.0,
+        15.625
+      ],
+      "acc50": [
+        0.0,
+        6.25
+      ],
+      "miou": [
+        -0.12471142344523284,
+        5.076447617162386
+      ]
+    },
+    "recording_extension/quad/C_ray-P": {
+      "acc25": [
+        -3.125,
+        12.5
+      ],
+      "acc50": [
+        -3.125,
+        15.625
+      ],
+      "miou": [
+        -1.9865943252258016,
+        5.729814310056994
+      ]
+    },
+    "recording_extension/quad/F_ray-F_pca": {
+      "acc25": [
+        -3.125,
+        15.625
+      ],
+      "acc50": [
+        0.0,
+        6.25
+      ],
+      "miou": [
+        -0.5234778223229687,
+        5.178118783737546
+      ]
+    },
+    "recording_extension/quad/C_ray-C_pca": {
+      "acc25": [
+        -3.125,
+        18.75
+      ],
+      "acc50": [
+        0.0,
+        9.375
+      ],
+      "miou": [
+        -0.44846177024953804,
+        5.958399054096436
+      ]
+    },
+    "recording_extension/macro/Q_joint-P": {
+      "acc25": [
+        -4.6875,
+        12.5
+      ],
+      "acc50": [
+        -4.6875,
+        4.6875
+      ],
+      "miou": [
+        -1.5578862298461438,
+        3.7882101518798525
+      ]
+    },
+    "recording_extension/macro/P_transfer-P": {
+      "acc25": [
+        0.0,
+        7.8125
+      ],
+      "acc50": [
+        -1.5625,
+        4.6875
+      ],
+      "miou": [
+        -0.08750491627617007,
+        3.5797340280301744
+      ]
+    },
+    "recording_extension/macro/C_ray-P": {
+      "acc25": [
+        -7.8125,
+        6.25
+      ],
+      "acc50": [
+        -1.5625,
+        12.5
+      ],
+      "miou": [
+        -2.0282885963348734,
+        4.799058407448204
+      ]
+    },
+    "recording_extension/macro/F_ray-F_pca": {
+      "acc25": [
+        -1.5625,
+        10.9375
+      ],
+      "acc50": [
+        0.0,
+        3.125
+      ],
+      "miou": [
+        0.04268840747767579,
+        3.7914788154172525
+      ]
+    },
+    "recording_extension/macro/C_ray-C_pca": {
+      "acc25": [
+        -3.125,
+        12.5
+      ],
+      "acc50": [
+        0.0,
+        4.6875
+      ],
+      "miou": [
+        -0.40672240954328487,
+        4.03103374223623
+      ]
+    },
+    "all_recording_separated/waymo/Q_joint-P": {
+      "acc25": [
+        1.0,
+        8.422790466732875
+      ],
+      "acc50": [
+        -19.791666666666664,
+        2.914063250985298
+      ],
+      "miou": [
+        -5.206881254397861,
+        2.267928152062614
+      ]
+    },
+    "all_recording_separated/waymo/P_transfer-P": {
+      "acc25": [
+        0.0,
+        7.07070707070707
+      ],
+      "acc50": [
+        -9.71058463486703,
+        9.473684210526317
+      ],
+      "miou": [
+        -1.3961389777645032,
+        3.746212249964779
+      ]
+    },
+    "all_recording_separated/waymo/C_ray-P": {
+      "acc25": [
+        -5.377805049088359,
+        8.16326530612245
+      ],
+      "acc50": [
+        -3.961386138613861,
+        12.371134020618557
+      ],
+      "miou": [
+        -1.699635249793036,
+        3.9678944700996985
+      ]
+    },
+    "all_recording_separated/waymo/F_ray-F_pca": {
+      "acc25": [
+        0.0,
+        3.296703296703297
+      ],
+      "acc50": [
+        -11.458333333333332,
+        6.453366058906036
+      ],
+      "miou": [
+        -1.8816715028808861,
+        3.221730355202809
+      ]
+    },
+    "all_recording_separated/waymo/C_ray-C_pca": {
+      "acc25": [
+        -3.061224489795918,
+        3.125
+      ],
+      "acc50": [
+        -1.9801980198019802,
+        10.1010101010101
+      ],
+      "miou": [
+        0.48378394422923104,
+        4.218768545305867
+      ]
+    },
+    "all_recording_separated/drone/Q_joint-P": {
+      "acc25": [
+        -6.25,
+        0.0
+      ],
+      "acc50": [
+        -12.5,
+        -6.25
+      ],
+      "miou": [
+        -2.6648439013842893,
+        -1.6348315058065568
+      ]
+    },
+    "all_recording_separated/drone/P_transfer-P": {
+      "acc25": [
+        0.0,
+        0.0
+      ],
+      "acc50": [
+        -3.125,
+        3.125
+      ],
+      "miou": [
+        -0.05029840910710731,
+        2.083020438897963
+      ]
+    },
+    "all_recording_separated/drone/C_ray-P": {
+      "acc25": [
+        -12.5,
+        0.0
+      ],
+      "acc50": [
+        0.0,
+        9.375
+      ],
+      "miou": [
+        -2.0699828674439456,
+        3.8683025048394133
+      ]
+    },
+    "all_recording_separated/drone/F_ray-F_pca": {
+      "acc25": [
+        0.0,
+        6.25
+      ],
+      "acc50": [
+        0.0,
+        0.0
+      ],
+      "miou": [
+        0.6088546372783203,
+        2.404838847096958
+      ]
+    },
+    "all_recording_separated/drone/C_ray-C_pca": {
+      "acc25": [
+        -3.125,
+        6.25
+      ],
+      "acc50": [
+        0.0,
+        0.0
+      ],
+      "miou": [
+        -0.3649830488370318,
+        2.1036684303760236
+      ]
+    },
+    "all_recording_separated/quad/Q_joint-P": {
+      "acc25": [
+        -3.125,
+        25.0
+      ],
+      "acc50": [
+        3.125,
+        15.625
+      ],
+      "miou": [
+        -0.4509285583079987,
+        9.211251809566262
+      ]
+    },
+    "all_recording_separated/quad/P_transfer-P": {
+      "acc25": [
+        0.0,
+        15.625
+      ],
+      "acc50": [
+        0.0,
+        6.25
+      ],
+      "miou": [
+        -0.12471142344523284,
+        5.076447617162386
+      ]
+    },
+    "all_recording_separated/quad/C_ray-P": {
+      "acc25": [
+        -3.125,
+        12.5
+      ],
+      "acc50": [
+        -3.125,
+        15.625
+      ],
+      "miou": [
+        -1.9865943252258016,
+        5.729814310056994
+      ]
+    },
+    "all_recording_separated/quad/F_ray-F_pca": {
+      "acc25": [
+        -3.125,
+        15.625
+      ],
+      "acc50": [
+        0.0,
+        6.25
+      ],
+      "miou": [
+        -0.5234778223229687,
+        5.178118783737546
+      ]
+    },
+    "all_recording_separated/quad/C_ray-C_pca": {
+      "acc25": [
+        -3.125,
+        18.75
+      ],
+      "acc50": [
+        0.0,
+        9.375
+      ],
+      "miou": [
+        -0.44846177024953804,
+        5.958399054096436
+      ]
+    },
+    "all_recording_separated/macro/Q_joint-P": {
+      "acc25": [
+        -2.0500171585449554,
+        9.85576923076923
+      ],
+      "acc50": [
+        -7.936200129338015,
+        2.115151515151516
+      ],
+      "miou": [
+        -2.2181913083775955,
+        2.7141913805314872
+      ]
+    },
+    "all_recording_separated/macro/P_transfer-P": {
+      "acc25": [
+        0.3472222222222222,
+        7.019927536231883
+      ],
+      "acc50": [
+        -2.796326754385965,
+        4.705056179775281
+      ],
+      "miou": [
+        0.06958114074062523,
+        3.0246767211245493
+      ]
+    },
+    "all_recording_separated/macro/C_ray-P": {
+      "acc25": [
+        -5.208333333333334,
+        4.875886524822695
+      ],
+      "acc50": [
+        -0.347401202749141,
+        10.164835164835166
+      ],
+      "miou": [
+        -1.169903243951905,
+        3.6121538984848125
+      ]
+    },
+    "all_recording_separated/macro/F_ray-F_pca": {
+      "acc25": [
+        -0.7116336633663366,
+        7.642543859649123
+      ],
+      "acc50": [
+        -3.0927835051546393,
+        3.5818862785154932
+      ],
+      "miou": [
+        -0.03191745166637425,
+        3.0317469414509968
+      ]
+    },
+    "all_recording_separated/macro/C_ray-C_pca": {
+      "acc25": [
+        -2.083333333333333,
+        8.333333333333332
+      ],
+      "acc50": [
+        0.31446540880503143,
+        5.791666666666667
+      ],
+      "miou": [
+        0.37085060559441657,
+        3.6089778762737756
+      ]
+    }
+  },
+  "evaluator": "73612a5870a2b01e11758f6cf45cb1f359fbcdf972687f1f8c198f63e6108f1e",
+  "frames": 416,
+  "FINAL_access": false
+}
