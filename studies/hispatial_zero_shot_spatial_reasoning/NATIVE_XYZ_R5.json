@@ -1,0 +1,11 @@
+{
+  "study": "R5 frozen HiSpatial native XYZ object-anchor intervention",
+  "parent": "8426528867cb573fa0751a2a19fe7b9a8ce778d4",
+  "scope": "Exactly the 107 R4 SpatialRGPT-Bench clock direction questions. Follow the original with-frame question, official color boxes, fixed RGB and stored frozen MoGe pointmaps. R4 distance and Height results are outside scope.",
+  "model": "Only baseline HiSpatial-3B and MoGe-2. Reuse the verified MoGe pointmaps, no MoGe rerun. Frozen decoding, no answer or evidence text added.",
+  "geometry": "Recompute the R4 window_robust geometric medians on the same 4x4 grid. Use the same estimated up axis, then convert their right/up/forward coordinates into the camera convention right/down/forward and float32. Verify that the resulting lateral/forward relation reproduces the R4 direct readout.",
+  "operator": "Overwrite XYZ of each region's valid pixels with its corresponding object anchor. Pixel centers are clipped to the official rectangles; pixels in both rectangles, outside both or originally invalid are kept native. Keep the validity mask verbatim. If R4 geometry is missing or either disjoint support is empty both altered arms fall back to the rerun same-format native decoder.",
+  "arms": "Rerun the original with-frame control. Apply the same overwrite footprint with proper anchors and with those two anchors swapped. Pass all three through official sinusoidal XYZ, frozen 14x14 encoder and fused projector while reusing the exact same RGB feature tensor. Score the direct geometric readout from the injected float32 anchors for both assignments with the same fallback.",
+  "verification": "Bitwise RGB input/encoder reuse and outside-footprint XYZ, depth token and fused token equality. Record changes inside the footprint, replay native outputs and check for exact 180-degree reversal of each active direct prediction. No target labels in preparation or prediction.",
+  "assessment": "Parse and score using the R4 clock rules. Report full-set and geometry-used ±1 hour rates and angular error, paired image-cluster confidence intervals, swap same-hour / exact inversion / inversion within one hour, agreement with the direct controls and eligibility. An unparseable model answer stays in the full denominator."
+}
