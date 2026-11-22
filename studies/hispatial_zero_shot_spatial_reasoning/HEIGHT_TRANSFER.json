@@ -1,0 +1,21 @@
+{
+  "study": "Ray-equivalent object height for frozen HiSpatial",
+  "parent": "ba8ebba56a62b68a3087bf250e4d642e224ebeec",
+  "original_method": "Zonglin-He/A dbd38fe61a637b6ae2905ec67d1b5fa535f7a349, Qwen single-frame grounding",
+  "scope": "All official SpatialRGPT-Bench val quantitative height_data and width_data; region given; width is a negative control for changing height",
+  "dataset": {"repository": "a8cheng/SpatialRGPT-Bench", "revision": "01b38d2c7aa805223518c061f2a7602ad8f491ef", "split": "val"},
+  "model_protocol": "OFFICIAL_BASELINE.json",
+  "training_steps": 0,
+  "inference": "Use the official colored rectangular regions in the RGB, corresponding object references, and original-image MoGe XYZ. Use original quantitative questions for the baseline. Use two fixed metric height prompts as a primary prior and paraphrase audit, not a selection rule.",
+  "prior_prompt": "How tall is {object}? Answer with its estimated height in meters.",
+  "alternate_prior_prompt": "What is the full vertical size of {object}? Give the estimate in meters.",
+  "support": "Reuse the prior 4-scale MoGe proposal bank using 4x4 Fit grid centers. Take the max box-IoU region if IoU >= 0.25, and restrict support to the official rectangle. Require 24 valid Fit points.",
+  "split": "In each 4x4 region grid cell, Fit uses offset (2,2), Selection (1,1), Audit (3,3), and identical original source pixels never cross splits. Scene plane, candidate, and initial box only use Fit samples. Only Selection can change the box. Pixel splits share MoGe's predictor and do not imply independent estimation errors.",
+  "gravity": "Require a well-supported lower-image approximately horizontal scene plane outside provided boxes. Up candidates within 30 degrees of image up, angular tolerance 12 degrees, plane depth-relative residual at most 0.015, at least 32 consensus triangles and 35% of eligible triangles, at least 20% image-width spread and 3 image tiles. Refit and reject degenerate normals. Camera-relative coordinates only.",
+  "initial": "Fit an unpadded orthogonal PCA bounding box to the selected Fit points. Enclose its eight corners in an upright box using the estimated up axis and the projected intrinsic horizontal axis. Fit points and the geometry determine this box independently of either HiSpatial height prior. The direct gravity-aligned measured span is a control for this enclosing-volume convention.",
+  "clip": "Keep the bottom and horizontal sides. Protect original in-box Fit/Selection measured points and all original Selection entry points. Apply min(initial_height,max(primary_height_prior,max_witness_height+1e-7)) from the fixed bottom only when an old Selection hit exists and the camera is outside. Test all usable Selection rays for hit and first-entry preservation, otherwise fall back. Audit rays never set the new height.",
+  "no_ray_control": "Use the same prior and Fit plus Selection in-box measured points without original ray entries. Report its accuracy and any lost/changed first intersections.",
+  "qa": "Run the same frozen model on original RGB and unchanged XYZ. Compare original question, original question plus prior height alone, corrected height alone, complete initial state, and complete corrected state. Only the height field changes in the paired complete-state prompts. Reuse responses on identical prompts. Use native answer on unavailable numerical/geometry inputs.",
+  "scoring": "Use the paper's ±25% success on all paired rows and absolute relative error on successfully parsed values plus a paired common-parseable ARE. Deterministic SI/imperial parser in place of the paper's GPT-4 value extraction. Human and answer data remain in different columns; the inference manifest uses answer-free text_q. Open reference answers only after numerical predictions and QA outputs are sealed.",
+  "stopping": "Finish R0–R3 on this fixed cohort. Region-free binding, distance and other benchmarks are out of this run."
+}
