@@ -1,0 +1,155 @@
+{
+  "posthoc_diagnostic": true,
+  "descriptions": {
+    "bbox_lateral": "Clock 3 or 9 using the sign of the annotated 2D box center difference only",
+    "zero_forward": "Same geometry and coverage as the window readout, set relative forward coordinate to zero"
+  },
+  "metrics": {
+    "frame": {
+      "n": 107,
+      "parsed": 105,
+      "correct": 30,
+      "accuracy_pct": 28.037383177570092,
+      "mean_error": 78.85714285714286,
+      "median_error": 60.0
+    },
+    "direct": {
+      "n": 107,
+      "parsed": 107,
+      "correct": 93,
+      "accuracy_pct": 86.91588785046729,
+      "mean_error": 19.626168224299064,
+      "median_error": 0.0
+    },
+    "bbox_lateral": {
+      "n": 107,
+      "parsed": 107,
+      "correct": 54,
+      "accuracy_pct": 50.467289719626166,
+      "mean_error": 44.299065420560744,
+      "median_error": 30.0
+    },
+    "zero_forward": {
+      "n": 107,
+      "parsed": 107,
+      "correct": 51,
+      "accuracy_pct": 47.66355140186916,
+      "mean_error": 48.504672897196265,
+      "median_error": 60.0
+    }
+  },
+  "covered_metrics": {
+    "frame": {
+      "n": 94,
+      "parsed": 92,
+      "correct": 26,
+      "accuracy_pct": 27.659574468085108,
+      "mean_error": 79.8913043478261,
+      "median_error": 60.0
+    },
+    "direct": {
+      "n": 94,
+      "parsed": 94,
+      "correct": 89,
+      "accuracy_pct": 94.68085106382979,
+      "mean_error": 12.446808510638299,
+      "median_error": 0.0
+    },
+    "bbox_lateral": {
+      "n": 94,
+      "parsed": 94,
+      "correct": 47,
+      "accuracy_pct": 50.0,
+      "mean_error": 45.319148936170215,
+      "median_error": 45.0
+    },
+    "zero_forward": {
+      "n": 94,
+      "parsed": 94,
+      "correct": 47,
+      "accuracy_pct": 50.0,
+      "mean_error": 45.319148936170215,
+      "median_error": 45.0
+    }
+  },
+  "paired": [
+    {
+      "scope": "all",
+      "before": "bbox_lateral",
+      "after": "direct",
+      "n": 107,
+      "physical_images": 96,
+      "base_correct": 54,
+      "arm_correct": 93,
+      "rescues": 46,
+      "harms": 7,
+      "delta_pp": 36.44859813084112,
+      "ci95_pp": [
+        25.0,
+        47.372329338197
+      ],
+      "common_parsed": 107,
+      "common_mean_before": 44.299065420560744,
+      "common_mean_after": 19.626168224299064
+    },
+    {
+      "scope": "all",
+      "before": "zero_forward",
+      "after": "direct",
+      "n": 107,
+      "physical_images": 96,
+      "base_correct": 51,
+      "arm_correct": 93,
+      "rescues": 42,
+      "harms": 0,
+      "delta_pp": 39.25233644859813,
+      "ci95_pp": [
+        29.906542056074766,
+        48.57142857142857
+      ],
+      "common_parsed": 107,
+      "common_mean_before": 48.504672897196265,
+      "common_mean_after": 19.626168224299064
+    },
+    {
+      "scope": "same_covered",
+      "before": "bbox_lateral",
+      "after": "direct",
+      "n": 94,
+      "physical_images": 85,
+      "base_correct": 47,
+      "arm_correct": 89,
+      "rescues": 42,
+      "harms": 0,
+      "delta_pp": 44.680851063829785,
+      "ci95_pp": [
+        34.73576799140709,
+        54.83870967741935
+      ],
+      "common_parsed": 94,
+      "common_mean_before": 45.319148936170215,
+      "common_mean_after": 12.446808510638299
+    },
+    {
+      "scope": "same_covered",
+      "before": "zero_forward",
+      "after": "direct",
+      "n": 94,
+      "physical_images": 85,
+      "base_correct": 47,
+      "arm_correct": 89,
+      "rescues": 42,
+      "harms": 0,
+      "delta_pp": 44.680851063829785,
+      "ci95_pp": [
+        34.73576799140709,
+        54.83870967741935
+      ],
+      "common_parsed": 94,
+      "common_mean_before": 45.319148936170215,
+      "common_mean_after": 12.446808510638299
+    }
+  ],
+  "predictions_sha256": "732e546a3ee03f09aa3137e4873d814242b7f90b65c1decae6eaa83cd3fab8c3",
+  "direction_format_seal": "02b586141920448c02d4259cf84e9f3f5d480f4649bf78b1ac2d8c8317cd91e1"
+}

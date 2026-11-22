@@ -1,0 +1,24 @@
+{
+  "study": "R4 Object-Pair Geometry Sufficiency Audit",
+  "parent": "808363dd13a3928723c2aa7b3dddc7b4f2be94e3",
+  "dataset": {"repository": "a8cheng/SpatialRGPT-Bench", "revision": "01b38d2c7aa805223518c061f2a7602ad8f491ef", "split": "val"},
+  "scope": "All 483 quantitative pair questions, direct distance, horizontal distance, vertical distance, and clock direction. Use official supplied boxes and official question rendering. Prior Height and Width labels and predictions are excluded.",
+  "model": "Frozen HiSpatial-3B and MoGe-2 at the pinned official baseline revisions. No training or second model.",
+  "geometry_budget": "Use the existing four-scale MoGe region bank and its size/continuity settings. Fit pixels are the existing 4x4 grid centers. All geometry arms use the same aligned XYZ and these known rectangles.",
+  "support": "Take each scale's highest rectangle IoU region above or at 0.25, clipped to the rectangle, with at least 24 valid grid points. The highest-IoU qualified one is the common support. Missing geometry falls back to the exact native prediction and is measured separately.",
+  "arms": {
+    "window_robust": "Geometric medians of all valid pixels on the shared grid inside the two official boxes.",
+    "visible_centroid": "Means of the two common point supports.",
+    "robust_center": "Geometric medians of the two common point supports.",
+    "multi_hypothesis": "One geometric median for each qualifying scale, then combine the two sets. Choose the candidate relation closest to the numeric median or circular hour medoid. Retain all sample relation values and their spread.",
+    "support_nn": "Direct distance only. Average the per-point nearest distances from A to B and from B to A, weighted by point counts as in the published generator.",
+    "camera_robust": "Frame diagnostic for horizontal, vertical and direction. Use the same robust centers and treat image up as the axis.",
+    "mask_robust": "Separate support diagnostic with the masks supplied by the benchmark, outside the box-only advance decision."
+  },
+  "definitions": "Euclidean center separation and support-set nearest neighbor are distinct direct-distance readouts. Horizontal distance is the absolute gravity-aligned lateral component; vertical uses the estimated up component. For clock direction, align forward and right to the plane and reproduce the official generator's negative-x convention and floor of angle/30. Estimated up uses the prior fixed lower-image planar criterion with the supplied boxes excluded; use native on frame-dependent arms when gravity is unavailable.",
+  "official_code_revision": "AnjieCheng/SpatialRGPT@16715d4f1419997da18926c6ce574802d1eb3a37",
+  "scoring": "Original published numeric and clock success rules, ±25% for distance, circular error at most one hour for direction. Use the published code's +0.0001 m ARE denominator and mean circular angle in degrees. Deterministic explicit meter/imperial and clock extraction replaces the GPT-4 conversion. Failures stay in the full denominators. Cluster paired 95% descriptive intervals by image content.",
+  "gate": "A box-only non-camera arm advances within a particular task only if its full-cohort native-fallback score has a positive lower paired 95% image-bootstrap bound and its common-parseable mean error is lower than native. If more than one arm qualifies, use the arm with largest paired gain, then smallest error, then name. No pooled distance/direction error. Mask and camera proxies are descriptive.",
+  "conditional_qa": "Only run on a qualifying category with frozen native image and XYZ. Show only the pair coordinates or the two symmetric nearest-neighbor aggregates that determined the candidate. Compare native, identically formatted no-evidence, and within-task mismatched geometry. Direct same-information readout stays in the results. This is a selected R4 diagnostic, not a disjoint confirmation.",
+  "labels": "Read only answer-free Arrow columns before predictions. Seal group and candidate predictions, then open the official serialized answer column in the offline evaluator. The optional QA pass receives only the gate choice and sealed geometry, never references or per-question correctness."
+}

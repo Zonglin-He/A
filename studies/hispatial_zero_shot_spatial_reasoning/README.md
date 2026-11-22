@@ -59,6 +59,8 @@ GPU 端读取分离的图像、问题、选项和行 ID。每套先用 24 道题
 
 [SpatialRGPT 首交等价高度报告](HEIGHT_TRANSFER_ZH.md)记录官方 Region-Given 的 Height／Width 对照、射线保持与同模型问答。
 
+[R4 对象对几何审计](OBJECT_PAIR_R4_ZH.md)覆盖直接、水平和垂直距离，以及钟面方向，包含方向证据的同模型反事实测试。
+
 ## 分支状态
 
 本次基线复跑在 `research/hispatial-zero-shot-spatial-reasoning` 登记。分支从 `Zonglin-He/A` 的 `main` 提交 `5a39e13ff2ee073c137e378a5b5780ac3fd7cce2` 建立。 [分支起点](https://github.com/Zonglin-He/A/commit/5a39e13ff2ee073c137e378a5b5780ac3fd7cce2)
