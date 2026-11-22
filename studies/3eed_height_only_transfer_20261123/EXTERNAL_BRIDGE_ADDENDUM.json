@@ -1,0 +1,9 @@
+{
+  "source_code": "https://github.com/talk2car/Talk2Car/blob/3fde52aee3341312196ab9b2f999337eff0693a0/talk2car.py",
+  "interpretation": "The released sample_token is a camera sample_data token. The author constructs the labelled box directly in that camera coordinate system.",
+  "pre_score_population": "Preserve the original keyframe-only intersection separately, and report the prespecified extension to all exact CAM_FRONT records, including sweeps, for the annotated train and val commands in the mini archive. Pair each camera with the nearest LIDAR_TOP record from the same scene. Maximum timestamp difference is 60 ms. An earlier sweep wins an exact time tie. All geometry uses one such sweep and the two official sensor poses. Flat 2D and upright LiDAR 3D are reported separately.",
+  "known_counts_from_metadata_only": {"annotated_camera_records": 113, "camera_keyframe_records": 9, "scenes": 6, "annotated_validation_records": 0},
+  "prediction_inputs": ["released command", "one RGB image", "nearest one LiDAR sweep", "official cameras and ego poses"],
+  "evaluation_only": ["published Talk2Car camera-frame target cuboid", "published 2D target box", "nuScenes annotation token compatibility for camera keyframes"],
+  "FINAL_access": false
+}

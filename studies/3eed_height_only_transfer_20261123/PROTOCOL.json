@@ -1,0 +1,38 @@
+{
+  "study": "Matched roof anchoring, an independent 3D provider, and an external language cohort",
+  "registered_method": "ray_equivalent_height_only",
+  "method_lock_sha256": "4cc68ccd7b088f66cb19958bf18e4a62acdaf7cf30e12216e65e5c54b176d0b8",
+  "previous_paper_experiments": "c0036a4ed80bd77fa3a3eda9d4ca00216dbd8180",
+  "fixed_ordinary_cohorts": {"validation": 9310, "extension": 1536},
+  "anchor_control": {
+    "population": "Both existing ordinary cohorts, including every fallback and missing reply",
+    "arms": ["frozen", "roof", "symmetric", "cut_bottom", "closest_feasible_symmetric"],
+    "matched": "Same final height, volume, XY footprint, yaw, route, input data and attached Fit, Selection and Audit returns. Move the lower face by zero, half or all of the original height reduction. The last control clamps the symmetric shift to the lowest protected point. Keep the original frame for a no-op.",
+    "outcomes": "Strict Acc@25, Acc@50, mIoU, paired rescue/harm, first-hit vector changes and original in-box return losses. Verify numeric equality to the sealed incumbent and roof from the paper suite."
+  },
+  "wilddet3d": {
+    "cohort": "All 1536 descriptions on the sealed recording-disjoint ordinary extension",
+    "official_code": "https://github.com/allenai/WildDet3D",
+    "code_revision": "1b8aa52b6ff3f00d0ebfa07175efc0c0c440964a",
+    "checkpoint_repo": "allenai/WildDet3D",
+    "checkpoint_revision": "161edb26239f58d8973045517d9c8b179c515f73",
+    "checkpoint": "wilddet3d_alldata_all_prompt_v1.0.pt",
+    "checkpoint_bytes": 4733213037,
+    "checkpoint_sha256": "f8b6a9e548f733ba62625a0d2adc4b0f4fdb6007ee11d9927f9c1027010fee57",
+    "identity": "Frozen archived Qwen3-VL-4B 2D window and vehicle routing, visual geometric-box prompt with calibration and no annotation inputs. For any nonzero lens distortion, undistort the image and prompt together using unchanged K for the provider only.",
+    "comparison": "Native WildDet3D upright output and native WildDet3D with measured sparse projected LiDAR depth, when official inference supports it. Feed the quaternion, native dimensions and center from the monocular output to the existing geometry entry. Compare paired roof on/off, with original Qwen geometry separately.",
+    "rule": "A documented box axis transform and corner parity are required before scoring. Report frozen model and per-platform results, including negative and missing predictions."
+  },
+  "external_data": {
+    "archive": "https://www.nuscenes.org/data/v1.0-mini.tgz",
+    "expected_bytes": 4167696325,
+    "language": "Official Talk2Car released annotated train and validation commands",
+    "population": "Every annotated command that has a matching v1.0-mini keyframe, CAM_FRONT calibration and LIDAR_TOP sweep. Keep annotation split for reporting and use only utterance, image and LiDAR/calibration in predictions. Exclude commands without a released target annotation by using the two annotated splits only.",
+    "method": "Existing frozen Qwen3-VL-4B prompts and parser; one frontal image and its calibrated LiDAR sweep. Reuse unmodified roof entry with a deterministic camera/point coordinate adapter. Compare native, window median, incumbent and roof. Document mini intersection size, origin and scene clustering.",
+    "bounds": "Use the single public mini archive and the two released compact language files. Do not fetch the full nuScenes sensor corpus. No thresholds or architecture changes from the external outcomes."
+  },
+  "scoring": "Verify immutable study and model hashes. Seal all predicted readouts for each cohort before first access to target boxes by its scorer. All paired statistics retain the complete roster. Original 3EED scoring uses the two existing oriented IoU implementations and strict thresholds. Record grouping by scene on the external cohort.",
+  "source_training": 0,
+  "target_updates": 0,
+  "FINAL_access": false
+}

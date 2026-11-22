@@ -1,0 +1,10 @@
+{
+  "training_source": "https://github.com/allenai/WildDet3D/blob/1b8aa52b6ff3f00d0ebfa07175efc0c0c440964a/docs/TRAINING_DATA.md#3eed",
+  "training_config": "https://github.com/allenai/WildDet3D/blob/1b8aa52b6ff3f00d0ebfa07175efc0c0c440964a/configs/training/stage2_alldata.py",
+  "reason": "The released all-data WildDet3D configuration includes 3EED detection and language TRAIN. The recording-separated 1536-description cohort comes from Ordinary TRAIN. Use the entire 9310-description Ordinary Validation cohort for the provider comparison instead.",
+  "population": "All descriptions in the sealed Ordinary Validation roster, retaining missing Qwen windows and every geometric fallback.",
+  "counts": {"waymo": 3782, "drone": 2792, "quad": 2736},
+  "when": "Before loading learned WildDet3D weights or scoring a provider output. Official architecture exercise with random weights had already passed and produced no predictions used in the experiment.",
+  "comparisons": "Keep the original provider configurations, model revisions, camera bridge, native RGB and RGB plus LiDAR modes, and the roof on/off pairs. All modes share the frozen Qwen 2D windows and calibration. The two anchor-control cohorts keep their original rosters.",
+  "FINAL_access": false
+}

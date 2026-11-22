@@ -33,3 +33,5 @@ prediction = predict(frame, replies)
 ## 论文实验
 
 在与普通 Validation 的录制、RGB 和 LiDAR 均分离的 **1,536 条**普通描述上，主方法的 Acc@25、Acc@50 和 mIoU 分别为 **58.98%、34.18%、33.73%**。冻结 `C_ray_simple` 的 Acc@50 为 31.51%，配对救回 48 条、误改 7 条。两批数据均有项目研发曝光记录。 [双队列实验](studies/3eed_qwen_height_only_paper_20261123/REPORT_ZH.md) · [实验图](studies/3eed_qwen_height_only_paper_20261123/results/paper_figure.pdf) · [独立复算](studies/3eed_qwen_height_only_paper_20261123/results/independent_recount.json)
+
+同框高、同观测的消融中，保留原底面在普通 Validation 上比尽量对称收缩高 **2.12 pp Acc@50**。换用 WildDet3D 的冻结三维输出后，顶缩的配对增量为 **+0.48 pp**。Talk2Car–mini 的 113 条外部复测中，两组 Acc@50 均为 **11.50%**。 [同高消融、三维前端替换与外部复测](studies/3eed_height_only_transfer_20261123/REPORT_ZH.md) · [补充实验图](studies/3eed_height_only_transfer_20261123/results/transfer_figure.pdf)
