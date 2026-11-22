@@ -1,0 +1,17 @@
+{
+  "study": "Closed-form clipping and height-only ray-equivalent extent",
+  "scope": "The existing 9310 previously exposed Ordinary Validation descriptions with the locked C_ray_simple inputs, split, score, and fallbacks.",
+  "frozen_method_sha256": "8224823efab925bb73e2fd058adfda9389b59d0bb6d0660e015d6249f88acc3b",
+  "source_extent_lock_sha256": "20c52cb77721f69403237154ad3588f7282a14f29bf90a127e6c5835ddece3c5",
+  "arms": {
+    "baseline": "Locked C_ray_simple.",
+    "ray_equivalent": "All three axes use min(incumbent extent, max(intrinsic extent, extent required by protected points)). Retain the original anchors and outward margin. The output must agree with the sealed all-axis box to 1e-8 m and reproduce its strict metric decisions.",
+    "height_only": "Use only the vertical term of the clip. Keep horizontal center, length, width, yaw, and original bottom. Keep both real in-box target points and the synthetic old Selection entries. Use the original applicability and fallbacks."
+  },
+  "fixed_inputs": "Same frozen Qwen replies, four-scale region and Fit/Selection/Audit partitions, selected heading, and incumbent box. No matched-volume target.",
+  "audit": "Compare incumbent and new entry masks and depths on the associated Selection and Audit sets at 1e-8 m depth tolerance. Audit rays are withheld from the candidate. Verify both actual entry routes on all descriptions and retain every fallback.",
+  "evaluation": "Seal both predictions before scoring. Report strict IoU > 0.25 and > 0.50, mIoU, paired threshold rescues and harm, recording bootstrap intervals and counts by platform and recording. Reuse the original ground-truth scorer and check the stored baseline and all-axis decisions.",
+  "decision_rule": "An all-axis mismatch invalidates the implementation check. Treat height-only as a simplification only if the ray and fixed-axis constraints hold, and report the paired accuracy cost and platform differences to inform adoption.",
+  "budget": "Two deterministic readouts of the same incumbent geometry per description, with a single geometry replay. CPU only, no threshold search, no new Qwen queries or training.",
+  "FINAL_access": false
+}
