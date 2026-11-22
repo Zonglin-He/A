@@ -1,0 +1,56 @@
+{
+  "status": "paper_experiments_completed",
+  "method": "ray_equivalent_height_only",
+  "main_lock": "4cc68ccd7b088f66cb19958bf18e4a62acdaf7cf30e12216e65e5c54b176d0b8",
+  "cohorts": {
+    "validation": {
+      "n": 9310,
+      "macro": {
+        "acc25": 54.33669986061837,
+        "acc50": 37.2303899131403,
+        "miou": 33.87848017764283
+      },
+      "delta_acc50_pp": 2.821495217552457,
+      "rescue50": 249,
+      "harm50": 7,
+      "recording_bootstrap_95pp": [
+        0.5860638362225857,
+        3.247612596767273
+      ],
+      "prior_project_exposure": true
+    },
+    "extension": {
+      "n": 1536,
+      "macro": {
+        "acc25": 58.984375,
+        "acc50": 34.1796875,
+        "miou": 33.73121650125718
+      },
+      "delta_acc50_pp": 2.669270833333333,
+      "rescue50": 48,
+      "harm50": 7,
+      "recording_bootstrap_95pp": [
+        0.41359816929413706,
+        3.7330892995351146
+      ],
+      "prior_project_exposure": true
+    }
+  },
+  "additional_evaluation": [
+    "within-dataset recording-disjoint replication",
+    "same-input module and height ablation",
+    "matched soft search",
+    "shuffled and cross-cohort shared height",
+    "ray subsampling",
+    "exact feasible roof oracle",
+    "paired category and recording breakdown",
+    "frozen 3EED historical context",
+    "paired CPU timing"
+  ],
+  "evaluation_scope": "Existing single-target ordinary 3EED rosters and a single frozen Qwen checkpoint",
+  "verification": "24a9c8daa0d6dbf2206841ae366a1a364bc17615b03110a0095f0701b5df63e3",
+  "report_sha256": "749104939a4f9a0eb1f4ef9e9bc5c172fe9f2f25a43bd1e31dc0c51d63e3c748",
+  "target_updates": 0,
+  "source_training": 0,
+  "FINAL_access": false
+}

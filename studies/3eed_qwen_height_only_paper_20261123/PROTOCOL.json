@@ -1,0 +1,30 @@
+{
+  "study": "Paper experiments for height-only correction in frozen single-frame 3D grounding",
+  "main_lock_sha256": "4cc68ccd7b088f66cb19958bf18e4a62acdaf7cf30e12216e65e5c54b176d0b8",
+  "model": "Qwen/Qwen3-VL-4B-Instruct",
+  "revision": "ebb281ec70b05090aa6165b016eac8ec08e71b17",
+  "cohorts": {
+    "validation": {"waymo": 3782, "drone": 2792, "quad": 2736, "scope": "Fixed previously exposed Ordinary Validation"},
+    "extension": {"waymo": 512, "drone": 512, "quad": 512, "scope": "Entire R159 sealed Ordinary TRAIN roster; disjoint recordings, RGB, and LiDAR from validation; previously exposed to this research project"}
+  },
+  "primary_comparison": "One score per target description. Three target platforms equally weighted. Strict upright oriented IoU > 0.25 and > 0.50, mIoU, paired rescues and harms, and per-platform and recording summaries. Validation and recording-disjoint replication are reported separately.",
+  "reference_readouts": ["Qwen native upright", "Qwen window median depth", "single-scale completion", "four-scale completion", "same-input PCA", "frozen C_ray_simple", "three-axis contraction", "height-only main"],
+  "height_ablations": {
+    "prior_only": "Apply the original Qwen height prior and original top upper bound; preserve the initial footprint, yaw, bottom, and branch eligibility.",
+    "points_only": "Add the in-box measured-point lower bound to prior_only.",
+    "rays_only": "Add the original selection-ray entry lower bound to prior_only.",
+    "height_only": "Both bounds with instance-specific raw Qwen height; exact replay of the selected main method.",
+    "no_prior": "Use the smallest feasible height within the same evidence bounds and numerical margin.",
+    "swapped_prior": "Permute native-height priors among eligible descriptions within each platform using a fixed label-free ordering; bypass degenerate groups.",
+    "soft_search": "Compare the same target returns, footprint, ground plane, orientation, and native height to a height-search adaptation of OVM3D-Det section 3.2. Use 17 evenly spaced heights between the prior clip and incumbent top plus the three protected variants' heights. Minimize mean hit-conditioned Euclidean entry residual plus 10 times the uncovered point fraction. Resolve ties toward the smaller height."
+  },
+  "geometry_tests": {
+    "invariance": "Compare Selection and withheld Audit ray vectors against the same original box. Count lost measured points and report both kinds of geometric changes by readout.",
+    "ray_count": "Recompute the roof bound with deterministic one-quarter or one-half Selection-ray subsets. Hold the winning pose, measured support, and prior fixed. Evaluate both the subsample and omitted rays. Supplement with exact slack and binding statistics.",
+    "oracle": "After sealing every prediction, project the annotated top onto the exact feasible height interval to obtain the best IoU obtainable by moving only the top. Independently check the monotone pieces using a 33-height grid on a deterministic sample. Oracle metrics are diagnostic."
+  },
+  "statistics": "Use paired recording bootstrap within each target platform, recording-specific results, sensitivity to omitting one recording, and predeclared strata by annotated category and range and label-free point support, camera position, and bound widths. Keep every failure in the denominators.",
+  "timing": "Use 24 eligible and 8 fallback validation descriptions per platform, fixed hash ordering, repeated matched live calls with warmed I/O on one CPU thread. Time the marginal height correction separately. Report the historical frozen Qwen generation seal as separate upstream cost.",
+  "constraints": "Frozen registered main method, prompts and model. Evaluation-only labels after sealing. Ordinary TRAIN is a replication population and no fitting split. No source retraining, FINAL payload access, or FINAL manifest access.",
+  "FINAL_access": false
+}

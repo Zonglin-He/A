@@ -29,3 +29,7 @@ prediction = predict(frame, replies)
 | **三平台等权** | **9,310** | **54.34%** | **37.23%** | **33.88%** |
 
 主方法相对同批冻结 `C_ray_simple` 的 Acc@50 提高 **2.82 个百分点**，相对三轴收缩的 Acc@50 低 **0.24 个百分点**。两种收缩入口均在 9,310 条上逐框复现封存预测。 [逐平台与录制结果](studies/3eed_qwen_extent_height_only_20261122/results/metrics.csv) · [配对结果](studies/3eed_qwen_extent_height_only_20261122/results/paired.csv) · [入口复放](studies/3eed_qwen_extent_height_only_20261122/results/live_replay.json)
+
+## 论文实验
+
+在与普通 Validation 的录制、RGB 和 LiDAR 均分离的 **1,536 条**普通描述上，主方法的 Acc@25、Acc@50 和 mIoU 分别为 **58.98%、34.18%、33.73%**。冻结 `C_ray_simple` 的 Acc@50 为 31.51%，配对救回 48 条、误改 7 条。两批数据均有项目研发曝光记录。 [双队列实验](studies/3eed_qwen_height_only_paper_20261123/REPORT_ZH.md) · [实验图](studies/3eed_qwen_height_only_paper_20261123/results/paper_figure.pdf) · [独立复算](studies/3eed_qwen_height_only_paper_20261123/results/independent_recount.json)
