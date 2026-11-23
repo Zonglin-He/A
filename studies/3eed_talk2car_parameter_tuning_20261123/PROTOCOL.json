@@ -1,0 +1,43 @@
+{
+  "study": "Paired Talk2Car-mini inference and geometry tuning on six recordings",
+  "population": {
+    "study": "3eed_height_only_transfer_20261123",
+    "input_seal_sha256": "ccb1e7eabead86a8eefa6ceba5726d28552c36f2e79f5a094343f9e156b8cdb5",
+    "descriptions": 113,
+    "recordings": 6,
+    "prior_development_exposure": true
+  },
+  "model": {
+    "name": "Qwen/Qwen3-VL-4B-Instruct",
+    "revision": "ebb281ec70b05090aa6165b016eac8ec08e71b17",
+    "method_registry_sha256": "a9e5e0af87798be0d688ddd6ca53bcdec0d7b89d0a0a04725e00448606bb82a2"
+  },
+  "generation": {
+    "fixed": "Same checkpoint, images, pixel budget, greedy decoding, original batch order, and strict one-object parser. Apply the prompt option to both output tasks. Reuse the previous archived original-144 replies and verify an exact replay probe.",
+    "single_target_suffix": " Choose the one main physical object the command refers to, using any other mentioned objects only as context. The JSON array must contain exactly one element. ",
+    "profiles": {
+      "original_144": {"max_new_tokens": 144, "prompt": "original", "archived": true},
+      "original_256": {"max_new_tokens": 256, "prompt": "original"},
+      "single_144": {"max_new_tokens": 144, "prompt": "single_target"},
+      "single_256": {"max_new_tokens": 256, "prompt": "single_target"}
+    }
+  },
+  "geometry": {
+    "fixed": "Same four scales, sampled points, camera bridge, fit and independent held-ray split, Qwen 2D vehicle rule, PCA/Qwen pose candidates, initial box recipe and top-correction evidence constraints.",
+    "minimum_returns": [5, 3],
+    "central_window_width_height_fraction": [0.50, 0.75],
+    "baseline": [5, 0.50]
+  },
+  "comparisons": {
+    "fixed_grid": "All 16 generation/geometry combinations on all 113 descriptions. Report native, matched window-median, and matched frozen-no-roof controls for the same Qwen information. Retain every missing prediction and fallback.",
+    "selection": "Hold out each recording in turn. Rank within the other five using equal-recording Acc@50, followed by equal-recording mIoU, fewer deviations from the archived setup, then the registered profile and geometry order. The held-out recording contributes neither to ranking nor tie breaking.",
+    "subsets": ["generation_only", "geometry_only", "joint"],
+    "primary": "Strict upright 3D IoU > 0.50. Report description-pooled and recording-macro summaries, Acc@25, mIoU, successful parses, 2D Acc@50, C_ray coverage, actual edits, rescue/harm and every recording. Provide both frozen method and window-median baselines. Resample whole recordings for descriptive paired intervals.",
+    "deployment": "Any exported full-cohort configuration is a Talk2Car development setting, distinct from recording-held-out predictions. Prefer evidence of benefit over the simpler same-information baseline. The general method registry is frozen."
+  },
+  "prediction_seal_before_labels": true,
+  "target_labels_used_for": "Post-seal scoring and five-recording configuration selection only.",
+  "source_training": 0,
+  "target_updates": 0,
+  "FINAL_access": false
+}

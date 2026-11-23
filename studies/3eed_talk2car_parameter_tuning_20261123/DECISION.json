@@ -1,0 +1,54 @@
+{
+  "decision": "use the single-target Qwen prompt with 144 output tokens for the Talk2Car development baseline; retain the current general method",
+  "scope": "113 previously exposed Talk2Car Train descriptions matched to nuScenes mini, from six recordings",
+  "talk2car_development_profile": {
+    "generation_profile": "single_144",
+    "prompt": "single_target",
+    "max_new_tokens": 144,
+    "readout": "window_median",
+    "geometry_entry": "studies/3eed_qwen_full_ordinary_validation_20261121/geometry_full.py:predict:boxes.A",
+    "selection": "chosen in all six leave-one-recording-out folds",
+    "hits50": 22,
+    "acc50_percent": 19.469026548672566,
+    "rescues50_vs_original_window": 9,
+    "harms50_vs_original_window": 2
+  },
+  "full_method_geometry_tuning_promoted": false,
+  "best_full_method_development_configuration": {
+    "arm": "roof_single_144_r5_w75",
+    "generation_profile": "single_144",
+    "minimum_returns": 5,
+    "central_window_width_height_fraction": 0.75,
+    "hits50": 19,
+    "acc50_percent": 16.8141592920354,
+    "rescues50_vs_archived_main_method": 7,
+    "harms50_vs_archived_main_method": 1,
+    "rescues50_vs_same_prompt_window": 6,
+    "harms50_vs_same_prompt_window": 9
+  },
+  "leave_one_recording_out_joint_tuning": {
+    "hits50": 15,
+    "acc50_percent": 13.27433628318584,
+    "matched_window_hits50": 18,
+    "matched_frozen_without_roof_hits50": 15,
+    "rescues50_vs_archived_main_method": 3,
+    "harms50_vs_archived_main_method": 1,
+    "rescues50_vs_matched_frozen": 0,
+    "harms50_vs_matched_frozen": 0
+  },
+  "audit": {
+    "new_qwen_replies": 678,
+    "original_144_to_256_parsed_values_changed": {"2d": 0, "3d": 0},
+    "single_144_to_256_parsed_values_changed": {"2d": 0, "3d": 0},
+    "full_method_window_gap_at_default_geometry": {
+      "A": {"rescues50": 0, "harms50": 0},
+      "H": {"rescues50": 3, "harms50": 4},
+      "C_ray": {"rescues50": 2, "harms50": 5}
+    },
+    "evaluation": "results/evaluation.json",
+    "prediction_seal": "results/prediction_seal.json"
+  },
+  "source_training": 0,
+  "target_updates": 0,
+  "FINAL_access": false
+}
