@@ -21,18 +21,18 @@ Bind 是无可学习参数的点云聚类与区域筛选。在滤除近地面点
 
 每框使用 14 维节点特征，每对候选使用 8 维关系特征。节点包含归一化点云分布、射线命中与残差、首次二维投影及 Qwen 先验对齐。边包含三维 IoU、局部归一化中心差、对数尺寸比与轴向角差。S5-pass 使用三层四头边注意力聚合候选关系。
 
-令 $y_i=\operatorname{IoU}_{3D}(B_i,B_{\mathrm{GT}})$。训练用风险调整效用 $U_i$，推理用相对评分 $u_i$。
+令 $y_i=\operatorname{IoU}_{3D}(B_i,B_{\mathrm{GT}})$。训练用风险调整目标 $U_i'$，推理用锚框相对评分 $u_i$。
 
 $$
-U_i=y_i-y_0-0.10\,\mathbf 1[y_0>0.5,\ y_i\le0.5],\qquad
+U_i'=y_i-0.10\,\mathbf 1[y_0>0.5,\ y_i\le0.5],\qquad
 u_i=v_i-v_0.
 $$
 
 $$
-\mathcal L=D_{\mathrm{KL}}\!\big(\operatorname{softmax}(U/0.05)\,\|\,\operatorname{softmax}(u)\big).
+\mathcal L=D_{\mathrm{KL}}\!\big(\operatorname{softmax}(U'/0.05)\,\|\,\operatorname{softmax}(v)\big).
 $$
 
-候选排序和替换使用同一个分数。最高分的有效非锚候选只有当 $u_i>0.09659984707832336$ 才替换 $B_0$。阈值和第 12 轮 checkpoint 由退化 Waymo val 冻结。
+Softmax 在有效候选上计算。查询内减去同一常数 $y_0$ 或 $v_0$ 会得到相同的目标或预测分布。最高分的有效非锚候选只有当 $u_i>0.09659984707832336$ 才替换 $B_0$。阈值和第 12 轮 checkpoint 由退化 Waymo val 冻结。 [后端简化消融](../3eed_s5_simplification_20261128/REPORT_ZH.md)
 
 ## 论文结果
 
