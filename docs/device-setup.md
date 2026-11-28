@@ -14,13 +14,13 @@ git log -1 --oneline
 
 ## 核对当前方法
 
-查看 [主方法登记](../QWEN_CURRENT_METHOD.json) 中的 `method`、`model.revision` 和 `prediction_entry`。目前登记值为 `ray_equivalent_height_only`，默认从 `studies/3eed_qwen_extent_height_only_20261122/live.py` 导入 `predict`。
+S5-pass 代码在 `research/3eed-hypothesis-verification-20261128`。使用 [论文登记](../QWEN_PAPER_METHOD.json) 核对冻结 Qwen 修订、默认 `s5_pass` 入口和 [Verifier 权重哈希](../studies/3eed_minimal_verifier_20261128/S5_PASS_METHOD_LOCK.json)。可按 [3EED 推理和评分说明](../tools/3eed_recovery/README.md) 从本机资产恢复权重并复跑。
 
 | 要运行的内容 | 准备方式 |
 | --- | --- |
 | 看实验结果、论文图、逐条公开分数 | 克隆后直接打开 [结果索引](research-index.md)。 |
-| 用已准备的帧和已解析回答运行 Qwen 几何读出 | 使用带 NumPy、SciPy 和 Pillow 的 Python 环境，按 [几何接口](qwen-grounding.md#推理入口) 传入 `frame` 与 `replies`。 |
-| 重新运行冻结 Qwen 推理 | 准备 CUDA 环境和登记修订的 Qwen3-VL-4B-Instruct。论文实验使用已配置的数据桥，命令从 [论文实验复验](../studies/3eed_qwen_height_only_paper_20261123/REPORT_ZH.md) 开始。 |
+| 用已准备的帧和已解析回答运行 Qwen 几何读出 | 使用 CUDA 环境和锁定的 Verifier 权重，按 [几何接口](qwen-grounding.md#推理入口) 传入 `frame` 与 `replies`。 |
+| 重新运行冻结 Qwen 推理 | 准备 CUDA 环境和登记修订的 Qwen3-VL-4B-Instruct。按 [默认论文运行器](../tools/3eed_recovery/README.md#推理和评分) 准备输入。 |
 | 复跑 WildDet3D 或 Talk2Car 的补充实验 | 将本地权重和数据路径填入 [外部复测说明](../studies/3eed_height_only_transfer_20261123/REPORT_ZH.md) 的变量。Talk2Car 调参另有 [固定协议](../studies/3eed_talk2car_parameter_tuning_20261123/PROTOCOL.json)。 |
 | 复跑旧版 3EED 或 STVG | 使用 [旧版 3EED 运行说明](../v1/RUN.md) 或 [STVG 方法说明](method.md) 对应的环境与资产。仓库根目录的 `environment.yml` 是 STVG 的环境定义。 |
 

@@ -25,7 +25,9 @@ PLATFORMS = ("waymo", "drone", "quad")
 VIEWS = ("F", "FL", "FR", "SL", "SR")
 HISTORIC_ARMS = ("C_ray_simple", "ray_equivalent_height_only", "ray_equivalent_extent")
 ARMS = HISTORIC_ARMS  # Imported by historical study runners.
+# Historical studies bind the Minimal-D registration by exact path and SHA.
 REGISTRATION = ROOT / "QWEN_CURRENT_METHOD.json"
+PAPER_REGISTRATION = ROOT / "QWEN_PAPER_METHOD.json"
 INPUT_FIELDS = {"uid", "target", "text", "rgb", "points", "calibration", "suffix", "seed"}
 CAMERA_FIELDS = {"image_intrinsic", "image_extrinsic", "camera_distortion"}
 
@@ -88,7 +90,7 @@ def height_2d_registration(current):
     return path, previous
 
 
-def registered_predictor(method):
+def registered_predictor(method, *, verifier_weights=None):
     """Load a locked geometry readout after source_paths has set up the environment."""
     entry = method["prediction_entry"]
     path = checked_file(entry)
@@ -97,6 +99,17 @@ def registered_predictor(method):
         raise ValueError("The registered readout differs from its method lock")
     for filename, expected in lock["config"]["historical_geometry"].items():
         checked_file(dict(file=filename, sha256=expected))
+    kwargs = dict(entry["kwargs"])
+    if "checkpoint" in lock:
+        checkpoint = lock["checkpoint"]
+        path_override = Path(verifier_weights) if verifier_weights is not None else ROOT.parent / checkpoint["workspace_path"]
+        if not path_override.is_file():
+            raise FileNotFoundError(f"Missing registered Verifier checkpoint: {path_override}. Use --verifier-weights to supply the locked file.")
+        if digest(path_override) != checkpoint["sha256"]:
+            raise ValueError(f"Verifier checkpoint SHA-256 differs from the method lock: {path_override}")
+        kwargs["checkpoint"] = str(path_override.resolve())
+    elif verifier_weights is not None:
+        raise ValueError("--verifier-weights requires the paper method")
 
     directory = str(path.parent)
     sys.path.insert(0, directory)
@@ -106,7 +119,7 @@ def registered_predictor(method):
         sys.path.remove(directory)
     if Path(module.__file__).resolve() != path.resolve():
         raise ValueError("The registered prediction module was not loaded")
-    return partial(getattr(module, entry["function"]), **entry["kwargs"])
+    return partial(getattr(module, entry["function"]), **kwargs)
 
 
 def input_frames(manifest):
@@ -141,10 +154,12 @@ def predict(args):
     frames = list(input_frames(args.manifest).values())
     if len(frames) % 2:
         raise ValueError("An even number of descriptions is required for complete four-query batches")
-    registration_bytes = REGISTRATION.read_bytes()
+    paper = getattr(args, "method", "paper") == "paper"
+    registration_bytes = (PAPER_REGISTRATION if paper else REGISTRATION).read_bytes()
     method = json.loads(registration_bytes)
-    _, previous = height_2d_registration(method)
-    frozen = read(ROOT / method["controls"]["frozen"]["method_lock"])["entry"]
+    baseline = read(REGISTRATION)
+    _, previous = height_2d_registration(baseline)
+    frozen = read(ROOT / baseline["controls"]["frozen"]["method_lock"])["entry"]
     checked_file(frozen)
     check_geometry()
 
@@ -152,8 +167,15 @@ def predict(args):
     from live import predict as roof_predict, frozen_predict
 
     old_2d = registered_predictor(previous)
-    current = registered_predictor(method)
-    arms = (*HISTORIC_ARMS, previous["method"], method["method"])
+    minimal_d = registered_predictor(baseline)
+    current = registered_predictor(method, verifier_weights=getattr(args, "verifier_weights", None)) if paper else None
+    if not paper and getattr(args, "verifier_weights", None) is not None:
+        raise ValueError("--verifier-weights requires the paper method")
+    arms = (*HISTORIC_ARMS, previous["method"], baseline["method"])
+    checkpoint_receipt = {}
+    if paper:
+        arms = (*arms, method["method"])
+        checkpoint_receipt["verifier_checkpoint_sha256"] = read(checked_file(method["method_lock"]))["checkpoint"]["sha256"]
 
     started = perf_counter()
     files = {Path(frame[field]) for frame in frames for field in ("rgb", "points", "calibration")}
@@ -170,13 +192,16 @@ def predict(args):
             answers = qwen_predict(processor, model, limit, jobs)
             for index, frame in enumerate(group):
                 replies = dict(zip(("3d", "2d"), answers[2*index:2*index + 2], strict=True))
+                anchor = minimal_d(frame, replies)
                 predictions = (
                     frozen_predict(frame, replies),
                     roof_predict(frame, replies, height_only=True),
                     roof_predict(frame, replies, height_only=False),
                     old_2d(frame, replies),
-                    current(frame, replies),
+                    anchor,
                 )
+                if current is not None:
+                    predictions = (*predictions, current(frame, replies, baseline=anchor))
                 rows.append(dict(uid=frame["uid"], target=frame["target"], replies=replies,
                                  predictions=dict(zip(arms, predictions, strict=True))))
             if start == 0 or len(rows) % 128 == 0 or len(rows) == len(frames):
@@ -193,7 +218,7 @@ def predict(args):
         counts=Counter(row["target"] for row in rows), target_labels_read=False,
         gpu=torch.cuda.get_device_name(), torch=torch.__version__, cuda=torch.version.cuda,
         transformers=transformers.__version__, python=sys.version.split()[0],
-        peak_gpu_bytes=torch.cuda.max_memory_allocated(), seconds=perf_counter() - started,
+        peak_gpu_bytes=torch.cuda.max_memory_allocated(), seconds=perf_counter() - started, **checkpoint_receipt,
     ))
 
 
@@ -223,6 +248,13 @@ def score(args):
         if extent["method"] != control["method"]:
             raise ValueError("The archived extent-plus-2D method differs from its registration")
         registered_arms[digest(extent_path)] = ((*old_arms, extent["method"]), extent["method"])
+    new = read(PAPER_REGISTRATION)
+    paper_sha = digest(PAPER_REGISTRATION)
+    registered_arms[paper_sha] = ((*current_arms, new["method"]), new["method"])
+    if seal["method_sha256"] == paper_sha:
+        checkpoint = read(checked_file(new["method_lock"]))["checkpoint"]
+        if seal.get("verifier_checkpoint_sha256") != checkpoint["sha256"]:
+            raise ValueError("Verifier checkpoint in the prediction seal differs from the method lock")
     arms = tuple(seal.get("arms", HISTORIC_ARMS))
     expected = registered_arms.get(seal["method_sha256"])
     if (expected is None or arms != expected[0]
@@ -294,6 +326,8 @@ def main():
     subparsers = parser.add_subparsers(dest="phase", required=True)
     infer = subparsers.add_parser("predict")
     infer.add_argument("--model-dir", required=True, type=Path)
+    infer.add_argument("--method", choices=("paper", "minimal-d"), default="paper")
+    infer.add_argument("--verifier-weights", type=Path)
     evaluate = subparsers.add_parser("score")
     evaluate.add_argument("--run", required=True, type=Path)
     evaluate.add_argument("--dataset", required=True, type=Path)

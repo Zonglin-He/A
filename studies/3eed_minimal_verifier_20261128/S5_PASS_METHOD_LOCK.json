@@ -1,0 +1,92 @@
+{
+  "method": "s5_pass",
+  "implementation": "S5-pass",
+  "status": "paper_main_method",
+  "entry": {
+    "file": "studies/3eed_minimal_verifier_20261128/s5_paper_entry.py",
+    "sha256": "9d2361d6006451afbb327c27d96741a9230cb5addfe7c8148932704865071fcc",
+    "function": "predict",
+    "kwargs": {
+      "cap": 13,
+      "threshold": 0.09659984707832336
+    }
+  },
+  "checkpoint": {
+    "format": "safetensors",
+    "workspace_path": "assets/models/3eed/S5-pass/e44a31c9a3e5cc1f62af7a13b2c396e9cf496754a260bd64d04ae2e088252789/S5-pass.safetensors",
+    "sha256": "e44a31c9a3e5cc1f62af7a13b2c396e9cf496754a260bd64d04ae2e088252789",
+    "bytes": 1717196,
+    "parameters": 428041,
+    "epoch": 12
+  },
+  "previous_primary_registration": {
+    "file": "QWEN_CURRENT_METHOD.json",
+    "sha256": "3034cb6c0bde673a6972d3d60b0a5ca0863afd50f6a669c7f977feac4fbaf57e"
+  },
+  "evaluation": {
+    "file": "studies/3eed_minimal_verifier_20261128/results.json",
+    "sha256": "6a7ee4ce5280c9273db18740ea626552bc552432f19a2700ac5790099593876a"
+  },
+  "training_protocol": {
+    "file": "studies/3eed_minimal_verifier_20261128/PROTOCOL_ZH.md",
+    "sha256": "ba4d30d076f9d1a3ecf4a456299d0a4b62b14f9c6110478ed31d17b827cb1c5e"
+  },
+  "config": {
+    "anchor": "Minimal-D",
+    "qwen_decodes_per_query": 2,
+    "qwen_parameters_updated": 0,
+    "source": "Waymo only",
+    "candidate_cap": 13,
+    "candidate_families": [
+      "projected poses",
+      "alternative regions",
+      "size relaxation"
+    ],
+    "node_channels": 14,
+    "edge_channels": 8,
+    "attention_layers": 3,
+    "heads": 4,
+    "objective": "risk-adjusted utility KL",
+    "risk_penalty": 0.1,
+    "utility_temperature": 0.05,
+    "switch_threshold": 0.09659984707832336,
+    "historical_geometry": {
+      "studies/3eed_qwen_extent_height_only_20261122/live.py": "29ff4c50c4680d61f8e753acc00d7ecff9e60a2ba26778f9aa72a190098d2e2e",
+      "studies/3eed_qwen_extent_height_only_20261122/extent_clip.py": "ddaaaeb1094e3581804eb2afe0fc2e1015aa34cddf89cf4bf08c25f355049257",
+      "studies/3eed_qwen_extent_height_only_20261122/METHOD_LOCK.json": "4cc68ccd7b088f66cb19958bf18e4a62acdaf7cf30e12216e65e5c54b176d0b8",
+      "studies/3eed_qwen_extent_height_only_20261122/LEGACY_REGISTRATION.json": "a9e5e0af87798be0d688ddd6ca53bcdec0d7b89d0a0a04725e00448606bb82a2",
+      "studies/3eed_qwen_cray_simplification_20261121/cray_simple.py": "c533d62d7e077e76cd12531bf1ea5e66761407aeabd7b28a08997a6fca2b56ca",
+      "studies/3eed_frozen_qwen_metric_grounding_20261120/geometry.py": "d27b42b0f72113b283c5a897d8470bef2fb142a1a0bd05708f72871418e55f93",
+      "studies/3eed_qwen_extent_height_only_20261122/live_2d.py": "5bdedabc1a144c0fa1d821ddec26cac1d8c2b0a98f5207a4833b05cf6458822a",
+      "studies/3eed_qwen_extent_height_only_20261122/REGISTRATION_HEIGHT_2D.json": "5da308d875501b312c17cc4ffd4625fe9bc3f2720085bcf7790c57836c8ac61c",
+      "studies/3eed_extent_2d_factorial_20261128/METHOD_LOCK.json": "8cf0034a5920e93b08f33322d313e866bf0089f07a5a0c8449a362029d862a4a",
+      "studies/3eed_qwen_extent_height_only_20261122/METHOD_LOCK_2D.json": "04fa3ed0ceab4d02c77c0ffbb74fa003ef26768b0180255b656b093492ce406e",
+      "studies/3eed_extent_2d_factorial_20261128/PROTOCOL_ZH.md": "715eb5ee2ddcb6274f08304e5a8dc31bcc4eb0923ea5cb7a8c334960d8b7c483",
+      "studies/3eed_minimal_pipeline_20261128/minimal.py": "47cfa83407ee4bc2a8aec299455217f325a227a54b75c38189b67f98843b6a2e",
+      "studies/3eed_extent_2d_factorial_20261128/axiswise_2d.py": "3139265292f0f063fc3df456af152583bb3e2ec5be40664e785772f5ec4a7d8e",
+      "studies/3eed_extent_2d_factorial_20261128/PAPER_METHOD_LOCK.json": "7defd3cde4fc536e54d7470686f620b34914a1606b25bb24c7b479cfed16fb33",
+      "studies/3eed_extent_2d_factorial_20261128/REGISTRATION_EXTENT_2D.json": "30a0f69c328ff8d3667cb4a51be10fe38c45c78ddc9b7e1d80259f1c2379d2b2",
+      "studies/3eed_qwen_cray_identifiability_audit_20261121/trace_pairs.py": "279e325e30a9225ba5ed8c205069f04516f94e6d9fc82f1bd4b60853f9cdb4ec",
+      "studies/3eed_qwen_cafe_exclusion_audit_20261121/center_sets.py": "bc2eeadb6489804909bb82e9ebcb97ee1d6ea0158f8bb82cc2698cdc94eda5fd",
+      "studies/3eed_qwen_four_scale_region_grounding_20261121/region_depth.py": "59b3359493523b3834c4fd7cbbae4cb14d8b5433e6aa25030fcdabaa033bdc63",
+      "studies/3eed_pose_consistent_visible_surface_grounding_20261121/surface_grounding.py": "5b92dcbc6fb2e5490b9f4420ab5e97196fbdb9b4bbe9f452414d4d61e7d24133",
+      "studies/3eed_qwen_four_scale_recording_confirmation_20261121/predict.py": "0e17de7327385bbdab03646061fc7649c2a92fc78317c64f6bf4c3c052e113ea",
+      "v1/crossplatform/physical_regions/regions.py": "05603aa2e81795ac5f89ddf4253f576f2bd634ffbf260ddbe91225b3a7e742ed",
+      "v1/crossplatform/candidate_frontend.py": "b13bca14718bd0bd2e02131a341e497ebb029980a2d15cceb2a01d1f9d031d81",
+      "QWEN_CURRENT_METHOD.json": "3034cb6c0bde673a6972d3d60b0a5ca0863afd50f6a669c7f977feac4fbaf57e",
+      "studies/3eed_minimal_pipeline_20261128/PAPER_METHOD_LOCK.json": "339dd3425c9bb6255080d0fcd3183313768bd19757fb5f4d07ea23827df3d4f6",
+      "studies/3eed_minimal_pipeline_20261128/paper_entry.py": "aa5c6a4faf10b620f669762ed27f18dd8382590cc690a945d01ad801244c6c28",
+      "studies/3eed_minimal_verifier_20261128/lean_geometry.py": "430390ec4144fa127346232b6b8cf34ba2a30a5d0209f982eb9d1ec7c54f42a3",
+      "studies/3eed_minimal_verifier_20261128/models.py": "e7ce86791f750437852ae417aabf48422095a0ca11467c108f2a9cc4a45d6cb7",
+      "studies/3eed_minimal_verifier_20261128/provenance.py": "2fa7e48202db622dcdc6325a5b7798e758391469fe0b33f4a80f38cdec65b13f",
+      "studies/3eed_relative_critic_v2_20261128/compact_pool.py": "393ba0f374c7365bc748e59b785a995ff3ebf0a8adea1b9b71747d2ac8e1a953",
+      "studies/3eed_relative_critic_v2_20261128/descriptors.py": "86d998b04c50da9c6a0e781c01f0bbfed0ff28ddddbf49bc68b19919519a4671",
+      "studies/3eed_relative_critic_v2_20261128/verifier.py": "4789469ec6c092f4438ad5486487b68b79eb0268135950ba8cc25cbebc74b643",
+      "studies/3eed_relative_critic_v2_20261128/source.py": "fec2eafe8a4a8a2f3ed1670a075e384d63ece3095058717a42b16e3efc0107c3",
+      "studies/3eed_relative_critic_v2_20261128/source_features.py": "fcf5114a6775156973bb164e460f6bf19e23959175ab58e98814a18bcfa77aa3",
+      "studies/3eed_four_paradigms_20261128/prepare_blind.py": "a31cc7986786125f444864d052660f385e26ce5d048c28400ef9d950a5ab6d10",
+      "studies/3eed_four_paradigms_20261128/physical_readout.py": "dae9ea9f6b97476c1cf2f28f49033b0d1ad9c3d2a605137197c2441cbed486a0",
+      "studies/3eed_four_paradigms_20261128/geometry_models.py": "3a0814e077cc11f5b6c170eea2c0369a02f0b9c5aca86a62c80113d1a332566d"
+    }
+  }
+}

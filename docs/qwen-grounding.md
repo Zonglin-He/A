@@ -1,35 +1,36 @@
 # Qwen 单帧三维指代
 
-最终论文方法为 **Minimal-D（Bind–Project–Select）**。冻结 Qwen3-VL 两次读出，四尺度绑定物理支持。统一轴区间算子恢复两个姿态的框，以首次二维投影排序，仅在平局时用射线代价。运行结果继续使用 `ray_equivalent_extent_2d_rank` 标识。 [主方法登记](../QWEN_CURRENT_METHOD.json) · [论文稿](../studies/3eed_minimal_pipeline_20261128/MANUSCRIPT_ZH.md) · [等价性与消融](../studies/3eed_minimal_pipeline_20261128/REPORT_ZH.md)
+论文主方法为 **S5-pass**。冻结 Qwen3-VL 两次读出，以 Minimal-D 为锚生成最多 13 个物理候选，再由只用 Waymo 训练的 Verifier 计算相对几何效用。推理使用一个分数和一个替换阈值。 [论文主方法登记](../QWEN_PAPER_METHOD.json) · [数学方法](../studies/3eed_minimal_verifier_20261128/METHOD_ZH.md) · [配对结果](../studies/3eed_minimal_verifier_20261128/REPORT_ZH.md)
 
 ## 推理入口
 
-使用 [3EED 恢复入口](../tools/3eed_recovery/README.md) 准备样本、运行冻结 Qwen 并对封存预测评分。已有缓存回复时，可从仓库根目录装载正式几何入口。
+[3EED 恢复入口](../tools/3eed_recovery/README.md) 的 `predict` 默认运行 `s5_pass`。已有冻结 Qwen 回复时，可从仓库根目录运行下列入口。
 
 ```python
 from pathlib import Path
 import sys
 
 sys.path.insert(0, "tools/3eed_recovery")
-from run_qwen_3eed import REGISTRATION, read, registered_predictor, source_paths
+from run_qwen_3eed import PAPER_REGISTRATION, read, registered_predictor, source_paths
 
 source_paths(Path("../assets/upstream-3eed"))
-predict = registered_predictor(read(REGISTRATION))
+predict = registered_predictor(read(PAPER_REGISTRATION))
 prediction = predict(frame, replies)
 ```
 
-将原 manifest 读取的 `frame` 与冻结 Qwen 的 `replies` 交给 `predict`。有效预测的 `prediction["box"]` 为 LiDAR 坐标系下的 `[x, y, z, length, width, height, yaw]`。`extent_corrected` 表示最终选中姿态的框是否沿任一轴收缩。 [锁定入口](../studies/3eed_minimal_pipeline_20261128/paper_entry.py) · [Qwen 回答协议](../studies/3eed_qwen_full_ordinary_validation_20261121/PROTOCOL.json)
+`prediction["box"]` 是 LiDAR 坐标系下的 `[x, y, z, length, width, height, yaw]`。`verifier_replaced` 记录是否替换 Minimal-D，`verifier_utility` 记录最高的有效替代候选分数。历史脚本绑定原 [Minimal-D 登记](../QWEN_CURRENT_METHOD.json)，CLI 可用 `--method minimal-d` 回放。
 
 ## 当前论文主表
 
-每格为 mIoU / Acc@50。665 条开发查询含 576 条 3EED 和 89 条 KITTI Tracking，外部子集来自 Mono3DRefer 的 18 段录制。两套面板均已参与项目评估。
+每格为 mIoU / Acc@50。两套均为历史复测。665 条开发查询含 576 条 3EED 和 89 条 KITTI Tracking，Mono 148 条覆盖 35 段录制。
 
-| 方法 | 开发面板 665 条 | Mono3DRefer 118 条 |
-|---|---:|---:|
-| 历史只缩顶部＋首次二维排序 | 34.296% / 35.038% | 26.872% / 27.966% |
-| Minimal-D | **34.312% / 35.188%** | **26.904% / 27.966%** |
+| 方法 | 开发 665 条 | Mono3DRefer 148 条 |
+| --- | ---: | ---: |
+| Minimal-D | 34.31% / 35.19% | 34.44% / 37.16% |
+| Verifier v2 | 37.84% / 39.55% | 39.31% / 42.57% |
+| **S5-pass** | **38.10% / 40.15%** | **39.22% / 42.57%** |
 
-Minimal-D 与原三轴入口在 873 条缓存查询上逐项相等。开发面板上的三轴配对增量为 +0.016 pp mIoU，95% CI [−0.052, +0.085]。当前得分来自历史曝光面板。 [原 2×2 结果](../studies/3eed_extent_2d_factorial_20261128/results.json) · [原三轴登记](../studies/3eed_extent_2d_factorial_20261128/REGISTRATION_EXTENT_2D.json) · [冻结后评估](../studies/3eed_minimal_pipeline_20261128/FINAL_EVALUATION_ZH.md)
+S5-pass 相对 v2 的开发 mIoU 和 Acc@50 分别提高 0.26 和 0.60 pp，配对区间均包含零。 [聚合结果](../studies/3eed_minimal_verifier_20261128/results.json)
 
 ## 普通 Validation
 

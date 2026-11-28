@@ -1,0 +1,79 @@
+{
+  "method": "s5_pass",
+  "display_name": "S5-pass · Relative Geometric Utility",
+  "status": "paper_main_method",
+  "selected_by": "user",
+  "selected_at_local": "2026-11-28",
+  "scope": "Qwen single-frame 3D visual grounding with a Waymo-trained verifier",
+  "model": {
+    "checkpoint": "Qwen/Qwen3-VL-4B-Instruct",
+    "revision": "ebb281ec70b05090aa6165b016eac8ec08e71b17",
+    "protocol": "studies/3eed_qwen_full_ordinary_validation_20261121/PROTOCOL.json"
+  },
+  "prediction_entry": {
+    "file": "studies/3eed_minimal_verifier_20261128/s5_paper_entry.py",
+    "sha256": "9d2361d6006451afbb327c27d96741a9230cb5addfe7c8148932704865071fcc",
+    "function": "predict",
+    "kwargs": {
+      "cap": 13,
+      "threshold": 0.09659984707832336
+    }
+  },
+  "method_lock": {
+    "file": "studies/3eed_minimal_verifier_20261128/S5_PASS_METHOD_LOCK.json",
+    "sha256": "4c8ad335570bea4bbab47210ac23a2b87a937d539a8e0bca3c42ea9625b913bc"
+  },
+  "anchor": {
+    "file": "QWEN_CURRENT_METHOD.json",
+    "sha256": "3034cb6c0bde673a6972d3d60b0a5ca0863afd50f6a669c7f977feac4fbaf57e"
+  },
+  "manuscript": "studies/3eed_minimal_verifier_20261128/METHOD_ZH.md",
+  "evaluation": {
+    "scope": "Previously exposed paired development panel: 576 3EED, 89 KITTI Tracking",
+    "descriptions": 665,
+    "recordings": 117,
+    "metrics_percent": {
+      "miou": 38.103368093307324,
+      "acc50": 40.150375939849624
+    },
+    "paired_vs_verifier_v2": {
+      "miou_delta_pp": 0.2624922588280384,
+      "acc50_delta_pp": 0.6015037593984962,
+      "miou_ci_pp": [
+        -0.406476978877419,
+        0.8378774350257324
+      ],
+      "acc50_ci_pp": [
+        -1.4708057779324748,
+        2.2831050228310503
+      ]
+    },
+    "report": "studies/3eed_minimal_verifier_20261128/REPORT_ZH.md"
+  },
+  "external_evaluation": {
+    "scope": "Previously evaluated Mono3DRefer validation subset: 35 recordings",
+    "descriptions": 148,
+    "recordings": 35,
+    "metrics_percent": {
+      "miou": 39.217949633048185,
+      "acc50": 42.567567567567565
+    },
+    "paired_vs_verifier_v2": {
+      "miou_delta_pp": -0.0893362573621699,
+      "acc50_delta_pp": 0.0,
+      "miou_ci_pp": [
+        -0.8520011464063392,
+        0.97451376201874
+      ],
+      "acc50_ci_pp": [
+        -2.150731028080761,
+        2.1511220196353404
+      ]
+    },
+    "report": "studies/3eed_minimal_verifier_20261128/REPORT_ZH.md"
+  },
+  "evidence": {
+    "file": "studies/3eed_minimal_verifier_20261128/results.json",
+    "sha256": "6a7ee4ce5280c9273db18740ea626552bc552432f19a2700ac5790099593876a"
+  }
+}

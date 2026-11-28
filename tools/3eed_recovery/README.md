@@ -1,6 +1,6 @@
 # 新工作区运行 3EED Qwen 单帧指代
 
-本机工作区位于 `/home/administ/3eed`，研究代码位于 `qwen-3eed`。正式运行器默认载入冻结的 **Minimal-D**。四尺度绑定后，对两种姿态分别进行统一轴恢复，以首次 Qwen 二维框排序，并在平局时复用首交计算射线代价。 [主方法登记](../../QWEN_CURRENT_METHOD.json) · [论文稿与结果](../../studies/3eed_minimal_pipeline_20261128/MANUSCRIPT_ZH.md)
+本机工作区位于 `/home/administ/3eed`，研究代码位于 `qwen-3eed`。正式运行器默认载入 **S5-pass**。冻结 Qwen 两次读出，Minimal-D 提供锚框，Waymo 源域训练的 Verifier 从最多 13 个候选中，用一次相对效用比较和单阈值决定输出。 [论文主方法登记](../../QWEN_PAPER_METHOD.json) · [数学方法和结果](../../studies/3eed_minimal_verifier_20261128/METHOD_ZH.md)
 
 ## 环境
 
@@ -48,6 +48,8 @@ unzip -n -q assets/archives/3eed_dataset.zip '3eed_dataset/*' -d assets/data
 
 模型目录的每个文件均由前端按 [MODEL.json](../../studies/3eed_frozen_qwen_metric_grounding_20261120/MODEL.json) 核对。数据集和模型来源为 [3EED 发布页](https://huggingface.co/datasets/RRRong/3EED/tree/129fe3cc45722423c917943a4480ba454eb352bd) 和 [Qwen 模型快照](https://huggingface.co/Qwen/Qwen3-VL-4B-Instruct/tree/ebb281ec70b05090aa6165b016eac8ec08e71b17)。
 
+S5-pass 使用 [方法锁](../../studies/3eed_minimal_verifier_20261128/S5_PASS_METHOD_LOCK.json) 中登记的另一个 safetensors 文件。本机默认路径为工作区 `assets/models/3eed/S5-pass/` 下按 SHA-256 命名的目录。在其他机器可用 `predict --verifier-weights /path/to/S5-pass.safetensors` 指定同一文件。运行器在加载 Qwen 前校验该文件的 SHA-256。
+
 上游转换源码在 `assets/upstream-3eed`，固定在 `843a901f5367a6be5cc484b97c6ecad462961dfa`。复建时可从 [worldbench/3EED](https://github.com/worldbench/3EED/tree/843a901f5367a6be5cc484b97c6ecad462961dfa) 获取该提交并检出。
 
 ## 推理和评分
@@ -75,7 +77,7 @@ run_dir="$run_root/output"
 
 准备阶段通过公开账本中的匿名 UID 匹配 Ordinary Validation 原始帧槽位，按平台和路径排序，每个烟测帧取一条描述。保存到推理清单的内容只有图像、LiDAR、相机白名单字段、原始描述、相机视角、固定采样种子和 UID。评分命令先验证预测和清单的 SHA-256，再打开对应标注槽位。两个现有评分实现交叉检查直立有向 IoU，报告严格的 `>0.25`、`>0.50` 和 mIoU，汇总时平台等权。解析失败的预测计为零。
 
-`predictions.json` 以稳定标识 `ray_equivalent_extent_2d_rank` 记录 Minimal-D，同时记录高度加二维、历史射线加高度、历史射线加三轴与冻结 `C_ray_simple` 四组对照。五组共用同一份 Qwen 回答。`seal.json` 以 `primary_arm` 标记主方法，并用登记 SHA-256 区分新旧实现。历史三臂、四臂以及原三轴加二维的五臂封存可用各自的原 manifest 和标签独立评分。`--all` 准备公开账本中全部 9,310 条成员做一次新运行，按当前清单组批并重新生成回答。旧运行的私有批次次序与缓存由其原协议和封存记录定义。 [原三轴登记](../../studies/3eed_extent_2d_factorial_20261128/REGISTRATION_EXTENT_2D.json) · [冻结后评估](../../studies/3eed_minimal_pipeline_20261128/FINAL_EVALUATION_ZH.md)
+`predictions.json` 以稳定标识 `s5_pass` 记录论文主方法，同时保存 Minimal-D、高度加二维、历史射线加高度、历史射线加三轴和冻结 `C_ray_simple` 五组对照。六组共用两次 Qwen 回答。`seal.json` 保存主方法标识、登记 SHA-256 与 Verifier 权重 SHA-256。用 `predict --method minimal-d` 回放原五组。评分入口根据原封存自动识别历史三、四、五组及新的六组。`--all` 准备公开账本中全部 9,310 条成员做一次新运行，按当前清单组批并重新生成回答。旧运行的私有批次次序与缓存由其原协议和封存记录定义。 [历史 Minimal-D 登记](../../QWEN_CURRENT_METHOD.json) · [原三轴登记](../../studies/3eed_extent_2d_factorial_20261128/REGISTRATION_EXTENT_2D.json)
 
 带有固定正式登记 SHA 的历史研究脚本从其原提交复跑。三轴四臂实验的原提交为 `46c68c2cc15a79d5b738f8bddeb4a0f96ae0de18`，Minimal-D 消融的原提交为 `27149faffe3f9477f433d18cf701d6a4b1791a36`。在本机可用同层独立工作树访问原运行目录和资源。 [高度加二维原登记](../../studies/3eed_qwen_extent_height_only_20261122/REGISTRATION_HEIGHT_2D.json)
 
@@ -84,6 +86,8 @@ git worktree add --detach ../qwen-height-2d-replay 46c68c2cc15a79d5b738f8bddeb4a
 ```
 
 ## 新机验收
+
+S5-pass 冻结入口已逐框匹配 702 条开发预测和 148 条 Mono3DRefer 预测。默认六组与显式 Minimal-D 五组都在三平台各 4 条上实际生成并评分，两次运行的冻结 Qwen 回复和共有对照逐项一致。 [S5-pass 验收回执](../../studies/3eed_minimal_verifier_20261128/S5_PASS_PROMOTION_VERIFICATION.json)
 
 Minimal-D 登记入口与既有 873 条三轴候选回放逐项一致。切换后对 Waymo、Drone、Quad 各 4 条实际重新生成 Qwen 回复并离线评分。五臂预测与切换前逐字节一致。主方法烟测三平台等权 mIoU 为 65.30%，Acc@50 为 83.33%。烟测用于检查接口和兼容性，论文报告使用封存面板。 [冻结验收回执](../../studies/3eed_minimal_pipeline_20261128/PROMOTION_VERIFICATION.json)
 
