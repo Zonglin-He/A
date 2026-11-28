@@ -1,6 +1,6 @@
 # 视觉指代研究
 
-当前主方法是 **Qwen 单帧三维指代 · 只缩顶部**。冻结 Qwen 提供对象位置和框先验，LiDAR 约束三维框，最后只收缩顶面并保留已有几何证据。 [方法、运行入口和主表](docs/qwen-grounding.md) · [主方法登记](QWEN_CURRENT_METHOD.json)
+当前主方法为 `ray_equivalent_height_only_2d_rank`。双姿态候选各自执行原首交等价顶缩，再复用首次 Qwen 二维框排序。 [推理入口](docs/qwen-grounding.md) · [主方法锁](QWEN_CURRENT_METHOD.json) · [论文定型与外部复测](studies/3eed_2d_pose_finalization_20261128/REPORT_ZH.md)
 
 | 要找什么 | 入口 |
 | --- | --- |
@@ -10,4 +10,4 @@
 | 旧版 3EED、STVG、AVIS、GREAT | [项目和历史分支索引](docs/research-index.md) |
 | 按名称找 `studies/` 下的实验 | [全部实验目录](docs/studies.md) |
 
-普通 3EED Validation 的 **9,310 条**描述上，主方法的三平台等权 **Acc@50 为 37.23%**，相对同批冻结 `C_ray_simple` 提高 **2.82 个百分点**。 [逐平台结果](docs/qwen-grounding.md#普通-validation)
+普通 3EED Validation 的 **9,310 条**描述上，旧射线加顶缩的三平台等权 **Acc@50 为 37.23%**，相对同批冻结 `C_ray_simple` 提高 **2.82 个百分点**。 [逐平台结果](docs/qwen-grounding.md#普通-validation)
