@@ -212,13 +212,21 @@ def score(args):
     old_arms = (*HISTORIC_ARMS, previous["method"])
     current_arms = (*old_arms, method["method"])
     registered_arms = {
-        digest(legacy): HISTORIC_ARMS,
-        digest(archived_path): old_arms,
-        hashlib.sha256(registration_bytes).hexdigest(): current_arms,
+        digest(legacy): (HISTORIC_ARMS, None),
+        digest(archived_path): (old_arms, None),
+        hashlib.sha256(registration_bytes).hexdigest(): (current_arms, method["method"]),
     }
+    if "extent_2d" in method["controls"]:
+        control = method["controls"]["extent_2d"]
+        extent_path = checked_file(control["registration"])
+        extent = read(extent_path)
+        if extent["method"] != control["method"]:
+            raise ValueError("The archived extent-plus-2D method differs from its registration")
+        registered_arms[digest(extent_path)] = ((*old_arms, extent["method"]), extent["method"])
     arms = tuple(seal.get("arms", HISTORIC_ARMS))
-    if (registered_arms.get(seal["method_sha256"]) != arms
-            or (arms == current_arms and seal.get("primary_arm") != method["method"])):
+    expected = registered_arms.get(seal["method_sha256"])
+    if (expected is None or arms != expected[0]
+            or (expected[1] is not None and seal.get("primary_arm") != expected[1])):
         raise ValueError("Scoring arms differ from the supported registered readouts")
     if (seal["target_labels_read"] or digest(payload) != seal["predictions_sha256"]
             or digest(args.manifest) != seal["manifest_sha256"]

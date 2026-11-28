@@ -1,6 +1,6 @@
 # Qwen 单帧三维指代
 
-当前论文主方法为 `ray_equivalent_extent_2d_rank`。冻结 Qwen3-VL-4B-Instruct 提供首次二维框与三维先验。PCA 与 Qwen 的两个物理锚定候选各自执行三轴观测等价投影，再按首次二维框的标定投影重叠排序。只有另一候选有效且得分严格提高时才替换原射线赢家。 [主方法登记](../QWEN_CURRENT_METHOD.json) · [论文稿](../studies/3eed_extent_2d_factorial_20261128/MANUSCRIPT_ZH.md) · [2×2 配对实验](../studies/3eed_extent_2d_factorial_20261128/REPORT_ZH.md)
+最终论文方法为 **Minimal-D（Bind–Project–Select）**。冻结 Qwen3-VL 两次读出，四尺度绑定物理支持。统一轴区间算子恢复两个姿态的框，以首次二维投影排序，仅在平局时用射线代价。运行结果继续使用 `ray_equivalent_extent_2d_rank` 标识。 [主方法登记](../QWEN_CURRENT_METHOD.json) · [论文稿](../studies/3eed_minimal_pipeline_20261128/MANUSCRIPT_ZH.md) · [等价性与消融](../studies/3eed_minimal_pipeline_20261128/REPORT_ZH.md)
 
 ## 推理入口
 
@@ -18,7 +18,7 @@ predict = registered_predictor(read(REGISTRATION))
 prediction = predict(frame, replies)
 ```
 
-将原 manifest 读取的 `frame` 与冻结 Qwen 的 `replies` 交给 `predict`。有效预测的 `prediction["box"]` 为 LiDAR 坐标系下的 `[x, y, z, length, width, height, yaw]`。`extent_corrected` 表示最终选中姿态的框是否沿任一轴收缩。 [当前入口](../studies/3eed_extent_2d_factorial_20261128/axiswise_2d.py) · [Qwen 回答协议](../studies/3eed_qwen_full_ordinary_validation_20261121/PROTOCOL.json)
+将原 manifest 读取的 `frame` 与冻结 Qwen 的 `replies` 交给 `predict`。有效预测的 `prediction["box"]` 为 LiDAR 坐标系下的 `[x, y, z, length, width, height, yaw]`。`extent_corrected` 表示最终选中姿态的框是否沿任一轴收缩。 [锁定入口](../studies/3eed_minimal_pipeline_20261128/paper_entry.py) · [Qwen 回答协议](../studies/3eed_qwen_full_ordinary_validation_20261121/PROTOCOL.json)
 
 ## 当前论文主表
 
@@ -27,9 +27,9 @@ prediction = predict(frame, replies)
 | 方法 | 开发面板 665 条 | Mono3DRefer 118 条 |
 |---|---:|---:|
 | 历史只缩顶部＋首次二维排序 | 34.296% / 35.038% | 26.872% / 27.966% |
-| 当前三轴投影＋首次二维排序 | **34.312% / 35.188%** | **26.904% / 27.966%** |
+| Minimal-D | **34.312% / 35.188%** | **26.904% / 27.966%** |
 
-开发面板上的三轴配对增量为 +0.016 pp mIoU，95% CI [−0.052, +0.085]。2×2 消融、分平台评分、Selection 与 Audit 首交计数见[完整结果](../studies/3eed_extent_2d_factorial_20261128/results.json)。旧版登记保存在[高度投影归档](../studies/3eed_qwen_extent_height_only_20261122/REGISTRATION_HEIGHT_2D.json)。
+Minimal-D 与原三轴入口在 873 条缓存查询上逐项相等。开发面板上的三轴配对增量为 +0.016 pp mIoU，95% CI [−0.052, +0.085]。当前得分来自历史曝光面板。 [原 2×2 结果](../studies/3eed_extent_2d_factorial_20261128/results.json) · [原三轴登记](../studies/3eed_extent_2d_factorial_20261128/REGISTRATION_EXTENT_2D.json) · [冻结后评估](../studies/3eed_minimal_pipeline_20261128/FINAL_EVALUATION_ZH.md)
 
 ## 普通 Validation
 

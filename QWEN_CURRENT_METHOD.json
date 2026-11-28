@@ -1,6 +1,6 @@
 {
   "method": "ray_equivalent_extent_2d_rank",
-  "display_name": "三轴观测等价投影与首次二维框排序",
+  "display_name": "Minimal-D（Bind–Project–Select）",
   "status": "paper_main_method",
   "selected_by": "user",
   "selected_at_local": "2026-11-28",
@@ -11,14 +11,14 @@
     "protocol": "studies/3eed_qwen_full_ordinary_validation_20261121/PROTOCOL.json"
   },
   "prediction_entry": {
-    "file": "studies/3eed_extent_2d_factorial_20261128/axiswise_2d.py",
+    "file": "studies/3eed_minimal_pipeline_20261128/paper_entry.py",
+    "sha256": "aa5c6a4faf10b620f669762ed27f18dd8382590cc690a945d01ad801244c6c28",
     "function": "predict",
-    "kwargs": {},
-    "sha256": "3139265292f0f063fc3df456af152583bb3e2ec5be40664e785772f5ec4a7d8e"
+    "kwargs": {}
   },
   "method_lock": {
-    "file": "studies/3eed_extent_2d_factorial_20261128/PAPER_METHOD_LOCK.json",
-    "sha256": "7defd3cde4fc536e54d7470686f620b34914a1606b25bb24c7b479cfed16fb33"
+    "file": "studies/3eed_minimal_pipeline_20261128/PAPER_METHOD_LOCK.json",
+    "sha256": "339dd3425c9bb6255080d0fcd3183313768bd19757fb5f4d07ea23827df3d4f6"
   },
   "legacy_registration": "studies/3eed_qwen_extent_height_only_20261122/LEGACY_REGISTRATION.json",
   "evaluation": {
@@ -28,7 +28,7 @@
       "miou": 34.31202388047312,
       "acc50": 35.18796992481203
     },
-    "report": "studies/3eed_extent_2d_factorial_20261128/REPORT_ZH.md"
+    "report": "studies/3eed_minimal_pipeline_20261128/REPORT_ZH.md"
   },
   "controls": {
     "frozen": {
@@ -49,9 +49,16 @@
         "file": "studies/3eed_qwen_extent_height_only_20261122/REGISTRATION_HEIGHT_2D.json",
         "sha256": "5da308d875501b312c17cc4ffd4625fe9bc3f2720085bcf7790c57836c8ac61c"
       }
+    },
+    "extent_2d": {
+      "method": "ray_equivalent_extent_2d_rank",
+      "registration": {
+        "file": "studies/3eed_extent_2d_factorial_20261128/REGISTRATION_EXTENT_2D.json",
+        "sha256": "30a0f69c328ff8d3667cb4a51be10fe38c45c78ddc9b7e1d80259f1c2379d2b2"
+      }
     }
   },
-  "manuscript": "studies/3eed_extent_2d_factorial_20261128/MANUSCRIPT_ZH.md",
+  "manuscript": "studies/3eed_minimal_pipeline_20261128/PIPELINE_ZH.md",
   "external_evaluation": {
     "scope": "118 previously evaluated Mono3DRefer Test recording-filtered queries",
     "descriptions": 118,
@@ -59,6 +66,19 @@
       "miou": 26.90416404566304,
       "acc50": 27.966101694915253
     },
-    "report": "studies/3eed_extent_2d_factorial_20261128/REPORT_ZH.md"
+    "report": "studies/3eed_minimal_pipeline_20261128/REPORT_ZH.md"
+  },
+  "implementation": "minimal_d",
+  "full_manuscript": "studies/3eed_minimal_pipeline_20261128/MANUSCRIPT_ZH.md",
+  "equivalence_replay": {
+    "reference_implementation": "historical extent-plus-2D Full",
+    "queries": 873,
+    "exact_prediction_records": 873,
+    "selection_first_hit_checks": 93832,
+    "selection_first_hit_changes": 0,
+    "results": {
+      "file": "studies/3eed_minimal_pipeline_20261128/results.json",
+      "sha256": "d271b14ba4f17bb3ec5e2df3bd7e9aca1732a3038b2db1304481a82b10cc1ba5"
+    }
   }
 }

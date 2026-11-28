@@ -1,0 +1,64 @@
+{
+  "method": "ray_equivalent_extent_2d_rank",
+  "display_name": "三轴观测等价投影与首次二维框排序",
+  "status": "paper_main_method",
+  "selected_by": "user",
+  "selected_at_local": "2026-11-28",
+  "scope": "Qwen single-frame 3D visual grounding",
+  "model": {
+    "checkpoint": "Qwen/Qwen3-VL-4B-Instruct",
+    "revision": "ebb281ec70b05090aa6165b016eac8ec08e71b17",
+    "protocol": "studies/3eed_qwen_full_ordinary_validation_20261121/PROTOCOL.json"
+  },
+  "prediction_entry": {
+    "file": "studies/3eed_extent_2d_factorial_20261128/axiswise_2d.py",
+    "function": "predict",
+    "kwargs": {},
+    "sha256": "3139265292f0f063fc3df456af152583bb3e2ec5be40664e785772f5ec4a7d8e"
+  },
+  "method_lock": {
+    "file": "studies/3eed_extent_2d_factorial_20261128/PAPER_METHOD_LOCK.json",
+    "sha256": "7defd3cde4fc536e54d7470686f620b34914a1606b25bb24c7b479cfed16fb33"
+  },
+  "legacy_registration": "studies/3eed_qwen_extent_height_only_20261122/LEGACY_REGISTRATION.json",
+  "evaluation": {
+    "scope": "665 previously exposed paired development queries (576 3EED, 89 KITTI Tracking)",
+    "descriptions": 665,
+    "metrics_percent": {
+      "miou": 34.31202388047312,
+      "acc50": 35.18796992481203
+    },
+    "report": "studies/3eed_extent_2d_factorial_20261128/REPORT_ZH.md"
+  },
+  "controls": {
+    "frozen": {
+      "method": "C_ray_simple",
+      "method_lock": "studies/3eed_qwen_cray_simplification_20261121/METHOD_LOCK.json",
+      "sha256": "8224823efab925bb73e2fd058adfda9389b59d0bb6d0660e015d6249f88acc3b"
+    },
+    "full_axis": {
+      "method": "ray_equivalent_extent",
+      "kwargs": {
+        "height_only": false
+      },
+      "method_lock": "studies/3eed_qwen_ray_equivalent_extent_20261122/METHOD_LOCK.json"
+    },
+    "height_2d": {
+      "method": "ray_equivalent_height_only_2d_rank",
+      "registration": {
+        "file": "studies/3eed_qwen_extent_height_only_20261122/REGISTRATION_HEIGHT_2D.json",
+        "sha256": "5da308d875501b312c17cc4ffd4625fe9bc3f2720085bcf7790c57836c8ac61c"
+      }
+    }
+  },
+  "manuscript": "studies/3eed_extent_2d_factorial_20261128/MANUSCRIPT_ZH.md",
+  "external_evaluation": {
+    "scope": "118 previously evaluated Mono3DRefer Test recording-filtered queries",
+    "descriptions": 118,
+    "metrics_percent": {
+      "miou": 26.90416404566304,
+      "acc50": 27.966101694915253
+    },
+    "report": "studies/3eed_extent_2d_factorial_20261128/REPORT_ZH.md"
+  }
+}
