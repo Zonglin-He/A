@@ -1,6 +1,6 @@
 # 新工作区运行 3EED Qwen 单帧指代
 
-本机工作区位于 `/home/administ/3eed`，研究代码位于 `qwen-3eed` 的本地 `restore/3eed-qwen` 分支。研究基点为 `5da5e86c659b661fae0c7a4f459c14f75da13aaa`，包含正式方法登记 `dbd38fe61a637b6ae2905ec67d1b5fa535f7a349` 和后续论文实验。当前正式入口复用首次二维框重排经过只缩顶部的原双姿态候选。只缩顶部保留底面、原框实测支持点和 Selection 首交深度。 [主方法登记](../../QWEN_CURRENT_METHOD.json)
+本机工作区位于 `/home/administ/3eed`，研究代码位于 `qwen-3eed`。当前论文主方法 `ray_equivalent_extent_2d_rank` 对两个已锚定的姿态分别做三轴观测等价投影，再以首次 Qwen 二维框排序。 [主方法登记](../../QWEN_CURRENT_METHOD.json) · [论文稿与结果](../../studies/3eed_extent_2d_factorial_20261128/MANUSCRIPT_ZH.md)
 
 ## 环境
 
@@ -75,9 +75,17 @@ run_dir="$run_root/output"
 
 准备阶段通过公开账本中的匿名 UID 匹配 Ordinary Validation 原始帧槽位，按平台和路径排序，每个烟测帧取一条描述。保存到推理清单的内容只有图像、LiDAR、相机白名单字段、原始描述、相机视角、固定采样种子和 UID。评分命令先验证预测和清单的 SHA-256，再打开对应标注槽位。两个现有评分实现交叉检查直立有向 IoU，报告严格的 `>0.25`、`>0.50` 和 mIoU，汇总时平台等权。解析失败的预测计为零。
 
-`predictions.json` 记录当前 `ray_equivalent_height_only_2d_rank`、旧射线加顶缩、冻结 `C_ray_simple` 与三轴对照，四组共用同一份 Qwen 回答。历史三臂封存仍可用原 manifest 和标签独立评分。`seal.json` 记录输入、方法、预测与执行环境。`--all` 准备公开账本中全部 9,310 条成员做一次新运行，按当前清单组批并重新生成回答。旧运行的私有批次次序与缓存继续由其原协议和封存记录定义。
+`predictions.json` 记录当前 `ray_equivalent_extent_2d_rank` 以及高度加二维、历史射线加高度、历史射线加三轴与冻结 `C_ray_simple` 四组对照，五组共用同一份 Qwen 回答。`seal.json` 以 `primary_arm` 标记本次主方法，并绑定输入、方法和预测。历史三臂、四臂封存可用各自的原 manifest 和标签独立评分。`--all` 准备公开账本中全部 9,310 条成员做一次新运行，按当前清单组批并重新生成回答。旧运行的私有批次次序与缓存由其原协议和封存记录定义。
+
+带有固定正式登记 SHA 的历史研究脚本从其原提交复跑。三轴四臂实验的原提交为 `46c68c2cc15a79d5b738f8bddeb4a0f96ae0de18`。在本机可用同层独立工作树访问原运行目录和资源。 [高度加二维原登记](../../studies/3eed_qwen_extent_height_only_20261122/REGISTRATION_HEIGHT_2D.json)
+
+```bash
+git worktree add --detach ../qwen-height-2d-replay 46c68c2cc15a79d5b738f8bddeb4a0f96ae0de18
+```
 
 ## 新机验收
+
+主方法登记后，恢复 CLI 用 Waymo、Drone、Quad 各 4 条完成 GPU 推理和独立评分。三轴加二维烟测的三平台等权 mIoU 为 65.30%，Acc@50 为 83.33%。登记入口与既有 873 条三轴候选回放逐框一致。烟测用于检查接口和兼容性，论文报告使用封存面板。
 
 2026-11-28 已验证 RTX 5090 的 BF16 SDPA、固定图像预处理与三平台四查询组批。公开数据 ZIP 的目录索引匹配全部 9,310 条 Ordinary Validation UID。使用发布包内 Waymo、Drone、Quad 各 4 帧，载入完成 SHA-256 校验的锁定权重，实际生成 24 份 Qwen 回答并独立评分，全部解析有效。模型校验、加载和推理合计 26.36 秒，PyTorch 显存分配峰值 9.43 GiB。
 
@@ -87,7 +95,7 @@ run_dir="$run_root/output"
 | `ray_equivalent_height_only` | 75.00% | 66.67% | 56.09% |
 | 三轴 `ray_equivalent_extent` | 75.00% | 66.67% | 57.57% |
 
-主方法对 9 条描述收缩顶面。2,067 条 Selection 射线的命中状态均保持，首交深度最大差 `7.11e-15 m`。两个评分实现的 IoU 最大差为 `6.66e-16`。已验证被篡改的预测在读取标注前被封存校验拒绝。这批样本只用于验收新机的运行能力。
+该历史烟测的高度对照对 9 条描述收缩顶面。2,067 条 Selection 射线的命中状态均保持，首交深度最大差 `7.11e-15 m`。两个评分实现的 IoU 最大差为 `6.66e-16`。已验证被篡改的预测在读取标注前被封存校验拒绝。这批样本只用于验收新机的运行能力。
 
 完整数据包通过 SHA-256 校验并解包到 `/home/administ/3eed/assets/data/3eed_dataset`。全部 9,310 条 Ordinary Validation 已准备到 `/home/administ/3eed/runs/ordinary-full-input/manifest.json`，其中 Waymo 3,782 条、Drone 2,792 条、Quad 2,736 条。完整数据与权重的传输日志在 `/home/administ/3eed/runs/download-progress.log`。
 

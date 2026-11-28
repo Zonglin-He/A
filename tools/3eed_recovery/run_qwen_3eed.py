@@ -3,6 +3,7 @@
 
 import argparse
 from collections import Counter
+from functools import partial
 import hashlib
 from importlib import import_module
 import json
@@ -24,7 +25,6 @@ PLATFORMS = ("waymo", "drone", "quad")
 VIEWS = ("F", "FL", "FR", "SL", "SR")
 HISTORIC_ARMS = ("C_ray_simple", "ray_equivalent_height_only", "ray_equivalent_extent")
 ARMS = HISTORIC_ARMS  # Imported by historical study runners.
-PROMOTED_ARM = "ray_equivalent_height_only_2d_rank"
 REGISTRATION = ROOT / "QWEN_CURRENT_METHOD.json"
 INPUT_FIELDS = {"uid", "target", "text", "rgb", "points", "calibration", "suffix", "seed"}
 CAMERA_FIELDS = {"image_intrinsic", "image_extrinsic", "camera_distortion"}
@@ -72,6 +72,43 @@ def check_geometry():
             raise ValueError(f"Geometric dependency differs from the candidate lock: {path}")
 
 
+def checked_file(ref):
+    path = ROOT / ref["file"]
+    if digest(path) != ref["sha256"]:
+        raise ValueError(f"Locked file differs from its registered hash: {ref['file']}")
+    return path
+
+
+def height_2d_registration(current):
+    control = current["controls"]["height_2d"]
+    path = checked_file(control["registration"])
+    previous = read(path)
+    if previous["method"] != control["method"]:
+        raise ValueError("The archived height-plus-2D method differs from its registration")
+    return path, previous
+
+
+def registered_predictor(method):
+    """Load a locked geometry readout after source_paths has set up the environment."""
+    entry = method["prediction_entry"]
+    path = checked_file(entry)
+    lock = read(checked_file(method["method_lock"]))
+    if lock["method"] != method["method"] or lock["entry"] != entry:
+        raise ValueError("The registered readout differs from its method lock")
+    for filename, expected in lock["config"]["historical_geometry"].items():
+        checked_file(dict(file=filename, sha256=expected))
+
+    directory = str(path.parent)
+    sys.path.insert(0, directory)
+    try:
+        module = import_module(path.stem)
+    finally:
+        sys.path.remove(directory)
+    if Path(module.__file__).resolve() != path.resolve():
+        raise ValueError("The registered prediction module was not loaded")
+    return partial(getattr(module, entry["function"]), **entry["kwargs"])
+
+
 def input_frames(manifest):
     rows = read(manifest)
     if not isinstance(rows, list) or not rows:
@@ -104,27 +141,19 @@ def predict(args):
     frames = list(input_frames(args.manifest).values())
     if len(frames) % 2:
         raise ValueError("An even number of descriptions is required for complete four-query batches")
-    method = read(REGISTRATION)
+    registration_bytes = REGISTRATION.read_bytes()
+    method = json.loads(registration_bytes)
+    _, previous = height_2d_registration(method)
     frozen = read(ROOT / method["controls"]["frozen"]["method_lock"])["entry"]
-    for lock in (method["prediction_entry"], method["method_lock"], frozen):
-        if digest(ROOT / lock["file"]) != lock["sha256"]:
-            raise ValueError(f"Locked file differs from its registered hash: {lock['file']}")
-    method_lock = read(ROOT / method["method_lock"]["file"])
-    for filename, expected in method_lock["config"]["historical_geometry"].items():
-        if digest(ROOT / filename) != expected:
-            raise ValueError(f"Registered dependency differs from lock: {filename}")
+    checked_file(frozen)
     check_geometry()
 
     from run_original_schedule import load_model, predict as qwen_predict
     from live import predict as roof_predict, frozen_predict
 
-    entry = method["prediction_entry"]
-    module = import_module(Path(entry["file"]).stem)
-    if Path(module.__file__).resolve() != (ROOT / entry["file"]).resolve():
-        raise ValueError("The registered prediction module was not loaded")
-    promoted = getattr(module, entry["function"])
-    args_for_entry = entry["kwargs"]
-    arms = (*HISTORIC_ARMS, PROMOTED_ARM)
+    old_2d = registered_predictor(previous)
+    current = registered_predictor(method)
+    arms = (*HISTORIC_ARMS, previous["method"], method["method"])
 
     started = perf_counter()
     files = {Path(frame[field]) for frame in frames for field in ("rgb", "points", "calibration")}
@@ -145,7 +174,8 @@ def predict(args):
                     frozen_predict(frame, replies),
                     roof_predict(frame, replies, height_only=True),
                     roof_predict(frame, replies, height_only=False),
-                    promoted(frame, replies, **args_for_entry),
+                    old_2d(frame, replies),
+                    current(frame, replies),
                 )
                 rows.append(dict(uid=frame["uid"], target=frame["target"], replies=replies,
                                  predictions=dict(zip(arms, predictions, strict=True))))
@@ -156,7 +186,8 @@ def predict(args):
     publish(payload, rows)
     publish(args.output / "seal.json", dict(
         predictions_sha256=digest(payload), manifest_sha256=digest(args.manifest),
-        method_sha256=digest(REGISTRATION), input_file_sha256=hashes, arms=arms,
+        method_sha256=hashlib.sha256(registration_bytes).hexdigest(), input_file_sha256=hashes, arms=arms,
+        primary_arm=method["method"],
         candidate_lock_sha256=digest(CANDIDATE_LOCK),
         model_revision=method["model"]["revision"], descriptions=len(rows),
         counts=Counter(row["target"] for row in rows), target_labels_read=False,
@@ -174,15 +205,23 @@ def score(args):
     seal_path = args.run / "seal.json"
     seal = read(seal_path)
     payload = args.run / "predictions.json"
-    method = read(REGISTRATION)
+    registration_bytes = REGISTRATION.read_bytes()
+    method = json.loads(registration_bytes)
+    archived_path, previous = height_2d_registration(method)
     legacy = ROOT / method["legacy_registration"]
-    registration_hashes = (digest(REGISTRATION), digest(legacy))
+    old_arms = (*HISTORIC_ARMS, previous["method"])
+    current_arms = (*old_arms, method["method"])
+    registered_arms = {
+        digest(legacy): HISTORIC_ARMS,
+        digest(archived_path): old_arms,
+        hashlib.sha256(registration_bytes).hexdigest(): current_arms,
+    }
     arms = tuple(seal.get("arms", HISTORIC_ARMS))
-    if arms not in (HISTORIC_ARMS, (*HISTORIC_ARMS, PROMOTED_ARM)):
+    if (registered_arms.get(seal["method_sha256"]) != arms
+            or (arms == current_arms and seal.get("primary_arm") != method["method"])):
         raise ValueError("Scoring arms differ from the supported registered readouts")
     if (seal["target_labels_read"] or digest(payload) != seal["predictions_sha256"]
             or digest(args.manifest) != seal["manifest_sha256"]
-            or seal["method_sha256"] not in registration_hashes
             or digest(CANDIDATE_LOCK) != seal["candidate_lock_sha256"]):
         raise ValueError("Prediction seal or manifest does not match")
     if args.output.exists():

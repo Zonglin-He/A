@@ -1,0 +1,47 @@
+{
+  "method": "ray_equivalent_height_only_2d_rank",
+  "display_name": "首次二维框排序与只缩顶部",
+  "status": "paper_main_method",
+  "selected_by": "user",
+  "selected_at_local": "2026-11-28",
+  "scope": "Qwen single-frame 3D visual grounding",
+  "model": {
+    "checkpoint": "Qwen/Qwen3-VL-4B-Instruct",
+    "revision": "ebb281ec70b05090aa6165b016eac8ec08e71b17",
+    "protocol": "studies/3eed_qwen_full_ordinary_validation_20261121/PROTOCOL.json"
+  },
+  "prediction_entry": {
+    "file": "studies/3eed_qwen_extent_height_only_20261122/live_2d.py",
+    "function": "predict",
+    "kwargs": {},
+    "sha256": "5bdedabc1a144c0fa1d821ddec26cac1d8c2b0a98f5207a4833b05cf6458822a"
+  },
+  "method_lock": {
+    "file": "studies/3eed_qwen_extent_height_only_20261122/METHOD_LOCK_2D.json",
+    "sha256": "04fa3ed0ceab4d02c77c0ffbb74fa003ef26768b0180255b656b093492ce406e"
+  },
+  "legacy_registration": "studies/3eed_qwen_extent_height_only_20261122/LEGACY_REGISTRATION.json",
+  "evaluation": {
+    "scope": "665 historical paired queries; dual-pose only",
+    "descriptions": 665,
+    "metrics_percent": {
+      "miou": 34.295792277959094,
+      "acc50": 35.037593984962406
+    },
+    "report": "studies/3eed_2d_pose_finalization_20261128/REPORT_ZH.md"
+  },
+  "controls": {
+    "frozen": {
+      "method": "C_ray_simple",
+      "method_lock": "studies/3eed_qwen_cray_simplification_20261121/METHOD_LOCK.json",
+      "sha256": "8224823efab925bb73e2fd058adfda9389b59d0bb6d0660e015d6249f88acc3b"
+    },
+    "full_axis": {
+      "method": "ray_equivalent_extent",
+      "kwargs": {
+        "height_only": false
+      },
+      "method_lock": "studies/3eed_qwen_ray_equivalent_extent_20261122/METHOD_LOCK.json"
+    }
+  }
+}

@@ -1,21 +1,35 @@
 # Qwen 单帧三维指代
 
-当前主方法为 `ray_equivalent_height_only_2d_rank`。冻结的 Qwen3-VL-4B-Instruct 提供首次二维框与三维先验。原四尺度点云区域产生 PCA 和 Qwen 两个姿态候选，各自保留原保护点和 Selection 首交证据执行顶缩。选择与首次二维框标定投影重叠更大的候选，失效和并列沿用原射线赢家。 [主方法登记](../QWEN_CURRENT_METHOD.json) · [定型报告](../studies/3eed_2d_pose_finalization_20261128/REPORT_ZH.md)
+当前论文主方法为 `ray_equivalent_extent_2d_rank`。冻结 Qwen3-VL-4B-Instruct 提供首次二维框与三维先验。PCA 与 Qwen 的两个物理锚定候选各自执行三轴观测等价投影，再按首次二维框的标定投影重叠排序。只有另一候选有效且得分严格提高时才替换原射线赢家。 [主方法登记](../QWEN_CURRENT_METHOD.json) · [论文稿](../studies/3eed_extent_2d_factorial_20261128/MANUSCRIPT_ZH.md) · [2×2 配对实验](../studies/3eed_extent_2d_factorial_20261128/REPORT_ZH.md)
 
 ## 推理入口
 
-在已配置 3EED 数据桥和几何依赖的研究环境中，从仓库根目录导入几何入口。将帧记录 `frame` 与已按固定协议解析的 Qwen 回答 `replies` 传给 `predict`。
+使用 [3EED 恢复入口](../tools/3eed_recovery/README.md) 准备样本、运行冻结 Qwen 并对封存预测评分。已有缓存回复时，可从仓库根目录装载正式几何入口。
 
 ```python
+from pathlib import Path
 import sys
 
-sys.path.insert(0, "studies/3eed_qwen_extent_height_only_20261122")
-from live_2d import predict
+sys.path.insert(0, "tools/3eed_recovery")
+from run_qwen_3eed import REGISTRATION, read, registered_predictor, source_paths
 
+source_paths(Path("../assets/upstream-3eed"))
+predict = registered_predictor(read(REGISTRATION))
 prediction = predict(frame, replies)
 ```
 
-有效预测的 `prediction["box"]` 为 LiDAR 坐标系下的 `[x, y, z, length, width, height, yaw]`。`extent_corrected` 记录本条是否收缩了顶面。历史入口 `live.predict` 保留旧射线选框和三轴消融。 [当前入口](../studies/3eed_qwen_extent_height_only_20261122/live_2d.py) · [历史入口](../studies/3eed_qwen_extent_height_only_20261122/live.py) · [Qwen 回答协议](../studies/3eed_qwen_full_ordinary_validation_20261121/PROTOCOL.json) · [复现命令](../studies/3eed_qwen_extent_height_only_20261122/REPORT_ZH.md)
+将原 manifest 读取的 `frame` 与冻结 Qwen 的 `replies` 交给 `predict`。有效预测的 `prediction["box"]` 为 LiDAR 坐标系下的 `[x, y, z, length, width, height, yaw]`。`extent_corrected` 表示最终选中姿态的框是否沿任一轴收缩。 [当前入口](../studies/3eed_extent_2d_factorial_20261128/axiswise_2d.py) · [Qwen 回答协议](../studies/3eed_qwen_full_ordinary_validation_20261121/PROTOCOL.json)
+
+## 当前论文主表
+
+每格为 mIoU / Acc@50。665 条开发查询含 576 条 3EED 和 89 条 KITTI Tracking，外部子集来自 Mono3DRefer 的 18 段录制。两套面板均已参与项目评估。
+
+| 方法 | 开发面板 665 条 | Mono3DRefer 118 条 |
+|---|---:|---:|
+| 历史只缩顶部＋首次二维排序 | 34.296% / 35.038% | 26.872% / 27.966% |
+| 当前三轴投影＋首次二维排序 | **34.312% / 35.188%** | **26.904% / 27.966%** |
+
+开发面板上的三轴配对增量为 +0.016 pp mIoU，95% CI [−0.052, +0.085]。2×2 消融、分平台评分、Selection 与 Audit 首交计数见[完整结果](../studies/3eed_extent_2d_factorial_20261128/results.json)。旧版登记保存在[高度投影归档](../studies/3eed_qwen_extent_height_only_20261122/REGISTRATION_HEIGHT_2D.json)。
 
 ## 普通 Validation
 
